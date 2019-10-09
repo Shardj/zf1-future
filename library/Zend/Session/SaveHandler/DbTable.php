@@ -347,9 +347,10 @@ class Zend_Session_SaveHandler_DbTable
         if (count($rows)) {
             $data[$this->_lifetimeColumn] = $this->_getLifetime($rows->current());
 
-            if ($this->update($data, $this->_getPrimary($id, self::PRIMARY_TYPE_WHERECLAUSE))) {
-                $return = true;
-            }
+            $this->update($data, $this->_getPrimary($id, self::PRIMARY_TYPE_WHERECLAUSE)); //will return number of rows affected
+      
+            $return = true; //always return true on update, even if 0 rows were effected (unchanged data with same timestamp)
+            
         } else {
             $data[$this->_lifetimeColumn] = $this->_lifetime;
 
