@@ -35,6 +35,6 @@
         "exclude": ["/demos", "/documentation", "/tests"]
     },
     "replace": {
-        "zendframework/zendframework1": "1.12.20"
+        "zendframework/zendframework1": "self.version"
     }
 }
