@@ -120,7 +120,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
      *
      * Calls {@link bootstrap()} by default
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->bootstrap();
     }
