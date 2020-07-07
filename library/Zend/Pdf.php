@@ -947,7 +947,7 @@ class Zend_Pdf
      * Return the document-level Metadata
      * or null Metadata stream is not presented
      *
-     * @return string
+     * @return string|null
      */
     public function getMetadata()
     {
@@ -988,7 +988,7 @@ class Zend_Pdf
      * Get open Action
      * Returns Zend_Pdf_Target (Zend_Pdf_Destination or Zend_Pdf_Action object)
      *
-     * @return Zend_Pdf_Target
+     * @return Zend_Pdf_Target|null
      */
     public function getOpenAction()
     {
@@ -1040,7 +1040,7 @@ class Zend_Pdf
      * Return specified named destination
      *
      * @param string $name
-     * @return Zend_Pdf_Destination_Explicit|Zend_Pdf_Action_GoTo
+     * @return Zend_Pdf_Destination_Explicit|Zend_Pdf_Action_GoTo|null
      */
     public function getNamedDestination($name)
     {
