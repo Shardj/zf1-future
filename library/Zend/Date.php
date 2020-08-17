@@ -487,7 +487,7 @@ class Zend_Date extends Zend_Date_DateObject
     {
         $result = $this->get($part);
         if (is_numeric($result)) {
-          return (int)$result;
+          return (int)(string) $result;
         } else {
           return false;
         }
