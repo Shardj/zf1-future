@@ -1818,7 +1818,6 @@ class Zend_Date extends Zend_Date_DateObject
                 require_once 'Zend/Date/Exception.php';
                 throw new Zend_Date_Exception("invalid date ($date) operand, swatchstamp expected", 0, null, $date);
 
-            case self::HOUR_SHORT:
             case self::HOUR_SHORT_AM:
                 if (is_numeric($date)) {
                     return $this->_assign($calc, $this->mktime((int)$date, 0, 0, 1, 1, 1970, true),
@@ -1827,6 +1826,16 @@ class Zend_Date extends Zend_Date_DateObject
 
                 require_once 'Zend/Date/Exception.php';
                 throw new Zend_Date_Exception("invalid date ($date) operand, hour expected", 0, null, $date);
+
+            case self::HOUR_SHORT:
+                if (is_numeric($date)) {
+                    return $this->_assign($calc, $this->mktime((int)$date, 0, 0, 1, 1, 1970, true),
+                                                 $this->mktime($hour,         0, 0, 1, 1, 1970, true), false);
+                }
+
+                require_once 'Zend/Date/Exception.php';
+                throw new Zend_Date_Exception("invalid date ($date) operand, hour expected", 0, null, $date);
+                break;
 
             case self::HOUR_AM:
                 if (is_numeric($date)) {
