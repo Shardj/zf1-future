@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -87,12 +88,12 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
             $dsn = $this->_pdoType . ':' . $dsn['name'];
         } else {
 
-            if(isset($dsn['dbname'])) {
+            if (isset($dsn['dbname'])) {
                 $dsn['Database'] = $dsn['dbname'];
                 unset($dsn['dbname']);
             }
 
-            if(isset($dsn['host'])) {
+            if (isset($dsn['host'])) {
                 $dsn['Server'] = $dsn['host'];
                 unset($dsn['host']);
             }
@@ -144,8 +145,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
         $sql = null;
 
         // Default transaction level in sql server
-        if ($level === null)
-        {
+        if ($level === null) {
             $level = SQLSRV_TXN_READ_COMMITTED;
         }
 
@@ -315,8 +315,8 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
      * @return string
      * @throws Zend_Db_Adapter_Exceptions
      */
-     public function limit($sql, $count, $offset = 0)
-     {
+    public function limit($sql, $count, $offset = 0)
+    {
         $count = (int)$count;
         if ($count <= 0) {
             require_once 'Zend/Db/Adapter/Exception.php';
@@ -340,17 +340,19 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
                 $order = trim(preg_replace('/\bASC\b|\bDESC\b/i', '', $order));
             }
 
-            $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . ($count+$offset) . ' ', $sql);
+            $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . ($count + $offset) . ' ', $sql);
 
             $sql = 'SELECT * FROM (SELECT TOP ' . $count . ' * FROM (' . $sql . ') AS inner_tbl';
             if ($orderby !== false) {
                 $innerOrder = preg_replace('/\".*\".\"(.*)\"/i', '"inner_tbl"."$1"', $order);
+                $innerOrder = $this->arrumarOrdenacao($innerOrder, "inner_tbl");
                 $sql .= ' ORDER BY ' . $innerOrder . ' ';
                 $sql .= (stripos($sort, 'asc') !== false) ? 'DESC' : 'ASC';
             }
             $sql .= ') AS outer_tbl';
             if ($orderby !== false) {
                 $outerOrder = preg_replace('/\".*\".\"(.*)\"/i', '"outer_tbl"."$1"', $order);
+                $outerOrder = $this->arrumarOrdenacao($outerOrder, "outer_tbl");
                 $sql .= ' ORDER BY ' . $outerOrder . ' ' . $sort;
             }
         }
@@ -375,5 +377,27 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
         } catch (PDOException $e) {
             return null;
         }
+    }
+
+    /**
+     * Função para correção da ordenação no Mssql quando utilizado alias 
+     * de tabela para ordenar os campos. Esta função irá substituir o alias 
+     * original pelo alias da tabela externa
+     * 
+     * @param string $order
+     * @param string $sub
+     */
+    public function arrumarOrdenacao($order, $sub)
+    {
+        $divEsp = explode(" ", $order);
+
+        for ($i = 0; $i < count($divEsp); $i++) {
+            if (strpos($divEsp[$i], ".") !== false) {
+                $divPonto = explode(".", $divEsp[$i]);
+                $divEsp[$i] = str_replace($divPonto[0] . ".", $sub . ".", $divEsp[$i]);
+            }
+        }
+
+        return implode(" ", $divEsp);
     }
 }

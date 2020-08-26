@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -136,6 +137,9 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
             // always use exceptions.
             $this->_connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            if (isset($this->_config['charset']) && $this->_config['charset'] === 'ISO-8859-1') {
+                $this->_connection->setAttribute(PDO::SQLSRV_ATTR_ENCODING, PDO::SQLSRV_ENCODING_SYSTEM);
+            }
         } catch (PDOException $e) {
             /**
              * @see Zend_Db_Adapter_Exception
@@ -143,7 +147,6 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
             require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception($e->getMessage(), $e->getCode(), $e);
         }
-
     }
 
     /**
@@ -317,7 +320,8 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
     /**
      * Roll-back a transaction.
      */
-    protected function _rollBack() {
+    protected function _rollBack()
+    {
         $this->_connect();
         $this->_connection->rollBack();
     }
