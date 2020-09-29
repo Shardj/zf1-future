@@ -60,7 +60,7 @@ class Zend_Tool_Framework_Manifest_ManifestGoodOne
 
     public function getMetadata()
     {
-        return new Zend_Tool_Framework_Metadata_Basic(array('name' => 'FooOne', 'value' => 'Bar'));
+        return new Zend_Tool_Framework_Metadata_Basic(['name' => 'FooOne', 'value' => 'Bar']);
     }
 
 }

@@ -48,7 +48,7 @@ class Zend_Search_Lucene_Index_TermsPriorityQueueTest extends PHPUnit_Framework_
     public function testQueue()
     {
         $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem(dirname(__FILE__) . '/_source/_files');
-        $segmentsList = array('_0', '_1', '_2', '_3', '_4');
+        $segmentsList = ['_0', '_1', '_2', '_3', '_4'];
 
         $segmentInfoQueue = new Zend_Search_Lucene_Index_TermsPriorityQueue();
 
@@ -62,7 +62,7 @@ class Zend_Search_Lucene_Index_TermsPriorityQueueTest extends PHPUnit_Framework_
             }
         }
 
-        $result = array();
+        $result = [];
         while (($segmentInfo = $segmentInfoQueue->pop()) !== null) {
             if ($segmentInfoQueue->top() === null ||
                 $segmentInfoQueue->top()->currentTerm()->key() !=
@@ -80,7 +80,7 @@ class Zend_Search_Lucene_Index_TermsPriorityQueueTest extends PHPUnit_Framework_
         }
 
         $this->assertTrue($result ==
-                          array(new Zend_Search_Lucene_Index_Term('a', 'contents'),
+                          [new Zend_Search_Lucene_Index_Term('a', 'contents'),
                                 new Zend_Search_Lucene_Index_Term('about', 'contents'),
                                 new Zend_Search_Lucene_Index_Term('above', 'contents'),
                                 new Zend_Search_Lucene_Index_Term('absolutely', 'contents'),
@@ -687,7 +687,7 @@ class Zend_Search_Lucene_Index_TermsPriorityQueueTest extends PHPUnit_Framework_
                                 new Zend_Search_Lucene_Index_Term('patches', 'path'),
                                 new Zend_Search_Lucene_Index_Term('pear', 'path'),
                                 new Zend_Search_Lucene_Index_Term('wishlist', 'path')
-                               ));
+                               ]);
 
     }
 }

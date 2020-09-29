@@ -23,7 +23,7 @@
 /**
  * SK-Revision: 22668
  */
-return array(
+return [
     // Zend_Validate_Alnum
     "Invalid type given. String, integer or float expected" => "Chybný typ. Bol očakávaný reťazec, celé alebo desatinné číslo",
     "'%value%' contains characters which are non alphabetic and no digits" => "'%value%' obsahuje aj iné znaky ako písmena a číslice",
@@ -262,4 +262,4 @@ return array(
     "Invalid type given. String expected" => "Chybný typ. Bol očakávaný reťazec",
     "'%value%' is less than %min% characters long" => "'%value%' ma menej ako %min% znakov",
     "'%value%' is more than %max% characters long" => "'%value%' ma viac ako %max% znakov",
-);
+];

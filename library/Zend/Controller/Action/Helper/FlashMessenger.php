@@ -47,7 +47,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      *
      * @var array
      */
-    static protected $_messages = array();
+    static protected $_messages = [];
 
     /**
      * $_session - Zend_Session storage object
@@ -151,7 +151,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         }
 
         if (!is_array(self::$_session->{$namespace})) {
-            self::$_session->{$namespace} = array();
+            self::$_session->{$namespace} = [];
         }
 
         self::$_session->{$namespace}[] = $message;
@@ -189,7 +189,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
             return self::$_messages[$namespace];
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -242,7 +242,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
             return self::$_session->{$namespace};
         }
 
-        return array();
+        return [];
     }
 
     /**

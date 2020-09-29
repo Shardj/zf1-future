@@ -38,11 +38,11 @@ require_once 'Zend/Db/TestUtil/Pdo/Common.php';
 class Zend_Db_TestUtil_Pdo_Sqlite extends Zend_Db_TestUtil_Pdo_Common
 {
 
-    public function getParams(array $constants = array())
+    public function getParams(array $constants = [])
     {
-        $constants = array (
+        $constants = [
             'dbname'   => 'TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_DATABASE'
-        );
+        ];
         return parent::getParams($constants);
     }
 

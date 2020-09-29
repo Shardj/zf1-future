@@ -23,7 +23,7 @@
 /**
  * EN-Revision: 22075
  */
-return array(
+return [
     // Zend_Validate_Alnum
     "Invalid type given, value should be float, string, or integer" => "El tipo especificado no es válido, el valor debe ser de tipo float, una cadena de texto o entero",
     "'%value%' contains characters which are non alphabetic and no digits" => "'%value%' contiene caracteres que no son alfabéticos ni dígitos",
@@ -262,5 +262,5 @@ return array(
     "Invalid type given, value should be a string" => "El tipo especificado es incorrecto, el valor deberí­a ser una cadena de texto",
     "'%value%' is less than %min% characters long" => "'%value%' tiene menos de '%min%' caracteres",
     "'%value%' is more than %max% characters long" => "'%value%' tiene más de '%max%' caracteres",
-);
+];
 

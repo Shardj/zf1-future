@@ -226,7 +226,7 @@ class Zend_Gdata_Photos_PhotoEntry extends Zend_Gdata_Media_Entry
         $category = new Zend_Gdata_App_Extension_Category(
             'http://schemas.google.com/photos/2007#photo',
             'http://schemas.google.com/g/2005#kind');
-        $this->setCategory(array($category));
+        $this->setCategory([$category]);
     }
 
     /**

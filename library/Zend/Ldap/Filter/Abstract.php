@@ -76,7 +76,7 @@ abstract class Zend_Ldap_Filter_Abstract
          */
         require_once 'Zend/Ldap/Filter/And.php';
         $fa = func_get_args();
-        $args = array_merge(array($this), $fa);
+        $args = array_merge([$this], $fa);
         return new Zend_Ldap_Filter_And($args);
     }
 
@@ -93,7 +93,7 @@ abstract class Zend_Ldap_Filter_Abstract
          */
         require_once 'Zend/Ldap/Filter/Or.php';
         $fa = func_get_args();
-        $args = array_merge(array($this), $fa);
+        $args = array_merge([$this], $fa);
         return new Zend_Ldap_Filter_Or($args);
     }
 
@@ -110,17 +110,17 @@ abstract class Zend_Ldap_Filter_Abstract
      * @param  string|array $values Array of values to escape
      * @return array Array $values, but escaped
      */
-    public static function escapeValue($values = array())
+    public static function escapeValue($values = [])
     {
         /**
          * @see Zend_Ldap_Converter
          */
         require_once 'Zend/Ldap/Converter.php';
 
-        if (!is_array($values)) $values = array($values);
+        if (!is_array($values)) $values = [$values];
         foreach ($values as $key => $val) {
             // Escaping of filter meta characters
-            $val = str_replace(array('\\', '*', '(', ')'), array('\5c', '\2a', '\28', '\29'), $val);
+            $val = str_replace(['\\', '*', '(', ')'], ['\5c', '\2a', '\28', '\29'], $val);
             // ASCII < 32 escaping
             $val = Zend_Ldap_Converter::ascToHex32($val);
             if (null === $val) $val = '\0';  // apply escaped "null" if string is empty
@@ -140,14 +140,14 @@ abstract class Zend_Ldap_Filter_Abstract
      * @param  string|array $values Array of values to escape
      * @return array Array $values, but unescaped
      */
-    public static function unescapeValue($values = array())
+    public static function unescapeValue($values = [])
     {
         /**
          * @see Zend_Ldap_Converter
          */
         require_once 'Zend/Ldap/Converter.php';
 
-        if (!is_array($values)) $values = array($values);
+        if (!is_array($values)) $values = [$values];
         foreach ($values as $key => $value) {
             // Translate hex code into ascii
             $values[$key] = Zend_Ldap_Converter::hex32ToAsc($value);

@@ -142,11 +142,11 @@ class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorShouldSetStateFromOptions()
     {
-        $options = array(
+        $options = [
             'type'   => 'static',
             'class'  => 'Foo',
             'method' => 'bar',
-        );
+        ];
         $callback = new Zend_Server_Method_Callback($options);
         $test = $callback->toArray();
         $this->assertSame($options, $test);

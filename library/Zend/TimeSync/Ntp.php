@@ -212,7 +212,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
                 "'$this->_timeserver' on port '$this->_port', reason: 'server timed out'");
         }
 
-        $result = array(
+        $result = [
             'flags'          => $flags,
             'stratum'        => ord(fread($this->_socket, 1)),
             'poll'           => ord(fread($this->_socket, 1)),
@@ -225,7 +225,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
             'receivestamp'   => $this->_getTimestamp(fread($this->_socket, 8)),
             'transmitstamp'  => $this->_getTimestamp(fread($this->_socket, 8)),
             'clientreceived' => microtime(true)
-        );
+        ];
 
         $this->_disconnect();
         return $result;

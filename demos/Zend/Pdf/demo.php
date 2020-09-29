@@ -64,7 +64,7 @@ $style = new Zend_Pdf_Style();
 $style->setFillColor(new Zend_Pdf_Color_Rgb(0, 0, 0.9));
 $style->setLineColor(new Zend_Pdf_Color_GrayScale(0.2));
 $style->setLineWidth(3);
-$style->setLineDashingPattern(array(3, 2, 3, 4), 1.6);
+$style->setLineDashingPattern([3, 2, 3, 4], 1.6);
 $style->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD), 32);
 
 try {
@@ -123,7 +123,7 @@ $page2->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_TIMES), 32)
 // Draw rectangle
 $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
       ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
-      ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+      ->setLineDashingPattern([3, 2, 3, 4], 1.6)
       ->drawRectangle(60, 400, 400, 350);
 
 // Draw circle
@@ -148,8 +148,8 @@ $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
 
 // Draw and fill polygon
 $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
-$x = array();
-$y = array();
+$x = [];
+$y = [];
 for ($count = 0; $count < 8; $count++) {
     $x[] = 140 + 25*cos(3*M_PI_4*$count);
     $y[] = 375 + 25*sin(3*M_PI_4*$count);
@@ -167,7 +167,7 @@ $page2->translate(60, 250); // Shift coordination system
 // Draw rectangle
 $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
       ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
-      ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+      ->setLineDashingPattern([3, 2, 3, 4], 1.6)
       ->drawRectangle(0, 50, 340, 0);
 
 // Draw circle
@@ -192,8 +192,8 @@ $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
 
 // Draw and fill polygon
 $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
-$x = array();
-$y = array();
+$x = [];
+$y = [];
 for ($count = 0; $count < 8; $count++) {
     $x[] = 80 + 25*cos(3*M_PI_4*$count);
     $y[] = 25 + 25*sin(3*M_PI_4*$count);
@@ -218,7 +218,7 @@ $page2->translate(60, 150)     // Shift coordination system
 // Draw rectangle
 $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
       ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
-      ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+      ->setLineDashingPattern([3, 2, 3, 4], 1.6)
       ->drawRectangle(0, 50, 340, 0);
 
 // Draw circle
@@ -243,8 +243,8 @@ $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
 
 // Draw and fill polygon
 $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
-$x = array();
-$y = array();
+$x = [];
+$y = [];
 for ($count = 0; $count < 8; $count++) {
     $x[] = 80 + 25*cos(3*M_PI_4*$count);
     $y[] = 25 + 25*sin(3*M_PI_4*$count);

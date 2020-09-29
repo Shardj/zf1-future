@@ -39,13 +39,13 @@ require_once 'Zend/Db/Adapter/Pdo/TestCommon.php';
 class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
 
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
         'INTEGER'            => Zend_Db::BIGINT_TYPE,
         'REAL'               => Zend_Db::FLOAT_TYPE
-    );
+    ];
 
     /**
      * Test AUTO_QUOTE_IDENTIFIERS option
@@ -58,9 +58,9 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => true
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
 
@@ -124,7 +124,7 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testAdapterQuoteArray()
     {
-        $array = array("it's", 'all', 'right!');
+        $array = ["it's", 'all', 'right!'];
         $value = $this->_db->quote($array);
         $this->assertEquals("'it''s', 'all', 'right!'", $value);
     }
@@ -204,14 +204,14 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::FETCH_MODE => 'obj'
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
 
         //two extra lines to make SQLite work
         $db->query('CREATE TABLE zfproducts (id)');
-        $db->insert('zfproducts', array('id' => 1));
+        $db->insert('zfproducts', ['id' => 1]);
 
         $select = $db->select()->from('zfproducts');
         $row = $db->fetchRow($select);
@@ -227,9 +227,9 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
 
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
         $db->setStatementClass($stmtClass);

@@ -94,7 +94,7 @@ class Zend_Db_Statement_Static implements Zend_Db_Statement_Interface
     /**
      * executes a prepared statement
      */
-    public function execute(array $params = array())
+    public function execute(array $params = [])
     {
     }
 
@@ -122,7 +122,7 @@ class Zend_Db_Statement_Static implements Zend_Db_Statement_Interface
     /**
      * fetches the next row and returns it as an object
      */
-    public function fetchObject($class = 'stdClass', array $config = array())
+    public function fetchObject($class = 'stdClass', array $config = [])
     {
     }
 

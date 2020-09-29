@@ -68,7 +68,7 @@ class Zend_Service_ReCaptcha_ResponseTest extends PHPUnit_Framework_TestCase
 
     public function testSetFromHttpResponseWhenResponseContentIsMissing() {
         $responseBody = 'true';
-        $httpResponse = new Zend_Http_Response(200, array('Content-Type' => 'text/html'), $responseBody);
+        $httpResponse = new Zend_Http_Response(200, ['Content-Type' => 'text/html'], $responseBody);
 
         $this->_response->setFromHttpResponse($httpResponse);
 
@@ -80,7 +80,7 @@ class Zend_Service_ReCaptcha_ResponseTest extends PHPUnit_Framework_TestCase
         $status = 'false';
         $errorCode = 'foobar';
         $responseBody = $status . "\n" . $errorCode;
-        $httpResponse = new Zend_Http_Response(200, array('Content-Type' => 'text/html'), $responseBody);
+        $httpResponse = new Zend_Http_Response(200, ['Content-Type' => 'text/html'], $responseBody);
 
         $this->_response->setFromHttpResponse($httpResponse);
 
@@ -92,7 +92,7 @@ class Zend_Service_ReCaptcha_ResponseTest extends PHPUnit_Framework_TestCase
         $status = 'false';
         $errorCode = 'foobar';
         $responseBody = $status . "\n" . $errorCode . "\nSome data\nEven more data";
-        $httpResponse = new Zend_Http_Response(200, array('Content-Type' => 'text/html'), $responseBody);
+        $httpResponse = new Zend_Http_Response(200, ['Content-Type' => 'text/html'], $responseBody);
 
         $this->_response->setFromHttpResponse($httpResponse);
 
@@ -114,7 +114,7 @@ class Zend_Service_ReCaptcha_ResponseTest extends PHPUnit_Framework_TestCase
         $status = 'false';
         $errorCode = 'foobar';
         $responseBody = $status . "\n" . $errorCode;
-        $httpResponse = new Zend_Http_Response(200, array('Content-Type' => 'text/html'), $responseBody);
+        $httpResponse = new Zend_Http_Response(200, ['Content-Type' => 'text/html'], $responseBody);
 
         $response = new Zend_Service_ReCaptcha_Response(null, null, $httpResponse);
 

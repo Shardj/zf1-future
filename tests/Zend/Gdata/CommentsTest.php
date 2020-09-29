@@ -72,8 +72,8 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
         $newComments = new Zend_Gdata_Extension_Comments();
         $newComments->transferFromXML($this->comments->saveXML());
         $this->assertEquals(0, count($newComments->extensionElements));
-        $newComments->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newComments->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newComments->extensionElements));
         $this->assertEquals("http://schemas.google.com/g/2005#regular", $newComments->rel);
 
@@ -105,8 +105,8 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->comments->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->comments->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->comments->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->comments->extensionAttributes['foo2']['value']);

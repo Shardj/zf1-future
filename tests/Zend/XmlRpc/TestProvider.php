@@ -27,17 +27,17 @@ abstract class Zend_XmlRpc_TestProvider
 {
     public static function provideGenerators()
     {
-        return array(
-            array(new Zend_XmlRpc_Generator_DomDocument()),
-            array(new Zend_XmlRpc_Generator_XmlWriter()),
-        );
+        return [
+            [new Zend_XmlRpc_Generator_DomDocument()],
+            [new Zend_XmlRpc_Generator_XmlWriter()],
+        ];
     }
 
     public static function provideGeneratorsWithAlternateEncodings()
     {
-        return array(
-            array(new Zend_XmlRpc_Generator_DomDocument('ISO-8859-1')),
-            array(new Zend_XmlRpc_Generator_XmlWriter('ISO-8859-1')),
-        );
+        return [
+            [new Zend_XmlRpc_Generator_DomDocument('ISO-8859-1')],
+            [new Zend_XmlRpc_Generator_XmlWriter('ISO-8859-1')],
+        ];
     }
 }

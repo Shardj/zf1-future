@@ -341,7 +341,7 @@ class Zend_Feed_Element implements ArrayAccess
      */
     protected function _children($var)
     {
-        $found = array();
+        $found = [];
 
         // Look for access of the form {ns:var}.
         if (strpos($var, ':') !== false) {

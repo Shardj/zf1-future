@@ -36,19 +36,19 @@ class InstallationChecker {
     const ZEND_GDATA_INSTALL_ERRORS = 'Zend Framework Installation Errors';
     const ZEND_SUBVERSION_URI = 'http://framework.zend.com/download/subversion';
 
-    private static $REQUIRED_EXTENSIONS = array(
-        'ctype', 'dom', 'libxml', 'spl', 'standard', 'openssl');
+    private static $REQUIRED_EXTENSIONS = [
+        'ctype', 'dom', 'libxml', 'spl', 'standard', 'openssl'];
 
-    private $_allErrors = array(
-        self::PHP_EXTENSION_ERRORS => array(
-            'tested' => false, 'errors' => null),
-        self::ZEND_GDATA_INSTALL_ERRORS => array(
-            'tested' => false, 'errors' => null),
-        self::SSL_CAPABILITIES_ERRORS => array(
-            'tested' => false, 'errors' => null),
-        self::YOUTUBE_API_CONNECTIVITY_ERRORS => array(
-            'tested' => false, 'errors' => null)
-            );
+    private $_allErrors = [
+        self::PHP_EXTENSION_ERRORS => [
+            'tested' => false, 'errors' => null],
+        self::ZEND_GDATA_INSTALL_ERRORS => [
+            'tested' => false, 'errors' => null],
+        self::SSL_CAPABILITIES_ERRORS => [
+            'tested' => false, 'errors' => null],
+        self::YOUTUBE_API_CONNECTIVITY_ERRORS => [
+            'tested' => false, 'errors' => null]
+            ];
 
     private $_sapiModeCLI = null;
 
@@ -117,7 +117,7 @@ class InstallationChecker {
      */
     private function validatePHPExtensions()
     {
-        $phpExtensionErrors = array();
+        $phpExtensionErrors = [];
         foreach (self::$REQUIRED_EXTENSIONS as $requiredExtension) {
             if (!extension_loaded($requiredExtension)) {
                 $requiredExtensionError = $requiredExtension .
@@ -159,7 +159,7 @@ class InstallationChecker {
      */
     private function validateZendFrameworkInstallation()
     {
-        $zendFrameworkInstallationErrors = array();
+        $zendFrameworkInstallationErrors = [];
         $zendLoaderPresent = false;
         try {
             $zendLoaderPresent = @fopen('Zend/Loader.php', 'r', true);
@@ -241,7 +241,7 @@ class InstallationChecker {
      */
     private function testSSLCapabilities()
     {
-        $sslCapabilitiesErrors = array();
+        $sslCapabilitiesErrors = [];
         require_once 'Zend/Loader.php';
         Zend_Loader::loadClass('Zend_Http_Client');
 
@@ -271,7 +271,7 @@ class InstallationChecker {
      */
     private function validateYouTubeAPIConnectivity()
     {
-        $connectivityErrors = array();
+        $connectivityErrors = [];
         require_once 'Zend/Loader.php';
         Zend_Loader::loadClass('Zend_Gdata_YouTube');
         $yt = new Zend_Gdata_YouTube();

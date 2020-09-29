@@ -55,9 +55,9 @@ class Zend_Ldap_FilterTest extends PHPUnit_Framework_TestCase
         $expected='t\28e,s\29t\2av\5cal\1eue';
         $filterval='t(e,s)t*v\\al' . chr(30) . 'ue';
         $this->assertEquals($expected, Zend_Ldap_Filter::escapeValue($filterval));
-        $this->assertEquals($expected, Zend_Ldap_Filter::escapeValue(array($filterval)));
-        $this->assertEquals(array($expected, $expected, $expected),
-            Zend_Ldap_Filter::escapeValue(array($filterval, $filterval, $filterval)));
+        $this->assertEquals($expected, Zend_Ldap_Filter::escapeValue([$filterval]));
+        $this->assertEquals([$expected, $expected, $expected],
+            Zend_Ldap_Filter::escapeValue([$filterval, $filterval, $filterval]));
     }
 
     public function testUnescapeValues()
@@ -65,9 +65,9 @@ class Zend_Ldap_FilterTest extends PHPUnit_Framework_TestCase
         $expected='t(e,s)t*v\\al' . chr(30) . 'ue';
         $filterval='t\28e,s\29t\2av\5cal\1eue';
         $this->assertEquals($expected, Zend_Ldap_Filter::unescapeValue($filterval));
-        $this->assertEquals($expected, Zend_Ldap_Filter::unescapeValue(array($filterval)));
-        $this->assertEquals(array($expected, $expected, $expected),
-            Zend_Ldap_Filter::unescapeValue(array($filterval, $filterval, $filterval)));
+        $this->assertEquals($expected, Zend_Ldap_Filter::unescapeValue([$filterval]));
+        $this->assertEquals([$expected, $expected, $expected],
+            Zend_Ldap_Filter::unescapeValue([$filterval, $filterval, $filterval]));
     }
 
     public function testFilterValueUtf8()
@@ -127,7 +127,7 @@ class Zend_Ldap_FilterTest extends PHPUnit_Framework_TestCase
      */
     public function testIllegalGroupingFilter()
     {
-        $data=array('a', 'b', 5);
+        $data=['a', 'b', 5];
         $f=new Zend_Ldap_Filter_And($data);
     }
 

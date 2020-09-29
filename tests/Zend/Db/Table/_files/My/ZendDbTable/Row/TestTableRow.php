@@ -42,7 +42,7 @@ class My_ZendDbTable_Row_TestTableRow extends Zend_Db_Table_Row_Abstract
 
     public function setInvalidColumn()
     {
-        $this->_transformColumn(array('bug_id'));
+        $this->_transformColumn(['bug_id']);
     }
 
     public function setTableToFail()
@@ -52,7 +52,7 @@ class My_ZendDbTable_Row_TestTableRow extends Zend_Db_Table_Row_Abstract
 
     public function setTableColsToFail()
     {
-        $this->_data = array();
+        $this->_data = [];
     }
 
     public function setPrimaryKeyToFail1()
@@ -62,7 +62,7 @@ class My_ZendDbTable_Row_TestTableRow extends Zend_Db_Table_Row_Abstract
 
     public function setPrimaryKeyToFail2()
     {
-        $this->_primary = array();
+        $this->_primary = [];
     }
 
     protected function _postUpdate()

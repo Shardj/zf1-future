@@ -396,7 +396,7 @@ function createEvent ($client, $title = 'Tennis with Beth',
   $gc = new Zend_Gdata_Calendar($client);
   $newEntry = $gc->newEventEntry();
   $newEntry->title = $gc->newTitle(trim($title));
-  $newEntry->where  = array($gc->newWhere($where));
+  $newEntry->where  = [$gc->newWhere($where)];
 
   $newEntry->content = $gc->newContent($desc);
   $newEntry->content->type = 'text';
@@ -404,7 +404,7 @@ function createEvent ($client, $title = 'Tennis with Beth',
   $when = $gc->newWhen();
   $when->startTime = "{$startDate}T{$startTime}:00.000{$tzOffset}:00";
   $when->endTime = "{$endDate}T{$endTime}:00.000{$tzOffset}:00";
-  $newEntry->when = array($when);
+  $newEntry->when = [$when];
 
   $createdEntry = $gc->insertEvent($newEntry);
   return $createdEntry->id->text;
@@ -458,7 +458,7 @@ function createWebContentEvent ($client, $title = 'World Cup 2006',
   $when = $gc->newWhen();
   $when->startTime = $startDate;
   $when->endTime = $endDate;
-  $newEntry->when = array($when);
+  $newEntry->when = [$when];
 
   $wc = $gc->newWebContent();
   $wc->url = $url;
@@ -472,7 +472,7 @@ function createWebContentEvent ($client, $title = 'World Cup 2006',
   $wcLink->href = $icon;
 
   $wcLink->webContent = $wc;
-  $newEntry->link = array($wcLink);
+  $newEntry->link = [$wcLink];
 
   $createdEntry = $gc->insertEvent($newEntry);
   return $createdEntry->id->text;
@@ -496,7 +496,7 @@ function createRecurringEvent ($client, $title = 'Tennis with Beth',
   $gc = new Zend_Gdata_Calendar($client);
   $newEntry = $gc->newEventEntry();
   $newEntry->title = $gc->newTitle(trim($title));
-  $newEntry->where = array($gc->newWhere($where));
+  $newEntry->where = [$gc->newWhere($where)];
 
   $newEntry->content = $gc->newContent($desc);
   $newEntry->content->type = 'text';
@@ -590,7 +590,7 @@ function addExtendedProperty ($client, $eventId,
   $gc = new Zend_Gdata_Calendar($client);
   if ($event = getEvent($client, $eventId)) {
     $extProp = $gc->newExtendedProperty($name, $value);
-    $extProps = array_merge($event->extendedProperty, array($extProp));
+    $extProps = array_merge($event->extendedProperty, [$extProp]);
     $event->extendedProperty = $extProps;
     $eventNew = $event->save();
     return $eventNew;
@@ -618,7 +618,7 @@ function setReminder($client, $eventId, $minutes=15)
         $reminder = $gc->newReminder();
         $reminder->setMinutes($minutes);
         $reminder->setMethod($method);
-        $when->reminders = array($reminder);
+        $when->reminders = [$reminder];
     }
     $eventNew = $event->save();
     return $eventNew;

@@ -165,12 +165,12 @@ $counter ++;
 
 $geoData = @file_get_contents('http://api.ipinfodb.com/v2/ip_query.php?key=332bde528d94fe578455e18ad225a01cba8dd359ee915ee46b70ca5e67137252');
 
-$keys = array (
+$keys = [
     'Ip'          => 'IP address',
     'City'        => 'city',
     'RegionName'  => 'region',
     'CountryName' => 'country'
-);
+];
 
 if (false !== $geoData) {
     $simplexml = new SimpleXMLElement($geoData);
@@ -221,10 +221,10 @@ $errorMessage = null;
 try {
     $microtime = microtime(true);
     $mailMerge = new Zend_Service_LiveDocx_MailMerge(
-        array (
+        [
             'username' => DEMOS_ZEND_SERVICE_LIVEDOCX_USERNAME,
             'password' => DEMOS_ZEND_SERVICE_LIVEDOCX_PASSWORD
-        )
+        ]
     );
     $mailMerge->logIn();
     $duration = microtime(true) - $microtime;

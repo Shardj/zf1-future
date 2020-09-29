@@ -43,7 +43,7 @@ class Zend_Oauth_ClientTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->client = new Zend_Oauth_Client(array());
+        $this->client = new Zend_Oauth_Client([]);
     }
 
     /**
@@ -60,12 +60,12 @@ class Zend_Oauth_ClientTest extends PHPUnit_Framework_TestCase
      */
     public function testIncludesParametersForSignatureOnPostEncUrlEncoded()
     {
-        $client = new Test_Oauth_Client(array());
+        $client = new Test_Oauth_Client([]);
         $client->setEncType(Zend_Http_Client::ENC_URLENCODED);
-        $params = array(
+        $params = [
             'param1' => 'dummy1',
             'param2' => 'dummy2',
-        );
+        ];
         $client->setParameterPost($params);
         $client->setMethod(Zend_Http_Client::POST);
         $this->assertEquals(2, count($client->getSignableParametersAsQueryString()));
@@ -76,12 +76,12 @@ class Zend_Oauth_ClientTest extends PHPUnit_Framework_TestCase
      */
     public function testExcludesParametersOnPostEncFormData()
     {
-        $client = new Test_Oauth_Client(array());
+        $client = new Test_Oauth_Client([]);
         $client->setEncType(Zend_Http_Client::ENC_FORMDATA);
-        $params = array(
+        $params = [
             'param1' => 'dummy1',
             'param2' => 'dummy2',
-        );
+        ];
         $client->setParameterPost($params);
         $client->setMethod(Zend_Http_Client::POST);
         $this->assertEquals(0, count($client->getSignableParametersAsQueryString()));

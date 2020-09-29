@@ -72,8 +72,8 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
         $newTransparency = new Zend_Gdata_Extension_Transparency();
         $newTransparency->transferFromXML($this->transparency->saveXML());
         $this->assertEquals(0, count($newTransparency->extensionElements));
-        $newTransparency->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newTransparency->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newTransparency->extensionElements));
         $this->assertEquals("http://schemas.google.com/g/2005#event.opaque", $newTransparency->value);
 
@@ -105,8 +105,8 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->transparency->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->transparency->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->transparency->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->transparency->extensionAttributes['foo2']['value']);

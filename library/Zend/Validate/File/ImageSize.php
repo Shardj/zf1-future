@@ -47,26 +47,26 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
     /**
      * @var array Error message template
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::WIDTH_TOO_BIG    => "Maximum allowed width for image '%value%' should be '%maxwidth%' but '%width%' detected",
         self::WIDTH_TOO_SMALL  => "Minimum expected width for image '%value%' should be '%minwidth%' but '%width%' detected",
         self::HEIGHT_TOO_BIG   => "Maximum allowed height for image '%value%' should be '%maxheight%' but '%height%' detected",
         self::HEIGHT_TOO_SMALL => "Minimum expected height for image '%value%' should be '%minheight%' but '%height%' detected",
         self::NOT_DETECTED     => "The size of image '%value%' could not be detected",
         self::NOT_READABLE     => "File '%value%' is not readable or does not exist",
-    );
+    ];
 
     /**
      * @var array Error message template variables
      */
-    protected $_messageVariables = array(
+    protected $_messageVariables = [
         'minwidth'  => '_minwidth',
         'maxwidth'  => '_maxwidth',
         'minheight' => '_minheight',
         'maxheight' => '_maxheight',
         'width'     => '_width',
         'height'    => '_height'
-    );
+    ];
 
     /**
      * Minimum image width
@@ -128,7 +128,7 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
             $options = $options->toArray();
         } elseif (1 < func_num_args()) {
             if (!is_array($options)) {
-                $options = array('minwidth' => $options);
+                $options = ['minwidth' => $options];
             }
             $argv = func_get_args();
             array_shift($argv);
@@ -160,7 +160,7 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
      */
     public function getImageMin()
     {
-        return array('minwidth' => $this->_minwidth, 'minheight' => $this->_minheight);
+        return ['minwidth' => $this->_minwidth, 'minheight' => $this->_minheight];
     }
 
     /**
@@ -170,7 +170,7 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
      */
     public function getImageMax()
     {
-        return array('maxwidth' => $this->_maxwidth, 'maxheight' => $this->_maxheight);
+        return ['maxwidth' => $this->_maxwidth, 'maxheight' => $this->_maxheight];
     }
 
     /**
@@ -180,7 +180,7 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
      */
     public function getImageWidth()
     {
-        return array('minwidth' => $this->_minwidth, 'maxwidth' => $this->_maxwidth);
+        return ['minwidth' => $this->_minwidth, 'maxwidth' => $this->_maxwidth];
     }
 
     /**
@@ -190,7 +190,7 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
      */
     public function getImageHeight()
     {
-        return array('minheight' => $this->_minheight, 'maxheight' => $this->_maxheight);
+        return ['minheight' => $this->_minheight, 'maxheight' => $this->_maxheight];
     }
 
     /**

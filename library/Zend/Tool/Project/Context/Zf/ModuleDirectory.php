@@ -78,9 +78,9 @@ class Zend_Tool_Project_Context_Zf_ModuleDirectory extends Zend_Tool_Project_Con
      */
     public function getPersistentAttributes()
     {
-        return array(
+        return [
             'moduleName' => $this->getModuleName()
-            );
+            ];
     }
 
     /**

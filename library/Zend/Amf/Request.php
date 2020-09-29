@@ -53,12 +53,12 @@ class Zend_Amf_Request
     /**
      * @var array Message bodies
      */
-    protected $_bodies = array();
+    protected $_bodies = [];
 
     /**
      * @var array Message headers
      */
-    protected $_headers = array();
+    protected $_headers = [];
 
     /**
      * @var int Message encoding to use for objects in response
@@ -112,8 +112,8 @@ class Zend_Amf_Request
             throw new Zend_Amf_Exception('Unknown Player Version ' . $clientVersion);
         }
 
-        $this->_bodies  = array();
-        $this->_headers = array();
+        $this->_bodies  = [];
+        $this->_headers = [];
         $headerCount    = $stream->readInt();
 
         // Iterate through the AMF envelope header

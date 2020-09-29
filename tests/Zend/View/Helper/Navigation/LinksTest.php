@@ -100,17 +100,17 @@ class Zend_View_Helper_Navigation_LinksTest
         $active->addRel('example', 'http://www.example.com/');
         $found = $this->_helper->findRelation($active, 'rel', 'example');
 
-        $expected = array(
+        $expected = [
             'type'  => 'Zend_Navigation_Page_Uri',
             'href'  => 'http://www.example.com/',
             'label' => null
-        );
+        ];
 
-        $actual = array(
+        $actual = [
             'type'  => get_class($found),
             'href'  => $found->getHref(),
             'label' => $found->getLabel()
-        );
+        ];
 
         $this->assertEquals($expected, $actual);
     }
@@ -118,23 +118,23 @@ class Zend_View_Helper_Navigation_LinksTest
     public function testDetectRelationFromPageInstancePropertyOfActivePage()
     {
         $active = $this->_helper->findOneByLabel('Page 2');
-        $active->addRel('example', Zend_Navigation_Page::factory(array(
+        $active->addRel('example', Zend_Navigation_Page::factory([
             'uri' => 'http://www.example.com/',
             'label' => 'An example page'
-        )));
+        ]));
         $found = $this->_helper->findRelExample($active);
 
-        $expected = array(
+        $expected = [
             'type'  => 'Zend_Navigation_Page_Uri',
             'href'  => 'http://www.example.com/',
             'label' => 'An example page'
-        );
+        ];
 
-        $actual = array(
+        $actual = [
             'type'  => get_class($found),
             'href'  => $found->getHref(),
             'label' => $found->getLabel()
-        );
+        ];
 
         $this->assertEquals($expected, $actual);
     }
@@ -142,23 +142,23 @@ class Zend_View_Helper_Navigation_LinksTest
     public function testDetectRelationFromArrayPropertyOfActivePage()
     {
         $active = $this->_helper->findOneByLabel('Page 2');
-        $active->addRel('example', array(
+        $active->addRel('example', [
             'uri' => 'http://www.example.com/',
             'label' => 'An example page'
-        ));
+        ]);
         $found = $this->_helper->findRelExample($active);
 
-        $expected = array(
+        $expected = [
             'type'  => 'Zend_Navigation_Page_Uri',
             'href'  => 'http://www.example.com/',
             'label' => 'An example page'
-        );
+        ];
 
-        $actual = array(
+        $actual = [
             'type'  => get_class($found),
             'href'  => $found->getHref(),
             'label' => $found->getLabel()
-        );
+        ];
 
         $this->assertEquals($expected, $actual);
     }
@@ -166,23 +166,23 @@ class Zend_View_Helper_Navigation_LinksTest
     public function testDetectRelationFromConfigInstancePropertyOfActivePage()
     {
         $active = $this->_helper->findOneByLabel('Page 2');
-        $active->addRel('example', new Zend_Config(array(
+        $active->addRel('example', new Zend_Config([
             'uri' => 'http://www.example.com/',
             'label' => 'An example page'
-        )));
+        ]));
         $found = $this->_helper->findRelExample($active);
 
-        $expected = array(
+        $expected = [
             'type'  => 'Zend_Navigation_Page_Uri',
             'href'  => 'http://www.example.com/',
             'label' => 'An example page'
-        );
+        ];
 
-        $actual = array(
+        $actual = [
             'type'  => get_class($found),
             'href'  => $found->getHref(),
             'label' => $found->getLabel()
-        );
+        ];
 
         $this->assertEquals($expected, $actual);
     }
@@ -191,21 +191,21 @@ class Zend_View_Helper_Navigation_LinksTest
     {
         $active = $this->_helper->findOneByLabel('Page 2');
 
-        $active->addRel('alternate', array(
-            array(
+        $active->addRel('alternate', [
+            [
                 'label' => 'foo',
                 'uri'   => 'bar'
-            ),
-            array(
+            ],
+            [
                 'label' => 'baz',
                 'uri'   => 'bat'
-            )
-        ));
+            ]
+        ]);
 
         $found = $this->_helper->findRelAlternate($active);
 
-        $expected = array('type' => 'array', 'count' => 2);
-        $actual = array('type' => gettype($found), 'count' => count($found));
+        $expected = ['type' => 'array', 'count' => 2];
+        $actual = ['type' => gettype($found), 'count' => count($found)];
         $this->assertEquals($expected, $actual);
     }
 
@@ -213,40 +213,40 @@ class Zend_View_Helper_Navigation_LinksTest
     {
         $active = $this->_helper->findOneByLabel('Page 2');
 
-        $active->addRel('alternate', new Zend_Config(array(
-            array(
+        $active->addRel('alternate', new Zend_Config([
+            [
                 'label' => 'foo',
                 'uri'   => 'bar'
-            ),
-            array(
+            ],
+            [
                 'label' => 'baz',
                 'uri'   => 'bat'
-            )
-        )));
+            ]
+        ]));
 
         $found = $this->_helper->findRelAlternate($active);
 
-        $expected = array('type' => 'array', 'count' => 2);
-        $actual = array('type' => gettype($found), 'count' => count($found));
+        $expected = ['type' => 'array', 'count' => 2];
+        $actual = ['type' => gettype($found), 'count' => count($found)];
         $this->assertEquals($expected, $actual);
     }
 
     public function testExtractingRelationsFromPageProperties()
     {
-        $types = array(
+        $types = [
             'alternate', 'stylesheet', 'start', 'next', 'prev', 'contents',
             'index', 'glossary', 'copyright', 'chapter', 'section', 'subsection',
             'appendix', 'help', 'bookmark'
-        );
+        ];
 
-        $samplePage = Zend_Navigation_Page::factory(array(
+        $samplePage = Zend_Navigation_Page::factory([
             'label' => 'An example page',
             'uri'   => 'http://www.example.com/'
-        ));
+        ]);
 
         $active = $this->_helper->findOneByLabel('Page 2');
-        $expected = array();
-        $actual = array();
+        $expected = [];
+        $actual = [];
 
         foreach ($types as $type) {
             $active->addRel($type, $samplePage);
@@ -329,8 +329,8 @@ class Zend_View_Helper_Navigation_LinksTest
         $active = $this->_helper->findOneByLabel('Page 2.3');
         $found = $this->_helper->findRelChapter($active);
 
-        $expected = array('Page 1', 'Page 2', 'Page 3', 'Zym');
-        $actual = array();
+        $expected = ['Page 1', 'Page 2', 'Page 3', 'Zym'];
+        $actual = [];
         foreach ($found as $page) {
             $actual[] = $page->getLabel();
         }
@@ -343,8 +343,8 @@ class Zend_View_Helper_Navigation_LinksTest
         $active = $this->_helper->findOneByLabel('Page 2');
         $found = $this->_helper->findRelChapter($active);
 
-        $expected = array('Page 1', 'Page 3', 'Zym');
-        $actual = array();
+        $expected = ['Page 1', 'Page 3', 'Zym'];
+        $actual = [];
         foreach ($found as $page) {
             $actual[] = $page->getLabel();
         }
@@ -356,8 +356,8 @@ class Zend_View_Helper_Navigation_LinksTest
     {
         $active = $this->_helper->findOneByLabel('Page 2');
         $found = $this->_helper->findRelSection($active);
-        $expected = array('Page 2.1', 'Page 2.2', 'Page 2.3');
-        $actual = array();
+        $expected = ['Page 2.1', 'Page 2.2', 'Page 2.3'];
+        $actual = [];
         foreach ($found as $page) {
             $actual[] = $page->getLabel();
         }
@@ -383,8 +383,8 @@ class Zend_View_Helper_Navigation_LinksTest
         $active = $this->_helper->findOneByLabel('Page 2.2');
         $found = $this->_helper->findRelSubsection($active);
 
-        $expected = array('Page 2.2.1', 'Page 2.2.2');
-        $actual = array();
+        $expected = ['Page 2.2.1', 'Page 2.2.2'];
+        $actual = [];
         foreach ($found as $page) {
             $actual[] = $page->getLabel();
         }
@@ -429,14 +429,14 @@ class Zend_View_Helper_Navigation_LinksTest
         $this->_helper->setAcl($acl);
         $this->_helper->setRole($acl->getRole('member'));
 
-        $samplePage = Zend_Navigation_Page::factory(array(
+        $samplePage = Zend_Navigation_Page::factory([
             'label'    => 'An example page',
             'uri'      => 'http://www.example.com/',
             'resource' => 'protected'
-        ));
+        ]);
 
         $active = $this->_helper->findOneByLabel('Home');
-        $expected = array(
+        $expected = [
             'alternate'  => false,
             'stylesheet' => false,
             'start'      => false,
@@ -452,8 +452,8 @@ class Zend_View_Helper_Navigation_LinksTest
             'appendix'   => false,
             'help'       => false,
             'bookmark'   => false
-        );
-        $actual = array();
+        ];
+        $actual = [];
 
         foreach ($expected as $type => $discard) {
             $active->addRel($type, $samplePage);
@@ -492,17 +492,17 @@ class Zend_View_Helper_Navigation_LinksTest
         $this->_helper->setContainer($container);
 
         $active = $this->_helper->findOneByLabel('Home');
-        $search = array(
+        $search = [
             'start'      => 'Page 1',
             'next'       => 'Page 1',
             'prev'       => 'Page 1.1',
             'chapter'    => 'Home',
             'section'    => 'Page 1',
             'subsection' => 'Page 2.2'
-        );
+        ];
 
-        $expected = array();
-        $actual = array();
+        $expected = [];
+        $actual = [];
 
         foreach ($search as $type => $active) {
             $expected[$type] = false;
@@ -548,38 +548,38 @@ class Zend_View_Helper_Navigation_LinksTest
 
     public function testFindAllRelations()
     {
-        $expectedRelations = array(
-            'alternate'  => array('Forced page'),
-            'stylesheet' => array('Forced page'),
-            'start'      => array('Forced page'),
-            'next'       => array('Forced page'),
-            'prev'       => array('Forced page'),
-            'contents'   => array('Forced page'),
-            'index'      => array('Forced page'),
-            'glossary'   => array('Forced page'),
-            'copyright'  => array('Forced page'),
-            'chapter'    => array('Forced page'),
-            'section'    => array('Forced page'),
-            'subsection' => array('Forced page'),
-            'appendix'   => array('Forced page'),
-            'help'       => array('Forced page'),
-            'bookmark'   => array('Forced page'),
-            'canonical'  => array('Forced page'),
-            'home'       => array('Forced page')
-        );
+        $expectedRelations = [
+            'alternate'  => ['Forced page'],
+            'stylesheet' => ['Forced page'],
+            'start'      => ['Forced page'],
+            'next'       => ['Forced page'],
+            'prev'       => ['Forced page'],
+            'contents'   => ['Forced page'],
+            'index'      => ['Forced page'],
+            'glossary'   => ['Forced page'],
+            'copyright'  => ['Forced page'],
+            'chapter'    => ['Forced page'],
+            'section'    => ['Forced page'],
+            'subsection' => ['Forced page'],
+            'appendix'   => ['Forced page'],
+            'help'       => ['Forced page'],
+            'bookmark'   => ['Forced page'],
+            'canonical'  => ['Forced page'],
+            'home'       => ['Forced page']
+        ];
 
         // build expected result
-        $expected = array(
+        $expected = [
             'rel' => $expectedRelations,
             'rev' => $expectedRelations
-        );
+        ];
 
         // find active page and create page to use for relations
         $active = $this->_helper->findOneByLabel('Page 1');
-        $forcedRelation = new Zend_Navigation_Page_Uri(array(
+        $forcedRelation = new Zend_Navigation_Page_Uri([
             'label' => 'Forced page',
             'uri'   => '#'
-        ));
+        ]);
 
         // add relations to active page
         foreach ($expectedRelations as $type => $discard) {
@@ -602,7 +602,7 @@ class Zend_View_Helper_Navigation_LinksTest
 
     private function _getFlags()
     {
-        return array(
+        return [
             Zend_View_Helper_Navigation_Links::RENDER_ALTERNATE  => 'alternate',
             Zend_View_Helper_Navigation_Links::RENDER_STYLESHEET => 'stylesheet',
             Zend_View_Helper_Navigation_Links::RENDER_START      => 'start',
@@ -618,7 +618,7 @@ class Zend_View_Helper_Navigation_LinksTest
             Zend_View_Helper_Navigation_Links::RENDER_HELP       => 'help',
             Zend_View_Helper_Navigation_Links::RENDER_BOOKMARK   => 'bookmark',
             Zend_View_Helper_Navigation_Links::RENDER_CUSTOM     => 'canonical'
-        );
+        ];
     }
 
     public function testSingleRenderFlags()
@@ -626,8 +626,8 @@ class Zend_View_Helper_Navigation_LinksTest
         $active = $this->_helper->findOneByLabel('Home');
         $active->active = true;
 
-        $expected = array();
-        $actual   = array();
+        $expected = [];
+        $actual   = [];
 
         // build expected and actual result
         foreach ($this->_getFlags() as $newFlag => $type) {

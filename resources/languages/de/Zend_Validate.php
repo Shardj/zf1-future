@@ -23,7 +23,7 @@
 /**
  * EN-Revision: 22668
  */
-return array(
+return [
     // Zend_Validate_Alnum
     "Invalid type given. String, integer or float expected" => "Ungültiger Typ angegeben. String, Integer oder Float erwartet",
     "'%value%' contains characters which are non alphabetic and no digits" => "'%value%' enthält Zeichen welche keine Buchstaben und keine Ziffern sind",
@@ -262,4 +262,4 @@ return array(
     "Invalid type given. String expected" => "Ungültiger Typ angegeben. String erwartet",
     "'%value%' is less than %min% characters long" => "'%value%' ist weniger als %min% Zeichen lang",
     "'%value%' is more than %max% characters long" => "'%value%' ist mehr als %max% Zeichen lang",
-);
+];

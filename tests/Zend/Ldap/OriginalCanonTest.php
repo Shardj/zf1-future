@@ -37,16 +37,16 @@ class Zend_Ldap_OriginalCanonTest extends PHPUnit_Framework_TestCase
 {
     protected $_options = null;
     protected $_principalName = TESTS_ZEND_LDAP_PRINCIPAL_NAME;
-    protected $_names = array();
+    protected $_names = [];
 
     public function setUp()
     {
-        $this->_options = array(
+        $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,
             'password' => TESTS_ZEND_LDAP_PASSWORD,
             'baseDn' => TESTS_ZEND_LDAP_BASE_DN,
-        );
+        ];
         if (defined('TESTS_ZEND_LDAP_PORT') && TESTS_ZEND_LDAP_PORT != 389)
             $this->_options['port'] = TESTS_ZEND_LDAP_PORT;
         if (defined('TESTS_ZEND_LDAP_USE_SSL'))

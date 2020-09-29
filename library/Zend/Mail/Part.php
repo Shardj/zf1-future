@@ -71,7 +71,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
      * parts of multipart message
      * @var array
      */
-    protected $_parts = array();
+    protected $_parts = [];
 
     /**
      * count of parts of a multipart message
@@ -286,7 +286,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
         $partClass = $this->getPartClass();
         $counter = 1;
         foreach ($parts as $part) {
-            $this->_parts[$counter++] = new $partClass(array('headers' => $part['header'], 'content' => $part['body']));
+            $this->_parts[$counter++] = new $partClass(['headers' => $part['header'], 'content' => $part['body']]);
         }
     }
 
@@ -369,7 +369,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
     {
         if ($this->_headers === null) {
             if (!$this->_mail) {
-                $this->_headers = array();
+                $this->_headers = [];
             } else {
                 $part = $this->_mail->getRawHeader($this->_messageNum);
                 Zend_Mime_Decode::splitMessage($part, $this->_headers, $null);

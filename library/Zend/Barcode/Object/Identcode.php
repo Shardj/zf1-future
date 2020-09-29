@@ -70,7 +70,7 @@ class Zend_Barcode_Object_Identcode extends Zend_Barcode_Object_Code25interleave
      */
     public function validateText($value)
     {
-        $this->_validateText($value, array('validator' => $this->getType()));
+        $this->_validateText($value, ['validator' => $this->getType()]);
     }
 
     /**

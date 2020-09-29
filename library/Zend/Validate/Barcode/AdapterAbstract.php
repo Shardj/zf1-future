@@ -139,7 +139,7 @@ abstract class Zend_Validate_Barcode_AdapterAbstract
         $checksum = $this->getChecksum();
         if (!empty($checksum)) {
             if (method_exists($this, $checksum)) {
-                return call_user_func(array($this, $checksum), $value);
+                return call_user_func([$this, $checksum], $value);
             }
         }
 

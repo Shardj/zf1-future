@@ -42,7 +42,7 @@ require_once 'Zend/Db/Adapter/Db2.php';
 class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
 {
 
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
@@ -51,7 +51,7 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
         'BIGINT'             => Zend_Db::BIGINT_TYPE,
         'DECIMAL'            => Zend_Db::FLOAT_TYPE,
         'NUMERIC'            => Zend_Db::FLOAT_TYPE
-    );
+    ];
 
     public function testAdapterDescribeTablePrimaryAuto()
     {
@@ -245,10 +245,10 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
 
         $config = $db->getConfig();
 
-        $expectedValue = array(
+        $expectedValue = [
             'autocommit' => 1,
             'DB2_ATTR_CASE' => 0
-            );
+            ];
         $this->assertEquals($expectedValue, $config['driver_options']);
     }
 
@@ -260,7 +260,7 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
      */
     public function testAdapterQuoteArray()
     {
-        $array = array("it's", 'all', 'right!');
+        $array = ["it's", 'all', 'right!'];
         $value = $this->_db->quote($array);
         $this->assertEquals("'it''s', 'all', 'right!'", $value);
     }

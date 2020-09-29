@@ -61,16 +61,16 @@ class Zend_Tag_Cloud_Decorator_HtmlTag extends Zend_Tag_Cloud_Decorator_Tag
      *
      * @var array
      */
-    protected $_alloweFontSizeUnits = array('em', 'ex', 'px', 'in', 'cm', 'mm', 'pt', 'pc', '%');
+    protected $_alloweFontSizeUnits = ['em', 'ex', 'px', 'in', 'cm', 'mm', 'pt', 'pc', '%'];
 
     /**
      * List of HTML tags
      *
      * @var array
      */
-    protected $_htmlTags = array(
+    protected $_htmlTags = [
         'li'
-    );
+    ];
 
     /**
      * Maximum fontsize
@@ -270,7 +270,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTag extends Zend_Tag_Cloud_Decorator_Tag
 
         $tags->spreadWeightValues($weightValues);
 
-        $result = array();
+        $result = [];
 
         $enc = $this->getEncoding();
         foreach ($tags as $tag) {

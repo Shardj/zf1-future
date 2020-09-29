@@ -60,7 +60,7 @@ class Zend_Form_Element_PasswordTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->errors = array();
+        $this->errors = [];
         $this->element = new Zend_Form_Element_Password('foo');
     }
 
@@ -102,10 +102,10 @@ class Zend_Form_Element_PasswordTest extends PHPUnit_Framework_TestCase
 
     public function testPasswordValueMaskedByGetMessages()
     {
-        $this->element->addValidators(array(
+        $this->element->addValidators([
             'Alpha',
             'Alnum'
-        ));
+        ]);
         $value  = 'abc-123';
         $expect = '*******';
         $this->assertFalse($this->element->isValid($value));
@@ -118,7 +118,7 @@ class Zend_Form_Element_PasswordTest extends PHPUnit_Framework_TestCase
     public function handleErrors($errno, $errmsg, $errfile, $errline, $errcontext)
     {
         if (!isset($this->errors)) {
-            $this->errors = array();
+            $this->errors = [];
         }
         $this->errors[] = $errmsg;
     }
@@ -128,10 +128,10 @@ class Zend_Form_Element_PasswordTest extends PHPUnit_Framework_TestCase
      */
     public function testGetMessagesReturnsEmptyArrayWhenNoMessagesRegistered()
     {
-        set_error_handler(array($this, 'handleErrors'));
+        set_error_handler([$this, 'handleErrors']);
         $messages = $this->element->getMessages();
         restore_error_handler();
-        $this->assertSame(array(), $messages);
+        $this->assertSame([], $messages);
         $this->assertTrue(empty($this->errors));
     }
 

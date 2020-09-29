@@ -134,14 +134,14 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends PHPUnit_Framework
     {
     	$dateTimeValue = new DateTime();
     	
-        $values = array(
+        $values = [
             'PartitionKey' => 'partition1',
             'RowKey' => '000001',
             'Name' => 'Maarten',
             'Age' => 25,
             'Visible' => true,
         	'DateInService' => $dateTimeValue
-        );
+        ];
         
         $target = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity();
         $target->setAzureValues($values);

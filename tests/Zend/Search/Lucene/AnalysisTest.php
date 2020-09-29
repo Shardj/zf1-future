@@ -339,7 +339,7 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Search/Lucene/Analysis/TokenFilter/StopWords.php';
 
         $analyzer = new Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive();
-        $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords(array('word', 'and', 'or'));
+        $stopWordsFilter = new Zend_Search_Lucene_Analysis_TokenFilter_StopWords(['word', 'and', 'or']);
 
         $analyzer->addFilter($stopWordsFilter);
 

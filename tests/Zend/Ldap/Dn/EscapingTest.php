@@ -41,9 +41,9 @@ class Zend_Ldap_Dn_EscapingTest extends PHPUnit_Framework_TestCase
         $dnval='  '.chr(22).' t,e+s"t,\\v<a>l;u#e=!    ';
         $expected='\20\20\16 t\,e\+s\"t\,\\\\v\<a\>l\;u\#e\=!\20\20\20\20';
         $this->assertEquals($expected, Zend_Ldap_Dn::escapeValue($dnval));
-        $this->assertEquals($expected, Zend_Ldap_Dn::escapeValue(array($dnval)));
-        $this->assertEquals(array($expected, $expected, $expected),
-            Zend_Ldap_Dn::escapeValue(array($dnval, $dnval, $dnval)));
+        $this->assertEquals($expected, Zend_Ldap_Dn::escapeValue([$dnval]));
+        $this->assertEquals([$expected, $expected, $expected],
+            Zend_Ldap_Dn::escapeValue([$dnval, $dnval, $dnval]));
     }
 
     public function testUnescapeValues()
@@ -51,8 +51,8 @@ class Zend_Ldap_Dn_EscapingTest extends PHPUnit_Framework_TestCase
         $dnval='\\20\\20\\16\\20t\\,e\\+s \\"t\\,\\\\v\\<a\\>l\\;u\\#e\\=!\\20\\20\\20\\20';
         $expected='  '.chr(22).' t,e+s "t,\\v<a>l;u#e=!    ';
         $this->assertEquals($expected, Zend_Ldap_Dn::unescapeValue($dnval));
-        $this->assertEquals($expected, Zend_Ldap_Dn::unescapeValue(array($dnval)));
-        $this->assertEquals(array($expected, $expected, $expected),
-            Zend_Ldap_Dn::unescapeValue(array($dnval,$dnval,$dnval)));
+        $this->assertEquals($expected, Zend_Ldap_Dn::unescapeValue([$dnval]));
+        $this->assertEquals([$expected, $expected, $expected],
+            Zend_Ldap_Dn::unescapeValue([$dnval,$dnval,$dnval]));
     }
 }

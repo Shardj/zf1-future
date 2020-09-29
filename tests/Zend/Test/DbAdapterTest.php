@@ -45,10 +45,10 @@ class Zend_Test_DbAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testAppendStatementToStack()
     {
-        $stmt1 = Zend_Test_DbStatement::createSelectStatement( array() );
+        $stmt1 = Zend_Test_DbStatement::createSelectStatement( [] );
         $this->_adapter->appendStatementToStack($stmt1);
 
-        $stmt2 = Zend_Test_DbStatement::createSelectStatement( array() );
+        $stmt2 = Zend_Test_DbStatement::createSelectStatement( [] );
         $this->_adapter->appendStatementToStack($stmt2);
 
         $this->assertSame($stmt2, $this->_adapter->query("foo"));
@@ -71,24 +71,24 @@ class Zend_Test_DbAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testListTablesDefault()
     {
-        $this->assertEquals(array(), $this->_adapter->listTables());
+        $this->assertEquals([], $this->_adapter->listTables());
     }
 
     public function testSetListTables()
     {
-        $this->_adapter->setListTables(array("foo", "bar"));
-        $this->assertEquals(array("foo", "bar"), $this->_adapter->listTables());
+        $this->_adapter->setListTables(["foo", "bar"]);
+        $this->assertEquals(["foo", "bar"], $this->_adapter->listTables());
     }
 
     public function testDescribeTableDefault()
     {
-        $this->assertEquals(array(), $this->_adapter->describeTable("foo"));
+        $this->assertEquals([], $this->_adapter->describeTable("foo"));
     }
 
     public function testDescribeTable()
     {
-        $this->_adapter->setDescribeTable("foo", array("bar"));
-        $this->assertEquals(array("bar"), $this->_adapter->describeTable("foo"));
+        $this->_adapter->setDescribeTable("foo", ["bar"]);
+        $this->assertEquals(["bar"], $this->_adapter->describeTable("foo"));
     }
 
     public function testConnect()
@@ -139,12 +139,12 @@ class Zend_Test_DbAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testQueryProfiler_QueryBindWithParams()
     {
-        $stmt = $this->_adapter->query("SELECT * FROM foo WHERE bar = ?", array(1234));
+        $stmt = $this->_adapter->query("SELECT * FROM foo WHERE bar = ?", [1234]);
 
         $qp = $this->_adapter->getProfiler()->getLastQueryProfile();
         /* @var $qp Zend_Db_Profiler_Query */
 
-        $this->assertEquals(array(1 => 1234), $qp->getQueryParams());
+        $this->assertEquals([1 => 1234], $qp->getQueryParams());
         $this->assertEquals("SELECT * FROM foo WHERE bar = ?", $qp->getQuery());
     }
 
@@ -158,7 +158,7 @@ class Zend_Test_DbAdapterTest extends PHPUnit_Framework_TestCase
         $qp = $this->_adapter->getProfiler()->getLastQueryProfile();
         /* @var $qp Zend_Db_Profiler_Query */
 
-        $this->assertEquals(array(1 => 1234), $qp->getQueryParams());
+        $this->assertEquals([1 => 1234], $qp->getQueryParams());
         $this->assertEquals("SELECT * FROM foo WHERE bar = ?", $qp->getQuery());
     }
 

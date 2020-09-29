@@ -98,12 +98,12 @@ class Zend_Dojo_Form_Element_NumberTextBoxTest extends PHPUnit_Framework_TestCas
     {
         $element = new Zend_Dojo_Form_Element_NumberTextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'NumberTextBox',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

@@ -99,14 +99,14 @@ class Zend_Dojo_Form_Element_DijitTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Dojo_Form_Element_TextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'TextBox',
                 'trim'  => true,
                 'propercase' => true,
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

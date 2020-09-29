@@ -175,9 +175,9 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $res = $mail->setBodyText('Test #2');
         $mail->setFrom('eli@example.com', 'test Mail User');
         $mail->setSubject('Subject #2');
-        $mail->addTo(array('heather@example.com', 'Ramsey White' => 'ramsey@example.com'));
-        $mail->addCc(array('keith@example.com', 'Cal Evans' => 'cal@example.com'));
-        $mail->addBcc(array('ralph@example.com', 'matthew@example.com'));
+        $mail->addTo(['heather@example.com', 'Ramsey White' => 'ramsey@example.com']);
+        $mail->addCc(['keith@example.com', 'Cal Evans' => 'cal@example.com']);
+        $mail->addBcc(['ralph@example.com', 'matthew@example.com']);
 
         $mock = new Zend_Mail_Transport_Mock();
         $mail->send($mock);
@@ -919,24 +919,24 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
 
     public function testDefaultFrom() {
         Zend_Mail::setDefaultFrom('john@example.com','John Doe');
-        $this->assertEquals(array('email' => 'john@example.com','name' =>'John Doe'), Zend_Mail::getDefaultFrom());
+        $this->assertEquals(['email' => 'john@example.com','name' =>'John Doe'], Zend_Mail::getDefaultFrom());
 
         Zend_Mail::clearDefaultFrom();
         $this->assertEquals(null, Zend_Mail::getDefaultFrom());
 
         Zend_Mail::setDefaultFrom('john@example.com');
-        $this->assertEquals(array('email' => 'john@example.com','name' => null), Zend_Mail::getDefaultFrom());
+        $this->assertEquals(['email' => 'john@example.com','name' => null], Zend_Mail::getDefaultFrom());
     }
 
     public function testDefaultReplyTo() {
         Zend_Mail::setDefaultReplyTo('john@example.com','John Doe');
-        $this->assertEquals(array('email' => 'john@example.com','name' =>'John Doe'), Zend_Mail::getDefaultReplyTo());
+        $this->assertEquals(['email' => 'john@example.com','name' =>'John Doe'], Zend_Mail::getDefaultReplyTo());
 
         Zend_Mail::clearDefaultReplyTo();
         $this->assertEquals(null, Zend_Mail::getDefaultReplyTo());
 
         Zend_Mail::setDefaultReplyTo('john@example.com');
-        $this->assertEquals(array('email' => 'john@example.com','name' => null), Zend_Mail::getDefaultReplyTo());
+        $this->assertEquals(['email' => 'john@example.com','name' => null], Zend_Mail::getDefaultReplyTo());
     }
 
     public function testSettingFromDefaults() {
@@ -982,7 +982,7 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
         $mail->addTo('foobar@example.com');
         $mail->setSubject('hello world!');
 
-        $params = array('envelope'=> '-tjohn@example.com', 'foo' => '-fbar');
+        $params = ['envelope'=> '-tjohn@example.com', 'foo' => '-fbar'];
         $expected = '-tjohn@example.com -fbar';
 
         $transportMock = new Zend_Mail_Transport_Sendmail_Mock($params);
@@ -1031,16 +1031,16 @@ class Zend_Mail_MailTest extends PHPUnit_Framework_TestCase
 
     public static function dataSubjects()
     {
-        return array(
-            array("Simple Ascii Subject"),
-            array("Subject with US Specialchars: &%$/()"),
-            array("Gimme more \xe2\x82\xa0!"),
-            array("This is \xc3\xa4n germ\xc3\xa4n multiline s\xc3\xbcbject with rand\xc3\xb6m \xc3\xbcml\xc3\xa4uts."),
-            array("Alle meine Entchen schwimmen in dem See, schwimmen in dem See, K\xc3\xb6pfchen in das Wasser, Schw\xc3\xa4nzchen in die H\xc3\xb6h!"),
-            array("\xc3\xa4\xc3\xa4xxxxx\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4"),
-            array("\xd0\x90\xd0\x91\xd0\x92\xd0\x93\xd0\x94\xd0\x95 \xd0\x96\xd0\x97\xd0\x98\xd0\x99 \xd0\x9a\xd0\x9b\xd0\x9c\xd0\x9d"),
-            array("Ich. Denke. Also. Bin. Ich! (Ein \xc3\xbcml\xc3\xa4\xc3\xbctautomat!)"),
-        );
+        return [
+            ["Simple Ascii Subject"],
+            ["Subject with US Specialchars: &%$/()"],
+            ["Gimme more \xe2\x82\xa0!"],
+            ["This is \xc3\xa4n germ\xc3\xa4n multiline s\xc3\xbcbject with rand\xc3\xb6m \xc3\xbcml\xc3\xa4uts."],
+            ["Alle meine Entchen schwimmen in dem See, schwimmen in dem See, K\xc3\xb6pfchen in das Wasser, Schw\xc3\xa4nzchen in die H\xc3\xb6h!"],
+            ["\xc3\xa4\xc3\xa4xxxxx\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4\xc3\xa4"],
+            ["\xd0\x90\xd0\x91\xd0\x92\xd0\x93\xd0\x94\xd0\x95 \xd0\x96\xd0\x97\xd0\x98\xd0\x99 \xd0\x9a\xd0\x9b\xd0\x9c\xd0\x9d"],
+            ["Ich. Denke. Also. Bin. Ich! (Ein \xc3\xbcml\xc3\xa4\xc3\xbctautomat!)"],
+        ];
     }
 
     /**

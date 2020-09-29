@@ -36,7 +36,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
     /**
      * @var array Array of Zend_Service_Delicious_Post
      */
-    protected $_posts = array();
+    protected $_posts = [];
 
     /**
      * @var Zend_Service_Delicious Service that has downloaded the post list

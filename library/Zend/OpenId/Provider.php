@@ -262,7 +262,7 @@ class Zend_OpenId_Provider
             return false;
         }
         if ($extensions !== null) {
-            $data = array();
+            $data = [];
             Zend_OpenId_Extension::forAll($extensions, 'getTrustData', $data);
         } else {
             $data = true;
@@ -414,7 +414,7 @@ class Zend_OpenId_Provider
      */
     protected function _associate($version, $params)
     {
-        $ret = array();
+        $ret = [];
 
         if ($version >= 2.0) {
             $ret['ns'] = Zend_OpenId::NS_2_0;
@@ -514,7 +514,7 @@ class Zend_OpenId_Provider
     protected function _checkId($version, $params, $immediate, $extensions=null,
         Zend_Controller_Response_Abstract $response = null)
     {
-        $ret = array();
+        $ret = [];
 
         if ($version >= 2.0) {
             $ret['openid.ns'] = Zend_OpenId::NS_2_0;
@@ -533,7 +533,7 @@ class Zend_OpenId_Provider
         /* Check if user already logged in into the server */
         if (!isset($params['openid_identity']) ||
             $this->_user->getLoggedInUser() !== $params['openid_identity']) {
-            $params2 = array();
+            $params2 = [];
             foreach ($params as $key => $val) {
                 if (strpos($key, 'openid_ns_') === 0) {
                     $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
@@ -605,7 +605,7 @@ class Zend_OpenId_Provider
             return $ret;
         } else if ($trusted === null) {
             /* Redirect to Server Trust Screen */
-            $params2 = array();
+            $params2 = [];
             foreach ($params as $key => $val) {
                 if (strpos($key, 'openid_ns_') === 0) {
                     $key = 'openid.ns.' . substr($key, strlen('openid_ns_'));
@@ -650,7 +650,7 @@ class Zend_OpenId_Provider
             $params['openid_ns'] == Zend_OpenId::NS_2_0) {
             $version = 2.0;
         }
-        $ret = array();
+        $ret = [];
         if ($version >= 2.0) {
             $ret['openid.ns'] = Zend_OpenId::NS_2_0;
         }
@@ -745,7 +745,7 @@ class Zend_OpenId_Provider
      */
     protected function _checkAuthentication($version, $params)
     {
-        $ret = array();
+        $ret = [];
         if ($version >= 2.0) {
             $ret['ns'] = Zend_OpenId::NS_2_0;
         }

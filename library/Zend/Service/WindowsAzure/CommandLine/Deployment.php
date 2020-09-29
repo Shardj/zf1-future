@@ -179,7 +179,7 @@ class Zend_Service_WindowsAzure_CommandLine_Deployment
 			$result = $client->getDeploymentByDeploymentId($serviceName, $deploymentName);
 		}
 
-		$this->_displayObjectInformation($result, array('Name', 'DeploymentSlot', 'Label', 'Url', 'Status'));
+		$this->_displayObjectInformation($result, ['Name', 'DeploymentSlot', 'Label', 'Url', 'Status']);
 	}
 
 	/**

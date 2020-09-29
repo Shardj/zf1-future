@@ -64,7 +64,7 @@ class Zend_Queue_Message_PlatformJob extends Zend_Queue_Message
      * @return void
      * @throws Zend_Queue_Exception
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         if (isset($options['data'])) {
             if (!($options['data'] instanceof ZendApi_Job)) {

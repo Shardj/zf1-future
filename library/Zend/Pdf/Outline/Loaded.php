@@ -56,7 +56,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
      *
      * @var array
      */
-    protected $_originalChildOutlines = array();
+    protected $_originalChildOutlines = [];
 
     /**
      * Get outline title.
@@ -214,9 +214,9 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
             $this->_outlineDictionary->C = null;
         } else {
             $components = $color->getComponents();
-            $colorComponentElements = array(new Zend_Pdf_Element_Numeric($components[0]),
+            $colorComponentElements = [new Zend_Pdf_Element_Numeric($components[0]),
                                             new Zend_Pdf_Element_Numeric($components[1]),
-                                            new Zend_Pdf_Element_Numeric($components[2]));
+                                            new Zend_Pdf_Element_Numeric($components[2])];
             $this->_outlineDictionary->C = new Zend_Pdf_Element_Array($colorComponentElements);
         }
 

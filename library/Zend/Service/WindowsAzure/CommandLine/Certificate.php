@@ -77,7 +77,7 @@ class Zend_Service_WindowsAzure_CommandLine_Certificate
 			echo 'No data to display.';
 		}
 		foreach ($result as $object) {
-			$this->_displayObjectInformation($object, array('Thumbprint', 'CertificateUrl', 'ThumbprintAlgorithm'));
+			$this->_displayObjectInformation($object, ['Thumbprint', 'CertificateUrl', 'ThumbprintAlgorithm']);
 		}
 	}
 
@@ -125,7 +125,7 @@ class Zend_Service_WindowsAzure_CommandLine_Certificate
 		$client = new Zend_Service_WindowsAzure_Management_Client($subscriptionId, $certificate, $certificatePassphrase);
 		$result = $client->getCertificate($serviceName, $algorithm, $thumbprint);
 
-		$this->_displayObjectInformation($result, array('Thumbprint', 'CertificateUrl', 'ThumbprintAlgorithm'));
+		$this->_displayObjectInformation($result, ['Thumbprint', 'CertificateUrl', 'ThumbprintAlgorithm']);
 	}
 
 	/**

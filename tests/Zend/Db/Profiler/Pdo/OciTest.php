@@ -60,9 +60,9 @@ class Zend_Db_Profiler_Pdo_OciTest extends Zend_Db_Profiler_TestCommon
         $this->assertEquals($queryType, $prof->getFilterQueryType());
 
         $this->_db->query("SELECT * FROM $bugs");
-        $this->_db->query("INSERT INTO $bugs ($bug_id, $bug_status) VALUES (:id, :status)", array(':id' => 100,':status' => 'NEW'));
+        $this->_db->query("INSERT INTO $bugs ($bug_id, $bug_status) VALUES (:id, :status)", [':id' => 100,':status' => 'NEW']);
         $this->_db->query("DELETE FROM $bugs");
-        $this->_db->query("UPDATE $bugs SET $bug_status = :status", array(':status'=>'FIXED'));
+        $this->_db->query("UPDATE $bugs SET $bug_status = :status", [':status'=>'FIXED']);
 
         $qps = $prof->getQueryProfiles();
         $this->assertTrue(is_array($qps), 'Expecting some query profiles, got none');

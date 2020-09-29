@@ -63,7 +63,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->_adapter = new Zend_Http_Client_Adapter_Test();
-        Zend_Feed::setHttpClient(new Zend_Http_Client(null, array('adapter' => $this->_adapter)));
+        Zend_Feed::setHttpClient(new Zend_Http_Client(null, ['adapter' => $this->_adapter]));
         $this->_client = Zend_Feed::getHttpClient();
         $this->_feedDir = dirname(__FILE__) . '/_files';
     }
@@ -250,8 +250,8 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
     {
         $array = $this->_getFullArray();
         $array['itunes']['author'] = 'iTunes Author';
-        $array['itunes']['owner'] = array('name' => 'iTunes Owner',
-                                          'email' => 'itunes@example.com');
+        $array['itunes']['owner'] = ['name' => 'iTunes Owner',
+                                          'email' => 'itunes@example.com'];
         $array['itunes']['image'] = 'http://www.example/itunes.png';
         $array['itunes']['subtitle'] = 'iTunes subtitle';
         $array['itunes']['summary'] = 'iTunes summary';
@@ -316,7 +316,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
             $this->markTestIncomplete('XDebug not installed');
         }
 
-        $response = new Zend_Http_Response(200, array(), '');
+        $response = new Zend_Http_Response(200, [], '');
         $this->_adapter->setResponse($response);
 
         try {
@@ -336,7 +336,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
      */
     protected function _getFullArray()
     {
-        $array = array('title' => 'Title of the feed',
+        $array = ['title' => 'Title of the feed',
                        'link' => 'http://www.example.com',
                        'description' => 'Description of the feed',
                        'author' => 'Olivier Sirven',
@@ -355,22 +355,22 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
   for "http://www.greatdocs.com/foo.html"
   by "George Sanderson, Jr."
   ratings (suds 0.5 density 0 color/hue 1))',
-                       'cloud' => array('domain' => 'rpc.sys.com',
+                       'cloud' => ['domain' => 'rpc.sys.com',
                                         'path' => '/rpc',
                                         'registerProcedure' => 'webServices.pingMe',
-                                        'protocol' => 'xml-rpc'),
-                       'textInput' => array('title' => 'subscribe',
+                                        'protocol' => 'xml-rpc'],
+                       'textInput' => ['title' => 'subscribe',
                                             'description' => 'enter your email address to subscribe by mail',
                                             'name' => 'email',
-                                            'link' => 'http://www.example.com/subscribe'),
-                       'skipHours' => array(1, 13, 17),
-                       'skipDays' => array('Saturday', 'Sunday'),
-                       'itunes'  => array('block' => 'no',
+                                            'link' => 'http://www.example.com/subscribe'],
+                       'skipHours' => [1, 13, 17],
+                       'skipDays' => ['Saturday', 'Sunday'],
+                       'itunes'  => ['block' => 'no',
                                           'keywords' => 'example,itunes,podcast',
-                                          'category' => array(array('main' => 'Technology',
-                                                                    'sub' => 'Gadgets'),
-                                                              array('main' => 'Music'))),
-                       'entries' => array(array('guid' => time(),
+                                          'category' => [['main' => 'Technology',
+                                                                    'sub' => 'Gadgets'],
+                                                              ['main' => 'Music']]],
+                       'entries' => [['guid' => time(),
                                                 'title' => 'First article',
                                                 'link' => 'http://www.example.com',
                                                 'description' => 'First article description',
@@ -378,32 +378,32 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
                                                 'lastUpdate' => time(),
                                                 'comments' => 'http://www.example.com/#comments',
                                                 'commentRss' => 'http://www.example.com/comments.xml',
-                                                'source' => array('title' => 'Original title',
-                                                                  'url' => 'http://www.domain.com'),
-                                                'category' => array(array('term' => 'test category',
-                                                                          'scheme' => 'http://www.example.com/scheme'),
-                                                                    array('term' => 'another category')
-                                                                    ),
-                                                'enclosure' => array(array('url' => 'http://www.example.com/podcast.mp3',
+                                                'source' => ['title' => 'Original title',
+                                                                  'url' => 'http://www.domain.com'],
+                                                'category' => [['term' => 'test category',
+                                                                          'scheme' => 'http://www.example.com/scheme'],
+                                                                    ['term' => 'another category']
+                                                                    ],
+                                                'enclosure' => [['url' => 'http://www.example.com/podcast.mp3',
                                                                            'type' => 'audio/mpeg',
                                                                            'length' => '12216320'
-                                                                           ),
-                                                                     array('url' => 'http://www.example.com/podcast2.mp3',
+                                                                           ],
+                                                                     ['url' => 'http://www.example.com/podcast2.mp3',
                                                                            'type' => 'audio/mpeg',
                                                                            'length' => '1221632'
-                                                                           )
-                                                                     )
-                                                ),
-                                          array('title' => 'Second article',
+                                                                           ]
+                                                                     ]
+                                                ],
+                                          ['title' => 'Second article',
                                                 'link' => 'http://www.example.com/two',
                                                 'description' => 'Second article description',
                                                 'content' => 'Second article <strong>content</strong>',
                                                 'lastUpdate' => time(),
                                                 'comments' => 'http://www.example.com/two/#comments',
-                                                'category' => array(array('term' => 'test category')),
-                                                )
-                                          )
-                       );
+                                                'category' => [['term' => 'test category']],
+                                                ]
+                                          ]
+                       ];
         return $array;
     }
 
@@ -412,7 +412,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
      */
     protected function _importAtomValid($filename)
     {
-        $response = new Zend_Http_Response(200, array(), file_get_contents("$this->_feedDir/$filename"));
+        $response = new Zend_Http_Response(200, [], file_get_contents("$this->_feedDir/$filename"));
         $this->_adapter->setResponse($response);
 
         $feed = Zend_Feed::import('http://localhost');
@@ -424,7 +424,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
      */
     protected function _importRssValid($filename)
     {
-        $response = new Zend_Http_Response(200, array(), file_get_contents("$this->_feedDir/$filename"));
+        $response = new Zend_Http_Response(200, [], file_get_contents("$this->_feedDir/$filename"));
         $this->_adapter->setResponse($response);
 
         $feed = Zend_Feed::import('http://localhost');
@@ -437,7 +437,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
      */
     protected function _importInvalid($filename)
     {
-        $response = new Zend_Http_Response(200, array(), file_get_contents("$this->_feedDir/$filename"));
+        $response = new Zend_Http_Response(200, [], file_get_contents("$this->_feedDir/$filename"));
         $this->_adapter->setResponse($response);
 
         try {
@@ -461,8 +461,8 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
         }
         Zend_Feed::setHttpClient(new Zend_Http_Client);
         $feeds = Zend_Feed::findFeeds('http://www.planet-php.net');
-        $this->assertEquals(array(
+        $this->assertEquals([
             'http://www.planet-php.org:80/rss/', 'http://www.planet-php.org:80/rdf/'
-        ), array_keys($feeds));
+        ], array_keys($feeds));
     }
 }

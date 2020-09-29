@@ -34,7 +34,7 @@ class Zend_Tool_Framework_Provider_ProviderFullFeaturedBadSpecialties2 extends Z
 
     public function getSpecialties()
     {
-        return new ArrayObject(array('Hi', 'BloodyMurder', 'ForYourTeam'));
+        return new ArrayObject(['Hi', 'BloodyMurder', 'ForYourTeam']);
     }
 
 }

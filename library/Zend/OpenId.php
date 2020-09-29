@@ -627,14 +627,14 @@ class Zend_OpenId
     static public function createDhKey($p, $g, $priv_key = null)
     {
         if (function_exists('openssl_dh_compute_key')) {
-            $dh_details = array(
+            $dh_details = [
                     'p' => $p,
                     'g' => $g
-                );
+                ];
             if ($priv_key !== null) {
                 $dh_details['priv_key'] = $priv_key;
             }
-            return openssl_pkey_new(array('dh'=>$dh_details));
+            return openssl_pkey_new(['dh'=>$dh_details]);
         } else {
             $bn_p        = self::binToBigNum($p);
             $bn_g        = self::binToBigNum($g);
@@ -649,16 +649,16 @@ class Zend_OpenId
             }
             $pub_key     = self::bigNumToBin($bn_pub_key);
 
-            return array(
+            return [
                 'p'        => $bn_p,
                 'g'        => $bn_g,
                 'priv_key' => $bn_priv_key,
                 'pub_key'  => $bn_pub_key,
-                'details'  => array(
+                'details'  => [
                     'p'        => $p,
                     'g'        => $g,
                     'priv_key' => $priv_key,
-                    'pub_key'  => $pub_key));
+                    'pub_key'  => $pub_key]];
         }
     }
 

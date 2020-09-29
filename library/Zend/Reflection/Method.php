@@ -107,9 +107,9 @@ class Zend_Reflection_Method extends ReflectionMethod
     public function getParameters($reflectionClass = 'Zend_Reflection_Parameter')
     {
         $phpReflections  = parent::getParameters();
-        $zendReflections = array();
+        $zendReflections = [];
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
-            $instance = new $reflectionClass(array($this->getDeclaringClass()->getName(), $this->getName()), $phpReflection->getName());
+            $instance = new $reflectionClass([$this->getDeclaringClass()->getName(), $this->getName()], $phpReflection->getName());
             if (!$instance instanceof Zend_Reflection_Parameter) {
                 require_once 'Zend/Reflection/Exception.php';
                 throw new Zend_Reflection_Exception('Invalid reflection class provided; must extend Zend_Reflection_Parameter');

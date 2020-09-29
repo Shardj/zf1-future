@@ -76,8 +76,8 @@ class Zend_Gdata_EntryLinkTest extends PHPUnit_Framework_TestCase
         $newEntryLink = new Zend_Gdata_Extension_EntryLink();
         $newEntryLink->transferFromXML($this->entryLink->saveXML());
         $this->assertEquals(0, count($newEntryLink->extensionElements));
-        $newEntryLink->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newEntryLink->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newEntryLink->extensionElements));
         $this->assertEquals("http://gmail.com/jo/contacts/Bob", $newEntryLink->href);
         $this->assertEquals("self", $newEntryLink->rel);
@@ -117,8 +117,8 @@ class Zend_Gdata_EntryLinkTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->entryLink->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->entryLink->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->entryLink->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->entryLink->extensionAttributes['foo2']['value']);

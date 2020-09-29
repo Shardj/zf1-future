@@ -65,7 +65,7 @@ class Zend_Dojo_Form_FormTest extends PHPUnit_Framework_TestCase
     {
         $this->form = new Zend_Dojo_Form();
         $this->form->addElement('TextBox', 'foo')
-                   ->addDisplayGroup(array('foo'), 'dg')
+                   ->addDisplayGroup(['foo'], 'dg')
                    ->setView(new Zend_View());
     }
 

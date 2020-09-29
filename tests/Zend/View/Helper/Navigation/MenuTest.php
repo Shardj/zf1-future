@@ -93,19 +93,19 @@ class Zend_View_Helper_Navigation_MenuTest
     {
         $this->_helper->setIndent(8);
 
-        $expected = array(
+        $expected = [
             'indent4' => $this->_getExpected('menu/indent4.html'),
             'indent8' => $this->_getExpected('menu/indent8.html')
-        );
+        ];
 
-        $renderOptions = array(
+        $renderOptions = [
             'indent' => 4
-        );
+        ];
 
-        $actual = array(
+        $actual = [
             'indent4' => rtrim($this->_helper->renderMenu(null, $renderOptions), PHP_EOL),
             'indent8' => rtrim($this->_helper->renderMenu(), PHP_EOL)
-        );
+        ];
 
         $this->assertEquals($expected, $actual);
     }
@@ -114,17 +114,17 @@ class Zend_View_Helper_Navigation_MenuTest
     {
         $rendered1 = $this->_getExpected('menu/default1.html');
         $rendered2 = $this->_getExpected('menu/default2.html');
-        $expected = array(
+        $expected = [
             'registered'       => $rendered1,
             'supplied'         => $rendered2,
             'registered_again' => $rendered1
-        );
+        ];
 
-        $actual = array(
+        $actual = [
             'registered'       => $this->_helper->render(),
             'supplied'         => $this->_helper->render($this->_nav2),
             'registered_again' => $this->_helper->render()
-        );
+        ];
 
         $this->assertEquals($expected, $actual);
     }
@@ -326,7 +326,7 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testRenderingPartialBySpecifyingAnArrayAsPartial()
     {
-        $this->_helper->setPartial(array('menu.phtml', 'default'));
+        $this->_helper->setPartial(['menu.phtml', 'default']);
 
         $expected = $this->_getExpected('menu/partial.html');
         $actual = $this->_helper->render();
@@ -336,7 +336,7 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testRenderingPartialShouldFailOnInvalidPartialArray()
     {
-        $this->_helper->setPartial(array('menu.phtml'));
+        $this->_helper->setPartial(['menu.phtml']);
 
         try {
             $this->_helper->render();
@@ -481,9 +481,9 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionMaxDepth()
     {
-        $options = array(
+        $options = [
             'maxDepth' => 1
-        );
+        ];
 
         $expected = $this->_getExpected('menu/maxdepth.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -493,9 +493,9 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionMinDepth()
     {
-        $options = array(
+        $options = [
             'minDepth' => 1
-        );
+        ];
 
         $expected = $this->_getExpected('menu/mindepth.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -505,10 +505,10 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionBothDepts()
     {
-        $options = array(
+        $options = [
             'minDepth' => 1,
             'maxDepth' => 2
-        );
+        ];
 
         $expected = $this->_getExpected('menu/bothdepts.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -518,9 +518,9 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionOnlyActiveBranch()
     {
-        $options = array(
+        $options = [
             'onlyActiveBranch' => true
-        );
+        ];
 
         $expected = $this->_getExpected('menu/onlyactivebranch.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -530,10 +530,10 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionOnlyActiveBranchNoParents()
     {
-        $options = array(
+        $options = [
             'onlyActiveBranch' => true,
             'renderParents' => false
-        );
+        ];
 
         $expected = $this->_getExpected('menu/onlyactivebranch_noparents.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -543,10 +543,10 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionOnlyActiveBranchAndMinDepth()
     {
-        $options = array(
+        $options = [
             'minDepth' => 1,
             'onlyActiveBranch' => true
-        );
+        ];
 
         $expected = $this->_getExpected('menu/onlyactivebranch_mindepth.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -556,10 +556,10 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionOnlyActiveBranchAndMaxDepth()
     {
-        $options = array(
+        $options = [
             'maxDepth' => 2,
             'onlyActiveBranch' => true
-        );
+        ];
 
         $expected = $this->_getExpected('menu/onlyactivebranch_maxdepth.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -569,11 +569,11 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionOnlyActiveBranchAndBothDepthsSpecified()
     {
-        $options = array(
+        $options = [
             'minDepth' => 1,
             'maxDepth' => 2,
             'onlyActiveBranch' => true
-        );
+        ];
 
         $expected = $this->_getExpected('menu/onlyactivebranch_bothdepts.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -583,12 +583,12 @@ class Zend_View_Helper_Navigation_MenuTest
 
     public function testOptionOnlyActiveBranchNoParentsAndBothDepthsSpecified()
     {
-        $options = array(
+        $options = [
             'minDepth' => 2,
             'maxDepth' => 2,
             'onlyActiveBranch' => true,
             'renderParents' => false
-        );
+        ];
 
         $expected = $this->_getExpected('menu/onlyactivebranch_np_bd.html');
         $actual = $this->_helper->renderMenu(null, $options);
@@ -643,10 +643,10 @@ class Zend_View_Helper_Navigation_MenuTest
     {
         $this->_nav3->findOneBy('id', 'home')->setCustomHtmlAttrib('rel', 'nofollow');
         $this->_nav3->findOneBy('uri', 'contact')->setCustomHtmlAttribs(
-            array(
+            [
                  'rel'   => 'nofollow',
                  'style' => 'font-weight: bold;',
-            )
+            ]
         );
         $this->_nav3->findOneBy('id', 'imprint')->setCustomHtmlAttrib('rel', 'nofollow');
 
@@ -675,7 +675,7 @@ class Zend_View_Helper_Navigation_MenuTest
     {
         $this->assertContains(
             '<ul class="navigation" id="foo">',
-            $this->_helper->renderMenu(null, array('ulId' => 'foo'))
+            $this->_helper->renderMenu(null, ['ulId' => 'foo'])
         );
     }
 
@@ -712,7 +712,7 @@ class Zend_View_Helper_Navigation_MenuTest
     {
         $this->assertContains(
             '<ul class="navigation" id="foo">',
-            $this->_helper->renderMenu(null, array('ulId' => 'foo'))
+            $this->_helper->renderMenu(null, ['ulId' => 'foo'])
         );
     }
 
@@ -757,11 +757,11 @@ class Zend_View_Helper_Navigation_MenuTest
         $container->findBy('label', 'Page 2.3.3.1')->setClass('foo');
 
         // Tests
-        $options = array(
+        $options = [
             'onlyActiveBranch' => true,
             'renderParents'    => false,
             'addPageClassToLi' => true,
-        );
+        ];
 
         $this->assertContains(
             '<li class="active foo">',
@@ -794,11 +794,11 @@ class Zend_View_Helper_Navigation_MenuTest
     public function testRenderDeepestMenuWithCustomActiveClass()
     {
         // Tests
-        $options = array(
+        $options = [
             'onlyActiveBranch' => true,
             'renderParents'    => false,
             'activeClass'      => 'current',
-        );
+        ];
 
         $html = $this->_helper->renderMenu(null, $options);
 
@@ -834,9 +834,9 @@ class Zend_View_Helper_Navigation_MenuTest
         $expected = $this->_getExpected('menu/parentclass_standard.html');
         $actual   = $this->_helper->renderMenu(
             null ,
-            array(
+            [
                  'renderParentClass' => true,
-            )
+            ]
         );
 
         $this->assertEquals($expected, $actual);
@@ -850,10 +850,10 @@ class Zend_View_Helper_Navigation_MenuTest
         $expected = $this->_getExpected('menu/parentclass_custom.html');
         $actual   = $this->_helper->renderMenu(
             null ,
-            array(
+            [
                  'renderParentClass' => true,
                  'parentClass'       => 'foo',
-            )
+            ]
         );
 
         $this->assertEquals($expected, $actual);

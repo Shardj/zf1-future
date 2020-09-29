@@ -52,7 +52,7 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -106,13 +106,13 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
 
     public function testRunShouldDispatchFrontController()
     {
-        $this->bootstrap->setOptions(array(
-            'resources' => array(
-                'frontcontroller' => array(
+        $this->bootstrap->setOptions([
+            'resources' => [
+                'frontcontroller' => [
                     'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
         $this->bootstrap->bootstrap();
 
         $front   = $this->bootstrap->getResource('FrontController');
@@ -137,9 +137,9 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
      */
     public function testBootstrapShouldInitializeModuleAutoloaderWhenNamespaceSpecified()
     {
-        $application = new Zend_Application('testing', array(
+        $application = new Zend_Application('testing', [
             'appnamespace' => 'Application',
-        ));
+        ]);
         $bootstrap   = new Zend_Application_Bootstrap_Bootstrap(
             $application
         );
@@ -153,9 +153,9 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
      */
     public function testBootstrapAutoloaderNamespaceShouldBeConfigurable()
     {
-        $application = new Zend_Application('testing', array(
+        $application = new Zend_Application('testing', [
             'appnamespace' => 'Default',
-        ));
+        ]);
         $bootstrap   = new Zend_Application_Bootstrap_Bootstrap(
             $application
         );
@@ -170,9 +170,9 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
     {
         $application = new Zend_Application(
             'testing',
-            array(
+            [
                  'appnamespace' => null,
-            )
+            ]
         );
         $bootstrap   = new Zend_Application_Bootstrap_Bootstrap(
             $application
@@ -191,14 +191,14 @@ class Zend_Application_Bootstrap_BootstrapTest extends PHPUnit_Framework_TestCas
      */
     public function testBootstrapRunMethodShouldReturnResponseIfFlagEnabled()
     {
-        $this->bootstrap->setOptions(array(
-            'resources' => array(
-                'frontcontroller' => array(
+        $this->bootstrap->setOptions([
+            'resources' => [
+                'frontcontroller' => [
                     'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
                     'returnresponse'  => true,
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
         $this->bootstrap->bootstrap();
 
         $front   = $this->bootstrap->getResource('FrontController');

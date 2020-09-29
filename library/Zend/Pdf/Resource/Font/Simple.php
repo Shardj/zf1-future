@@ -222,7 +222,7 @@ abstract class Zend_Pdf_Resource_Font_Simple extends Zend_Pdf_Resource_Font
      */
     public function widthsForGlyphs($glyphNumbers)
     {
-        $widths = array();
+        $widths = [];
         foreach ($glyphNumbers as $key => $glyphNumber) {
             if (!isset($this->_glyphWidths[$glyphNumber])) {
                 $widths[$key] = $this->_missingGlyphWidth;

@@ -134,12 +134,12 @@ class Zend_Ldap_Node_OnlineTest extends Zend_Ldap_OnlineTestCase
      */
     public function testAttachToInvalidLdap()
     {
-        $data=array(
+        $data=[
             'dn'          => 'ou=name,dc=example,dc=org',
-            'ou'          => array('name'),
-            'l'           => array('a', 'b', 'c'),
-            'objectClass' => array('organizationalUnit', 'top'),
-        );
+            'ou'          => ['name'],
+            'l'           => ['a', 'b', 'c'],
+            'objectClass' => ['organizationalUnit', 'top'],
+        ];
         $node=Zend_Ldap_Node::fromArray($data);
         $this->assertFalse($node->isAttached());
         $node->attachLdap($this->_getLdap());
@@ -147,12 +147,12 @@ class Zend_Ldap_Node_OnlineTest extends Zend_Ldap_OnlineTestCase
 
     public function testAttachToValidLdap()
     {
-        $data=array(
+        $data=[
             'dn'          => $this->_createDn('ou=name,'),
-            'ou'          => array('name'),
-            'l'           => array('a', 'b', 'c'),
-            'objectClass' => array('organizationalUnit', 'top'),
-        );
+            'ou'          => ['name'],
+            'l'           => ['a', 'b', 'c'],
+            'objectClass' => ['organizationalUnit', 'top'],
+        ];
         $node=Zend_Ldap_Node::fromArray($data);
         $this->assertFalse($node->isAttached());
         $node->attachLdap($this->_getLdap());
@@ -161,12 +161,12 @@ class Zend_Ldap_Node_OnlineTest extends Zend_Ldap_OnlineTestCase
 
     public function testExistsDn()
     {
-        $data=array(
+        $data=[
             'dn'          => $this->_createDn('ou=name,'),
-            'ou'          => array('name'),
-            'l'           => array('a', 'b', 'c'),
-            'objectClass' => array('organizationalUnit', 'top'),
-        );
+            'ou'          => ['name'],
+            'l'           => ['a', 'b', 'c'],
+            'objectClass' => ['organizationalUnit', 'top'],
+        ];
         $node1=Zend_Ldap_Node::fromArray($data);
         $node1->attachLdap($this->_getLdap());
         $this->assertFalse($node1->exists());
@@ -215,15 +215,15 @@ class Zend_Ldap_Node_OnlineTest extends Zend_Ldap_OnlineTestCase
     {
         $node=$this->_getLdap()->getNode($this->_createDn('ou=Node,'));
         $items=$node->searchSubtree('(objectClass=organizationalUnit)', Zend_Ldap::SEARCH_SCOPE_SUB,
-            array(), 'ou');
+            [], 'ou');
         $this->assertTrue($items instanceof Zend_Ldap_Node_Collection);
         $this->assertEquals(3, $items->count());
 
         $i=0;
-        $dns=array(
+        $dns=[
             $this->_createDn('ou=Node,'),
             $this->_createDn('ou=Test1,ou=Node,'),
-            $this->_createDn('ou=Test2,ou=Node,'));
+            $this->_createDn('ou=Test2,ou=Node,')];
         foreach ($items as $key => $node) {
             $key=Zend_Ldap_Dn::fromString($key)->toString(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
             $this->assertEquals($dns[$i], $key);
@@ -256,9 +256,9 @@ class Zend_Ldap_Node_OnlineTest extends Zend_Ldap_OnlineTestCase
     public function testSearchChildren()
     {
         $node=$this->_getLdap()->getNode($this->_createDn('ou=Node,'));
-        $this->assertEquals(2, $node->searchChildren('(objectClass=*)', array(), 'ou')->count());
+        $this->assertEquals(2, $node->searchChildren('(objectClass=*)', [], 'ou')->count());
         $node=$this->_getLdap()->getNode(TESTS_ZEND_LDAP_WRITEABLE_SUBTREE);
-        $this->assertEquals(6, $node->searchChildren('(objectClass=*)', array(), 'ou')->count());
+        $this->assertEquals(6, $node->searchChildren('(objectClass=*)', [], 'ou')->count());
     }
 
     public function testGetParent()

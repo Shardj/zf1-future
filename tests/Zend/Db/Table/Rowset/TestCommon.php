@@ -47,7 +47,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
     {
         $table = $this->_table['bugs'];
 
-        $rows = $table->find(array(1, 2));
+        $rows = $table->find([1, 2]);
         $this->assertTrue($rows instanceof Zend_Db_Table_Rowset_Abstract,
             'Expecting object of type Zend_Db_Table_Rowset_Abstract, got '.get_class($rows));
 
@@ -164,7 +164,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $table = $this->_table['bugs'];
         $bug_description = $this->_db->foldCase('bug_description');
 
-        $rows = $table->find(array(1, 2));
+        $rows = $table->find([1, 2]);
         $this->assertEquals(2, count($rows));
 
         // iterate through the rowset, because that's the only way
@@ -396,7 +396,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $tableClass = get_class($table);
 
         $select = $table->select();
-        $select->from('zfbugs', array('bug_id'));
+        $select->from('zfbugs', ['bug_id']);
 
         require_once 'Zend/Paginator.php';
         $paginator = Zend_Paginator::factory($select);

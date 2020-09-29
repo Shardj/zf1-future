@@ -4,10 +4,10 @@ require_once 'Zend/Mobile/Push/Message/Gcm.php';
 
 $message = new Zend_Mobile_Push_Message_Gcm();
 $message->addToken('ABCDEF0123456789');
-$message->setData(array(
+$message->setData([
     'foo' => 'bar',
     'bar' => 'foo',
-));
+]);
 
 $gcm = new Zend_Mobile_Push_Gcm();
 $gcm->setApiKey('YOUR_API_KEY');

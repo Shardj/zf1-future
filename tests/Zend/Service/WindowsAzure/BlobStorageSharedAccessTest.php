@@ -152,9 +152,9 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
             // Reduced permissions user performs this part
             $storageClient = $this->createStorageInstance();
             $credentials = $storageClient->getCredentials();
-            $credentials->setPermissionSet(array(
+            $credentials->setPermissionSet([
                 $sharedAccessUrl
-            ));
+            ]);
 
             $result = $storageClient->putBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif');
     
@@ -204,10 +204,10 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
 
             $exceptionThrown = false;
             try {
-	            $credentials->setPermissionSet(array(
+	            $credentials->setPermissionSet([
 	                $sharedAccessUrl1,
 	                $sharedAccessUrl2
-	            ));
+	            ]);
             } catch (Exception $ex) {
                 $exceptionThrown = true;
             }

@@ -121,7 +121,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
             $this->assertContains('does not exist', $e->getMessage());
         }
 
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ts', 'de', array('clear' => true));
+        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ts', 'de', ['clear' => true]);
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
@@ -129,8 +129,8 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
     public function testOptions()
     {
         $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/translation_en.ts', 'en');
-        $adapter->setOptions(array('testoption' => 'testkey'));
-        $expected = array(
+        $adapter->setOptions(['testoption' => 'testkey']);
+        $expected = [
             'testoption'      => 'testkey',
             'clear'           => false,
             'content'         => dirname(__FILE__) . '/_files/translation_en.ts',
@@ -142,7 +142,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
             'logMessage'      => 'Untranslated message within \'%locale%\': %message%',
             'logUntranslated' => false,
             'reload'          => false
-        );
+        ];
         $options = $adapter->getOptions();
 
         foreach ($expected as $key => $value) {
@@ -159,7 +159,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
         $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/translation_en.ts', 'en');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 6', $adapter->translate('Message 6'));
-        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ts', 'de', array('clear' => true));
+        $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ts', 'de', ['clear' => true]);
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
         $this->assertEquals('Message 4', $adapter->translate('Message 4'));
     }
@@ -179,7 +179,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
             $this->assertContains('does not exist', $e->getMessage());
         }
 
-        set_error_handler(array($this, 'errorHandlerIgnore'));
+        set_error_handler([$this, 'errorHandlerIgnore']);
         $adapter->setLocale('it');
         restore_error_handler();
         $this->assertEquals('it', $adapter->getLocale());
@@ -188,9 +188,9 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
     public function testList()
     {
         $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/translation_en.ts', 'en');
-        $this->assertEquals(array('en' => 'en'), $adapter->getList());
+        $this->assertEquals(['en' => 'en'], $adapter->getList());
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ts', 'de');
-        $this->assertEquals(array('en' => 'en', 'de' => 'de'), $adapter->getList());
+        $this->assertEquals(['en' => 'en', 'de' => 'de'], $adapter->getList());
         $this->assertTrue($adapter->isAvailable('en'));
         $locale = new Zend_Locale('en');
         $this->assertTrue($adapter->isAvailable($locale));
@@ -200,16 +200,16 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit_Framework_TestCase
     public function testOptionLocaleDirectory()
     {
         require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/testts', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
-        $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
+        $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/testts', 'de_AT', ['scan' => Zend_Translate::LOCALE_DIRECTORY]);
+        $this->assertEquals(['de_AT' => 'de_AT', 'en_GB' => 'en_GB'], $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
 
     public function testOptionLocaleFilename()
     {
         require_once 'Zend/Translate.php';
-        $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/testts', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
-        $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
+        $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/testts', 'de_DE', ['scan' => Zend_Translate::LOCALE_FILENAME]);
+        $this->assertEquals(['de_DE' => 'de_DE', 'en_US' => 'en_US'], $adapter->getList());
         $this->assertEquals('Nachricht 8', $adapter->translate('Message 8'));
     }
 

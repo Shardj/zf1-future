@@ -107,7 +107,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit_Framework_TestCase
         $child = $parent->createChild('array');
 
         $children = $parent->getChildren();
-        $types = array();
+        $types = [];
         foreach ($children as $c) {
             $types[] = $c->getValue();
         }
@@ -176,18 +176,18 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit_Framework_TestCase
         $child2grand2great2 = $child2grand2->createChild('child2grand2great2');
 
         $endPoints = $root->getEndPoints();
-        $endPointsArray = array();
+        $endPointsArray = [];
         foreach ($endPoints as $endPoint) {
             $endPointsArray[] = $endPoint->getValue();
         }
 
-        $test = array(
+        $test = [
             'child1',
             'child1grand2',
             'child2grand1',
             'child2grand2',
             'child2grand2great2'
-        );
+        ];
 
         $this->assertTrue($test === $endPointsArray, 'Test was [' . var_export($test, 1) . ']; endPoints were [' . var_export($endPointsArray, 1) . ']');
     }

@@ -67,10 +67,10 @@ class Zend_Gdata_Analytics extends Zend_Gdata
     const ANALYTICS_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/data';
     const ANALYTICS_ACCOUNT_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/management/accounts';
 
-    public static $namespaces = array(
-        array('analytics', 'http://schemas.google.com/analytics/2009', 1, 0),
-        array('ga', 'http://schemas.google.com/ga/2009', 1, 0)
-     );
+    public static $namespaces = [
+        ['analytics', 'http://schemas.google.com/analytics/2009', 1, 0],
+        ['ga', 'http://schemas.google.com/ga/2009', 1, 0]
+     ];
 
     /**
      * Create Gdata object

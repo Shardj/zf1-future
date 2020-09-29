@@ -110,11 +110,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testAddItemShouldThrowExceptionIfNoIdentifierPresentInObject()
     {
-        $item = array(
+        $item = [
             'id'    => '1',
             'title' => 'foo',
             'url'   => 'http://www.example.com/',
-        );
+        ];
         try {
             $this->dojoData->addItem($item);
             $this->fail('Should throw exception if no identifier present');
@@ -125,10 +125,10 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testAddItemShouldThrowExceptionIfNoIdentifierPresentInItem()
     {
-        $item = array(
+        $item = [
             'title' => 'foo',
             'url'   => 'http://www.example.com/',
-        );
+        ];
         $this->dojoData->setIdentifier('id');
         try {
             $this->dojoData->addItem($item);
@@ -140,11 +140,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testAddItemShouldAcceptArray()
     {
-        $item = array(
+        $item = [
             'id'    => '1',
             'title' => 'foo',
             'url'   => 'http://www.example.com/',
-        );
+        ];
         $this->dojoData->setIdentifier('id');
         $this->dojoData->addItem($item);
         $this->assertEquals(1, count($this->dojoData));
@@ -153,11 +153,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testAddItemShouldAcceptStdObject()
     {
-        $item = array(
+        $item = [
             'id'    => '1',
             'title' => 'foo',
             'url'   => 'http://www.example.com/',
-        );
+        ];
         $obj = (object) $item;
         $this->dojoData->setIdentifier('id');
         $this->dojoData->addItem($obj);
@@ -187,10 +187,10 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testAddItemShouldAllowSpecifyingIdentifier()
     {
-        $item = array(
+        $item = [
             'title' => 'foo',
             'url'   => 'http://www.example.com/',
-        );
+        ];
         $this->dojoData->setIdentifier('id');
         $this->dojoData->addItem($item, 'foo');
         $this->assertEquals(1, count($this->dojoData));
@@ -206,11 +206,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
     public function testOverwritingItemsShouldNotBeAllowedFromAddItem()
     {
         $this->testAddItemShouldAcceptArray();
-        $item = array(
+        $item = [
             'id'    => '1',
             'title' => 'foo',
             'url'   => 'http://www.example.com/',
-        );
+        ];
         try {
             $this->dojoData->addItem($item);
             $this->fail('Overwriting items via addItem() should throw error');
@@ -222,11 +222,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
     public function testSetItemShouldOverwriteExistingItem()
     {
         $this->testAddItemShouldAcceptArray();
-        $item = array(
+        $item = [
             'id'    => '1',
             'title' => 'bar',
             'url'   => 'http://www.foo.com/',
-        );
+        ];
         $this->assertNotSame($item, $this->dojoData->getItem(1));
         $this->dojoData->setItem($item);
         $this->assertEquals(1, count($this->dojoData));
@@ -235,11 +235,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testSetItemShouldAddItemIfNonexistent()
     {
-        $item = array(
+        $item = [
             'id'    => '1',
             'title' => 'bar',
             'url'   => 'http://www.foo.com/',
-        );
+        ];
         $this->dojoData->setIdentifier('id');
         $this->assertEquals(0, count($this->dojoData));
         $this->dojoData->setItem($item);
@@ -249,23 +249,23 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testAddItemsShouldAcceptArray()
     {
-        $items = array(
-            array (
+        $items = [
+            [
                 'id'    => 1,
                 'title' => 'Foo',
                 'email' => 'foo@bar',
-            ),
-            array (
+            ],
+            [
                 'id'    => 2,
                 'title' => 'Bar',
                 'email' => 'bar@bar',
-            ),
-            array (
+            ],
+            [
                 'id'    => 3,
                 'title' => 'Baz',
                 'email' => 'baz@bar',
-            ),
-        );
+            ],
+        ];
         $this->dojoData->setIdentifier('id');
         $this->assertEquals(0, count($this->dojoData));
         $this->dojoData->addItems($items);
@@ -335,23 +335,23 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorShouldSetIdentifierItemsAndLabelWhenPassed()
     {
-        $items = array(
-            array (
+        $items = [
+            [
                 'id'    => 1,
                 'title' => 'Foo',
                 'email' => 'foo@bar',
-            ),
-            array (
+            ],
+            [
                 'id'    => 2,
                 'title' => 'Bar',
                 'email' => 'bar@bar',
-            ),
-            array (
+            ],
+            [
                 'id'    => 3,
                 'title' => 'Baz',
                 'email' => 'baz@bar',
-            ),
-        );
+            ],
+        ];
         $data = new Zend_Dojo_Data('id', $items, 'title');
         $this->assertEquals('id', $data->getIdentifier());
         $this->assertEquals('title', $data->getLabel());
@@ -411,10 +411,10 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->dojoData instanceof ArrayAccess);
         $this->testAddItemsShouldAcceptTraversableObject();
         $this->assertEquals($this->dojoData->getItem(1), $this->dojoData[1]);
-        $this->dojoData[4] = array(
+        $this->dojoData[4] = [
             'title' => 'ArrayAccess',
             'meta'  => 'fun',
-        );
+        ];
         $this->assertTrue(isset($this->dojoData[4]));
         $this->assertEquals($this->dojoData->getItem(4), $this->dojoData[4]);
         unset($this->dojoData[4]);
@@ -438,16 +438,16 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
     public function testShouldAllowPopulationFromJson()
     {
-        $data = array(
+        $data = [
             'identifier' => 'id',
             'label'      => 'title',
-            'items'      => array(
-                array('id' => 1, 'title' => 'One', 'name' => 'First'),
-                array('id' => 2, 'title' => 'Two', 'name' => 'Second'),
-                array('id' => 3, 'title' => 'Three', 'name' => 'Third'),
-                array('id' => 4, 'title' => 'Four', 'name' => 'Fourth'),
-            ),
-        );
+            'items'      => [
+                ['id' => 1, 'title' => 'One', 'name' => 'First'],
+                ['id' => 2, 'title' => 'Two', 'name' => 'Second'],
+                ['id' => 3, 'title' => 'Three', 'name' => 'Third'],
+                ['id' => 4, 'title' => 'Four', 'name' => 'Fourth'],
+            ],
+        ];
         require_once 'Zend/Json.php';
         $json = Zend_Json::encode($data);
         $dojoData = new Zend_Dojo_Data();
@@ -483,7 +483,7 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($metadata));
         $this->assertTrue(empty($metadata));
 
-        $metadata = array('numRows' => 100, 'sort' => 'name');
+        $metadata = ['numRows' => 100, 'sort' => 'name'];
         $this->dojoData->setMetadata($metadata);
         $test = $this->dojoData->getMetadata();
         $this->assertEquals($metadata, $test);
@@ -528,11 +528,11 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
 
 class Zend_Dojo_DataTest_DataObject
 {
-    public $item = array(
+    public $item = [
         'id'    => 'foo',
         'title' => 'Foo',
         'email' => 'foo@foo.com',
-    );
+    ];
 
     public function toArray()
     {
@@ -542,7 +542,7 @@ class Zend_Dojo_DataTest_DataObject
 
 class Zend_Dojo_DataTest_DataCollection implements Iterator
 {
-    public $items = array();
+    public $items = [];
 
     public function __construct()
     {

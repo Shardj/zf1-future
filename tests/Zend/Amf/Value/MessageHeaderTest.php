@@ -75,7 +75,7 @@ class Zend_Amf_Value_MessageHeaderTest extends PHPUnit_Framework_TestCase
     {
         $data = new stdClass;
         $data->foo = 'bar';
-        $data->bar = array('baz' => 'bat');
+        $data->bar = ['baz' => 'bat'];
         $messageHeader = new Zend_Amf_Value_MessageHeader('foo', true, $data);
         $this->assertSame($data, $messageHeader->data);
     }

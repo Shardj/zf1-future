@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_PasswordTextBoxTest extends PHPUnit_Framework_TestC
     {
         $element = new Zend_Dojo_Form_Element_PasswordTextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'PasswordTextBox',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

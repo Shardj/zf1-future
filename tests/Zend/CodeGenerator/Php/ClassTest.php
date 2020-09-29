@@ -75,18 +75,18 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
     public function testImplementedInterfacesAccessors()
     {
         $codeGenClass = new Zend_CodeGenerator_Php_Class();
-        $codeGenClass->setImplementedInterfaces(array('Class1', 'Class2'));
-        $this->assertEquals($codeGenClass->getImplementedInterfaces(), array('Class1', 'Class2'));
+        $codeGenClass->setImplementedInterfaces(['Class1', 'Class2']);
+        $this->assertEquals($codeGenClass->getImplementedInterfaces(), ['Class1', 'Class2']);
     }
 
     public function testPropertyAccessors()
     {
 
         $codeGenClass = new Zend_CodeGenerator_Php_Class();
-        $codeGenClass->setProperties(array(
-            array('name' => 'propOne'),
-            new Zend_CodeGenerator_Php_Property(array('name' => 'propTwo'))
-            ));
+        $codeGenClass->setProperties([
+            ['name' => 'propOne'],
+            new Zend_CodeGenerator_Php_Property(['name' => 'propTwo'])
+            ]);
 
         $properties = $codeGenClass->getProperties();
         $this->assertEquals(count($properties), 2);
@@ -97,18 +97,18 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($property->getName(), 'propTwo');
 
         // add a new property
-        $codeGenClass->setProperty(array('name' => 'prop3'));
+        $codeGenClass->setProperty(['name' => 'prop3']);
         $this->assertEquals(count($codeGenClass->getProperties()), 3);
     }
 
     public function testSetProperty_AlreadyExists_ThrowsException()
     {
         $codeGenClass = new Zend_CodeGenerator_Php_Class();
-        $codeGenClass->setProperty(array('name' => 'prop3'));
+        $codeGenClass->setProperty(['name' => 'prop3']);
 
         $this->setExpectedException("Zend_CodeGenerator_Php_Exception");
 
-        $codeGenClass->setProperty(array('name' => 'prop3'));
+        $codeGenClass->setProperty(['name' => 'prop3']);
     }
 
     public function testSetProperty_NoArrayOrProperty_ThrowsException()
@@ -122,10 +122,10 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
     public function testMethodAccessors()
     {
         $codeGenClass = new Zend_CodeGenerator_Php_Class();
-        $codeGenClass->setMethods(array(
-            array('name' => 'methodOne'),
-            new Zend_CodeGenerator_Php_Method(array('name' => 'methodTwo'))
-            ));
+        $codeGenClass->setMethods([
+            ['name' => 'methodOne'],
+            new Zend_CodeGenerator_Php_Method(['name' => 'methodTwo'])
+            ]);
 
         $methods = $codeGenClass->getMethods();
         $this->assertEquals(count($methods), 2);
@@ -136,7 +136,7 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($method->getName(), 'methodOne');
 
         // add a new property
-        $codeGenClass->setMethod(array('name' => 'methodThree'));
+        $codeGenClass->setMethod(['name' => 'methodThree']);
         $this->assertEquals(count($codeGenClass->getMethods()), 3);
     }
 
@@ -195,19 +195,19 @@ class Zend_CodeGenerator_Php_ClassTest extends PHPUnit_Framework_TestCase
 
     public function testToString()
     {
-        $codeGenClass = new Zend_CodeGenerator_Php_Class(array(
+        $codeGenClass = new Zend_CodeGenerator_Php_Class([
             'abstract' => true,
             'name' => 'SampleClass',
             'extendedClass' => 'ExtendedClassName',
-            'implementedInterfaces' => array('Iterator', 'Traversable'),
-            'properties' => array(
-                array('name' => 'foo'),
-                array('name' => 'bar')
-                ),
-            'methods' => array(
-                array('name' => 'baz')
-                ),
-            ));
+            'implementedInterfaces' => ['Iterator', 'Traversable'],
+            'properties' => [
+                ['name' => 'foo'],
+                ['name' => 'bar']
+                ],
+            'methods' => [
+                ['name' => 'baz']
+                ],
+            ]);
 
         $expectedOutput = <<<EOS
 abstract class SampleClass extends ExtendedClassName implements Iterator, Traversable
@@ -322,7 +322,7 @@ CODE;
         $property->setName('name')->setDefaultValue('property');
 
         $codeGenClass = new Zend_CodeGenerator_Php_Class();
-        $codeGenClass->setName('My_Class')->setProperties(array($const, $property));
+        $codeGenClass->setName('My_Class')->setProperties([$const, $property]);
 
         $expected = <<<CODE
 class My_Class

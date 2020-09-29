@@ -46,14 +46,14 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         parent::setUp($db);
     }
 
-    public function getParams(array $constants = array())
+    public function getParams(array $constants = [])
     {
-        $constants = array (
+        $constants = [
             'host'     => 'TESTS_ZEND_DB_ADAPTER_ORACLE_HOSTNAME',
             'username' => 'TESTS_ZEND_DB_ADAPTER_ORACLE_USERNAME',
             'password' => 'TESTS_ZEND_DB_ADAPTER_ORACLE_PASSWORD',
             'dbname'   => 'TESTS_ZEND_DB_ADAPTER_ORACLE_SID'
-        );
+        ];
         return parent::getParams($constants);
     }
 

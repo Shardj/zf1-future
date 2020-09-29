@@ -66,9 +66,9 @@ class Zend_CodeGenerator_Php_MethodTest extends PHPUnit_Framework_TestCase
     public function testMethodParameterAccessors()
     {
         $codeGen = new Zend_CodeGenerator_Php_Method();
-        $codeGen->setParameters(array(
-            array('name' => 'one')
-            ));
+        $codeGen->setParameters([
+            ['name' => 'one']
+            ]);
         $params = $codeGen->getParameters();
         $param = array_shift($params);
         $this->assertTrue($param instanceof Zend_CodeGenerator_Php_Parameter, 'Failed because $param was not instance of Zend_CodeGenerator_Php_Property');
@@ -116,9 +116,9 @@ EOS;
     {
         $codeGen = new Zend_CodeGenerator_Php_Method();
         $codeGen->setName('foo');
-        $codeGen->setParameters(array(
-            array('name' => 'one')
-            ));
+        $codeGen->setParameters([
+            ['name' => 'one']
+            ]);
         $codeGen->setStatic(true);
 
         $expected = <<<EOS
@@ -138,9 +138,9 @@ EOS;
     {
         $codeGen = new Zend_CodeGenerator_Php_Method();
         $codeGen->setName('foo');
-        $codeGen->setParameters(array(
-            array('name' => 'one')
-            ));
+        $codeGen->setParameters([
+            ['name' => 'one']
+            ]);
         $codeGen->setFinal(true);
 
         $expected = <<<EOS
@@ -159,9 +159,9 @@ EOS;
     {
         $codeGen = new Zend_CodeGenerator_Php_Method();
         $codeGen->setName('foo');
-        $codeGen->setParameters(array(
-            array('name' => 'one')
-            ));
+        $codeGen->setParameters([
+            ['name' => 'one']
+            ]);
         $codeGen->setFinal(true);
         $codeGen->setAbstract(true);
 
@@ -179,12 +179,12 @@ EOS;
      */
     public function testMethodCanHaveDocblock()
     {
-        $codeGenProperty = new Zend_CodeGenerator_Php_Method(array(
+        $codeGenProperty = new Zend_CodeGenerator_Php_Method([
             'name' => 'someFoo',
             'static' => true,
             'visibility' => 'protected',
             'docblock' => '@var string $someVal This is some val'
-            ));
+            ]);
 
         $expected = <<<EOS
     /**

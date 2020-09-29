@@ -100,74 +100,74 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
         return $this->helper->verticalSlider(
             'elementId',
             '',
-            array(
+            [
                 'minimum'        => -10,
                 'maximum'        => 10,
                 'discreteValues' => 11,
-                'topDecoration' => array(
-                    'labels' => array(
+                'topDecoration' => [
+                    'labels' => [
                         ' ',
                         '20%',
                         '40%',
                         '60%',
                         '80%',
                         ' ',
-                    ),
-                    'attribs' => array(
-                        'container' => array(
+                    ],
+                    'attribs' => [
+                        'container' => [
                             'style' => 'height:1.2em; font-size=75%;color:gray;',
-                        ),
-                        'labels' => array(
+                        ],
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
+                        ],
+                    ],
                     'dijit' => 'VerticalRuleLabels',
-                ),
-                'bottomDecoration' => array(
-                    'labels' => array(
+                ],
+                'bottomDecoration' => [
+                    'labels' => [
                         '0%',
                         '50%',
                         '100%',
-                    ),
-                    'attribs' => array(
-                        'labels' => array(
+                    ],
+                    'attribs' => [
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
-                ),
-                'leftDecoration' => array(
-                    'labels' => array(
+                        ],
+                    ],
+                ],
+                'leftDecoration' => [
+                    'labels' => [
                         ' ',
                         '20%',
                         '40%',
                         '60%',
                         '80%',
                         ' ',
-                    ),
-                    'attribs' => array(
-                        'container' => array(
+                    ],
+                    'attribs' => [
+                        'container' => [
                             'style' => 'height:1.2em; font-size=75%;color:gray;',
-                        ),
-                        'labels' => array(
+                        ],
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
+                        ],
+                    ],
                     'dijit' => 'VerticalRuleLabels',
-                ),
-                'rightDecoration' => array(
-                    'labels' => array(
+                ],
+                'rightDecoration' => [
+                    'labels' => [
                         '0%',
                         '50%',
                         '100%',
-                    ),
-                    'attribs' => array(
-                        'labels' => array(
+                    ],
+                    'attribs' => [
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
-                ),
-            ),
-            array()
+                        ],
+                    ],
+                ],
+            ],
+            []
         );
     }
 

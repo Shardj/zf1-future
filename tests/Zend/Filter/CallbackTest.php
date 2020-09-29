@@ -37,28 +37,28 @@ class Zend_Filter_CallbackTest extends PHPUnit_Framework_TestCase
 {
     public function testObjectCallback()
     {
-        $filter = new Zend_Filter_Callback(array($this, 'objectCallback'));
+        $filter = new Zend_Filter_Callback([$this, 'objectCallback']);
         $this->assertEquals('objectCallback-test', $filter->filter('test'));
     }
 
     public function testStaticCallback()
     {
         $filter = new Zend_Filter_Callback(
-            array('Zend_Filter_CallbackTest', 'staticCallback')
+            ['Zend_Filter_CallbackTest', 'staticCallback']
         );
         $this->assertEquals('staticCallback-test', $filter->filter('test'));
     }
 
     public function testSettingDefaultOptions()
     {
-        $filter = new Zend_Filter_Callback(array($this, 'objectCallback'), 'options');
+        $filter = new Zend_Filter_Callback([$this, 'objectCallback'], 'options');
         $this->assertEquals('options', $filter->getOptions());
         $this->assertEquals('objectCallback-test', $filter->filter('test'));
     }
 
     public function testSettingDefaultOptionsAfterwards()
     {
-        $filter = new Zend_Filter_Callback(array($this, 'objectCallback'));
+        $filter = new Zend_Filter_Callback([$this, 'objectCallback']);
         $filter->setOptions('options');
         $this->assertEquals('options', $filter->getOptions());
         $this->assertEquals('objectCallback-test', $filter->filter('test'));

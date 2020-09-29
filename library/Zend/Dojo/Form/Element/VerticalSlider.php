@@ -50,7 +50,7 @@ class Zend_Dojo_Form_Element_VerticalSlider extends Zend_Dojo_Form_Element_Slide
         if ($this->hasDijitParam('leftDecoration')) {
             return $this->getDijitParam('leftDecoration');
         }
-        return array();
+        return [];
     }
 
     /**
@@ -133,7 +133,7 @@ class Zend_Dojo_Form_Element_VerticalSlider extends Zend_Dojo_Form_Element_Slide
         if ($this->hasDijitParam('rightDecoration')) {
             return $this->getDijitParam('rightDecoration');
         }
-        return array();
+        return [];
     }
 
     /**

@@ -72,10 +72,10 @@ class Zend_Gdata_Books extends Zend_Gdata
      *
      * @var array
      */
-    public static $namespaces = array(
-        array('gbs', 'http://schemas.google.com/books/2008', 1, 0),
-        array('dc', 'http://purl.org/dc/terms', 1, 0)
-    );
+    public static $namespaces = [
+        ['gbs', 'http://schemas.google.com/books/2008', 1, 0],
+        ['dc', 'http://purl.org/dc/terms', 1, 0]
+    ];
 
     /**
      * Create Zend_Gdata_Books object

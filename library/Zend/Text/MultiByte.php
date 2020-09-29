@@ -32,26 +32,31 @@ class Zend_Text_MultiByte
     /**
      * Word wrap
      *
-     * @param  string  $string
-     * @param  integer $width
-     * @param  string  $break
-     * @param  boolean $cut
-     * @param  string  $charset
+     * @param string $string
+     * @param integer $width
+     * @param string $break
+     * @param boolean $cut
+     * @param string $charset
      * @return string
+     * @throws Zend_Text_Exception
      */
     public static function wordWrap($string, $width = 75, $break = "\n", $cut = false, $charset = 'utf-8')
     {
         $stringWidth = iconv_strlen($string, $charset);
         $breakWidth  = iconv_strlen($break, $charset);
-        
+
         if (strlen($string) === 0) {
             return '';
-        } elseif ($breakWidth === null) {
+        }
+
+        if ($breakWidth === null) {
             throw new Zend_Text_Exception('Break string cannot be empty');
-        } elseif ($width === 0 && $cut) {
+        }
+
+        if ($width === 0 && $cut) {
             throw new Zend_Text_Exception('Can\'t force cut when width is zero');
         }
-        
+
         $result    = '';
         $lastStart = $lastSpace = 0;
         

@@ -73,8 +73,8 @@ class Zend_Gdata_OpenSearchTotalResultsTest extends PHPUnit_Framework_TestCase
         $newOpenSearchTotalResults = new Zend_Gdata_Extension_OpenSearchTotalResults();
         $newOpenSearchTotalResults->transferFromXML($this->openSearchTotalResults->saveXML());
         $this->assertEquals(0, count($newOpenSearchTotalResults->extensionElements));
-        $newOpenSearchTotalResults->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newOpenSearchTotalResults->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newOpenSearchTotalResults->extensionElements));
         $this->assertEquals("42", $newOpenSearchTotalResults->text);
 
@@ -106,8 +106,8 @@ class Zend_Gdata_OpenSearchTotalResultsTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->openSearchTotalResults->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->openSearchTotalResults->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->openSearchTotalResults->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->openSearchTotalResults->extensionAttributes['foo2']['value']);

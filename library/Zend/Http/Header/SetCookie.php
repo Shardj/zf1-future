@@ -133,7 +133,7 @@ class Zend_Http_Header_SetCookie
         }
 
         $multipleHeaders = preg_split('#(?<!Sun|Mon|Tue|Wed|Thu|Fri|Sat),\s*#', $value);
-        $headers = array();
+        $headers = [];
         foreach ($multipleHeaders as $headerLine) {
             $header = new self();
             $keyValuePairs = preg_split('#;\s*#', $headerLine);
@@ -153,7 +153,7 @@ class Zend_Http_Header_SetCookie
                 }
 
                 // Process the remanining elements
-                switch (str_replace(array('-', '_'), '', strtolower($headerKey))) {
+                switch (str_replace(['-', '_'], '', strtolower($headerKey))) {
                     case 'expires' : $header->setExpires($headerValue); break;
                     case 'domain'  : $header->setDomain($headerValue); break;
                     case 'path'    : $header->setPath($headerValue); break;

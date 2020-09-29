@@ -49,8 +49,8 @@ require_once 'Zend/Db/Profiler/Firebug.php';
 $profiler = new Zend_Db_Profiler_Firebug('All DB Queries');
 
 $db = Zend_Db::factory('PDO_SQLITE',
-                       array('dbname' => ':memory:',
-                             'profiler' => $profiler));
+                       ['dbname' => ':memory:',
+                             'profiler' => $profiler]);
 
 $db->getProfiler()->setEnabled(true);
 

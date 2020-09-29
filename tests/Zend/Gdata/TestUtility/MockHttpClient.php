@@ -52,7 +52,7 @@ class Test_Zend_Gdata_MockHttpClient extends Zend_Http_Client_Adapter_Test
     public function __construct()
     {
         parent::__construct();
-        $this->_requests = array();
+        $this->_requests = [];
     }
 
     public function popRequest()
@@ -66,7 +66,7 @@ class Test_Zend_Gdata_MockHttpClient extends Zend_Http_Client_Adapter_Test
     public function write($method,
                           $uri,
                           $http_ver = '1.1',
-                          $headers = array(),
+                          $headers = [],
                           $body = '')
     {
         $request = new Test_Zend_Gdata_MockHttpClient_Request();

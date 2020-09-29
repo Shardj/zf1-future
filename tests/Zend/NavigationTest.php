@@ -75,11 +75,11 @@ class Zend_NavigationTest extends PHPUnit_Framework_TestCase
     public function testNavigationArraySortsCorrectly()
     {
         require_once 'Zend/Navigation/Page/Uri.php';
-        $page1 = new Zend_Navigation_Page_Uri(array('uri' => 'page1'));
-        $page2 = new Zend_Navigation_Page_Uri(array('uri' => 'page2'));
-        $page3 = new Zend_Navigation_Page_Uri(array('uri' => 'page3'));
+        $page1 = new Zend_Navigation_Page_Uri(['uri' => 'page1']);
+        $page2 = new Zend_Navigation_Page_Uri(['uri' => 'page2']);
+        $page3 = new Zend_Navigation_Page_Uri(['uri' => 'page3']);
 
-        $this->_navigation->setPages(array($page1, $page2, $page3));
+        $this->_navigation->setPages([$page1, $page2, $page3]);
 
         $page1->setOrder(1);
         $page3->setOrder(0);

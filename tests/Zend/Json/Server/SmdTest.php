@@ -88,7 +88,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testTransportShouldBeLimitedToPost()
     {
-        foreach (array('GET', 'REST') as $transport) {
+        foreach (['GET', 'REST'] as $transport) {
             try {
                 $this->smd->setTransport($transport);
                 $this->fail('Invalid transport should throw exception');
@@ -114,7 +114,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testEnvelopeShouldBeLimitedToJsonRpcVersions()
     {
-        foreach (array('URL', 'PATH', 'JSON') as $env) {
+        foreach (['URL', 'PATH', 'JSON'] as $env) {
             try {
                 $this->smd->setEnvelope($env);
                 $this->fail('Invalid envelope type should throw exception');
@@ -131,7 +131,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testContentTypeAccessorsShouldWorkUnderNormalInput()
     {
-        foreach (array('text/json', 'text/plain', 'application/x-json') as $type) {
+        foreach (['text/json', 'text/plain', 'application/x-json'] as $type) {
             $this->smd->setContentType($type);
             $this->assertEquals($type, $this->smd->getContentType());
         }
@@ -139,7 +139,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testContentTypeShouldBeLimitedToMimeFormatStrings()
     {
-        foreach (array('plain', 'json', 'foobar') as $type) {
+        foreach (['plain', 'json', 'foobar'] as $type) {
             try {
                 $this->smd->setContentType($type);
                 $this->fail('Invalid content type should raise exception');
@@ -215,9 +215,9 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testShouldBeAbleToUseArrayToAddService()
     {
-        $service = array(
+        $service = [
             'name' => 'foo',
-        );
+        ];
         $this->smd->addService($service);
         $foo = $this->smd->getService('foo');
         $this->assertTrue($foo instanceof Zend_Json_Server_Smd_Service);
@@ -239,7 +239,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testAttemptingToRegisterInvalidServiceShouldThrowException()
     {
-        foreach (array('foo', false, 1, 1.0) as $service) {
+        foreach (['foo', false, 1, 1.0] as $service) {
             try {
                 $this->smd->addService($service);
                 $this->fail('Attempt to register invalid service should throw exception');
@@ -254,7 +254,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
         $one   = new Zend_Json_Server_Smd_Service('one');
         $two   = new Zend_Json_Server_Smd_Service('two');
         $three = new Zend_Json_Server_Smd_Service('three');
-        $services = array($one, $two, $three);
+        $services = [$one, $two, $three];
         $this->smd->addServices($services);
         $test = $this->smd->getServices();
         $this->assertSame($services, array_values($test));
@@ -262,27 +262,27 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function testShouldBeAbleToAddManyServicesAtOnceWithArrayOfArrays()
     {
-        $services = array(
-            array('name' => 'one'),
-            array('name' => 'two'),
-            array('name' => 'three'),
-        );
+        $services = [
+            ['name' => 'one'],
+            ['name' => 'two'],
+            ['name' => 'three'],
+        ];
         $this->smd->addServices($services);
         $test = $this->smd->getServices();
-        $this->assertSame(array('one', 'two', 'three'), array_keys($test));
+        $this->assertSame(['one', 'two', 'three'], array_keys($test));
     }
 
     public function testShouldBeAbleToAddManyServicesAtOnceWithMixedArrayOfObjectsAndArrays()
     {
         $two = new Zend_Json_Server_Smd_Service('two');
-        $services = array(
-            array('name' => 'one'),
+        $services = [
+            ['name' => 'one'],
             $two,
-            array('name' => 'three'),
-        );
+            ['name' => 'three'],
+        ];
         $this->smd->addServices($services);
         $test = $this->smd->getServices();
-        $this->assertSame(array('one', 'two', 'three'), array_keys($test));
+        $this->assertSame(['one', 'two', 'three'], array_keys($test));
         $this->assertEquals($two, $test['two']);
     }
 
@@ -290,14 +290,14 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
     {
         $this->testShouldBeAbleToAddManyServicesAtOnceWithMixedArrayOfObjectsAndArrays();
         $five = new Zend_Json_Server_Smd_Service('five');
-        $services = array(
-            array('name' => 'four'),
+        $services = [
+            ['name' => 'four'],
             $five,
-            array('name' => 'six'),
-        );
+            ['name' => 'six'],
+        ];
         $this->smd->setServices($services);
         $test = $this->smd->getServices();
-        $this->assertSame(array('four', 'five', 'six'), array_keys($test));
+        $this->assertSame(['four', 'five', 'six'], array_keys($test));
         $this->assertEquals($five, $test['five']);
     }
 
@@ -377,26 +377,26 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
 
     public function getOptions()
     {
-        return array(
+        return [
             'target'   => '/test/me',
             'id'       => '/test/me',
-            'services' => array(
-                array(
+            'services' => [
+                [
                     'name'   => 'foo',
-                    'params' => array(
-                        array('type' => 'boolean'),
-                    ),
+                    'params' => [
+                        ['type' => 'boolean'],
+                    ],
                     'return' => 'boolean',
-                ),
-                array(
+                ],
+                [
                     'name'   => 'bar',
-                    'params' => array(
-                        array('type' => 'integer'),
-                    ),
+                    'params' => [
+                        ['type' => 'integer'],
+                    ],
                     'return' => 'string',
-                ),
-            )
-        );
+                ],
+            ]
+        ];
     }
 
     public function validateServiceArray(array $smd, array $options)

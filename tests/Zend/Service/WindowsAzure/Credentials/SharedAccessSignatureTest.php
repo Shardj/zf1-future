@@ -125,9 +125,9 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends PH
         $credentials = new Zend_Service_WindowsAzure_Credentials_SharedAccessSignature('myaccount', '', false);
         $queryString = $credentials->createSignedQueryString('pictures/blob.txt', '', 'b', 'r', '2009-02-09', '2009-02-10');
         
-        $credentials->setPermissionSet(array(
+        $credentials->setPermissionSet([
             'http://blob.core.windows.net/myaccount/pictures/blob.txt?' . $queryString
-        ));
+        ]);
 
         $requestUrl = 'http://blob.core.windows.net/myaccount/pictures/blob.txt?comp=metadata';
         $result = $credentials->signRequestUrl($requestUrl, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB);

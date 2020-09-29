@@ -38,10 +38,10 @@ session_start();
 // Application constants. Replace these values with your own.
 $APP_NAME = 'google-ZendGData3LOSample-1.0';
 $APP_URL = getAppURL();
-$scopes = array(
+$scopes = [
     'https://docs.google.com/feeds/',
     'http://spreadsheets.google.com/feeds/'
-);
+];
 
 // Setup OAuth consumer. Thes values should be replaced with your registered
 // app's consumer key/secret.
@@ -78,7 +78,7 @@ switch (@$_REQUEST['action']) {
             $spreadsheetFeed = $spreadsheetsService->getSpreadsheetFeed(
                 'http://spreadsheets.google.com/feeds/spreadsheets/private/full?max-results=100');
 
-            renderHTML($accessToken, array($docsFeed, $spreadsheetFeed));
+            renderHTML($accessToken, [$docsFeed, $spreadsheetFeed]);
         } else {
             renderHTML();
         }

@@ -122,7 +122,7 @@ class Zend_Service_Amazon_Authentication_V2 extends Zend_Service_Amazon_Authenti
         uksort($paramaters, 'strcmp');
         unset($paramaters['Signature']);
 
-        $arrData = array();
+        $arrData = [];
         foreach($paramaters as $key => $value) {
             $arrData[] = $key . '=' . str_replace('%7E', '~', rawurlencode($value));
         }

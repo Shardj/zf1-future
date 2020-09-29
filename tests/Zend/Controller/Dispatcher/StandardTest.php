@@ -66,10 +66,10 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         $front->resetInstance();
         Zend_Controller_Action_HelperBroker::removeHelper('viewRenderer');
         $this->_dispatcher = new Zend_Controller_Dispatcher_Standard();
-        $this->_dispatcher->setControllerDirectory(array(
+        $this->_dispatcher->setControllerDirectory([
             'default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files',
             'admin'   => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Admin'
-        ));
+        ]);
     }
 
     public function tearDown()
@@ -103,10 +103,10 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
 
     public function testSetGetControllerDirectory()
     {
-        $expected = array(
+        $expected = [
             'default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files',
             'admin'   => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Admin'
-        );
+        ];
         $dirs = $this->_dispatcher->getControllerDirectory();
         $this->assertEquals($expected, $dirs);
     }
@@ -334,9 +334,9 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
 
     public function testWordDelimiter()
     {
-        $this->assertEquals(array('-', '.'), $this->_dispatcher->getWordDelimiter());
+        $this->assertEquals(['-', '.'], $this->_dispatcher->getWordDelimiter());
         $this->_dispatcher->setWordDelimiter(':');
-        $this->assertEquals(array(':'), $this->_dispatcher->getWordDelimiter());
+        $this->assertEquals([':'], $this->_dispatcher->getWordDelimiter());
     }
 
     public function testPathDelimiter()
@@ -476,7 +476,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->_dispatcher->isValidModule('bogus'));
         $this->assertFalse($this->_dispatcher->isValidModule(null));
         $this->assertFalse($this->_dispatcher->isValidModule($this));
-        $this->assertFalse($this->_dispatcher->isValidModule(array()));
+        $this->assertFalse($this->_dispatcher->isValidModule([]));
     }
 
     /**
@@ -674,7 +674,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_dispatcher->isDispatchable($request), var_export($this->_dispatcher->getControllerDirectory(), 1));
 
         $response = new Zend_Controller_Response_Cli();
-        set_error_handler(array($this, 'handleErrors'));
+        set_error_handler([$this, 'handleErrors']);
         try {
             $this->_dispatcher->dispatch($request, $response);
             $body = $this->_dispatcher->getResponse()->getBody();
@@ -692,7 +692,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
      */
     public function testGetControllerClassThrowsExceptionIfNoDefaultModuleDefined()
     {
-        $this->_dispatcher->setControllerDirectory(array());
+        $this->_dispatcher->setControllerDirectory([]);
 
         $request = new Zend_Controller_Request_Simple();
         $request->setControllerName('empty');

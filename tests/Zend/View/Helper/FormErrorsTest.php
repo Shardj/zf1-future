@@ -116,7 +116,7 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testFormErrorsRendersUnorderedListByDefault()
     {
-        $errors = array('foo', 'bar', 'baz');
+        $errors = ['foo', 'bar', 'baz'];
         $html = $this->helper->formErrors($errors);
         $this->assertContains('<ul', $html);
         foreach ($errors as $error) {
@@ -130,7 +130,7 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit_Framework_TestCase
         $this->helper->setElementStart('<dl><dt>')
                      ->setElementSeparator('</dt><dt>')
                      ->setElementEnd('</dt></dl>');
-        $errors = array('foo', 'bar', 'baz');
+        $errors = ['foo', 'bar', 'baz'];
         $html = $this->helper->formErrors($errors);
         $this->assertContains('<dl>', $html);
         foreach ($errors as $error) {
@@ -141,9 +141,9 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testFormErrorsPreventsXssAttacks()
     {
-        $errors = array(
+        $errors = [
             'bad' => '\"><script>alert("xss");</script>',
-        );
+        ];
         $html = $this->helper->formErrors($errors);
         $this->assertNotContains($errors['bad'], $html);
         $this->assertContains('&', $html);
@@ -151,11 +151,11 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testCanDisableEscapingErrorMessages()
     {
-        $errors = array(
+        $errors = [
             'foo' => '<b>Field is required</b>',
             'bar' => '<a href="/help">Please click here for more information</a>'
-        );
-        $html = $this->helper->formErrors($errors, array('escape' => false));
+        ];
+        $html = $this->helper->formErrors($errors, ['escape' => false]);
         $this->assertContains($errors['foo'], $html);
         $this->assertContains($errors['bar'], $html);
     }
@@ -166,8 +166,8 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit_Framework_TestCase
      */
     public function testCanSetClassAttribute()
     {
-        $options    = array('class' => 'custom-class');
-        $actualHtml = $this->helper->formErrors(array(), $options);
+        $options    = ['class' => 'custom-class'];
+        $actualHtml = $this->helper->formErrors([], $options);
         $this->assertEquals(
             '<ul class="custom-class"><li></li></ul>',
             $actualHtml
@@ -180,12 +180,12 @@ class Zend_View_Helper_FormErrorsTest extends PHPUnit_Framework_TestCase
     public function testCanSetElementStringsPerOptions()
     {
         $actual = $this->helper->formErrors(
-            array('foo', 'bar', 'baz'),
-            array(
+            ['foo', 'bar', 'baz'],
+            [
                  'elementStart'     => '<p>',
                  'elementEnd'       => '</p>',
                  'elementSeparator' => '<br>',
-            )
+            ]
         );
 
         $this->assertEquals('<p>foo<br>bar<br>baz</p>', $actual);

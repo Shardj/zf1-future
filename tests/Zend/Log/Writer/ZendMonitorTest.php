@@ -49,12 +49,12 @@ class Zend_Log_Writer_ZendMonitorTest extends PHPUnit_Framework_TestCase
     public function testWrite()
     {
         $writer = new Zend_Log_Writer_ZendMonitor();
-        $writer->write(array('message' => 'my mess', 'priority' => 1));
+        $writer->write(['message' => 'my mess', 'priority' => 1]);
     }
 
     public function testFactory()
     {
-        $cfg = array();
+        $cfg = [];
 
         $writer = Zend_Log_Writer_ZendMonitor::factory($cfg);
         $this->assertTrue($writer instanceof Zend_Log_Writer_ZendMonitor);

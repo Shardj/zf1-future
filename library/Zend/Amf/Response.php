@@ -46,13 +46,13 @@ class Zend_Amf_Response
      * Array of Zend_Amf_Value_MessageBody objects
      * @var array
      */
-    protected $_bodies = array();
+    protected $_bodies = [];
 
     /**
      * Array of Zend_Amf_Value_MessageHeader objects
      * @var array
      */
-    protected $_headers = array();
+    protected $_headers = [];
 
     /**
      * @var Zend_Amf_Parse_OutputStream

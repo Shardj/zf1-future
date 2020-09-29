@@ -62,7 +62,7 @@ class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
         $product_name = $this->_db->quoteIdentifier('product_name');
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (:product_id, :product_name)");
-        $stmt->execute(array('product_id' => 4, 'product_name' => 'Solaris'));
+        $stmt->execute(['product_id' => 4, 'product_name' => 'Solaris']);
 
         $select = $this->_db->select()
             ->from('zfproducts')
@@ -70,7 +70,7 @@ class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
         $result = $this->_db->fetchAll($select);
         $stmt->closeCursor();
 
-        $this->assertEquals(array(array('product_id'=>4, 'product_name'=>'Solaris')), $result);
+        $this->assertEquals([['product_id'=>4, 'product_name'=>'Solaris']], $result);
     }
 
     public function testStatementFetchAllStyleBoth()
@@ -109,7 +109,7 @@ class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
         $product_name = $this->_db->quoteIdentifier('product_name');
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (:product_id, :product_name)");
-        $stmt->execute(array('product_id' => 4, 'product_name' => null));
+        $stmt->execute(['product_id' => 4, 'product_name' => null]);
 
         $select = $this->_db->select()
                        ->from('zfproducts')

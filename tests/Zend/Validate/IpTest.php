@@ -79,19 +79,19 @@ class Zend_Validate_IpTest extends PHPUnit_Framework_TestCase
      */
     public function testGetMessages()
     {
-        $this->assertEquals(array(), $this->_validator->getMessages());
+        $this->assertEquals([], $this->_validator->getMessages());
     }
 
     public function testOnlyIpv4()
     {
-        $this->_validator->setOptions(array('allowipv6' => false));
+        $this->_validator->setOptions(['allowipv6' => false]);
         $this->assertTrue($this->_validator->isValid('1.2.3.4'));
         $this->assertFalse($this->_validator->isValid('a:b:c:d:e::1.2.3.4'));
     }
 
     public function testOnlyIpv6()
     {
-        $this->_validator->setOptions(array('allowipv4' => false));
+        $this->_validator->setOptions(['allowipv4' => false]);
         $this->assertFalse($this->_validator->isValid('1.2.3.4'));
         $this->assertTrue($this->_validator->isValid('a:b:c:d:e::1.2.3.4'));
     }
@@ -99,7 +99,7 @@ class Zend_Validate_IpTest extends PHPUnit_Framework_TestCase
     public function testNoValidation()
     {
         try {
-            $this->_validator->setOptions(array('allowipv4' => false, 'allowipv6' => false));
+            $this->_validator->setOptions(['allowipv4' => false, 'allowipv6' => false]);
             $this->fail();
         } catch (Zend_Validate_Exception $e) {
             $this->assertContains('Nothing to validate', $e->getMessage());
@@ -122,7 +122,7 @@ class Zend_Validate_IpTest extends PHPUnit_Framework_TestCase
      */
     public function testIPv6addresses()
     {
-        $IPs = array(
+        $IPs = [
             '2001:0db8:0000:0000:0000:0000:1428:57ab'   => true,
             '2001:0DB8:0000:0000:0000:0000:1428:57AB'   => true,
             '2001:00db8:0000:0000:0000:0000:1428:57ab'  => false,
@@ -199,7 +199,7 @@ class Zend_Validate_IpTest extends PHPUnit_Framework_TestCase
             'a:b:c:d:e:f::'         => true,
 
             'total gibberish'       => false
-        );
+        ];
 
         foreach($IPs as $ip => $expectedOutcome) {
             if($expectedOutcome) {
@@ -216,7 +216,7 @@ class Zend_Validate_IpTest extends PHPUnit_Framework_TestCase
      */
     public function testNonStringValidation()
     {
-        $this->assertFalse($this->_validator->isValid(array(1 => 1)));
+        $this->assertFalse($this->_validator->isValid([1 => 1]));
     }
 
     /**

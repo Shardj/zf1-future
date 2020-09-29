@@ -61,7 +61,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * Additional arguments to pass to method on invocation
      * @var array
      */
-    protected $_argv = array();
+    protected $_argv = [];
 
     /**
      * Used to store extra configuration for the method (typically done by the
@@ -70,7 +70,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * {@link __set()}
      * @var array
      */
-    protected $_config = array();
+    protected $_config = [];
 
     /**
      * Declaring class (needed for when serialization occurs)
@@ -94,7 +94,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      * Prototypes
      * @var array
      */
-    protected $_prototypes = array();
+    protected $_prototypes = [];
 
     private $_return;
     private $_returnDesc;
@@ -107,7 +107,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      *
      * @param ReflectionFunction $r
      */
-    public function __construct(Reflector $r, $namespace = null, $argv = array())
+    public function __construct(Reflector $r, $namespace = null, $argv = [])
     {
         // In PHP 5.1.x, ReflectionMethod extends ReflectionFunction. In 5.2.x,
         // both extend ReflectionFunctionAbstract. So, we can't do normal type
@@ -175,7 +175,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      */
     protected function _buildTree()
     {
-        $returnTree = array();
+        $returnTree = [];
         foreach ((array) $this->_return as $value) {
             $node = new Zend_Server_Reflection_Node($value);
             $this->_addTree($node);
@@ -205,13 +205,13 @@ abstract class Zend_Server_Reflection_Function_Abstract
         $this->_sigParams      = $paramTypes;
         $this->_sigParamsDepth = count($paramTypes);
         $signatureTrees        = $this->_buildTree();
-        $signatures            = array();
+        $signatures            = [];
 
-        $endPoints = array();
+        $endPoints = [];
         foreach ($signatureTrees as $root) {
             $tmp = $root->getEndPoints();
             if (empty($tmp)) {
-                $endPoints = array_merge($endPoints, array($root));
+                $endPoints = array_merge($endPoints, [$root]);
             } else {
                 $endPoints = array_merge($endPoints, $tmp);
             }
@@ -222,7 +222,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
                 continue;
             }
 
-            $signature = array();
+            $signature = [];
             do {
                 array_unshift($signature, $node->getValue());
                 $node = $node->getParent();
@@ -235,7 +235,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
         $params = $this->_reflection->getParameters();
         foreach ($signatures as $signature) {
             $return = new Zend_Server_Reflection_ReturnValue(array_shift($signature), $this->_returnDesc);
-            $tmp    = array();
+            $tmp    = [];
             foreach ($signature as $key => $type) {
                 $param = new Zend_Server_Reflection_Parameter($params[$key], $type, (isset($this->_paramDesc[$key]) ? $this->_paramDesc[$key] : null));
                 $param->setPosition($key);
@@ -260,7 +260,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
     {
         $function           = $this->_reflection;
         $helpText           = '';
-        $signatures         = array();
+        $signatures         = [];
         $returnDesc         = '';
         $paramCount         = $function->getNumberOfParameters();
         $paramCountRequired = $function->getNumberOfRequiredParameters();
@@ -308,7 +308,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
             $return   = 'void';
 
             // Try and auto-determine type, based on reflection
-            $paramTypesTmp = array();
+            $paramTypesTmp = [];
             foreach ($parameters as $i => $param) {
                 $paramType = 'mixed';
                 if ($param->isArray()) {
@@ -325,7 +325,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
         if (!isset($paramTypesTmp) && (0 < $paramCount)) {
             $paramTypesTmp = array_fill(0, $paramCount, 'mixed');
         } elseif (!isset($paramTypesTmp)) {
-            $paramTypesTmp = array();
+            $paramTypesTmp = [];
         } elseif (count($paramTypesTmp) < $paramCount) {
             $start = $paramCount - count($paramTypesTmp);
             for ($i = $start; $i < $paramCount; ++$i) {
@@ -337,7 +337,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
         if (!isset($paramDesc) && (0 < $paramCount)) {
             $paramDesc = array_fill(0, $paramCount, '');
         } elseif (!isset($paramDesc)) {
-            $paramDesc = array();
+            $paramDesc = [];
         } elseif (count($paramDesc) < $paramCount) {
             $start = $paramCount - count($paramDesc);
             for ($i = $start; $i < $paramCount; ++$i) {
@@ -354,7 +354,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
              . 'docblock.');
         }
 
-        $paramTypes = array();
+        $paramTypes = [];
         foreach ($paramTypesTmp as $i => $param) {
             $tmp = explode('|', $param);
             if ($parameters[$i]->isOptional()) {
@@ -377,7 +377,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
     public function __call($method, $args)
     {
         if (method_exists($this->_reflection, $method)) {
-            return call_user_func_array(array($this->_reflection, $method), $args);
+            return call_user_func_array([$this->_reflection, $method], $args);
         }
 
         require_once 'Zend/Server/Reflection/Exception.php';

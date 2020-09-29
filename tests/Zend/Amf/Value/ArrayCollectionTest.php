@@ -62,9 +62,9 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $data = array();
-        $data[] = array('foo' => 'foo1', 'bar' => 'bar1');
-        $data[] = array('foo' => 'foo2', 'bar' => 'bar2');
+        $data = [];
+        $data[] = ['foo' => 'foo1', 'bar' => 'bar1'];
+        $data[] = ['foo' => 'foo2', 'bar' => 'bar2'];
         $this->_data = $data;
 
     }
@@ -128,7 +128,7 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
     public function testOffsetSetGet()
     {
         $this->_arrayCollection = new Zend_Amf_Value_Messaging_ArrayCollection($this->_data);
-        $data = array('fooSet' => 'fooSet2', 'barSet' => 'barSet2');
+        $data = ['fooSet' => 'fooSet2', 'barSet' => 'barSet2'];
         $this->_arrayCollection->offsetSet(1,$data);
         $this->assertEquals($data, $this->_arrayCollection->offsetGet(1));
     }
@@ -139,7 +139,7 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
     public function testOffsetUnset()
     {
         $this->_arrayCollection = new Zend_Amf_Value_Messaging_ArrayCollection($this->_data);
-        $data = array('foo' => 'foo1', 'bar' => 'bar1');
+        $data = ['foo' => 'foo1', 'bar' => 'bar1'];
         $this->assertEquals($data, $this->_arrayCollection->offsetGet(0));
         $this->assertEquals(2, count($this->_arrayCollection));
         $this->_arrayCollection->offsetUnset(0);
@@ -163,8 +163,8 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
     {
         $this->_arrayCollection = new Zend_Amf_Value_Messaging_ArrayCollection($this->_data);
         $arrayCollectionTwo = new Zend_Amf_Value_Messaging_ArrayCollection();
-        $arrayCollectionTwo->append(array('foo' => 'foo1', 'bar' => 'bar1'));
-        $arrayCollectionTwo->append(array('foo' => 'foo2', 'bar' => 'bar2'));
+        $arrayCollectionTwo->append(['foo' => 'foo1', 'bar' => 'bar1']);
+        $arrayCollectionTwo->append(['foo' => 'foo2', 'bar' => 'bar2']);
         $this->assertEquals($arrayCollectionTwo, $this->_arrayCollection);
     }
 

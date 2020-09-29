@@ -169,22 +169,22 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
         $accessors = self::getAzureAccessors(get_class($this));
         
         // Loop accessors and retrieve values
-        $returnValue = array();
+        $returnValue = [];
         foreach ($accessors as $accessor) {
             if ($accessor->EntityType == 'ReflectionProperty') {
                 $property = $accessor->EntityAccessor;
-                $returnValue[] = (object)array(
+                $returnValue[] = (object)[
                     'Name'  => $accessor->AzurePropertyName,
                 	'Type'  => $accessor->AzurePropertyType,
                 	'Value' => $this->$property,
-                );
+                ];
             } else if ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'get') {
                 $method = $accessor->EntityAccessor;
-                $returnValue[] = (object)array(
+                $returnValue[] = (object)[
                     'Name'  => $accessor->AzurePropertyName,
                 	'Type'  => $accessor->AzurePropertyType,
                 	'Value' => $this->$method(),
-                );
+                ];
             }
         }
         
@@ -199,13 +199,13 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
      * @param boolean $throwOnError Throw Zend_Service_WindowsAzure_Exception when a property is not specified in $values?
      * @throws Zend_Service_WindowsAzure_Exception
      */
-    public function setAzureValues($values = array(), $throwOnError = false)
+    public function setAzureValues($values = [], $throwOnError = false)
     {
         // Get accessors
         $accessors = self::getAzureAccessors(get_class($this));
         
         // Loop accessors and set values
-        $returnValue = array();
+        $returnValue = [];
         foreach ($accessors as $accessor) {
             if (isset($values[$accessor->AzurePropertyName])) {
                 // Cast to correct type
@@ -254,7 +254,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
     public static function getAzureAccessors($className = '')
     {
         // List of accessors
-        $azureAccessors = array();
+        $azureAccessors = [];
         
         // Get all types
         $type = new ReflectionClass($className);
@@ -313,12 +313,12 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
         
         // Fetch @azure properties
         $azureProperties = explode(' ', $azureComment);
-        return (object)array(
+        return (object)[
             'EntityAccessor'    => $member->getName(),
             'EntityType'        => get_class($member),
             'AzurePropertyName' => $azureProperties[0],
         	'AzurePropertyType' => isset($azureProperties[1]) ? $azureProperties[1] : ''
-        );
+        ];
     }
     
     /**

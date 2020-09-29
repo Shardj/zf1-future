@@ -318,7 +318,7 @@ class Zend_Mail_Protocol_Pop3
         }
 
         $result = $this->request('LIST', true);
-        $messages = array();
+        $messages = [];
         $line = strtok($result, "\n");
         while ($line) {
             list($no, $size) = explode(' ', trim($line));
@@ -349,7 +349,7 @@ class Zend_Mail_Protocol_Pop3
         $result = $this->request('UIDL', true);
 
         $result = explode("\n", $result);
-        $messages = array();
+        $messages = [];
         foreach ($result as $line) {
             if (!$line) {
                 continue;

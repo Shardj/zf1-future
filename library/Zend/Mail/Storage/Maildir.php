@@ -56,7 +56,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
      * data of found message files in maildir dir
      * @var array
      */
-    protected $_files = array();
+    protected $_files = [];
 
     /**
      * known flag chars in filenames
@@ -65,12 +65,12 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
      *
      * @var array
      */
-    protected static $_knownFlags = array('D' => Zend_Mail_Storage::FLAG_DRAFT,
+    protected static $_knownFlags = ['D' => Zend_Mail_Storage::FLAG_DRAFT,
                                           'F' => Zend_Mail_Storage::FLAG_FLAGGED,
                                           'P' => Zend_Mail_Storage::FLAG_PASSED,
                                           'R' => Zend_Mail_Storage::FLAG_ANSWERED,
                                           'S' => Zend_Mail_Storage::FLAG_SEEN,
-                                          'T' => Zend_Mail_Storage::FLAG_DELETED);
+                                          'T' => Zend_Mail_Storage::FLAG_DELETED];
 
     // TODO: getFlags($id) for fast access if headers are not needed (i.e. just setting flags)?
 
@@ -155,7 +155,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
             return isset($filedata['size']) ? $filedata['size'] : filesize($filedata['filename']);
         }
 
-        $result = array();
+        $result = [];
         foreach ($this->_files as $num => $data) {
             $result[$num + 1] = isset($data['size']) ? $data['size'] : filesize($data['filename']);
         }
@@ -176,12 +176,12 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
     {
         // TODO that's ugly, would be better to let the message class decide
         if (strtolower($this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
-            return new $this->_messageClass(array('file'  => $this->_getFileData($id, 'filename'),
-                                                  'flags' => $this->_getFileData($id, 'flags')));
+            return new $this->_messageClass(['file'  => $this->_getFileData($id, 'filename'),
+                                                  'flags' => $this->_getFileData($id, 'flags')]);
         }
 
-        return new $this->_messageClass(array('handler' => $this, 'id' => $id, 'headers' => $this->getRawHeader($id),
-                                              'flags'   => $this->_getFileData($id, 'flags')));
+        return new $this->_messageClass(['handler' => $this, 'id' => $id, 'headers' => $this->getRawHeader($id),
+                                              'flags'   => $this->_getFileData($id, 'flags')]);
     }
 
     /*
@@ -330,7 +330,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
 
         $dh = @opendir($dirname . '/new/');
         if ($dh) {
-            $this->_getMaildirFiles($dh, $dirname . '/new/', array(Zend_Mail_Storage::FLAG_RECENT));
+            $this->_getMaildirFiles($dh, $dirname . '/new/', [Zend_Mail_Storage::FLAG_RECENT]);
             closedir($dh);
         } else if (file_exists($dirname . '/new/')) {
             /**
@@ -349,7 +349,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
      * @param array    $default_flags default flags for given dir
      * @return null
      */
-    protected function _getMaildirFiles($dh, $dirname, $default_flags = array())
+    protected function _getMaildirFiles($dh, $dirname, $default_flags = [])
     {
         while (($entry = readdir($dh)) !== false) {
             if ($entry[0] == '.' || !is_file($dirname . $entry)) {
@@ -376,10 +376,10 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
                 $named_flags[$flag] = isset(self::$_knownFlags[$flag]) ? self::$_knownFlags[$flag] : $flag;
             }
 
-            $data = array('uniq'       => $uniq,
+            $data = ['uniq'       => $uniq,
                           'flags'      => $named_flags,
                           'flaglookup' => array_flip($named_flags),
-                          'filename'   => $dirname . $entry);
+                          'filename'   => $dirname . $entry];
             if ($size !== null) {
                 $data['size'] = (int)$size;
             }
@@ -396,7 +396,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
      */
     public function close()
     {
-        $this->_files = array();
+        $this->_files = [];
     }
 
 
@@ -441,7 +441,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
             return $this->_getFileData($id, 'uniq');
         }
 
-        $ids = array();
+        $ids = [];
         foreach ($this->_files as $num => $file) {
             $ids[$num + 1] = $file['uniq'];
         }

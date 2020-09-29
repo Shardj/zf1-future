@@ -77,23 +77,23 @@ class Zend_Ldap_CopyRenameTest extends Zend_Ldap_OnlineTestCase
         $this->_newSubTreeDn=$this->_createDn('ou=NewSubtree,');
         $this->_targetSubTreeDn=$this->_createDn('ou=Target,');
 
-        $this->_nodes=array(
-            $this->_orgDn => array("objectClass" => "organizationalUnit", "ou" => "OrgTest"),
-            $this->_orgSubTreeDn =>  array("objectClass" => "organizationalUnit", "ou" => "OrgSubtree"),
+        $this->_nodes=[
+            $this->_orgDn => ["objectClass" => "organizationalUnit", "ou" => "OrgTest"],
+            $this->_orgSubTreeDn =>  ["objectClass" => "organizationalUnit", "ou" => "OrgSubtree"],
             'ou=Subtree1,' . $this->_orgSubTreeDn =>
-                array("objectClass" => "organizationalUnit", "ou" => "Subtree1"),
+                ["objectClass" => "organizationalUnit", "ou" => "Subtree1"],
             'ou=Subtree11,ou=Subtree1,' . $this->_orgSubTreeDn =>
-                array("objectClass" => "organizationalUnit", "ou" => "Subtree11"),
+                ["objectClass" => "organizationalUnit", "ou" => "Subtree11"],
             'ou=Subtree12,ou=Subtree1,' . $this->_orgSubTreeDn =>
-                array("objectClass" => "organizationalUnit", "ou" => "Subtree12"),
+                ["objectClass" => "organizationalUnit", "ou" => "Subtree12"],
             'ou=Subtree13,ou=Subtree1,' . $this->_orgSubTreeDn =>
-                array("objectClass" => "organizationalUnit", "ou" => "Subtree13"),
+                ["objectClass" => "organizationalUnit", "ou" => "Subtree13"],
             'ou=Subtree2,' . $this->_orgSubTreeDn =>
-                array("objectClass" => "organizationalUnit", "ou" => "Subtree2"),
+                ["objectClass" => "organizationalUnit", "ou" => "Subtree2"],
             'ou=Subtree3,' . $this->_orgSubTreeDn =>
-                array("objectClass" => "organizationalUnit", "ou" => "Subtree3"),
-            $this->_targetSubTreeDn => array("objectClass" => "organizationalUnit", "ou" => "Target")
-        );
+                ["objectClass" => "organizationalUnit", "ou" => "Subtree3"],
+            $this->_targetSubTreeDn => ["objectClass" => "organizationalUnit", "ou" => "Target"]
+        ];
 
         $ldap=$this->_getLdap()->getResource();
         foreach ($this->_nodes as $dn => $entry) {
@@ -121,13 +121,13 @@ class Zend_Ldap_CopyRenameTest extends Zend_Ldap_OnlineTestCase
 
     public function testSimpleLeafRename()
     {
-        $org=$this->_getLdap()->getEntry($this->_orgDn, array(), true);
+        $org=$this->_getLdap()->getEntry($this->_orgDn, [], true);
         $this->_getLdap()->rename($this->_orgDn, $this->_newDn, false);
         $this->assertFalse($this->_getLdap()->exists($this->_orgDn));
         $this->assertTrue($this->_getLdap()->exists($this->_newDn));
         $new=$this->_getLdap()->getEntry($this->_newDn);
         $this->assertEquals($org['objectclass'], $new['objectclass']);
-        $this->assertEquals(array('NewTest'), $new['ou']);
+        $this->assertEquals(['NewTest'], $new['ou']);
     }
 
     public function testSimpleLeafMoveAlias()

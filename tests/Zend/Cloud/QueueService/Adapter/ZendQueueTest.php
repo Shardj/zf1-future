@@ -72,10 +72,10 @@ class Zend_Cloud_QueueService_Adapter_ZendQueueTest
 
     protected function _getConfig()
     {
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             Zend_Cloud_QueueService_Factory::QUEUE_ADAPTER_KEY => 'Zend_Cloud_QueueService_Adapter_ZendQueue',
             Zend_Cloud_QueueService_Adapter_ZendQueue::ADAPTER => 'Array'
-        ));
+        ]);
 
         return $config;
     }

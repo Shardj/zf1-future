@@ -106,26 +106,26 @@ class Zend_Feed_Reader
 
     protected static $_pluginLoader = null;
 
-    protected static $_prefixPaths = array();
+    protected static $_prefixPaths = [];
 
-    protected static $_extensions = array(
-        'feed' => array(
+    protected static $_extensions = [
+        'feed' => [
             'DublinCore_Feed',
             'Atom_Feed'
-        ),
-        'entry' => array(
+        ],
+        'entry' => [
             'Content_Entry',
             'DublinCore_Entry',
             'Atom_Entry'
-        ),
-        'core' => array(
+        ],
+        'core' => [
             'DublinCore_Feed',
             'Atom_Feed',
             'Content_Entry',
             'DublinCore_Entry',
             'Atom_Entry'
-        )
-    );
+        ]
+    ];
 
     /**
      * Get the Feed cache
@@ -583,9 +583,9 @@ class Zend_Feed_Reader
     {
         if (!isset(self::$_pluginLoader)) {
             require_once 'Zend/Loader/PluginLoader.php';
-            self::$_pluginLoader = new Zend_Loader_PluginLoader(array(
+            self::$_pluginLoader = new Zend_Loader_PluginLoader([
                 'Zend_Feed_Reader_Extension_' => 'Zend/Feed/Reader/Extension/',
-            ));
+            ]);
         }
         return self::$_pluginLoader;
     }
@@ -698,25 +698,25 @@ class Zend_Feed_Reader
         self::$_httpMethodOverride = false;
         self::$_httpConditionalGet = false;
         self::$_pluginLoader       = null;
-        self::$_prefixPaths        = array();
-        self::$_extensions         = array(
-            'feed' => array(
+        self::$_prefixPaths        = [];
+        self::$_extensions         = [
+            'feed' => [
                 'DublinCore_Feed',
                 'Atom_Feed'
-            ),
-            'entry' => array(
+            ],
+            'entry' => [
                 'Content_Entry',
                 'DublinCore_Entry',
                 'Atom_Entry'
-            ),
-            'core' => array(
+            ],
+            'core' => [
                 'DublinCore_Feed',
                 'Atom_Feed',
                 'Content_Entry',
                 'DublinCore_Entry',
                 'Atom_Entry'
-            )
-        );
+            ]
+        ];
     }
 
     /**

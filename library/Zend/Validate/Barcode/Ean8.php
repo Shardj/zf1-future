@@ -36,7 +36,7 @@ class Zend_Validate_Barcode_Ean8 extends Zend_Validate_Barcode_AdapterAbstract
      * Allowed barcode lengths
      * @var integer
      */
-    protected $_length = array(7, 8);
+    protected $_length = [7, 8];
 
     /**
      * Allowed barcode characters

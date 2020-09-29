@@ -60,7 +60,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
      * @param  string  $charSet
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();

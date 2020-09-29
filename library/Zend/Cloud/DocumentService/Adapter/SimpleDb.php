@@ -67,7 +67,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      * @param  array|Zend_Config $options
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
@@ -249,7 +249,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
             $fieldset = $fieldset->getFields();
         }
 
-        $replace = array();
+        $replace = [];
         if (empty($options[self::MERGE_OPTION])) {
             // no merge option - we replace all
             foreach ($fieldset as $key => $value) {
@@ -389,7 +389,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      */
     protected function _makeAttributes($name, $attributes)
     {
-        $result = array();
+        $result = [];
         foreach ($attributes as $key => $attr) {
             $result[] = new Zend_Service_Amazon_SimpleDb_Attribute($name, $key, $attr);
         }
@@ -404,7 +404,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      */
     protected function _resolveAttributes($attributes, $returnDocument = false)
     {
-        $result = array();
+        $result = [];
         foreach ($attributes as $attr) {
             $value = $attr->getValues();
             if (count($value) == 0) {
@@ -457,7 +457,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      */
     protected function _getDocumentSetFromResultSet(Zend_Service_Amazon_SimpleDb_Page $resultSet, $returnDocs = true)
     {
-        $docs = array();
+        $docs = [];
         foreach ($resultSet->getData() as $item) {
             $docs[] = $this->_resolveAttributes($item, $returnDocs);
         }

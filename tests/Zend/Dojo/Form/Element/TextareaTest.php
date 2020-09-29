@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_TextareaTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Dojo_Form_Element_Textarea(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'Textarea',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

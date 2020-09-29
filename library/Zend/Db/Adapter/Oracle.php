@@ -51,12 +51,12 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
      * persistent => (boolean) Set TRUE to use a persistent connection
      * @var array
      */
-    protected $_config = array(
+    protected $_config = [
         'dbname'       => null,
         'username'     => null,
         'password'     => null,
         'persistent'   => false
-    );
+    ];
 
     /**
      * Keys are UPPERCASE SQL datatypes or the constants
@@ -69,14 +69,14 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
      *
      * @var array Associative array of datatypes to values 0, 1, or 2.
      */
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
         'BINARY_DOUBLE'      => Zend_Db::FLOAT_TYPE,
         'BINARY_FLOAT'       => Zend_Db::FLOAT_TYPE,
         'NUMBER'             => Zend_Db::FLOAT_TYPE,
-    );
+    ];
 
     /**
      * @var integer
@@ -415,9 +415,9 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
         $constraint_type = 10;
         $position        = 11;
 
-        $desc = array();
+        $desc = [];
         foreach ($result as $key => $row) {
-            list ($primary, $primaryPosition, $identity) = array(false, null, false);
+            list ($primary, $primaryPosition, $identity) = [false, null, false];
             if ($row[$constraint_type] == 'P') {
                 $primary = true;
                 $primaryPosition = $row[$position];
@@ -426,7 +426,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
                  */
                 $identity = false;
             }
-            $desc[$this->foldCase($row[$column_name])] = array(
+            $desc[$this->foldCase($row[$column_name])] = [
                 'SCHEMA_NAME'      => $this->foldCase($row[$owner]),
                 'TABLE_NAME'       => $this->foldCase($row[$table_name]),
                 'COLUMN_NAME'      => $this->foldCase($row[$column_name]),
@@ -441,7 +441,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
                 'PRIMARY'          => $primary,
                 'PRIMARY_POSITION' => $primaryPosition,
                 'IDENTITY'         => $identity
-            );
+            ];
         }
         return $desc;
     }

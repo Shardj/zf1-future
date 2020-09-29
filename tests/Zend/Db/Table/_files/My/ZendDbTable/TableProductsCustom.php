@@ -44,5 +44,5 @@ class My_ZendDbTable_TableProductsCustom extends My_ZendDbTable_TableProducts
     protected $_rowClass    = 'My_ZendDbTable_Row_TestMyRow';
     protected $_rowsetClass = 'My_ZendDbTable_Rowset_TestMyRowset';
 
-    protected $_dependentTables = array('My_ZendDbTable_TableBugsProductsCustom');
+    protected $_dependentTables = ['My_ZendDbTable_TableBugsProductsCustom'];
 }

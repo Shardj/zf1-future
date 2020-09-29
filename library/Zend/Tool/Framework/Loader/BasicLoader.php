@@ -54,9 +54,9 @@ class Zend_Tool_Framework_Loader_BasicLoader
     /**
      * @var array
      */
-    protected $_classesToLoad = array();
+    protected $_classesToLoad = [];
 
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if ($options) {
             $this->setOptions($options);
@@ -101,7 +101,7 @@ class Zend_Tool_Framework_Loader_BasicLoader
         $manifestRegistry = $this->_registry->getManifestRepository();
         $providerRegistry = $this->_registry->getProviderRepository();
 
-        $loadedClasses = array();
+        $loadedClasses = [];
 
         // loop through the loaded classes and ensure that
         foreach ($this->_classesToLoad as $class) {

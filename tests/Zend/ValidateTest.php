@@ -69,7 +69,7 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-        Zend_Validate::setDefaultNamespaces(array());
+        Zend_Validate::setDefaultNamespaces([]);
     }
 
     /**
@@ -79,10 +79,10 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testEmpty()
     {
-        $this->assertEquals(array(), $this->_validator->getMessages());
-        $this->assertEquals(array(), $this->_validator->getErrors());
+        $this->assertEquals([], $this->_validator->getMessages());
+        $this->assertEquals([], $this->_validator->getErrors());
         $this->assertTrue($this->_validator->isValid('something'));
-        $this->assertEquals(array(), $this->_validator->getErrors());
+        $this->assertEquals([], $this->_validator->getErrors());
     }
 
     /**
@@ -94,8 +94,8 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
     {
         $this->_validator->addValidator(new Zend_ValidateTest_True());
         $this->assertTrue($this->_validator->isValid(null));
-        $this->assertEquals(array(), $this->_validator->getMessages());
-        $this->assertEquals(array(), $this->_validator->getErrors());
+        $this->assertEquals([], $this->_validator->getMessages());
+        $this->assertEquals([], $this->_validator->getErrors());
     }
 
     /**
@@ -107,7 +107,7 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
     {
         $this->_validator->addValidator(new Zend_ValidateTest_False());
         $this->assertFalse($this->_validator->isValid(null));
-        $this->assertEquals(array('error' => 'validation failed'), $this->_validator->getMessages());
+        $this->assertEquals(['error' => 'validation failed'], $this->_validator->getMessages());
     }
 
     /**
@@ -120,7 +120,7 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
         $this->_validator->addValidator(new Zend_ValidateTest_False(), true)
                          ->addValidator(new Zend_ValidateTest_False());
         $this->assertFalse($this->_validator->isValid(null));
-        $this->assertEquals(array('error' => 'validation failed'), $this->_validator->getMessages());
+        $this->assertEquals(['error' => 'validation failed'], $this->_validator->getMessages());
     }
 
     /**
@@ -140,8 +140,8 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testStaticFactoryWithConstructorArguments()
     {
-        $this->assertTrue(Zend_Validate::is('12', 'Between', array('min' => 1, 'max' => 12)));
-        $this->assertFalse(Zend_Validate::is('24', 'Between', array('min' => 1, 'max' => 12)));
+        $this->assertTrue(Zend_Validate::is('12', 'Between', ['min' => 1, 'max' => 12]));
+        $this->assertFalse(Zend_Validate::is('24', 'Between', ['min' => 1, 'max' => 12]));
     }
 
     /**
@@ -166,35 +166,35 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testNamespaces()
     {
-        $this->assertEquals(array(), Zend_Validate::getDefaultNamespaces());
+        $this->assertEquals([], Zend_Validate::getDefaultNamespaces());
         $this->assertFalse(Zend_Validate::hasDefaultNamespaces());
 
         Zend_Validate::setDefaultNamespaces('TestDir');
-        $this->assertEquals(array('TestDir'), Zend_Validate::getDefaultNamespaces());
+        $this->assertEquals(['TestDir'], Zend_Validate::getDefaultNamespaces());
 
         Zend_Validate::setDefaultNamespaces('OtherTestDir');
-        $this->assertEquals(array('OtherTestDir'), Zend_Validate::getDefaultNamespaces());
+        $this->assertEquals(['OtherTestDir'], Zend_Validate::getDefaultNamespaces());
 
         $this->assertTrue(Zend_Validate::hasDefaultNamespaces());
 
-        Zend_Validate::setDefaultNamespaces(array());
+        Zend_Validate::setDefaultNamespaces([]);
 
-        $this->assertEquals(array(), Zend_Validate::getDefaultNamespaces());
+        $this->assertEquals([], Zend_Validate::getDefaultNamespaces());
         $this->assertFalse(Zend_Validate::hasDefaultNamespaces());
 
-        Zend_Validate::addDefaultNamespaces(array('One', 'Two'));
-        $this->assertEquals(array('One', 'Two'), Zend_Validate::getDefaultNamespaces());
+        Zend_Validate::addDefaultNamespaces(['One', 'Two']);
+        $this->assertEquals(['One', 'Two'], Zend_Validate::getDefaultNamespaces());
 
         Zend_Validate::addDefaultNamespaces('Three');
-        $this->assertEquals(array('One', 'Two', 'Three'), Zend_Validate::getDefaultNamespaces());
+        $this->assertEquals(['One', 'Two', 'Three'], Zend_Validate::getDefaultNamespaces());
 
-        Zend_Validate::setDefaultNamespaces(array());
+        Zend_Validate::setDefaultNamespaces([]);
     }
 
     public function testIsValidWithParameters()
     {
-        $this->assertTrue(Zend_Validate::is(5, 'Between', array(1, 10)));
-        $this->assertTrue(Zend_Validate::is(5, 'Between', array('min' => 1, 'max' => 10)));
+        $this->assertTrue(Zend_Validate::is(5, 'Between', [1, 10]));
+        $this->assertTrue(Zend_Validate::is(5, 'Between', ['min' => 1, 'max' => 10]));
     }
 
     public function testSetGetMessageLengthLimitation()
@@ -210,8 +210,8 @@ class Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
     public function testSetGetDefaultTranslator()
     {
-        set_error_handler(array($this, 'errorHandlerIgnore'));
-        $translator = new Zend_Translate('array', array(), 'en');
+        set_error_handler([$this, 'errorHandlerIgnore']);
+        $translator = new Zend_Translate('array', [], 'en');
         restore_error_handler();
         Zend_Validate_Abstract::setDefaultTranslator($translator);
         $this->assertSame($translator->getAdapter(), Zend_Validate_Abstract::getDefaultTranslator());
@@ -268,7 +268,7 @@ class Zend_ValidateTest_False extends Zend_Validate_Abstract
 {
     public function isValid($value)
     {
-        $this->_messages = array('error' => 'validation failed');
+        $this->_messages = ['error' => 'validation failed'];
         return false;
     }
 }

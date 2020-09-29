@@ -84,7 +84,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
             $this->markTestSkipped("Windows Azure access not configured, skipping test");
         }
 
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             Zend_Cloud_QueueService_Factory::QUEUE_ADAPTER_KEY => 'Zend_Cloud_QueueService_Adapter_WindowsAzure',
             Zend_Cloud_QueueService_Adapter_WindowsAzure::ACCOUNT_NAME => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_ACCOUNTNAME'),
             Zend_Cloud_QueueService_Adapter_WindowsAzure::ACCOUNT_KEY => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_ACCOUNTKEY'),
@@ -92,7 +92,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
             Zend_Cloud_QueueService_Adapter_WindowsAzure::PROXY_HOST => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_STORAGE_PROXY_HOST'),
             Zend_Cloud_QueueService_Adapter_WindowsAzure::PROXY_PORT => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_STORAGE_PROXY_PORT'),
             Zend_Cloud_QueueService_Adapter_WindowsAzure::PROXY_CREDENTIALS => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_STORAGE_PROXY_CREDENTIALS'),
-        ));
+        ]);
 
         return $config;
     }

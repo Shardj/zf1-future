@@ -133,7 +133,7 @@ class Zend_Json_Server_CacheTest_Foo
      */
     public function bar($one, $two = 'two', $three = null)
     {
-        return array($one, $two, $three);
+        return [$one, $two, $three];
     }
 
     /**

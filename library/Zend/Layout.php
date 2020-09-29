@@ -640,7 +640,7 @@ class Zend_Layout
             require_once 'Zend/Filter/Inflector.php';
             $inflector = new Zend_Filter_Inflector();
             $inflector->setTargetReference($this->_inflectorTarget)
-                      ->addRules(array(':script' => array('Word_CamelCaseToDash', 'StringToLower')))
+                      ->addRules([':script' => ['Word_CamelCaseToDash', 'StringToLower']])
                       ->setStaticRuleReference('suffix', $this->_viewSuffix);
             $this->setInflector($inflector);
         }
@@ -778,7 +778,7 @@ class Zend_Layout
 
         if ($this->inflectorEnabled() && (null !== ($inflector = $this->getInflector())))
         {
-            $name = $this->_inflector->filter(array('script' => $name));
+            $name = $this->_inflector->filter(['script' => $name]);
         }
 
         $view = $this->getView();

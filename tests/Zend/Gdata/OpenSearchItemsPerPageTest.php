@@ -73,8 +73,8 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
         $newOpenSearchItemsPerPage = new Zend_Gdata_Extension_OpenSearchItemsPerPage();
         $newOpenSearchItemsPerPage->transferFromXML($this->openSearchItemsPerPage->saveXML());
         $this->assertEquals(0, count($newOpenSearchItemsPerPage->extensionElements));
-        $newOpenSearchItemsPerPage->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newOpenSearchItemsPerPage->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newOpenSearchItemsPerPage->extensionElements));
         $this->assertEquals("200", $newOpenSearchItemsPerPage->text);
 
@@ -106,8 +106,8 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->openSearchItemsPerPage->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->openSearchItemsPerPage->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->openSearchItemsPerPage->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->openSearchItemsPerPage->extensionAttributes['foo2']['value']);

@@ -66,10 +66,10 @@ class Zend_Tag_Cloud
      *
      * @var array
      */
-    protected $_skipOptions = array(
+    protected $_skipOptions = [
         'options',
         'config',
-    );
+    ];
 
     /**
      * Create a new tag cloud with options
@@ -327,7 +327,7 @@ class Zend_Tag_Cloud
             $pathPrefix = 'Zend/Tag/Cloud/Decorator/';
 
             require_once 'Zend/Loader/PluginLoader.php';
-            $this->_pluginLoader = new Zend_Loader_PluginLoader(array($prefix => $pathPrefix));
+            $this->_pluginLoader = new Zend_Loader_PluginLoader([$prefix => $pathPrefix]);
         }
 
         return $this->_pluginLoader;

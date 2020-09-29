@@ -150,7 +150,7 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
         if($defaultValue === null) {
             $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue("null");
         } else if(is_array($defaultValue)) {
-            $defaultValue = str_replace(array("\r", "\n"), "", var_export($defaultValue, true));
+            $defaultValue = str_replace(["\r", "\n"], "", var_export($defaultValue, true));
             $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue($defaultValue);
         } else if(is_bool($defaultValue)) {
             if($defaultValue == true) {

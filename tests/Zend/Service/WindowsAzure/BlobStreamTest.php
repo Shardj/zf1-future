@@ -290,7 +290,7 @@ class Zend_Service_WindowsAzure_BlobStreamTest extends PHPUnit_Framework_TestCas
   
             $storageClient->registerStreamWrapper();
             
-            $result2 = array();
+            $result2 = [];
             if ($handle = opendir('azure://' . $containerName)) {
                 while (false !== ($file = readdir($handle))) {
                     $result2[] = $file;

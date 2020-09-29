@@ -131,7 +131,7 @@ class Zend_Serializer_Adapter_JsonTest extends PHPUnit_Framework_TestCase
     public function testUnserializeAsArray()
     {
         $value    = '{"test":"test"}';
-        $expected = array('test' => 'test');
+        $expected = ['test' => 'test'];
 
         $data = $this->_adapter->unserialize($value);
         $this->assertEquals($expected, $data);
@@ -143,7 +143,7 @@ class Zend_Serializer_Adapter_JsonTest extends PHPUnit_Framework_TestCase
         $expected   = new stdClass();
         $expected->test = 'test';
 
-        $data = $this->_adapter->unserialize($value, array('objectDecodeType' => Zend_Json::TYPE_OBJECT));
+        $data = $this->_adapter->unserialize($value, ['objectDecodeType' => Zend_Json::TYPE_OBJECT]);
         $this->assertEquals($expected, $data);
     }
 

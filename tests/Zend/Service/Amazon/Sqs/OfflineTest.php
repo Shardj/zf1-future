@@ -86,11 +86,11 @@ class Zend_Service_Amazon_Sqs_OfflineTest extends PHPUnit_Framework_TestCase
     
     public function testGetRegions()
     {
-        $endPoints= array('us-east-1' => 'sqs.us-east-1.amazonaws.com',
+        $endPoints= ['us-east-1' => 'sqs.us-east-1.amazonaws.com',
                                      'us-west-1' => 'sqs.us-west-1.amazonaws.com',
                                      'eu-west-1' => 'sqs.eu-west-1.amazonaws.com',
                                      'ap-southeast-1' => 'sqs.ap-southeast-1.amazonaws.com',
-                                     'ap-northeast-1' => 'sqs.ap-northeast-1.amazonaws.com');
+                                     'ap-northeast-1' => 'sqs.ap-northeast-1.amazonaws.com'];
         $this->assertEquals($this->_amazon->getEndpoints(),$endPoints);
     }
 }

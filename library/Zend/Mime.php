@@ -61,7 +61,7 @@ class Zend_Mime
      *
      * @var array
      */
-    public static $qpKeys = array(
+    public static $qpKeys = [
         "\x00",
         "\x01",
         "\x02",
@@ -223,12 +223,12 @@ class Zend_Mime
         "\xFD",
         "\xFE",
         "\xFF"
-    );
+    ];
 
     /**
      * @var array
      */
-    public static $qpReplaceValues = array(
+    public static $qpReplaceValues = [
         "=00",
         "=01",
         "=02",
@@ -390,7 +390,7 @@ class Zend_Mime
         "=FD",
         "=FE",
         "=FF"
-    );
+    ];
 
     /**
      * @var string
@@ -497,11 +497,11 @@ class Zend_Mime
 
         // Mail-Header required chars have to be encoded also:
         $str = str_replace(
-            array('?', ' ', '_', ','), array('=3F', '=20', '=5F', '=2C'), $str
+            ['?', ' ', '_', ','], ['=3F', '=20', '=5F', '=2C'], $str
         );
 
         // initialize first line, we need it anyways
-        $lines = array(0 => "");
+        $lines = [0 => ""];
 
         // Split encoded text into separate lines
         $tmp = "";

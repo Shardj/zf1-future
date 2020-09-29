@@ -39,7 +39,7 @@ class Zend_Serializer_Adapter_PythonPickleSerializeProtocol0Test extends PHPUnit
 
     public function setUp()
     {
-        $this->_adapter = new Zend_Serializer_Adapter_PythonPickle(array('protocol' => 0));
+        $this->_adapter = new Zend_Serializer_Adapter_PythonPickle(['protocol' => 0]);
     }
 
     public function tearDown()
@@ -117,7 +117,7 @@ class Zend_Serializer_Adapter_PythonPickleSerializeProtocol0Test extends PHPUnit
 
     public function testSerializeArrayList()
     {
-        $value      = array('1', '2', 'test');
+        $value      = ['1', '2', 'test'];
         $expected   = "(lp0\r\n"
                     . "S'1'\r\n"
                     . "p1\r\n"
@@ -133,7 +133,7 @@ class Zend_Serializer_Adapter_PythonPickleSerializeProtocol0Test extends PHPUnit
 
     public function testSerializeArrayDict()
     {
-        $value    = array('1', '2', 'three' => 'test');
+        $value    = ['1', '2', 'three' => 'test'];
         $expected = "(dp0\r\n"
                   . "I0\r\n"
                   . "S'1'\r\n"

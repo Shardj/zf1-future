@@ -16,13 +16,13 @@ require_once 'Zend/Gdata/Query.php';
 
 class Gdata_OAuth_Helper extends Zend_Oauth_Consumer {
   // Google's default oauth parameters/constants.
-  private $_defaultOptions = array(
+  private $_defaultOptions = [
       'requestScheme' => Zend_Oauth::REQUEST_SCHEME_HEADER,
       'version' => '1.0',
       'requestTokenUrl' => 'https://www.google.com/accounts/OAuthGetRequestToken',
       'userAuthorizationUrl' => 'https://www.google.com/accounts/OAuthAuthorizeToken',
       'accessTokenUrl' => 'https://www.google.com/accounts/OAuthGetAccessToken'
-  );
+  ];
 
   /**
    * Create Gdata_OAuth_Helper object
@@ -70,7 +70,7 @@ class Gdata_OAuth_Helper extends Zend_Oauth_Consumer {
     $this->_defaultOptions['callbackUrl'] = $uri;
     $this->_config->setCallbackUrl($uri);
     if (!isset($_SESSION['ACCESS_TOKEN'])) {
-        return parent::getRequestToken(array('scope' => $scope));
+        return parent::getRequestToken(['scope' => $scope]);
     }
     return null;
   }
@@ -85,9 +85,9 @@ class Gdata_OAuth_Helper extends Zend_Oauth_Consumer {
    * @return void
    */
   public function authorizeRequestToken($domain=null) {
-    $params = array();
+    $params = [];
     if ($domain != null) {
-      $params = array('hd' => $domain);
+      $params = ['hd' => $domain];
     }
     $this->redirect($params);
   }

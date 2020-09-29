@@ -30,8 +30,8 @@ if (isset($_GET['progress'])) {
     require_once 'Zend/ProgressBar.php';
     require_once 'Zend/ProgressBar/Adapter/JsPush.php';
 
-    $adapter     = new Zend_ProgressBar_Adapter_JsPush(array('updateMethodName' => 'Zend_ProgressBar_Update',
-                                                             'finishMethodName' => 'Zend_ProgressBar_Finish'));
+    $adapter     = new Zend_ProgressBar_Adapter_JsPush(['updateMethodName' => 'Zend_ProgressBar_Update',
+                                                             'finishMethodName' => 'Zend_ProgressBar_Finish']);
     $progressBar = new Zend_ProgressBar($adapter, 0, 100);
 
     for ($i = 1; $i <= 100; $i++) {

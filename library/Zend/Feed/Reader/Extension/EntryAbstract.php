@@ -32,7 +32,7 @@ abstract class Zend_Feed_Reader_Extension_EntryAbstract
      *
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * DOM document object

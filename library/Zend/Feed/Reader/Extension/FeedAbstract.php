@@ -48,7 +48,7 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Parsed feed data in the shape of a DOMDocument

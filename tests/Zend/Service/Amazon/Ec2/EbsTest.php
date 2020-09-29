@@ -53,9 +53,9 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
         $this->Zend_Service_Amazon_Ec2_Ebs = new Zend_Service_Amazon_Ec2_Ebs('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Ebs::setHttpClient($client);
     }
@@ -93,13 +93,13 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->attachVolume('vol-4d826724', 'i-6058a509', '/dev/sdh');
 
-        $arrAttach = array(
+        $arrAttach = [
             'volumeId'  => 'vol-4d826724',
             'instanceId'  => 'i-6058a509',
             'device'  => '/dev/sdh',
             'status'  => 'attaching',
             'attachTime'  => '2008-05-07T11:51:50.000Z'
-        );
+        ];
 
         $this->assertSame($arrAttach, $return);
     }
@@ -127,13 +127,13 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->createSnapshot('vol-4d826724');
 
-        $arrCreateSnapShot = array(
+        $arrCreateSnapShot = [
             'snapshotId'  => 'snap-78a54011',
             'volumeId'  => 'vol-4d826724',
             'status'  => 'pending',
             'startTime'  => '2008-05-07T11:51:50.000Z',
             'progress'  => ''
-        );
+        ];
 
         $this->assertSame($arrCreateSnapShot, $return);
 
@@ -162,13 +162,13 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->createNewVolume(400, 'us-east-1a');
 
-        $arrCreateNewVolume = array(
+        $arrCreateNewVolume = [
             'volumeId'  => 'vol-4d826724',
             'size'  => '400',
             'status'  => 'creating',
             'createTime'  => '2008-05-07T11:51:50.000Z',
             'availabilityZone'  => 'us-east-1a'
-        );
+        ];
 
         $this->assertSame($arrCreateNewVolume, $return);
 
@@ -197,14 +197,14 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->createVolumeFromSnapshot('snap-78a54011', 'us-east-1a');
 
-        $arrCreateNewVolume = array(
+        $arrCreateNewVolume = [
             'volumeId'  => 'vol-4d826724',
             'size'  => '400',
             'status'  => 'creating',
             'createTime'  => '2008-05-07T11:51:50.000Z',
             'availabilityZone'  => 'us-east-1a',
             'snapshotId'        => 'snap-78a54011'
-        );
+        ];
 
         $this->assertSame($arrCreateNewVolume, $return);
 
@@ -283,13 +283,13 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeSnapshot('snap-78a54011');
 
-        $arrSnapshot = array(array(
+        $arrSnapshot = [[
             'snapshotId'        => 'snap-78a54011',
             'volumeId'  => 'vol-4d826724',
             'status'  => 'pending',
             'startTime'  => '2008-05-07T12:51:50.000Z',
             'progress'  => '80%'
-        ));
+        ]];
 
         $this->assertSame($arrSnapshot, $return);
 
@@ -327,24 +327,24 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
                     . "</DescribeSnapshotsResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeSnapshot(array('snap-78a54011', 'snap-78a54012'));
+        $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeSnapshot(['snap-78a54011', 'snap-78a54012']);
 
-        $arrSnapshots = array(
-            array(
+        $arrSnapshots = [
+            [
                 'snapshotId'    => 'snap-78a54011',
                 'volumeId'      => 'vol-4d826724',
                 'status'        => 'pending',
                 'startTime'     => '2008-05-07T12:51:50.000Z',
                 'progress'      => '80%',
-            ),
-            array(
+            ],
+            [
                 'snapshotId'    => 'snap-78a54012',
                 'volumeId'      => 'vol-4d826725',
                 'status'        => 'pending',
                 'startTime'     => '2008-08-07T12:51:50.000Z',
                 'progress'      => '65%',
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrSnapshots, $return);
 
@@ -390,21 +390,21 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeVolume('vol-4282672b');
 
-        $arrVolumes = array(
-            array(
+        $arrVolumes = [
+            [
                 'volumeId'          => 'vol-4282672b',
                 'size'              => '800',
                 'status'            => 'in-use',
                 'createTime'        => '2008-05-07T11:51:50.000Z',
-                'attachmentSet'     => array(
+                'attachmentSet'     => [
                     'volumeId'              => 'vol-4282672b',
                     'instanceId'            => 'i-6058a509',
                     'device'                => '/dev/sdh',
                     'status'                => 'attached',
                     'attachTime'            => '2008-05-07T12:51:50.000Z',
-                )
-            )
-        );
+                ]
+            ]
+        ];
 
         $this->assertSame($arrVolumes, $return);
 
@@ -451,29 +451,29 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
                     . "</DescribeVolumesResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeVolume(array('vol-4282672b', 'vol-42826775'));
+        $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeVolume(['vol-4282672b', 'vol-42826775']);
 
-        $arrVolumes = array(
-            array(
+        $arrVolumes = [
+            [
                 'volumeId'          => 'vol-4282672b',
                 'size'              => '800',
                 'status'            => 'in-use',
                 'createTime'        => '2008-05-07T11:51:50.000Z',
-                'attachmentSet'     => array(
+                'attachmentSet'     => [
                     'volumeId'              => 'vol-4282672b',
                     'instanceId'            => 'i-6058a509',
                     'device'                => '/dev/sdh',
                     'status'                => 'attached',
                     'attachTime'            => '2008-05-07T12:51:50.000Z',
-                )
-            ),
-            array(
+                ]
+            ],
+            [
                 'volumeId'          => 'vol-42826775',
                 'size'              => '40',
                 'status'            => 'available',
                 'createTime'        => '2008-08-07T11:51:50.000Z'
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrVolumes, $return);
     }
@@ -521,21 +521,21 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->describeAttachedVolumes('i-6058a509');
 
-        $arrVolumes = array(
-            array(
+        $arrVolumes = [
+            [
                 'volumeId'          => 'vol-4282672b',
                 'size'              => '800',
                 'status'            => 'in-use',
                 'createTime'        => '2008-05-07T11:51:50.000Z',
-                'attachmentSet'     => array(
+                'attachmentSet'     => [
                     'volumeId'              => 'vol-4282672b',
                     'instanceId'            => 'i-6058a509',
                     'device'                => '/dev/sdh',
                     'status'                => 'attached',
                     'attachTime'            => '2008-05-07T12:51:50.000Z',
-                )
-            )
-        );
+                ]
+            ]
+        ];
 
         $this->assertSame($arrVolumes, $return);
     }
@@ -565,13 +565,13 @@ class Zend_Service_Amazon_Ec2_EbsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Ebs->detachVolume('vol-4d826724');
 
-        $arrVolume = array(
+        $arrVolume = [
             'volumeId'      => 'vol-4d826724',
             'instanceId'    => 'i-6058a509',
             'device'        => '/dev/sdh',
             'status'        => 'detaching',
             'attachTime'    => '2008-05-08T11:51:50.000Z'
-        );
+        ];
 
         $this->assertSame($arrVolume, $return);
     }

@@ -76,11 +76,11 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
     }
 
     public function testMultipleParams() {
-        $params = array(
+        $params = [
             'ssl' => true,
             'error' => 'errorMsg',
             'xhtml' => true,
-        );
+        ];
 
         $this->_reCaptcha->setParams($params);
         $_params = $this->_reCaptcha->getParams();
@@ -103,10 +103,10 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
     }
 
     public function testMultipleOptions() {
-        $options = array(
+        $options = [
             'theme' => 'black',
             'lang' => 'no',
-        );
+        ];
 
         $this->_reCaptcha->setOptions($options);
         $_options = $this->_reCaptcha->getOptions();
@@ -116,11 +116,11 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
     }
 
     public function testSetMultipleParamsFromZendConfig() {
-        $params = array(
+        $params = [
             'ssl' => true,
             'error' => 'errorMsg',
             'xhtml' => true,
-        );
+        ];
 
         $config = new Zend_Config($params);
 
@@ -139,10 +139,10 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
     }
 
     public function testSetMultipleOptionsFromZendConfig() {
-        $options = array(
+        $options = [
             'theme' => 'black',
             'lang' => 'no',
-        );
+        ];
 
         $config = new Zend_Config($options);
 
@@ -160,16 +160,16 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
     }
 
     public function testConstructor() {
-        $params = array(
+        $params = [
             'ssl' => true,
             'error' => 'errorMsg',
             'xhtml' => true,
-        );
+        ];
 
-        $options = array(
+        $options = [
             'theme' => 'black',
             'lang' => 'no',
-        );
+        ];
 
         $ip = '127.0.0.1';
 
@@ -211,9 +211,9 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends PHPUnit_Framework_TestCase
         $this->_reCaptcha->setIp('127.0.0.1');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
 
         Zend_Service_ReCaptcha::setHttpClient($client);
 

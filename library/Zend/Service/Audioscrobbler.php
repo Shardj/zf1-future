@@ -174,13 +174,17 @@ class Zend_Service_Audioscrobbler
              */
             require_once 'Zend/Http/Client/Exception.php';
             throw new Zend_Http_Client_Exception('Could not find: ' . $this->_client->getUri());
-        } elseif (preg_match('/No user exists with this name/', $responseBody)) {
+        }
+
+        if (preg_match('/No user exists with this name/', $responseBody)) {
             /**
              * @see Zend_Http_Client_Exception
              */
             require_once 'Zend/Http/Client/Exception.php';
             throw new Zend_Http_Client_Exception('No user exists with this name');
-        } elseif (!$response->isSuccessful()) {
+        }
+
+        if (!$response->isSuccessful()) {
             /**
              * @see Zend_Http_Client_Exception
              */
@@ -188,7 +192,7 @@ class Zend_Service_Audioscrobbler
             throw new Zend_Http_Client_Exception('The web service ' . $this->_client->getUri() . ' returned the following status code: ' . $response->getStatus());
         }
 
-        set_error_handler(array($this, '_errorHandler'));
+        set_error_handler([$this, '_errorHandler']);
 
         if (!$simpleXmlElementResponse = Zend_Xml_Security::scan($responseBody)) {
             restore_error_handler();
@@ -650,13 +654,13 @@ class Zend_Service_Audioscrobbler
      */
     public function _errorHandler($errno, $errstr, $errfile, $errline, array $errcontext)
     {
-        $this->_error = array(
+        $this->_error = [
             'errno'      => $errno,
             'errstr'     => $errstr,
             'errfile'    => $errfile,
             'errline'    => $errline,
             'errcontext' => $errcontext
-            );
+            ];
     }
 
     /**

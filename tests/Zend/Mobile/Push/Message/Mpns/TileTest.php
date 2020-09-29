@@ -53,7 +53,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTokenNonStringThrowsException()
     {
-        $token = array('foo' => 'bar');
+        $token = ['foo' => 'bar'];
         $this->_msg->setToken($token);
     }
 
@@ -88,7 +88,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetBackgroundImageThrowsExceptionOnNonString()
     {
-        $image = array('foo' => 'bar');
+        $image = ['foo' => 'bar'];
         $this->_msg->setBackgroundImage($image);
     }
 
@@ -123,7 +123,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTitleThrowsExceptionOnNonString()
     {
-        $title = array('foo' => 'bar');
+        $title = ['foo' => 'bar'];
         $this->_msg->setTitle($title);
     }
 
@@ -139,7 +139,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetBackBackgroundImageThrowsExceptionOnNonString()
     {
-        $image = array('foo' => 'bar');
+        $image = ['foo' => 'bar'];
         $this->_msg->setBackBackgroundImage($image);
     }
 
@@ -155,7 +155,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetBackTitleThrowsExceptionOnNonString()
     {
-        $title = array('foo' => 'bar');
+        $title = ['foo' => 'bar'];
         $this->_msg->setBackTitle($title);
     }
 
@@ -171,7 +171,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetBackContentThrowsExceptionOnNonString()
     {
-        $content = array('foo' => 'bar');
+        $content = ['foo' => 'bar'];
         $this->_msg->setBackContent($content);
         $this->assertEquals($content, $this->_msg->getBackContent());
     }
@@ -188,7 +188,7 @@ class Zend_Mobile_Push_Message_Mpns_TileTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTileIdThrowsExceptionOnNonString()
     {
-        $id = array('foo' => 'bar');
+        $id = ['foo' => 'bar'];
         $this->_msg->setTileId($id);
     }
 

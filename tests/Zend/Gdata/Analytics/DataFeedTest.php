@@ -34,12 +34,12 @@ require_once 'Zend/Http/Client.php';
  */
 class Zend_Gdata_Analytics_DataFeedTest extends PHPUnit_Framework_TestCase
 {
-    public $testData = array(
+    public $testData = [
         'foobarbaz.de' => 12,
         'foobar.de' => 3,
         'foobarbaz.ch' => 1,
         'baz.ch' => 1,
-    );
+    ];
     /** @var DataFeed */
     public $dataFeed;
 

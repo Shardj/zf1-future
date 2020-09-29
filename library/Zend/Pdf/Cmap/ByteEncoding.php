@@ -49,7 +49,7 @@ class Zend_Pdf_Cmap_ByteEncoding extends Zend_Pdf_Cmap
      * the translated Unicode code points.
      * @var array
      */
-    protected $_glyphIndexArray = array();
+    protected $_glyphIndexArray = [];
 
 
 
@@ -71,7 +71,7 @@ class Zend_Pdf_Cmap_ByteEncoding extends Zend_Pdf_Cmap
      */
     public function glyphNumbersForCharacters($characterCodes)
     {
-        $glyphNumbers = array();
+        $glyphNumbers = [];
         foreach ($characterCodes as $key => $characterCode) {
 
            if (! isset($this->_glyphIndexArray[$characterCode])) {

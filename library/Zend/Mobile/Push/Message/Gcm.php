@@ -42,14 +42,14 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
      *
      * @var array
      */
-    protected $_token = array();
+    protected $_token = [];
 
     /**
      * Data key value pairs
      * 
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Delay while idle
@@ -110,7 +110,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
      */
     public function clearToken()
     {
-        $this->_token = array();
+        $this->_token = [];
         return $this;
     }
 
@@ -158,7 +158,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
      */
     public function clearData()
     {
-        $this->_data = array();
+        $this->_data = [];
         return $this;
     }
 
@@ -252,7 +252,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
      */
     public function toJson()
     {
-        $json = array();
+        $json = [];
         if ($this->_token) {
             $json['registration_ids'] = $this->_token;
         }

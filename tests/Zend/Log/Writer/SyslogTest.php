@@ -45,17 +45,17 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
 
     public function testWrite()
     {
-        $fields = array('message' => 'foo', 'priority' => LOG_NOTICE);
+        $fields = ['message' => 'foo', 'priority' => LOG_NOTICE];
         $writer = new Zend_Log_Writer_Syslog();
         $writer->write($fields);
     }
 
     public function testFactory()
     {
-        $cfg = array(
+        $cfg = [
             'application' => 'my app',
             'facility'    => LOG_USER
-        );
+        ];
 
         $writer = Zend_Log_Writer_Syslog::factory($cfg);
         $this->assertTrue($writer instanceof Zend_Log_Writer_Syslog);
@@ -109,7 +109,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
      */
     public function testPastFacilityViaConstructor()
     {
-        $writer = new WriterSyslogCustom(array('facility' => LOG_USER));
+        $writer = new WriterSyslogCustom(['facility' => LOG_USER]);
         $this->assertEquals(LOG_USER, $writer->getFacility());
     }
 
@@ -118,12 +118,12 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
      */
     public function testWriteWithFormatter()
     {
-        $event = array(
+        $event = [
         	'message' => 'tottakai',
             'priority' => Zend_Log::ERR
-        );
+        ];
 
-        $writer = Zend_Log_Writer_Syslog::factory(array());
+        $writer = Zend_Log_Writer_Syslog::factory([]);
         require_once 'Zend/Log/Formatter/Simple.php';
         $formatter = new Zend_Log_Formatter_Simple('%message% (this is a test)');
         $writer->setFormatter($formatter);

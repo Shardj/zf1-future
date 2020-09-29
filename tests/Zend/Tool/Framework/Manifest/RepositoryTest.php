@@ -175,26 +175,26 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
 
     public function testManifestGetMetadatasCollectionSearchWorks()
     {
-        $metadata1 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata1 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Foo',
             'value' => 'Bar',
-            ));
+            ]);
 
-        $metadata2 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata2 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Bar',
             'value' => 'Baz',
-            ));
+            ]);
 
-        $metadata3 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata3 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Baz',
             'value' => 'Foo',
-            ));
+            ]);
 
         $this->_repository->addMetadata($metadata1);
         $this->_repository->addMetadata($metadata2);
         $this->_repository->addMetadata($metadata3);
 
-        $resultMetadatas = $this->_repository->getMetadatas(array('name' => 'Bar'));
+        $resultMetadatas = $this->_repository->getMetadatas(['name' => 'Bar']);
         $this->assertEquals(1, count($resultMetadatas));
         $this->assertTrue($metadata2 === array_shift($resultMetadatas));
 
@@ -203,55 +203,55 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
 
     public function testManifestGetMetadataSingularSearchWorks()
     {
-        $metadata1 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata1 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Foo',
             'value' => 'Bar',
-            ));
+            ]);
 
-        $metadata2 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata2 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Bar',
             'value' => 'Baz',
-            ));
+            ]);
 
-        $metadata3 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata3 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Baz',
             'value' => 'Foo',
-            ));
+            ]);
 
         $this->_repository->addMetadata($metadata1);
         $this->_repository->addMetadata($metadata2);
         $this->_repository->addMetadata($metadata3);
 
-        $resultMetadata = $this->_repository->getMetadata(array('name' => 'Baz'));
+        $resultMetadata = $this->_repository->getMetadata(['name' => 'Baz']);
         $this->assertTrue($metadata3 === $resultMetadata);
 
     }
 
     public function testManifestGetMetadatasCollectionSearchWorksWithNonExistentProperties()
     {
-        $metadata1 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata1 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Foo',
             'value' => 'Bar',
-            ));
+            ]);
 
-        $metadata2 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata2 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Bar',
             'value' => 'Baz',
-            ));
+            ]);
 
-        $metadata3 = new Zend_Tool_Framework_Metadata_Basic(array(
+        $metadata3 = new Zend_Tool_Framework_Metadata_Basic([
             'name' => 'Baz',
             'value' => 'Foo',
-            ));
+            ]);
 
         $this->_repository->addMetadata($metadata1);
         $this->_repository->addMetadata($metadata2);
         $this->_repository->addMetadata($metadata3);
 
-        $resultMetadatas = $this->_repository->getMetadatas(array('name' => 'Bar', 'blah' => 'boo'));
+        $resultMetadatas = $this->_repository->getMetadatas(['name' => 'Bar', 'blah' => 'boo']);
         $this->assertEquals(1, count($resultMetadatas));
 
-        $resultMetadatas = $this->_repository->getMetadatas(array('name' => 'Bar', 'blah' => 'boo'), false);
+        $resultMetadatas = $this->_repository->getMetadatas(['name' => 'Bar', 'blah' => 'boo'], false);
         $this->assertEquals(0, count($resultMetadatas));
         //$this->assertTrue($metadata2 === array_shift($resultMetadatas));
 

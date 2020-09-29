@@ -50,9 +50,9 @@ class Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
 	 */
 	public function __construct()
 	{
-        $this->_data = array(
+        $this->_data = [
             'datasources'	=> new Zend_Service_WindowsAzure_Diagnostics_ConfigurationDataSources()
-        );
+        ];
 	}
 
 	/**
@@ -87,7 +87,7 @@ class Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
 			if (count($subscriptions->PerformanceCounterConfiguration) > 1) {
 				$subscriptions = $subscriptions->PerformanceCounterConfiguration;
 			} else {
-				$subscriptions = array($subscriptions->PerformanceCounterConfiguration);
+				$subscriptions = [$subscriptions->PerformanceCounterConfiguration];
 			}
 			foreach ($subscriptions as $subscription) {
 				$this->DataSources->PerformanceCounters->addSubscription((string)$subscription->CounterSpecifier, (int)$subscription->SampleRateInSeconds);
@@ -104,7 +104,7 @@ class Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
 			if (count($subscriptions->string) > 1) {
 				$subscriptions = $subscriptions->string;
 			} else {
-				$subscriptions = array($subscriptions->string);
+				$subscriptions = [$subscriptions->string];
 			}
 			foreach ($subscriptions as $subscription) {
 				$this->DataSources->WindowsEventLog->addSubscription((string)$subscription);
@@ -121,7 +121,7 @@ class Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
 			if (count($subscriptions->DirectoryConfiguration) > 1) {
 				$subscriptions = $subscriptions->DirectoryConfiguration;
 			} else {
-				$subscriptions = array($subscriptions->DirectoryConfiguration);
+				$subscriptions = [$subscriptions->DirectoryConfiguration];
 			}
 			foreach ($subscriptions as $subscription) {
 				$this->DataSources->Directories->addSubscription((string)$subscription->Path, (string)$subscription->Container, (int)$subscription->DirectoryQuotaInMB);
@@ -137,7 +137,7 @@ class Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
 	public function toXml()
 	{
 		// Return value
-		$returnValue = array();
+		$returnValue = [];
 		
 		// Build XML
 		$returnValue[] = '<?xml version="1.0"?>';

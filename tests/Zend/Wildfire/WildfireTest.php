@@ -211,9 +211,9 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue($firephp->send('Hello World'));
 
-        $messages = array(Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE=>
-                          array(Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
-                                array('[{"Type":"LOG"},"Hello World"]')));
+        $messages = [Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE=>
+                          [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
+                                ['[{"Type":"LOG"},"Hello World"]']]];
 
         $this->assertEquals(serialize($protocol->getMessages()),
                             serialize($messages));
@@ -268,7 +268,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         Zend_Wildfire_Channel_HttpHeaders::getInstance()->flush();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -289,7 +289,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $this->_controller->dispatch();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -319,7 +319,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $this->_controller->dispatch();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -344,7 +344,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $this->_controller->dispatch();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -366,13 +366,13 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $message = 'This is a log message!';
         $label = 'Test Label';
-        $table = array('Summary line for the table',
-                       array(
-                           array('Column 1', 'Column 2'),
-                           array('Row 1 c 1',' Row 1 c 2'),
-                           array('Row 2 c 1',' Row 2 c 2')
-                       )
-                      );
+        $table = ['Summary line for the table',
+                       [
+                           ['Column 1', 'Column 2'],
+                           ['Row 1 c 1',' Row 1 c 2'],
+                           ['Row 2 c 1',' Row 2 c 2']
+                       ]
+                      ];
 
         $firephp->send($message, null, 'TRACE');
         $firephp->send($table, null, 'TABLE');
@@ -396,13 +396,13 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $channel = Zend_Wildfire_Channel_HttpHeaders::getInstance();
         $protocol = $channel->getProtocol(Zend_Wildfire_Plugin_FirePhp::PROTOCOL_URI);
 
-        $messages = array(Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE=>
-                          array(Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
-                                array(1=>'[{"Type":"TABLE"},["Summary line for the table",[["Column 1","Column 2"],["Row 1 c 1"," Row 1 c 2"],["Row 2 c 1"," Row 2 c 2"]]]]',
-                                      2=>'[{"Type":"LOG","Label":"Test Label"},"This is a log message!"]')),
+        $messages = [Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE=>
+                          [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
+                                [1=>'[{"Type":"TABLE"},["Summary line for the table",[["Column 1","Column 2"],["Row 1 c 1"," Row 1 c 2"],["Row 2 c 1"," Row 2 c 2"]]]]',
+                                      2=>'[{"Type":"LOG","Label":"Test Label"},"This is a log message!"]']],
                           Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_DUMP=>
-                          array(Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
-                                array('{"Test Label":"This is a log message!"}')));
+                          [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
+                                ['{"Test Label":"This is a log message!"}']]];
 
         $qued_messages = $protocol->getMessages();
         unset($qued_messages[Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE][Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI][0]);
@@ -484,7 +484,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
             // success
         }
 
-        $row = array('col1','col2');
+        $row = ['col1','col2'];
 
         $this->assertEquals($table->getRowCount(), 0);
 
@@ -496,7 +496,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         }
 
         try {
-            $table->setRowAt(1,array());
+            $table->setRowAt(1,[]);
             $this->fail('Should throw exception as no rows present');
         } catch (Exception $e) {
             // success
@@ -504,15 +504,15 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $table->addRow($row);
 
-        $this->assertEquals($table->getMessage(), array($row));
+        $this->assertEquals($table->getMessage(), [$row]);
         $this->assertEquals($table->getLastRow(), $row);
 
         $this->assertEquals($table->getRowCount(), 1);
 
         $table->addRow($row);
 
-        $this->assertEquals($table->getMessage(), array($row,
-                                                        $row));
+        $this->assertEquals($table->getMessage(), [$row,
+                                                        $row]);
 
         $this->assertEquals($table->getRowCount(), 2);
         $this->assertEquals($table->getLastRow(), $row);
@@ -525,7 +525,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         }
 
         try {
-            $table->setRowAt(2,array());
+            $table->setRowAt(2,[]);
             $this->fail('Should throw exception as index is out of bounds');
         } catch (Exception $e) {
             // success
@@ -540,15 +540,15 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($table->getRowAt(1), $rowOld);
         $this->assertEquals($table->getLastRow(), $rowOld);
 
-        $this->assertEquals($table->getMessage(), array($row,
-                                                        $rowOld));
+        $this->assertEquals($table->getMessage(), [$row,
+                                                        $rowOld]);
 
-        $header = array('hc1', 'hc2');
+        $header = ['hc1', 'hc2'];
         $table->setHeader($header);
 
-        $this->assertEquals($table->getMessage(), array($header,
+        $this->assertEquals($table->getMessage(), [$header,
                                                         $row,
-                                                        $rowOld));
+                                                        $rowOld]);
     }
 
     /**
@@ -562,7 +562,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $protocol = $channel->getProtocol(Zend_Wildfire_Plugin_FirePhp::PROTOCOL_URI);
 
         $table = new Zend_Wildfire_Plugin_FirePhp_TableMessage('TestMessage');
-        $table->setHeader(array('col1','col2'));
+        $table->setHeader(['col1','col2']);
         $table->setBuffered(true);
 
         Zend_Wildfire_Plugin_FirePhp::send($table);
@@ -571,7 +571,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $cell->append("item1");
         $cell->append("item2");
 
-        $table->addRow(array("row1", $cell));
+        $table->addRow(["row1", $cell]);
 
         Zend_Wildfire_Channel_HttpHeaders::getInstance()->flush();
 
@@ -592,7 +592,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $this->_controller->dispatch();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -610,13 +610,13 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
     {
         $this->_setupWithFrontController();
  
-        Zend_Wildfire_Plugin_FirePhp::group('Test Group', array('Collapsed' => true));
+        Zend_Wildfire_Plugin_FirePhp::group('Test Group', ['Collapsed' => true]);
         Zend_Wildfire_Plugin_FirePhp::send('Test Message');
         Zend_Wildfire_Plugin_FirePhp::groupEnd();
 
         $this->_controller->dispatch();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -634,13 +634,13 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
     {
         $this->_setupWithFrontController();
  
-        Zend_Wildfire_Plugin_FirePhp::group('Test Group', array('Collapsed' => false));
+        Zend_Wildfire_Plugin_FirePhp::group('Test Group', ['Collapsed' => false]);
         Zend_Wildfire_Plugin_FirePhp::send('Test Message');
         Zend_Wildfire_Plugin_FirePhp::groupEnd();
 
         $this->_controller->dispatch();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -786,7 +786,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $this->assertNull(Zend_Wildfire_Plugin_FirePhp::getInstance(true));
 
         try {
-            Zend_Wildfire_Plugin_FirePhp::init(array());
+            Zend_Wildfire_Plugin_FirePhp::init([]);
             $this->fail('Should not be able to initialize');
         } catch (Exception $e) {
             // success
@@ -815,7 +815,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $this->assertNull(Zend_Wildfire_Channel_HttpHeaders::getInstance(true));
 
         try {
-            Zend_Wildfire_Channel_HttpHeaders::init(array());
+            Zend_Wildfire_Channel_HttpHeaders::init([]);
             $this->fail('Should not be able to initialize');
         } catch (Exception $e) {
             // success
@@ -835,7 +835,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $channel = Zend_Wildfire_Channel_HttpHeaders::getInstance();
         $protocol = $channel->getProtocol(Zend_Wildfire_Plugin_FirePhp::PROTOCOL_URI);
 
-        $firephp->send(array('file'=>tmpfile()));
+        $firephp->send(['file'=>tmpfile()]);
 
         $messages = $protocol->getMessages();
 
@@ -858,7 +858,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $channel = Zend_Wildfire_Channel_HttpHeaders::getInstance();
         $protocol = $channel->getProtocol(Zend_Wildfire_Plugin_FirePhp::PROTOCOL_URI);
 
-        $data = array();
+        $data = [];
         for ($i=0 ; $i < 400 ; $i++) {
           $data[] = 'Test Data '.$i;
         }
@@ -881,13 +881,13 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
     {
         $firephp = Zend_Wildfire_Plugin_FirePhp::getInstance();
 
-        $_options = array(
+        $_options = [
             'traceOffset' => 1, /* The offset in the trace which identifies the source of the message */
             'maxTraceDepth' => 99, /* Maximum depth for stack traces */
             'maxObjectDepth' => 10, /* The maximum depth to traverse objects when encoding */
             'maxArrayDepth' => 20, /* The maximum depth to traverse nested arrays when encoding */
             'includeLineNumbers' => true /* Whether to include line and file info for each message */
-        );
+        ];
 
         $this->assertEquals($firephp->getOptions(), $_options, 'Ensure defaults stay the same');
 
@@ -915,7 +915,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
 
         $firephp->send($obj);
 
-        $firephp->setObjectFilter('Zend_Wildfire_WildfireTest_TestObject1',array('value', 'protectedStatic'));
+        $firephp->setObjectFilter('Zend_Wildfire_WildfireTest_TestObject1',['value', 'protectedStatic']);
 
         $firephp->send($obj);
 
@@ -990,16 +990,16 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $firephp->setOption('maxArrayDepth',1);
 
         $obj = new Zend_Wildfire_WildfireTest_TestObject3();
-        $obj->testArray = array('val1',array('val2',array('Hello World')));
+        $obj->testArray = ['val1',['val2',['Hello World']]];
         $obj->child = clone $obj;
         $obj->child->child = clone $obj;
 
         $firephp->send($obj);
 
 
-        $table = array();
-        $table[] = array('Col1', 'Col2');
-        $table[] = array($obj, $obj);
+        $table = [];
+        $table[] = ['Col1', 'Col2'];
+        $table[] = [$obj, $obj];
 
         $firephp->send($table, 'Label', Zend_Wildfire_Plugin_FirePhp::TABLE);
 
@@ -1054,7 +1054,7 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $firephp->setOption('includeLineNumbers', true);
         $firephp->setOption('maxTraceDepth', 0);
 
-        $lines = array();
+        $lines = [];
         // NOTE: Do NOT separate the following pairs otherwise the line numbers will not match for the test
 
         // Message number: 1
@@ -1066,13 +1066,13 @@ class Zend_Wildfire_WildfireTest extends PHPUnit_Framework_TestCase
         $firephp->send('Hello World', null, 'TRACE');
 
         // Message number: 3
-        $table = array('Summary line for the table',
-                       array(
-                           array('Column 1', 'Column 2'),
-                           array('Row 1 c 1',' Row 1 c 2'),
-                           array('Row 2 c 1',' Row 2 c 2')
-                       )
-                      );
+        $table = ['Summary line for the table',
+                       [
+                           ['Column 1', 'Column 2'],
+                           ['Row 1 c 1',' Row 1 c 2'],
+                           ['Row 2 c 1',' Row 2 c 2']
+                       ]
+                      ];
         $lines[] = __LINE__+1;
         $firephp->send($table, null, 'TABLE');
 
@@ -1174,7 +1174,7 @@ class Zend_Wildfire_WildfireTest_Response extends Zend_Controller_Response_HttpT
         sort($keys1);
         $keys1 = serialize($keys1);
 
-        $keys2 = array();
+        $keys2 = [];
         foreach ($response_headers as $header ) {
             $keys2[] = $header['name'];
         }
@@ -1189,7 +1189,7 @@ class Zend_Wildfire_WildfireTest_Response extends Zend_Controller_Response_HttpT
         sort($values1);
         $values1 = serialize($values1);
 
-        $values2 = array();
+        $values2 = [];
         foreach ($response_headers as $header ) {
             $values2[] = $header['value'];
         }

@@ -56,8 +56,8 @@ class Zend_Barcode_Object_Code128Test extends Zend_Barcode_Object_TestCommon
     {
         require_once dirname(__FILE__) . '/_files/Code128Test.php';
     	$barcode = new Code128Test();
-    	$this->assertSame(array(104, 13, 17, 18, 19), $barcode->_convertToBarcodeChars(-123));
-    	$this->assertSame(array(104, 40, 41, 99, 34, 56, 78), $barcode->_convertToBarcodeChars('HI345678'));
+    	$this->assertSame([104, 13, 17, 18, 19], $barcode->_convertToBarcodeChars(-123));
+    	$this->assertSame([104, 40, 41, 99, 34, 56, 78], $barcode->_convertToBarcodeChars('HI345678'));
     }
 
     public function testSetText()

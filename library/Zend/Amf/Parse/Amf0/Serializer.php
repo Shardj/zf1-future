@@ -46,7 +46,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      * An array of reference objects
      * @var array
      */
-    protected $_referenceObjects = array();
+    protected $_referenceObjects = [];
 
     /**
      * Determine type and serialize accordingly

@@ -112,14 +112,14 @@ class Zend_Gdata_Photos extends Zend_Gdata
      *
      * @var array
      */
-    public static $namespaces = array(
-        array('gphoto', 'http://schemas.google.com/photos/2007', 1, 0),
-        array('photo', 'http://www.pheed.com/pheed/', 1, 0),
-        array('exif', 'http://schemas.google.com/photos/exif/2007', 1, 0),
-        array('georss', 'http://www.georss.org/georss', 1, 0),
-        array('gml', 'http://www.opengis.net/gml', 1, 0),
-        array('media', 'http://search.yahoo.com/mrss/', 1, 0)
-    );
+    public static $namespaces = [
+        ['gphoto', 'http://schemas.google.com/photos/2007', 1, 0],
+        ['photo', 'http://www.pheed.com/pheed/', 1, 0],
+        ['exif', 'http://schemas.google.com/photos/exif/2007', 1, 0],
+        ['georss', 'http://www.georss.org/georss', 1, 0],
+        ['gml', 'http://www.opengis.net/gml', 1, 0],
+        ['media', 'http://search.yahoo.com/mrss/', 1, 0]
+    ];
 
     /**
      * Create Zend_Gdata_Photos object

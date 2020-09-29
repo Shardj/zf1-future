@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-return array(
+return [
     'Message 1' => 'Nachricht 1',
     'Message 8' => 'Nachricht 8'
-);
+];

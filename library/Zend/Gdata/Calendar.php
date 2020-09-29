@@ -70,9 +70,9 @@ class Zend_Gdata_Calendar extends Zend_Gdata
      *
      * @var array
      */
-    public static $namespaces = array(
-        array('gCal', 'http://schemas.google.com/gCal/2005', 1, 0)
-    );
+    public static $namespaces = [
+        ['gCal', 'http://schemas.google.com/gCal/2005', 1, 0]
+    ];
 
     /**
      * Create Gdata_Calendar object

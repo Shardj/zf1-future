@@ -60,23 +60,23 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        $valuesExpected = array(
-            array(null, true),
-            array('jpeg', true),
-            array('test/notype', false),
-            array('image/gif, image/jpeg', true),
-            array(array('image/vasa', 'image/jpeg'), true),
-            array(array('image/jpeg', 'gif'), true),
-            array(array('image/gif', 'gif'), false),
-        );
+        $valuesExpected = [
+            [null, true],
+            ['jpeg', true],
+            ['test/notype', false],
+            ['image/gif, image/jpeg', true],
+            [['image/vasa', 'image/jpeg'], true],
+            [['image/jpeg', 'gif'], true],
+            [['image/gif', 'gif'], false],
+        ];
 
-        $files = array(
+        $files = [
             'name'     => 'picture.jpg',
             'type'     => 'image/jpeg',
             'size'     => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/picture.jpg',
             'error'    => 0
-        );
+        ];
 
         foreach ($valuesExpected as $element) {
             $validator = new Zend_Validate_File_IsImage($element[0]);
@@ -99,11 +99,11 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_File_IsImage('image/gif');
         $this->assertEquals('image/gif', $validator->getMimeType());
 
-        $validator = new Zend_Validate_File_IsImage(array('image/gif', 'video', 'text/test'));
+        $validator = new Zend_Validate_File_IsImage(['image/gif', 'video', 'text/test']);
         $this->assertEquals('image/gif,video,text/test', $validator->getMimeType());
 
-        $validator = new Zend_Validate_File_IsImage(array('image/gif', 'video', 'text/test'));
-        $this->assertEquals(array('image/gif', 'video', 'text/test'), $validator->getMimeType(true));
+        $validator = new Zend_Validate_File_IsImage(['image/gif', 'video', 'text/test']);
+        $this->assertEquals(['image/gif', 'video', 'text/test'], $validator->getMimeType(true));
     }
 
     /**
@@ -116,15 +116,15 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_File_IsImage('image/gif');
         $validator->setMimeType('image/jpeg');
         $this->assertEquals('image/jpeg', $validator->getMimeType());
-        $this->assertEquals(array('image/jpeg'), $validator->getMimeType(true));
+        $this->assertEquals(['image/jpeg'], $validator->getMimeType(true));
 
         $validator->setMimeType('image/gif, text/test');
         $this->assertEquals('image/gif,text/test', $validator->getMimeType());
-        $this->assertEquals(array('image/gif', 'text/test'), $validator->getMimeType(true));
+        $this->assertEquals(['image/gif', 'text/test'], $validator->getMimeType(true));
 
-        $validator->setMimeType(array('video/mpeg', 'gif'));
+        $validator->setMimeType(['video/mpeg', 'gif']);
         $this->assertEquals('video/mpeg,gif', $validator->getMimeType());
-        $this->assertEquals(array('video/mpeg', 'gif'), $validator->getMimeType(true));
+        $this->assertEquals(['video/mpeg', 'gif'], $validator->getMimeType(true));
     }
 
     /**
@@ -137,19 +137,19 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_File_IsImage('image/gif');
         $validator->addMimeType('text');
         $this->assertEquals('image/gif,text', $validator->getMimeType());
-        $this->assertEquals(array('image/gif', 'text'), $validator->getMimeType(true));
+        $this->assertEquals(['image/gif', 'text'], $validator->getMimeType(true));
 
         $validator->addMimeType('jpg, to');
         $this->assertEquals('image/gif,text,jpg,to', $validator->getMimeType());
-        $this->assertEquals(array('image/gif', 'text', 'jpg', 'to'), $validator->getMimeType(true));
+        $this->assertEquals(['image/gif', 'text', 'jpg', 'to'], $validator->getMimeType(true));
 
-        $validator->addMimeType(array('zip', 'ti'));
+        $validator->addMimeType(['zip', 'ti']);
         $this->assertEquals('image/gif,text,jpg,to,zip,ti', $validator->getMimeType());
-        $this->assertEquals(array('image/gif', 'text', 'jpg', 'to', 'zip', 'ti'), $validator->getMimeType(true));
+        $this->assertEquals(['image/gif', 'text', 'jpg', 'to', 'zip', 'ti'], $validator->getMimeType(true));
 
         $validator->addMimeType('');
         $this->assertEquals('image/gif,text,jpg,to,zip,ti', $validator->getMimeType());
-        $this->assertEquals(array('image/gif', 'text', 'jpg', 'to', 'zip', 'ti'), $validator->getMimeType(true));
+        $this->assertEquals(['image/gif', 'text', 'jpg', 'to', 'zip', 'ti'], $validator->getMimeType(true));
     }
 
     /**
@@ -157,13 +157,13 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
      */
     public function testErrorMessages()
     {
-        $files = array(
+        $files = [
             'name'     => 'picture.jpg',
             'type'     => 'image/jpeg',
             'size'     => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/picture.jpg',
             'error'    => 0
-        );
+        ];
 
         $validator = new Zend_Validate_File_IsImage('test/notype');
         $validator->enableHeaderCheck();
@@ -184,11 +184,11 @@ class Zend_Validate_File_IsImageTest extends PHPUnit_Framework_TestCase
             $magicFile = dirname(__FILE__) . '/_files/magic.mime';
         }
 
-        $validator = new Zend_Validate_File_IsImage(array(
+        $validator = new Zend_Validate_File_IsImage([
             'image/gif',
             'image/jpg',
             'magicfile' => $magicFile,
-            'headerCheck' => true));
+            'headerCheck' => true]);
 
         $this->assertEquals($magicFile, $validator->getMagicFile());
         $this->assertTrue($validator->getHeaderCheck());

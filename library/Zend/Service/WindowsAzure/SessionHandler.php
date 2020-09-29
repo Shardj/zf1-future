@@ -110,12 +110,12 @@ class Zend_Service_WindowsAzure_SessionHandler
 	 */
 	public function register()
 	{
-        return session_set_save_handler(array($this, 'open'),
-                                        array($this, 'close'),
-                                        array($this, 'read'),
-                                        array($this, 'write'),
-                                        array($this, 'destroy'),
-                                        array($this, 'gc')
+        return session_set_save_handler([$this, 'open'],
+                                        [$this, 'close'],
+                                        [$this, 'read'],
+                                        [$this, 'write'],
+                                        [$this, 'destroy'],
+                                        [$this, 'gc']
         );
 	}
 	
@@ -226,7 +226,7 @@ class Zend_Service_WindowsAzure_SessionHandler
     			$this->_sessionContainer,
     			$this->_sessionContainerPartition . '/' . $id,
     			$serializedData,
-    			array('sessionexpires' => time())
+    			['sessionexpires' => time()]
     		);
     	}
     }

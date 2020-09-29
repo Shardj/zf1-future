@@ -41,14 +41,14 @@ class Zend_Service_WindowsAzure_Storage_TableEntityQuery
 	 * 
 	 * @var array
 	 */
-	protected $_where = array();
+	protected $_where = [];
 	
 	/**
 	 * Order by
 	 * 
 	 * @var array
 	 */
-	protected $_orderBy = array();
+	protected $_orderBy = [];
 	
 	/**
 	 * Top
@@ -200,7 +200,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntityQuery
      */
 	public function assembleQueryString($urlEncode = false)
 	{
-		$query = array();
+		$query = [];
 		if (count($this->_where) != 0) {
 		    $filter = implode('', $this->_where);
 			$query[] = '$filter=' . ($urlEncode ? self::encodeQuery($filter) : $filter);

@@ -51,9 +51,9 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit_Framework_TestCase
         // accept at or below priority 2
         $filter = new Zend_Log_Filter_Priority(2);
 
-        $this->assertTrue($filter->accept(array('priority' => 2)));
-        $this->assertTrue($filter->accept(array('priority' => 1)));
-        $this->assertFalse($filter->accept(array('priority' => 3)));
+        $this->assertTrue($filter->accept(['priority' => 2]));
+        $this->assertTrue($filter->accept(['priority' => 1]));
+        $this->assertFalse($filter->accept(['priority' => 3]));
     }
 
     public function testComparisonOperatorCanBeChanged()
@@ -61,9 +61,9 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit_Framework_TestCase
         // accept above priority 2
         $filter = new Zend_Log_Filter_Priority(2, '>');
 
-        $this->assertTrue($filter->accept(array('priority' => 3)));
-        $this->assertFalse($filter->accept(array('priority' => 2)));
-        $this->assertFalse($filter->accept(array('priority' => 1)));
+        $this->assertTrue($filter->accept(['priority' => 3]));
+        $this->assertFalse($filter->accept(['priority' => 2]));
+        $this->assertFalse($filter->accept(['priority' => 1]));
     }
 
     public function testConstructorThrowsOnInvalidPriority()
@@ -79,24 +79,24 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit_Framework_TestCase
 
     public function testFactory()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName' => "Mock",
             'filterName' => "Priority",
-            'filterParams' => array(
+            'filterParams' => [
                 'priority' => "Zend_Log::CRIT",
                 'operator' => "<="
-             ),
-        )));
+             ],
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
 
         try {
-            $logger = Zend_Log::factory(array('Null' => array(
+            $logger = Zend_Log::factory(['Null' => [
                 'writerName'   => 'Mock',
                 'filterName'   => 'Priority',
-                'filterParams' => array(),
-            )));
+                'filterParams' => [],
+            ]]);
         } catch(Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/must be an integer/', $e->getMessage());

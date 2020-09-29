@@ -58,28 +58,28 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
      *
      * @var array
      */
-    protected $_units = array(
-        'BINARY'      => array(2,  '⑵'),
-        'TERNARY'     => array(3,  '⑶'),
-        'QUATERNARY'  => array(4,  '⑷'),
-        'QUINARY'     => array(5,  '⑸'),
-        'SENARY'      => array(6,  '⑹'),
-        'SEPTENARY'   => array(7,  '⑺'),
-        'OCTAL'       => array(8,  '⑻'),
-        'NONARY'      => array(9,  '⑼'),
-        'DECIMAL'     => array(10, '⑽'),
-        'DUODECIMAL'  => array(12, '⑿'),
-        'HEXADECIMAL' => array(16, '⒃'),
-        'ROMAN'       => array(99, ''),
+    protected $_units = [
+        'BINARY'      => [2,  '⑵'],
+        'TERNARY'     => [3,  '⑶'],
+        'QUATERNARY'  => [4,  '⑷'],
+        'QUINARY'     => [5,  '⑸'],
+        'SENARY'      => [6,  '⑹'],
+        'SEPTENARY'   => [7,  '⑺'],
+        'OCTAL'       => [8,  '⑻'],
+        'NONARY'      => [9,  '⑼'],
+        'DECIMAL'     => [10, '⑽'],
+        'DUODECIMAL'  => [12, '⑿'],
+        'HEXADECIMAL' => [16, '⒃'],
+        'ROMAN'       => [99, ''],
         'STANDARD'    => 'DECIMAL'
-    );
+    ];
 
     /**
      * Definition of all roman signs
      *
      * @var array $_roman
      */
-    private static $_roman = array(
+    private static $_roman = [
         'I' => 1,
         'A' => 4,
         'V' => 5,
@@ -105,14 +105,14 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
         'T' => 500000,
         'Z' => 900000,
         'U' => 1000000
-    );
+    ];
 
     /**
      * Convertion table for roman signs
      *
      * @var array $_romanconvert
      */
-    private static $_romanconvert = array(
+    private static $_romanconvert = [
         '/_V/' => '/P/',
         '/_X/' => '/Q/',
         '/_L/' => '/R/',
@@ -131,7 +131,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
         '/QS/' => '/W/',
         '/ST/' => '/Y/',
         '/SU/' => '/Z/'
-    );
+    ];
 
     /**
      * Zend_Measure_Abstract is an abstract class for the different measurement types
@@ -253,7 +253,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
 
             default:
                 try {
-                    $value = Zend_Locale_Format::getInteger($value, array('locale' => $locale));
+                    $value = Zend_Locale_Format::getInteger($value, ['locale' => $locale]);
                 } catch (Exception $e) {
                     require_once 'Zend/Measure/Exception.php';
                     throw new Zend_Measure_Exception($e->getMessage(), $e->getCode(), $e);

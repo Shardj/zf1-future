@@ -228,7 +228,7 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
 
     public function testInsertUpdateDeleteRow()
     {
-        $rowData = array();
+        $rowData = [];
         $rowData['a1'] = 'new';
         $rowData['b1'] = 'row';
         $rowData['c1'] = 'data';
@@ -241,7 +241,7 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
 
     public function testInsertUpdateDeleteRow2()
     {
-        $rowData = array();
+        $rowData = [];
         $rowData['a1'] = 'new';
         $rowData['b1'] = 'row';
         $rowData['c1'] = 'data';
@@ -255,7 +255,7 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
 
     public function testInsertUpdateDeleteRow3()
     {
-        $rowData = array();
+        $rowData = [];
         $rowData['a1'] = 'new';
         $rowData['b1'] = 'row';
         $rowData['c1'] = 'data';
@@ -268,7 +268,7 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
     }
 
     public function testCustomElementsCollected() {
-        $rowData = array();
+        $rowData = [];
         $rowData['a1'] = 'new';
         $rowData['b1'] = 'row';
         $rowData['c1'] = 'data';

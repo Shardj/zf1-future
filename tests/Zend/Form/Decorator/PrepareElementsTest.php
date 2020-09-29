@@ -62,7 +62,7 @@ class Zend_Form_Decorator_PrepareElementsTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->form = new Zend_Form();
-        $this->form->setDecorators(array('PrepareElements'));
+        $this->form->setDecorators(['PrepareElements']);
         $this->decorator = $this->form->getDecorator('PrepareElements');
     }
 
@@ -94,7 +94,7 @@ class Zend_Form_Decorator_PrepareElementsTest extends PHPUnit_Framework_TestCase
                    ->addElement('text', 'bar')
                    ->addElement('text', 'baz')
                    ->addElement('text', 'bat')
-                   ->addDisplayGroup(array('baz', 'bat'), 'bazbat')
+                   ->addDisplayGroup(['baz', 'bat'], 'bazbat')
                    ->addSubForm($sub1, 'sub')
                    ->setView($this->getView());
     }
@@ -134,7 +134,7 @@ class Zend_Form_Decorator_PrepareElementsTest extends PHPUnit_Framework_TestCase
     {
         $this->prepareForm();
         require_once 'Zend/Translate.php';
-        $translator = new Zend_Translate('array', array('foo' => 'bar'), 'en');
+        $translator = new Zend_Translate('array', ['foo' => 'bar'], 'en');
         $this->form->setTranslator($translator);
         $this->form->render();
         $translator = $this->form->getTranslator();

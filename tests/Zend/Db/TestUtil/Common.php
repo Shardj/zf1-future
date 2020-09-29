@@ -47,12 +47,12 @@ abstract class Zend_Db_TestUtil_Common
     /**
      * @var array
      */
-    protected $_tables = array();
+    protected $_tables = [];
 
     /**
      * @var array
      */
-    protected $_sequences = array();
+    protected $_sequences = [];
 
     protected function _getSqlCreateTable($tableName)
     {
@@ -74,7 +74,7 @@ abstract class Zend_Db_TestUtil_Common
         return $type;
     }
 
-    public function createTable($tableId, array $columns = array())
+    public function createTable($tableId, array $columns = [])
     {
         if (!$columns) {
             $columns = $this->{'_getColumns'.$tableId}();
@@ -92,7 +92,7 @@ abstract class Zend_Db_TestUtil_Common
         $sql .= " (\n\t";
 
         $pKey = null;
-        $pKeys = array();
+        $pKeys = [];
         if (isset($columns['PRIMARY KEY'])) {
             $pKey = $columns['PRIMARY KEY'];
             unset($columns['PRIMARY KEY']);
@@ -186,9 +186,9 @@ abstract class Zend_Db_TestUtil_Common
         unset($this->_sequences[$sequenceName]);
     }
 
-    public function getParams(array $constants = array())
+    public function getParams(array $constants = [])
     {
-        $params = array();
+        $params = [];
         foreach ($constants as $key => $constant) {
             if (defined($constant)) {
                 $params[$key] = constant($constant);
@@ -208,7 +208,7 @@ abstract class Zend_Db_TestUtil_Common
         return null;
     }
 
-    protected $_tableName = array(
+    protected $_tableName = [
         'Accounts'      => 'zfaccounts',
         'Products'      => 'zfproducts',
         'Bugs'          => 'zfbugs',
@@ -219,7 +219,7 @@ abstract class Zend_Db_TestUtil_Common
         'Price'         => 'zfprice',
         'AltBugsProducts' => 'zfalt_bugs_products',
         'CascadeRecursive' => 'zfalt_cascade_recursive'
-    );
+    ];
 
     public function getTableName($tableId)
     {
@@ -235,7 +235,7 @@ abstract class Zend_Db_TestUtil_Common
 
     protected function _getColumnsBugs()
     {
-        return array(
+        return [
             'bug_id'          => 'IDENTITY',
             'bug_description' => 'VARCHAR(100)',
             'bug_status'      => 'VARCHAR(20)',
@@ -244,77 +244,77 @@ abstract class Zend_Db_TestUtil_Common
             'reported_by'     => 'VARCHAR(100)',
             'assigned_to'     => 'VARCHAR(100)',
             'verified_by'     => 'VARCHAR(100)'
-        );
+        ];
     }
 
     protected function _getColumnsAccounts()
     {
-        return array(
+        return [
             'account_name' => 'VARCHAR(100) NOT NULL',
             'PRIMARY KEY'  => 'account_name'
-        );
+        ];
     }
 
     protected function _getColumnsProducts()
     {
-        return array(
+        return [
             'product_id'   => 'IDENTITY',
             'product_name' => 'VARCHAR(100)'
-        );
+        ];
     }
 
     protected function _getColumnsBugsProducts()
     {
-        return array(
+        return [
             'bug_id'       => 'INTEGER NOT NULL',
             'product_id'   => 'INTEGER NOT NULL',
             'PRIMARY KEY'  => 'bug_id,product_id'
-        );
+        ];
     }
 
     protected function _getColumnsDocuments()
     {
-        return array(
+        return [
             'doc_id'       => 'INTEGER NOT NULL',
             'doc_clob'     => 'CLOB',
             'doc_blob'     => 'BLOB',
             'PRIMARY KEY'  => 'doc_id'
-            );
+            ];
     }
 
     protected function _getColumnsPrice()
     {
-        return array(
+        return [
             'product_id'    => 'INTEGER NOT NULL',
             'price_name'    => 'VARCHAR(100)',
             'price_total'   => 'DECIMAL(10,2) NOT NULL',
             'PRIMARY KEY'   => 'product_id'
-            );
+            ];
     }
 
     protected function _getColumnsCascadeRecursive()
     {
-        return array(
+        return [
             'item_id'       => 'INTEGER NOT NULL',
             'item_parent'   => 'INTEGER NULL',
             'item_data'     => 'VARCHAR(100)',
             'PRIMARY KEY'   => 'item_id'
-        );
+        ];
     }
 
     protected function _getDataAccounts()
     {
-        return array(
-            array('account_name' => 'mmouse'),
-            array('account_name' => 'dduck'),
-            array('account_name' => 'goofy'),
-        );
+        return [
+            ['account_name' => 'mmouse'],
+            ['account_name' => 'dduck'],
+            ['account_name' => 'goofy'],
+        ];
     }
 
     protected function _getDataBugs()
     {
-        return array(
-            array(
+        return [
+            [
                 'bug_description' => 'System needs electricity to run',
                 'bug_status'      => 'NEW',
                 'created_on'      => '2007-04-01',
@@ -322,8 +322,8 @@ abstract class Zend_Db_TestUtil_Common
                 'reported_by'     => 'goofy',
                 'assigned_to'     => 'mmouse',
                 'verified_by'     => 'dduck'
-            ),
-            array(
+            ],
+            [
                 'bug_description' => 'Implement Do What I Mean function',
                 'bug_status'      => 'VERIFIED',
                 'created_on'      => '2007-04-02',
@@ -331,8 +331,8 @@ abstract class Zend_Db_TestUtil_Common
                 'reported_by'     => 'goofy',
                 'assigned_to'     => 'mmouse',
                 'verified_by'     => 'dduck'
-            ),
-            array(
+            ],
+            [
                 'bug_description' => 'Where are my keys?',
                 'bug_status'      => 'FIXED',
                 'created_on'      => '2007-04-03',
@@ -340,8 +340,8 @@ abstract class Zend_Db_TestUtil_Common
                 'reported_by'     => 'dduck',
                 'assigned_to'     => 'mmouse',
                 'verified_by'     => 'dduck'
-            ),
-            array(
+            ],
+            [
                 'bug_description' => 'Bug no product',
                 'bug_status'      => 'INCOMPLETE',
                 'created_on'      => '2007-04-04',
@@ -349,53 +349,53 @@ abstract class Zend_Db_TestUtil_Common
                 'reported_by'     => 'mmouse',
                 'assigned_to'     => 'goofy',
                 'verified_by'     => 'dduck'
-            )
-        );
+            ]
+        ];
     }
 
     protected function _getDataProducts()
     {
-        return array(
-            array('product_name' => 'Windows'),
-            array('product_name' => 'Linux'),
-            array('product_name' => 'OS X'),
-        );
+        return [
+            ['product_name' => 'Windows'],
+            ['product_name' => 'Linux'],
+            ['product_name' => 'OS X'],
+        ];
     }
 
     protected function _getDataBugsProducts()
     {
-        return array(
-            array(
+        return [
+            [
                 'bug_id'       => 1,
                 'product_id'   => 1
-            ),
-            array(
+            ],
+            [
                 'bug_id'       => 1,
                 'product_id'   => 2
-            ),
-            array(
+            ],
+            [
                 'bug_id'       => 1,
                 'product_id'   => 3
-            ),
-            array(
+            ],
+            [
                 'bug_id'       => 2,
                 'product_id'   => 3
-            ),
-            array(
+            ],
+            [
                 'bug_id'       => 3,
                 'product_id'   => 2
-            ),
-            array(
+            ],
+            [
                 'bug_id'       => 3,
                 'product_id'   => 3
-            ),
-        );
+            ],
+        ];
     }
 
     protected function _getDataDocuments()
     {
-        return array (
-            array(
+        return [
+            [
                 'doc_id'    => 1,
                 'doc_clob'  => 'this is the clob that never ends...'.
                                'this is the clob that never ends...'.
@@ -403,31 +403,31 @@ abstract class Zend_Db_TestUtil_Common
                 'doc_blob'  => 'this is the blob that never ends...'.
                                'this is the blob that never ends...'.
                                'this is the blob that never ends...'
-            )
-        );
+            ]
+        ];
     }
 
     protected function _getDataPrice()
     {
-        return array(
-            array(
+        return [
+            [
                 'product_id'   => 1,
                 'price_name'   => 'Price 1',
                 'price_total'  => 200.45
-            )
-        );
+            ]
+        ];
     }
 
     protected function _getDataCascadeRecursive()
     {
-        return array(
-            array('item_id' => '1', 'item_parent' => new Zend_Db_Expr('NULL'), 'item_data' => '1'),
-            array('item_id' => '2', 'item_parent' => '1', 'item_data' => '1.2'),
-            array('item_id' => '3', 'item_parent' => '1', 'item_data' => '1.3'),
-            array('item_id' => '4', 'item_parent' => '3', 'item_data' => '1.3.4'),
-            array('item_id' => '5', 'item_parent' => '3', 'item_data' => '1.3.5'),
-            array('item_id' => '6', 'item_parent' => new Zend_Db_Expr('NULL'), 'item_data' => '6')
-        );
+        return [
+            ['item_id' => '1', 'item_parent' => new Zend_Db_Expr('NULL'), 'item_data' => '1'],
+            ['item_id' => '2', 'item_parent' => '1', 'item_data' => '1.2'],
+            ['item_id' => '3', 'item_parent' => '1', 'item_data' => '1.3'],
+            ['item_id' => '4', 'item_parent' => '3', 'item_data' => '1.3.4'],
+            ['item_id' => '5', 'item_parent' => '3', 'item_data' => '1.3.5'],
+            ['item_id' => '6', 'item_parent' => new Zend_Db_Expr('NULL'), 'item_data' => '6']
+        ];
     }
 
     public function populateTable($tableId)
@@ -436,8 +436,8 @@ abstract class Zend_Db_TestUtil_Common
         $data = $this->{'_getData'.$tableId}();
         foreach ($data as $row) {
             $sql = 'INSERT INTO ' .  $this->getAdapter()->quoteIdentifier($tableName, true);
-            $cols = array();
-            $vals = array();
+            $cols = [];
+            $vals = [];
             foreach ($row as $col => $val) {
                 $cols[] = $this->getAdapter()->quoteIdentifier($col, true);
                 if ($val instanceof Zend_Db_Expr) {

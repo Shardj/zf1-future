@@ -84,16 +84,16 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
 
     public function testMultiCheckboxHelperRendersLabelledCheckboxesForEachOption()
     {
-        $options = array(
+        $options = [
             'foo' => 'Foo',
             'bar' => 'Bar',
             'baz' => 'Baz'
-        );
-        $html = $this->helper->formMultiCheckbox(array(
+        ];
+        $html = $this->helper->formMultiCheckbox([
             'name'    => 'foo',
             'value'   => 'bar',
             'options' => $options,
-        ));
+        ]);
         foreach ($options as $key => $value) {
             $pattern = '#((<label[^>]*>.*?)(<input[^>]*?("' . $key . '").*?>)(.*?</label>))#';
             if (!preg_match($pattern, $html, $matches)) {
@@ -108,16 +108,16 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
 
     public function testRendersAsHtmlByDefault()
     {
-        $options = array(
+        $options = [
             'foo' => 'Foo',
             'bar' => 'Bar',
             'baz' => 'Baz'
-        );
-        $html = $this->helper->formMultiCheckbox(array(
+        ];
+        $html = $this->helper->formMultiCheckbox([
             'name'    => 'foo',
             'value'   => 'bar',
             'options' => $options,
-        ));
+        ]);
         foreach ($options as $key => $value) {
             $pattern = '#(<input[^>]*?("' . $key . '").*?>)#';
             if (!preg_match($pattern, $html, $matches)) {
@@ -130,16 +130,16 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
     public function testCanRendersAsXHtml()
     {
         $this->view->doctype('XHTML1_STRICT');
-        $options = array(
+        $options = [
             'foo' => 'Foo',
             'bar' => 'Bar',
             'baz' => 'Baz'
-        );
-        $html = $this->helper->formMultiCheckbox(array(
+        ];
+        $html = $this->helper->formMultiCheckbox([
             'name'    => 'foo',
             'value'   => 'bar',
             'options' => $options,
-        ));
+        ]);
         foreach ($options as $key => $value) {
             $pattern = '#(<input[^>]*?("' . $key . '").*?>)#';
             if (!preg_match($pattern, $html, $matches)) {

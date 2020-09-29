@@ -163,10 +163,10 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
     {
         $filter = new Zend_Filter_File_Rename($this->_newFile);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => '*',
+        $this->assertEquals([0 =>
+            ['source'    => '*',
                   'target'    => $this->_newFile,
-                  'overwrite' => false)),
+                  'overwrite' => false]],
             $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
@@ -179,14 +179,14 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructSingleArray()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source' => $this->_oldFile,
-            'target' => $this->_newFile));
+            'target' => $this->_newFile]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newFile,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -198,16 +198,16 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructFullOptionsArray()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source' => $this->_oldFile,
             'target' => $this->_newFile,
             'overwrite' => true,
-            'unknown'   => false));
+            'unknown'   => false]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newFile,
-                  'overwrite' => true)), $filter->getFile());
+                  'overwrite' => true]], $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -219,15 +219,15 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructDoubleArray()
     {
-        $filter = new Zend_Filter_File_Rename(array(
-            0 => array(
+        $filter = new Zend_Filter_File_Rename([
+            0 => [
                 'source' => $this->_oldFile,
-                'target' => $this->_newFile)));
+                'target' => $this->_newFile]]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newFile,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -239,13 +239,13 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructTruncatedTarget()
     {
-        $filter = new Zend_Filter_File_Rename(array(
-            'source' => $this->_oldFile));
+        $filter = new Zend_Filter_File_Rename([
+            'source' => $this->_oldFile]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => '*',
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
 
         $this->assertEquals($this->_oldFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
@@ -258,13 +258,13 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructTruncatedSource()
     {
-        $filter = new Zend_Filter_File_Rename(array(
-            'target' => $this->_newFile));
+        $filter = new Zend_Filter_File_Rename([
+            'target' => $this->_newFile]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => '*',
+        $this->assertEquals([0 =>
+            ['source'    => '*',
                   'target'    => $this->_newFile,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
 
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
@@ -279,10 +279,10 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
     {
         $filter = new Zend_Filter_File_Rename($this->_newDir);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => '*',
+        $this->assertEquals([0 =>
+            ['source'    => '*',
                   'target'    => $this->_newDir,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newDirFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -294,14 +294,14 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructSingleArrayDirectory()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source' => $this->_oldFile,
-            'target' => $this->_newDir));
+            'target' => $this->_newDir]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newDir,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newDirFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -313,15 +313,15 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructDoubleArrayDirectory()
     {
-        $filter = new Zend_Filter_File_Rename(array(
-            0 => array(
+        $filter = new Zend_Filter_File_Rename([
+            0 => [
                 'source' => $this->_oldFile,
-                'target' => $this->_newDir)));
+                'target' => $this->_newDir]]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newDir,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newDirFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -333,13 +333,13 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructTruncatedSourceDirectory()
     {
-        $filter = new Zend_Filter_File_Rename(array(
-            'target' => $this->_newDir));
+        $filter = new Zend_Filter_File_Rename([
+            'target' => $this->_newDir]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => '*',
+        $this->assertEquals([0 =>
+            ['source'    => '*',
                   'target'    => $this->_newDir,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
 
         $this->assertEquals($this->_newDirFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
@@ -350,18 +350,18 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testAddSameFileAgainAndOverwriteExistingTarget()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source' => $this->_oldFile,
-            'target' => $this->_newDir));
+            'target' => $this->_newDir]);
 
-        $filter->addFile(array(
+        $filter->addFile([
             'source' => $this->_oldFile,
-            'target' => $this->_newFile));
+            'target' => $this->_newFile]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newFile,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }
@@ -371,14 +371,14 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testGetNewName()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source' => $this->_oldFile,
-            'target' => $this->_newDir));
+            'target' => $this->_newDir]);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newDir,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newDirFile, $filter->getNewName($this->_oldFile));
     }
 
@@ -387,16 +387,16 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testGetNewNameExceptionWithExistingFile()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source' => $this->_oldFile,
-            'target' => $this->_newFile));
+            'target' => $this->_newFile]);
 
         copy($this->_oldFile, $this->_newFile);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newFile,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         try {
             $this->assertEquals($this->_newFile, $filter->getNewName($this->_oldFile));
             $this->fail();
@@ -410,17 +410,17 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
      */
     public function testGetNewNameOverwriteWithExistingFile()
     {
-        $filter = new Zend_Filter_File_Rename(array(
+        $filter = new Zend_Filter_File_Rename([
             'source'    => $this->_oldFile,
             'target'    => $this->_newFile,
-            'overwrite' => true));
+            'overwrite' => true]);
 
         copy($this->_oldFile, $this->_newFile);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => $this->_oldFile,
+        $this->assertEquals([0 =>
+            ['source'    => $this->_oldFile,
                   'target'    => $this->_newFile,
-                  'overwrite' => true)), $filter->getFile());
+                  'overwrite' => true]], $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->getNewName($this->_oldFile));
     }
 
@@ -432,10 +432,10 @@ class Zend_Filter_File_RenameTest extends PHPUnit_Framework_TestCase
         $filter = new Zend_Filter_File_Rename($this->_oldFile);
         $filter->addFile($this->_newFile);
 
-        $this->assertEquals(array(0 =>
-            array('source'    => '*',
+        $this->assertEquals([0 =>
+            ['source'    => '*',
                   'target'    => $this->_newFile,
-                  'overwrite' => false)), $filter->getFile());
+                  'overwrite' => false]], $filter->getFile());
         $this->assertEquals($this->_newFile, $filter->filter($this->_oldFile));
         $this->assertEquals('falsefile', $filter->filter('falsefile'));
     }

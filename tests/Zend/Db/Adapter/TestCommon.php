@@ -85,7 +85,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $db->getConnection();
 
         $config = $db->getConfig();
-        $this->assertEquals(array(), $config['driver_options']);
+        $this->assertEquals([], $config['driver_options']);
     }
 
     /**
@@ -96,9 +96,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => true
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
 
@@ -130,9 +130,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
 
@@ -143,17 +143,17 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $util->setAdapter($db);
 
         // create test table using no identifier quoting
-        $util->createTable('noquote', array(
+        $util->createTable('noquote', [
             'id'    => 'INT NOT NULL PRIMARY KEY',
             'stuff' => 'CHAR(10)'
-        ));
+        ]);
         $tableName = $this->_util->getTableName('noquote');
 
         // insert into the table
-        $numRows = $db->insert($tableName, array(
+        $numRows = $db->insert($tableName, [
             'id'    => 1,
             'stuff' => 'no quote 1'
-        ));
+        ]);
         $this->assertEquals(1, $numRows,
             'number of rows in first insert not as expected');
 
@@ -161,17 +161,17 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $sql = "SELECT id, stuff FROM $tableName ORDER BY id";
         $stmt = $db->query($sql);
         $fetched = $stmt->fetchAll(Zend_Db::FETCH_NUM);
-        $a = array(
-            0 => array(0 => 1, 1 => 'no quote 1')
-        );
+        $a = [
+            0 => [0 => 1, 1 => 'no quote 1']
+        ];
         $this->assertEquals($a, $fetched,
             'result of first query not as expected');
 
         // insert into the table using other case
-        $numRows = $db->insert($tableName, array(
+        $numRows = $db->insert($tableName, [
             'ID'    => 2,
             'STUFF' => 'no quote 2'
-        ));
+        ]);
         $this->assertEquals(1, $numRows,
             'number of rows in second insert not as expected');
 
@@ -180,10 +180,10 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $stmt = $db->query($sql);
         $fetched = $stmt->fetchAll(Zend_Db::FETCH_NUM);
 
-        $a = array(
-            0 => array(0 => 1, 1 => 'no quote 1'),
-            1 => array(0 => 2, 1 => 'no quote 2'),
-        );
+        $a = [
+            0 => [0 => 1, 1 => 'no quote 1'],
+            1 => [0 => 2, 1 => 'no quote 2'],
+        ];
         $this->assertEquals($a, $fetched,
             'result of second query not as expected');
 
@@ -266,16 +266,16 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $product_name = $this->_db->quoteIdentifier('product_name');
 
         $ids = $this->_db->fetchCol("SELECT $product_id FROM $products ORDER BY $product_id");
-        $this->assertEquals(array(1, 2, 3), $ids);
+        $this->assertEquals([1, 2, 3], $ids);
 
         $rowsAffected = $this->_db->delete(
             'zfproducts',
-            array("$product_id = 1", "$product_name = 'Windows'")
+            ["$product_id = 1", "$product_name = 'Windows'"]
         );
         $this->assertEquals(1, $rowsAffected);
 
         $ids = $this->_db->fetchCol("SELECT $product_id FROM $products ORDER BY $product_id");
-        $this->assertEquals(array(2, 3), $ids);
+        $this->assertEquals([2, 3], $ids);
     }
 
     /**
@@ -288,16 +288,16 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $product_name = $this->_db->quoteIdentifier('product_name');
 
         $ids = $this->_db->fetchCol("SELECT $product_id FROM $products ORDER BY $product_id");
-        $this->assertEquals(array(1, 2, 3), $ids);
+        $this->assertEquals([1, 2, 3], $ids);
 
         $rowsAffected = $this->_db->delete(
             'zfproducts',
-            array("$product_id = ?" => 1, "$product_name = ?" => 'Windows')
+            ["$product_id = ?" => 1, "$product_name = ?" => 'Windows']
         );
         $this->assertEquals(1, $rowsAffected);
 
         $ids = $this->_db->fetchCol("SELECT $product_id FROM $products ORDER BY $product_id");
-        $this->assertEquals(array(2, 3), $ids);
+        $this->assertEquals([2, 3], $ids);
     }
 
     public function testAdapterDeleteWhereDbExpr()
@@ -308,7 +308,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $expr = new Zend_Db_Expr("$product_id = 1");
 
         $ids = $this->_db->fetchCol("SELECT $product_id FROM $products ORDER BY $product_id");
-        $this->assertEquals(array(1, 2, 3), $ids);
+        $this->assertEquals([1, 2, 3], $ids);
 
         $rowsAffected = $this->_db->delete(
             'zfproducts',
@@ -317,7 +317,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $this->assertEquals(1, $rowsAffected);
 
         $ids = $this->_db->fetchCol("SELECT $product_id FROM $products ORDER BY $product_id");
-        $this->assertEquals(array(2, 3), $ids);
+        $this->assertEquals([2, 3], $ids);
     }
 
     public function testAdapterDeleteEmptyWhere()
@@ -361,10 +361,10 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $desc = $this->_db->describeTable('zfproducts');
 
-        $cols = array(
+        $cols = [
             'product_id',
             'product_name'
-        );
+        ];
         $this->assertEquals($cols, array_keys($desc));
     }
 
@@ -372,7 +372,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $desc = $this->_db->describeTable('zfproducts');
 
-        $keys = array(
+        $keys = [
             'SCHEMA_NAME',
             'TABLE_NAME',
             'COLUMN_NAME',
@@ -387,7 +387,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'PRIMARY',
             'PRIMARY_POSITION',
             'IDENTITY'
-        );
+        ];
         $this->assertEquals($keys, array_keys($desc['product_name']));
     }
 
@@ -504,7 +504,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $this->_db->setFetchMode(Zend_Db::FETCH_OBJ);
         $result = $this->_db->fetchAssoc("SELECT * FROM $products WHERE $product_id > ? ORDER BY $product_id DESC", 1);
         $this->assertTrue(is_array($result));
-        $this->assertEquals(array('product_id', 'product_name'), array_keys(current($result)));
+        $this->assertEquals(['product_id', 'product_name'], array_keys(current($result)));
     }
 
     /**
@@ -652,7 +652,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
      */
     public function testAdapterInsert()
     {
-        $row = array (
+        $row = [
             'bug_description' => 'New bug',
             'bug_status'      => 'NEW',
             'created_on'      => '2007-04-02',
@@ -660,7 +660,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'reported_by'     => 'micky',
             'assigned_to'     => 'goofy',
             'verified_by'     => 'dduck'
-        );
+        ];
         $rowsAffected = $this->_db->insert('zfbugs', $row);
         $this->assertEquals(1, $rowsAffected);
         $lastInsertId = $this->_db->lastInsertId();
@@ -671,10 +671,10 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     public function testAdapterInsertSequence()
     {
-        $row = array (
+        $row = [
             'product_id' => $this->_db->nextSequenceId('zfproducts_seq'),
             'product_name' => 'Solaris',
-        );
+        ];
         $rowsAffected = $this->_db->insert('zfproducts', $row);
         $this->assertEquals(1, $rowsAffected);
         $lastInsertId = $this->_db->lastInsertId('zfproducts');
@@ -691,7 +691,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $expr = new Zend_Db_Expr('2+3');
 
-        $row = array (
+        $row = [
             'bug_id'          => $expr,
             'bug_description' => 'New bug',
             'bug_status'      => 'NEW',
@@ -700,7 +700,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
             'reported_by'     => 'micky',
             'assigned_to'     => 'goofy',
             'verified_by'     => 'dduck'
-        );
+        ];
         $rowsAffected = $this->_db->insert('zfbugs', $row);
         $this->assertEquals(1, $rowsAffected);
 
@@ -825,9 +825,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::CASE_FOLDING => $case
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $this->_testAdapterOptionCaseFoldingSetup($db);
         $products = $db->quoteIdentifier('zfproducts');
@@ -981,7 +981,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
      */
     public function testAdapterQuoteArray()
     {
-        $array = array("it's", 'all', 'right!');
+        $array = ["it's", 'all', 'right!'];
         $value = $this->_db->quote($array);
         $this->assertEquals("'it\\'s', 'all', 'right!'", $value);
     }
@@ -1038,7 +1038,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
      */
     public function testAdapterQuoteIntegerArray()
     {
-        $array = array(1,'2',3);
+        $array = [1,'2',3];
         $value = $this->_db->quote($array);
         $this->assertEquals("1, '2', 3", $value);
     }
@@ -1097,7 +1097,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
      */
     public function testAdapterQuoteIdentifierArray()
     {
-        $array = array('foo', 'bar');
+        $array = ['foo', 'bar'];
         $value = $this->_db->quoteIdentifier($array);
         $this->assertEquals('"foo"."bar"', $value);
     }
@@ -1110,7 +1110,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     public function testAdapterQuoteIdentifierArrayDbExpr()
     {
         $expr = new Zend_Db_Expr('*');
-        $array = array('foo', $expr);
+        $array = ['foo', $expr];
         $value = $this->_db->quoteIdentifier($array);
         $this->assertEquals('"foo".*', $value);
     }
@@ -1225,11 +1225,11 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $this->assertEquals("id = 'St John\\'s Wort'", $value);
     }
 
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE
-    );
+    ];
 
     public function testAdapterQuoteIntoType()
     {
@@ -1507,12 +1507,12 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     public function testAdapterSetFetchMode()
     {
-        $modes = array(
+        $modes = [
             Zend_Db::FETCH_ASSOC,
             Zend_Db::FETCH_BOTH,
             Zend_Db::FETCH_NUM,
             Zend_Db::FETCH_OBJ
-        );
+        ];
         foreach ($modes as $mode) {
             $this->_db->setFetchMode($mode);
             $this->assertEquals($mode, $this->_db->getFetchMode());
@@ -1677,7 +1677,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         // an existing row.
         $rowsAffected = $this->_db->update(
             'zfproducts',
-            array('product_name' => 'Vista'),
+            ['product_name' => 'Vista'],
             "$product_id = 1"
         );
         $this->assertEquals(1, $rowsAffected);
@@ -1696,7 +1696,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         // clause matches none.
         $rowsAffected = $this->_db->update(
             'zfproducts',
-            array('product_name' => 'Vista'),
+            ['product_name' => 'Vista'],
             "$product_id = 327"
         );
         $this->assertEquals(0, $rowsAffected);
@@ -1711,7 +1711,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $expr = new Zend_Db_Expr("UPPER('setExpr')");
         $rowsAffected = $this->_db->update(
             'zfbugs',
-            array('bug_status' => $expr),
+            ['bug_status' => $expr],
             "$bug_id = 1"
         );
         $this->assertEquals(1, $rowsAffected);
@@ -1728,8 +1728,8 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $rowsAffected = $this->_db->update(
             'zfbugs',
-            array('bug_status' => 'ARRAY'),
-            array("$bug_id = 1", "$bug_status = 'NEW'")
+            ['bug_status' => 'ARRAY'],
+            ["$bug_id = 1", "$bug_status = 'NEW'"]
         );
         $this->assertEquals(1, $rowsAffected);
 
@@ -1748,8 +1748,8 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $rowsAffected = $this->_db->update(
             'zfbugs',
-            array('bug_status' => 'ARRAY'),
-            array("$bug_id = ?" => 1, "$bug_status = ?" => 'NEW')
+            ['bug_status' => 'ARRAY'],
+            ["$bug_id = ?" => 1, "$bug_status = ?" => 'NEW']
         );
         $this->assertEquals(1, $rowsAffected);
 
@@ -1767,7 +1767,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $rowsAffected = $this->_db->update(
             'zfbugs',
-            array('bug_status' => 'DBEXPR'),
+            ['bug_status' => 'DBEXPR'],
             $whereExpr
         );
         $this->assertEquals(1, $rowsAffected);
@@ -1783,7 +1783,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $rowsAffected = $this->_db->update(
             'zfbugs',
-            array('bug_status' => 'EMPTY')
+            ['bug_status' => 'EMPTY']
             // intentionally no where clause
         );
         $this->assertEquals(4, $rowsAffected);
@@ -1799,31 +1799,31 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     public function testAdapterUpdateWithLongColumnIdentifier()
     {
         // create test table using no identifier quoting
-        $this->_util->createTable('zf_longidentifier', array(
+        $this->_util->createTable('zf_longidentifier', [
             'id'    => 'INTEGER NOT NULL',
             'veryveryveryverylongidentifier' => 'INTEGER NOT NULL'
-        ));
+        ]);
         $tableName = $this->_util->getTableName('zf_longidentifier');
 
         // insert into the table
-        $this->_db->insert($tableName, array(
+        $this->_db->insert($tableName, [
             'id' => 1,
             'veryveryveryverylongidentifier' => 2
-        ));
+        ]);
 
         //try to update
         $this->_db->update($tableName,
-                           array('veryveryveryverylongidentifier' => 3),
-                           array($this->_db->quoteIdentifier('id') . ' = 1'));
+                           ['veryveryveryverylongidentifier' => 3],
+                           [$this->_db->quoteIdentifier('id') . ' = 1']);
 
         // check if the row was inserted as expected
-        $select = $this->_db->select()->from($tableName, array('id', 'veryveryveryverylongidentifier'));
+        $select = $this->_db->select()->from($tableName, ['id', 'veryveryveryverylongidentifier']);
 
         $stmt = $this->_db->query($select);
         $fetched = $stmt->fetchAll(Zend_Db::FETCH_NUM);
-        $a = array(
-            0 => array(0 => 1, 1 => 3)
-        );
+        $a = [
+            0 => [0 => 1, 1 => 3]
+        ];
         $this->assertEquals($a, $fetched,
             'result of query not as expected');
 
@@ -1841,9 +1841,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => false
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
         $db->setStatementClass($stmtClass);
@@ -1861,11 +1861,11 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
     public function testAdapterSetCustomProfiler()
     {
-        $profilerOptions = array(
+        $profilerOptions = [
             'enabled'  => true,
             'class'    => 'stdClass',
             'instance' => new stdClass()
-        );
+        ];
 
         try {
             $this->_db->setProfiler($profilerOptions);
@@ -1987,9 +1987,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     public function testAdapterSerializationFailsWhenNotAllowedToBeSerialized()
     {
         $params = $this->_util->getParams();
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::ALLOW_SERIALIZATION => false
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $this->setExpectedException('Zend_Db_Adapter_Exception');
         $serialized = serialize($db);
@@ -2002,9 +2002,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $this->assertFalse($db->isConnected());
 
         $params = $this->_util->getParams();
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_RECONNECT_ON_UNSERIALIZE => true
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db = unserialize(serialize($db));
         $this->assertTrue($db->isConnected());
@@ -2029,25 +2029,25 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $util->setAdapter($db);
 
         // create test table using no identifier quoting
-        $util->createTable('charsetutf8', array(
+        $util->createTable('charsetutf8', [
             'id'    => 'INTEGER NOT NULL',
             'stuff' => 'VARCHAR(32)'
-        ));
+        ]);
         $tableName = $this->_util->getTableName('charsetutf8');
         // insert into the table
-        $numRows = $db->insert($tableName, array(
+        $numRows = $db->insert($tableName, [
             'id'    => 1,
             'stuff' => 'äöüß'
-        ));
+        ]);
 
         // check if the row was inserted as expected
-        $select = $db->select()->from($tableName, array('id', 'stuff'));
+        $select = $db->select()->from($tableName, ['id', 'stuff']);
 
         $stmt = $db->query($select);
         $fetched = $stmt->fetchAll(Zend_Db::FETCH_NUM);
-        $a = array(
-            0 => array(0 => 1, 1 => 'äöüß')
-        );
+        $a = [
+            0 => [0 => 1, 1 => 'äöüß']
+        ];
         $this->assertEquals($a, $fetched,
             'result of query not as expected');
 
@@ -2071,32 +2071,32 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     public function testLongQueryWithTextField()
     {
         // create test table using no identifier quoting
-        $this->_util->createTable('zf_longquery', array(
+        $this->_util->createTable('zf_longquery', [
             'id'    => 'INTEGER NOT NULL',
             'stuff' => 'TEXT NOT NULL'
-        ));
+        ]);
         $tableName = $this->_util->getTableName('zf_longquery');
 
         // insert into the table
         $longValue = str_repeat('x', 4000);
-        $numRows = $this->_db->insert($tableName, array(
+        $numRows = $this->_db->insert($tableName, [
             'id' => 1,
             'stuff' => $longValue
-        ));
+        ]);
 
         $quotedTableName = $this->_db->quoteIdentifier('zf_longquery');
         $sql = "INSERT INTO $quotedTableName VALUES (2, '$longValue')";
         $this->_db->query($sql);
 
         // check if the row was inserted as expected
-        $select = $this->_db->select()->from($tableName, array('id', 'stuff'));
+        $select = $this->_db->select()->from($tableName, ['id', 'stuff']);
 
         $stmt = $this->_db->query($select);
         $fetched = $stmt->fetchAll(Zend_Db::FETCH_NUM);
-        $a = array(
-            0 => array(0 => 1, 1 => $longValue),
-            1 => array(0 => 2, 1 => $longValue)
-        );
+        $a = [
+            0 => [0 => 1, 1 => $longValue],
+            1 => [0 => 2, 1 => $longValue]
+        ];
         $this->assertEquals($a, $fetched,
             'result of query not as expected');
 
@@ -2112,9 +2112,9 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::FETCH_MODE => 'obj'
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $select = $db->select()->from('zfproducts');
         $row = $db->fetchRow($select);

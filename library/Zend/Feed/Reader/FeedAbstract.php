@@ -42,7 +42,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      *
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Parsed feed data in the shape of a DOMDocument
@@ -56,7 +56,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      *
      * @var array
      */
-    protected $_entries = array();
+    protected $_entries = [];
 
     /**
      * A pointer for the iterator to keep track of the entries array
@@ -77,7 +77,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      *
      * @var array
      */
-    protected $_extensions = array();
+    protected $_extensions = [];
 
     /**
      * Original Source URI (set if imported from a URI)
@@ -270,7 +270,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
     {
         foreach ($this->_extensions as $extension) {
             if (method_exists($extension, $method)) {
-                return call_user_func_array(array($extension, $method), $args);
+                return call_user_func_array([$extension, $method], $args);
             }
         }
         require_once 'Zend/Feed/Exception.php';

@@ -103,7 +103,7 @@ class Zend_Uri_Http extends Zend_Uri
      *
      * @var array
      */
-    protected $_regex = array();
+    protected $_regex = [];
 
     /**
      * Constructor accepts a string $scheme (e.g., http, https) and a scheme-specific part of the URI
@@ -178,7 +178,7 @@ class Zend_Uri_Http extends Zend_Uri
         $scheme         = strtolower($uri[0]);
         $schemeSpecific = isset($uri[1]) === true ? $uri[1] : '';
 
-        if (in_array($scheme, array('http', 'https')) === false) {
+        if (in_array($scheme, ['http', 'https']) === false) {
             require_once 'Zend/Uri/Exception.php';
             throw new Zend_Uri_Exception("Invalid scheme: '$scheme'");
         }
@@ -597,7 +597,7 @@ class Zend_Uri_Http extends Zend_Uri
     public function getQueryAsArray()
     {
         $query = $this->getQuery();
-        $querryArray = array();
+        $querryArray = [];
         if ($query !== false) {
             parse_str($query, $querryArray);
         }

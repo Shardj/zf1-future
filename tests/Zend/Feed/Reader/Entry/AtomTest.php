@@ -36,9 +36,9 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
 
     protected $_feedSamplePath = null;
     
-    protected $_expectedCats = array();
+    protected $_expectedCats = [];
     
-    protected $_expectedCatsDc = array();
+    protected $_expectedCatsDc = [];
 
     public function setup()
     {
@@ -54,36 +54,36 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
                 unset($this->_options[$k]);
             }
         }
-        Zend_Date::setOptions(array('format_type'=>'iso'));
-        $this->_expectedCats = array(
-            array(
+        Zend_Date::setOptions(['format_type'=>'iso']);
+        $this->_expectedCats = [
+            [
                 'term' => 'topic1',
                 'scheme' => 'http://example.com/schema1',
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'topic1',
                 'scheme' => 'http://example.com/schema2',
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'cat_dog',
                 'scheme' => 'http://example.com/schema1',
                 'label' => 'Cat & Dog'
-            )
-        );
-        $this->_expectedCatsDc = array(
-            array(
+            ]
+        ];
+        $this->_expectedCatsDc = [
+            [
                 'term' => 'topic1',
                 'scheme' => null,
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'topic2',
                 'scheme' => null,
                 'label' => 'topic2'
-            )
-        );
+            ]
+        ];
     }
     
     public function teardown()
@@ -193,14 +193,14 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath . '/author/plain/atom03.xml')
         );
 
-        $authors = array(
-            array('email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs'),
-            array('email'=>'joe@example.com','uri'=>'http://www.example.com'),
-            array('uri'=>'http://www.example.com'),
-            array('email'=>'joe@example.com')
-        );
+        $authors = [
+            ['email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs'],
+            ['email'=>'joe@example.com','uri'=>'http://www.example.com'],
+            ['uri'=>'http://www.example.com'],
+            ['email'=>'joe@example.com']
+        ];
 
         $entry = $feed->current();
         $this->assertEquals($authors, (array) $entry->getAuthors());
@@ -212,14 +212,14 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath . '/author/plain/atom10.xml')
         );
 
-        $authors = array(
-            array('email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs'),
-            array('email'=>'joe@example.com','uri'=>'http://www.example.com'),
-            array('uri'=>'http://www.example.com'),
-            array('email'=>'joe@example.com')
-        );
+        $authors = [
+            ['email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs'],
+            ['email'=>'joe@example.com','uri'=>'http://www.example.com'],
+            ['uri'=>'http://www.example.com'],
+            ['email'=>'joe@example.com']
+        ];
 
         $entry = $feed->current();
         $this->assertEquals($authors, (array) $entry->getAuthors());
@@ -234,7 +234,7 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath . '/author/plain/atom03.xml')
         );
         $entry = $feed->current();
-        $this->assertEquals(array('name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'), $entry->getAuthor());
+        $this->assertEquals(['name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'], $entry->getAuthor());
     }
 
     public function testGetsAuthorFromAtom10()
@@ -243,7 +243,7 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath . '/author/plain/atom10.xml')
         );
         $entry = $feed->current();
-        $this->assertEquals(array('name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'), $entry->getAuthor());
+        $this->assertEquals(['name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'], $entry->getAuthor());
     }
 
     /**
@@ -467,7 +467,7 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
         );
         $entry = $feed->current();
         $this->assertEquals($this->_expectedCats, (array) $entry->getCategories());
-        $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals(['topic1','Cat & Dog'], array_values($entry->getCategories()->getValues()));
     }
     
     public function testGetsCategoriesFromAtom03_Atom10Extension()
@@ -477,7 +477,7 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
         );
         $entry = $feed->current();
         $this->assertEquals($this->_expectedCats, (array) $entry->getCategories());
-        $this->assertEquals(array('topic1','Cat & Dog'), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals(['topic1','Cat & Dog'], array_values($entry->getCategories()->getValues()));
     }
     
     // DC 1.0/1.1 for Atom 0.3
@@ -489,7 +489,7 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
         );
         $entry = $feed->current();
         $this->assertEquals($this->_expectedCatsDc, (array) $entry->getCategories());
-        $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals(['topic1','topic2'], array_values($entry->getCategories()->getValues()));
     }
     
     public function testGetsCategoriesFromAtom03_Dc11()
@@ -499,7 +499,7 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
         );
         $entry = $feed->current();
         $this->assertEquals($this->_expectedCatsDc, (array) $entry->getCategories());
-        $this->assertEquals(array('topic1','topic2'), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals(['topic1','topic2'], array_values($entry->getCategories()->getValues()));
     }
     
     // No Categories In Entry
@@ -510,8 +510,8 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/category/plain/none/atom10.xml')
         );
         $entry = $feed->current();
-        $this->assertEquals(array(), (array) $entry->getCategories());
-        $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals([], (array) $entry->getCategories());
+        $this->assertEquals([], array_values($entry->getCategories()->getValues()));
     }
     
     public function testGetsCategoriesFromAtom03_None()
@@ -520,8 +520,8 @@ class Zend_Feed_Reader_Entry_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/category/plain/none/atom03.xml')
         );
         $entry = $feed->current();
-        $this->assertEquals(array(), (array) $entry->getCategories());
-        $this->assertEquals(array(), array_values($entry->getCategories()->getValues()));
+        $this->assertEquals([], (array) $entry->getCategories());
+        $this->assertEquals([], array_values($entry->getCategories()->getValues()));
     }
     
 }

@@ -73,10 +73,10 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->_origServer = $_SERVER;
-        $_SERVER = array(
+        $_SERVER = [
             'SCRIPT_FILENAME' => __FILE__,
             'PHP_SELF'        => __FILE__,
-        );
+        ];
 
         $front = Zend_Controller_Front::getInstance();
         $front->resetInstance();
@@ -189,7 +189,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
      */
     public function testActionReturnsContentReflectingPassedParams()
     {
-        $value = $this->helper->action('baz', 'action-foo', null, array('bat' => 'This is my message'));
+        $value = $this->helper->action('baz', 'action-foo', null, ['bat' => 'This is my message']);
         $this->assertNotContains('BOGUS', $value, var_export($this->helper->request->getUserParams(), 1));
         $this->assertContains('This is my message', $value);
     }

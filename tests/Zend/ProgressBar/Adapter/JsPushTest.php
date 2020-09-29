@@ -53,9 +53,9 @@ class Zend_ProgressBar_Adapter_jsPushTest extends PHPUnit_Framework_TestCase
 
     public function testJson()
     {
-        $result = array();
+        $result = [];
 
-        $adapter = new Zend_ProgressBar_Adapter_jsPush_Stub(array('finishMethodName' => 'Zend_ProgressBar_Finish'));
+        $adapter = new Zend_ProgressBar_Adapter_jsPush_Stub(['finishMethodName' => 'Zend_ProgressBar_Finish']);
         $adapter->notify(0, 2, 0.5, 1, 1, 'status');
         $output = $adapter->getLastOutput();
 

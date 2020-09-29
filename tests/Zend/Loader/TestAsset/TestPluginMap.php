@@ -35,11 +35,11 @@ class ZendTest_Loader_TestAsset_TestPluginMap implements IteratorAggregate
      * 
      * @var array
      */
-    public $map = array(
+    public $map = [
         'map'    => __CLASS__,
         'test'   => 'Zend_Loader_PluginClassLoaderTest',
         'loader' => 'Zend_Loader_PluginClassLoader',
-    );
+    ];
 
     /**
      * Return iterator

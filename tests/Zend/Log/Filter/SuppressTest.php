@@ -53,39 +53,39 @@ class Zend_Log_Filter_SuppressTest extends PHPUnit_Framework_TestCase
 
     public function testSuppressIsInitiallyOff()
     {
-        $this->assertTrue($this->filter->accept(array()));
+        $this->assertTrue($this->filter->accept([]));
     }
 
     public function testSuppressOn()
     {
         $this->filter->suppress(true);
-        $this->assertFalse($this->filter->accept(array()));
-        $this->assertFalse($this->filter->accept(array()));
+        $this->assertFalse($this->filter->accept([]));
+        $this->assertFalse($this->filter->accept([]));
     }
 
     public function testSuppressOff()
     {
         $this->filter->suppress(false);
-        $this->assertTrue($this->filter->accept(array()));
-        $this->assertTrue($this->filter->accept(array()));
+        $this->assertTrue($this->filter->accept([]));
+        $this->assertTrue($this->filter->accept([]));
     }
 
     public function testSuppressCanBeReset()
     {
         $this->filter->suppress(true);
-        $this->assertFalse($this->filter->accept(array()));
+        $this->assertFalse($this->filter->accept([]));
         $this->filter->suppress(false);
-        $this->assertTrue($this->filter->accept(array()));
+        $this->assertTrue($this->filter->accept([]));
         $this->filter->suppress(true);
-        $this->assertFalse($this->filter->accept(array()));
+        $this->assertFalse($this->filter->accept([]));
     }
 
     public function testFactory()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName' => "Mock",
             'filterName' => "Suppress"
-        )));
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);

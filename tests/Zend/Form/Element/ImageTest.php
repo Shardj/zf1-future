@@ -170,7 +170,7 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
     public function testTitleAttributeGetsTranslated()
     {
         $this->element->setAttrib('title', 'bar');
-        $translator = new Zend_Translate_Adapter_Array(array("bar" => "baz"), 'de');
+        $translator = new Zend_Translate_Adapter_Array(["bar" => "baz"], 'de');
         $this->element->setTranslator($translator);
         $html = $this->element->render(new Zend_View());
         $this->assertContains('title', $html);
@@ -181,7 +181,7 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
     public function testTitleAttributeDoesNotGetTranslatedIfTranslatorIsDisabled()
     {
         $this->element->setAttrib('title', 'bar');
-        $translator = new Zend_Translate_Adapter_Array(array("bar" => "baz"), 'de');
+        $translator = new Zend_Translate_Adapter_Array(["bar" => "baz"], 'de');
         $this->element->setTranslator($translator);
         // now disable translator and see if that works
         $this->element->setDisableTranslator(true);

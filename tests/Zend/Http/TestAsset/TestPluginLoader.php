@@ -31,7 +31,7 @@ require_once 'Zend/Loader/PluginLoader.php';
  */
 class Zend_Http_TestAsset_TestPluginLoader extends Zend_Loader_PluginLoader
 {
-    public function __construct(array $prefixToPaths = array(), $staticRegistryName = null)
+    public function __construct(array $prefixToPaths = [], $staticRegistryName = null)
     {
         parent::__construct($prefixToPaths, $staticRegistryName);
         $this->addPrefixPath('Zend_Http_TestAsset_Device', dirname(__FILE__) . '/Device');

@@ -72,8 +72,8 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
         $newVisibility = new Zend_Gdata_Extension_Visibility();
         $newVisibility->transferFromXML($this->visibility->saveXML());
         $this->assertEquals(0, count($newVisibility->extensionElements));
-        $newVisibility->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newVisibility->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newVisibility->extensionElements));
         $this->assertEquals("http://schemas.google.com/g/2005#event.private", $newVisibility->value);
 
@@ -105,8 +105,8 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->visibility->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->visibility->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->visibility->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->visibility->extensionAttributes['foo2']['value']);

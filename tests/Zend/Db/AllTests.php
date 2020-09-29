@@ -92,7 +92,7 @@ class Zend_Db_AllTests
             return;
         }
 
-        $ext = array(
+        $ext = [
             'Oracle' => 'oci8',
             'Db2'    => 'ibm_db2',
             'Mysqli' => 'mysqli',
@@ -100,7 +100,7 @@ class Zend_Db_AllTests
             /**
              * @todo  'Odbc'
              */
-        );
+        ];
 
         if (isset($ext[$driver]) && !extension_loaded($ext[$driver])) {
             self::_skipTestSuite($driver, "extension '{$ext[$driver]}' is not loaded");

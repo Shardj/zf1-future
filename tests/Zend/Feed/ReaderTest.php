@@ -209,9 +209,9 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
         }
         $links = Zend_Feed_Reader::findFeedLinks('http://www.planet-php.net');
         $this->assertTrue($links instanceof Zend_Feed_Reader_FeedSet);
-        $this->assertEquals(array(
+        $this->assertEquals([
             'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => 'http://www.planet-php.org/rss/'
-        ), (array) $links->getIterator()->current());
+        ], (array) $links->getIterator()->current());
     }
 
     public function testFeedSetLoadsFeedObjectWhenFeedArrayKeyAccessed()
@@ -288,8 +288,8 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
             $currClient = Zend_Feed_Reader::getHttpClient();
 
             $testAdapter = new Zend_Http_Client_Adapter_Test();
-            $testAdapter->setResponse(new Zend_Http_Response(200, array(), '<!DOCTYPE html><html><head><link rel="alternate" type="application/rss+xml" href="../test.rss"><link rel="alternate" type="application/atom+xml" href="/test.atom"></head><body></body></html>'));
-            Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, array('adapter' => $testAdapter)));
+            $testAdapter->setResponse(new Zend_Http_Response(200, [], '<!DOCTYPE html><html><head><link rel="alternate" type="application/rss+xml" href="../test.rss"><link rel="alternate" type="application/atom+xml" href="/test.atom"></head><body></body></html>'));
+            Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, ['adapter' => $testAdapter]));
 
             $links = Zend_Feed_Reader::findFeedLinks('http://foo/bar');
 
@@ -327,10 +327,10 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
     {
         $currClient = Zend_Feed_Reader::getHttpClient();
         $testAdapter = new Zend_Http_Client_Adapter_Test();
-        $testAdapter->setResponse(new Zend_Http_Response(200,array(),''));
-        Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, array(
+        $testAdapter->setResponse(new Zend_Http_Response(200,[],''));
+        Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, [
             'adapter'=>$testAdapter
-        )));
+        ]));
         
         $this->setExpectedException('Zend_Feed_Exception', 'Feed failed to load');
         $result = Zend_Feed_Reader::import('http://www.example.com');
@@ -346,9 +346,9 @@ class Zend_Feed_ReaderTest extends PHPUnit_Framework_TestCase
  
     protected function _getTempDirectory()
     {
-        $tmpdir = array();
-        foreach (array($_ENV, $_SERVER) as $tab) {
-            foreach (array('TMPDIR', 'TEMP', 'TMP', 'windir', 'SystemRoot') as $key) {
+        $tmpdir = [];
+        foreach ([$_ENV, $_SERVER] as $tab) {
+            foreach (['TMPDIR', 'TEMP', 'TMP', 'windir', 'SystemRoot'] as $key) {
                 if (isset($tab[$key])) {
                     if (($key == 'windir') || ($key == 'SystemRoot')) {
                         $dir = realpath($tab[$key] . '\\temp');

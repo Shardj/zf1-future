@@ -41,7 +41,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
     /**
      * @var array of Zend_Service_Rackspace_Servers_Server
      */
-    protected $servers = array();
+    protected $servers = [];
     /**
      * @var int Iterator key
      */
@@ -57,7 +57,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      * @param  array $list
      * @return void
      */
-    public function __construct($service,$list = array())
+    public function __construct($service,$list = [])
     {
         if (!($service instanceof Zend_Service_Rackspace_Servers) || !is_array($list)) {
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
@@ -96,7 +96,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      */
     public function toArray()
     {
-        $array= array();
+        $array= [];
         foreach ($this->servers as $server) {
             $array[]= $server->toArray();
         }

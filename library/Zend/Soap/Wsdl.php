@@ -65,7 +65,7 @@ class Zend_Soap_Wsdl
      *
      * @var array
      */
-    private $_includedTypes = array();
+    private $_includedTypes = [];
 
     /**
      * Strategy for detection of complex types
@@ -432,7 +432,7 @@ class Zend_Soap_Wsdl
         }
 
         $doc = $this->_dom->createElement('documentation');
-        $doc_cdata = $this->_dom->createTextNode(str_replace(array("\r\n", "\r"), "\n", $documentation));
+        $doc_cdata = $this->_dom->createTextNode(str_replace(["\r\n", "\r"], "\n", $documentation));
         $doc->appendChild($doc_cdata);
 
         if($node->hasChildNodes()) {
@@ -622,7 +622,7 @@ class Zend_Soap_Wsdl
 
         $elementXml = $this->_dom->createElement('xsd:element');
         foreach ($element as $key => $value) {
-            if (in_array($key, array('sequence', 'all', 'choice'))) {
+            if (in_array($key, ['sequence', 'all', 'choice'])) {
                 if (is_array($value)) {
                     $complexType = $this->_dom->createElement('xsd:complexType');
                     if (count($value) > 0) {

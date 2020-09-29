@@ -71,8 +71,8 @@ class Zend_Gdata_Calendar_SelectedTest extends PHPUnit_Framework_TestCase
         $newSelected = new Zend_Gdata_Calendar_Extension_Selected();
         $newSelected->transferFromXML($this->selected->saveXML());
         $this->assertEquals(count($newSelected->extensionElements), 0);
-        $newSelected->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newSelected->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newSelected->extensionElements), 1);
         $this->assertEquals($newSelected->value, true);
 
@@ -104,8 +104,8 @@ class Zend_Gdata_Calendar_SelectedTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->selected->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->selected->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->selected->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->selected->extensionAttributes['foo2']['value']);
