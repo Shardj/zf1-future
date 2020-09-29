@@ -69,8 +69,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertFalse($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertFalse($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertFalse($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertFalse($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -96,8 +96,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -123,8 +123,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -150,8 +150,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -177,8 +177,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -204,8 +204,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertFalse($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -231,8 +231,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertFalse($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertFalse($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -258,8 +258,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertFalse($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -285,8 +285,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertFalse($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertFalse($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertFalse($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertFalse($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -312,8 +312,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertFalse($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -340,8 +340,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertTrue($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertTrue($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertTrue($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertTrue($this->_filter->filter(null));
         $this->assertTrue($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -368,8 +368,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertFalse($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertFalse($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertFalse($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertFalse($this->_filter->filter(null));
         $this->assertFalse($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -385,13 +385,13 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     public function testArrayConstantNotation()
     {
         $filter = new Zend_Filter_Boolean(
-            array(
-                'type' => array(
+            [
+                'type' => [
                     Zend_Filter_Boolean::ZERO,
                     Zend_Filter_Boolean::STRING,
                     Zend_Filter_Boolean::BOOLEAN
-                )
-            )
+                ]
+            ]
         );
 
         $this->assertFalse($filter->filter(false));
@@ -404,8 +404,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertTrue($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertTrue($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertTrue($filter->filter(null));
         $this->assertTrue($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -421,13 +421,13 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     public function testArrayConfigNotation()
     {
         $filter = new Zend_Filter_Boolean(
-            array(
-                'type' => array(
+            [
+                'type' => [
                     Zend_Filter_Boolean::ZERO,
                     Zend_Filter_Boolean::STRING,
-                    Zend_Filter_Boolean::BOOLEAN),
+                    Zend_Filter_Boolean::BOOLEAN],
                 'test' => false
-            )
+            ]
         );
 
         $this->assertFalse($filter->filter(false));
@@ -440,8 +440,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertTrue($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertTrue($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertTrue($filter->filter(null));
         $this->assertTrue($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -470,8 +470,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertTrue($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertTrue($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertTrue($filter->filter(null));
         $this->assertTrue($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -487,9 +487,9 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     public function testStringNotation()
     {
         $filter = new Zend_Filter_Boolean(
-            array(
-                'type' => array('zero', 'string', 'boolean')
-            )
+            [
+                'type' => ['zero', 'string', 'boolean']
+            ]
         );
 
         $this->assertFalse($filter->filter(false));
@@ -502,8 +502,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertTrue($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertTrue($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertTrue($filter->filter(null));
         $this->assertTrue($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -532,8 +532,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertTrue($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertTrue($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertTrue($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertTrue($filter->filter(null));
         $this->assertTrue($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -560,8 +560,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_filter->filter('abc'));
         $this->assertFalse($this->_filter->filter('0'));
         $this->assertTrue($this->_filter->filter('1'));
-        $this->assertFalse($this->_filter->filter(array()));
-        $this->assertTrue($this->_filter->filter(array('xxx')));
+        $this->assertFalse($this->_filter->filter([]));
+        $this->assertTrue($this->_filter->filter(['xxx']));
         $this->assertFalse($this->_filter->filter(null));
         $this->assertFalse($this->_filter->filter('false'));
         $this->assertTrue($this->_filter->filter('true'));
@@ -592,8 +592,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertFalse($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertFalse($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertFalse($filter->filter(null));
         $this->assertFalse($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -611,7 +611,7 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     public function testConfigObject()
     {
         require_once 'Zend/Config.php';
-        $options = array('type' => 'all', 'locale' => 'de');
+        $options = ['type' => 'all', 'locale' => 'de'];
         $config  = new Zend_Config($options);
 
         $filter = new Zend_Filter_Boolean(
@@ -628,8 +628,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertFalse($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertFalse($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertFalse($filter->filter(null));
         $this->assertFalse($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -647,7 +647,7 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     public function testSettingLocalePerConstructorArray()
     {
         $filter = new Zend_Filter_Boolean(
-            array('type' => 'all', 'locale' => 'de')
+            ['type' => 'all', 'locale' => 'de']
         );
 
         $this->assertFalse($filter->filter(false));
@@ -660,8 +660,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertFalse($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertFalse($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertFalse($filter->filter(null));
         $this->assertFalse($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -680,7 +680,7 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     {
         $locale = new Zend_Locale('de');
         $filter = new Zend_Filter_Boolean(
-            array('type' => 'all', 'locale' => $locale)
+            ['type' => 'all', 'locale' => $locale]
         );
 
         $this->assertFalse($filter->filter(false));
@@ -693,8 +693,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($filter->filter('abc'));
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
-        $this->assertFalse($filter->filter(array()));
-        $this->assertTrue($filter->filter(array('xxx')));
+        $this->assertFalse($filter->filter([]));
+        $this->assertTrue($filter->filter(['xxx']));
         $this->assertFalse($filter->filter(null));
         $this->assertFalse($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));
@@ -713,7 +713,7 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
     {
         $locale = new Zend_Locale('de');
         $filter = new Zend_Filter_Boolean(
-            array('type' => 'all', 'casting' => false, 'locale' => $locale)
+            ['type' => 'all', 'casting' => false, 'locale' => $locale]
         );
 
         $this->assertFalse($filter->filter(false));
@@ -729,8 +729,8 @@ class Zend_Filter_BooleanTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($filter->filter('0'));
         $this->assertTrue($filter->filter('1'));
         $this->assertEquals('2', $filter->filter('2'));
-        $this->assertFalse($filter->filter(array()));
-        $this->assertEquals(array('xxx'), $filter->filter(array('xxx')));
+        $this->assertFalse($filter->filter([]));
+        $this->assertEquals(['xxx'], $filter->filter(['xxx']));
         $this->assertEquals(null, $filter->filter(null));
         $this->assertFalse($filter->filter('false'));
         $this->assertTrue($filter->filter('true'));

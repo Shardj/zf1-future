@@ -36,25 +36,25 @@ class Zend_Oauth_Token_AuthorizedRequestTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorSetsInputData()
     {
-        $data = array('foo'=>'bar');
+        $data = ['foo'=>'bar'];
         $token = new Zend_Oauth_Token_AuthorizedRequest($data);
         $this->assertEquals($data, $token->getData());
     }
 
     public function testConstructorParsesAccessTokenFromInputData()
     {
-        $data = array(
+        $data = [
             'oauth_token'=>'jZaee4GF52O3lUb9'
-        );
+        ];
         $token = new Zend_Oauth_Token_AuthorizedRequest($data);
         $this->assertEquals('jZaee4GF52O3lUb9', $token->getToken());
     }
 
     public function testPropertyAccessWorks()
     {
-        $data = array(
+        $data = [
             'oauth_token'=>'jZaee4GF52O3lUb9'
-        );
+        ];
         $token = new Zend_Oauth_Token_AuthorizedRequest($data);
         $this->assertEquals('jZaee4GF52O3lUb9', $token->oauth_token);
     }
@@ -78,19 +78,19 @@ class Zend_Oauth_Token_AuthorizedRequestTest extends PHPUnit_Framework_TestCase
 
     public function testIsValidDetectsBadResponse()
     {
-        $data = array(
+        $data = [
             'missing_oauth_token'=>'jZaee4GF52O3lUb9'
-        );
+        ];
         $token = new Zend_Oauth_Token_AuthorizedRequest($data);
         $this->assertFalse($token->isValid());
     }
 
     public function testIsValidDetectsGoodResponse()
     {
-        $data = array(
+        $data = [
             'oauth_token'=>'jZaee4GF52O3lUb9',
             'foo'=>'bar'
-        );
+        ];
         $token = new Zend_Oauth_Token_AuthorizedRequest($data);
         $this->assertTrue($token->isValid());
     }

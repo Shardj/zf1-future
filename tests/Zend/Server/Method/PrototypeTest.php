@@ -109,20 +109,20 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
 
     public function testPrototypeShouldAllowAddingParameterObjects()
     {
-        $parameter = new Zend_Server_Method_Parameter(array(
+        $parameter = new Zend_Server_Method_Parameter([
             'type' => 'string',
             'name' => 'foo',
-        ));
+        ]);
         $this->prototype->addParameter($parameter);
         $this->assertSame($parameter, $this->prototype->getParameter('foo'));
     }
 
     public function testPrototypeShouldAllowFetchingParameterByNameOrIndex()
     {
-        $parameter = new Zend_Server_Method_Parameter(array(
+        $parameter = new Zend_Server_Method_Parameter([
             'type' => 'string',
             'name' => 'foo',
-        ));
+        ]);
         $this->prototype->addParameter($parameter);
         $test1 = $this->prototype->getParameter('foo');
         $test2 = $this->prototype->getParameter(0);
@@ -133,7 +133,7 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
 
     public function testPrototypeShouldAllowRetrievingParameterObjects()
     {
-        $this->prototype->addParameters(array('string', 'array'));
+        $this->prototype->addParameters(['string', 'array']);
         $parameters = $this->prototype->getParameterObjects();
         foreach ($parameters as $parameter) {
             $this->assertTrue($parameter instanceof Zend_Server_Method_Parameter);
@@ -143,10 +143,10 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
     public function testPrototypeShouldAllowAddingMultipleParameters()
     {
         $this->testParametersShouldBeEmptyArrayByDefault();
-        $params = array(
+        $params = [
             'string',
             'array',
-        );
+        ];
         $this->prototype->addParameters($params);
         $test = $this->prototype->getParameters();
         $this->assertSame($params, $test);
@@ -155,11 +155,11 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
     public function testSetParametersShouldOverwriteParameters()
     {
         $this->testPrototypeShouldAllowAddingMultipleParameters();
-        $params = array(
+        $params = [
             'bool',
             'base64',
             'struct',
-        );
+        ];
         $this->prototype->setParameters($params);
         $test = $this->prototype->getParameters();
         $this->assertSame($params, $test);
@@ -168,11 +168,11 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
     public function testPrototypeShouldSerializeToArray()
     {
         $return = 'string';
-        $params = array(
+        $params = [
             'bool',
             'base64',
             'struct',
-        );
+        ];
         $this->prototype->setReturnType($return)
                         ->setParameters($params);
         $test = $this->prototype->toArray();
@@ -182,14 +182,14 @@ class Zend_Server_Method_PrototypeTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorShouldSetObjectStateFromOptions()
     {
-        $options = array(
+        $options = [
             'returnType' => 'string',
-            'parameters' => array(
+            'parameters' => [
                 'bool',
                 'base64',
                 'struct',
-            ),
-        );
+            ],
+        ];
         $prototype = new Zend_Server_Method_Prototype($options);
         $test = $prototype->toArray();
         $this->assertSame($options, $test);

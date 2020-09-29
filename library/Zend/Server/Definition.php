@@ -33,7 +33,7 @@ class Zend_Server_Definition implements Countable, Iterator
     /**
      * @var array Array of Zend_Server_Method_Definition objects
      */
-    protected $_methods = array();
+    protected $_methods = [];
 
     /**
      * @var bool Whether or not overwriting existing methods is allowed
@@ -187,7 +187,7 @@ class Zend_Server_Definition implements Countable, Iterator
      */
     public function clearMethods()
     {
-        $this->_methods = array();
+        $this->_methods = [];
         return $this;
     }
 
@@ -198,7 +198,7 @@ class Zend_Server_Definition implements Countable, Iterator
      */
     public function toArray()
     {
-        $methods = array();
+        $methods = [];
         foreach ($this->getMethods() as $key => $method) {
             $methods[$key] = $method->toArray();
         }

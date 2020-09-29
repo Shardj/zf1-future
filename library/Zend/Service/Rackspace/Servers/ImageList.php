@@ -40,7 +40,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
     /**
      * @var array of Zend_Service_Rackspace_Servers_Image
      */
-    protected $images = array();
+    protected $images = [];
     /**
      * @var int Iterator key
      */
@@ -56,7 +56,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      * @param  array $list
      * @return void
      */
-    public function __construct($service,$list = array())
+    public function __construct($service,$list = [])
     {
         if (!($service instanceof Zend_Service_Rackspace_Servers) || !is_array($list)) {
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
@@ -95,7 +95,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      */
     public function toArray()
     {
-        $array= array();
+        $array= [];
         foreach ($this->images as $image) {
             $array[]= $image->toArray();
         }

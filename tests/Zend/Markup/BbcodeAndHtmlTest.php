@@ -121,7 +121,7 @@ class Zend_Markup_BbcodeAndHtmlTest extends PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Zend_Markup_Parser_Exception');
 
-        $this->_markup->getParser()->parse(array());
+        $this->_markup->getParser()->parse([]);
     }
 
     /**
@@ -150,15 +150,15 @@ class Zend_Markup_BbcodeAndHtmlTest extends PHPUnit_Framework_TestCase
 
         $this->_markup->addMarkup('bar',
             Zend_Markup_Renderer_RendererAbstract::TYPE_CALLBACK,
-            array('group' => 'inline'));
+            ['group' => 'inline']);
         $this->_markup->addMarkup('suppp',
             Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
-            array('start' => '<sup>', 'end' => '</sup>', 'group' => 'inline'));
+            ['start' => '<sup>', 'end' => '</sup>', 'group' => 'inline']);
         $this->_markup->addMarkup('zend',
             Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
-            array('replace' => 'Zend Framework', 'group' => 'inline', 'empty' => true));
+            ['replace' => 'Zend Framework', 'group' => 'inline', 'empty' => true]);
         $this->_markup->addMarkup('line', Zend_Markup_Renderer_RendererAbstract::TYPE_ALIAS,
-            array('name' => 'hr'));
+            ['name' => 'hr']);
 
         $this->assertEquals('[foo=blaat]hell<sup>test</sup>blaat[/foo]',
             $this->_markup->render('[bar="blaat"]hell[suppp]test[/suppp]blaat[/]'));
@@ -276,7 +276,7 @@ class Zend_Markup_BbcodeAndHtmlTest extends PHPUnit_Framework_TestCase
 
     public function testListTypes()
     {
-        $types = array(
+        $types = [
             '01'    => 'decimal-leading-zero',
             '1'     => 'decimal',
             'i'     => 'lower-roman',
@@ -284,7 +284,7 @@ class Zend_Markup_BbcodeAndHtmlTest extends PHPUnit_Framework_TestCase
             'a'     => 'lower-alpha',
             'A'     => 'upper-alpha',
             'alpha' => 'lower-greek'
-        );
+        ];
 
         foreach ($types as $type => $style) {
             $input    = "[list={$type}][*]Foobar\n[*]Zend\n[/list]";
@@ -435,7 +435,7 @@ BBCODE;
 
         $this->_markup->addMarkup('suppp',
             Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
-            array('start' => '<sup>', 'end' => '</sup>', 'group' => 'inline', 'filter' => $filter));
+            ['start' => '<sup>', 'end' => '</sup>', 'group' => 'inline', 'filter' => $filter]);
         $this->assertEquals("filter<br />\n<sup>filter\n&amp;\nfilter</sup>",
             $m->render("filter\n[suppp]filter\n&\nfilter[/suppp]"));
     }
@@ -484,33 +484,33 @@ BBCODE;
     {
         $m = $this->_markup;
 
-        $m->addGroup('table', array('block'));
-        $m->addGroup('table-row', array('table'));
-        $m->addGroup('table-cell', array('table-row'), array('inline', 'inline-empty'));
+        $m->addGroup('table', ['block']);
+        $m->addGroup('table-row', ['table']);
+        $m->addGroup('table-cell', ['table-row'], ['inline', 'inline-empty']);
 
         $m->addMarkup(
             'table',
             Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
-            array(
+            [
                 'tag'   => 'table',
                 'group' => 'table'
-            )
+            ]
         );
         $m->addMarkup(
             'tr',
             Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
-            array(
+            [
                 'tag'   => 'tr',
                 'group' => 'table-row'
-            )
+            ]
         );
         $m->addMarkup(
             'td',
             Zend_Markup_Renderer_RendererAbstract::TYPE_REPLACE,
-            array(
+            [
                 'tag'   => 'td',
                 'group' => 'table-cell'
-            )
+            ]
         );
 
         $this->assertEquals('<table><tr><td>test</td></tr></table>',

@@ -174,7 +174,7 @@ class Zend_View_Helper_PaginationControlTest extends PHPUnit_Framework_TestCase
     public function testAcceptsViewPartialInOtherModule()
     {
         try {
-            $this->_viewHelper->paginationControl($this->_paginator, null, array('partial.phtml', 'test'));
+            $this->_viewHelper->paginationControl($this->_paginator, null, ['partial.phtml', 'test']);
         } catch (Exception $e) {
             /* We don't care whether or not the module exists--we just want to
              * make sure it gets to Zend_View_Helper_Partial and it's recognized

@@ -49,7 +49,7 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
         // This has to be done because some CLI setups don't have $_SERVER variables
         // to simuulate that we have an actual webserver.
         if(!isset($_SERVER) || !is_array($_SERVER)) {
-            $_SERVER = array();
+            $_SERVER = [];
         }
         $_SERVER['HTTP_HOST'] = 'localhost';
         $_SERVER['REQUEST_URI'] = '/my_script.php?wsdl';
@@ -59,7 +59,7 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
 
     protected function sanitizeWsdlXmlOutputForOsCompability($xmlstring)
     {
-        $xmlstring = str_replace(array("\r", "\n"), "", $xmlstring);
+        $xmlstring = str_replace(["\r", "\n"], "", $xmlstring);
         $xmlstring = preg_replace('/(>[\s]{1,}<)/', '', $xmlstring);
         return $xmlstring;
     }
@@ -158,8 +158,8 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
         $scriptUri = 'http://localhost/my_script.php';
 
         $server = new Zend_Soap_AutoDiscover();
-        $server->setBindingStyle(array('style' => 'document', 'transport' => 'http://framework.zend.com'));
-        $server->setOperationBodyStyle(array('use' => 'literal', 'namespace' => 'http://framework.zend.com'));
+        $server->setBindingStyle(['style' => 'document', 'transport' => 'http://framework.zend.com']);
+        $server->setOperationBodyStyle(['use' => 'literal', 'namespace' => 'http://framework.zend.com']);
         $server->setClass('Zend_Soap_AutoDiscover_Test');
         $dom = new DOMDocument();
         ob_start();
@@ -382,8 +382,8 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
         $scriptUri = 'http://localhost/my_script.php';
 
         $server = new Zend_Soap_AutoDiscover();
-        $server->setBindingStyle(array('style' => 'document', 'transport' => 'http://framework.zend.com'));
-        $server->setOperationBodyStyle(array('use' => 'literal', 'namespace' => 'http://framework.zend.com'));
+        $server->setBindingStyle(['style' => 'document', 'transport' => 'http://framework.zend.com']);
+        $server->setOperationBodyStyle(['use' => 'literal', 'namespace' => 'http://framework.zend.com']);
         $server->addFunction('Zend_Soap_AutoDiscover_TestFunc');
         $dom = new DOMDocument();
         ob_start();
@@ -619,7 +619,7 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
     {
         $server = new Zend_Soap_AutoDiscover();
         try {
-            $server->setUri(array("bogus"));
+            $server->setUri(["bogus"]);
             $this->fail();
         } catch(Zend_Soap_AutoDiscover_Exception $e) {
 
@@ -708,7 +708,7 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
 
         $functions = $server->getFunctions();
         $this->assertEquals(
-            array('Zend_Soap_AutoDiscover_TestFunc', 'testFunc1', 'testFunc2', 'testFunc3', 'testFunc4'),
+            ['Zend_Soap_AutoDiscover_TestFunc', 'testFunc1', 'testFunc2', 'testFunc3', 'testFunc4'],
             $functions
         );
     }
@@ -719,35 +719,35 @@ class Zend_Soap_AutoDiscoverTest extends PHPUnit_Framework_TestCase
     public function testUsingRequestUriWithoutParametersAsDefault()
     {
         // Apache
-        $_SERVER = array('REQUEST_URI' => '/my_script.php?wsdl', 'HTTP_HOST' => 'localhost');
+        $_SERVER = ['REQUEST_URI' => '/my_script.php?wsdl', 'HTTP_HOST' => 'localhost'];
         $server = new Zend_Soap_AutoDiscover();
         $uri = $server->getUri()->getUri();
         $this->assertNotContains("?wsdl", $uri);
         $this->assertEquals("http://localhost/my_script.php", $uri);
 
         // Apache plus SSL
-        $_SERVER = array('REQUEST_URI' => '/my_script.php?wsdl', 'HTTP_HOST' => 'localhost', 'HTTPS' => 'on');
+        $_SERVER = ['REQUEST_URI' => '/my_script.php?wsdl', 'HTTP_HOST' => 'localhost', 'HTTPS' => 'on'];
         $server = new Zend_Soap_AutoDiscover();
         $uri = $server->getUri()->getUri();
         $this->assertNotContains("?wsdl", $uri);
         $this->assertEquals("https://localhost/my_script.php", $uri);
 
         // IIS 5 + PHP as FastCGI
-        $_SERVER = array('ORIG_PATH_INFO' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
+        $_SERVER = ['ORIG_PATH_INFO' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost'];
         $server = new Zend_Soap_AutoDiscover();
         $uri = $server->getUri()->getUri();
         $this->assertNotContains("?wsdl", $uri);
         $this->assertEquals("http://localhost/my_script.php", $uri);
 
         // IIS with ISAPI_Rewrite
-        $_SERVER = array('HTTP_X_REWRITE_URL' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
+        $_SERVER = ['HTTP_X_REWRITE_URL' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost'];
         $server = new Zend_Soap_AutoDiscover();
         $uri = $server->getUri()->getUri();
         $this->assertNotContains("?wsdl", $uri);
         $this->assertEquals("http://localhost/my_script.php", $uri);
 
         // IIS with Microsoft Rewrite Module
-        $_SERVER = array('HTTP_X_ORIGINAL_URL' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost');
+        $_SERVER = ['HTTP_X_ORIGINAL_URL' => '/my_script.php?wsdl', 'SERVER_NAME' => 'localhost'];
         $server = new Zend_Soap_AutoDiscover();
         $uri = $server->getUri()->getUri();
         $this->assertNotContains("?wsdl", $uri);

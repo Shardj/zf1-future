@@ -204,7 +204,7 @@ class Zend_XmlRpc_FaultTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue(Zend_XmlRpc_Fault::isFault($xml), $xml);
         $this->assertFalse(Zend_XmlRpc_Fault::isFault('foo'));
-        $this->assertFalse(Zend_XmlRpc_Fault::isFault(array('foo')));
+        $this->assertFalse(Zend_XmlRpc_Fault::isFault(['foo']));
     }
 
     /**

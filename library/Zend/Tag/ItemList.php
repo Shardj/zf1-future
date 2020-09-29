@@ -38,7 +38,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      *
      * @var array
      */
-    protected $_items = array();
+    protected $_items = [];
 
     /**
      * Count all items
@@ -91,7 +91,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
             // Calculate the thresholds
             $steps      = count($values);
             $delta      = ($maxWeight - $minWeight) / ($steps - 1);
-            $thresholds = array();
+            $thresholds = [];
 
             for ($i = 0; $i < $steps; $i++) {
                 $thresholds[$i] = floor(100 * log(($minWeight + $i * $delta) + 2));

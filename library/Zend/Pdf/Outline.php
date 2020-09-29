@@ -45,7 +45,7 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
      *
      * @var array
      */
-    public $childOutlines = array();
+    public $childOutlines = [];
 
 
     /**
@@ -155,12 +155,12 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
      */
     public function getOptions()
     {
-        return array('title'  => $this->_title,
+        return ['title'  => $this->_title,
                      'open'   => $this->_open,
                      'color'  => $this->_color,
                      'italic' => $this->_italic,
                      'bold'   => $this->_bold,
-                     'target' => $this->_target);
+                     'target' => $this->_target];
     }
 
     /**
@@ -236,8 +236,8 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
                 throw new Zend_Pdf_Exception('Outline create method takes $title (string) and $target (Zend_Pdf_Target or string) or an array as an input');
             }
 
-            return new Zend_Pdf_Outline_Created(array('title'  => $param1,
-                                                      'target' => $param2));
+            return new Zend_Pdf_Outline_Created(['title'  => $param1,
+                                                      'target' => $param2]);
         } else {
             if (!is_array($param1)  ||  $param2 !== null) {
                 require_once 'Zend/Pdf/Exception.php';

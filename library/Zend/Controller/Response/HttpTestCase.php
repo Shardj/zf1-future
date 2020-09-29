@@ -40,7 +40,7 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
      */
     public function sendHeaders()
     {
-        $headers = array();
+        $headers = [];
         foreach ($this->_headersRaw as $header) {
             $headers[] = $header;
         }

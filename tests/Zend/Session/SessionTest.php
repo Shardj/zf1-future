@@ -57,7 +57,7 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function __construct($name = NULL, array $data = array(), $dataName = '')
+    public function __construct($name = NULL, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
         $this->_script = 'php '
@@ -168,17 +168,17 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
     public function testSetOptions()
     {
         try {
-            Zend_Session::setOptions(array('foo' => 'break me'));
+            Zend_Session::setOptions(['foo' => 'break me']);
             $this->fail('Expected Zend_Session_Exception not thrown when trying to set an invalid option');
         } catch (Zend_Session_Exception $e) {
             $this->assertRegexp('/unknown.option/i', $e->getMessage());
         }
 
-        Zend_Session::setOptions(array('save_path' => '1;777;/tmp'));
+        Zend_Session::setOptions(['save_path' => '1;777;/tmp']);
 
-        Zend_Session::setOptions(array('save_path' => '2;/tmp'));
+        Zend_Session::setOptions(['save_path' => '2;/tmp']);
 
-        Zend_Session::setOptions(array('save_path' => '/tmp'));
+        Zend_Session::setOptions(['save_path' => '/tmp']);
     }
 
     /**
@@ -521,7 +521,7 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
      */
     public function testUnLockAll()
     {
-        $sessions = array('one', 'two', 'default', 'three');
+        $sessions = ['one', 'two', 'default', 'three'];
         foreach ($sessions as $namespace) {
             $s = new Zend_Session_Namespace($namespace);
             $s->a = 'apple';
@@ -1043,12 +1043,12 @@ class Zend_SessionTest extends PHPUnit_Framework_TestCase
     public function testGetNameSpaceMethod()
     {
         Zend_Session::$_unitTestEnabled = true;
-        $namespace = array(
+        $namespace = [
             'FooBar',
             'Foo_Bar',
             'Foo-Bar',
             'Foo1000'
-        );
+        ];
         foreach ($namespace as $v) {
             $s = new Zend_Session_Namespace($v);
             $this->assertEquals($v, $s->getNamespace());

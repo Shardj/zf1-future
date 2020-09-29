@@ -81,7 +81,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDbTest
         $doc1 = $this->_makeDocument($data[1]);
         $this->_wait();
         $this->_commonDocument->updateDocument($name, $doc->getID(), $doc1,
-            array(Zend_Cloud_DocumentService_Adapter_SimpleDb::MERGE_OPTION => true));
+            [Zend_Cloud_DocumentService_Adapter_SimpleDb::MERGE_OPTION => true]);
         $this->_wait();
 
         $fetchdoc = $this->_commonDocument->fetchDocument($name, $doc->getID());
@@ -105,8 +105,8 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDbTest
         $doc1 = $this->_makeDocument($data[1]);
         $this->_wait();
         $this->_commonDocument->updateDocument($name, $doc->getID(), $doc1,
-            array(Zend_Cloud_DocumentService_Adapter_SimpleDb::MERGE_OPTION =>
-                array("year" => true, "pages" => true)));
+            [Zend_Cloud_DocumentService_Adapter_SimpleDb::MERGE_OPTION =>
+                ["year" => true, "pages" => true]]);
         $this->_wait();
 
         $fetchdoc = $this->_commonDocument->fetchDocument($name, $doc->getID());
@@ -122,11 +122,11 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDbTest
 
     static function getConfigArray()
     {
-        return array(
+        return [
                 Zend_Cloud_DocumentService_Factory::DOCUMENT_ADAPTER_KEY => 'Zend_Cloud_DocumentService_Adapter_SimpleDb',
                 Zend_Cloud_DocumentService_Adapter_SimpleDb::AWS_ACCESS_KEY => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
                 Zend_Cloud_DocumentService_Adapter_SimpleDb::AWS_SECRET_KEY => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_SECRETKEY'),
-            );
+            ];
     }
 
     protected function _getConfig()
@@ -145,39 +145,39 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDbTest
 
     protected function _getDocumentData()
     {
-        return array(
-            array(
+        return [
+            [
 	        	parent::ID_FIELD => "0385333498",
 	        	"name" =>	"The Sirens of Titan",
 	        	"author" =>	"Kurt Vonnegut",
 	        	"year"	=> 1959,
 	        	"pages" =>	336,
-	        	"keyword" => array("Book", "Paperback")
-	        	),
-            array(
+	        	"keyword" => ["Book", "Paperback"]
+	        	],
+            [
 	        	parent::ID_FIELD => "0802131786",
 	        	"name" =>	"Tropic of Cancer",
 	        	"author" =>	"Henry Miller",
 	        	"year"	=> 1934,
 	        	"pages" =>	318,
-	        	"keyword" => array("Book")
-	        	),
-            array(
+	        	"keyword" => ["Book"]
+	        	],
+            [
 	        	parent::ID_FIELD => "B000T9886K",
 	        	"name" =>	"In Between",
 	        	"author" =>	"Paul Van Dyk",
 	        	"year"	=> 2007,
-	        	"keyword" => array("CD", "Music")
-	        	),
-	        array(
+	        	"keyword" => ["CD", "Music"]
+	        	],
+	        [
 	        	parent::ID_FIELD => "1579124585",
 	        	"name" =>	"The Right Stuff",
 	        	"author" =>	"Tom Wolfe",
 	        	"year"	=> 1979,
 	        	"pages" =>	304,
-	        	"keyword" => array("American", "Book", "Hardcover")
-	        	),
-        );
+	        	"keyword" => ["American", "Book", "Hardcover"]
+	        	],
+        ];
     }
 
     protected function _queryString($domain, $s1, $s2)

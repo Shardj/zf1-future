@@ -62,7 +62,7 @@ class Custom_Object {
 
     public function __sleep()
     {
-        return array('a'); // serialize only this variable
+        return ['a']; // serialize only this variable
     }
 }
 
@@ -71,15 +71,15 @@ class Zend_Queue_CustomTest extends PHPUnit_Framework_TestCase
     public function test_behavior()
     {
         $object_count = 10;
-        $objects = array();
+        $objects = [];
 
-        $queue = new Custom_Queue('Array', array('name'=>'ObjectA'));
+        $queue = new Custom_Queue('Array', ['name'=>'ObjectA']);
         $this->assertTrue($queue instanceof Custom_Queue);
 
         // ------------------------------------------------ send
 
         // add items $objects[0-4]
-        $objects = array();
+        $objects = [];
         for ($i = 0; $i < $object_count-5; $i++) {
             $object = new Custom_Object();
             $queue->send(new Custom_Message($object));

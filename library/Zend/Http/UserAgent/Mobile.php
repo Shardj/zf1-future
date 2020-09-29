@@ -42,7 +42,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @var array
      */
-    protected static $_uaSignatures = array(
+    protected static $_uaSignatures = [
         'iphone',
         'ipod',
         'ipad',
@@ -162,25 +162,25 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
         'j2me',
         'klondike',
         'kbrowser'
-    );
+    ];
 
     /**
      * @var array
      */
-    protected static $_haTerms = array(
+    protected static $_haTerms = [
         'midp',
         'wml',
         'vnd.rim',
         'vnd.wap',
         'j2me',
-    );
+    ];
 
     /**
      * first 4 letters of mobile User Agent chains
      *
      * @var array
      */
-    protected static $_uaBegin = array(
+    protected static $_uaBegin = [
         'w3c ',
         'acs-',
         'alav',
@@ -266,7 +266,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
         'winw',
         'xda',
         'xda-',
-    );
+    ];
 
     /**
      * Comparison of the UserAgent chain and User Agent signatures
@@ -325,7 +325,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return void
      */
-    public function __construct($userAgent = null, array $server = array(), array $config = array())
+    public function __construct($userAgent = null, array $server = [], array $config = [])
     {
         // For mobile detection, an adapter must be defined
         if (empty($config['mobile']['features'])) {
@@ -375,7 +375,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
         }
 
         // image format
-        $this->_images = array();
+        $this->_images = [];
 
         if ($this->getFeature('png')) {
             $this->_images[] = 'png';

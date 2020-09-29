@@ -72,8 +72,8 @@ class Zend_Gdata_EventStatusTest extends PHPUnit_Framework_TestCase
         $newEventStatus = new Zend_Gdata_Extension_EventStatus();
         $newEventStatus->transferFromXML($this->eventStatus->saveXML());
         $this->assertEquals(0, count($newEventStatus->extensionElements));
-        $newEventStatus->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newEventStatus->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newEventStatus->extensionElements));
         $this->assertEquals("http://schemas.google.com/g/2005#event.tentative", $newEventStatus->value);
 
@@ -105,8 +105,8 @@ class Zend_Gdata_EventStatusTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->eventStatus->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->eventStatus->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->eventStatus->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->eventStatus->extensionAttributes['foo2']['value']);

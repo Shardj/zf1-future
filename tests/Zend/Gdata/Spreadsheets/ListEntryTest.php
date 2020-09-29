@@ -38,7 +38,7 @@ class Zend_Gdata_Spreadsheets_ListEntryTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->listEntry = new Zend_Gdata_Spreadsheets_ListEntry();
-        $this->rowData = array();
+        $this->rowData = [];
         $this->rowData[] = new Zend_Gdata_Spreadsheets_Extension_Custom(
             'column_1', 'value 1');
         $this->rowData[] = new Zend_Gdata_Spreadsheets_Extension_Custom(
@@ -145,7 +145,7 @@ class Zend_Gdata_Spreadsheets_ListEntryTest extends PHPUnit_Framework_TestCase
             count($this->listEntry->getCustom()));
         $this->assertEquals(count($this->listEntry->getCustom()),
             count($this->listEntry->getCustomByName()));
-        $this->listEntry->setCustom(array());
+        $this->listEntry->setCustom([]);
         $this->assertEquals(0, count($this->listEntry->getCustom()));
     }
 

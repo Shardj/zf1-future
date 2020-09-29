@@ -60,13 +60,13 @@ class Zend_Oauth_Http_RequestToken extends Zend_Oauth_Http
      */
     public function assembleParams()
     {
-        $params = array(
+        $params = [
             'oauth_consumer_key'     => $this->_consumer->getConsumerKey(),
             'oauth_nonce'            => $this->_httpUtility->generateNonce(),
             'oauth_timestamp'        => $this->_httpUtility->generateTimestamp(),
             'oauth_signature_method' => $this->_consumer->getSignatureMethod(),
             'oauth_version'          => $this->_consumer->getVersion(),
-        );
+        ];
 
         // indicates we support 1.0a
         if ($this->_consumer->getCallbackUrl()) {

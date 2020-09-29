@@ -234,14 +234,14 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
         $uri    = 'http://' . $host . ':' . $this->getPort() . $path;
         $client = self::getHttpClient();
         $client->setUri($uri);
-        $client->setConfig(array(
+        $client->setConfig([
             'useragent'    => $this->getUserAgent(),
-        ));
+        ]);
 
-        $client->setHeaders(array(
+        $client->setHeaders([
             'Host'         => $host,
             'Content-Type' => 'application/x-www-form-urlencoded; charset=' . $this->getCharset()
-        ));
+        ]);
         $client->setParameterPost($params);
 
         $client->setMethod(Zend_Http_Client::POST);
@@ -265,10 +265,10 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
             $blog = $this->getBlogUrl();
         }
 
-        $response = $this->_post('rest.akismet.com', '/1.1/verify-key', array(
+        $response = $this->_post('rest.akismet.com', '/1.1/verify-key', [
             'key'  => $key,
             'blog' => $blog
-        ));
+        ]);
 
         return ('valid' == $response->getBody());
     }

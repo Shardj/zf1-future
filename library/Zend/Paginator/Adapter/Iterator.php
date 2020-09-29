@@ -82,7 +82,7 @@ class Zend_Paginator_Adapter_Iterator implements Zend_Paginator_Adapter_Interfac
     public function getItems($offset, $itemCountPerPage)
     {
         if ($this->_count == 0) {
-            return array();
+            return [];
         }
 
         // @link http://bugs.php.net/bug.php?id=49906 | ZF-8084

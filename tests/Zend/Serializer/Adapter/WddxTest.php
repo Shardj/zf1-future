@@ -63,7 +63,7 @@ class Zend_Serializer_Adapter_WddxTest extends PHPUnit_Framework_TestCase
         $expected = '<wddxPacket version=\'1.0\'><header><comment>a test comment</comment></header>'
                   . '<data><string>test</string></data></wddxPacket>';
 
-        $data = $this->_adapter->serialize($value, array('comment' => 'a test comment'));
+        $data = $this->_adapter->serialize($value, ['comment' => 'a test comment']);
         $this->assertEquals($expected, $data);
     }
 

@@ -80,7 +80,7 @@ class Zend_Http_UserAgent implements Serializable
      *
      * @var array
      */
-    protected $_browserTypeClass = array();
+    protected $_browserTypeClass = [];
 
     /**
      * Array to store config
@@ -90,12 +90,12 @@ class Zend_Http_UserAgent implements Serializable
      *
      * @var array
      */
-    protected $_config = array(
+    protected $_config = [
         'identification_sequence' => self::DEFAULT_IDENTIFICATION_SEQUENCE,
-        'storage'                 => array(
+        'storage'                 => [
             'adapter'             => self::DEFAULT_PERSISTENT_STORAGE_ADAPTER,
-        ),
-    );
+        ],
+    ];
 
     /**
      * Identified device
@@ -122,20 +122,20 @@ class Zend_Http_UserAgent implements Serializable
      * Plugin loaders
      * @var array
      */
-    protected $_loaders = array();
+    protected $_loaders = [];
 
     /**
      * Valid plugin loader types
      * @var array
      */
-    protected $_loaderTypes = array('storage', 'device');
+    protected $_loaderTypes = ['storage', 'device'];
 
     /**
      * Trace of items matched to identify the browser type
      *
      * @var array
      */
-    protected $_matchLog = array();
+    protected $_matchLog = [];
 
     /**
      * Server variable
@@ -172,14 +172,14 @@ class Zend_Http_UserAgent implements Serializable
     public function serialize()
     {
         $device = $this->getDevice();
-        $spec = array(
+        $spec = [
             'browser_type' => $this->_browserType,
             'config'       => $this->_config,
             'device_class' => get_class($device),
             'device'       => $device->serialize(),
             'user_agent'   => $this->getServerValue('http_user_agent'),
             'http_accept'  => $this->getServerValue('http_accept'),
-        );
+        ];
         return serialize($spec);
     }
 
@@ -249,7 +249,7 @@ class Zend_Http_UserAgent implements Serializable
         }
 
         // And then loop through the remaining options
-        $config = array();
+        $config = [];
         foreach ($options as $key => $value) {
             switch (strtolower($key)) {
                 case 'browser_type':
@@ -296,7 +296,7 @@ class Zend_Http_UserAgent implements Serializable
 
         // Call match method on device class
         return call_user_func(
-            array($deviceClass, 'match'),
+            [$deviceClass, 'match'],
             $userAgent,
             $this->getServer()
         );
@@ -432,7 +432,7 @@ class Zend_Http_UserAgent implements Serializable
                 $adapter = $loader->load($adapter);
                 $loader = $this->getPluginLoader('storage');
             }
-            $options = array('browser_type' => $browser);
+            $options = ['browser_type' => $browser];
             if (isset($config['options'])) {
                 $options = array_merge($options, $config['options']);
             }
@@ -500,7 +500,7 @@ class Zend_Http_UserAgent implements Serializable
      * @param  mixed $config (option) Config array
      * @return Zend_Http_UserAgent
      */
-    public function setConfig($config = array())
+    public function setConfig($config = [])
     {
         if ($config instanceof Zend_Config) {
             $config = $config->toArray();
@@ -516,7 +516,7 @@ class Zend_Http_UserAgent implements Serializable
         }
 
         if ($config instanceof Traversable) {
-            $tmp = array();
+            $tmp = [];
             foreach ($config as $key => $value) {
                 $tmp[$key] = $value;
             }
@@ -649,7 +649,7 @@ class Zend_Http_UserAgent implements Serializable
         if ($server instanceof ArrayObject) {
             $server = $server->getArrayCopy();
         } elseif ($server instanceof Traversable) {
-            $tmp = array();
+            $tmp = [];
             foreach ($server as $key => $value) {
                 $tmp[$key] = $value;
             }

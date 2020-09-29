@@ -68,7 +68,7 @@ class Zend_Session_TestHelper
      */
     public function doExpireAll(array $args)
     {
-        Zend_Session::setOptions(array('remember_me_seconds' => 15, 'gc_probability' => 2));
+        Zend_Session::setOptions(['remember_me_seconds' => 15, 'gc_probability' => 2]);
         session_id($args[0]);
         if (isset($args[1]) && !empty($args[1])) {
             $s = new Zend_Session_Namespace($args[1]);
@@ -140,7 +140,7 @@ class Zend_Session_TestHelper
         }
         $result = '';
         foreach ($s->getIterator() as $key => $val) {
-            $result .= "$key === ". (str_replace(array("\n", ' '),array(';',''), print_r($val, true))) .';';
+            $result .= "$key === ". (str_replace(["\n", ' '],[';',''], print_r($val, true))) .';';
         }
         // file_put_contents('out.sesstiontest.get', print_r($s->someArray, true));
         Zend_Session::writeClose();

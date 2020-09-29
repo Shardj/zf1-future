@@ -60,11 +60,11 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        $valuesExpected = array(
+        $valuesExpected = [
             'string' => 'string',
             'aBc1@3' => 'abc1@3',
             'A b C'  => 'a b c'
-        );
+        ];
 
         foreach ($valuesExpected as $input => $output) {
             $this->assertEquals($output, $this->_filter->filter($input));
@@ -79,11 +79,11 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
      */
     public function testWithEncoding()
     {
-        $valuesExpected = array(
+        $valuesExpected = [
             'Ü'     => 'ü',
             'Ñ'     => 'ñ',
             'ÜÑ123' => 'üñ123'
-        );
+        ];
 
         try {
             $this->_filter->setEncoding('UTF-8');
@@ -117,14 +117,14 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
      */
     public function testInitiationWithEncoding()
     {
-        $valuesExpected = array(
+        $valuesExpected = [
             'Ü'     => 'ü',
             'Ñ'     => 'ñ',
             'ÜÑ123' => 'üñ123'
-        );
+        ];
 
         try {
-            $filter = new Zend_Filter_StringToLower(array('encoding' => 'UTF-8'));
+            $filter = new Zend_Filter_StringToLower(['encoding' => 'UTF-8']);
             foreach ($valuesExpected as $input => $output) {
                 $this->assertEquals($output, $filter->filter($input));
             }
@@ -138,11 +138,11 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
      */
     public function testCaseInsensitiveEncoding()
     {
-        $valuesExpected = array(
+        $valuesExpected = [
             'Ü'     => 'ü',
             'Ñ'     => 'ñ',
             'ÜÑ123' => 'üñ123'
-        );
+        ];
 
         try {
             $this->_filter->setEncoding('UTF-8');

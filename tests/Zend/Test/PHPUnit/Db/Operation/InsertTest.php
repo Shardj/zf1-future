@@ -48,13 +48,13 @@ class Zend_Test_PHPUnit_Db_Operation_InsertTest extends PHPUnit_Framework_TestCa
         $testAdapter = $this->getMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->at(0))
                     ->method('insert')
-                    ->with('foo', array('foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'));
+                    ->with('foo', ['foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz']);
         $testAdapter->expects($this->at(1))
                     ->method('insert')
-                    ->with('foo', array('foo' => 'bar', 'bar' => 'bar', 'baz' => 'bar'));
+                    ->with('foo', ['foo' => 'bar', 'bar' => 'bar', 'baz' => 'bar']);
         $testAdapter->expects($this->at(2))
                     ->method('insert')
-                    ->with('foo', array('foo' => 'baz', 'bar' => 'baz', 'baz' => 'baz'));
+                    ->with('foo', ['foo' => 'baz', 'bar' => 'baz', 'baz' => 'baz']);
 
         $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
 

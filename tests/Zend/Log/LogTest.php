@@ -198,8 +198,8 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($mock->events));
         $event = array_shift($mock->events);
 
-        $standardFields = array_flip(array('timestamp', 'priority', 'priorityName', 'message'));
-        $this->assertEquals(array(), array_diff_key($event, $standardFields));
+        $standardFields = array_flip(['timestamp', 'priority', 'priorityName', 'message']);
+        $this->assertEquals([], array_diff_key($event, $standardFields));
     }
 
     public function testLogWritesAndOverwritesExtraFields() {
@@ -221,7 +221,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     public function testLogAcceptsExtrasParameterAsArrayAndPushesIntoEvent()
     {
         $logger = new Zend_Log($mock = new Zend_Log_Writer_Mock);
-        $logger->info('foo', array('content' => 'nonesuch'));
+        $logger->info('foo', ['content' => 'nonesuch']);
         $event = array_shift($mock->events);
         $this->assertContains('content', array_keys($event));
         $this->assertEquals('nonesuch', $event['content']);
@@ -233,7 +233,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     public function testLogNumericKeysInExtrasArrayArePassedToInfoKeyOfEvent()
     {
         $logger = new Zend_Log($mock = new Zend_Log_Writer_Mock);
-        $logger->info('foo', array('content' => 'nonesuch', 'bar'));
+        $logger->info('foo', ['content' => 'nonesuch', 'bar']);
         $event = array_shift($mock->events);
         $this->assertContains('content', array_keys($event));
         $this->assertContains('info', array_keys($event));
@@ -257,13 +257,13 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
 
     public function testLogConstructFromConfigStream()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName'      => "Stream",
             'writerNamespace' => "Zend_Log_Writer",
-            'writerParams'    => array(
+            'writerParams'    => [
                 'stream'      => "php://memory"
-            )
-        )));
+            ]
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
@@ -271,18 +271,18 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
 
     public function testLogConstructFromConfigStreamAndFilter()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName'      => "Stream",
             'writerNamespace' => "Zend_Log_Writer",
-            'writerParams'    => array(
+            'writerParams'    => [
                 'stream'      => "php://memory"
-            ),
+            ],
             'filterName'   => "Priority",
-            'filterParams' => array(
+            'filterParams' => [
                 'priority' => "Zend_Log::CRIT",
                 'operator' => "<="
-             ),
-        )));
+             ],
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
@@ -290,10 +290,10 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
 
     public function testFactoryUsesNameAndNamespaceWithoutModifications()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName'      => "ZendMonitor",
             'writerNamespace' => "Zend_Log_Writer",
-        )));
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
@@ -316,7 +316,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         $this->expectingLogging = true;
         error_reporting(E_ALL | E_STRICT);
 
-        $oldHandler = set_error_handler(array($this, 'verifyHandlerData'));
+        $oldHandler = set_error_handler([$this, 'verifyHandlerData']);
         $logger->registerErrorHandler();
 
         trigger_error("Testing notice shows up in logs", E_USER_NOTICE);
@@ -386,7 +386,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     {
         try {
             $logger = new Zend_Log();
-            $writer = array('writerName' => 'NotExtendedWriterAbstract');
+            $writer = ['writerName' => 'NotExtendedWriterAbstract'];
             $logger->addWriter($writer);
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
@@ -401,7 +401,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     {
         try {
             $logger = new Zend_Log();
-            $filter = array('filterName' => 'NotImplementsFilterInterface');
+            $filter = ['filterName' => 'NotImplementsFilterInterface'];
             $logger->addFilter($filter);
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
@@ -417,7 +417,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         $logger   = new Zend_Log();
         $instance = $logger->addPriority('all', 8)
                            ->addFilter(1)
-                           ->addWriter(array('writerName' => 'Null'))
+                           ->addWriter(['writerName' => 'Null'])
                            ->setEventItem('os', PHP_OS);
 
         $this->assertTrue($instance instanceof Zend_Log);
@@ -457,17 +457,17 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
      */
     public function testLogConstructFromConfigFormatter()
     {
-        $config = array(
-        	'log' => array(
-	        	'test' => array(
+        $config = [
+        	'log' => [
+	        	'test' => [
 		            'writerName'    => 'Mock',
 		            'formatterName' => 'Simple',
-		            'formatterParams' => array(
+		            'formatterParams' => [
 		                'format' => '%timestamp% (%priorityName%): %message%'
-		            )
-	            )
-            )
-        );
+		            ]
+	            ]
+            ]
+        ];
 
         $logger = Zend_Log::factory($config['log']);
         $logger->log('custom message', Zend_Log::INFO);
@@ -478,15 +478,15 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
      */
     public function testLogConstructFromConfigCustomFormatter()
     {
-        $config = array(
-        	'log' => array(
-	        	'test' => array(
+        $config = [
+        	'log' => [
+	        	'test' => [
 		            'writerName'    => 'Mock',
 		            'formatterName' => 'Mock',
         			'formatterNamespace' => 'Custom_Formatter'
-	            )
-            )
-        );
+	            ]
+            ]
+        ];
 
         $logger = Zend_Log::factory($config['log']);
         $logger->log('custom message', Zend_Log::INFO);
@@ -497,12 +497,12 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
      */
     public function testFactoryShouldSetTimestampFormat()
     {
-        $config = array(
+        $config = [
             'timestampFormat' => 'Y-m-d',
-            'mock' => array(
+            'mock' => [
                 'writerName' => 'Mock'
-            )
-        );
+            ]
+        ];
         $logger = Zend_Log::factory($config);
 
         $this->assertEquals('Y-m-d', $logger->getTimestampFormat());
@@ -513,12 +513,12 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
      */
     public function testFactoryShouldKeepDefaultTimestampFormat()
     {
-        $config = array(
+        $config = [
             'timestampFormat' => '',
-            'mock' => array(
+            'mock' => [
                 'writerName' => 'Mock'
-            )
-        );
+            ]
+        ];
         $logger = Zend_Log::factory($config);
 
         $this->assertEquals('c', $logger->getTimestampFormat());
@@ -531,15 +531,15 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         }
 
         // preload namespaced class from custom path
-        Zend_Loader::loadClass('\Zfns\Writer', array(dirname(__FILE__) . '/_files'));
+        Zend_Loader::loadClass('\Zfns\Writer', [dirname(__FILE__) . '/_files']);
 
         try {
-            $config = array(
-                'mine' => array(
+            $config = [
+                'mine' => [
                     'writerName'      => 'Writer',
                     'writerNamespace' => '\Zfns\\',
-                )
-            );
+                ]
+            ];
 
             $logger = Zend_log::factory($config);
             $logger->info('this is a test');
@@ -556,10 +556,10 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     {
         $writer = new Zend_Log_Writer_Null();
         $log = ZLTest_My_Log::factory(
-            array(
+            [
                 'writerName' => $writer,
                 'className' => 'ZLTest_My_Log'
-            )
+            ]
         );
         $this->assertTrue($log instanceof ZLTest_My_Log);
     }
@@ -571,10 +571,10 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
     {
         $writer = new Zend_Log_Writer_Null();
         ZLTest_My_Log::factory(
-            array(
+            [
                 'writerName' => $writer,
                 'className' => 'ZLTest_My_LogNotExtending'
-            )
+            ]
         );
     }
 }

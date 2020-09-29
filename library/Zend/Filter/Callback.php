@@ -135,11 +135,11 @@ class Zend_Filter_Callback implements Zend_Filter_Interface
      */
     public function filter($value)
     {
-        $options = array();
+        $options = [];
 
         if ($this->_options !== null) {
             if (!is_array($this->_options)) {
-                $options = array($this->_options);
+                $options = [$this->_options];
             } else {
                 $options = $this->_options;
             }

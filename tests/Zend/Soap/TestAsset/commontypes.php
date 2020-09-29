@@ -76,7 +76,7 @@ function Zend_Soap_TestAsset_TestFunc6()
  */
 function Zend_Soap_TestAsset_TestFunc7()
 {
-    return array('foo' => 'bar', 'baz' => true, 1 => false, 'bat' => 123);
+    return ['foo' => 'bar', 'baz' => true, 1 => false, 'bat' => 123];
 }
 
 /**
@@ -86,7 +86,7 @@ function Zend_Soap_TestAsset_TestFunc7()
  */
 function Zend_Soap_TestAsset_TestFunc8()
 {
-    $return = (object) array('foo' => 'bar', 'baz' => true, 'bat' => 123, 'qux' => false);
+    $return = (object) ['foo' => 'bar', 'baz' => true, 'bat' => 123, 'qux' => false];
     return $return;
 }
 
@@ -209,10 +209,10 @@ class Zend_Soap_TestAsset_AutoDiscoverTestClass2
      */
     public function fetchAll()
     {
-        return array(
+        return [
             new AutoDiscoverTestClass1(),
             new AutoDiscoverTestClass1(),
-        );
+        ];
     }
 
     /**
@@ -251,7 +251,7 @@ class Zend_Soap_TestAsset_ComplexTypeA
     /**
      * @var Zend_Soap_TestAsset_ComplexTypeB[]
      */
-    public $baz = array();
+    public $baz = [];
 }
 
 /**
@@ -292,7 +292,7 @@ class Zend_Soap_TestAsset_ComplexObjectStructure
     /**
      * @var array
      */
-    public $array = array(1, 2, 3);
+    public $array = [1, 2, 3];
 }
 
 /**

@@ -326,7 +326,7 @@ class SimpleCRUD
      */
     public function stringToArray($rowData)
     {
-        $arr = array();
+        $arr = [];
         foreach ($rowData as $row) {
             $temp = explode('=', $row);
             $arr[$temp[0]] = $temp[1];

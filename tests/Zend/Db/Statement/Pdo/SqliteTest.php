@@ -45,9 +45,9 @@ class Zend_Db_Statement_Pdo_SqliteTest extends Zend_Db_Statement_Pdo_TestCommon
         $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding parameters');
     }
 
-    protected $_getColumnMetaKeys = array(
+    protected $_getColumnMetaKeys = [
         'native_type', 'sqlite:decl_type', 'flags', 'name', 'len', 'precision', 'pdo_type'
-    );
+    ];
 
     /**
      * @group ZF-7706

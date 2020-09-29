@@ -49,24 +49,24 @@ class Zend_Oauth_Http_UserAuthorizationTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorSetsCustomServiceParameters()
     {
-        $redirect = new Zend_Oauth_Http_UserAuthorization($this->stubConsumer, array(1,2,3));
-        $this->assertEquals(array(1,2,3), $redirect->getParameters());
+        $redirect = new Zend_Oauth_Http_UserAuthorization($this->stubConsumer, [1,2,3]);
+        $this->assertEquals([1,2,3], $redirect->getParameters());
     }
 
     public function testAssembleParametersReturnsUserAuthorizationParamArray()
     {
-        $redirect = new Zend_Oauth_Http_UserAuthorization($this->stubConsumer, array('foo '=>'bar~'));
-        $expected = array(
+        $redirect = new Zend_Oauth_Http_UserAuthorization($this->stubConsumer, ['foo '=>'bar~']);
+        $expected = [
             'oauth_token'=>'1234567890',
             'oauth_callback'=>'http://www.example.com/local',
             'foo '=>'bar~'
-        );
+        ];
         $this->assertEquals($expected, $redirect->assembleParams());
     }
 
     public function testGetUrlReturnsEncodedQueryStringParamsAppendedToLocalUrl()
     {
-        $redirect = new Zend_Oauth_Http_UserAuthorization($this->stubConsumer, array('foo '=>'bar~'));
+        $redirect = new Zend_Oauth_Http_UserAuthorization($this->stubConsumer, ['foo '=>'bar~']);
         $expected =
             'http://www.example.com/authorize?oauth_token=1234567890&oauth_callback=http%3A%2F%2Fwww.example.com%2Flocal&foo%20=bar~';
         $this->assertEquals($expected, $redirect->getUrl());

@@ -61,11 +61,11 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         $cache = Zend_Cache::factory(
             'Core',
             'File',
-            array(
+            [
                  'lifetime'                => 0,
                  'automatic_serialization' => true
-            ),
-            array('cache_dir' => dirname(__FILE__) . "/SlideShare/_files")
+            ],
+            ['cache_dir' => dirname(__FILE__) . "/SlideShare/_files"]
         );
         $ss->setCacheObject($cache);
 
@@ -134,10 +134,10 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
 
         try {
             $results = $ss->getSlideShowsByTag(
-                array(
+                [
                      'zend',
                      'php'
-                ), 0, 1
+                ], 0, 1
             );
         } catch (Exception $e) {
             $this->fail("Exception Caught retrieving Slideshow List (tag)");
@@ -183,7 +183,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         $show->setFilename($ppt_file);
         $show->setDescription("Unit Test");
         $show->setTitle($title);
-        $show->setTags(array('unittest'));
+        $show->setTags(['unittest']);
         $show->setID(0);
 
         try {
@@ -222,10 +222,10 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         $ss->setStatus(124);
         $ss->setStatusDescription("Boo");
         $ss->setTags(
-            array(
+            [
                  'bar',
                  'baz'
-            )
+            ]
         );
         $ss->addTag('fon');
         $ss->setThumbnailUrl('asdf');
@@ -243,11 +243,11 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($ss->getStatusDescription(), "Boo");
         $this->assertEquals(
             $ss->getTags(),
-            array(
+            [
                  'bar',
                  'baz',
                  'fon'
-            )
+            ]
         );
         $this->assertEquals($ss->getThumbnailUrl(), "asdf");
         $this->assertEquals($ss->getTitle(), "title");

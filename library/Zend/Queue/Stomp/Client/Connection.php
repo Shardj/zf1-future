@@ -64,7 +64,7 @@ class Zend_Queue_Stomp_Client_Connection
      * @return true;
      * @throws Zend_Queue_Exception
      */
-    public function open($scheme, $host, $port, array $options = array())
+    public function open($scheme, $host, $port, array $options = [])
     {
         $str = $scheme . '://' . $host;
         $this->_socket = fsockopen($str, $port, $errno, $errstr);
@@ -171,7 +171,7 @@ class Zend_Queue_Stomp_Client_Connection
      */
     public function canRead()
     {
-        $read   = array($this->_socket);
+        $read   = [$this->_socket];
         $write  = null;
         $except = null;
 

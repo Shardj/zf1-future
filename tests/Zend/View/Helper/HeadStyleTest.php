@@ -188,13 +188,13 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit_Framework_TestCase
 
     public function testCanBuildStyleTagsWithAttributes()
     {
-        $this->helper->setStyle('a {}', array(
+        $this->helper->setStyle('a {}', [
             'lang'  => 'us_en',
             'title' => 'foo',
             'media' => 'projection',
             'dir'   => 'rtol',
             'bogus' => 'unused'
-        ));
+        ]);
         $value = $this->helper->getValue();
 
         $this->assertObjectHasAttribute('attributes', $value);
@@ -214,13 +214,13 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit_Framework_TestCase
 
     public function testRenderedStyleTagsContainHtmlEscaping()
     {
-        $this->helper->setStyle('a {}', array(
+        $this->helper->setStyle('a {}', [
             'lang'  => 'us_en',
             'title' => 'foo',
             'media' => 'screen',
             'dir'   => 'rtol',
             'bogus' => 'unused'
-        ));
+        ]);
         $value = $this->helper->toString();
         $this->assertContains('<!--' . PHP_EOL, $value);
         $this->assertContains(PHP_EOL . '-->', $value);
@@ -228,8 +228,8 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit_Framework_TestCase
 
     public function testRenderedStyleTagsContainsDefaultMedia()
     {
-        $this->helper->setStyle('a {}', array(
-        ));
+        $this->helper->setStyle('a {}', [
+        ]);
         $value = $this->helper->toString();
         $this->assertRegexp('#<style [^>]*?media="screen"#', $value, $value);
     }
@@ -239,7 +239,7 @@ class Zend_View_Helper_HeadStyleTest extends PHPUnit_Framework_TestCase
      */
     public function testMediaAttributeCanHaveSpaceInCommaSeparatedString()
     {
-        $this->helper->appendStyle('a { }', array('media' => 'screen, projection'));
+        $this->helper->appendStyle('a { }', ['media' => 'screen, projection']);
         $string = $this->helper->toString();
         $this->assertContains('media="screen,projection"', $string);
     }
@@ -377,7 +377,7 @@ h1 {
         $this->helper->appendStyle('
 a {
     display: none;
-}', array('media' => array('screen', 'projection')));
+}', ['media' => ['screen', 'projection']]);
         $string = $this->helper->toString();
 
         $scripts = substr_count($string, '    <style');
@@ -394,7 +394,7 @@ a {
         $this->helper->appendStyle('
 a {
     display: none;
-}', array('media' => 'screen,projection'));
+}', ['media' => 'screen,projection']);
         $string = $this->helper->toString();
 
         $scripts = substr_count($string, '    <style');
@@ -410,7 +410,7 @@ a {
         $this->helper->appendStyle('
 a {
     display: none;
-}', array('media' => 'screen,projection', 'conditional' => 'lt IE 7'));
+}', ['media' => 'screen,projection', 'conditional' => 'lt IE 7']);
         $test = $this->helper->toString();
         $this->assertContains('<!--[if lt IE 7]>', $test);
     }
@@ -448,9 +448,9 @@ a {
     public function testRenderConditionalCommentsShouldNotContainHtmlEscaping()
     {
         $style = 'a{display:none;}';
-        $this->helper->appendStyle($style, array(
+        $this->helper->appendStyle($style, [
         	'conditional' => 'IE 8'
-        ));
+        ]);
         $value = $this->helper->toString();
 
         $this->assertNotContains('<!--' . PHP_EOL, $value);
@@ -465,7 +465,7 @@ a {
         $this->helper->appendStyle('
 a {
     display: none;
-}', array('media' => 'screen,projection', 'conditional' => '!IE'));
+}', ['media' => 'screen,projection', 'conditional' => '!IE']);
         $test = $this->helper->toString();
         $this->assertContains('<!--[if !IE]><!--><', $test);
         $this->assertContains('<!--<![endif]-->', $test);
@@ -479,7 +479,7 @@ a {
         $this->helper->appendStyle('
 a {
     display: none;
-}', array('media' => 'screen,projection', 'conditional' => '! IE'));
+}', ['media' => 'screen,projection', 'conditional' => '! IE']);
         $test = $this->helper->toString();
         $this->assertContains('<!--[if ! IE]><!--><', $test);
         $this->assertContains('<!--<![endif]-->', $test);

@@ -29,7 +29,7 @@
 class DocumentController extends Zend_Controller_Action
 {
     
-    public $dependencies = array('config');
+    public $dependencies = ['config'];
     
     /**
      * @var Zend_Cloud_DocumentService_Adapter
@@ -55,9 +55,9 @@ class DocumentController extends Zend_Controller_Action
             return;
         }
         $q = $this->_doc->select("*");
-        $this->view->data = $this->_doc->query($name, $q, array(
+        $this->view->data = $this->_doc->query($name, $q, [
             Zend_Cloud_DocumentService_Adapter_SimpleDB::RETURN_DOCUMENTS => true
-        ));
+        ]);
     }
 
     public function createAction()
@@ -87,8 +87,8 @@ class DocumentController extends Zend_Controller_Action
         if (!$id = $this->_getParam('id', false)) {
             return;
         }
-        $fields = array();
-        foreach ($this->_getParam('field', array()) as $field) {
+        $fields = [];
+        foreach ($this->_getParam('field', []) as $field) {
             if (!$field["name"]) {
                 continue;
             }
@@ -99,7 +99,7 @@ class DocumentController extends Zend_Controller_Action
         }
         $document = new Zend_Cloud_DocumentService_Document($id, $fields);
 		$this->_doc->insertDocument($name, $document);
-        return $this->_helper->redirector('show', null, null, array("collection" => $name));
+        return $this->_helper->redirector('show', null, null, ["collection" => $name]);
     }
 
     public function deleteDocumentAction()
@@ -115,6 +115,6 @@ class DocumentController extends Zend_Controller_Action
             return;
         }
         $this->_doc->deleteDocument($name, $id);
-        return $this->_helper->redirector('show', null, null, array("collection" => $name));
+        return $this->_helper->redirector('show', null, null, ["collection" => $name]);
    }
 }

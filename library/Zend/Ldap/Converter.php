@@ -70,7 +70,7 @@ class Zend_Ldap_Converter
     public static function hex32ToAsc($string)
     {
         // Using a callback, since PHP 5.5 has deprecated the /e modifier in preg_replace.
-        $string = preg_replace_callback("/\\\([0-9A-Fa-f]{2})/", array('Zend_Ldap_Converter', '_charHex32ToAsc'), $string);
+        $string = preg_replace_callback("/\\\([0-9A-Fa-f]{2})/", ['Zend_Ldap_Converter', '_charHex32ToAsc'], $string);
         return $string;
     }
 
@@ -260,7 +260,7 @@ class Zend_Ldap_Converter
      */
     public static function fromLdapDateTime($date, $asUtc = true)
     {
-        $datepart = array ();
+        $datepart = [];
         if (!preg_match('/^(\d{4})/', $date, $datepart) ) {
             throw new InvalidArgumentException('Invalid date format found');
         }
@@ -269,7 +269,7 @@ class Zend_Ldap_Converter
             throw new InvalidArgumentException('Invalid date format found (too short)');
         }
 
-        $time = array (
+        $time = [
             // The year is mandatory!
             'year'   => $datepart[1],
             'month'  => 1,
@@ -280,7 +280,7 @@ class Zend_Ldap_Converter
             'offdir' => '+',
             'offsethours' => 0,
             'offsetminutes' => 0
-        );
+        ];
 
         $length = strlen($date);
 
@@ -331,7 +331,7 @@ class Zend_Ldap_Converter
 
         // Set Offset
         $offsetRegEx = '/([Z\-\+])(\d{2}\'?){0,1}(\d{2}\'?){0,1}$/';
-        $off         = array ();
+        $off         = [];
         if (preg_match($offsetRegEx, $date, $off)) {
             $offset = $off[1];
             if ($offset == '+' || $offset == '-') {

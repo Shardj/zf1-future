@@ -71,7 +71,7 @@ implements Iterator, Countable
      *
      * @var array
      */
-    protected $_entries = array();
+    protected $_entries = [];
 
     /**
      * A pointer for the iterator to keep track of the entries array
@@ -181,7 +181,7 @@ implements Iterator, Countable
          * Could do with some improvement for performance perhaps
          */
         $timestamp = time();
-        $entries = array();
+        $entries = [];
         foreach ($this->_entries as $entry) {
             if ($entry->getDateModified()) {
                 $timestamp = (int) $entry->getDateModified()->get(Zend_Date::TIMESTAMP);

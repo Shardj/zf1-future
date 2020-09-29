@@ -78,8 +78,8 @@ class Zend_Gdata_FeedLinkTest extends PHPUnit_Framework_TestCase
         $newFeedLink = new Zend_Gdata_Extension_FeedLink();
         $newFeedLink->transferFromXML($this->feedLink->saveXML());
         $this->assertEquals(0, count($newFeedLink->extensionElements));
-        $newFeedLink->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newFeedLink->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newFeedLink->extensionElements));
         $this->assertEquals("http://www.google.com/calendar/feeds/default/private/full", $newFeedLink->href);
         $this->assertEquals("via", $newFeedLink->rel);
@@ -123,8 +123,8 @@ class Zend_Gdata_FeedLinkTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->feedLink->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->feedLink->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->feedLink->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->feedLink->extensionAttributes['foo2']['value']);

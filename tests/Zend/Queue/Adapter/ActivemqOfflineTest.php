@@ -43,7 +43,7 @@ class Zend_Queue_Adapter_ActivemqOfflineTest extends PHPUnit_Framework_TestCase
         $options['driverOptions']['stompClient'] = $stompClient;
         $adapter = new Zend_Queue_Adapter_Activemq($options);
 
-        $queue = new Zend_Queue('array', array('name' => 'foo'));
+        $queue = new Zend_Queue('array', ['name' => 'foo']);
         $adapter->receive(null, null, $queue);
         $adapter->receive(null, null, $queue);
 
@@ -61,8 +61,8 @@ class Zend_Queue_Adapter_ActivemqOfflineTest extends PHPUnit_Framework_TestCase
 
 class StompClientMock extends Zend_Queue_Stomp_Client
 {
-    public $frameStack = array();
-    public $responseStack = array();
+    public $frameStack = [];
+    public $responseStack = [];
 
     public function __construct() {
         // spoof a successful connection in the response stack

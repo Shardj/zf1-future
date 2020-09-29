@@ -185,10 +185,10 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
      */
     public function testParamsToQuery()
     {
-        $this->assertSame( '', Zend_OpenId::paramsToQuery(array()) );
-        $this->assertSame( 'a=1', Zend_OpenId::paramsToQuery(array('a'=>1)) );
-        $this->assertSame( 'a=1&b=2', Zend_OpenId::paramsToQuery(array('a'=>1,'b'=>2)) );
-        $this->assertSame( 'a=x+y', Zend_OpenId::paramsToQuery(array('a'=>'x y')) );
+        $this->assertSame( '', Zend_OpenId::paramsToQuery([]) );
+        $this->assertSame( 'a=1', Zend_OpenId::paramsToQuery(['a'=>1]) );
+        $this->assertSame( 'a=1&b=2', Zend_OpenId::paramsToQuery(['a'=>1,'b'=>2]) );
+        $this->assertSame( 'a=x+y', Zend_OpenId::paramsToQuery(['a'=>'x y']) );
     }
 
     /**
@@ -413,7 +413,7 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
         $response = new Zend_OpenId_ResponseHelper(true);
         Zend_OpenId::redirect("http://www.test.com/", null, $response, 'GET');
         $this->assertSame( 302, $response->getHttpResponseCode() );
-        $this->assertSame( array(), $response->getRawHeaders() );
+        $this->assertSame( [], $response->getRawHeaders() );
         $headers = $response->getHeaders();
         $this->assertTrue( is_array($headers) );
         $this->assertSame( 1, count($headers) );
@@ -430,30 +430,30 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
         $this->assertSame( 'http://www.test.com/test.php?a=b', $headers[0]['value'] );
 
         $response = new Zend_OpenId_ResponseHelper(true);
-        Zend_OpenId::redirect("http://www.test.com/test.php", array('a'=>'b'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php", ['a'=>'b'], $response, 'GET');
         $headers = $response->getHeaders();
         $this->assertSame( 'http://www.test.com/test.php?a=b', $headers[0]['value'] );
 
         $response = new Zend_OpenId_ResponseHelper(true);
-        Zend_OpenId::redirect("http://www.test.com/test.php", array('a'=>'b', 'c'=>'d'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php", ['a'=>'b', 'c'=>'d'], $response, 'GET');
         $headers = $response->getHeaders();
         $this->assertSame( 'http://www.test.com/test.php?a=b&c=d', $headers[0]['value'] );
 
         $response = new Zend_OpenId_ResponseHelper(true);
-        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", array('c'=>'d'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", ['c'=>'d'], $response, 'GET');
         $headers = $response->getHeaders();
         $this->assertSame( 'http://www.test.com/test.php?a=b&c=d', $headers[0]['value'] );
 
         $response = new Zend_OpenId_ResponseHelper(true);
-        Zend_OpenId::redirect("http://www.test.com/test.php", array('a'=>'x y'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php", ['a'=>'x y'], $response, 'GET');
         $headers = $response->getHeaders();
         $this->assertSame( 'http://www.test.com/test.php?a=x+y', $headers[0]['value'] );
 
         $response = new Zend_OpenId_ResponseHelper(false);
         Zend_OpenId::redirect("http://www.test.com/", null, $response, 'GET');
         $this->assertSame( 200, $response->getHttpResponseCode() );
-        $this->assertSame( array(), $response->getRawHeaders() );
-        $this->assertSame( array(), $response->getHeaders() );
+        $this->assertSame( [], $response->getRawHeaders() );
+        $this->assertSame( [], $response->getHeaders() );
         $this->assertSame(
             "<script language=\"JavaScript\" type=\"text/javascript\">window.location='http://www.test.com/';</script>",
             $response->getBody() );
@@ -465,25 +465,25 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
             $response->getBody() );
 
         $response = new Zend_OpenId_ResponseHelper(false);
-        Zend_OpenId::redirect("http://www.test.com/test.php", array('a'=>'b'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php", ['a'=>'b'], $response, 'GET');
         $this->assertSame(
             "<script language=\"JavaScript\" type=\"text/javascript\">window.location='http://www.test.com/test.php?a=b';</script>",
             $response->getBody() );
 
         $response = new Zend_OpenId_ResponseHelper(false);
-        Zend_OpenId::redirect("http://www.test.com/test.php", array('a'=>'b','c'=>'d'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php", ['a'=>'b','c'=>'d'], $response, 'GET');
         $this->assertSame(
             "<script language=\"JavaScript\" type=\"text/javascript\">window.location='http://www.test.com/test.php?a=b&c=d';</script>",
             $response->getBody() );
 
         $response = new Zend_OpenId_ResponseHelper(false);
-        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", array('c'=>'d'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", ['c'=>'d'], $response, 'GET');
         $this->assertSame(
             "<script language=\"JavaScript\" type=\"text/javascript\">window.location='http://www.test.com/test.php?a=b&c=d';</script>",
             $response->getBody() );
 
         $response = new Zend_OpenId_ResponseHelper(false);
-        Zend_OpenId::redirect("http://www.test.com/test.php", array('a'=>'x y'), $response, 'GET');
+        Zend_OpenId::redirect("http://www.test.com/test.php", ['a'=>'x y'], $response, 'GET');
         $this->assertSame(
             "<script language=\"JavaScript\" type=\"text/javascript\">window.location='http://www.test.com/test.php?a=x+y';</script>",
             $response->getBody() );
@@ -491,8 +491,8 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
         $response = new Zend_OpenId_ResponseHelper(true);
         Zend_OpenId::redirect("http://www.test.com/", null, $response, 'POST');
         $this->assertSame( 200, $response->getHttpResponseCode() );
-        $this->assertSame( array(), $response->getRawHeaders() );
-        $this->assertSame( array(), $response->getHeaders() );
+        $this->assertSame( [], $response->getRawHeaders() );
+        $this->assertSame( [], $response->getHeaders() );
         $this->assertSame(
             "<html><body onLoad=\"document.forms[0].submit();\">\n" .
             "<form method=\"POST\" action=\"http://www.test.com/\">\n" .
@@ -501,7 +501,7 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
             $response->getBody() );
 
         $response = new Zend_OpenId_ResponseHelper(true);
-        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", array('a'=>'b'), $response, 'POST');
+        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", ['a'=>'b'], $response, 'POST');
         $this->assertSame(
             "<html><body onLoad=\"document.forms[0].submit();\">\n" .
             "<form method=\"POST\" action=\"http://www.test.com/test.php?a=b\">\n" .
@@ -511,7 +511,7 @@ class Zend_OpenIdTest extends PHPUnit_Framework_TestCase
             $response->getBody() );
 
         $response = new Zend_OpenId_ResponseHelper(true);
-        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", array('a'=>'b','c'=>'d'), $response, 'POST');
+        Zend_OpenId::redirect("http://www.test.com/test.php?a=b", ['a'=>'b','c'=>'d'], $response, 'POST');
         $this->assertSame(
             "<html><body onLoad=\"document.forms[0].submit();\">\n" .
             "<form method=\"POST\" action=\"http://www.test.com/test.php?a=b\">\n" .

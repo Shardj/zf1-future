@@ -100,12 +100,12 @@ class Zend_Dojo_View_Helper_TextBoxTest extends PHPUnit_Framework_TestCase
         return $this->helper->textBox(
             'elementId',
             'someText',
-            array(
+            [
                 'required'    => true,
                 'trim'        => true,
                 'propercase'  => true,
-            ),
-            array()
+            ],
+            []
         );
     }
 

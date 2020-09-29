@@ -658,7 +658,7 @@ EOT;
 	<execution_time>0.0790269374847</execution_time>	
 </response>
 EOT;
-        return array(array($xmlStringContents));
+        return [[$xmlStringContents]];
     }
     
 } // End of class Zend_Json_JsonXMLTest

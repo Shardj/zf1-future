@@ -275,10 +275,10 @@ class Zend_Feed_Writer_Renderer_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
         $author = $feed->getAuthor();
-        $this->assertEquals(array(
+        $this->assertEquals([
             'email'=>'joe@example.com',
             'name'=>'Joe',
-            'uri'=>'http://www.example.com/joe'), $feed->getAuthor());
+            'uri'=>'http://www.example.com/joe'], $feed->getAuthor());
     }
 
     /**
@@ -288,17 +288,17 @@ class Zend_Feed_Writer_Renderer_Feed_AtomTest extends PHPUnit_Framework_TestCase
     {
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $this->_validWriter->remove('authors');
-        $this->_validWriter->addAuthor(array(
+        $this->_validWriter->addAuthor([
             'email'=>'<>&\'"áéíóú',
             'name'=>'<>&\'"áéíóú',
-            'uri'=>'http://www.example.com/joe'));
+            'uri'=>'http://www.example.com/joe']);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
         $author = $feed->getAuthor();
-        $this->assertEquals(array(
+        $this->assertEquals([
             'email'=>'<>&\'"áéíóú',
             'name'=>'<>&\'"áéíóú',
-            'uri'=>'http://www.example.com/joe'), $feed->getAuthor());
+            'uri'=>'http://www.example.com/joe'], $feed->getAuthor());
     }
 
     public function testFeedAuthorIfNotSetThrowsExceptionIfAnyEntriesAlsoAreMissingAuthors()
@@ -357,75 +357,75 @@ class Zend_Feed_Writer_Renderer_Feed_AtomTest extends PHPUnit_Framework_TestCase
 
     public function testCategoriesCanBeSet()
     {
-        $this->_validWriter->addCategories(array(
-            array('term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2')
-        ));
+        $this->_validWriter->addCategories([
+            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2']
+        ]);
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
-        $expected = array(
-            array('term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null)
-        );
+        $expected = [
+            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+        ];
         $this->assertEquals($expected, (array) $feed->getCategories());
     }
 
     public function testCategoriesCharDataEncoding()
     {
-        $this->_validWriter->addCategories(array(
-            array('term'=>'cat_dog', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2')
-        ));
+        $this->_validWriter->addCategories([
+            ['term'=>'cat_dog', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2']
+        ]);
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
-        $expected = array(
-            array('term'=>'cat_dog', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null)
-        );
+        $expected = [
+            ['term'=>'cat_dog', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+        ];
         $this->assertEquals($expected, (array) $feed->getCategories());
     }
 
     public function testHubsCanBeSet()
     {
         $this->_validWriter->addHubs(
-            array('http://www.example.com/hub', 'http://www.example.com/hub2')
+            ['http://www.example.com/hub', 'http://www.example.com/hub2']
         );
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
-        $expected = array(
+        $expected = [
             'http://www.example.com/hub', 'http://www.example.com/hub2'
-        );
+        ];
         $this->assertEquals($expected, (array) $feed->getHubs());
     }
 
     public function testImageCanBeSet()
     {
         $this->_validWriter->setImage(
-            array('uri'=>'http://www.example.com/logo.gif')
+            ['uri'=>'http://www.example.com/logo.gif']
         );
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
-        $expected = array(
+        $expected = [
             'uri' => 'http://www.example.com/logo.gif'
-        );
+        ];
         $this->assertEquals($expected, $feed->getImage());
     }
 
     public function testIconCanBeSet()
     {
         $this->_validWriter->setIcon(
-            array('uri'=>'http://www.example.com/logo.gif')
+            ['uri'=>'http://www.example.com/logo.gif']
         );
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
-        $expected = array(
+        $expected = [
             'uri' => 'http://www.example.com/logo.gif'
-        );
+        ];
         $this->assertEquals($expected, $feed->getIcon());
     }
 

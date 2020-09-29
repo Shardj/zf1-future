@@ -232,9 +232,9 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
     protected function _fileTest($filename, $object, $type, $exp_type, $stream = false)
     {
         if($stream) {
-            $this->_amazon->putFile($filename, $object, array(Zend_Service_Amazon_S3::S3_CONTENT_TYPE_HEADER => $type));
+            $this->_amazon->putFile($filename, $object, [Zend_Service_Amazon_S3::S3_CONTENT_TYPE_HEADER => $type]);
         } else {
-            $this->_amazon->putFileStream($filename, $object, array(Zend_Service_Amazon_S3::S3_CONTENT_TYPE_HEADER => $type));
+            $this->_amazon->putFileStream($filename, $object, [Zend_Service_Amazon_S3::S3_CONTENT_TYPE_HEADER => $type]);
         }
 
         $data = file_get_contents($filename);
@@ -377,7 +377,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
 
         $this->_amazon->putFile($filedir."testdata.html", $this->_bucket."/zftestfile.html");
         $this->_amazon->putFile($filedir."testdata.html", $this->_bucket."/zftestfile2.html",
-            array(Zend_Service_Amazon_S3::S3_ACL_HEADER => Zend_Service_Amazon_S3::S3_ACL_PUBLIC_READ));
+            [Zend_Service_Amazon_S3::S3_ACL_HEADER => Zend_Service_Amazon_S3::S3_ACL_PUBLIC_READ]);
 
         $url = 'http://' . Zend_Service_Amazon_S3::S3_ENDPOINT."/".$this->_bucket."/zftestfile.html";
         $data = @file_get_contents($url);
@@ -413,7 +413,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
         $this->_amazon->createBucket($this->_bucket);
         $filedir = dirname(__FILE__)."/_files/";
         $this->_amazon->putFile($filedir."testdata.html", $this->_bucket."/subdir/dir with spaces/zftestfile.html",
-            array(Zend_Service_Amazon_S3::S3_ACL_HEADER => Zend_Service_Amazon_S3::S3_ACL_PUBLIC_READ));
+            [Zend_Service_Amazon_S3::S3_ACL_HEADER => Zend_Service_Amazon_S3::S3_ACL_PUBLIC_READ]);
         $url = 'http://' . Zend_Service_Amazon_S3::S3_ENDPOINT."/".$this->_bucket."/subdir/dir%20with%20spaces/zftestfile.html";
         $data = @file_get_contents($url);
         $this->assertEquals(file_get_contents($filedir."testdata.html"), $data);
@@ -477,7 +477,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
         $this->_amazon->putObject("testgetobjectparams1/zftest1", "testdata");
         $this->_amazon->putObject("testgetobjectparams1/zftest2", "testdata");
 
-        $list = $this->_amazon->getObjectsByBucket("testgetobjectparams1", array('max-keys' => 1));
+        $list = $this->_amazon->getObjectsByBucket("testgetobjectparams1", ['max-keys' => 1]);
         $this->assertEquals(1, count($list));
 
         $this->_amazon->removeObject("testgetobjectparams1/zftest1", "testdata");
@@ -490,7 +490,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
     public function testVersionBucket()
     {
         $this->_amazon->createBucket($this->_bucket);
-        $response= $this->_amazon->_makeRequest('GET', $this->_bucket.'/?versions', array('versions'=>''));
+        $response= $this->_amazon->_makeRequest('GET', $this->_bucket.'/?versions', ['versions'=>'']);
         $this->assertNotNull($response,'The response for the ?versions is empty');
         $xml = new SimpleXMLElement($response->getBody());
         $this->assertEquals((string) $xml->Name,$this->_bucket,'The bucket name in XML response is not valid');
@@ -503,10 +503,10 @@ class Zend_Service_Amazon_S3_OnlineTest extends PHPUnit_Framework_TestCase
         $this->_amazon->createBucket($this->_bucket);
         $this->_amazon->putObject($this->_bucket.'/test-folder/test1','test');
         $this->_amazon->putObject($this->_bucket.'/test-folder/test2-folder/','');
-        $params= array(
+        $params= [
                     'prefix' => 'test-folder/',
                     'delimiter' => '/'
-                 );
+                 ];
         $response= $this->_amazon->getObjectsAndPrefixesByBucket($this->_bucket,$params);
         $this->assertEquals($response['objects'][0],'test-folder/test1');
         $this->assertEquals($response['prefixes'][0],'test-folder/test2-folder/');

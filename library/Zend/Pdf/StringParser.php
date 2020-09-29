@@ -69,7 +69,7 @@ class Zend_Pdf_StringParser
      *
      * @var array
      */
-    private $_elements = array();
+    private $_elements = [];
 
     /**
      * PDF objects factory.
@@ -87,7 +87,7 @@ class Zend_Pdf_StringParser
     public function cleanUp()
     {
         $this->_context = null;
-        $this->_elements = array();
+        $this->_elements = [];
         $this->_objFactory = null;
     }
 
@@ -433,7 +433,7 @@ class Zend_Pdf_StringParser
      */
     private function _readArray()
     {
-        $elements = array();
+        $elements = [];
 
         while ( strlen($nextLexeme = $this->readLexeme()) != 0 ) {
             if ($nextLexeme != ']') {
@@ -554,7 +554,7 @@ class Zend_Pdf_StringParser
 
         $this->offset    = $offset;
         $this->_context  = $context;
-        $this->_elements = array();
+        $this->_elements = [];
 
         $objNum = $this->readLexeme();
         if (!ctype_digit($objNum)) {

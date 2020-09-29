@@ -127,12 +127,12 @@ class Zend_Cloud_StorageService_Adapter_S3Test
             $this->markTestSkipped("Amazon S3 access not configured, skipping test");
         }
 
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY => 'Zend_Cloud_StorageService_Adapter_S3',
             Zend_Cloud_StorageService_Adapter_S3::AWS_ACCESS_KEY   => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
             Zend_Cloud_StorageService_Adapter_S3::AWS_SECRET_KEY   => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_SECRETKEY'),
             Zend_Cloud_StorageService_Adapter_S3::BUCKET_NAME      => constant('TESTS_ZEND_SERVICE_AMAZON_S3_BUCKET'),
-        ));
+        ]);
 
         return $config;
     }

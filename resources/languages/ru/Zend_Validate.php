@@ -23,7 +23,7 @@
 /**
  * EN-Revision: 20377
  */
-return array(
+return [
     // Zend_Validate_Alnum
     "Invalid type given, value should be float, string, or integer" => "Недопустимый тип данных, значение должно быть числом с плавающей точкой, строкой или целым числом",
     "'%value%' contains characters which are non alphabetic and no digits" => "'%value%' содержит недопустимые символы. Разрешены только буквенные символы и цифры",
@@ -256,4 +256,4 @@ return array(
     "Invalid type given, value should be a string" => "Недопустимый тип данных, значение должно быть строкой",
     "'%value%' is less than %min% characters long" => "'%value%' меньше разрешенной минимальной длины в %min% символов",
     "'%value%' is more than %max% characters long" => "'%value%' больше разрешенной максимальной длины в %max% символов",
-);
+];

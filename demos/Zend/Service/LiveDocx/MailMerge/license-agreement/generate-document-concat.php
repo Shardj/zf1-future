@@ -87,7 +87,7 @@ mkdir($tempDirectory);
 
 // Generate temporary documents
 
-$tempFilenames = array();
+$tempFilenames = [];
 
 $mailMerge = new Zend_Service_LiveDocx_MailMerge();
 

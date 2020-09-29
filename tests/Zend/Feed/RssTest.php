@@ -37,7 +37,7 @@ require_once 'Zend/Feed/Rss.php';
  */
 class Zend_Feed_RssTest extends Zend_Feed_AbstractFeedTest
 {
-    public $remoteFeedNames = array('zend_feed_rss_xxe.remote.xml');
+    public $remoteFeedNames = ['zend_feed_rss_xxe.remote.xml'];
 
     public function testPreventsXxeAttacksOnParsing()
     {

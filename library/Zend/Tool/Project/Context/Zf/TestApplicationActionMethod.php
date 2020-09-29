@@ -94,9 +94,9 @@ class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_T
      */
     public function getPersistentAttributes()
     {
-        return array(
+        return [
             'forActionName' => $this->getForActionName()
-            );
+            ];
     }
 
     /**
@@ -174,7 +174,7 @@ EOS;
         }
         
         $codeGenFile = Zend_CodeGenerator_Php_File::fromReflectedFileName($file, true, true);
-        $codeGenFile->getClass()->setMethod(array(
+        $codeGenFile->getClass()->setMethod([
             'name' => 'test' . ucfirst($actionParam) . 'Action',
             'body' => <<<EOS
 \$params = array('action' => '$actionParam', 'controller' => '$controllerParam', 'module' => '$moduleParam');
@@ -189,7 +189,7 @@ EOS;
 $assert
 
 EOS
-            ));
+            ]);
 
         file_put_contents($file, $codeGenFile->generate());
         

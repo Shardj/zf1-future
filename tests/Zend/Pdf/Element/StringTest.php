@@ -69,11 +69,11 @@ class Zend_Pdf_Element_StringTest extends PHPUnit_Framework_TestCase
      */
     public function testUnescapeOctal()
     {
-        $input = array(
+        $input = [
             0304 => '\\304',
             0326 => '\\326',
             0334 => '\\334'
-        );
+        ];
         foreach ($input as $k => $v) {
             $this->assertEquals(Zend_Pdf_Element_String::unescape($v),
                 chr($k), 'expected German Umlaut');

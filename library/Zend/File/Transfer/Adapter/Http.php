@@ -42,7 +42,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
      *
      * @param array $options OPTIONAL Options to set
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if (ini_get('file_uploads') == false) {
             require_once 'Zend/File/Transfer/Exception.php';
@@ -135,9 +135,9 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
                 $files = current($files);
             }
 
-            $temp = array($files => array(
+            $temp = [$files => [
                 'name'  => $files,
-                'error' => 1));
+                'error' => 1]];
             $validator = $this->_validators['Zend_Validate_File_Upload'];
             $validator->setFiles($temp)
                       ->isValid($files, null);
@@ -312,13 +312,13 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
         }
 
         $session = 'Zend_File_Transfer_Adapter_Http_ProgressBar';
-        $status  = array(
+        $status  = [
             'total'    => 0,
             'current'  => 0,
             'rate'     => 0,
             'message'  => '',
             'done'     => false
-        );
+        ];
 
         if (is_array($id)) {
             if (isset($id['progress'])) {
@@ -434,7 +434,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
      */
     protected function _prepareFiles()
     {
-        $this->_files = array();
+        $this->_files = [];
         foreach ($_FILES as $form => $content) {
             if (is_array($content['name'])) {
                 foreach ($content as $param => $file) {

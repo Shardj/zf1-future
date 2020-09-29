@@ -54,7 +54,7 @@ class Zend_Stdlib_PriorityQueue implements Countable, IteratorAggregate, Seriali
      * with keys "data" and "priority".
      * @var array
      */
-    protected $items      = array();
+    protected $items      = [];
 
     /**
      * Inner queue object
@@ -74,10 +74,10 @@ class Zend_Stdlib_PriorityQueue implements Countable, IteratorAggregate, Seriali
     public function insert($data, $priority = 1)
     {
         $priority = (int) $priority;
-        $this->items[] = array(
+        $this->items[] = [
             'data'     => $data,
             'priority' => $priority,
-        );
+        ];
         $this->getQueue()->insert($data, $priority);
         return $this;
     }
@@ -218,10 +218,10 @@ class Zend_Stdlib_PriorityQueue implements Countable, IteratorAggregate, Seriali
             case self::EXTR_BOTH:
                 return $this->items;
             case self::EXTR_PRIORITY:
-                return array_map(array($this, 'returnPriority'), $this->items);
+                return array_map([$this, 'returnPriority'], $this->items);
             case self::EXTR_DATA:
             default:
-                return array_map(array($this, 'returnData'), $this->items);
+                return array_map([$this, 'returnData'], $this->items);
         }
     }
 

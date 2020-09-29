@@ -87,7 +87,7 @@ class Zend_Gdata_AuthSubTest extends PHPUnit_Framework_TestCase
             $c->setAuthSubToken('abcdefg');
             $requestData = $c->filterHttpRequest('POST',
                                                  'http://www.example.com/feed',
-                                                  array(),
+                                                  [],
                                                   'foo bar',
                                                   'text/plain');
 

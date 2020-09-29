@@ -61,7 +61,7 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
             }
         }
 
-        $files = array(
+        $files = [
             dirname(__FILE__) . '/../_files/zipextracted.txt',
             dirname(__FILE__) . '/../_files/_compress/Compress/First/Second/zipextracted.txt',
             dirname(__FILE__) . '/../_files/_compress/Compress/First/Second',
@@ -72,7 +72,7 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
             dirname(__FILE__) . '/../_files/_compress/zipextracted.txt',
             dirname(__FILE__) . '/../_files/_compress',
             dirname(__FILE__) . '/../_files/compressed.tar'
-        );
+        ];
 
         foreach($files as $file) {
             if (file_exists($file)) {
@@ -94,7 +94,7 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
-        $files = array(
+        $files = [
             dirname(__FILE__) . '/../_files/zipextracted.txt',
             dirname(__FILE__) . '/../_files/_compress/Compress/First/Second/zipextracted.txt',
             dirname(__FILE__) . '/../_files/_compress/Compress/First/Second',
@@ -105,7 +105,7 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
             dirname(__FILE__) . '/../_files/_compress/zipextracted.txt',
             dirname(__FILE__) . '/../_files/_compress',
             dirname(__FILE__) . '/../_files/compressed.tar'
-        );
+        ];
 
         foreach($files as $file) {
             if (file_exists($file)) {
@@ -133,10 +133,10 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
     public function testBasicUsage()
     {
         $filter  = new Zend_Filter_Compress_Tar(
-            array(
+            [
                 'archive'  => dirname(__FILE__) . '/../_files/compressed.tar',
                 'target'   => dirname(__FILE__) . '/../_files/zipextracted.txt'
-            )
+            ]
         );
 
         $content = $filter->compress('compress me');
@@ -158,20 +158,20 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
     {
         $filter = new Zend_Filter_Compress_Tar();
         $this->assertEquals(
-            array(
+            [
                 'archive' => null,
                 'target'  => '.',
-                'mode'    => null),
+                'mode'    => null],
             $filter->getOptions()
         );
 
         $this->assertEquals(null, $filter->getOptions('archive'));
 
         $this->assertNull($filter->getOptions('nooption'));
-        $filter->setOptions(array('nooptions' => 'foo'));
+        $filter->setOptions(['nooptions' => 'foo']);
         $this->assertNull($filter->getOptions('nooption'));
 
-        $filter->setOptions(array('archive' => 'temp.txt'));
+        $filter->setOptions(['archive' => 'temp.txt']);
         $this->assertEquals('temp.txt', $filter->getOptions('archive'));
     }
 
@@ -218,10 +218,10 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
     public function testTarCompressToFile()
     {
         $filter  = new Zend_Filter_Compress_Tar(
-            array(
+            [
                 'archive'  => dirname(__FILE__) . '/../_files/compressed.tar',
                 'target'   => dirname(__FILE__) . '/../_files/zipextracted.txt'
-            )
+            ]
         );
         file_put_contents(dirname(__FILE__) . '/../_files/zipextracted.txt', 'compress me');
 
@@ -243,10 +243,10 @@ class Zend_Filter_Compress_TarTest extends PHPUnit_Framework_TestCase
     public function testTarCompressDirectory()
     {
         $filter  = new Zend_Filter_Compress_Tar(
-            array(
+            [
                 'archive'  => dirname(__FILE__) . '/../_files/compressed.tar',
                 'target'   => dirname(__FILE__) . '/../_files/_compress'
-            )
+            ]
         );
         $content = $filter->compress(dirname(__FILE__) . '/../_files/Compress');
         $this->assertEquals(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files'

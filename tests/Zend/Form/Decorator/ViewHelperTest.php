@@ -107,7 +107,7 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
 
     public function testGetHelperWillUseHelperProvidedInOptions()
     {
-        $this->decorator->setOptions(array('helper' => 'formSubmit'));
+        $this->decorator->setOptions(['helper' => 'formSubmit']);
         $this->assertEquals('formSubmit', $this->decorator->getHelper());
     }
 
@@ -158,18 +158,18 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Form/Element/Select.php';
         require_once 'Zend/Translate.php';
         $element = new Zend_Form_Element_Select('foo');
-        $options = array(
+        $options = [
             'foo' => 'This Foo Will Not Be Displayed',
             'bar' => 'This Bar Will Not Be Displayed',
             'baz' => 'This Baz Will Not Be Displayed',
-        );
+        ];
         $element->setMultiOptions($options);
 
-        $translations = array(
+        $translations = [
             'This Foo Will Not Be Displayed' => 'This is the Foo Value',
             'This Bar Will Not Be Displayed' => 'This is the Bar Value',
             'This Baz Will Not Be Displayed' => 'This is the Baz Value',
-        );
+        ];
         $translate = new Zend_Translate('array', $translations, 'en');
         $translate->setLocale('en');
 
@@ -189,17 +189,17 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Form/Element/MultiCheckbox.php';
         
         $element = new Zend_Form_Element_MultiCheckbox('foo');
-        $options = array(
+        $options = [
             'foo' => 'Foo',
             'bar' => 'Bar',
-        );
+        ];
         $element->setMultiOptions($options);
         $element->setSeparator('</p><p>');
         $element->setDecorators(
-            array(
-                array('ViewHelper', array('separator' => '')),
-                array('HtmlTag', array('tag' => 'p')),
-            )
+            [
+                ['ViewHelper', ['separator' => '']],
+                ['HtmlTag', ['tag' => 'p']],
+            ]
         );
         
         $expected = '<p><label><input type="checkbox" name="foo[]" id="foo-foo" value="foo">Foo</label></p>'
@@ -217,17 +217,17 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Form/Element/Radio.php';
         
         $element = new Zend_Form_Element_Radio('foo');
-        $options = array(
+        $options = [
             'foo' => 'Foo',
             'bar' => 'Bar',
-        );
+        ];
         $element->setMultiOptions($options);
         $element->setSeparator('</p><p>');
         $element->setDecorators(
-            array(
-                array('ViewHelper', array('separator' => '')),
-                array('HtmlTag', array('tag' => 'p')),
-            )
+            [
+                ['ViewHelper', ['separator' => '']],
+                ['HtmlTag', ['tag' => 'p']],
+            ]
         );
         
         $expected = '<p><label><input type="radio" name="foo" id="foo-foo" value="foo">Foo</label></p>'
@@ -249,9 +249,9 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
         $element->setValue('bar');
         $element->setLabel('baz');
         $element->setDecorators(
-            array(
+            [
                  'ViewHelper',
-            )
+            ]
         );
 
         // Test
@@ -273,9 +273,9 @@ class Zend_Form_Decorator_ViewHelperTest extends PHPUnit_Framework_TestCase
         $element = new Zend_Form_Element_Button('foo');
         $element->setAttrib('type', 'submit');
         $element->setDecorators(
-            array(
+            [
                  'ViewHelper',
-            )
+            ]
         );
 
         // Test

@@ -123,7 +123,7 @@ class Zend_Form_Decorator_ErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testRenderPrependsMessagesToContentWhenRequested()
     {
-        $this->decorator->setOptions(array('placement' => 'PREPEND'));
+        $this->decorator->setOptions(['placement' => 'PREPEND']);
         $this->setupElement();
         $content = 'test content';
         $test = $this->decorator->render($content);
@@ -140,7 +140,7 @@ class Zend_Form_Decorator_ErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testRenderSeparatesContentAndErrorsWithCustomSeparatorWhenRequested()
     {
-        $this->decorator->setOptions(array('separator' => '<br />'));
+        $this->decorator->setOptions(['separator' => '<br />']);
         $this->setupElement();
         $content = 'test content';
         $test = $this->decorator->render($content);
@@ -154,25 +154,25 @@ class Zend_Form_Decorator_ErrorsTest extends PHPUnit_Framework_TestCase
     {
         // Set up form
         $form = new Zend_Form(
-            array(
-                 'elements'         => array(
+            [
+                 'elements'         => [
                      'foo' => new Zend_Form_Element('foo'),
                      'bar' => new Zend_Form_Element('bar'),
-                 ),
+                 ],
                  'view'             => $this->getView(),
                  'elementsBelongTo' => 'foobar',
-            )
+            ]
         );
 
         $this->decorator->setElement($form);
 
         // Tests
         $this->assertEquals(
-            array('foobar' => array()),
+            ['foobar' => []],
             $form->getMessages()
         );
         $this->assertEquals(
-            array(),
+            [],
             $form->getMessages(null, true)
         );
         $this->assertEquals(
@@ -188,25 +188,25 @@ class Zend_Form_Decorator_ErrorsTest extends PHPUnit_Framework_TestCase
     {
         // Set up sub form
         $subForm = new Zend_Form_SubForm(
-            array(
-                 'elements' => array(
+            [
+                 'elements' => [
                      'foo' => new Zend_Form_Element('foo'),
                      'bar' => new Zend_Form_Element('bar'),
-                 ),
+                 ],
                  'view'     => $this->getView(),
                  'name'     => 'foobar',
-            )
+            ]
         );
 
         $this->decorator->setElement($subForm);
 
         // Tests
         $this->assertEquals(
-            array('foobar' => array()),
+            ['foobar' => []],
             $subForm->getMessages()
         );
         $this->assertEquals(
-            array(),
+            [],
             $subForm->getMessages(null, true)
         );
         $this->assertEquals(

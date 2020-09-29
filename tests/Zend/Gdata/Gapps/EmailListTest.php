@@ -73,8 +73,8 @@ class Zend_Gdata_Gapps_EmailListTest extends PHPUnit_Framework_TestCase
         $newEmailList = new Zend_Gdata_Gapps_Extension_EmailList();
         $newEmailList->transferFromXML($this->emailList->saveXML());
         $this->assertEquals(0, count($newEmailList->extensionElements));
-        $newEmailList->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newEmailList->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newEmailList->extensionElements));
         $this->assertEquals("test-name", $newEmailList->name);
 
@@ -106,8 +106,8 @@ class Zend_Gdata_Gapps_EmailListTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->emailList->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->emailList->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->emailList->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->emailList->extensionAttributes['foo2']['value']);

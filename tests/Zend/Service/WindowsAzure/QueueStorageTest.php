@@ -158,9 +158,9 @@ class Zend_Service_WindowsAzure_QueueStorageTest extends PHPUnit_Framework_TestC
             $storageClient = $this->createStorageInstance();
             $storageClient->createQueue($queueName);
             
-            $storageClient->setQueueMetadata($queueName, array(
+            $storageClient->setQueueMetadata($queueName, [
                 'createdby' => 'PHPAzure',
-            ));
+            ]);
             
             $metadata = $storageClient->getQueueMetadata($queueName);
             $this->assertEquals('PHPAzure', $metadata['createdby']);
@@ -219,10 +219,10 @@ class Zend_Service_WindowsAzure_QueueStorageTest extends PHPUnit_Framework_TestC
     	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_QUEUE_RUNTESTS) {
             $queueName = $this->generateName();
             $storageClient = $this->createStorageInstance();
-            $storageClient->createQueue($queueName, array(
+            $storageClient->createQueue($queueName, [
                 'createdby' => 'PHPAzure',
                 'ownedby' => 'PHPAzure',
-            ));
+            ]);
             
             $result = $storageClient->listQueues($queueName, null, null, 'metadata');
             

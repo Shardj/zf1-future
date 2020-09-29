@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_CurrencyTextBoxTest extends PHPUnit_Framework_TestC
     {
         $element = new Zend_Dojo_Form_Element_CurrencyTextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'CurrencyTextBox',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

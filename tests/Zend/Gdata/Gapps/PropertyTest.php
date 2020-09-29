@@ -75,8 +75,8 @@ class Zend_Gdata_Gapps_PropertyTest extends PHPUnit_Framework_TestCase
         $newProperty = new Zend_Gdata_Gapps_Extension_Property();
         $newProperty->transferFromXML($this->theProperty->saveXML());
         $this->assertEquals(0, count($newProperty->extensionElements));
-        $newProperty->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newProperty->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newProperty->extensionElements));
         $this->assertEquals("foo", $newProperty->name);
         $this->assertEquals("bar", $newProperty->value);
@@ -112,8 +112,8 @@ class Zend_Gdata_Gapps_PropertyTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->theProperty->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->theProperty->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->theProperty->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->theProperty->extensionAttributes['foo2']['value']);

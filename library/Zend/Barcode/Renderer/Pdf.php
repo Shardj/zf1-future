@@ -233,7 +233,7 @@ class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
     public function widthForStringUsingFontSize($text, $font, $fontSize)
     {
         $drawingString = iconv('UTF-8', 'UTF-16BE//IGNORE', $text);
-        $characters    = array();
+        $characters    = [];
         for ($i = 0; $i < strlen($drawingString); $i ++) {
             $characters[] = (ord($drawingString[$i ++]) << 8) | ord($drawingString[$i]);
         }

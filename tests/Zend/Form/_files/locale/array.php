@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-return array(
+return [
     'notDigits'         => 'Translating the notDigits string',
     'digitsStringEmpty' => 'Translating the stringEmpty string',
     'stringEmpty'       => 'Translating the stringEmpty string',
@@ -31,4 +31,4 @@ return array(
     'barvalue'    => 'Bar Value',
     'Foo'         => 'Foo Translation',
     'Bar'         => 'Bar Translation',
-);
+];

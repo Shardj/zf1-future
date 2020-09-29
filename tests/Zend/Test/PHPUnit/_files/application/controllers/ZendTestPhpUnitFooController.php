@@ -40,6 +40,6 @@ class ZendTestPhpUnitFooController extends Zend_Controller_Action
     public function sessionAction()
     {
         $this->_helper->viewRenderer->setNoRender(true);
-        $_SESSION = array('foo' => 'bar', 'bar' => 'baz');
+        $_SESSION = ['foo' => 'bar', 'bar' => 'baz'];
     }
 }

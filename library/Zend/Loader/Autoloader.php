@@ -42,12 +42,12 @@ class Zend_Loader_Autoloader
     /**
      * @var array Concrete autoloader callback implementations
      */
-    protected $_autoloaders = array();
+    protected $_autoloaders = [];
 
     /**
      * @var array Default autoloader callback
      */
-    protected $_defaultAutoloader = array('Zend_Loader', 'loadClass');
+    protected $_defaultAutoloader = ['Zend_Loader', 'loadClass'];
 
     /**
      * @var bool Whether or not to act as a fallback autoloader
@@ -62,15 +62,15 @@ class Zend_Loader_Autoloader
     /**
      * @var array Supported namespaces 'Zend' and 'ZendX' by default.
      */
-    protected $_namespaces = array(
+    protected $_namespaces = [
         'Zend_'  => true,
         'ZendX_' => true,
-    );
+    ];
 
     /**
      * @var array Namespace-specific autoloaders
      */
-    protected $_namespaceAutoloaders = array();
+    protected $_namespaceAutoloaders = [];
 
     /**
      * @var bool Whether or not to suppress file not found warnings
@@ -192,7 +192,7 @@ class Zend_Loader_Autoloader
     {
         $namespace = (string) $namespace;
         if (!array_key_exists($namespace, $this->_namespaceAutoloaders)) {
-            return array();
+            return [];
         }
         return $this->_namespaceAutoloaders[$namespace];
     }
@@ -265,10 +265,10 @@ class Zend_Loader_Autoloader
         }
 
         $this->_zfPath = $this->_getVersionPath($path, $version);
-        set_include_path(implode(PATH_SEPARATOR, array(
+        set_include_path(implode(PATH_SEPARATOR, [
             $this->_zfPath,
             get_include_path(),
-        )));
+        ]));
         return $this;
     }
 
@@ -327,7 +327,7 @@ class Zend_Loader_Autoloader
     public function getClassAutoloaders($class)
     {
         $namespace   = false;
-        $autoloaders = array();
+        $autoloaders = [];
 
         // Add concrete namespaced autoloaders
         foreach (array_keys($this->_namespaceAutoloaders) as $ns) {
@@ -459,8 +459,8 @@ class Zend_Loader_Autoloader
      */
     protected function __construct()
     {
-        spl_autoload_register(array(__CLASS__, 'autoload'));
-        $this->_internalAutoloader = array($this, '_autoload');
+        spl_autoload_register([__CLASS__, 'autoload']);
+        $this->_internalAutoloader = [$this, '_autoload'];
     }
 
     /**
@@ -565,7 +565,7 @@ class Zend_Loader_Autoloader
         $path       = rtrim($path, '/');
         $path       = rtrim($path, '\\');
         $versionLen = strlen($version);
-        $versions   = array();
+        $versions   = [];
         $dirs       = glob("$path/*", GLOB_ONLYDIR);
         foreach ((array) $dirs as $dir) {
             $dirName = substr($dir, strlen($path) + 1);

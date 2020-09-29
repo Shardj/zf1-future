@@ -35,7 +35,7 @@ class Zend_Feed_Writer_Deleted
      *
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Holds the value "atom" or "rss" depending on the feed type set when
@@ -149,7 +149,7 @@ class Zend_Feed_Writer_Deleted
 
     public function setBy(array $by)
     {
-        $author = array();
+        $author = [];
         if (!array_key_exists('name', $by)
             || empty($by['name'])
             || !is_string($by['name'])

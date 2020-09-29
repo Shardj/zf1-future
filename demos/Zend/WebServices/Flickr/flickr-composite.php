@@ -98,10 +98,10 @@ if (strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
     $flickr = new Zend_Service_Flickr('381e601d332ab5ce9c25939570cb5c4b');
 
     try {
-        $results = $flickr->tagSearch($keywords, array('per_page' => 50, 'tag_mode' => 'all'));
+        $results = $flickr->tagSearch($keywords, ['per_page' => 50, 'tag_mode' => 'all']);
 
         if ($results->totalResults() > 0) {
-            $images = array();
+            $images = [];
             foreach ($results as $result) {
                 if (isset($result->Medium)) {
                     $images[] = imagecreatefromjpeg($result->Medium->uri);

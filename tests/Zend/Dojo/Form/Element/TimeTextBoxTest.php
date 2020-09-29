@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Dojo_Form_Element_TimeTextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'TimeTextBox',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

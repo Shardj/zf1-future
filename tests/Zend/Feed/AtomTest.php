@@ -37,7 +37,7 @@ require_once 'Zend/Feed/Atom.php';
  */
 class Zend_Feed_AtomTest extends Zend_Feed_AbstractFeedTest
 {
-    public $remoteFeedNames = array('zend_feed_atom_xxe.remote.xml');
+    public $remoteFeedNames = ['zend_feed_atom_xxe.remote.xml'];
 
     public function testPreventsXxeAttacksOnParsing()
     {

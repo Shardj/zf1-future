@@ -29,7 +29,7 @@ $mailMerge->assign('customer_number', sprintf("#%'10s",  rand(0,1000000000)))
           ->assign('account_number',  sprintf("#%'10s",  rand(0,1000000000)));
 
 
-$billData = array (  
+$billData = [  
     'phone'         => '+22 (0)333 444 555',
     'date'          => Zend_Date::now()->toString(Zend_Date::DATE_LONG),
     'name'          => 'James Henry Brown',
@@ -42,33 +42,33 @@ $billData = array (
     'tax'           =>  '19.00',
     'tax_value'     =>   '3.72',
     'total'         =>  '23.32'
-);
+];
 
 $mailMerge->assign($billData);
 
 
-$billConnections = array(
-    array(
+$billConnections = [
+    [
         'connection_number'   => '+11 (0)222 333 441',
         'connection_duration' => '00:01:01',
         'fee'                 => '1.15'
-    ),
-    array(
+    ],
+    [
         'connection_number'   => '+11 (0)222 333 442',
         'connection_duration' => '00:01:02',
         'fee'                 => '1.15'
-    ),
-    array(
+    ],
+    [
         'connection_number'   => '+11 (0)222 333 443', 
         'connection_duration' => '00:01:03', 
         'fee'                 => '1.15'
-    ),
-    array(
+    ],
+    [
         'connection_number'   => '+11 (0)222 333 444',
         'connection_duration' => '00:01:04',
         'fee'                 => '1.15'
-    )
-);
+    ]
+];
 
 $mailMerge->assign('connection', $billConnections);
 

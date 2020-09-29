@@ -159,7 +159,7 @@ class Zend_Dom_QueryTest extends PHPUnit_Framework_TestCase
 
     public function testQueryingInvalidDocumentShouldThrowException()
     {
-        set_error_handler(array($this, 'handleError'));
+        set_error_handler([$this, 'handleError']);
         $this->query->setDocumentXml('some bogus string');
         try {
             $this->query->query('.foo');

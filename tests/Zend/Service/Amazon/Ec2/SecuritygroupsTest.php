@@ -54,9 +54,9 @@ class Zend_Service_Amazon_Ec2_SecuritygroupsTest extends PHPUnit_Framework_TestC
         $this->Zend_Service_Amazon_Ec2_Securitygroups = new Zend_Service_Amazon_Ec2_Securitygroups('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Securitygroups::setHttpClient($client);
 
@@ -252,34 +252,34 @@ class Zend_Service_Amazon_Ec2_SecuritygroupsTest extends PHPUnit_Framework_TestC
                     . "</DescribeSecurityGroupsResponse>\r\n";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $return = $this->Zend_Service_Amazon_Ec2_Securitygroups->describe(array('WebServers','RangedPortsBySource'));
+        $return = $this->Zend_Service_Amazon_Ec2_Securitygroups->describe(['WebServers','RangedPortsBySource']);
 
         $this->assertEquals(2, count($return));
 
-        $arrGroups = array(
-                array(
+        $arrGroups = [
+                [
                     'ownerId'   => 'UYY3TLBUXIEON5NQVUUX6OMPWBZIQNFM',
                     'groupName' => 'WebServers',
                     'groupDescription' => 'Web',
-                    'ipPermissions' => array(0 => array(
+                    'ipPermissions' => [0 => [
                         'ipProtocol' => 'tcp',
                         'fromPort'  => '80',
                         'toPort'    => '80',
                         'ipRanges'  => '0.0.0.0/0'
-                    ))
-                ),
-                array(
+                    ]]
+                ],
+                [
                     'ownerId'   => 'UYY3TLBUXIEON5NQVUUX6OMPWBZIQNFM',
                     'groupName' => 'RangedPortsBySource',
                     'groupDescription' => 'A',
-                    'ipPermissions' => array(0 => array(
+                    'ipPermissions' => [0 => [
                         'ipProtocol' => 'tcp',
                         'fromPort'  => '6000',
                         'toPort'    => '7000',
                         'ipRanges'  => '0.0.0.0/0'
-                    ))
-                )
-            );
+                    ]]
+                ]
+            ];
         foreach($return as $k => $r) {
             $this->assertSame($arrGroups[$k], $r);
         }
@@ -324,19 +324,19 @@ class Zend_Service_Amazon_Ec2_SecuritygroupsTest extends PHPUnit_Framework_TestC
 
         $this->assertEquals(1, count($return));
 
-        $arrGroups = array(
-                array(
+        $arrGroups = [
+                [
                     'ownerId'   => 'UYY3TLBUXIEON5NQVUUX6OMPWBZIQNFM',
                     'groupName' => 'WebServers',
                     'groupDescription' => 'Web',
-                    'ipPermissions' => array(0 => array(
+                    'ipPermissions' => [0 => [
                         'ipProtocol' => 'tcp',
                         'fromPort'  => '80',
                         'toPort'    => '80',
                         'ipRanges'  => '0.0.0.0/0'
-                    ))
-                )
-            );
+                    ]]
+                ]
+            ];
         foreach($return as $k => $r) {
             $this->assertSame($arrGroups[$k], $r);
         }
@@ -384,22 +384,22 @@ class Zend_Service_Amazon_Ec2_SecuritygroupsTest extends PHPUnit_Framework_TestC
 
         $this->assertEquals(1, count($return));
 
-        $arrGroups = array(
-                array(
+        $arrGroups = [
+                [
                     'ownerId'   => 'UYY3TLBUXIEON5NQVUUX6OMPWBZIQNFM',
                     'groupName' => 'WebServers',
                     'groupDescription' => 'Web',
-                    'ipPermissions' => array(0 => array(
+                    'ipPermissions' => [0 => [
                         'ipProtocol' => 'tcp',
                         'fromPort'  => '80',
                         'toPort'    => '80',
-                        'ipRanges'  => array(
+                        'ipRanges'  => [
                             '0.0.0.0/0',
                             '1.1.1.1/0'
-                            )
-                    ))
-                )
-            );
+                            ]
+                    ]]
+                ]
+            ];
         foreach($return as $k => $r) {
             $this->assertSame($arrGroups[$k], $r);
         }

@@ -59,7 +59,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyTest extends PHPUnit_Framew
                               'GET',
                               '/',
                               '',
-                              array("x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"),
+                              ["x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"],
                               false
                           );
                           
@@ -78,7 +78,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyTest extends PHPUnit_Framew
                               'GET',
                               '/test',
                               '',
-                              array("x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"),
+                              ["x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"],
                               false
                           );
   
@@ -97,7 +97,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyTest extends PHPUnit_Framew
                               'GET',
                               '/',
                               '?test=true',
-                              array("x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"),
+                              ["x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"],
                               false
                           );
   
@@ -116,7 +116,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyTest extends PHPUnit_Framew
                               'GET',
                               '/',
                               '',
-                              array("x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"),
+                              ["x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"],
                               false
                           );
                           
@@ -135,7 +135,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyTest extends PHPUnit_Framew
                               'GET',
                               '/test',
                               '',
-                              array("x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"),
+                              ["x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"],
                               false
                           );
   
@@ -154,7 +154,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyTest extends PHPUnit_Framew
                               'GET',
                               '/',
                               '?test=true',
-                              array("x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"),
+                              ["x-ms-date" => "Wed, 29 Apr 2009 13:12:47 GMT"],
                               false
                           );
   

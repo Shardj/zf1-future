@@ -46,7 +46,7 @@ class Zend_Tool_Project_Provider_Model extends Zend_Tool_Project_Provider_Abstra
 
         $newModel = $modelsDirectory->createResource(
             'modelFile',
-            array('modelName' => $modelName, 'moduleName' => $moduleName)
+            ['modelName' => $modelName, 'moduleName' => $moduleName]
             );
 
         return $newModel;
@@ -72,7 +72,7 @@ class Zend_Tool_Project_Provider_Model extends Zend_Tool_Project_Provider_Abstra
             return false;
         }
         
-        return (($modelsDirectory->search(array('modelFile' => array('modelName' => $modelName)))) instanceof Zend_Tool_Project_Profile_Resource);
+        return (($modelsDirectory->search(['modelFile' => ['modelName' => $modelName]])) instanceof Zend_Tool_Project_Profile_Resource);
     }
 
     /**
@@ -84,10 +84,10 @@ class Zend_Tool_Project_Provider_Model extends Zend_Tool_Project_Provider_Abstra
      */
     protected static function _getModelsDirectoryResource(Zend_Tool_Project_Profile $profile, $moduleName = null)
     {
-        $profileSearchParams = array();
+        $profileSearchParams = [];
 
         if ($moduleName != null && is_string($moduleName)) {
-            $profileSearchParams = array('modulesDirectory', 'moduleDirectory' => array('moduleName' => $moduleName));
+            $profileSearchParams = ['modulesDirectory', 'moduleDirectory' => ['moduleName' => $moduleName]];
         }
 
         $profileSearchParams[] = 'modelsDirectory';
@@ -134,7 +134,7 @@ class Zend_Tool_Project_Provider_Model extends Zend_Tool_Project_Provider_Abstra
                 'Note: The canonical model name that ' . $tense
                     . ' used with other providers is "' . $name . '";'
                     . ' not "' . $originalName . '" as supplied',
-                array('color' => array('yellow'))
+                ['color' => ['yellow']]
                 );
         }
 

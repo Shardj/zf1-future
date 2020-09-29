@@ -176,7 +176,7 @@ abstract class Zend_Cloud_QueueService_TestCase extends PHPUnit_Framework_TestCa
             $queueURL = $this->_commonQueue->createQueue('test-fetch-queue-metadata');
             $this->assertNotNull($queueURL);
             $this->_wait();
-            $this->_commonQueue->storeQueueMetadata($queueURL, array('purpose' => 'test'));
+            $this->_commonQueue->storeQueueMetadata($queueURL, ['purpose' => 'test']);
             $this->_wait();
             $metadata = $this->_commonQueue->fetchQueueMetadata($queueURL);
             $this->assertTrue(is_array($metadata));
@@ -255,11 +255,11 @@ abstract class Zend_Cloud_QueueService_TestCase extends PHPUnit_Framework_TestCa
             $this->assertTrue($receivedMessages2 instanceof Zend_Cloud_QueueService_MessageSet);
             $this->assertEquals(2, count($receivedMessages2));
 
-            $tests = array();
+            $tests = [];
             foreach ($receivedMessages2 as $message) {
                 $tests[] = $message;
             }
-            $texts = array($tests[0]->getBody(), $tests[1]->getBody());
+            $texts = [$tests[0]->getBody(), $tests[1]->getBody()];
             $this->assertContains($message1, $texts);
             $this->assertContains($message2, $texts);
 

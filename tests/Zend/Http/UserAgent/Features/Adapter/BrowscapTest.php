@@ -51,7 +51,7 @@ class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends PHPUnit_Framewor
     public function testGetFromRequest()
     {
         $request['http_user_agent'] = 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419.3';
-        $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, array());
+        $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, []);
         $this->assertEquals(1,                           $adapter['ismobiledevice']);
         $this->assertEquals(1,                           $adapter['javascript']);
         $this->assertEquals(3,                           $adapter['cssversion']);
@@ -59,7 +59,7 @@ class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends PHPUnit_Framewor
         $this->assertContains('^mozilla/.\\..*(iphone;.*cpu', $adapter['browser_name_regex']);
 
         $request['http_user_agent'] = 'SonyEricssonK700i/R2AC SEMC-Browser/4.0.2 Profile/MIDP-2.0 Configuration/CLDC-1.1';
-        $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, array());
+        $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, []);
         $this->assertEquals(1,                           $adapter['ismobiledevice']);
         $this->assertEquals(1,                           $adapter['javascript']);
         $this->assertEquals(1,                           $adapter['cssversion']);

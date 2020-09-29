@@ -52,12 +52,12 @@ class Zend_Db_Table_Pdo_OciTest extends Zend_Db_Table_TestCommon
     {
         $schemaName = $this->_util->getSchema();
         $tableName = 'zfbugs';
-        $identifier = join('.', array_filter(array($schemaName, $tableName)));
+        $identifier = join('.', array_filter([$schemaName, $tableName]));
         $table = $this->_getTable('My_ZendDbTable_TableSpecial',
-            array('name' => $tableName, 'schema' => $schemaName,Zend_Db_Table_Abstract::SEQUENCE => 'zfbugs_seq')
+            ['name' => $tableName, 'schema' => $schemaName,Zend_Db_Table_Abstract::SEQUENCE => 'zfbugs_seq']
         );
 
-        $row = array (
+        $row = [
             'bug_description' => 'New bug',
             'bug_status'      => 'NEW',
             'created_on'      => '2007-04-02',
@@ -65,7 +65,7 @@ class Zend_Db_Table_Pdo_OciTest extends Zend_Db_Table_TestCommon
             'reported_by'     => 'micky',
             'assigned_to'     => 'goofy',
             'verified_by'     => 'dduck'
-        );
+        ];
 
         $profilerEnabled = $this->_db->getProfiler()->getEnabled();
         $this->_db->getProfiler()->setEnabled(true);
@@ -80,8 +80,8 @@ class Zend_Db_Table_Pdo_OciTest extends Zend_Db_Table_TestCommon
     public function testTableInsertSequence()
     {
         $table = $this->_getTable('My_ZendDbTable_TableBugs',
-            array(Zend_Db_Table_Abstract::SEQUENCE => 'zfbugs_seq'));
-        $row = array (
+            [Zend_Db_Table_Abstract::SEQUENCE => 'zfbugs_seq']);
+        $row = [
             'bug_description' => 'New bug',
             'bug_status'      => 'NEW',
             'created_on'      => new Zend_Db_Expr(
@@ -90,7 +90,7 @@ class Zend_Db_Table_Pdo_OciTest extends Zend_Db_Table_TestCommon
                 $this->_db->quoteInto('DATE ?', '2007-04-02')),
             'reported_by'     => 'micky',
             'assigned_to'     => 'goofy'
-        );
+        ];
         $insertResult         = $table->insert($row);
         $lastInsertId         = $this->_db->lastInsertId('zfbugs');
         $lastSequenceId       = $this->_db->lastSequenceId('zfbugs_seq');
@@ -101,7 +101,7 @@ class Zend_Db_Table_Pdo_OciTest extends Zend_Db_Table_TestCommon
 
     protected function _getRowForTableAndIdentityWithVeryLongName()
     {
-        return array('thisisalongtablenameidentity' => 1, 'stuff' => 'information');
+        return ['thisisalongtablenameidentity' => 1, 'stuff' => 'information'];
     }
 
     public function getDriver()

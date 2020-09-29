@@ -38,9 +38,9 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
 class Zend_Db_Statement_Pdo_PgsqlTest extends Zend_Db_Statement_Pdo_TestCommon
 {
 
-    protected $_getColumnMetaKeys = array(
+    protected $_getColumnMetaKeys = [
         'pgsql:oid', 'native_type', 'name', 'len', 'precision', 'pdo_type'
-    );
+    ];
 
     public function getDriver()
     {

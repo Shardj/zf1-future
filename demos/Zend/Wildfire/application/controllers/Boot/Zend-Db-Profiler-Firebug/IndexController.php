@@ -13,6 +13,6 @@ class IndexController extends Zend_Controller_Action
                                       col1    VARCHAR(10) NOT NULL
                                     )');
 
-        $db->insert('foo', array('id'=>1,'col1'=>'original'));
+        $db->insert('foo', ['id'=>1,'col1'=>'original']);
     }
 }

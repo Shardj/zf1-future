@@ -122,7 +122,7 @@ class Zend_Pdf_Resource_Image_Jpeg extends Zend_Pdf_Resource_Image
 
         $this->_width  = $imageInfo[0];
         $this->_height = $imageInfo[1];
-        $this->_imageProperties = array();
+        $this->_imageProperties = [];
         $this->_imageProperties['bitDepth'] = $imageInfo['bits'];
         $this->_imageProperties['jpegImageType'] = $imageInfo[2];
         $this->_imageProperties['jpegColorType'] = $imageInfo['channels'];

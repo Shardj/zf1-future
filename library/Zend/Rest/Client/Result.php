@@ -49,7 +49,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
      */
     public function __construct($data)
     {
-        set_error_handler(array($this, 'handleXmlErrors'));
+        set_error_handler([$this, 'handleXmlErrors']);
         $this->_sxml = Zend_Xml_Security::scan($data); 
         restore_error_handler();
         if($this->_sxml === false) {
@@ -131,7 +131,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
             if (!is_array($value)) {
                 return $this->toValue($value);
             } else {
-                $return = array();
+                $return = [];
                 foreach ($value as $element) {
                     $return[] = $this->toValue($element);
                 }

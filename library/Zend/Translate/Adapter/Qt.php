@@ -41,7 +41,7 @@ require_once 'Zend/Xml/Exception.php';
 class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
     // Internal variables
     private $_file        = false;
-    private $_cleared     = array();
+    private $_cleared     = [];
     private $_transunit   = null;
     private $_source      = null;
     private $_target      = null;
@@ -49,7 +49,7 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
     private $_tcontent    = null;
     private $_stag        = false;
     private $_ttag        = true;
-    private $_data        = array();
+    private $_data        = [];
 
     /**
      * Load translation data (QT file reader)
@@ -61,9 +61,9 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter {
      * @throws Zend_Translation_Exception
      * @return array
      */
-    protected function _loadTranslationData($filename, $locale, array $options = array())
+    protected function _loadTranslationData($filename, $locale, array $options = [])
     {
-        $this->_data = array();
+        $this->_data = [];
         if (!is_readable($filename)) {
             require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception('Translation file \'' . $filename . '\' is not readable.');

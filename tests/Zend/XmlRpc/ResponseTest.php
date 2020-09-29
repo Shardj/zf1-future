@@ -77,8 +77,8 @@ class Zend_XmlRpc_ResponseTest extends PHPUnit_Framework_TestCase
         $this->_response->setReturnValue('string');
         $this->assertEquals('string', $this->_response->getReturnValue());
 
-        $this->_response->setReturnValue(array('one', 'two'));
-        $this->assertSame(array('one', 'two'), $this->_response->getReturnValue());
+        $this->_response->setReturnValue(['one', 'two']);
+        $this->assertSame(['one', 'two'], $this->_response->getReturnValue());
     }
 
     /**
@@ -143,7 +143,7 @@ class Zend_XmlRpc_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testExceptionIsThrownWhenInvalidXmlIsReturnedByServer()
     {
-        set_error_handler(array($this, 'trackError'));
+        set_error_handler([$this, 'trackError']);
         $invalidResponse = 'foo';
         $response = new Zend_XmlRpc_Response();
         $this->assertFalse($this->_errorOccured);
@@ -167,13 +167,13 @@ EOD;
         }
 
         $this->assertTrue($ret);
-        $this->assertEquals(array(
-            0 => array(
+        $this->assertEquals([
+            0 => [
                 'id'            => 1,
                 'name'          => 'birdy num num!',
                 'description'   => null,
-            )
-        ), $response->getReturnValue());
+            ]
+        ], $response->getReturnValue());
     }
 
     /**

@@ -35,7 +35,7 @@ require_once 'Zend/TimeSync.php';
  */
 class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
 {
-    public $timeservers = array(
+    public $timeservers = [
         // invalid servers
         'server_a'  => 'ntp://be.foo.bar.org',
         'server_b'  => 'sntp://be.foo.bar.org',
@@ -45,7 +45,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
         'server_d'  => 'ntp://be.pool.ntp.org',
         'server_e'  => 'ntp://time.windows.com',
         'server_f'  => 'sntp://time-C.timefreq.bldrdoc.gov'
-    );
+    ];
 
     /**
      * Test for object initialisation
@@ -141,7 +141,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
         $timeout = 5;
 
         $server = new Zend_TimeSync();
-        $server->setOptions(array('timeout' => $timeout));
+        $server->setOptions(['timeout' => $timeout]);
 
         $this->assertEquals($timeout, $server->getOptions('timeout'));
     }
@@ -153,10 +153,10 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      */
     public function testSetOptions()
     {
-        $options = array(
+        $options = [
             'timeout' => 5,
             'foo'     => 'bar'
-        );
+        ];
 
         $server = new Zend_TimeSync();
         $server->setOptions($options);
@@ -292,10 +292,10 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      */
     public function testGetInvalidDate()
     {
-        $servers = array(
+        $servers = [
             'server_a' => 'dummy-ntp-timeserver.com',
             'server_b' => 'another-dummy-ntp-timeserver.com'
-        );
+        ];
 
         $server = new Zend_TimeSync($servers);
 

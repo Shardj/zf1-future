@@ -225,6 +225,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param int $lifetime
      * @param boolean $overrideLifetime (optional)
      * @return Zend_Session_SaveHandler_DbTable
+     * @throws Zend_Session_SaveHandler_Exception
      */
     public function setLifetime($lifetime, $overrideLifetime = null)
     {
@@ -234,7 +235,9 @@ class Zend_Session_SaveHandler_DbTable
              */
             require_once 'Zend/Session/SaveHandler/Exception.php';
             throw new Zend_Session_SaveHandler_Exception();
-        } else if (empty($lifetime)) {
+        }
+
+        if (empty($lifetime)) {
             $this->_lifetime = (int) ini_get('session.gc_maxlifetime');
         } else {
             $this->_lifetime = (int) $lifetime;
@@ -315,7 +318,7 @@ class Zend_Session_SaveHandler_DbTable
     {
         $return = '';
 
-        $rows = call_user_func_array(array(&$this, 'find'), $this->_getPrimary($id));
+        $rows = call_user_func_array([&$this, 'find'], $this->_getPrimary($id));
 
         if (count($rows)) {
             if ($this->_getExpirationTime($row = $rows->current()) > time()) {
@@ -337,10 +340,10 @@ class Zend_Session_SaveHandler_DbTable
      */
     public function write($id, $data)
     {
-        $data = array($this->_modifiedColumn => time(),
-                      $this->_dataColumn     => (string) $data);
+        $data = [$this->_modifiedColumn => time(),
+                      $this->_dataColumn     => (string) $data];
 
-        $rows = call_user_func_array(array(&$this, 'find'), $this->_getPrimary($id));
+        $rows = call_user_func_array([&$this, 'find'], $this->_getPrimary($id));
 
         if (count($rows)) {
             $data[$this->_lifetimeColumn] = $this->_getLifetime($rows->current());
@@ -430,9 +433,9 @@ class Zend_Session_SaveHandler_DbTable
     protected function _setupPrimaryAssignment()
     {
         if ($this->_primaryAssignment === null) {
-            $this->_primaryAssignment = array(1 => self::PRIMARY_ASSIGNMENT_SESSION_ID);
+            $this->_primaryAssignment = [1 => self::PRIMARY_ASSIGNMENT_SESSION_ID];
         } else if (!is_array($this->_primaryAssignment)) {
-            $this->_primaryAssignment = array(1 => (string) $this->_primaryAssignment);
+            $this->_primaryAssignment = [1 => (string) $this->_primaryAssignment];
         } else if (isset($this->_primaryAssignment[0])) {
             array_unshift($this->_primaryAssignment, null);
 
@@ -513,7 +516,7 @@ class Zend_Session_SaveHandler_DbTable
             $type = self::PRIMARY_TYPE_NUM;
         }
 
-        $primaryArray = array();
+        $primaryArray = [];
 
         foreach ($this->_primary as $index => $primary) {
             switch ($this->_primaryAssignment[$index]) {

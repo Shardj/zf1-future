@@ -44,7 +44,7 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
 {
     protected function sanitizeWsdlXmlOutputForOsCompability($xmlstring)
     {
-        $xmlstring = str_replace(array("\r", "\n"), "", $xmlstring);
+        $xmlstring = str_replace(["\r", "\n"], "", $xmlstring);
         $xmlstring = preg_replace('/(>[\s]{1,}<)/', '', $xmlstring);
         return $xmlstring;
     }
@@ -84,7 +84,7 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
     {
         $wsdl = new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php');
 
-        $messageParts = array();
+        $messageParts = [];
         $messageParts['parameter1'] = $wsdl->getType('int');
         $messageParts['parameter2'] = $wsdl->getType('string');
         $messageParts['parameter3'] = $wsdl->getType('mixed');
@@ -192,14 +192,14 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
         $wsdl->addBindingOperation($binding, 'operation1');
         $wsdl->addBindingOperation($binding,
                                    'operation2',
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"),
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/")
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"],
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"]
                                   );
         $wsdl->addBindingOperation($binding,
                                    'operation3',
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"),
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"),
-                                   array('name' => 'MyFault', 'use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/")
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"],
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"],
+                                   ['name' => 'MyFault', 'use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"]
                                    );
 
         $this->assertEquals($this->sanitizeWsdlXmlOutputForOsCompability($wsdl->toXml()),
@@ -249,8 +249,8 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
         $wsdl->addBindingOperation($binding, 'operation1');
         $wsdl->addBindingOperation($binding,
                                    'operation2',
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"),
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/")
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"],
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"]
                                   );
 
         $this->assertEquals($this->sanitizeWsdlXmlOutputForOsCompability($wsdl->toXml()),
@@ -287,8 +287,8 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
         $wsdl1->addBindingOperation($binding, 'operation1');
         $wsdl1->addBindingOperation($binding,
                                    'operation2',
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"),
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/")
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"],
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"]
                                   );
 
         $this->assertEquals($this->sanitizeWsdlXmlOutputForOsCompability($wsdl1->toXml()),
@@ -329,8 +329,8 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
         $wsdl->addBindingOperation($binding, 'operation1');
         $wsdl->addBindingOperation($binding,
                                    'operation2',
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"),
-                                   array('use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/")
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"],
+                                   ['use' => 'encoded', 'encodingStyle' => "http://schemas.xmlsoap.org/soap/encoding/"]
                                   );
 
         $this->assertEquals($this->sanitizeWsdlXmlOutputForOsCompability($wsdl->toXml()),
@@ -413,7 +413,7 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
     {
         $wsdl = new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php');
 
-        $messageParts = array();
+        $messageParts = [];
         $messageParts['parameter1'] = $wsdl->getType('int');
         $messageParts['parameter2'] = $wsdl->getType('string');
         $messageParts['parameter3'] = $wsdl->getType('mixed');
@@ -577,7 +577,7 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
             $wsdl->addType('Zend_Soap_Wsdl_Test');
             $types = $wsdl->getTypes();
             $this->assertEquals(1, count($types));
-            $this->assertEquals(array("Zend_Soap_Wsdl_Test"), $types);
+            $this->assertEquals(["Zend_Soap_Wsdl_Test"], $types);
         } catch(Zend_Soap_Wsdl_Exception $e) {
             $this->fail();
         }
@@ -587,10 +587,10 @@ class Zend_Soap_WsdlTest extends PHPUnit_Framework_TestCase
     {
         $wsdl = new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php');
         $wsdl->addComplexType('Zend_Soap_Wsdl_Test');
-        $this->assertEquals(array('Zend_Soap_Wsdl_Test'), $wsdl->getTypes());
+        $this->assertEquals(['Zend_Soap_Wsdl_Test'], $wsdl->getTypes());
 
         $wsdl->addComplexType('Zend_Soap_Wsdl_Test');
-        $this->assertEquals(array('Zend_Soap_Wsdl_Test'), $wsdl->getTypes());
+        $this->assertEquals(['Zend_Soap_Wsdl_Test'], $wsdl->getTypes());
     }
 
     function testAddComplexType()

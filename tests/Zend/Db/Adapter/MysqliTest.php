@@ -42,7 +42,7 @@ require_once 'Zend/Db/Adapter/Mysqli.php';
 class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
 {
 
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
@@ -59,7 +59,7 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
         'DOUBLE PRECISION'   => Zend_Db::FLOAT_TYPE,
         'FIXED'              => Zend_Db::FLOAT_TYPE,
         'FLOAT'              => Zend_Db::FLOAT_TYPE
-    );
+    ];
 
     /**
      * Test AUTO_QUOTE_IDENTIFIERS option
@@ -72,9 +72,9 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => true
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
 
@@ -145,7 +145,7 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
      */
     public function testAdapterQuoteIdentifierArray()
     {
-        $array = array('foo', 'bar');
+        $array = ['foo', 'bar'];
         $value = $this->_db->quoteIdentifier($array);
         $this->assertEquals('`foo`.`bar`', $value);
     }
@@ -158,7 +158,7 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
     public function testAdapterQuoteIdentifierArrayDbExpr()
     {
         $expr = new Zend_Db_Expr('*');
-        $array = array('foo', $expr);
+        $array = ['foo', $expr];
         $value = $this->_db->quoteIdentifier($array);
         $this->assertEquals('`foo`.*', $value);
     }
@@ -276,9 +276,9 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
     public function testMySqliInitCommand()
     {
         $params = $this->_util->getParams();
-        $params['driver_options'] = array(
+        $params['driver_options'] = [
             'mysqli_init_command' => 'SET AUTOCOMMIT=0;'
-        );
+        ];
 
         $db = Zend_Db::factory($this->getDriver(), $params);
 

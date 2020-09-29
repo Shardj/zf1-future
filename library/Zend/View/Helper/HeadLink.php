@@ -48,7 +48,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
      *
      * @var array
      */
-    protected $_itemKeys = array(
+    protected $_itemKeys = [
         'charset',
         'href',
         'hreflang',
@@ -60,7 +60,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
         'title',
         'extras',
         'sizes',
-    );
+    ];
 
     /**
      * @var string registry key
@@ -340,7 +340,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
                 ? $this->getWhitespace($indent)
                 : $this->getIndent();
 
-        $items = array();
+        $items = [];
         $this->getContainer()->ksort();
         foreach ($this as $item) {
             $items[] = $this->itemToString($item);

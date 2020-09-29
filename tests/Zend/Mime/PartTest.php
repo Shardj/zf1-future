@@ -58,12 +58,12 @@ class Zend_Mime_PartTest extends PHPUnit_Framework_TestCase
 
     public function testHeaders()
     {
-        $expectedHeaders = array('Content-Type: text/plain',
+        $expectedHeaders = ['Content-Type: text/plain',
                                  'Content-Transfer-Encoding: ' . Zend_Mime::ENCODING_BASE64,
                                  'Content-Disposition: attachment',
                                  'filename="test.txt"',
                                  'charset=iso8859-1',
-                                 'Content-ID: <4711>');
+                                 'Content-ID: <4711>'];
 
         $actual = $this->part->getHeaders();
 

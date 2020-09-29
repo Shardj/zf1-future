@@ -67,7 +67,7 @@ class Zend_Service_WindowsAzure_RetryPolicy_RetryN extends Zend_Service_WindowsA
      * @param array        $parameters     Parameters for function call
      * @return mixed
      */
-    public function execute($function, $parameters = array())
+    public function execute($function, $parameters = [])
     {
         $returnValue = null;
         

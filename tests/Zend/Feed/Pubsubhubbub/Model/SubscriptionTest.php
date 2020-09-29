@@ -42,18 +42,18 @@ class Zend_Feed_Pubsubhubbub_Model_SubscriptionTest extends PHPUnit_Framework_Te
         $this->assertFalse($subscription->hasSubscription($id));
         $this->assertFalse($subscription->getSubscription($id));
         $this->assertFalse($subscription->deleteSubscription($id));
-        $this->assertTrue($subscription->setSubscription(array('id' => $id)));
+        $this->assertTrue($subscription->setSubscription(['id' => $id]));
 
         $this->assertTrue($subscription->hasSubscription($id));
         $dataSubscription = $subscription->getSubscription($id);
         $this->assertTrue(is_array($dataSubscription));
-        $keys = array('id', 'topic_url', 'hub_url',
+        $keys = ['id', 'topic_url', 'hub_url',
                       'created_time', 'lease_seconds',
                       'verify_token', 'secret',
-                      'expiration_time', 'subscription_state');
+                      'expiration_time', 'subscription_state'];
 
         $this->assertSame($keys, array_keys($dataSubscription));
-        $this->assertFalse($subscription->setSubscription(array('id' => $id)));
+        $this->assertFalse($subscription->setSubscription(['id' => $id]));
         $this->assertTrue($subscription->deleteSubscription($id));
     }
 
@@ -74,7 +74,7 @@ class Zend_Feed_Pubsubhubbub_Model_SubscriptionTest extends PHPUnit_Framework_Te
             $this->markTestSkipped("PDO driver 'sqlite' is not available");
         }
 
-        $db = Zend_Db::factory('Pdo_Sqlite', array('dbname' => ':memory:'));
+        $db = Zend_Db::factory('Pdo_Sqlite', ['dbname' => ':memory:']);
         Zend_Db_Table::setDefaultAdapter($db);
         $this->_createTable();
     }

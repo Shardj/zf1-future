@@ -110,8 +110,8 @@ class Zend_Service_Console_Command
 		}
 
 		// Replace error handler
-		set_error_handler(array('Zend_Service_Console_Command', 'phpstderr'));
-		set_exception_handler(array('Zend_Service_Console_Command', 'phpstdex'));
+		set_error_handler(['Zend_Service_Console_Command', 'phpstderr']);
+		set_exception_handler(['Zend_Service_Console_Command', 'phpstdex']);
 
 		// Build the application model
 		$model = self::_buildModel();
@@ -145,8 +145,8 @@ class Zend_Service_Console_Command
 		}
 
 		// Parse parameter values
-		$parameterValues = array();
-		$missingParameterValues = array();
+		$parameterValues = [];
+		$missingParameterValues = [];
 		$parameterInputs = array_splice($argv, 2);
 		foreach ($command->parameters as $parameter) {
 			// Default value: null
@@ -188,7 +188,7 @@ class Zend_Service_Console_Command
 		$className = $handler->class;
 		$classInstance = new $className();
 		$classInstance->setHandler($handler);
-		call_user_func_array(array($classInstance, $command->method), $parameterValues);
+		call_user_func_array([$classInstance, $command->method], $parameterValues);
 
 		// Restore error handler
 		restore_exception_handler();
@@ -202,7 +202,7 @@ class Zend_Service_Console_Command
 	 */
 	protected static function _buildModel()
 	{
-		$model = array();
+		$model = [];
 
 		$classes = get_declared_classes();
 		foreach ($classes as $class) {
@@ -224,14 +224,14 @@ class Zend_Service_Console_Command
 				$handlerDescription = str_replace('\r\n', "\r\n", $handlerDescription);
 				$handlerDescription = str_replace('\n', "\n", $handlerDescription);
 
-				$handlerModel = (object)array(
+				$handlerModel = (object)[
 					'handler'     => strtolower($handler),
 					'description' => $handlerDescription,
 					'headers'     => $handlerHeaders,
 					'footers'     => $handlerFooters,
 					'class'       => $class,
-					'commands'    => array()
-				);
+					'commands'    => []
+				];
 
 				$methods = $type->getMethods();
 			    foreach ($methods as $method) {
@@ -252,15 +252,15 @@ class Zend_Service_Console_Command
 						$command = $commands[0];
 						$commandDescription = isset($commandDescriptions[0]) ? $commandDescriptions[0] : '';
 
-						$commandModel = (object)array(
+						$commandModel = (object)[
 							'command'     => $command,
 							'aliases'     => $commands,
 							'description' => $commandDescription,
 							'examples'    => $commandExamples,
 							'class'       => $class,
 							'method'      => $method->getName(),
-							'parameters'  => array()
-						);
+							'parameters'  => []
+						];
 
 						$parameters = $method->getParameters();
 						$parametersFor = self::_findValueForDocComment('@command-parameter-for', $method->getDocComment());
@@ -291,14 +291,14 @@ class Zend_Service_Console_Command
 								$parameterForDefaultValue = $parameter->getDefaultValue();
 							}
 
-							$parameterModel = (object)array(
+							$parameterModel = (object)[
 								'name'           => '$' . $parameter->getName(),
 								'defaultvalue'   => $parameterForDefaultValue,
 								'valueproviders' => explode('|', $parameterFor[1]),
 								'aliases'        => explode('|', $parameterFor[2]),
 								'description'    => (isset($parameterFor[3]) ? $parameterFor[3] : ''),
 								'required'       => (isset($parameterFor[3]) ? strpos(strtolower($parameterFor[3]), 'required') !== false && strpos(strtolower($parameterFor[3]), 'required if') === false : false),
-							);
+							];
 
 							// Add to model
 							$commandModel->parameters[] = $parameterModel;
@@ -326,7 +326,7 @@ class Zend_Service_Console_Command
 	 */
 	protected static function _findValueForDocComment($docCommentName, $docComment)
 	{
-		$returnValue = array();
+		$returnValue = [];
 
 		$commentLines = explode("\n", $docComment);
 	    foreach ($commentLines as $commentLine) {
@@ -344,7 +344,7 @@ class Zend_Service_Console_Command
 	 * @param object $object Object
 	 * @param array $propertiesToDump Property names to display
 	 */
-	protected function _displayObjectInformation($object, $propertiesToDump = array())
+	protected function _displayObjectInformation($object, $propertiesToDump = [])
 	{
 		foreach ($propertiesToDump as $property) {
 			printf('%-16s: %s' . "\r\n", $property, $object->$property);

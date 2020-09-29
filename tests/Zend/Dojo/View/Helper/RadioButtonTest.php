@@ -100,12 +100,12 @@ class Zend_Dojo_View_Helper_RadioButtonTest extends PHPUnit_Framework_TestCase
         return $this->helper->radioButton(
             'elementId',
             'foo',
-            array(),
-            array(),
-            array(
+            [],
+            [],
+            [
                 'checked'   => 'foo',
                 'unChecked' => 'bar',
-            )
+            ]
         );
     }
 

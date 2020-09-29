@@ -66,12 +66,12 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
      *
      * @var array
      */
-    protected $_options = array(
+    protected $_options = [
         'img_size'    => 80,
         'default_img' => self::DEFAULT_MM,
         'rating'      => self::RATING_G,
         'secure'      => null,
-    );
+    ];
 
     /**
      * Email Adress
@@ -103,7 +103,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
      * @param  array $attribs Attributes for image tag (title, alt etc.)
      * @return Zend_View_Helper_Gravatar
      */
-    public function gravatar($email = "", $options = array(), $attribs = array())
+    public function gravatar($email = "", $options = [], $attribs = [])
     {
         $this->setEmail($email);
         $this->setOptions($options);

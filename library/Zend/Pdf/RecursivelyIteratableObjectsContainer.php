@@ -29,7 +29,7 @@
  */
 class Zend_Pdf_RecursivelyIteratableObjectsContainer implements RecursiveIterator, Countable
 {
-    protected $_objects = array();
+    protected $_objects = [];
 
     public function __construct(array $objects) { $this->_objects = $objects; }
 

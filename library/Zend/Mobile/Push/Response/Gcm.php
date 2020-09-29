@@ -215,7 +215,7 @@ class Zend_Mobile_Push_Response_Gcm
      */
     public function getResult($flag)
     {
-        $ret = array();
+        $ret = [];
         foreach ($this->_correlate() as $k => $v) {
             if (isset($v[$flag])) {
                 $ret[$k] = $v[$flag];

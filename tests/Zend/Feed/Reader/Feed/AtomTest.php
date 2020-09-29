@@ -36,11 +36,11 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
 
     protected $_feedSamplePath = null;
     
-    protected $_options = array();
+    protected $_options = [];
     
-    protected $_expectedCats = array();
+    protected $_expectedCats = [];
     
-    protected $_expectedCatsDc = array();
+    protected $_expectedCatsDc = [];
 
     public function setup()
     {
@@ -56,36 +56,36 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
                 unset($this->_options[$k]);
             }
         }
-        Zend_Date::setOptions(array('format_type'=>'iso'));
-        $this->_expectedCats = array(
-            array(
+        Zend_Date::setOptions(['format_type'=>'iso']);
+        $this->_expectedCats = [
+            [
                 'term' => 'topic1',
                 'scheme' => 'http://example.com/schema1',
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'topic1',
                 'scheme' => 'http://example.com/schema2',
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'cat_dog',
                 'scheme' => 'http://example.com/schema1',
                 'label' => 'Cat & Dog'
-            )
-        );
-        $this->_expectedCatsDc = array(
-            array(
+            ]
+        ];
+        $this->_expectedCatsDc = [
+            [
                 'term' => 'topic1',
                 'scheme' => null,
                 'label' => 'topic1'
-            ),
-            array(
+            ],
+            [
                 'term' => 'topic2',
                 'scheme' => null,
                 'label' => 'topic2'
-            )
-        );
+            ]
+        ];
     }
     
     public function teardown()
@@ -121,14 +121,14 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/author/plain/atom03.xml')
         );
 
-        $authors = array(
-            array('email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs'),
-            array('email'=>'joe@example.com','uri'=>'http://www.example.com'),
-            array('uri'=>'http://www.example.com'),
-            array('email'=>'joe@example.com')
-        );
+        $authors = [
+            ['email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs'],
+            ['email'=>'joe@example.com','uri'=>'http://www.example.com'],
+            ['uri'=>'http://www.example.com'],
+            ['email'=>'joe@example.com']
+        ];
 
         $this->assertEquals($authors, (array) $feed->getAuthors());
     }
@@ -139,14 +139,14 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/author/plain/atom10.xml')
         );
 
-        $authors = array(
-            array('email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs','uri'=>'http://www.example.com'),
-            array('name'=>'Joe Bloggs'),
-            array('email'=>'joe@example.com','uri'=>'http://www.example.com'),
-            array('uri'=>'http://www.example.com'),
-            array('email'=>'joe@example.com')
-        );
+        $authors = [
+            ['email'=>'joe@example.com','name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs','uri'=>'http://www.example.com'],
+            ['name'=>'Joe Bloggs'],
+            ['email'=>'joe@example.com','uri'=>'http://www.example.com'],
+            ['uri'=>'http://www.example.com'],
+            ['email'=>'joe@example.com']
+        ];
 
         $this->assertEquals($authors, (array) $feed->getAuthors());
     }
@@ -160,7 +160,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/author/plain/atom03.xml')
         );
 
-        $this->assertEquals(array('name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'), $feed->getAuthor());
+        $this->assertEquals(['name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'], $feed->getAuthor());
     }
 
     public function testGetsSingleAuthorFromAtom10()
@@ -169,7 +169,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/author/plain/atom10.xml')
         );
 
-        $this->assertEquals(array('name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'), $feed->getAuthor());
+        $this->assertEquals(['name'=>'Joe Bloggs','email'=>'joe@example.com','uri'=>'http://www.example.com'], $feed->getAuthor());
     }
 
     /**
@@ -417,10 +417,10 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/hubs/plain/atom03.xml')
         );
-        $this->assertEquals(array(
+        $this->assertEquals([
             'http://www.example.com/hub1',
             'http://www.example.com/hub2'
-        ), $feed->getHubs());
+        ], $feed->getHubs());
     }
 
     public function testGetsHubsFromAtom10()
@@ -428,10 +428,10 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/hubs/plain/atom10.xml')
         );
-        $this->assertEquals(array(
+        $this->assertEquals([
             'http://www.example.com/hub1',
             'http://www.example.com/hub2'
-        ), $feed->getHubs());
+        ], $feed->getHubs());
     }
 
 
@@ -459,7 +459,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/category/plain/atom10.xml')
         );
         $this->assertEquals($this->_expectedCats, (array) $feed->getCategories());
-        $this->assertEquals(array('topic1','Cat & Dog'), array_values($feed->getCategories()->getValues()));
+        $this->assertEquals(['topic1','Cat & Dog'], array_values($feed->getCategories()->getValues()));
     }
     
     public function testGetsCategoriesFromAtom03_Atom10Extension()
@@ -468,7 +468,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/category/plain/atom03.xml')
         );
         $this->assertEquals($this->_expectedCats, (array) $feed->getCategories());
-        $this->assertEquals(array('topic1','Cat & Dog'), array_values($feed->getCategories()->getValues()));
+        $this->assertEquals(['topic1','Cat & Dog'], array_values($feed->getCategories()->getValues()));
     }
     
     // DC 1.0/1.1 for Atom 0.3
@@ -479,7 +479,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/category/plain/dc10/atom03.xml')
         );
         $this->assertEquals($this->_expectedCatsDc, (array) $feed->getCategories());
-        $this->assertEquals(array('topic1','topic2'), array_values($feed->getCategories()->getValues()));
+        $this->assertEquals(['topic1','topic2'], array_values($feed->getCategories()->getValues()));
     }
     
     public function testGetsCategoriesFromAtom03_Dc11()
@@ -488,7 +488,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
             file_get_contents($this->_feedSamplePath.'/category/plain/dc11/atom03.xml')
         );
         $this->assertEquals($this->_expectedCatsDc, (array) $feed->getCategories());
-        $this->assertEquals(array('topic1','topic2'), array_values($feed->getCategories()->getValues()));
+        $this->assertEquals(['topic1','topic2'], array_values($feed->getCategories()->getValues()));
     }
     
     // No Categories In Entry
@@ -498,8 +498,8 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/category/plain/none/atom10.xml')
         );
-        $this->assertEquals(array(), (array) $feed->getCategories());
-        $this->assertEquals(array(), array_values($feed->getCategories()->getValues()));
+        $this->assertEquals([], (array) $feed->getCategories());
+        $this->assertEquals([], array_values($feed->getCategories()->getValues()));
     }
     
     public function testGetsCategoriesFromAtom03_None()
@@ -507,8 +507,8 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/category/plain/none/atom03.xml')
         );
-        $this->assertEquals(array(), (array) $feed->getCategories());
-        $this->assertEquals(array(), array_values($feed->getCategories()->getValues()));
+        $this->assertEquals([], (array) $feed->getCategories());
+        $this->assertEquals([], array_values($feed->getCategories()->getValues()));
     }
 
     /**
@@ -519,7 +519,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/image/plain/atom03.xml')
         );
-        $this->assertEquals(array('uri'=>'http://www.example.com/logo.gif'), $feed->getImage());
+        $this->assertEquals(['uri'=>'http://www.example.com/logo.gif'], $feed->getImage());
     }
 
     public function testGetsImageFromAtom10()
@@ -527,7 +527,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/image/plain/atom10.xml')
         );
-        $this->assertEquals(array('uri'=>'http://www.example.com/logo.gif'), $feed->getImage());
+        $this->assertEquals(['uri'=>'http://www.example.com/logo.gif'], $feed->getImage());
     }
 
     /**
@@ -557,7 +557,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/icon/plain/atom03.xml')
         );
-        $this->assertEquals(array('uri'=>'http://www.example.com/logo.gif'), $feed->getIcon());
+        $this->assertEquals(['uri'=>'http://www.example.com/logo.gif'], $feed->getIcon());
     }
 
     public function testGetsIconFromAtom10()
@@ -565,7 +565,7 @@ class Zend_Feed_Reader_Feed_AtomTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath.'/icon/plain/atom10.xml')
         );
-        $this->assertEquals(array('uri'=>'http://www.example.com/logo.gif'), $feed->getIcon());
+        $this->assertEquals(['uri'=>'http://www.example.com/logo.gif'], $feed->getIcon());
     }
 
     /**

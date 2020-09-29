@@ -84,8 +84,8 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
         $newLink = new Zend_Gdata_Calendar_Extension_Link();
         $newLink->transferFromXML($this->link->saveXML());
         $this->assertEquals(count($newLink->extensionElements), 0);
-        $newLink->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newLink->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newLink->extensionElements), 1);
         $this->assertEquals($newLink->rel, "http://nowhere.invalid/");
         $this->assertEquals($newLink->title, "Somewhere");
@@ -139,8 +139,8 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->link->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->link->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->link->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->link->extensionAttributes['foo2']['value']);

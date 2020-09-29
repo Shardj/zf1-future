@@ -96,7 +96,7 @@ class Zend_Reflection_Function extends ReflectionFunction
     public function getParameters($reflectionClass = 'Zend_Reflection_Parameter')
     {
         $phpReflections  = parent::getParameters();
-        $zendReflections = array();
+        $zendReflections = [];
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
             $instance = new $reflectionClass($this->getName(), $phpReflection->getName());
             if (!$instance instanceof Zend_Reflection_Parameter) {

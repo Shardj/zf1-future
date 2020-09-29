@@ -54,11 +54,11 @@ class Zend_Mail_SmtpProtocolTest extends PHPUnit_Framework_TestCase
     {
         $this->_connectAndEhlo(); // expects 250 response
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             '220 example.com ESMTP welcome',
             'EHLO 127.0.0.1',
             '250 Hello 127.0.0.1, go ahead'
-        ), $this->_protocol->dialog);
+        ], $this->_protocol->dialog);
     }
 
     /**
@@ -76,22 +76,22 @@ class Zend_Mail_SmtpProtocolTest extends PHPUnit_Framework_TestCase
      */
     public function testEhloFallsBackToHelo()
     {
-        $this->_protocol->responseBuffer = array(
+        $this->_protocol->responseBuffer = [
             '220 example.com ESMTP welcome',
             '500 Unrecognized', /* 500 or 502 error on unrecognized EHLO */
             '250 Hello 127.0.0.1, go ahead'
-        );
+        ];
 
         $this->_protocol->connect();
         $this->_protocol->helo();
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             '220 example.com ESMTP welcome',
             'EHLO 127.0.0.1', // tries EHLO
             '500 Unrecognized', // .. which fails
             'HELO 127.0.0.1', // continues to HELO
             '250 Hello 127.0.0.1, go ahead' // success
-        ), $this->_protocol->dialog);
+        ], $this->_protocol->dialog);
     }
 
     /**
@@ -181,7 +181,7 @@ class Zend_Mail_SmtpProtocolTest extends PHPUnit_Framework_TestCase
     {
         $expectedDialog = $this->_connectAndEhlo();
 
-        $this->_protocol->responseBuffer = array('250 OK');
+        $this->_protocol->responseBuffer = ['250 OK'];
         $expectedDialog[] = 'RSET';
         $expectedDialog[] = '250 OK';
 
@@ -199,7 +199,7 @@ class Zend_Mail_SmtpProtocolTest extends PHPUnit_Framework_TestCase
         $expectedDialog = $this->_connectAndEhlo();
 
         // Microsoft ESMTP server responds to RSET with 220 rather than 250
-        $this->_protocol->responseBuffer = array('220 OK');
+        $this->_protocol->responseBuffer = ['220 OK'];
         $expectedDialog[] = 'RSET';
         $expectedDialog[] = '220 OK';
 
@@ -322,10 +322,10 @@ class Zend_Mail_SmtpProtocolTest extends PHPUnit_Framework_TestCase
      */
     protected function _connectAndEhlo()
     {
-        $this->_protocol->responseBuffer = array(
+        $this->_protocol->responseBuffer = [
             '220 example.com ESMTP welcome',
             '250 Hello 127.0.0.1, go ahead'
-        );
+        ];
 
         $this->_protocol->connect();
         $this->_protocol->helo();
@@ -336,8 +336,8 @@ class Zend_Mail_SmtpProtocolTest extends PHPUnit_Framework_TestCase
 
 class ProtocolMock extends Zend_Mail_Protocol_Smtp
 {
-    public $dialog = array();
-    public $responseBuffer = array();
+    public $dialog = [];
+    public $responseBuffer = [];
 
     /**
      * Override connect function to use local file for testing

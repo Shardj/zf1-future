@@ -100,16 +100,16 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
         return $this->helper->filteringSelect(
             'elementId',
             'someCombo',
-            array(),
-            array(),
-            array(
+            [],
+            [],
+            [
                 'red' => 'Rouge',
                 'blue' => 'Bleu',
                 'white' => 'Blanc',
                 'orange' => 'Orange',
                 'black' => 'Noir',
                 'green' => 'Vert',
-            )
+            ]
         );
     }
 
@@ -118,17 +118,17 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
         return $this->helper->filteringSelect(
             'elementId',
             'someCombo',
-            array(
-                'store' => array(
+            [
+                'store' => [
                     'store' => 'stateStore',
                     'type' => 'dojo.data.ItemFileReadStore',
-                    'params' => array(
+                    'params' => [
                         'url' => 'states.txt'
-                    )
-                ),
+                    ]
+                ],
                 'searchAttr' => 'name'
-            ),
-            array()
+            ],
+            []
         );
     }
 

@@ -66,10 +66,10 @@ class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
         $this->_controller = new Zend_Controller_ActionTest_TestController(
             new Zend_Controller_Request_Http(),
             new Zend_Controller_Response_Cli(),
-            array(
+            [
                 'foo' => 'bar',
                 'bar' => 'baz'
-            )
+            ]
         );
 
         $redirector = $this->_controller->getHelper('redirector');
@@ -119,7 +119,7 @@ class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
 
     public function testGetInvokeArgs()
     {
-        $expected = array('foo' => 'bar', 'bar' => 'baz');
+        $expected = ['foo' => 'bar', 'bar' => 'baz'];
         $this->assertSame($expected, $this->_controller->getInvokeArgs());
     }
 
@@ -174,8 +174,8 @@ class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
     public function testForwardCanSetParams()
     {
         $request = $this->_controller->getRequest();
-        $request->setParams(array('admin' => 'batman'));
-        $this->_controller->forward('forwarded', null, null, array('foo' => 'bar'));
+        $request->setParams(['admin' => 'batman']);
+        $this->_controller->forward('forwarded', null, null, ['foo' => 'bar']);
         $this->assertEquals('forwarded', $request->getActionName());
         $received = $request->getParams();
         $this->assertTrue(isset($received['foo']));
@@ -504,7 +504,7 @@ class Zend_Controller_ActionTest extends PHPUnit_Framework_TestCase
 
 class Zend_Controller_ActionTest_TestController extends Zend_Controller_Action
 {
-    public $initArgs = array();
+    public $initArgs = [];
 
     public function init()
     {

@@ -105,10 +105,10 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
         $server = new Zend_XmlRpc_Server();
         try {
             $server->addFunction(
-                array(
+                [
                     'Zend_XmlRpc_Server_testFunction',
                     'Zend_XmlRpc_Server_testFunction2',
-                ),
+                ],
                 'zsr'
             );
         } catch (Zend_XmlRpc_Exception $e) {
@@ -126,10 +126,10 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
     {
         try {
             $this->_server->addFunction(
-                array(
+                [
                     'Zend_XmlRpc_Server_testFunction',
                     'Zend_XmlRpc_Server_testFunction2',
-                ),
+                ],
                 'zsr'
             );
         } catch (Zend_XmlRpc_Exception $e) {
@@ -171,9 +171,9 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->handle($request);
         $this->assertFalse($response instanceof Zend_XmlRpc_Fault);
         $this->assertSame(
-            array('test1' => 'argv-argument',
+            ['test1' => 'argv-argument',
                 'test2' => null,
-                'arg' => array('argv-argument')),
+                'arg' => ['argv-argument']],
             $response->getReturnValue());
     }
 
@@ -185,10 +185,10 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
 
         $request = new Zend_XmlRpc_Request();
         $request->setMethod('test.test4');
-        $request->setParams(array('foo'));
+        $request->setParams(['foo']);
         $response = $this->_server->handle($request);
         $this->assertFalse($response instanceof Zend_XmlRpc_Fault);
-        $this->assertSame(array('test1' => 'a1', 'test2' => 'a2', 'arg' => array('foo')), $response->getReturnValue());
+        $this->assertSame(['test1' => 'a1', 'test2' => 'a2', 'arg' => ['foo']], $response->getReturnValue());
     }
 
     /**
@@ -342,16 +342,16 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
      */
     public function testMulticall()
     {
-        $struct = array(
-            array(
+        $struct = [
+            [
                 'methodName' => 'system.listMethods',
-                'params' => array()
-            ),
-            array(
+                'params' => []
+            ],
+            [
                 'methodName' => 'system.methodHelp',
-                'params' => array('system.multicall')
-            )
-        );
+                'params' => ['system.multicall']
+            ]
+        ];
         $request = new Zend_XmlRpc_Request();
         $request->setMethod('system.multicall');
         $request->addParam($struct);
@@ -370,16 +370,16 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
      */
     public function testMulticallHandlesFaults()
     {
-        $struct = array(
-            array(
+        $struct = [
+            [
                 'methodName' => 'system.listMethods',
-                'params' => array()
-            ),
-            array(
+                'params' => []
+            ],
+            [
                 'methodName' => 'undefined',
-                'params' => array()
-            )
-        );
+                'params' => []
+            ]
+        ];
         $request = new Zend_XmlRpc_Request();
         $request->setMethod('system.multicall');
         $request->addParam($struct);
@@ -390,8 +390,8 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($returns));
         $this->assertEquals(2, count($returns), var_export($returns, 1));
         $this->assertTrue(is_array($returns[0]), var_export($returns[0], 1));
-        $this->assertSame(array(
-            'faultCode' => 620, 'faultString' => 'Method "undefined" does not exist'),
+        $this->assertSame([
+            'faultCode' => 620, 'faultString' => 'Method "undefined" does not exist'],
             $returns[1], var_export($returns[1], 1));
     }
 
@@ -467,7 +467,7 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
             // success
         }
 
-        $o = array($o);
+        $o = [$o];
         try {
             $this->_server->loadFunctions($o);
             $this->fail('loadFunctions() should not allow non-reflection objects in an array');
@@ -478,12 +478,12 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
 
     public function testLoadFunctionsReadsMethodsFromServerDefinitionObjects()
     {
-        $mockedMethod = $this->getMock('Zend_Server_Method_Definition', array(), array(), '', false,
+        $mockedMethod = $this->getMock('Zend_Server_Method_Definition', [], [], '', false,
             false);
-        $mockedDefinition = $this->getMock('Zend_Server_Definition', array(), array(), '', false, false);
+        $mockedDefinition = $this->getMock('Zend_Server_Definition', [], [], '', false, false);
         $mockedDefinition->expects($this->once())
                          ->method('getMethods')
-                         ->will($this->returnValue(array('bar' => $mockedMethod)));
+                         ->will($this->returnValue(['bar' => $mockedMethod]));
         $this->_server->loadFunctions($mockedDefinition);
     }
 
@@ -536,7 +536,7 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
         $this->_server->setClass('Zend_XmlRpc_Server_testClass');
         $request = new Zend_XmlRpc_Request();
         $request->setMethod('test2');
-        $request->addParam(array('value1', 'value2'));
+        $request->addParam(['value1', 'value2']);
         $response = $this->_server->handle($request);
         $this->assertFalse($response instanceof Zend_XmlRpc_Fault);
         $this->assertEquals('value1; value2', $response->getReturnValue());
@@ -547,7 +547,7 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
         $this->_server->addFunction('Zend_XmlRpc_Server_testFunction');
         $request = new Zend_XmlRpc_Request();
         $request->setMethod('Zend_XmlRpc_Server_testFunction');
-        $request->setParams(array(array('value1'), 'key'));
+        $request->setParams([['value1'], 'key']);
         $response = $this->_server->handle($request);
         $this->assertFalse($response instanceof Zend_XmlRpc_Fault);
         $this->assertEquals('key: value1', $response->getReturnValue());
@@ -556,23 +556,23 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
     public function testMulticallReturnsFaultsWithBadData()
     {
         // bad method array
-        $try = array(
+        $try = [
             'system.listMethods',
-            array(
+            [
                 'name' => 'system.listMethods'
-            ),
-            array(
+            ],
+            [
                 'methodName' => 'system.listMethods'
-            ),
-            array(
+            ],
+            [
                 'methodName' => 'system.listMethods',
                 'params'     => ''
-            ),
-            array(
+            ],
+            [
                 'methodName' => 'system.multicall',
-                'params'     => array()
-            )
-        );
+                'params'     => []
+            ]
+        ];
         $returned = $this->_server->multicall($try);
         $this->assertTrue(is_array($returned));
         $this->assertEquals(5, count($returned));
@@ -610,8 +610,8 @@ class Zend_XmlRpc_ServerTest extends PHPUnit_Framework_TestCase
     {
         $this->_server->setClass('Zend_XmlRpc_Server_testClass', 'test');
         $data    = base64_encode('this is the payload');
-        $param   = array('type' => 'base64', 'value' => $data);
-        $request = new Zend_XmlRpc_Request('test.base64', array($param));
+        $param   = ['type' => 'base64', 'value' => $data];
+        $request = new Zend_XmlRpc_Request('test.base64', [$param]);
 
         $response = $this->_server->handle($request);
         $this->assertFalse($response instanceof Zend_XmlRpc_Fault);
@@ -751,7 +751,7 @@ class Zend_XmlRpc_Server_testClass
      */
     public function test4($arg)
     {
-        return array('test1' => $this->_value1, 'test2' => $this->_value2, 'arg' => func_get_args());
+        return ['test1' => $this->_value1, 'test2' => $this->_value2, 'arg' => func_get_args()];
     }
 
     /**

@@ -54,7 +54,7 @@ class Zend_Amf_Util_BinaryStreamTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructorShouldThrowExceptionForInvalidStream()
     {
-        $test = new Zend_Amf_Util_BinaryStream(array('foo', 'bar'));
+        $test = new Zend_Amf_Util_BinaryStream(['foo', 'bar']);
     }
 
     /**

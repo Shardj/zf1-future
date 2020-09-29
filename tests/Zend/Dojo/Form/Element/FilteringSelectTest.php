@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_FilteringSelectTest extends PHPUnit_Framework_TestC
     {
         $element = new Zend_Dojo_Form_Element_FilteringSelect(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'FilteringSelect',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }
@@ -120,11 +120,11 @@ class Zend_Dojo_Form_Element_FilteringSelectTest extends PHPUnit_Framework_TestC
      */
     public function testShouldRegisterInArrayValidatorWhenNoStoreProvided()
     {
-        $options = array(
+        $options = [
             'foo' => 'Foo Value',
             'bar' => 'Bar Value',
             'baz' => 'Baz Value',
-        );
+        ];
         $this->element->setMultiOptions($options);
         $this->assertFalse($this->element->getValidator('InArray'));
         $this->element->isValid('test');
@@ -134,15 +134,15 @@ class Zend_Dojo_Form_Element_FilteringSelectTest extends PHPUnit_Framework_TestC
 
     public function testShouldNotRegisterInArrayValidatorWhenStoreProvided()
     {
-        $options = array(
+        $options = [
             'foo' => 'Foo Value',
             'bar' => 'Bar Value',
             'baz' => 'Baz Value',
-        );
+        ];
         $this->element->setMultiOptions($options);
         $this->element->setStoreId('fooStore')
                       ->setStoreType('dojo.data.ItemFileReadStore')
-                      ->setStoreParams(array('url' => '/foo'));
+                      ->setStoreParams(['url' => '/foo']);
         $this->assertFalse($this->element->getValidator('InArray'));
         $this->element->isValid('test');
         $this->assertFalse($this->element->getValidator('InArray'));

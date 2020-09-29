@@ -112,8 +112,8 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      */
     public function __sleep()
     {
-        return array('_dn', '_currentData', '_newDn', '_originalData',
-            '_new', '_delete', '_children');
+        return ['_dn', '_currentData', '_newDn', '_originalData',
+            '_new', '_delete', '_children'];
     }
 
     /**
@@ -143,7 +143,8 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'No LDAP connection specified.', Zend_Ldap_Exception::LDAP_OTHER);
         }
-        else return $this->_ldap;
+
+        return $this->_ldap;
     }
 
     /**
@@ -221,7 +222,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
         if ($fromDataSource === true) {
             $this->_originalData = $data;
         } else {
-            $this->_originalData = array();
+            $this->_originalData = [];
         }
         $this->_children = null;
         $this->_markAsNew(($fromDataSource === true) ? false : true);
@@ -236,7 +237,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * @return Zend_Ldap_Node
      * @throws Zend_Ldap_Exception
      */
-    public static function create($dn, array $objectClass = array())
+    public static function create($dn, array $objectClass = [])
     {
         if (is_string($dn) || is_array($dn)) {
             $dn = Zend_Ldap_Dn::factory($dn);
@@ -249,7 +250,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, '$dn is of a wrong data type.');
         }
-        $new = new self($dn, array(), false, null);
+        $new = new self($dn, [], false, null);
         $new->_ensureRdnAttributeValues();
         $new->setAttribute('objectClass', $objectClass);
         return $new;
@@ -276,7 +277,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, '$dn is of a wrong data type.');
         }
-        $data = $ldap->getEntry($dn, array('*', '+'), true);
+        $data = $ldap->getEntry($dn, ['*', '+'], true);
         if ($data === null) {
             return null;
         }
@@ -584,9 +585,9 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * @param  array $options Additional options used during encoding
      * @return string
      */
-    public function toLdif(array $options = array())
+    public function toLdif(array $options = [])
     {
-        $attributes = array_merge(array('dn' => $this->getDnString()), $this->getData(false));
+        $attributes = array_merge(['dn' => $this->getDnString()], $this->getData(false));
         /**
          * Zend_Ldap_Ldif_Encoder
          */
@@ -606,7 +607,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      */
     public function getChangedData()
     {
-        $changed = array();
+        $changed = [];
         foreach ($this->_currentData as $key => $value) {
             if (!array_key_exists($key, $this->_originalData) && !empty($value)) {
                 $changed[$key] = $value;
@@ -626,10 +627,10 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      */
     public function getChanges()
     {
-        $changes = array(
-            'add'     => array(),
-            'delete'  => array(),
-            'replace' => array());
+        $changes = [
+            'add'     => [],
+            'delete'  => [],
+            'replace' => []];
         foreach ($this->_currentData as $key => $value) {
             if (!array_key_exists($key, $this->_originalData) && !empty($value)) {
                 $changes['add'][$key] = $value;
@@ -816,20 +817,24 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'DN cannot be changed.');
         }
-        else if (array_key_exists($name, $rdn)) {
+
+        if (array_key_exists($name, $rdn)) {
             /**
              * @see Zend_Ldap_Exception
              */
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'Cannot change attribute because it\'s part of the RDN');
-        } else if (in_array($name, self::$_systemAttributes)) {
+        }
+
+        if (in_array($name, self::$_systemAttributes)) {
             /**
              * @see Zend_Ldap_Exception
              */
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception(null, 'Cannot change attribute because it\'s read-only');
         }
-        else return true;
+
+        return true;
     }
 
     /**
@@ -950,7 +955,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
          * @see Zend_Ldap_Node_Collection
          */
         require_once 'Zend/Ldap/Node/Collection.php';
-        return $this->getLdap()->search($filter, $this->_getDn(), $scope, array('*', '+'), $sort,
+        return $this->getLdap()->search($filter, $this->_getDn(), $scope, ['*', '+'], $sort,
             'Zend_Ldap_Node_Collection');
     }
 
@@ -1030,7 +1035,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
     public function getChildren()
     {
         if (!is_array($this->_children)) {
-            $this->_children = array();
+            $this->_children = [];
             if ($this->isAttached()) {
                 $children = $this->searchChildren('(objectClass=*)', null);
                 foreach ($children as $child) {

@@ -37,8 +37,8 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 {
 
     protected $_langDir      = null;
-    protected $_languages    = array();
-    protected $_translations = array();
+    protected $_languages    = [];
+    protected $_translations = [];
 
     public function setUp()
     {
@@ -106,7 +106,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testEnglishKeySameAsValue()
     {
-        $errors = array();
+        $errors = [];
         $cnt    = 0;
         foreach ($this->_translations['en'] as $key => $value) {
             if ($key !== $value) {
@@ -125,7 +125,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testTranslationAvailableInEnglish()
     {
-        $errors = array();
+        $errors = [];
         $cnt    = 0;
         foreach ($this->_translations as $lang => $translation) {
             if ($lang == 'en') {
@@ -150,7 +150,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testTranslationDiffersFromEnglish()
     {
-        $errors = array();
+        $errors = [];
         $cnt    = 0;
         foreach ($this->_translations as $lang => $translation) {
             if ($lang == 'en') {
@@ -175,7 +175,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testPlaceholder()
     {
-        $errors = array();
+        $errors = [];
         $cnt    = 0;
         foreach ($this->_translations as $lang => $translation) {
             if ($lang == 'en') { // not needed to test - see testEnglishKeySameAsValue
@@ -204,7 +204,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
      */
     public function testAllTranslated()
     {
-        $errors = array();
+        $errors = [];
         $cnt    = 0;
         foreach ($this->_translations as $lang => $translation) {
             foreach ($this->_translations['en'] as $key => $value) {

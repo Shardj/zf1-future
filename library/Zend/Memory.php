@@ -47,7 +47,7 @@ class Zend_Memory
      * @return Zend_Memory_Manager
      * @throws Zend_Memory_Exception
      */
-    public static function factory($backend, $backendOptions = array())
+    public static function factory($backend, $backendOptions = [])
     {
         if (strcasecmp($backend, 'none') == 0) {
             return new Zend_Memory_Manager();

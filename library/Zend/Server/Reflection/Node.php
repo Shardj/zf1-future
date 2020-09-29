@@ -40,7 +40,7 @@ class Zend_Server_Reflection_Node
      * Array of child nodes (if any)
      * @var array
      */
-    protected $_children = array();
+    protected $_children = [];
 
     /**
      * Parent node (if any)
@@ -174,7 +174,7 @@ class Zend_Server_Reflection_Node
      */
     public function getEndPoints()
     {
-        $endPoints = array();
+        $endPoints = [];
         if (!$this->hasChildren()) {
             return $endPoints;
         }

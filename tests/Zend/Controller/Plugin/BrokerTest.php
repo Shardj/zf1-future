@@ -218,7 +218,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
         $broker->registerPlugin($plugin3, 2);
 
         $plugins = $broker->getPlugins();
-        $expected = array(-5 => $plugin2, 2 => $plugin3, 5 => $plugin1);
+        $expected = [-5 => $plugin2, 2 => $plugin3, 5 => $plugin1];
         $this->assertSame($expected, $plugins);
     }
 
@@ -246,7 +246,7 @@ class Zend_Controller_Plugin_BrokerTest extends PHPUnit_Framework_TestCase
         $broker->registerPlugin($plugin3);
 
         $plugins = $broker->getPlugins();
-        $expected = array(2 => $plugin1, 3 => $plugin2, 4 => $plugin3);
+        $expected = [2 => $plugin1, 3 => $plugin2, 4 => $plugin3];
         $this->assertSame($expected, $plugins);
     }
 

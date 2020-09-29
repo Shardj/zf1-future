@@ -44,19 +44,19 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
     /**
      * @var array Error message templates
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::TOO_MANY => "Too many files, maximum '%max%' are allowed but '%count%' are given",
         self::TOO_FEW  => "Too few files, minimum '%min%' are expected but '%count%' are given",
-    );
+    ];
 
     /**
      * @var array Error message template variables
      */
-    protected $_messageVariables = array(
+    protected $_messageVariables = [
         'min'   => '_min',
         'max'   => '_max',
         'count' => '_count'
-    );
+    ];
 
     /**
      * Minimum file count
@@ -108,7 +108,7 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         } elseif (is_string($options) || is_numeric($options)) {
-            $options = array('max' => $options);
+            $options = ['max' => $options];
         } elseif (!is_array($options)) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception ('Invalid options to validator provided');
@@ -215,7 +215,7 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
     public function addFile($file)
     {
         if (is_string($file)) {
-            $file = array($file);
+            $file = [$file];
         }
 
         if (is_array($file)) {
@@ -254,7 +254,7 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
             $this->addFile($value);
         }
 
-        $this->_count = count($this->_files === null ? array() : $this->_files);
+        $this->_count = count($this->_files === null ? [] : $this->_files);
         if (($this->_max !== null) && ($this->_count > $this->_max)) {
             return $this->_throw($file, self::TOO_MANY);
         }

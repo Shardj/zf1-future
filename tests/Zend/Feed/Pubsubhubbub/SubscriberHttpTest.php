@@ -52,9 +52,9 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
 
     protected $_adapter = null;
 
-    protected $_config = array(
+    protected $_config = [
         'adapter'     => 'Zend_Http_Client_Adapter_Socket'
-    );
+    ];
 
     public function setUp()
     {
@@ -117,7 +117,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
     protected function _getCleanMock($className) {
         $class = new ReflectionClass($className);
         $methods = $class->getMethods();
-        $stubMethods = array();
+        $stubMethods = [];
         foreach ($methods as $method) {
             if ($method->isPublic() || ($method->isProtected()
             && $method->isAbstract())) {
@@ -127,7 +127,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
         $mocked = $this->getMock(
             $className,
             $stubMethods,
-            array(),
+            [],
             $className . '_SubscriberHttpTestMock_' . uniqid(),
             false
         );

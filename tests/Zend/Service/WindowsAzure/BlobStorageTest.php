@@ -233,9 +233,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $storageClient->setContainerAcl(
                 $containerName,
                 Zend_Service_WindowsAzure_Storage_Blob::ACL_PRIVATE,
-                array(
+                [
                     new Zend_Service_WindowsAzure_Storage_SignedIdentifier('ABCDEF', '2009-10-10', '2009-10-11', 'r')
-                )
+                ]
             );
             $acl = $storageClient->getContainerAcl($containerName, true);
             
@@ -253,9 +253,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
             
-            $storageClient->setContainerMetadata($containerName, array(
+            $storageClient->setContainerMetadata($containerName, [
                 'createdby' => 'PHPAzure',
-            ));
+            ]);
             
             $metadata = $storageClient->getContainerMetadata($containerName);
             $this->assertEquals('PHPAzure', $metadata['createdby']);
@@ -298,10 +298,10 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
     	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
-            $storageClient->createContainer($containerName, array(
+            $storageClient->createContainer($containerName, [
                 'createdby' => 'PHPAzure',
                 'ownedby' => 'PHPAzure',
-            ));
+            ]);
             
             $result = $storageClient->listContainers($containerName, null, null, 'metadata');
             
@@ -500,10 +500,10 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $storageClient->createContainer($containerName);
             $storageClient->putBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif');
             
-            $storageClient->setBlobProperties($containerName, 'images/WindowsAzure.gif', null, array(
+            $storageClient->setBlobProperties($containerName, 'images/WindowsAzure.gif', null, [
                 'x-ms-blob-content-language' => 'nl-BE',
             	'x-ms-blob-content-type' => 'image/gif'
-            ));
+            ]);
             
             $blobInstance = $storageClient->getBlobInstance($containerName, 'images/WindowsAzure.gif');
 
@@ -523,9 +523,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $storageClient->createContainer($containerName);
             $storageClient->putBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif');
             
-            $storageClient->setBlobMetadata($containerName, 'images/WindowsAzure.gif', array(
+            $storageClient->setBlobMetadata($containerName, 'images/WindowsAzure.gif', [
                 'createdby' => 'PHPAzure',
-            ));
+            ]);
             
             $metadata = $storageClient->getBlobMetadata($containerName, 'images/WindowsAzure.gif');
             $this->assertEquals('PHPAzure', $metadata['createdby']);
@@ -546,9 +546,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
 			$exceptionThrown = false;
             try {
             	// adding a newline should not be possible...
-                $storageClient->setBlobMetadata($containerName, 'images/WindowsAzure.gif', array(
+                $storageClient->setBlobMetadata($containerName, 'images/WindowsAzure.gif', [
 	                'createdby' => "PHPAzure\nx-ms-meta-something:false",
-	            ));
+	            ]);
             } catch (Exception $ex) {
                 $exceptionThrown = true;
             }
@@ -609,18 +609,18 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
             
-            $storageClient->putBlob($containerName, 'images/WindowsAzure1.gif', self::$path . 'WindowsAzure.gif', array(
+            $storageClient->putBlob($containerName, 'images/WindowsAzure1.gif', self::$path . 'WindowsAzure.gif', [
                 'createdby' => 'PHPAzure',
                 'ownedby' => 'PHPAzure',
-            ));
-            $storageClient->putBlob($containerName, 'images/WindowsAzure2.gif', self::$path . 'WindowsAzure.gif', array(
+            ]);
+            $storageClient->putBlob($containerName, 'images/WindowsAzure2.gif', self::$path . 'WindowsAzure.gif', [
                 'createdby' => 'PHPAzure',
                 'ownedby' => 'PHPAzure',
-            ));
-            $storageClient->putBlob($containerName, 'images/WindowsAzure3.gif', self::$path . 'WindowsAzure.gif', array(
+            ]);
+            $storageClient->putBlob($containerName, 'images/WindowsAzure3.gif', self::$path . 'WindowsAzure.gif', [
                 'createdby' => 'PHPAzure',
                 'ownedby' => 'PHPAzure',
-            ));
+            ]);
             
             $result = $storageClient->listBlobs($containerName, '', '', null, null, 'metadata,snapshots,uncommittedblobs');
             $this->assertEquals(3, count($result));
@@ -651,7 +651,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $this->assertEquals('images/WindowsAzureCopy.gif', $destination->Name);
             
             $snapshotId = $storageClient->snapshotBlob($containerName, 'images/WindowsAzure.gif');
-            $destination = $storageClient->copyBlob($containerName, 'images/WindowsAzure.gif', $containerName, 'images/WindowsAzureCopy2.gif', array(), $snapshotId);
+            $destination = $storageClient->copyBlob($containerName, 'images/WindowsAzure.gif', $containerName, 'images/WindowsAzureCopy2.gif', [], $snapshotId);
     
             $this->assertEquals($containerName, $destination->Container);
             $this->assertEquals('images/WindowsAzureCopy2.gif', $destination->Name);
@@ -676,9 +676,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $this->assertEquals(Zend_Service_WindowsAzure_Storage_Blob::ACL_PUBLIC_CONTAINER, $acl);
             
             // Metadata
-            $storageClient->setContainerMetadata($containerName, array(
+            $storageClient->setContainerMetadata($containerName, [
                 'createdby' => 'PHPAzure',
-            ));
+            ]);
             
             $metadata = $storageClient->getContainerMetadata($containerName);
             $this->assertEquals('PHPAzure', $metadata['createdby']);
@@ -707,9 +707,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             unlink($fileName);
             
             // Blob metadata
-            $storageClient->setBlobMetadata($containerName, 'WindowsAzure.gif', array(
+            $storageClient->setBlobMetadata($containerName, 'WindowsAzure.gif', [
                 'createdby' => 'PHPAzure',
-            ));
+            ]);
             
             $metadata = $storageClient->getBlobMetadata($containerName, 'WindowsAzure.gif');
             $this->assertEquals('PHPAzure', $metadata['createdby']);
@@ -796,8 +796,8 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
-            $headers = array("x-ms-blob-cache-control" => "public, max-age=7200");
-            $result = $storageClient->putBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif', array(), null, $headers);
+            $headers = ["x-ms-blob-cache-control" => "public, max-age=7200"];
+            $result = $storageClient->putBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif', [], null, $headers);
     
             $blobInstance = $storageClient->getBlobInstance($containerName, 'images/WindowsAzure.gif');
             
@@ -818,8 +818,8 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
-            $headers = array("x-ms-blob-cache-control" => "public, max-age=7200");
-            $storageClient->putLargeBlob($containerName, 'LargeFile.txt', $fileName, array(), null, array("x-ms-blob-cache-control" => "public, max-age=7200"));
+            $headers = ["x-ms-blob-cache-control" => "public, max-age=7200"];
+            $storageClient->putLargeBlob($containerName, 'LargeFile.txt', $fileName, [], null, ["x-ms-blob-cache-control" => "public, max-age=7200"]);
     
             $blobInstance = $storageClient->getBlobInstance($containerName, 'LargeFile.txt');
             

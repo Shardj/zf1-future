@@ -79,7 +79,7 @@ class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
         if (null === self::$_meansEnglishAlphabet) {
             $this->_locale = new Zend_Locale('auto');
             self::$_meansEnglishAlphabet = in_array($this->_locale->getLanguage(),
-                                                    array('ja')
+                                                    ['ja']
                                                     );
         }
     }
@@ -93,12 +93,12 @@ class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
     {
         if (!self::$_unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
-            $valuesExpected = array(
+            $valuesExpected = [
                 'abc123'        => 'abc',
                 'abc 123'       => 'abc',
                 'abcxyz'        => 'abcxyz',
                 ''              => ''
-                );
+                ];
         } else if (self::$_meansEnglishAlphabet) {
             //The Alphabet means english alphabet.
             /**
@@ -109,16 +109,16 @@ class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
              * The forth  contains various multibyte or singlebyte characters.
              * The last contains only singlebyte alphabets.
              */
-            $valuesExpected = array(
+            $valuesExpected = [
                 'aＡBｂc'  => 'aBc',
                 'z Ｙ　x'  => 'zx',
                 'Ｗ1v３Ｕ4t' => 'vt',
                 '，sй.rλ:qν＿p' => 'srqp',
                 'onml' => 'onml'
-                );
+                ];
         } else {
             //The Alphabet means each language's alphabet.
-            $valuesExpected = array(
+            $valuesExpected = [
                 'abc123'        => 'abc',
                 'abc 123'       => 'abc',
                 'abcxyz'        => 'abcxyz',
@@ -127,7 +127,7 @@ class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
                 'grzegżółka'    => 'grzegżółka',
                 'België'        => 'België',
                 ''              => ''
-                );
+                ];
         }
 
         foreach ($valuesExpected as $input => $output) {
@@ -149,23 +149,23 @@ class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
         $this->_filter->setAllowWhiteSpace(true);
         if (!self::$_unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
-            $valuesExpected = array(
+            $valuesExpected = [
                 'abc123'        => 'abc',
                 'abc 123'       => 'abc ',
                 'abcxyz'        => 'abcxyz',
                 ''              => '',
                 "\n"            => "\n",
                 " \t "          => " \t "
-                );
+                ];
         } if (self::$_meansEnglishAlphabet) {
             //The Alphabet means english alphabet.
-            $valuesExpected = array(
+            $valuesExpected = [
                 'a B'  => 'a B',
                 'zＹ　x'  => 'zx'
-                );
+                ];
         } else {
             //The Alphabet means each language's alphabet.
-            $valuesExpected = array(
+            $valuesExpected = [
                 'abc123'        => 'abc',
                 'abc 123'       => 'abc ',
                 'abcxyz'        => 'abcxyz',
@@ -176,7 +176,7 @@ class Zend_Filter_AlphaTest extends PHPUnit_Framework_TestCase
                 ''              => '',
                 "\n"            => "\n",
                 " \t "          => " \t "
-                );
+                ];
         }
 
         foreach ($valuesExpected as $input => $output) {

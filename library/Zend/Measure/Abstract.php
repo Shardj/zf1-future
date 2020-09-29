@@ -69,7 +69,7 @@ abstract class Zend_Measure_Abstract
     /**
      * Unit types for this measurement
      */
-    protected $_units = array();
+    protected $_units = [];
 
     /**
      * Zend_Measure_Abstract is an abstract class for the different measurement types
@@ -162,7 +162,7 @@ abstract class Zend_Measure_Abstract
 
         if ($locale !== null) {
             $this->setLocale($locale, true);
-            return Zend_Locale_Format::toNumber($return, array('locale' => $locale));
+            return Zend_Locale_Format::toNumber($return, ['locale' => $locale]);
         }
 
         return $return;
@@ -199,7 +199,7 @@ abstract class Zend_Measure_Abstract
         }
 
         try {
-            $value = Zend_Locale_Format::getNumber($value, array('locale' => $locale));
+            $value = Zend_Locale_Format::getNumber($value, ['locale' => $locale]);
         } catch(Exception $e) {
             require_once 'Zend/Measure/Exception.php';
             throw new Zend_Measure_Exception($e->getMessage(), $e->getCode(), $e);

@@ -282,7 +282,7 @@ class Zend_Controller_Plugin_ActionStackTest extends PHPUnit_Framework_TestCase
     {
         $plugin   = new Zend_Controller_Plugin_ActionStack();
         $request  = $this->getNewRequest();
-        $params   = array('foo' => 'bar','baz'=>'bat');
+        $params   = ['foo' => 'bar','baz'=>'bat'];
         $request->setParams($params);
         $plugin->setRequest($request);
 
@@ -298,7 +298,7 @@ class Zend_Controller_Plugin_ActionStackTest extends PHPUnit_Framework_TestCase
         $next = $this->getNewRequest();
         $plugin->forward($next);
 
-        $this->assertEquals(array(),$plugin->getRequest()->getParams());
+        $this->assertEquals([],$plugin->getRequest()->getParams());
     }
 
     /**

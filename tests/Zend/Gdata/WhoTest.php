@@ -76,8 +76,8 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
         $newWho = new Zend_Gdata_Extension_Who();
         $newWho->transferFromXML($this->who->saveXML());
         $this->assertEquals(0, count($newWho->extensionElements));
-        $newWho->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newWho->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newWho->extensionElements));
         $this->assertEquals("Test Value String", $newWho->valueString);
         $this->assertEquals("http://schemas.google.com/g/2005#event.speaker", $newWho->rel);
@@ -117,8 +117,8 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->who->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->who->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->who->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->who->extensionAttributes['foo2']['value']);

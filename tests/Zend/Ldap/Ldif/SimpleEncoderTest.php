@@ -42,26 +42,26 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 {
     public static function stringEncodingProvider()
     {
-        $testData = array(
-            array('cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com',
-                'cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com'),
-            array('Babs is a big sailing fan, and travels extensively in search of perfect sailing conditions.',
-                'Babs is a big sailing fan, and travels extensively in search of perfect sailing conditions.'),
-            array("\x00 NULL CHAR first", base64_encode("\x00 NULL CHAR first")),
-            array("\n LF CHAR first", base64_encode("\n LF CHAR first")),
-            array("\r CR CHAR first", base64_encode("\r CR CHAR first")),
-            array(' SPACE CHAR first', base64_encode(' SPACE CHAR first')),
-            array(': colon CHAR first', base64_encode(': colon CHAR first')),
-            array('< less-than CHAR first', base64_encode('< less-than CHAR first')),
-            array("\x7f CHR(127) first", base64_encode("\x7f CHR(127) first")),
-            array("NULL CHAR \x00 in string", base64_encode("NULL CHAR \x00 in string")),
-            array("LF CHAR \n in string", base64_encode("LF CHAR \n in string")),
-            array("CR CHAR \r in string", base64_encode("CR CHAR \r in string")),
-            array("CHR(127) \x7f in string", base64_encode("CHR(127) \x7f in string")),
-            array('Ä first', base64_encode('Ä first')),
-            array('in Ä string', base64_encode('in Ä string')),
-            array('last char is a string ', base64_encode('last char is a string '))
-        );
+        $testData = [
+            ['cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com',
+                'cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com'],
+            ['Babs is a big sailing fan, and travels extensively in search of perfect sailing conditions.',
+                'Babs is a big sailing fan, and travels extensively in search of perfect sailing conditions.'],
+            ["\x00 NULL CHAR first", base64_encode("\x00 NULL CHAR first")],
+            ["\n LF CHAR first", base64_encode("\n LF CHAR first")],
+            ["\r CR CHAR first", base64_encode("\r CR CHAR first")],
+            [' SPACE CHAR first', base64_encode(' SPACE CHAR first')],
+            [': colon CHAR first', base64_encode(': colon CHAR first')],
+            ['< less-than CHAR first', base64_encode('< less-than CHAR first')],
+            ["\x7f CHR(127) first", base64_encode("\x7f CHR(127) first")],
+            ["NULL CHAR \x00 in string", base64_encode("NULL CHAR \x00 in string")],
+            ["LF CHAR \n in string", base64_encode("LF CHAR \n in string")],
+            ["CR CHAR \r in string", base64_encode("CR CHAR \r in string")],
+            ["CHR(127) \x7f in string", base64_encode("CHR(127) \x7f in string")],
+            ['Ä first', base64_encode('Ä first')],
+            ['in Ä string', base64_encode('in Ä string')],
+            ['last char is a string ', base64_encode('last char is a string ')]
+        ];
         return $testData;
     }
 
@@ -75,18 +75,18 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 
     public static function attributeEncodingProvider()
     {
-        $testData = array(
-            array(array('dn' => 'cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com'),
-                'dn: cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com'),
-            array(array('dn' => 'cn=Jürgen Österreicher, ou=Äpfel, dc=airius, dc=com'),
-                'dn:: ' . base64_encode('cn=Jürgen Österreicher, ou=Äpfel, dc=airius, dc=com')),
-            array(array('description' => 'Babs is a big sailing fan, and travels extensively in search of perfect sailing conditions.'),
-                'description: Babs is a big sailing fan, and travels extensively in search of p' . PHP_EOL . ' erfect sailing conditions.'),
-            array(array('description' => "CHR(127) \x7f in string"),
-                'description:: ' . base64_encode("CHR(127) \x7f in string")),
-            array(array('description' => '1234567890123456789012345678901234567890123456789012345678901234 567890'),
-                'description: 1234567890123456789012345678901234567890123456789012345678901234 ' . PHP_EOL . ' 567890'),
-        );
+        $testData = [
+            [['dn' => 'cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com'],
+                'dn: cn=Barbara Jensen, ou=Product Development, dc=airius, dc=com'],
+            [['dn' => 'cn=Jürgen Österreicher, ou=Äpfel, dc=airius, dc=com'],
+                'dn:: ' . base64_encode('cn=Jürgen Österreicher, ou=Äpfel, dc=airius, dc=com')],
+            [['description' => 'Babs is a big sailing fan, and travels extensively in search of perfect sailing conditions.'],
+                'description: Babs is a big sailing fan, and travels extensively in search of p' . PHP_EOL . ' erfect sailing conditions.'],
+            [['description' => "CHR(127) \x7f in string"],
+                'description:: ' . base64_encode("CHR(127) \x7f in string")],
+            [['description' => '1234567890123456789012345678901234567890123456789012345678901234 567890'],
+                'description: 1234567890123456789012345678901234567890123456789012345678901234 ' . PHP_EOL . ' 567890'],
+        ];
         return $testData;
     }
 
@@ -103,18 +103,18 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
     {
         $input = '56789012345678901234567890';
         $expected = 'dn: 567890' . PHP_EOL . ' 1234567890' . PHP_EOL . ' 1234567890';
-        $output = Zend_Ldap_Ldif_Encoder::encode(array('dn' => $input), array('wrap' => 10));
+        $output = Zend_Ldap_Ldif_Encoder::encode(['dn' => $input], ['wrap' => 10]);
         $this->assertEquals($expected, $output);
     }
 
     public function testEncodeMultipleAttributes()
     {
-        $data = array(
-            'a' => array('a', 'b'),
+        $data = [
+            'a' => ['a', 'b'],
             'b' => 'c',
             'c' => '',
-            'd' => array(),
-            'e' => array(''));
+            'd' => [],
+            'e' => ['']];
         $expected = 'a: a' . PHP_EOL .
             'a: b' . PHP_EOL .
             'b: c' . PHP_EOL .
@@ -132,14 +132,14 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 
     public function testSorting()
     {
-        $data=array(
-            'cn'          => array('name'),
+        $data=[
+            'cn'          => ['name'],
             'dn'          => 'cn=name,dc=example,dc=org',
-            'host'        => array('a', 'b', 'c'),
-            'empty'       => array(),
-            'boolean'     => array('TRUE', 'FALSE'),
-            'objectclass' => array('account', 'top'),
-        );
+            'host'        => ['a', 'b', 'c'],
+            'empty'       => [],
+            'boolean'     => ['TRUE', 'FALSE'],
+            'objectclass' => ['account', 'top'],
+        ];
         $expected = 'version: 1' . PHP_EOL .
             'dn: cn=name,dc=example,dc=org' . PHP_EOL .
             'objectclass: account' . PHP_EOL .
@@ -165,7 +165,7 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
             'boolean: FALSE' . PHP_EOL .
             'objectclass: account' . PHP_EOL .
             'objectclass: top';
-        $actual = Zend_Ldap_Ldif_Encoder::encode($data, array('sort' => false));
+        $actual = Zend_Ldap_Ldif_Encoder::encode($data, ['sort' => false]);
         $this->assertEquals($expected, $actual);
     }
 
@@ -192,14 +192,14 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 
     public function testSupressVersionHeader()
     {
-        $data=array(
-            'cn'          => array('name'),
+        $data=[
+            'cn'          => ['name'],
             'dn'          => 'cn=name,dc=example,dc=org',
-            'host'        => array('a', 'b', 'c'),
-            'empty'       => array(),
-            'boolean'     => array('TRUE', 'FALSE'),
-            'objectclass' => array('account', 'top'),
-        );
+            'host'        => ['a', 'b', 'c'],
+            'empty'       => [],
+            'boolean'     => ['TRUE', 'FALSE'],
+            'objectclass' => ['account', 'top'],
+        ];
         $expected = 'dn: cn=name,dc=example,dc=org' . PHP_EOL .
             'objectclass: account' . PHP_EOL .
             'objectclass: top' . PHP_EOL .
@@ -210,35 +210,35 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
             'host: a' . PHP_EOL .
             'host: b' . PHP_EOL .
             'host: c';
-        $actual = Zend_Ldap_Ldif_Encoder::encode($data, array('version' => null));
+        $actual = Zend_Ldap_Ldif_Encoder::encode($data, ['version' => null]);
         $this->assertEquals($expected, $actual);
     }
 
     public function testEncodingWithJapaneseCharacters()
     {
-        $data=array(
+        $data=[
             'dn'                         => 'uid=rogasawara,ou=営業部,o=Airius',
-            'objectclass'                => array('top', 'person', 'organizationalPerson', 'inetOrgPerson'),
-            'uid'                        => array('rogasawara'),
-            'mail'                       => array('rogasawara@airius.co.jp'),
-            'givenname;lang-ja'          => array('ロドニー'),
-            'sn;lang-ja'                 => array('小笠原'),
-            'cn;lang-ja'                 => array('小笠原 ロドニー'),
-            'title;lang-ja'              => array('営業部 部長'),
-            'preferredlanguage'          => array('ja'),
-            'givenname'                  => array('ロドニー'),
-            'sn'                         => array('小笠原'),
-            'cn'                         => array('小笠原 ロドニー'),
-            'title'                      => array('営業部 部長'),
-            'givenname;lang-ja;phonetic' => array('ろどにー'),
-            'sn;lang-ja;phonetic'        => array('おがさわら'),
-            'cn;lang-ja;phonetic'        => array('おがさわら ろどにー'),
-            'title;lang-ja;phonetic'     => array('えいぎょうぶ ぶちょう'),
-            'givenname;lang-en'          => array('Rodney'),
-            'sn;lang-en'                 => array('Ogasawara'),
-            'cn;lang-en'                 => array('Rodney Ogasawara'),
-            'title;lang-en'              => array('Sales, Director'),
-        );
+            'objectclass'                => ['top', 'person', 'organizationalPerson', 'inetOrgPerson'],
+            'uid'                        => ['rogasawara'],
+            'mail'                       => ['rogasawara@airius.co.jp'],
+            'givenname;lang-ja'          => ['ロドニー'],
+            'sn;lang-ja'                 => ['小笠原'],
+            'cn;lang-ja'                 => ['小笠原 ロドニー'],
+            'title;lang-ja'              => ['営業部 部長'],
+            'preferredlanguage'          => ['ja'],
+            'givenname'                  => ['ロドニー'],
+            'sn'                         => ['小笠原'],
+            'cn'                         => ['小笠原 ロドニー'],
+            'title'                      => ['営業部 部長'],
+            'givenname;lang-ja;phonetic' => ['ろどにー'],
+            'sn;lang-ja;phonetic'        => ['おがさわら'],
+            'cn;lang-ja;phonetic'        => ['おがさわら ろどにー'],
+            'title;lang-ja;phonetic'     => ['えいぎょうぶ ぶちょう'],
+            'givenname;lang-en'          => ['Rodney'],
+            'sn;lang-en'                 => ['Ogasawara'],
+            'cn;lang-en'                 => ['Rodney Ogasawara'],
+            'title;lang-en'              => ['Sales, Director'],
+        ];
         $expected = 'dn:: dWlkPXJvZ2FzYXdhcmEsb3U95Za25qWt6YOoLG89QWlyaXVz' . PHP_EOL .
             'objectclass: top' . PHP_EOL .
             'objectclass: person' . PHP_EOL .
@@ -263,7 +263,7 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
             'sn;lang-en: Ogasawara' . PHP_EOL .
             'cn;lang-en: Rodney Ogasawara' . PHP_EOL .
             'title;lang-en: Sales, Director';
-        $actual = Zend_Ldap_Ldif_Encoder::encode($data, array('sort' => false, 'version' => null));
+        $actual = Zend_Ldap_Ldif_Encoder::encode($data, ['sort' => false, 'version' => null]);
         $this->assertEquals($expected, $actual);
     }
 }

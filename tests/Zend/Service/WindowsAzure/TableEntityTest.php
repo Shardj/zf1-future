@@ -85,13 +85,13 @@ class Zend_Service_WindowsAzure_TableEntityTest extends PHPUnit_Framework_TestCa
      */
     public function testSetAzureValuesSuccess()
     {
-        $values = array(
+        $values = [
             'PartitionKey' => 'partition1',
             'RowKey' => '000001',
             'Name' => 'Maarten',
             'Age' => 25,
             'Visible' => true
-        );
+        ];
         
         $target = new TSETTest_TestEntity();
         $target->setAzureValues($values);
@@ -108,10 +108,10 @@ class Zend_Service_WindowsAzure_TableEntityTest extends PHPUnit_Framework_TestCa
      */
     public function testSetAzureValuesFailure()
     {
-        $values = array(
+        $values = [
             'PartitionKey' => 'partition1',
             'RowKey' => '000001'
-        );
+        ];
         
         $exceptionRaised = false;
         $target = new TSETTest_TestEntity();

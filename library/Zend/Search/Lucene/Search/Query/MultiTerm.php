@@ -41,7 +41,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
      *
      * @var array
      */
-    private $_terms = array();
+    private $_terms = [];
 
     /**
      * Term signs.
@@ -70,7 +70,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
      *
      * @var array
      */
-    private $_termsFreqs = array();
+    private $_termsFreqs = [];
 
 
     /**
@@ -90,7 +90,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
      *
      * @var array
      */
-    private $_weights = array();
+    private $_weights = [];
 
 
     /**
@@ -142,7 +142,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
     public function addTerm(Zend_Search_Lucene_Index_Term $term, $sign = null) {
         if ($sign !== true || $this->_signs !== null) {       // Skip, if all terms are required
             if ($this->_signs === null) {                     // Check, If all previous terms are required
-                $this->_signs = array();
+                $this->_signs = [];
                 foreach ($this->_terms as $prevTerm) {
                     $this->_signs[] = true;
                 }
@@ -325,12 +325,12 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
         $this->_resVector = null;
 
         if (count($this->_terms) == 0) {
-            $this->_resVector = array();
+            $this->_resVector = [];
         }
 
         // Order terms by selectivity
-        $docFreqs = array();
-        $ids      = array();
+        $docFreqs = [];
+        $ids      = [];
         foreach ($this->_terms as $id => $term) {
             $docFreqs[] = $reader->docFreq($term);
             $ids[]      = $id; // Used to keep original order for terms with the same selectivity and omit terms comparison
@@ -365,12 +365,12 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
      */
     private function _calculateNonConjunctionResult(Zend_Search_Lucene_Interface $reader)
     {
-        $requiredVectors      = array();
-        $requiredVectorsSizes = array();
-        $requiredVectorsIds   = array(); // is used to prevent arrays comparison
+        $requiredVectors      = [];
+        $requiredVectorsSizes = [];
+        $requiredVectorsIds   = []; // is used to prevent arrays comparison
 
-        $optional   = array();
-        $prohibited = array();
+        $optional   = [];
+        $prohibited = [];
 
         foreach ($this->_terms as $termId => $term) {
             $termDocs = array_flip($reader->termDocs($term));
@@ -408,7 +408,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
                 /**
                  * This code is used as workaround for array_intersect_key() slowness problem.
                  */
-                $updatedVector = array();
+                $updatedVector = [];
                 foreach ($required as $id => $value) {
                     if (isset($nextResVector[$id])) {
                         $updatedVector[$id] = $value;
@@ -496,7 +496,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
     public function _nonConjunctionScore($docId, $reader)
     {
         if ($this->_coord === null) {
-            $this->_coord = array();
+            $this->_coord = [];
 
             $maxCoord = 0;
             foreach ($this->_signs as $sign) {
@@ -595,7 +595,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
             return $this->_terms;
         }
 
-        $terms = array();
+        $terms = [];
 
         foreach ($this->_signs as $id => $sign) {
             if ($sign !== false) {
@@ -613,7 +613,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
      */
     protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
     {
-        $words = array();
+        $words = [];
 
         if ($this->_signs === null) {
             foreach ($this->_terms as $term) {

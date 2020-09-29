@@ -86,7 +86,7 @@ class Zend_Filter_Encrypt implements Zend_Filter_Interface
         }
 
         if (!is_array($options)) {
-            $options = array();
+            $options = [];
         }
 
         if (Zend_Loader::isReadable('Zend/Filter/Encrypt/' . ucfirst($adapter). '.php')) {
@@ -120,7 +120,7 @@ class Zend_Filter_Encrypt implements Zend_Filter_Interface
             throw new Zend_Filter_Exception("Unknown method '{$method}'");
         }
 
-        return call_user_func_array(array($this->_adapter, $method), $options);
+        return call_user_func_array([$this->_adapter, $method], $options);
     }
 
     /**

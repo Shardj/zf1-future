@@ -58,25 +58,25 @@ class Zend_Tool_Framework_Manifest_ManifestGoodTwo
 
     public function getProviders()
     {
-        return array(
+        return [
             new Zend_Tool_Framework_Manifest_ProviderTwo()
-            );
+            ];
     }
 
     public function getActions()
     {
-        return array(
+        return [
             new Zend_Tool_Framework_Manifest_ActionTwo(),
             'Foo'
-            );
+            ];
     }
 
     public function getMetadata()
     {
-        return array(
-            new Zend_Tool_Framework_Metadata_Basic(array('name' => 'FooTwo', 'value' => 'Baz1')),
-            new Zend_Tool_Framework_Metadata_Basic(array('name' => 'FooThree', 'value' => 'Baz2'))
-            );
+        return [
+            new Zend_Tool_Framework_Metadata_Basic(['name' => 'FooTwo', 'value' => 'Baz1']),
+            new Zend_Tool_Framework_Metadata_Basic(['name' => 'FooThree', 'value' => 'Baz2'])
+            ];
 
     }
 

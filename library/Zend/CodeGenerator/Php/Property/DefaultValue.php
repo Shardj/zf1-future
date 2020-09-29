@@ -54,7 +54,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
     /**
      * @var array of reflected constants
      */
-    protected static $_constants = array();
+    protected static $_constants = [];
 
     /**
      * @var mixed
@@ -99,7 +99,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
         }
 
         // valid types for constants
-        $scalarTypes = array(
+        $scalarTypes = [
             self::TYPE_BOOLEAN,
             self::TYPE_BOOL,
             self::TYPE_NUMBER,
@@ -110,7 +110,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
             self::TYPE_STRING,
             self::TYPE_CONSTANT,
             self::TYPE_NULL
-            );
+            ];
 
         return in_array($type, $scalarTypes);
     }
@@ -252,7 +252,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
                     );
                 foreach ($rii as $curKey => $curValue) {
                     if (!$curValue instanceof Zend_CodeGenerator_Php_Property_DefaultValue) {
-                        $curValue = new self(array('value' => $curValue));
+                        $curValue = new self(['value' => $curValue]);
                         $rii->getSubIterator()->offsetSet($curKey, $curValue);
                     }
                     $curValue->setArrayDepth($rii->getDepth());
@@ -290,7 +290,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
                     $curArrayMultiblock = true;
                     $output .= PHP_EOL . str_repeat($this->_indentation, $this->_arrayDepth+1);
                 }
-                $outputParts = array();
+                $outputParts = [];
                 $noKeyIndex = 0;
                 foreach ($value as $n => $v) {
                     $v->setArrayDepth($this->_arrayDepth + 1);

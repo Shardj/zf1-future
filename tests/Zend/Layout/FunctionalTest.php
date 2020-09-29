@@ -53,7 +53,7 @@ class Zend_Layout_FunctionalTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function setUp()
     {
-        $this->bootstrap = array($this, 'appBootstrap');
+        $this->bootstrap = [$this, 'appBootstrap'];
         parent::setUp();
     }
 

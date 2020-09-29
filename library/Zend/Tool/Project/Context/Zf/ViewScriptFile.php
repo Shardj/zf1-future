@@ -108,7 +108,7 @@ class Zend_Tool_Project_Context_Zf_ViewScriptFile extends Zend_Tool_Project_Cont
      */
     public function getPersistentAttributes()
     {
-        $attributes = array();
+        $attributes = [];
 
         if ($this->_forActionName) {
             $attributes['forActionName'] = $this->_forActionName;

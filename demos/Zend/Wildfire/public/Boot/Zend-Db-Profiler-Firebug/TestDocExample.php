@@ -9,7 +9,7 @@ switch($_GET['Example']) {
 
         $profiler = new Zend_Db_Profiler_Firebug('All DB Queries');
         $profiler->setEnabled(true);
-        $db = Zend_Db::factory('PDO_SQLITE', array('dbname' => ':memory:'));
+        $db = Zend_Db::factory('PDO_SQLITE', ['dbname' => ':memory:']);
         $db->setProfiler($profiler);
         Zend_Registry::set('db',$db);
 
@@ -26,7 +26,7 @@ switch($_GET['Example']) {
 
         $profiler = new Zend_Db_Profiler_Firebug('All DB Queries');
         $profiler->setEnabled(true);
-        $db = Zend_Db::factory('PDO_SQLITE', array('dbname' => ':memory:'));
+        $db = Zend_Db::factory('PDO_SQLITE', ['dbname' => ':memory:']);
         $db->setProfiler($profiler);
 
         $request  = new Zend_Controller_Request_Http();
@@ -40,7 +40,7 @@ switch($_GET['Example']) {
                                       col1    VARCHAR(10) NOT NULL
                                     )');
 
-        $db->insert('foo', array('id'=>1,'col1'=>'original'));
+        $db->insert('foo', ['id'=>1,'col1'=>'original']);
 
         $channel->flush();
         $response->sendHeaders();

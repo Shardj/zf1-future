@@ -57,7 +57,7 @@ class Zend_Gdata_GappsOnlineTest extends PHPUnit_Framework_TestCase
         //
         // Failed deletions are okay, so add everying creatd in here, even if
         // you plan to delete the user yourself!
-        $this->autoDeletePool = array();
+        $this->autoDeletePool = [];
     }
 
     public function tearDown()

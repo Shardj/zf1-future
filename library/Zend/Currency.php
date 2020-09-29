@@ -66,7 +66,7 @@ class Zend_Currency
      * @var array
      * @see Zend_Locale
      */
-    protected $_options = array(
+    protected $_options = [
         'position'  => self::STANDARD,
         'script'    => null,
         'format'    => null,
@@ -79,7 +79,7 @@ class Zend_Currency
         'value'     => 0,
         'service'   => null,
         'tag'       => 'Zend_Locale'
-    );
+    ];
 
     /**
      * Creates a currency instance. Every supressed parameter is used from the actual or the given locale.
@@ -143,7 +143,7 @@ class Zend_Currency
      * @throws Zend_Currency_Exception When the value is not a number
      * @return string
      */
-    public function toCurrency($value = null, array $options = array())
+    public function toCurrency($value = null, array $options = [])
     {
         if ($value === null) {
             if (is_array($options) && isset($options['value'])) {
@@ -189,9 +189,9 @@ class Zend_Currency
         }
 
         $original = $value;
-        $value    = Zend_Locale_Format::toNumber($value, array('locale'        => $locale,
+        $value    = Zend_Locale_Format::toNumber($value, ['locale'        => $locale,
                                                                'number_format' => $format,
-                                                               'precision'     => $options['precision']));
+                                                               'precision'     => $options['precision']]);
 
         if ($options['position'] !== self::STANDARD) {
             $value = str_replace('¤', '', $value);
@@ -287,7 +287,7 @@ class Zend_Currency
      * @param  array $options (Optional) Options to set
      * @return Zend_Currency
      */
-    public function setFormat(array $options = array())
+    public function setFormat(array $options = [])
     {
         $this->_options = $this->_checkOptions($options) + $this->_options;
         return $this;
@@ -327,7 +327,7 @@ class Zend_Currency
             $abbreviation = $data;
         }
 
-        return array('locale' => $locale, 'currency' => $currency, 'name' => $abbreviation, 'country' => $country);
+        return ['locale' => $locale, 'currency' => $currency, 'name' => $abbreviation, 'country' => $country];
     }
 
     /**
@@ -830,7 +830,7 @@ class Zend_Currency
      * @throws Zend_Currency_Exception On unknown options
      * @return array
      */
-    protected function _checkOptions(array $options = array())
+    protected function _checkOptions(array $options = [])
     {
         if (count($options) === 0) {
             return $this->_options;

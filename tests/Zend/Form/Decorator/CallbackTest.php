@@ -79,7 +79,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
         $this->decorator->setCallback($callback);
         $this->assertSame($callback, $this->decorator->getCallback());
 
-        $callback = array('Zend_Form_Decorator_CallbackTest_TestCallbackClass', 'direct');
+        $callback = ['Zend_Form_Decorator_CallbackTest_TestCallbackClass', 'direct'];
         $this->decorator->setCallback($callback);
         $this->assertSame($callback, $this->decorator->getCallback());
     }
@@ -87,7 +87,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
     public function testCanSetCallbackViaOptions()
     {
         $callback = 'Zend_Form_Decorator_CallbackTest_TestCallback';
-        $this->decorator->setOptions(array('callback' => $callback));
+        $this->decorator->setOptions(['callback' => $callback]);
         $this->assertSame($callback, $this->decorator->getCallback());
     }
 
@@ -109,14 +109,14 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
         }
 
         try {
-            $this->decorator->setCallback(array('foo', 'bar', 'baz'));
+            $this->decorator->setCallback(['foo', 'bar', 'baz']);
             $this->fail('Only arrays of two elements should be allowed as callbacks');
         } catch (Zend_Form_Exception $e) {
             $this->assertContains('Invalid', $e->getMessage());
         }
 
         try {
-            $this->decorator->setCallback(array('foo'));
+            $this->decorator->setCallback(['foo']);
             $this->fail('Only arrays of two elements should be allowed as callbacks');
         } catch (Zend_Form_Exception $e) {
             $this->assertContains('Invalid', $e->getMessage());
@@ -129,7 +129,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
         $element  = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
-        $this->decorator->setOptions(array('callback' => $callback))
+        $this->decorator->setOptions(['callback' => $callback])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
@@ -140,11 +140,11 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
 
     public function testRenderCallsMethodCallback()
     {
-        $callback = array('Zend_Form_Decorator_CallbackTest_TestCallbackClass', 'direct');
+        $callback = ['Zend_Form_Decorator_CallbackTest_TestCallbackClass', 'direct'];
         $element  = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
-        $this->decorator->setOptions(array('callback' => $callback))
+        $this->decorator->setOptions(['callback' => $callback])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
@@ -160,7 +160,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
         $element  = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
-        $this->decorator->setOptions(array('callback' => $callback, 'placement' => 'prepend'))
+        $this->decorator->setOptions(['callback' => $callback, 'placement' => 'prepend'])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
@@ -176,7 +176,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
         $element  = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
-        $this->decorator->setOptions(array('callback' => $callback, 'placement' => false))
+        $this->decorator->setOptions(['callback' => $callback, 'placement' => false])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');

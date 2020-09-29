@@ -122,29 +122,29 @@ class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
     public function testAddsByNameFromArray()
     {
         $entry = new Zend_Feed_Writer_Deleted;
-        $entry->setBy(array('name'=>'Joe'));
-        $this->assertEquals(array('name'=>'Joe'), $entry->getBy());
+        $entry->setBy(['name'=>'Joe']);
+        $this->assertEquals(['name'=>'Joe'], $entry->getBy());
     }
 
     public function testAddsByEmailFromArray()
     {
         $entry = new Zend_Feed_Writer_Deleted;
-        $entry->setBy(array('name'=>'Joe','email'=>'joe@example.com'));
-        $this->assertEquals(array('name'=>'Joe', 'email' => 'joe@example.com'), $entry->getBy());
+        $entry->setBy(['name'=>'Joe','email'=>'joe@example.com']);
+        $this->assertEquals(['name'=>'Joe', 'email' => 'joe@example.com'], $entry->getBy());
     }
 
     public function testAddsByUriFromArray()
     {
         $entry = new Zend_Feed_Writer_Deleted;
-        $entry->setBy(array('name'=>'Joe','uri'=>'http://www.example.com'));
-        $this->assertEquals(array('name'=>'Joe', 'uri' => 'http://www.example.com'), $entry->getBy());
+        $entry->setBy(['name'=>'Joe','uri'=>'http://www.example.com']);
+        $this->assertEquals(['name'=>'Joe', 'uri' => 'http://www.example.com'], $entry->getBy());
     }
 
     public function testAddByThrowsExceptionOnInvalidNameFromArray()
     {
         $entry = new Zend_Feed_Writer_Deleted;
         try {
-            $entry->setBy(array('name'=>''));
+            $entry->setBy(['name'=>'']);
             $this->fail();
         } catch (Zend_Feed_Exception $e) {
         }
@@ -154,7 +154,7 @@ class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
     {
         $entry = new Zend_Feed_Writer_Deleted;
         try {
-            $entry->setBy(array('name'=>'Joe','email'=>''));
+            $entry->setBy(['name'=>'Joe','email'=>'']);
             $this->fail();
         } catch (Zend_Feed_Exception $e) {
         }
@@ -164,7 +164,7 @@ class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
     {
         $entry = new Zend_Feed_Writer_Deleted;
         try {
-            $entry->setBy(array('name'=>'Joe','uri'=>'notauri'));
+            $entry->setBy(['name'=>'Joe','uri'=>'notauri']);
             $this->fail();
         } catch (Zend_Feed_Exception $e) {
         }
@@ -174,7 +174,7 @@ class Zend_Feed_Writer_DeletedTest extends PHPUnit_Framework_TestCase
     {
         $entry = new Zend_Feed_Writer_Deleted;
         try {
-            $entry->setBy(array('uri'=>'notauri'));
+            $entry->setBy(['uri'=>'notauri']);
             $this->fail();
         } catch (Zend_Feed_Exception $e) {
         }

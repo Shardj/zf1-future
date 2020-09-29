@@ -160,7 +160,7 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
      */
     public function getCapabilities()
     {
-        return array(
+        return [
             'create'        => false,
             'delete'        => false,
             'send'          => false,
@@ -169,6 +169,6 @@ class Zend_Queue_Adapter_Null extends Zend_Queue_Adapter_AdapterAbstract
             'getQueues'     => false,
             'count'         => false,
             'isExists'      => false,
-        );
+        ];
     }
 }

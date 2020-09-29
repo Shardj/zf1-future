@@ -100,10 +100,10 @@ class Zend_Dojo_View_Helper_TimeTextBoxTest extends PHPUnit_Framework_TestCase
         return $this->helper->timeTextBox(
             'elementId',
             '2008-07-07',
-            array(
+            [
                 'required'    => true,
-            ),
-            array()
+            ],
+            []
         );
     }
 

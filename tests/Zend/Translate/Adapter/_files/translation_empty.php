@@ -20,4 +20,4 @@
  * @version    $Id$
  */
 
-return array();
+return [];

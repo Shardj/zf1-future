@@ -43,7 +43,7 @@ class Zend_Tool_Framework_Action_Repository
     /**
      * @var array
      */
-    protected $_actions = array();
+    protected $_actions = [];
 
     /**
      * setRegistry()

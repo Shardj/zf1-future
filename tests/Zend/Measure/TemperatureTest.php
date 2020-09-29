@@ -65,7 +65,7 @@ class Zend_Measure_TemperatureTest extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         if (is_string($this->_locale) && strpos($this->_locale, ';')) {
-            $locales = array();
+            $locales = [];
             foreach (explode(';', $this->_locale) as $l) {
                 $tmp = explode('=', $l);
                 $locales[$tmp[0]] = $tmp[1];

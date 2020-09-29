@@ -87,9 +87,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
     /**
      * Set entry title
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom
+     * @param DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
@@ -100,10 +101,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
         $title = $dom->createElement('title');
         $root->appendChild($title);
@@ -136,9 +137,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
     /**
      * Set date entry was modified
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom
+     * @param DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
@@ -149,10 +151,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
 
         $updated = $dom->createElement('updated');
@@ -262,9 +264,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
     /**
      * Set entry identifier
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom
+     * @param DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
@@ -278,10 +281,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
 
         if (!$this->getDataContainer()->getId()) {
@@ -336,9 +339,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
     /**
      * Set entry content
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom
+     * @param DOMElement $root
      * @return void
+     * @throws Zend_Feed_Exception
      */
     protected function _setContent(DOMDocument $dom, DOMElement $root)
     {
@@ -352,10 +356,10 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
             $exception = new Zend_Feed_Exception($message);
             if (!$this->_ignoreExceptions) {
                 throw $exception;
-            } else {
-                $this->_exceptions[] = $exception;
-                return;
             }
+
+            $this->_exceptions[] = $exception;
+            return;
         }
         if (!$content) {
             return;
@@ -376,11 +380,11 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
         $xhtml = '';
         if (class_exists('tidy', false)) {
             $tidy = new tidy;
-            $config = array(
+            $config = [
                 'output-xhtml' => true,
                 'show-body-only' => true,
                 'quote-nbsp' => false
-            );
+            ];
             $encoding = str_replace('-', '', $this->getEncoding());
             $tidy->parseString($content, $config, $encoding);
             $tidy->cleanRepair();
@@ -388,9 +392,9 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
         } else {
             $xhtml = $content;
         }
-        $xhtml = preg_replace(array(
+        $xhtml = preg_replace([
             "/(<[\/]?)([a-zA-Z]+)/"
-        ), '$1xhtml:$2', $xhtml);
+        ], '$1xhtml:$2', $xhtml);
         $dom = new DOMDocument('1.0', $this->getEncoding());
 
         $dom = Zend_Xml_Security::scan('<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">'

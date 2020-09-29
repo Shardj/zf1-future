@@ -46,7 +46,7 @@ class Zend_Rest_TestController extends Zend_Rest_Controller
     public $testValue = '';
     public function __construct(Zend_Controller_Request_Abstract $request,
                                 Zend_Controller_Response_Abstract $response,
-                                array $invokeArgs = array())
+                                array $invokeArgs = [])
     {
         $this->testValue = '';
     }

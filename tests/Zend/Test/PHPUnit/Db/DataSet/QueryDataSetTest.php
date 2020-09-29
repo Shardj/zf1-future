@@ -62,7 +62,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSetTest extends Zend_Test_PHPUnit_Db
         $fixtureTableName = "foo";
 
         $adapterMock = $this->getMock('Zend_Test_DbAdapter');
-        $selectMock = $this->getMock('Zend_Db_Select', array(), array($adapterMock));
+        $selectMock = $this->getMock('Zend_Db_Select', [], [$adapterMock]);
 
         $adapterMock->expects($this->once())
                     ->method('select')

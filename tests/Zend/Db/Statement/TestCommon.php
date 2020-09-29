@@ -166,7 +166,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $product_name = $this->_db->quoteIdentifier('product_name');
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
-        $stmt->execute(array(4, 'Solaris'));
+        $stmt->execute([4, 'Solaris']);
 
         $select = $this->_db->select()
             ->from('zfproducts')
@@ -174,7 +174,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $this->_db->fetchAll($select);
         $stmt->closeCursor();
 
-        $this->assertEquals(array(array('product_id'=>4, 'product_name'=>'Solaris')), $result);
+        $this->assertEquals([['product_id'=>4, 'product_name'=>'Solaris']], $result);
     }
 
     public function testStatementErrorCodeKeyViolation()
@@ -186,7 +186,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
         try {
             // INSERT a value that results in a key violation
-            $retval = $stmt->execute(array(1, 'Solaris'));
+            $retval = $stmt->execute([1, 'Solaris']);
             if ($retval === false) {
                 throw new Zend_Db_Statement_Exception('dummy');
             }
@@ -208,7 +208,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
         try {
             // INSERT a value that results in a key violation
-            $retval = $stmt->execute(array(1, 'Solaris'));
+            $retval = $stmt->execute([1, 'Solaris']);
             if ($retval === false) {
                 throw new Zend_Db_Statement_Exception('dummy');
             }
@@ -615,7 +615,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             ->where("$product_id = 4");
         $result = $this->_db->fetchAll($select);
 
-        $this->assertEquals(array(array('product_id' => $productIdValue, 'product_name' => $productNameValue)), $result);
+        $this->assertEquals([['product_id' => $productIdValue, 'product_name' => $productNameValue]], $result);
     }
 
     public function testStatementBindParamByName()
@@ -646,7 +646,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $this->_db->fetchAll($select);
         $stmt->closeCursor();
 
-        $this->assertEquals(array(array('product_id' => $productIdValue, 'product_name' => $productNameValue)), $result);
+        $this->assertEquals([['product_id' => $productIdValue, 'product_name' => $productNameValue]], $result);
     }
 
     public function testStatementBindValueByPosition()
@@ -675,7 +675,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $this->_db->fetchAll($select);
         $stmt->closeCursor();
 
-        $this->assertEquals(array(array('product_id' => '4', 'product_name' => 'AmigaOS')), $result);
+        $this->assertEquals([['product_id' => '4', 'product_name' => 'AmigaOS']], $result);
     }
 
     public function testStatementBindValueByName()
@@ -706,7 +706,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $this->_db->fetchAll($select);
         $stmt->closeCursor();
 
-        $this->assertEquals(array(array('product_id' => '4', 'product_name' => 'AmigaOS')), $result);
+        $this->assertEquals([['product_id' => '4', 'product_name' => 'AmigaOS']], $result);
     }
 
     public function testStatementBindColumnByPosition()
@@ -793,9 +793,9 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $stmt->closeCursor();
     }
 
-    protected $_getColumnMetaKeys = array(
+    protected $_getColumnMetaKeys = [
         'native_type', 'flags', 'table', 'name', 'len', 'precision', 'pdo_type'
-    );
+    ];
 
     public function testStatementGetColumnMeta()
     {
@@ -851,7 +851,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             return;
         }
 
-        $valueArray = array('value1', 'value2');
+        $valueArray = ['value1', 'value2'];
         $stmt->setAttribute(1235, $valueArray);
         $this->assertEquals($valueArray, $stmt->getAttribute(1235), "Expected array #1");
         $this->assertEquals($value, $stmt->getAttribute(1234), "Expected '$value' #2");

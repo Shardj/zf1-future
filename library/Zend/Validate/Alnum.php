@@ -56,11 +56,11 @@ class Zend_Validate_Alnum extends Zend_Validate_Abstract
      *
      * @var array
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::INVALID      => "Invalid type given. String, integer or float expected",
         self::NOT_ALNUM    => "'%value%' contains characters which are non alphabetic and no digits",
         self::STRING_EMPTY => "'%value%' is an empty string",
-    );
+    ];
 
     /**
      * Sets default option values for this instance

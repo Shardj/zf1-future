@@ -105,7 +105,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedKeyLite
 		}
 
 		// Create string to sign   
-		$stringToSign   = array();
+		$stringToSign   = [];
     	$stringToSign[] = $requestDate; // Date
     	$stringToSign[] = $canonicalizedResource;		 			// Canonicalized resource
     	$stringToSign   = implode("\n", $stringToSign);

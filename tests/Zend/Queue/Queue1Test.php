@@ -46,9 +46,9 @@ class Zend_Queue_Queue1Test extends Zend_Queue_QueueBaseTest
         date_default_timezone_set('GMT');
 
         // Test Zend_Config
-        $this->config = array(
+        $this->config = [
             'name'      => 'queue1'
-        );
+        ];
 
         $this->queue = new Zend_Queue('Array', $this->config);
     }

@@ -106,25 +106,25 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         $this->_filesPath      = dirname(__FILE__) . '/_files';
         $this->_basicResolver  = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htbasic.1");
         $this->_digestResolver = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htdigest.3");
-        $this->_basicConfig    = array(
+        $this->_basicConfig    = [
             'accept_schemes' => 'basic',
             'realm'          => 'Test Realm',
             'proxy_auth'     => true
-        );
-        $this->_digestConfig   = array(
+        ];
+        $this->_digestConfig   = [
             'accept_schemes' => 'digest',
             'realm'          => 'Test Realm',
             'digest_domains' => '/ http://localhost/',
             'nonce_timeout'  => 300,
             'proxy_auth'     => true
-        );
-        $this->_bothConfig     = array(
+        ];
+        $this->_bothConfig     = [
             'accept_schemes' => 'basic digest',
             'realm'          => 'Test Realm',
             'digest_domains' => '/ http://localhost/',
             'nonce_timeout'  => 300,
             'proxy_auth'     => true
-        );
+        ];
     }
 
     public function testBasicChallenge()
@@ -359,11 +359,11 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         $a->setResponse($response);
         $result = $a->authenticate();
 
-        $return = array(
+        $return = [
             'result'  => $result,
             'status'  => $response->getHttpResponseCode(),
             'headers' => $response->getHeaders()
-        );
+        ];
         return $return;
     }
 

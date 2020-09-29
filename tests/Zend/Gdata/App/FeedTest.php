@@ -118,8 +118,8 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
 
     public function testSetServicePropagatesToChildren() {
         // Setup
-        $entries = array(new Zend_Gdata_App_Entry(),
-                         new Zend_Gdata_App_Entry());
+        $entries = [new Zend_Gdata_App_Entry(),
+                         new Zend_Gdata_App_Entry()];
         foreach ($entries as $entry) {
             $this->feed->addEntry($entry);
         }

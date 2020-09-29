@@ -81,9 +81,9 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      *
      * @var array
      */
-    protected $config = array(
+    protected $config = [
         'adapter'     => 'Zend_Http_Client_Adapter_Socket'
-    );
+    ];
 
     /**
      * Set up the test case
@@ -134,7 +134,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      */
     public function testSimpleRequests()
     {
-        $methods = array('GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE');
+        $methods = ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'];
 
         foreach ($methods as $method) {
             $res = $this->client->request($method);
@@ -150,9 +150,9 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'testHeaders.php');
         $this->client->setParameterGet('someinput', 'somevalue');
-        $this->client->setHeaders(array(
+        $this->client->setHeaders([
             'X-Powered-By' => 'My Glorious Golden Ass',
-        ));
+        ]);
 
         $res = $this->client->request(Zend_Http_Client::TRACE);
         if ($res->getStatus() == 405 || $res->getStatus() == 501) {
@@ -177,7 +177,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
 
         $this->client->setParameterGet($params);
         $res = $this->client->request('GET');
-        $this->assertEquals(serialize(array_merge(array('name' => 'Arthur'), $params)), $res->getBody());
+        $this->assertEquals(serialize(array_merge(['name' => 'Arthur'], $params)), $res->getBody());
     }
 
     /**
@@ -493,14 +493,14 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      */
     public function testResetParameters()
     {
-        $params = array(
+        $params = [
             'quest' => 'To seek the holy grail',
             'YourMother' => 'Was a hamster',
             'specialChars' => '<>$+ &?=[]^%',
-            'array' => array('firstItem', 'secondItem', '3rdItem')
-        );
+            'array' => ['firstItem', 'secondItem', '3rdItem']
+        ];
 
-        $headers = array("X-Foo" => "bar");
+        $headers = ["X-Foo" => "bar"];
 
         $this->client->setParameterPost($params);
         $this->client->setParameterGet($params);
@@ -530,15 +530,15 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'testResetParameters.php');
 
-        $gparams = array (
+        $gparams = [
             'cheese' => 'camambert',
             'beer'   => 'jever pilnsen',
-        );
+        ];
 
-        $pparams = array (
+        $pparams = [
             'from' => 'bob',
             'to'   => 'alice'
-        );
+        ];
 
         $this->client->setParameterGet($gparams)->setParameterPost($pparams);
 
@@ -562,11 +562,11 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'testHeaders.php');
 
-        $headers = array(
+        $headers = [
             'Accept-encoding' => 'gzip,deflate',
             'X-baz' => 'Foo',
             'X-powered-by' => 'A large wooden badger'
-        );
+        ];
 
         foreach ($headers as $key => $val) {
             $this->client->setHeaders($key, $val);
@@ -596,12 +596,12 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'testHeaders.php');
 
-        $headers = array(
+        $headers = [
             'Accept-encoding' => 'gzip,deflate',
             'X-baz' => 'Foo',
             'X-powered-by' => 'A large wooden badger',
             'Accept: text/xml,text/html,*/*'
-        );
+        ];
 
         $this->client->setHeaders($headers);
 
@@ -628,19 +628,19 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      public function testMultipleHeader()
      {
          $this->client->setUri($this->baseuri . 'testHeaders.php');
-        $headers = array(
+        $headers = [
             'Accept-encoding' => 'gzip,deflate',
             'X-baz' => 'Foo',
-            'X-powered-by' => array(
+            'X-powered-by' => [
                 'A large wooden badger',
                 'My Shiny Metal Ass',
                 'Dark Matter'
-            ),
-            'Cookie' => array(
+            ],
+            'Cookie' => [
                 'foo=bar',
                 'baz=waka'
-            )
-        );
+            ]
+        ];
 
         $this->client->setHeaders($headers);
         $res = $this->client->request('TRACE');
@@ -696,7 +696,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $this->client->setParameterPost('Camelot', 'A silly place');
 
         // Set strict redirections
-        $this->client->setConfig(array('strictredirects' => true));
+        $this->client->setConfig(['strictredirects' => true]);
 
         // Request
         $res = $this->client->request('POST');
@@ -722,7 +722,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
 
         // Set lower max redirections
         // Try with strict redirections first
-        $this->client->setConfig(array('strictredirects' => true, 'maxredirects' => 2));
+        $this->client->setConfig(['strictredirects' => true, 'maxredirects' => 2]);
 
         $res = $this->client->request('POST');
         $this->assertTrue($res->isRedirect(),
@@ -730,7 +730,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
 
         // Then try with normal redirections
         $this->client->setParameterGet('redirection', '0');
-        $this->client->setConfig(array('strictredirects' => false));
+        $this->client->setConfig(['strictredirects' => false]);
         $res = $this->client->request('POST');
         $this->assertTrue($res->isRedirect(),
             "Last response was not a redirection as expected. Response code: {$res->getStatus()}. Redirections counter: {$this->client->getRedirectionsCount()} (when strict redirects are off)");
@@ -744,7 +744,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'testRelativeRedirections.php');
         $this->client->setParameterGet('redirect', 'abpath');
-        $this->client->setConfig(array('maxredirects' => 1));
+        $this->client->setConfig(['maxredirects' => 1]);
 
         // Get the host and port part of our baseuri
         $uri = $this->client->getUri()->getScheme() . '://' . $this->client->getUri()->getHost() . ':' .
@@ -764,7 +764,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'testRelativeRedirections.php');
         $this->client->setParameterGet('redirect', 'relpath');
-        $this->client->setConfig(array('maxredirects' => 1));
+        $this->client->setConfig(['maxredirects' => 1]);
 
         // Set the new expected URI
         $uri = clone $this->client->getUri();
@@ -789,11 +789,11 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     public function testHttpAuthBasic()
     {
         $this->client->setUri($this->baseuri. 'testHttpAuth.php');
-        $this->client->setParameterGet(array(
+        $this->client->setParameterGet([
             'user'   => 'alice',
             'pass'   => 'secret',
             'method' => 'Basic'
-        ));
+        ]);
 
         // First - fail password
         $this->client->setAuth('alice', 'wrong');
@@ -815,11 +815,11 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $uri = str_replace('http://', 'http://%s:%s@', $this->baseuri) . 'testHttpAuth.php';
 
-        $this->client->setParameterGet(array(
+        $this->client->setParameterGet([
             'user'   => 'alice',
             'pass'   => 'secret',
             'method' => 'Basic'
-        ));
+        ]);
 
         // First - fail password
         $this->client->setUri(sprintf($uri, 'alice', 'wrong'));
@@ -881,10 +881,10 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri. 'testCookies.php');
 
-        $cookies = array(
+        $cookies = [
             'name'   => 'value',
             'cookie' => 'crumble'
-        );
+        ];
 
         foreach ($cookies as $k => $v) {
             $this->client->setCookie($k, $v);
@@ -904,12 +904,12 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $this->client->setUri($this->baseuri. 'testCookies.php');
         $refuri = $this->client->getUri();
 
-        $cookies = array(
+        $cookies = [
             Zend_Http_Cookie::fromString('chocolate=chips', $refuri),
             Zend_Http_Cookie::fromString('crumble=apple', $refuri)
-        );
+        ];
 
-        $strcookies = array();
+        $strcookies = [];
         foreach ($cookies as $c) {
             $this->client->setCookie($c);
             $strcookies[$c->getName()] = $c->getValue();
@@ -928,15 +928,15 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $this->client->setUri($this->baseuri. 'testCookies.php');
         $refuri = $this->client->getUri();
 
-        $cookies = array(
+        $cookies = [
             Zend_Http_Cookie::fromString('chocolate=chips', $refuri),
             Zend_Http_Cookie::fromString('crumble=apple', $refuri),
             Zend_Http_Cookie::fromString('another=cookie', $refuri)
-        );
+        ];
 
         $this->client->setCookie($cookies);
 
-        $strcookies = array();
+        $strcookies = [];
         foreach ($cookies as $c) {
             $strcookies[$c->getName()] = $c->getValue();
         }
@@ -953,11 +953,11 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri. 'testCookies.php');
 
-        $cookies = array(
+        $cookies = [
             'chocolate' => 'chips',
             'crumble'   => 'apple',
             'another'   => 'cookie'
-        );
+        ];
 
         $this->client->setCookie($cookies);
 
@@ -975,12 +975,12 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
         $this->client->setCookieJar();
         $refuri = $this->client->getUri();
 
-        $cookies = array(
+        $cookies = [
             Zend_Http_Cookie::fromString('chocolate=chips', $refuri),
             Zend_Http_Cookie::fromString('crumble=apple', $refuri)
-        );
+        ];
 
-        $strcookies = array();
+        $strcookies = [];
         foreach ($cookies as $c) {
             $this->client->setCookie($c);
             $strcookies[$c->getName()] = $c->getValue();
@@ -1109,7 +1109,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
 
         $this->client->setUri($this->baseuri . 'testUploads.php');
 
-        $files = array('file1.txt', 'file2.txt', 'someotherfile.foo');
+        $files = ['file1.txt', 'file2.txt', 'someotherfile.foo'];
 
         $expectedBody = '';
         foreach($files as $filename) {
@@ -1249,7 +1249,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
     {
         $this->client->setUri($this->baseuri . 'ZF10645-PutContentType.php');
         $this->client->setMethod(Zend_Http_Client::PUT);
-        $data = array('foo' => 'bar');
+        $data = ['foo' => 'bar'];
         $this->client->setRawData(http_build_query($data), 'text/html; charset=ISO-8859-1');
 
         $response = $this->client->request();
@@ -1310,38 +1310,38 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      */
     public static function parameterArrayProvider()
     {
-        return array(
-            array(
-                array(
+        return [
+            [
+                [
                     'quest' => 'To seek the holy grail',
                     'YourMother' => 'Was a hamster',
                     'specialChars' => '<>$+ &?=[]^%',
-                    'array' => array('firstItem', 'secondItem', '3rdItem')
-                )
-            ),
+                    'array' => ['firstItem', 'secondItem', '3rdItem']
+                ]
+            ],
 
-            array(
-                array(
-                    'someData' => array(
+            [
+                [
+                    'someData' => [
                         "1",
                         "2",
                         'key' => 'value',
-                        'nesting' => array(
+                        'nesting' => [
                             'a' => 'AAA',
                             'b' => 'BBB'
-                        )
-                    ),
-                    'someOtherData' => array('foo', 'bar')
-                )
-            ),
+                        ]
+                    ],
+                    'someOtherData' => ['foo', 'bar']
+                ]
+            ],
 
-            array(
-                array(
+            [
+                [
                     'foo1' => 'bar',
-                    'foo2' => array('baz', 'w00t')
-                )
-            )
-        );
+                    'foo2' => ['baz', 'w00t']
+                ]
+            ]
+        ];
     }
 
     /**
@@ -1351,12 +1351,12 @@ abstract class Zend_Http_Client_CommonHttpTests extends PHPUnit_Framework_TestCa
      */
     public static function invalidConfigProvider()
     {
-        return array(
-            array(false),
-            array('foo => bar'),
-            array(null),
-            array(new stdClass),
-            array(55)
-        );
+        return [
+            [false],
+            ['foo => bar'],
+            [null],
+            [new stdClass],
+            [55]
+        ];
     }
 }

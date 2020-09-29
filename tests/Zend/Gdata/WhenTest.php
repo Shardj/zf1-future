@@ -76,8 +76,8 @@ class Zend_Gdata_WhenTest extends PHPUnit_Framework_TestCase
         $newWhen = new Zend_Gdata_Extension_When();
         $newWhen->transferFromXML($this->when->saveXML());
         $this->assertEquals(0, count($newWhen->extensionElements));
-        $newWhen->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newWhen->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newWhen->extensionElements));
         $this->assertEquals("Later", $newWhen->valueString);
         $this->assertEquals("2007-06-21T21:31:56-07:00", $newWhen->endTime);
@@ -117,8 +117,8 @@ class Zend_Gdata_WhenTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->when->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->when->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->when->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->when->extensionAttributes['foo2']['value']);

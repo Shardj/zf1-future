@@ -218,7 +218,7 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
 
         Zend_Wildfire_Channel_HttpHeaders::getInstance()->flush();
 
-        $headers = array();
+        $headers = [];
         $headers['X-Wf-Protocol-1'] = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
         $headers['X-Wf-1-Structure-1'] = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
         $headers['X-Wf-1-Plugin-1'] = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
@@ -237,13 +237,13 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
 
         $message = 'This is a log message!';
         $label = 'Test Label';
-        $table = array('Summary line for the table',
-                       array(
-                           array('Column 1', 'Column 2'),
-                           array('Row 1 c 1',' Row 1 c 2'),
-                           array('Row 2 c 1',' Row 2 c 2')
-                       )
-                      );
+        $table = ['Summary line for the table',
+                       [
+                           ['Column 1', 'Column 2'],
+                           ['Row 1 c 1',' Row 1 c 2'],
+                           ['Row 2 c 1',' Row 2 c 2']
+                       ]
+                      ];
 
 
         $this->_logger->addPriority('TRACE', 8);
@@ -270,9 +270,9 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
         $channel = Zend_Wildfire_Channel_HttpHeaders::getInstance();
         $protocol = $channel->getProtocol(Zend_Wildfire_Plugin_FirePhp::PROTOCOL_URI);
 
-        $messages = array(Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE=>
-                          array(Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
-                                array(1=>'[{"Type":"TABLE"},["Summary line for the table",[["Column 1","Column 2"],["Row 1 c 1"," Row 1 c 2"],["Row 2 c 1"," Row 2 c 2"]]]]')));
+        $messages = [Zend_Wildfire_Plugin_FirePhp::STRUCTURE_URI_FIREBUGCONSOLE=>
+                          [Zend_Wildfire_Plugin_FirePhp::PLUGIN_URI=>
+                                [1=>'[{"Type":"TABLE"},["Summary line for the table",[["Column 1","Column 2"],["Row 1 c 1"," Row 1 c 2"],["Row 2 c 1"," Row 2 c 2"]]]]']]];
 
         $qued_messages = $protocol->getMessages();
 
@@ -285,9 +285,9 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
 
     public function testFactory()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName' => "Firebug"
-        )));
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
@@ -304,7 +304,7 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
         $firephp->setOption('includeLineNumbers', true);
         $firephp->setOption('maxTraceDepth', 0);
 
-        $lines = array();
+        $lines = [];
         // NOTE: Do NOT separate the following pairs otherwise the line numbers will not match for the test
 
         // Message number: 1
@@ -320,13 +320,13 @@ class Zend_Log_Writer_FirebugTest extends PHPUnit_Framework_TestCase
         // Message number: 3
         $this->_logger->addPriority('TABLE', 9);
         $this->_writer->setPriorityStyle(9, 'TABLE');
-        $table = array('Summary line for the table',
-                       array(
-                           array('Column 1', 'Column 2'),
-                           array('Row 1 c 1',' Row 1 c 2'),
-                           array('Row 2 c 1',' Row 2 c 2')
-                       )
-                      );
+        $table = ['Summary line for the table',
+                       [
+                           ['Column 1', 'Column 2'],
+                           ['Row 1 c 1',' Row 1 c 2'],
+                           ['Row 2 c 1',' Row 2 c 2']
+                       ]
+                      ];
         $lines[] = __LINE__+1;
         $this->_logger->table($table);
 
@@ -386,7 +386,7 @@ class Zend_Log_Writer_FirebugTest_Response extends Zend_Controller_Response_Http
         sort($keys1);
         $keys1 = serialize($keys1);
 
-        $keys2 = array();
+        $keys2 = [];
         foreach ($response_headers as $header ) {
             $keys2[] = $header['name'];
         }
@@ -401,7 +401,7 @@ class Zend_Log_Writer_FirebugTest_Response extends Zend_Controller_Response_Http
         sort($values1);
         $values1 = serialize($values1);
 
-        $values2 = array();
+        $values2 = [];
         foreach ($response_headers as $header ) {
             $values2[] = $header['value'];
         }

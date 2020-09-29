@@ -62,15 +62,15 @@ class Zend_Feed_Writer_Extension_ITunes_EntryTest extends PHPUnit_Framework_Test
     public function testAddAuthors()
     {
         $entry = new Zend_Feed_Writer_Entry;
-        $entry->addItunesAuthors(array('joe', 'jane'));
-        $this->assertEquals(array('joe', 'jane'), $entry->getItunesAuthors());
+        $entry->addItunesAuthors(['joe', 'jane']);
+        $this->assertEquals(['joe', 'jane'], $entry->getItunesAuthors());
     }
 
     public function testAddAuthor()
     {
         $entry = new Zend_Feed_Writer_Entry;
         $entry->addItunesAuthor('joe');
-        $this->assertEquals(array('joe'), $entry->getItunesAuthors());
+        $this->assertEquals(['joe'], $entry->getItunesAuthors());
     }
 
     /**
@@ -163,9 +163,9 @@ class Zend_Feed_Writer_Extension_ITunes_EntryTest extends PHPUnit_Framework_Test
     public function testSetKeywords()
     {
         $entry = new Zend_Feed_Writer_Entry;
-        $words = array(
+        $words = [
             'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12'
-        );
+        ];
         $entry->setItunesKeywords($words);
         $this->assertEquals($words, $entry->getItunesKeywords());
     }
@@ -176,9 +176,9 @@ class Zend_Feed_Writer_Extension_ITunes_EntryTest extends PHPUnit_Framework_Test
     public function testSetKeywordsThrowsExceptionIfMaxKeywordsExceeded()
     {
         $entry = new Zend_Feed_Writer_Entry;
-        $words = array(
+        $words = [
             'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12', 'a13'
-        );
+        ];
         $entry->setItunesKeywords($words);
     }
 
@@ -188,9 +188,9 @@ class Zend_Feed_Writer_Extension_ITunes_EntryTest extends PHPUnit_Framework_Test
     public function testSetKeywordsThrowsExceptionIfFormattedKeywordsExceeds255CharLength()
     {
         $entry = new Zend_Feed_Writer_Entry;
-        $words = array(
+        $words = [
             str_repeat('a', 253), str_repeat('b', 2)
-        );
+        ];
         $entry->setItunesKeywords($words);
     }
 

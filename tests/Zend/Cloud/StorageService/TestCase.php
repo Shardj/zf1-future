@@ -87,7 +87,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
 
     public function testNoParams()
     {
-        $config = array(Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY => $this->_config->get(Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY));
+        $config = [Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY => $this->_config->get(Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY)];
         $this->setExpectedException('Zend_Cloud_StorageService_Exception');
         $s = Zend_Cloud_StorageService_Factory::getAdapter($config);
     }
@@ -323,7 +323,7 @@ abstract class Zend_Cloud_StorageService_TestCase extends PHPUnit_Framework_Test
             $this->_clobberItem($data, $dummyName);
             $this->_wait();
 
-            $this->_commonStorage->storeMetadata($dummyName, array('zend' => 'zend'));
+            $this->_commonStorage->storeMetadata($dummyName, ['zend' => 'zend']);
             $this->_wait();
 
             // Hopefully we can assert more about the metadata in the future :/

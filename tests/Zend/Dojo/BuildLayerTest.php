@@ -79,7 +79,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 
     public function testDojoHelperShouldBeRetrievedFromViewObjectIfNotExplicitySet()
     {
-        $build = new Zend_Dojo_BuildLayer(array('view' => $this->view));
+        $build = new Zend_Dojo_BuildLayer(['view' => $this->view]);
         $helper = $build->getDojoHelper();
         $this->assertTrue($helper instanceof Zend_Dojo_View_Helper_Dojo_Container);
     }
@@ -151,10 +151,10 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         $this->view->dojo()->requireModule('dijit.form.Form')
                            ->requireModule('dijit.form.TextBox')
                            ->requireModule('dijit.form.Button');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'view'      => $this->view,
             'layerName' => 'foo.bar',
-        ));
+        ]);
 
         $test   = $build->generateLayerScript();
         $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayer.js');
@@ -170,11 +170,11 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
                            ->requireModule('dijit.form.TextBox')
                            ->requireModule('dijit.form.Button')
                            ->addOnLoad('custom.callback');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'view'          => $this->view,
             'layerName'     => 'foo.bar',
             'consumeOnLoad' => true,
-        ));
+        ]);
 
         $test   = $build->generateLayerScript();
         $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayerOnLoad.js');
@@ -190,10 +190,10 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
                            ->requireModule('dijit.form.TextBox')
                            ->requireModule('dijit.form.Button')
                            ->addOnLoad('custom.callback');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'view'          => $this->view,
             'layerName'     => 'foo.bar',
-        ));
+        ]);
 
         $test   = $build->generateLayerScript();
         $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayer.js');
@@ -209,11 +209,11 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
                            ->requireModule('dijit.form.TextBox')
                            ->requireModule('dijit.form.Button')
                            ->addJavascript('custom.callback();');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'view'              => $this->view,
             'layerName'         => 'foo.bar',
             'consumeJavascript' => true,
-        ));
+        ]);
 
         $test   = $build->generateLayerScript();
         $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayerJavascript.js');
@@ -229,10 +229,10 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
                            ->requireModule('dijit.form.TextBox')
                            ->requireModule('dijit.form.Button')
                            ->addJavascript('custom.callback();');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'view'          => $this->view,
             'layerName'     => 'foo.bar',
-        ));
+        ]);
 
         $test   = $build->generateLayerScript();
         $script = file_get_contents(dirname(__FILE__) . '/_files/BuildLayer.js');
@@ -252,12 +252,12 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 
     public function testAddProfileOptionsShouldAddOptions()
     {
-        $options = array('foo' => 'bar');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $options = ['foo' => 'bar'];
+        $build = new Zend_Dojo_BuildLayer([
             'profileOptions' => $options,
-        ));
-        $build->addProfileOptions(array('bar' => 'baz'));
-        $expected = $this->getDefaultProfileOptions() + array('foo' => 'bar', 'bar' => 'baz');
+        ]);
+        $build->addProfileOptions(['bar' => 'baz']);
+        $expected = $this->getDefaultProfileOptions() + ['foo' => 'bar', 'bar' => 'baz'];
         $this->assertEquals($expected, $build->getProfileOptions());
     }
 
@@ -270,12 +270,12 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 
     public function testSetProfileOptionsShouldNotOverwriteOptions()
     {
-        $options = array('foo' => 'bar');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $options = ['foo' => 'bar'];
+        $build = new Zend_Dojo_BuildLayer([
             'profileOptions' => $options,
-        ));
-        $build->setProfileOptions(array('bar' => 'baz'));
-        $this->assertNotEquals(array('bar' => 'baz'), $build->getProfileOptions());
+        ]);
+        $build->setProfileOptions(['bar' => 'baz']);
+        $this->assertNotEquals(['bar' => 'baz'], $build->getProfileOptions());
         $this->assertTrue($build->hasProfileOption('bar'));
     }
 
@@ -288,31 +288,31 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 
     public function testProfilePrefixesIncludeLayerNamePrefix()
     {
-        $build = new Zend_Dojo_BuildLayer(array('layerName' => 'foo.main'));
+        $build = new Zend_Dojo_BuildLayer(['layerName' => 'foo.main']);
         $prefixes = $build->getProfilePrefixes();
         $this->assertTrue(array_key_exists('foo', $prefixes), var_export($prefixes, 1));
-        $this->assertEquals(array('foo', '../foo'), $prefixes['foo']);
+        $this->assertEquals(['foo', '../foo'], $prefixes['foo']);
     }
 
     public function testProfilePrefixesShouldIncludePrefixesOfAllRequiredModules()
     {
         $this->view->dojo()->requireModule('dijit.layout.TabContainer')
                            ->requireModule('dojox.layout.ContentPane');
-        $build = new Zend_Dojo_BuildLayer(array('view' => $this->view));
+        $build = new Zend_Dojo_BuildLayer(['view' => $this->view]);
 
         $prefixes = $build->getProfilePrefixes();
         $this->assertTrue(array_key_exists('dijit', $prefixes), var_export($prefixes, 1));
-        $this->assertEquals(array('dijit', '../dijit'), $prefixes['dijit']);
+        $this->assertEquals(['dijit', '../dijit'], $prefixes['dijit']);
         $this->assertTrue(array_key_exists('dojox', $prefixes), var_export($prefixes, 1));
-        $this->assertEquals(array('dojox', '../dojox'), $prefixes['dojox']);
+        $this->assertEquals(['dojox', '../dojox'], $prefixes['dojox']);
     }
 
     public function testGeneratedDojoBuildProfileWithNoExtraLayerDependencies()
     {
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'layerScriptPath' => '../zend/main.js',
             'layerName'       => 'zend.main',
-        ));
+        ]);
         $profile  = $build->generateBuildProfile();
         $expected = file_get_contents(dirname(__FILE__) . '/_files/BuildProfile.js');
 
@@ -329,11 +329,11 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
     {
         $this->view->dojo()->requireModule('dijit.layout.BorderContainer')
                            ->requireModule('dojox.layout.ContentPane');
-        $build = new Zend_Dojo_BuildLayer(array(
+        $build = new Zend_Dojo_BuildLayer([
             'layerScriptPath' => '../zend/main.js',
             'view'            => $this->view,
             'layerName'       => 'zend.main',
-        ));
+        ]);
         $profile  = $build->generateBuildProfile();
         $expected = file_get_contents(dirname(__FILE__) . '/_files/BuildProfileWithDependencies.js');
 
@@ -357,14 +357,14 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
 
     protected function getDefaultProfileOptions()
     {
-        return array(
+        return [
             'action'        => 'release',
             'optimize'      => 'shrinksafe',
             'layerOptimize' => 'shrinksafe',
             'copyTests'     => false,
             'loader'        => 'default',
             'cssOptimize'   => 'comments',
-        );
+        ];
     }
 
     protected function decodeProfileJson($profile)

@@ -83,9 +83,9 @@ class Zend_Service_Rackspace_Files_OfflineTest
 
         $this->container = new Zend_Service_Rackspace_Files_Container(
             $this->rackspace,
-            array(
+            [
                  'name' => TESTS_ZEND_SERVICE_RACKSPACE_CONTAINER_NAME
-            )
+            ]
         );
 
         $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
@@ -102,14 +102,14 @@ class Zend_Service_Rackspace_Files_OfflineTest
             $this->rackspace->authenticate(), 'Authentication failed'
         );
 
-        $this->metadata = array(
+        $this->metadata = [
             'foo'  => 'bar',
             'foo2' => 'bar2'
-        );
+        ];
 
-        $this->metadata2 = array(
+        $this->metadata2 = [
             'hello' => 'world'
-        );
+        ];
 
         // load the HTTP response (from a file)
         $this->httpClientAdapterTest->setResponse(
@@ -231,10 +231,10 @@ class Zend_Service_Rackspace_Files_OfflineTest
     {
         $objects = $this->rackspace->getObjects(
             'zf-unit-test',
-            array(
+            [
                 'delimiter' => '/',
                 'prefix'    => 'dir/',
-            )
+            ]
         );
         $this->assertTrue($objects !== false);
 

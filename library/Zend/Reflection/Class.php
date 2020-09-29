@@ -121,7 +121,7 @@ class Zend_Reflection_Class extends ReflectionClass
     public function getInterfaces($reflectionClass = 'Zend_Reflection_Class')
     {
         $phpReflections  = parent::getInterfaces();
-        $zendReflections = array();
+        $zendReflections = [];
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
             $instance = new $reflectionClass($phpReflection->getName());
             if (!$instance instanceof Zend_Reflection_Class) {
@@ -166,7 +166,7 @@ class Zend_Reflection_Class extends ReflectionClass
     public function getMethods($filter = -1, $reflectionClass = 'Zend_Reflection_Method')
     {
         $phpReflections  = parent::getMethods($filter);
-        $zendReflections = array();
+        $zendReflections = [];
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
             $instance = new $reflectionClass($this->getName(), $phpReflection->getName());
             if (!$instance instanceof Zend_Reflection_Method) {
@@ -231,7 +231,7 @@ class Zend_Reflection_Class extends ReflectionClass
     public function getProperties($filter = -1, $reflectionClass = 'Zend_Reflection_Property')
     {
         $phpReflections = parent::getProperties($filter);
-        $zendReflections = array();
+        $zendReflections = [];
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
             $instance = new $reflectionClass($this->getName(), $phpReflection->getName());
             if (!$instance instanceof Zend_Reflection_Property) {

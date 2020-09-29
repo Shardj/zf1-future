@@ -71,18 +71,18 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('EBAY-US', $this->_finding->getOption(Zend_Service_Ebay_Finding::OPTION_GLOBAL_ID));
         $this->assertEquals('foo', $this->_finding->getOption(Zend_Service_Ebay_Finding::OPTION_APP_ID));
 
-        $options = array(
+        $options = [
             Zend_Service_Ebay_Finding::OPTION_APP_ID    => 'app-id',
             Zend_Service_Ebay_Finding::OPTION_GLOBAL_ID => 'EBAY-GB',
             'foo' => 'bar'
-        );
+        ];
         $finding = new Zend_Service_Ebay_Finding($options);
         $this->assertEquals('EBAY-GB', $finding->getOption(Zend_Service_Ebay_Finding::OPTION_GLOBAL_ID));
         $this->assertEquals('app-id', $finding->getOption(Zend_Service_Ebay_Finding::OPTION_APP_ID));
         $this->assertEquals('bar', $finding->getOption('foo'));
 
         $this->setExpectedException('Zend_Service_Ebay_Finding_Exception');
-        $finding = new Zend_Service_Ebay_Finding(array('foo' => 'bar'));
+        $finding = new Zend_Service_Ebay_Finding(['foo' => 'bar']);
     }
 
     public function testResponseAbstract()

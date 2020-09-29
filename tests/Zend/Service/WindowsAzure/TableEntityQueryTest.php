@@ -162,7 +162,7 @@ class Zend_Service_WindowsAzure_TableEntityQueryTest extends PHPUnit_Framework_T
         $target = new Zend_Service_WindowsAzure_Storage_TableEntityQuery();
         $target->select()
                ->from('MyTable')
-               ->where('Name eq ? or Name eq ?', array('Maarten', 'Vijay'));
+               ->where('Name eq ? or Name eq ?', ['Maarten', 'Vijay']);
                
         $this->assertEquals('MyTable()?$filter=Name eq \'Maarten\' or Name eq \'Vijay\'', $target->__toString());
     }

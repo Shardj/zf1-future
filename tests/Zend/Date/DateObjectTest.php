@@ -42,9 +42,9 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         date_default_timezone_set('Europe/Paris');
         require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
-                 array('lifetime' => 120, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/../_files/'));
-        Zend_Date_DateObjectTestHelper::setOptions(array('cache' => $this->_cache));
+                 ['lifetime' => 120, 'automatic_serialization' => true],
+                 ['cache_dir' => dirname(__FILE__) . '/../_files/']);
+        Zend_Date_DateObjectTestHelper::setOptions(['cache' => $this->_cache]);
     }
 
     public function tearDown()
@@ -276,40 +276,40 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
     public function testCalcSunInternal()
     {
         $date = new Zend_Date_DateObjectTestHelper(10000000);
-        $this->assertSame( 9961681, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, true ));
-        $this->assertSame(10010367, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, false));
-        $this->assertSame( 9967006, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), -0.0145439, true ));
-        $this->assertSame(10005042, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), -0.0145439, false));
-        $this->assertSame( 9947773, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>  29), -0.0145439, true ));
-        $this->assertSame( 9996438, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>  29), -0.0145439, false));
-        $this->assertSame( 9953077, $date->calcSun(array('latitude' => -38.4, 'longitude' =>  29), -0.0145439, true ));
-        $this->assertSame( 9991134, $date->calcSun(array('latitude' => -38.4, 'longitude' =>  29), -0.0145439, false));
-        $this->assertSame( 9923795, $date->calcSun(array('latitude' =>  38.4, 'longitude' => 129), -0.0145439, true ));
-        $this->assertSame( 9972422, $date->calcSun(array('latitude' =>  38.4, 'longitude' => 129), -0.0145439, false));
-        $this->assertSame( 9929062, $date->calcSun(array('latitude' => -38.4, 'longitude' => 129), -0.0145439, true ));
-        $this->assertSame( 9967155, $date->calcSun(array('latitude' => -38.4, 'longitude' => 129), -0.0145439, false));
-        $this->assertSame( 9985660, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>-129), -0.0145439, true ));
-        $this->assertSame(10034383, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>-129), -0.0145439, false));
-        $this->assertSame( 9991022, $date->calcSun(array('latitude' => -38.4, 'longitude' =>-129), -0.0145439, true ));
-        $this->assertSame(10029021, $date->calcSun(array('latitude' => -38.4, 'longitude' =>-129), -0.0145439, false));
+        $this->assertSame( 9961681, $date->calcSun(['latitude' =>  38.4, 'longitude' => -29], -0.0145439, true ));
+        $this->assertSame(10010367, $date->calcSun(['latitude' =>  38.4, 'longitude' => -29], -0.0145439, false));
+        $this->assertSame( 9967006, $date->calcSun(['latitude' => -38.4, 'longitude' => -29], -0.0145439, true ));
+        $this->assertSame(10005042, $date->calcSun(['latitude' => -38.4, 'longitude' => -29], -0.0145439, false));
+        $this->assertSame( 9947773, $date->calcSun(['latitude' =>  38.4, 'longitude' =>  29], -0.0145439, true ));
+        $this->assertSame( 9996438, $date->calcSun(['latitude' =>  38.4, 'longitude' =>  29], -0.0145439, false));
+        $this->assertSame( 9953077, $date->calcSun(['latitude' => -38.4, 'longitude' =>  29], -0.0145439, true ));
+        $this->assertSame( 9991134, $date->calcSun(['latitude' => -38.4, 'longitude' =>  29], -0.0145439, false));
+        $this->assertSame( 9923795, $date->calcSun(['latitude' =>  38.4, 'longitude' => 129], -0.0145439, true ));
+        $this->assertSame( 9972422, $date->calcSun(['latitude' =>  38.4, 'longitude' => 129], -0.0145439, false));
+        $this->assertSame( 9929062, $date->calcSun(['latitude' => -38.4, 'longitude' => 129], -0.0145439, true ));
+        $this->assertSame( 9967155, $date->calcSun(['latitude' => -38.4, 'longitude' => 129], -0.0145439, false));
+        $this->assertSame( 9985660, $date->calcSun(['latitude' =>  38.4, 'longitude' =>-129], -0.0145439, true ));
+        $this->assertSame(10034383, $date->calcSun(['latitude' =>  38.4, 'longitude' =>-129], -0.0145439, false));
+        $this->assertSame( 9991022, $date->calcSun(['latitude' => -38.4, 'longitude' =>-129], -0.0145439, true ));
+        $this->assertSame(10029021, $date->calcSun(['latitude' => -38.4, 'longitude' =>-129], -0.0145439, false));
 
         $date = new Zend_Date_DateObjectTestHelper(-148309884);
-        $this->assertSame(-148322663, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, true ));
-        $this->assertSame(-148274758, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, false));
-        $this->assertSame(-148318117, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), -0.0145439, true ));
-        $this->assertSame(-148279304, $date->calcSun(array('latitude' => -38.4, 'longitude' => -29), -0.0145439, false));
-        $this->assertSame(-148336570, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>  29), -0.0145439, true ));
-        $this->assertSame(-148288687, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>  29), -0.0145439, false));
-        $this->assertSame(-148332046, $date->calcSun(array('latitude' => -38.4, 'longitude' =>  29), -0.0145439, true ));
-        $this->assertSame(-148293211, $date->calcSun(array('latitude' => -38.4, 'longitude' =>  29), -0.0145439, false));
-        $this->assertSame(-148360548, $date->calcSun(array('latitude' =>  38.4, 'longitude' => 129), -0.0145439, true ));
-        $this->assertSame(-148312703, $date->calcSun(array('latitude' =>  38.4, 'longitude' => 129), -0.0145439, false));
-        $this->assertSame(-148356061, $date->calcSun(array('latitude' => -38.4, 'longitude' => 129), -0.0145439, true ));
-        $this->assertSame(-148317189, $date->calcSun(array('latitude' => -38.4, 'longitude' => 129), -0.0145439, false));
-        $this->assertSame(-148298686, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>-129), -0.0145439, true ));
-        $this->assertSame(-148250742, $date->calcSun(array('latitude' =>  38.4, 'longitude' =>-129), -0.0145439, false));
-        $this->assertSame(-148294101, $date->calcSun(array('latitude' => -38.4, 'longitude' =>-129), -0.0145439, true ));
-        $this->assertSame(-148255327, $date->calcSun(array('latitude' => -38.4, 'longitude' =>-129), -0.0145439, false));
+        $this->assertSame(-148322663, $date->calcSun(['latitude' =>  38.4, 'longitude' => -29], -0.0145439, true ));
+        $this->assertSame(-148274758, $date->calcSun(['latitude' =>  38.4, 'longitude' => -29], -0.0145439, false));
+        $this->assertSame(-148318117, $date->calcSun(['latitude' => -38.4, 'longitude' => -29], -0.0145439, true ));
+        $this->assertSame(-148279304, $date->calcSun(['latitude' => -38.4, 'longitude' => -29], -0.0145439, false));
+        $this->assertSame(-148336570, $date->calcSun(['latitude' =>  38.4, 'longitude' =>  29], -0.0145439, true ));
+        $this->assertSame(-148288687, $date->calcSun(['latitude' =>  38.4, 'longitude' =>  29], -0.0145439, false));
+        $this->assertSame(-148332046, $date->calcSun(['latitude' => -38.4, 'longitude' =>  29], -0.0145439, true ));
+        $this->assertSame(-148293211, $date->calcSun(['latitude' => -38.4, 'longitude' =>  29], -0.0145439, false));
+        $this->assertSame(-148360548, $date->calcSun(['latitude' =>  38.4, 'longitude' => 129], -0.0145439, true ));
+        $this->assertSame(-148312703, $date->calcSun(['latitude' =>  38.4, 'longitude' => 129], -0.0145439, false));
+        $this->assertSame(-148356061, $date->calcSun(['latitude' => -38.4, 'longitude' => 129], -0.0145439, true ));
+        $this->assertSame(-148317189, $date->calcSun(['latitude' => -38.4, 'longitude' => 129], -0.0145439, false));
+        $this->assertSame(-148298686, $date->calcSun(['latitude' =>  38.4, 'longitude' =>-129], -0.0145439, true ));
+        $this->assertSame(-148250742, $date->calcSun(['latitude' =>  38.4, 'longitude' =>-129], -0.0145439, false));
+        $this->assertSame(-148294101, $date->calcSun(['latitude' => -38.4, 'longitude' =>-129], -0.0145439, true ));
+        $this->assertSame(-148255327, $date->calcSun(['latitude' => -38.4, 'longitude' =>-129], -0.0145439, false));
     }
 
     public function testGetDate()
@@ -318,10 +318,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($date->getDateParts()));
         $this->assertTrue(is_array($date->getDateParts(1000000)));
 
-        $test = array(             'seconds' =>   40,      'minutes' => 46,
+        $test = [             'seconds' =>   40,      'minutes' => 46,
             'hours'   => 14,       'mday'    =>   12,      'wday'    =>  1,
             'mon'     =>  1,       'year'    => 1970,      'yday'    => 11,
-            'weekday' => 'Monday', 'month'   => 'January', 0         => 1000000);
+            'weekday' => 'Monday', 'month'   => 'January', 0         => 1000000];
         $result = $date->getDateParts(1000000);
 
         $this->assertSame((int) $test['seconds'], (int) $result['seconds']);
@@ -336,10 +336,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame(      $test['month'],         $result['month']  );
         $this->assertSame(      $test[0],               $result[0]        );
 
-        $test = array(                'seconds' =>   20,      'minutes' => 33,
+        $test = [                'seconds' =>   20,      'minutes' => 33,
             'hours'   => 11,          'mday'    =>    6,      'wday'    =>  3,
             'mon'     =>  3,          'year'    => 1748,      'yday'    => 65,
-            'weekday' => 'Wednesday', 'month'   => 'February', 0        => -7000000000);
+            'weekday' => 'Wednesday', 'month'   => 'February', 0        => -7000000000];
         $result = $date->getDateParts(-7000000000);
 
         $this->assertSame((int) $test['seconds'], (int) $result['seconds']);
@@ -354,10 +354,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame(      $test['month'],         $result['month']  );
         $this->assertSame(      $test[0],               $result[0]        );
 
-        $test = array(               'seconds' => 0,        'minutes' => 40,
+        $test = [               'seconds' => 0,        'minutes' => 40,
             'hours'   => 2,          'mday'    => 26,       'wday'    => 2,
             'mon'     => 8,          'year'    => 2188,     'yday'    => 238,
-            'weekday' => 'Tuesday', 'month'   => 'July', 0      => 6900000000);
+            'weekday' => 'Tuesday', 'month'   => 'July', 0      => 6900000000];
         $result = $date->getDateParts(6900000000);
 
         $this->assertSame((int) $test['seconds'], (int) $result['seconds']);
@@ -372,10 +372,10 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
         $this->assertSame(      $test['month'],         $result['month']  );
         $this->assertSame(      $test[0],               $result[0]        );
 
-        $test = array(               'seconds' => 0,        'minutes' => 40,
+        $test = [               'seconds' => 0,        'minutes' => 40,
             'hours'   => 2,          'mday'    => 26,       'wday'    => 3,
             'mon'     => 8,          'year'    => 2188,     'yday'    => 238,
-            'weekday' => 'Wednesday', 'month'   => 'July', 0      => 6900000000);
+            'weekday' => 'Wednesday', 'month'   => 'July', 0      => 6900000000];
         $result = $date->getDateParts(6900000000, true);
 
         $this->assertSame((int) $test['seconds'], (int) $result['seconds']);

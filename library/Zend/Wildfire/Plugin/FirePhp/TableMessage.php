@@ -48,7 +48,7 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
      * The rows of the table
      * $var array
      */
-    protected $_rows = array();
+    protected $_rows = [];
 
     /**
      * Constructor

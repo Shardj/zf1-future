@@ -77,7 +77,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testGetTagsAllowed()
     {
-        $this->assertEquals(array(), $this->_filter->getTagsAllowed());
+        $this->assertEquals([], $this->_filter->getTagsAllowed());
     }
 
     /**
@@ -88,7 +88,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
     public function testSetTagsAllowedString()
     {
         $this->_filter->setTagsAllowed('b');
-        $this->assertEquals(array('b' => array()), $this->_filter->getTagsAllowed());
+        $this->assertEquals(['b' => []], $this->_filter->getTagsAllowed());
     }
 
     /**
@@ -98,17 +98,17 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTagsAllowedArray()
     {
-        $tagsAllowed = array(
+        $tagsAllowed = [
             'b',
             'a'   => 'href',
-            'div' => array('id', 'class')
-            );
+            'div' => ['id', 'class']
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
-        $tagsAllowedExpected = array(
-            'b'   => array(),
-            'a'   => array('href' => null),
-            'div' => array('id' => null, 'class' => null)
-            );
+        $tagsAllowedExpected = [
+            'b'   => [],
+            'a'   => ['href' => null],
+            'div' => ['id' => null, 'class' => null]
+            ];
         $this->assertEquals($tagsAllowedExpected, $this->_filter->getTagsAllowed());
     }
 
@@ -119,7 +119,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testGetAttributesAllowed()
     {
-        $this->assertEquals(array(), $this->_filter->getAttributesAllowed());
+        $this->assertEquals([], $this->_filter->getAttributesAllowed());
     }
 
     /**
@@ -130,7 +130,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
     public function testSetAttributesAllowedString()
     {
         $this->_filter->setAttributesAllowed('class');
-        $this->assertEquals(array('class' => null), $this->_filter->getAttributesAllowed());
+        $this->assertEquals(['class' => null], $this->_filter->getAttributesAllowed());
     }
 
     /**
@@ -140,18 +140,18 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testSetAttributesAllowedArray()
     {
-        $attributesAllowed = array(
+        $attributesAllowed = [
             'clAss',
             4    => 'inT',
             'ok' => 'String',
             null
-            );
+            ];
         $this->_filter->setAttributesAllowed($attributesAllowed);
-        $attributesAllowedExpected = array(
+        $attributesAllowedExpected = [
             'class'  => null,
             'int'    => null,
             'string' => null
-            );
+            ];
         $this->assertEquals($attributesAllowedExpected, $this->_filter->getAttributesAllowed());
     }
 
@@ -273,9 +273,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testFilterTagAllowedAttributeAllowed()
     {
-        $tagsAllowed = array(
+        $tagsAllowed = [
             'img' => 'alt'
-            );
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input    = '<IMG ALT="FOO" />';
         $expected = '<img alt="FOO" />';
@@ -291,9 +291,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testFilterTagAllowedAttributeAllowedGt()
     {
-        $tagsAllowed = array(
+        $tagsAllowed = [
             'img' => 'alt'
-            );
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input    = '<img alt="$object->property" />';
         $expected = '<img>property" /';
@@ -307,9 +307,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testFilterTagAllowedAttributeAllowedGtEscaped()
     {
-        $tagsAllowed = array(
+        $tagsAllowed = [
             'img' => 'alt'
-            );
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input    = '<img alt="$object-&gt;property" />';
         $expected = '<img alt="$object-&gt;property" />';
@@ -324,9 +324,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testFilterTagAllowedAttributeAllowedValueUnclosed()
     {
-        $tagsAllowed = array(
-            'img' => array('alt', 'height', 'src', 'width')
-            );
+        $tagsAllowed = [
+            'img' => ['alt', 'height', 'src', 'width']
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input    = '<img src="image.png" alt="square height="100" width="100" />';
         $expected = '<img src="image.png" alt="square height=" width="100" />';
@@ -340,9 +340,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testFilterTagAllowedAttributeAllowedValueMissing()
     {
-        $tagsAllowed = array(
-            'input' => array('checked', 'name', 'type')
-            );
+        $tagsAllowed = [
+            'input' => ['checked', 'name', 'type']
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input    = '<input name="foo" type="checkbox" checked />';
         $expected = '<input name="foo" type="checkbox" />';
@@ -357,11 +357,11 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testFilter20070526()
     {
-        $tagsAllowed = array(
-            'object' => array('width', 'height'),
-            'param'  => array('name', 'value'),
-            'embed'  => array('src', 'type', 'wmode', 'width', 'height'),
-            );
+        $tagsAllowed = [
+            'object' => ['width', 'height'],
+            'param'  => ['name', 'value'],
+            'embed'  => ['src', 'type', 'wmode', 'width', 'height'],
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input = '<object width="425" height="350"><param name="movie" value="http://www.example.com/path/to/movie">'
                . '</param><param name="wmode" value="transparent"></param><embed '
@@ -479,9 +479,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testClosingAngleBracketInAllowedAttributeValue()
     {
-        $tagsAllowed = array(
+        $tagsAllowed = [
             'a' => 'href'
-            );
+            ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input    = '<a href="Some &gt; Text">';
         $expected = '<a href="Some &gt; Text">';
@@ -496,9 +496,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testAllowedAttributeValueMayEndWithEquals()
     {
-        $tagsAllowed = array(
+        $tagsAllowed = [
             'element' => 'attribute'
-        );
+        ];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input = '<element attribute="a=">contents</element>';
         $this->assertEquals($input, $this->_filter->filter($input));
@@ -509,7 +509,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testDisallowedAttributesSplitOverMultipleLinesShouldBeStripped()
     {
-        $tagsAllowed = array('a' => 'href');
+        $tagsAllowed = ['a' => 'href'];
         $this->_filter->setTagsAllowed($tagsAllowed);
         $input = '<a href="http://framework.zend.com/issues" onclick
 =
@@ -573,7 +573,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
      */
     public function testMultiParamArray()
     {
-        $filter = new Zend_Filter_StripTags(array("a","b","hr"),array(),true);
+        $filter = new Zend_Filter_StripTags(["a","b","hr"],[],true);
 
         $input    = 'test <a /> test <div>div-content</div>';
         $expected = 'test <a /> test div-content';
@@ -586,10 +586,10 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
     public function testMultiQuoteInput()
     {
         $filter = new Zend_Filter_StripTags(
-            array(
+            [
                 'allowTags' => 'img',
-                'allowAttribs' => array('width', 'height', 'src')
-            )
+                'allowAttribs' => ['width', 'height', 'src']
+            ]
         );
 
         $input    = '<img width="10" height="10" src=\'wont_be_matched.jpg\'>';
@@ -616,7 +616,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit_Framework_TestCase
         $expected  = '<li data-name="Test User" data-id="11223"></li>';
         
         $this->_filter->setTagsAllowed('li');
-        $this->_filter->setAttributesAllowed(array('data-id','data-name'));
+        $this->_filter->setAttributesAllowed(['data-id','data-name']);
         
         $this->assertEquals($expected, $this->_filter->filter($input));
     }

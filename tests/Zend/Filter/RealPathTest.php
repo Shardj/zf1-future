@@ -105,10 +105,10 @@ class Zend_Filter_RealPathTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->_filter->getExists());
 
         $this->_filter->setExists(true);
-        $this->_filter->setExists(array('exists' => false));
+        $this->_filter->setExists(['exists' => false]);
         $this->assertFalse($this->_filter->getExists());
 
-        $this->_filter->setExists(array('unknown'));
+        $this->_filter->setExists(['unknown']);
         $this->assertTrue($this->_filter->getExists());
     }
 

@@ -44,7 +44,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructExceptionTitleMissing()
     {
-        $post = array('u' => 'anything');
+        $post = ['u' => 'anything'];
         try {
             $simplePost = new Zend_Service_Delicious_SimplePost($post);
             $this->fail('Expected Zend_Service_Delicious_Exception not thrown');
@@ -60,7 +60,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructExceptionUrlMissing()
     {
-        $post = array('d' => 'anything');
+        $post = ['d' => 'anything'];
         try {
             $simplePost = new Zend_Service_Delicious_SimplePost($post);
             $this->fail('Expected Zend_Service_Delicious_Exception not thrown');
@@ -77,10 +77,10 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
     public function testGetUrl()
     {
         $url  = 'something';
-        $post = array(
+        $post = [
             'd' => 'anything',
             'u' => $url
-            );
+            ];
         $simplePost = new Zend_Service_Delicious_SimplePost($post);
         $this->assertEquals(
             $url,
@@ -97,10 +97,10 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
     public function testGetTitle()
     {
         $title  = 'something';
-        $post   = array(
+        $post   = [
             'd' => $title,
             'u' => 'anything'
-            );
+            ];
         $simplePost = new Zend_Service_Delicious_SimplePost($post);
         $this->assertEquals(
             $title,
@@ -117,11 +117,11 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
     public function testGetNotes()
     {
         $notes  = 'something';
-        $post   = array(
+        $post   = [
             'd' => 'anything',
             'u' => 'anything',
             'n' => $notes
-            );
+            ];
         $simplePost = new Zend_Service_Delicious_SimplePost($post);
         $this->assertEquals(
             $notes,
@@ -138,11 +138,11 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
     public function testGetTags()
     {
         $tags  = 'something';
-        $post  = array(
+        $post  = [
             'd' => 'anything',
             'u' => 'anything',
             't' => $tags
-            );
+            ];
         $simplePost = new Zend_Service_Delicious_SimplePost($post);
         $this->assertEquals(
             $tags,

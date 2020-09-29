@@ -67,7 +67,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         // Draw rectangle
         $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
               ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
-              ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+              ->setLineDashingPattern([3, 2, 3, 4], 1.6)
               ->drawRectangle(60, 400, 500, 350);
 
         // Draw rounded rectangle
@@ -98,8 +98,8 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
 
         // Draw and fill polygon
         $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
-        $x = array();
-        $y = array();
+        $x = [];
+        $y = [];
         for ($count = 0; $count < 8; $count++) {
             $x[] = 140 + 25*cos(3*M_PI_4*$count);
             $y[] = 375 + 25*sin(3*M_PI_4*$count);
@@ -138,7 +138,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
             $page->setFillColor(new Zend_Pdf_Color_Rgb(0, 0, 0.9))
                  ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
                  ->setLineWidth(3)
-                 ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+                 ->setLineDashingPattern([3, 2, 3, 4], 1.6)
                  ->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD), 32);
 
 
@@ -173,7 +173,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         // Draw rectangle
         $page2->setFillColor(new Zend_Pdf_Color_GrayScale(0.8))
               ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
-              ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+              ->setLineDashingPattern([3, 2, 3, 4], 1.6)
               ->drawRectangle(60, 400, 500, 350);
 
         // Draw rounded rectangle
@@ -204,8 +204,8 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
 
         // Draw and fill polygon
         $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
-        $x = array();
-        $y = array();
+        $x = [];
+        $y = [];
         for ($count = 0; $count < 8; $count++) {
             $x[] = 140 + 25*cos(3*M_PI_4*$count);
             $y[] = 375 + 25*sin(3*M_PI_4*$count);
@@ -297,7 +297,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
             // Exception is thrown
         }
 
-        $outputPageSet = array();
+        $outputPageSet = [];
         foreach ($pdf->pages as $srcPage){
             $page = new Zend_Pdf_Page($srcPage);
 
@@ -310,7 +310,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
             $page->setFillColor(new Zend_Pdf_Color_Rgb(0, 0, 0.9))
                  ->setLineColor(new Zend_Pdf_Color_GrayScale(0.2))
                  ->setLineWidth(3)
-                 ->setLineDashingPattern(array(3, 2, 3, 4), 1.6)
+                 ->setLineDashingPattern([3, 2, 3, 4], 1.6)
                  ->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD), 32);
 
 
@@ -344,8 +344,8 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         $pdf = new ExtendedZendPdf();
 
         // Test accessing protected variables and their default content
-        $this->assertEquals(array(), $pdf->_originalProperties);
-        $this->assertEquals(array(), $pdf->_namedTargets);
+        $this->assertEquals([], $pdf->_originalProperties);
+        $this->assertEquals([], $pdf->_namedTargets);
 
         $pdfpage = new ExtendedZendPdfPage(Zend_Pdf_Page::SIZE_A4);
         // Test accessing protected variables and their default content

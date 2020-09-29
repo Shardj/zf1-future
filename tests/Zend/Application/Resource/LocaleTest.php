@@ -52,7 +52,7 @@ class Zend_Application_Resource_LocaleTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -83,14 +83,14 @@ class Zend_Application_Resource_LocaleTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationInitializesLocaleObject()
     {
-        $resource = new Zend_Application_Resource_Locale(array());
+        $resource = new Zend_Application_Resource_Locale([]);
         $resource->init();
         $this->assertTrue($resource->getLocale() instanceof Zend_Locale);
     }
 
     public function testInitializationReturnsLocaleObject()
     {
-        $resource = new Zend_Application_Resource_Locale(array());
+        $resource = new Zend_Application_Resource_Locale([]);
         $resource->setBootstrap($this->bootstrap);
         $test = $resource->init();
         $this->assertTrue($test instanceof Zend_Locale);
@@ -98,11 +98,11 @@ class Zend_Application_Resource_LocaleTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsPassedToResourceAreUsedToSetLocaleState()
     {
-        $options = array(
+        $options = [
             'default'      => 'kok_IN',
             'registry_key' => 'Foo_Bar',
             'force'        => true
-        );
+        ];
 
         $resource = new Zend_Application_Resource_Locale($options);
         $resource->setBootstrap($this->bootstrap);
@@ -115,10 +115,10 @@ class Zend_Application_Resource_LocaleTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsPassedToResourceAreUsedToSetLocaleState1()
     {
-        $options = array(
+        $options = [
             'default'      => 'kok_IN',
             'force' => true
-        );
+        ];
 
         $resource = new Zend_Application_Resource_Locale($options);
         $resource->setBootstrap($this->bootstrap);
@@ -135,15 +135,15 @@ class Zend_Application_Resource_LocaleTest extends PHPUnit_Framework_TestCase
      */
     public function testSetCache()
     {
-        $cache = Zend_Cache::factory('Core', 'Black Hole', array(
+        $cache = Zend_Cache::factory('Core', 'Black Hole', [
             'lifetime' => 120,
             'automatic_serialization' => true
-        ));
+        ]);
 
-        $config = array(
+        $config = [
             'default' => 'fr_FR',
             'cache' => $cache,
-        );
+        ];
         $resource = new Zend_Application_Resource_Locale($config);
         $resource->init();
         $backend = Zend_Locale::getCache()->getBackend();
@@ -156,27 +156,27 @@ class Zend_Application_Resource_LocaleTest extends PHPUnit_Framework_TestCase
      */
     public function testSetCacheFromCacheManager()
     {
-        $configCache = array(
-            'memory' => array(
-                'frontend' => array(
+        $configCache = [
+            'memory' => [
+                'frontend' => [
                     'name' => 'Core',
-                    'options' => array(
+                    'options' => [
                         'lifetime' => 120,
                         'automatic_serialization' => true
-                    )
-                ),
-                'backend' => array(
+                    ]
+                ],
+                'backend' => [
                     'name' => 'Black Hole'
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $this->bootstrap->registerPluginResource('cachemanager', $configCache);
         $this->assertFalse(Zend_Locale::hasCache());
 
-        $config = array(
+        $config = [
             'bootstrap' => $this->bootstrap,
             'cache' => 'memory',
-        );
+        ];
         $resource = new Zend_Application_Resource_Locale($config);
         $resource->init();
 

@@ -43,7 +43,7 @@ require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
 
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
@@ -57,7 +57,7 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         'NUMERIC'            => Zend_Db::FLOAT_TYPE,
         'REAL'               => Zend_Db::FLOAT_TYPE,
         'SMALLMONEY'         => Zend_Db::FLOAT_TYPE
-    );
+    ];
 
     /**
      * Test AUTO_QUOTE_IDENTIFIERS option
@@ -67,9 +67,9 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     {
         $params = $this->_util->getParams();
 
-        $params['options'] = array(
+        $params['options'] = [
             Zend_Db::AUTO_QUOTE_IDENTIFIERS => true
-        );
+        ];
         $db = Zend_Db::factory($this->getDriver(), $params);
         $db->getConnection();
 
@@ -121,7 +121,7 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testAdapterQuoteArray()
     {
-        $array = array("it's", 'all', 'right!');
+        $array = ["it's", 'all', 'right!'];
         $value = $this->_db->quote($array);
         $this->assertEquals("'it''s', 'all', 'right!'", $value);
     }
@@ -184,7 +184,7 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
 
         $expr = new Zend_Db_Expr('2+3');
 
-        $row = array (
+        $row = [
             'bug_id'          => $expr,
             'bug_description' => 'New bug',
             'bug_status'      => 'NEW',
@@ -193,7 +193,7 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
             'reported_by'     => 'micky',
             'assigned_to'     => 'goofy',
             'verified_by'     => 'dduck'
-        );
+        ];
 
         $this->_db->query("SET IDENTITY_INSERT $bugs ON");
 
@@ -274,7 +274,7 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testAdapterInsert()
     {
-        $row = array (
+        $row = [
             'bug_description' => 'New bug',
             'bug_status'      => 'NEW',
             'created_on'      => '2007-04-02',
@@ -282,7 +282,7 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
             'reported_by'     => 'micky',
             'assigned_to'     => 'goofy',
             'verified_by'     => 'dduck'
-        );
+        ];
         $rowsAffected = $this->_db->insert('zfbugs', $row);
         $this->assertEquals(1, $rowsAffected);
         $lastInsertId = $this->_db->lastInsertId();
@@ -297,23 +297,23 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testAdapterLimitWorksWithOrderByClause()
     {
         // more values
-        $this->_db->insert('zfproducts', array('product_name' => 'Unix'));
-        $this->_db->insert('zfproducts', array('product_name' => 'Windows'));
-        $this->_db->insert('zfproducts', array('product_name' => 'AIX'));
-        $this->_db->insert('zfproducts', array('product_name' => 'I5'));
-        $this->_db->insert('zfproducts', array('product_name' => 'Linux'));
+        $this->_db->insert('zfproducts', ['product_name' => 'Unix']);
+        $this->_db->insert('zfproducts', ['product_name' => 'Windows']);
+        $this->_db->insert('zfproducts', ['product_name' => 'AIX']);
+        $this->_db->insert('zfproducts', ['product_name' => 'I5']);
+        $this->_db->insert('zfproducts', ['product_name' => 'Linux']);
 
         $select = $this->_db->select();
         $select->from('zfproducts')
-           ->order(array('product_name ASC', 'product_id DESC'))
+           ->order(['product_name ASC', 'product_id DESC'])
            ->limit(4, 4);
         $products = $this->_db->fetchAll($select);
-        $expectedProducts = array(
-            0 => array('product_id' => '3', 'product_name' => 'OS X'),
-            1 => array('product_id' => '4', 'product_name' => 'Unix'),
-            2 => array('product_id' => '5', 'product_name' => 'Windows'),
-            3 => array ('product_id' => '1', 'product_name' => 'Windows')
-            );
+        $expectedProducts = [
+            0 => ['product_id' => '3', 'product_name' => 'OS X'],
+            1 => ['product_id' => '4', 'product_name' => 'Unix'],
+            2 => ['product_id' => '5', 'product_name' => 'Windows'],
+            3 => ['product_id' => '1', 'product_name' => 'Windows']
+            ];
         $this->assertEquals($expectedProducts, $products);
     }
 
@@ -322,20 +322,20 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testAdapterLimitWorksWithDistinctClause()
     {
-        $this->_db->insert('zfproducts', array('product_name' => 'Unix'));
-        $this->_db->insert('zfproducts', array('product_name' => 'Windows'));
-        $this->_db->insert('zfproducts', array('product_name' => 'AIX'));
-        $this->_db->insert('zfproducts', array('product_name' => 'I5'));
-        $this->_db->insert('zfproducts', array('product_name' => 'Linux'));
+        $this->_db->insert('zfproducts', ['product_name' => 'Unix']);
+        $this->_db->insert('zfproducts', ['product_name' => 'Windows']);
+        $this->_db->insert('zfproducts', ['product_name' => 'AIX']);
+        $this->_db->insert('zfproducts', ['product_name' => 'I5']);
+        $this->_db->insert('zfproducts', ['product_name' => 'Linux']);
 
         $sql = 'SELECT DISTINCT product_name FROM zfproducts ORDER BY product_name DESC';
         $sql = $this->_db->limit($sql, 3, 3);
         $products = $this->_db->fetchAll($sql);
-        $expectedProducts = array(
-           0 => array('product_name' => 'Linux'),
-           1 => array('product_name' => 'I5'),
-           2 => array('product_name' => 'AIX')
-           );
+        $expectedProducts = [
+           0 => ['product_name' => 'Linux'],
+           1 => ['product_name' => 'I5'],
+           2 => ['product_name' => 'AIX']
+           ];
         $this->assertEquals($expectedProducts, $products);
     }
 

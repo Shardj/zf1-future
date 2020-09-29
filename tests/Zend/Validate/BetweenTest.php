@@ -51,15 +51,15 @@ class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
          *      - expected validation result
          *      - array of test input values
          */
-        $valuesExpected = array(
-            array(1, 100, true, true, array(1, 10, 100)),
-            array(1, 100, true, false, array(0, 0.99, 100.01, 101)),
-            array(1, 100, false, false, array(0, 1, 100, 101)),
-            array('a', 'z', true, true, array('a', 'b', 'y', 'z')),
-            array('a', 'z', false, false, array('!', 'a', 'z'))
-            );
+        $valuesExpected = [
+            [1, 100, true, true, [1, 10, 100]],
+            [1, 100, true, false, [0, 0.99, 100.01, 101]],
+            [1, 100, false, false, [0, 1, 100, 101]],
+            ['a', 'z', true, true, ['a', 'b', 'y', 'z']],
+            ['a', 'z', false, false, ['!', 'a', 'z']]
+            ];
         foreach ($valuesExpected as $element) {
-            $validator = new Zend_Validate_Between(array('min' => $element[0], 'max' => $element[1], 'inclusive' => $element[2]));
+            $validator = new Zend_Validate_Between(['min' => $element[0], 'max' => $element[1], 'inclusive' => $element[2]]);
             foreach ($element[4] as $input) {
                 $this->assertEquals($element[3], $validator->isValid($input),
                 'Failed values: ' . $input . ":" . implode("\n", $validator->getMessages()));
@@ -74,8 +74,8 @@ class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
      */
     public function testGetMessages()
     {
-        $validator = new Zend_Validate_Between(array('min' => 1, 'max' => 10));
-        $this->assertEquals(array(), $validator->getMessages());
+        $validator = new Zend_Validate_Between(['min' => 1, 'max' => 10]);
+        $this->assertEquals([], $validator->getMessages());
     }
 
     /**
@@ -85,7 +85,7 @@ class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
      */
     public function testGetMin()
     {
-        $validator = new Zend_Validate_Between(array('min' => 1, 'max' => 10));
+        $validator = new Zend_Validate_Between(['min' => 1, 'max' => 10]);
         $this->assertEquals(1, $validator->getMin());
     }
 
@@ -96,7 +96,7 @@ class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
      */
     public function testGetMax()
     {
-        $validator = new Zend_Validate_Between(array('min' => 1, 'max' => 10));
+        $validator = new Zend_Validate_Between(['min' => 1, 'max' => 10]);
         $this->assertEquals(10, $validator->getMax());
     }
 
@@ -107,7 +107,7 @@ class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
      */
     public function testGetInclusive()
     {
-        $validator = new Zend_Validate_Between(array('min' => 1, 'max' => 10));
+        $validator = new Zend_Validate_Between(['min' => 1, 'max' => 10]);
         $this->assertEquals(true, $validator->getInclusive());
     }
 }

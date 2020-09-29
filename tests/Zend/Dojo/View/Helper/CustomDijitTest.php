@@ -103,13 +103,13 @@ class Zend_Dojo_View_Helper_CustomDijitTest extends PHPUnit_Framework_TestCase
 
     public function testHelperInDeclarativeModeShouldGenerateDivWithPassedDojoType()
     {
-        $content = $this->view->customDijit('foo', 'content', array('dojoType' => 'custom.Dijit'));
+        $content = $this->view->customDijit('foo', 'content', ['dojoType' => 'custom.Dijit']);
         $this->assertContains('dojoType="custom.Dijit"', $content);
     }
 
     public function testHelperInDeclarativeModeShouldRegisterDojoTypeAsModule()
     {
-        $content = $this->view->customDijit('foo', 'content', array('dojoType' => 'custom.Dijit'));
+        $content = $this->view->customDijit('foo', 'content', ['dojoType' => 'custom.Dijit']);
         $dojo    = $this->view->dojo();
         $modules = $dojo->getModules();
         $this->assertContains('custom.Dijit', $modules);
@@ -118,7 +118,7 @@ class Zend_Dojo_View_Helper_CustomDijitTest extends PHPUnit_Framework_TestCase
     public function testHelperInProgrammaticModeShouldRegisterDojoTypeAsModule()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
-        $content = $this->view->customDijit('foo', 'content', array('dojoType' => 'custom.Dijit'));
+        $content = $this->view->customDijit('foo', 'content', ['dojoType' => 'custom.Dijit']);
         $dojo    = $this->view->dojo();
         $modules = $dojo->getModules();
         $this->assertContains('custom.Dijit', $modules);
@@ -127,13 +127,13 @@ class Zend_Dojo_View_Helper_CustomDijitTest extends PHPUnit_Framework_TestCase
     public function testHelperInProgrammaticModeShouldGenerateDivWithoutPassedDojoType()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
-        $content = $this->view->customDijit('foo', 'content', array('dojoType' => 'custom.Dijit'));
+        $content = $this->view->customDijit('foo', 'content', ['dojoType' => 'custom.Dijit']);
         $this->assertNotContains('dojoType="custom.Dijit"', $content);
     }
 
     public function testHelperShouldAllowCapturingContent()
     {
-        $this->view->customDijit()->captureStart('foo', array('dojoType' => 'custom.Dijit'));
+        $this->view->customDijit()->captureStart('foo', ['dojoType' => 'custom.Dijit']);
         echo "Captured content started\n";
         $content = $this->view->customDijit()->captureEnd('foo');
         $this->assertContains(">Captured content started\n<", $content);
@@ -163,10 +163,10 @@ class Zend_Dojo_View_Helper_CustomDijitTest extends PHPUnit_Framework_TestCase
      */
     public function testHelperShouldAllowSpecifyingRootNode()
     {
-        $content = $this->view->customDijit('foo', 'content', array(
+        $content = $this->view->customDijit('foo', 'content', [
             'dojoType' => 'custom.Dijit',
             'rootNode' => 'select',
-        ));
+        ]);
         $this->assertContains('<select', $content);
     }
 }
@@ -176,7 +176,7 @@ class Zend_Dojo_View_Helper_CustomDijitTest_FooContentPane
 {
     protected $_defaultDojoType = 'foo.ContentPane';
 
-    public function fooContentPane($id = null, $value = null, array $params = array(), array $attribs = array())
+    public function fooContentPane($id = null, $value = null, array $params = [], array $attribs = [])
     {
         return $this->customDijit($id, $value, $params, $attribs);
     }

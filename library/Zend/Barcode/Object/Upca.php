@@ -72,55 +72,55 @@ class Zend_Barcode_Object_Upca extends Zend_Barcode_Object_Ean13
      */
     protected function _prepareBarcode()
     {
-        $barcodeTable = array();
+        $barcodeTable = [];
         $height = ($this->_drawText) ? 1.1 : 1;
 
         // Start character (101)
-        $barcodeTable[] = array(1 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(0 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(1 , $this->_barThinWidth , 0 , $height);
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [0 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , $height];
 
         $textTable = str_split($this->getText());
 
         // First character
         $bars = str_split($this->_codingMap['A'][$textTable[0]]);
         foreach ($bars as $b) {
-            $barcodeTable[] = array($b , $this->_barThinWidth , 0 , $height);
+            $barcodeTable[] = [$b , $this->_barThinWidth , 0 , $height];
         }
 
         // First part
         for ($i = 1; $i < 6; $i++) {
             $bars = str_split($this->_codingMap['A'][$textTable[$i]]);
             foreach ($bars as $b) {
-                $barcodeTable[] = array($b , $this->_barThinWidth , 0 , 1);
+                $barcodeTable[] = [$b , $this->_barThinWidth , 0 , 1];
             }
         }
 
         // Middle character (01010)
-        $barcodeTable[] = array(0 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(1 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(0 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(1 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(0 , $this->_barThinWidth , 0 , $height);
+        $barcodeTable[] = [0 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [0 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [0 , $this->_barThinWidth , 0 , $height];
 
         // Second part
         for ($i = 6; $i < 11; $i++) {
             $bars = str_split($this->_codingMap['C'][$textTable[$i]]);
             foreach ($bars as $b) {
-                $barcodeTable[] = array($b , $this->_barThinWidth , 0 , 1);
+                $barcodeTable[] = [$b , $this->_barThinWidth , 0 , 1];
             }
         }
 
         // Last character
         $bars = str_split($this->_codingMap['C'][$textTable[11]]);
         foreach ($bars as $b) {
-            $barcodeTable[] = array($b , $this->_barThinWidth , 0 , $height);
+            $barcodeTable[] = [$b , $this->_barThinWidth , 0 , $height];
         }
 
         // Stop character (101)
-        $barcodeTable[] = array(1 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(0 , $this->_barThinWidth , 0 , $height);
-        $barcodeTable[] = array(1 , $this->_barThinWidth , 0 , $height);
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [0 , $this->_barThinWidth , 0 , $height];
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , $height];
         return $barcodeTable;
     }
 

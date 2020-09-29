@@ -276,7 +276,7 @@ class Zend_Pdf_Element_Reference extends Zend_Pdf_Element
             $this->_dereference();
         }
 
-        return call_user_func_array(array($this->_ref, $method), $args);
+        return call_user_func_array([$this->_ref, $method], $args);
     }
 
     /**

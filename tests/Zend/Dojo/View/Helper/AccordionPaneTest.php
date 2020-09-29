@@ -97,7 +97,7 @@ class Zend_Dojo_View_Helper_AccordionPaneTest extends PHPUnit_Framework_TestCase
 
     public function getContainer()
     {
-        return $this->view->accordionPane('pane1', 'This is the pane content', array('title' => 'Pane 1'));
+        return $this->view->accordionPane('pane1', 'This is the pane content', ['title' => 'Pane 1']);
     }
 
     public function testShouldAllowDeclarativeDijitCreation()

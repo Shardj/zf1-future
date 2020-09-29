@@ -43,8 +43,8 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     {
         require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory('Core', 'File',
-                 array('lifetime' => 1, 'automatic_serialization' => true),
-                 array('cache_dir' => dirname(__FILE__) . '/../_files/'));
+                 ['lifetime' => 1, 'automatic_serialization' => true],
+                 ['cache_dir' => dirname(__FILE__) . '/../_files/']);
         Zend_Locale_Data::setCache($this->_cache);
     }
 
@@ -211,13 +211,13 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testContextTransform()
     {
         $contexttransform = Zend_Locale_Data::getList('uk', 'contexttransform', 'uiListOrMenu');
-        $result = array(
+        $result = [
             'languages' => 'titlecase-firstword',
             'day-format-except-narrow' => 'titlecase-firstword',
             'day-standalone-except-narrow' => 'titlecase-firstword',
             'month-format-except-narrow' => 'titlecase-firstword',
             'month-standalone-except-narrow' => 'titlecase-firstword',
-        );
+        ];
         $this->assertEquals($result, $contexttransform);
     }
 
@@ -305,13 +305,13 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testMonth()
     {
         $date   = Zend_Locale_Data::getList('de_AT', 'months');
-        $result = array(
+        $result = [
             'context'     => 'format',
             'default'     => 'wide',
             'format'      =>
-                array(
+                [
                     'abbreviated' =>
-                        array(
+                        [
                             1  => 'Jän.',
                             2  => 'Feb.',
                             3  => 'März',
@@ -324,9 +324,9 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                             10 => 'Okt.',
                             11 => 'Nov.',
                             12 => 'Dez.',
-                        ),
+                        ],
                     'narrow'      =>
-                        array(
+                        [
                             1  => 'J',
                             2  => 'F',
                             3  => 'M',
@@ -339,9 +339,9 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                             10 => 'O',
                             11 => 'N',
                             12 => 'D',
-                        ),
+                        ],
                     'wide'        =>
-                        array(
+                        [
                             1  => 'Jänner',
                             2  => 'Februar',
                             3  => 'März',
@@ -354,12 +354,12 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                             10 => 'Oktober',
                             11 => 'November',
                             12 => 'Dezember',
-                        ),
-                ),
+                        ],
+                ],
             'stand-alone' =>
-                array(
+                [
                     'abbreviated' =>
-                        array(
+                        [
                             1  => 'Jän',
                             2  => 'Feb',
                             3  => 'Mär',
@@ -372,9 +372,9 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                             10 => 'Okt',
                             11 => 'Nov',
                             12 => 'Dez',
-                        ),
+                        ],
                     'narrow'      =>
-                        array(
+                        [
                             1  => 'J',
                             2  => 'F',
                             3  => 'M',
@@ -387,9 +387,9 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                             10 => 'O',
                             11 => 'N',
                             12 => 'D',
-                        ),
+                        ],
                     'wide'        =>
-                        array(
+                        [
                             1  => 'Jänner',
                             2  => 'Februar',
                             3  => 'März',
@@ -402,18 +402,18 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                             10 => 'Oktober',
                             11 => 'November',
                             12 => 'Dezember',
-                        ),
-                ),
-        );
+                        ],
+                ],
+        ];
         $this->assertEquals($result, $date, var_export($date, 1));
 
         $date   = Zend_Locale_Data::getList('de_AT', 'months', 'islamic');
-        $result = array(
+        $result = [
             "context"     => "format",
             "default"     => "wide",
             "format"      =>
-                array(
-                    "abbreviated" => array(
+                [
+                    "abbreviated" => [
                         1  => "Muh.",
                         2  => "Saf.",
                         3  => "Rab. I",
@@ -426,8 +426,8 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                         10 => "Shaw.",
                         11 => "Dhuʻl-Q.",
                         12 => "Dhuʻl-H."
-                    ),
-                    "narrow"      => array(
+                    ],
+                    "narrow"      => [
                         1  => '1',
                         2  => '2',
                         3  => '3',
@@ -440,8 +440,8 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                         10 => '10',
                         11 => '11',
                         12 => '12'
-                    ),
-                    "wide"        => array(
+                    ],
+                    "wide"        => [
                         1  => "Muharram",
                         2  => "Safar",
                         3  => "Rabiʻ I",
@@ -454,10 +454,10 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                         10 => "Shawwal",
                         11 => "Dhuʻl-Qiʻdah",
                         12 => "Dhuʻl-Hijjah"
-                    )
-                ),
-            "stand-alone" => array(
-                "abbreviated" => array(
+                    ]
+                ],
+            "stand-alone" => [
+                "abbreviated" => [
                     1  => "Muh.",
                     2  => "Saf.",
                     3  => "Rab. I",
@@ -470,8 +470,8 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                     10 => "Shaw.",
                     11 => "Dhuʻl-Q.",
                     12 => "Dhuʻl-H."
-                ),
-                "narrow"      => array(
+                ],
+                "narrow"      => [
                     1  => '1',
                     2  => '2',
                     3  => '3',
@@ -484,8 +484,8 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                     10 => '10',
                     11 => '11',
                     12 => '12'
-                ),
-                "wide"        => array(
+                ],
+                "wide"        => [
                     1  => "Muharram",
                     2  => "Safar",
                     3  => "Rabiʻ I",
@@ -498,14 +498,14 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                     10 => "Shawwal",
                     11 => "Dhuʻl-Qiʻdah",
                     12 => "Dhuʻl-Hijjah"
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'month');
         $this->assertEquals(
-            array(
+            [
                 1  => "Jänner",
                 2  => "Februar",
                 3  => "März",
@@ -518,13 +518,13 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                 10 => "Oktober",
                 11 => "November",
                 12 => "Dezember"
-            ),
+            ],
             $date
         );
 
-        $date = Zend_Locale_Data::getList('de_AT', 'month', array('gregorian', 'format', 'wide'));
+        $date = Zend_Locale_Data::getList('de_AT', 'month', ['gregorian', 'format', 'wide']);
         $this->assertEquals(
-            array(
+            [
                 1  => "Jänner",
                 2  => "Februar",
                 3  => "März",
@@ -537,17 +537,17 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                 10 => "Oktober",
                 11 => "November",
                 12 => "Dezember"
-            ),
+            ],
             $date
         );
 
         $value = Zend_Locale_Data::getContent('de_AT', 'month', 12);
         $this->assertEquals('Dezember', $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'month', array('gregorian', 'format', 'wide', 12));
+        $value = Zend_Locale_Data::getContent('de_AT', 'month', ['gregorian', 'format', 'wide', 12]);
         $this->assertEquals('Dezember', $value);
 
-        $value = Zend_Locale_Data::getContent('ar', 'month', array('islamic', 'format', 'wide', 1));
+        $value = Zend_Locale_Data::getContent('ar', 'month', ['islamic', 'format', 'wide', 1]);
         $this->assertEquals("محرم", $value);
     }
 
@@ -584,56 +584,56 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testDay()
     {
         $date = Zend_Locale_Data::getList('de_AT', 'days');
-        $result = array("context" => "format", "default" => "wide", "format" =>
-            array("abbreviated" => array("sun" => "So.", "mon" => "Mo.", "tue" => "Di.", "wed" => "Mi.",
-                      "thu" => "Do.", "fri" => "Fr.", "sat" => "Sa."),
-                  "narrow" => array("sun" => "S", "mon" => "M", "tue" => "D", "wed" => "M",
-                      "thu" => "D", "fri" => "F", "sat" => "S"),
-                  "wide" => array("sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
-                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag")
-            ),
-            "stand-alone" => array("abbreviated" => array("sun" => "So", "mon" => "Mo", "tue" => "Di", "wed" => "Mi",
-                      "thu" => "Do", "fri" => "Fr", "sat" => "Sa"),
-                  "narrow" => array("sun" => "S", "mon" => "M", "tue" => "D", "wed" => "M",
-                      "thu" => "D", "fri" => "F", "sat" => "S"),
-                  "wide" => array("sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag", "wed" => "Mittwoch",
-                      "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag")
-            ));
+        $result = ["context" => "format", "default" => "wide", "format" =>
+            ["abbreviated" => ["sun" => "So.", "mon" => "Mo.", "tue" => "Di.", "wed" => "Mi.",
+                      "thu" => "Do.", "fri" => "Fr.", "sat" => "Sa."],
+                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "D", "wed" => "M",
+                      "thu" => "D", "fri" => "F", "sat" => "S"],
+                  "wide" => ["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
+                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"]
+            ],
+            "stand-alone" => ["abbreviated" => ["sun" => "So", "mon" => "Mo", "tue" => "Di", "wed" => "Mi",
+                      "thu" => "Do", "fri" => "Fr", "sat" => "Sa"],
+                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "D", "wed" => "M",
+                      "thu" => "D", "fri" => "F", "sat" => "S"],
+                  "wide" => ["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag", "wed" => "Mittwoch",
+                      "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"]
+            ]];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'days', 'islamic');
-        $result = array("context" => "format", "default" => "wide", "format" =>
-            array("abbreviated" => array("sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"),
-                  "narrow" => array("sun" => "S", "mon" => "M", "tue" => "T", "wed" => "W",
-                      "thu" => "T", "fri" => "F", "sat" => "S"),
-                  "wide" => array("sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat")
-            ),
-            "stand-alone" => array("abbreviated" => array("sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"),
-                  "narrow" => array("sun" => "S", "mon" => "M", "tue" => "T", "wed" => "W",
-                      "thu" => "T", "fri" => "F", "sat" => "S"),
-                  "wide" => array("sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat")
-            ));
+        $result = ["context" => "format", "default" => "wide", "format" =>
+            ["abbreviated" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
+                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"],
+                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "T", "wed" => "W",
+                      "thu" => "T", "fri" => "F", "sat" => "S"],
+                  "wide" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
+                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"]
+            ],
+            "stand-alone" => ["abbreviated" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
+                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"],
+                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "T", "wed" => "W",
+                      "thu" => "T", "fri" => "F", "sat" => "S"],
+                  "wide" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
+                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"]
+            ]];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'day');
-        $this->assertEquals(array("sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
-                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"), $date);
+        $this->assertEquals(["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
+                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"], $date);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'day', array('gregorian', 'format', 'wide'));
-        $this->assertEquals(array("sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
-                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"), $date);
+        $date = Zend_Locale_Data::getList('de_AT', 'day', ['gregorian', 'format', 'wide']);
+        $this->assertEquals(["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
+                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"], $date);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'day', 'mon');
         $this->assertEquals('Montag', $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'day', array('gregorian', 'format', 'wide', 'mon'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'day', ['gregorian', 'format', 'wide', 'mon']);
         $this->assertEquals('Montag', $value);
 
-        $value = Zend_Locale_Data::getContent('ar', 'day', array('islamic', 'format', 'wide', 'mon'));
+        $value = Zend_Locale_Data::getContent('ar', 'day', ['islamic', 'format', 'wide', 'mon']);
         $this->assertEquals("Mon", $value);
     }
 
@@ -644,46 +644,46 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testQuarter()
     {
         $date = Zend_Locale_Data::getList('de_AT', 'quarters');
-        $result = array("format" =>
-            array("abbreviated" => array("1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"),
-                  "narrow" => array("1" => "1", "2" => "2", "3" => "3", "4" => "4"),
-                  "wide" => array("1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
-                      "4" => "4. Quartal")
-            ),
-            "stand-alone" => array("abbreviated" => array("1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"),
-                  "narrow" => array("1" => "1", "2" => "2", "3" => "3", "4" => "4"),
-                  "wide" => array("1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal", "4" => "4. Quartal")
-            ));
+        $result = ["format" =>
+            ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
+                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
+                  "wide" => ["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
+                      "4" => "4. Quartal"]
+            ],
+            "stand-alone" => ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
+                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
+                  "wide" => ["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal", "4" => "4. Quartal"]
+            ]];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'quarters', 'islamic');
-        $result = array("format" =>
-            array("abbreviated" => array("1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"),
-                  "narrow" => array("1" => "1", "2" => "2", "3" => "3", "4" => "4"),
-                  "wide" => array("1" => "Q1", "2" => "Q2", "3" => "Q3",
-                      "4" => "Q4")
-            ),
-            "stand-alone" => array("abbreviated" => array("1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"),
-                  "narrow" => array("1" => "1", "2" => "2", "3" => "3", "4" => "4"),
-                  "wide" => array("1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4")
-            ));
+        $result = ["format" =>
+            ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
+                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
+                  "wide" => ["1" => "Q1", "2" => "Q2", "3" => "Q3",
+                      "4" => "Q4"]
+            ],
+            "stand-alone" => ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
+                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
+                  "wide" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"]
+            ]];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'quarter');
-        $this->assertEquals(array("1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
-                      "4" => "4. Quartal"), $date);
+        $this->assertEquals(["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
+                      "4" => "4. Quartal"], $date);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'quarter', array('gregorian', 'format', 'wide'));
-        $this->assertEquals(array("1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
-                      "4" => "4. Quartal"), $date);
+        $date = Zend_Locale_Data::getList('de_AT', 'quarter', ['gregorian', 'format', 'wide']);
+        $this->assertEquals(["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
+                      "4" => "4. Quartal"], $date);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'quarter', '1');
         $this->assertEquals('1. Quartal', $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'quarter', array('gregorian', 'format', 'wide', '1'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'quarter', ['gregorian', 'format', 'wide', '1']);
         $this->assertEquals('1. Quartal', $value);
 
-        $value = Zend_Locale_Data::getContent('ar', 'quarter', array('islamic', 'format', 'wide', '1'));
+        $value = Zend_Locale_Data::getContent('ar', 'quarter', ['islamic', 'format', 'wide', '1']);
         $this->assertEquals("Q1", $value);
     }
 
@@ -694,12 +694,12 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testWeek()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'week');
-        $this->assertEquals(array('minDays' => 4, 'firstDay' => 'mon', 'weekendStart' => 'sat',
-                                  'weekendEnd' => 'sun'), $value);
+        $this->assertEquals(['minDays' => 4, 'firstDay' => 'mon', 'weekendStart' => 'sat',
+                                  'weekendEnd' => 'sun'], $value);
 
         $value = Zend_Locale_Data::getList('en_US', 'week');
-        $this->assertEquals(array('minDays' => '1', 'firstDay' => 'sun', 'weekendStart' => 'sat',
-                                  'weekendEnd' => 'sun'), $value);
+        $this->assertEquals(['minDays' => '1', 'firstDay' => 'sun', 'weekendStart' => 'sat',
+                                  'weekendEnd' => 'sun'], $value);
     }
 
     /**
@@ -735,42 +735,42 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testEra()
     {
         $date = Zend_Locale_Data::getList('de_AT', 'eras');
-        $result = array(
+        $result = [
             'names'       =>
-                array(
+                [
                     0 => 'v. Chr.',
                     1 => 'n. Chr.',
-                ),
+                ],
             'abbreviated' =>
-                array(
+                [
                     0 => 'v. Chr.',
                     1 => 'n. Chr.',
-                ),
+                ],
             'narrow'      =>
-                array(
+                [
                     0 => 'v. Chr.',
                     1 => 'n. Chr.',
-                ),
-        );
+                ],
+        ];
         $this->assertEquals($result, $date, var_export($date, 1));
 
         $date = Zend_Locale_Data::getList('de_AT', 'eras', 'islamic');
-        $result = array("abbreviated" => array("0" => "AH"), "narrow" => array("0" => "AH"), "names" => array("0" => "AH"));
+        $result = ["abbreviated" => ["0" => "AH"], "narrow" => ["0" => "AH"], "names" => ["0" => "AH"]];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'era');
-        $this->assertEquals(array("0" => "v. Chr.", "1" => "n. Chr."), $date);
+        $this->assertEquals(["0" => "v. Chr.", "1" => "n. Chr."], $date);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'era', array('gregorian', 'Abbr'));
-        $this->assertEquals(array("0" => "v. Chr.", "1" => "n. Chr."), $date);
+        $date = Zend_Locale_Data::getList('de_AT', 'era', ['gregorian', 'Abbr']);
+        $this->assertEquals(["0" => "v. Chr.", "1" => "n. Chr."], $date);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'era', '1');
         $this->assertEquals('n. Chr.', $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'era', array('gregorian', 'Names', '1'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'era', ['gregorian', 'Names', '1']);
         $this->assertEquals('n. Chr.', $value);
 
-        $value = Zend_Locale_Data::getContent('ar', 'era', array('islamic', 'Abbr', '0'));
+        $value = Zend_Locale_Data::getContent('ar', 'era', ['islamic', 'Abbr', '0']);
         $this->assertEquals('هـ', $value);
     }
 
@@ -794,13 +794,13 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testDate()
     {
         $date = Zend_Locale_Data::getList('de_AT', 'date');
-        $result = array("full" => "EEEE, dd. MMMM y", "long" => "dd. MMMM y",
-                        "medium" => "dd.MM.y", "short" => "dd.MM.yy");
+        $result = ["full" => "EEEE, dd. MMMM y", "long" => "dd. MMMM y",
+                        "medium" => "dd.MM.y", "short" => "dd.MM.yy"];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'date', 'islamic');
-        $result = array("full" => "G y MMMM d, EEEE", "long" => "G y MMMM d",
-                        "medium" => "G y MMM d", "short" => "GGGGG y-MM-dd");
+        $result = ["full" => "G y MMMM d, EEEE", "long" => "G y MMMM d",
+                        "medium" => "G y MMM d", "short" => "GGGGG y-MM-dd"];
         $this->assertEquals($result, $date);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'date');
@@ -809,7 +809,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
         $value = Zend_Locale_Data::getContent('de_AT', 'date', 'long');
         $this->assertEquals("dd. MMMM y", $value);
 
-        $value = Zend_Locale_Data::getContent('ar', 'date', array('islamic', 'long'));
+        $value = Zend_Locale_Data::getContent('ar', 'date', ['islamic', 'long']);
         $this->assertEquals("d MMMM، y G", $value);
     }
 
@@ -833,13 +833,13 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTime()
     {
         $date = Zend_Locale_Data::getList('de_AT', 'time');
-        $result = array("full" => "HH:mm:ss zzzz", "long" => "HH:mm:ss z",
-                        "medium" => "HH:mm:ss", "short" => "HH:mm");
+        $result = ["full" => "HH:mm:ss zzzz", "long" => "HH:mm:ss z",
+                        "medium" => "HH:mm:ss", "short" => "HH:mm"];
         $this->assertEquals($result, $date);
 
         $date = Zend_Locale_Data::getList('de_AT', 'time', 'islamic');
-        $result = array("full" => "HH:mm:ss zzzz", "long" => "HH:mm:ss z",
-                        "medium" => "HH:mm:ss", "short" => "HH:mm");
+        $result = ["full" => "HH:mm:ss zzzz", "long" => "HH:mm:ss z",
+                        "medium" => "HH:mm:ss", "short" => "HH:mm"];
         $this->assertEquals($result, $date);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'time');
@@ -848,7 +848,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
         $value = Zend_Locale_Data::getContent('de_AT', 'time', 'long');
         $this->assertEquals("HH:mm:ss z", $value);
 
-        $value = Zend_Locale_Data::getContent('ar', 'time', array('islamic', 'long'));
+        $value = Zend_Locale_Data::getContent('ar', 'time', ['islamic', 'long']);
         $this->assertEquals("HH:mm:ss z", $value);
     }
 
@@ -859,27 +859,27 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testDateTime()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'datetime');
-        $result = array(
+        $result = [
             'full' => 'EEEE, dd. MMMM y HH:mm:ss zzzz',
             'long' => 'dd. MMMM y HH:mm:ss z',
             'medium' => 'dd.MM.y HH:mm:ss',
             'short' => 'dd.MM.yy HH:mm'
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getList('de_AT', 'datetime', 'gregorian');
-        $result = array(
+        $result = [
             'full' => 'EEEE, dd. MMMM y HH:mm:ss zzzz',
             'long' => 'dd. MMMM y HH:mm:ss z',
             'medium' => 'dd.MM.y HH:mm:ss',
             'short' => 'dd.MM.yy HH:mm'
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'datetime', 'full');
         $this->assertEquals("EEEE, dd. MMMM y HH:mm:ss zzzz", $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'datetime', array('gregorian', 'long'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'datetime', ['gregorian', 'long']);
         $this->assertEquals("dd. MMMM y HH:mm:ss z", $value);
     }
 
@@ -891,7 +891,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     {
         $value = Zend_Locale_Data::getList('de_AT', 'field');
         $this->assertEquals(
-            array(
+            [
                 'era'       => 'Epoche',
                 'year'      => 'Jahr',
                 'month'     => 'Monat',
@@ -903,14 +903,14 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                 'minute'    => 'Minute',
                 'second'    => 'Sekunde',
                 'zone'      => 'Zeitzone',
-            ),
+            ],
             $value,
             var_export($value, 1)
         );
 
         $value = Zend_Locale_Data::getList('de_AT', 'field', 'gregorian');
         $this->assertEquals(
-            array(
+            [
                 'era'       => 'Epoche',
                 'year'      => 'Jahr',
                 'month'     => 'Monat',
@@ -922,7 +922,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                 'minute'    => 'Minute',
                 'second'    => 'Sekunde',
                 'zone'      => 'Zeitzone',
-            ),
+            ],
             $value,
             var_export($value, 1)
         );
@@ -930,7 +930,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
         $value = Zend_Locale_Data::getContent('de_AT', 'field', 'week');
         $this->assertEquals("Woche", $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'field', array('gregorian', 'week'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'field', ['gregorian', 'week']);
         $this->assertEquals("Woche", $value);
     }
 
@@ -941,29 +941,29 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testRelative()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'relative');
-        $this->assertEquals(array("0" => "Heute", "1" => "Morgen", "2" => "Übermorgen",
-            "-1" => "Gestern", "-2" => "Vorgestern"), $value);
+        $this->assertEquals(["0" => "Heute", "1" => "Morgen", "2" => "Übermorgen",
+            "-1" => "Gestern", "-2" => "Vorgestern"], $value);
 
         $value = Zend_Locale_Data::getList('de_AT', 'relative', 'day');
-        $this->assertEquals(array("0" => "Heute", "1" => "Morgen", "2" => "Übermorgen",
-            "-1" => "Gestern", "-2" => "Vorgestern"), $value);
+        $this->assertEquals(["0" => "Heute", "1" => "Morgen", "2" => "Übermorgen",
+            "-1" => "Gestern", "-2" => "Vorgestern"], $value);
 
         $value = Zend_Locale_Data::getList('de_AT', 'relative', 'week');
-        $this->assertEquals(array("0" => "Diese Woche", "1" => "Nächste Woche",
-            "-1" => "Letzte Woche"), $value);
+        $this->assertEquals(["0" => "Diese Woche", "1" => "Nächste Woche",
+            "-1" => "Letzte Woche"], $value);
 
         $value = Zend_Locale_Data::getList('de_AT', 'relative', 'month');
-        $this->assertEquals(array("0" => "Dieser Monat", "1" => "Nächster Monat",
-            "-1" => "Letzter Monat"), $value);
+        $this->assertEquals(["0" => "Dieser Monat", "1" => "Nächster Monat",
+            "-1" => "Letzter Monat"], $value);
 
         $value = Zend_Locale_Data::getList('de_AT', 'relative', 'year');
-        $this->assertEquals(array("0" => "Dieses Jahr", "1" => "Nächstes Jahr",
-            "-1" => "Letztes Jahr"), $value);
+        $this->assertEquals(["0" => "Dieses Jahr", "1" => "Nächstes Jahr",
+            "-1" => "Letztes Jahr"], $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'relative', '-1');
         $this->assertEquals("Gestern", $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'relative', array('gregorian', '-1'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'relative', ['gregorian', '-1']);
         $this->assertEquals("Gestern", $value);
     }
 
@@ -974,10 +974,10 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testSymbols()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'symbols');
-        $result = array(    "decimal"  => ",", "group" => ".", "list"  => ";", "percent"  => "%",
+        $result = [    "decimal"  => ",", "group" => ".", "list"  => ";", "percent"  => "%",
             // "zero"  => "0", "pattern"  => "#",
             "plus"  => "+", "minus" => "-", "exponent" => "E",
-            "mille" => "‰", "infinity" => "∞", "nan"   => "NaN");
+            "mille" => "‰", "infinity" => "∞", "nan"   => "NaN"];
         $this->assertEquals($result, $value);
     }
 
@@ -1038,7 +1038,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testNameToCurrency()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'nametocurrency');
-        $result = array(
+        $result = [
             'ADP' => 'Andorranische Pesete',
             'AED' => 'VAE-Dirham',
             'AFA' => 'Afghanische Afghani (1927–2002)',
@@ -1313,7 +1313,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'ZWD' => 'Simbabwe-Dollar (1980–2008)',
             'ZWL' => 'Simbabwe-Dollar (2009)',
             'ZWR' => 'Simbabwe-Dollar (2008)',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'nametocurrency', 'USD');
@@ -1327,7 +1327,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testCurrencyToName()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'currencytoname');
-        $result = array(
+        $result = [
             'Andorranische Pesete'                        => 'ADP',
             'VAE-Dirham'                                  => 'AED',
             'Afghanische Afghani (1927–2002)'             => 'AFA',
@@ -1602,7 +1602,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'Simbabwe-Dollar (1980–2008)'                 => 'ZWD',
             'Simbabwe-Dollar (2009)'                      => 'ZWL',
             'Simbabwe-Dollar (2008)'                      => 'ZWR',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'currencytoname', 'Unze Platin');
@@ -1616,7 +1616,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testCurrencySymbol()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'currencysymbol');
-        $result = array(
+        $result = [
             'ARS' => '$',
             'ATS' => 'öS',
             'AUD' => 'AU$',
@@ -1677,7 +1677,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'XCD' => 'EC$',
             'XOF' => 'CFA',
             'XPF' => 'CFPF',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'currencysymbol', 'USD');
@@ -1691,7 +1691,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testQuestion()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'question');
-        $this->assertEquals(array("yes" => "ja:j", "no" => "nein:n"), $value);
+        $this->assertEquals(["yes" => "ja:j", "no" => "nein:n"], $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'question', 'yes');
         $this->assertEquals("ja:j", $value);
@@ -1705,7 +1705,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     {
         $value = Zend_Locale_Data::getList('de_AT', 'currencyfraction');
         $this->assertEquals(
-            array(
+            [
                 'ADP'     => '0',
                 'AFN'     => '0',
                 'ALL'     => '0',
@@ -1772,7 +1772,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                 'YER'     => '0',
                 'ZMK'     => '0',
                 'ZWD'     => '0',
-            ), $value
+            ], $value
         );
 
         $value = Zend_Locale_Data::getContent('de_AT', 'currencyfraction');
@@ -1790,7 +1790,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     {
         $value = Zend_Locale_Data::getList('de_AT', 'currencyrounding');
         $this->assertEquals(
-            array(
+            [
                 'ADP'     => '0',
                 'AFN'     => '0',
                 'ALL'     => '0',
@@ -1857,7 +1857,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                 'YER'     => '0',
                 'ZMK'     => '0',
                 'ZWD'     => '0',
-            ), $value
+            ], $value
         );
 
         $value = Zend_Locale_Data::getContent('de_AT', 'currencyrounding');
@@ -1874,7 +1874,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testCurrencyToRegion()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'currencytoregion');
-        $result = array(
+        $result = [
             150  => 'EUR',
             'AC' => 'SHP',
             'AD' => 'EUR',
@@ -2142,7 +2142,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'ZR' => 'ZRN',
             'ZW' => 'USD',
             'ZZ' => 'XAG',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'currencytoregion', 'AT');
@@ -2156,7 +2156,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testRegionToCurrency()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'regiontocurrency');
-        $result = array(
+        $result = [
             'EUR' => '150 AD AT AX BE BL CY DE EA EE ES EU FI FR GF GP GR IC IE IT LU LV MC ME MF MQ MT NL PM PT RE SI SK SM TF VA XK YT',
             'SHP' => 'AC SH',
             'AED' => 'AE',
@@ -2321,7 +2321,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'ZMW' => 'ZM',
             'ZRN' => 'ZR',
             'XAG' => 'ZZ',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'regiontocurrency', 'EUR');
@@ -2338,7 +2338,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testRegionToTerritory()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'regiontoterritory');
-        $result = array('001' => '019 002 150 142 009',
+        $result = ['001' => '019 002 150 142 009',
             '011' => 'BF BJ CI CV GH GM GN GW LR ML MR NE NG SH SL SN TG', '013' => 'BZ CR GT HN MX NI PA SV',
             '014' => 'BI DJ ER ET KE KM MG MU MW MZ RE RW SC SO TZ UG YT ZM ZW',
             '142' => '145 143 030 034 035', '143' => 'TM TJ KG KZ UZ',
@@ -2357,7 +2357,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             '054' => 'FJ NC PG SB VU', '057' => 'FM GU KI MH MP NR PW',
             '061' => 'AS CK NU PF PN TK TO TV WF WS', '034' => 'AF BD BT IN IR LK MV NP PK',
             '009' => '053 054 057 061 QO', 'QO' => 'AQ BV CC CX GS HM IO TF UM AC CP DG TA',
-            'EU' => 'AT BE CY CZ DE DK EE ES FI FR GB GR HU IE IT LT LU LV MT NL PL PT SE SI SK BG RO');
+            'EU' => 'AT BE CY CZ DE DK EE ES FI FR GB GR HU IE IT LT LU LV MT NL PL PT SE SI SK BG RO'];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'regiontoterritory', '143');
@@ -2371,7 +2371,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTerritoryToRegion()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'territorytoregion');
-        $result = array (
+        $result = [
   '019' => '001',
   '002' => '001',
   150 => '001',
@@ -2655,7 +2655,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
   'AC' => 'QO',
   'CP' => 'QO',
   'DG' => 'QO',
-  'TA' => 'QO');
+  'TA' => 'QO'];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'territorytoregion', 'AT');
@@ -2669,7 +2669,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testScriptToLanguage()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'scripttolanguage');
-        $result = array(
+        $result = [
             'aa'  => 'Latn',
             'ab'  => 'Cyrl',
             'abq' => 'Cyrl',
@@ -3299,7 +3299,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'zu'  => 'Latn',
             'zun' => 'Latn',
             'zza' => 'Arab',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'scripttolanguage', 'uk');
@@ -3313,7 +3313,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testLanguageToScript()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'languagetoscript');
-        $result = array(
+        $result = [
             'Latn' => 'aa ace ach ada af agq ain ak ale amo an aoz arn arp arw asa ast atj ay az ban bas bbc bbj bem bez bfd bi bik bin bkm bku bla bm bmq bqv br bs bss bto buc bug bum bvb bya byv bze bzx ca cad car cay cch ceb cgg ch chk chn cho chp chy co cr cs csb cy da dak dav de del den dgr din dje dnj dsb dtm dua dyo dyu ebu ee efi eka en eo es et ett eu ewo fan ff fi fil fit fj fo fon fr frr frs fur fy ga gaa gag gay gcr gd gil gl gn gor gos grb gsw gub guz gv gwi ha hai haw hil hmn hnn ho hop hr hsb ht hu hup hz ia iba ibb id ig ik ilo is it jmc jv kab kac kaj kam kao kcg kck kde kea kfo kg kge kgp kha khq ki kj kl kln kmb kos kpe kr kri krl ksb ksf ksh ku kut kvr kw ky la lag lam lb lbw lg li lmo ln lol loz lt lu lua lui lun luo lut luy lv mad maf mak man mas maz mdh mdr mdt men mer mfe mg mgh mgy mh mi mic min moe moh mos ms mt mua mus mwk mwl mxc na nap naq nb nch nd nds ng nhe nhw nia nij niu nl nmg nn nr nso nus nv nxq ny nym nyn nyo nzi oc om osa osc pag pam pap pau pcm pko pl pon prg pt puu qu raj rap rar rcf rej ria rm rmf rmo rmu rn rng ro rob rof rom rup rw rwk sad saf saq sas sat sbp sc scn sco scs se see sef seh ses sg sga shi sid sk sl sm sma smj smn sms sn snk so sq sr srb srn srr ss ssy st su suk sus sv sw swc sxn syi tbw tem teo ter tet tg tiv tk tkl tli tmh tn to tog tpi tr tru trv ts tsg tsi ttj tum tvl twq ty tzm uli umb uz vai ve vi vic vo vot vun wa wae war was wo xav xh xog xum yao yap yav ybb yo yua za zap zea zmi zu zun',
             'Cyrl' => 'ab abq ady aii alt av az ba be bg bs bua ce chm cjs ckt crh cu cv dar dng evn gld inh kaa kbd kca kjh kk koi kpy krc ku kum kv ky lbe lez mdf mk mn mns mrj myv nog os rom ru rue sah sel sr tab tg tk tt tyv ude udm ug uk uz xal yrk',
             'Avst' => 'ae',
@@ -3389,7 +3389,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'Sarb' => 'xsa',
             'Hans' => 'yue zh',
             'Hant' => 'zh',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'languagetoscript', 'Kana');
@@ -3403,7 +3403,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTerritoryToLanguage()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'territorytolanguage');
-        $result = array(
+        $result = [
             'aa'  => 'DJ ET',
             'ab'  => 'GE',
             'abr' => 'GH',
@@ -3752,7 +3752,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'zh'  => 'CN HK MO SG TW',
             'zu'  => 'ZA',
             'zza' => 'TR',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, true));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'territorytolanguage', 'uk');
@@ -3766,7 +3766,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testLanguageToTerritory()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'languagetoterritory');
-        $result = array(
+        $result = [
             'DJ' => 'aa ar fr',
             'ET' => 'aa am om sid wal',
             'GE' => 'ab ka os',
@@ -4020,7 +4020,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'UZ' => 'uz',
             'VN' => 'vi',
             'TW' => 'zh',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'languagetoterritory', 'GQ');
@@ -4034,7 +4034,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTimezoneToWindows()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'timezonetowindows');
-        $result = array(
+        $result = [
             'Dateline Standard Time'          => 'Etc/GMT+12',
             'UTC-11'                          => 'Etc/GMT+11',
             'Hawaiian Standard Time'          => 'Pacific/Honolulu',
@@ -4134,7 +4134,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'Magadan Standard Time'           => 'Asia/Magadan',
             'Tonga Standard Time'             => 'Pacific/Tongatapu',
             'Samoa Standard Time'             => 'Pacific/Apia',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'timezonetowindows', 'Fiji Standard Time');
@@ -4148,7 +4148,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testWindowsToTimezone()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'windowstotimezone');
-        $result = array(
+        $result = [
             'Etc/GMT+12'                                                                                                                                                                                                                                                                       => 'Dateline Standard Time',
             'Etc/GMT+11'                                                                                                                                                                                                                                                                       => 'UTC-11',
             'Pacific/Pago_Pago'                                                                                                                                                                                                                                                                => 'UTC-11',
@@ -4512,7 +4512,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'Pacific/Fakaofo'                                                                                                                                                                                                                                                                  => 'Tonga Standard Time',
             'Etc/GMT-13'                                                                                                                                                                                                                                                                       => 'Tonga Standard Time',
             'Pacific/Apia'                                                                                                                                                                                                                                                                     => 'Samoa Standard Time',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'windowstotimezone', 'Pacific/Fiji');
@@ -4526,7 +4526,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTerritoryToTimezone()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'territorytotimezone');
-        $result = array ('America/Rio_Branco' => '001', 'Asia/Kabul' => '001',
+        $result = ['America/Rio_Branco' => '001', 'Asia/Kabul' => '001',
             'Africa/Maputo' => '001', 'Africa/Bujumbura' => 'BI', 'Africa/Gaborone' => 'BW',
             'Africa/Lubumbashi' => 'CD', 'Africa/Blantyre' => 'MW', 'Africa/Kigali' => 'RW',
             'Africa/Lusaka' => 'ZM', 'Africa/Harare' => 'ZW', 'Africa/Nairobi' => '001',
@@ -4789,7 +4789,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
                         'Pacific/Wake' => '001',
                         'Pacific/Wallis' => '001',
                         'Asia/Yakutsk' => '001',
-                        'America/Yakutat' => '001');
+                        'America/Yakutat' => '001'];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'territorytotimezone', 'Antarctica/Vostok');
@@ -4803,7 +4803,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTimezoneToTerritory()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'timezonetoterritory');
-        $result = array(
+        $result = [
             '001' => 'America/Rio_Branco',
             'BI'  => 'Africa/Bujumbura',
             'BW'  => 'Africa/Gaborone',
@@ -4935,7 +4935,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'LA'  => 'Asia/Vientiane',
             'TH'  => 'Asia/Bangkok',
             'KP'  => 'Asia/Pyongyang',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'timezonetoterritory', 'GU');
@@ -4949,7 +4949,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testCityToTimezone()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'citytotimezone');
-        $result = array(
+        $result = [
             'Etc/Unknown'                    => 'Unbekannt',
             'Europe/Tirane'                  => 'Tirana',
             'Asia/Yerevan'                   => 'Erivan',
@@ -5069,7 +5069,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'America/St_Vincent'             => 'St. Vincent',
             'America/St_Thomas'              => 'St. Thomas',
             'Asia/Saigon'                    => 'Ho-Chi-Minh-Stadt',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'citytotimezone', 'Pacific/Fiji');
@@ -5083,7 +5083,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTimezoneToCity()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'timezonetocity');
-        $result = array(
+        $result = [
             'Unbekannt'               => 'Etc/Unknown',
             'Tirana'                  => 'Europe/Tirane',
             'Erivan'                  => 'Asia/Yerevan',
@@ -5203,7 +5203,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'St. Vincent'             => 'America/St_Vincent',
             'St. Thomas'              => 'America/St_Thomas',
             'Ho-Chi-Minh-Stadt'       => 'Asia/Saigon',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'timezonetocity', 'Fidschi');
@@ -5217,7 +5217,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTerritoryToPhone()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'territorytophone');
-        $result = array(
+        $result = [
             388 => '001',
             247 => 'AC',
             376 => 'AD',
@@ -5424,7 +5424,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             27  => 'ZA',
             260 => 'ZM',
             263 => 'ZW',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'territorytophone', '43');
@@ -5438,7 +5438,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testPhoneToTerritory()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'phonetoterritory');
-        $result = array(
+        $result = [
             '001' => '388',
             'AC'  => '247',
             'AD'  => '376',
@@ -5689,7 +5689,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'ZA'  => '27',
             'ZM'  => '260',
             'ZW'  => '263',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'phonetoterritory', 'AT');
@@ -5703,7 +5703,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTerritoryToNumeric()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'territorytonumeric');
-        $result = array('958' => 'AA', '020' => 'AD', '784' => 'AE', '004' => 'AF', '028' => 'AG',
+        $result = ['958' => 'AA', '020' => 'AD', '784' => 'AE', '004' => 'AF', '028' => 'AG',
             '660' => 'AI', '008' => 'AL', '051' => 'AM', '530' => 'AN', '024' => 'AO', '010' => 'AQ',
             '032' => 'AR', '016' => 'AS', '040' => 'AT', '036' => 'AU', '533' => 'AW', '248' => 'AX',
             '031' => 'AZ', '070' => 'BA', '052' => 'BB', '050' => 'BD', '056' => 'BE', '854' => 'BF',
@@ -5752,7 +5752,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             '987' => 'XO', '988' => 'XP', '989' => 'XQ', '990' => 'XR', '991' => 'XS', '992' => 'XT',
             '993' => 'XU', '994' => 'XV', '995' => 'XW', '996' => 'XX', '997' => 'XY', '998' => 'XZ',
             '720' => 'YD', '887' => 'YE', '175' => 'YT', '710' => 'ZA', '894' => 'ZM', '716' => 'ZW',
-            '999' => 'ZZ');
+            '999' => 'ZZ'];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'territorytonumeric', '040');
@@ -5766,7 +5766,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testNumericToTerritory()
     {
         $value  = Zend_Locale_Data::getList('de_AT', 'numerictoterritory');
-        $result = array(
+        $result = [
             'AA' => '958',
             'AC' => '',
             'AD' => '020',
@@ -6076,7 +6076,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'ZR' => '180',
             'ZW' => '716',
             'ZZ' => '999',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'numerictoterritory', 'AT');
@@ -6090,7 +6090,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testTerritoryToAlpha3()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'territorytoalpha3');
-        $result = array('AAA' => 'AA', 'ASC' => 'AC', 'AND' => 'AD', 'ARE' => 'AE', 'AFG' => 'AF', 'ATG' => 'AG',
+        $result = ['AAA' => 'AA', 'ASC' => 'AC', 'AND' => 'AD', 'ARE' => 'AE', 'AFG' => 'AF', 'ATG' => 'AG',
             'AIA' => 'AI', 'ALB' => 'AL', 'ARM' => 'AM', 'ANT' => 'AN', 'AGO' => 'AO', 'ATA' => 'AQ',
             'ARG' => 'AR', 'ASM' => 'AS', 'AUT' => 'AT', 'AUS' => 'AU', 'ABW' => 'AW', 'ALA' => 'AX',
             'AZE' => 'AZ', 'BIH' => 'BA', 'BRB' => 'BB', 'BGD' => 'BD', 'BEL' => 'BE', 'BFA' => 'BF',
@@ -6139,7 +6139,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'XMM' => 'XM', 'XNN' => 'XN', 'XOO' => 'XO', 'XPP' => 'XP', 'XQQ' => 'XQ', 'XRR' => 'XR',
             'XSS' => 'XS', 'XTT' => 'XT', 'XUU' => 'XU', 'XVV' => 'XV', 'XWW' => 'XW', 'XXX' => 'XX',
             'XYY' => 'XY', 'XZZ' => 'XZ', 'YMD' => 'YD', 'YEM' => 'YE', 'MYT' => 'YT', 'YUG' => 'YU',
-            'ZAF' => 'ZA', 'ZMB' => 'ZM', 'ZAR' => 'ZR', 'ZWE' => 'ZW', 'ZZZ' => 'ZZ');
+            'ZAF' => 'ZA', 'ZMB' => 'ZM', 'ZAR' => 'ZR', 'ZWE' => 'ZW', 'ZZZ' => 'ZZ'];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'territorytoalpha3', 'AUT');
@@ -6153,7 +6153,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testAlpha3ToTerritory()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'alpha3toterritory');
-        $result = array(
+        $result = [
             'AA' => 'AAA',
             'AC' => 'ASC',
             'AD' => 'AND',
@@ -6463,7 +6463,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'ZR' => 'ZAR',
             'ZW' => 'ZWE',
             'ZZ' => 'ZZZ',
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'alpha3toterritory', 'AT');
@@ -6477,7 +6477,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testPostalToTerritory()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'postaltoterritory');
-        $result = array('GB' => 'GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\d{1,4}',
+        $result = ['GB' => 'GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\d{1,4}',
             'JE' => 'JE\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}',
             'GG' => 'GY\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}',
             'IM' => 'IM\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}',
@@ -6635,7 +6635,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'WF' => '986\d{2}',
             'XK' => '\d{5}',
             'YT' => '976\d{2}'
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'postaltoterritory', 'AT');
@@ -6649,7 +6649,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testNumberingSystem()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'numberingsystem');
-        $result = array(
+        $result = [
             'arab' => '٠١٢٣٤٥٦٧٨٩',
             'arabext' => '۰۱۲۳۴۵۶۷۸۹',
             'bali' => '᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙',
@@ -6692,7 +6692,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'thai' => '๐๑๒๓๔๕๖๗๘๙',
             'tibt' => '༠༡༢༣༤༥༦༧༨༩',
             'vaii' => '꘠꘡꘢꘣꘤꘥꘦꘧꘨꘩'
-        );
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getContent('de_AT', 'numberingsystem', 'Arab');
@@ -6751,7 +6751,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testDateItem()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'dateitem');
-        $result = array(
+        $result = [
             'd'       => 'd',
             'Ed'      => 'E, d.',
             'Ehm'     => 'E h:mm a',
@@ -6790,11 +6790,11 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'yMMMM'   => 'MMMM y',
             'yQQQ'    => 'QQQ y',
             'yQQQQ'   => 'QQQQ y',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getList('de_AT', 'dateitem', 'gregorian');
-        $result = array(
+        $result = [
             'd'       => 'd',
             'Ed'      => 'E, d.',
             'Ehm'     => 'E h:mm a',
@@ -6833,7 +6833,7 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
             'yMMMM'   => 'MMMM y',
             'yQQQ'    => 'QQQ y',
             'yQQQQ'   => 'QQQQ y',
-        );
+        ];
         $this->assertEquals($result, $value, var_export($value, 1));
 
         $value = Zend_Locale_Data::getContent('de_AT', 'dateitem', 'MMMd');
@@ -6847,158 +6847,158 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testDateInterval()
     {
         $value = Zend_Locale_Data::getList('de_AT', 'dateinterval');
-        $result = array(
-            'MMMd' => array(
+        $result = [
+            'MMMd' => [
                 'd' => "dd.-dd. MMM",
-                'M' => "dd. MMM - dd. MMM"),
-            'MMMEd' => array(
+                'M' => "dd. MMM - dd. MMM"],
+            'MMMEd' => [
                 'd' => "E, dd. - E, dd. MMM",
-                'M' => "E, dd. MMM - E, dd. MMM"),
-            'yMMMd' => array(
+                'M' => "E, dd. MMM - E, dd. MMM"],
+            'yMMMd' => [
                 'd' => "dd.-dd. MMM y",
                 'M' => "dd. MMM - dd. MMM y",
-                'y' => "dd. MMM y - dd. MMM y"),
-            'yMMMEd' => array(
+                'y' => "dd. MMM y - dd. MMM y"],
+            'yMMMEd' => [
                 'd' => "E, dd. - E, dd. MMM y",
                 'M' => "E, dd. MMM - E, dd. MMM y",
-                'y' => "E, dd. MMM y - E, dd. MMM y"),
-            'd' => array(
-                'd' => "d.-d."),
-            'h' => array(
+                'y' => "E, dd. MMM y - E, dd. MMM y"],
+            'd' => [
+                'd' => "d.-d."],
+            'h' => [
                 'a' => "h a - h a",
-                'h' => "h-h a"),
-            'H' => array(
-                'H' => "HH-HH 'Uhr'"),
-            'hm' => array(
+                'h' => "h-h a"],
+            'H' => [
+                'H' => "HH-HH 'Uhr'"],
+            'hm' => [
                 'a' => "h:mm a - h:mm a",
                 'h' => "h:mm-h:mm a",
-                'm' => "h:mm-h:mm a"),
-            'Hm' => array(
+                'm' => "h:mm-h:mm a"],
+            'Hm' => [
                 'H' => "HH:mm-HH:mm",
-                'm' => "HH:mm-HH:mm"),
-            'hmv' => array(
+                'm' => "HH:mm-HH:mm"],
+            'hmv' => [
                 'a' => "h:mm a - h:mm a v",
                 'h' => "h:mm-h:mm a v",
-                'm' => "h:mm-h:mm a v"),
-            'Hmv' => array(
+                'm' => "h:mm-h:mm a v"],
+            'Hmv' => [
                 'H' => "HH:mm-HH:mm v",
-                'm' => "HH:mm-HH:mm v"),
-            'hv' => array(
+                'm' => "HH:mm-HH:mm v"],
+            'hv' => [
                 'a' => "h a - h a v",
-                'h' => "h-h a v"),
-            'Hv' => array(
-                'H' => "HH-HH 'Uhr' v"),
-            'M' => array(
-                'M' => "M.-M."),
-            'Md' => array(
+                'h' => "h-h a v"],
+            'Hv' => [
+                'H' => "HH-HH 'Uhr' v"],
+            'M' => [
+                'M' => "M.-M."],
+            'Md' => [
                 'd' => "dd.MM. - dd.MM.",
-                'M' => "dd.MM. - dd.MM."),
-            'MEd' => array(
+                'M' => "dd.MM. - dd.MM."],
+            'MEd' => [
                 'd' => "E, dd.MM. - E, dd.MM.",
-                'M' => "E, dd.MM. - E, dd.MM."),
-            'MMM' => array(
-                'M' => "MMM-MMM"),
-            'MMMM' => array(
-                'M' => "LLLL-LLLL"),
-            'y' => array(
-                'y' => "y-y"),
-            'yM' => array(
+                'M' => "E, dd.MM. - E, dd.MM."],
+            'MMM' => [
+                'M' => "MMM-MMM"],
+            'MMMM' => [
+                'M' => "LLLL-LLLL"],
+            'y' => [
+                'y' => "y-y"],
+            'yM' => [
                 'M' => "MM.y - MM.y",
-                'y' => "MM.y - MM.y"),
-            'yMd' => array(
+                'y' => "MM.y - MM.y"],
+            'yMd' => [
                 'd' => "dd.MM.y - dd.MM.y",
                 'M' => "dd.MM.y - dd.MM.y",
-                'y' => "dd.MM.y - dd.MM.y"),
-            'yMEd' => array(
+                'y' => "dd.MM.y - dd.MM.y"],
+            'yMEd' => [
                 'd' => "E, dd.MM.y - E, dd.MM.y",
                 'M' => "E, dd.MM.y - E, dd.MM.y",
-                'y' => "E, dd.MM.y - E, dd.MM.y"),
-            'yMMM' => array(
+                'y' => "E, dd.MM.y - E, dd.MM.y"],
+            'yMMM' => [
                 'M' => "MMM-MMM y",
-                'y' => "MMM y - MMM y"),
-            'yMMMM' => array(
+                'y' => "MMM y - MMM y"],
+            'yMMMM' => [
                 'M' => "MMMM-MMMM y",
-                'y' => "MMMM y - MMMM y")
-        );
+                'y' => "MMMM y - MMMM y"]
+        ];
         $this->assertEquals($result, $value);
 
         $value = Zend_Locale_Data::getList('de_AT', 'dateinterval', 'gregorian');
-        $result = array(
-            'MMMd' => array(
+        $result = [
+            'MMMd' => [
                 'd' => "dd.-dd. MMM",
-                'M' => "dd. MMM - dd. MMM"),
-            'MMMEd' => array(
+                'M' => "dd. MMM - dd. MMM"],
+            'MMMEd' => [
                 'd' => "E, dd. - E, dd. MMM",
-                'M' => "E, dd. MMM - E, dd. MMM"),
-            'yMMMd' => array(
+                'M' => "E, dd. MMM - E, dd. MMM"],
+            'yMMMd' => [
                 'd' => "dd.-dd. MMM y",
                 'M' => "dd. MMM - dd. MMM y",
-                'y' => "dd. MMM y - dd. MMM y"),
-            'yMMMEd' => array(
+                'y' => "dd. MMM y - dd. MMM y"],
+            'yMMMEd' => [
                 'd' => "E, dd. - E, dd. MMM y",
                 'M' => "E, dd. MMM - E, dd. MMM y",
-                'y' => "E, dd. MMM y - E, dd. MMM y"),
-            'd' => array(
-                'd' => "d.-d."),
-            'h' => array(
+                'y' => "E, dd. MMM y - E, dd. MMM y"],
+            'd' => [
+                'd' => "d.-d."],
+            'h' => [
                 'a' => "h a - h a",
-                'h' => "h-h a"),
-            'H' => array(
-                'H' => "HH-HH 'Uhr'"),
-            'hm' => array(
+                'h' => "h-h a"],
+            'H' => [
+                'H' => "HH-HH 'Uhr'"],
+            'hm' => [
                 'a' => "h:mm a - h:mm a",
                 'h' => "h:mm-h:mm a",
-                'm' => "h:mm-h:mm a"),
-            'Hm' => array(
+                'm' => "h:mm-h:mm a"],
+            'Hm' => [
                 'H' => "HH:mm-HH:mm",
-                'm' => "HH:mm-HH:mm"),
-            'hmv' => array(
+                'm' => "HH:mm-HH:mm"],
+            'hmv' => [
                 'a' => "h:mm a - h:mm a v",
                 'h' => "h:mm-h:mm a v",
-                'm' => "h:mm-h:mm a v"),
-            'Hmv' => array(
+                'm' => "h:mm-h:mm a v"],
+            'Hmv' => [
                 'H' => "HH:mm-HH:mm v",
-                'm' => "HH:mm-HH:mm v"),
-            'hv' => array(
+                'm' => "HH:mm-HH:mm v"],
+            'hv' => [
                 'a' => "h a - h a v",
-                'h' => "h-h a v"),
-            'Hv' => array(
-                'H' => "HH-HH 'Uhr' v"),
-            'M' => array(
-                'M' => "M.-M."),
-            'Md' => array(
+                'h' => "h-h a v"],
+            'Hv' => [
+                'H' => "HH-HH 'Uhr' v"],
+            'M' => [
+                'M' => "M.-M."],
+            'Md' => [
                 'd' => "dd.MM. - dd.MM.",
-                'M' => "dd.MM. - dd.MM."),
-            'MEd' => array(
+                'M' => "dd.MM. - dd.MM."],
+            'MEd' => [
                 'd' => "E, dd.MM. - E, dd.MM.",
-                'M' => "E, dd.MM. - E, dd.MM."),
-            'MMM' => array(
-                'M' => "MMM-MMM"),
-            'MMMM' => array(
-                'M' => "LLLL-LLLL"),
-            'y' => array(
-                'y' => "y-y"),
-            'yM' => array(
+                'M' => "E, dd.MM. - E, dd.MM."],
+            'MMM' => [
+                'M' => "MMM-MMM"],
+            'MMMM' => [
+                'M' => "LLLL-LLLL"],
+            'y' => [
+                'y' => "y-y"],
+            'yM' => [
                 'M' => "MM.y - MM.y",
-                'y' => "MM.y - MM.y"),
-            'yMd' => array(
+                'y' => "MM.y - MM.y"],
+            'yMd' => [
                 'd' => "dd.MM.y - dd.MM.y",
                 'M' => "dd.MM.y - dd.MM.y",
-                'y' => "dd.MM.y - dd.MM.y"),
-            'yMEd' => array(
+                'y' => "dd.MM.y - dd.MM.y"],
+            'yMEd' => [
                 'd' => "E, dd.MM.y - E, dd.MM.y",
                 'M' => "E, dd.MM.y - E, dd.MM.y",
-                'y' => "E, dd.MM.y - E, dd.MM.y"),
-            'yMMM' => array(
+                'y' => "E, dd.MM.y - E, dd.MM.y"],
+            'yMMM' => [
                 'M' => "MMM-MMM y",
-                'y' => "MMM y - MMM y"),
-            'yMMMM' => array(
+                'y' => "MMM y - MMM y"],
+            'yMMMM' => [
                 'M' => "MMMM-MMMM y",
-                'y' => "MMMM y - MMMM y")
-        );
+                'y' => "MMMM y - MMMM y"]
+        ];
         $this->assertEquals($result, $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'dateinterval', array('gregorian', 'yMMMM', 'y'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'dateinterval', ['gregorian', 'yMMMM', 'y']);
         $this->assertEquals("MMMM y - MMMM y", $value);
     }
 
@@ -7009,195 +7009,195 @@ class Zend_Locale_DataTest extends PHPUnit_Framework_TestCase
     public function testUnit()
     {
         $value  = Zend_Locale_Data::getList('de_AT', 'unit');
-        $result = array(
-            'acceleration-g-force'     => array(
+        $result = [
+            'acceleration-g-force'     => [
                 'one'   => '{0}-fache Erdbeschleunigung',
                 'other' => '{0}-fache Erdbeschleunigung',
-            ),
-            'angle-arc-minute'         => array(
+            ],
+            'angle-arc-minute'         => [
                 'one'   => '{0} Winkelminute',
                 'other' => '{0} Winkelminuten',
-            ),
-            'angle-arc-second'         => array(
+            ],
+            'angle-arc-second'         => [
                 'one'   => '{0} Winkelsekunde',
                 'other' => '{0} Winkelsekunden',
-            ),
-            'angle-degree'             => array(
+            ],
+            'angle-degree'             => [
                 'one'   => '{0} Grad',
                 'other' => '{0} Grad',
-            ),
-            'area-acre'                => array(
+            ],
+            'area-acre'                => [
                 'one'   => '{0} Acre',
                 'other' => '{0} Acres',
-            ),
-            'area-hectare'             => array(
+            ],
+            'area-hectare'             => [
                 'one'   => '{0} Hektar',
                 'other' => '{0} Hektar',
-            ),
-            'area-square-foot'         => array(
+            ],
+            'area-square-foot'         => [
                 'one'   => '{0} Quadratfuß',
                 'other' => '{0} Quadratfuß',
-            ),
-            'area-square-kilometer'    => array(
+            ],
+            'area-square-kilometer'    => [
                 'one'   => '{0} Quadratkilometer',
                 'other' => '{0} Quadratkilometer',
-            ),
-            'area-square-meter'        => array(
+            ],
+            'area-square-meter'        => [
                 'one'   => '{0} Quadratmeter',
                 'other' => '{0} Quadratmeter',
-            ),
-            'area-square-mile'         => array(
+            ],
+            'area-square-mile'         => [
                 'one'   => '{0} Quadratmeile',
                 'other' => '{0} Quadratmeilen',
-            ),
-            'duration-day'             => array(
+            ],
+            'duration-day'             => [
                 'one'   => '{0} Tag',
                 'other' => '{0} Tage',
-            ),
-            'duration-hour'            => array(
+            ],
+            'duration-hour'            => [
                 'one'   => '{0} Stunde',
                 'other' => '{0} Stunden',
-            ),
-            'duration-millisecond'     => array(
+            ],
+            'duration-millisecond'     => [
                 'one'   => '{0} Millisekunde',
                 'other' => '{0} Millisekunden',
-            ),
-            'duration-minute'          => array(
+            ],
+            'duration-minute'          => [
                 'one'   => '{0} Minute',
                 'other' => '{0} Minuten',
-            ),
-            'duration-month'           => array(
+            ],
+            'duration-month'           => [
                 'one'   => '{0} Monat',
                 'other' => '{0} Monate',
-            ),
-            'duration-second'          => array(
+            ],
+            'duration-second'          => [
                 'one'   => '{0} Sekunde',
                 'other' => '{0} Sekunden',
-            ),
-            'duration-week'            => array(
+            ],
+            'duration-week'            => [
                 'one'   => '{0} Woche',
                 'other' => '{0} Wochen',
-            ),
-            'duration-year'            => array(
+            ],
+            'duration-year'            => [
                 'one'   => '{0} Jahr',
                 'other' => '{0} Jahre',
-            ),
-            'length-centimeter'        => array(
+            ],
+            'length-centimeter'        => [
                 'one'   => '{0} Zentimeter',
                 'other' => '{0} Zentimeter',
-            ),
-            'length-foot'              => array(
+            ],
+            'length-foot'              => [
                 'one'   => '{0} Fuß',
                 'other' => '{0} Fuß',
-            ),
-            'length-inch'              => array(
+            ],
+            'length-inch'              => [
                 'one'   => '{0} Zoll',
                 'other' => '{0} Zoll',
-            ),
-            'length-kilometer'         => array(
+            ],
+            'length-kilometer'         => [
                 'one'   => '{0} Kilometer',
                 'other' => '{0} Kilometer',
-            ),
-            'length-light-year'        => array(
+            ],
+            'length-light-year'        => [
                 'one'   => '{0} Lichtjahr',
                 'other' => '{0} Lichtjahre',
-            ),
-            'length-meter'             => array(
+            ],
+            'length-meter'             => [
                 'one'   => '{0} Meter',
                 'other' => '{0} Meter',
-            ),
-            'length-mile'              => array(
+            ],
+            'length-mile'              => [
                 'one'   => '{0} Meile',
                 'other' => '{0} Meilen',
-            ),
-            'length-millimeter'        => array(
+            ],
+            'length-millimeter'        => [
                 'one'   => '{0} Millimeter',
                 'other' => '{0} Millimeter',
-            ),
-            'length-picometer'         => array(
+            ],
+            'length-picometer'         => [
                 'one'   => '{0} Pikometer',
                 'other' => '{0} Pikometer',
-            ),
-            'length-yard'              => array(
+            ],
+            'length-yard'              => [
                 'one'   => '{0} Yard',
                 'other' => '{0} Yards',
-            ),
-            'mass-gram'                => array(
+            ],
+            'mass-gram'                => [
                 'one'   => '{0} Gramm',
                 'other' => '{0} Gramm',
-            ),
-            'mass-kilogram'            => array(
+            ],
+            'mass-kilogram'            => [
                 'one'   => '{0} Kilogramm',
                 'other' => '{0} Kilogramm',
-            ),
-            'mass-ounce'               => array(
+            ],
+            'mass-ounce'               => [
                 'one'   => '{0} Unze',
                 'other' => '{0} Unzen',
-            ),
-            'mass-pound'               => array(
+            ],
+            'mass-pound'               => [
                 'one'   => '{0} Pfund',
                 'other' => '{0} Pfund',
-            ),
-            'power-horsepower'         => array(
+            ],
+            'power-horsepower'         => [
                 'one'   => '{0} Pferdestärke',
                 'other' => '{0} Pferdestärken',
-            ),
-            'power-kilowatt'           => array(
+            ],
+            'power-kilowatt'           => [
                 'one'   => '{0} Kilowatt',
                 'other' => '{0} Kilowatt',
-            ),
-            'power-watt'               => array(
+            ],
+            'power-watt'               => [
                 'one'   => '{0} Watt',
                 'other' => '{0} Watt',
-            ),
-            'pressure-hectopascal'     => array(
+            ],
+            'pressure-hectopascal'     => [
                 'one'   => '{0} Hektopascal',
                 'other' => '{0} Hektopascal',
-            ),
-            'pressure-inch-hg'         => array(
+            ],
+            'pressure-inch-hg'         => [
                 'one'   => '{0} Zoll Quecksilbersäule',
                 'other' => '{0} Zoll Quecksilbersäule',
-            ),
-            'pressure-millibar'        => array(
+            ],
+            'pressure-millibar'        => [
                 'one'   => '{0} Millibar',
                 'other' => '{0} Millibar',
-            ),
-            'speed-kilometer-per-hour' => array(
+            ],
+            'speed-kilometer-per-hour' => [
                 'one'   => '{0} Kilometer pro Stunde',
                 'other' => '{0} Kilometer pro Stunde',
-            ),
-            'speed-meter-per-second'   => array(
+            ],
+            'speed-meter-per-second'   => [
                 'one'   => '{0} Meter pro Sekunde',
                 'other' => '{0} Meter pro Sekunde',
-            ),
-            'speed-mile-per-hour'      => array(
+            ],
+            'speed-mile-per-hour'      => [
                 'one'   => '{0} Meile pro Stunde',
                 'other' => '{0} Meilen pro Stunde',
-            ),
-            'temperature-celsius'      => array(
+            ],
+            'temperature-celsius'      => [
                 'one'   => '{0} Grad Celsius',
                 'other' => '{0} Grad Celsius',
-            ),
-            'temperature-fahrenheit'   => array(
+            ],
+            'temperature-fahrenheit'   => [
                 'one'   => '{0} Grad Fahrenheit',
                 'other' => '{0} Grad Fahrenheit',
-            ),
-            'volume-cubic-kilometer'   => array(
+            ],
+            'volume-cubic-kilometer'   => [
                 'one'   => '{0} Kubikkilometer',
                 'other' => '{0} Kubikkilometer',
-            ),
-            'volume-cubic-mile'        => array(
+            ],
+            'volume-cubic-mile'        => [
                 'one'   => '{0} Kubikmeile',
                 'other' => '{0} Kubikmeilen',
-            ),
-            'volume-liter'             => array(
+            ],
+            'volume-liter'             => [
                 'one'   => '{0} Liter',
                 'other' => '{0} Liter',
-            ),
-        );
+            ],
+        ];
         $this->assertEquals($result, $value);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'unit', array('duration-day', 'one'));
+        $value = Zend_Locale_Data::getContent('de_AT', 'unit', ['duration-day', 'one']);
         $this->assertEquals('{0} Tag', $value);
     }
 

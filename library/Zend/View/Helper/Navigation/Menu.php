@@ -471,10 +471,10 @@ class Zend_View_Helper_Navigation_Menu
         }
 
         // get attribs for element
-        $attribs = array(
+        $attribs = [
             'id'     => $page->getId(),
             'title'  => $title,
-        );
+        ];
 
         if (false === $this->getAddPageClassToLi()) {
             $attribs['class'] = $page->getClass();
@@ -504,7 +504,7 @@ class Zend_View_Helper_Navigation_Menu
      * @param  array $options  [optional] options to normalize
      * @return array           normalized options
      */
-    protected function _normalizeOptions(array $options = array())
+    protected function _normalizeOptions(array $options = [])
     {
         // Ident
         if (isset($options['indent'])) {
@@ -652,10 +652,10 @@ class Zend_View_Helper_Navigation_Menu
             $active['page'] = $active['page']->getParent();
         }
 
-        $attribs = array(
+        $attribs = [
             'class' => $ulClass,
             'id'    => $ulId,
-        );
+        ];
 
         // We don't need a prefix for the menu ID (backup)
         $skipValue = $this->_skipPrefixForId;
@@ -677,13 +677,13 @@ class Zend_View_Helper_Navigation_Menu
             $liClass = '';
             if ($subPage->isActive(true) && $addPageClassToLi) {
                 $liClass = $this->_htmlAttribs(
-                    array('class' => $activeClass . ' ' . $subPage->getClass())
+                    ['class' => $activeClass . ' ' . $subPage->getClass()]
                 );
             } else if ($subPage->isActive(true)) {
-                $liClass = $this->_htmlAttribs(array('class' => $activeClass));
+                $liClass = $this->_htmlAttribs(['class' => $activeClass]);
             } else if ($addPageClassToLi) {
                 $liClass = $this->_htmlAttribs(
-                    array('class' => $subPage->getClass())
+                    ['class' => $subPage->getClass()]
                 );
             }
             $html .= $indent . $innerIndent . '<li' . $liClass . '>' . $this->getEOL();
@@ -802,14 +802,14 @@ class Zend_View_Helper_Navigation_Menu
             $myIndent = $indent . str_repeat($innerIndent, $depth * 2);
 
             if ($depth > $prevDepth) {
-                $attribs = array();
+                $attribs = [];
 
                 // start new ul tag
                 if (0 == $depth) {
-                    $attribs = array(
+                    $attribs = [
                         'class' => $ulClass,
                         'id'    => $ulId,
-                    );
+                    ];
                 }
 
                 // We don't need a prefix for the menu ID (backup)
@@ -838,7 +838,7 @@ class Zend_View_Helper_Navigation_Menu
             }
 
             // render li tag and page
-            $liClasses = array();
+            $liClasses = [];
             // Is page active?
             if ($isActive) {
                 $liClasses[] = $activeClass;
@@ -858,7 +858,7 @@ class Zend_View_Helper_Navigation_Menu
             }
 
             $html .= $myIndent . $innerIndent . '<li'
-                   . $this->_htmlAttribs(array('class' => implode(' ', $liClasses)))
+                   . $this->_htmlAttribs(['class' => implode(' ', $liClasses)])
                    . '>' . $this->getEOL()
                    . $myIndent . str_repeat($innerIndent, 2)
                    . $this->htmlify($page)
@@ -900,7 +900,7 @@ class Zend_View_Helper_Navigation_Menu
      * @return string                                rendered menu
      */
     public function renderMenu(Zend_Navigation_Container $container = null,
-                               array $options = array())
+                               array $options = [])
     {
         if (null === $container) {
             $container = $this->getContainer();
@@ -989,7 +989,7 @@ class Zend_View_Helper_Navigation_Menu
                                   $addPageClassToLi = false,
                                   $innerIndent = null)
     {
-        return $this->renderMenu($container, array(
+        return $this->renderMenu($container, [
             'indent'           => $indent,
             'innerIndent'      => $innerIndent,
             'ulClass'          => $ulClass,
@@ -999,7 +999,7 @@ class Zend_View_Helper_Navigation_Menu
             'renderParents'    => false,
             'ulId'             => $ulId,
             'addPageClassToLi' => $addPageClassToLi,
-        ));
+        ]);
     }
 
     /**
@@ -1046,9 +1046,9 @@ class Zend_View_Helper_Navigation_Menu
             throw $e;
         }
 
-        $model = array(
+        $model = [
             'container' => $container
-        );
+        ];
 
         if (is_array($partial)) {
             if (count($partial) != 2) {

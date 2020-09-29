@@ -200,10 +200,10 @@ class Zend_Validate_MessageTest extends PHPUnit_Framework_TestCase
     public function testSetMessages()
     {
         $this->_validator->setMessages(
-            array(
+            [
                 Zend_Validate_StringLength::TOO_LONG  => 'Your value is too long',
                 Zend_Validate_StringLength::TOO_SHORT => 'Your value is too short'
-            )
+            ]
         );
 
         $this->assertFalse($this->_validator->isValid('abcdefghij'));
@@ -296,7 +296,7 @@ class Zend_Validate_MessageTest extends PHPUnit_Framework_TestCase
         $vars = $this->_validator->getMessageVariables();
 
         $this->assertTrue(is_array($vars));
-        $this->assertEquals(array('min', 'max'), $vars);
+        $this->assertEquals(['min', 'max'], $vars);
         $message = 'variables: %notvar% ';
         foreach ($vars as $var) {
             $message .= "%$var% ";

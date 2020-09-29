@@ -144,7 +144,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
      * PHP types => XML-RPC types
      * @var array
      */
-    protected $_typeMap = array(
+    protected $_typeMap = [
         'i4'                         => 'i4',
         'int'                        => 'int',
         'integer'                    => 'int',
@@ -174,7 +174,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
         'ex:nil'                     => 'nil',
         'void'                       => 'void',
         'mixed'                      => 'struct',
-    );
+    ];
 
     /**
      * Send arguments to all methods or just constructor?
@@ -211,7 +211,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
             require_once 'Zend/XmlRpc/Server/Exception.php';
             throw new Zend_XmlRpc_Server_Exception('Unknown instance method called on server: ' . $method);
         }
-        return call_user_func_array(array($system, $method), $params);
+        return call_user_func_array([$system, $method], $params);
     }
 
     /**

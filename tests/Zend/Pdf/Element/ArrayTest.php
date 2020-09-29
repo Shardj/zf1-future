@@ -68,7 +68,7 @@ class Zend_Pdf_Element_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testPDFArray2()
     {
-        $srcArray = array();
+        $srcArray = [];
         $srcArray[] = new Zend_Pdf_Element_Boolean(false);
         $srcArray[] = new Zend_Pdf_Element_Numeric(100.426);
         $srcArray[] = new Zend_Pdf_Element_Name('MyName');
@@ -93,7 +93,7 @@ class Zend_Pdf_Element_ArrayTest extends PHPUnit_Framework_TestCase
     public function testPDFArrayBadInput2()
     {
         try {
-            $srcArray = array();
+            $srcArray = [];
             $srcArray[] = new Zend_Pdf_Element_Boolean(false);
             $srcArray[] = new Zend_Pdf_Element_Numeric(100.426);
             $srcArray[] = new Zend_Pdf_Element_Name('MyName');
@@ -116,7 +116,7 @@ class Zend_Pdf_Element_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testToString()
     {
-        $srcArray = array();
+        $srcArray = [];
         $srcArray[] = new Zend_Pdf_Element_Boolean(false);
         $srcArray[] = new Zend_Pdf_Element_Numeric(100.426);
         $srcArray[] = new Zend_Pdf_Element_Name('MyName');

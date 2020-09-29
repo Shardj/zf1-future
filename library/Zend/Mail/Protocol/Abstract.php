@@ -121,7 +121,7 @@ abstract class Zend_Mail_Protocol_Abstract
      * Log of mail requests and server responses for a session
      * @var array
      */
-    private $_log = array();
+    private $_log = [];
 
 
     /**
@@ -231,7 +231,7 @@ abstract class Zend_Mail_Protocol_Abstract
      */
     public function resetLog()
     {
-        $this->_log = array();
+        $this->_log = [];
     }
 
     /**
@@ -401,14 +401,14 @@ abstract class Zend_Mail_Protocol_Abstract
      */
     protected function _expect($code, $timeout = null)
     {
-        $this->_response = array();
+        $this->_response = [];
         $cmd  = '';
         $more = '';
         $msg  = '';
         $errMsg = '';
 
         if (!is_array($code)) {
-            $code = array($code);
+            $code = [$code];
         }
 
         do {

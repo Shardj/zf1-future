@@ -60,7 +60,7 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
         unset($fileObject);
         $this->assertEquals($directory->fileLength('file1'), 0);
 
-        $this->assertEquals(count(array_diff($directory->fileList(), array('file1'))), 0);
+        $this->assertEquals(count(array_diff($directory->fileList(), ['file1'])), 0);
 
         $directory->deleteFile('file1');
         $this->assertEquals(count($directory->fileList()), 0);
@@ -74,7 +74,7 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
         $this->assertEquals($directory->fileLength('file2'), 10);
 
         $directory->renameFile('file2', 'file3');
-        $this->assertEquals(count(array_diff($directory->fileList(), array('file3'))), 0);
+        $this->assertEquals(count(array_diff($directory->fileList(), ['file3'])), 0);
 
         $modifiedAt1 = $directory->fileModified('file3');
         clearstatcache();

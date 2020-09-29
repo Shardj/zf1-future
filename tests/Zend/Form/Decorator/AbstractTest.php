@@ -82,11 +82,11 @@ class Zend_Form_Decorator_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function getOptions()
     {
-        $options = array(
+        $options = [
             'foo' => 'fooval',
             'bar' => 'barval',
             'baz' => 'bazval'
-        );
+        ];
         return $options;
     }
 
@@ -120,7 +120,7 @@ class Zend_Form_Decorator_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testSetElementAllowsDisplayGroups()
     {
-        $loader = new Zend_Loader_PluginLoader(array('Zend_Form_Decorator' => 'Zend/Form/Decorator'));
+        $loader = new Zend_Loader_PluginLoader(['Zend_Form_Decorator' => 'Zend/Form/Decorator']);
         $group  = new Zend_Form_DisplayGroup('foo', $loader);
         $this->decorator->setElement($group);
         $this->assertSame($group, $this->decorator->getElement());
@@ -128,7 +128,7 @@ class Zend_Form_Decorator_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testSetElementThrowsExceptionWithInvalidElementTypes()
     {
-        $config = new Zend_Config(array());
+        $config = new Zend_Config([]);
         try {
             $this->decorator->setElement($config);
             $this->fail('Invalid element type should raise exception');
@@ -145,7 +145,7 @@ class Zend_Form_Decorator_AbstractTest extends PHPUnit_Framework_TestCase
     public function testCanSetPlacementViaPlacementOption()
     {
         $this->testPlacementDefaultsToAppend();
-        $this->decorator->setOptions(array('placement' => 'PREPEND'));
+        $this->decorator->setOptions(['placement' => 'PREPEND']);
         $this->assertEquals(Zend_Form_Decorator_Abstract::PREPEND, $this->decorator->getPlacement());
     }
 
@@ -157,7 +157,7 @@ class Zend_Form_Decorator_AbstractTest extends PHPUnit_Framework_TestCase
     public function testCanSetSeparatorViaSeparatorOption()
     {
         $this->testSeparatorDefaultsToPhpEol();
-        $this->decorator->setOptions(array('separator' => '<br />'));
+        $this->decorator->setOptions(['separator' => '<br />']);
         $this->assertEquals('<br />', $this->decorator->getSeparator());
     }
 
@@ -182,12 +182,12 @@ class Zend_Form_Decorator_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertNull($this->decorator->getOption('foo'));
         $this->assertNull($this->decorator->getOption('bar'));
         $this->assertNull($this->decorator->getOption('baz'));
-        $options = array('foo' => 'bar', 'bar' => 'baz', 'baz' => 'bat');
+        $options = ['foo' => 'bar', 'bar' => 'baz', 'baz' => 'bat'];
         $this->decorator->setOptions($options);
         $received = $this->decorator->getOptions();
         $this->assertEquals($options, $received);
         $this->decorator->clearOptions();
-        $this->assertEquals(array(), $this->decorator->getOptions());
+        $this->assertEquals([], $this->decorator->getOptions());
     }
 }
 

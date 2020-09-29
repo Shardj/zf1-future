@@ -115,7 +115,7 @@ abstract class Zend_Db_Statement_Pdo_TestCommon extends Zend_Db_Statement_TestCo
 
         $params = $this->_db->getProfiler()->getLastQueryProfile()->getQueryParams();
 
-        $target = array(':product_id' => 1);
+        $target = [':product_id' => 1];
         $this->assertEquals($target, $params);
 
     }

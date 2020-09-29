@@ -45,7 +45,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
     /**
      * @var array of Zend_Db_Table_Abstract
      */
-    protected $_table = array();
+    protected $_table = [];
 
     public function setUp()
     {
@@ -65,7 +65,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
         parent::tearDown();
     }
 
-    protected function _getTable($tableClass, $options = array())
+    protected function _getTable($tableClass, $options = [])
     {
         if (is_array($options) && !isset($options['db'])) {
             $options['db'] = $this->_db;
@@ -123,13 +123,13 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
      */
     public function testSelectForReadOnly()
     {
-        $select = $this->_selectForReadOnly(array('count' => 'COUNT(*)'));
+        $select = $this->_selectForReadOnly(['count' => 'COUNT(*)']);
         $this->assertTrue($select->isReadOnly());
 
-        $select = $this->_selectForReadOnly(array());
+        $select = $this->_selectForReadOnly([]);
         $this->assertFalse($select->isReadOnly());
 
-        $select = $this->_selectForReadOnly(array('*'));
+        $select = $this->_selectForReadOnly(['*']);
         $this->assertFalse($select->isReadOnly());
     }
 
@@ -141,7 +141,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
         $table = $this->_getSelectTable('products');
 
         $select = $table->select()
-            ->join(array('p' => 'zfbugs_products'), 'p.product_id = zfproduct.id', 'p.bug_id');
+            ->join(['p' => 'zfbugs_products'], 'p.product_id = zfproduct.id', 'p.bug_id');
         return $select;
     }
 
@@ -165,7 +165,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
     /**
      * Test adding a FOR UPDATE clause to a Zend_Db_Select object.
      */
-    protected function _selectForToString1($tableName = null, $fields = array('*'), $useTable = true)
+    protected function _selectForToString1($tableName = null, $fields = ['*'], $useTable = true)
     {
         $table = $this->_getSelectTable($tableName);
 
@@ -181,7 +181,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
     /**
      * Test adding a FOR UPDATE clause to a Zend_Db_Select object.
      */
-    protected function _selectForToString2($tableName, $fields = array('*'))
+    protected function _selectForToString2($tableName, $fields = ['*'])
     {
         $select = $this->_db->select()
             ->from($tableName, $fields);
@@ -206,8 +206,8 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
         $this->assertEquals($select1->assemble(), $select2->assemble());
 
         // Test for selected fields
-        $select1 = $this->_selectForToString1('products', array('product_id', 'DISTINCT(product_name)'));
-        $select2 = $this->_selectForToString2('zfproducts', array('product_id', 'DISTINCT(product_name)'));
+        $select1 = $this->_selectForToString1('products', ['product_id', 'DISTINCT(product_name)']);
+        $select2 = $this->_selectForToString2('zfproducts', ['product_id', 'DISTINCT(product_name)']);
         $this->assertEquals($select1->assemble(), $select2->assemble());
     }
 
@@ -260,7 +260,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
         $select1 = $table->select();
         $select2 = $table->select();
 
-        $selectUnion = $table->select()->union(array($select1, $select2));
+        $selectUnion = $table->select()->union([$select1, $select2]);
         $selectUnionSql = $selectUnion->assemble();
     }
 

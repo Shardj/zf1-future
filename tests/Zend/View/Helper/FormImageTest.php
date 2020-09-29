@@ -88,7 +88,7 @@ class Zend_View_Helper_FormImageTest extends PHPUnit_Framework_TestCase
 
     public function testDisablingFormImageRendersImageInputWithDisableAttribute()
     {
-        $button = $this->helper->formImage('foo', 'bar', array('disable' => true));
+        $button = $this->helper->formImage('foo', 'bar', ['disable' => true]);
         $this->assertRegexp('/<input[^>]*?disabled="disabled"/', $button);
         $this->assertRegexp('/<input[^>]*?src="bar"/', $button);
         $this->assertRegexp('/<input[^>]*?name="foo"/', $button);
@@ -100,9 +100,9 @@ class Zend_View_Helper_FormImageTest extends PHPUnit_Framework_TestCase
      */
     public function testRendersAsHtmlByDefault()
     {
-        $test = $this->helper->formImage(array(
+        $test = $this->helper->formImage([
             'name' => 'foo',
-        ));
+        ]);
         $this->assertNotContains(' />', $test);
     }
 
@@ -112,9 +112,9 @@ class Zend_View_Helper_FormImageTest extends PHPUnit_Framework_TestCase
     public function testCanRendersAsXHtml()
     {
         $this->view->doctype('XHTML1_STRICT');
-        $test = $this->helper->formImage(array(
+        $test = $this->helper->formImage([
             'name' => 'foo',
-        ));
+        ]);
         $this->assertContains(' />', $test);
     }
 }

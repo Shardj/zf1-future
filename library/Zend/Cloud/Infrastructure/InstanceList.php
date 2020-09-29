@@ -22,7 +22,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
     /**
      * @var array Array of Zend_Cloud_Infrastructure_Instance
      */
-    protected $instances = array();
+    protected $instances = [];
 
     /**
      * @var int Iterator key

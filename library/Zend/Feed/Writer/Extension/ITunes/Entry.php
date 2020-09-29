@@ -32,7 +32,7 @@ class Zend_Feed_Writer_Extension_ITunes_Entry
      *
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Encoding of all text values
@@ -112,7 +112,7 @@ class Zend_Feed_Writer_Extension_ITunes_Entry
             . ' contain a maximum of 255 characters each');
         }
         if (!isset($this->_data['authors'])) {
-            $this->_data['authors'] = array();
+            $this->_data['authors'] = [];
         }
         $this->_data['authors'][] = $value;
         return $this;
@@ -147,7 +147,7 @@ class Zend_Feed_Writer_Extension_ITunes_Entry
      */
     public function setItunesExplicit($value)
     {
-        if (!in_array($value, array('yes','no','clean'))) {
+        if (!in_array($value, ['yes','no','clean'])) {
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('invalid parameter: "explicit" may only'
             . ' be one of "yes", "no" or "clean"');
