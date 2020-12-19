@@ -64,6 +64,22 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
 
 
     /**
+     * Indicates that verification of SSL certificate is required.
+     *
+     * @var bool
+     */
+    protected $_verifyPeer;
+
+
+    /**
+     * Indicates that verification of peer name is required.
+     *
+     * @var bool
+     */
+    protected $_verifyPeerName;
+
+
+    /**
      * Indicates an smtp session has been started by the HELO command
      *
      * @var boolean
@@ -146,6 +162,17 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
             }
         }
 
+        // Self-signed certificates can trigger this error:
+        //   stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+        //   error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed (/path/to/shardj/zf1-future/library/Zend/Mail/Protocol/Smtp.php:<line containing stream_socket_enable_crypto>)
+        // https://stackoverflow.com/questions/32211301/ssl-error-ssl3-get-server-certificatecertificate-verify-failed#32366242
+        if (isset($config['verify_peer'])) {
+            $this->_verifyPeer = in_array(strtolower($config['verify_peer']), ['true', 'yes', '1']);
+        }
+        if (isset($config['verify_peer_name'])) {
+            $this->_verifyPeerName = in_array(strtolower($config['verify_peer_name']), ['true', 'yes', '1']);
+        }
+
         // If no port has been specified then check the master PHP ini file. Defaults to 25 if the ini setting is null.
         if ($port == null) {
             if (($port = ini_get('smtp_port')) == '') {
@@ -164,7 +191,22 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
      */
     public function connect()
     {
-        return $this->_connect($this->_transport . '://' . $this->_host . ':'. $this->_port);
+        $result = $this->_connect($this->_transport . '://' . $this->_host . ':'. $this->_port);
+
+        if ($result) {
+            // Self-signed certificates can trigger this error:
+            //   stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+            //   error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed (/path/to/shardj/zf1-future/library/Zend/Mail/Protocol/Smtp.php:<line containing stream_socket_enable_crypto>)
+            // https://stackoverflow.com/questions/32211301/ssl-error-ssl3-get-server-certificatecertificate-verify-failed#32366242
+            if (is_bool($this->_verifyPeer)) {
+                stream_context_set_option($this->_socket, 'ssl', 'verify_peer', $this->_verifyPeer);
+            }
+            if (is_bool($this->_verifyPeerName)) {
+                stream_context_set_option($this->_socket, 'ssl', 'verify_peer_name', $this->_verifyPeerName);
+            }
+        }
+
+        return $result;
     }
 
 
