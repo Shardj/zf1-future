@@ -28,7 +28,7 @@
 class Zend_Exception extends Exception
 {
     /**
-     * @var null|Exception
+     * @var null|Throwable
      */
     private $_previous = null;
 
@@ -37,7 +37,7 @@ class Zend_Exception extends Exception
      *
      * @param  string $msg
      * @param  int $code
-     * @param  Exception $previous
+     * @param  Throwable $previous
      * @return void
      */
     public function __construct($msg = '', $code = 0, \Throwable $previous = null)
