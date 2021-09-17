@@ -76,7 +76,7 @@ class Zend_Queue_Stomp_FrameTest extends PHPUnit_Framework_TestCase
     public function test_setHeaders()
     {
         $frame = new Zend_Queue_Stomp_Frame();
-        $frame->setHeaders(array('testing' => 1));
+        $frame->setHeaders(['testing' => 1]);
         $this->assertEquals(1, $frame->getHeader('testing'));
     }
 
@@ -85,42 +85,42 @@ class Zend_Queue_Stomp_FrameTest extends PHPUnit_Framework_TestCase
         $frame = new Zend_Queue_Stomp_Frame();
 
         try {
-            $frame->setAutoContentLength(array());
+            $frame->setAutoContentLength([]);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);
         }
 
         try {
-            $frame->setHeader(array(), 1);
+            $frame->setHeader([], 1);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);
         }
 
         try {
-            $frame->setHeader('testing', array());
+            $frame->setHeader('testing', []);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);
         }
 
         try {
-            $frame->getHeader(array());
+            $frame->getHeader([]);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);
         }
 
         try {
-            $frame->setBody(array());
+            $frame->setBody([]);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);
         }
 
         try {
-            $frame->setCommand(array());
+            $frame->setCommand([]);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);
@@ -134,7 +134,7 @@ class Zend_Queue_Stomp_FrameTest extends PHPUnit_Framework_TestCase
         }
 
         try {
-            $frame->fromFrame(array());
+            $frame->fromFrame([]);
             $this->fail('Exception should have been thrown');
         } catch(Exception $e) {
             $this->assertTrue(true);

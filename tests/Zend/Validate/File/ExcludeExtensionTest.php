@@ -60,14 +60,14 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        $valuesExpected = array(
-            array('mo', false),
-            array('gif', true),
-            array(array('mo'), false),
-            array(array('gif'), true),
-            array(array('gif', 'pdf', 'mo', 'pict'), false),
-            array(array('gif', 'gz', 'hint'), true),
-        );
+        $valuesExpected = [
+            ['mo', false],
+            ['gif', true],
+            [['mo'], false],
+            [['gif'], true],
+            [['gif', 'pdf', 'mo', 'pict'], false],
+            [['gif', 'gz', 'hint'], true],
+        ];
 
         foreach ($valuesExpected as $element) {
             $validator = new Zend_Validate_File_ExcludeExtension($element[0]);
@@ -82,52 +82,52 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo'));
         $this->assertTrue(array_key_exists('fileExcludeExtensionNotFound', $validator->getMessages()));
 
-        $files = array(
+        $files = [
             'name'     => 'test1',
             'type'     => 'text',
             'size'     => 200,
             'tmp_name' => 'tmp_test1',
             'error'    => 0
-        );
+        ];
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo', $files));
         $this->assertTrue(array_key_exists('fileExcludeExtensionNotFound', $validator->getMessages()));
 
-        $files = array(
+        $files = [
             'name'     => 'testsize.mo',
             'type'     => 'text',
             'size'     => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/testsize.mo',
             'error'    => 0
-        );
+        ];
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo', $files));
         $this->assertTrue(array_key_exists('fileExcludeExtensionFalse', $validator->getMessages()));
 
-        $files = array(
+        $files = [
             'name'     => 'testsize.mo',
             'type'     => 'text',
             'size'     => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/testsize.mo',
             'error'    => 0
-        );
+        ];
         $validator = new Zend_Validate_File_ExcludeExtension('gif');
         $this->assertEquals(true, $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo', $files));
     }
 
     public function testCaseTesting()
     {
-        $files = array(
+        $files = [
             'name'     => 'testsize.mo',
             'type'     => 'text',
             'size'     => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/testsize.mo',
             'error'    => 0
-        );
-        $validator = new Zend_Validate_File_ExcludeExtension(array('MO', 'case' => true));
+        ];
+        $validator = new Zend_Validate_File_ExcludeExtension(['MO', 'case' => true]);
         $this->assertEquals(true, $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo', $files));
 
-        $validator = new Zend_Validate_File_ExcludeExtension(array('MO', 'case' => false));
+        $validator = new Zend_Validate_File_ExcludeExtension(['MO', 'case' => false]);
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo', $files));
     }
 
@@ -139,10 +139,10 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
     public function testGetExtension()
     {
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
-        $this->assertEquals(array('mo'), $validator->getExtension());
+        $this->assertEquals(['mo'], $validator->getExtension());
 
-        $validator = new Zend_Validate_File_ExcludeExtension(array('mo', 'gif', 'jpg'));
-        $this->assertEquals(array('mo', 'gif', 'jpg'), $validator->getExtension());
+        $validator = new Zend_Validate_File_ExcludeExtension(['mo', 'gif', 'jpg']);
+        $this->assertEquals(['mo', 'gif', 'jpg'], $validator->getExtension());
     }
 
     /**
@@ -154,13 +154,13 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
     {
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $validator->setExtension('gif');
-        $this->assertEquals(array('gif'), $validator->getExtension());
+        $this->assertEquals(['gif'], $validator->getExtension());
 
         $validator->setExtension('jpg, mo');
-        $this->assertEquals(array('jpg', 'mo'), $validator->getExtension());
+        $this->assertEquals(['jpg', 'mo'], $validator->getExtension());
 
-        $validator->setExtension(array('zip', 'ti'));
-        $this->assertEquals(array('zip', 'ti'), $validator->getExtension());
+        $validator->setExtension(['zip', 'ti']);
+        $this->assertEquals(['zip', 'ti'], $validator->getExtension());
     }
 
     /**
@@ -172,16 +172,16 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
     {
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $validator->addExtension('gif');
-        $this->assertEquals(array('mo', 'gif'), $validator->getExtension());
+        $this->assertEquals(['mo', 'gif'], $validator->getExtension());
 
         $validator->addExtension('jpg, to');
-        $this->assertEquals(array('mo', 'gif', 'jpg', 'to'), $validator->getExtension());
+        $this->assertEquals(['mo', 'gif', 'jpg', 'to'], $validator->getExtension());
 
-        $validator->addExtension(array('zip', 'ti'));
-        $this->assertEquals(array('mo', 'gif', 'jpg', 'to', 'zip', 'ti'), $validator->getExtension());
+        $validator->addExtension(['zip', 'ti']);
+        $this->assertEquals(['mo', 'gif', 'jpg', 'to', 'zip', 'ti'], $validator->getExtension());
 
         $validator->addExtension('');
-        $this->assertEquals(array('mo', 'gif', 'jpg', 'to', 'zip', 'ti'), $validator->getExtension());
+        $this->assertEquals(['mo', 'gif', 'jpg', 'to', 'zip', 'ti'], $validator->getExtension());
     }
 }
 

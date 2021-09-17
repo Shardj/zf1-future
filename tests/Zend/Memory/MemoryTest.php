@@ -83,7 +83,7 @@ class Zend_Memory_MemoryTest extends PHPUnit_Framework_TestCase
         unset($memoryManager);
 
         /** 'File' backend */
-        $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+        $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
         $memoryManager = Zend_Memory::factory('File', $backendOptions);
         $this->assertTrue($memoryManager instanceof Zend_Memory_Manager);
         unset($memoryManager);
@@ -108,18 +108,18 @@ class Zend_Memory_MemoryTest extends PHPUnit_Framework_TestCase
      */
     public function providerCacheBackend()
     {
-        return array(
-            array('Apc'),
-            array('File'),
-            array('Libmemcached'),
-            array('Memcached'),
-            array('Sqlite'),
-            array('TwoLevels'),
-            array('Xcache'),
-            array('ZendPlatform'),
-            array('ZendServer_Disk'),
-            array('ZendServer_ShMem')
-        );
+        return [
+            ['Apc'],
+            ['File'],
+            ['Libmemcached'],
+            ['Memcached'],
+            ['Sqlite'],
+            ['TwoLevels'],
+            ['Xcache'],
+            ['ZendPlatform'],
+            ['ZendServer_Disk'],
+            ['ZendServer_ShMem']
+        ];
     }
 }
 

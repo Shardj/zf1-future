@@ -47,15 +47,15 @@ class Zend_Mobile_Push_Response_GcmTest extends PHPUnit_Framework_TestCase
         $this->assertNull($response->getResponse());
 
         $message = new Zend_Mobile_Push_Message_Gcm();
-        $responseArr = json_encode(array(
-            'results' => array(
-                array('message_id' => '1:1234'),
-            ),
+        $responseArr = json_encode([
+            'results' => [
+                ['message_id' => '1:1234'],
+            ],
             'success' => 1,
             'failure' => 0,
             'canonical_ids' => 0,
             'multicast_id' => 1,
-        ));
+        ]);
         $response = new Zend_Mobile_Push_Response_Gcm($responseArr, $message);
         $this->assertEquals(json_decode($responseArr, true), $response->getResponse());
         $this->assertEquals($message, $response->getMessage());
@@ -79,15 +79,15 @@ class Zend_Mobile_Push_Response_GcmTest extends PHPUnit_Framework_TestCase
 
     public function testResponse()
     {
-        $responseArr = array(
-            'results' => array(
-                array('message_id' => '1:234'),
-            ),
+        $responseArr = [
+            'results' => [
+                ['message_id' => '1:234'],
+            ],
             'success' => 1,
             'failure' => 0,
             'canonical_ids' => 0,
             'multicast_id' => '123',
-        );
+        ];
         $response = new Zend_Mobile_Push_Response_Gcm();
         $response->setResponse($responseArr);
         $this->assertEquals($responseArr, $response->getResponse());
@@ -95,15 +95,15 @@ class Zend_Mobile_Push_Response_GcmTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0, $response->getFailureCount());
         $this->assertEquals(0, $response->getCanonicalCount());
         // test results non correlated
-        $expected = array(array('message_id' => '1:234'));
+        $expected = [['message_id' => '1:234']];
         $this->assertEquals($expected, $response->getResults());
-        $expected = array(0 => '1:234');
+        $expected = [0 => '1:234'];
         $this->assertEquals($expected, $response->getResult(Zend_Mobile_Push_Response_Gcm::RESULT_MESSAGE_ID));
 
         $message = new Zend_Mobile_Push_Message_Gcm();
-        $message->setToken(array('ABCDEF'));
+        $message->setToken(['ABCDEF']);
         $response->setMessage($message);
-        $expected = array('ABCDEF' => '1:234');
+        $expected = ['ABCDEF' => '1:234'];
         $this->assertEquals($expected, $response->getResult(Zend_Mobile_Push_Response_Gcm::RESULT_MESSAGE_ID));
     }
 }

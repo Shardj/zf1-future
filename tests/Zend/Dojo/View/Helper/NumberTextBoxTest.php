@@ -100,11 +100,11 @@ class Zend_Dojo_View_Helper_NumberTextBoxTest extends PHPUnit_Framework_TestCase
         return $this->helper->numberTextBox(
             'elementId',
             '2008-07-07',
-            array(
+            [
                 'required'    => true,
                 'constraints' => '{min:-20000,max:20000,places:0}',
-            ),
-            array()
+            ],
+            []
         );
     }
 

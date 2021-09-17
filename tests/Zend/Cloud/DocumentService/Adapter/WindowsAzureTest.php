@@ -87,7 +87,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
 
     static function getConfigArray()
     {
-         return array(
+         return [
             Zend_Cloud_DocumentService_Factory::DOCUMENT_ADAPTER_KEY => 'Zend_Cloud_DocumentService_Adapter_WindowsAzure',
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::ACCOUNT_NAME => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_ACCOUNTNAME'),
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::ACCOUNT_KEY => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_ACCOUNTKEY'),
@@ -95,7 +95,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::PROXY_HOST => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_STORAGE_PROXY_HOST'),
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::PROXY_PORT => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_STORAGE_PROXY_PORT'),
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::PROXY_CREDENTIALS => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_STORAGE_PROXY_CREDENTIALS'),
-        );
+        ];
     }
 
     protected function _getConfig()
@@ -114,39 +114,39 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
 
     protected function _getDocumentData()
     {
-        return array(
-            array(
-	        	parent::ID_FIELD => array("Amazon", "0385333498"),
+        return [
+            [
+	        	parent::ID_FIELD => ["Amazon", "0385333498"],
 	        	"name" =>	"The Sirens of Titan",
 	        	"author" =>	"Kurt Vonnegut",
 	        	"year"	=> 1959,
 	        	"pages" =>	336,
 	        	"keyword" => "Book"
-	        	),
-            array(
-	        	parent::ID_FIELD => array("Amazon", "0802131786"),
+	        	],
+            [
+	        	parent::ID_FIELD => ["Amazon", "0802131786"],
 	        	"name" =>	"Tropic of Cancer",
 	        	"author" =>	"Henry Miller",
 	        	"year"	=> 1934,
 	        	"pages" =>	318,
 	        	"keyword" => "Book"
-	        	),
-            array(
-	        	parent::ID_FIELD => array("Amazon", "B000T9886K"),
+	        	],
+            [
+	        	parent::ID_FIELD => ["Amazon", "B000T9886K"],
 	        	"name" =>	"In Between",
 	        	"author" =>	"Paul Van Dyk",
 	        	"year"	=> 2007,
 	        	"keyword" => "CD"
-	        	),
-	       array(
-	        	parent::ID_FIELD => array("Amazon", "1579124585"),
+	        	],
+	       [
+	        	parent::ID_FIELD => ["Amazon", "1579124585"],
 	        	"name" =>	"The Right Stuff",
 	        	"author" =>	"Tom Wolfe",
 	        	"year"	=> 1979,
 	        	"pages" =>	304,
 	        	"keyword" => "Book"
-	        	),
-        );
+	        	],
+        ];
     }
 
     protected function _queryString($domain, $s1, $s2)

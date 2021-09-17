@@ -47,17 +47,17 @@ class ZendLogWriterFirebugController extends Zend_Controller_Action
         $logger->log('Notice: normal but significant condition', Zend_Log::NOTICE);
         $logger->log('Informational: informational messages',    Zend_Log::INFO);
         $logger->log('Debug: debug messages',                    Zend_Log::DEBUG);
-        $logger->log(array('$_SERVER',$_SERVER),                 Zend_Log::DEBUG);
+        $logger->log(['$_SERVER',$_SERVER],                 Zend_Log::DEBUG);
 
         $logger->trace('Trace to here');
 
-        $table = array('Summary line for the table',
-                       array(
-                           array('Column 1', 'Column 2'),
-                           array('Row 1 c 1',' Row 1 c 2'),
-                           array('Row 2 c 1',' Row 2 c 2')
-                       )
-                      );
+        $table = ['Summary line for the table',
+                       [
+                           ['Column 1', 'Column 2'],
+                           ['Row 1 c 1',' Row 1 c 2'],
+                           ['Row 2 c 1',' Row 2 c 2']
+                       ]
+                      ];
         $logger->table($table);
     }
 
@@ -65,11 +65,11 @@ class ZendLogWriterFirebugController extends Zend_Controller_Action
     {
         $logger = Zend_Registry::get('logger');
 
-        Zend_Wildfire_Plugin_FirePhp::group("Collapsed Group", array('Collapsed' => true));
+        Zend_Wildfire_Plugin_FirePhp::group("Collapsed Group", ['Collapsed' => true]);
             $logger->log('Message in collapsed group', Zend_Log::DEBUG);
         Zend_Wildfire_Plugin_FirePhp::groupEnd();
 
-        Zend_Wildfire_Plugin_FirePhp::group("Expanded Group", array('Collapsed' => false));
+        Zend_Wildfire_Plugin_FirePhp::group("Expanded Group", ['Collapsed' => false]);
             $logger->log('Message in expanded group', Zend_Log::DEBUG);
         Zend_Wildfire_Plugin_FirePhp::groupEnd();
     }
@@ -82,7 +82,7 @@ class ZendLogWriterFirebugController extends Zend_Controller_Action
 
     public function testlargemessageAction()
     {
-        $message = array();
+        $message = [];
 
         for ( $i=0 ; $i<300 ; $i++ ) {
             $message[] = 'This is message #' . $i;

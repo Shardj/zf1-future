@@ -65,11 +65,11 @@ class Zend_Application_Bootstrap_Bootstrap
 
         if ($application->hasOption('resourceloader')) {
             $this->setOptions(
-                array(
+                [
                     'resourceloader' => $application->getOption(
                         'resourceloader'
                     )
-                )
+                ]
             );
         }
         $this->getResourceLoader();
@@ -134,10 +134,10 @@ class Zend_Application_Bootstrap_Bootstrap
             $path = $r->getFileName();
             $this->setResourceLoader(
                 new Zend_Application_Module_Autoloader(
-                    array(
+                    [
                         'namespace' => $namespace,
                         'basePath'  => dirname($path),
-                    )
+                    ]
                 )
             );
         }

@@ -49,7 +49,7 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
     public function testGetHttpClientResetsParameters()
     {
         $client = new Test_Http_Client_19485876();
-        $client->setParameterGet(array('key'=>'value'));
+        $client->setParameterGet(['key'=>'value']);
         Zend_Oauth::setHttpClient($client);
         $resetClient = Zend_Oauth::getHttpClient();
         $resetClient->setUri('http://www.example.com');
@@ -93,55 +93,55 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
 
     public function providerOauthClientOauthOptions()
     {
-        $options = array(
+        $options = [
             'requestMethod' => 'GET',
             'siteUrl'       => 'http://www.example.com'
-        );
+        ];
 
         require_once 'Zend/Config.php';
-        return array(
-            array($options),
-            array(new Zend_Config($options))
-        );
+        return [
+            [$options],
+            [new Zend_Config($options)]
+        ];
     }
 
     public function providerOauthClientConfigHttpClient()
     {
-        return array(
-            array(
-                array('adapter' => 'Zend_Http_Client_Adapter_Test'),
-                array('rfc' => true,
+        return [
+            [
+                ['adapter' => 'Zend_Http_Client_Adapter_Test'],
+                ['rfc' => true,
                       'timeout' => 10,
                       'useragent' => 'Zend_Http_Client'
-                )
-            ),
-            array(
-                new Zend_Config(array('adapter' => 'Zend_Http_Client_Adapter_Test')),
-                array('rfc' => true,
+                ]
+            ],
+            [
+                new Zend_Config(['adapter' => 'Zend_Http_Client_Adapter_Test']),
+                ['rfc' => true,
                       'timeout' => 10,
                       'useragent' => 'Zend_Http_Client'
-                )
-            ),
-            array(
-                new Zend_Config(array(
+                ]
+            ],
+            [
+                new Zend_Config([
                    'adapter' => 'Zend_Http_Client_Adapter_Test',
                    'rfc3986_strict' => false,
                    'timeout'        => 100,
                    'useragent' => 'Zend_Http_ClientCustom'
-                )),
-                array('rfc' => false,
+                ]),
+                ['rfc' => false,
                       'timeout' => 100,
                       'useragent' => 'Zend_Http_ClientCustom'
-                )
-            ),
-            array(
+                ]
+            ],
+            [
                 null,
-                array('rfc'       => true,
+                ['rfc'       => true,
                       'timeout'   => 10,
                       'useragent' => 'Zend_Http_Client'
-                )
-            ),
-        );
+                ]
+            ],
+        ];
     }
 
     /**
@@ -149,9 +149,9 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
      */
     public function testOauthClientAcceptsRealmConfigurationOption()
     {
-        $options = array(
+        $options = [
             'realm'			=> 'http://www.example.com'
-        );
+        ];
 
         require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client($options);
@@ -165,11 +165,11 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
     {
         require_once "Zend/Oauth/Token/Access.php";
 
-        $options = array(
+        $options = [
             'requestMethod' => 'GET',
             'siteUrl'       => 'http://www.example.com',
             'realm'			=> 'someRealm'
-        );
+        ];
         $token = new Zend_Oauth_Token_Access();
 
         require_once 'Zend/Oauth/Client.php';
@@ -192,11 +192,11 @@ class Zend_OauthTest extends PHPUnit_Framework_TestCase
         require_once "Zend/Oauth/Token/Access.php";
         $token = new Zend_Oauth_Token_Access();
         
-        $options = array(
+        $options = [
             'requestMethod' => 'GET',
             'requestScheme' => Zend_Oauth::REQUEST_SCHEME_QUERYSTRING,
             'realm'			=> 'someRealm'
-        );
+        ];
         
         require_once 'Zend/Oauth/Client.php';
         $client = new Zend_Oauth_Client($options);

@@ -20,11 +20,11 @@
  * @version    $Id: translation-en_US.php 17573 2009-08-13 18:01:41Z alexander $
  */
 
-return array(
+return [
     'Message 1' => 'Message 1 (ja)',
     'Message 2' => 'Message 2 (ja)',
     'Message 3' => 'Message 3 (ja)',
     'Message 4' => 'Message 4 (ja)',
     'Cooking furniture' => 'Küchen Möbel (ja)',
     'Küchen Möbel' => 'Cooking furniture (ja)'
-);
+];

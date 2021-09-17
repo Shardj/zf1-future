@@ -26,10 +26,10 @@ $mailMerge->setDocumentPassword('aaaaaaaaaa');
 
 // Available on premium service only
 $mailMerge->setDocumentAccessPermissions(
-    array(
+    [
         'AllowHighLevelPrinting' ,  // getDocumentAccessOptions() returns
         'AllowExtractContents'      // array of permitted values
-    ),   
+    ],   
     'myDocumentAccessPassword'
 );
 

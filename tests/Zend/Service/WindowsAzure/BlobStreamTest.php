@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Test helpers
  */
 require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_Storage_Blob */
 require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
@@ -290,7 +290,7 @@ class Zend_Service_WindowsAzure_BlobStreamTest extends PHPUnit_Framework_TestCas
   
             $storageClient->registerStreamWrapper();
             
-            $result2 = array();
+            $result2 = [];
             if ($handle = opendir('azure://' . $containerName)) {
                 while (false !== ($file = readdir($handle))) {
                     $result2[] = $file;

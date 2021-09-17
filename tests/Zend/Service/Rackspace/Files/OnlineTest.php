@@ -85,14 +85,14 @@ class Zend_Service_Rackspace_Files_OnlineTest extends PHPUnit_Framework_TestCase
         $this->rackspace->getHttpClient()
                         ->setAdapter(self::$httpClientAdapterSocket);
         
-        $this->metadata =  array (
+        $this->metadata =  [
             'foo'  => 'bar',
             'foo2' => 'bar2'
-        );
+        ];
         
-        $this->metadata2 = array (
+        $this->metadata2 = [
             'hello' => 'world'
-        );
+        ];
         
         // terms of use compliance: safe delay between each test
         sleep(2);

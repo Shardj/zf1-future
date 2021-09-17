@@ -116,7 +116,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
      */
     public function testGetAndSetMethods()
     {
-        $attribs = array('class' => 'gravatar', 'title' => 'avatar', 'id' => 'gravatar-1');
+        $attribs = ['class' => 'gravatar', 'title' => 'avatar', 'id' => 'gravatar-1'];
         $this->_object->setDefaultImg('monsterid')
              ->setImgSize(150)
              ->setSecure(true)
@@ -135,11 +135,11 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     {
         $this->_object->gravatar("example@example.com");
 
-        $img = array(
+        $img = [
             "wavatar",
             "http://www.example.com/images/avatar/example.png",
             Zend_View_Helper_Gravatar::DEFAULT_MONSTERID,
-        );
+        ];
 
         foreach ($img as $value) {
             $this->_object->setDefaultImg($value);
@@ -149,7 +149,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
 
     public function testSetImgSize()
     {
-        $imgSizesRight = array(1, 500, "600");
+        $imgSizesRight = [1, 500, "600"];
         foreach ($imgSizesRight as $value) {
             $this->_object->setImgSize($value);
             $this->assertTrue(is_int($this->_object->getImgSize()));
@@ -158,7 +158,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
 
     public function testInvalidRatingParametr()
     {
-        $ratingsWrong = array( 'a', 'cs', 456);
+        $ratingsWrong = [ 'a', 'cs', 456];
         $this->setExpectedException('Zend_View_Exception');
         foreach ($ratingsWrong as $value) {
             $this->_object->setRating($value);
@@ -167,7 +167,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
 
     public function testSetRating()
     {
-        $ratingsRight = array( 'g', 'pg', 'r', 'x', Zend_View_Helper_Gravatar::RATING_R);
+        $ratingsRight = [ 'g', 'pg', 'r', 'x', Zend_View_Helper_Gravatar::RATING_R];
         foreach ($ratingsRight as $value) {
             $this->_object->setRating($value);
             $this->assertEquals($value, $this->_object->getRating());
@@ -176,7 +176,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
 
     public function testSetSecure()
     {
-        $values = array("true", "false", "text", $this->_view, 100, true, "", null, 0, false);
+        $values = ["true", "false", "text", $this->_view, 100, true, "", null, 0, false];
         foreach ($values as $value) {
             $this->_object->setSecure($value);
             $this->assertTrue(is_bool($this->_object->getSecure()));
@@ -189,7 +189,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     public function testHttpsSource()
     {
         $this->assertRegExp('/src="https:\/\/secure.gravatar.com\/avatar\/[a-z0-9]{32}.+"/',
-                $this->_object->gravatar("example@example.com", array('secure' => true))->__toString());
+                $this->_object->gravatar("example@example.com", ['secure' => true])->__toString());
     }
 
     /**
@@ -198,8 +198,8 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     public function testImgAttribs()
     {
         $this->assertRegExp('/class="gravatar" title="Gravatar"/',
-                $this->_object->gravatar("example@example.com", array(),
-                        array('class' => 'gravatar', 'title' => 'Gravatar'))
+                $this->_object->gravatar("example@example.com", [],
+                        ['class' => 'gravatar', 'title' => 'Gravatar'])
                      ->__toString()
         );
     }
@@ -211,8 +211,8 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     {
         $this->assertRegExp('/src="http:\/\/www.gravatar.com\/avatar\/[a-z0-9]{32}\?s=125&amp;d=wavatar&amp;r=pg"/',
                 $this->_object->gravatar("example@example.com",
-                        array('rating' => 'pg', 'imgSize' => 125, 'defaultImg' => 'wavatar',
-                            'secure' => false))
+                        ['rating' => 'pg', 'imgSize' => 125, 'defaultImg' => 'wavatar',
+                            'secure' => false])
                      ->__toString()
         );
     }
@@ -223,7 +223,7 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
      */
     public function testAutoDetectLocation()
     {
-        $values = array("on", "", 1, true);
+        $values = ["on", "", 1, true];
 
         foreach ($values as $value) {
             $_SERVER['HTTPS'] = $value;
@@ -247,11 +247,11 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
     {
         $email = 'example@example.com';
         $this->_object->setEmail($email);
-        $this->_object->setAttribs(array(
+        $this->_object->setAttribs([
             'class' => 'gravatar',
             'src'   => 'http://example.com',
             'id'    => 'gravatarID',
-        ));
+        ]);
 
         $this->assertRegExp('/src="http:\/\/www.gravatar.com\/avatar\/[a-z0-9]{32}.+"/',
                             $this->_object->getImgTag());
@@ -278,9 +278,9 @@ class Zend_View_Helper_GravatarTest extends PHPUnit_Framework_TestCase
 
     public function testInvalidKeyPassedToSetOptionsMethod()
     {
-        $options = array(
-            'unknown' => array('val' => 1)
-        );
+        $options = [
+            'unknown' => ['val' => 1]
+        ];
         $this->_object->gravatar()->setOptions($options);
     }
 }

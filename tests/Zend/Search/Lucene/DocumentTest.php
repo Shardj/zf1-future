@@ -92,7 +92,7 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $document->addField(Zend_Search_Lucene_Field::Text('annotation', 'Annotation'));
         $document->addField(Zend_Search_Lucene_Field::Text('body',       'Document body, document body, document body...'));
 
-        $fieldnamesDiffArray = array_diff($document->getFieldNames(), array('title', 'annotation', 'body'));
+        $fieldnamesDiffArray = array_diff($document->getFieldNames(), ['title', 'annotation', 'body']);
         $this->assertTrue(is_array($fieldnamesDiffArray));
         $this->assertEquals(count($fieldnamesDiffArray), 0);
 
@@ -146,10 +146,10 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
         $doc->highlightExtended('document',
-                                array('Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
-                                      'extendedHighlightingCallback'),
-                                array('style="color:black;background-color:#ff66ff"',
-                                      '(!!!)'));
+                                ['Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
+                                      'extendedHighlightingCallback'],
+                                ['style="color:black;background-color:#ff66ff"',
+                                      '(!!!)']);
         $this->assertTrue(strpos($doc->getHTML(), '<b style="color:black;background-color:#ff66ff">Document</b>(!!!) body.') !== false);
     }
 
@@ -158,7 +158,7 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $doc = Zend_Search_Lucene_Document_Html::loadHTML('<HTML><HEAD><TITLE>Page title</TITLE></HEAD><BODY>Document body.</BODY></HTML>');
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
-        $doc->highlight(array('document', 'body'), '#66ffff');
+        $doc->highlight(['document', 'body'], '#66ffff');
         $highlightedHTML = $doc->getHTML();
         $this->assertTrue(strpos($highlightedHTML, '<b style="color:black;background-color:#66ffff">Document</b>') !== false);
         $this->assertTrue(strpos($highlightedHTML, '<b style="color:black;background-color:#66ffff">body</b>')     !== false);
@@ -170,10 +170,10 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
         $doc->highlightExtended('document',
-                                array('Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
-                                      'extendedHighlightingCallback'),
-                                array('style="color:black;background-color:#ff66ff"',
-                                      '<h3>(!!!)' /* Wrong HTML here, <h3> tag is not closed */));
+                                ['Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
+                                      'extendedHighlightingCallback'],
+                                ['style="color:black;background-color:#ff66ff"',
+                                      '<h3>(!!!)' /* Wrong HTML here, <h3> tag is not closed */]);
         $this->assertTrue(strpos($doc->getHTML(), '<b style="color:black;background-color:#ff66ff">Document</b><h3>(!!!)</h3> body.') !== false);
     }
 
@@ -183,14 +183,14 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
         $this->assertTrue(array_values($doc->getHeaderLinks()) ==
-                          array('index.html', 'contributing.html', 'contributing.bugs.html', 'contributing.wishlist.html'));
+                          ['index.html', 'contributing.html', 'contributing.bugs.html', 'contributing.wishlist.html']);
         $this->assertTrue(array_values($doc->getLinks()) ==
-                          array('contributing.bugs.html',
+                          ['contributing.bugs.html',
                                 'contributing.wishlist.html',
                                 'developers.documentation.html',
                                 'faq.translators-revision-tracking.html',
                                 'index.html',
-                                'contributing.html'));
+                                'contributing.html']);
     }
 
 
@@ -243,7 +243,7 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         Zend_Search_Lucene_Document_Html::setExcludeNoFollowLinks(false);
         $doc1 = Zend_Search_Lucene_Document_Html::loadHTML($html);
         $this->assertTrue($doc1 instanceof Zend_Search_Lucene_Document_Html);
-        $links = array('link1.html', 'link2.html', 'link3.html', 'link4.html');
+        $links = ['link1.html', 'link2.html', 'link3.html', 'link4.html'];
         $this->assertTrue(array_values($doc1->getLinks()) == $links);
     }
 
@@ -263,12 +263,12 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         Zend_Search_Lucene_Document_Html::setExcludeNoFollowLinks(false);
         $doc1 = Zend_Search_Lucene_Document_Html::loadHTML($html);
         $this->assertTrue($doc1 instanceof Zend_Search_Lucene_Document_Html);
-        $this->assertTrue(array_values($doc1->getLinks()) == array('link1.html', 'link2.html'));
+        $this->assertTrue(array_values($doc1->getLinks()) == ['link1.html', 'link2.html']);
 
         Zend_Search_Lucene_Document_Html::setExcludeNoFollowLinks(true);
         $doc2 = Zend_Search_Lucene_Document_Html::loadHTML($html);
         $this->assertTrue($doc2 instanceof Zend_Search_Lucene_Document_Html);
-        $this->assertTrue(array_values($doc2->getLinks()) == array('link1.html'));
+        $this->assertTrue(array_values($doc2->getLinks()) == ['link1.html']);
     }
 
     public function testDocx()

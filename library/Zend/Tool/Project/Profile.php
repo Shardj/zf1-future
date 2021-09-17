@@ -206,13 +206,13 @@ class Zend_Tool_Project_Profile extends Zend_Tool_Project_Profile_Resource_Conta
     /**
      * storeToData() - create a string representation of the profile in memory
      *
-     * @return string
+     * @return string XML
      */
     public function storeToData()
     {
         $parser = new Zend_Tool_Project_Profile_FileParser_Xml();
-        $xml = $parser->serialize($this);
-        return $xml;
+
+        return $parser->serialize($this);
     }
 
     /**

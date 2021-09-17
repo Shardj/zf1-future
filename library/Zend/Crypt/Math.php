@@ -122,15 +122,20 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
                 'The min parameter must be lower than max parameter'
             );
         }
+
         $range = $max - $min;
-        if ($range == 0) {
+
+        if ($range === 0) {
             return $max;
-        } elseif ($range > PHP_INT_MAX || is_float($range)) {
+        }
+
+        if ($range > PHP_INT_MAX || is_float($range)) {
             require_once 'Zend/Crypt/Exception.php';
             throw new Zend_Crypt_Exception(
                 'The supplied range is too great to generate'
             );
         }
+
         if (function_exists('random_int')) { // available in PHP 7
             return random_int($min, $max);
         }

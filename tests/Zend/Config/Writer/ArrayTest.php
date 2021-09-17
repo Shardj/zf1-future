@@ -54,7 +54,7 @@ class Zend_Config_Writer_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testNoFilenameSet()
     {
-        $writer = new Zend_Config_Writer_Array(array('config' => new Zend_Config(array())));
+        $writer = new Zend_Config_Writer_Array(['config' => new Zend_Config([])]);
 
         try {
             $writer->write();
@@ -66,7 +66,7 @@ class Zend_Config_Writer_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testNoConfigSet()
     {
-        $writer = new Zend_Config_Writer_Array(array('filename' => $this->_tempName));
+        $writer = new Zend_Config_Writer_Array(['filename' => $this->_tempName]);
 
         try {
             $writer->write();
@@ -78,7 +78,7 @@ class Zend_Config_Writer_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testFileNotWritable()
     {
-        $writer = new Zend_Config_Writer_Array(array('config' => new Zend_Config(array()), 'filename' => '/../../../'));
+        $writer = new Zend_Config_Writer_Array(['config' => new Zend_Config([]), 'filename' => '/../../../']);
 
         try {
             $writer->write();
@@ -90,9 +90,9 @@ class Zend_Config_Writer_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testWriteAndRead()
     {
-        $config = new Zend_Config(array('test' => 'foo'));
+        $config = new Zend_Config(['test' => 'foo']);
 
-        $writer = new Zend_Config_Writer_Array(array('config' => $config, 'filename' => $this->_tempName));
+        $writer = new Zend_Config_Writer_Array(['config' => $config, 'filename' => $this->_tempName]);
         $writer->write();
 
         $config = new Zend_Config(include $this->_tempName);
@@ -102,7 +102,7 @@ class Zend_Config_Writer_ArrayTest extends PHPUnit_Framework_TestCase
 
     public function testArgumentOverride()
     {
-        $config = new Zend_Config(array('test' => 'foo'));
+        $config = new Zend_Config(['test' => 'foo']);
 
         $writer = new Zend_Config_Writer_Array();
         $writer->write($this->_tempName, $config);
@@ -117,7 +117,7 @@ class Zend_Config_Writer_ArrayTest extends PHPUnit_Framework_TestCase
      */
     public function testRender()
     {
-        $config = new Zend_Config(array('test' => 'foo', 'bar' => array(0 => 'baz', 1 => 'foo')));
+        $config = new Zend_Config(['test' => 'foo', 'bar' => [0 => 'baz', 1 => 'foo']]);
 
         $writer = new Zend_Config_Writer_Array();
         $configString = $writer->setConfig($config)->render();

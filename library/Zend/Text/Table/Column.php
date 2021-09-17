@@ -72,7 +72,7 @@ class Zend_Text_Table_Column
      *
      * @var array
      */
-    protected $_allowedAligns = array(self::ALIGN_LEFT, self::ALIGN_CENTER, self::ALIGN_RIGHT);
+    protected $_allowedAligns = [self::ALIGN_LEFT, self::ALIGN_CENTER, self::ALIGN_RIGHT];
 
     /**
      * Create a column for a Zend_Text_Table_Row object.
@@ -165,7 +165,7 @@ class Zend_Text_Table_Column
      */
     public function setColSpan($colSpan)
     {
-        if (is_int($colSpan) === false or $colSpan < 1) {
+        if (is_int($colSpan) === false || $colSpan < 1) {
             require_once 'Zend/Text/Table/Exception.php';
             throw new Zend_Text_Table_Exception('$colSpan must be an integer and greater than 0');
         }
@@ -196,7 +196,7 @@ class Zend_Text_Table_Column
      */
     public function render($columnWidth, $padding = 0)
     {
-        if (is_int($columnWidth) === false or $columnWidth < 1) {
+        if (is_int($columnWidth) === false || $columnWidth < 1) {
             require_once 'Zend/Text/Table/Exception.php';
             throw new Zend_Text_Table_Exception('$columnWidth must be an integer and greater than 0');
         }
@@ -228,7 +228,7 @@ class Zend_Text_Table_Column
 
         $outputCharset = Zend_Text_Table::getOutputCharset();
         $lines         = explode("\n", Zend_Text_MultiByte::wordWrap($this->_content, $columnWidth, "\n", true, $outputCharset));
-        $paddedLines   = array();
+        $paddedLines   = [];
 
         foreach ($lines AS $line) {
             $paddedLines[] = str_repeat(' ', $padding)
@@ -236,8 +236,6 @@ class Zend_Text_Table_Column
                            . str_repeat(' ', $padding);
         }
 
-        $result = implode("\n", $paddedLines);
-
-        return $result;
+        return implode("\n", $paddedLines);
     }
 }

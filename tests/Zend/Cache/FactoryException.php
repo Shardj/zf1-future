@@ -47,12 +47,12 @@ class Zend_Cache_FactoryException extends PHPUnit_Extensions_ExceptionTestCase
 
     public function testFrontendBadParam()
     {
-        Zend_Cache::factory('badFrontend', 'File', array('badParam'=>true));
+        Zend_Cache::factory('badFrontend', 'File', ['badParam'=>true]);
     }
 
     public function testBackendBadParam()
     {
-        Zend_Cache::factory('Output', 'badBackend', array(), array('badParam'=>true));
+        Zend_Cache::factory('Output', 'badBackend', [], ['badParam'=>true]);
     }
 
     public function testThrowMethod()

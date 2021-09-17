@@ -63,10 +63,10 @@ class Zend_Validate_Sitemap_ChangefreqTest extends PHPUnit_Framework_TestCase
      */
     public function testValidChangefreqs()
     {
-        $values = array(
+        $values = [
             'always',  'hourly', 'daily', 'weekly',
             'monthly', 'yearly', 'never'
-        );
+        ];
 
         foreach ($values as $value) {
             $this->assertSame(true, $this->_validator->isValid($value));
@@ -79,11 +79,11 @@ class Zend_Validate_Sitemap_ChangefreqTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidStrings()
     {
-        $values = array(
+        $values = [
             'alwayz',  '_hourly', 'Daily', 'wEekly',
             'mönthly ', ' yearly ', 'never ', 'rofl',
             'yesterday',
-        );
+        ];
 
         foreach ($values as $value) {
             $this->assertSame(false, $this->_validator->isValid($value));
@@ -98,9 +98,9 @@ class Zend_Validate_Sitemap_ChangefreqTest extends PHPUnit_Framework_TestCase
      */
     public function testNotString()
     {
-        $values = array(
+        $values = [
             1, 1.4, null, new stdClass(), true, false
-        );
+        ];
 
         foreach ($values as $value) {
             $this->assertSame(false, $this->_validator->isValid($value));

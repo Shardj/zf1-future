@@ -53,11 +53,11 @@ $zfCoreTests   = "$zfRoot/tests";
  * loading other copies of the framework code and tests that would supersede
  * this copy.
  */
-$path = array(
+$path = [
     $zfCoreLibrary,
     $zfCoreTests,
     get_include_path()
-    );
+    ];
 set_include_path(implode(PATH_SEPARATOR, $path));
 
 /*
@@ -67,7 +67,7 @@ set_include_path(implode(PATH_SEPARATOR, $path));
 if (is_readable($zfCoreTests . DIRECTORY_SEPARATOR . 'TestConfiguration.php')) {
     require_once $zfCoreTests . DIRECTORY_SEPARATOR . 'TestConfiguration.php';
 } else {
-    require_once $zfCoreTests . DIRECTORY_SEPARATOR . 'TestConfiguration.php.dist';
+    require_once $zfCoreTests . DIRECTORY_SEPARATOR . 'TestConfiguration.dist.php';
 }
 
 /**

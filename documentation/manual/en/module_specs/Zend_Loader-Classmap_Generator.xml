@@ -14,7 +14,7 @@
 
         <para>
             Internally, it consumes both <link linkend="zend.console.getopt">Zend_Console_Getopt</link> (for parsing command-line
-            options) and <link linkend="zend.file.class-file-locater">Zend_File_ClassFileLocater</link> for
+            options) and <!-- This link ID does not exist in the docs, which fails the linter link linkend="zend.file.class-file-locator"-->Zend_File_ClassFileLocator<!--/link--> for
             recursively finding all PHP class files in a given tree.
         </para>
     </sect2>

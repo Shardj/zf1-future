@@ -42,7 +42,7 @@ implements ArrayAccess
      *
      * @param array $config ('queue', 'messageClass', 'data'=>array());
      */
-    public function __construct(array $config=array())
+    public function __construct(array $config=[])
     {
         if (isset($config['queue'])) {
             $this->_queue = $config['queue'];
@@ -72,7 +72,7 @@ implements ArrayAccess
             // for each of the messages
             foreach($config['data'] as $i => $data) {
                 // construct the message parameters
-                $message = array('data' => $data);
+                $message = ['data' => $data];
 
                 // If queue has not been set, then use the default.
                 if (empty($message['queue'])) {

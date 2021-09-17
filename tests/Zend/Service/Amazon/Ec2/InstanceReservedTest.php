@@ -55,9 +55,9 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
         $this->Zend_Service_Amazon_Ec2_Instance_Reserved = new Zend_Service_Amazon_Ec2_Instance_Reserved('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Instance_Reserved::setHttpClient($client);
 
@@ -106,8 +106,8 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Reserved->describeInstances('4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8');
 
-        $arrReturn = array(
-            array(
+        $arrReturn = [
+            [
             "reservedInstancesId" => "4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8",
             "instanceType" => "m1.small",
             "availabilityZone" => "us-east-1a",
@@ -117,8 +117,8 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
             "productDescription" => "m1.small offering in us-east-1a",
             "instanceCount" => "19",
             "state" => "Active"
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrReturn, $return);
 
@@ -155,8 +155,8 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Reserved->describeOfferings();
 
-        $arrReturn = array(
-            array(
+        $arrReturn = [
+            [
             "reservedInstancesOfferingId" => "4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8",
             "instanceType" => "m1.small",
             "availabilityZone" => "us-east-1a",
@@ -164,8 +164,8 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
             "fixedPrice" => "0.00",
             "usagePrice" => "0.00",
             "productDescription" => "m1.small offering in us-east-1a",
-            )
-        );
+            ]
+        ];
 
         $this->assertSame($arrReturn, $return);
 

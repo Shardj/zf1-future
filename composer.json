@@ -1,6 +1,6 @@
 {
     "name": "shardj/zf1-future",
-    "description": "Zend Framework 1 PHP 5.4+ compatible. The aim is to keep ZF1 working with the latest PHP versions",
+    "description": "Zend Framework 1. The aim is to keep ZF1 working with the latest PHP versions",
     "type": "library",
     "keywords": [
         "framework",
@@ -9,7 +9,7 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=5.4"
+        "php": ">=7.0"
     },
     "autoload": {
         "psr-0": {
@@ -28,13 +28,18 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*",
-        "phpunit/dbunit": "1.3.*"
+        "php-parallel-lint/php-parallel-lint": "1.0.0",
+        "phpunit/dbunit": "1.3.*",
+        "zf1s/phpunit": "3.7.39"
     },
     "archive": {
         "exclude": ["/demos", "/documentation", "/tests"]
     },
     "replace": {
-        "zendframework/zendframework1": "self.version"
+        "zendframework/zendframework1": ">=1.12.20"
+    },
+    "scripts": {
+        "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
+        "test": "phpunit"
     }
 }

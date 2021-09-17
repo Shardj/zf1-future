@@ -48,7 +48,7 @@ class Zend_Ldap_Collection implements Iterator, Countable
      *
      * @var array
      */
-    protected $_cache = array();
+    protected $_cache = [];
 
     /**
      * Constructor.
@@ -82,7 +82,7 @@ class Zend_Ldap_Collection implements Iterator, Countable
      */
     public function toArray()
     {
-        $data = array();
+        $data = [];
         foreach ($this as $item) {
             $data[] = $item;
         }
@@ -92,7 +92,7 @@ class Zend_Ldap_Collection implements Iterator, Countable
     /**
      * Get first entry
      *
-     * @return array
+     * @return array|null
      */
     public function getFirst()
     {

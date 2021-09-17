@@ -71,8 +71,8 @@ class Zend_Gdata_Calendar_TimezoneTest extends PHPUnit_Framework_TestCase
         $newTimezone = new Zend_Gdata_Calendar_Extension_Timezone();
         $newTimezone->transferFromXML($this->timezone->saveXML());
         $this->assertEquals(count($newTimezone->extensionElements), 0);
-        $newTimezone->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newTimezone->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newTimezone->extensionElements), 1);
         $this->assertEquals($newTimezone->value, "America/Chicago");
 
@@ -104,8 +104,8 @@ class Zend_Gdata_Calendar_TimezoneTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->timezone->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->timezone->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->timezone->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->timezone->extensionAttributes['foo2']['value']);

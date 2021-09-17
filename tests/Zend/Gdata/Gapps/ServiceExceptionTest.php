@@ -112,6 +112,20 @@ class Zend_Gdata_Gapps_ServiceExceptionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Bar", $incoming[9925]->reason);
     }
 
+    public function testImportFromStringException()
+    {
+        try {
+            $this->fixture->importFromString('foo');
+        } catch (Zend_Gdata_App_Exception $e) {
+            self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
+            self::assertContains('cannot parse', $e->getMessage());
+
+            return;
+        }
+
+        self::fail('Illegal string should\'ve cause an expcetion');
+    }
+
     public function testCanConvertToString() {
         $this->fixture->setErrors($this->data);
         $this->assertEquals("The server encountered the following errors processing the request:

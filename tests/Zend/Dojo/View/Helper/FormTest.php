@@ -97,7 +97,7 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
 
     public function getForm()
     {
-        return $this->helper->form('myForm', array('action' => '/foo'), '');
+        return $this->helper->form('myForm', ['action' => '/foo'], '');
     }
 
     public function testShouldAllowDeclarativeDijitCreation()
@@ -124,7 +124,7 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
 
     public function testShouldNotRenderIdAsHtmlIdWhenIdPassedAsAttrib()
     {
-        $html = $this->helper->form('foo', array('id' => 'bar'));
+        $html = $this->helper->form('foo', ['id' => 'bar']);
         $this->assertRegexp('/<form[^>]*(id="bar")/', $html);
     }
     

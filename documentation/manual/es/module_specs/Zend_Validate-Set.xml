@@ -33,7 +33,11 @@
             en blanco como caracter válido. </para>
     </sect2>
 
-    <xi:include href="Zend_Validate-Barcode.xml"/>
+    <xi:include href="Zend_Validate-Barcode.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Barcode.xml"/>
+        </xi:fallback>
+    </xi:include>
 
     <sect2 id="zend.validate.set.between">
         <title>Between</title>
@@ -46,8 +50,16 @@
             mayor al mínimo y estrictamente menor al máximo. </para>
     </sect2>
 
-    <xi:include href="Zend_Validate-Callback.xml"/>
-    <xi:include href="Zend_Validate-CreditCard.xml"/>
+    <xi:include href="Zend_Validate-Callback.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Callback.xml"/>
+        </xi:fallback>
+    </xi:include>
+    <xi:include href="Zend_Validate-CreditCard.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-CreditCard.xml"/>
+        </xi:fallback>
+    </xi:include>
 
     <sect2 id="zend.validate.set.ccnum">
         <title>Ccnum</title>
@@ -78,7 +90,9 @@
     </sect2>
 
     <xi:include href="Zend_Validate-Db.xml">
-        <xi:fallback href="../../en/module_specs/Zend_Validate-Db.xml"/>
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Db.xml"/>
+        </xi:fallback>
     </xi:include>
     <sect2 id="zend.validate.set.digits">
         <title>Digits</title>
@@ -87,8 +101,9 @@
     </sect2>
 
     <xi:include href="Zend_Validate-EmailAddress.xml">
-        <xi:fallback href="../../en/module_specs/Zend_Validate-EmailAddress.xml"
-        />
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-EmailAddress.xml"/>
+        </xi:fallback>
     </xi:include>
     <sect2 id="zend.validate.set.float">
         <title>Float</title>
@@ -113,7 +128,11 @@
             y A-F). </para>
     </sect2>
 
-    <xi:include href="Zend_Validate-Hostname.xml"/>
+    <xi:include href="Zend_Validate-Hostname.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Hostname.xml"/>
+        </xi:fallback>
+    </xi:include>
 
     <sect2 id="zend.validate.set.iban">
         <title>Iban</title>
@@ -166,8 +185,11 @@ if ($validator->isValid($iban)) {
                 <varname>$valor</varname> . </para>
     </sect2>
 
-    <xi:include href="Zend_Validate-Identical.xml"/>
-    <xi:include href="Zend_Validate-InArray.xml"/>
+    <xi:include href="Zend_Validate-Identical.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Identical.xml"/>
+        </xi:fallback>
+    </xi:include>
 
     <sect2 id="zend.validate.set.int">
         <title>Int</title>
@@ -179,8 +201,16 @@ if ($validator->isValid($iban)) {
             give it while creating a instance of this validator. </para>
     </sect2>
 
-    <xi:include href="Zend_Validate-Ip.xml"/>
-     <xi:include href="Zend_Validate-Isbn.xml" />
+    <xi:include href="Zend_Validate-Ip.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Ip.xml"/>
+        </xi:fallback>
+    </xi:include>
+    <xi:include href="Zend_Validate-Isbn.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-Isbn.xml"/>
+        </xi:fallback>
+    </xi:include>
 
     <sect2 id="zend.validate.set.less_than">
         <title>LessThan</title>
@@ -188,9 +218,17 @@ if ($validator->isValid($iban)) {
                 <varname>$valor</varname> es menor al límite máximo. </para>
     </sect2>
 
-    <xi:include href="Zend_Validate-NotEmpty.xml"/>
+    <xi:include href="Zend_Validate-NotEmpty.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-NotEmpty.xml"/>
+        </xi:fallback>
+    </xi:include>
 
-    <xi:include href="Zend_Validate-PostCode.xml"/>
+    <xi:include href="Zend_Validate-PostCode.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Validate-PostCode.xml"/>
+        </xi:fallback>
+    </xi:include>
 
     <sect2 id="zend.validate.set.regex">
         <title>Regex</title>

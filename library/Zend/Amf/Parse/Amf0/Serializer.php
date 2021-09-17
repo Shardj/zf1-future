@@ -46,7 +46,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      * An array of reference objects
      * @var array
      */
-    protected $_referenceObjects = array();
+    protected $_referenceObjects = [];
 
     /**
      * Determine type and serialize accordingly
@@ -157,7 +157,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                     $i = 0;
                     foreach (array_keys($data) as $key) {
                         // check if it contains non-integer keys
-                        if (!is_numeric($key) || intval($key) != $key) {
+                        if (!is_numeric($key) || (int)$key != $key) {
                             $markerType = Zend_Amf_Constants::AMF0_OBJECT;
                             break;
                             // check if it is a sparse indexed array

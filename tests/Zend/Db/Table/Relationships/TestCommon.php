@@ -748,7 +748,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $bug1Reporter = $this->_getTable('My_ZendDbTable_TableBugsCustom')
                         ->find(1)
                         ->current()
-                        ->findParentRow(new My_ZendDbTable_TableAccountsCustom(array('db' => $this->_db)));
+                        ->findParentRow(new My_ZendDbTable_TableAccountsCustom(['db' => $this->_db]));
 
         $this->assertTrue($bug1Reporter instanceof $myRowClass,
             "Expecting object of type $myRowClass, got ".get_class($bug1Reporter));
@@ -931,7 +931,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $accounts_list = $this->_db->fetchCol("SELECT $account_name from $accounts ORDER BY $account_name");
         // if the save() did an UPDATE instead of an INSERT, then goofy should
         // be missing, and clarabell should be present
-        $this->assertEquals(array('clarabell', 'dduck', 'mmouse'), $accounts_list);
+        $this->assertEquals(['clarabell', 'dduck', 'mmouse'], $accounts_list);
     }
 
     /**
@@ -1017,22 +1017,22 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
 
     public function testTableRelationshipOmitRefColumns()
     {
-        $refMap = array(
-            'Reporter' => array(
-                'columns'       => array('reported_by'),
+        $refMap = [
+            'Reporter' => [
+                'columns'       => ['reported_by'],
                 'refTableClass' => 'My_ZendDbTable_TableAccounts'
-            )
-        );
+            ]
+        ];
         $table = $this->_getTable('My_ZendDbTable_TableSpecial',
-            array(
+            [
                 'name'          => 'zfbugs',
                 'referenceMap'  => $refMap
-            )
+            ]
         );
 
         $bug1 = $table->find(1)->current();
         $reporter = $bug1->findParentRow('My_ZendDbTable_TableAccounts');
-        $this->assertEquals(array('account_name' => 'goofy'), $reporter->toArray());
+        $this->assertEquals(['account_name' => 'goofy'], $reporter->toArray());
     }
 
     /**
@@ -1065,7 +1065,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $bugRow = $bugsTable->find(2)->current();
 
         $intRows = $bugRow->findDependentRowset($intersectionTable);
-        $this->assertEquals(array(2, 3), array_values($intRows->current()->toArray()));
+        $this->assertEquals([2, 3], array_values($intRows->current()->toArray()));
     }
 
     /**
@@ -1174,51 +1174,51 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
      */
     protected function _getTableDefinition()
     {
-        $definition = array(
-            'Bugs' => array(
+        $definition = [
+            'Bugs' => [
                 'name' => 'zfbugs',
-                'referenceMap' => array(
-                    'Reporter' => array(
+                'referenceMap' => [
+                    'Reporter' => [
                         'columns'           => 'reported_by',
                         'refTableClass'     => 'Accounts',
                         'refColumns'        => 'account_name'
-                        ),
-                    'Engineer' => array(
+                        ],
+                    'Engineer' => [
                         'columns'           => 'assigned_to',
                         'refTableClass'     => 'Accounts',
                         'refColumns'        => 'account_name'
-                        ),
-                    'Verifier' => array(
+                        ],
+                    'Verifier' => [
                         'columns'           => 'verified_by',
                         'refTableClass'     => 'Accounts',
                         'refColumns'        => 'account_name'
-                        )
-                    )
-                ),
-            'Accounts' => array(
+                        ]
+                    ]
+                ],
+            'Accounts' => [
                 'name' => 'zfaccounts'
-                ),
-            'BugsProducts' => array(
+                ],
+            'BugsProducts' => [
                 'name' => 'zfbugs_products',
-                'referenceMap' => array(
-                    'Bug' => array(
+                'referenceMap' => [
+                    'Bug' => [
                         'columns'           => 'bug_id', // Deliberate non-array value
                         'refTableClass'     => 'Bugs',
                         'refColumns'        => 'bug_id'
-                        ),
-                    'Product' => array(
+                        ],
+                    'Product' => [
                         'columns'           => 'product_id',
                         'refTableClass'     => 'Products',
                         'refColumns'        => 'product_id',
                         'onDelete'          => Zend_Db_Table::CASCADE,
                         'onUpdate'          => Zend_Db_Table::CASCADE
-                        )
-                    )
-                ),
-            'Products' => array(
+                        ]
+                    ]
+                ],
+            'Products' => [
                 'name' => 'zfproducts'
-                )
-            );
+                ]
+            ];
 
         return new Zend_Db_Table_Definition($definition);
     }
@@ -1230,29 +1230,29 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
      */
     protected function _getBugsProductsWithDissimilarColumns()
     {
-        $altCols = array(
+        $altCols = [
             'boog_id'      => 'INTEGER NOT NULL',
             'produck_id'   => 'INTEGER NOT NULL',
             'PRIMARY KEY'  => 'boog_id,produck_id'
-        );
+        ];
         $this->_util->createTable('AltBugsProducts', $altCols);
         $altBugsProducts = $this->_db->quoteIdentifier($this->_db->foldCase('zfalt_bugs_products'), true);
         $bugsProducts = $this->_db->quoteIdentifier($this->_db->foldCase('zfbugs_products'), true);
         $this->_db->query("INSERT INTO $altBugsProducts SELECT * FROM $bugsProducts");
 
-        $refMap    = array(
-            'Boog' => array(
-                'columns'           => array('boog_id'),
+        $refMap    = [
+            'Boog' => [
+                'columns'           => ['boog_id'],
                 'refTableClass'     => 'My_ZendDbTable_TableBugs',
-                'refColumns'        => array('bug_id')
-            ),
-            'Produck' => array(
-                'columns'           => array('produck_id'),
+                'refColumns'        => ['bug_id']
+            ],
+            'Produck' => [
+                'columns'           => ['produck_id'],
                 'refTableClass'     => 'My_ZendDbTable_TableProducts',
-                'refColumns'        => array('product_id')
-            )
-        );
-        $options = array('name' => 'zfalt_bugs_products', 'referenceMap' => $refMap);
+                'refColumns'        => ['product_id']
+            ]
+        ];
+        $options = ['name' => 'zfalt_bugs_products', 'referenceMap' => $refMap];
         $table = $this->_getTable('My_ZendDbTable_TableSpecial', $options);
         return $table;
     }

@@ -107,105 +107,105 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
         $this->element->setRequired(false);
 
         // Examining various validators
-        $validators = array(
-            array(
-                'options' => array('Alnum'),
+        $validators = [
+            [
+                'options' => ['Alnum'],
                 'value'   => 'aa11?? ',
-            ),
-            array(
-                'options' => array('Alpha'),
+            ],
+            [
+                'options' => ['Alpha'],
                 'value'   => 'aabb11',
-            ),
-            array(
-                'options' => array(
+            ],
+            [
+                'options' => [
                     'Between',
                     false,
-                    array(
+                    [
                         'min' => 0,
                         'max' => 10,
-                    )
-                ),
+                    ]
+                ],
                 'value'   => '11',
-            ),
-            array(
-                'options' => array('Date'),
+            ],
+            [
+                'options' => ['Date'],
                 'value'   => '10.10.2000',
-            ),
-            array(
-                'options' => array('Digits'),
+            ],
+            [
+                'options' => ['Digits'],
                 'value'   => '1122aa',
-            ),
-            array(
-                'options' => array('EmailAddress'),
+            ],
+            [
+                'options' => ['EmailAddress'],
                 'value'   => 'foo',
-            ),
-            array(
-                'options' => array('Float'),
+            ],
+            [
+                'options' => ['Float'],
                 'value'   => '10a01',
-            ),
-            array(
-                'options' => array(
+            ],
+            [
+                'options' => [
                     'GreaterThan',
                     false,
-                    array('min' => 10),
-                ),
+                    ['min' => 10],
+                ],
                 'value'   => '9',
-            ),
-            array(
-                'options' => array('Hex'),
+            ],
+            [
+                'options' => ['Hex'],
                 'value'   => '123ABCDEFGH',
-            ),
-            array(
-                'options' => array(
+            ],
+            [
+                'options' => [
                     'InArray',
                     false,
-                    array(
+                    [
                         'key'      => 'value',
                         'otherkey' => 'othervalue',
-                    )
-                ),
+                    ]
+                ],
                 'value'   => 'foo',
-            ),
-            array(
-                'options' => array('Int'),
+            ],
+            [
+                'options' => ['Int'],
                 'value'   => '1234.5',
-            ),
-            array(
-                'options' => array(
+            ],
+            [
+                'options' => [
                     'LessThan',
                     false,
-                    array('max' => 10),
-                ),
+                    ['max' => 10],
+                ],
                 'value'   => '11',
-            ),
-            array(
-                'options' => array('NotEmpty'),
+            ],
+            [
+                'options' => ['NotEmpty'],
                 'value'   => '',
-            ),
-            array(
-                'options' => array(
+            ],
+            [
+                'options' => [
                     'Regex',
                     false,
-                    array('pattern' => '/^Test/'),
-                ),
+                    ['pattern' => '/^Test/'],
+                ],
                 'value'   => 'Pest',
-            ),
-            array(
-                'options' => array(
+            ],
+            [
+                'options' => [
                     'StringLength',
                     false,
-                    array(
+                    [
                         6,
                         20,
-                    )
-                ),
+                    ]
+                ],
                 'value'   => 'foo',
-            ),
-        );
+            ],
+        ];
 
         foreach ($validators as $validator) {
             // Add validator
-            $this->element->addValidators(array($validator['options']));
+            $this->element->addValidators([$validator['options']]);
 
             // Testing
             $this->assertTrue($this->element->isValid($validator['value']));

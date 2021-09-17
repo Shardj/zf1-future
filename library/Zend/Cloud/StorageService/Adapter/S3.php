@@ -61,7 +61,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array|Zend_Config $options
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
@@ -104,7 +104,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return string
      */
-    public function fetchItem($path, $options = array())
+    public function fetchItem($path, $options = [])
     {
         $fullPath = $this->_getFullPath($path, $options);
         try {
@@ -131,7 +131,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return void
      */
-    public function storeItem($destinationPath, $data, $options = array())
+    public function storeItem($destinationPath, $data, $options = [])
     {
         try {
             $fullPath = $this->_getFullPath($destinationPath, $options);
@@ -152,7 +152,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return void
      */
-    public function deleteItem($path, $options = array())
+    public function deleteItem($path, $options = [])
     {
         try {
             $this->_s3->removeObject($this->_getFullPath($path, $options));
@@ -174,7 +174,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return void
      */
-    public function copyItem($sourcePath, $destinationPath, $options = array())
+    public function copyItem($sourcePath, $destinationPath, $options = [])
     {
         try {
             $fullSourcePath = $this->_getFullPath($sourcePath, $options);
@@ -200,7 +200,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return void
      */
-    public function moveItem($sourcePath, $destinationPath, $options = array())
+    public function moveItem($sourcePath, $destinationPath, $options = [])
     {
         try {
             $fullSourcePath = $this->_getFullPath($sourcePath, $options);
@@ -257,7 +257,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return array
      */
-    public function fetchMetadata($path, $options = array())
+    public function fetchMetadata($path, $options = [])
     {
         try {
             return $this->_s3->getInfo($this->_getFullPath($path, $options));
@@ -275,7 +275,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @param  array $options
      * @return void
      */
-    public function storeMetadata($destinationPath, $metadata, $options = array())
+    public function storeMetadata($destinationPath, $metadata, $options = [])
     {
         require_once 'Zend/Cloud/OperationNotAvailableException.php';
         throw new Zend_Cloud_OperationNotAvailableException('Storing separate metadata is not supported, use storeItem() with \'metadata\' option key');

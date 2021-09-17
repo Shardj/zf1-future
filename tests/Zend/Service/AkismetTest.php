@@ -45,18 +45,18 @@ class Zend_Service_AkismetTest extends PHPUnit_Framework_TestCase
     {
         $this->akismet = new Zend_Service_Akismet('somebogusapikey', 'http://framework.zend.com/wiki/');
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Akismet::setHttpClient($client);
 
-        $this->comment = array(
+        $this->comment = [
             'user_ip'         => '71.161.221.76',
             'user_agent'      => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1)',
             'comment_type'    => 'comment',
             'comment_content' => 'spam check'
-        );
+        ];
     }
 
     public function testBlogUrl()

@@ -90,7 +90,7 @@ class Zend_Session extends Zend_Session_Abstract
      *
      * @var array
      */
-    private static $_defaultOptions = array(
+    private static $_defaultOptions = [
         'save_path'                 => null,
         'name'                      => null, /* this should be set to a unique value for each application */
         'save_handler'              => null,
@@ -115,8 +115,14 @@ class Zend_Session extends Zend_Session_Abstract
         'bug_compat_42'             => null,
         'bug_compat_warn'           => null,
         'hash_function'             => null,
-        'hash_bits_per_character'   => null
-    );
+        'hash_bits_per_character'   => null,
+        'lazy_write'                => null,
+        'trans_sid_tags'            => null,
+        'trans_sid_hosts'           => null,
+        'sid_length'                => null,
+        'sid_bits_per_character'    => null,
+        'cookie_samesite'           => null
+    ];
 
     /**
      * List of options pertaining to Zend_Session that can be set by developers
@@ -125,11 +131,11 @@ class Zend_Session extends Zend_Session_Abstract
      *
      * @var array
      */
-    private static $_localOptions = array(
+    private static $_localOptions = [
         'strict'                => '_strict',
         'remember_me_seconds'   => '_rememberMeSeconds',
         'throw_startup_exceptions' => '_throwStartupExceptions'
-    );
+    ];
 
     /**
      * Whether or not write close has been performed.
@@ -196,7 +202,7 @@ class Zend_Session extends Zend_Session_Abstract
      * @throws Zend_Session_Exception
      * @return void
      */
-    public static function setOptions(array $userOptions = array())
+    public static function setOptions(array $userOptions = [])
     {
         // set default options on first run only (before applying user settings)
         if (!self::$_defaultOptionsSet && !self::$_unitTestEnabled) {
@@ -235,11 +241,11 @@ class Zend_Session extends Zend_Session_Abstract
      * getOptions()
      *
      * @param string $optionName OPTIONAL
-     * @return array|string
+     * @return array|string|null
      */
     public static function getOptions($optionName = null)
     {
-        $options = array();
+        $options = [];
         foreach (ini_get_all('session') as $sysOptionName => $sysOptionValues) {
             $options[substr($sysOptionName, 8)] = $sysOptionValues['local_value'];
         }
@@ -273,13 +279,14 @@ class Zend_Session extends Zend_Session_Abstract
         }
 
         $result = session_set_save_handler(
-            array(&$saveHandler, 'open'),
-            array(&$saveHandler, 'close'),
-            array(&$saveHandler, 'read'),
-            array(&$saveHandler, 'write'),
-            array(&$saveHandler, 'destroy'),
-            array(&$saveHandler, 'gc')
+            [&$saveHandler, 'open'],
+            [&$saveHandler, 'close'],
+            [&$saveHandler, 'read'],
+            [&$saveHandler, 'write'],
+            [&$saveHandler, 'destroy'],
+            [&$saveHandler, 'gc']
             );
+        register_shutdown_function('session_write_close');
 
         if (!$result) {
             throw new Zend_Session_Exception('Unable to set session handler');
@@ -369,7 +376,7 @@ class Zend_Session extends Zend_Session_Abstract
             return;
         }
         
-        if (!self::sessionExists()) { // session_set_cookie_params(): Cannot change session cookie parameters when session is active
+        if (!self::$_sessionStarted) { // session_set_cookie_params(): Cannot change session cookie parameters when session is active
             $cookieParams = session_get_cookie_params();
             session_set_cookie_params(
                     $seconds,
@@ -442,7 +449,7 @@ class Zend_Session extends Zend_Session_Abstract
 
         // make sure our default options (at the least) have been set
         if (!self::$_defaultOptionsSet) {
-            self::setOptions(is_array($options) ? $options : array());
+            self::setOptions(is_array($options) ? $options : []);
         }
 
         // In strict mode, do not allow auto-starting Zend_Session, such as via "new Zend_Session_Namespace()"
@@ -479,7 +486,7 @@ class Zend_Session extends Zend_Session_Abstract
 
             if (self::$_throwStartupExceptions) {
                 require_once 'Zend/Session/Exception.php';
-                set_error_handler(array('Zend_Session_Exception', 'handleSessionStartError'), $errorLevel);
+                set_error_handler(['Zend_Session_Exception', 'handleSessionStartError'], $errorLevel);
             }
 
             $startedCleanly = session_start();
@@ -490,7 +497,7 @@ class Zend_Session extends Zend_Session_Abstract
 
             if (!$startedCleanly || Zend_Session_Exception::$sessionStartError != null) {
                 if (self::$_throwStartupExceptions) {
-                    set_error_handler(array('Zend_Session_Exception', 'handleSilentWriteClose'), $errorLevel);
+                    set_error_handler(['Zend_Session_Exception', 'handleSilentWriteClose'], $errorLevel);
                 }
                 session_write_close();
                 if (self::$_throwStartupExceptions) {
@@ -531,7 +538,10 @@ class Zend_Session extends Zend_Session_Abstract
             }
         }
 
-        $hashBitsPerChar = ini_get('session.hash_bits_per_character');
+        $hashBitsPerChar = ini_get('session.sid_bits_per_character');
+        if (!$hashBitsPerChar) {
+          $hashBitsPerChar = ini_get('session.hash_bits_per_character');
+        }
         if (!$hashBitsPerChar) {
             $hashBitsPerChar = 5; // the default value
         }
@@ -877,7 +887,7 @@ class Zend_Session extends Zend_Session_Abstract
             throw new Zend_Session_Exception(parent::_THROW_NOT_READABLE_MSG);
         }
 
-        $spaces  = array();
+        $spaces  = [];
         if (isset($_SESSION)) {
             $spaces = array_keys($_SESSION);
             foreach($spaces as $key => $space) {

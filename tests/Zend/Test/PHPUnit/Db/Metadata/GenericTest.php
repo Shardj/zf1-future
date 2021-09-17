@@ -55,31 +55,31 @@ class Zend_Test_PHPUnit_Db_Metadata_GenericTest extends PHPUnit_Framework_TestCa
         $this->adapterMock->expects($this->once())
                           ->method('describeTable')
                           ->with($fixtureTableName)
-                          ->will($this->returnValue(array("foo" => 1, "bar" => 2)));
+                          ->will($this->returnValue(["foo" => 1, "bar" => 2]));
         $data = $this->metadata->getTableColumns($fixtureTableName);
 
-        $this->assertEquals(array("foo", "bar"), $data);
+        $this->assertEquals(["foo", "bar"], $data);
     }
 
     public function testGetTableNames()
     {
         $this->adapterMock->expects($this->once())
                           ->method('listTables')
-                          ->will($this->returnValue(array("foo")));
+                          ->will($this->returnValue(["foo"]));
         $tables = $this->metadata->getTableNames();
 
-        $this->assertEquals(array("foo"), $tables);
+        $this->assertEquals(["foo"], $tables);
     }
 
     public function testGetTablePrimaryKey()
     {
         $fixtureTableName = "foo";
 
-        $tableMeta = array(
-            array('PRIMARY' => false, 'COLUMN_NAME' => 'foo'),
-            array('PRIMARY' => true, 'COLUMN_NAME' => 'bar'),
-            array('PRIMARY' => true, 'COLUMN_NAME' => 'baz'),
-        );
+        $tableMeta = [
+            ['PRIMARY' => false, 'COLUMN_NAME' => 'foo'],
+            ['PRIMARY' => true, 'COLUMN_NAME' => 'bar'],
+            ['PRIMARY' => true, 'COLUMN_NAME' => 'baz'],
+        ];
 
         $this->adapterMock->expects($this->once())
                           ->method('describeTable')
@@ -87,7 +87,7 @@ class Zend_Test_PHPUnit_Db_Metadata_GenericTest extends PHPUnit_Framework_TestCa
                           ->will($this->returnValue($tableMeta));
 
         $primaryKey = $this->metadata->getTablePrimaryKeys($fixtureTableName);
-        $this->assertEquals(array("bar", "baz"), $primaryKey);
+        $this->assertEquals(["bar", "baz"], $primaryKey);
     }
 
     public function testGetAllowCascading()

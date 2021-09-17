@@ -100,7 +100,7 @@ class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
             return;
         }
 
-        $rounder = array(
+        $rounder = [
             '0.477051'      => -12, '513695.36425'  =>   1, '89.85'         =>   4, '533.506'       =>   3,
             '0.376139'      =>  -2, '1784212419'    =>  -9, '447878.429296' => -11, '79.31'         =>  -2,
             '941.543'       =>  -5, '0.396850'      => -10, '425271509'     =>  10, '220820.93233'  =>  -2,
@@ -1338,7 +1338,7 @@ class Zend_Locale_MathTest extends PHPUnit_Framework_TestCase
             '169.741'       =>   3, '0.178673'      =>   3, '1698545278'    =>   9, '212734.373075' =>   6,
             '40.49'         =>  -2, '691.776'       =>  -2, '0.66820'       => -10, '1373687051'    =>  -6,
             '184194.472342' =>   1, '800.551'       =>  -4, '0.210012'      =>  10, '1640724691'    =>  10
-        );
+        ];
         if (!Zend_Locale_Math::isBcmathDisabled()) {
             // If no BCMath extension, the round below falls through to PHP's round(),
             // which actually produces incorrect results, and fails these tests.

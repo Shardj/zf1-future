@@ -96,9 +96,9 @@ class Zend_Amf_Adobe_IntrospectorTest extends PHPUnit_Framework_TestCase
     public function testPassingDirectoriesOptionShouldResolveServiceClassAndType()
     {
         require_once dirname(__FILE__) . '/_files/ZendAmfAdobeIntrospectorTestType.php';
-        $xml = $this->introspector->introspect('ZendAmfAdobeIntrospectorTest', array(
-            'directories' => array(dirname(__FILE__) . '/_files'),
-        ));
+        $xml = $this->introspector->introspect('ZendAmfAdobeIntrospectorTest', [
+            'directories' => [dirname(__FILE__) . '/_files'],
+        ]);
         $this->assertRegexp('/<operation[^>]*(name="foo")/', $xml, $xml);
         $this->assertRegexp('/<type[^>]*(name="ZendAmfAdobeIntrospectorTestType")/', $xml, $xml);
         $this->assertRegexp('/<property[^>]*(name="bar")/', $xml, $xml);

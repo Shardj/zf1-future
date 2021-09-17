@@ -70,4 +70,16 @@ class Zend_Feed_Entry_RssTest extends PHPUnit_Framework_TestCase
         // $this->assertNull($item->content); // always return DOMElement Object
     }
 
+    public function testConstructorElementException()
+    {
+        try {
+            new Zend_Feed_Entry_Rss(null, 'foo');
+        } catch (Exception $e) {
+            self::assertInstanceOf('Zend_Feed_Exception', $e);
+
+            return;
+        }
+
+        self::fail('Test should throw exception and not reach this point');
+    }
 }

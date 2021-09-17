@@ -57,8 +57,8 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
     protected function _stripActiveDirectorySystemAttributes(&$entry)
     {
-        $adAttributes = array('distinguishedname', 'instancetype', 'name', 'objectcategory',
-            'objectguid', 'usnchanged', 'usncreated', 'whenchanged', 'whencreated');
+        $adAttributes = ['distinguishedname', 'instancetype', 'name', 'objectcategory',
+            'objectguid', 'usnchanged', 'usncreated', 'whenchanged', 'whencreated'];
         foreach ($adAttributes as $attr) {
             if (array_key_exists($attr, $entry)) {
                 unset($entry[$attr]);
@@ -67,7 +67,7 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
         if (array_key_exists('objectclass', $entry) && count($entry['objectclass']) > 0) {
             if ($entry['objectclass'][0] !== 'top') {
-                $entry['objectclass']=array_merge(array('top'), $entry['objectclass']);
+                $entry['objectclass']=array_merge(['top'], $entry['objectclass']);
             }
         }
     }
@@ -91,7 +91,7 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
     public function testAddNewNode()
     {
         $dn=$this->_createDn('ou=Test,');
-        $node1=Zend_Ldap_Node::create($dn, array('organizationalUnit'));
+        $node1=Zend_Ldap_Node::create($dn, ['organizationalUnit']);
         $node1->l='a';
         $node1->update($this->_getLdap());
 
@@ -127,7 +127,7 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
     {
         $dnOld=$this->_createDn('ou=Test,');
         $dnNew=$this->_createDn('ou=TestNew,');
-        $node1=Zend_Ldap_Node::create($dnOld, array('organizationalUnit'));
+        $node1=Zend_Ldap_Node::create($dnOld, ['organizationalUnit']);
         $node1->l='a';
         $node1->setDn($dnNew);
         $node1->update($this->_getLdap());
@@ -145,7 +145,7 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
     public function testModifyDeletedNode()
     {
         $dn=$this->_createDn('ou=Test1,');
-        $node1=Zend_Ldap_Node::create($dn, array('organizationalUnit'));
+        $node1=Zend_Ldap_Node::create($dn, ['organizationalUnit']);
         $node1->delete();
         $node1->update($this->_getLdap());
 
@@ -160,7 +160,7 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
     public function testAddDeletedNode()
     {
         $dn=$this->_createDn('ou=Test,');
-        $node1=Zend_Ldap_Node::create($dn, array('organizationalUnit'));
+        $node1=Zend_Ldap_Node::create($dn, ['organizationalUnit']);
         $node1->delete();
         $node1->update($this->_getLdap());
 
@@ -184,7 +184,7 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
     {
         $dnOld=$this->_createDn('ou=Test,');
         $dnNew=$this->_createDn('ou=TestNew,');
-        $node1=Zend_Ldap_Node::create($dnOld, array('organizationalUnit'));
+        $node1=Zend_Ldap_Node::create($dnOld, ['organizationalUnit']);
         $node1->setDn($dnNew);
         $node1->delete();
         $node1->update($this->_getLdap());

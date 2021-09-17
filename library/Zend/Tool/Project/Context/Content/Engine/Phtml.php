@@ -81,9 +81,8 @@ class Zend_Tool_Project_Context_Content_Engine_Phtml
 
         ob_start();
         include $streamUri;
-        $content = ob_get_clean();
 
-        return $content;
+        return ob_get_clean();
     }
 
 }

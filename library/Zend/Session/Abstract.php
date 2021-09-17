@@ -52,7 +52,7 @@ abstract class Zend_Session_Abstract
      *
      * @var array
      */
-    protected static $_expiringData = array();
+    protected static $_expiringData = [];
 
 
     /**
@@ -177,9 +177,9 @@ abstract class Zend_Session_Abstract
     protected static function _namespaceGetAll($namespace)
     {
         $currentData  = (isset($_SESSION[$namespace]) && is_array($_SESSION[$namespace])) ?
-            $_SESSION[$namespace] : array();
+            $_SESSION[$namespace] : [];
         $expiringData = (isset(self::$_expiringData[$namespace]) && is_array(self::$_expiringData[$namespace])) ?
-            self::$_expiringData[$namespace] : array();
+            self::$_expiringData[$namespace] : [];
         return array_merge($currentData, $expiringData);
     }
 }

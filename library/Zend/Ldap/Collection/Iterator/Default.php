@@ -198,7 +198,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
             return null;
         }
 
-        $entry = array('dn' => $this->key());
+        $entry = ['dn' => $this->key()];
         $ber_identifier = null;
         $name = @ldap_first_attribute($this->_ldap->getResource(), $this->_current,
             $ber_identifier);

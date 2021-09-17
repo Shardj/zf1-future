@@ -45,13 +45,13 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testConstuctor()
     {
-        $tag = new Zend_Tag_Item(array(
+        $tag = new Zend_Tag_Item([
             'title' => 'foo',
             'weight' => 10,
-            'params' => array(
+            'params' => [
                 'bar' => 'baz'
-            )
-        ));
+            ]
+        ]);
 
         $this->assertEquals('foo', $tag->getTitle());
         $this->assertEquals(10, $tag->getWeight());
@@ -60,14 +60,14 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testSetOptions()
     {
-        $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 1));
-        $tag->setOptions(array(
+        $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1]);
+        $tag->setOptions([
             'title' => 'bar',
             'weight' => 10,
-            'params' => array(
+            'params' => [
                 'bar' => 'baz'
-            )
-        ));
+            ]
+        ]);
 
         $this->assertEquals('bar', $tag->getTitle());
         $this->assertEquals(10, $tag->getWeight());
@@ -76,7 +76,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testSetParam()
     {
-        $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 1));
+        $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1]);
         $tag->setParam('bar', 'baz');
 
         $this->assertEquals('baz', $tag->getParam('bar'));
@@ -84,7 +84,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testSetTitle()
     {
-        $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 1));
+        $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1]);
         $tag->setTitle('baz');
 
         $this->assertEquals('baz', $tag->getTitle());
@@ -93,7 +93,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
     public function testInvalidTitle()
     {
         try {
-            $tag = new Zend_Tag_Item(array('title' => 10, 'weight' => 1));
+            $tag = new Zend_Tag_Item(['title' => 10, 'weight' => 1]);
             $this->fail('An expected Zend_Tag_Exception was not raised');
         } catch (Zend_Tag_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Title must be a string');
@@ -102,7 +102,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testSetWeight()
     {
-        $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 1));
+        $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1]);
         $tag->setWeight('10');
 
         $this->assertEquals(10.0, $tag->getWeight());
@@ -112,7 +112,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
     public function testInvalidWeight()
     {
         try {
-            $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 'foobar'));
+            $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 'foobar']);
             $this->fail('An expected Zend_Tag_Exception was not raised');
         } catch (Zend_Tag_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Weight must be numeric');
@@ -121,7 +121,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testSkipOptions()
     {
-        $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 1, 'param' => 'foobar'));
+        $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1, 'param' => 'foobar']);
         // In case would fail due to an error
     }
 
@@ -138,7 +138,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
     public function testMissingTitle()
     {
         try {
-            $tag = new Zend_Tag_Item(array('weight' => 1));
+            $tag = new Zend_Tag_Item(['weight' => 1]);
             $this->fail('An expected Zend_Tag_Exception was not raised');
         } catch (Zend_Tag_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Title was not set');
@@ -148,7 +148,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
     public function testMissingWeight()
     {
         try {
-            $tag = new Zend_Tag_Item(array('title' => 'foo'));
+            $tag = new Zend_Tag_Item(['title' => 'foo']);
             $this->fail('An expected Zend_Tag_Exception was not raised');
         } catch (Zend_Tag_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Weight was not set');
@@ -157,7 +157,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testConfigOptions()
     {
-        $tag = new Zend_Tag_Item(new Zend_Config(array('title' => 'foo', 'weight' => 1)));
+        $tag = new Zend_Tag_Item(new Zend_Config(['title' => 'foo', 'weight' => 1]));
 
         $this->assertEquals($tag->getTitle(), 'foo');
         $this->assertEquals($tag->getWeight(), 1);
@@ -165,7 +165,7 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
 
     public function testGetNonSetParam()
     {
-        $tag = new Zend_Tag_Item(array('title' => 'foo', 'weight' => 1));
+        $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1]);
 
         $this->assertNull($tag->getParam('foo'));
     }

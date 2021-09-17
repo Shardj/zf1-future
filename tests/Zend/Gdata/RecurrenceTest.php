@@ -72,8 +72,8 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
         $newRecurrence = new Zend_Gdata_Extension_Recurrence();
         $newRecurrence->transferFromXML($this->recurrence->saveXML());
         $this->assertEquals(0, count($newRecurrence->extensionElements));
-        $newRecurrence->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newRecurrence->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newRecurrence->extensionElements));
         $this->assertEquals("Foo", $newRecurrence->text);
 
@@ -105,8 +105,8 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->recurrence->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->recurrence->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->recurrence->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->recurrence->extensionAttributes['foo2']['value']);

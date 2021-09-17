@@ -33,6 +33,6 @@ class Zend_Tool_Framework_EmptyLoader extends Zend_Tool_Framework_Loader_Abstrac
 {
     protected function _getFiles()
     {
-        return array();
+        return [];
     }
 }

@@ -108,10 +108,10 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     public function testEncodeJsonProxiesToJsonActionHelper()
     {
         $dojo    = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $data    = array('foo', 'bar', 'baz');
+        $data    = ['foo', 'bar', 'baz'];
         $encoded = $dojo->prepareAutoCompletion($data);
         $decoded = Zend_Json::decode($encoded);
-        $test    = array();
+        $test    = [];
         foreach ($decoded['items'] as $item) {
             $test[] = $item['name'];
         }
@@ -133,14 +133,14 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     public function testDojoHelperEncodesToJson()
     {
         $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $dojo->direct($data, false);
         $decoded = Zend_Json::decode($encoded);
         $this->assertContains('items', array_keys($decoded));
         $this->assertContains('identifier', array_keys($decoded));
         $this->assertEquals('name', $decoded['identifier']);
 
-        $test = array();
+        $test = [];
         foreach ($decoded['items'] as $item) {
             $test[] = $item['label'];
         }
@@ -151,10 +151,10 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
         $dojo->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $dojo->direct($data);
         $decoded = Zend_Json::decode($encoded);
-        $test    = array();
+        $test    = [];
         foreach ($decoded['items'] as $item) {
             $test[] = $item['name'];
         }
@@ -167,7 +167,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
         $dojo->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $dojo->direct($data);
         $this->assertFalse($this->layout->isEnabled());
         $this->assertTrue($this->viewRenderer->getNoRender());
@@ -177,7 +177,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
         $dojo->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $dojo->direct($data, false, true);
         $this->assertTrue($this->layout->isEnabled());
         $this->assertFalse($this->viewRenderer->getNoRender());
@@ -189,11 +189,11 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $dojo = new Zend_Controller_Action_Helper_AutoCompleteDojo();
         $dojo->suppressExit = true;
-        $data = array ('garçon', 'schließen', 'Helgi Þormar Þorbjörnsson');
+        $data = ['garçon', 'schließen', 'Helgi Þormar Þorbjörnsson'];
         $encoded = $dojo->direct($data);
         $body = $this->response->getBody();
         $decoded = Zend_Json::decode($encoded);
-        $test = array ();
+        $test = [];
         foreach ($decoded['items'] as $item) {
             $test[] = $item['name'];
         }
@@ -220,7 +220,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $scriptaculous = new Zend_Controller_Action_Helper_AutoCompleteScriptaculous();
         $scriptaculous->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $formatted = $scriptaculous->direct($data);
         $this->assertContains('<ul>', $formatted);
         foreach ($data as $value) {
@@ -233,7 +233,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $scriptaculous = new Zend_Controller_Action_Helper_AutoCompleteScriptaculous();
         $scriptaculous->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $scriptaculous->direct($data);
         $body = $this->response->getBody();
         $this->assertSame($encoded, $body);
@@ -243,7 +243,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $scriptaculous = new Zend_Controller_Action_Helper_AutoCompleteScriptaculous();
         $scriptaculous->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $scriptaculous->direct($data);
         $this->assertFalse($this->layout->isEnabled());
         $this->assertTrue($this->viewRenderer->getNoRender());
@@ -253,7 +253,7 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends PHPUnit_Framework_T
     {
         $scriptaculous = new Zend_Controller_Action_Helper_AutoCompleteScriptaculous();
         $scriptaculous->suppressExit = true;
-        $data = array('foo', 'bar', 'baz');
+        $data = ['foo', 'bar', 'baz'];
         $encoded = $scriptaculous->direct($data, false, true);
         $this->assertTrue($this->layout->isEnabled());
         $this->assertFalse($this->viewRenderer->getNoRender());

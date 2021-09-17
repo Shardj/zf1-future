@@ -55,7 +55,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
     public function testGetTextFieldNames()
     {
         $fieldNames = $this->_pdf->getTextFieldNames();
-        $this->assertEquals(array('Field1', 'Field2'), $fieldNames);
+        $this->assertEquals(['Field1', 'Field2'], $fieldNames);
     }
 
     /**
@@ -65,7 +65,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
     {
         $pdf        = new Zend_Pdf();
         $fieldNames = $pdf->getTextFieldNames();
-        $this->assertEquals(array(), $fieldNames);
+        $this->assertEquals([], $fieldNames);
     }
 
     public function testSetTextField()
@@ -179,7 +179,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
     {
         // setting string value is possible
         $pdf = new Zend_Pdf();
-        $javaScriptArray = array('print();', 'alert();');
+        $javaScriptArray = ['print();', 'alert();'];
         $pdf->setJavaScript($javaScriptArray);
         $this->assertEquals($javaScriptArray, $pdf->getJavaScript());
     }
@@ -197,7 +197,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
     {
         // adding JavaScript appends previously added JavaScript
         $pdf = new Zend_Pdf();
-        $javaScriptArray = array('print();', 'alert();');
+        $javaScriptArray = ['print();', 'alert();'];
         $pdf->addJavaScript($javaScriptArray[0]);
         $pdf->addJavaScript($javaScriptArray[1]);
         $this->assertEquals($javaScriptArray, $pdf->getJavaScript());
@@ -226,13 +226,13 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
     public function testSetJavaScriptEmptyArray()
     {
         $pdf = new Zend_Pdf();
-        $pdf->setJavaScript(array());
+        $pdf->setJavaScript([]);
     }
 
     public function testSetAndSaveLoadAndGetJavaScript()
     {
         $tempFile = tempnam(sys_get_temp_dir(), 'PdfUnitFile');
-        $javaScript = array('print();', 'alert();');
+        $javaScript = ['print();', 'alert();'];
 
         $pdf = new Zend_Pdf();
         $pdf->setJavaScript($javaScript);
@@ -248,7 +248,7 @@ class Zend_PdfTest extends PHPUnit_Framework_TestCase
     public function testSetAndSaveLoadAndResetAndSaveLoadAndGetJavaScript()
     {
         $tempFile = tempnam(sys_get_temp_dir(), 'PdfUnitFile');
-        $javaScript = array('print();', 'alert();');
+        $javaScript = ['print();', 'alert();'];
 
         $pdf = new Zend_Pdf();
         $pdf->setJavaScript($javaScript);

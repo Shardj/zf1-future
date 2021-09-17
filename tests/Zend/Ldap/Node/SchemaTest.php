@@ -125,32 +125,32 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertTrue($ou instanceof Zend_Ldap_Node_Schema_ObjectClass_OpenLdap);
         $this->assertEquals('organizationalUnit', $ou->getName());
         $this->assertEquals('2.5.6.5', $ou->getOid());
-        $this->assertEquals(array('objectClass', 'ou'), $ou->getMustContain());
-        $this->assertEquals(array('businessCategory', 'description', 'destinationIndicator',
+        $this->assertEquals(['objectClass', 'ou'], $ou->getMustContain());
+        $this->assertEquals(['businessCategory', 'description', 'destinationIndicator',
             'facsimileTelephoneNumber', 'internationaliSDNNumber', 'l',
             'physicalDeliveryOfficeName', 'postOfficeBox', 'postalAddress', 'postalCode',
             'preferredDeliveryMethod', 'registeredAddress', 'searchGuide', 'seeAlso', 'st',
             'street', 'telephoneNumber', 'teletexTerminalIdentifier', 'telexNumber',
-            'userPassword', 'x121Address'), $ou->getMayContain());
+            'userPassword', 'x121Address'], $ou->getMayContain());
         $this->assertEquals('RFC2256: an organizational unit', $ou->getDescription());
         $this->assertEquals(Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_STRUCTURAL, $ou->getType());
-        $this->assertEquals(array('top'), $ou->getParentClasses());
+        $this->assertEquals(['top'], $ou->getParentClasses());
 
         $this->assertEquals('2.5.6.5', $ou->oid);
         $this->assertEquals('organizationalUnit', $ou->name);
         $this->assertEquals('RFC2256: an organizational unit', $ou->desc);
         $this->assertFalse($ou->obsolete);
-        $this->assertEquals(array('top'), $ou->sup);
+        $this->assertEquals(['top'], $ou->sup);
         $this->assertFalse($ou->abstract);
         $this->assertTrue($ou->structural);
         $this->assertFalse($ou->auxiliary);
-        $this->assertEquals(array('ou'), $ou->must);
-        $this->assertEquals(array('userPassword', 'searchGuide', 'seeAlso', 'businessCategory',
+        $this->assertEquals(['ou'], $ou->must);
+        $this->assertEquals(['userPassword', 'searchGuide', 'seeAlso', 'businessCategory',
             'x121Address', 'registeredAddress', 'destinationIndicator', 'preferredDeliveryMethod',
             'telexNumber', 'teletexTerminalIdentifier', 'telephoneNumber',
             'internationaliSDNNumber', 'facsimileTelephoneNumber', 'street', 'postOfficeBox',
             'postalCode', 'postalAddress', 'physicalDeliveryOfficeName', 'st', 'l',
-            'description'), $ou->may);
+            'description'], $ou->may);
         $this->assertEquals("( 2.5.6.5 NAME 'organizationalUnit' " .
             "DESC 'RFC2256: an organizational unit' SUP top STRUCTURAL MUST ou " .
             "MAY ( userPassword $ searchGuide $ seeAlso $ businessCategory $ x121Address $ " .
@@ -158,7 +158,7 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             "teletexTerminalIdentifier $ telephoneNumber $ internationaliSDNNumber $ " .
             "facsimileTelephoneNumber $ street $ postOfficeBox $ postalCode $ postalAddress $ " .
             "physicalDeliveryOfficeName $ st $ l $ description ) )", $ou->_string);
-        $this->assertEquals(array(), $ou->aliases);
+        $this->assertEquals([], $ou->aliases);
         $this->assertSame($objectClasses['top'], $ou->_parents[0]);
 
         $this->assertArrayHasKey('ou', $attributeTypes);
@@ -175,7 +175,7 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertEquals('ou', $ou->name);
         $this->assertEquals('RFC2256: organizational unit this object belongs to', $ou->desc);
         $this->assertFalse($ou->obsolete);
-        $this->assertEquals(array('name'), $ou->sup);
+        $this->assertEquals(['name'], $ou->sup);
         $this->assertNull($ou->equality);
         $this->assertNull($ou->ordering);
         $this->assertNull($ou->substr);
@@ -187,7 +187,7 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertEquals('userApplications', $ou->usage);
         $this->assertEquals("( 2.5.4.11 NAME ( 'ou' 'organizationalUnitName' ) " .
             "DESC 'RFC2256: organizational unit this object belongs to' SUP name )", $ou->_string);
-        $this->assertEquals(array('organizationalUnitName'), $ou->aliases);
+        $this->assertEquals(['organizationalUnitName'], $ou->aliases);
         $this->assertSame($attributeTypes['name'], $ou->_parents[0]);
     }
 
@@ -226,7 +226,7 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertEquals('2.5.4.41', $name->getOid());
         $this->assertEquals('2.5.4.3', $cn->getOid());
         $this->assertNull($name->sup);
-        $this->assertEquals(array('name'), $cn->sup);
+        $this->assertEquals(['name'], $cn->sup);
 
         $this->assertEquals('caseIgnoreMatch', $name->equality);
         $this->assertNull($name->ordering);
@@ -264,21 +264,21 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
 
         $this->assertEquals('2.5.6.16', $ca->getOid());
         $this->assertEquals('2.5.6.16.2', $ca2->getOid());
-        $this->assertEquals(array('top'), $ca->sup);
-        $this->assertEquals(array('certificationAuthority'), $ca2->sup);
+        $this->assertEquals(['top'], $ca->sup);
+        $this->assertEquals(['certificationAuthority'], $ca2->sup);
 
-        $this->assertEquals(array('authorityRevocationList', 'certificateRevocationList',
-            'cACertificate'), $ca->must);
-        $this->assertEquals(array('authorityRevocationList', 'cACertificate',
-            'certificateRevocationList', 'objectClass'), $ca->getMustContain());
-        $this->assertEquals(array('crossCertificatePair'), $ca->may);
-        $this->assertEquals(array('crossCertificatePair'), $ca->getMayContain());
+        $this->assertEquals(['authorityRevocationList', 'certificateRevocationList',
+            'cACertificate'], $ca->must);
+        $this->assertEquals(['authorityRevocationList', 'cACertificate',
+            'certificateRevocationList', 'objectClass'], $ca->getMustContain());
+        $this->assertEquals(['crossCertificatePair'], $ca->may);
+        $this->assertEquals(['crossCertificatePair'], $ca->getMayContain());
 
-        $this->assertEquals(array(), $ca2->must);
-        $this->assertEquals(array('authorityRevocationList', 'cACertificate',
-            'certificateRevocationList', 'objectClass'), $ca2->getMustContain());
-        $this->assertEquals(array('deltaRevocationList'), $ca2->may);
-        $this->assertEquals(array('crossCertificatePair', 'deltaRevocationList'),
+        $this->assertEquals([], $ca2->must);
+        $this->assertEquals(['authorityRevocationList', 'cACertificate',
+            'certificateRevocationList', 'objectClass'], $ca2->getMustContain());
+        $this->assertEquals(['deltaRevocationList'], $ca2->may);
+        $this->assertEquals(['crossCertificatePair', 'deltaRevocationList'],
             $ca2->getMayContain());
     }
 

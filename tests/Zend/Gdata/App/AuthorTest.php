@@ -54,8 +54,8 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
         $newAuthor = new Zend_Gdata_App_Extension_Author();
         $newAuthor->transferFromXML($this->author->saveXML());
         $this->assertEquals(count($newAuthor->extensionElements), 0);
-        $newAuthor->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newAuthor->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newAuthor->extensionElements), 1);
         $this->assertEquals($newAuthor->name->text, 'Jeff Scudder');
 
@@ -93,8 +93,8 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->author->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->author->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->author->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->author->extensionAttributes['foo2']['value']);

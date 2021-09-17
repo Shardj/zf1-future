@@ -122,9 +122,9 @@ class Zend_Gdata_Gapps extends Zend_Gdata
      *
      * @var array
      */
-    public static $namespaces = array(
-        array('apps', 'http://schemas.google.com/apps/2006', 1, 0)
-    );
+    public static $namespaces = [
+        ['apps', 'http://schemas.google.com/apps/2006', 1, 0]
+    ];
 
     /**
      * Create Gdata_Gapps object
@@ -216,7 +216,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
      * @throws Zend_Gdata_Gapps_ServiceException
      * @return Zend_Http_Response
      */
-    public function get($uri, $extraHeaders = array())
+    public function get($uri, $extraHeaders = [])
     {
         try {
             return parent::get($uri, $extraHeaders);
@@ -691,8 +691,8 @@ class Zend_Gdata_Gapps extends Zend_Gdata
         if ($uri === null) {
             $uri = $this->getBaseUrl() . self::APPS_USER_PATH;
         }
-        $newEntry = $this->insertEntry($user, $uri, 'Zend_Gdata_Gapps_UserEntry');
-        return $newEntry;
+
+        return $this->insertEntry($user, $uri, 'Zend_Gdata_Gapps_UserEntry');
     }
 
     /**
@@ -714,8 +714,8 @@ class Zend_Gdata_Gapps extends Zend_Gdata
         if ($uri === null) {
             $uri = $this->getBaseUrl() . self::APPS_NICKNAME_PATH;
         }
-        $newEntry = $this->insertEntry($nickname, $uri, 'Zend_Gdata_Gapps_NicknameEntry');
-        return $newEntry;
+
+        return $this->insertEntry($nickname, $uri, 'Zend_Gdata_Gapps_NicknameEntry');
     }
 
     /**
@@ -737,8 +737,8 @@ class Zend_Gdata_Gapps extends Zend_Gdata
             $uri  = self::APPS_BASE_FEED_URI . self::APPS_GROUP_PATH . '/';
             $uri .= $this->getDomain();
         }
-        $newEntry = $this->insertEntry($group, $uri, 'Zend_Gdata_Gapps_GroupEntry');
-        return $newEntry;
+
+        return $this->insertEntry($group, $uri, 'Zend_Gdata_Gapps_GroupEntry');
     }
 
     /**
@@ -761,8 +761,8 @@ class Zend_Gdata_Gapps extends Zend_Gdata
             throw new Zend_Gdata_App_InvalidArgumentException(
                     'URI must not be null');
         }
-        $newEntry = $this->insertEntry($member, $uri, 'Zend_Gdata_Gapps_MemberEntry');
-        return $newEntry;
+
+        return $this->insertEntry($member, $uri, 'Zend_Gdata_Gapps_MemberEntry');
     }
 
     /**
@@ -785,8 +785,8 @@ class Zend_Gdata_Gapps extends Zend_Gdata
             throw new Zend_Gdata_App_InvalidArgumentException(
                     'URI must not be null');
         }
-        $newEntry = $this->insertEntry($owner, $uri, 'Zend_Gdata_Gapps_OwnerEntry');
-        return $newEntry;
+
+        return $this->insertEntry($owner, $uri, 'Zend_Gdata_Gapps_OwnerEntry');
     }
 
     /**
@@ -808,8 +808,8 @@ class Zend_Gdata_Gapps extends Zend_Gdata
         if ($uri === null) {
             $uri = $this->getBaseUrl() . self::APPS_EMAIL_LIST_PATH;
         }
-        $newEntry = $this->insertEntry($emailList, $uri, 'Zend_Gdata_Gapps_EmailListEntry');
-        return $newEntry;
+
+        return $this->insertEntry($emailList, $uri, 'Zend_Gdata_Gapps_EmailListEntry');
     }
 
     /**
@@ -832,11 +832,13 @@ class Zend_Gdata_Gapps extends Zend_Gdata
             require_once 'Zend/Gdata/App/InvalidArgumentException.php';
             throw new Zend_Gdata_App_InvalidArgumentException(
                     'URI must not be null');
-        } elseif ($uri instanceof Zend_Gdata_Gapps_EmailListEntry) {
+        }
+
+        if ($uri instanceof Zend_Gdata_Gapps_EmailListEntry) {
             $uri = $uri->getLink('edit')->href;
         }
-        $newEntry = $this->insertEntry($recipient, $uri, 'Zend_Gdata_Gapps_EmailListRecipientEntry');
-        return $newEntry;
+
+        return $this->insertEntry($recipient, $uri, 'Zend_Gdata_Gapps_EmailListRecipientEntry');
     }
 
     /**
@@ -874,7 +876,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
             if ($foundClassName != null) {
                 $reflectionObj = new ReflectionClass($foundClassName);
                 // Prepend the domain to the query
-                $args = array_merge(array($this->getDomain()), $args);
+                $args = array_merge([$this->getDomain()], $args);
                 return $reflectionObj->newInstanceArgs($args);
             } else {
                 require_once 'Zend/Gdata/App/Exception.php';
@@ -1113,9 +1115,10 @@ class Zend_Gdata_Gapps extends Zend_Gdata
     public function retrieveNicknames($username) {
         $query = $this->newNicknameQuery();
         $query->setUsername($username);
-        $nicknameFeed = $this->retrieveAllEntriesForFeed(
-            $this->getNicknameFeed($query));
-        return $nicknameFeed;
+
+        return $this->retrieveAllEntriesForFeed(
+            $this->getNicknameFeed($query)
+        );
     }
 
     /**

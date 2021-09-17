@@ -42,8 +42,8 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
      */
     public function testNumberLocalization()
     {
-        $filter = new Zend_Filter_NormalizedToLocalized(array('locale' => 'de'));
-        $valuesExpected = array(
+        $filter = new Zend_Filter_NormalizedToLocalized(['locale' => 'de']);
+        $valuesExpected = [
             1  => '0',
             2  => 0,
             3  => '1234',
@@ -55,9 +55,9 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
             9  => -1234,
             10 => '-1234.56',
             11 => -1234.56
-        );
+        ];
 
-        $valuesReceived = array(
+        $valuesReceived = [
             1  => '0',
             2  => '0',
             3  => '1.234',
@@ -69,7 +69,7 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
             9  => '-1.234',
             10 => '-1.234,56',
             11 => '-1.234,56'
-        );
+        ];
 
         foreach ($valuesExpected as $key => $value) {
             $this->assertEquals($valuesReceived[$key], $filter->filter($value), 'failed filter of ' . var_export($value, 1));
@@ -83,45 +83,45 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
      */
     public function testDateLocalizationWithoutParameters()
     {
-        $filter = new Zend_Filter_NormalizedToLocalized(array('locale' => 'de', 'date_format' => 'HH:mm:ss'));
-        $valuesExpected[1] = array(
+        $filter = new Zend_Filter_NormalizedToLocalized(['locale' => 'de', 'date_format' => 'HH:mm:ss']);
+        $valuesExpected[1] = [
             'hour'         => '11',
             'minute'       => '22',
-            'second'       => '33');
+            'second'       => '33'];
         $valuesReceived[1] = '11:22:33';
 
         foreach ($valuesExpected as $key => $value) {
             $this->assertEquals($valuesReceived[$key], $filter->filter($value), 'failed filter of ' . var_export($value, 1));
         }
 
-        $filter = new Zend_Filter_NormalizedToLocalized(array('locale' => 'de', 'date_format' => 'dd.MM.yyyy'));
-        $valuesExpected[1] = array(
+        $filter = new Zend_Filter_NormalizedToLocalized(['locale' => 'de', 'date_format' => 'dd.MM.yyyy']);
+        $valuesExpected[1] = [
             'date_format'  => 'dd.MM.yyyy',
             'locale'       => 'de',
             'day'          => '20',
             'month'        => '04',
-            'year'         => '2009');
+            'year'         => '2009'];
         $valuesReceived[1] = '20.04.2009';
 
-        $valuesExpected[2] = array(
+        $valuesExpected[2] = [
             'date_format'  => null,
             'locale'       => 'de',
             'day'          => '20',
             'month'        => '04',
-            'year'         => '2009');
+            'year'         => '2009'];
         $valuesReceived[2] = '20.04.2009';
 
-        $valuesExpected[3] = array(
+        $valuesExpected[3] = [
             'date_format'  => 'dd.MM.yyyy',
             'day'          => '20',
             'month'        => '04',
-            'year'         => '2009');
+            'year'         => '2009'];
         $valuesReceived[3] = '20.04.2009';
 
-        $valuesExpected[4] = array(
+        $valuesExpected[4] = [
             'day'          => '20',
             'month'        => '04',
-            'year'         => '2009');
+            'year'         => '2009'];
         $valuesReceived[4] = '20.04.2009';
 
         foreach ($valuesExpected as $key => $value) {
@@ -136,36 +136,36 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
      */
     public function testDateLocalizationWithParameters()
     {
-        $filter = new Zend_Filter_NormalizedToLocalized(array('locale' => 'de', 'date_format' => 'yyyy.dd.MM'));
+        $filter = new Zend_Filter_NormalizedToLocalized(['locale' => 'de', 'date_format' => 'yyyy.dd.MM']);
 
         // Note that any non date array key like date_format or locale does not
         // change filter parameters... only day, month and year are used
-        $valuesExpected[1] = array(
+        $valuesExpected[1] = [
             'date_format' => 'yyyy.dd.MM',
             'locale'      => 'de',
             'day'         => '20',
             'month'       => '04',
-            'year'        => '2009');
+            'year'        => '2009'];
         $valuesReceived[1] = '2009.20.04';
 
-        $valuesExpected[2] = array(
+        $valuesExpected[2] = [
             'day'         => '20',
             'month'       => '04',
-            'year'        => '2009');
+            'year'        => '2009'];
         $valuesReceived[2] = '2009.20.04';
 
-        $valuesExpected[3] = array(
+        $valuesExpected[3] = [
             'locale'      => 'de',
             'day'         => '20',
             'month'       => '04',
-            'year'        => '2009');
+            'year'        => '2009'];
         $valuesReceived[3] = '2009.20.04';
 
-        $valuesExpected[4] = array(
+        $valuesExpected[4] = [
             'date_format' => null,
             'day'         => '20',
             'month'       => '04',
-            'year'        => '2009');
+            'year'        => '2009'];
         $valuesReceived[4] = '2009.20.04';
 
         foreach ($valuesExpected as $key => $value) {
@@ -180,24 +180,24 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
      */
     public function testLocalizationToInteger()
     {
-        $filter = new Zend_Filter_NormalizedToLocalized(array('locale' => 'de', 'precision' => 0));
-        $valuesExpected = array(
+        $filter = new Zend_Filter_NormalizedToLocalized(['locale' => 'de', 'precision' => 0]);
+        $valuesExpected = [
             1 => '1234.56',
             2 => 1234.56,
             3 => '1.234',
             4 => 1.234,
             5 => '1234',
             6 => 1234
-        );
+        ];
 
-        $valuesReceived = array(
+        $valuesReceived = [
             1 => '1.235',
             2 => '1.235',
             3 => '1',
             4 => '1',
             5 => '1.234',
             6 => '1.234'
-        );
+        ];
 
         foreach ($valuesExpected as $key => $value) {
             $this->assertEquals($valuesReceived[$key], $filter->filter($value), 'failed filter of ' . var_export($value, 1));
@@ -211,25 +211,25 @@ class Zend_Filter_NormalizedToLocalizedTest extends PHPUnit_Framework_TestCase
      */
     public function testLocalizationToFloat()
     {
-        $filter = new Zend_Filter_NormalizedToLocalized(array('locale' => 'de', 'precision' => 2));
+        $filter = new Zend_Filter_NormalizedToLocalized(['locale' => 'de', 'precision' => 2]);
 
-        $valuesExpected = array(
+        $valuesExpected = [
             1 => '1234.5678',
             2 => 1234.5678,
             3 => '1.234',
             4 => 1.234,
             5 => '1234',
             6 => 1234
-        );
+        ];
 
-        $valuesReceived = array(
+        $valuesReceived = [
             1 => '1.234,57',
             2 => '1.234,57',
             3 => '1,23',
             4 => '1,23',
             5 => '1.234,00',
             6 => '1.234,00'
-        );
+        ];
 
         foreach ($valuesExpected as $key => $value) {
             $this->assertEquals($valuesReceived[$key], $filter->filter($value), 'failed filter of ' . var_export($value, 1));

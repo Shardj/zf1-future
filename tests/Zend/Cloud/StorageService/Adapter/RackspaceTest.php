@@ -120,12 +120,12 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
             $this->markTestSkipped("Rackspace access not configured, skipping test");
         }
 
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY        => 'Zend_Cloud_StorageService_Adapter_Rackspace',
             Zend_Cloud_StorageService_Adapter_Rackspace::USER             => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_USER'),
             Zend_Cloud_StorageService_Adapter_Rackspace::API_KEY          => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_KEY'),
             Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER => constant('TESTS_ZEND_SERVICE_RACKSPACE_CONTAINER_NAME')
-        ));
+        ]);
 
         return $config;
     }

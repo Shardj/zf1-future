@@ -103,7 +103,7 @@ class Zend_Json_Decoder
         $this->_offset       = 0;
 
         // Normalize and set $decodeType
-        if (!in_array($decodeType, array(Zend_Json::TYPE_ARRAY, Zend_Json::TYPE_OBJECT)))
+        if (!in_array($decodeType, [Zend_Json::TYPE_ARRAY, Zend_Json::TYPE_OBJECT]))
         {
             $decodeType = Zend_Json::TYPE_ARRAY;
         }
@@ -146,7 +146,9 @@ class Zend_Json_Decoder
         if (null === $source) {
             require_once 'Zend/Json/Exception.php';
             throw new Zend_Json_Exception('Must specify JSON encoded source for decoding');
-        } elseif (!is_string($source)) {
+        }
+
+        if (!is_string($source)) {
             require_once 'Zend/Json/Exception.php';
             throw new Zend_Json_Exception('Can only decode JSON encoded strings');
         }
@@ -161,6 +163,7 @@ class Zend_Json_Decoder
      * Recursive driving rountine for supported toplevel tops
      *
      * @return mixed
+     * @throws Zend_Json_Exception
      */
     protected function _decodeValue()
     {
@@ -198,7 +201,7 @@ class Zend_Json_Decoder
      */
     protected function _decodeObject()
     {
-        $members = array();
+        $members = [];
         $tok = $this->_getNextToken();
 
         while ($tok && $tok != self::RBRACE) {
@@ -260,7 +263,7 @@ class Zend_Json_Decoder
      */
     protected function _decodeArray()
     {
-        $result = array();
+        $result = [];
         $starttok = $tok = $this->_getNextToken(); // Move past the '['
         $index  = 0;
 
@@ -308,6 +311,7 @@ class Zend_Json_Decoder
      * Retrieves the next token from the source stream
      *
      * @return int Token constant value specified in class definition
+     * @throws Zend_Json_Exception
      */
     protected function _getNextToken()
     {
@@ -324,7 +328,7 @@ class Zend_Json_Decoder
         $i          = $this->_offset;
         $start      = $i;
 
-        switch ($str{$i}) {
+        switch ($str[$i]) {
             case '{':
                $this->_token = self::LBRACE;
                break;
@@ -351,14 +355,14 @@ class Zend_Json_Decoder
                         break;
                     }
 
-                    $chr = $str{$i};
+                    $chr = $str[$i];
 
                     if ($chr == '\\') {
                         $i++;
                         if ($i >= $str_length) {
                             break;
                         }
-                        $chr = $str{$i};
+                        $chr = $str[$i];
                         switch ($chr) {
                             case '"' :
                                 $result .= '"';
@@ -431,7 +435,7 @@ class Zend_Json_Decoder
             return($this->_token);
         }
 
-        $chr = $str{$i};
+        $chr = $str[$i];
         if ($chr == '-' || $chr == '.' || ($chr >= '0' && $chr <= '9')) {
             if (preg_match('/-?([0-9])*(\.[0-9]*)?((e|E)((-|\+)?)[0-9]+)?/s',
                 $str, $matches, PREG_OFFSET_CAPTURE, $start) && $matches[0][1] == $start) {
@@ -442,11 +446,11 @@ class Zend_Json_Decoder
                     if (preg_match('/^0\d+$/', $datum)) {
                         require_once 'Zend/Json/Exception.php';
                         throw new Zend_Json_Exception("Octal notation not supported by JSON (value: $datum)");
-                    } else {
-                        $val  = intval($datum);
-                        $fVal = floatval($datum);
-                        $this->_tokenValue = ($val == $fVal ? $val : $fVal);
                     }
+
+                    $val  = (int)$datum;
+                    $fVal = (float)$datum;
+                    $this->_tokenValue = ($val == $fVal ? $val : $fVal);
                 } else {
                     require_once 'Zend/Json/Exception.php';
                     throw new Zend_Json_Exception("Illegal number format: $datum");
@@ -494,7 +498,7 @@ class Zend_Json_Decoder
                     $i += 5;
                     break;
                 case ($ord_chrs_c >= 0x20) && ($ord_chrs_c <= 0x7F):
-                    $utf8 .= $chrs{$i};
+                    $utf8 .= $chrs[$i];
                     break;
                 case ($ord_chrs_c & 0xE0) == 0xC0:
                     // characters U-00000080 - U-000007FF, mask 110XXXXX

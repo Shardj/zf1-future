@@ -83,13 +83,13 @@ class Zend_Tool_Framework_Action_Base implements Zend_Tool_Framework_Action_Inte
      * _parseName - internal method to determine the name of an action when one is not explicity provided.
      *
      * @param Zend_Tool_Framework_Action_Interface $action
-     * @return string
+     * @return string Action name
      */
     protected function _parseName()
     {
         $className = get_class($this);
-        $actionName = substr($className, strrpos($className, '_')+1);
-        return $actionName;
+
+        return substr($className, strrpos($className, '_')+1);
     }
 
 }

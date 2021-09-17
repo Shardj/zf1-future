@@ -38,9 +38,9 @@ FOP=@FOP@
 ECSRC=@ECSRC@
 HERE=@HERE@
 
-DOCBOOK_DTD?=http://framework.zend.com/docbook/xml/4.5/docbookx.dtd
-DOCBOOK_XSL?=http://framework.zend.com/docbook-xsl/htmlhelp/htmlhelp.xsl
-DOCBOOK_FO_XSL?=http://framework.zend.com/docbook-xsl/fo/docbook.xsl
+DOCBOOK_DTD?=https://docbook.org/xml/4.5/docbookx.dtd
+DOCBOOK_XSL?=https://cdn.docbook.org/release/xsl/current/html/chunk.xsl
+DOCBOOK_FO_XSL?=https://cdn.docbook.org/release/xsl/current/fo/docbook.xsl
 HTML_XSL=html.xsl
 MANUAL_XML=manual.xml
 MANUAL_PRINT1_XML=manual-print1.xml
@@ -58,8 +58,8 @@ html: html/index.html
 
 html/index.html: $(MANUAL_XML) $(HTML_XSL)
 	@echo "Rendering the whole manual with $(XSLTPROC)..."
-	$(XMLLINT) --xinclude --output _temp_manual.xml $(MANUAL_XML)
-	$(XSLTPROC) --xinclude --output html/index.html $(HTML_XSL) _temp_manual.xml
+	$(XMLLINT) --xinclude --noent --output _temp_manual.xml $(MANUAL_XML)
+	$(XSLTPROC) --xinclude --maxdepth 6000 --output html/index.html $(HTML_XSL) _temp_manual.xml
 	@echo "Copying manual figures (recursively)..."
 	-[ -d figures ] && cp -r figures html/
 

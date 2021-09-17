@@ -87,11 +87,11 @@ class Zend_View_Helper_AttributeJsEscapingTest extends PHPUnit_Framework_TestCas
      */
     public function testRendersSubmitInput()
     {
-        $html = $this->helper->formSubmit(array(
+        $html = $this->helper->formSubmit([
             'name'    => 'foo',
             'value'   => 'Submit!',
-            'attribs' => array('onsubmit' => array('foo', '\'bar\'', 10))
-        ));
+            'attribs' => ['onsubmit' => ['foo', '\'bar\'', 10]]
+        ]);
         $this->assertEquals('<input type="submit" name="foo" id="foo" value="Submit!" onsubmit=\'["foo","&#39;bar&#39;",10]\'>', $html);
     }
 }

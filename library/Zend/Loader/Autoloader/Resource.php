@@ -42,7 +42,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
     /**
      * @var array Components handled within this resource
      */
-    protected $_components = array();
+    protected $_components = [];
 
     /**
      * @var string Default resource/component to use when using object registry
@@ -57,7 +57,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
     /**
      * @var array Available resource types handled by this resource autoloader
      */
-    protected $_resourceTypes = array();
+    protected $_resourceTypes = [];
 
     /**
      * Constructor
@@ -145,7 +145,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
         $namespace         = '';
 
         if (!empty($namespaceTopLevel)) {
-            $namespace = array();
+            $namespace = [];
             $topLevelSegments = count(explode('_', $namespaceTopLevel));
             for ($i = 0; $i < $topLevelSegments; $i++) {
                 $namespace[] = array_shift($segments);
@@ -289,9 +289,9 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
             }
             $namespaceTopLevel = $this->getNamespace();
             $namespace = ucfirst(trim($namespace, '_'));
-            $this->_resourceTypes[$type] = array(
+            $this->_resourceTypes[$type] = [
                 'namespace' => empty($namespaceTopLevel) ? $namespace : $namespaceTopLevel . '_' . $namespace,
-            );
+            ];
         }
         if (!is_string($path)) {
             require_once 'Zend/Loader/Exception.php';
@@ -408,8 +408,8 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
      */
     public function clearResourceTypes()
     {
-        $this->_resourceTypes = array();
-        $this->_components    = array();
+        $this->_resourceTypes = [];
+        $this->_components    = [];
         return $this;
     }
 

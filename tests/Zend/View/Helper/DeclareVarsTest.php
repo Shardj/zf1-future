@@ -71,10 +71,10 @@ class Zend_View_Helper_DeclareVarsTest extends PHPUnit_Framework_TestCase
         $this->view->declareVars(
             'varName1',
             'varName2',
-            array(
+            [
                 'varName3' => 'defaultValue',
-                'varName4' => array()
-            )
+                'varName4' => []
+            ]
         );
     }
 
@@ -88,7 +88,7 @@ class Zend_View_Helper_DeclareVarsTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isset($this->view->varName4));
 
         $this->assertEquals('defaultValue', $this->view->varName3);
-        $this->assertEquals(array(), $this->view->varName4);
+        $this->assertEquals([], $this->view->varName4);
     }
 
     public function testDeclareDeclaredVars()

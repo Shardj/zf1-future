@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Test helpers
  */
 require_once dirname(__FILE__) . '/../../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../../TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/../../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_Credentials_SharedAccessSignature */
 require_once 'Zend/Service/WindowsAzure/Credentials/SharedAccessSignature.php';
@@ -125,9 +125,9 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends PH
         $credentials = new Zend_Service_WindowsAzure_Credentials_SharedAccessSignature('myaccount', '', false);
         $queryString = $credentials->createSignedQueryString('pictures/blob.txt', '', 'b', 'r', '2009-02-09', '2009-02-10');
         
-        $credentials->setPermissionSet(array(
+        $credentials->setPermissionSet([
             'http://blob.core.windows.net/myaccount/pictures/blob.txt?' . $queryString
-        ));
+        ]);
 
         $requestUrl = 'http://blob.core.windows.net/myaccount/pictures/blob.txt?comp=metadata';
         $result = $credentials->signRequestUrl($requestUrl, Zend_Service_WindowsAzure_Storage::RESOURCE_BLOB);

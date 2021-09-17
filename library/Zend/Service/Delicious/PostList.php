@@ -36,7 +36,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
     /**
      * @var array Array of Zend_Service_Delicious_Post
      */
-    protected $_posts = array();
+    protected $_posts = [];
 
     /**
      * @var Zend_Service_Delicious Service that has downloaded the post list
@@ -116,7 +116,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
         $postList = new self($this->_service);
 
         foreach ($this->_posts as $post) {
-            if (count(array_diff($tags, $post->getTags())) == 0) {
+            if (count(array_diff($tags, $post->getTags())) === 0) {
                 $postList->_addPost($post);
             }
         }

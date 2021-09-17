@@ -15,7 +15,7 @@
         für weitere Informationen über die Google Analytics <acronym>API</acronym>.
     </para>
 
-    <sect2 id="zend.gdata.analytics">
+    <sect2 id="zend.gdata.analytics.accounts">
         <title>Account-Daten abfragen</title>
 
         <para>

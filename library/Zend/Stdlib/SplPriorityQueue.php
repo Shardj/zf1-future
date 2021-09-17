@@ -62,7 +62,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * All items in the queue
          * @var array
          */
-        protected $queue = array();
+        protected $queue = [];
 
         /**
          * Constructor
@@ -205,7 +205,7 @@ if (!is_array($this->preparedQueue)) {
                 $priority = serialize($priority);
             }
             if (!isset($this->queue[$priority])) {
-                $this->queue[$priority] = array();
+                $this->queue[$priority] = [];
             }
             $this->queue[$priority][] = $value;
             $this->count++;
@@ -283,11 +283,11 @@ if (!is_array($this->preparedQueue)) {
          */
         public function setExtractFlags($flags)
         {
-            $expected = array(
+            $expected = [
                 self::EXTR_DATA => true,
                 self::EXTR_PRIORITY => true,
                 self::EXTR_BOTH => true,
-            );
+            ];
             if (!isset($expected[$flags])) {
                 throw new InvalidArgumentException(sprintf('Expected an EXTR_* flag; received %s', $flags));
             }
@@ -317,10 +317,10 @@ if (!is_array($this->preparedQueue)) {
                 return $this->queue[$key][0];
             }
 
-            return array(
+            return [
                 'data'     => $this->queue[$key][0],
                 'priority' => $key,
-            );
+            ];
         }
 
         /**
@@ -352,19 +352,19 @@ if (!is_array($this->preparedQueue)) {
         {
             $this->sort();
             $count = $this->count;
-            $queue = array();
+            $queue = [];
             foreach ($this->queue as $priority => $values) {
                 $priorityKey = $priority;
                 if (preg_match('/^(a|O):/', $priority)) {
                     $priority = unserialize($priority);
                 }
                 foreach ($values as $key => $value) {
-                    $queue[$count] = array(
+                    $queue[$count] = [
                         'data'        => $value,
                         'priority'    => $priority,
                         'priorityKey' => $priorityKey,
                         'key'         => $key,
-                    );
+                    ];
                     $count--;
                 }
             }
@@ -424,7 +424,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         // necessary.
         if ($this->isPhp53) {
             if (!is_array($priority)) {
-                $priority = array($priority, $this->serial--);
+                $priority = [$priority, $this->serial--];
             }
         }
         parent::insert($datum, $priority);
@@ -440,7 +440,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
     public function toArray()
     {
         $this->setExtractFlags(self::EXTR_BOTH);
-        $array = array();
+        $array = [];
         while ($this->valid()) {
             $array[] = $this->current();
             $this->next();
@@ -453,7 +453,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         }
 
         // Return only the data
-        $return = array();
+        $return = [];
         foreach ($array as $item) {
             $return[] = $item['data'];
         }
@@ -468,7 +468,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
      */
     public function serialize()
     {
-        $data = array();
+        $data = [];
         $this->setExtractFlags(self::EXTR_BOTH);
         while ($this->valid()) {
             $data[] = $this->current();

@@ -72,10 +72,10 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
     public function testConstructor() {
         $mail = 'mail@example.com';
 
-        $options = array(
+        $options = [
             'theme' => 'black',
             'lang' => 'no',
-        );
+        ];
 
         $config = new Zend_Config($options);
 

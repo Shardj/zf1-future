@@ -172,13 +172,13 @@ class Zend_Form_Decorator_ViewScriptTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsArePassedToPartialAsVariables()
     {
-        $this->decorator->setOptions(array(
+        $this->decorator->setOptions([
             'foo'        => 'Foo Value',
             'bar'        => 'Bar Value',
             'baz'        => 'Baz Value',
             'bat'        => 'Bat Value',
             'viewScript' => 'decorator.phtml',
-        ));
+        ]);
         $this->getElement();
         $test = $this->decorator->render('');
         foreach ($this->decorator->getOptions() as $key => $value) {

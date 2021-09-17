@@ -222,7 +222,7 @@ abstract class Zend_View_Helper_Placeholder_Container_Standalone extends Zend_Vi
     {
         $container = $this->getContainer();
         if (method_exists($container, $method)) {
-            $return = call_user_func_array(array($container, $method), $args);
+            $return = call_user_func_array([$container, $method], $args);
             if ($return === $container) {
                 // If the container is returned, we really want the current object
                 return $this;

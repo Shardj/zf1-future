@@ -49,17 +49,17 @@ abstract class Zend_Application_Resource_ResourceAbstract implements Zend_Applic
      *
      * @var array
      */
-    protected $_options = array();
+    protected $_options = [];
 
     /**
      * Option keys to skip when calling setOptions()
      *
      * @var array
      */
-    protected $_skipOptions = array(
+    protected $_skipOptions = [
         'options',
         'config',
-    );
+    ];
 
     /**
      * Create a instance with options

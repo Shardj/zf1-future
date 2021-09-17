@@ -136,6 +136,6 @@ class TestClient extends Zend_Http_Client
                 break;
         }
 
-        return new Zend_Http_Response($code, array(), $body);
+        return new Zend_Http_Response($code, [], $body);
     }
 }

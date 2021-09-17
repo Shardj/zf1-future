@@ -38,7 +38,7 @@ class Zend_Filter_DecryptTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        if (!extension_loaded('mcrypt') and !extension_loaded('openssl')) {
+        if (!extension_loaded('mcrypt') && !extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the mcrypt or openssl extension');
         }
     }
@@ -54,12 +54,12 @@ class Zend_Filter_DecryptTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('Mcrypt extension not installed');
         }
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Mcrypt'));
-        $valuesExpected = array(
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Mcrypt']);
+        $valuesExpected = [
             'STRING' => 'STRING',
             'ABC1@3' => 'ABC1@3',
             'A b C'  => 'A B C'
-        );
+        ];
 
         $enc = $filter->getEncryption();
         $filter->setVector('testvect');
@@ -80,7 +80,7 @@ class Zend_Filter_DecryptTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('Openssl extension not installed');
         }
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Openssl'));
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Openssl']);
         $filter->setPassphrase('zPUp9mCzIrM7xQOEnPJZiDkBwPBV9UlITY0Xd3v4bfIwzJ12yPQCAkcR5BsePGVw
 RK6GS5RwXSLrJu9Qj8+fk0wPj6IPY5HvA9Dgwh+dptPlXppeBm3JZJ+92l0DqR2M
 ccL43V3Z4JN9OXRAfGWXyrBJNmwURkq7a2EyFElBBWK03OLYVMevQyRJcMKY0ai+
@@ -91,7 +91,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
 
         $key = $filter->getPrivateKey();
         $this->assertEquals(
-            array(dirname(__FILE__) . '/_files/privatekey.pem' =>
+            [dirname(__FILE__) . '/_files/privatekey.pem' =>
                   '-----BEGIN RSA PRIVATE KEY-----
 MIICXgIBAAKBgQDKTIp7FntJt1BioBZ0lmWBE8CyzngeGCHNMcAC4JLbi1Y0LwT4
 CSaQarbvAqBRmc+joHX+rcURm89wOibRaThrrZcvgl2pomzu7shJc0ObiRZC8H7p
@@ -107,7 +107,7 @@ qxzHN7QGmjSn9g36hmH+/rhwKGK9MxfsGkt+/KOOqNi5X8kGIFkxBPGP5LtMisk8
 cAkcoMuBcgWhIn/46C1PAkEAzLK/ibrdMQLOdO4SuDgj/2nc53NZ3agl61ew8Os6
 d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 -----END RSA PRIVATE KEY-----
-'),
+'],
             $key);
     }
 
@@ -123,7 +123,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->markTestSkipped('Mcrypt extension not installed');
         }
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Mcrypt', 'key' => 'testkey'));
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $this->assertEquals('testvect', $filter->getVector());
     }
@@ -139,10 +139,10 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->markTestSkipped('Mcrypt extension not installed');
         }
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Mcrypt', 'key' => 'testkey'));
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $this->assertEquals(
-            array(
+            [
                 'key'                 => 'testkey',
                 'algorithm'           => MCRYPT_BLOWFISH,
                 'algorithm_directory' => '',
@@ -150,7 +150,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
                 'mode_directory'      => '',
                 'vector'              => 'testvect',
                 'salt'                => '',
-            ),
+            ],
             $filter->getEncryption()
         );
     }
@@ -166,13 +166,13 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->markTestSkipped('Mcrypt extension not installed');
         }
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Mcrypt', 'key' => 'testkey'));
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $filter->setEncryption(
-            array('mode' => MCRYPT_MODE_ECB,
-                  'algorithm' => MCRYPT_3DES));
+            ['mode' => MCRYPT_MODE_ECB,
+                  'algorithm' => MCRYPT_3DES]);
         $this->assertEquals(
-            array(
+            [
                 'mode'                => MCRYPT_MODE_ECB,
                 'algorithm'           => MCRYPT_3DES,
                 'key'                 => 'testkey',
@@ -180,7 +180,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
                 'mode_directory'      => '',
                 'vector'              => 'testvect',
                 'salt'                => '',
-            ),
+            ],
             $filter->getEncryption()
         );
     }
@@ -196,13 +196,13 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->markTestSkipped('Mcrypt extension not installed');
         }
 
-        $filter = new Zend_Filter_Encrypt(array('adapter' => 'Mcrypt', 'key' => 'testkey'));
+        $filter = new Zend_Filter_Encrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $output = $filter->filter('teststring');
 
         $this->assertNotEquals('teststring', $output);
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Mcrypt', 'key' => 'testkey'));
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $input = $filter->filter($output);
         $this->assertEquals('teststring', trim($input));
@@ -219,13 +219,13 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->markTestSkipped('Openssl extension not installed');
         }
 
-        $filter = new Zend_Filter_Encrypt(array('adapter' => 'Openssl'));
+        $filter = new Zend_Filter_Encrypt(['adapter' => 'Openssl']);
         $filter->setPublicKey(dirname(__FILE__) . '/_files/publickey.pem');
         $output = $filter->filter('teststring');
         $envelopekeys = $filter->getEnvelopeKey();
         $this->assertNotEquals('teststring', $output);
 
-        $filter = new Zend_Filter_Decrypt(array('adapter' => 'Openssl'));
+        $filter = new Zend_Filter_Decrypt(['adapter' => 'Openssl']);
         $filter->setPassphrase('zPUp9mCzIrM7xQOEnPJZiDkBwPBV9UlITY0Xd3v4bfIwzJ12yPQCAkcR5BsePGVw
 RK6GS5RwXSLrJu9Qj8+fk0wPj6IPY5HvA9Dgwh+dptPlXppeBm3JZJ+92l0DqR2M
 ccL43V3Z4JN9OXRAfGWXyrBJNmwURkq7a2EyFElBBWK03OLYVMevQyRJcMKY0ai+
@@ -243,7 +243,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
      */
     public function testSettingAdapterManually()
     {
-        if (!extension_loaded('mcrypt') or !extension_loaded('openssl')) {
+        if (!extension_loaded('mcrypt') || !extension_loaded('openssl')) {
             $this->markTestSkipped('Mcrypt or Openssl extension not installed');
         }
 

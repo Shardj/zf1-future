@@ -63,8 +63,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator exten
         }
 
         // if the file matches the accept file pattern, accept
-        $acceptable = (preg_match('#' . $this->_acceptFilePattern . '#', $currentNodeRealPath)) ? true : false;
-        return $acceptable;
+        return (preg_match('#' . $this->_acceptFilePattern . '#', $currentNodeRealPath)) ? true : false;
     }
 
     /**

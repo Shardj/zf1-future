@@ -65,7 +65,7 @@ class Zend_Tag_ItemListTest extends PHPUnit_Framework_TestCase
     {
         $list = new Zend_Tag_ItemList();
 
-        $values = array('foo', 'bar', 'baz');
+        $values = ['foo', 'bar', 'baz'];
         foreach ($values as $value) {
             $list[] = $this->_getItem($value);
         }
@@ -105,14 +105,14 @@ class Zend_Tag_ItemListTest extends PHPUnit_Framework_TestCase
         $list[] = $this->_getItem('bar', 5);
         $list[] = $this->_getItem('baz', 50);
 
-        $list->spreadWeightValues(array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        $list->spreadWeightValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
-        $weightValues = array();
+        $weightValues = [];
         foreach ($list as $item) {
             $weightValues[] = $item->getParam('weightValue');
         }
 
-        $expectedWeightValues = array(1, 2, 10);
+        $expectedWeightValues = [1, 2, 10];
 
         $this->assertEquals($weightValues, $expectedWeightValues);
     }
@@ -125,14 +125,14 @@ class Zend_Tag_ItemListTest extends PHPUnit_Framework_TestCase
         $list[] = $this->_getItem('bar', 5);
         $list[] = $this->_getItem('baz', 50);
 
-        $list->spreadWeightValues(array('foobar'));
+        $list->spreadWeightValues(['foobar']);
 
-        $weightValues = array();
+        $weightValues = [];
         foreach ($list as $item) {
             $weightValues[] = $item->getParam('weightValue');
         }
 
-        $expectedWeightValues = array('foobar', 'foobar', 'foobar');
+        $expectedWeightValues = ['foobar', 'foobar', 'foobar'];
 
         $this->assertEquals($weightValues, $expectedWeightValues);
     }
@@ -142,7 +142,7 @@ class Zend_Tag_ItemListTest extends PHPUnit_Framework_TestCase
         $list = new Zend_Tag_ItemList();
 
         try {
-            $list->spreadWeightValues(array());
+            $list->spreadWeightValues([]);
             $this->fail('An expected Zend_Tag_Exception was not raised');
         } catch (Zend_Tag_Exception $e) {
             $this->assertEquals($e->getMessage(), 'Value list may not be empty');
@@ -151,7 +151,7 @@ class Zend_Tag_ItemListTest extends PHPUnit_Framework_TestCase
 
     protected function _getItem($title = 'foo', $weight = 1)
     {
-        return new Zend_Tag_Item(array('title' => $title, 'weight' => $weight));
+        return new Zend_Tag_Item(['title' => $title, 'weight' => $weight]);
     }
 }
 

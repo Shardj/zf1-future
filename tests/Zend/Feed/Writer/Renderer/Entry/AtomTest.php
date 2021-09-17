@@ -183,20 +183,20 @@ class Zend_Feed_Writer_Renderer_Entry_AtomTest extends PHPUnit_Framework_TestCas
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $author = $entry->getAuthor();
-        $this->assertEquals(array(
+        $this->assertEquals([
             'name'=>'Jane',
             'email'=>'jane@example.com',
-            'uri'=>'http://www.example.com/jane'), $entry->getAuthor());
+            'uri'=>'http://www.example.com/jane'], $entry->getAuthor());
     }
 
     public function testEntryHoldsAnyEnclosureAdded()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
-        $this->_validEntry->setEnclosure(array(
+        $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
             'length' => '1337',
             'uri' => 'http://example.com/audio.mp3'
-        ));
+        ]);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $enc = $entry->getEnclosure();
@@ -283,28 +283,28 @@ class Zend_Feed_Writer_Renderer_Entry_AtomTest extends PHPUnit_Framework_TestCas
 
     public function testCategoriesCanBeSet()
     {
-        $this->_validEntry->addCategories(array(
-            array('term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2')
-        ));
+        $this->_validEntry->addCategories([
+            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2']
+        ]);
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
         $entry = $feed->current();
-        $expected = array(
-            array('term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null)
-        );
+        $expected = [
+            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+        ];
         $this->assertEquals($expected, (array) $entry->getCategories());
     }
 
     public function testCommentFeedLinksRendered()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Atom($this->_validWriter);
-        $this->_validEntry->setCommentFeedLinks(array(
-            array('uri'=>'http://www.example.com/atom/id/1','type'=>'atom'),
-            array('uri'=>'http://www.example.com/rss/id/1','type'=>'rss'),
-        ));
+        $this->_validEntry->setCommentFeedLinks([
+            ['uri'=>'http://www.example.com/atom/id/1','type'=>'atom'],
+            ['uri'=>'http://www.example.com/rss/id/1','type'=>'rss'],
+        ]);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         // Skipped over due to ZFR bug (detects Atom in error when RSS requested)

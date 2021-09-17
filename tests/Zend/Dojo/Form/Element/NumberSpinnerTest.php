@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     {
         $element = new Zend_Dojo_Form_Element_NumberSpinner(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'NumberSpinner',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

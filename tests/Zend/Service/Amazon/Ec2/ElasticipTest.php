@@ -54,9 +54,9 @@ class Zend_Service_Amazon_Ec2_ElasticipTest extends PHPUnit_Framework_TestCase
         $this->Zend_Service_Amazon_Ec2_Elasticip = new Zend_Service_Amazon_Ec2_Elasticip('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Elasticip::setHttpClient($client);
 
@@ -142,10 +142,10 @@ class Zend_Service_Amazon_Ec2_ElasticipTest extends PHPUnit_Framework_TestCase
 
         $response = $this->Zend_Service_Amazon_Ec2_Elasticip->describe('67.202.55.255');
 
-        $arrIp = array(
+        $arrIp = [
             'publicIp'      => '67.202.55.255',
             'instanceId'    => 'i-ag8ga0a'
-        );
+        ];
 
         $this->assertSame($arrIp, $response[0]);
     }
@@ -175,18 +175,18 @@ class Zend_Service_Amazon_Ec2_ElasticipTest extends PHPUnit_Framework_TestCase
                     . "</DescribeAddressesResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $response = $this->Zend_Service_Amazon_Ec2_Elasticip->describe(array('67.202.55.255', '67.202.55.200'));
+        $response = $this->Zend_Service_Amazon_Ec2_Elasticip->describe(['67.202.55.255', '67.202.55.200']);
 
-        $arrIps = array(
-            array(
+        $arrIps = [
+            [
                 'publicIp'      => '67.202.55.255',
                 'instanceId'    => 'i-ag8ga0a'
-            ),
-            array(
+            ],
+            [
                 'publicIp'      => '67.202.55.200',
                 'instanceId'    => 'i-aauoi9g'
-            )
-        );
+            ]
+        ];
 
         foreach($response as $k => $r) {
             $this->assertSame($arrIps[$k], $r);

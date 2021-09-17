@@ -78,11 +78,11 @@ class Zend_XmlRpc_Server_FaultTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(411, $fault->getCode());
         Zend_XmlRpc_Server_Fault::detachFaultException('zxrs_fault_test_exception');
 
-        $exceptions = array(
+        $exceptions = [
             'zxrs_fault_test_exception',
             'zxrs_fault_test_exception2',
             'zxrs_fault_test_exception3'
-        );
+        ];
         Zend_XmlRpc_Server_Fault::attachFaultException($exceptions);
         foreach ($exceptions as $class) {
             $e = new $class('test exception', 411);
@@ -123,11 +123,11 @@ class Zend_XmlRpc_Server_FaultTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(404, $fault->getCode());
 
 
-        $exceptions = array(
+        $exceptions = [
             'zxrs_fault_test_exception',
             'zxrs_fault_test_exception2',
             'zxrs_fault_test_exception3'
-        );
+        ];
         Zend_XmlRpc_Server_Fault::attachFaultException($exceptions);
         foreach ($exceptions as $class) {
             $e = new $class('test exception', 411);
@@ -257,7 +257,7 @@ class zxrs_fault_observer
 {
     private static $_instance = false;
 
-    public $observed = array();
+    public $observed = [];
 
     private function __construct()
     {
@@ -279,7 +279,7 @@ class zxrs_fault_observer
 
     public static function clearObserved()
     {
-        self::getInstance()->observed = array();
+        self::getInstance()->observed = [];
     }
 
     public static function getObserved()

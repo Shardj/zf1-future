@@ -57,12 +57,12 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      */
     public function setUp()
     {
-        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter(array( 
+        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter([ 
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Ec2', 
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_ACCESS_KEY         => 'foo', 
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECRET_KEY         => 'bar', 
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_REGION             => 'us-east-1'     
-        )); 
+        ]); 
 
         $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();     
 
@@ -76,11 +76,11 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
         
         $adapter= $this->infrastructure->getAdapter();
         
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $this->httpClientAdapterTest
-        ));
+        ]);
         
-        call_user_func(array($adapter,'setHttpClient'),$client);
+        call_user_func([$adapter,'setHttpClient'],$client);
     
     }
     /**
@@ -106,13 +106,13 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      */ 
     static function getConfigArray()
     {
-         return array(
+         return [
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Ec2',
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_ACCESS_KEY         => 'foo',
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECRET_KEY         => 'bar',
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_REGION             => 'us-east-1',
             Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECURITY_GROUP     => 'default'
-        );
+        ];
     }
     
     /**
@@ -152,10 +152,10 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends PHPUnit_Framework_TestCa
      */
     public function testCreateInstance()
     {
-        $options = array (
+        $options = [
             Zend_Cloud_Infrastructure_Instance::INSTANCE_IMAGEID      => 'ami-7f418316',
-            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECURITY_GROUP => array('default')
-        );       
+            Zend_Cloud_Infrastructure_Adapter_Ec2::AWS_SECURITY_GROUP => ['default']
+        ];       
         $instance = $this->infrastructure->createInstance('test', $options);
         self::$instanceId= $instance->getId();
         $this->assertEquals('ami-7f418316', $instance->getImageId());

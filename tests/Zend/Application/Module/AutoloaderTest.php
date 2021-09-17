@@ -65,7 +65,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         // Store original include_path
@@ -77,10 +77,10 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
         // initialize 'error' member for tests that utilize error handling
         $this->error = null;
 
-        $this->loader = new Zend_Application_Module_Autoloader(array(
+        $this->loader = new Zend_Application_Module_Autoloader([
             'namespace' => 'FooBar',
             'basePath'  => realpath(dirname(__FILE__) . '/_files'),
-        ));
+        ]);
     }
 
     public function tearDown()

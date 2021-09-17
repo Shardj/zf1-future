@@ -53,12 +53,12 @@ class Zend_Amf_Request
     /**
      * @var array Message bodies
      */
-    protected $_bodies = array();
+    protected $_bodies = [];
 
     /**
      * @var array Message headers
      */
-    protected $_headers = array();
+    protected $_headers = [];
 
     /**
      * @var int Message encoding to use for objects in response
@@ -112,8 +112,8 @@ class Zend_Amf_Request
             throw new Zend_Amf_Exception('Unknown Player Version ' . $clientVersion);
         }
 
-        $this->_bodies  = array();
-        $this->_headers = array();
+        $this->_bodies  = [];
+        $this->_headers = [];
         $headerCount    = $stream->readInt();
 
         // Iterate through the AMF envelope header
@@ -154,8 +154,7 @@ class Zend_Amf_Request
             throw new Zend_Amf_Exception('Unable to parse ' . $name . ' header data: ' . $e->getMessage() . ' '. $e->getLine(), 0, $e);
         }
 
-        $header = new Zend_Amf_Value_MessageHeader($name, $mustRead, $data, $length);
-        return $header;
+        return new Zend_Amf_Value_MessageHeader($name, $mustRead, $data, $length);
     }
 
     /**
@@ -191,8 +190,7 @@ class Zend_Amf_Request
             $this->_objectEncoding = Zend_Amf_Constants::AMF3_OBJECT_ENCODING;
         }
 
-        $body = new Zend_Amf_Value_MessageBody($targetURI, $responseURI, $data);
-        return $body;
+        return new Zend_Amf_Value_MessageBody($targetURI, $responseURI, $data);
     }
 
     /**

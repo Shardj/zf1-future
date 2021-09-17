@@ -100,12 +100,12 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCa
         return $this->helper->currencyTextBox(
             'elementId',
             '3',
-            array(
+            [
                 'required'    => true,
                 'constraints' => '{fractional:true}',
                 'currency'    => 'USD',
-            ),
-            array()
+            ],
+            []
         );
     }
 

@@ -103,15 +103,15 @@ class Zend_Dojo_Form_Decorator_TabContainerTest extends PHPUnit_Framework_TestCa
     public function getElement()
     {
         $element = new Zend_Dojo_Form();
-        $element->setAttribs(array(
+        $element->setAttribs([
             'name'   => 'foo',
             'style'  => 'width: 300px; height: 500px;',
             'class'  => 'someclass',
-            'dijitParams' => array(
+            'dijitParams' => [
                 'labelAttr' => 'foobar',
                 'typeAttr'  => 'barbaz',
-            ),
-        ));
+            ],
+        ]);
         return $element;
     }
 

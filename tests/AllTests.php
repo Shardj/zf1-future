@@ -38,7 +38,7 @@ class AllTests
 {
     public static function main()
     {
-        $parameters = array();
+        $parameters = [];
 
         if (TESTS_GENERATE_REPORT && extension_loaded('xdebug')) {
             $parameters['reportDirectory'] = TESTS_GENERATE_REPORT_TARGET;

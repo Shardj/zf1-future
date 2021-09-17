@@ -68,6 +68,12 @@ class Zend_File_ClassFileLocator extends FilterIterator
                 define('T_NS_SEPARATOR', '\\');
             }
         }
+
+        if (PHP_VERSION_ID < 80000) {
+            if (!defined('T_NAME_QUALIFIED')) {
+                define('T_NAME_QUALIFIED', 0);
+            }
+        }
     }
 
     /**
@@ -126,6 +132,7 @@ class Zend_File_ClassFileLocator extends FilterIterator
                         switch ($type) {
                             case T_STRING:
                             case T_NS_SEPARATOR:
+                            case T_NAME_QUALIFIED:
                                 $namespace .= $content;
                                 break;
                         }

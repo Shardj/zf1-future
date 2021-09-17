@@ -40,14 +40,14 @@ abstract class Zend_Ldap_TestCase extends PHPUnit_Framework_TestCase
      */
     protected function _createTestArrayData()
     {
-        $data=array(
+        $data=[
             'dn'          => 'cn=name,dc=example,dc=org',
-            'cn'          => array('name'),
-            'host'        => array('a', 'b', 'c'),
-            'empty'       => array(),
-            'boolean'     => array('TRUE', 'FALSE'),
-            'objectclass' => array('account', 'top'),
-        );
+            'cn'          => ['name'],
+            'host'        => ['a', 'b', 'c'],
+            'empty'       => [],
+            'boolean'     => ['TRUE', 'FALSE'],
+            'objectclass' => ['account', 'top'],
+        ];
         return $data;
     }
 

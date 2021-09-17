@@ -47,6 +47,6 @@ class Zend_EventManager_TestAsset_ClassWithEvents
 
     public function foo()
     {
-        $this->events()->trigger(__FUNCTION__, $this, array());
+        $this->events()->trigger(__FUNCTION__, $this, []);
     }
 }

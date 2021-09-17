@@ -55,8 +55,8 @@ class Zend_Gdata_App_CategoryTest extends PHPUnit_Framework_TestCase
         $newCategory = new Zend_Gdata_App_Extension_Category();
         $newCategory->transferFromXML($this->category->saveXML());
         $this->assertEquals(0, count($newCategory->extensionElements));
-        $newCategory->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newCategory->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newCategory->extensionElements), 1);
         $this->assertEquals($newCategory->scheme, 'http://schemas.google.com/g/2005#kind');
 
@@ -92,8 +92,8 @@ class Zend_Gdata_App_CategoryTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->category->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->category->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->category->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->category->extensionAttributes['foo2']['value']);

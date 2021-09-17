@@ -138,11 +138,11 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
             $this->markTestSkipped("Amazon SQS access not configured, skipping test");
         }
 
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             Zend_Cloud_QueueService_Factory::QUEUE_ADAPTER_KEY => 'Zend_Cloud_QueueService_Adapter_Sqs',
             Zend_Cloud_QueueService_Adapter_Sqs::AWS_ACCESS_KEY => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
             Zend_Cloud_QueueService_Adapter_Sqs::AWS_SECRET_KEY => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_SECRETKEY'),
-            ));
+            ]);
 
         return $config;
     }

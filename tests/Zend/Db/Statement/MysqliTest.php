@@ -143,8 +143,8 @@ INPUT;
     
             $count++;
             $io = explode('out:', $ioLine);
-            $in = str_replace(array('[', ']'),'', trim($io[0]));
-            $out = str_replace(array('[', ']'),'', trim($io[1]));
+            $in = str_replace(['[', ']'],'', trim($io[0]));
+            $out = str_replace(['[', ']'],'', trim($io[1]));
             $actual = $this->_Zend_Db_Statement_Mysqli_Test_Class->stripQuoted($in);
             $this->assertSame($out, $actual, $count . ' - unexpected output');
         }
@@ -266,22 +266,22 @@ INPUT;
      */
     public function testNumberOfBoundParamsDoesNotMatchNumberOfTokens()
     {
-    	$this->_util->createTable('zf_objects', array(
+    	$this->_util->createTable('zf_objects', [
             'object_id'		=> 'INTEGER NOT NULL',
     		'object_type'	=> 'INTEGER NOT NULL',
     		'object_status' => 'INTEGER NOT NULL',
     		'object_lati'   => 'REAL',
     		'object_long'   => 'REAL',
-        ));
+        ]);
         $tableName = $this->_util->getTableName('zf_objects');
 
-        $numRows = $this->_db->insert($tableName, array (
+        $numRows = $this->_db->insert($tableName, [
         	'object_id' => 1,
         	'object_type' => 1,
         	'object_status' => 1,
         	'object_lati' => 1.12345,
         	'object_long' => 1.54321,
-        ));
+        ]);
 
         $sql = 'SELECT object_id, object_type, object_status,'
              . ' object_lati, object_long FROM ' . $tableName

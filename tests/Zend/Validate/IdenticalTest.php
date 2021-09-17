@@ -124,25 +124,25 @@ class Zend_Validate_IdenticalTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->validator->isValid(true));
         $this->assertFalse($this->validator->isValid(1));
 
-        $this->validator->setToken(array('one' => 'two', 'three'));
-        $this->assertTrue($this->validator->isValid(array('one' => 'two', 'three')));
-        $this->assertFalse($this->validator->isValid(array()));
+        $this->validator->setToken(['one' => 'two', 'three']);
+        $this->assertTrue($this->validator->isValid(['one' => 'two', 'three']));
+        $this->assertFalse($this->validator->isValid([]));
     }
 
     public function testValidatingTokenArray()
     {
-        $validator = new Zend_Validate_Identical(array('token' => 123));
+        $validator = new Zend_Validate_Identical(['token' => 123]);
         $this->assertTrue($validator->isValid(123));
-        $this->assertFalse($validator->isValid(array('token' => 123)));
+        $this->assertFalse($validator->isValid(['token' => 123]));
     }
 
     public function testValidatingNonStrictToken()
     {
-        $validator = new Zend_Validate_Identical(array('token' => 123, 'strict' => false));
+        $validator = new Zend_Validate_Identical(['token' => 123, 'strict' => false]);
         $this->assertTrue($validator->isValid('123'));
 
         $validator->setStrict(true);
-        $this->assertFalse($validator->isValid(array('token' => '123')));
+        $this->assertFalse($validator->isValid(['token' => '123']));
     }
 }
 

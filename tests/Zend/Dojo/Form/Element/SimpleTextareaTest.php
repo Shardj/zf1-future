@@ -102,12 +102,12 @@ class Zend_Dojo_Form_Element_SimpleTextareaTest extends PHPUnit_Framework_TestCa
     {
         $element = new Zend_Dojo_Form_Element_SimpleTextarea(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'SimpleTextarea',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

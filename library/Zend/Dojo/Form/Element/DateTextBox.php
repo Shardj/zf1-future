@@ -44,21 +44,21 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      * Allowed formatLength types
      * @var array
      */
-    protected $_allowedFormatTypes = array(
+    protected $_allowedFormatTypes = [
         'long',
         'short',
         'medium',
         'full',
-    );
+    ];
 
     /**
      * Allowed selector types
      * @var array
      */
-    protected $_allowedSelectorTypes = array(
+    protected $_allowedSelectorTypes = [
         'time',
         'date',
-    );
+    ];
 
     /**
      * Set am,pm flag

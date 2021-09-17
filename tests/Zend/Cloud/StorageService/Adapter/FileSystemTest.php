@@ -139,10 +139,10 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest
 
     protected function _getConfig()
     {
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY        => 'Zend_Cloud_StorageService_Adapter_Filesystem',
             Zend_Cloud_StorageService_Adapter_FileSystem::LOCAL_DIRECTORY => dirname(__FILE__) . '/../_files/data/FileSystemTest',
-        ));
+        ]);
 
         return $config;
     }

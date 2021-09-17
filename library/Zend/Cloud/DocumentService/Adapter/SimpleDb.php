@@ -67,7 +67,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      * @param  array|Zend_Config $options
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
@@ -160,8 +160,8 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
     public function listDocuments($collectionName, array $options = null)
     {
         $query = $this->select('*')->from($collectionName);
-        $items = $this->query($collectionName, $query, $options);
-        return $items;
+
+        return $this->query($collectionName, $query, $options);
     }
 
     /**
@@ -249,7 +249,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
             $fieldset = $fieldset->getFields();
         }
 
-        $replace = array();
+        $replace = [];
         if (empty($options[self::MERGE_OPTION])) {
             // no merge option - we replace all
             foreach ($fieldset as $key => $value) {
@@ -304,15 +304,17 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      * @param  string $collectionName Collection name
      * @param  mixed $documentId Document ID, adapter-dependent
      * @param  array $options
-     * @return Zend_Cloud_DocumentService_Document
+     * @return array|Zend_Cloud_DocumentService_Document
      */
     public function fetchDocument($collectionName, $documentId, $options = null)
     {
         try {
             $attributes = $this->_simpleDb->getAttributes($collectionName, $documentId);
-            if ($attributes == false || count($attributes) == 0) {
+
+            if ($attributes == false || count($attributes) === 0) {
                 return false;
             }
+
             return $this->_resolveAttributes($attributes, true);
         } catch(Zend_Service_Amazon_Exception $e) {
             throw new Zend_Cloud_DocumentService_Exception('Error on fetching document: '.$e->getMessage(), $e->getCode(), $e);
@@ -389,7 +391,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      */
     protected function _makeAttributes($name, $attributes)
     {
-        $result = array();
+        $result = [];
         foreach ($attributes as $key => $attr) {
             $result[] = new Zend_Service_Amazon_SimpleDb_Attribute($name, $key, $attr);
         }
@@ -404,12 +406,12 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      */
     protected function _resolveAttributes($attributes, $returnDocument = false)
     {
-        $result = array();
+        $result = [];
         foreach ($attributes as $attr) {
             $value = $attr->getValues();
-            if (count($value) == 0) {
+            if (count($value) === 0) {
                 $value = null;
-            } elseif (count($value) == 1) {
+            } elseif (count($value) === 1) {
                 $value = $value[0];
             }
             $result[$attr->getName()] = $value;
@@ -457,7 +459,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      */
     protected function _getDocumentSetFromResultSet(Zend_Service_Amazon_SimpleDb_Page $resultSet, $returnDocs = true)
     {
-        $docs = array();
+        $docs = [];
         foreach ($resultSet->getData() as $item) {
             $docs[] = $this->_resolveAttributes($item, $returnDocs);
         }

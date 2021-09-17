@@ -123,9 +123,9 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
 
     public function testJsonHelperReturnsJsonEncodedString()
     {
-        $data = $this->helper->json(array('foobar'));
+        $data = $this->helper->json(['foobar']);
         $this->assertTrue(is_string($data));
-        $this->assertEquals(array('foobar'), Zend_Json::decode($data));
+        $this->assertEquals(['foobar'], Zend_Json::decode($data));
     }
 
     public function testJsonHelperDisablesLayoutsByDefault()
@@ -140,7 +140,7 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
     {
         $layout = Zend_Layout::startMvc();
         $this->assertTrue($layout->isEnabled());
-        $data = $this->helper->json(array('foobar'), true);
+        $data = $this->helper->json(['foobar'], true);
         $this->assertTrue($layout->isEnabled());
     }
 
@@ -152,16 +152,16 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
         $layout = Zend_Layout::startMvc();
         $this->assertTrue($layout->isEnabled());
         $data = $this->helper->json(
-            array(
+            [
                  'foobar',
-            ),
-            array(
+            ],
+            [
                  'keepLayouts' => true,
                  'encodeData'  => false,
-            )
+            ]
         );
         $this->assertTrue($layout->isEnabled());
-        $this->assertSame(array('foobar'), $data);
+        $this->assertSame(['foobar'], $data);
     }
     
     /**
@@ -169,7 +169,7 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
      */
     public function testJsonHelperWillAcceptPreencodedJson()
     {
-        $data = $this->helper->json(Zend_Json::encode(array('f')), false, false);
+        $data = $this->helper->json(Zend_Json::encode(['f']), false, false);
         $this->assertEquals('["f"]', $data);
     }
     
@@ -178,7 +178,7 @@ class Zend_View_Helper_JsonTest extends PHPUnit_Framework_TestCase
      */
     public function testJsonHelperWillSendHeadersWhenProvidedWithPreencodedJson()
     {
-        $data = $this->helper->json(Zend_Json::encode(array('f')), false, false);
+        $data = $this->helper->json(Zend_Json::encode(['f']), false, false);
         $this->verifyJsonHeader();
     }
 }

@@ -42,7 +42,7 @@ class Zend_Test_PHPUnit_Db_Integration_SqLiteIntegrationTest extends Zend_Test_P
             $this->markTestSkipped('SqLite is not included in PDO in this PHP installation.');
         }
 
-        $this->dbAdapter = Zend_Db::factory('pdo_sqlite', array('dbname' => ':memory:'));
+        $this->dbAdapter = Zend_Db::factory('pdo_sqlite', ['dbname' => ':memory:']);
         $this->dbAdapter->query(
             'CREATE TABLE "foo" (id INTEGER PRIMARY KEY AUTOINCREMENT, foo VARCHAR, bar VARCHAR, baz VARCHAR)'
         );

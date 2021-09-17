@@ -45,7 +45,7 @@ class Zend_View_Helper_RenderToPlaceholderTest extends PHPUnit_Framework_TestCas
 
     public function setUp()
     {
-        $this->_view = new Zend_View(array('scriptPath'=>dirname(__FILE__).'/_files/scripts/'));
+        $this->_view = new Zend_View(['scriptPath'=>dirname(__FILE__).'/_files/scripts/']);
     }
 
     public function testDefaultEmpty()

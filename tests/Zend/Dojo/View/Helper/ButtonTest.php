@@ -100,12 +100,12 @@ class Zend_Dojo_View_Helper_ButtonTest extends PHPUnit_Framework_TestCase
         return $this->helper->button(
             'elementId',
             'foo',
-            array(),
-            array(),
-            array(
+            [],
+            [],
+            [
                 'checked'   => 'foo',
                 'unChecked' => 'bar',
-            )
+            ]
         );
     }
 

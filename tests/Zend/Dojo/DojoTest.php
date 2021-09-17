@@ -95,7 +95,7 @@ class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
                 ->addElement('text', 'bar')
                 ->addElement('text', 'baz')
                 ->addElement('text', 'bat');
-        $form->addDisplayGroup(array('foo', 'bar'), 'foobar')
+        $form->addDisplayGroup(['foo', 'bar'], 'foobar')
              ->addSubForm($subForm, 'sub')
              ->setView(new Zend_View);
         return $form;

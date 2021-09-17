@@ -52,7 +52,7 @@ class Zend_Application_Resource_RouterTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -81,7 +81,7 @@ class Zend_Application_Resource_RouterTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationInitializesRouterObject()
     {
-        $resource = new Zend_Application_Resource_Router(array());
+        $resource = new Zend_Application_Resource_Router([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
         $this->assertTrue($resource->getRouter() instanceof Zend_Controller_Router_Rewrite);
@@ -89,7 +89,7 @@ class Zend_Application_Resource_RouterTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationReturnsRouterObject()
     {
-        $resource = new Zend_Application_Resource_Router(array());
+        $resource = new Zend_Application_Resource_Router([]);
         $resource->setBootstrap($this->bootstrap);
         $test = $resource->init();
         $this->assertTrue($test instanceof Zend_Controller_Router_Rewrite);
@@ -97,7 +97,7 @@ class Zend_Application_Resource_RouterTest extends PHPUnit_Framework_TestCase
 
     public function testChainNameSeparatorIsParsedOnToRouter()
     {
-        $resource = new Zend_Application_Resource_Router(array('chainNameSeparator' => '_unitTestSep_'));
+        $resource = new Zend_Application_Resource_Router(['chainNameSeparator' => '_unitTestSep_']);
         $resource->setBootstrap($this->bootstrap);
         $router = $resource->init();
         $this->assertEquals('_unitTestSep_', $router->getChainNameSeparator());
@@ -105,19 +105,19 @@ class Zend_Application_Resource_RouterTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsPassedToResourceAreUsedToCreateRoutes()
     {
-        $options = array('routes' => array(
-            'archive' => array(
+        $options = ['routes' => [
+            'archive' => [
                 'route'    => 'archive/:year/*',
-                'defaults' => array(
+                'defaults' => [
                     'controller' => 'archive',
                     'action'     => 'show',
                     'year'       => 2000,
-                ),
-                'reqs'     => array(
+                ],
+                'reqs'     => [
                     'year' => '\d+',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]];
 
         $resource = new Zend_Application_Resource_Router($options);
         $resource->setBootstrap($this->bootstrap);

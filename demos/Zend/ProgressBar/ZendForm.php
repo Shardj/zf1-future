@@ -33,7 +33,7 @@ if (isset($_GET['progress_key'])) {
     require_once 'Zend/ProgressBar/Adapter/JsPull.php';
 
     $adapter = new Zend_ProgressBar_Adapter_JsPull();
-    Zend_File_Transfer_Adapter_Http::getProgress(array('progress' => $adapter));
+    Zend_File_Transfer_Adapter_Http::getProgress(['progress' => $adapter]);
     die;
 }
 ?>
@@ -193,16 +193,16 @@ if (isset($_GET['progress_key'])) {
     require_once 'Zend/View.php';
     require_once 'Zend/Form.php';
 
-    $form = new Zend_Form(array(
+    $form = new Zend_Form([
         'enctype'  => 'multipart/form-data',
         'action'   => 'ZendForm.php',
         'target'   => 'uploadTarget',
         'onsubmit' => 'observeProgress();',
-        'elements' => array(
-            'file'   => array('file', array('label' => 'File')),
-            'submit' => array('submit', array('label' => 'Upload!'))
-        )
-    ));
+        'elements' => [
+            'file'   => ['file', ['label' => 'File']],
+            'submit' => ['submit', ['label' => 'Upload!']]
+        ]
+    ]);
 
     $form->setView(new Zend_View());
 

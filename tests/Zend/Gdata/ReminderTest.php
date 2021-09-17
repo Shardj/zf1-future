@@ -80,8 +80,8 @@ class Zend_Gdata_ReminderTest extends PHPUnit_Framework_TestCase
         $newReminder = new Zend_Gdata_Extension_Reminder();
         $newReminder->transferFromXML($this->reminder->saveXML());
         $this->assertEquals(0, count($newReminder->extensionElements));
-        $newReminder->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newReminder->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newReminder->extensionElements));
         $this->assertEquals("12", $newReminder->days);
         $this->assertEquals("64", $newReminder->minutes);
@@ -129,8 +129,8 @@ class Zend_Gdata_ReminderTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->reminder->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->reminder->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->reminder->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->reminder->extensionAttributes['foo2']['value']);

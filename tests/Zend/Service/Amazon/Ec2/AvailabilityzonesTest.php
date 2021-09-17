@@ -54,9 +54,9 @@ class Zend_Service_Amazon_Ec2_AvailabilityzonesTest extends PHPUnit_Framework_Te
         $this->Zend_Service_Amazon_Ec2_Availabilityzones = new Zend_Service_Amazon_Ec2_Availabilityzones('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Availabilityzones::setHttpClient($client);
 
@@ -134,7 +134,7 @@ class Zend_Service_Amazon_Ec2_AvailabilityzonesTest extends PHPUnit_Framework_Te
 
         $this->assertTrue(is_array($response));
 
-        $arrExpected = array('us-east-1a', 'us-east-1b', 'us-east-1c');
+        $arrExpected = ['us-east-1a', 'us-east-1b', 'us-east-1c'];
         foreach ($response as $k => $node) {
             $this->assertEquals($arrExpected[$k], $node['zoneName']);
         }

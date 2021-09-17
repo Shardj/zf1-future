@@ -80,10 +80,10 @@ class Zend_Crypt_MathTest extends PHPUnit_Framework_TestCase
 
     public static function provideRandInt()
     {
-        return array(
-            array(2, 1, 10000, 100, 0.9, 1.1, false),
-            array(2, 1, 10000, 100, 0.8, 1.2, true)
-        );
+        return [
+            [2, 1, 10000, 100, 0.9, 1.1, false],
+            [2, 1, 10000, 100, 0.8, 1.2, true]
+        ];
     }
 
     /**

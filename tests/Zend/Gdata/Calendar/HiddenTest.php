@@ -71,8 +71,8 @@ class Zend_Gdata_Calendar_HiddenTest extends PHPUnit_Framework_TestCase
         $newHidden = new Zend_Gdata_Calendar_Extension_Hidden();
         $newHidden->transferFromXML($this->hidden->saveXML());
         $this->assertEquals(count($newHidden->extensionElements), 0);
-        $newHidden->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newHidden->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newHidden->extensionElements), 1);
         $this->assertEquals($newHidden->value, true);
 
@@ -104,8 +104,8 @@ class Zend_Gdata_Calendar_HiddenTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->hidden->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->hidden->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->hidden->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->hidden->extensionAttributes['foo2']['value']);

@@ -98,12 +98,12 @@ class Zend_Dojo_View_Helper_SplitContainerTest extends PHPUnit_Framework_TestCas
     public function getContainer()
     {
         $html = '';
-        foreach (array('top', 'bottom', 'center', 'left', 'right') as $pane) {
+        foreach (['top', 'bottom', 'center', 'left', 'right'] as $pane) {
             $id      = $pane . 'Pane';
             $content = 'This is the content of pane ' . $pane;
-            $html   .= $this->view->contentPane($id, $content, array('region' => $pane));
+            $html   .= $this->view->contentPane($id, $content, ['region' => $pane]);
         }
-        return $this->helper->splitContainer('container', $html, array('design' => 'headline'));
+        return $this->helper->splitContainer('container', $html, ['design' => 'headline']);
     }
 
     public function testShouldAllowDeclarativeDijitCreation()

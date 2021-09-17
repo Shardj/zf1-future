@@ -45,7 +45,7 @@ class Zend_Ldap_ConnectTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_options = array('host' => TESTS_ZEND_LDAP_HOST);
+        $this->_options = ['host' => TESTS_ZEND_LDAP_HOST];
         if (defined('TESTS_ZEND_LDAP_PORT') && TESTS_ZEND_LDAP_PORT != 389)
             $this->_options['port'] = TESTS_ZEND_LDAP_PORT;
         if (defined('TESTS_ZEND_LDAP_USE_SSL'))
@@ -54,7 +54,7 @@ class Zend_Ldap_ConnectTest extends PHPUnit_Framework_TestCase
 
     public function testEmptyOptionsConnect()
     {
-        $ldap = new Zend_Ldap(array());
+        $ldap = new Zend_Ldap([]);
         try {
             $ldap->connect();
             $this->fail('Expected exception for empty options');
@@ -64,7 +64,7 @@ class Zend_Ldap_ConnectTest extends PHPUnit_Framework_TestCase
     }
     public function testUnknownHostConnect()
     {
-        $ldap = new Zend_Ldap(array('host' => 'bogus.example.com'));
+        $ldap = new Zend_Ldap(['host' => 'bogus.example.com']);
         try {
             // connect doesn't actually try to connect until bind is called
             $ldap->connect()->bind('CN=ignored,DC=example,DC=com', 'ignored');

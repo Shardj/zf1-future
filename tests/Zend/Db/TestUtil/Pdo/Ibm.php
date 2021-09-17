@@ -61,8 +61,8 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
         $server = $this->getServer();
 
         if ($server == 'IDS') {
-            return array (
-            array(
+            return [
+            [
                 'doc_id'    => 1,
                 'doc_clob'  => 'this is the clob that never ends...'.
                                'this is the clob that never ends...'.
@@ -70,8 +70,8 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
                 'doc_blob'  => 'this is the blob that never ends...'.
                                'this is the blob that never ends...'.
                                'this is the blob that never ends...'
-                )
-            );
+                ]
+            ];
         }
 
         return parent::_getDataDocuments();

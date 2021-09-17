@@ -81,12 +81,12 @@ function printBrowserDetails($browser)
 
 }
 
-$options = array(
+$options = [
     '', 
     'mobile, text, desktop', 
     'bot, mobile, validator, checker, console, offline, email, text', 
     'text, bot, validator, checker, console, offline, email'
-);
+];
 ?>
 
 <div id="content">

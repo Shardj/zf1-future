@@ -133,7 +133,7 @@ class SimpleCRUD
             $this->cellsGetAction();
         } else if (($command[0] == 'update') && (count($command) > 2)) {
               $this->getRowAndColumnCount();
-                if (count($command) == 4) {
+                if (count($command) === 4) {
                     $this->cellsUpdateAction($command[1], $command[2], $command[3]);
                 } elseif (count($command) > 4) {
                     $newValue = implode(' ', array_slice($command,3));
@@ -326,7 +326,7 @@ class SimpleCRUD
      */
     public function stringToArray($rowData)
     {
-        $arr = array();
+        $arr = [];
         foreach ($rowData as $row) {
             $temp = explode('=', $row);
             $arr[$temp[0]] = $temp[1];

@@ -35,9 +35,9 @@ require_once 'Zend/Db/Statement/TestCommon.php';
 class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
 {
     // http://msdn.microsoft.com/en-us/library/cc296197(SQL.90).aspx
-    protected $_getColumnMetaKeys = array(
+    protected $_getColumnMetaKeys = [
         'Name' , 'Type', 'Size', 'Precision', 'Scale', 'Nullable'
-    );
+    ];
 
     public function testStatementExecuteWithParams()
     {
@@ -118,7 +118,7 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
         // create procedure
         $this->_db->query($prodecure);
 
-        $stmt  = $this->_db->query('{call ' . $products_procedure .'(?)}', array('Product'));
+        $stmt  = $this->_db->query('{call ' . $products_procedure .'(?)}', ['Product']);
 
         $result1 = $stmt->rowCount();
 

@@ -106,75 +106,75 @@ class Zend_Dojo_View_Helper_HorizontalSliderTest extends PHPUnit_Framework_TestC
         return $this->helper->horizontalSlider(
             'elementId',
             '',
-            array(
+            [
                 'minimum'        => -10,
                 'maximum'        => 10,
                 'discreteValues' => 11,
-                'topDecoration' => array(
-                    'labels' => array(
+                'topDecoration' => [
+                    'labels' => [
                         ' ',
                         '20%',
                         '40%',
                         '60%',
                         '80%',
                         ' ',
-                    ),
+                    ],
                     'container' => 'top',
-                    'attribs' => array(
-                        'container' => array(
+                    'attribs' => [
+                        'container' => [
                             'style' => 'height:1.2em; font-size=75%;color:gray;',
-                        ),
-                        'labels' => array(
+                        ],
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
+                        ],
+                    ],
                     'dijit' => 'HorizontalRuleLabels',
-                ),
-                'bottomDecoration' => array(
-                    'labels' => array(
+                ],
+                'bottomDecoration' => [
+                    'labels' => [
                         '0%',
                         '50%',
                         '100%',
-                    ),
-                    'attribs' => array(
-                        'labels' => array(
+                    ],
+                    'attribs' => [
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
-                ),
-                'leftDecoration' => array(
-                    'labels' => array(
+                        ],
+                    ],
+                ],
+                'leftDecoration' => [
+                    'labels' => [
                         ' ',
                         '20%',
                         '40%',
                         '60%',
                         '80%',
                         ' ',
-                    ),
-                    'attribs' => array(
-                        'container' => array(
+                    ],
+                    'attribs' => [
+                        'container' => [
                             'style' => 'height:1.2em; font-size=75%;color:gray;',
-                        ),
-                        'labels' => array(
+                        ],
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
+                        ],
+                    ],
                     'dijit' => 'VerticalRuleLabels',
-                ),
-                'rightDecoration' => array(
-                    'labels' => array(
+                ],
+                'rightDecoration' => [
+                    'labels' => [
                         '0%',
                         '50%',
                         '100%',
-                    ),
-                    'attribs' => array(
-                        'labels' => array(
+                    ],
+                    'attribs' => [
+                        'labels' => [
                             'style' => 'height:1em; font-size=75%;color:gray;',
-                        ),
-                    ),
-                ),
-            ),
-            array()
+                        ],
+                    ],
+                ],
+            ],
+            []
         );
     }
 
@@ -238,28 +238,28 @@ class Zend_Dojo_View_Helper_HorizontalSliderTest extends PHPUnit_Framework_TestC
         $html = $this->helper->horizontalSlider(
             'elementId',
             '',
-            array(
+            [
                 'minimum'        => -10,
                 'maximum'        => 10,
                 'discreteValues' => 11,
-                'topDecoration' => array(
-                    'labels' => array(
+                'topDecoration' => [
+                    'labels' => [
                         ' ',
                         '20%',
                         '40%',
                         '60%',
                         '80%',
                         ' ',
-                    ),
-                    'params' => array(
+                    ],
+                    'params' => [
                         'required' => true,
-                        'labels' => array(
+                        'labels' => [
                             'minimum' => 5,
-                        )
-                    ),
+                        ]
+                    ],
                     'dijit' => 'HorizontalRuleLabels',
-                ),
-            )
+                ],
+            ]
         );
         $this->assertContains('required="', $html);
         $this->assertContains('minimum="', $html);
@@ -271,37 +271,37 @@ class Zend_Dojo_View_Helper_HorizontalSliderTest extends PHPUnit_Framework_TestC
     public function testShouldCreateAppropriateIdsForElementsInSubForms()
     {
         $form = new Zend_Dojo_Form;
-        $form->setDecorators(array(
+        $form->setDecorators([
             'FormElements',
-            array('TabContainer', array(
+            ['TabContainer', [
                 'id' => 'tabContainer',
                 'style' => 'width: 600px; height: 300px;',
-                'dijitParams' => array(
+                'dijitParams' => [
                     'tabPosition' => 'top'
-                ),
-            )),
+                ],
+            ]],
             'DijitForm',
-        ));
+        ]);
 
         $sliderForm = new Zend_Dojo_Form_SubForm();
-        $sliderForm->setAttribs(array(
+        $sliderForm->setAttribs([
             'name'   => 'slidertab',
             'legend' => 'Slider Elements',
-        ));
+        ]);
 
         $sliderForm->addElement(
                 'HorizontalSlider',
                 'slide1',
-                array(
+                [
                     'label' => 'Slide me:',
                     'minimum' => 0,
                     'maximum' => 25,
                     'discreteValues' => 10,
                     'style' => 'width: 450px;',
                     'topDecorationDijit' => 'HorizontalRuleLabels',
-                    'topDecorationLabels' => array('0%', '50%', '100%'),
-                    'topDecorationParams' => array('style' => 'padding-bottom: 20px;')
-                )
+                    'topDecorationLabels' => ['0%', '50%', '100%'],
+                    'topDecorationParams' => ['style' => 'padding-bottom: 20px;']
+                ]
             );
 
         $form->addSubForm($sliderForm, 'slidertab')

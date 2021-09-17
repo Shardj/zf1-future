@@ -87,7 +87,7 @@ mkdir($tempDirectory);
 
 // Generate temporary documents
 
-$tempFilenames = array();
+$tempFilenames = [];
 
 $mailMerge = new Zend_Service_LiveDocx_MailMerge();
 
@@ -162,7 +162,7 @@ function randomString()
     
     for ($i = 0; $i < $stringLen; $i ++) {
         $pos = (rand() % $poolLen);
-        $ret .= $pool{$pos};
+        $ret .= $pool[$pos];
     }
     
     return $ret;

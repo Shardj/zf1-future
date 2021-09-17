@@ -215,7 +215,7 @@ defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED') || define('TESTS_ZEND_FEED_READ
  * to enable tests that require ClientLogin authentication.  Enter your
  * Google login credentials in the EMAIL and PASSWORD properties below.
  *
- * Edit TestConfiguration.php, not TestConfiguration.php.dist.
+ * Edit TestConfiguration.php, not TestConfiguration.dist.php.
  * Never commit plaintext passwords to the source code repository.
  *
  * Note: the GData tests currently require that the TZID env variable
@@ -443,7 +443,7 @@ defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE') || define('TESTS_ZEND_LOCALE_FORMA
  * If the EXTENDED_COVERAGE property below is false, most of the I18N
  * unit tests will not be computed... this speeds tests up to 80 minutes
  * when doing reports. *
- * Edit TestConfiguration.php, not TestConfiguration.php.dist.
+ * Edit TestConfiguration.php, not TestConfiguration.dist.php.
  */
 defined('TESTS_ZEND_LOCALE_BCMATH_ENABLED') || define('TESTS_ZEND_LOCALE_BCMATH_ENABLED', true);
 defined('TESTS_ZEND_I18N_EXTENDED_COVERAGE') || define('TESTS_ZEND_I18N_EXTENDED_COVERAGE', true);

@@ -120,7 +120,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
      * @return void
      * @throws Zend_Mail_Protocol_Exception
      */
-    public function __construct($host = '127.0.0.1', $port = null, array $config = array())
+    public function __construct($host = '127.0.0.1', $port = null, array $config = [])
     {
         if (isset($config['ssl'])) {
             switch (strtolower($config['ssl'])) {
@@ -153,7 +153,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
             }
         }
 
-        parent::__construct($host, $port);
+        parent::__construct($host, $port, $config);
     }
 
 
@@ -286,7 +286,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
 
         // Set rcpt to true, as per 4.1.1.3 of RFC 2821
         $this->_send('RCPT TO:<' . $to . '>');
-        $this->_expect(array(250, 251), 300); // Timeout set for 5 minutes as per RFC 2821 4.5.3.2
+        $this->_expect([250, 251], 300); // Timeout set for 5 minutes as per RFC 2821 4.5.3.2
         $this->_rcpt = true;
     }
 
@@ -317,6 +317,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
                 // Escape lines prefixed with a '.'
                 $line = '.' . $line;
             }
+
             $this->_send($line);
         }
 
@@ -337,7 +338,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
     {
         $this->_send('RSET');
         // MS ESMTP doesn't follow RFC, see [ZF-1377]
-        $this->_expect(array(250, 220));
+        $this->_expect([250, 220]);
 
         $this->_mail = false;
         $this->_rcpt = false;
@@ -370,7 +371,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
     public function vrfy($user)
     {
         $this->_send('VRFY ' . $user);
-        $this->_expect(array(250, 251, 252), 300); // Timeout set for 5 minutes as per RFC 2821 4.5.3.2
+        $this->_expect([250, 251, 252], 300); // Timeout set for 5 minutes as per RFC 2821 4.5.3.2
     }
 
 

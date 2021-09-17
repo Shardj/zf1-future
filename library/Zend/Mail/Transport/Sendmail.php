@@ -98,7 +98,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
     public function _sendMail()
     {
         if ($this->parameters === null) {
-            set_error_handler(array($this, '_handleMailErrors'));
+            set_error_handler([$this, '_handleMailErrors']);
             $result = mail(
                 $this->recipients,
                 $this->_mail->getSubject(),
@@ -119,7 +119,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
                 );
             }
 
-            set_error_handler(array($this, '_handleMailErrors'));
+            set_error_handler([$this, '_handleMailErrors']);
             $result = mail(
                 $this->recipients,
                 $this->_mail->getSubject(),

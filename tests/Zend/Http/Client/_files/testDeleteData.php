@@ -20,7 +20,7 @@
  * @version    $Id: testDeleteData.php 23772 2011-07-17 21:35:29Z mcleod@spaceweb.nl $
  */
 
-$variables = array();
+$variables = [];
 $data = file_get_contents('php://input');
 parse_str($data, $variables);
 echo serialize($variables);

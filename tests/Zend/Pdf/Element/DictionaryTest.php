@@ -43,7 +43,7 @@ class Zend_Pdf_Element_DictionaryTest extends PHPUnit_Framework_TestCase
 
     public function testPDFDictionary2()
     {
-        $srcArray = array();
+        $srcArray = [];
         $srcArray['Bool'] = new Zend_Pdf_Element_Boolean(false);
         $srcArray['Number'] = new Zend_Pdf_Element_Numeric(100.426);
         $srcArray['Name'] = new Zend_Pdf_Element_Name('MyName');
@@ -68,7 +68,7 @@ class Zend_Pdf_Element_DictionaryTest extends PHPUnit_Framework_TestCase
     public function testPDFDictionaryBadInput2()
     {
         try {
-            $srcArray = array();
+            $srcArray = [];
             $srcArray['Bool'] = new Zend_Pdf_Element_Boolean(false);
             $srcArray['Number'] = new Zend_Pdf_Element_Numeric(100.426);
             $srcArray['Name'] = new Zend_Pdf_Element_Name('MyName');
@@ -86,7 +86,7 @@ class Zend_Pdf_Element_DictionaryTest extends PHPUnit_Framework_TestCase
     public function testPDFDictionaryBadInput3()
     {
         try {
-            $srcArray = array();
+            $srcArray = [];
             $srcArray['Bool'] = new Zend_Pdf_Element_Boolean(false);
             $srcArray['Number'] = new Zend_Pdf_Element_Numeric(100.426);
             $srcArray['Name'] = new Zend_Pdf_Element_Name('MyName');
@@ -109,7 +109,7 @@ class Zend_Pdf_Element_DictionaryTest extends PHPUnit_Framework_TestCase
 
     public function testToString()
     {
-        $srcArray = array();
+        $srcArray = [];
         $srcArray['Bool'] = new Zend_Pdf_Element_Boolean(false);
         $srcArray['Number'] = new Zend_Pdf_Element_Numeric(100.426);
         $srcArray['Name'] = new Zend_Pdf_Element_Name('MyName');

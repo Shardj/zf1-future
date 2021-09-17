@@ -48,12 +48,12 @@ class Zend_Db_TestUtil_Pdo_Mysql extends Zend_Db_TestUtil_Mysqli
         }
     }
 
-    public function getParams(array $constants = array())
+    public function getParams(array $constants = [])
     {
         $constants = parent::getParams($constants);
 
         if (!isset($constants['driver_options'])) {
-            $constants['driver_options'] = array();
+            $constants['driver_options'] = [];
         }
 
         if (!isset($constants['driver_options'][PDO::MYSQL_ATTR_USE_BUFFERED_QUERY])) {

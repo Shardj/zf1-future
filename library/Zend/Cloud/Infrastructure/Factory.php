@@ -44,7 +44,7 @@ class Zend_Cloud_Infrastructure_Factory extends Zend_Cloud_AbstractFactory
      * @param  array $options
      * @return void
      */
-    public static function getAdapter($options = array())
+    public static function getAdapter($options = [])
     {
         $adapter = parent::_getAdapter(self::INFRASTRUCTURE_ADAPTER_KEY, $options);
 

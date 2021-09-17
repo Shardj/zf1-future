@@ -197,10 +197,10 @@ class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
         // create a new picasa album
         $albumEntry = $gd->newEntry();
         $albumEntry->setTitle($gd->newTitle('My New Test Album'));
-        $albumEntry->setCategory(array($gd->newCategory(
+        $albumEntry->setCategory([$gd->newCategory(
                 'http://schemas.google.com/photos/2007#album',
                 'http://schemas.google.com/g/2005#kind'
-                )));
+                )]);
         $createdAlbumEntry = $gd->insertEntry($albumEntry,
                 'http://picasaweb.google.com/data/feed/api/user/default');
         $this->assertEquals('My New Test Album',
@@ -225,10 +225,10 @@ class Zend_Gdata_GdataOnlineTest extends PHPUnit_Framework_TestCase
 
         $mediaEntry->setTitle($gd->newTitle('My New Test Photo'));
         $mediaEntry->setSummary($gd->newSummary('My New Test Photo Summary'));
-        $mediaEntry->setCategory(array($gd->newCategory(
+        $mediaEntry->setCategory([$gd->newCategory(
                 'http://schemas.google.com/photos/2007#photo ',
                 'http://schemas.google.com/g/2005#kind'
-                )));
+                )]);
         $createdPhotoMultipart = $gd->insertEntry($mediaEntry, $albumUrl);
         $this->assertEquals('My New Test Photo',
                 $createdPhotoMultipart->title->text);

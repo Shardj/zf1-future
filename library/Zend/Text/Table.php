@@ -56,7 +56,7 @@ class Zend_Text_Table
      *
      * @var array
      */
-    protected $_rows = array();
+    protected $_rows = [];
 
     /**
      * Auto separation mode
@@ -77,7 +77,7 @@ class Zend_Text_Table
      *
      * @var array
      */
-    protected $_defaultColumnAligns = array();
+    protected $_defaultColumnAligns = [];
 
     /**
      * Plugin loader for decorators
@@ -105,11 +105,11 @@ class Zend_Text_Table
      *
      * @var array
      */
-    protected $_skipOptions = array(
+    protected $_skipOptions = [
         'options',
         'config',
         'defaultColumnAlign',
-    );
+    ];
 
     /**
      * Create a basic table object
@@ -193,7 +193,7 @@ class Zend_Text_Table
         }
 
         foreach ($columnWidths as $columnNum => $columnWidth) {
-            if (is_int($columnWidth) === false or $columnWidth < 1) {
+            if (is_int($columnWidth) === false || $columnWidth < 1) {
                 require_once 'Zend/Text/Table/Exception.php';
                 throw new Zend_Text_Table_Exception('Column ' . $columnNum . ' has an invalid'
                                                     . ' column width');
@@ -259,7 +259,7 @@ class Zend_Text_Table
             $pathPrefix = 'Zend/Text/Table/Decorator/';
 
             require_once 'Zend/Loader/PluginLoader.php';
-            $this->_pluginLoader = new Zend_Loader_PluginLoader(array($prefix => $pathPrefix));
+            $this->_pluginLoader = new Zend_Loader_PluginLoader([$prefix => $pathPrefix]);
         }
 
         return $this->_pluginLoader;

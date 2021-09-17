@@ -45,14 +45,14 @@ class Zend_Feed_Writer_Entry
      *
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Registered extensions
      *
      * @var array
      */
-    protected $_extensions = array();
+    protected $_extensions = [];
 
     /**
      * Holds the value "atom" or "rss" depending on the feed type set when
@@ -82,7 +82,7 @@ class Zend_Feed_Writer_Entry
      */
     public function addAuthor($name, $email = null, $uri = null)
     {
-        $author = array();
+        $author = [];
         if (is_array($name)) {
             if (!array_key_exists('name', $name)
                 || empty($name['name'])
@@ -327,13 +327,13 @@ class Zend_Feed_Writer_Entry
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Invalid parameter: "link" must be a non-empty string and valid URI/IRI');
         }
-        if (!isset($link['type']) || !in_array($link['type'], array('atom', 'rss', 'rdf'))) {
+        if (!isset($link['type']) || !in_array($link['type'], ['atom', 'rss', 'rdf'])) {
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Invalid parameter: "type" must be one'
             . ' of "atom", "rss" or "rdf"');
         }
         if (!isset($this->_data['commentFeedLinks'])) {
-            $this->_data['commentFeedLinks'] = array();
+            $this->_data['commentFeedLinks'] = [];
         }
         $this->_data['commentFeedLinks'][] = $link;
     }
@@ -561,7 +561,7 @@ class Zend_Feed_Writer_Entry
             }
         }
         if (!isset($this->_data['categories'])) {
-            $this->_data['categories'] = array();
+            $this->_data['categories'] = [];
         }
         $this->_data['categories'][] = $category;
     }
@@ -695,7 +695,7 @@ class Zend_Feed_Writer_Entry
     {
         foreach ($this->_extensions as $extension) {
             try {
-                return call_user_func_array(array($extension, $method), $args);
+                return call_user_func_array([$extension, $method], $args);
             } catch (Zend_Feed_Writer_Exception_InvalidMethodException $e) {
             }
         }

@@ -121,12 +121,12 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
      * @param  Zend_Config $config
      * @return void
      */
-    protected function _addBranch(Zend_Config $config, $parents = array())
+    protected function _addBranch(Zend_Config $config, $parents = [])
     {
         $iniString = '';
 
         foreach ($config as $key => $value) {
-            $group = array_merge($parents, array($key));
+            $group = array_merge($parents, [$key]);
 
             if ($value instanceof Zend_Config) {
                 $iniString .= $this->_addBranch($value, $group);
@@ -173,7 +173,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
     protected function _sortRootElements(Zend_Config $config)
     {
         $configArray = $config->toArray();
-        $sections = array();
+        $sections = [];
 
         // remove sections from config array
         foreach ($configArray as $key => $value) {

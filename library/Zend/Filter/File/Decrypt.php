@@ -82,7 +82,7 @@ class Zend_Filter_File_Decrypt extends Zend_Filter_Decrypt
             $this->_filename = $value;
         }
 
-        if (file_exists($this->_filename) and !is_writable($this->_filename)) {
+        if (file_exists($this->_filename) && !is_writable($this->_filename)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("File '{$this->_filename}' is not writable");
         }

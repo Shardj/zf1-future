@@ -81,7 +81,7 @@ class Zend_Rest_ResultTest extends PHPUnit_Framework_TestCase
         foreach ($client as $key => $value) {
             $result_array[$key] = (string) $value;
         }
-        $this->assertEquals(array("foo" => "bar", "baz" => "1", "key_1" => "0", "bat" => "123", "status" => "success"), $result_array);
+        $this->assertEquals(["foo" => "bar", "baz" => "1", "key_1" => "0", "bat" => "123", "status" => "success"], $result_array);
     }
 
     public function testResponseObject()

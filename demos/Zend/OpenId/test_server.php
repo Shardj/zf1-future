@@ -242,7 +242,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     if (isset($_POST['forever'])) {
                         $server->denySite($server->getSiteRoot($_GET));
                     }
-                    Zend_OpenId::redirect($_GET['openid_return_to'], array('openid.mode'=>'cancel'));
+                    Zend_OpenId::redirect($_GET['openid_return_to'], ['openid.mode'=>'cancel']);
                 }
             } else if (isset($_POST['allow'])) {
                 $server->allowSite($_POST['site']);

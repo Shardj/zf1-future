@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
     {
         $element = new Zend_Dojo_Form_Element_HorizontalSlider(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'HorizontalSlider',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }
@@ -200,7 +200,7 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
 
     public function testSettingTopDecorationLabelsShouldProxyToTopDecorationDijitParam()
     {
-        $labels = array('0%', '50%', '100%');
+        $labels = ['0%', '50%', '100%'];
         $this->element->setTopDecorationLabels($labels);
         $this->assertTrue($this->element->hasDijitParam('topDecoration'));
         $topDecoration = $this->element->getDijitParam('topDecoration');
@@ -214,14 +214,14 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
 
     public function testSettingTopDecorationParamsShouldProxyToTopDecorationDijitParam()
     {
-        $params = array(
-            'container' => array(
+        $params = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setTopDecorationParams($params);
         $this->assertTrue($this->element->hasDijitParam('topDecoration'));
         $topDecoration = $this->element->getDijitParam('topDecoration');
@@ -235,14 +235,14 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
 
     public function testSettingTopDecorationAttribsShouldProxyToTopDecorationDijitParam()
     {
-        $attribs = array(
-            'container' => array(
+        $attribs = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setTopDecorationAttribs($attribs);
         $this->assertTrue($this->element->hasDijitParam('topDecoration'));
         $topDecoration = $this->element->getDijitParam('topDecoration');
@@ -282,7 +282,7 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
 
     public function testSettingBottomDecorationLabelsShouldProxyToBottomDecorationDijitParam()
     {
-        $labels = array('0%', '50%', '100%');
+        $labels = ['0%', '50%', '100%'];
         $this->element->setBottomDecorationLabels($labels);
         $this->assertTrue($this->element->hasDijitParam('bottomDecoration'));
         $bottomDecoration = $this->element->getDijitParam('bottomDecoration');
@@ -296,14 +296,14 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
 
     public function testSettingBottomDecorationParamsShouldProxyToBottomDecorationDijitParam()
     {
-        $params = array(
-            'container' => array(
+        $params = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setBottomDecorationParams($params);
         $this->assertTrue($this->element->hasDijitParam('bottomDecoration'));
         $bottomDecoration = $this->element->getDijitParam('bottomDecoration');
@@ -317,14 +317,14 @@ class Zend_Dojo_Form_Element_HorizontalSliderTest extends PHPUnit_Framework_Test
 
     public function testSettingBottomDecorationAttribsShouldProxyToBottomDecorationDijitParam()
     {
-        $attribs = array(
-            'container' => array(
+        $attribs = [
+            'container' => [
                 'style' => 'height:1.2em; font-size=75%;color:gray;',
-            ),
-            'list' => array(
+            ],
+            'list' => [
                 'style' => 'height:1em; font-size=75%;color:gray;',
-            ),
-        );
+            ],
+        ];
         $this->element->setBottomDecorationAttribs($attribs);
         $this->assertTrue($this->element->hasDijitParam('bottomDecoration'));
         $bottomDecoration = $this->element->getDijitParam('bottomDecoration');

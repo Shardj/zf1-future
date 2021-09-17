@@ -66,7 +66,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit_Framework_TestCase
         $parameters = $method->getParameters();
         $this->_parametersRaw = $parameters;
 
-        $fParameters = array();
+        $fParameters = [];
         foreach ($parameters as $p) {
             $fParameters[] = new Zend_Server_Reflection_Parameter($p);
         }

@@ -85,7 +85,7 @@ class Zend_Memory_Container_AccessControllerTest extends PHPUnit_Framework_TestC
     private function _getMemoryManager()
     {
         if ($this->_memoryManager === null) {
-            $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+            $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
             $this->_memoryManager = Zend_Memory::factory('File', $backendOptions);
         }
 

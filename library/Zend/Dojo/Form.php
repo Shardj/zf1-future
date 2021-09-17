@@ -64,7 +64,7 @@ class Zend_Dojo_Form extends Zend_Form
         $decorators = $this->getDecorators();
         if (empty($decorators)) {
             $this->addDecorator('FormElements')
-                 ->addDecorator('HtmlTag', array('tag' => 'dl', 'class' => 'zend_form_dojo'))
+                 ->addDecorator('HtmlTag', ['tag' => 'dl', 'class' => 'zend_form_dojo'])
                  ->addDecorator('DijitForm');
         }
     }

@@ -99,7 +99,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
     public function testInvalidKeysShouldBeIgnored()
     {
         $count = 0;
-        foreach (array(array('foo', true), array('foo', new stdClass), array('foo', array())) as $spec) {
+        foreach ([['foo', true], ['foo', new stdClass], ['foo', []]] as $spec) {
             $this->request->addParam($spec[0], $spec[1]);
             $this->assertNull($this->request->getParam('foo'));
             $params = $this->request->getParams();
@@ -110,11 +110,11 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 
     public function testShouldBeAbleToAddMultipleIndexedParamsAtOnce()
     {
-        $params = array(
+        $params = [
             'foo',
             'bar',
             'baz',
-        );
+        ];
         $this->request->addParams($params);
         $test = $this->request->getParams();
         $this->assertSame($params, $test);
@@ -122,11 +122,11 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 
     public function testShouldBeAbleToAddMultipleNamedParamsAtOnce()
     {
-        $params = array(
+        $params = [
             'foo' => 'bar',
             'bar' => 'baz',
             'baz' => 'bat',
-        );
+        ];
         $this->request->addParams($params);
         $test = $this->request->getParams();
         $this->assertSame($params, $test);
@@ -134,11 +134,11 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 
     public function testShouldBeAbleToAddMixedIndexedAndNamedParamsAtOnce()
     {
-        $params = array(
+        $params = [
             'foo' => 'bar',
             'baz',
             'baz' => 'bat',
-        );
+        ];
         $this->request->addParams($params);
         $test = $this->request->getParams();
         $this->assertEquals(array_values($params), array_values($test));
@@ -150,11 +150,11 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
     public function testSetParamsShouldOverwriteParams()
     {
         $this->testShouldBeAbleToAddMixedIndexedAndNamedParamsAtOnce();
-        $params = array(
+        $params = [
             'one',
             'two',
             'three',
-        );
+        ];
         $this->request->setParams($params);
         $this->assertSame($params, $this->request->getParams());
     }
@@ -186,7 +186,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 
     public function testSettingMethodWithInvalidNameShouldSetError()
     {
-        foreach (array('1ad', 'abc-123', 'ad$$832r#@') as $method) {
+        foreach (['1ad', 'abc-123', 'ad$$832r#@'] as $method) {
             $this->request->setMethod($method);
             $this->assertNull($this->request->getMethod());
             $this->assertTrue($this->request->isMethodError());
@@ -265,15 +265,15 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
 
     public function getOptions()
     {
-        return array(
+        return [
             'method' => 'foo',
-            'params' => array(
+            'params' => [
                 5,
                 'four',
                 true,
-            ),
+            ],
             'id'     => 'foobar'
-        );
+        ];
     }
 
     public function validateJson($json, array $options)

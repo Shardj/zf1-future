@@ -58,7 +58,7 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends PHPUnit_Framework_
         if (!is_array($this->_loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->_loaders = array();
+            $this->_loaders = [];
         }
 
         // Clear out other autoloaders to ensure those being tested are at the
@@ -93,11 +93,11 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends PHPUnit_Framework_
     public function testAutoincluding()
     {
         Zend_Loader_AutoloaderFactory::factory(
-            array(
-                'Zend_Loader_ClassMapAutoloader' => array(
+            [
+                'Zend_Loader_ClassMapAutoloader' => [
                     dirname(__FILE__) . '/_files/goodmap.php',
-                ),
-            )
+                ],
+            ]
         );
         $loader = Zend_Loader_AutoloaderFactory::getRegisteredAutoloader(
             'Zend_Loader_ClassMapAutoloader'

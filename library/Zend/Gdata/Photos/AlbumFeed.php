@@ -124,11 +124,11 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
      */
     protected $_gphotoCommentingEnabled = null;
 
-    protected $_entryKindClassMapping = array(
+    protected $_entryKindClassMapping = [
         'http://schemas.google.com/photos/2007#photo' => 'Zend_Gdata_Photos_PhotoEntry',
         'http://schemas.google.com/photos/2007#comment' => 'Zend_Gdata_Photos_CommentEntry',
         'http://schemas.google.com/photos/2007#tag' => 'Zend_Gdata_Photos_TagEntry'
-    );
+    ];
 
     public function __construct($element = null)
     {

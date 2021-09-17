@@ -46,13 +46,13 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->_concrete = new Zend_Service_Ebay_AbstractConcrete(array());
+        $this->_concrete = new Zend_Service_Ebay_AbstractConcrete([]);
     }
 
     public function testConstructor()
     {
-        $array  = array('foo'  => 'bar',
-                        'some' => 'value');
+        $array  = ['foo'  => 'bar',
+                        'some' => 'value'];
         $config = new Zend_Config($array);
 
         $concreteArray  = new Zend_Service_Ebay_AbstractConcrete($array);
@@ -65,8 +65,8 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testSetOptions()
     {
-        $array  = array('foo'  => 'bar',
-                        'some' => 'value');
+        $array  = ['foo'  => 'bar',
+                        'some' => 'value'];
         $config = new Zend_Config($array);
         $concreteArray  = new Zend_Service_Ebay_AbstractConcrete();
         $concreteArray->setOption($array);
@@ -88,22 +88,22 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testGetOption()
     {
-        $expected = array(
+        $expected = [
             'foo' => 1,
             'bar' => 2
-        );
+        ];
 
         $this->_concrete->setOption('foo', 1)
-                        ->setOption(array('bar' => 2));
+                        ->setOption(['bar' => 2]);
 
         $this->assertEquals(1, $this->_concrete->getOption('foo'));
         $this->assertEquals(2, $this->_concrete->getOption('bar'));
         $this->assertEquals($expected, $this->_concrete->getOption());
 
         $this->_concrete->setOption(
-            array('foo' => 3,
+            ['foo' => 3,
                   'bar' => 4
-            )
+            ]
         );
         $this->assertEquals(3, $this->_concrete->getOption('foo'));
         $this->assertEquals(4, $this->_concrete->getOption('bar'));
@@ -147,38 +147,38 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsToNameValueSyntax()
     {
-        $options = array(
-            'paginationInput' => array(
+        $options = [
+            'paginationInput' => [
               'entriesPerPage' => 5,
               'pageNumber'     => 2
-            ),
-            'itemFilter' => array(
-              array(
+            ],
+            'itemFilter' => [
+              [
                   'name'       => 'MaxPrice',
                   'value'      => 25,
                   'paramName'  => 'Currency',
                   'paramValue' => 'USD'
-              ),
-              array(
+              ],
+              [
                   'name'  => 'FreeShippingOnly',
                   'value' => true
-              ),
-              array(
+              ],
+              [
                   'name'  => 'ListingType',
-                  'value' => array(
+                  'value' => [
                       'AuctionWithBIN',
                       'FixedPrice',
                       'StoreInventory'
-                  )
-              )
-            ),
-            'productId' => array(
+                  ]
+              ]
+            ],
+            'productId' => [
               ''     => 123,
               'type' => 'UPC'
-            )
-        );
+            ]
+        ];
 
-        $expected = array(
+        $expected = [
             'paginationInput.entriesPerPage' => '5',
             'paginationInput.pageNumber'     => '2',
             'itemFilter(0).name'             => 'MaxPrice',
@@ -193,7 +193,7 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
             'itemFilter(2).value(2)'         => 'StoreInventory',
             'productId'                      => '123',
             'productId.@type'                => 'UPC'
-        );
+        ];
 
         $this->assertEquals($expected, $this->_concrete->optionsToNameValueSyntax($options));
     }

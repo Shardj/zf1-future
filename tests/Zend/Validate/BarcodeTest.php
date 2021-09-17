@@ -73,11 +73,11 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
     {
         $barcode = new Zend_Validate_Barcode('upca');
         $this->assertFalse($barcode->isValid(106510000.4327));
-        $this->assertFalse($barcode->isValid(array('065100004327')));
+        $this->assertFalse($barcode->isValid(['065100004327']));
 
         $barcode = new Zend_Validate_Barcode('ean13');
         $this->assertFalse($barcode->isValid(06510000.4327));
-        $this->assertFalse($barcode->isValid(array('065100004327')));
+        $this->assertFalse($barcode->isValid(['065100004327']));
     }
 
     public function testInvalidChecksumAdapter()
@@ -154,7 +154,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
 
     public function testArrayConstructAdapter()
     {
-        $barcode = new Zend_Validate_Barcode(array('adapter' => 'Ean13', 'options' => 'unknown', 'checksum' => false));
+        $barcode = new Zend_Validate_Barcode(['adapter' => 'Ean13', 'options' => 'unknown', 'checksum' => false]);
         $this->assertTrue($barcode->getAdapter() instanceof Zend_Validate_Barcode_Ean13);
         $this->assertFalse($barcode->getChecksum());
     }
@@ -162,7 +162,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
     public function testInvalidArrayConstructAdapter()
     {
         try {
-            $barcode = new Zend_Validate_Barcode(array('options' => 'unknown', 'checksum' => false));
+            $barcode = new Zend_Validate_Barcode(['options' => 'unknown', 'checksum' => false]);
             $this->fails('Exception expected');
         } catch (Exception $e) {
             $this->assertContains('Missing option', $e->getMessage());
@@ -171,7 +171,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
 
     public function testConfigConstructAdapter()
     {
-        $array = array('adapter' => 'Ean13', 'options' => 'unknown', 'checksum' => false);
+        $array = ['adapter' => 'Ean13', 'options' => 'unknown', 'checksum' => false];
         require_once 'Zend/Config.php';
         $config = new Zend_Config($array);
 

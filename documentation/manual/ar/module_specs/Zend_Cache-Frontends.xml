@@ -1,7 +1,7 @@
 <sect1 id="zend.cache.frontends">
     <title>الـ frontends المتوفرة فى Zend_Cache</title>
 
-    <sect2 id="zend.cache.core">
+    <sect2 id="zend.cache.frontends.core">
         <title>Zend_Cache_Core</title>
         <sect3 id="zend.cache.core.introduction">
             <title>مقدمة</title>

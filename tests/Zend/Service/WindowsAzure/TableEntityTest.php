@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Test helpers
  */
 require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_Storage_TableEntity */
 require_once 'Zend/Service/WindowsAzure/Storage/TableEntity.php';
@@ -85,13 +85,13 @@ class Zend_Service_WindowsAzure_TableEntityTest extends PHPUnit_Framework_TestCa
      */
     public function testSetAzureValuesSuccess()
     {
-        $values = array(
+        $values = [
             'PartitionKey' => 'partition1',
             'RowKey' => '000001',
             'Name' => 'Maarten',
             'Age' => 25,
             'Visible' => true
-        );
+        ];
         
         $target = new TSETTest_TestEntity();
         $target->setAzureValues($values);
@@ -108,10 +108,10 @@ class Zend_Service_WindowsAzure_TableEntityTest extends PHPUnit_Framework_TestCa
      */
     public function testSetAzureValuesFailure()
     {
-        $values = array(
+        $values = [
             'PartitionKey' => 'partition1',
             'RowKey' => '000001'
-        );
+        ];
         
         $exceptionRaised = false;
         $target = new TSETTest_TestEntity();

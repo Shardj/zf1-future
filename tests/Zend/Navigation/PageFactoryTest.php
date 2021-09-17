@@ -55,73 +55,73 @@ class Zend_Navigation_PageFactoryTest extends PHPUnit_Framework_TestCase
 
     public function testDetectMvcPage()
     {
-        $pages = array(
-            Zend_Navigation_Page::factory(array(
+        $pages = [
+            Zend_Navigation_Page::factory([
                 'label'  => 'MVC Page',
                 'action' => 'index'
-            )),
-            Zend_Navigation_Page::factory(array(
+            ]),
+            Zend_Navigation_Page::factory([
                 'label'      => 'MVC Page',
                 'controller' => 'index'
-            )),
-            Zend_Navigation_Page::factory(array(
+            ]),
+            Zend_Navigation_Page::factory([
                 'label'  => 'MVC Page',
                 'module' => 'index'
-            )),
-            Zend_Navigation_Page::factory(array(
+            ]),
+            Zend_Navigation_Page::factory([
                 'label' => 'MVC Page',
                 'route' => 'home'
-            )),
-            Zend_Navigation_Page::factory(array(
+            ]),
+            Zend_Navigation_Page::factory([
                 'label'  => 'MVC Page',
-                'params' => array(
+                'params' => [
                     'foo' => 'bar',
-                ),
-            )),
-        );
+                ],
+            ]),
+        ];
 
         $this->assertContainsOnly('Zend_Navigation_Page_Mvc', $pages);
     }
 
     public function testDetectUriPage()
     {
-        $page = Zend_Navigation_Page::factory(array(
+        $page = Zend_Navigation_Page::factory([
             'label' => 'URI Page',
             'uri'   => '#'
-        ));
+        ]);
 
         $this->assertTrue($page instanceof Zend_Navigation_Page_Uri);
     }
 
     public function testSupportsMvcShorthand()
     {
-        $mvcPage = Zend_Navigation_Page::factory(array(
+        $mvcPage = Zend_Navigation_Page::factory([
             'type'       => 'mvc',
             'label'      => 'MVC Page',
             'action'     => 'index',
             'controller' => 'index'
-        ));
+        ]);
 
         $this->assertTrue($mvcPage instanceof Zend_Navigation_Page_Mvc);
     }
 
     public function testSupportsUriShorthand()
     {
-        $uriPage = Zend_Navigation_Page::factory(array(
+        $uriPage = Zend_Navigation_Page::factory([
             'type'  => 'uri',
             'label' => 'URI Page',
             'uri'   => 'http://www.example.com/'
-        ));
+        ]);
 
         $this->assertTrue($uriPage instanceof Zend_Navigation_Page_Uri);
     }
 
     public function testSupportsCustomPageTypes()
     {
-        $page = Zend_Navigation_Page::factory(array(
+        $page = Zend_Navigation_Page::factory([
             'type'  => 'My_Page',
             'label' => 'My Custom Page'
-        ));
+        ]);
 
         return $this->assertTrue($page instanceof My_Page);
     }
@@ -129,10 +129,10 @@ class Zend_Navigation_PageFactoryTest extends PHPUnit_Framework_TestCase
     public function testShouldFailForInvalidType()
     {
         try {
-            $page = Zend_Navigation_Page::factory(array(
+            $page = Zend_Navigation_Page::factory([
                 'type'  => 'My_InvalidPage',
                 'label' => 'My Invalid Page'
-            ));
+            ]);
         } catch(Zend_Navigation_Exception $e) {
             return;
         }
@@ -142,10 +142,10 @@ class Zend_Navigation_PageFactoryTest extends PHPUnit_Framework_TestCase
 
     public function testShouldFailForNonExistantType()
     {
-        $pageConfig = array(
+        $pageConfig = [
             'type'  => 'My_NonExistant_Page',
             'label' => 'My non-existant Page'
-        );
+        ];
 
         try {
             $page = Zend_Navigation_Page::factory($pageConfig);
@@ -165,9 +165,9 @@ class Zend_Navigation_PageFactoryTest extends PHPUnit_Framework_TestCase
     public function testShouldFailIfUnableToDetermineType()
     {
         try {
-            $page = Zend_Navigation_Page::factory(array(
+            $page = Zend_Navigation_Page::factory([
                 'label' => 'My Invalid Page'
-            ));
+            ]);
 
             $this->fail(
                 'An exception has not been thrown for invalid page type'

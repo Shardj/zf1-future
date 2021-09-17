@@ -113,26 +113,26 @@ class Demo_Zend_Mail_SimpleMailer
 
         switch ($this->type) {
             case 'mbox':
-                $this->mail = new Zend_Mail_Storage_Mbox(array('filename' => $this->param));
+                $this->mail = new Zend_Mail_Storage_Mbox(['filename' => $this->param]);
                 break;
             case 'mbox-folder':
-                $this->mail = new Zend_Mail_Storage_Folder_Mbox(array('dirname' => $this->param));
+                $this->mail = new Zend_Mail_Storage_Folder_Mbox(['dirname' => $this->param]);
                 break;
             case 'maildir':
-                $this->mail = new Zend_Mail_Storage_Maildir(array('dirname' => $this->param));
+                $this->mail = new Zend_Mail_Storage_Maildir(['dirname' => $this->param]);
                 break;
             case 'maildir-folder':
-                $this->mail = new Zend_Mail_Storage_Folder_Maildir(array('dirname' => $this->param));
+                $this->mail = new Zend_Mail_Storage_Folder_Maildir(['dirname' => $this->param]);
                 break;
             case 'pop3':
-                $this->mail = new Zend_Mail_Storage_Pop3(array('host'     => $this->param,
+                $this->mail = new Zend_Mail_Storage_Pop3(['host'     => $this->param,
                                                                'user'     => $_SERVER['PHP_AUTH_USER'],
-                                                               'password' => $_SERVER['PHP_AUTH_PW']));
+                                                               'password' => $_SERVER['PHP_AUTH_PW']]);
                 break;
             case 'imap':
-                $this->mail = new Zend_Mail_Storage_Imap(array('host'     => $this->param,
+                $this->mail = new Zend_Mail_Storage_Imap(['host'     => $this->param,
                                                                'user'     => $_SERVER['PHP_AUTH_USER'],
-                                                               'password' => $_SERVER['PHP_AUTH_PW']));
+                                                               'password' => $_SERVER['PHP_AUTH_PW']]);
                 break;
             default:
                 $this->mail = null;
@@ -147,14 +147,14 @@ class Demo_Zend_Mail_SimpleMailer
      */
     function whitelistParam()
     {
-        $whitelist = array('mbox'           => array('mbox/INBOX', 'mbox/subfolder/test'),
-                           'mbox-folder'    => array('mbox'),
-                           'maildir'        => array('maildir', 'maildir/.subfolder', 'maildir/.subfolder.test'),
-                           'maildir-folder' => array('maildir', 'maildir/.subfolder', 'maildir/.subfolder.test'),
-                           'pop3'           => array(),
-                           'imap'           => array());
+        $whitelist = ['mbox'           => ['mbox/INBOX', 'mbox/subfolder/test'],
+                           'mbox-folder'    => ['mbox'],
+                           'maildir'        => ['maildir', 'maildir/.subfolder', 'maildir/.subfolder.test'],
+                           'maildir-folder' => ['maildir', 'maildir/.subfolder', 'maildir/.subfolder.test'],
+                           'pop3'           => [],
+                           'imap'           => []];
 
-        if ($this->type === null || @$whitelist[$this->type] === array() || @in_array($this->param, $whitelist[$this->type])) {
+        if ($this->type === null || @$whitelist[$this->type] === [] || @in_array($this->param, $whitelist[$this->type])) {
             return;
         }
 
@@ -168,12 +168,12 @@ class Demo_Zend_Mail_SimpleMailer
      */
     function loadClasses()
     {
-        $classname = array('mbox'           => 'Zend_Mail_Storage_Mbox',
+        $classname = ['mbox'           => 'Zend_Mail_Storage_Mbox',
                            'mbox-folder'    => 'Zend_Mail_Storage_Folder_Mbox',
                            'maildir'        => 'Zend_Mail_Storage_Maildir',
                            'maildir-folder' => 'Zend_Mail_Storage_Folder_Maildir',
                            'pop3'           => 'Zend_Mail_Storage_Pop3',
-                           'imap'           => 'Zend_Mail_Storage_Imap');
+                           'imap'           => 'Zend_Mail_Storage_Imap'];
 
         if (isset($classname[$this->type])) {
             Zend_Loader::loadClass($classname[$this->type]);
@@ -193,9 +193,9 @@ class Demo_Zend_Mail_SimpleMailer
         $this->param       = isset($_GET['param'])  ? $_GET['param']  : null;
         $this->folder      = isset($_GET['folder']) ? $_GET['folder'] : null;
         $this->messageNum  = isset($_GET['message']) && is_numeric($_GET['message']) ? $_GET['message'] : null;
-        $this->queryString = http_build_query(array('type'   => $this->type,
+        $this->queryString = http_build_query(['type'   => $this->type,
                                                     'param'  => $this->param,
-                                                    'folder' => $this->folder));
+                                                    'folder' => $this->folder]);
     }
 
     /**
@@ -379,7 +379,7 @@ class Demo_Zend_Mail_SimpleMailer
 
         foreach ($this->mail as $num => $message) {
             if ($this->mail->hasFlags) {
-                $class = array();
+                $class = [];
 
                 if ($message->hasFlag(Zend_Mail_Storage::FLAG_RECENT)) {
                     $class['unread'] = 'unread';

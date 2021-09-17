@@ -88,10 +88,10 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
      */
     public function testCanDisableElement()
     {
-        $html = $this->helper->formFile(array(
+        $html = $this->helper->formFile([
             'name'    => 'foo',
-            'attribs' => array('disable' => true)
-        ));
+            'attribs' => ['disable' => true]
+        ]);
 
         $this->assertRegexp('/<input[^>]*?(disabled="disabled")/', $html);
     }
@@ -101,10 +101,10 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
      */
     public function testDisablingElementDoesNotRenderHiddenElements()
     {
-        $html = $this->helper->formFile(array(
+        $html = $this->helper->formFile([
             'name'    => 'foo',
-            'attribs' => array('disable' => true)
-        ));
+            'attribs' => ['disable' => true]
+        ]);
 
         $this->assertNotRegexp('/<input[^>]*?(type="hidden")/', $html);
     }
@@ -112,18 +112,18 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
 
     public function testRendersAsHtmlByDefault()
     {
-        $test = $this->helper->formFile(array(
+        $test = $this->helper->formFile([
             'name' => 'foo',
-        ));
+        ]);
         $this->assertNotContains(' />', $test);
     }
 
     public function testCanRendersAsXHtml()
     {
         $this->view->doctype('XHTML1_STRICT');
-        $test = $this->helper->formFile(array(
+        $test = $this->helper->formFile([
             'name' => 'foo',
-        ));
+        ]);
         $this->assertContains(' />', $test);
     }
 
@@ -134,10 +134,10 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
     {
         $test = $this->helper->formFile(
             'foo',
-            array(
+            [
                  'data-image-old' => 100,
                  'data-image-new' => 200,
-            )
+            ]
         );
         $this->assertEquals(
             '<input type="file" name="foo" id="foo" data-image-old="100" data-image-new="200">',

@@ -69,7 +69,7 @@ class Zend_Service_Amazon_Authentication_S3Test extends PHPUnit_Framework_TestCa
 
     public function testGetGeneratesCorrectSignature()
     {
-        $headers = array();
+        $headers = [];
         $headers['Date'] = "Tue, 27 Mar 2007 19:36:42 +0000";
 
         $ret = $this->Zend_Service_Amazon_Authentication_S3->generateSignature('GET', 'http://s3.amazonaws.com/johnsmith/photos/puppy.jpg', $headers);
@@ -84,7 +84,7 @@ Tue, 27 Mar 2007 19:36:42 +0000
 
     public function testPutGeneratesCorrectSignature()
     {
-        $headers = array();
+        $headers = [];
         $headers['Date'] = "Tue, 27 Mar 2007 21:15:45 +0000";
         $headers['Content-Type'] = "image/jpeg";
         $headers['Content-Length'] = 94328;
@@ -101,7 +101,7 @@ Tue, 27 Mar 2007 21:15:45 +0000
 
     public function testListGeneratesCorrectSignature()
     {
-        $headers = array();
+        $headers = [];
         $headers['Date'] = "Tue, 27 Mar 2007 19:42:41 +0000";
 
         $ret = $this->Zend_Service_Amazon_Authentication_S3->generateSignature('GET', 'http://s3.amazonaws.com/johnsmith/?prefix=photos&max-keys=50&marker=puppy', $headers);
@@ -116,7 +116,7 @@ Tue, 27 Mar 2007 19:42:41 +0000
 
     public function testFetchGeneratesCorrectSignature()
     {
-        $headers = array();
+        $headers = [];
         $headers['Date'] = "Tue, 27 Mar 2007 19:44:46 +0000";
 
         $ret = $this->Zend_Service_Amazon_Authentication_S3->generateSignature('GET', 'http://s3.amazonaws.com/johnsmith/?acl', $headers);
@@ -132,7 +132,7 @@ Tue, 27 Mar 2007 19:44:46 +0000
     public function testDeleteGeneratesCorrectSignature()
     {
 
-        $headers = array();
+        $headers = [];
         $headers['x-amz-date'] = "Tue, 27 Mar 2007 21:20:26 +0000";
 
         $ret = $this->Zend_Service_Amazon_Authentication_S3->generateSignature('DELETE', 'http://s3.amazonaws.com/johnsmith/photos/puppy.jpg', $headers);
@@ -148,7 +148,7 @@ x-amz-date:Tue, 27 Mar 2007 21:20:26 +0000
 
     public function testUploadGeneratesCorrectSignature()
     {
-        $headers = array();
+        $headers = [];
         $headers['Date'] = "Tue, 27 Mar 2007 21:06:08 +0000";
         $headers['x-amz-acl'] = "public-read";
         $headers['content-type'] = "application/x-download";

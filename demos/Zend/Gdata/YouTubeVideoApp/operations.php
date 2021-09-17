@@ -118,7 +118,7 @@ switch ($operation) {
                        $_POST['oldPlaylistTitle']);
         break;
 
-    case (strcmp(substr($operation, 0, 7), 'search_') == 0):
+    case (strcmp(substr($operation, 0, 7), 'search_') === 0):
         // initialize search specific information
         $searchType = substr($operation, 7);
         searchVideos($searchType, $_POST['searchTerm'], $_POST['startIndex'],

@@ -69,8 +69,8 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
     public function testAttibuteGettersAndSettersWork()
     {
 
-        $profile = new Zend_Tool_Project_Profile(array('foo' => 'bar'));
-        $profile->setAttributes(array('baz' => 'BAZ'));
+        $profile = new Zend_Tool_Project_Profile(['foo' => 'bar']);
+        $profile->setAttributes(['baz' => 'BAZ']);
         $profile->setAttribute('boof', 'foob');
 
         $this->assertEquals('foob', $profile->getAttribute('boof'));
@@ -98,10 +98,10 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
     public function testProfileLoadsFromExistingFileGivenProfileFile()
     {
 
-        $profile = new Zend_Tool_Project_Profile(array(
+        $profile = new Zend_Tool_Project_Profile([
             'projectProfileFile' => $this->_projectProfileFile,
             'projectDirectory'   => $this->_projectDirectory
-            ));
+            ]);
         $profile->loadFromFile();
 
         $projectDirectoryResource = $profile->current();
@@ -142,7 +142,7 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
     public function testLoadFromDataIsSameAsLoadFromFile()
     {
 
-        $profile = new Zend_Tool_Project_Profile(array('projectProfileFile' => $this->_projectProfileFile));
+        $profile = new Zend_Tool_Project_Profile(['projectProfileFile' => $this->_projectProfileFile]);
         $profile->setAttribute('projectDirectory', $this->_projectDirectory);
         $profile->loadFromFile();
 
@@ -158,7 +158,7 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
     {
         $this->_standardProfileFromData->loadFromData();
         $expectedValue = '<?xml version="1.0"?><projectProfile>  <projectDirectory>    <projectProfileFile filesystemName=".zfproject.xml"/>    <applicationDirectory classNamePrefix="Application_">      <configsDirectory>        <applicationConfigFile type="ini"/>      </configsDirectory>      <controllersDirectory>        <controllerFile controllerName="index"/>        <controllerFile controllerName="error"/>      </controllersDirectory>      <layoutsDirectory enabled="false"/>      <modelsDirectory/>      <modulesDirectory enabled="false"/>      <servicesDirectory enabled="false"/>      <viewsDirectory>        <viewScriptsDirectory>          <viewControllerScriptsDirectory forControllerName="index">            <viewScriptFile scriptName="index"/>          </viewControllerScriptsDirectory>        </viewScriptsDirectory>        <viewHelpersDirectory/>        <viewFiltersDirectory enabled="false"/>      </viewsDirectory>      <bootstrapFile filesystemName="Bootstrap.php"/>    </applicationDirectory>    <dataDirectory enabled="false">      <cacheDirectory enabled="false"/>      <searchIndexesDirectory enabled="false"/>      <localesDirectory enabled="false"/>      <logsDirectory enabled="false"/>      <sessionsDirectory enabled="false"/>      <uploadsDirectory enabled="false"/>    </dataDirectory>    <libraryDirectory>      <zfStandardLibraryDirectory/>    </libraryDirectory>    <publicDirectory>      <publicStylesheetsDirectory enabled="false"/>      <publicScriptsDirectory enabled="false"/>      <publicImagesDirectory enabled="false"/>      <publicIndexFile filesystemName="index.php"/>      <htaccessFile filesystemName=".htaccess"/>    </publicDirectory>    <projectProvidersDirectory enabled="false"/>  </projectDirectory></projectProfile>';
-        $this->assertEquals($expectedValue, str_replace(array("\r\n", "\n"), '', $this->_standardProfileFromData->storeToData()));
+        $this->assertEquals($expectedValue, str_replace(["\r\n", "\n"], '', $this->_standardProfileFromData->storeToData()));
     }
 
     public function testProfileCanSaveStorageDataToFile()
@@ -171,10 +171,10 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
 
     public function testProfileCanFindResource()
     {
-        $profile = new Zend_Tool_Project_Profile(array(
+        $profile = new Zend_Tool_Project_Profile([
             'projectProfileFile' => $this->_projectProfileFile,
             'projectDirectory'   => $this->_projectDirectory
-            ));
+            ]);
         $profile->loadFromFile();
 
         $modelsDirectoryResource = $profile->search('modelsDirectory');
@@ -182,7 +182,7 @@ class Zend_Tool_Project_ProfileTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Zend_Tool_Project_Profile_Resource', get_class($modelsDirectoryResource));
         $this->assertEquals('Zend_Tool_Project_Context_Zf_ModelsDirectory', get_class($modelsDirectoryResource->getContext()));
 
-        $publicIndexFile = $profile->search(array('publicDirectory', 'publicIndexFile'));
+        $publicIndexFile = $profile->search(['publicDirectory', 'publicIndexFile']);
 
         $this->assertEquals('Zend_Tool_Project_Profile_Resource', get_class($publicIndexFile));
         $this->assertEquals('Zend_Tool_Project_Context_Zf_PublicIndexFile', get_class($publicIndexFile->getContext()));

@@ -12,3 +12,5 @@ vendor/*
 composer.lock
 bin/dbunit
 bin/phpunit
+.php_cs.cache
+.idea

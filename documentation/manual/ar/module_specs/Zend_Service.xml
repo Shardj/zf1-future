@@ -6,7 +6,7 @@
     </para>
     <para>
         توفر <code>Zend_Service</code> دعم لأى web service تعتمد على REST من خلال
-        <link linkend="zend.service.rest"><code>Zend_Service_Rest</code></link>.
+        <link linkend="zend.rest.client"><classname>Zend_Rest_Client</classname></link>.
     </para>
     <para>
         بالإضافة إلى امكانية الوراثة من <code>Zend_Service</code> و إستخدام

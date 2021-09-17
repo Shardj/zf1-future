@@ -41,7 +41,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      * Collected items
      * @var array
      */
-    protected $_items = array();
+    protected $_items = [];
 
     /**
      * Label field of item
@@ -53,7 +53,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      * Data container metadata
      * @var array
      */
-    protected $_metadata = array();
+    protected $_metadata = [];
 
     /**
      * Constructor
@@ -205,7 +205,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      */
     public function clearItems()
     {
-        $this->_items = array();
+        $this->_items = [];
         return $this;
     }
 
@@ -316,7 +316,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     public function clearMetadata($key = null)
     {
         if (null === $key) {
-            $this->_metadata = array();
+            $this->_metadata = [];
         } elseif (array_key_exists($key, $this->_metadata)) {
             unset($this->_metadata[$key]);
         }
@@ -374,10 +374,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
             throw new Zend_Dojo_Exception('Serialization requires that an identifier be present in the object; first call setIdentifier()');
         }
 
-        $array = array(
+        $array = [
             'identifier' => $identifier,
             'items'      => array_values($this->getItems()),
-        );
+        ];
 
         $metadata = $this->getMetadata();
         if (!empty($metadata)) {
@@ -522,9 +522,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Normalize an item to attach to the collection
      *
-     * @param  array|object $item
-     * @param  string|int|null $id
+     * @param array|object $item
+     * @param string|int|null $id
      * @return array
+     * @throws Zend_Dojo_Exception
      */
     protected function _normalizeItem($item, $id)
     {
@@ -549,15 +550,17 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
         if ((null === $id) && !array_key_exists($identifier, $item)) {
             require_once 'Zend/Dojo/Exception.php';
             throw new Zend_Dojo_Exception('Item must contain a column matching the currently set identifier');
-        } elseif (null === $id) {
+        }
+
+        if (null === $id) {
             $id = $item[$identifier];
         } else {
             $item[$identifier] = $id;
         }
 
-        return array(
+        return [
             'id'   => $id,
             'data' => $item,
-        );
+        ];
     }
 }

@@ -52,7 +52,7 @@ class Zend_Application_Resource_DojoTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -84,7 +84,7 @@ class Zend_Application_Resource_DojoTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationInitializesDojoContainer()
     {
-        $resource = new Zend_Application_Resource_Dojo(array());
+        $resource = new Zend_Application_Resource_Dojo([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
         $this->assertTrue($resource->getDojo() instanceof Zend_Dojo_View_Helper_Dojo_Container);
@@ -92,7 +92,7 @@ class Zend_Application_Resource_DojoTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationReturnsDojoContainer()
     {
-        $resource = new Zend_Application_Resource_Dojo(array());
+        $resource = new Zend_Application_Resource_Dojo([]);
         $resource->setBootstrap($this->bootstrap);
         $test = $resource->init();
         $this->assertTrue($test instanceof Zend_Dojo_View_Helper_Dojo_Container);
@@ -100,10 +100,10 @@ class Zend_Application_Resource_DojoTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsPassedToResourceAreUsedToSetDojosContainerState()
     {
-        $options = array(
-            'requireModules'     => array('DojoTest'),
+        $options = [
+            'requireModules'     => ['DojoTest'],
             'localPath'          => '/ofc/ZF/Rules/',
-        );
+        ];
 
         $resource = new Zend_Application_Resource_Dojo($options);
         $resource->setBootstrap($this->bootstrap);
@@ -111,10 +111,10 @@ class Zend_Application_Resource_DojoTest extends PHPUnit_Framework_TestCase
         $resource->getBootstrap()->bootstrap('view');
         $dojo = $resource->getBootstrap()->view->dojo();
 
-        $test = array(
+        $test = [
             'requireModules' => $dojo->getModules(),
             'localPath'      => $dojo->getLocalPath()
-        );
+        ];
         $this->assertEquals($options, $test);
     }
 }

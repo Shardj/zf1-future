@@ -49,12 +49,12 @@ class Zend_Validate_LessThanTest extends PHPUnit_Framework_TestCase
          *      - expected validation result
          *      - array of test input values
          */
-        $valuesExpected = array(
-            array(100, true, array(-1, 0, 0.01, 1, 99.999)),
-            array(100, false, array(100, 100.0, 100.01)),
-            array('a', false, array('a', 'b', 'c', 'd')),
-            array('z', true, array('x', 'y'))
-            );
+        $valuesExpected = [
+            [100, true, [-1, 0, 0.01, 1, 99.999]],
+            [100, false, [100, 100.0, 100.01]],
+            ['a', false, ['a', 'b', 'c', 'd']],
+            ['z', true, ['x', 'y']]
+            ];
         foreach ($valuesExpected as $element) {
             $validator = new Zend_Validate_LessThan($element[0]);
             foreach ($element[2] as $input) {
@@ -71,7 +71,7 @@ class Zend_Validate_LessThanTest extends PHPUnit_Framework_TestCase
     public function testGetMessages()
     {
         $validator = new Zend_Validate_LessThan(10);
-        $this->assertEquals(array(), $validator->getMessages());
+        $this->assertEquals([], $validator->getMessages());
     }
 
     /**

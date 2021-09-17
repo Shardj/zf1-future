@@ -95,7 +95,7 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
      */
     public function testBaseUrlIsSameAsFrontController()
     {
-        $baseUrls = array('', '/subdir', '/subdir/', '/sub/sub/dir');
+        $baseUrls = ['', '/subdir', '/subdir/', '/sub/sub/dir'];
         foreach ($baseUrls as $baseUrl) {
             Zend_Controller_Front::getInstance()->setBaseUrl($baseUrl);
             $helper = new Zend_View_Helper_BaseUrl();
@@ -110,11 +110,11 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
      */
     public function testBaseUrlIsCorrectingFilePath()
     {
-        $baseUrls = array(
+        $baseUrls = [
             ''             => '/file.js',
             '/subdir'      => '/subdir/file.js',
             '/sub/sub/dir' => '/sub/sub/dir/file.js',
-        );
+        ];
 
         foreach ($baseUrls as $baseUrl => $val) {
             Zend_Controller_Front::getInstance()->setBaseUrl($baseUrl);
@@ -130,11 +130,11 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
      */
     public function testBaseUrlIsAppendedWithFile()
     {
-        $baseUrls = array(
+        $baseUrls = [
             ''             => '/file.js',
             '/subdir'      => '/subdir/file.js',
             '/sub/sub/dir' => '/sub/sub/dir/file.js',
-        );
+        ];
 
         foreach ($baseUrls as $baseUrl => $val) {
             Zend_Controller_Front::getInstance()->setBaseUrl($baseUrl);
@@ -150,11 +150,11 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
      */
     public function testBaseUrlIsAppendedWithPath()
     {
-        $baseUrls = array(
+        $baseUrls = [
             ''             => '/path/bar',
             '/subdir'      => '/subdir/path/bar',
             '/sub/sub/dir' => '/sub/sub/dir/path/bar',
-        );
+        ];
 
         foreach ($baseUrls as $baseUrl => $val) {
             Zend_Controller_Front::getInstance()->setBaseUrl($baseUrl);
@@ -170,10 +170,10 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
      */
     public function testBaseUrlIsAppendedWithRootPath()
     {
-        $baseUrls = array(
+        $baseUrls = [
             ''     => '/',
             '/foo' => '/foo/'
-        );
+        ];
 
         foreach ($baseUrls as $baseUrl => $val) {
             Zend_Controller_Front::getInstance()->setBaseUrl($baseUrl);

@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Test helpers
  */
 require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_Storage_Table */
 require_once 'Zend/Service/WindowsAzure/Storage/Table.php';
@@ -449,7 +449,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
             $dynamicEntity->Otherproperty = "Test";
             $dynamicEntity->Age = 0;
             
-            $storageClient->mergeEntity($tableName, $dynamicEntity, false, array('Myproperty', 'Otherproperty')); // only update 'Myproperty' and 'Otherproperty'
+            $storageClient->mergeEntity($tableName, $dynamicEntity, false, ['Myproperty', 'Otherproperty']); // only update 'Myproperty' and 'Otherproperty'
             
             $result = $storageClient->retrieveEntityById($tableName, $entity->getPartitionKey(), $entity->getRowKey());
 
@@ -873,7 +873,7 @@ class Zend_Service_WindowsAzure_TableStorageTest extends PHPUnit_Framework_TestC
      */
     protected function _generateEntities($amount = 1)
     {
-        $returnValue = array();
+        $returnValue = [];
         
         for ($i = 0; $i < $amount; $i++)
         {

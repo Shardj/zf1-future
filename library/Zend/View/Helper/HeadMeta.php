@@ -41,7 +41,6 @@ require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
  * @method $this prependHttpEquiv($keyValue, $content, $conditionalHttpEquiv)
  * @method $this prependName($keyValue, $content, $conditionalName)
  * @method $this prependProperty($property, $content, $modifiers)
- * @method $this setCharset($charset)
  * @method $this setHttpEquiv($keyValue, $content, $modifiers)
  * @method $this setName($keyValue, $content, $modifiers)
  * @method $this setProperty($property, $content, $modifiers)
@@ -52,9 +51,9 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
      * Types of attributes
      * @var array
      */
-    protected $_typeKeys     = array('name', 'http-equiv', 'charset', 'property');
-    protected $_requiredKeys = array('content');
-    protected $_modifierKeys = array('lang', 'scheme');
+    protected $_typeKeys     = ['name', 'http-equiv', 'charset', 'property'];
+    protected $_requiredKeys = ['content'];
+    protected $_modifierKeys = ['lang', 'scheme'];
 
     /**
      * @var string registry key
@@ -84,7 +83,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
      * @param  string $placement
      * @return Zend_View_Helper_HeadMeta
      */
-    public function headMeta($content = null, $keyValue = null, $keyType = 'name', $modifiers = array(), $placement = Zend_View_Helper_Placeholder_Container_Abstract::APPEND)
+    public function headMeta($content = null, $keyValue = null, $keyType = 'name', $modifiers = [], $placement = Zend_View_Helper_Placeholder_Container_Abstract::APPEND)
     {
         if ((null !== $content) && (null !== $keyValue)) {
             $item   = $this->createData($keyType, $keyValue, $content, $modifiers);
@@ -165,7 +164,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             }
 
             if (3 > $argc) {
-                $args[] = array();
+                $args[] = [];
             }
 
             $item  = $this->createData($type, $args[0], $args[1], $args[2]);
@@ -195,7 +194,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
         $item->type = 'charset';
         $item->charset = $charset;
         $item->content = null;
-        $item->modifiers = array();
+        $item->modifiers = [];
         $this->set($item);
         return $this;
     }
@@ -222,8 +221,8 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             return false;
         }
 
-        // <meta property= ... /> is only supported with doctype RDFa
-        if ( !is_null($this->view) && !$this->view->doctype()->isRdfa()
+        // <meta property= ... /> is only supported with doctype RDFa and html5
+        if ( !is_null($this->view) && !$this->view->doctype()->isRdfa() && !$isHtml5
             && $item->type === 'property') {
             return false;
         }
@@ -415,7 +414,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
                 ? $this->getWhitespace($indent)
                 : $this->getIndent();
 
-        $items = array();
+        $items = [];
         $this->getContainer()->ksort();
         try {
             foreach ($this as $item) {

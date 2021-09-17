@@ -59,7 +59,7 @@ class Custom_Queue extends Zend_Queue
     public function __construct()
     {
         $args = func_get_args();
-        call_user_func_array(array($this, 'parent::__construct'), $args);
+        call_user_func_array([$this, 'parent::__construct'], $args);
 
         $this->setMessageClass('Custom_Message');
         $this->setMessageSetClass('Custom_Messages');

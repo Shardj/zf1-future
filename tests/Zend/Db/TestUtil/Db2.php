@@ -42,15 +42,15 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
         parent::setUp($db);
     }
 
-    public function getParams(array $constants = array())
+    public function getParams(array $constants = [])
     {
-        $constants = array(
+        $constants = [
             'host'     => 'TESTS_ZEND_DB_ADAPTER_DB2_HOSTNAME',
             'username' => 'TESTS_ZEND_DB_ADAPTER_DB2_USERNAME',
             'password' => 'TESTS_ZEND_DB_ADAPTER_DB2_PASSWORD',
             'dbname'   => 'TESTS_ZEND_DB_ADAPTER_DB2_DATABASE',
             'port'     => 'TESTS_ZEND_DB_ADAPTER_DB2_PORT'
-        );
+        ];
 
         $params = parent::getParams($constants);
 
@@ -73,10 +73,10 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
      */
     protected function _getColumnsProducts()
     {
-        return array(
+        return [
             'product_id'   => 'INT NOT NULL PRIMARY KEY',
             'product_name' => 'VARCHAR(100)'
-        );
+        ];
     }
 
     protected function _getDataProducts()
@@ -90,8 +90,8 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 
     protected function _getDataDocuments()
     {
-        return array (
-            array(
+        return [
+            [
                 'doc_id'    => 1,
                 'doc_clob'  => 'this is the clob that never ends...'.
                                'this is the clob that never ends...'.
@@ -99,8 +99,8 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
                 'doc_blob'  => new Zend_Db_Expr("BLOB('this is the blob that never ends...".
                                "this is the blob that never ends...".
                                "this is the blob that never ends...')")
-            )
-        );
+            ]
+        ];
     }
 
     public function getSqlType($type)

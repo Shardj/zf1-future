@@ -90,8 +90,8 @@ class Zend_View_Helper_HtmlObjectTest extends PHPUnit_Framework_TestCase
 
     public function testMakeHtmlObjectWithAttribsWithoutParams()
     {
-        $attribs = array('attribkey1' => 'attribvalue1',
-                         'attribkey2' => 'attribvalue2');
+        $attribs = ['attribkey1' => 'attribvalue1',
+                         'attribkey2' => 'attribvalue2'];
 
         $htmlObject = $this->helper->htmlObject('datastring', 'typestring', $attribs);
 
@@ -103,10 +103,10 @@ class Zend_View_Helper_HtmlObjectTest extends PHPUnit_Framework_TestCase
     {
         $this->view->doctype(Zend_View_Helper_Doctype::HTML4_STRICT);
 
-        $params = array('paramname1' => 'paramvalue1',
-                        'paramname2' => 'paramvalue2');
+        $params = ['paramname1' => 'paramvalue1',
+                        'paramname2' => 'paramvalue2'];
 
-        $htmlObject = $this->helper->htmlObject('datastring', 'typestring', array(), $params);
+        $htmlObject = $this->helper->htmlObject('datastring', 'typestring', [], $params);
 
         $this->assertContains('<object data="datastring" type="typestring">', $htmlObject);
         $this->assertContains('</object>', $htmlObject);
@@ -122,10 +122,10 @@ class Zend_View_Helper_HtmlObjectTest extends PHPUnit_Framework_TestCase
     {
         $this->view->doctype(Zend_View_Helper_Doctype::XHTML1_STRICT);
 
-        $params = array('paramname1' => 'paramvalue1',
-                        'paramname2' => 'paramvalue2');
+        $params = ['paramname1' => 'paramvalue1',
+                        'paramname2' => 'paramvalue2'];
 
-        $htmlObject = $this->helper->htmlObject('datastring', 'typestring', array(), $params);
+        $htmlObject = $this->helper->htmlObject('datastring', 'typestring', [], $params);
 
         $this->assertContains('<object data="datastring" type="typestring">', $htmlObject);
         $this->assertContains('</object>', $htmlObject);
@@ -139,7 +139,7 @@ class Zend_View_Helper_HtmlObjectTest extends PHPUnit_Framework_TestCase
 
     public function testMakeHtmlObjectWithContent()
     {
-        $htmlObject = $this->helper->htmlObject('datastring', 'typestring', array(), array(), 'testcontent');
+        $htmlObject = $this->helper->htmlObject('datastring', 'typestring', [], [], 'testcontent');
 
         $this->assertContains('<object data="datastring" type="typestring">', $htmlObject);
         $this->assertContains('testcontent', $htmlObject);

@@ -96,7 +96,7 @@ class Zend_Reflection_Function extends ReflectionFunction
     public function getParameters($reflectionClass = 'Zend_Reflection_Parameter')
     {
         $phpReflections  = parent::getParameters();
-        $zendReflections = array();
+        $zendReflections = [];
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
             $instance = new $reflectionClass($this->getName(), $phpReflection->getName());
             if (!$instance instanceof Zend_Reflection_Parameter) {
@@ -118,12 +118,14 @@ class Zend_Reflection_Function extends ReflectionFunction
     public function getReturn()
     {
         $docblock = $this->getDocblock();
+
         if (!$docblock->hasTag('return')) {
             require_once 'Zend/Reflection/Exception.php';
             throw new Zend_Reflection_Exception('Function does not specify an @return annotation tag; cannot determine return type');
         }
+
         $tag    = $docblock->getTag('return');
-        $return = Zend_Reflection_Docblock_Tag::factory('@return ' . $tag->getDescription());
-        return $return;
+
+        return Zend_Reflection_Docblock_Tag::factory('@return ' . $tag->getDescription());
     }
 }

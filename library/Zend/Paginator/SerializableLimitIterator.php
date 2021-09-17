@@ -62,12 +62,12 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
      */
     public function serialize()
     {
-        return serialize(array(
+        return serialize([
             'it'     => $this->getInnerIterator(),
             'offset' => $this->_offset,
             'count'  => $this->_count,
             'pos'    => $this->getPosition(),
-        ));
+        ]);
     }
 
     /**

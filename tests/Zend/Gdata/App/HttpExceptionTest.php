@@ -51,7 +51,7 @@ class Zend_Gdata_App_HttpExceptionTest extends PHPUnit_Framework_TestCase
     public function testGetRawResponseBody()
     {
         try {
-            $rowData = array();
+            $rowData = [];
             $entry = $this->gdata->insertRow($rowData, $this->sprKey);
             $this->fail('Expecting Zend_Gdata_App_HttpException');
         } catch (Zend_Gdata_App_HttpException $hExc) {

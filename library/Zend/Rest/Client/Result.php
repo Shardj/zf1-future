@@ -49,7 +49,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
      */
     public function __construct($data)
     {
-        set_error_handler(array($this, 'handleXmlErrors'));
+        set_error_handler([$this, 'handleXmlErrors']);
         $this->_sxml = Zend_Xml_Security::scan($data); 
         restore_error_handler();
         if($this->_sxml === false) {
@@ -107,13 +107,15 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
         $result = $this->_sxml->xpath("//$name");
         $count  = count($result);
 
-        if ($count == 0) {
+        if ($count === 0) {
             return null;
-        } elseif ($count == 1) {
-            return $result[0];
-        } else {
-            return $result;
         }
+
+        if ($count === 1) {
+            return $result[0];
+        }
+
+        return $result;
     }
 
     /**
@@ -131,7 +133,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
             if (!is_array($value)) {
                 return $this->toValue($value);
             } else {
-                $return = array();
+                $return = [];
                 foreach ($value as $element) {
                     $return[] = $this->toValue($element);
                 }

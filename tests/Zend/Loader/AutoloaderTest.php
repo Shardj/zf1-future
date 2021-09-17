@@ -57,7 +57,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         // Store original include_path
@@ -119,13 +119,13 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testDefaultAutoloaderShouldBeZendLoader()
     {
-        $this->assertSame(array('Zend_Loader', 'loadClass'), $this->autoloader->getDefaultAutoloader());
+        $this->assertSame(['Zend_Loader', 'loadClass'], $this->autoloader->getDefaultAutoloader());
     }
 
     public function testDefaultAutoloaderShouldBeMutable()
     {
-        $this->autoloader->setDefaultAutoloader(array($this, 'autoload'));
-        $this->assertSame(array($this, 'autoload'), $this->autoloader->getDefaultAutoloader());
+        $this->autoloader->setDefaultAutoloader([$this, 'autoload']);
+        $this->assertSame([$this, 'autoload'], $this->autoloader->getDefaultAutoloader());
     }
 
     /**
@@ -152,7 +152,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloaderShouldAllowRegisteringMultipleNamespacesAtOnce()
     {
-        $this->autoloader->registerNamespace(array('Phly_', 'Solar_'));
+        $this->autoloader->registerNamespace(['Phly_', 'Solar_']);
         $namespaces = $this->autoloader->getRegisteredNamespaces();
         $this->assertContains('Phly_', $namespaces);
         $this->assertContains('Solar_', $namespaces);
@@ -176,7 +176,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloaderShouldAllowUnregisteringMultipleNamespacesAtOnce()
     {
-        $this->autoloader->unregisterNamespace(array('Zend', 'ZendX'));
+        $this->autoloader->unregisterNamespace(['Zend', 'ZendX']);
         $namespaces = $this->autoloader->getRegisteredNamespaces();
         $this->assertNotContains('Zend', $namespaces);
         $this->assertNotContains('ZendX', $namespaces);
@@ -242,7 +242,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testUnshiftAutoloaderShouldAllowSpecifyingMultipleNamespaces()
     {
-        $this->autoloader->unshiftAutoloader('require', array('Foo', 'Bar'));
+        $this->autoloader->unshiftAutoloader('require', ['Foo', 'Bar']);
 
         $autoloaders = $this->autoloader->getNamespaceAutoloaders('Foo');
         $test = array_shift($autoloaders);
@@ -279,7 +279,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testPushAutoloaderShouldAllowSpecifyingMultipleNamespaces()
     {
-        $this->autoloader->pushAutoloader('require', array('Foo', 'Bar'));
+        $this->autoloader->pushAutoloader('require', ['Foo', 'Bar']);
 
         $autoloaders = $this->autoloader->getNamespaceAutoloaders('Foo');
         $test = array_pop($autoloaders);
@@ -300,7 +300,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testRemovingAutoloaderShouldAlsoRemoveAutoloaderFromNamespacedAutoloaders()
     {
-        $this->autoloader->pushAutoloader('require', array('Foo', 'Bar'))
+        $this->autoloader->pushAutoloader('require', ['Foo', 'Bar'])
                          ->pushAutoloader('include');
         $this->autoloader->removeAutoloader('require');
         $test = $this->autoloader->getNamespaceAutoloaders('Foo');
@@ -311,7 +311,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloaderShouldAllowRemovingCallbackFromSpecifiedNamespaces()
     {
-        $this->autoloader->pushAutoloader('require', array('Foo', 'Bar'))
+        $this->autoloader->pushAutoloader('require', ['Foo', 'Bar'])
                          ->pushAutoloader('include');
         $this->autoloader->removeAutoloader('require', 'Foo');
         $test = $this->autoloader->getNamespaceAutoloaders('Foo');
@@ -345,7 +345,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
         $this->addTestIncludePath();
         $this->autoloader->suppressNotFoundWarnings(false);
         $this->autoloader->registerNamespace('ZendLoaderAutoloader');
-        set_error_handler(array($this, 'handleErrors'));
+        set_error_handler([$this, 'handleErrors']);
         $this->assertFalse(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_Bar'));
         restore_error_handler();
         $this->assertNotNull($this->error);
@@ -359,7 +359,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testAutoloadShouldReturnTrueIfMethodBasedAutoloaderMatchesAndReturnsNonFalseValue()
     {
-        $this->autoloader->pushAutoloader(array($this, 'autoload'));
+        $this->autoloader->pushAutoloader([$this, 'autoload']);
         $this->assertTrue(Zend_Loader_Autoloader::autoload('ZendLoaderAutoloader_Foo_Bar'));
     }
 
@@ -371,7 +371,7 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
 
     public function testUsingAlternateDefaultLoaderShouldOverrideUsageOfZendLoader()
     {
-        $this->autoloader->setDefaultAutoloader(array($this, 'autoload'));
+        $this->autoloader->setDefaultAutoloader([$this, 'autoload']);
         $class = $this->autoloader->autoload('Zend_ThisClass_WilNever_Exist');
         $this->assertTrue($class);
         $this->assertFalse(class_exists($class, false));
@@ -396,13 +396,13 @@ class Zend_Loader_AutoloaderTest extends PHPUnit_Framework_TestCase
      */
     public function testRetrievesAutoloadersFromLongestMatchingNamespace()
     {
-        $this->autoloader->pushAutoloader(array($this, 'autoloadFirstLevel'), 'Level1_')
-                         ->pushAutoloader(array($this, 'autoloadSecondLevel'), 'Level1_Level2');
+        $this->autoloader->pushAutoloader([$this, 'autoloadFirstLevel'], 'Level1_')
+                         ->pushAutoloader([$this, 'autoloadSecondLevel'], 'Level1_Level2');
         $class = 'Level1_Level2_Foo';
         $als   = $this->autoloader->getClassAutoloaders($class);
         $this->assertEquals(1, count($als));
         $al    = array_shift($als);
-        $this->assertEquals(array($this, 'autoloadSecondLevel'), $al);
+        $this->assertEquals([$this, 'autoloadSecondLevel'], $al);
     }
 
     /**

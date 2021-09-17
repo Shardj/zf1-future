@@ -34,12 +34,12 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
      * class capabilities with default values
      * @var array
      */
-    protected $_has = array('uniqueid'  => true,
+    protected $_has = ['uniqueid'  => true,
                             'delete'    => false,
                             'create'    => false,
                             'top'       => false,
                             'fetchPart' => true,
-                            'flags'     => false);
+                            'flags'     => false];
 
     /**
      * current iteration position
@@ -76,6 +76,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
     {
         if (strpos($var, 'has') === 0) {
             $var = strtolower(substr($var, 3));
+
             return isset($this->_has[$var]) ? $this->_has[$var] : null;
         }
 

@@ -75,8 +75,8 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
         $newName = new Zend_Gdata_Gapps_Extension_Name();
         $newName->transferFromXML($this->theName->saveXML());
         $this->assertEquals(0, count($newName->extensionElements));
-        $newName->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newName->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newName->extensionElements));
         $this->assertEquals("John", $newName->givenName);
         $this->assertEquals("Doe", $newName->familyName);
@@ -112,8 +112,8 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->theName->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->theName->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->theName->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->theName->extensionAttributes['foo2']['value']);

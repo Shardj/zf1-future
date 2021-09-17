@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 require_once 'Zend/Loader/Autoloader.php';
 require_once 'Zend/Application/Resource/ResourceAbstract.php';
-require_once 'Zend/Application/Resource/Useragent.php';
+require_once 'Zend/Application/Resource/UserAgent.php';
 
 /**
  * @category   Zend
@@ -53,7 +53,7 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -85,7 +85,7 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationInitializesUserAgentObject()
     {
-        $resource = new Zend_Application_Resource_Useragent(array());
+        $resource = new Zend_Application_Resource_Useragent([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
         $this->assertTrue($resource->getUserAgent() instanceof Zend_Http_UserAgent);
@@ -93,9 +93,9 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsPassedToResourceAreUsedToSetUserAgentState()
     {
-        $options = array(
-            'storage' => array('adapter' => 'NonPersistent'),
-        );
+        $options = [
+            'storage' => ['adapter' => 'NonPersistent'],
+        ];
         $resource = new Zend_Application_Resource_Useragent($options);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
@@ -106,8 +106,8 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
 
     public function testInjectsUserAgentIntoViewHelperWhenViewResourcePresent()
     {
-        $this->bootstrap->registerPluginResource('view', array());
-        $resource = new Zend_Application_Resource_Useragent(array());
+        $this->bootstrap->registerPluginResource('view', []);
+        $resource = new Zend_Application_Resource_Useragent([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
 

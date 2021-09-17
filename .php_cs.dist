@@ -1,0 +1,14 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->notPath('tests/Zend/Loader/_files/ParseError.php')
+    ->in('.');
+
+return PhpCsFixer\Config::create()
+    ->setFinder($finder)
+    ->setRules([
+        'array_syntax' => ['syntax' => 'long'],
+        'list_syntax' => ['syntax' => 'long'],
+        'modernize_types_casting' => true,
+        'logical_operators' => true,
+    ]);

@@ -46,7 +46,7 @@ class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
 
     public function testCreateFolder()
     {
-        $this->adapter->setResponse(array('HTTP/1.1 200 OK\r\n\r\n'));
+        $this->adapter->setResponse(['HTTP/1.1 200 OK\r\n\r\n']);
         $this->gdata->createFolder("Test Folder");
         $request = $this->adapter->popRequest();
         
@@ -70,7 +70,7 @@ class Zend_Gdata_DocsTest extends PHPUnit_Framework_TestCase
     public function testCreateSubfolder()
     {
         $subfolderName = "MySubfolder";
-        $this->adapter->setResponse(array('HTTP/1.1 200 OK\r\n\r\n'));
+        $this->adapter->setResponse(['HTTP/1.1 200 OK\r\n\r\n']);
         $this->gdata->createFolder("Test Folder", $subfolderName);
         $request = $this->adapter->popRequest();
         

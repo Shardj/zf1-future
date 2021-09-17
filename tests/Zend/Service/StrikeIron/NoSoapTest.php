@@ -50,9 +50,9 @@ class Zend_Service_StrikeIron_NoSoapTest extends PHPUnit_Framework_TestCase
     public function testNoSoapException()
     {
         try {
-            $base = new Zend_Service_StrikeIron_Base(array('client'   => $this->soapClient,
+            $base = new Zend_Service_StrikeIron_Base(['client'   => $this->soapClient,
                                                              'username' => 'user',
-                                                             'password' => 'pass'));
+                                                             'password' => 'pass']);
             $this->fail('Expecting exception of type Zend_Service_StrikeIron_Exception');
         } catch (Zend_Exception $e) {
             $this->assertTrue($e instanceof Zend_Service_StrikeIron_Exception,

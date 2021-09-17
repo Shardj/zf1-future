@@ -60,7 +60,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
      *
      * @var array  Array of Zend_Pdf_Action objects
      */
-    public $next = array();
+    public $next = [];
 
     /**
      * Object constructor

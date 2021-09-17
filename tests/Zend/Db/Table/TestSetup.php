@@ -45,7 +45,7 @@ abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
     /**
      * @var array of Zend_Db_Table_Abstract
      */
-    protected $_table = array();
+    protected $_table = [];
 
     protected $_runtimeIncludePath = null;
 
@@ -67,7 +67,7 @@ abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
         parent::tearDown();
     }
 
-    protected function _getTable($tableClass, $options = array())
+    protected function _getTable($tableClass, $options = [])
     {
         if (is_array($options) && !isset($options['db'])) {
             $options['db'] = $this->_db;

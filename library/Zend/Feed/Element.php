@@ -190,27 +190,32 @@ class Zend_Feed_Element implements ArrayAccess
         $nodes = $this->_children($var);
         $length = count($nodes);
 
-        if ($length == 1) {
+        if ($length === 1) {
             return new Zend_Feed_Element($nodes[0]);
-        } elseif ($length > 1) {
-            return array_map(function ($e) { return new Zend_Feed_Element($e); }, $nodes);
-        } else {
-            // When creating anonymous nodes for __set chaining, don't
-            // call appendChild() on them. Instead we pass the current
-            // element to them as an extra reference; the child is
-            // then responsible for appending itself when it is
-            // actually set. This way "if ($foo->bar)" doesn't create
-            // a phantom "bar" element in our tree.
-            if (strpos($var, ':') !== false) {
-                list($ns, $elt) = explode(':', $var, 2);
-                $node = $this->_element->ownerDocument->createElementNS(Zend_Feed::lookupNamespace($ns), $elt);
-            } else {
-                $node = $this->_element->ownerDocument->createElement($var);
-            }
-            $node = new self($node);
-            $node->setParent($this);
-            return $node;
         }
+
+        if ($length > 1) {
+            return array_map(function ($e) { return new Zend_Feed_Element($e); }, $nodes);
+        }
+
+        // When creating anonymous nodes for __set chaining, don't
+        // call appendChild() on them. Instead we pass the current
+        // element to them as an extra reference; the child is
+        // then responsible for appending itself when it is
+        // actually set. This way "if ($foo->bar)" doesn't create
+        // a phantom "bar" element in our tree.
+        if (strpos($var, ':') !== false) {
+            list($ns, $elt) = explode(':', $var, 2);
+            $node = $this->_element->ownerDocument->createElementNS(Zend_Feed::lookupNamespace($ns), $elt);
+        } else {
+            $node = $this->_element->ownerDocument->createElement($var);
+        }
+
+        $node = new self($node);
+        $node->setParent($this);
+
+        return $node;
+
     }
 
 
@@ -341,7 +346,7 @@ class Zend_Feed_Element implements ArrayAccess
      */
     protected function _children($var)
     {
-        $found = array();
+        $found = [];
 
         // Look for access of the form {ns:var}.
         if (strpos($var, ':') !== false) {

@@ -71,8 +71,8 @@ class Zend_Gdata_Calendar_ColorTest extends PHPUnit_Framework_TestCase
         $newColor = new Zend_Gdata_Calendar_Extension_Color();
         $newColor->transferFromXML($this->color->saveXML());
         $this->assertEquals(count($newColor->extensionElements), 0);
-        $newColor->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newColor->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newColor->extensionElements), 1);
         $this->assertEquals($newColor->value, '#abcdef');
 
@@ -104,8 +104,8 @@ class Zend_Gdata_Calendar_ColorTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->color->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->color->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->color->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->color->extensionAttributes['foo2']['value']);

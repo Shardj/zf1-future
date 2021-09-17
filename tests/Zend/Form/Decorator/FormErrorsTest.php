@@ -84,47 +84,47 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
     public function setupForm()
     {
         $form1 = new Zend_Form_SubForm;
-        $form1->addElement('text', 'foo', array(
+        $form1->addElement('text', 'foo', [
                     'label' => 'Sub Foo: ',
                     'required' => true,
-                    'validators' => array(
+                    'validators' => [
                         'NotEmpty',
                         'Alpha',
-                    ),
-                ))
-              ->addElement('text', 'bar', array(
+                    ],
+                ])
+              ->addElement('text', 'bar', [
                     'label' => 'Sub Bar: ',
                     'required' => true,
-                    'validators' => array(
+                    'validators' => [
                         'Alpha',
                         'Alnum',
-                    ),
-                ));
+                    ],
+                ]);
         $form2 = new Zend_Form;
-        $form2->addElement('text', 'foo', array(
+        $form2->addElement('text', 'foo', [
                     'label' => 'Master Foo: ',
                     'required' => true,
-                    'validators' => array(
+                    'validators' => [
                         'NotEmpty',
                         'Alpha',
-                    ),
-                ))
-              ->addElement('text', 'bar', array(
+                    ],
+                ])
+              ->addElement('text', 'bar', [
                     'required' => true,
-                    'validators' => array(
+                    'validators' => [
                         'Alpha',
                         'Alnum',
-                    ),
-                ))
+                    ],
+                ])
               ->addSubForm($form1, 'sub');
-        $form2->isValid(array(
+        $form2->isValid([
             'foo' => '',
             'bar' => 'foo 2 u 2',
-            'sub' => array(
+            'sub' => [
                 'foo' => '',
                 'bar' => 'foo 2 u 2',
-            ),
-        ));
+            ],
+        ]);
         $form2->setView($this->getView());
         $this->decorator->setElement($form2);
         $this->form = $form2;
@@ -180,7 +180,7 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testRenderPrependsMessagesToContentWhenRequested()
     {
-        $this->decorator->setOptions(array('placement' => 'PREPEND'));
+        $this->decorator->setOptions(['placement' => 'PREPEND']);
         $this->setupForm();
         $content = 'test content';
         $test = $this->decorator->render($content);
@@ -197,7 +197,7 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testRenderSeparatesContentAndErrorsWithCustomSeparatorWhenRequested()
     {
-        $this->decorator->setOptions(array('separator' => '<br />'));
+        $this->decorator->setOptions(['separator' => '<br />']);
         $this->setupForm();
         $content = 'test content';
         $test = $this->decorator->render($content);
@@ -222,7 +222,7 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testMarkupOptionsMayBePassedViaSetOptions()
     {
-        $options = array(
+        $options = [
             'ignoreSubForms'          => true,
             'markupElementLabelEnd'   => '</i>',
             'markupElementLabelStart' => '<i>',
@@ -230,7 +230,7 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
             'markupListItemEnd'       => '</dd>',
             'markupListItemStart'     => '<dd>',
             'markupListStart'         => '<dl class="form-errors">',
-        );
+        ];
         $this->decorator->setOptions($options);
         foreach ($options as $key => $value) {
             if ($key == 'ignoreSubForms') {
@@ -244,7 +244,7 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function testMarkupOptionsShouldBeUsedWhenRendering()
     {
-        $options = array(
+        $options = [
             'ignoreSubForms'          => true,
             'markupElementLabelEnd'   => '</i>',
             'markupElementLabelStart' => '<i>',
@@ -252,7 +252,7 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
             'markupListItemEnd'       => '</p>',
             'markupListItemStart'     => '<p>',
             'markupListStart'         => '<div class="form-errors">',
-        );
+        ];
         $this->setupForm();
         $this->decorator->setOptions($options);
         $markup = $this->decorator->render('');
@@ -371,15 +371,15 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
         // Translator
         $translator = new Zend_Translate(
             'array',
-            array(
+            [
                  'Master Foo: ' => 'transleted label',
                  'bar'          => 'translated name',
-            )
+            ]
         );
 
         // Form
         $this->setupForm();
-        $this->form->setDecorators(array($this->decorator));
+        $this->form->setDecorators([$this->decorator]);
         $this->form->foo->setTranslator($translator);
         $this->form->bar->setTranslator($translator);
 
@@ -397,15 +397,15 @@ class Zend_Form_Decorator_FormErrorsTest extends PHPUnit_Framework_TestCase
 
     public function markupOptionMethodsProvider()
     {
-        return array(
-            array('IgnoreSubForms'),
-            array('MarkupElementLabelEnd'),
-            array('MarkupElementLabelStart'),
-            array('MarkupListEnd'),
-            array('MarkupListItemEnd'),
-            array('MarkupListItemStart'),
-            array('MarkupListStart'),
-        );
+        return [
+            ['IgnoreSubForms'],
+            ['MarkupElementLabelEnd'],
+            ['MarkupElementLabelStart'],
+            ['MarkupListEnd'],
+            ['MarkupListItemEnd'],
+            ['MarkupListItemStart'],
+            ['MarkupListStart'],
+        ];
     }
 }
 

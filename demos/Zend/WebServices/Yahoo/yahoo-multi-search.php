@@ -106,7 +106,7 @@ if (isset($_POST) && strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
         $yahoo = new Zend_Service_Yahoo('zendtesting');
 
         try {
-            $results = $yahoo->imageSearch($keywords, array("results" => 5));
+            $results = $yahoo->imageSearch($keywords, ["results" => 5]);
 
             if ($results->totalResults() > 0) {
                 echo '<div id="image">';

@@ -67,9 +67,9 @@ class Zend_CodeGenerator_Php_DocblockTest extends PHPUnit_Framework_TestCase
 
     public function testTagGettersAndSetters()
     {
-        $this->_docblock->setTag(array('name' => 'blah'));
-        $this->_docblock->setTag(new Zend_CodeGenerator_Php_Docblock_Tag_Param(array('datatype' => 'string')));
-        $this->_docblock->setTag(new Zend_CodeGenerator_Php_Docblock_Tag_Return(array('datatype' => 'int')));
+        $this->_docblock->setTag(['name' => 'blah']);
+        $this->_docblock->setTag(new Zend_CodeGenerator_Php_Docblock_Tag_Param(['datatype' => 'string']));
+        $this->_docblock->setTag(new Zend_CodeGenerator_Php_Docblock_Tag_Return(['datatype' => 'int']));
         $this->assertEquals(3, count($this->_docblock->getTags()));
 
         $target = <<<EOS

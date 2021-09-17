@@ -35,10 +35,10 @@ abstract class Zend_Tag_Cloud_Decorator_Tag
      *
      * @var array
      */
-    protected $_skipOptions = array(
+    protected $_skipOptions = [
         'options',
         'config',
-    );
+    ];
 
     /**
      * Create a new cloud decorator with options

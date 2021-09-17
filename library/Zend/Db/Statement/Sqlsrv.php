@@ -160,10 +160,10 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
             return false;
         }
 
-        return array(
+        return [
             $error[0]['code'],
             $error[0]['message'],
-        );
+        ];
     }
 
 
@@ -183,13 +183,13 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
 
         if ($params !== null) {
             if (!is_array($params)) {
-                $params = array($params);
+                $params = [$params];
             }
             $error = false;
 
             // make all params passed by reference
-            $params_ = array();
-            $temp    = array();
+            $params_ = [];
+            $temp    = [];
             $i       = 1;
             foreach ($params as $param) {
                 $temp[$i]  = $param;
@@ -318,7 +318,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
      * @return mixed One object instance of the specified class.
      * @throws Zend_Db_Statement_Exception
      */
-    public function fetchObject($class = 'stdClass', array $config = array())
+    public function fetchObject($class = 'stdClass', array $config = [])
     {
         if (!$this->_stmt) {
             return false;
@@ -426,7 +426,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
     public function fetchAll($style = null, $col = null)
     {
         $data = parent::fetchAll($style, $col);
-        $results = array();
+        $results = [];
         $remove = $this->_adapter->foldCase('ZEND_DB_ROWNUM');
 
         foreach ($data as $row) {

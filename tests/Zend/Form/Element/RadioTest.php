@@ -117,22 +117,22 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
 
     public function testCanDisableIndividualRadioOptions()
     {
-        $this->element->setMultiOptions(array(
+        $this->element->setMultiOptions([
                 'foo'  => 'Foo',
                 'bar'  => 'Bar',
                 'baz'  => 'Baz',
                 'bat'  => 'Bat',
                 'test' => 'Test',
-            ))
-            ->setAttrib('disable', array('baz', 'test'));
+            ])
+            ->setAttrib('disable', ['baz', 'test']);
         $html = $this->element->render($this->getView());
-        foreach (array('baz', 'test') as $test) {
+        foreach (['baz', 'test'] as $test) {
             if (!preg_match('/(<input[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching disabled option for ' . $test);
             }
             $this->assertRegexp('/<input[^>]*?(disabled="disabled")/', $m[1]);
         }
-        foreach (array('foo', 'bar', 'bat') as $test) {
+        foreach (['foo', 'bar', 'bat'] as $test) {
             if (!preg_match('/(<input[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching option for ' . $test);
             }
@@ -142,13 +142,13 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
 
     public function testSpecifiedSeparatorIsUsedWhenRendering()
     {
-        $this->element->setMultiOptions(array(
+        $this->element->setMultiOptions([
                 'foo'  => 'Foo',
                 'bar'  => 'Bar',
                 'baz'  => 'Baz',
                 'bat'  => 'Bat',
                 'test' => 'Test',
-            ))
+            ])
             ->setSeparator('--FooBarFunSep--');
         $html = $this->element->render($this->getView());
         $this->assertContains($this->element->getSeparator(), $html);
@@ -158,13 +158,13 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
 
     public function testRadioElementRendersDtDdWrapper()
     {
-        $this->element->setMultiOptions(array(
+        $this->element->setMultiOptions([
                 'foo'  => 'Foo',
                 'bar'  => 'Bar',
                 'baz'  => 'Baz',
                 'bat'  => 'Bat',
                 'test' => 'Test',
-            ));
+            ]);
         $html = $this->element->render($this->getView());
         $this->assertRegexp('#<dt[^>]*>&\#160;</dt>.*?<dd#s', $html, $html);
     }
@@ -191,10 +191,10 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderingShouldCreateLabelWithoutForAttribute()
     {
-        $this->element->setMultiOptions(array(
+        $this->element->setMultiOptions([
                 'foo'  => 'Foo',
                 'bar'  => 'Bar',
-             ))
+             ])
              ->setLabel('Foo');
         $html = $this->element->render($this->getView());
         $this->assertNotContains('for="foo"', $html);
@@ -205,16 +205,16 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
      */
     public function testCreationWithIndividualDecoratorsAsConstructorOptionsWithoutLabel()
     {
-        $element = new Zend_Form_Element_Radio(array(
+        $element = new Zend_Form_Element_Radio([
             'name'         => 'foo',
-            'multiOptions' => array(
+            'multiOptions' => [
                 'bar'  => 'Bar',
                 'baz'  => 'Baz',
-            ),
-            'decorators' => array(
+            ],
+            'decorators' => [
                 'ViewHelper',
-            ),
-        ));
+            ],
+        ]);
 
         $this->assertFalse($element->getDecorator('label'));
     }
@@ -224,16 +224,16 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderingWithIndividualDecoratorsAsConstructorOptionsWithoutLabel()
     {
-        $element = new Zend_Form_Element_Radio(array(
+        $element = new Zend_Form_Element_Radio([
             'name'         => 'foo',
-            'multiOptions' => array(
+            'multiOptions' => [
                 'bar'  => 'Bar',
                 'baz'  => 'Baz',
-            ),
-            'decorators' => array(
+            ],
+            'decorators' => [
                 'ViewHelper',
-            ),
-        ));
+            ],
+        ]);
 
         $html = $element->render($this->getView());
         $this->assertNotContains('<dt id="foo-label">&#160;</dt>', $html);

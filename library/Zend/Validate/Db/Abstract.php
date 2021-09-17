@@ -44,10 +44,10 @@ abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
     /**
      * @var array Message templates
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::ERROR_NO_RECORD_FOUND => "No record matching '%value%' was found",
         self::ERROR_RECORD_FOUND    => "A record matching '%value%' was found",
-    );
+    ];
 
     /**
      * @var string
@@ -310,7 +310,7 @@ abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
              * Build select object
              */
             $select = new Zend_Db_Select($db);
-            $select->from($this->_table, array($this->_field), $this->_schema);
+            $select->from($this->_table, [$this->_field], $this->_schema);
             if ($db->supportsParameters('named')) {
                 $select->where($db->quoteIdentifier($this->_field, true).' = :value'); // named
             } else {
@@ -341,15 +341,12 @@ abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
     protected function _query($value)
     {
         $select = $this->getSelect();
-        /**
-         * Run query
-         */
-        $result = $select->getAdapter()->fetchRow(
-            $select,
-            array('value' => $value), // this should work whether db supports positional or named params
-            Zend_Db::FETCH_ASSOC
-            );
 
-        return $result;
+        // Run query
+        return $select->getAdapter()->fetchRow(
+            $select,
+            ['value' => $value], // this should work whether db supports positional or named params
+            Zend_Db::FETCH_ASSOC
+        );
     }
 }

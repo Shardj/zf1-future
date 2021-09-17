@@ -81,7 +81,7 @@ class Zend_Service_Amazon_Ec2_AbstractTest extends PHPUnit_Framework_TestCase
     public function testSignParamsWithSpaceEncodesWithPercentInsteadOfPlus()
     {
         $class = new TestAmamzonEc2Abstract('TestAccessKey', 'TestSecretKey');
-        $ret = $class->testSign(array('Action' => 'Space Test'));
+        $ret = $class->testSign(['Action' => 'Space Test']);
 
         // this is the encode signuature with urlencode - It's Invalid!
         $invalidSignature = 'EeHAfo7cMcLyvH4SW4fEpjo51xJJ4ES1gdjRPxZTlto=';

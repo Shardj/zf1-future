@@ -42,7 +42,7 @@ class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
 {
     public $baseUri;
 
-    public $remoteFeedNames = array();
+    public $remoteFeedNames = [];
 
     public function setUp()
     {

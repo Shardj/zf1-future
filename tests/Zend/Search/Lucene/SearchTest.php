@@ -43,7 +43,7 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $defaultPrefixLength = Zend_Search_Lucene_Search_Query_Fuzzy::getDefaultPrefixLength();
         Zend_Search_Lucene_Search_Query_Fuzzy::setDefaultPrefixLength(0);
 
-        $queries = array('title:"The Right Way" AND text:go',
+        $queries = ['title:"The Right Way" AND text:go',
                          'title:"Do it right" AND right',
                          'title:Do it right',
                          'te?t',
@@ -79,9 +79,9 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
                          'contents:apache AND type:1 AND id:5',
                          'f1:word1 f1:word2 and f1:word3',
                          'f1:word1 not f1:word2 and f1:word3'
-                         );
+                         ];
 
-        $rewrittenQueries = array('+(title:"the right way") +(text:go)',
+        $rewrittenQueries = ['+(title:"the right way") +(text:go)',
                                   '+(title:"do it right") +(path:right modified:right contents:right)',
                                   '(title:do) (path:it modified:it contents:it) (path:right modified:right contents:right)',
                                   '(contents:test contents:text)',
@@ -116,7 +116,7 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
                                   '+(contents:apache) +(<InsignificantQuery>) +(<InsignificantQuery>)',
                                   '+(contents:apache) +(<InsignificantQuery>) +(<InsignificantQuery>)',
                                   '(f1:word) (+(f1:word) +(f1:word))',
-                                  '(f1:word) (-(f1:word) +(f1:word))');
+                                  '(f1:word) (-(f1:word) +(f1:word))'];
 
 
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
@@ -176,9 +176,9 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('submitting');
 
         $this->assertEquals(count($hits), 3);
-        $expectedResultset = array(array(2, 0.114555, 'IndexSource/contributing.patches.html'),
-                                   array(7, 0.112241, 'IndexSource/contributing.bugs.html'),
-                                   array(8, 0.112241, 'IndexSource/contributing.html'));
+        $expectedResultset = [[2, 0.114555, 'IndexSource/contributing.patches.html'],
+                                   [7, 0.112241, 'IndexSource/contributing.bugs.html'],
+                                   [8, 0.112241, 'IndexSource/contributing.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -207,10 +207,10 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('"reporting bugs"');
 
         $this->assertEquals(count($hits), 4);
-        $expectedResultset = array(array(0, 0.247795, 'IndexSource/contributing.documentation.html'),
-                                   array(7, 0.212395, 'IndexSource/contributing.bugs.html'),
-                                   array(8, 0.212395, 'IndexSource/contributing.html'),
-                                   array(2, 0.176996, 'IndexSource/contributing.patches.html'));
+        $expectedResultset = [[0, 0.247795, 'IndexSource/contributing.documentation.html'],
+                                   [7, 0.212395, 'IndexSource/contributing.bugs.html'],
+                                   [8, 0.212395, 'IndexSource/contributing.html'],
+                                   [2, 0.176996, 'IndexSource/contributing.patches.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -226,8 +226,8 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('submitting AND (wishlists OR requirements)');
 
         $this->assertEquals(count($hits), 2);
-        $expectedResultset = array(array(7, 0.095697, 'IndexSource/contributing.bugs.html'),
-                                   array(8, 0.075573, 'IndexSource/contributing.html'));
+        $expectedResultset = [[7, 0.095697, 'IndexSource/contributing.bugs.html'],
+                                   [8, 0.075573, 'IndexSource/contributing.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -243,7 +243,7 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('"PEAR developers" AND Home');
 
         $this->assertEquals(count($hits), 1);
-        $expectedResultset = array(array(1, 0.168270, 'IndexSource/contributing.wishlist.html'));
+        $expectedResultset = [[1, 0.168270, 'IndexSource/contributing.wishlist.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -274,7 +274,7 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('"PEAR developers" AND Home AND 123456787654321');
 
         $this->assertEquals(count($hits), 1);
-        $expectedResultset = array(array(1, 0.168270, 'IndexSource/contributing.wishlist.html'));
+        $expectedResultset = [[1, 0.168270, 'IndexSource/contributing.wishlist.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -293,15 +293,15 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('*cont*');
 
         $this->assertEquals(count($hits), 9);
-        $expectedResultset = array(array(8, 0.125253, 'IndexSource/contributing.html'),
-                                   array(4, 0.112122, 'IndexSource/copyright.html'),
-                                   array(2, 0.108491, 'IndexSource/contributing.patches.html'),
-                                   array(7, 0.077716, 'IndexSource/contributing.bugs.html'),
-                                   array(0, 0.050760, 'IndexSource/contributing.documentation.html'),
-                                   array(1, 0.049163, 'IndexSource/contributing.wishlist.html'),
-                                   array(3, 0.036159, 'IndexSource/about-pear.html'),
-                                   array(5, 0.021500, 'IndexSource/authors.html'),
-                                   array(9, 0.007422, 'IndexSource/core.html'));
+        $expectedResultset = [[8, 0.125253, 'IndexSource/contributing.html'],
+                                   [4, 0.112122, 'IndexSource/copyright.html'],
+                                   [2, 0.108491, 'IndexSource/contributing.patches.html'],
+                                   [7, 0.077716, 'IndexSource/contributing.bugs.html'],
+                                   [0, 0.050760, 'IndexSource/contributing.documentation.html'],
+                                   [1, 0.049163, 'IndexSource/contributing.wishlist.html'],
+                                   [3, 0.036159, 'IndexSource/about-pear.html'],
+                                   [5, 0.021500, 'IndexSource/authors.html'],
+                                   [9, 0.007422, 'IndexSource/core.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -322,15 +322,15 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('tesd~0.4');
 
         $this->assertEquals(count($hits), 9);
-        $expectedResultset = array(array(2, 0.037139, 'IndexSource/contributing.patches.html'),
-                                   array(0, 0.008735, 'IndexSource/contributing.documentation.html'),
-                                   array(7, 0.002449, 'IndexSource/contributing.bugs.html'),
-                                   array(1, 0.000483, 'IndexSource/contributing.wishlist.html'),
-                                   array(3, 0.000483, 'IndexSource/about-pear.html'),
-                                   array(9, 0.000483, 'IndexSource/core.html'),
-                                   array(5, 0.000414, 'IndexSource/authors.html'),
-                                   array(8, 0.000414, 'IndexSource/contributing.html'),
-                                   array(4, 0.000345, 'IndexSource/copyright.html'));
+        $expectedResultset = [[2, 0.037139, 'IndexSource/contributing.patches.html'],
+                                   [0, 0.008735, 'IndexSource/contributing.documentation.html'],
+                                   [7, 0.002449, 'IndexSource/contributing.bugs.html'],
+                                   [1, 0.000483, 'IndexSource/contributing.wishlist.html'],
+                                   [3, 0.000483, 'IndexSource/about-pear.html'],
+                                   [9, 0.000483, 'IndexSource/core.html'],
+                                   [5, 0.000414, 'IndexSource/authors.html'],
+                                   [8, 0.000414, 'IndexSource/contributing.html'],
+                                   [4, 0.000345, 'IndexSource/copyright.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -348,11 +348,11 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('[xml TO zzzzz]');
 
         $this->assertEquals(count($hits), 5);
-        $expectedResultset = array(array(4, 0.156366, 'IndexSource/copyright.html'),
-                                   array(2, 0.080458, 'IndexSource/contributing.patches.html'),
-                                   array(7, 0.060214, 'IndexSource/contributing.bugs.html'),
-                                   array(1, 0.009687, 'IndexSource/contributing.wishlist.html'),
-                                   array(5, 0.005871, 'IndexSource/authors.html'));
+        $expectedResultset = [[4, 0.156366, 'IndexSource/copyright.html'],
+                                   [2, 0.080458, 'IndexSource/contributing.patches.html'],
+                                   [7, 0.060214, 'IndexSource/contributing.bugs.html'],
+                                   [1, 0.009687, 'IndexSource/contributing.wishlist.html'],
+                                   [5, 0.005871, 'IndexSource/authors.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -368,11 +368,11 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('{xml TO zzzzz}');
 
         $this->assertEquals(count($hits), 5);
-        $expectedResultset = array(array(2, 0.1308671, 'IndexSource/contributing.patches.html'),
-                                   array(7, 0.0979391, 'IndexSource/contributing.bugs.html'),
-                                   array(4, 0.0633930, 'IndexSource/copyright.html'),
-                                   array(1, 0.0157556, 'IndexSource/contributing.wishlist.html'),
-                                   array(5, 0.0095493, 'IndexSource/authors.html'));
+        $expectedResultset = [[2, 0.1308671, 'IndexSource/contributing.patches.html'],
+                                   [7, 0.0979391, 'IndexSource/contributing.bugs.html'],
+                                   [4, 0.0633930, 'IndexSource/copyright.html'],
+                                   [1, 0.0157556, 'IndexSource/contributing.wishlist.html'],
+                                   [5, 0.0095493, 'IndexSource/authors.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -391,11 +391,11 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('contributing');
 
         $this->assertEquals(count($hits), 5);
-        $expectedResultset = array(array(8, 0.847922, 'IndexSource/contributing.html'),
-                                   array(0, 0.678337, 'IndexSource/contributing.documentation.html'),
-                                   array(1, 0.678337, 'IndexSource/contributing.wishlist.html'),
-                                   array(2, 0.678337, 'IndexSource/contributing.patches.html'),
-                                   array(7, 0.678337, 'IndexSource/contributing.bugs.html'));
+        $expectedResultset = [[8, 0.847922, 'IndexSource/contributing.html'],
+                                   [0, 0.678337, 'IndexSource/contributing.documentation.html'],
+                                   [1, 0.678337, 'IndexSource/contributing.wishlist.html'],
+                                   [2, 0.678337, 'IndexSource/contributing.patches.html'],
+                                   [7, 0.678337, 'IndexSource/contributing.bugs.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -451,10 +451,10 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('"reporting bugs"', 'path');
 
         $this->assertEquals(count($hits), 4);
-        $expectedResultset = array(array(7, 0.212395, 'IndexSource/contributing.bugs.html'),
-                                   array(0, 0.247795, 'IndexSource/contributing.documentation.html'),
-                                   array(8, 0.212395, 'IndexSource/contributing.html'),
-                                   array(2, 0.176996, 'IndexSource/contributing.patches.html'));
+        $expectedResultset = [[7, 0.212395, 'IndexSource/contributing.bugs.html'],
+                                   [0, 0.247795, 'IndexSource/contributing.documentation.html'],
+                                   [8, 0.212395, 'IndexSource/contributing.html'],
+                                   [2, 0.176996, 'IndexSource/contributing.patches.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);
@@ -474,9 +474,9 @@ class Zend_Search_Lucene_SearchTest extends PHPUnit_Framework_TestCase
         $hits = $index->find('"reporting bugs"', 'path');
 
         $this->assertEquals(count($hits), 3);
-        $expectedResultset = array(array(7, 0.212395, 'IndexSource/contributing.bugs.html'),
-                                   array(0, 0.247795, 'IndexSource/contributing.documentation.html'),
-                                   array(2, 0.176996, 'IndexSource/contributing.patches.html'));
+        $expectedResultset = [[7, 0.212395, 'IndexSource/contributing.bugs.html'],
+                                   [0, 0.247795, 'IndexSource/contributing.documentation.html'],
+                                   [2, 0.176996, 'IndexSource/contributing.patches.html']];
 
         foreach ($hits as $resId => $hit) {
             $this->assertEquals($hit->id, $expectedResultset[$resId][0]);

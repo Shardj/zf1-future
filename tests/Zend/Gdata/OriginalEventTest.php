@@ -74,8 +74,8 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
         $newOriginalEvent = new Zend_Gdata_Extension_OriginalEvent();
         $newOriginalEvent->transferFromXML($this->originalEvent->saveXML());
         $this->assertEquals(0, count($newOriginalEvent->extensionElements));
-        $newOriginalEvent->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newOriginalEvent->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newOriginalEvent->extensionElements));
         $this->assertEquals("http://www.google.com/calendar/feeds/nobody@gmail.com/private/composite", $newOriginalEvent->href);
         $this->assertEquals("abcdef123456789", $newOriginalEvent->id);
@@ -111,8 +111,8 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->originalEvent->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->originalEvent->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->originalEvent->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->originalEvent->extensionAttributes['foo2']['value']);

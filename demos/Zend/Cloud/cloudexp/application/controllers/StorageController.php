@@ -29,7 +29,7 @@
 class StorageController extends Zend_Controller_Action
 {
     
-    public $dependencies = array('config');
+    public $dependencies = ['config'];
     
     /**
      * @var Zend_Cloud_StorageService_Adapter
@@ -52,10 +52,10 @@ class StorageController extends Zend_Controller_Action
             return $this->_helper->redirector('index');
         }
 
-        $item = $this->_storage->fetchItem($name, array(
+        $item = $this->_storage->fetchItem($name, [
         	Zend_Cloud_StorageService_Adapter_S3::FETCH_STREAM => true,
         	Zend_Cloud_StorageService_Adapter_WindowsAzure::RETURN_TYPE => Zend_Cloud_StorageService_Adapter_WindowsAzure::RETURN_STREAM
-        ));
+        ]);
 
         if (!$item) {
             $this->getResponse()->setHttpResponseCode(404);
@@ -103,11 +103,11 @@ class StorageController extends Zend_Controller_Action
 			$name = $upload->getFileName(null, false);
 		}
 
-        $this->_storage->storeItem($name, $fp, array(
-            Zend_Cloud_StorageService_Adapter_S3::METADATA => array("type" => $mime)
-        ));
+        $this->_storage->storeItem($name, $fp, [
+            Zend_Cloud_StorageService_Adapter_S3::METADATA => ["type" => $mime]
+        ]);
 		try {
-			$this->_storage->storeMetadata($name, array("type" => $mime));
+			$this->_storage->storeMetadata($name, ["type" => $mime]);
 		} catch(Zend_Cloud_OperationNotAvailableException $e) {
 			// ignore it
 		}

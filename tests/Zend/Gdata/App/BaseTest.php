@@ -33,6 +33,15 @@ require_once 'Zend/Gdata/App/MockBase.php';
  */
 class Zend_Gdata_App_BaseTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var string
+     */
+    private $fileName;
+    /**
+     * @var Zend_Gdata_App_MockBase
+     */
+    private $base;
+
     public function setUp()
     {
         $this->fileName = 'Zend/Gdata/App/_files/FeedSample1.xml';
@@ -130,4 +139,17 @@ class Zend_Gdata_App_BaseTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($ns, $result);
     }
 
+    public function testException()
+    {
+        try {
+            $this->base->transferFromXML('foo');
+        } catch (Exception $e) {
+            self::assertInstanceOf('Zend_Gdata_App_Exception', $e);
+            self::assertContains('cannot parse', $e->getMessage());
+
+            return;
+        }
+
+        self::fail('Test expects exception to be thrown and handled without reaching this part');
+    }
 }

@@ -83,10 +83,10 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
     {
         $r = new Zend_XmlRpc_Request();
         $this->assertEquals('', $r->getMethod());
-        $this->assertEquals(array(), $r->getParams());
+        $this->assertEquals([], $r->getParams());
 
         $method = 'foo.bar';
-        $params = array('baz', 1, array('foo' => 'bar'));
+        $params = ['baz', 1, ['foo' => 'bar']];
         $r = new Zend_XmlRpc_Request($method, $params);
         $this->assertEquals($method, $r->getMethod());
         $this->assertEquals($params, $r->getParams());
@@ -135,32 +135,32 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
      */
     public function testSetParams()
     {
-        $params = array(
+        $params = [
             'string1',
             true,
-            array('one', 'two')
-        );
+            ['one', 'two']
+        ];
         $this->_request->setParams($params);
         $returned = $this->_request->getParams();
         $this->assertSame($params, $returned);
 
-        $params = array(
+        $params = [
             'string2',
-            array('two', 'one')
-        );
+            ['two', 'one']
+        ];
         $this->_request->setParams($params);
         $returned = $this->_request->getParams();
         $this->assertSame($params, $returned);
 
-        $params = array(array('value' => 'foobar'));
+        $params = [['value' => 'foobar']];
         $this->_request->setParams($params);
-        $this->assertSame(array('foobar'), $this->_request->getParams());
-        $this->assertSame(array('string'), $this->_request->getTypes());
+        $this->assertSame(['foobar'], $this->_request->getParams());
+        $this->assertSame(['string'], $this->_request->getTypes());
 
         $null = new Zend_XmlRpc_Value_Nil();
         $this->_request->setParams('foo', 1, $null);
-        $this->assertSame(array('foo', 1, $null), $this->_request->getParams());
-        $this->assertSame(array('string', 'int', 'nil'), $this->_request->getTypes());
+        $this->assertSame(['foo', 1, $null], $this->_request->getParams());
+        $this->assertSame(['string', 'int', 'nil'], $this->_request->getTypes());
 
         $this->assertNull($this->_request->setParams(), 'Call without argument returns null');
     }
@@ -193,7 +193,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($parsed, $xml);
 
         $this->assertEquals('do.Something', $this->_request->getMethod());
-        $test = array('string1', true);
+        $test = ['string1', true];
         $params = $this->_request->getParams();
         $this->assertSame($test, $params);
 
@@ -294,10 +294,10 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
 
         try {
             $methodName = (string) $sx->methodName;
-            $params = array(
+            $params = [
                 (string) $sx->params->param[0]->value->string,
                 (bool) $sx->params->param[1]->value->boolean
-            );
+            ];
         } catch (Exception $e) {
             $this->fail('One or more inconsistencies parsing generated XML: ' . $e->getMessage());
         }
@@ -311,7 +311,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
      */
     public function testSaveXML()
     {
-        $argv = array('string', true);
+        $argv = ['string', true];
         $this->_request->setMethod('do.Something');
         $this->_request->setParams($argv);
         $xml = $this->_request->saveXml();
@@ -323,7 +323,7 @@ class Zend_XmlRpc_RequestTest extends PHPUnit_Framework_TestCase
      */
     public function test__toString()
     {
-        $argv = array('string', true);
+        $argv = ['string', true];
         $this->_request->setMethod('do.Something');
         $this->_request->setParams($argv);
         $xml = $this->_request->__toString();

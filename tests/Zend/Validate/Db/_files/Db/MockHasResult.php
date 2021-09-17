@@ -36,7 +36,7 @@ require_once 'Zend/Db/Adapter/Abstract.php';
  */
 class Db_MockHasResult extends Zend_Db_Adapter_Abstract
 {
-    protected $_supportsParametersValues = array('named' => true, 'positional' => true);
+    protected $_supportsParametersValues = ['named' => true, 'positional' => true];
     
     public function setSupportsParametersValues(array $supportsParametersValues)
     {
@@ -51,9 +51,9 @@ class Db_MockHasResult extends Zend_Db_Adapter_Abstract
      * @param mixed                 $fetchMode Override current fetch mode.
      * @return array
      */
-    public function fetchRow($sql, $bind = array(), $fetchMode = null)
+    public function fetchRow($sql, $bind = [], $fetchMode = null)
     {
-        return array('one' => 'one');
+        return ['one' => 'one'];
     }
 
     /**

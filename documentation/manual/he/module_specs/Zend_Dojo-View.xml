@@ -36,8 +36,16 @@ Zend_Dojo::enableView($view);
         </programlisting>
     </example>
 
-    <xi:include href="Zend_Dojo-View-Dojo.xml" />
-    <xi:include href="Zend_Dojo-View-Helpers.xml" />
+    <xi:include href="Zend_Dojo-View-Dojo.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Dojo-View-Dojo.xml" />
+        </xi:fallback>
+    </xi:include>
+    <xi:include href="Zend_Dojo-View-Helpers.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Dojo-View-Helpers.xml" />
+        </xi:fallback>
+    </xi:include>
 </sect1>
 <!--
 vim:se ts=4 sw=4 et:

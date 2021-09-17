@@ -91,10 +91,22 @@ class UserControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         </para>
     </example>
 
-    <xi:include href="Zend_Test-PHPUnit-Bootstrapping.xml" />
+    <xi:include href="Zend_Test-PHPUnit-Bootstrapping.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Test-PHPUnit-Bootstrapping.xml" />
+        </xi:fallback>
+    </xi:include>
     <xi:include href="Zend_Test-PHPUnit-Testing.xml" />
-    <xi:include href="Zend_Test-PHPUnit-Assertions.xml" />
-    <xi:include href="Zend_Test-PHPUnit-Examples.xml" />
+    <xi:include href="Zend_Test-PHPUnit-Assertions.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Test-PHPUnit-Assertions.xml" />
+        </xi:fallback>
+    </xi:include>
+    <xi:include href="Zend_Test-PHPUnit-Examples.xml">
+        <xi:fallback>
+            <xi:include href="../../en/module_specs/Zend_Test-PHPUnit-Examples.xml" />
+        </xi:fallback>
+    </xi:include>
 </sect1>
 <!--
 vim:se ts=4 sw=4 et:

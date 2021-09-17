@@ -74,19 +74,19 @@ class Zend_Validate_PostCodeTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        $valuesExpected = array(
-            array('2292', true),
-            array('1000', true),
-            array('0000', true),
-            array('12345', false),
-            array(1234, true),
-            array(9821, true),
-            array('21A4', false),
-            array('ABCD', false),
-            array(true, false),
-            array('AT-2292', false),
-            array(1.56, false)
-        );
+        $valuesExpected = [
+            ['2292', true],
+            ['1000', true],
+            ['0000', true],
+            ['12345', false],
+            [1234, true],
+            [9821, true],
+            ['21A4', false],
+            ['ABCD', false],
+            [true, false],
+            ['AT-2292', false],
+            [1.56, false]
+        ];
 
         foreach ($valuesExpected as $element) {
             $this->assertEquals($element[1], $this->_validator->isValid($element[0]),
@@ -101,7 +101,7 @@ class Zend_Validate_PostCodeTest extends PHPUnit_Framework_TestCase
      */
     public function testGetMessages()
     {
-        $this->assertEquals(array(), $this->_validator->getMessages());
+        $this->assertEquals([], $this->_validator->getMessages());
     }
 
     /**
