@@ -417,10 +417,10 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      *
      * @param  string $name
      * @param  mixed  $value
-     * @return null
+     * @return void
      * @throws BadMethodCallException
      */
-    public function offsetSet($name, $value)
+    public function offsetSet($name, $value): void
     {
         throw new BadMethodCallException();
     }
@@ -435,7 +435,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * @return array
      * @throws Zend_Ldap_Exception
      */
-    public function offsetGet($name)
+    public function offsetGet($name): mixed
     {
         return $this->getAttribute($name, null);
     }
@@ -449,10 +449,10 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * This is an offline method.
      *
      * @param  string $name
-     * @return null
+     * @return void
      * @throws BadMethodCallException
      */
-    public function offsetUnset($name)
+    public function offsetUnset($name): void
     {
         throw new BadMethodCallException();
     }
@@ -466,7 +466,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      * @param  string $name
      * @return boolean
      */
-    public function offsetExists($name)
+    public function offsetExists($name): bool
     {
         return $this->existsAttribute($name, false);
     }

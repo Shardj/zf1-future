@@ -894,10 +894,10 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * This is an offline method.
      *
      * @param  string $name
-     * @return null
+     * @return void
      * @throws Zend_Ldap_Exception
      */
-    public function offsetUnset($name)
+    public function offsetUnset($name): void
     {
         $this->deleteAttribute($name);
     }
