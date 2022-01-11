@@ -880,7 +880,7 @@ class Zend_Ldap_Node extends Zend_Ldap_Node_Abstract implements Iterator, Recurs
      * @return null
      * @throws Zend_Ldap_Exception
      */
-    public function offsetSet($name, $value)
+    public function offsetSet($name, $value): void
     {
         $this->setAttribute($name, $value);
     }
