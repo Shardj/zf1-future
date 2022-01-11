@@ -60,7 +60,7 @@ class Zend_Ldap_Node_Collection extends Zend_Ldap_Collection
      *
      * @return string
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->_iterator->key();
     }

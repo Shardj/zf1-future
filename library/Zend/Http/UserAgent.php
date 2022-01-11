@@ -169,7 +169,7 @@ class Zend_Http_UserAgent implements Serializable
      *
      * @return string
      */
-    public function serialize()
+    public function serialize(): string
     {
         $device = $this->getDevice();
         $spec = [
@@ -189,7 +189,7 @@ class Zend_Http_UserAgent implements Serializable
      * @param  string $serialized
      * @return void
      */
-    public function unserialize($serialized)
+    public function unserialize($serialized): void
     {
         $spec = unserialize($serialized);
 

@@ -40,7 +40,7 @@ class Zend_Service_Ebay_Finding_Error_Data_Set extends Zend_Service_Ebay_Finding
      *
      * @return Zend_Service_Ebay_Finding_Error_Data
      */
-    public function current()
+    public function current(): mixed
     {
         // check node
         $node = $this->_nodes->item($this->_key);

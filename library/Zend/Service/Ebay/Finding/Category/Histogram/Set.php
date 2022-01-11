@@ -40,7 +40,7 @@ class Zend_Service_Ebay_Finding_Category_Histogram_Set extends Zend_Service_Ebay
      *
      * @return Zend_Service_Ebay_Finding_Category_Histogram
      */
-    public function current()
+    public function current(): mixed
     {
         // check node
         $node = $this->_nodes->item($this->_key);

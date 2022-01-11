@@ -73,7 +73,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator exten
      *
      * @return Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator
      */
-    public function getChildren()
+    public function getChildren(): ?Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator
     {
         if (empty($this->ref)) {
             $this->ref = new ReflectionClass($this);

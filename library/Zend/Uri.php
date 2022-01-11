@@ -203,5 +203,5 @@ abstract class Zend_Uri
      *
      * @return boolean
      */
-    abstract public function valid();
+    abstract public function valid(): bool;
 }

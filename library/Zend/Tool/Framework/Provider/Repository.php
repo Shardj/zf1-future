@@ -248,7 +248,7 @@ class Zend_Tool_Framework_Provider_Repository
      *
      * @return ArrayIterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->getProviders());
     }

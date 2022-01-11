@@ -109,7 +109,7 @@ implements ArrayAccess
     /**
      * @see SPL ArrayIterator::append
      */
-    public function append($value) {
+    public function append($value): void {
         $this->_data[] = $value;
     }
 
@@ -120,7 +120,7 @@ implements ArrayAccess
     /**
      * @see SPL ArrayAccess::offsetSet
      */
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value): void {
         if (! $value instanceof Custom_Message) {
             $msg = '$value must be a child or an instance of Custom_Messag';
             /**
@@ -131,20 +131,19 @@ implements ArrayAccess
         }
 
         $this->_data[$offset] = $value;
-        return $value;
     }
 
     /**
      * @see SPL ArrayAccess::offsetGet
      */
-    public function offsetGet($offset) {
+    public function offsetGet($offset): mixed {
         return $this->_data[$offset];
     }
 
     /**
      * @see SPL ArrayAccess::offsetUnset
      */
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset): void {
         if (! $this->_connected) {
             $msg = 'Cannot delete message after serialization';
             /**
@@ -161,7 +160,7 @@ implements ArrayAccess
     /**
      * @see SPL ArrayAccess::offsetExists
      */
-    public function offsetExists($offset) {
+    public function offsetExists($offset): bool {
         return isSet($this->_data[$offset]);
     }
 
@@ -172,7 +171,7 @@ implements ArrayAccess
     /**
      * @see SPL SeekableIterator::seek
      */
-    public function seek($index) {
+    public function seek($index): void {
         $this->_pointer = $index;
     }
 }

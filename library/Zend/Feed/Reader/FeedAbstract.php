@@ -146,7 +146,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      *
      * @return Zend_Feed_Reader_EntryInterface
      */
-    public function current()
+    public function current(): mixed
     {
         if (substr($this->getType(), 0, 3) == 'rss') {
             $reader = new Zend_Feed_Reader_Entry_Rss($this->_entries[$this->key()], $this->key(), $this->getType());
@@ -228,7 +228,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      *
      * @return unknown
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->_entriesKey;
     }
@@ -237,7 +237,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      * Move the feed pointer forward
      *
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_entriesKey;
     }
@@ -246,7 +246,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      * Reset the pointer in the feed object
      *
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_entriesKey = 0;
     }
@@ -256,7 +256,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      *
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
         return 0 <= $this->_entriesKey && $this->_entriesKey < $this->count();
     }

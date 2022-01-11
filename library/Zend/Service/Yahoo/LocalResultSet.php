@@ -77,7 +77,7 @@ class Zend_Service_Yahoo_LocalResultSet extends Zend_Service_Yahoo_ResultSet
      *
      * @return Zend_Service_Yahoo_LocalResult
      */
-    public function current()
+    public function current(): Zend_Service_Yahoo_LocalResult
     {
         return new Zend_Service_Yahoo_LocalResult($this->_results->item($this->_currentIndex));
     }

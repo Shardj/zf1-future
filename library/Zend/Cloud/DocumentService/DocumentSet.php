@@ -61,7 +61,7 @@ class Zend_Cloud_DocumentService_DocumentSet implements Countable, IteratorAggre
      *
      * @return Traversable
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return $this->_documents;
     }

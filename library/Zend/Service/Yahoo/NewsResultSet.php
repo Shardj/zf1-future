@@ -56,7 +56,7 @@ class Zend_Service_Yahoo_NewsResultSet extends Zend_Service_Yahoo_ResultSet
      *
      * @return Zend_Service_Yahoo_NewsResult
      */
-    public function current()
+    public function current(): Zend_Service_Yahoo_NewsResult
     {
         return new Zend_Service_Yahoo_NewsResult($this->_results->item($this->_currentIndex));
     }

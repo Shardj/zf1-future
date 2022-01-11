@@ -210,7 +210,7 @@ implements Iterator, Countable
      *
      * @return Zend_Feed_Reader_Entry_Interface
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->_entries[$this->key()];
     }
@@ -220,7 +220,7 @@ implements Iterator, Countable
      *
      * @return unknown
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->_entriesKey;
     }
@@ -230,7 +230,7 @@ implements Iterator, Countable
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_entriesKey;
     }
@@ -240,7 +240,7 @@ implements Iterator, Countable
      *
      * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_entriesKey = 0;
     }
@@ -250,7 +250,7 @@ implements Iterator, Countable
      *
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
         return 0 <= $this->_entriesKey && $this->_entriesKey < $this->count();
     }

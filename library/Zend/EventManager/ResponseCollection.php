@@ -110,7 +110,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return mixed
          */
-        public function current()
+        public function current(): mixed
         {
             if (!$this->stack) {
                 $this->rewind();
@@ -143,7 +143,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return mixed
          */
-        public function key()
+        public function key(): mixed
         {
             if (!$this->stack) {
                 $this->rewind();
@@ -156,12 +156,12 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return void
          */
-        public function next()
+        public function next(): void
         {
             if (!$this->stack) {
                 $this->rewind();
             }
-            return next($this->stack);
+            next($this->stack);
         }
 
         /**
@@ -263,10 +263,10 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return void
          */
-        public function rewind()
+        public function rewind(): void
         {
             if (is_array($this->stack)) {
-                return reset($this->stack);
+                reset($this->stack);
             }
             $this->stack = array_reverse($this->data, true);
         }
@@ -276,7 +276,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return string
          */
-        public function serialize()
+        public function serialize(): string
         {
             return serialize($this->data);
         }
@@ -314,7 +314,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * @param  string
          * @return void
          */
-        public function unserialize($serialized)
+        public function unserialize($serialized): void
         {
             $this->data  = unserialize($serialized);
             $this->stack = false;
@@ -338,7 +338,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return bool
          */
-        public function valid()
+        public function valid(): bool
         {
             $key = key($this->stack);
 

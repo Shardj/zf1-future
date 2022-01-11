@@ -67,7 +67,7 @@ class Zend_Search_Lucene_Index_Term
      *
      * @return string
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->field . chr(0) . $this->text;
     }

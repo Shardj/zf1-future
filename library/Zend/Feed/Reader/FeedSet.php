@@ -132,7 +132,7 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
      * @return mixed
      * @uses Zend_Feed_Reader
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if ($offset == 'feed' && !$this->offsetExists('feed')) {
             if (!$this->offsetExists('href')) {

@@ -120,10 +120,10 @@ class Zend_Dom_Query_Result implements Iterator,Countable
      *
      * @return DOMNode|null
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_position = 0;
-        return $this->_nodeList->item(0);
+        $this->_nodeList->item(0);
     }
 
     /**
@@ -131,7 +131,7 @@ class Zend_Dom_Query_Result implements Iterator,Countable
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         if (in_array($this->_position, range(0, $this->_nodeList->length - 1)) && $this->_nodeList->length > 0) {
             return true;
@@ -144,7 +144,7 @@ class Zend_Dom_Query_Result implements Iterator,Countable
      *
      * @return DOMElement
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->_nodeList->item($this->_position);
     }
@@ -154,7 +154,7 @@ class Zend_Dom_Query_Result implements Iterator,Countable
      *
      * @return int
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->_position;
     }
@@ -164,10 +164,10 @@ class Zend_Dom_Query_Result implements Iterator,Countable
      *
      * @return DOMNode|null
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_position;
-        return $this->_nodeList->item($this->_position);
+        $this->_nodeList->item($this->_position);
     }
 
     /**

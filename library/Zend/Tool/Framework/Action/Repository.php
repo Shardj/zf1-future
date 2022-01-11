@@ -130,7 +130,7 @@ class Zend_Tool_Framework_Action_Repository
      *
      * @return array
      */
-    public function getIterator()
+    public function getIterator(): ArrayObject
     {
         return new ArrayIterator($this->_actions);
     }

@@ -115,7 +115,7 @@ class Zend_Server_Reflection_Node
      *
      * @return array
      */
-    public function getChildren()
+    public function getChildren(): ?Array
     {
         return $this->_children;
     }
@@ -125,7 +125,7 @@ class Zend_Server_Reflection_Node
      *
      * @return boolean
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return count($this->_children) > 0;
     }

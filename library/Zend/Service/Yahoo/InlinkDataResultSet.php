@@ -55,7 +55,7 @@ class Zend_Service_Yahoo_InlinkDataResultSet extends Zend_Service_Yahoo_ResultSe
      *
      * @return Zend_Service_Yahoo_InlinkDataResult
      */
-    public function current()
+    public function current(): Zend_Service_Yahoo_InlinkDataResult
     {
         return new Zend_Service_Yahoo_InlinkDataResult($this->_results->item($this->_currentIndex));
     }

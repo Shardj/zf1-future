@@ -291,7 +291,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   void
       */
-     public function rewind()
+     public function rewind(): void
      {
         $this->_iterationMax = $this->countMessages();
         $this->_iterationPos = 1;
@@ -303,7 +303,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   Zend_Mail_Message current message
       */
-     public function current()
+     public function current(): mixed
      {
         return $this->getMessage($this->_iterationPos);
      }
@@ -314,7 +314,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   int id of current position
       */
-     public function key()
+     public function key(): mixed
      {
         return $this->_iterationPos;
      }
@@ -325,7 +325,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   void
       */
-     public function next()
+     public function next(): void
      {
         ++$this->_iterationPos;
      }
@@ -336,7 +336,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   boolean
       */
-     public function valid()
+     public function valid(): bool
      {
         if ($this->_iterationMax === null) {
           $this->_iterationMax = $this->countMessages();
@@ -352,7 +352,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return void
       * @throws OutOfBoundsException
       */
-     public function seek($pos)
+     public function seek($pos): void
      {
         if ($this->_iterationMax === null) {
           $this->_iterationMax = $this->countMessages();

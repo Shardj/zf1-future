@@ -88,7 +88,7 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
      *
      * @return array
      */
-    public function getIterator()
+    public function getIterator(): ArrayObject
     {
         return new ArrayObject($this->_helpersByPriority);
     }

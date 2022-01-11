@@ -305,7 +305,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @return ArrayIterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayObject
     {
         return new ArrayIterator($this->_metadatas);
     }

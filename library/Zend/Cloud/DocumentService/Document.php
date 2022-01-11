@@ -241,7 +241,7 @@ class Zend_Cloud_DocumentService_Document
      *
      * @return Iterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->_fields);
     }

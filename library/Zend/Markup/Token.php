@@ -252,7 +252,7 @@ class Zend_Markup_Token
      *
      * @return Zend_Markup_TokenList
      */
-    public function getChildren()
+    public function getChildren(): ?Zend_Markup_TokenList
     {
         if (null === $this->_children) {
             $this->setChildren(new Zend_Markup_TokenList());
@@ -265,7 +265,7 @@ class Zend_Markup_Token
      *
      * @return bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return !empty($this->_children);
     }

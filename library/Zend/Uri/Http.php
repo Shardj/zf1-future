@@ -268,7 +268,7 @@ class Zend_Uri_Http extends Zend_Uri
      *
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
         // Return true if and only if all parts of the URI have passed validation
         return $this->validateUsername()
