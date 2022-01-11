@@ -211,7 +211,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @throws OutOfBoundsException When item does not implement Zend_Tag_Taggable
      * @return void
      */
-    public function offsetSet($offset, $item) {
+    public function offsetSet($offset, $item): void {
         // We need to make that check here, as the method signature must be
         // compatible with ArrayAccess::offsetSet()
         if (!($item instanceof Zend_Tag_Taggable)) {

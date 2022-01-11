@@ -228,7 +228,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @param    int     $id
       * @return   boolean
       */
-     public function offsetExists($id)
+     public function offsetExists($id): bool
      {
         try {
             if ($this->getMessage($id)) {
@@ -246,7 +246,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @param    int $id
       * @return   Zend_Mail_Message message object
       */
-     public function offsetGet($id)
+     public function offsetGet($id): Zend_Mail_Message
      {
         return $this->getMessage($id);
      }
@@ -260,7 +260,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @throws   Zend_Mail_Storage_Exception
       * @return   void
       */
-     public function offsetSet($id, $value)
+     public function offsetSet($id, $value): void
      {
         /**
          * @see Zend_Mail_Storage_Exception
@@ -276,9 +276,9 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @param    int   $id
       * @return   boolean success
       */
-     public function offsetUnset($id)
+     public function offsetUnset($id): void
      {
-        return $this->removeMessage($id);
+        $this->removeMessage($id);
      }
 
 

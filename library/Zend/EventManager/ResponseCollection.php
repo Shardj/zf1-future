@@ -170,7 +170,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * @param  mixed $index
          * @return bool
          */
-        public function offsetExists($index)
+        public function offsetExists($index): bool
         {
             return array_key_exists($index, $this->data);
         }
@@ -182,7 +182,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * @return mixed
          * @throws OutOfRangeException
          */
-        public function offsetGet($index)
+        public function offsetGet($index): mixed
         {
             if (!$this->offsetExists($index)) {
                 throw OutOfRangeException(sprintf('Invalid index ("%s") specified', $index));
@@ -197,7 +197,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * @param  mixed $newval
          * @return void
          */
-        public function offsetSet($index, $newval)
+        public function offsetSet($index, $newval): void
         {
             $this->data[$index] = $newval;
             $this->stack = false;
@@ -211,7 +211,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * @return void
          * @throws OutOfRangeException
          */
-        public function offsetUnset($index)
+        public function offsetUnset($index): void
         {
             if (!$this->offsetExists($index)) {
                 throw OutOfRangeException(sprintf('Invalid index ("%s") specified', $index));

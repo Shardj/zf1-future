@@ -153,7 +153,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      * @param  string $rdn
      * @return Zend_Ldap_node
      */
-    public function offsetGet($rdn): Zend_Ldap_node
+    public function offsetGet($rdn): mixed
     {
         if ($this->offsetExists($rdn)) {
             return $this->_data[$rdn];
