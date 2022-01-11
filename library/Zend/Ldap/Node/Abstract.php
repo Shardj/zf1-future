@@ -477,7 +477,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_currentData);
     }

@@ -109,7 +109,7 @@ class Zend_Service_Rackspace_Servers_ServerList implements Countable, Iterator, 
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->servers);
     }

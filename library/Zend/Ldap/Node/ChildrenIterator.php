@@ -60,7 +60,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_data);
     }

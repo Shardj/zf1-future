@@ -216,7 +216,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
      *
      * @return   int
      */
-     public function count()
+     public function count(): int
      {
         return $this->countMessages();
      }

@@ -257,7 +257,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return $this->_docCount;
     }

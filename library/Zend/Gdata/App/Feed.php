@@ -129,7 +129,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      *
      * @return integer Entry count.
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_entry);
     }

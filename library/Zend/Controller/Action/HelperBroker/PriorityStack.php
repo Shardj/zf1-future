@@ -198,7 +198,7 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_helpersByPriority);
     }

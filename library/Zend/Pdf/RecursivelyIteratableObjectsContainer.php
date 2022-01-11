@@ -41,5 +41,5 @@ class Zend_Pdf_RecursivelyIteratableObjectsContainer implements RecursiveIterato
     public function getChildren()  { return current($this->_objects);            }
     public function hasChildren()  { return count($this->_objects) > 0;          }
 
-    public function count() { return count($this->_objects); }
+    public function count(): int { return count($this->_objects); }
 }

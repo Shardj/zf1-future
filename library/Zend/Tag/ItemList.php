@@ -45,7 +45,7 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_items);
     }

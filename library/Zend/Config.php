@@ -245,7 +245,7 @@ class Zend_Config implements Countable, Iterator
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->_count;
     }

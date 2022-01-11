@@ -689,7 +689,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return $this->_docCount;
     }

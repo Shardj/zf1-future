@@ -93,7 +93,7 @@ interface Zend_Search_Lucene_Interface extends Zend_Search_Lucene_Index_TermsStr
      *
      * @return integer
      */
-    public function count();
+    public function count(): int;
 
     /**
      * Returns one greater than the largest possible document number.

@@ -61,7 +61,7 @@ class Zend_Crypt_Rsa_Key implements Countable
      * @return string
      * @throws Zend_Crypt_Exception
      */
-    public function toString()
+    public function toString():string
     {
         if (!empty($this->_pemString)) {
             return $this->_pemString;
@@ -83,7 +83,7 @@ class Zend_Crypt_Rsa_Key implements Countable
         return $this->toString();
     }
 
-    public function count()
+    public function count(): int
     {
         return $this->_details['bits'];
     }

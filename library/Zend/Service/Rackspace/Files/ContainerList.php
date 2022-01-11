@@ -95,7 +95,7 @@ class Zend_Service_Rackspace_Files_ContainerList implements Countable, Iterator,
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->objects);
     }

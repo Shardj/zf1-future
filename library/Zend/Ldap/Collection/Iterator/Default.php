@@ -177,7 +177,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->_itemCount;
     }

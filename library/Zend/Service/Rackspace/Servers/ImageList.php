@@ -108,7 +108,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->images);
     }

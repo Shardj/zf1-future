@@ -121,7 +121,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return $this->_nodes ? $this->_nodes->length : 0;
     }

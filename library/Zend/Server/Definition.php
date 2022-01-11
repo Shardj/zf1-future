@@ -210,7 +210,7 @@ class Zend_Server_Definition implements Countable, Iterator
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_methods);
     }

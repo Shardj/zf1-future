@@ -105,7 +105,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return int
          */
-        public function count()
+        public function count(): int
         {
             return $this->count;
         }

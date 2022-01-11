@@ -616,7 +616,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
      *
      * @return int  number of pages in the container
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_index);
     }

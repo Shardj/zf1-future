@@ -278,7 +278,7 @@ class Zend_Queue_Message_Iterator implements Iterator, Countable
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_data);
     }

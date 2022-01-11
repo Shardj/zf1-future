@@ -145,7 +145,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         $count = 0;
 

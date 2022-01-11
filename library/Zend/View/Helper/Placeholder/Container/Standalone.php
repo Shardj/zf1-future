@@ -261,7 +261,7 @@ abstract class Zend_View_Helper_Placeholder_Container_Standalone extends Zend_Vi
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         $container = $this->getContainer();
         return count($container);

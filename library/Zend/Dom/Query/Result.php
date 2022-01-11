@@ -175,7 +175,7 @@ class Zend_Dom_Query_Result implements Iterator,Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->_nodeList->length;
     }

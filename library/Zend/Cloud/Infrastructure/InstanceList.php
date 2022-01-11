@@ -88,7 +88,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->instances);
     }

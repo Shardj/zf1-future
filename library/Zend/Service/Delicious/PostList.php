@@ -161,7 +161,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_posts);
     }

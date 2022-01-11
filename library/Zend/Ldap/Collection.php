@@ -120,7 +120,7 @@ class Zend_Ldap_Collection implements Iterator, Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->_iterator->count();
     }

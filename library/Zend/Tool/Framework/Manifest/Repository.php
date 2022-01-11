@@ -295,7 +295,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_metadatas);
     }

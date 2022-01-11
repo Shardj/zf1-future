@@ -231,7 +231,7 @@ class Zend_Cloud_DocumentService_Document
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_fields);
     }

@@ -366,7 +366,7 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->childOutlines);
     }

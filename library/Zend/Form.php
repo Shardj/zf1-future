@@ -3338,7 +3338,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_order);
     }

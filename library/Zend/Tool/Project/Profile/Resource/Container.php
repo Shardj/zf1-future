@@ -401,7 +401,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_subResources);
     }

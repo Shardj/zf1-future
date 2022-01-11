@@ -397,7 +397,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->childOutlines);
     }
