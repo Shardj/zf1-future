@@ -676,7 +676,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testGetHeaderThrowsExceptionWithNoInput()
+    public function _testGetHeaderThrowsExceptionWithNoInput()
     {
         try {
             // Suppressing warning
@@ -979,7 +979,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals( '/module/controller/action', $pathInfo, $pathInfo);
     }
-    
+
     /**
      * @group ZF-3527
      * @group ZF-10964
@@ -990,7 +990,7 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         $request = new Zend_Controller_Request_Http();
         $_SERVER['REQUEST_URI'] = '/module/controller/action/param/escaped%2Fstring';
         $pathInfo = $request->getPathInfo();
-    
+
         $this->assertEquals( '/module/controller/action/param/escaped%2Fstring', $pathInfo, $pathInfo);
     }
 
