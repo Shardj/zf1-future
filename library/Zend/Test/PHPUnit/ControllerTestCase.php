@@ -34,6 +34,38 @@ require_once 'Zend/Session.php';
 /** @see Zend_Registry */
 require_once 'Zend/Registry.php';
 
+if (version_compare(\PHPUnit\Runner\Version::id(), '8.0.0', '<')) {
+    abstract class Zend_Test_PHPUnit_ControllerTestCaseOld extends Zend_Test_PHPUnit_ControllerTestCaseBase
+    {
+        /**
+         * Set up MVC app
+         *
+         * Calls {@link bootstrap()} by default
+         */
+        protected function setUp()
+        {
+            $this->bootstrap();
+        }
+
+    }
+    class_alias(Zend_Test_PHPUnit_ControllerTestCaseOld::class, Zend_Test_PHPUnit_ControllerTestCase::class);
+} else {
+    abstract class Zend_Test_PHPUnit_ControllerTestCaseNew extends Zend_Test_PHPUnit_ControllerTestCaseBase
+    {
+        /**
+         * Set up MVC app
+         *
+         * Calls {@link bootstrap()} by default
+         */
+        protected function setUp(): void
+        {
+            $this->bootstrap();
+        }
+
+    }
+    class_alias(Zend_Test_PHPUnit_ControllerTestCaseNew::class, Zend_Test_PHPUnit_ControllerTestCase::class);
+}
+
 /**
  * Functional testing scaffold for MVC applications
  *
@@ -44,7 +76,7 @@ require_once 'Zend/Registry.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_TestCase
+abstract class Zend_Test_PHPUnit_ControllerTestCaseBase extends PHPUnit_Framework_TestCase
 {
     /**
      * @var mixed Bootstrap file path or callback
@@ -113,16 +145,6 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
         }
 
         return null;
-    }
-
-    /**
-     * Set up MVC app
-     *
-     * Calls {@link bootstrap()} by default
-     */
-    protected function setUp()
-    {
-        $this->bootstrap();
     }
 
     /**
