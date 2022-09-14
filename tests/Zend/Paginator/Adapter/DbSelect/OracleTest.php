@@ -62,10 +62,10 @@ class Zend_Paginator_Adapter_DbSelect_OracleTest extends Zend_Paginator_Adapter_
         }
 
         $this->_db = new Zend_Db_Adapter_Oracle(
-                array('host' => TESTS_ZEND_DB_ADAPTER_ORACLE_HOSTNAME ,
+                ['host' => TESTS_ZEND_DB_ADAPTER_ORACLE_HOSTNAME ,
                         'username' => TESTS_ZEND_DB_ADAPTER_ORACLE_USERNAME ,
                         'password' => TESTS_ZEND_DB_ADAPTER_ORACLE_PASSWORD ,
-                        'dbname' => TESTS_ZEND_DB_ADAPTER_ORACLE_SID));
+                        'dbname' => TESTS_ZEND_DB_ADAPTER_ORACLE_SID]);
 
         $this->_dropTable();
         $this->_createTable();

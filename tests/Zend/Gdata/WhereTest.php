@@ -76,8 +76,8 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
         $newWhere = new Zend_Gdata_Extension_Where();
         $newWhere->transferFromXML($this->where->saveXML());
         $this->assertEquals(0, count($newWhere->extensionElements));
-        $newWhere->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newWhere->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newWhere->extensionElements));
         $this->assertEquals("Test Value String", $newWhere->valueString);
         $this->assertEquals("http://schemas.google.com/g/2005#event.alternate", $newWhere->rel);
@@ -117,8 +117,8 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->where->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->where->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->where->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->where->extensionAttributes['foo2']['value']);

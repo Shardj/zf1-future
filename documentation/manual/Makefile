@@ -15,9 +15,9 @@
 # @license    http://framework.zend.com/license/new-bsd     New BSD License
 #
 
-LANG=*
-DOCBOOK_DTD=http://framework.zend.com/docbook/xml/4.5/docbookx.dtd
-DOCBOOK_XSL=http://framework.zend.com/docbook-xsl/htmlhelp/htmlhelp.xsl
+LANG=en
+DOCBOOK_DTD=https://docbook.org/xml/4.5/docbookx.dtd
+DOCBOOK_XSL=https://cdn.docbook.org/release/xsl/current/htmlhelp/htmlhelp.xsl
 
 all: html
 

@@ -92,17 +92,17 @@ class Zend_Feed_IteratorTest extends PHPUnit_Framework_TestCase
 
     public function testKey()
     {
-        $keys = array();
+        $keys = [];
         foreach ($this->_feed as $k => $f) {
             $keys[] = $k;
         }
-        $this->assertEquals($keys, array(0, 1), 'Feed should have keys 0 and 1');
+        $this->assertEquals($keys, [0, 1], 'Feed should have keys 0 and 1');
 
-        $keys = array();
+        $keys = [];
         foreach ($this->_nsfeed as $k => $f) {
             $keys[] = $k;
         }
-        $this->assertEquals($keys, array(0, 1), 'Feed should have keys 0 and 1');
+        $this->assertEquals($keys, [0, 1], 'Feed should have keys 0 and 1');
     }
 
     public function testNext()

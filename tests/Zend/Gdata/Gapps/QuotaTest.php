@@ -73,8 +73,8 @@ class Zend_Gdata_Gapps_QuotaTest extends PHPUnit_Framework_TestCase
         $newQuota = new Zend_Gdata_Gapps_Extension_Quota();
         $newQuota->transferFromXML($this->quota->saveXML());
         $this->assertEquals(0, count($newQuota->extensionElements));
-        $newQuota->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newQuota->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newQuota->extensionElements));
         $this->assertEquals("123456789", $newQuota->limit);
 
@@ -106,8 +106,8 @@ class Zend_Gdata_Gapps_QuotaTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->quota->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->quota->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->quota->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->quota->extensionAttributes['foo2']['value']);

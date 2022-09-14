@@ -164,7 +164,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
     /**
      * Get the class to apply to the HTML tag, if any, with which to surround label
      *
-     * @return void
+     * @return string
      */
     public function getTagClass()
     {
@@ -247,7 +247,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
     {
         $tail = substr($method, -6);
         $head = substr($method, 0, 3);
-        if (in_array($head, array('get', 'set'))
+        if (in_array($head, ['get', 'set'])
             && (('Prefix' == $tail) || ('Suffix' == $tail))
         ) {
             $position = substr($method, -6);
@@ -302,7 +302,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
         }
 
         $label = $element->getLabel();
-        $label = trim($label);
+        $label = trim((string) $label);
 
         if (empty($label)) {
             return '';
@@ -435,12 +435,12 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
             require_once 'Zend/Form/Decorator/HtmlTag.php';
             $decorator = new Zend_Form_Decorator_HtmlTag();
             if (null !== $this->_tagClass) {
-                $decorator->setOptions(array('tag'   => $tag,
+                $decorator->setOptions(['tag'   => $tag,
                                              'id'    => $id . '-label',
-                                             'class' => $tagClass));
+                                             'class' => $tagClass]);
             } else {
-                $decorator->setOptions(array('tag'   => $tag,
-                                             'id'    => $id . '-label'));
+                $decorator->setOptions(['tag'   => $tag,
+                                             'id'    => $id . '-label']);
             }
 
             $label = $decorator->render($label);

@@ -52,18 +52,18 @@ if (!is_dir($libPath)) {
 $libraryPath = getcwd();
 
 // Setup autoloading
-$loader = new Zend_Loader_StandardAutoloader(array('autoregister_zf' => true));
+$loader = new Zend_Loader_StandardAutoloader(['autoregister_zf' => true]);
 $loader->setFallbackAutoloader(true);
 $loader->register();
 
-$rules = array(
+$rules = [
     'help|h'        => 'Get usage message',
     'library|l-s'   => 'Library to parse; if none provided, assumes current directory',
     'output|o-s'    => 'Where to write autoload file; if not provided, assumes "autoload_classmap.php" in library directory',
     'append|a'    => 'Append to autoload file if it exists',
     'overwrite|w'   => 'Whether or not to overwrite existing autoload file',
     'ignore|i-s'  => 'Comma-separated namespaces to ignore',
-);
+];
 
 try {
     $opts = new Zend_Console_Getopt($rules);
@@ -78,7 +78,7 @@ if ($opts->getOption('h')) {
     exit(0);
 }
 
-$ignoreNamespaces = array();
+$ignoreNamespaces = [];
 if (isset($opts->i)) {
     $ignoreNamespaces = explode(',', $opts->i);
 }
@@ -229,7 +229,9 @@ foreach ($matches as $match) {
     $maxWidth = max($maxWidth, strlen($match[1]));
 }
 
-$content = preg_replace('(\n\s+([^=]+)=>)e', "'\n    \\1' . str_repeat(' ', " . $maxWidth . " - strlen('\\1')) . '=>'", $content);
+$content = preg_replace_callback('(\n\s+([^=]+)=>)', function ($matches) use ($maxWidth) {
+            return "\n    " . $matches[1] . str_repeat(' ', $maxWidth - strlen($matches[1])) . '=>';
+        }, $content);
 
 // Make the file end by EOL
 $content = rtrim($content, "\n") . "\n";

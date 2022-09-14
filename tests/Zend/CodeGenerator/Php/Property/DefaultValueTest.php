@@ -59,7 +59,7 @@ class Zend_CodeGenerator_Php_Property_DefaultValueTest extends PHPUnit_Framework
     public function testPropertyDefaultValueCanHandleArray()
     {
         $propDefaultValue = new Zend_CodeGenerator_Php_Property_DefaultValue();
-        $propDefaultValue->setValue(array('foo'));
+        $propDefaultValue->setValue(['foo']);
         $this->assertEquals('array(\'foo\');', $propDefaultValue->generate());
     }
 
@@ -81,20 +81,20 @@ class Zend_CodeGenerator_Php_Property_DefaultValueTest extends PHPUnit_Framework
 
     public function testPropertyDefaultValueCanHandleComplexArrayOfTypes()
     {
-        $targetValue = array(
+        $targetValue = [
             5,
             'one' => 1,
             'two' => '2',
-            array(
+            [
                 'foo',
                 'bar',
-                array(
+                [
                     'baz1',
                     'baz2'
-                    )
-                ),
-            new Zend_CodeGenerator_Php_Property_DefaultValue(array('value' => 'PHP_EOL', 'type' => 'constant'))
-            );
+                    ]
+                ],
+            new Zend_CodeGenerator_Php_Property_DefaultValue(['value' => 'PHP_EOL', 'type' => 'constant'])
+            ];
 
         $expectedSource = <<<EOS
 array(

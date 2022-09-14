@@ -50,7 +50,7 @@ abstract class Zend_Translate_Adapter {
      * Internal value to see already routed languages
      * @var array()
      */
-    private $_routed = array();
+    private $_routed = [];
 
     /**
      * Internal cache for all adapters
@@ -94,7 +94,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @var array
      */
-    protected $_options = array(
+    protected $_options = [
         'clear'           => false,
         'content'         => null,
         'disableNotices'  => false,
@@ -108,13 +108,13 @@ abstract class Zend_Translate_Adapter {
         'route'           => null,
         'scan'            => null,
         'tag'             => 'Zend_Translate'
-    );
+    ];
 
     /**
      * Translation table
      * @var array
      */
-    protected $_translate = array();
+    protected $_translate = [];
 
     /**
      * Generates the adapter
@@ -125,13 +125,13 @@ abstract class Zend_Translate_Adapter {
      * @throws Zend_Translate_Exception
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         } else if (func_num_args() > 1) {
             $args               = func_get_args();
-            $options            = array();
+            $options            = [];
             $options['content'] = array_shift($args);
 
             if (!empty($args)) {
@@ -143,7 +143,7 @@ abstract class Zend_Translate_Adapter {
                 $options = array_merge($opt, $options);
             }
         } else if (!is_array($options)) {
-            $options = array('content' => $options);
+            $options = ['content' => $options];
         }
 
         if (array_key_exists('cache', $options)) {
@@ -194,13 +194,13 @@ abstract class Zend_Translate_Adapter {
      * @throws Zend_Translate_Exception
      * @return Zend_Translate_Adapter Provides fluent interface
      */
-    public function addTranslation($options = array())
+    public function addTranslation($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         } else if (func_num_args() > 1) {
             $args = func_get_args();
-            $options            = array();
+            $options            = [];
             $options['content'] = array_shift($args);
 
             if (!empty($args)) {
@@ -212,9 +212,9 @@ abstract class Zend_Translate_Adapter {
                 $options = array_merge($opt, $options);
             }
         } else if (!is_array($options)) {
-            $options = array('content' => $options);
+            $options = ['content' => $options];
         }
-        
+
         if (!isset($options['content']) || empty($options['content'])) {
             require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception("Required option 'content' is missing");
@@ -254,7 +254,7 @@ abstract class Zend_Translate_Adapter {
                 ),
                 RecursiveIteratorIterator::SELF_FIRST
             );
-            
+
             foreach ($iterator as $directory => $info) {
                 $file = $info->getFilename();
                 if (is_array($options['ignore'])) {
@@ -292,12 +292,12 @@ abstract class Zend_Translate_Adapter {
                             $options['locale'] = (string) $filename;
                         } else {
                             $parts  = explode('.', $file);
-                            $parts2 = array();
+                            $parts2 = [];
                             foreach($parts as $token) {
                                 $parts2 += explode('_', $token);
                             }
                             $parts  = array_merge($parts, $parts2);
-                            $parts2 = array();
+                            $parts2 = [];
                             foreach($parts as $token) {
                                 $parts2 += explode('-', $token);
                             }
@@ -323,7 +323,7 @@ abstract class Zend_Translate_Adapter {
                     }
                 }
             }
-            
+
             unset($iterator);
         } else {
             $this->_addTranslationData($options);
@@ -343,7 +343,7 @@ abstract class Zend_Translate_Adapter {
      * @throws Zend_Translate_Exception
      * @return Zend_Translate_Adapter Provides fluent interface
      */
-    public function setOptions(array $options = array())
+    public function setOptions(array $options = [])
     {
         $change = false;
         $locale = null;
@@ -374,7 +374,7 @@ abstract class Zend_Translate_Adapter {
         if (isset(self::$_cache) && ($change == true)) {
             $id = 'Zend_Translate_' . $this->toString() . '_Options';
             if (self::$_cacheTags) {
-                self::$_cache->save($this->_options, $id, array($this->_options['tag']));
+                self::$_cache->save($this->_options, $id, [$this->_options['tag']]);
             } else {
                 self::$_cache->save($this->_options, $id);
             }
@@ -466,7 +466,7 @@ abstract class Zend_Translate_Adapter {
             if (isset(self::$_cache)) {
                 $id = 'Zend_Translate_' . $this->toString() . '_Options';
                 if (self::$_cacheTags) {
-                    self::$_cache->save($this->_options, $id, array($this->_options['tag']));
+                    self::$_cache->save($this->_options, $id, [$this->_options['tag']]);
                 } else {
                     self::$_cache->save($this->_options, $id);
                 }
@@ -499,7 +499,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  string             $message Message to get the key for
      * @param  string|Zend_Locale $locale (optional) Language to return the message ids from
-     * @return string|array|false
+     * @return false|int|string
      */
     public function getMessageId($message, $locale = null)
     {
@@ -557,8 +557,7 @@ abstract class Zend_Translate_Adapter {
      */
     public function isAvailable($locale)
     {
-        $return = isset($this->_translate[(string) $locale]);
-        return $return;
+        return isset($this->_translate[(string) $locale]);
     }
 
     /**
@@ -569,7 +568,7 @@ abstract class Zend_Translate_Adapter {
      * @param  array              $options (optional)
      * @return array
      */
-    abstract protected function _loadTranslationData($data, $locale, array $options = array());
+    abstract protected function _loadTranslationData($data, $locale, array $options = []);
 
     /**
      * Internal function for adding translation data
@@ -583,7 +582,7 @@ abstract class Zend_Translate_Adapter {
      * @throws Zend_Translate_Exception
      * @return Zend_Translate_Adapter Provides fluent interface
      */
-    private function _addTranslationData($options = array())
+    private function _addTranslationData($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
@@ -625,7 +624,7 @@ abstract class Zend_Translate_Adapter {
         }
 
         if ($options['clear'] || !isset($this->_translate[$options['locale']])) {
-            $this->_translate[$options['locale']] = array();
+            $this->_translate[$options['locale']] = [];
         }
 
         $read = true;
@@ -643,20 +642,20 @@ abstract class Zend_Translate_Adapter {
 
         if ($read) {
             if (!empty($options['usetranslateadapter'])) {
-                $temp = array($options['locale'] => $options['content']);
+                $temp = [$options['locale'] => $options['content']];
             } else {
                 $temp = $this->_loadTranslationData($options['content'], $options['locale'], $options);
             }
         }
 
         if (empty($temp)) {
-            $temp = array();
+            $temp = [];
         }
 
         $keys = array_keys($temp);
         foreach($keys as $key) {
             if (!isset($this->_translate[$key])) {
-                $this->_translate[$key] = array();
+                $this->_translate[$key] = [];
             }
 
             if (array_key_exists($key, $temp) && is_array($temp[$key])) {
@@ -679,7 +678,7 @@ abstract class Zend_Translate_Adapter {
         if (($read) && (isset(self::$_cache))) {
             $id = 'Zend_Translate_' . md5(serialize($options['content'])) . '_' . $this->toString();
             if (self::$_cacheTags) {
-                self::$_cache->save($temp, $id, array($this->_options['tag']));
+                self::$_cache->save($temp, $id, [$this->_options['tag']]);
             } else {
                 self::$_cache->save($temp, $id);
             }
@@ -735,7 +734,7 @@ abstract class Zend_Translate_Adapter {
                     }
                 }
 
-                $this->_routed = array();
+                $this->_routed = [];
                 if ($plural === null) {
                     return $messageId;
                 }
@@ -755,29 +754,29 @@ abstract class Zend_Translate_Adapter {
         if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
             // return original translation
             if ($plural === null) {
-                $this->_routed = array();
+                $this->_routed = [];
                 return $this->_translate[$locale][$messageId];
             }
 
             $rule = Zend_Translate_Plural::getPlural($number, $locale);
             if (isset($this->_translate[$locale][$plural[0]][$rule])) {
-                $this->_routed = array();
+                $this->_routed = [];
                 return $this->_translate[$locale][$plural[0]][$rule];
             }
-        } else if (strlen($locale) != 2) {
+        } else if (strlen($locale) !== 2) {
             // faster than creating a new locale and separate the leading part
             $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
 
             if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
                 // return regionless translation (en_US -> en)
                 if ($plural === null) {
-                    $this->_routed = array();
+                    $this->_routed = [];
                     return $this->_translate[$locale][$messageId];
                 }
 
                 $rule = Zend_Translate_Plural::getPlural($number, $locale);
                 if (isset($this->_translate[$locale][$plural[0]][$rule])) {
-                    $this->_routed = array();
+                    $this->_routed = [];
                     return $this->_translate[$locale][$plural[0]][$rule];
                 }
             }
@@ -793,7 +792,7 @@ abstract class Zend_Translate_Adapter {
             }
         }
 
-        $this->_routed = array();
+        $this->_routed = [];
         if ($plural === null) {
             return $messageId;
         }
@@ -820,7 +819,7 @@ abstract class Zend_Translate_Adapter {
      */
     public function plural($singular, $plural, $number, $locale = null)
     {
-        return $this->translate(array($singular, $plural, $number), $locale);
+        return $this->translate([$singular, $plural, $number], $locale);
     }
 
     /**
@@ -831,8 +830,11 @@ abstract class Zend_Translate_Adapter {
      */
     protected function _log($message, $locale) {
         if ($this->_options['logUntranslated']) {
-            $message = str_replace('%message%', $message, $this->_options['logMessage']);
-            $message = str_replace('%locale%', $locale, $message);
+            $message = str_replace(
+                ['%message%', '%locale%'],
+                [$message, $locale],
+                $this->_options['logMessage']);
+
             if ($this->_options['log']) {
                 $this->_options['log']->log($message, $this->_options['logPriority']);
             } else {
@@ -891,7 +893,7 @@ abstract class Zend_Translate_Adapter {
         if ((is_string($messageId) || is_int($messageId)) && isset($this->_translate[$locale][$messageId])) {
             // return original translation
             return true;
-        } else if ((strlen($locale) != 2) && ($original === false)) {
+        } else if ((strlen($locale) !== 2) && ($original === false)) {
             // faster than creating a new locale and separate the leading part
             $locale = substr($locale, 0, -strlen(strrchr($locale, '_')));
 
@@ -964,7 +966,7 @@ abstract class Zend_Translate_Adapter {
                 $tag = 'Zend_Translate';
             }
 
-            self::$_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array($tag));
+            self::$_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, [$tag]);
         } else {
             self::$_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
         }

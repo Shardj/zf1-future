@@ -82,7 +82,7 @@ while (($file = readdir($dir)) !== false) {
     if (is_dir($indexSourceDir . '/' . $file)) {
         continue;
     }
-    if (strcasecmp(substr($file, strlen($file)-5), '.html') != 0) {
+    if (strcasecmp(substr($file, strlen($file)-5), '.html') !== 0) {
         continue;
     }
 

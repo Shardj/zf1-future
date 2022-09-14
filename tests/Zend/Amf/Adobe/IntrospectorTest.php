@@ -96,9 +96,9 @@ class Zend_Amf_Adobe_IntrospectorTest extends PHPUnit_Framework_TestCase
     public function testPassingDirectoriesOptionShouldResolveServiceClassAndType()
     {
         require_once dirname(__FILE__) . '/_files/ZendAmfAdobeIntrospectorTestType.php';
-        $xml = $this->introspector->introspect('ZendAmfAdobeIntrospectorTest', array(
-            'directories' => array(dirname(__FILE__) . '/_files'),
-        ));
+        $xml = $this->introspector->introspect('ZendAmfAdobeIntrospectorTest', [
+            'directories' => [dirname(__FILE__) . '/_files'],
+        ]);
         $this->assertRegexp('/<operation[^>]*(name="foo")/', $xml, $xml);
         $this->assertRegexp('/<type[^>]*(name="ZendAmfAdobeIntrospectorTestType")/', $xml, $xml);
         $this->assertRegexp('/<property[^>]*(name="bar")/', $xml, $xml);
@@ -172,7 +172,7 @@ class com_zend_framework_IntrospectorTest
      * Foobar
      *
      * @param  string|int $arg
-     * @return string|stdClass
+     * @return void
      */
     public function foobar($arg)
     {
@@ -182,7 +182,7 @@ class com_zend_framework_IntrospectorTest
      * Barbaz
      *
      * @param  com_zend_framework_IntrospectorTestCustomType $arg
-     * @return boolean
+     * @return void
      */
     public function barbaz($arg)
     {
@@ -191,7 +191,7 @@ class com_zend_framework_IntrospectorTest
     /**
      * Bazbat
      *
-     * @return com_zend_framework_IntrospectorTestExplicitType
+     * @return void
      */
     public function bazbat()
     {

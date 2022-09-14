@@ -46,7 +46,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      * An array of reference objects
      * @var array
      */
-    protected $_referenceObjects = array();
+    protected $_referenceObjects = [];
 
     /**
      * Determine type and serialize accordingly
@@ -81,7 +81,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                         $this->_stream->writeByte($data);
                         break;
                     case Zend_Amf_Constants::AMF0_STRING:
-                        $this->_stream->writeUTF($data);
+                        $this->_stream->writeUtf($data);
                         break;
                     case Zend_Amf_Constants::AMF0_OBJECT:
                         $this->writeObject($data);
@@ -103,7 +103,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                         $this->writeDate($data);
                         break;
                     case Zend_Amf_Constants::AMF0_LONGSTRING:
-                        $this->_stream->writeLongUTF($data);
+                        $this->_stream->writeLongUtf($data);
                         break;
                     case Zend_Amf_Constants::AMF0_TYPEDOBJECT:
                         $this->writeTypedObject($data);
@@ -230,7 +230,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         foreach ($object as $key => &$value) {
             // skip variables starting with an _ private transient
             if( $key[0] == "_") continue;
-            $this->_stream->writeUTF($key);
+            $this->_stream->writeUtf($key);
             $this->writeTypeMarker($value);
         }
 
@@ -299,7 +299,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
      */
     public function writeTypedObject($data)
     {
-        $this->_stream->writeUTF($this->_className);
+        $this->_stream->writeUtf($this->_className);
         $this->writeObject($data);
         return $this;
     }

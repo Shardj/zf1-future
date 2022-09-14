@@ -78,7 +78,7 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->errors = array();
+        $this->errors = [];
         $this->view   = $this->getView();
         $this->decorator = new Zend_Dojo_Form_Decorator_ContentPane();
         $this->element   = $this->getElement();
@@ -107,15 +107,15 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
     public function getElement()
     {
         $element = new Zend_Dojo_Form_SubForm();
-        $element->setAttribs(array(
+        $element->setAttribs([
             'name'   => 'foo',
             'style'  => 'width: 300px; height: 500px;',
             'class'  => 'someclass',
-            'dijitParams' => array(
+            'dijitParams' => [
                 'labelAttr' => 'foobar',
                 'typeAttr'  => 'barbaz',
-            ),
-        ));
+            ],
+        ]);
         return $element;
     }
 
@@ -175,9 +175,9 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
 
     public function testRenderingShouldTriggerErrorWhenDuplicateDijitDetected()
     {
-        $this->view->dojo()->addDijit('foo-ContentPane', array('dojoType' => 'dijit.layout.ContentPane'));
+        $this->view->dojo()->addDijit('foo-ContentPane', ['dojoType' => 'dijit.layout.ContentPane']);
 
-        $handler = set_error_handler(array($this, 'handleError'));
+        $handler = set_error_handler([$this, 'handleError']);
         $html = $this->decorator->render('');
         restore_error_handler();
 
@@ -210,15 +210,15 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
     public function testShouldAllowPassingDijitParamsAsOptions()
     {
         $element = new Zend_Dojo_Form_SubForm();
-        $element->setAttribs(array(
+        $element->setAttribs([
             'name'   => 'foo',
             'style'  => 'width: 300px; height: 500px;',
             'class'  => 'someclass',
-        ));
-        $dijitParams = array(
+        ]);
+        $dijitParams = [
             'labelAttr' => 'foobar',
             'typeAttr'  => 'barbaz',
-        );
+        ];
         $this->decorator->setElement($element);
         $this->decorator->setOption('dijitParams', $dijitParams);
         $test = $this->decorator->getDijitParams();
@@ -230,12 +230,12 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
     public function testShouldUseLegendAttribAsTitleIfNoTitlePresent()
     {
         $element = new Zend_Dojo_Form_SubForm();
-        $element->setAttribs(array(
+        $element->setAttribs([
                     'name'   => 'foo',
                     'legend' => 'FooBar',
                     'style'  => 'width: 300px; height: 500px;',
                     'class'  => 'someclass',
-                ))
+                ])
                 ->setView($this->view);
         $this->decorator->setElement($element);
         $html = $this->decorator->render('');

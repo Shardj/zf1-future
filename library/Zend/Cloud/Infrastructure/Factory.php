@@ -12,7 +12,7 @@ require_once 'Zend/Cloud/AbstractFactory.php';
 
 /**
  * Factory for infrastructure adapters
- * 
+ *
  * @package    Zend_Cloud
  * @subpackage Infrastructure
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
@@ -42,9 +42,9 @@ class Zend_Cloud_Infrastructure_Factory extends Zend_Cloud_AbstractFactory
      * Retrieve an adapter instance
      *
      * @param  array $options
-     * @return void
+     * @return Zend_Cloud_DocumentService_Adapter|Zend_Cloud_QueueService_Adapter|Zend_Cloud_StorageService_Adapter
      */
-    public static function getAdapter($options = array())
+    public static function getAdapter($options = [])
     {
         $adapter = parent::_getAdapter(self::INFRASTRUCTURE_ADAPTER_KEY, $options);
 

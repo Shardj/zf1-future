@@ -60,7 +60,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
             $queue = $this->_queue;
         }
 
-        $msgs = array();
+        $msgs = [];
 
         $info = $this->_msg_table->info();
 
@@ -74,7 +74,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
 
             // changes: added forUpdate
             $query = $db->select()->forUpdate();
-            $query->from($info['name'], array('*'));
+            $query->from($info['name'], ['*']);
             $query->where('queue_id=?', $this->getQueueId($queue->getName()));
             $query->where('handle IS NULL OR timeout+' . (int)$timeout . ' < ' . (int)$microtime);
             $query->limit($maxMessages);
@@ -83,13 +83,13 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
                 // setup our changes to the message
                 $data['handle'] = md5(uniqid(rand(), true));
 
-                $update = array(
+                $update = [
                     'handle'  => $data['handle'],
                     'timeout' => $microtime
-                );
+                ];
 
                 // update the database
-                $where = array();
+                $where = [];
                 $where[] = $db->quoteInto('message_id=?', $data['message_id']);
 
                 $count = $db->update($info['name'], $update, $where);
@@ -110,11 +110,11 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
             throw new Zend_Queue_Exception($e->getMessage(), $e->getCode());
         }
 
-        $config = array(
+        $config = [
             'queue'    => $queue,
             'data'     => $msgs,
             'messageClass' => $queue->getMessageClass()
-        );
+        ];
 
         $classname = $queue->getMessageSetClass();
         Zend_Loader::loadClass($classname);

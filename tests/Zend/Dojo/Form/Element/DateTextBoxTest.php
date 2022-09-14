@@ -99,12 +99,12 @@ class Zend_Dojo_Form_Element_DateTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Dojo_Form_Element_DateTextBox(
             'foo',
-            array(
+            [
                 'value' => 'some text',
                 'label' => 'DateTextBox',
                 'class' => 'someclass',
                 'style' => 'width: 100px;',
-            )
+            ]
         );
         return $element;
     }

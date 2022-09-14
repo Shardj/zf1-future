@@ -43,20 +43,20 @@ class My_ZendDbTable_TableBugsProductsCustom extends My_ZendDbTable_TableBugsPro
     protected $_rowClass    = 'My_ZendDbTable_Row_TestMyRow';
     protected $_rowsetClass = 'My_ZendDbTable_Rowset_TestMyRowset';
 
-    protected $_referenceMap    = array(
-        'Bug' => array(
+    protected $_referenceMap    = [
+        'Bug' => [
             'columns'           => 'bug_id',
             'refTableClass'     => 'My_ZendDbTable_TableBugsCustom',
             'refColumns'        => 'bug_id',
             'onDelete'          => self::CASCADE,
             'onUpdate'          => self::CASCADE
-        ),
-        'Product' => array(
+        ],
+        'Product' => [
             'columns'           => 'product_id',
             'refTableClass'     => 'My_ZendDbTable_TableProductsCustom',
             'refColumns'        => 'product_id',
             'onDelete'          => 'anything but self::CASCADE',
             'onUpdate'          => 'anything but self::CASCADE'
-        )
-    );
+        ]
+    ];
 }

@@ -55,12 +55,12 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
      */
     public function setUp()
     {
-        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter(array( 
+        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter([ 
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace', 
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER   => 'foo', 
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY    => 'bar', 
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => 'USA'   
-        )); 
+        ]); 
 
         $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
 
@@ -106,12 +106,12 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
      */ 
     static function getConfigArray()
     {
-         return array(
+         return [
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace',
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER   => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_USER'),
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY    => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_KEY'),
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_REGION')
-        );
+        ];
     }
     
     /**
@@ -151,13 +151,13 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
      */
     public function testCreateInstance()
     {
-        $options = array (
+        $options = [
             'imageId'  => constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID'),
             'flavorId' => constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_FLAVORID'),
-            'metadata' => array (
+            'metadata' => [
                 'foo' => 'bar'
-            )
-        );
+            ]
+        ];
         $instance = $this->infrastructure->createInstance(constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGE_NAME'), $options);
         self::$instanceId= $instance->getId();
         $this->assertEquals(constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID'), $instance->getImageId());

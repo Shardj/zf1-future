@@ -93,6 +93,7 @@ interface Zend_Search_Lucene_Interface extends Zend_Search_Lucene_Index_TermsStr
      *
      * @return integer
      */
+    #[\ReturnTypeWillChange]
     public function count();
 
     /**

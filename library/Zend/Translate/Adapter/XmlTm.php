@@ -41,11 +41,11 @@ require_once 'Zend/Xml/Exception.php';
 class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
     // Internal variables
     private $_file        = false;
-    private $_cleared     = array();
+    private $_cleared     = [];
     private $_lang        = null;
     private $_content     = null;
     private $_tag         = null;
-    private $_data        = array();
+    private $_data        = [];
 
     /**
      * Load translation data (XMLTM file reader)
@@ -57,9 +57,9 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
      * @throws Zend_Translation_Exception
      * @return array
      */
-    protected function _loadTranslationData($filename, $locale, array $options = array())
+    protected function _loadTranslationData($filename, $locale, array $options = [])
     {
-        $this->_data = array();
+        $this->_data = [];
         $this->_lang = $locale;
         if (!is_readable($filename)) {
             require_once 'Zend/Translate/Exception.php';
@@ -133,7 +133,7 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
 
     private function _findEncoding($filename)
     {
-        $file = file_get_contents($filename, null, null, 0, 100);
+        $file = file_get_contents($filename, false, null, 0, 100);
         if (strpos($file, "encoding") !== false) {
             $encoding = substr($file, strpos($file, "encoding") + 9);
             $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);

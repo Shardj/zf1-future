@@ -126,7 +126,7 @@ abstract class Zend_Cloud_Infrastructure_TestCase extends PHPUnit_Framework_Test
             'Zend\Cloud\Infrastructure\Exception\InvalidArgumentException',
             'You must pass an array of params'
         );
-        $instance = new Zend_Cloud_Infrastructure_Instance(self::$adapter,array());
+        $instance = new Zend_Cloud_Infrastructure_Instance(self::$adapter,[]);
     }
 
     /**
@@ -138,7 +138,7 @@ abstract class Zend_Cloud_Infrastructure_TestCase extends PHPUnit_Framework_Test
             'Zend\Cloud\Infrastructure\Exception\InvalidArgumentException',
             'The param "'.Zend_Cloud_Infrastructure_Instance::INSTANCE_ID.'" is a required param for Zend\Cloud\Infrastructure\Instance'
         );
-        $instance = new Zend_Cloud_Infrastructure_Instance(self::$adapter,array('foo'=>'bar'));
+        $instance = new Zend_Cloud_Infrastructure_Instance(self::$adapter,['foo'=>'bar']);
     }
 
     /**

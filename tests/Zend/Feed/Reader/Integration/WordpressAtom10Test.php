@@ -46,7 +46,7 @@ class Zend_Feed_Reader_Integration_WordpressAtom10Test extends PHPUnit_Framework
                 unset($this->_options[$k]);
             }
         }
-        Zend_Date::setOptions(array('format_type'=>'iso'));
+        Zend_Date::setOptions(['format_type'=>'iso']);
     }
     
     public function teardown()
@@ -67,9 +67,9 @@ class Zend_Feed_Reader_Integration_WordpressAtom10Test extends PHPUnit_Framework
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath)
         );
-        $this->assertEquals(array(
-            array('name'=>'norm2782','uri'=>'http://www.norm2782.com')
-        ), (array) $feed->getAuthors());
+        $this->assertEquals([
+            ['name'=>'norm2782','uri'=>'http://www.norm2782.com']
+        ], (array) $feed->getAuthors());
     }
 
     public function testGetsSingleAuthor()
@@ -77,7 +77,7 @@ class Zend_Feed_Reader_Integration_WordpressAtom10Test extends PHPUnit_Framework
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath)
         );
-        $this->assertEquals(array('name'=>'norm2782','uri'=>'http://www.norm2782.com'), $feed->getAuthor());
+        $this->assertEquals(['name'=>'norm2782','uri'=>'http://www.norm2782.com'], $feed->getAuthor());
     }
 
     public function testGetsCopyright()
@@ -160,7 +160,7 @@ class Zend_Feed_Reader_Integration_WordpressAtom10Test extends PHPUnit_Framework
             file_get_contents($this->_feedSamplePath)
         );
         $entry = $feed->current();
-        $this->assertEquals(array(array('name'=>'norm2782','uri'=>'http://www.norm2782.com')), (array) $entry->getAuthors());
+        $this->assertEquals([['name'=>'norm2782','uri'=>'http://www.norm2782.com']], (array) $entry->getAuthors());
     }
 
     public function testGetsEntrySingleAuthor()
@@ -169,7 +169,7 @@ class Zend_Feed_Reader_Integration_WordpressAtom10Test extends PHPUnit_Framework
             file_get_contents($this->_feedSamplePath)
         );
         $entry = $feed->current();
-        $this->assertEquals(array('name'=>'norm2782','uri'=>'http://www.norm2782.com'), $entry->getAuthor());
+        $this->assertEquals(['name'=>'norm2782','uri'=>'http://www.norm2782.com'], $entry->getAuthor());
     }
 
     public function testGetsEntryDescription()
@@ -199,7 +199,7 @@ class Zend_Feed_Reader_Integration_WordpressAtom10Test extends PHPUnit_Framework
             file_get_contents($this->_feedSamplePath)
         );
         $entry = $feed->current();
-        $this->assertEquals(array('http://www.norm2782.com/2009/03/wth-reading-books/'), $entry->getLinks());
+        $this->assertEquals(['http://www.norm2782.com/2009/03/wth-reading-books/'], $entry->getLinks());
     }
 
     public function testGetsEntryLink()

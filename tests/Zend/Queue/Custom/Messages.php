@@ -42,7 +42,7 @@ implements ArrayAccess
      *
      * @param array $config ('queue', 'messageClass', 'data'=>array());
      */
-    public function __construct(array $config=array())
+    public function __construct(array $config=[])
     {
         if (isset($config['queue'])) {
             $this->_queue = $config['queue'];
@@ -72,7 +72,7 @@ implements ArrayAccess
             // for each of the messages
             foreach($config['data'] as $i => $data) {
                 // construct the message parameters
-                $message = array('data' => $data);
+                $message = ['data' => $data];
 
                 // If queue has not been set, then use the default.
                 if (empty($message['queue'])) {
@@ -120,6 +120,7 @@ implements ArrayAccess
     /**
      * @see SPL ArrayAccess::offsetSet
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value) {
         if (! $value instanceof Custom_Message) {
             $msg = '$value must be a child or an instance of Custom_Messag';
@@ -144,6 +145,7 @@ implements ArrayAccess
     /**
      * @see SPL ArrayAccess::offsetUnset
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset) {
         if (! $this->_connected) {
             $msg = 'Cannot delete message after serialization';
@@ -161,6 +163,7 @@ implements ArrayAccess
     /**
      * @see SPL ArrayAccess::offsetExists
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset) {
         return isSet($this->_data[$offset]);
     }

@@ -34,13 +34,13 @@ require_once "Zend/OpenId/Extension/Sreg.php";
 
 $id = "";
 $status = "";
-$data = array();
+$data = [];
 if (isset($_POST['openid_action']) &&
     $_POST['openid_action'] == "login" &&
     !empty($_POST['openid_identifier'])) {
 
     $consumer = new Zend_OpenId_Consumer();
-    $props = array();
+    $props = [];
     foreach (Zend_OpenId_Extension_Sreg::getSregProperties() as $prop) {
         if (isset($_POST[$prop])) {
             if ($_POST[$prop] === "required") {

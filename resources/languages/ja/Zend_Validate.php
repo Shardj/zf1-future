@@ -23,7 +23,7 @@
 /**
  * EN-Revision: 23772
  */
-return array(
+return [
     // Zend_Validate_Alnum
     "Invalid type given. String, integer or float expected" => "不正な形式です。文字列、整数もしくは小数が期待されています",
     "'%value%' contains characters which are non alphabetic and no digits" => "'%value%' にアルファベットと数字以外の文字が含まれています",
@@ -262,4 +262,4 @@ return array(
     "Invalid type given. String expected" => "不正な形式です。文字列が期待されています",
     "'%value%' is less than %min% characters long" => " '%value%' は %min% 文字より短いです",
     "'%value%' is more than %max% characters long" => " '%value%' は %max% 文字より長いです",
-);
+];

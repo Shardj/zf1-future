@@ -141,9 +141,9 @@ function echoVideoPlayer($videoId)
     print <<<END
     <b>$videoTitle</b><br />
     <object width="425" height="350">
-      <param name="movie" value="${videoUrl}&autoplay=1"></param>
+      <param name="movie" value="{$videoUrl}&autoplay=1"></param>
       <param name="wmode" value="transparent"></param>
-      <embed src="${videoUrl}&autoplay=1" type="application/x-shockwave-flash" wmode="transparent"
+      <embed src="{$videoUrl}&autoplay=1" type="application/x-shockwave-flash" wmode="transparent"
         width=425" height="350"></embed>
     </object>
 END;
@@ -175,15 +175,15 @@ function echoVideoMetadata($entry)
     $numRaters = $entry->rating->numRaters;
     $flashUrl = findFlashUrl($entry);
     print <<<END
-    <b>Title:</b> ${title}<br />
-    <b>Description:</b> ${description}<br />
-    <b>Author:</b> <a href="${authorUrl}">${authorUsername}</a><br />
-    <b>Tags:</b> ${tags}<br />
-    <b>Duration:</b> ${duration} seconds<br />
-    <b>View count:</b> ${viewCount}<br />
-    <b>Rating:</b> ${rating} (${numRaters} ratings)<br />
-    <b>Flash:</b> <a href="${flashUrl}">${flashUrl}</a><br />
-    <b>Watch page:</b> <a href="${watchPage}">${watchPage}</a> <br />
+    <b>Title:</b> {$title}<br />
+    <b>Description:</b> {$description}<br />
+    <b>Author:</b> <a href="{$authorUrl}">{$authorUsername}</a><br />
+    <b>Tags:</b> {$tags}<br />
+    <b>Duration:</b> {$duration} seconds<br />
+    <b>View count:</b> {$viewCount}<br />
+    <b>Rating:</b> {$rating} ({$numRaters} ratings)<br />
+    <b>Flash:</b> <a href="{$flashUrl}">{$flashUrl}</a><br />
+    <b>Watch page:</b> <a href="{$watchPage}">{$watchPage}</a> <br />
 END;
 }
 
@@ -203,11 +203,11 @@ function echoVideoList($feed)
         $videoTitle = $entry->mediaGroup->title;
         $videoDescription = $entry->mediaGroup->description;
         print <<<END
-        <tr onclick="ytvbp.presentVideo('${videoId}')">
-        <td width="130"><img src="${thumbnailUrl}" /></td>
+        <tr onclick="ytvbp.presentVideo('{$videoId}')">
+        <td width="130"><img src="{$thumbnailUrl}" /></td>
         <td width="100%">
-        <a href="#">${videoTitle}</a>
-        <p class="videoDescription">${videoDescription}</p>
+        <a href="#">{$videoTitle}</a>
+        <p class="videoDescription">{$videoDescription}</p>
         </td>
         </tr>
 END;

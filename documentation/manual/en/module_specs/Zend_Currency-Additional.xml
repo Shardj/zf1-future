@@ -118,7 +118,7 @@ var_dump($currency->getName('EUR'));
             <methodname>clearCache()</methodname> and <methodname>removeCache()</methodname>.
         </para>
 
-        <example id="zend.currency.usage.cache.example">
+        <example id="zend.currency.additional.cache.example">
             <title>Caching currencies</title>
 
             <programlisting language="php"><![CDATA[

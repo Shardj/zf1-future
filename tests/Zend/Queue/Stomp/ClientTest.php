@@ -78,10 +78,10 @@ class Zend_Queue_Stomp_Connection_Mock
     /**
      * write a frame to the stomp server
      *
-     * @example $response = $client->write($frame)->read();
-     *
      * @param Zend_Queue_Stom_Frame $frame
-     * @return $this
+     * @return void
+     *@example $response = $client->write($frame)->read();
+     *
      */
     public function write(Zend_Queue_Stomp_FrameInterface $frame)
     {

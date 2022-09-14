@@ -32,38 +32,43 @@ class Zend_Text_MultiByte
     /**
      * Word wrap
      *
-     * @param  string  $string
-     * @param  integer $width
-     * @param  string  $break
-     * @param  boolean $cut
-     * @param  string  $charset
+     * @param string $string
+     * @param integer $width
+     * @param string $break
+     * @param boolean $cut
+     * @param string $charset
      * @return string
+     * @throws Zend_Text_Exception
      */
     public static function wordWrap($string, $width = 75, $break = "\n", $cut = false, $charset = 'utf-8')
     {
         $stringWidth = iconv_strlen($string, $charset);
         $breakWidth  = iconv_strlen($break, $charset);
-        
+
         if (strlen($string) === 0) {
             return '';
-        } elseif ($breakWidth === null) {
+        }
+
+        if ($breakWidth === null) {
             throw new Zend_Text_Exception('Break string cannot be empty');
-        } elseif ($width === 0 && $cut) {
+        }
+
+        if ($width === 0 && $cut) {
             throw new Zend_Text_Exception('Can\'t force cut when width is zero');
         }
-        
+
         $result    = '';
         $lastStart = $lastSpace = 0;
-        
+
         for ($current = 0; $current < $stringWidth; $current++) {
             $char = iconv_substr($string, $current, 1, $charset);
-            
+
             if ($breakWidth === 1) {
                 $possibleBreak = $char;
             } else {
                 $possibleBreak = iconv_substr($string, $current, $breakWidth, $charset);
             }
-            
+
             if ($possibleBreak === $break) {
                 $result    .= iconv_substr($string, $lastStart, $current - $lastStart + $breakWidth, $charset);
                 $current   += $breakWidth - 1;
@@ -73,7 +78,7 @@ class Zend_Text_MultiByte
                     $result    .= iconv_substr($string, $lastStart, $current - $lastStart, $charset) . $break;
                     $lastStart  = $current + 1;
                 }
-                
+
                 $lastSpace = $current;
             } elseif ($current - $lastStart >= $width && $cut && $lastStart >= $lastSpace) {
                 $result    .= iconv_substr($string, $lastStart, $current - $lastStart, $charset) . $break;
@@ -83,11 +88,11 @@ class Zend_Text_MultiByte
                 $lastStart  = $lastSpace = $lastSpace + 1;
             }
         }
-        
+
         if ($lastStart !== $current) {
             $result .= iconv_substr($string, $lastStart, $current - $lastStart, $charset);
         }
-        
+
         return $result;
     }
 

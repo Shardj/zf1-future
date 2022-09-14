@@ -131,7 +131,7 @@ class Zend_Form_Element_Hash extends Zend_Form_Element_Xhtml
             $rightHash = null;
         }
 
-        $this->addValidator('Identical', true, array($rightHash));
+        $this->addValidator('Identical', true, [$rightHash]);
         return $this;
     }
 

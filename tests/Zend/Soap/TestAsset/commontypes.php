@@ -76,7 +76,7 @@ function Zend_Soap_TestAsset_TestFunc6()
  */
 function Zend_Soap_TestAsset_TestFunc7()
 {
-    return array('foo' => 'bar', 'baz' => true, 1 => false, 'bat' => 123);
+    return ['foo' => 'bar', 'baz' => true, 1 => false, 'bat' => 123];
 }
 
 /**
@@ -86,7 +86,7 @@ function Zend_Soap_TestAsset_TestFunc7()
  */
 function Zend_Soap_TestAsset_TestFunc8()
 {
-    $return = (object) array('foo' => 'bar', 'baz' => true, 'bat' => 123, 'qux' => false);
+    $return = (object) ['foo' => 'bar', 'baz' => true, 'bat' => 123, 'qux' => false];
     return $return;
 }
 
@@ -115,7 +115,7 @@ class Zend_Soap_TestAsset_TestFixingMultiplePrototypes
      * @param integer $a
      * @param integer $b
      * @param integer $d
-     * @return integer
+     * @return void
      */
     public function testFunc($a=100, $b=200, $d=300)
     {
@@ -205,14 +205,14 @@ class Zend_Soap_TestAsset_AutoDiscoverTestClass2
     }
 
     /**
-     * @return Zend_Soap_TestAsset_AutoDiscoverTestClass1[]
+     * @return AutoDiscoverTestClass1[]
      */
     public function fetchAll()
     {
-        return array(
+        return [
             new AutoDiscoverTestClass1(),
             new AutoDiscoverTestClass1(),
-        );
+        ];
     }
 
     /**
@@ -251,7 +251,7 @@ class Zend_Soap_TestAsset_ComplexTypeA
     /**
      * @var Zend_Soap_TestAsset_ComplexTypeB[]
      */
-    public $baz = array();
+    public $baz = [];
 }
 
 /**
@@ -292,7 +292,7 @@ class Zend_Soap_TestAsset_ComplexObjectStructure
     /**
      * @var array
      */
-    public $array = array(1, 2, 3);
+    public $array = [1, 2, 3];
 }
 
 /**
@@ -317,14 +317,14 @@ class Zend_Soap_TestAsset_MyService
 {
     /**
      *    @param string $foo
-     *    @return Zend_Soap_TestAsset_MyResponse[]
+     *    @return void
      */
     public function foo($foo)
     {
     }
     /**
      *    @param string $bar
-     *    @return Zend_Soap_TestAsset_MyResponse[]
+     *    @return void
      */
     public function bar($bar)
     {
@@ -332,7 +332,7 @@ class Zend_Soap_TestAsset_MyService
 
     /**
      *    @param string $baz
-     *    @return Zend_Soap_TestAsset_MyResponse[]
+     *    @return void
      */
     public function baz($baz)
     {
@@ -348,14 +348,14 @@ class Zend_Soap_TestAsset_MyServiceSequence
 {
     /**
      *    @param string $foo
-     *    @return string[]
+     *    @return void
      */
     public function foo($foo)
     {
     }
     /**
      *    @param string $bar
-     *    @return string[]
+     *    @return void
      */
     public function bar($bar)
     {
@@ -363,7 +363,7 @@ class Zend_Soap_TestAsset_MyServiceSequence
 
     /**
      *    @param string $baz
-     *    @return string[]
+     *    @return void
      */
     public function baz($baz)
     {
@@ -371,7 +371,7 @@ class Zend_Soap_TestAsset_MyServiceSequence
 
     /**
      *    @param string $baz
-     *    @return string[][][]
+     *    @return void
      */
     public function bazNested($baz)
     {
@@ -404,7 +404,7 @@ class Zend_Soap_TestAsset_Recursion
     public $recursion;
 
     /**
-     * @return Zend_Soap_TestAsset_Recursion
+     * @return void
      */
     public function create() {}
 }
@@ -621,6 +621,7 @@ class Zend_Soap_TestAsset_TestLocalSoapClient extends SoapClient
         parent::__construct($wsdl, $options);
     }
 
+    #[\ReturnTypeWillChange]
     public function __doRequest($request, $location, $action, $version, $one_way = 0)
     {
         ob_start();

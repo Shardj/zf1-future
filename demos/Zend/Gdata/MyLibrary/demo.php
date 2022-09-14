@@ -116,7 +116,7 @@ class SimpleDemo {
      * Add an arbitrary book to the library feed.
      *
      * @param string $volumeId Volume to the library
-     * @return void
+     * @return Zend_Gdata_App_Entry
      */
     public function addBookToLibrary($volumeId)
     {
@@ -132,7 +132,7 @@ class SimpleDemo {
      *
      * @param string $volumeId Volume to add a rating to
      * @param float $rating Numeric rating from 0 to 5
-     * @return void
+     * @return Zend_Gdata_App_Entry
      */
     public function addRating($volumeId, $rating)
     {

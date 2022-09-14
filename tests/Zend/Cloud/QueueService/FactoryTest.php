@@ -85,9 +85,9 @@ class Zend_Cloud_QueueService_FactoryTest extends PHPUnit_Framework_TestCase
     public function testGetAdapterWithArray()
     {
         // No need to overdo it; we'll test the array config with just one adapter.
-        $zqConfig = array(Zend_Cloud_QueueService_Factory::QUEUE_ADAPTER_KEY =>
+        $zqConfig = [Zend_Cloud_QueueService_Factory::QUEUE_ADAPTER_KEY =>
         					     'Zend_Cloud_QueueService_Adapter_ZendQueue',
-                            Zend_Cloud_QueueService_Adapter_ZendQueue::ADAPTER => "Array");
+                            Zend_Cloud_QueueService_Adapter_ZendQueue::ADAPTER => "Array"];
 
         $zq = Zend_Cloud_QueueService_Factory::getAdapter($zqConfig);
 

@@ -5,7 +5,7 @@
         .
     </para>
     <para>
-        通过<link linkend="zend.service.rest"><code>Zend_Service_Rest</code></link>类,
+        通过<link linkend="zend.rest.client"><classname>Zend_Rest_Client</classname></link>类,
         <code>Zend_Service</code>可以支持任何基于REST的web服务。
         .
     </para>

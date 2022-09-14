@@ -23,7 +23,7 @@
 /**
  * SK-Revision:
  */
-return array(
+return [
     // Zend_Captcha_ReCaptcha
     "Missing captcha fields" => "Chýba captcha pole",
     "Failed to validate captcha" => "Captchu sa nepodarilo overiť",
@@ -33,4 +33,4 @@ return array(
     "Empty captcha value" => "Hodnota captchy nebola zadaná",
     "Captcha ID field is missing" => "Chýba pole captcha ID",
     "Captcha value is wrong" => "Chybná hodnota catpchy",
-);
+];

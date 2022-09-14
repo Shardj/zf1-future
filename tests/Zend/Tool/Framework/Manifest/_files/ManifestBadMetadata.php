@@ -36,10 +36,10 @@ class Zend_Tool_Framework_Manifest_ManifestBadMetadata
 
     public function getMetadata()
     {
-        return array(
-            new Zend_Tool_Framework_Metadata_Basic(array('name' => 'FooTwo', 'value' => 'Baz1')),
+        return [
+            new Zend_Tool_Framework_Metadata_Basic(['name' => 'FooTwo', 'value' => 'Baz1']),
             new ArrayObject()
-            );
+            ];
 
     }
 

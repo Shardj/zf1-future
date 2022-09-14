@@ -80,14 +80,19 @@ abstract class Zend_Db_TestSetup extends PHPUnit_Framework_TestCase
      */
     protected function _setUpAdapter()
     {
-        $this->_db = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
         try {
-            $conn = $this->_db->getConnection();
+            $this->_db = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
+            $this->_db->getConnection();
         } catch (Zend_Exception $e) {
             $this->_db = null;
             $this->assertTrue($e instanceof Zend_Db_Adapter_Exception,
                 'Expecting Zend_Db_Adapter_Exception, got ' . get_class($e));
             $this->markTestSkipped($e->getMessage());
+        } catch (Throwable $e) {
+            // DB2 constants
+            if (stristr($e->getMessage(), 'undefined constant')) {
+                $this->markTestSkipped($e->getMessage());
+            }
         }
     }
 

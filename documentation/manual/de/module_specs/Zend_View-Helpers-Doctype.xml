@@ -158,4 +158,5 @@ $doctypeHelper->doctype('XHTML1_RDFA');
       <?php endif; ?>
 >
 ]]></programlisting>
+    </example>
 </sect3>

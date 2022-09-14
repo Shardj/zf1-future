@@ -273,8 +273,8 @@ abstract class Zend_Cloud_DocumentService_TestCase extends PHPUnit_Framework_Tes
 
         $this->assertTrue(count($fetchdocs) >= 2, "Query failed to fetch 2 fields");
         foreach($fetchdocs as $fdoc) {
-            $this->assertContains($fdoc["name"], array($doc[1]->name, $doc[2]->name), "Wrong name in results");
-            $this->assertContains($fdoc["author"], array($doc[1]->author, $doc[2]->author), "Wrong name in results");
+            $this->assertContains($fdoc["name"], [$doc[1]->name, $doc[2]->name], "Wrong name in results");
+            $this->assertContains($fdoc["author"], [$doc[1]->author, $doc[2]->author], "Wrong name in results");
         }
 
         $this->_commonDocument->deleteCollection($name);
@@ -306,7 +306,7 @@ abstract class Zend_Cloud_DocumentService_TestCase extends PHPUnit_Framework_Tes
 
         // query by field condition
         $query = $this->_commonDocument->select()
-            ->from($name)->where("year > ?", array(1945));
+            ->from($name)->where("year > ?", [1945]);
         $fetchdocs = $this->_commonDocument->query($name, $query);
         $this->assertEquals(3, count($fetchdocs));
         foreach($fetchdocs as $fdoc) {
@@ -323,12 +323,12 @@ abstract class Zend_Cloud_DocumentService_TestCase extends PHPUnit_Framework_Tes
 
         // query with limit
         $query = $this->_commonDocument->select()
-            ->from($name)->where("year > ?", array(1945))->limit(1);
+            ->from($name)->where("year > ?", [1945])->limit(1);
         $fetchdocs = $this->_commonDocument->query($name, $query);
         $this->assertEquals(1, count($fetchdocs));
         foreach($fetchdocs as $fdoc) {
             $this->assertTrue($fdoc["year"] > 1945);
-            $this->assertContains($fdoc["name"], array($doc[0]->name, $doc[2]->name, $doc[3]->name), "Wrong name in results");
+            $this->assertContains($fdoc["name"], [$doc[0]->name, $doc[2]->name, $doc[3]->name], "Wrong name in results");
         }
 
         $this->_commonDocument->deleteCollection($name);
@@ -341,7 +341,7 @@ abstract class Zend_Cloud_DocumentService_TestCase extends PHPUnit_Framework_Tes
 
         // query with sort
         $query = $this->_commonDocument->select()
-            ->from($name)->where("year > ?", array(1945))->order("year", "desc");
+            ->from($name)->where("year > ?", [1945])->order("year", "desc");
         $fetchdocs = $this->_commonDocument->query($name, $query);
         $this->assertEquals(3, count($fetchdocs));
         foreach ($fetchdocs as $fdoc) {

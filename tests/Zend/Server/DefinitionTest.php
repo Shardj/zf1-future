@@ -90,7 +90,7 @@ class Zend_Server_DefinitionTest extends PHPUnit_Framework_TestCase
 
     public function testDefinitionShouldAllowAddingSingleMethods()
     {
-        $method = new Zend_Server_Method_Definition(array('name' => 'foo'));
+        $method = new Zend_Server_Method_Definition(['name' => 'foo']);
         $this->definition->addMethod($method);
         $methods = $this->definition->getMethods();
         $this->assertEquals(1, count($methods));
@@ -100,9 +100,9 @@ class Zend_Server_DefinitionTest extends PHPUnit_Framework_TestCase
 
     public function testDefinitionShouldAllowAddingMultipleMethods()
     {
-        $method1 = new Zend_Server_Method_Definition(array('name' => 'foo'));
-        $method2 = new Zend_Server_Method_Definition(array('name' => 'bar'));
-        $this->definition->addMethods(array($method1, $method2));
+        $method1 = new Zend_Server_Method_Definition(['name' => 'foo']);
+        $method2 = new Zend_Server_Method_Definition(['name' => 'bar']);
+        $this->definition->addMethods([$method1, $method2]);
         $methods = $this->definition->getMethods();
         $this->assertEquals(2, count($methods));
         $this->assertSame($method1, $methods['foo']);
@@ -114,9 +114,9 @@ class Zend_Server_DefinitionTest extends PHPUnit_Framework_TestCase
     public function testSetMethodsShouldOverwriteExistingMethods()
     {
         $this->testDefinitionShouldAllowAddingMultipleMethods();
-        $method1 = new Zend_Server_Method_Definition(array('name' => 'foo'));
-        $method2 = new Zend_Server_Method_Definition(array('name' => 'bar'));
-        $methods = array($method1, $method2);
+        $method1 = new Zend_Server_Method_Definition(['name' => 'foo']);
+        $method2 = new Zend_Server_Method_Definition(['name' => 'bar']);
+        $methods = [$method1, $method2];
         $this->assertNotEquals($methods, $this->definition->getMethods());
         $this->definition->setMethods($methods);
         $test = $this->definition->getMethods();
@@ -152,21 +152,21 @@ class Zend_Server_DefinitionTest extends PHPUnit_Framework_TestCase
 
     public function testDefinitionShouldSerializeToArray()
     {
-        $method = array(
+        $method = [
             'name' => 'foo.bar',
-            'callback' => array(
+            'callback' => [
                 'type'     => 'function',
                 'function' => 'bar',
-            ),
-            'prototypes' => array(
-                array(
+            ],
+            'prototypes' => [
+                [
                     'returnType' => 'string',
-                    'parameters' => array('string'),
-                ),
-            ),
+                    'parameters' => ['string'],
+                ],
+            ],
             'methodHelp' => 'Foo Bar!',
-            'invokeArguments' => array('foo'),
-        );
+            'invokeArguments' => ['foo'],
+        ];
         $definition = new Zend_Server_Definition();
         $definition->addMethod($method);
         $test = $definition->toArray();
@@ -180,22 +180,22 @@ class Zend_Server_DefinitionTest extends PHPUnit_Framework_TestCase
 
     public function testPassingOptionsToConstructorShouldSetObjectState()
     {
-        $method = array(
+        $method = [
             'name' => 'foo.bar',
-            'callback' => array(
+            'callback' => [
                 'type'     => 'function',
                 'function' => 'bar',
-            ),
-            'prototypes' => array(
-                array(
+            ],
+            'prototypes' => [
+                [
                     'returnType' => 'string',
-                    'parameters' => array('string'),
-                ),
-            ),
+                    'parameters' => ['string'],
+                ],
+            ],
             'methodHelp' => 'Foo Bar!',
-            'invokeArguments' => array('foo'),
-        );
-        $options = array($method);
+            'invokeArguments' => ['foo'],
+        ];
+        $options = [$method];
         $definition = new Zend_Server_Definition($options);
         $test = $definition->toArray();
         $this->assertEquals(1, count($test));

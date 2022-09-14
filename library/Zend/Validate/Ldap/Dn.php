@@ -34,26 +34,26 @@ class Zend_Validate_Ldap_Dn extends Zend_Validate_Abstract
 {
 
     const MALFORMED = 'malformed';
-    
+
     /**
      * Validation failure message template definitions.
      *
      * @var array
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::MALFORMED => 'DN is malformed',
-    );
-    
+    ];
+
     /**
      * Defined by Zend_Validate_Interface.
      *
      * Returns true if and only if $value is a valid DN.
      *
      * @param string $value The value to be validated.
-     * 
+     *
      * @return boolean
      */
-    public function isValid($value) 
+    public function isValid($value)
     {
         $valid = Zend_Ldap_Dn::checkDn($value);
         if ($valid === false) {

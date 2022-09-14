@@ -23,7 +23,7 @@
 /**
  * EN-Revision: 22668
  */
-return array (
+return [
     "'%hostname%' does not appear to have a valid MX record for the email address '%value%'" => "'%hostname%' ne semble pas avoir d'enregistrement MX valide pour l'adresse email '%value%'",
     "'%hostname%' is not a valid hostname for email address '%value%'" => "'%hostname%' n'est pas un nom d'hôte valide pour l'adresse email '%value%'",
     "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network" => "'%hostname%' n'est pas dans un segment réseau routable. L'adresse email '%value%' ne devrait pas être résolue depuis un réseau public.",
@@ -132,4 +132,4 @@ return array (
     "Unknown country within the IBAN '%value%'" => "Pays inconnu pour l'IBAN '%value%'",
     "Unknown error while uploading file '%value%'" => "Erreur inconnue lors de l'envoi du fichier '%value%'",
     "Value is required and can't be empty" => "Cette valeur est obligatoire et ne peut être vide",
-);
+];

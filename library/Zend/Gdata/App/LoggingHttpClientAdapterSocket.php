@@ -73,7 +73,7 @@ class Zend_Gdata_App_LoggingHttpClientAdapterSocket extends Zend_Http_Client_Ada
      */
     public function connect($host, $port = 80, $secure = false)
     {
-        $this->log("Connecting to: ${host}:${port}");
+        $this->log("Connecting to: {$host}:{$port}");
         return parent::connect($host, $port, $secure);
     }
 
@@ -87,7 +87,7 @@ class Zend_Gdata_App_LoggingHttpClientAdapterSocket extends Zend_Http_Client_Ada
      * @param string        $body
      * @return string Request as string
      */
-    public function write($method, $uri, $http_ver = '1.1', $headers = array(), $body = '')
+    public function write($method, $uri, $http_ver = '1.1', $headers = [], $body = '')
     {
         $request = parent::write($method, $uri, $http_ver, $headers, $body);
         $this->log("\n\n" . $request);
@@ -102,7 +102,7 @@ class Zend_Gdata_App_LoggingHttpClientAdapterSocket extends Zend_Http_Client_Ada
     public function read()
     {
         $response = parent::read();
-        $this->log("${response}\n\n");
+        $this->log("{$response}\n\n");
         return $response;
     }
 

@@ -50,19 +50,19 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
      * An array of reference objects per amf body
      * @var array
      */
-    protected $_referenceObjects = array();
+    protected $_referenceObjects = [];
 
     /**
      * An array of reference strings per amf body
      * @var array
      */
-    protected $_referenceStrings = array();
+    protected $_referenceStrings = [];
 
     /**
      * An array of reference class definitions, indexed by classname
      * @var array
      */
-    protected $_referenceDefinitions = array();
+    protected $_referenceDefinitions = [];
 
     /**
      * Serialize PHP types to AMF3 and write to stream
@@ -236,8 +236,8 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
             return $this;
         }
 
-        $ref = array_key_exists($string, $this->_referenceStrings) 
-             ? $this->_referenceStrings[$string] 
+        $ref = array_key_exists($string, $this->_referenceStrings)
+             ? $this->_referenceStrings[$string]
              : false;
         if ($ref === false){
             $this->_referenceStrings[$string] = count($this->_referenceStrings);
@@ -291,7 +291,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
         if(is_string($xml)) {
             //nothing to do
         } else if ($xml instanceof DOMDocument) {
-            $xml = $xml->saveXml();
+            $xml = $xml->saveXML();
         } else if ($xml instanceof SimpleXMLElement) {
             $xml = $xml->asXML();
         } else {
@@ -343,8 +343,8 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
         $this->_referenceObjects[] = $array;
 
         // have to seperate mixed from numberic keys.
-        $numeric = array();
-        $string  = array();
+        $numeric = [];
+        $string  = [];
         foreach ($array as $key => &$value) {
             if (is_int($key)) {
                 $numeric[] = $value;
@@ -389,8 +389,8 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
         }
 
         $hash = spl_object_hash($object);
-        $ref = array_key_exists($hash, $this->_referenceObjects) 
-             ? $this->_referenceObjects[$hash] 
+        $ref = array_key_exists($hash, $this->_referenceObjects)
+             ? $this->_referenceObjects[$hash]
              : false;
 
         // quickly handle object references
@@ -456,7 +456,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
 
             $writeTraits = false;
         } else {
-            $propertyNames = array();
+            $propertyNames = [];
 
             if($className == ''){
                 //if there is no className, we interpret the class as dynamic without any sealed members
@@ -471,11 +471,11 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                 }
             }
 
-            $this->_referenceDefinitions[$className] = array(
+            $this->_referenceDefinitions[$className] = [
                         'id'            => count($this->_referenceDefinitions),
                         'encoding'      => $encoding,
                         'propertyNames' => $propertyNames,
-                    );
+                    ];
 
             $traitsInfo = Zend_Amf_Constants::AMF3_OBJECT_ENCODING;
             $traitsInfo |= $encoding << 2;

@@ -20,11 +20,11 @@
 
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
     /**
-     * SplPriorityQueue 
+     * SplPriorityQueue
      *
      * PHP 5.2.X userland implementation of PHP's SplPriorityQueue
      */
-    class SplPriorityQueue implements Iterator , Countable 
+    class SplPriorityQueue implements Iterator , Countable
     {
         /**
          * Extract data only
@@ -62,13 +62,13 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          * All items in the queue
          * @var array
          */
-        protected $queue = array();
+        protected $queue = [];
 
         /**
          * Constructor
-         * 
+         *
          * Creates a new, empty queue
-         * 
+         *
          * @return void
          */
         public function __construct()
@@ -78,10 +78,10 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
         /**
          * Compare two priorities
          *
-         * Returns positive integer if $priority1 is greater than $priority2, 0 
+         * Returns positive integer if $priority1 is greater than $priority2, 0
          * if equal, negative otherwise.
          *
-         * Unused internally, and only included in order to retain the same 
+         * Unused internally, and only included in order to retain the same
          * interface as PHP's SplPriorityQueue.
          *
          * @param  mixed $priority1
@@ -102,10 +102,10 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 
         /**
          * Countable: return number of items composed in the queue
-         * 
+         *
          * @return int
          */
-        public function count()
+        public function count(): int
         {
             return $this->count;
         }
@@ -115,6 +115,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
          *
          * @return mixed
          */
+        #[\ReturnTypeWillChange]
         public function current()
         {
             if (!$this->preparedQueue) {
@@ -205,7 +206,7 @@ if (!is_array($this->preparedQueue)) {
                 $priority = serialize($priority);
             }
             if (!isset($this->queue[$priority])) {
-                $this->queue[$priority] = array();
+                $this->queue[$priority] = [];
             }
             $this->queue[$priority][] = $value;
             $this->count++;
@@ -225,8 +226,9 @@ if (!is_array($this->preparedQueue)) {
         /**
          * Iterator: return current key
          *
-         * @return mixed Usually an int or string
+         * @return int Usually an int or string
          */
+        #[\ReturnTypeWillChange]
         public function key()
         {
             return $this->count;
@@ -237,6 +239,7 @@ if (!is_array($this->preparedQueue)) {
          *
          * @return void
          */
+        #[\ReturnTypeWillChange]
         public function next()
         {
             $this->count--;
@@ -245,7 +248,7 @@ if (!is_array($this->preparedQueue)) {
         /**
          * Recover from corrupted state and allow further actions on the queue
          *
-         * Unimplemented, and only included in order to retain the same interface as PHP's 
+         * Unimplemented, and only included in order to retain the same interface as PHP's
          * SplPriorityQueue.
          *
          * @return void
@@ -259,7 +262,7 @@ if (!is_array($this->preparedQueue)) {
          *
          * @return void
          */
-        public function rewind()
+        public function rewind(): void
         {
             if (!$this->preparedQueue) {
                 $this->prepareQueue();
@@ -268,10 +271,10 @@ if (!is_array($this->preparedQueue)) {
 
         /**
          * Set the extract flags
-         * 
-         * Defines what is extracted by SplPriorityQueue::current(), 
+         *
+         * Defines what is extracted by SplPriorityQueue::current(),
          * SplPriorityQueue::top() and SplPriorityQueue::extract().
-         * 
+         *
          * - SplPriorityQueue::EXTR_DATA (0x00000001): Extract the data
          * - SplPriorityQueue::EXTR_PRIORITY (0x00000002): Extract the priority
          * - SplPriorityQueue::EXTR_BOTH (0x00000003): Extract an array containing both
@@ -283,11 +286,11 @@ if (!is_array($this->preparedQueue)) {
          */
         public function setExtractFlags($flags)
         {
-            $expected = array(
+            $expected = [
                 self::EXTR_DATA => true,
                 self::EXTR_PRIORITY => true,
                 self::EXTR_BOTH => true,
-            );
+            ];
             if (!isset($expected[$flags])) {
                 throw new InvalidArgumentException(sprintf('Expected an EXTR_* flag; received %s', $flags));
             }
@@ -295,7 +298,7 @@ if (!is_array($this->preparedQueue)) {
         }
 
         /**
-         * Return the value or priority (or both) of the top node, depending on 
+         * Return the value or priority (or both) of the top node, depending on
          * the extract flag
          *
          * @return mixed
@@ -317,10 +320,10 @@ if (!is_array($this->preparedQueue)) {
                 return $this->queue[$key][0];
             }
 
-            return array(
+            return [
                 'data'     => $this->queue[$key][0],
                 'priority' => $key,
-            );
+            ];
         }
 
         /**
@@ -328,14 +331,14 @@ if (!is_array($this->preparedQueue)) {
          *
          * @return bool
          */
-        public function valid()
+        public function valid(): bool
         {
             return (bool) $this->count;
         }
 
         /**
          * Sort the queue
-         * 
+         *
          * @return void
          */
         protected function sort()
@@ -345,26 +348,26 @@ if (!is_array($this->preparedQueue)) {
 
         /**
          * Prepare the queue for iteration and/or extraction
-         * 
+         *
          * @return void
          */
         protected function prepareQueue()
         {
             $this->sort();
             $count = $this->count;
-            $queue = array();
+            $queue = [];
             foreach ($this->queue as $priority => $values) {
                 $priorityKey = $priority;
                 if (preg_match('/^(a|O):/', $priority)) {
                     $priority = unserialize($priority);
                 }
                 foreach ($values as $key => $value) {
-                    $queue[$count] = array(
+                    $queue[$count] = [
                         'data'        => $value,
                         'priority'    => $priority,
                         'priorityKey' => $priorityKey,
                         'key'         => $key,
-                    );
+                    ];
                     $count--;
                 }
             }
@@ -398,7 +401,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
 
     /**
      * Constructor
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -409,11 +412,11 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
     /**
      * Insert a value with a given priority
      *
-     * Utilizes {@var $serial} to ensure that values of equal priority are 
+     * Utilizes {@var $serial} to ensure that values of equal priority are
      * emitted in the same order in which they are inserted.
-     * 
-     * @param  mixed $datum 
-     * @param  mixed $priority 
+     *
+     * @param  mixed $datum
+     * @param  mixed $priority
      * @return void
      */
     public function insert($datum, $priority)
@@ -424,7 +427,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         // necessary.
         if ($this->isPhp53) {
             if (!is_array($priority)) {
-                $priority = array($priority, $this->serial--);
+                $priority = [$priority, $this->serial--];
             }
         }
         parent::insert($datum, $priority);
@@ -434,13 +437,13 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
      * Serialize to an array
      *
      * Array will be priority => data pairs
-     * 
+     *
      * @return array
      */
     public function toArray()
     {
         $this->setExtractFlags(self::EXTR_BOTH);
-        $array = array();
+        $array = [];
         while ($this->valid()) {
             $array[] = $this->current();
             $this->next();
@@ -453,7 +456,7 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
         }
 
         // Return only the data
-        $return = array();
+        $return = [];
         foreach ($array as $item) {
             $return[] = $item['data'];
         }
@@ -463,12 +466,17 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
 
     /**
      * Serialize
-     * 
+     *
      * @return string
      */
-    public function serialize()
+    public function serialize(): ?string
     {
-        $data = array();
+        return serialize($this->__serialize());
+    }
+
+    public function __serialize(): array
+    {
+        $data = [];
         $this->setExtractFlags(self::EXTR_BOTH);
         while ($this->valid()) {
             $data[] = $this->current();
@@ -481,18 +489,23 @@ class Zend_Stdlib_SplPriorityQueue extends SplPriorityQueue implements Serializa
             $this->insert($item['data'], $item['priority']);
         }
 
-        return serialize($data);
+        return $data;
     }
 
     /**
      * Deserialize
-     * 
+     *
      * @param  string $data
      * @return void
      */
-    public function unserialize($data)
+    public function unserialize($data): void
     {
-        foreach (unserialize($data) as $item) {
+        $this->__unserialize(unserialize($data));
+    }
+
+    public function __unserialize(array $data): void
+    {
+        foreach ($data as $item) {
             $this->insert($item['data'], $item['priority']);
         }
     }

@@ -54,7 +54,7 @@ class Zend_Application_Resource_Db extends Zend_Application_Resource_ResourceAbs
      *
      * @var array
      */
-    protected $_params = array();
+    protected $_params = [];
 
     /**
      * Wether to register the created adapter as default table adapter
@@ -141,7 +141,7 @@ class Zend_Application_Resource_Db extends Zend_Application_Resource_ResourceAbs
         ) {
             $this->_db = Zend_Db::factory($adapter, $this->getParams());
 
-            if ($this->_db instanceof Zend_Db_Adapter_Abstract 
+            if ($this->_db instanceof Zend_Db_Adapter_Abstract
                 && $this->isDefaultTableAdapter()
             ) {
                 Zend_Db_Table::setDefaultAdapter($this->_db);

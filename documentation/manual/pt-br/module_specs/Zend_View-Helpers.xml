@@ -387,25 +387,101 @@ echo $this->formCheckbox('foo',
 </form>
 ]]></programlisting>
 
-        <xi:include href="Zend_View-Helpers-Action.xml" />
-        <xi:include href="Zend_View-Helpers-BaseUrl.xml" />
-        <xi:include href="Zend_View-Helpers-Currency.xml" />
-        <xi:include href="Zend_View-Helpers-Cycle.xml" />
-        <xi:include href="Zend_View-Helpers-Partial.xml" />
-        <xi:include href="Zend_View-Helpers-Placeholder.xml" />
-        <xi:include href="Zend_View-Helpers-Doctype.xml" />
-        <xi:include href="Zend_View-Helpers-Gravatar.xml" />
-        <xi:include href="Zend_View-Helpers-HeadLink.xml" />
-        <xi:include href="Zend_View-Helpers-HeadMeta.xml" />
-        <xi:include href="Zend_View-Helpers-HeadScript.xml" />
-        <xi:include href="Zend_View-Helpers-HeadStyle.xml" />
-        <xi:include href="Zend_View-Helpers-HeadTitle.xml" />
-        <xi:include href="Zend_View-Helpers-HtmlObject.xml" />
-        <xi:include href="Zend_View-Helpers-InlineScript.xml" />
-        <xi:include href="Zend_View-Helpers-Json.xml" />
-        <xi:include href="Zend_View-Helpers-Navigation.xml" />
-        <xi:include href="Zend_View-Helpers-Translate.xml" />
-        <xi:include href="Zend_View-Helpers-UserAgent.xml" />
+        <xi:include href="Zend_View-Helpers-Action.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Action.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-BaseUrl.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-BaseUrl.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Currency.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Currency.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Cycle.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Cycle.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Partial.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Partial.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Placeholder.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Placeholder.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Doctype.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Doctype.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Gravatar.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Gravatar.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-HeadLink.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-HeadLink.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-HeadMeta.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-HeadMeta.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-HeadScript.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-HeadScript.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-HeadStyle.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-HeadStyle.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-HeadTitle.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-HeadTitle.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-HtmlObject.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-HtmlObject.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-InlineScript.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-InlineScript.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Json.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Json.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Navigation.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Navigation.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-Translate.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-Translate.xml" />
+            </xi:fallback>
+        </xi:include>
+        <xi:include href="Zend_View-Helpers-UserAgent.xml">
+            <xi:fallback>
+                <xi:include href="../../en/module_specs/Zend_View-Helpers-UserAgent.xml" />
+            </xi:fallback>
+        </xi:include>
     </sect2>
 
     <sect2 id="zend.view.helpers.paths">

@@ -52,7 +52,7 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -114,13 +114,13 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
     public function testPassingDatabaseConfigurationSetsObjectState()
     {
         require_once 'Zend/Application/Resource/Db.php';
-        $config = array(
+        $config = [
             'adapter' => 'Pdo_Sqlite',
-            'params'  => array(
+            'params'  => [
                 'dbname' => ':memory:',
-            ),
+            ],
             'isDefaultTableAdapter' => false,
-        );
+        ];
         $resource = new Zend_Application_Resource_Db($config);
         $this->assertFalse($resource->isDefaultTableAdapter());
         $this->assertEquals($config['adapter'], $resource->getAdapter());
@@ -130,13 +130,13 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
     public function testInitShouldInitializeDbAdapter()
     {
         require_once 'Zend/Application/Resource/Db.php';
-        $config = array(
+        $config = [
             'adapter' => 'Pdo_Sqlite',
-            'params'  => array(
+            'params'  => [
                 'dbname' => ':memory:',
-            ),
+            ],
             'isDefaultTableAdapter' => false,
-        );
+        ];
         $resource = new Zend_Application_Resource_Db($config);
         $resource->init();
         $db = $resource->getDbAdapter();
@@ -148,18 +148,18 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDefaultMetadataCache()
     {
-        $cache = Zend_Cache::factory('Core', 'Black Hole', array(
+        $cache = Zend_Cache::factory('Core', 'Black Hole', [
             'lifetime' => 120,
             'automatic_serialization' => true
-        ));
+        ]);
 
-        $config = array(
+        $config = [
             'adapter' => 'PDO_SQLite',
-            'params'  => array(
+            'params'  => [
                 'dbname' => ':memory:',
-            ),
+            ],
             'defaultMetadataCache' => $cache,
-        );
+        ];
         $resource = new Zend_Application_Resource_Db($config);
         $resource->init();
         $this->assertTrue(Zend_Db_Table::getDefaultMetadataCache() instanceof Zend_Cache_Core);
@@ -170,30 +170,30 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDefaultMetadataCacheFromCacheManager()
     {
-        $configCache = array(
-            'database' => array(
-                'frontend' => array(
+        $configCache = [
+            'database' => [
+                'frontend' => [
                     'name' => 'Core',
-                    'options' => array(
+                    'options' => [
                         'lifetime' => 120,
                         'automatic_serialization' => true
-                    )
-                ),
-                'backend' => array(
+                    ]
+                ],
+                'backend' => [
                     'name' => 'Black Hole'
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $this->bootstrap->registerPluginResource('cachemanager', $configCache);
 
-        $config = array(
+        $config = [
             'bootstrap' => $this->bootstrap,
             'adapter' => 'PDO_SQLite',
-            'params'  => array(
+            'params'  => [
                 'dbname' => ':memory:',
-            ),
+            ],
             'defaultMetadataCache' => 'database',
-        );
+        ];
         $resource = new Zend_Application_Resource_Db($config);
         $resource->init();
         $this->assertTrue(Zend_Db_Table::getDefaultMetadataCache() instanceof Zend_Cache_Core);
@@ -204,16 +204,16 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
      */
     public function testSetOptionFetchMode()
     {
-        $config = array(
+        $config = [
             'bootstrap' => $this->bootstrap,
             'adapter' => 'PDO_SQLite',
-            'params'  => array(
+            'params'  => [
                 'dbname'    => ':memory:',
-                'options'   => array(
+                'options'   => [
                     'fetchMode' => 'obj'
-                )
-            ),
-        );
+                ]
+            ],
+        ];
         $resource = new Zend_Application_Resource_Db($config);
         $db = $resource->init();
         $this->assertEquals($db->getFetchMode(), Zend_Db::FETCH_OBJ);
@@ -224,22 +224,22 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDefaultMetadataCacheThroughBootstrap()
     {
-        $options = array(
-            'resources' => array(
-                'db'    => array(
+        $options = [
+            'resources' => [
+                'db'    => [
                     'adapter'  => 'Pdo_Sqlite',
-                    'params'   => array(
+                    'params'   => [
                         'dbname'   => ':memory:'
-                     ),
+                     ],
                      'defaultMetadataCache' => 'default'
-                ),
-                'cachemanager' => array(
-                    'default'  => array(
-                        'backend' => array('name' => 'black-hole')
-                    )
-                )
-            )
-        );
+                ],
+                'cachemanager' => [
+                    'default'  => [
+                        'backend' => ['name' => 'black-hole']
+                    ]
+                ]
+            ]
+        ];
 
         $this->bootstrap->setOptions($options);
         $this->bootstrap->bootstrap();

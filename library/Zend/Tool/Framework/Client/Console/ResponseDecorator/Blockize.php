@@ -53,17 +53,20 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize
 
         // break apart the message into wrapped chunks
         $lines = explode(PHP_EOL, wordwrap($content, $lineLength, PHP_EOL, false));
-        $content = array();
+        $content = [];
+
         foreach($lines AS $line) {
-            if(strlen(trim($line)) == 0) {
+            if(trim($line) === '') {
                 continue;
             }
 
             if(strlen($line) < $lineLength) {
                 $line .= str_repeat(" ", $lineLength-strlen($line));
             }
+
             $content[] = $line;
         }
+
         return implode(PHP_EOL, $content);
     }
 }

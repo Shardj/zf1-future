@@ -55,9 +55,9 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
         $this->Zend_Service_Amazon_Ec2_Instance = new Zend_Service_Amazon_Ec2_Instance('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Instance::setHttpClient($client);
 
@@ -305,7 +305,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
     public function testRunThrowsExceptionWhenNoImageIdPassedIn()
     {
-        $arrStart = array(
+        $arrStart = [
             'maxStart' => 3,
             'keyName'   => 'example-key-name',
             'securityGroup'    => 'default',
@@ -315,7 +315,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
             'ramdiskId'         => 'ari-4538dd2c',
             'blockDeviceVirtualName'    => 'vertdevice',
             'blockDeviceName'       => '/dev/sdv'
-        );
+        ];
 
         try {
             $return = $this->Zend_Service_Amazon_Ec2_Instance->run($arrStart);
@@ -401,7 +401,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
         $this->adapter->setResponse($rawHttpResponse);
 
 
-        $arrStart = array(
+        $arrStart = [
             'imageId' => 'ami-60a54009',
             'maxStart' => 3,
             'keyName'   => 'example-key-name',
@@ -412,14 +412,14 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
             'ramdiskId'         => 'ari-4538dd2c',
             'blockDeviceVirtualName'    => 'vertdevice',
             'blockDeviceName'       => '/dev/sdv'
-        );
+        ];
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->run($arrStart);
 
         $this->assertEquals(3, count($return['instances']));
         $this->assertEquals('495219933132', $return['ownerId']);
 
-        $arrInstanceIds = array('i-2ba64342', 'i-2bc64242', 'i-2be64332');
+        $arrInstanceIds = ['i-2ba64342', 'i-2bc64242', 'i-2be64332'];
 
         foreach($return['instances'] as $k => $r) {
             $this->assertEquals($arrInstanceIds[$k], $r['instanceId']);
@@ -472,21 +472,21 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
                     . "</RunInstancesResponse>\r\n";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $arrStart = array(
+        $arrStart = [
             'imageId' => 'ami-60a54009',
             'keyName'   => 'example-key-name',
-            'securityGroup'    => array('default','web'),
+            'securityGroup'    => ['default','web'],
             'userData'          => 'instance_id=www3',
             'placement'         => 'us-east-1b',
             'kernelId'          => 'aki-4438dd2d',
             'ramdiskId'         => 'ari-4538dd2c',
             'blockDeviceVirtualName'    => 'vertdevice',
             'blockDeviceName'       => '/dev/sdv'
-        );
+        ];
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->run($arrStart);
 
-        $arrGroups = array('default', 'web');
+        $arrGroups = ['default', 'web'];
 
         $this->assertSame($arrGroups, $return['groupSet']);
     }
@@ -567,7 +567,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
                     . "</TerminateInstancesResponse>\r\n";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $arrInstanceIds = array('i-28a64341', 'i-21a64348');
+        $arrInstanceIds = ['i-28a64341', 'i-21a64348'];
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->terminate($arrInstanceIds);
 
@@ -594,7 +594,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
                     . "</RebootInstancesResponse>\r\n";
         $this->adapter->setResponse($rawHttpResponse);
 
-        $arrInstanceIds = array('i-28a64341', 'i-21a64348');
+        $arrInstanceIds = ['i-28a64341', 'i-21a64348'];
         $return = $this->Zend_Service_Amazon_Ec2_Instance->reboot($arrInstanceIds);
 
         $this->assertTrue($return);
@@ -648,7 +648,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->consoleOutput('i-28a64341');
 
-        $arrOutput = array(
+        $arrOutput = [
             'instanceId'    => 'i-28a64341',
             'timestamp'     => '2007-01-03 15:00:00',
             'output'        => "Linux version 2.6.16-xenU (builder@patchbat.amazonsa) (gcc version 4.0.1 20050727 (Red Hat 4.0.1-5)) #1 SMP Thu Oct 26 08:41:26 SAST 2006\n"
@@ -660,7 +660,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 . "IRQ lockup detection disabled\n"
 . "Built 1 zonelists\n"
 . "Kernel command line: root=/dev/sda1 ro 4\n"
-. "Enabling fast FPU save and restore... done.\n");
+. "Enabling fast FPU save and restore... done.\n"];
 
         $this->assertSame($arrOutput, $return);
     }
@@ -690,7 +690,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->monitor('i-43a4412a');
 
-        $arrReturn = array(array('instanceid' => 'i-43a4412a', 'monitorstate' => 'monitoring'));
+        $arrReturn = [['instanceid' => 'i-43a4412a', 'monitorstate' => 'monitoring']];
         $this->assertSame($arrReturn, $return);
     }
 
@@ -719,7 +719,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->unmonitor('i-43a4412a');
 
-        $arrReturn = array(array('instanceid' => 'i-43a4412a', 'monitorstate' => 'pending'));
+        $arrReturn = [['instanceid' => 'i-43a4412a', 'monitorstate' => 'pending']];
         $this->assertSame($arrReturn, $return);
     }
 

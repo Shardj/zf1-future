@@ -79,7 +79,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
     public function testGetSingleIllegalEntryWithException()
     {
         $dn=$this->_createDn('ou=Test99,');
-        $entry=$this->_getLdap()->getEntry($dn, array(), true);
+        $entry=$this->_getLdap()->getEntry($dn, [], true);
     }
 
     public function testCountBase()
@@ -162,9 +162,9 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
 
     public function testSorting()
     {
-        $lSorted=array('a', 'b', 'c', 'd', 'e');
+        $lSorted=['a', 'b', 'c', 'd', 'e'];
         $items=$this->_getLdap()->search('(l=*)', TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
-            Zend_Ldap::SEARCH_SCOPE_SUB, array(), 'l');
+            Zend_Ldap::SEARCH_SCOPE_SUB, [], 'l');
         $this->assertEquals(5, $items->count());
         foreach ($items as $key => $item)
         {
@@ -307,7 +307,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
     {
         try {
             $items=$this->_getLdap()->search('(objectClass=organizationalUnit)',
-                TESTS_ZEND_LDAP_WRITEABLE_SUBTREE, Zend_Ldap::SEARCH_SCOPE_SUB, array(), null,
+                TESTS_ZEND_LDAP_WRITEABLE_SUBTREE, Zend_Ldap::SEARCH_SCOPE_SUB, [], null,
                 'This_Class_Does_Not_Exist');
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
@@ -320,7 +320,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
     {
         try {
             $items=$this->_getLdap()->search('(objectClass=organizationalUnit)',
-                TESTS_ZEND_LDAP_WRITEABLE_SUBTREE, Zend_Ldap::SEARCH_SCOPE_SUB, array(), null,
+                TESTS_ZEND_LDAP_WRITEABLE_SUBTREE, Zend_Ldap::SEARCH_SCOPE_SUB, [], null,
                 'Zend_Ldap_SearchTest_CollectionClassNotSubclassingZendLdapCollection');
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
@@ -335,11 +335,11 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testSearchWithOptionsArray()
     {
-        $items=$this->_getLdap()->search(array(
+        $items=$this->_getLdap()->search([
             'filter' => '(objectClass=organizationalUnit)',
             'baseDn' => TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             'scope'  => Zend_Ldap::SEARCH_SCOPE_SUB
-        ));
+        ]);
         $this->assertEquals(9, $items->count());
     }
 
@@ -348,11 +348,11 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testSearchEntriesShortcutWithOptionsArray()
     {
-        $items=$this->_getLdap()->searchEntries(array(
+        $items=$this->_getLdap()->searchEntries([
             'filter' => '(objectClass=organizationalUnit)',
             'baseDn' => TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             'scope'  => Zend_Ldap::SEARCH_SCOPE_SUB
-        ));
+        ]);
         $this->assertEquals(9, count($items));
     }
 
@@ -361,9 +361,9 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testReverseSortingWithSearchEntriesShortcut()
     {
-        $lSorted = array('e', 'd', 'c', 'b', 'a');
+        $lSorted = ['e', 'd', 'c', 'b', 'a'];
         $items = $this->_getLdap()->searchEntries('(l=*)', TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
-            Zend_Ldap::SEARCH_SCOPE_SUB, array(), 'l', true);
+            Zend_Ldap::SEARCH_SCOPE_SUB, [], 'l', true);
         foreach ($items as $key => $item) {
             $this->assertEquals($lSorted[$key], $item['l'][0]);
         }
@@ -374,14 +374,14 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testReverseSortingWithSearchEntriesShortcutWithOptionsArray()
     {
-        $lSorted = array('e', 'd', 'c', 'b', 'a');
-        $items = $this->_getLdap()->searchEntries(array(
+        $lSorted = ['e', 'd', 'c', 'b', 'a'];
+        $items = $this->_getLdap()->searchEntries([
             'filter'      => '(l=*)',
             'baseDn'      => TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             'scope'       => Zend_Ldap::SEARCH_SCOPE_SUB,
             'sort'        => 'l',
             'reverseSort' => true
-        ));
+        ]);
         foreach ($items as $key => $item) {
             $this->assertEquals($lSorted[$key], $item['l'][0]);
         }
@@ -391,7 +391,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
     {
         $entries = $this->_getLdap()->search('(objectClass=account)',
             TESTS_ZEND_LDAP_WRITEABLE_SUBTREE, Zend_Ldap::SEARCH_SCOPE_SUB,
-            array(), 'uid');
+            [], 'uid');
         $this->assertEquals(0, $entries->count());
         $i = 0;
         foreach ($entries as $key => $item) {
@@ -404,7 +404,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
     {
         $entries = $this->_getLdap()->search('(objectClass=account)',
             TESTS_ZEND_LDAP_WRITEABLE_SUBTREE, Zend_Ldap::SEARCH_SCOPE_SUB,
-            array(), 'uid');
+            [], 'uid');
         $entries = $entries->toArray();
         $this->assertEquals(0, count($entries));
         $i = 0;
@@ -574,7 +574,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
     {
         $dn = $this->_createDn('ou=Node,');
         $list = $this->_getLdap()->search('objectClass=*', $dn, Zend_Ldap::SEARCH_SCOPE_BASE);
-        $list->getInnerIterator()->setAttributeNameTreatment(array('Zend_Ldap_SearchTest_CustomNaming', 'name1'));
+        $list->getInnerIterator()->setAttributeNameTreatment(['Zend_Ldap_SearchTest_CustomNaming', 'name1']);
         $this->assertArrayHasKey('edoclatsop', $list->current());
     }
 
@@ -586,7 +586,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
         $dn = $this->_createDn('ou=Node,');
         $list = $this->_getLdap()->search('objectClass=*', $dn, Zend_Ldap::SEARCH_SCOPE_BASE);
         $namer = new Zend_Ldap_SearchTest_CustomNaming();
-        $list->getInnerIterator()->setAttributeNameTreatment(array($namer, 'name2'));
+        $list->getInnerIterator()->setAttributeNameTreatment([$namer, 'name2']);
         $this->assertArrayHasKey('edoClatsop', $list->current());
     }
 }

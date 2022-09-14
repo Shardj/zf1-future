@@ -52,30 +52,30 @@ class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         // Test Zend_Config
-        $this->options = array(
+        $this->options = [
             'name'      => 'queue1',
-            'params'    => array(),
-        );
+            'params'    => [],
+        ];
 
         $this->queue = new Zend_Queue('array', $this->options);
 
         // construct messages
         $this->message_count = 5;
-        $data  = array();
-        $datum = array();
+        $data  = [];
+        $datum = [];
         for ($i = 0; $i < $this->message_count; $i++) {
-            $data[] = array(
+            $data[] = [
                 'id' => $i+1,
                 'handle' => null,
                 'body' => 'Hello world' // This is my 2524'th time writing that.
-            );
+            ];
         }
 
-        $options = array(
+        $options = [
             'queue'    => $this->queue,
             'data'     => $data,
             'messageClass' => $this->queue->getMessageClass()
-        );
+        ];
 
         $classname = $this->queue->getMessageSetClass();
         if (!class_exists($classname)) {

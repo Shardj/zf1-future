@@ -20,10 +20,14 @@
  * @version    $Id$
  */
 
+use Zend\Http\StreamObject;
+
 /**
  * Zend_Http_Response
  */
 require_once 'Zend/Http/Response.php';
+
+require_once __DIR__ . '/StreamObject.php';
 
 /**
  * Zend_Http_Response unit tests
@@ -38,8 +42,18 @@ require_once 'Zend/Http/Response.php';
  */
 class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
 {
+    /** @var null|string */
+    private $tempFile;
+
     public function setUp()
     { }
+
+    public function tearDown()
+    {
+        if ($this->tempFile !== null && file_exists($this->tempFile)) {
+            unlink($this->tempFile);
+        }
+    }
 
     public function testGzipResponse ()
     {
@@ -173,6 +187,23 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($response->isSuccessful(), 'Response is a redirection, but isSuccessful() returned true');
     }
 
+    /**
+     * @see https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3007
+     */
+    public function testDestructionDoesNothingIfStreamIsNotAResourceAndStreamNameIsNotAString()
+    {
+        $this->tempFile = tempnam(sys_get_temp_dir(), 'lhrs');
+        $streamObject = new StreamObject($this->tempFile);
+
+        $response = new Zend_Http_Response_Stream(200, array());
+        $response->setCleanup(true);
+        $response->setStreamName($streamObject);
+
+        unset($response);
+
+        $this->assertFileExists($this->tempFile);
+    }
+
     public function test200Ok()
     {
         $response = Zend_Http_Response::fromString($this->readResponse('response_deflate'));
@@ -294,7 +325,7 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(Zend_Http_Response::extractMessage($response_str) === false);
         $this->assertTrue(Zend_Http_Response::extractVersion($response_str) === false);
         $this->assertTrue(Zend_Http_Response::extractBody($response_str) === '');
-        $this->assertTrue(Zend_Http_Response::extractHeaders($response_str) === array());
+        $this->assertTrue(Zend_Http_Response::extractHeaders($response_str) === []);
     }
 
     /**
@@ -331,10 +362,10 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructorWithHeadersAssocArray()
     {
-        $response = new Zend_Http_Response(200, array(
+        $response = new Zend_Http_Response(200, [
             'content-type' => 'text/plain',
             'x-foo'        => 'bar:baz'
-        ));
+        ]);
 
         $this->assertEquals('text/plain', $response->getHeader('content-type'));
         $this->assertEquals('bar:baz', $response->getHeader('x-foo'));
@@ -348,10 +379,10 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructorWithHeadersIndexedArrayZF10277()
     {
-        $response = new Zend_Http_Response(200, array(
+        $response = new Zend_Http_Response(200, [
             'content-type: text/plain',
             'x-foo: bar:baz'
-        ));
+        ]);
 
         $this->assertEquals('text/plain', $response->getHeader('content-type'));
         $this->assertEquals('bar:baz', $response->getHeader('x-foo'));
@@ -366,10 +397,10 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructorWithHeadersIndexedArrayNoWhitespace()
     {
-        $response = new Zend_Http_Response(200, array(
+        $response = new Zend_Http_Response(200, [
             'content-type:text/plain',
             'x-foo:bar:baz'
-        ));
+        ]);
 
         $this->assertEquals('text/plain', $response->getHeader('content-type'));
         $this->assertEquals('bar:baz', $response->getHeader('x-foo'));
@@ -395,15 +426,15 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
 
     public function invalidResponseHeaders()
     {
-        return array(
-            'bad-status-line'            => array("HTTP/1.0a 200 OK\r\nHost: example.com\r\n\r\nMessage Body"),
-            'nl-in-header'               => array("HTTP/1.1 200 OK\r\nHost: example.\ncom\r\n\r\nMessage Body"),
-            'cr-in-header'               => array("HTTP/1.1 200 OK\r\nHost: example.\rcom\r\n\r\nMessage Body"),
-            'bad-continuation'           => array("HTTP/1.1 200 OK\r\nHost: example.\r\ncom\r\n\r\nMessage Body"),
-            'no-status-nl-in-header'     => array("Host: example.\ncom\r\n\r\nMessage Body"),
-            'no-status-cr-in-header'     => array("Host: example.\rcom\r\n\r\nMessage Body"),
-            'no-status-bad-continuation' => array("Host: example.\r\ncom\r\n\r\nMessage Body"),
-        );
+        return [
+            'bad-status-line'            => ["HTTP/1.0a 200 OK\r\nHost: example.com\r\n\r\nMessage Body"],
+            'nl-in-header'               => ["HTTP/1.1 200 OK\r\nHost: example.\ncom\r\n\r\nMessage Body"],
+            'cr-in-header'               => ["HTTP/1.1 200 OK\r\nHost: example.\rcom\r\n\r\nMessage Body"],
+            'bad-continuation'           => ["HTTP/1.1 200 OK\r\nHost: example.\r\ncom\r\n\r\nMessage Body"],
+            'no-status-nl-in-header'     => ["Host: example.\ncom\r\n\r\nMessage Body"],
+            'no-status-cr-in-header'     => ["Host: example.\rcom\r\n\r\nMessage Body"],
+            'no-status-bad-continuation' => ["Host: example.\r\ncom\r\n\r\nMessage Body"],
+        ];
     }
 
     /**
@@ -450,5 +481,12 @@ class Zend_Http_ResponseTest extends PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('imagetoolbar', $headers);
         $this->assertEmpty($headers['imagetoolbar']);
+    }
+
+    public function testHttp2()
+    {
+        $response = Zend_Http_Response::fromString($this->readResponse('response_http2'));
+
+        $this->assertEquals("2", $response->getVersion());
     }
 }

@@ -37,8 +37,8 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
         $this->_cache_dir = $this->mkdir();
         $this->_cache = Zend_Cache::factory(
             'Core', 'File',
-            array('automatic_serialization'=>true),
-            array('cache_dir'=>$this->_cache_dir)
+            ['automatic_serialization'=>true],
+            ['cache_dir'=>$this->_cache_dir]
         );
     }
 
@@ -70,44 +70,44 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     public function testLazyLoadsDefaultPageCache()
     {
         $manager = new Zend_Cache_Manager;
-        $manager->setTemplateOptions('pagetag',array(
-            'backend' => array(
-                'options' => array(
+        $manager->setTemplateOptions('pagetag',[
+            'backend' => [
+                'options' => [
                     'cache_dir' => $this->_cache_dir
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
         $this->assertTrue($manager->getCache('page') instanceof Zend_Cache_Frontend_Capture);
     }
 
     public function testCanOverrideCacheFrontendNameConfiguration()
     {
         $manager = new Zend_Cache_Manager;
-        $manager->setTemplateOptions('pagetag',array(
-            'backend' => array(
-                'options' => array(
+        $manager->setTemplateOptions('pagetag',[
+            'backend' => [
+                'options' => [
                     'cache_dir' => $this->_cache_dir
-                )
-            )
-        ));
-        $manager->setTemplateOptions('page', array(
-            'frontend' => array(
+                ]
+            ]
+        ]);
+        $manager->setTemplateOptions('page', [
+            'frontend' => [
                 'name'=> 'Page'
-            )
-        ));
+            ]
+        ]);
         $this->assertTrue($manager->getCache('page') instanceof Zend_Cache_Frontend_Page);
     }
 
     public function testCanMergeTemplateCacheOptionsFromZendConfig()
     {
         $manager = new Zend_Cache_Manager;
-        $config = new Zend_Config(array(
-            'backend' => array(
-                'options' => array(
+        $config = new Zend_Config([
+            'backend' => [
+                'options' => [
                     'cache_dir' => $this->_cache_dir
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
         $manager->setTemplateOptions('pagetag', $config);
         $options = $manager->getCacheTemplate('pagetag');
         $this->assertEquals($this->_cache_dir, $options['backend']['options']['cache_dir']);
@@ -116,31 +116,31 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     public function testCanOverrideCacheBackendendNameConfiguration()
     {
         $manager = new Zend_Cache_Manager;
-        $manager->setTemplateOptions('pagetag',array(
-            'backend' => array(
-                'options' => array(
+        $manager->setTemplateOptions('pagetag',[
+            'backend' => [
+                'options' => [
                     'cache_dir' => $this->_cache_dir
-                )
-            )
-        ));
-        $manager->setTemplateOptions('page', array(
-            'backend' => array(
+                ]
+            ]
+        ]);
+        $manager->setTemplateOptions('page', [
+            'backend' => [
                 'name'=> 'File'
-            )
-        ));
+            ]
+        ]);
         $this->assertTrue($manager->getCache('page')->getBackend() instanceof Zend_Cache_Backend_File);
     }
 
     public function testCanOverrideCacheFrontendOptionsConfiguration()
     {
         $manager = new Zend_Cache_Manager;
-        $manager->setTemplateOptions('page', array(
-            'frontend' => array(
-                'options'=> array(
+        $manager->setTemplateOptions('page', [
+            'frontend' => [
+                'options'=> [
                     'lifetime' => 9999
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
         $config = $manager->getCacheTemplate('page');
         $this->assertEquals(9999, $config['frontend']['options']['lifetime']);
     }
@@ -148,13 +148,13 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     public function testCanOverrideCacheBackendOptionsConfiguration()
     {
         $manager = new Zend_Cache_Manager;
-        $manager->setTemplateOptions('page', array(
-            'backend' => array(
-                'options'=> array(
+        $manager->setTemplateOptions('page', [
+            'backend' => [
+                'options'=> [
                     'public_dir' => './cacheDir'
-                )
-            )
-        ));
+                ]
+            ]
+        ]);
         $config = $manager->getCacheTemplate('page');
         $this->assertEquals('./cacheDir', $config['backend']['options']['public_dir']);
     }
@@ -162,20 +162,20 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     public function testSetsConfigTemplate()
     {
         $manager = new Zend_Cache_Manager;
-        $config = array(
-            'frontend' => array(
+        $config = [
+            'frontend' => [
                 'name' => 'Core',
-                'options' => array(
+                'options' => [
                     'automatic_serialization' => true
-                )
-            ),
-            'backend' => array(
+                ]
+            ],
+            'backend' => [
                 'name' => 'File',
-                'options' => array(
+                'options' => [
                     'cache_dir' => '../cache',
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $manager->setCacheTemplate('myCache', $config);
         $this->assertSame($config, $manager->getCacheTemplate('myCache'));
     }
@@ -183,17 +183,17 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     public function testSetsConfigTemplateWithoutMultipartNameNormalisation()
     {
         $manager = new Zend_Cache_Manager;
-        $config = array(
-            'frontend' => array(
+        $config = [
+            'frontend' => [
                 'name' => 'Core',
-                'options' => array(
+                'options' => [
                     'automatic_serialization' => true
-                )
-            ),
-            'backend' => array(
+                ]
+            ],
+            'backend' => [
                 'name' => 'BlackHole'
-            )
-        );
+            ]
+        ];
         $manager->setCacheTemplate('myCache', $config);
         $this->assertSame($config, $manager->getCacheTemplate('myCache'));
     }
@@ -201,20 +201,20 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
     public function testSetsOptionsTemplateUsingZendConfig()
     {
         $manager = new Zend_Cache_Manager;
-        $config = array(
-            'frontend' => array(
+        $config = [
+            'frontend' => [
                 'name' => 'Core',
-                'options' => array(
+                'options' => [
                     'automatic_serialization' => true
-                )
-            ),
-            'backend' => array(
+                ]
+            ],
+            'backend' => [
                 'name' => 'File',
-                'options' => array(
+                'options' => [
                     'cache_dir' => '../cache',
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $manager->setCacheTemplate('myCache', new Zend_Config($config));
         $this->assertSame($config, $manager->getCacheTemplate('myCache'));
     }
@@ -243,15 +243,15 @@ class Zend_Cache_ManagerTest extends PHPUnit_Framework_TestCase
         $manager = new Zend_Cache_Manager;
         $manager->setTemplateOptions(
             'page',
-            array(
-                 'frontend' => array(
+            [
+                 'frontend' => [
                      'customFrontendNaming' => true,
-                 ),
-                 'backend'  => array(
+                 ],
+                 'backend'  => [
                      'customBackendNaming' => true,
-                 ),
+                 ],
                  'frontendBackendAutoload' => true,
-            )
+            ]
         );
         $config = $manager->getCacheTemplate('page');
         $this->assertTrue($config['frontend']['customFrontendNaming']);

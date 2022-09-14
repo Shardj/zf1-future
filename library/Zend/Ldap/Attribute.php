@@ -55,7 +55,7 @@ class Zend_Ldap_Attribute
     public static function setAttribute(array &$data, $attribName, $value, $append = false)
     {
         $attribName = strtolower($attribName);
-        $valArray = array();
+        $valArray = [];
         if (is_array($value) || ($value instanceof Traversable))
         {
             foreach ($value as $v)
@@ -72,7 +72,7 @@ class Zend_Ldap_Attribute
 
         if ($append === true && isset($data[$attribName]))
         {
-            if (is_string($data[$attribName])) $data[$attribName] = array($data[$attribName]);
+            if (is_string($data[$attribName])) $data[$attribName] = [$data[$attribName]];
             $data[$attribName] = array_merge($data[$attribName], $valArray);
         }
         else
@@ -93,8 +93,8 @@ class Zend_Ldap_Attribute
     {
         $attribName = strtolower($attribName);
         if ($index === null) {
-            if (!isset($data[$attribName])) return array();
-            $retArray = array();
+            if (!isset($data[$attribName])) return [];
+            $retArray = [];
             foreach ($data[$attribName] as $v)
             {
                 $retArray[] = self::_valueFromLdap($v);
@@ -126,7 +126,7 @@ class Zend_Ldap_Attribute
         if (!isset($data[$attribName])) return false;
 
         if (is_scalar($value)) {
-            $value = array($value);
+            $value = [$value];
         }
 
         foreach ($value as $v) {
@@ -166,10 +166,10 @@ class Zend_Ldap_Attribute
         if (!isset($data[$attribName])) return;
 
         if (is_scalar($value)) {
-            $value = array($value);
+            $value = [$value];
         }
 
-        $valArray = array();
+        $valArray = [];
         foreach ($value as $v)
         {
             $v = self::_valueToLdap($v);
@@ -217,7 +217,7 @@ class Zend_Ldap_Attribute
     /**
      * Converts a PHP data type into its LDAP representation
      *
-     * @deprected    use Zend_Ldap_Converter instead
+     * @deprecated     use Zend_Ldap_Converter instead
      * @param          mixed $value
      * @return         string|null - null if the PHP data type cannot be converted.
      */
@@ -229,7 +229,7 @@ class Zend_Ldap_Attribute
     /**
      * Converts an LDAP value into its PHP data type
      *
-     * @deprected    use Zend_Ldap_Converter instead
+     * @deprecated     use Zend_Ldap_Converter instead
      * @param          string $value
      * @return         mixed
      */
@@ -254,7 +254,7 @@ class Zend_Ldap_Attribute
      * Converts LDAP date/time representation into a timestamp
      *
      * @param  string $value
-     * @return integer|null - null if the value cannot be converted.
+     * @return string|null - null if the value cannot be converted.
      */
     public static function convertFromLdapDateTimeValue($value)
     {
@@ -349,7 +349,7 @@ class Zend_Ldap_Attribute
     public static function setDateTimeAttribute(array &$data, $attribName, $value, $utc = false,
         $append = false)
     {
-        $convertedValues = array();
+        $convertedValues = [];
         if (is_array($value) || ($value instanceof Traversable))
         {
             foreach ($value as $v) {
@@ -403,7 +403,7 @@ class Zend_Ldap_Attribute
 
     /**
      * @param  string|DateTime $value
-     * @return integer|null
+     * @return string|null
      */
     private static function _valueFromLdapDateTime($value)
     {

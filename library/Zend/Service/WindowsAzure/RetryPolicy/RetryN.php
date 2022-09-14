@@ -36,21 +36,21 @@ class Zend_Service_WindowsAzure_RetryPolicy_RetryN extends Zend_Service_WindowsA
 {
     /**
      * Number of retries
-     * 
+     *
      * @var int
      */
     protected $_retryCount = 1;
-    
+
     /**
      * Interval between retries (in milliseconds)
-     * 
+     *
      * @var int
      */
     protected $_retryInterval = 0;
-    
+
     /**
      * Constructor
-     * 
+     *
      * @param int $count                    Number of retries
      * @param int $intervalBetweenRetries   Interval between retries (in milliseconds)
      */
@@ -59,28 +59,28 @@ class Zend_Service_WindowsAzure_RetryPolicy_RetryN extends Zend_Service_WindowsA
         $this->_retryCount = $count;
         $this->_retryInterval = $intervalBetweenRetries;
     }
-    
+
     /**
      * Execute function under retry policy
-     * 
+     *
      * @param string|array $function       Function to execute
      * @param array        $parameters     Parameters for function call
      * @return mixed
      */
-    public function execute($function, $parameters = array())
+    public function execute($function, $parameters = [])
     {
         $returnValue = null;
-        
+
         for ($retriesLeft = $this->_retryCount; $retriesLeft >= 0; --$retriesLeft) {
             try {
                 $returnValue = call_user_func_array($function, $parameters);
                 return $returnValue;
             } catch (Exception $ex) {
-                if ($retriesLeft == 1) {
+                if ($retriesLeft === 1) {
                     require_once 'Zend/Service/WindowsAzure/RetryPolicy/Exception.php';
                     throw new Zend_Service_WindowsAzure_RetryPolicy_Exception("Exceeded retry count of " . $this->_retryCount . ". " . $ex->getMessage());
                 }
-                    
+
                 usleep($this->_retryInterval * 1000);
             }
         }

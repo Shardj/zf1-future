@@ -33,6 +33,6 @@ class Zend_EventManager_TestAsset_StaticEventsMock implements Zend_EventManager_
 {
     public function getListeners($id, $event)
     {
-        return array();
+        return [];
     }
 }

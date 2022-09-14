@@ -94,7 +94,7 @@ class Zend_Controller_Request_Apache404Test extends PHPUnit_Framework_TestCase
         $request = new Zend_Controller_Request_Apache404();
         $requestUri = $request->getRequestUri();
         $this->assertEquals('/foo/bar', $requestUri);
-        $this->assertSame(array('baz' => 'bat', 'bat' => 'delta'), $request->getQuery());
+        $this->assertSame(['baz' => 'bat', 'bat' => 'delta'], $request->getQuery());
     }
 }
 

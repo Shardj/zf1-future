@@ -100,12 +100,12 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
         return $this->helper->checkBox(
             'elementId',
             'foo',
-            array(),
-            array(),
-            array(
+            [],
+            [],
+            [
                 'checked'   => 'foo',
                 'unChecked' => 'bar',
-            )
+            ]
         );
     }
 
@@ -146,10 +146,10 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
      */
     public function testElementShouldUseCheckedValueForCheckboxInput()
     {
-        $html = $this->helper->checkBox('foo', '0', array(), array(), array(
+        $html = $this->helper->checkBox('foo', '0', [], [], [
             'checkedValue'   => '1',
             'unCheckedValue' => '0',
-        ));
+        ]);
         if (!preg_match('#(<input[^>]*(?:type="checkbox")[^>]*>)#s', $html, $matches)) {
             $this->fail('Did not find checkbox in html: ' . $html);
         }

@@ -99,9 +99,9 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
     {
         $element = new Zend_Dojo_Form_Element_ComboBox(
             'foo',
-            array(
+            [
                 'label' => 'ComboBox',
-            )
+            ]
         );
         return $element;
     }
@@ -128,11 +128,11 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
 
     public function testSettingStoreParamsShouldProxyToStoreDijitParam()
     {
-        $this->element->setStoreParams(array('url' => '/js/foo.json'));
+        $this->element->setStoreParams(['url' => '/js/foo.json']);
         $this->assertTrue($this->element->hasDijitParam('store'));
         $store = $this->element->getDijitParam('store');
         $this->assertTrue(array_key_exists('params', $store));
-        $this->assertEquals(array('url' => '/js/foo.json'), $store['params']);
+        $this->assertEquals(['url' => '/js/foo.json'], $store['params']);
         $this->assertEquals($this->element->getStoreParams(), $store['params']);
     }
 
@@ -150,11 +150,11 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
      */
     public function testShouldNeverRegisterInArrayValidatorAutomatically()
     {
-        $options = array(
+        $options = [
             'foo' => 'Foo Value',
             'bar' => 'Bar Value',
             'baz' => 'Baz Value',
-        );
+        ];
         $this->element->setMultiOptions($options);
         $this->assertFalse($this->element->getValidator('InArray'));
         $this->element->isValid('test');
@@ -177,12 +177,12 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $this->element->setStoreId('foo')
                       ->setStoreType('dojo.data.ItemFileReadStore')
-                      ->setStoreParams(array(
+                      ->setStoreParams([
                           'url' => '/foo',
-                        ));
+                        ]);
 
         include_once 'Zend/Form/SubForm.php';
-        $subform = new Zend_Form_SubForm(array('name' => 'bar'));
+        $subform = new Zend_Form_SubForm(['name' => 'bar']);
         $subform->addElement($this->element);
         $html = $this->element->render();
         $dojo = $this->view->dojo()->__toString();

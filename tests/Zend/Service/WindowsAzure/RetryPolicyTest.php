@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Test helpers
  */
 require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract */
 require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';
@@ -71,7 +71,7 @@ class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCa
         $this->_executedRetries = 0;
         $policy = Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::noRetry();
         $retries = $policy->execute(
-            array($this, '_countRetries')
+            [$this, '_countRetries']
         );
         $this->assertEquals(1, $retries);
     }
@@ -86,7 +86,7 @@ class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCa
         
         $policy = Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::retryN(10, 100);
         $retries = $policy->execute(
-            array($this, '_countRetriesAndThrowExceptions')
+            [$this, '_countRetriesAndThrowExceptions']
         );
         $this->assertEquals(10, $retries);
     }

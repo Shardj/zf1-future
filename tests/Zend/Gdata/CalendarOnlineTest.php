@@ -100,7 +100,7 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
     {
         $newEntry = $this->gdata->newEventEntry();
         $newEntry->title = $this->gdata->newTitle(trim($title));
-        $newEntry->where  = array($this->gdata->newWhere($where));
+        $newEntry->where  = [$this->gdata->newWhere($where)];
 
         $newEntry->content = $this->gdata->newContent($desc);
         $newEntry->content->type = 'text';
@@ -111,8 +111,8 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
         $reminder = $this->gdata->newReminder();
         $reminder->minutes = '30';
         $reminder->method = 'email';
-        $when->reminders = array($reminder);
-        $newEntry->when = array($when);
+        $when->reminders = [$reminder];
+        $newEntry->when = [$when];
 
         $createdEntry = $this->gdata->insertEvent($newEntry);
 

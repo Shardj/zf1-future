@@ -68,10 +68,10 @@ class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
 
     public function testShorten()
     {
-        $urls = array(
+        $urls = [
             'http://framework.zend.com/'           => 'http://xrl.us/bh4ptf',
             'http://framework.zend.com/manual/en/' => 'http://xrl.us/bh4pth'
-        );
+        ];
 
         foreach ($urls as $url => $shortenedUrl) {
             $this->assertEquals($shortenedUrl, $this->_s->shorten($url));
@@ -80,10 +80,10 @@ class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
 
     public function testUnshorten()
     {
-        $urls = array(
+        $urls = [
             'http://framework.zend.com/'           => 'http://xrl.us/bh4ptf',
             'http://framework.zend.com/manual/en/' => 'http://xrl.us/bh4pth'
-        );
+        ];
 
         foreach ($urls as $url => $shortenedUrl) {
             $this->assertEquals($url, $this->_s->unshorten($shortenedUrl));

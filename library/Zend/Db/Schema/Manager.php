@@ -55,7 +55,7 @@ class Zend_Db_Schema_Manager
      * If the table does not exist, it will be created and the version will
      * be set to 0.
      *
-     * @return int
+     * @return string
      */
     public function getCurrentSchemaVersion()
     {
@@ -243,13 +243,13 @@ class Zend_Db_Schema_Manager
             $to = $currentVersion;
         }
 
-        $files = array();
+        $files = [];
         if (!is_dir($dir) || !is_readable($dir)) {
         	return $files;
         }
 
         $d = dir($dir);
-        $seen = array();
+        $seen = [];
         while (false !== ($entry = $d->read())) {
             if (preg_match('/^([0-9]+)\-(.*)\.php/i', $entry, $matches) ) {
                 $versionNumber = (int)$matches[1];
@@ -260,11 +260,11 @@ class Zend_Db_Schema_Manager
                 $className = $matches[2];
                 if ($versionNumber > $from && $versionNumber <= $to) {
                     $path = $this->_relativePath($this->_dir, $dir);
-                    $files["v{$matches[1]}"] = array(
+                    $files["v{$matches[1]}"] = [
                         'path'=>$path,
                         'filename'=>$entry,
                         'version'=>$versionNumber,
-                        'classname'=>$className);
+                        'classname'=>$className];
                 }
             } elseif ($entry != '.' && $entry != '..') {
                 $subdir = $dir . '/' . $entry;

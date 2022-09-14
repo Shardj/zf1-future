@@ -54,7 +54,7 @@ class Zend_Application_Resource_SessionTest extends PHPUnit_Framework_TestCase
     public function testSetSaveHandlerString()
     {
         $saveHandlerClassName = 'Zend_Application_Resource_SessionTestHandlerMock1';
-        $saveHandler = $this->getMock('Zend_Session_SaveHandler_Interface', array(), array(), $saveHandlerClassName);
+        $saveHandler = $this->getMock('Zend_Session_SaveHandler_Interface', [], [], $saveHandlerClassName);
 
         $this->resource->setSaveHandler($saveHandlerClassName);
 
@@ -64,24 +64,24 @@ class Zend_Application_Resource_SessionTest extends PHPUnit_Framework_TestCase
     public function testSetSaveHandlerArray()
     {
         $saveHandlerClassName = 'Zend_Application_Resource_SessionTestHandlerMock2';
-        $saveHandler = $this->getMock('Zend_Session_SaveHandler_Interface', array(), array(), $saveHandlerClassName);
+        $saveHandler = $this->getMock('Zend_Session_SaveHandler_Interface', [], [], $saveHandlerClassName);
 
-        $this->resource->setSaveHandler(array('class' => $saveHandlerClassName));
+        $this->resource->setSaveHandler(['class' => $saveHandlerClassName]);
 
         $this->assertTrue($this->resource->getSaveHandler() instanceof $saveHandlerClassName);
     }
 
     public function testSetOptions()
     {
-        Zend_Session::setOptions(array(
+        Zend_Session::setOptions([
             'use_only_cookies' => false,
             'remember_me_seconds' => 3600,
-        ));
+        ]);
 
-        $this->resource->setOptions(array(
+        $this->resource->setOptions([
              'use_only_cookies' => true,
              'remember_me_seconds' => 7200,
-        ));
+        ]);
 
         $this->resource->init();
 

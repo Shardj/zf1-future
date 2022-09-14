@@ -107,12 +107,12 @@ class Zend_Service_Amazon_OnlineTest extends PHPUnit_Framework_TestCase
      */
     public function testItemSearchBooksPhp()
     {
-        $resultSet = $this->_amazon->itemSearch(array(
+        $resultSet = $this->_amazon->itemSearch([
             'SearchIndex'   => 'Books',
             'Keywords'      => 'php',
             'ResponseGroup' => 'Small,ItemAttributes,Images,SalesRank,Reviews,EditorialReview,Similarities,'
                              . 'ListmaniaLists'
-            ));
+            ]);
 
         $this->assertTrue(10 < $resultSet->totalResults());
         $this->assertTrue(1 < $resultSet->totalPages());
@@ -148,11 +148,11 @@ class Zend_Service_Amazon_OnlineTest extends PHPUnit_Framework_TestCase
      */
     public function testItemSearchMusicMozart()
     {
-        $resultSet = $this->_amazon->itemSearch(array(
+        $resultSet = $this->_amazon->itemSearch([
             'SearchIndex'   => 'Music',
             'Keywords'      => 'Mozart',
             'ResponseGroup' => 'Small,Tracks,Offers'
-            ));
+            ]);
 
         foreach ($resultSet as $item) {
             $this->assertTrue($item instanceof Zend_Service_Amazon_Item);
@@ -166,11 +166,11 @@ class Zend_Service_Amazon_OnlineTest extends PHPUnit_Framework_TestCase
      */
     public function testItemSearchElectronicsDigitalCamera()
     {
-        $resultSet = $this->_amazon->itemSearch(array(
+        $resultSet = $this->_amazon->itemSearch([
             'SearchIndex'   => 'Electronics',
             'Keywords'      => 'digital camera',
             'ResponseGroup' => 'Accessories'
-            ));
+            ]);
 
         foreach ($resultSet as $item) {
             $this->assertTrue($item instanceof Zend_Service_Amazon_Item);
@@ -184,11 +184,11 @@ class Zend_Service_Amazon_OnlineTest extends PHPUnit_Framework_TestCase
      */
     public function testItemSearchBooksPHPSort()
     {
-        $resultSet = $this->_amazon->itemSearch(array(
+        $resultSet = $this->_amazon->itemSearch([
             'SearchIndex' => 'Books',
             'Keywords'    => 'php',
             'Sort'        => '-titlerank'
-            ));
+            ]);
 
         foreach ($resultSet as $item) {
             $this->assertTrue($item instanceof Zend_Service_Amazon_Item);
@@ -203,11 +203,11 @@ class Zend_Service_Amazon_OnlineTest extends PHPUnit_Framework_TestCase
     public function testItemSearchExceptionCityInvalid()
     {
         try {
-            $this->_amazon->itemSearch(array(
+            $this->_amazon->itemSearch([
                 'SearchIndex' => 'Restaurants',
                 'Keywords'    => 'seafood',
                 'City'        => 'Des Moines'
-                ));
+                ]);
             $this->fail('Expected Zend_Service_Exception not thrown');
         } catch (Zend_Service_Exception $e) {
         }
@@ -265,7 +265,7 @@ class Zend_Service_Amazon_OnlineTest extends PHPUnit_Framework_TestCase
     public function testItemLookupExceptionSearchIndex()
     {
         try {
-            $this->_amazon->itemLookup('oops', array('SearchIndex' => 'Books'));
+            $this->_amazon->itemLookup('oops', ['SearchIndex' => 'Books']);
             $this->fail('Expected Zend_Service_Exception not thrown');
         } catch (Zend_Service_Exception $e) {
             $this->assertContains('restricted parameter combination', $e->getMessage());

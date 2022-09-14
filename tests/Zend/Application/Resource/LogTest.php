@@ -52,7 +52,7 @@ class Zend_Application_Resource_LogTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -81,22 +81,22 @@ class Zend_Application_Resource_LogTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationInitializesLogObject()
     {
-        $resource = new Zend_Application_Resource_Log(array());
+        $resource = new Zend_Application_Resource_Log([]);
         $resource->setBootstrap($this->bootstrap);
-        $resource->setOptions(array(
-            'Mock' => array('writerName' => 'Mock'),
-        ));
+        $resource->setOptions([
+            'Mock' => ['writerName' => 'Mock'],
+        ]);
         $resource->init();
         $this->assertTrue($resource->getLog() instanceof Zend_Log);
     }
 
     public function testInitializationReturnsLogObject()
     {
-        $resource = new Zend_Application_Resource_Log(array());
+        $resource = new Zend_Application_Resource_Log([]);
         $resource->setBootstrap($this->bootstrap);
-        $resource->setOptions(array(
-            'Mock' => array('writerName' => 'Mock'),
-        ));
+        $resource->setOptions([
+            'Mock' => ['writerName' => 'Mock'],
+        ]);
         $test = $resource->init();
         $this->assertTrue($test instanceof Zend_Log);
     }
@@ -104,12 +104,12 @@ class Zend_Application_Resource_LogTest extends PHPUnit_Framework_TestCase
     public function testOptionsPassedToResourceAreUsedToInitializeLog()
     {
         $stream = fopen('php://memory', 'w+', false);
-        $options = array('memory' => array(
+        $options = ['memory' => [
             'writerName'   => 'Stream',
-            'writerParams' => array(
+            'writerParams' => [
                 'stream' => $stream,
-            )
-        ));
+            ]
+        ]];
 
         $resource = new Zend_Application_Resource_Log($options);
         $resource->setBootstrap($this->bootstrap);
@@ -128,19 +128,19 @@ class Zend_Application_Resource_LogTest extends PHPUnit_Framework_TestCase
      */
     public function testNumericLogStreamFilterParamsPriorityDoesNotFail()
     {
-        $options = array(
-            'stream' => array(
+        $options = [
+            'stream' => [
                 'writerName'   => 'Stream',
-                'writerParams' => array(
+                'writerParams' => [
                     'stream' => "php://memory",
                     'mode'   => 'a'
-                ),
+                ],
                 'filterName' => 'Priority',
-                'filterParams' => array(
+                'filterParams' => [
                     'priority' => '4'
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
         $resource = new Zend_Application_Resource_Log($options);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
@@ -152,22 +152,22 @@ class Zend_Application_Resource_LogTest extends PHPUnit_Framework_TestCase
     public function testInitializationWithFilterAndFormatter()
     {
         $stream = fopen('php://memory', 'w+');
-        $options = array(
-            'memory' => array(
+        $options = [
+            'memory' => [
                 'writerName' => 'Stream',
-                'writerParams' => array(
+                'writerParams' => [
                      'stream' => $stream,
-                ),
+                ],
                 'filterName' => 'Priority',
-                'filterParams' => array(
+                'filterParams' => [
                     'priority' => Zend_Log::INFO,
-                ),
+                ],
                 'formatterName' => 'Simple',
-                'formatterParams' => array(
+                'formatterParams' => [
                     'format' => '%timestamp%: %message%',
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $message = 'tottakai';
 
         $resource = new Zend_Application_Resource_Log($options);

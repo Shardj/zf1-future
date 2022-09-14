@@ -42,10 +42,10 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
     /**#@+
      * @var array Character sets
      */
-    static public $V  = array("a", "e", "i", "o", "u", "y");
-    static public $VN = array("a", "e", "i", "o", "u", "y","2","3","4","5","6","7","8","9");
-    static public $C  = array("b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z");
-    static public $CN = array("b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z","2","3","4","5","6","7","8","9");
+    static public $V  = ["a", "e", "i", "o", "u", "y"];
+    static public $VN = ["a", "e", "i", "o", "u", "y","2","3","4","5","6","7","8","9"];
+    static public $C  = ["b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z"];
+    static public $CN = ["b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z","2","3","4","5","6","7","8","9"];
     /**#@-*/
 
     /**
@@ -116,11 +116,11 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
      * Error messages
      * @var array
      */
-    protected $_messageTemplates = array(
+    protected $_messageTemplates = [
         self::MISSING_VALUE => 'Empty captcha value',
         self::MISSING_ID    => 'Captcha ID field is missing',
         self::BAD_CAPTCHA   => 'Captcha value is wrong',
-    );
+    ];
 
     /**
      * Length of the word to generate
@@ -325,7 +325,7 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
     protected function _generateWord()
     {
         $word       = '';
-        $wordLen    = $this->getWordLen();
+        $wordLen    = $this->getWordlen();
         $vowels     = $this->_useNumbers ? self::$VN : self::$V;
         $consonants = $this->_useNumbers ? self::$CN : self::$C;
 

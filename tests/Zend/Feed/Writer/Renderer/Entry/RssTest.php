@@ -195,7 +195,7 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $author = $entry->getAuthor();
-        $this->assertEquals(array('name'=>'Jane'), $entry->getAuthor());
+        $this->assertEquals(['name'=>'Jane'], $entry->getAuthor());
     }
 
     public function testEntryAuthorCharDataEncoding()
@@ -205,17 +205,17 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $author = $entry->getAuthor();
-        $this->assertEquals(array('name'=>'<>&\'"áéíóú'), $entry->getAuthor());
+        $this->assertEquals(['name'=>'<>&\'"áéíóú'], $entry->getAuthor());
     }
 
     public function testEntryHoldsAnyEnclosureAdded()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $this->_validEntry->setEnclosure(array(
+        $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
             'length' => '1337',
             'uri' => 'http://example.com/audio.mp3'
-        ));
+        ]);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $enc = $entry->getEnclosure();
@@ -230,10 +230,10 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testAddsEnclosureThrowsExceptionOnMissingType()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $this->_validEntry->setEnclosure(array(
+        $this->_validEntry->setEnclosure([
             'uri' => 'http://example.com/audio.mp3',
             'length' => '1337'
-        ));
+        ]);
         $renderer->render();
     }
 
@@ -243,10 +243,10 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testAddsEnclosureThrowsExceptionOnMissingLength()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $this->_validEntry->setEnclosure(array(
+        $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
             'uri' => 'http://example.com/audio.mp3'
-        ));
+        ]);
         $renderer->render();
     }
 
@@ -256,11 +256,11 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testAddsEnclosureThrowsExceptionOnNonNumericLength()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $this->_validEntry->setEnclosure(array(
+        $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
             'uri' => 'http://example.com/audio.mp3',
             'length' => 'abc'
-        ));
+        ]);
         $renderer->render();
     }
 
@@ -270,11 +270,11 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testAddsEnclosureThrowsExceptionOnNegativeLength()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $this->_validEntry->setEnclosure(array(
+        $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
             'uri' => 'http://example.com/audio.mp3',
             'length' => -23
-        ));
+        ]);
         $renderer->render();
     }
 
@@ -321,10 +321,10 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testCommentFeedLinksRendered()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $this->_validEntry->setCommentFeedLinks(array(
-            array('uri'=>'http://www.example.com/atom/id/1','type'=>'atom'),
-            array('uri'=>'http://www.example.com/rss/id/1','type'=>'rss'),
-        ));
+        $this->_validEntry->setCommentFeedLinks([
+            ['uri'=>'http://www.example.com/atom/id/1','type'=>'atom'],
+            ['uri'=>'http://www.example.com/rss/id/1','type'=>'rss'],
+        ]);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         // Skipped assertion is because RSS has no facility to show Atom feeds without an extension
@@ -334,17 +334,17 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
 
     public function testCategoriesCanBeSet()
     {
-        $this->_validEntry->addCategories(array(
-            array('term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2')
-        ));
+        $this->_validEntry->addCategories([
+            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2']
+        ]);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
-        $expected = array(
-            array('term'=>'cat_dog', 'label' => 'cat_dog', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null)
-        );
+        $expected = [
+            ['term'=>'cat_dog', 'label' => 'cat_dog', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+        ];
         $this->assertEquals($expected, (array) $entry->getCategories());
     }
 
@@ -353,17 +353,17 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
      */
     public function testCategoriesCharDataEncoding()
     {
-        $this->_validEntry->addCategories(array(
-            array('term'=>'<>&\'"áéíóú', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2')
-        ));
+        $this->_validEntry->addCategories([
+            ['term'=>'<>&\'"áéíóú', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2']
+        ]);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
-        $expected = array(
-            array('term'=>'<>&\'"áéíóú', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'),
-            array('term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null)
-        );
+        $expected = [
+            ['term'=>'<>&\'"áéíóú', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
+            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+        ];
         $this->assertEquals($expected, (array) $entry->getCategories());
     }
 
@@ -372,9 +372,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
      */
     public function testCategoryHasCDataSection()
     {
-        $this->_validEntry->addCategory(array(
+        $this->_validEntry->addCategory([
             'term' => 'This is a test category',
-        ));
+        ]);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $xmlString = $renderer->render()->saveXml();
         $this->assertContains('<category><![CDATA[This is a test category]]></category>', $xmlString);

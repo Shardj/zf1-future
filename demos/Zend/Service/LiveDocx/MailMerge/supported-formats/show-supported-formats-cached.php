@@ -17,14 +17,14 @@ print(Demos_Zend_Service_LiveDocx_Helper::wrapLine(
 
 $cacheId = md5(__FILE__);
 
-$cacheFrontendOptions = array(
+$cacheFrontendOptions = [
     'lifetime' => 2592000, // 30 days
     'automatic_serialization' => true
-);
+];
 
-$cacheBackendOptions = array(
+$cacheBackendOptions = [
     'cache_dir' => dirname(__FILE__) . '/cache'
-);
+];
 
 $cache = Zend_Cache::factory('Core', 'File', $cacheFrontendOptions, $cacheBackendOptions);
 

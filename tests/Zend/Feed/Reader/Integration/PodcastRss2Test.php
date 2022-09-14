@@ -46,7 +46,7 @@ class Zend_Feed_Reader_Integration_PodcastRss2Test extends PHPUnit_Framework_Tes
                 unset($this->_options[$k]);
             }
         }
-        Zend_Date::setOptions(array('format_type'=>'iso'));
+        Zend_Date::setOptions(['format_type'=>'iso']);
     }
 
     public function teardown()

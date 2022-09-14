@@ -51,7 +51,7 @@ class Zend_Config_Yaml extends Zend_Config
      *
      * @var callable
      */
-    protected $_yamlDecoder = array(__CLASS__, 'decode');
+    protected $_yamlDecoder = [__CLASS__, 'decode'];
 
     /**
      * Whether or not to ignore constants in parsed YAML
@@ -165,7 +165,7 @@ class Zend_Config_Yaml extends Zend_Config
         }
 
         // Suppress warnings and errors while loading file
-        set_error_handler(array($this, '_loadFileErrorHandler'));
+        set_error_handler([$this, '_loadFileErrorHandler']);
         $yaml = file_get_contents($yaml);
         restore_error_handler();
 
@@ -191,13 +191,13 @@ class Zend_Config_Yaml extends Zend_Config
         }
 
         if (null === $section) {
-            $dataArray = array();
+            $dataArray = [];
             foreach ($config as $sectionName => $sectionData) {
                 $dataArray[$sectionName] = $this->_processExtends($config, $sectionName);
             }
             parent::__construct($dataArray, $allowModifications);
         } elseif (is_array($section)) {
-            $dataArray = array();
+            $dataArray = [];
             foreach ($section as $sectionName) {
                 if (!isset($config[$sectionName])) {
                     require_once 'Zend/Config/Exception.php';
@@ -222,7 +222,7 @@ class Zend_Config_Yaml extends Zend_Config
             $dataArray = $this->_processExtends($config, $section);
             if (!is_array($dataArray)) {
                 // Section in the yaml data contains just one top level string
-                $dataArray = array($section => $dataArray);
+                $dataArray = [$section => $dataArray];
             }
             parent::__construct($dataArray, $allowModifications);
         }
@@ -240,7 +240,7 @@ class Zend_Config_Yaml extends Zend_Config
      * @return array
      * @throws Zend_Config_Exception When $section cannot be found
      */
-    protected function _processExtends(array $data, $section, array $config = array())
+    protected function _processExtends(array $data, $section, array $config = [])
     {
         if (!isset($data[$section])) {
             require_once 'Zend/Config/Exception.php';
@@ -283,17 +283,17 @@ class Zend_Config_Yaml extends Zend_Config
      * @param  int $currentIndent Current indent level
      * @param  array $lines  YAML lines
      * @param int $pointer The current line being parsed
-     * @return array|string
+     * @return array
      */
     protected static function _decodeYaml($currentIndent, $lines, &$pointer = -1)
     {
-        $config = array();
+        $config = [];
         $inIndent = false;
         while (++$pointer < count($lines)) {
             $lineno = $pointer + 1;
 
             $lines[$pointer] = rtrim(preg_replace("/#.*$/", "", $lines[$pointer]));
-            if (strlen($lines[$pointer]) == 0) {
+            if (strlen($lines[$pointer]) === 0) {
                 continue;
             }
 
@@ -301,7 +301,7 @@ class Zend_Config_Yaml extends Zend_Config
 
             // line without the spaces
             $lines[$pointer] = trim($lines[$pointer]);
-            if (strlen($lines[$pointer]) == 0) {
+            if (strlen($lines[$pointer]) === 0) {
                 continue;
             }
 
@@ -367,7 +367,7 @@ class Zend_Config_Yaml extends Zend_Config
                 $value = substr($value, 1, -1);
             }
         } elseif ('\'' == substr($value, 0, 1) && '\'' == substr($value, -1)) {
-            $value = strtr($value, array("''" => "'", "'" => ''));
+            $value = strtr($value, ["''" => "'", "'" => '']);
         }
 
         // Check for booleans and constants

@@ -39,7 +39,7 @@ class Zend_Serializer_Adapter_PythonPickleSerializeProtocol1Test extends PHPUnit
 
     public function setUp()
     {
-        $this->_adapter = new Zend_Serializer_Adapter_PythonPickle(array('protocol' => 1));
+        $this->_adapter = new Zend_Serializer_Adapter_PythonPickle(['protocol' => 1]);
     }
 
     public function tearDown()

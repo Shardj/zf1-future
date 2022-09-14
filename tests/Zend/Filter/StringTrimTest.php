@@ -59,11 +59,11 @@ class Zend_Filter_StringTrimTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic()
     {
-        $valuesExpected = array(
+        $valuesExpected = [
             'string' => 'string',
             ' str '  => 'str',
             "\ns\t"  => 's'
-            );
+            ];
         foreach ($valuesExpected as $input => $output) {
             $this->assertEquals($output, $this->_filter->filter($input));
         }
@@ -123,11 +123,11 @@ class Zend_Filter_StringTrimTest extends PHPUnit_Framework_TestCase
     public function testSetParamCharListToConstructor()
     {
         require_once 'Zend/Config.php';
-        $config = new Zend_Config(array('charlist' => '&'));
+        $config = new Zend_Config(['charlist' => '&']);
         $filter = new Zend_Filter_StringTrim($config);
         $this->assertEquals('&', $filter->getCharList());
 
-        $filter = new Zend_Filter_StringTrim(array('charlist' => '&'));
+        $filter = new Zend_Filter_StringTrim(['charlist' => '&']);
         $this->assertEquals('&', $filter->getCharList());
 
         $filter = new Zend_Filter_StringTrim('&');

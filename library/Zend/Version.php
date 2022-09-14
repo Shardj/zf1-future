@@ -32,7 +32,7 @@ final class Zend_Version
     /**
      * Zend Framework version identification - see compareVersion()
      */
-    const VERSION = '1.18.5';
+    const VERSION = '1.21.3';
 
     /**
      * The latest stable version Zend Framework available
@@ -69,21 +69,21 @@ final class Zend_Version
         if (null === self::$_latestVersion) {
             self::$_latestVersion = 'not available';
 
-            $opts = array(
-                'http' => array(
+            $opts = [
+                'http' => [
                     'method' => 'GET',
-                    'header' => array(
+                    'header' => [
                         'User-Agent: PHP'
-                    )
-                )
-            );
+                    ]
+                ]
+            ];
             $context = stream_context_create($opts);
             $content = file_get_contents('https://api.github.com/repos/Shardj/zf1-future/releases/latest', false, $context);
 
             if (false !== $content) {
-                $releaseName = json_decode($content, true)['name'];
+                $releaseName = explode('-', json_decode($content, true)['name']);
 
-                self::$_latestVersion = array_pop(explode('-', $releaseName));
+                self::$_latestVersion = array_pop($releaseName);
             }
         }
 

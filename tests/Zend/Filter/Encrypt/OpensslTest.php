@@ -50,15 +50,15 @@ class Zend_Filter_Encrypt_OpensslTest extends PHPUnit_Framework_TestCase
     public function testBasicOpenssl()
     {
         $filter = new Zend_Filter_Encrypt_Openssl(dirname(__FILE__) . '/../_files/publickey.pem');
-        $valuesExpected = array(
+        $valuesExpected = [
             'STRING' => 'STRING',
             'ABC1@3' => 'ABC1@3',
             'A b C'  => 'A B C'
-        );
+        ];
 
         $key = $filter->getPublicKey();
         $this->assertEquals(
-            array(dirname(__FILE__) . '/../_files/publickey.pem' =>
+            [dirname(__FILE__) . '/../_files/publickey.pem' =>
                   '-----BEGIN CERTIFICATE-----
 MIIC3jCCAkegAwIBAgIBADANBgkqhkiG9w0BAQQFADCBtDELMAkGA1UEBhMCTkwx
 FjAUBgNVBAgTDU5vb3JkLUhvbGxhbmQxEDAOBgNVBAcTB1phYW5kYW0xFzAVBgNV
@@ -77,7 +77,7 @@ FDD4V7XpcNU63QIDAQABMA0GCSqGSIb3DQEBBAUAA4GBAFQ22OU/PAN7rRDr23NS
 5jYy6v3b+zwEvY82EUieMldovdnpsS1EScjjvPfQ1lSgcTHT2QX5MjNv13xLnOgh
 PIDs9E7uuizAKDhRRRvho8BS
 -----END CERTIFICATE-----
-'),
+'],
             $key);
         foreach ($valuesExpected as $input => $output) {
             $this->assertNotEquals($output, $filter->encrypt($input));
@@ -147,7 +147,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
             $this->assertContains('not valid', $e->getMessage());
         }
 
-        $filter->setPublicKey(array('private' => dirname(__FILE__) . '/../_files/publickey.pem'));
+        $filter->setPublicKey(['private' => dirname(__FILE__) . '/../_files/publickey.pem']);
     }
 
     /**
@@ -163,9 +163,9 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
             $this->assertContains('not valid', $e->getMessage());
         }
 
-        $filter->setPrivateKey(array('public' => dirname(__FILE__) . '/../_files/privatekey.pem'));
+        $filter->setPrivateKey(['public' => dirname(__FILE__) . '/../_files/privatekey.pem']);
         $test = $filter->getPrivateKey();
-        $this->assertEquals(array(
+        $this->assertEquals([
             dirname(__FILE__) . '/../_files/privatekey.pem' => '-----BEGIN RSA PRIVATE KEY-----
 MIICXgIBAAKBgQDKTIp7FntJt1BioBZ0lmWBE8CyzngeGCHNMcAC4JLbi1Y0LwT4
 CSaQarbvAqBRmc+joHX+rcURm89wOibRaThrrZcvgl2pomzu7shJc0ObiRZC8H7p
@@ -181,7 +181,7 @@ qxzHN7QGmjSn9g36hmH+/rhwKGK9MxfsGkt+/KOOqNi5X8kGIFkxBPGP5LtMisk8
 cAkcoMuBcgWhIn/46C1PAkEAzLK/ibrdMQLOdO4SuDgj/2nc53NZ3agl61ew8Os6
 d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 -----END RSA PRIVATE KEY-----
-'), $test);
+'], $test);
     }
 
     /**
@@ -206,7 +206,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->assertContains('Please give a private key', $e->getMessage());
         }
 
-        $filter->setPrivateKey(array('public' => dirname(__FILE__) . '/../_files/privatekey.pem'));
+        $filter->setPrivateKey(['public' => dirname(__FILE__) . '/../_files/privatekey.pem']);
         try {
             $filter->decrypt('unknown');
             $this->fail();
@@ -248,10 +248,10 @@ ccL43V3Z4JN9OXRAfGWXyrBJNmwURkq7a2EyFElBBWK03OLYVMevQyRJcMKY0ai+
 tmnFUSkH2zwnkXQfPUxg9aV7TmGQv/3TkK1SziyDyNm7GwtyIlfcigCCRz3uc77U
 Izcez5wgmkpNElg/D7/VCd9E+grTfPYNmuTVccGOes+n8ISJJdW0vYX1xwWv5l
 bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
-        $filter = new Zend_Filter_Encrypt_Openssl(array(
+        $filter = new Zend_Filter_Encrypt_Openssl([
             'public' => dirname(__FILE__) . '/../_files/publickey.pem',
             'passphrase' => $passphrase,
-            'private' => dirname(__FILE__) . '/../_files/privatekey.pem'));
+            'private' => dirname(__FILE__) . '/../_files/privatekey.pem']);
         $public = $filter->getPublicKey();
         $this->assertFalse(empty($public));
         $this->assertEquals($passphrase, $filter->getPassphrase());

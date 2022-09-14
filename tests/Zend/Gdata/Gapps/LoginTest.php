@@ -85,8 +85,8 @@ class Zend_Gdata_Gapps_LoginTest extends PHPUnit_Framework_TestCase
         $newLogin = new Zend_Gdata_Gapps_Extension_Login();
         $newLogin->transferFromXML($this->login->saveXML());
         $this->assertEquals(0, count($newLogin->extensionElements));
-        $newLogin->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newLogin->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newLogin->extensionElements));
         $this->assertEquals("johndoe", $newLogin->username);
         $this->assertEquals("abcdefg1234567890", $newLogin->password);
@@ -143,8 +143,8 @@ class Zend_Gdata_Gapps_LoginTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->login->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->login->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->login->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->login->extensionAttributes['foo2']['value']);

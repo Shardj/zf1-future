@@ -131,11 +131,11 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends PHPUnit_Framework_TestC
      */
     public function testCreateServer()
     {       
-        $data = array (
+        $data = [
             'name'     => TESTS_ZEND_SERVICE_RACKSPACE_SERVER_NAME,
             'imageId'  => TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID,
             'flavorId' => TESTS_ZEND_SERVICE_RACKSPACE_SERVER_FLAVORID
-        );
+        ];
         $server= $this->rackspace->createServer($data);
         
         $this->assertTrue($server!==false);

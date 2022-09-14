@@ -37,7 +37,7 @@ http://www.sagehill.net/docbookxsl/index.html
 http://docbook.org/tdg/en/html/part2.html DocBook tag reference
 
 
-To generat a CHM project file, you must install MsHtmlHelpWorkshop.
+To generate a CHM project file, you must install MsHtmlHelpWorkshop.
 
 To build the CHM file on the command line navigate to the directory
 in which the manual html files are built as described above
@@ -51,3 +51,10 @@ where "C:/path/to/workshop/" is the path to MsHtmlHelpWorkshop.
 This will build a "Zend_Framework_LANGUAGE.chm" file.
 
  You should now have an index in the file..
+
+ To generate an HTML version of the documentation optimizes for online
+ presentation, similar to what was published on the Zend Framework
+ website, use the html_site.xsl.in template in conjunction with the
+ chunking Docbook XSL stylesheet:
+
+ DOCBOOK_XSL=https://cdn.docbook.org/release/xsl/current/html/chunk.xsl

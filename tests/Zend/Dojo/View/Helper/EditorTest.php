@@ -134,8 +134,8 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
 
     public function testHelperShouldJsonifyPlugins()
     {
-        $plugins = array('copy', 'cut', 'paste');
-        $html = $this->helper->editor('foo', '', array('plugins' => $plugins));
+        $plugins = ['copy', 'cut', 'paste'];
+        $html = $this->helper->editor('foo', '', ['plugins' => $plugins]);
         $pluginsString = Zend_Json::encode($plugins);
         $pluginsString = str_replace('"', "'", $pluginsString);
         $this->assertContains('plugins="' . $pluginsString . '"', $html);
@@ -180,11 +180,11 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
      */
     public function testHelperShouldRegisterPluginModulesWithDojo()
     {
-        $plugins = array(
+        $plugins = [
             'createLink' => 'LinkDialog',
             'fontName' => 'FontChoice',
-        );
-        $html = $this->helper->editor('foo', '', array('plugins' => array_keys($plugins)));
+        ];
+        $html = $this->helper->editor('foo', '', ['plugins' => array_keys($plugins)]);
 
         $dojo = $this->view->dojo()->__toString();
         foreach (array_values($plugins) as $plugin) {
@@ -224,8 +224,8 @@ class Zend_Dojo_View_Helper_EditorTest extends PHPUnit_Framework_TestCase
     /** @group ZF-5711 */
     public function testHelperShouldJsonifyExtraPlugins()
     {
-        $extraPlugins = array('copy', 'cut', 'paste');
-        $html = $this->helper->editor('foo', '', array('extraPlugins' => $extraPlugins));
+        $extraPlugins = ['copy', 'cut', 'paste'];
+        $html = $this->helper->editor('foo', '', ['extraPlugins' => $extraPlugins]);
         $pluginsString = Zend_Json::encode($extraPlugins);
         $pluginsString = str_replace('"', "'", $pluginsString);
         $this->assertContains('extraPlugins="' . $pluginsString . '"', $html);

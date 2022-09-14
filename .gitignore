@@ -12,4 +12,6 @@ vendor/*
 composer.lock
 bin/dbunit
 bin/phpunit
+bin/parallel-lint
 .php_cs.cache
+.idea

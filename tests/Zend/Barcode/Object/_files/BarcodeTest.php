@@ -14,7 +14,7 @@ class Zend_Barcode_Object_Test extends Zend_Barcode_Object_ObjectAbstract
 
     protected function _prepareBarcode()
     {
-        return array();
+        return [];
     }
 
     protected function _checkParams()

@@ -68,7 +68,7 @@ class Zend_Markup_ParserIntegrityTest extends PHPUnit_Framework_TestCase
                 $token->addChild(new Zend_Markup_Token(
                     $token->getStopper(),
                     Zend_Markup_Token::TYPE_NONE,
-                    '', array(), $token)
+                    '', [], $token)
                 );
             }
         }

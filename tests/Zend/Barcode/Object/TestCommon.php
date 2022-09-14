@@ -82,16 +82,16 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
     public function testConstructorWithArray()
     {
         $object = $this->_getBarcodeObject(
-                array('barHeight' => 150 ,
-                        'unknownProperty' => 'aValue'));
+                ['barHeight' => 150 ,
+                        'unknownProperty' => 'aValue']);
         $this->assertEquals(150, $object->getBarHeight());
     }
 
     public function testConstructorWithZendConfig()
     {
         $config = new Zend_Config(
-                array('barHeight' => 150 ,
-                        'unknownProperty' => 'aValue'));
+                ['barHeight' => 150 ,
+                        'unknownProperty' => 'aValue']);
         $object = $this->_getBarcodeObject($config);
         $this->assertEquals(150, $object->getBarHeight());
     }
@@ -99,16 +99,16 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
     public function testSetOptions()
     {
         $this->_object->setOptions(
-                array('barHeight' => 150 ,
-                        'unknownProperty' => 'aValue'));
+                ['barHeight' => 150 ,
+                        'unknownProperty' => 'aValue']);
         $this->assertEquals(150, $this->_object->getBarHeight());
     }
 
     public function testSetConfig()
     {
         $config = new Zend_Config(
-                array('barHeight' => 150 ,
-                        'unknownProperty' => 'aValue'));
+                ['barHeight' => 150 ,
+                        'unknownProperty' => 'aValue']);
         $this->_object->setConfig($config);
         $this->assertEquals(150, $this->_object->getBarHeight());
     }
@@ -318,7 +318,7 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
             $this->markTestSkipped(
                     'GD extension is required to run this test');
         }
-        $gdFontSize = array(8 , 13 , 13 , 16 , 15);
+        $gdFontSize = [8 , 13 , 13 , 16 , 15];
         for ($i = 1; $i <= 5; $i ++) {
             $this->_object->setFont($i);
             $this->assertSame($i, $this->_object->getFont());
@@ -402,39 +402,39 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
     public function testAddInstruction()
     {
         $object = new Zend_Barcode_Object_Test();
-        $instructions = array('type' => 'text' , 'text' => 'text' , 'size' => 10 ,
-                'position' => array(5 , 5) ,
+        $instructions = ['type' => 'text' , 'text' => 'text' , 'size' => 10 ,
+                'position' => [5 , 5] ,
                 'font' => 'my_font.ttf' ,
                 'color' => '#123456' ,
                 'alignment' => 'center' ,
-                'orientation' => 45);
+                'orientation' => 45];
         $object->addInstruction($instructions);
-        $this->assertSame(array($instructions), $object->getInstructions());
+        $this->assertSame([$instructions], $object->getInstructions());
     }
 
     public function testAddPolygon()
     {
         $object = new Zend_Barcode_Object_Test();
-        $points = array();
+        $points = [];
         $color = '#123456';
         $filled = false;
-        $instructions = array('type' => 'polygon' , 'points' => $points ,
-                'color' => $color , 'filled' => $filled);
+        $instructions = ['type' => 'polygon' , 'points' => $points ,
+                'color' => $color , 'filled' => $filled];
         $object->addPolygon($points, $color, $filled);
-        $this->assertSame(array($instructions), $object->getInstructions());
+        $this->assertSame([$instructions], $object->getInstructions());
     }
 
     public function testAddPolygonWithDefaultColor()
     {
         $object = new Zend_Barcode_Object_Test();
-        $points = array();
+        $points = [];
         $color = 123456;
         $object->setForeColor($color);
         $filled = false;
-        $instructions = array('type' => 'polygon' , 'points' => $points ,
-                'color' => $color , 'filled' => $filled);
+        $instructions = ['type' => 'polygon' , 'points' => $points ,
+                'color' => $color , 'filled' => $filled];
         $object->addPolygon($points, null, $filled);
-        $this->assertSame(array($instructions), $object->getInstructions());
+        $this->assertSame([$instructions], $object->getInstructions());
     }
 
     public function testAddText()
@@ -442,19 +442,19 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
         $object = new Zend_Barcode_Object_Test();
         $size = 10;
         $text = 'foobar';
-        $position = array();
+        $position = [];
         $font = 'my_font.ttf';
         $color = '#123456';
         $alignment = 'right';
         $orientation = 45;
-        $instructions = array('type' => 'text' , 'text' => $text , 'size' => $size ,
+        $instructions = ['type' => 'text' , 'text' => $text , 'size' => $size ,
                 'position' => $position ,
                 'font' => $font , 'color' => $color ,
                 'alignment' => $alignment ,
-                'orientation' => $orientation);
+                'orientation' => $orientation];
         $object->addText($text, $size, $position, $font, $color, $alignment,
                 $orientation);
-        $this->assertSame(array($instructions), $object->getInstructions());
+        $this->assertSame([$instructions], $object->getInstructions());
     }
 
     public function testAddTextWithDefaultColor()
@@ -462,19 +462,19 @@ abstract class Zend_Barcode_Object_TestCommon extends PHPUnit_Framework_TestCase
         $object = new Zend_Barcode_Object_Test();
         $size = 10;
         $text = 'foobar';
-        $position = array();
+        $position = [];
         $font = 'my_font.ttf';
         $color = 123456;
         $object->setForeColor($color);
         $alignment = 'right';
         $orientation = 45;
-        $instructions = array('type' => 'text' , 'text' => $text , 'size' => $size ,
+        $instructions = ['type' => 'text' , 'text' => $text , 'size' => $size ,
                 'position' => $position ,
                 'font' => $font , 'color' => $color ,
                 'alignment' => $alignment ,
-                'orientation' => $orientation);
+                'orientation' => $orientation];
         $object->addText($text, $size, $position, $font, null, $alignment, $orientation);
-        $this->assertSame(array($instructions), $object->getInstructions());
+        $this->assertSame([$instructions], $object->getInstructions());
     }
 
     /**

@@ -71,7 +71,7 @@ class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
     {
         $optionName = 'invalid';
         try {
-            $this->_ldap->setOptions(array($optionName => 'irrelevant'));
+            $this->_ldap->setOptions([$optionName => 'irrelevant']);
             $this->fail('Expected Zend_Ldap_Exception not thrown');
         } catch (Zend_Ldap_Exception $e) {
             $this->assertEquals("Unknown Zend_Ldap option: $optionName", $e->getMessage());
@@ -83,7 +83,7 @@ class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testExplodeDnOperation()
     {
-        $inputs = array(
+        $inputs = [
             'CN=Alice Baker,CN=Users,DC=example,DC=com' => true,
             'CN=Baker\\, Alice,CN=Users,DC=example,DC=com' => true,
             'OU=Sales,DC=local' => true,
@@ -103,7 +103,7 @@ class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
             'O=ACME' => true,
             '' => false,
             '   ' => false,
-        );
+        ];
 
         foreach ($inputs as $dn => $expected) {
             $ret = Zend_Ldap::explodeDn($dn);

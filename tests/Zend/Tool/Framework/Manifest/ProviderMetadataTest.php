@@ -63,14 +63,14 @@ class Zend_Tool_Framework_Manifest_ProviderMetadataTest extends PHPUnit_Framewor
     {
         $obj1 = new ArrayObject();
 
-        $metadata = new Zend_Tool_Framework_Manifest_ProviderMetadata(array(
+        $metadata = new Zend_Tool_Framework_Manifest_ProviderMetadata([
             'name' => 'Foo',
             'providerName' => 'FooBar',
             'actionName' => 'BarBaz',
             'specialtyName' => 'FooBarBaz',
             'value' => 'Bar',
             'reference' => $obj1
-            ));
+            ]);
 
         $this->assertEquals('Foo',       $metadata->getName());
         $this->assertEquals('FooBar',    $metadata->getProviderName());
@@ -84,14 +84,14 @@ class Zend_Tool_Framework_Manifest_ProviderMetadataTest extends PHPUnit_Framewor
     {
         $obj1 = new ArrayObject();
 
-        $this->_metadata->setOptions(array(
+        $this->_metadata->setOptions([
             'name' => 'Foo',
             'providerName' => 'FooBar',
             'actionName' => 'BarBaz',
             'specialtyName' => 'FooBarBaz',
             'value' => 'Bar',
             'reference' => $obj1
-            ));
+            ]);
 
         $this->assertEquals('Foo',       $this->_metadata->getName());
         $this->assertEquals('FooBar',    $this->_metadata->getProviderName());
@@ -117,14 +117,14 @@ class Zend_Tool_Framework_Manifest_ProviderMetadataTest extends PHPUnit_Framewor
     {
         $obj1 = new ArrayObject();
 
-        $this->_metadata->setOptions(array(
+        $this->_metadata->setOptions([
             'name' => 'Foo',
             'providerName' => 'FooBar',
             'actionName' => 'BarBaz',
             'specialtyName' => 'FooBarBaz',
             'value' => 'Bar',
             'reference' => $obj1
-            ));
+            ]);
 
         $this->assertEquals('Type: Provider, Name: Foo, Value: Bar (ProviderName: FooBar, ActionName: BarBaz, SpecialtyName: FooBarBaz)', (string) $this->_metadata);
     }

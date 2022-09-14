@@ -120,7 +120,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      * @param string $env      Environment to read database conguration from
      * @param string $dir      Directory containing migration scripts
      *
-     * @return booolean
+     * @return bool
      */
     public function increment($versions=1,$env='development', $dir='./scripts/migrations')
     {
@@ -155,6 +155,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function current($env='development', $dir='./migrations')
     {
         $this->_init($env);
@@ -254,7 +255,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
 
         $options = false;
         if ($allowModifications) {
-            $options = array('allowModifications' => true);
+            $options = ['allowModifications' => true];
         }
 
         $suffix = pathinfo($filename, PATHINFO_EXTENSION);
@@ -359,7 +360,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      */
     protected function _getAppConfigOverridePathList($appConfigFilePath)
     {
-        $pathList     = array();
+        $pathList     = [];
         $appConfigDir = dirname($appConfigFilePath);
         $userConfig   = false;
 
@@ -391,7 +392,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
             if ($userConfig->name instanceof Zend_Config) {
                 $fileNameList = $userConfig->name->toArray();
             } else {
-                $fileNameList = array(200 => $userConfig->name);
+                $fileNameList = [200 => $userConfig->name];
             }
 
             foreach($fileNameList as $order => $fileName) {
@@ -407,7 +408,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
             if ($userConfig->path instanceof Zend_Config) {
                 $filePathList = $userConfig->path->toArray();
             } else {
-                $filePathList = array(300 => $userConfig->path);
+                $filePathList = [300 => $userConfig->path];
             }
 
             foreach($filePathList as $order => $filePath) {

@@ -74,9 +74,9 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
 
         $album = new Zend_Gdata_Photos_AlbumEntry();
         $album->setTitle($client->newTitle("testAlbum"));
-        $album->setCategory(array($client->newCategory(
+        $album->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#album',
-            'http://schemas.google.com/g/2005#kind')));
+            'http://schemas.google.com/g/2005#kind')]);
 
         $newAlbum = $client->insertAlbumEntry($album);
         $this->assertEquals($album->getTitle(), $newAlbum->getTitle());
@@ -99,9 +99,9 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $photo = new Zend_Gdata_Photos_PhotoEntry();
         $photo->setMediaSource($fd);
         $photo->setTitle($client->newTitle("test photo"));
-        $photo->setCategory(array($client->newCategory(
+        $photo->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#photo',
-            'http://schemas.google.com/g/2005#kind')));
+            'http://schemas.google.com/g/2005#kind')]);
 
         $newPhoto = $client->insertPhotoEntry($photo, $album);
         $this->assertEquals($photo->getTitle(), $newPhoto->getTitle());
@@ -127,7 +127,7 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $insertedEntry->mediaGroup->keywords = $keywords;
 
         $updatedEntry = $insertedEntry->save();
-        return array($updatedEntry, $album);
+        return [$updatedEntry, $album];
     }
 
     public function createComment($photo)
@@ -137,9 +137,9 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $comment = new Zend_Gdata_Photos_CommentEntry();
         $comment->setTitle($client->newTitle("test comment"));
         $comment->setContent($client->newContent("test comment"));
-        $comment->setCategory(array($client->newCategory(
+        $comment->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#comment',
-            'http://schemas.google.com/g/2005#kind')));
+            'http://schemas.google.com/g/2005#kind')]);
 
         $newComment = $client->insertCommentEntry($comment, $photo);
         $this->assertEquals($comment->getContent(), $newComment->getContent());
@@ -155,9 +155,9 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $tag = new Zend_Gdata_Photos_TagEntry();
         $tag->setTitle($client->newTitle("test tag"));
         $tag->setContent($client->newContent("test tag"));
-        $tag->setCategory(array($client->newCategory(
+        $tag->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#tag',
-            'http://schemas.google.com/g/2005#kind')));
+            'http://schemas.google.com/g/2005#kind')]);
 
         $newTag = $client->insertTagEntry($tag, $photo);
         $this->assertEquals($tag->getTitle(), $newTag->getTitle());

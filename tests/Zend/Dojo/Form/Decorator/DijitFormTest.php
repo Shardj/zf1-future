@@ -103,15 +103,15 @@ class Zend_Dojo_Form_Decorator_DijitFormTest extends PHPUnit_Framework_TestCase
     public function getElement()
     {
         $element = new Zend_Dojo_Form();
-        $element->setAttribs(array(
+        $element->setAttribs([
             'name'   => 'foo',
             'style'  => 'width: 300px; height: 500px;',
             'class'  => 'someclass',
-            'dijitParams' => array(
+            'dijitParams' => [
                 'labelAttr' => 'foobar',
                 'typeAttr'  => 'barbaz',
-            ),
-        ));
+            ],
+        ]);
         return $element;
     }
 
@@ -130,14 +130,14 @@ class Zend_Dojo_Form_Decorator_DijitFormTest extends PHPUnit_Framework_TestCase
     public function testRenderingShouldEnforceFormName()
     {
         $element = new Zend_Dojo_Form();
-        $element->setAttribs(array(
+        $element->setAttribs([
             'style'  => 'width: 300px; height: 500px;',
             'class'  => 'someclass',
-            'dijitParams' => array(
+            'dijitParams' => [
                 'labelAttr' => 'foobar',
                 'typeAttr'  => 'barbaz',
-            ),
-        ));
+            ],
+        ]);
         $element->setView($this->view);
         $decorator = new Zend_Dojo_Form_Decorator_DijitForm();
         $decorator->setElement($element);

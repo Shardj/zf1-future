@@ -41,11 +41,11 @@ class ZendDbProfilerFirebugController extends Zend_Controller_Action
                                       col1    VARCHAR(10) NOT NULL
                                     )');
 
-        $db->insert('foo', array('id'=>1,'col1'=>'original'));
+        $db->insert('foo', ['id'=>1,'col1'=>'original']);
 
         $db->fetchAll('SELECT * FROM foo WHERE id = ?', 1);
 
-        $db->update('foo', array('col1'=>'new'), 'id = 1');
+        $db->update('foo', ['col1'=>'new'], 'id = 1');
 
         $db->fetchAll('SELECT * FROM foo WHERE id = ?', 1);
 
@@ -59,16 +59,16 @@ class ZendDbProfilerFirebugController extends Zend_Controller_Action
         $profiler1 = new Zend_Db_Profiler_Firebug('All DB Queries for first database');
 
         $db1 = Zend_Db::factory('PDO_SQLITE',
-                               array('dbname' => ':memory:',
-                                     'profiler' => $profiler1));
+                               ['dbname' => ':memory:',
+                                     'profiler' => $profiler1]);
 
         $db1->getProfiler()->setEnabled(true);
 
         $profiler2 = new Zend_Db_Profiler_Firebug('All DB Queries for second database');
 
         $db2 = Zend_Db::factory('PDO_SQLITE',
-                               array('dbname' => ':memory:',
-                                     'profiler' => $profiler2));
+                               ['dbname' => ':memory:',
+                                     'profiler' => $profiler2]);
 
         $db2->getProfiler()->setEnabled(true);
 
@@ -77,14 +77,14 @@ class ZendDbProfilerFirebugController extends Zend_Controller_Action
                                       col1    VARCHAR(10) NOT NULL
                                     )');
 
-        $db1->insert('foo', array('id'=>1,'col1'=>'original'));
+        $db1->insert('foo', ['id'=>1,'col1'=>'original']);
 
         $db2->getConnection()->exec('CREATE TABLE foo (
                                       id      INTEGNER NOT NULL,
                                       col1    VARCHAR(10) NOT NULL
                                     )');
 
-        $db2->insert('foo', array('id'=>1,'col1'=>'original'));
+        $db2->insert('foo', ['id'=>1,'col1'=>'original']);
     }
 
 }

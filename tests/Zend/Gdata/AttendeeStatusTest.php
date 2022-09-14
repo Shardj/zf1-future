@@ -72,8 +72,8 @@ class Zend_Gdata_AttendeeStatusTest extends PHPUnit_Framework_TestCase
         $newAttendeeStatus = new Zend_Gdata_Extension_AttendeeStatus();
         $newAttendeeStatus->transferFromXML($this->attendeeStatus->saveXML());
         $this->assertEquals(0, count($newAttendeeStatus->extensionElements));
-        $newAttendeeStatus->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newAttendeeStatus->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newAttendeeStatus->extensionElements));
         $this->assertEquals("http://schemas.google.com/g/2005#event.accepted", $newAttendeeStatus->value);
 
@@ -105,8 +105,8 @@ class Zend_Gdata_AttendeeStatusTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->attendeeStatus->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->attendeeStatus->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->attendeeStatus->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->attendeeStatus->extensionAttributes['foo2']['value']);

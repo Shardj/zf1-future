@@ -55,7 +55,7 @@ class Zend_Filter_File_Encrypt extends Zend_Filter_Encrypt
      * Sets the new filename where the content will be stored
      *
      * @param  string $filename (Optional) New filename to set
-     * @return Zend_Filter_File_Encryt
+     * @return Zend_Filter_File_Encrypt
      */
     public function setFilename($filename = null)
     {

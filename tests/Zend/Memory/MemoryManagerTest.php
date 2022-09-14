@@ -78,7 +78,7 @@ class Zend_Memory_MemoryManagerTest extends PHPUnit_Framework_TestCase
     public function testCreation()
     {
         /** 'File' backend */
-        $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+        $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
         $memoryManager = Zend_Memory::factory('File', $backendOptions);
         $this->assertTrue($memoryManager instanceof Zend_Memory_Manager);
     }
@@ -92,7 +92,7 @@ class Zend_Memory_MemoryManagerTest extends PHPUnit_Framework_TestCase
     public function testBackendNamingProcessing()
     {
         /** 'File' backend */
-        $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+        $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
         $memoryManager = Zend_Memory::factory('fIlE', $backendOptions);
     }
 
@@ -102,7 +102,7 @@ class Zend_Memory_MemoryManagerTest extends PHPUnit_Framework_TestCase
     public function testSettings()
     {
         /** 'File' backend */
-        $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+        $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
         $memoryManager = Zend_Memory::factory('File', $backendOptions);
 
         // MemoryLimit
@@ -122,7 +122,7 @@ class Zend_Memory_MemoryManagerTest extends PHPUnit_Framework_TestCase
     public function testCreate()
     {
         /** 'File' backend */
-        $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+        $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
         $memoryManager = Zend_Memory::factory('File', $backendOptions);
 
         $memObject1 = $memoryManager->create('Value of object 1');
@@ -149,13 +149,13 @@ class Zend_Memory_MemoryManagerTest extends PHPUnit_Framework_TestCase
     public function testProcessing()
     {
         /** 'File' backend */
-        $backendOptions = array('cache_dir' => $this->cacheDir); // Directory where to put the cache files
+        $backendOptions = ['cache_dir' => $this->cacheDir]; // Directory where to put the cache files
         $memoryManager = Zend_Memory::factory('File', $backendOptions);
 
         $memoryManager->setMinSize(256);
         $memoryManager->setMemoryLimit(1024*32);
 
-        $memObjects = array();
+        $memObjects = [];
         for ($count = 0; $count < 64; $count++) {
             $memObject = $memoryManager->create(str_repeat((string)($count % 10), 1024) /* 1K */);
             $memObjects[] = $memObject;

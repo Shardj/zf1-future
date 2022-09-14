@@ -181,7 +181,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
     const METRIC_TOTAL_EVENTS = 'ga:totalEvents';
     const METRIC_UNIQUE_EVENTS = 'ga:uniqueEvents';
     const METRIC_EVENT_VALUE = 'ga:eventValue';
-    
+
     // suported filter operators
     const EQUALS = "==";
     const EQUALS_NOT = "!=";
@@ -193,7 +193,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
     const CONTAINS_NOT ="!@";
     const REGULAR ="=~";
     const REGULAR_NOT ="!~";
-    
+
     /**
      * @var string
      */
@@ -201,20 +201,20 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
     /**
      * @var array
      */
-    protected $_dimensions = array();
+    protected $_dimensions = [];
     /**
      * @var array
      */
-    protected $_metrics = array();
+    protected $_metrics = [];
     /**
      * @var array
      */
-    protected $_sort = array();
+    protected $_sort = [];
     /**
      * @var array
      */
-    protected $_filters = array();
-    
+    protected $_filters = [];
+
     /**
      * @param string $id
      * @return Zend_Gdata_Analytics_DataQuery
@@ -239,7 +239,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
      */
     public function addDimension($dimension)
     {
-        $this->_dimensions[$dimension] = true;        
+        $this->_dimensions[$dimension] = true;
         return $this;
     }
 
@@ -305,27 +305,27 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         $this->setParam("end-date", $date);
         return $this;
     }
-    
+
     /**
      * @param string $filter
      * @return Zend_Gdata_Analytics_DataQuery
      */
     public function addFilter($filter)
     {
-        $this->_filters[] = array($filter, true);
+        $this->_filters[] = [$filter, true];
         return $this;
     }
-    
+
     /**
      * @param string $filter
      * @return Zend_Gdata_Analytics_DataQuery
      */
     public function addOrFilter($filter)
     {
-        $this->_filters[] = array($filter, false);
+        $this->_filters[] = [$filter, false];
         return $this;
     }
-    
+
     /**
      * @param string $sort
      * @param boolean[optional] $descending
@@ -337,16 +337,16 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         $this->_sort[] = ($descending?'-':'').$sort;
         return $this;
     }
-    
+
     /**
      * @return Zend_Gdata_Analytics_DataQuery
      */
     public function clearSort()
     {
-        $this->_sort = array();
+        $this->_sort = [];
         return $this;
     }
-    
+
     /**
      * @param string $segment
      * @return Zend_Gdata_Analytics_DataQuery
@@ -366,37 +366,37 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         if (isset($this->_url)) {
             $uri = $this->_url;
         }
-        
+
         $dimensions = $this->getDimensions();
         if (!empty($dimensions)) {
             $this->setParam('dimensions', implode(",", array_keys($dimensions)));
         }
-        
+
         $metrics = $this->getMetrics();
         if (!empty($metrics)) {
             $this->setParam('metrics', implode(",", array_keys($metrics)));
         }
-        
+
         // profile id (ga:tableId)
         if ($this->getProfileId() != null) {
             $this->setParam('ids', 'ga:'.ltrim($this->getProfileId(), "ga:"));
         }
-                
+
         // sorting
         if ($this->_sort) {
             $this->setParam('sort', implode(",", $this->_sort));
         }
-        
+
         // filtering
         $filters = "";
         foreach ($this->_filters as $filter) {
             $filters.=($filter[1]===true?';':',').$filter[0];
         }
-        
+
         if ($filters!="") {
             $this->setParam('filters', ltrim($filters, ",;"));
         }
-        
+
         $uri .= $this->getQueryString();
         return $uri;
     }

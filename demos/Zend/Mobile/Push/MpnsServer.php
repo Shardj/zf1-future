@@ -5,7 +5,7 @@ require_once 'Zend/Mobile/Push/Message/Mpns/Tile.php';
 require_once 'Zend/Mobile/Push/Message/Mpns/Toast.php';
 
 $mpns = new Zend_Mobile_Push_Mpns();
-$messages = array();
+$messages = [];
  
 // raw notification
 $message = new Zend_Mobile_Push_Message_Mpns_Raw();

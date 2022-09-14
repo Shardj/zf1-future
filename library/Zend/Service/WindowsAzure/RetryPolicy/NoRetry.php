@@ -36,15 +36,15 @@ class Zend_Service_WindowsAzure_RetryPolicy_NoRetry extends Zend_Service_Windows
 {
     /**
      * Execute function under retry policy
-     * 
+     *
      * @param string|array $function       Function to execute
      * @param array        $parameters     Parameters for function call
      * @return mixed
      */
-    public function execute($function, $parameters = array())
+    public function execute($function, $parameters = [])
     {
         $returnValue = null;
-        
+
         try
         {
             $returnValue = call_user_func_array($function, $parameters);

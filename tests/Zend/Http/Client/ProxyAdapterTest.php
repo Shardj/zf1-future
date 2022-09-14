@@ -30,7 +30,7 @@ require_once 'Zend/Http/Client/Adapter/Proxy.php';
  * In order to run, TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY must point to a working
  * proxy server, which can access TESTS_ZEND_HTTP_CLIENT_BASEURI.
  *
- * See TestConfiguration.php.dist for more information.
+ * See TestConfiguration.dist.php for more information.
  *
  * @category   Zend
  * @package    Zend_Http_Client
@@ -76,13 +76,13 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
                     $pass = TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_PASS;
 
 
-            $this->config = array(
+            $this->config = [
                 'adapter'    => 'Zend_Http_Client_Adapter_Proxy',
                 'proxy_host' => $host,
                 'proxy_port' => $port,
                 'proxy_user' => $user,
                 'proxy_pass' => $pass,
-            );
+            ];
 
             parent::setUp();
 
@@ -97,9 +97,9 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      */
     public function testFallbackToSocket()
     {
-        $this->_adapter->setConfig(array(
+        $this->_adapter->setConfig([
             'proxy_host' => null,
-        ));
+        ]);
 
         $this->client->setUri($this->baseuri . 'testGetLastRequest.php');
         $res = $this->client->request(Zend_Http_Client::TRACE);

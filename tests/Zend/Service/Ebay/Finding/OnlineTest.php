@@ -69,17 +69,17 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
 
     public function testResponseTypeFinds()
     {
-        $services =  array('findItemsAdvanced'     => array('tolkien'),
-                           'findItemsByCategory'   => array('10181'),
-                           'findItemsByKeywords'   => array('harry+potter'),
-                           'findItemsByProduct'    => array('53039031'),
-                           'findItemsInEbayStores' => array("Laura_Chen's_Small_Store"));
+        $services =  ['findItemsAdvanced'     => ['tolkien'],
+                           'findItemsByCategory'   => ['10181'],
+                           'findItemsByKeywords'   => ['harry+potter'],
+                           'findItemsByProduct'    => ['53039031'],
+                           'findItemsInEbayStores' => ["Laura_Chen's_Small_Store"]];
 
         $item     = null;
         $category = null;
         $store    = null;
         foreach ($services as $service => $params) {
-            $response = call_user_func_array(array($this->_finding, $service), $params);
+            $response = call_user_func_array([$this->_finding, $service], $params);
             $this->assertTrue($response instanceof Zend_Service_Ebay_Finding_Response_Items);
             if (!$item && $response->attributes('searchResult', 'count') > 0) {
                 $item = $response->searchResult->item->current();
@@ -103,10 +103,10 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
         $response2 = $item->findItemsByProduct($this->_finding);
         $this->assertTrue($response2 instanceof Zend_Service_Ebay_Finding_Response_Items);
 
-        $response3 = $category->findItems($this->_finding, array());
+        $response3 = $category->findItems($this->_finding, []);
         $this->assertTrue($response3 instanceof Zend_Service_Ebay_Finding_Response_Items);
 
-        $response4 = $store->findItems($this->_finding, array());
+        $response4 = $store->findItems($this->_finding, []);
         $this->assertTrue($response4 instanceof Zend_Service_Ebay_Finding_Response_Items);
     }
 
@@ -115,7 +115,7 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
         $response = $this->_finding->getSearchKeywordsRecommendation('hary');
         $this->assertTrue($response instanceof Zend_Service_Ebay_Finding_Response_Keywords);
 
-        $response2 = $response->findItems($this->_finding, array());
+        $response2 = $response->findItems($this->_finding, []);
         $this->assertTrue($response2 instanceof Zend_Service_Ebay_Finding_Response_Items);
 
         $response3 = $this->_finding->getHistograms('11233');

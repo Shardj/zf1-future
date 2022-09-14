@@ -1,0 +1,38 @@
+name: run PHP lint with supported PHP versions
+
+on: [push, pull_request]
+
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 0
+    - name: PHP syntax checker 7.1
+      uses: prestashop/github-action-php-lint/7.1@v1.1
+      with:
+        folder-to-exclude: "! -path \"./tests/Zend/Loader/_files/*\""
+    - name: PHP syntax checker 7.2
+      uses: prestashop/github-action-php-lint/7.2@v1.1
+      with:
+        folder-to-exclude: "! -path \"./tests/Zend/Loader/_files/*\""
+    - name: PHP syntax checker 7.3
+      uses: prestashop/github-action-php-lint/7.3@v1.1
+      with:
+        folder-to-exclude: "! -path \"./tests/Zend/Loader/_files/*\""
+    - name: PHP syntax checker 7.4
+      uses: prestashop/github-action-php-lint/7.4@v1.1
+      with:
+        folder-to-exclude: "! -path \"./tests/Zend/Loader/_files/*\""
+    - name: PHP syntax checker 8.0
+      uses: prestashop/github-action-php-lint/8.0@v1.1
+      with:
+        folder-to-exclude: "! -path \"./tests/Zend/Loader/_files/*\""
+    - name: PHP syntax checker 8.1
+      uses: prestashop/github-action-php-lint/8.1@v1.1
+      with:
+        folder-to-exclude: "! -path \"./tests/Zend/Loader/_files/*\""
+
+# excluding the folder ./tests/Zend/Loader/_files/ because of ./tests/Zend/Loader/_files/ParseError.php

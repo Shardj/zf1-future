@@ -100,8 +100,8 @@ class Zend_Dojo_View_Helper_TextareaTest extends PHPUnit_Framework_TestCase
         return $this->helper->textarea(
             'elementId',
             'some content',
-            array(),
-            array()
+            [],
+            []
         );
     }
 
@@ -121,7 +121,7 @@ class Zend_Dojo_View_Helper_TextareaTest extends PHPUnit_Framework_TestCase
 
     public function testPassingIdAsAttributeShouldOverrideUsingNameAsId()
     {
-        $html = $this->helper->textarea('foo[bar]', '', array(), array('id' => 'foo-bar'));
+        $html = $this->helper->textarea('foo[bar]', '', [], ['id' => 'foo-bar']);
         $this->assertContains('id="foo-bar"', $html);
     }
 

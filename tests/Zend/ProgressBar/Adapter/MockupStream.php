@@ -33,7 +33,7 @@ class Zend_ProgressBar_Adapter_Console_MockupStream {
 
     private $test;
 
-    public static $tests = array();
+    public static $tests = [];
 
     function stream_open($path, $mode, $options, &$opened_path)
     {

@@ -49,12 +49,12 @@ class Zend_Test_PHPUnit_Db_Integration_MysqlIntegrationTest extends Zend_Test_PH
             return;
         }
 
-        $params = array(
+        $params = [
             'host'     => TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME,
             'username' => TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME,
             'password' => TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD,
             'dbname'   => TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE,
-        );
+        ];
 
         $this->dbAdapter = Zend_Db::factory('pdo_mysql', $params);
         $this->dbAdapter->query("DROP TABLE IF EXISTS foo");

@@ -77,8 +77,8 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
         $newWebContent = new Zend_Gdata_Calendar_Extension_WebContent();
         $newWebContent->transferFromXML($this->webContent->saveXML());
         $this->assertEquals(count($newWebContent->extensionElements), 0);
-        $newWebContent->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newWebContent->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(count($newWebContent->extensionElements), 1);
         $this->assertEquals($newWebContent->url, "http://nowhere.invalid/");
         $this->assertEquals($newWebContent->height, "100");
@@ -118,8 +118,8 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->webContent->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->webContent->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->webContent->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->webContent->extensionAttributes['foo2']['value']);

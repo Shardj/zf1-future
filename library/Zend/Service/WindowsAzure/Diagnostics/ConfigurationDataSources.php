@@ -64,18 +64,18 @@ class Zend_Service_WindowsAzure_Diagnostics_ConfigurationDataSources
 {
     /**
      * Constructor
-     * 
+     *
 	 * @param	int	$overallQuotaInMB				Overall quota in MB
 	 */
-    public function __construct($overallQuotaInMB = 0) 
-    {	        
-        $this->_data = array(
+    public function __construct($overallQuotaInMB = 0)
+    {
+        $this->_data = [
             'overallquotainmb'        		=> $overallQuotaInMB,
             'logs'             				=> new Zend_Service_WindowsAzure_Diagnostics_ConfigurationLogs(),
             'diagnosticinfrastructurelogs'  => new Zend_Service_WindowsAzure_Diagnostics_ConfigurationDiagnosticInfrastructureLogs(),
             'performancecounters'     		=> new Zend_Service_WindowsAzure_Diagnostics_ConfigurationPerformanceCounters(),
             'windowseventlog'              	=> new Zend_Service_WindowsAzure_Diagnostics_ConfigurationWindowsEventLog(),
             'directories'             		=> new Zend_Service_WindowsAzure_Diagnostics_ConfigurationDirectories()
-        );
+        ];
     }
 }

@@ -101,9 +101,9 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
      *
      * @param  string|Zend_Db_Select $sql  The SQL statement with placeholders.
      * @param  mixed                 $bind An array of data to bind to the placeholders.
-     * @return Zend_Db_Statement (may also be PDOStatement in the case of PDO)
+     * @return Zend_Db_Statement_Static (may also be PDOStatement in the case of PDO)
      */
-    public function query($sql, $bind = array())
+    public function query($sql, $bind = [])
     {
         // connect to the database if needed
         $this->_connect();
@@ -117,7 +117,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
         // don't use (array) typecasting because
         // because $bind may be a Zend_Db_Expr object
         if (!is_array($bind)) {
-            $bind = array($bind);
+            $bind = [$bind];
         }
 
         // prepare and execute the statement with profiling
@@ -141,7 +141,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
      */
     public function listTables()
     {
-        return array('dummy');
+        return ['dummy'];
     }
 
     /**
@@ -173,7 +173,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
      */
     public function describeTable($tableName, $schemaName = null)
     {
-        return array(
+        return [
             'SCHEMA_NAME'      => $schemaName,
             'TABLE_NAME'       => $tableName,
             'COLUMN_NAME'      => null,
@@ -187,7 +187,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
             'UNSIGNED'         => null,
             'PRIMARY'          => null,
             'PRIMARY_POSITION' => null,
-        );
+        ];
     }
 
     /**
@@ -225,7 +225,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
      * Prepare a statement and return a PDOStatement-like object.
      *
      * @param  string|Zend_Db_Select $sql SQL query
-     * @return Zend_Db_Statment_Static
+     * @return Zend_Db_Statement_Static
      */
     public function prepare($sql)
     {
@@ -244,7 +244,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
      *
      * @param string $tableName   OPTIONAL Name of table.
      * @param string $primaryKey  OPTIONAL Name of primary key column.
-     * @return integer
+     * @return integer|null
      */
     public function lastInsertId($tableName = null, $primaryKey = 'id')
     {

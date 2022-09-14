@@ -862,7 +862,7 @@ function runCLIVersion($argv, $argc)
         # Dispatch arguments to the desired method
         switch ($argv[1]) {
             case 'createUser':
-                if ($argc == 9) {
+                if ($argc === 9) {
                     createUser($gapps, false, $argv[5], $argv[6], $argv[7], $argv[8]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -873,7 +873,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveUser':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     retrieveUser($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -885,7 +885,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveAllUsers':
-                if ($argc == 5) {
+                if ($argc === 5) {
                     retrieveAllUsers($gapps, false);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -895,7 +895,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'updateUserName':
-                if ($argc == 8) {
+                if ($argc === 8) {
                     updateUserName($gapps, false, $argv[5], $argv[6], $argv[7]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -906,7 +906,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'updateUserPassword':
-                if ($argc == 7) {
+                if ($argc === 7) {
                     updateUserPassword($gapps, false, $argv[5], $argv[6]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -917,7 +917,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'suspendUser':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     suspendUser($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -928,7 +928,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'restoreUser':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     restoreUser($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -939,7 +939,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'giveUserAdminRights':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     giveUserAdminRights($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -950,7 +950,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'revokeUserAdminRights':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     revokeUserAdminRights($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -961,7 +961,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'setUserMustChangePassword':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     setUserMustChangePassword($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -972,7 +972,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'clearUserMustChangePassword':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     clearUserMustChangePassword($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -984,7 +984,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'deleteUser':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     deleteUser($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -995,7 +995,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'createNickname':
-                if ($argc == 7) {
+                if ($argc === 7) {
                     createNickname($gapps, false, $argv[5], $argv[6]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1006,7 +1006,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveNickname':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     retrieveNickname($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1018,7 +1018,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveNicknames':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     retrieveNicknames($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1029,7 +1029,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveAllNicknames':
-                if ($argc == 5) {
+                if ($argc === 5) {
                     retrieveAllNicknames($gapps, false);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1040,7 +1040,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'deleteNickname':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     deleteNickname($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1051,7 +1051,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'createEmailList':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     createEmailList($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1062,7 +1062,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveEmailLists':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     retrieveEmailLists($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1074,7 +1074,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveAllEmailLists':
-                if ($argc == 5) {
+                if ($argc === 5) {
                     retrieveAllEmailLists($gapps, false);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1086,7 +1086,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'deleteEmailList':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     deleteEmailList($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1097,7 +1097,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'addRecipientToEmailList':
-                if ($argc == 7) {
+                if ($argc === 7) {
                     addRecipientToEmailList($gapps, false, $argv[5], $argv[6]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1108,7 +1108,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'retrieveAllRecipients':
-                if ($argc == 6) {
+                if ($argc === 6) {
                     retrieveAllRecipients($gapps, false, $argv[5]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .
@@ -1119,7 +1119,7 @@ function runCLIVersion($argv, $argc)
                 }
                 break;
             case 'removeRecipientFromEmailList':
-                if ($argc == 7) {
+                if ($argc === 7) {
                     removeRecipientFromEmailList($gapps, false, $argv[5], $argv[6]);
                 } else {
                     echo "Usage: php {$argv[0]} {$argv[1]} <username> <domain> <password> " .

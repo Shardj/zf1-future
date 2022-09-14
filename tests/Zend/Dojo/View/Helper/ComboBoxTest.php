@@ -100,16 +100,16 @@ class Zend_Dojo_View_Helper_ComboBoxTest extends PHPUnit_Framework_TestCase
         return $this->helper->comboBox(
             'elementId',
             'someCombo',
-            array(),
-            array(),
-            array(
+            [],
+            [],
+            [
                 'red' => 'Rouge',
                 'blue' => 'Bleu',
                 'white' => 'Blanc',
                 'orange' => 'Orange',
                 'black' => 'Noir',
                 'green' => 'Vert',
-            )
+            ]
         );
     }
 
@@ -118,17 +118,17 @@ class Zend_Dojo_View_Helper_ComboBoxTest extends PHPUnit_Framework_TestCase
         return $this->helper->comboBox(
             'elementId',
             'someCombo',
-            array(
-                'store' => array(
+            [
+                'store' => [
                     'store' => 'stateStore',
                     'type' => 'dojo.data.ItemFileReadStore',
-                    'params' => array(
+                    'params' => [
                         'url' => 'states.txt'
-                    )
-                ),
+                    ]
+                ],
                 'searchAttr' => 'name'
-            ),
-            array()
+            ],
+            []
         );
     }
 
@@ -181,12 +181,12 @@ class Zend_Dojo_View_Helper_ComboBoxTest extends PHPUnit_Framework_TestCase
         $html = $this->helper->comboBox(
             'elementId',
             'someCombo',
-            array(
+            [
                 'store'       => 'stateStore',
                 'storeType'   => 'dojo.data.ItemFileReadStore',
-                'storeParams' => array('url' => 'states.txt'),
+                'storeParams' => ['url' => 'states.txt'],
                 'searchAttr'  => 'name',
-            )
+            ]
         );
         if (!preg_match('/(<input[^>]*(dojoType="dijit.form.ComboBox"))/', $html, $m)) {
             $this->fail('Did not create text input as remoter: ' . $html);

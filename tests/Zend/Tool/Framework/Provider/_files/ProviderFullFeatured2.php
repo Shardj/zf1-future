@@ -39,7 +39,7 @@ class Zend_Tool_Framework_Provider_ProviderFullFeatured2 extends Zend_Tool_Frame
 
     public function getSpecialties()
     {
-        return array('Hi', 'BloodyMurder', 'ForYourTeam');
+        return ['Hi', 'BloodyMurder', 'ForYourTeam'];
     }
 
     /**

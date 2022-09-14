@@ -123,7 +123,7 @@ class Zend_Server_ReflectionTest extends PHPUnit_Framework_TestCase
  * @param string|array $arg2
  * @param string $arg3 Optional argument
  * @param string|struct|false $arg4 Optional argument
- * @return boolean|array
+ * @return void
  */
 function Zend_Server_Reflection_testFunction($arg1, $arg2, $arg3 = 'string', $arg4 = 'array')
 {
@@ -151,7 +151,7 @@ class Zend_Server_Reflection_testClass
      *
      * @param string $arg1
      * @param array $arg2
-     * @return string
+     * @return void
      */
     public function one($arg1, $arg2 = null)
     {
@@ -164,7 +164,7 @@ class Zend_Server_Reflection_testClass
      *
      * @param string $arg1
      * @param array $arg2
-     * @return string
+     * @return void
      */
     protected function _one($arg1, $arg2 = null)
     {
@@ -175,7 +175,7 @@ class Zend_Server_Reflection_testClass
      *
      * @param string $arg1
      * @param string $arg2
-     * @return boolean|array
+     * @return void
      */
     public static function two($arg1, $arg2)
     {

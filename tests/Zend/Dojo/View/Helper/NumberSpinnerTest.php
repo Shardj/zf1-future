@@ -100,14 +100,14 @@ class Zend_Dojo_View_Helper_NumberSpinnerTest extends PHPUnit_Framework_TestCase
         return $this->helper->numberSpinner(
             'elementId',
             '5',
-            array(
+            [
                 'smallDelta' => '10',
                 'min' => 9,
                 'max' => 1550,
                 'places' => 0,
                 'required'    => true,
-            ),
-            array()
+            ],
+            []
         );
     }
 
@@ -154,9 +154,9 @@ class Zend_Dojo_View_Helper_NumberSpinnerTest extends PHPUnit_Framework_TestCase
         $html = $this->helper->numberSpinner(
             'foo',
             5,
-            array (
+            [
                 'constraints' => 'bogus',
-            )
+            ]
         );
         $this->assertNotContains('constraints="', $html);
     }

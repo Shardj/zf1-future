@@ -104,7 +104,7 @@ class Zend_Gdata_Gapps_UserEntryTest extends PHPUnit_Framework_TestCase
         $entry2 = new Zend_Gdata_Extension_FeedLink();
         $entry2->rel = "second";
         $entry2->href= "bar";
-        $data = array($entry1, $entry2);
+        $data = [$entry1, $entry2];
 
         // Load test data and run test
         $this->entry->feedLink = $data;
@@ -119,7 +119,7 @@ class Zend_Gdata_Gapps_UserEntryTest extends PHPUnit_Framework_TestCase
         $entry2 = new Zend_Gdata_Extension_FeedLink();
         $entry2->rel = "second";
         $entry2->href= "bar";
-        $data = array($entry1, $entry2);
+        $data = [$entry1, $entry2];
 
         // Load test data and run test
         $this->entry->feedLink = $data;

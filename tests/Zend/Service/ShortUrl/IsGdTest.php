@@ -68,10 +68,10 @@ class Zend_Service_ShortUrl_IsGdTest extends PHPUnit_Framework_TestCase
 
     public function testShorten()
     {
-        $urls = array(
+        $urls = [
             'http://framework.zend.com/',
             'http://framework.zend.com/manual/en/',
-        );
+        ];
 
         foreach ($urls as $url) {
             $shortenedUrl = $this->_s->shorten($url);
@@ -83,10 +83,10 @@ class Zend_Service_ShortUrl_IsGdTest extends PHPUnit_Framework_TestCase
 
     public function testUnshorten()
     {
-        $urls = array(
+        $urls = [
             'http://framework.zend.com/'           => 'http://is.gd/g3ASn',
             'http://framework.zend.com/manual/en/' => 'http://is.gd/g3AVm'
-        );
+        ];
 
         foreach ($urls as $url => $shortenedUrl) {
             $this->assertEquals($url, $this->_s->unshorten($shortenedUrl));

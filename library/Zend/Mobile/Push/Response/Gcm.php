@@ -84,7 +84,7 @@ class Zend_Mobile_Push_Response_Gcm
      *
      * @param string $responseString JSON encoded response
      * @param Zend_Mobile_Push_Message_Gcm $message
-     * @return Zend_Mobile_Push_Response_Gcm
+     * @return void
      * @throws Zend_Mobile_Push_Exception_ServerUnavailable
      */
     public function __construct($responseString = null, Zend_Mobile_Push_Message_Gcm $message = null)
@@ -195,7 +195,7 @@ class Zend_Mobile_Push_Response_Gcm
      *
      * @return array multi dimensional array of:
      *         NOTE: key is registration_id if the message is passed.
-     *         'registration_id' => array( 
+     *         'registration_id' => array(
      *             'message_id' => 'id',
      *             'error' => 'error',
      *             'registration_id' => 'id'
@@ -215,7 +215,7 @@ class Zend_Mobile_Push_Response_Gcm
      */
     public function getResult($flag)
     {
-        $ret = array();
+        $ret = [];
         foreach ($this->_correlate() as $k => $v) {
             if (isset($v[$flag])) {
                 $ret[$k] = $v[$flag];

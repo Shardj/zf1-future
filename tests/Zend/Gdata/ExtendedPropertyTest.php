@@ -74,8 +74,8 @@ class Zend_Gdata_ExtendedPropertyTest extends PHPUnit_Framework_TestCase
         $newExtendedProperty = new Zend_Gdata_Extension_ExtendedProperty();
         $newExtendedProperty->transferFromXML($this->extendedProperty->saveXML());
         $this->assertEquals(0, count($newExtendedProperty->extensionElements));
-        $newExtendedProperty->extensionElements = array(
-                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar'));
+        $newExtendedProperty->extensionElements = [
+                new Zend_Gdata_App_Extension_Element('foo', 'atom', null, 'bar')];
         $this->assertEquals(1, count($newExtendedProperty->extensionElements));
         $this->assertEquals("http://www.example.com/schemas/2007#mycal.foo", $newExtendedProperty->name);
         $this->assertEquals("5678", $newExtendedProperty->value);
@@ -111,8 +111,8 @@ class Zend_Gdata_ExtendedPropertyTest extends PHPUnit_Framework_TestCase
 
     public function testExtensionAttributes() {
         $extensionAttributes = $this->extendedProperty->extensionAttributes;
-        $extensionAttributes['foo1'] = array('name'=>'foo1', 'value'=>'bar');
-        $extensionAttributes['foo2'] = array('name'=>'foo2', 'value'=>'rab');
+        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
+        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
         $this->extendedProperty->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->extendedProperty->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->extendedProperty->extensionAttributes['foo2']['value']);

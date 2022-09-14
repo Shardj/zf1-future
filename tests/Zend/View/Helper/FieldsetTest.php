@@ -88,7 +88,7 @@ class Zend_View_Helper_FieldsetTest extends PHPUnit_Framework_TestCase
 
     public function testProvidingLegendOptionToFieldsetCreatesLegendTag()
     {
-        $html = $this->helper->fieldset('foo', 'foobar', array('legend' => 'Great Scott!'));
+        $html = $this->helper->fieldset('foo', 'foobar', ['legend' => 'Great Scott!']);
         $this->assertRegexp('#<legend>Great Scott!</legend>#', $html);
     }
 
@@ -97,8 +97,8 @@ class Zend_View_Helper_FieldsetTest extends PHPUnit_Framework_TestCase
      */
     public function testEmptyLegendShouldNotRenderLegendTag()
     {
-        foreach (array(null, '', ' ', false) as $legend) {
-            $html = $this->helper->fieldset('foo', 'foobar', array('legend' => $legend));
+        foreach ([null, '', ' ', false] as $legend) {
+            $html = $this->helper->fieldset('foo', 'foobar', ['legend' => $legend]);
             $this->assertNotContains('<legend>', $html, 'Failed with value ' . var_export($legend, 1) . ': ' . $html);
         }
     }
@@ -108,7 +108,7 @@ class Zend_View_Helper_FieldsetTest extends PHPUnit_Framework_TestCase
      */
     public function testHelperShouldAllowDisablingEscapingOfLegend()
     {
-        $html = $this->helper->fieldset('foo', 'foobar', array('legend' => '<b>Great Scott!</b>', 'escape' => false));
+        $html = $this->helper->fieldset('foo', 'foobar', ['legend' => '<b>Great Scott!</b>', 'escape' => false]);
         $this->assertRegexp('#<legend><b>Great Scott!</b></legend>#', $html, $html);
     }
 }

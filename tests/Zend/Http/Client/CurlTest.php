@@ -56,9 +56,9 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
      *
      * @var array
      */
-    protected $config = array(
+    protected $config = [
         'adapter'     => 'Zend_Http_Client_Adapter_Curl'
-    );
+    ];
 
     public static function main()
     {
@@ -84,10 +84,10 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
      */
     public function testConfigSetAsArray()
     {
-        $config = array(
+        $config = [
             'timeout'    => 500,
             'someoption' => 'hasvalue'
-        );
+        ];
 
         $this->_adapter->setConfig($config);
 
@@ -106,12 +106,12 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     {
         require_once 'Zend/Config.php';
 
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             'timeout'  => 400,
-            'nested'   => array(
+            'nested'   => [
                 'item' => 'value',
-            )
-        ));
+            ]
+        ]);
 
         $this->_adapter->setConfig($config);
 
@@ -141,10 +141,10 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
      */
     public function testSettingInvalidCurlOption()
     {
-        $config = array(
+        $config = [
             'adapter'     => 'Zend_Http_Client_Adapter_Curl',
-            'curloptions' => array(CURLOPT_CLOSEPOLICY => true),
-        );
+            'curloptions' => [CURLOPT_CLOSEPOLICY => true],
+        ];
         $this->client = new Zend_Http_Client($this->client->getUri(true), $config);
 
         $this->client->request('GET');
@@ -182,11 +182,11 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     {
         $adapter = new Zend_Http_Client_Adapter_Curl();
         $this->client->setAdapter($adapter);
-        $adapter->setConfig(array(
-            'curloptions' => array(
+        $adapter->setConfig([
+            'curloptions' => [
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_TIMEOUT => 1,
-            ))
+            ]]
         );
 
         $this->client->setUri($this->baseuri . 'testRedirections.php');
@@ -231,9 +231,9 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 
         $adapter = new Zend_Http_Client_Adapter_Curl();
         $this->client->setAdapter($adapter);
-        $adapter->setConfig(array(
-            'curloptions' => array(CURLOPT_INFILE => $putFileHandle, CURLOPT_INFILESIZE => $putFileSize)
-        ));
+        $adapter->setConfig([
+            'curloptions' => [CURLOPT_INFILE => $putFileHandle, CURLOPT_INFILESIZE => $putFileSize]
+        ]);
         $this->client->request('PUT');
         $this->assertEquals(gzcompress($putFileContents), gzcompress($this->client->getLastResponse()->getBody()));
     }
@@ -262,7 +262,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
                 ->setCurlOption('bar', 'baz');
 
         $this->assertEquals(
-            array('curloptions' => array('foo' => 'bar', 'bar' => 'baz')),
+            ['curloptions' => ['foo' => 'bar', 'bar' => 'baz']],
             $this->readAttribute($adapter, '_config')
         );
     }
@@ -270,20 +270,20 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     public function testWorkWithProxyConfiguration()
     {
         $adapter = new Zend_Http_Client_Adapter_Curl();
-        $adapter->setConfig(array(
+        $adapter->setConfig([
             'proxy_host' => 'localhost',
             'proxy_port' => 80,
             'proxy_user' => 'foo',
             'proxy_pass' => 'baz',
-        ));
+        ]);
 
-        $expected = array(
-            'curloptions' => array(
+        $expected = [
+            'curloptions' => [
                 CURLOPT_PROXYUSERPWD => 'foo:baz',
                 CURLOPT_PROXY => 'localhost',
                 CURLOPT_PROXYPORT => 80,
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals(
             $expected, $this->readAttribute($adapter, '_config')
@@ -296,7 +296,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     public function testGetCurlHandle()
     {
         $adapter = new Zend_Http_Client_Adapter_Curl();
-        $adapter->setConfig(array('timeout' => 2, 'maxredirects' => 1));
+        $adapter->setConfig(['timeout' => 2, 'maxredirects' => 1]);
         $adapter->connect("http://framework.zend.com");
 
         $this->assertTrue(is_resource($adapter->getHandle()));

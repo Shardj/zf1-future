@@ -74,9 +74,9 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
     public function getView()
     {
         require_once 'Zend/View.php';
-        $view = new Zend_View(array(
+        $view = new Zend_View([
             'encoding' => 'UTF-8',
-        ));
+        ]);
         $view->addHelperPath(dirname(__FILE__) . '/../../../../library/Zend/View/Helper');
         return $view;
     }
@@ -109,24 +109,24 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
 
     public function testCanDisableIndividualSelectOptions()
     {
-        $this->element->setMultiOptions(array(
+        $this->element->setMultiOptions([
                 'foo' => 'foo',
-                'bar' => array(
+                'bar' => [
                     'baz' => 'Baz',
                     'bat' => 'Bat'
-                ),
+                ],
                 'test' => 'Test',
-            ))
-            ->setAttrib('disable', array('baz', 'test'));
+            ])
+            ->setAttrib('disable', ['baz', 'test']);
         $html = $this->element->render($this->getView());
         $this->assertNotRegexp('/<select[^>]*?(disabled="disabled")/', $html, $html);
-        foreach (array('baz', 'test') as $test) {
+        foreach (['baz', 'test'] as $test) {
             if (!preg_match('/(<option[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching disabled option for ' . $test);
             }
             $this->assertRegexp('/<option[^>]*?(disabled="disabled")/', $m[1]);
         }
-        foreach (array('foo', 'bat') as $test) {
+        foreach (['foo', 'bat'] as $test) {
             if (!preg_match('/(<option[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching option for ' . $test);
             }
@@ -143,19 +143,19 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
     {
         require_once 'Zend/Translate.php';
         require_once 'Zend/View.php';
-        $translate = new Zend_Translate('array', array('Select Test', 'Select Test Translated'), 'en');
+        $translate = new Zend_Translate('array', ['Select Test', 'Select Test Translated'], 'en');
         $this->element
              ->setLabel('Select Test')
-             ->setMultiOptions(array(
-                 'Group 1' => array(
+             ->setMultiOptions([
+                 'Group 1' => [
                      '1-1' => 'Hi 1-1',
                      '1-2' => 'Hi 1-2',
-                 ),
-                 'Group 2' => array(
+                 ],
+                 'Group 2' => [
                      '2-1' => 'Hi 2-1',
                      '2-2' => 'Hi 2-2',
-                 ),
-             ))
+                 ],
+             ])
              ->setTranslator($translate)
              ->setView(new Zend_View());
         $html = $this->element->render();
@@ -166,11 +166,11 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
      */
     public function testUsingZeroAsValueShouldSelectAppropriateOption()
     {
-        $this->element->setMultiOptions(array(
-            array('key' => '1', 'value' => 'Yes'),
-            array('key' => '0', 'value' => 'No'),
-            array('key' => 'somewhat', 'value' => 'Somewhat'),
-        ));
+        $this->element->setMultiOptions([
+            ['key' => '1', 'value' => 'Yes'],
+            ['key' => '0', 'value' => 'No'],
+            ['key' => 'somewhat', 'value' => 'Somewhat'],
+        ]);
         $this->element->setValue(0);
         $html = $this->element->render($this->getView());
 
@@ -185,12 +185,12 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
      */
     public function testEmptyOptionsShouldNotBeTranslated()
     {
-        $translate = new Zend_Translate('array', array('unused', 'foo' => 'bar'), 'en');
+        $translate = new Zend_Translate('array', ['unused', 'foo' => 'bar'], 'en');
         $this->element->setTranslator($translate);
-        $this->element->setMultiOptions(array(
-            array('key' => '', 'value' => ''),
-            array('key' => 'foo', 'value' => 'foo'),
-        ));
+        $this->element->setMultiOptions([
+            ['key' => '', 'value' => ''],
+            ['key' => 'foo', 'value' => 'foo'],
+        ]);
         $this->element->setView($this->getView());
         $html = $this->element->render();
         $this->assertNotContains('unused', $html, $html);
@@ -206,10 +206,10 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
     public function testIsValidWithPlainOptions()
     {
         // test both syntaxes for setting plain options
-        $this->element->setMultiOptions(array(
-            array('key' => '1', 'value' => 'Web Developer'),
+        $this->element->setMultiOptions([
+            ['key' => '1', 'value' => 'Web Developer'],
             '2' => 'Software Engineer',
-        ));
+        ]);
 
         $this->assertTrue($this->element->isValid('1'));
         $this->assertTrue($this->element->isValid('2'));
@@ -223,14 +223,14 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
     public function testIsValidWithOptionGroups()
     {
         // test optgroup and both syntaxes for setting plain options
-        $this->element->setMultiOptions(array(
-            'Technology' => array(
+        $this->element->setMultiOptions([
+            'Technology' => [
                 '1' => 'Web Developer',
                 '2' => 'Software Engineer',
-            ),
-            array('key' => '3', 'value' => 'Trainee'),
+            ],
+            ['key' => '3', 'value' => 'Trainee'],
             '4' => 'Intern',
-        ));
+        ]);
 
         $this->assertTrue($this->element->isValid('1'));
         $this->assertTrue($this->element->isValid('3'));
@@ -257,7 +257,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
     {
         $this->element->addMultiOption('bar', 'Bar')
                       ->setIsArray(true)
-                      ->setDecorators(array('ViewHelper'));
+                      ->setDecorators(['ViewHelper']);
 
         $actual   = $this->element->render($this->getView());
         $expected = PHP_EOL

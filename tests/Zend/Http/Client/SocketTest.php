@@ -52,9 +52,9 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
      *
      * @var array
      */
-    protected $config = array(
+    protected $config = [
         'adapter' => 'Zend_Http_Client_Adapter_Socket'
-    );
+    ];
 
     /**
      * Off-line common adapter tests
@@ -66,10 +66,10 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
      */
     public function testConfigSetAsArray()
     {
-        $config = array(
+        $config = [
             'timeout'    => 500,
             'someoption' => 'hasvalue'
-        );
+        ];
 
         $this->_adapter->setConfig($config);
 
@@ -88,12 +88,12 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
     {
         require_once 'Zend/Config.php';
 
-        $config = new Zend_Config(array(
+        $config = new Zend_Config([
             'timeout'  => 400,
-            'nested'   => array(
+            'nested'   => [
                 'item' => 'value',
-            )
-        ));
+            ]
+        ]);
 
         $this->_adapter->setConfig($config);
 
@@ -138,15 +138,15 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
     public function testSetNewStreamContextOptions()
     {
         $adapter = new $this->config['adapter'];
-        $options = array(
-            'socket' => array(
+        $options = [
+            'socket' => [
                 'bindto' => '1.2.3.4:0'
-            ),
-            'ssl' => array(
+            ],
+            'ssl' => [
                 'verify_peer' => true,
                 'allow_self_signed' => false
-            )
-        );
+            ]
+        ];
 
         $adapter->setStreamContext($options);
 
@@ -172,12 +172,12 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
         }
 
         $adapter = new $this->config['adapter'];
-        $adapter->setStreamContext(array(
-            'ssl' => array(
+        $adapter->setStreamContext([
+            'ssl' => [
                 'capture_peer_cert' => true,
                 'capture_peer_chain' => true
-            )
-        ));
+            ]
+        ]);
 
         $this->client->setAdapter($adapter);
         $this->client->setUri($this->baseuri . '/testSimpleRequests.php');
@@ -195,7 +195,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
     public function testExceptionOnReadTimeout()
     {
         // Set 1 second timeout
-        $this->client->setConfig(array('timeout' => 1));
+        $this->client->setConfig(['timeout' => 1]);
 
         $start = microtime(true);
 
@@ -240,11 +240,11 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
      */
     static public function invalidContextProvider()
     {
-        return array(
-            array(new stdClass()),
-            array(fopen('data://text/plain,', 'r')),
-            array(false),
-            array(null)
-        );
+        return [
+            [new stdClass()],
+            [fopen('data://text/plain,', 'r')],
+            [false],
+            [null]
+        ];
     }
 }

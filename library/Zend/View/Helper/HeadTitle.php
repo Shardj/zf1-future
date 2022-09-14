@@ -31,6 +31,10 @@ require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
  * @subpackage Helper
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @method $this append($content)
+ * @method $this prepend($content)
+ * @method $this setSeparator($separator)
+ * @method $this set($title)
  */
 class Zend_View_Helper_HeadTitle extends Zend_View_Helper_Placeholder_Container_Standalone
 {
@@ -95,11 +99,11 @@ class Zend_View_Helper_HeadTitle extends Zend_View_Helper_Placeholder_Container_
      */
     public function setDefaultAttachOrder($setType)
     {
-        if (!in_array($setType, array(
+        if (!in_array($setType, [
             Zend_View_Helper_Placeholder_Container_Abstract::APPEND,
             Zend_View_Helper_Placeholder_Container_Abstract::SET,
             Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
-        ))) {
+        ])) {
             require_once 'Zend/View/Exception.php';
             throw new Zend_View_Exception("You must use a valid attach order: 'PREPEND', 'APPEND' or 'SET'");
         }
@@ -111,7 +115,7 @@ class Zend_View_Helper_HeadTitle extends Zend_View_Helper_Placeholder_Container_
     /**
      * Get the default attach order, if any.
      *
-     * @return mixed
+     * @return string|null
      */
     public function getDefaultAttachOrder()
     {
@@ -193,7 +197,7 @@ class Zend_View_Helper_HeadTitle extends Zend_View_Helper_Placeholder_Container_
                 ? $this->getWhitespace($indent)
                 : $this->getIndent();
 
-        $items = array();
+        $items = [];
 
         if($this->_translate && $translator = $this->getTranslator()) {
             foreach ($this as $item) {

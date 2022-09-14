@@ -78,7 +78,7 @@ class Zend_Markup_Test_Parser_MockParser implements Zend_Markup_Parser_ParserInt
             $value,
             Zend_Markup_Token::TYPE_NONE,
             '',
-            array(),
+            [],
             $current
         );
         $current->addChild($token);

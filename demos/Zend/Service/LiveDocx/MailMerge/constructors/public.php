@@ -37,10 +37,10 @@ unset($mailMerge);
 // Alternatively, you can pass username and password in the constructor.
 
 $mailMerge = new Zend_Service_LiveDocx_MailMerge(
-    array (
+    [
         'username' => DEMOS_ZEND_SERVICE_LIVEDOCX_USERNAME,
         'password' => DEMOS_ZEND_SERVICE_LIVEDOCX_PASSWORD,
-    )
+    ]
 );
 
 $mailMerge->getTemplateFormats(); // then call methods as usual

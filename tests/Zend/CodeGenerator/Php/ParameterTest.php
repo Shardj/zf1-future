@@ -129,34 +129,39 @@ class Zend_CodeGenerator_Php_ParameterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('array', $codeGenParam->getType());
     }
 
+
     public function testFromReflection_GetWithNativeType()
     {
         $reflParam = $this->getFirstReflectionParameter('hasNativeDocTypes');
         $codeGenParam = Zend_CodeGenerator_Php_Parameter::fromReflection($reflParam);
 
-        $this->assertNotEquals('int', $codeGenParam->getType());
-        $this->assertEquals('', $codeGenParam->getType());
+        if (PHP_VERSION_ID < 80000) {
+            $this->assertEquals('', $codeGenParam->getType());
+            $this->assertNotEquals('int', $codeGenParam->getType());
+        } else {
+            $this->assertEquals('int', $codeGenParam->getType());
+        }
     }
 
     static public function dataFromReflection_Generate()
     {
-        return array(
-            array('name', '$param'),
-            array('type', 'stdClass $bar'),
-            array('reference', '&$baz'),
-            array('defaultValue', '$value = \'foo\''),
-            array('defaultNull', '$value = null'),
-            array('fromArray', 'array $array'),
-            array('hasNativeDocTypes', '$integer'),
-            array('defaultArray', '$array = array ()'),
-            array('defaultArrayWithValues', '$array = array (  0 => 1,  1 => 2,  2 => 3,)'),
-            array('defaultFalse', '$val = false'),
-            array('defaultTrue', '$val = true'),
-            array('defaultZero', '$number = 0'),
-            array('defaultNumber', '$number = 1234'),
-            array('defaultFloat', '$float = 1.34'),
-            array('defaultConstant', '$con = \'foo\'')
-        );
+        return [
+            ['name', '$param'],
+            ['type', 'stdClass $bar'],
+            ['reference', '&$baz'],
+            ['defaultValue', '$value = \'foo\''],
+            ['defaultNull', '$value = null'],
+            ['fromArray', 'array $array'],
+            ['hasNativeDocTypes', PHP_VERSION_ID >= 80000 ? 'int $integer' : '$integer'],
+            ['defaultArray', '$array = array ()'],
+            ['defaultArrayWithValues', '$array = array (  0 => 1,  1 => 2,  2 => 3,)'],
+            ['defaultFalse', '$val = false'],
+            ['defaultTrue', '$val = true'],
+            ['defaultZero', '$number = 0'],
+            ['defaultNumber', '$number = 1234'],
+            ['defaultFloat', '$float = 1.34'],
+            ['defaultConstant', '$con = \'foo\'']
+        ];
     }
 
     /**
@@ -217,7 +222,7 @@ class Zend_CodeGenerator_Php_ParameterExample
 
     }
 
-    public function defaultArray($array = array())
+    public function defaultArray($array = [])
     {
 
     }
@@ -247,7 +252,7 @@ class Zend_CodeGenerator_Php_ParameterExample
 
     }
 
-    public function defaultArrayWithValues($array = array(0 => 1, 1 => 2, 2 => 3))
+    public function defaultArrayWithValues($array = [0 => 1, 1 => 2, 2 => 3])
     {
 
     }

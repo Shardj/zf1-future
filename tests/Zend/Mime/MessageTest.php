@@ -49,7 +49,7 @@ class Zend_Mime_MessageTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($p));
         $this->assertTrue(count($p) == 0);
 
-        $p2 = array();
+        $p2 = [];
         $p2[] = new Zend_Mime_Part('This is a test');
         $p2[] = new Zend_Mime_Part('This is another test');
         $msg->setParts($p2);

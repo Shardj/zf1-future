@@ -65,7 +65,7 @@ class Zend_Service_Amazon_Authentication_V1Test extends PHPUnit_Framework_TestCa
     public function testGenerateDevPaySignature()
     {
         $url = "https://ls.amazonaws.com/";
-        $params = array();
+        $params = [];
         $params['Action'] = "ActivateHostedProduct";
         $params['Timestamp'] = "2009-11-11T13:52:38Z";
 

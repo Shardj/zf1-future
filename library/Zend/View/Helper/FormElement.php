@@ -95,7 +95,7 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         // if an array, it's an element info array that will override
         // these baseline values.  as such, ignore it for the 'name'
         // if it's an array.
-        $info = array(
+        $info = [
             'name'    => is_array($name) ? '' : $name,
             'id'      => is_array($name) ? '' : $name,
             'value'   => $value,
@@ -104,7 +104,7 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
             'listsep' => $listsep,
             'disable' => false,
             'escape'  => true,
-        );
+        ];
 
         // override with named args
         if (is_array($name)) {
@@ -142,16 +142,16 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         // Set ID for element
         if (array_key_exists('id', $attribs)) {
             $info['id'] = (string)$attribs['id'];
-        } else if ('' !== $info['name']) {
+        } else if (is_string($info['name']) && '' !== $info['name']) {
             $info['id'] = trim(strtr($info['name'],
-                                     array('[' => '-', ']' => '')), '-');
+                                     ['[' => '-', ']' => '']), '-');
         }
-        
+
         // Remove NULL name attribute override
         if (array_key_exists('name', $attribs) && is_null($attribs['name'])) {
         	unset($attribs['name']);
         }
-        
+
         // Override name in info if specified in attribs
         if (array_key_exists('name', $attribs) && $attribs['name'] != $info['name']) {
             $info['name'] = $attribs['name'];

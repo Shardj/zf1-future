@@ -53,7 +53,7 @@ class Zend_Tool_Project_Context_Zf_TestPHPUnitBootstrapFile extends Zend_Tool_Pr
     {
         return 'TestPHPUnitBootstrapFile';
     }
-    
+
     /**
      * getContents()
      *
@@ -61,7 +61,7 @@ class Zend_Tool_Project_Context_Zf_TestPHPUnitBootstrapFile extends Zend_Tool_Pr
      */
     public function getContents()
     {
-        $codeGenerator = new Zend_CodeGenerator_Php_File(array(
+        $codeGenerator = new Zend_CodeGenerator_Php_File([
             'body' => <<<EOS
 // Define path to application directory
 defined('APPLICATION_PATH')
@@ -81,7 +81,7 @@ require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 
 EOS
-            ));
+            ]);
         return $codeGenerator->generate();
     }
 

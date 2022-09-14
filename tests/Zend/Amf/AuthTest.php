@@ -288,7 +288,7 @@ class WrongPassword extends Zend_Amf_Auth_Abstract
     public function authenticate() {
         return new Zend_Auth_Result(Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID,
                 null,
-                array('Wrong Password')
+                ['Wrong Password']
                 );
     }
 }

@@ -58,7 +58,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
     public function testLoadDataExecutesQueryOnZendAdapter()
     {
         $statementMock = new Zend_Test_DbStatement();
-        $statementMock->append(array('foo' => 'bar'));
+        $statementMock->append(['foo' => 'bar']);
         $adapterMock = new Zend_Test_DbAdapter();
         $adapterMock->appendStatementToStack($statementMock);
 
@@ -68,14 +68,14 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
         $data = $queryTable->getRow(0);
 
         $this->assertEquals(
-            array("foo" => "bar"), $data
+            ["foo" => "bar"], $data
         );
     }
 
     public function testGetRowCountLoadsData()
     {
         $statementMock = new Zend_Test_DbStatement();
-        $statementMock->append(array('foo' => 'bar'));
+        $statementMock->append(['foo' => 'bar']);
         $adapterMock = new Zend_Test_DbAdapter();
         $adapterMock->appendStatementToStack($statementMock);
 
@@ -92,7 +92,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
         $fixtureSql = "SELECT * FROM foo";
 
         $statementMock = new Zend_Test_DbStatement();
-        $statementMock->append(array('foo' => 'bar'));
+        $statementMock->append(['foo' => 'bar']);
         $adapterMock = $this->getMock('Zend_Test_DbAdapter');
         $adapterMock->expects($this->once())
                     ->method('query')
@@ -105,7 +105,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
         $this->assertEquals(1, $queryTable->getRowCount());
         $this->assertEquals(1, $queryTable->getRowCount());
         $row = $queryTable->getRow(0);
-        $this->assertEquals(array('foo' => 'bar'), $row);
+        $this->assertEquals(['foo' => 'bar'], $row);
     }
 
     public function testQueryTableWithoutRows()
@@ -119,8 +119,8 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 
         $metadata = $queryTable->getTableMetaData();
         $this->assertTrue($metadata instanceof PHPUnit_Extensions_Database_DataSet_ITableMetaData);
-        $this->assertEquals(array(), $metadata->getColumns());
-        $this->assertEquals(array(), $metadata->getPrimaryKeys());
+        $this->assertEquals([], $metadata->getColumns());
+        $this->assertEquals([], $metadata->getPrimaryKeys());
         $this->assertEquals("foo", $metadata->getTableName());
     }
 }

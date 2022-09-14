@@ -65,7 +65,7 @@ class Zend_Service_Amazon_Authentication_V2Test extends PHPUnit_Framework_TestCa
     public function testGenerateEc2PostSignature()
     {
         $url = "https://ec2.amazonaws.com/";
-        $params = array();
+        $params = [];
         $params['Action'] = "DescribeImages";
         $params['ImageId.1'] = "ami-2bb65342";
         $params['Timestamp'] = "2009-11-11T13:52:38Z";
@@ -79,7 +79,7 @@ class Zend_Service_Amazon_Authentication_V2Test extends PHPUnit_Framework_TestCa
     public function testGenerateSqsGetSignature()
     {
         $url = "https://queue.amazonaws.com/770098461991/queue2";
-        $params = array();
+        $params = [];
         $params['Action'] = "SetQueueAttributes";
         $params['Attribute.Name'] = "VisibilityTimeout";
         $params['Attribute.Value'] = "90";

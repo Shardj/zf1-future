@@ -426,7 +426,7 @@ abstract class Zend_XmlRpc_Value
                     require_once 'Zend/XmlRpc/Value/Exception.php';
                     throw new Zend_XmlRpc_Value_Exception('Invalid XML for XML-RPC native '. self::XMLRPC_TYPE_ARRAY .' type: ARRAY tag must contain DATA tag');
                 }
-                $values = array();
+                $values = [];
                 // Parse all the elements of the array from the XML string
                 // (simple xml element) to Zend_XmlRpc_Value objects
                 foreach ($data->value as $element) {
@@ -436,7 +436,7 @@ abstract class Zend_XmlRpc_Value
                 $xmlrpcValue = new Zend_XmlRpc_Value_Array($values);
                 break;
             case self::XMLRPC_TYPE_STRUCT:
-                $values = array();
+                $values = [];
                 // Parse all the memebers of the struct from the XML string
                 // (simple xml element) to Zend_XmlRpc_Value objects
                 foreach ($value->member as $member) {
@@ -486,16 +486,22 @@ abstract class Zend_XmlRpc_Value
      */
     protected static function _extractTypeAndValue(SimpleXMLElement $xml, &$type, &$value)
     {
-        list($type, $value) = array(key($xml), current($xml));
+        // Fix key() and current() deprecation for objects in PHP 8.1
+        $xmlVars = get_object_vars($xml);
+        list($type, $value) = [key($xmlVars), current($xmlVars)];
 
         if (!$type && $value === null) {
-            $namespaces = array('ex' => 'http://ws.apache.org/xmlrpc/namespaces/extensions');
+            $namespaces = ['ex' => 'http://ws.apache.org/xmlrpc/namespaces/extensions'];
             foreach ($namespaces as $namespaceName => $namespaceUri) {
                 $namespaceXml = $xml->children($namespaceUri);
-                list($type, $value) = array(key($namespaceXml), current($namespaceXml));
-                if ($type !== null) {
-                    $type = $namespaceName . ':' . $type;
-                    break;
+                if ($namespaceXml) {
+                    // Fix key() and current() deprecation for objects in PHP 8.1
+                    $namespaceXmlVars = get_object_vars($namespaceXml);
+                    list($type, $value) = [key($namespaceXmlVars), current($namespaceXmlVars)];
+                    if ($type !== null) {
+                        $type = $namespaceName . ':' . $type;
+                        break;
+                    }
                 }
             }
         }
@@ -509,7 +515,7 @@ abstract class Zend_XmlRpc_Value
         if (!$type) {
             $type = self::XMLRPC_TYPE_STRING;
             if (preg_match('#^<value>.*</value>$#', $xml->asXML())) {
-                $value = str_replace(array('<value>', '</value>'), '', $xml->asXML());
+                $value = str_replace(['<value>', '</value>'], '', $xml->asXML());
             }
         }
     }

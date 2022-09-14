@@ -45,14 +45,14 @@ class Zend_Db_TestUtil_Pdo_Pgsql extends Zend_Db_TestUtil_Pdo_Common
         parent::setUp($db);
     }
 
-    public function getParams(array $constants = array())
+    public function getParams(array $constants = [])
     {
-        $constants = array (
+        $constants = [
             'host'     => 'TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_HOSTNAME',
             'username' => 'TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME',
             'password' => 'TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD',
             'dbname'   => 'TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE'
-        );
+        ];
         return parent::getParams($constants);
     }
 
@@ -67,10 +67,10 @@ class Zend_Db_TestUtil_Pdo_Pgsql extends Zend_Db_TestUtil_Pdo_Common
      */
     protected function _getColumnsProducts()
     {
-        return array(
+        return [
             'product_id'   => 'INT NOT NULL PRIMARY KEY',
             'product_name' => 'VARCHAR(100)'
-        );
+        ];
     }
 
     protected function _getDataProducts()

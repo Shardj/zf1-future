@@ -90,7 +90,7 @@ HTML;
             $thumbnail_img
         </div></td>
         <td width="100%">
-            <a href="${preview}">$title</a><br>
+            <a href="{$preview}">$title</a><br>
             $creators<br>
             $preview_link
         </td></tr>

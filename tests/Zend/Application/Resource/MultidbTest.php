@@ -47,8 +47,8 @@ require_once 'Zend/Db/Table.php';
  */
 class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
 {
-    protected $_dbOptions = array('db1' => array('adapter' => 'pdo_mysql','dbname' => 'db1','password' => 'XXXX','username' => 'webuser'),
-                                'db2' => array('adapter' => 'pdo_pgsql', 'dbname' => 'db2', 'password' => 'notthatpublic', 'username' => 'dba'));
+    protected $_dbOptions = ['db1' => ['adapter' => 'pdo_mysql','dbname' => 'db1','password' => 'XXXX','username' => 'webuser'],
+                                'db2' => ['adapter' => 'pdo_pgsql', 'dbname' => 'db2', 'password' => 'notthatpublic', 'username' => 'dba']];
 
     public static function main()
     {
@@ -63,7 +63,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
         if (!is_array($this->loaders)) {
             // spl_autoload_functions does not return empty array when no
             // autoloaders registered...
-            $this->loaders = array();
+            $this->loaders = [];
         }
 
         Zend_Loader_Autoloader::resetInstance();
@@ -95,7 +95,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
 
     public function testInitializationInitializesResourcePluginObject()
     {
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->setOptions($this->_dbOptions);
         $res = $resource->init();
@@ -104,7 +104,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
 
     public function testDbsAreSetupCorrectlyObject()
     {
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->setOptions($this->_dbOptions);
         $res = $resource->init();
@@ -117,7 +117,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
         $options = $this->_dbOptions;
         $options['db2']['default'] = true;
 
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->setOptions($options);
         $res = $resource->init();
@@ -128,7 +128,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
         $options = $this->_dbOptions;
         $options['db2']['isDefaultTableAdapter'] = true;
 
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->setOptions($options);
         $res = $resource->init();
@@ -141,7 +141,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
 
     public function testGetDefaultRandomWhenNoDefaultWasSetObject()
     {
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->setOptions($this->_dbOptions);
         $res = $resource->init();
@@ -152,7 +152,7 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
 
     public function testGetDbWithFaultyDbNameThrowsException()
     {
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $resource->setOptions($this->_dbOptions);
         $res = $resource->init();
@@ -170,24 +170,24 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
      */
     public function testParamDefaultAndAdapterAreNotPassedOnAsParameter()
     {
-        $resource = new Zend_Application_Resource_Multidb(array());
+        $resource = new Zend_Application_Resource_Multidb([]);
         $resource->setBootstrap($this->bootstrap);
         $options = $this->_dbOptions;
         $options['db2']['isDefaultTableAdapter'] = true;
         $resource->setOptions($options);
         $res = $resource->init();
 
-        $expected = array(
+        $expected = [
             'dbname' => 'db2',
             'password' => 'notthatpublic',
             'username' => 'dba',
             'charset' => null,
             'persistent' => false,
-            'options' => array(
+            'options' => [
                 'caseFolding'          => 0,
                 'autoQuoteIdentifiers' => true,
-                'fetchMode'            => 2),
-            'driver_options' => array());
+                'fetchMode'            => 2],
+            'driver_options' => []];
         $this->assertEquals($expected, $res->getDb('db2')->getConfig());
 
         $options = $this->_dbOptions;
@@ -202,10 +202,10 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDefaultMetadataCache()
     {
-        $cache = Zend_Cache::factory('Core', 'Black Hole', array(
+        $cache = Zend_Cache::factory('Core', 'Black Hole', [
             'lifetime' => 120,
             'automatic_serialization' => true
-        ));
+        ]);
 
         $options = $this->_dbOptions;
         $options['defaultMetadataCache'] = $cache;
@@ -219,20 +219,20 @@ class Zend_Application_Resource_MultidbTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDefaultMetadataCacheFromCacheManager()
     {
-        $configCache = array(
-            'database' => array(
-                'frontend' => array(
+        $configCache = [
+            'database' => [
+                'frontend' => [
                     'name' => 'Core',
-                    'options' => array(
+                    'options' => [
                         'lifetime' => 120,
                         'automatic_serialization' => true
-                    )
-                ),
-                'backend' => array(
+                    ]
+                ],
+                'backend' => [
                     'name' => 'Black Hole'
-                )
-            )
-        );
+                ]
+            ]
+        ];
         $this->bootstrap->registerPluginResource('cachemanager', $configCache);
 
         $options = $this->_dbOptions;

@@ -88,7 +88,7 @@ function Zend_Soap_AutoDiscover_TestFunc6()
  */
 function Zend_Soap_AutoDiscover_TestFunc7()
 {
-    return array('foo' => 'bar', 'baz' => true, 1 => false, 'bat' => 123);
+    return ['foo' => 'bar', 'baz' => true, 1 => false, 'bat' => 123];
 }
 
 /**
@@ -98,7 +98,7 @@ function Zend_Soap_AutoDiscover_TestFunc7()
  */
 function Zend_Soap_AutoDiscover_TestFunc8()
 {
-    $return = (object) array('foo' => 'bar', 'baz' => true, 'bat' => 123, 'qux' => false);
+    $return = (object) ['foo' => 'bar', 'baz' => true, 'bat' => 123, 'qux' => false];
     return $return;
 }
 
@@ -129,7 +129,7 @@ class Zend_Soap_AutoDiscover_TestFixingMultiplePrototypes
      * @param integer $a
      * @param integer $b
      * @param integer $d
-     * @return integer
+     * @return void
      */
     function testFunc($a=100, $b=200, $d=300)
     {
@@ -226,10 +226,10 @@ class Zend_Soap_AutoDiscoverTestClass2
      */
     public function fetchAll()
     {
-        return array(
+        return [
             new Zend_Soap_AutoDiscoverTestClass1(),
             new Zend_Soap_AutoDiscoverTestClass1(),
-        );
+        ];
     }
 
     /**
@@ -272,7 +272,7 @@ class Zend_Soap_Wsdl_ComplexTypeA
     /**
      * @var Zend_Soap_Wsdl_ComplexTypeB[]
      */
-    public $baz = array();
+    public $baz = [];
 }
 
 /**
@@ -317,7 +317,7 @@ class Zend_Soap_Wsdl_ComplexObjectStructure
     /**
      * @var array
      */
-    public $array = array(1, 2, 3);
+    public $array = [1, 2, 3];
 }
 
 /**
@@ -346,20 +346,20 @@ class Zend_Soap_AutoDiscover_MyService
 {
     /**
      *    @param string $foo
-     *    @return Zend_Soap_AutoDiscover_MyResponse[]
+     *    @return void
      */
     public function foo($foo) {
     }
     /**
      *    @param string $bar
-     *    @return Zend_Soap_AutoDiscover_MyResponse[]
+     *    @return void
      */
     public function bar($bar) {
     }
 
     /**
      *    @param string $baz
-     *    @return Zend_Soap_AutoDiscover_MyResponse[]
+     *    @return void
      */
     public function baz($baz) {
     }
@@ -376,27 +376,27 @@ class Zend_Soap_AutoDiscover_MyServiceSequence
 {
     /**
      *    @param string $foo
-     *    @return string[]
+     *    @return void
      */
     public function foo($foo) {
     }
     /**
      *    @param string $bar
-     *    @return string[]
+     *    @return void
      */
     public function bar($bar) {
     }
 
     /**
      *    @param string $baz
-     *    @return string[]
+     *    @return void
      */
     public function baz($baz) {
     }
 
     /**
      *    @param string $baz
-     *    @return string[][][]
+     *    @return void
      */
     public function bazNested($baz) {
     }
@@ -432,7 +432,7 @@ class Zend_Soap_AutoDiscover_Recursion
     public $recursion;
 
     /**
-     * @return Zend_Soap_AutoDiscover_Recursion
+     * @return void
      */
     public function create() {}
 }

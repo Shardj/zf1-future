@@ -19,7 +19,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id
  */
-$variables = array();
+$variables = [];
 $data = file_get_contents('php://input');
 parse_str($data, $variables);
 echo serialize($variables);

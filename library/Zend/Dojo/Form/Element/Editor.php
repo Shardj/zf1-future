@@ -94,7 +94,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
     public function getCaptureEvents()
     {
         if (!$this->hasDijitParam('captureEvents')) {
-            return array();
+            return [];
         }
         return $this->getDijitParam('captureEvents');
     }
@@ -193,7 +193,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
     public function getEvents()
     {
         if (!$this->hasDijitParam('events')) {
-            return array();
+            return [];
         }
         return $this->getDijitParam('events');
     }
@@ -291,7 +291,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
     public function getPlugins()
     {
         if (!$this->hasDijitParam('plugins')) {
-            return array();
+            return [];
         }
         return $this->getDijitParam('plugins');
     }
@@ -483,7 +483,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
         } elseif (!empty($stylesheets)) {
             $stylesheets = (array) $stylesheets;
         } else {
-            $stylesheets = array();
+            $stylesheets = [];
         }
         if (!in_array($styleSheet, $stylesheets)) {
             $stylesheets[] = (string) $styleSheet;
@@ -610,12 +610,12 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
         if (in_array($plugin, $extraPlugins)) {
             return $this;
         }
-    
+
         $extraPlugins[] = (string) $plugin;
         $this->setDijitParam('extraPlugins', $extraPlugins);
         return $this;
     }
-    
+
     /**
      * Add multiple extra plugins.
      *
@@ -629,7 +629,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
         }
         return $this;
     }
-    
+
     /**
      * Overwrite many extra plugins at once.
      *
@@ -642,7 +642,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
         $this->addExtraPlugins($plugins);
         return $this;
     }
-    
+
     /**
      * Get all extra plugins.
      *
@@ -651,11 +651,11 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
     public function getExtraPlugins()
     {
         if (!$this->hasDijitParam('extraPlugins')) {
-            return array();
+            return [];
         }
         return $this->getDijitParam('extraPlugins');
     }
-    
+
     /**
      * Is a given extra plugin registered?
      *
@@ -667,7 +667,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
         $extraPlugins = $this->getExtraPlugins();
         return in_array((string) $plugin, $extraPlugins);
     }
-    
+
     /**
      * Remove a given extra plugin.
      *
@@ -684,7 +684,7 @@ class Zend_Dojo_Form_Element_Editor extends Zend_Dojo_Form_Element_Dijit
         $this->setDijitParam('extraPlugins', $extraPlugins);
         return $this;
     }
-    
+
     /**
      * Clear all extra plugins.
      *

@@ -28,7 +28,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Test helpers
  */
 require_once dirname(__FILE__) . '/../../../TestHelper.php';
-require_once dirname(__FILE__) . '/../../../TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/../../../TestConfiguration.dist.php';
 
 /** Zend_Service_WindowsAzure_Storage_TableEntityQuery */
 require_once 'Zend/Service/WindowsAzure/Storage/TableEntityQuery.php';
@@ -162,7 +162,7 @@ class Zend_Service_WindowsAzure_TableEntityQueryTest extends PHPUnit_Framework_T
         $target = new Zend_Service_WindowsAzure_Storage_TableEntityQuery();
         $target->select()
                ->from('MyTable')
-               ->where('Name eq ? or Name eq ?', array('Maarten', 'Vijay'));
+               ->where('Name eq ? or Name eq ?', ['Maarten', 'Vijay']);
                
         $this->assertEquals('MyTable()?$filter=Name eq \'Maarten\' or Name eq \'Vijay\'', $target->__toString());
     }

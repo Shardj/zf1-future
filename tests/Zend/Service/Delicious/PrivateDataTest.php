@@ -43,7 +43,7 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
     private static $TEST_POST_TITLE  = 'test - title';
     private static $TEST_POST_URL    = 'http://zfdev.com/unittests/delicious/test_url_1';
     private static $TEST_POST_NOTES  = 'test - note';
-    private static $TEST_POST_TAGS   = array('testTag1','testTag2');
+    private static $TEST_POST_TAGS   = ['testTag1','testTag2'];
     private static $TEST_POST_SHARED = false;
 
     /**
@@ -58,10 +58,10 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $httpClient = new Zend_Http_Client();
-        $httpClient->setConfig(array(
+        $httpClient->setConfig([
                 'useragent' => 'Zend_Service_Delicious - Unit tests/0.1',
                 'keepalive' => true
-        ));
+        ]);
         Zend_Rest_Client::setHttpClient($httpClient);
 
         $this->_delicious = new Zend_Service_Delicious(self::TEST_UNAME, self::TEST_PASS);

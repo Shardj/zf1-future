@@ -50,8 +50,8 @@ defined('TESTS_ZEND_AUTH_ADAPTER_DBTABLE_PDO_SQLITE_ENABLED') || define('TESTS_Z
  * TESTS_ZEND_CACHE_XCACHE_ENABLED     => xcache extension has to be enabled
  */
 defined('TESTS_ZEND_CACHE_SQLITE_ENABLED') || define('TESTS_ZEND_CACHE_SQLITE_ENABLED', true);
-defined('TESTS_ZEND_CACHE_MEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_MEMCACHED_ENABLED', true);
-defined('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED', true);
+//defined('TESTS_ZEND_CACHE_MEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_MEMCACHED_ENABLED', true);
+//defined('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED', true);
 
 /**
  * Zend_Db_Adapter_Pdo_Mysql and Zend_Db_Adapter_Mysqli
@@ -82,4 +82,4 @@ defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD') || define('TESTS_ZEND_DB_ADA
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE', 'zftest');
 
 
-require_once dirname(__FILE__) . '/TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/TestConfiguration.dist.php';

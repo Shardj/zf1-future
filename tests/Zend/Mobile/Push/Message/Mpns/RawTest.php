@@ -53,7 +53,7 @@ class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTokenNonStringThrowsException()
     {
-        $token = array('foo' => 'bar');
+        $token = ['foo' => 'bar'];
         $this->_msg->setToken($token);
     }
 
@@ -83,7 +83,7 @@ class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
      */
     public function testSetMessageThrowsExceptionOnNonString()
     {
-        $msg = array('foo' => 'bar');
+        $msg = ['foo' => 'bar'];
         $this->_msg->setMessage($msg);
     }
 

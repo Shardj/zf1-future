@@ -47,7 +47,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      *
      * @var array
      */
-    static protected $_messages = array();
+    static protected $_messages = [];
 
     /**
      * $_session - Zend_Session storage object
@@ -112,10 +112,10 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         $this->_namespace = $namespace;
         return $this;
     }
-    
+
     /**
      * getNamespace() - return the current namepsace
-     * 
+     *
      * @return string
      */
     public function getNamespace()
@@ -145,13 +145,13 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if (self::$_messageAdded === false) {
             self::$_session->setExpirationHops(1, null, true);
         }
 
         if (!is_array(self::$_session->{$namespace})) {
-            self::$_session->{$namespace} = array();
+            self::$_session->{$namespace} = [];
         }
 
         self::$_session->{$namespace}[] = $message;
@@ -170,7 +170,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         return isset(self::$_messages[$namespace]);
     }
 
@@ -184,12 +184,12 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if ($this->hasMessages($namespace)) {
             return self::$_messages[$namespace];
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -202,7 +202,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if ($this->hasMessages($namespace)) {
             unset(self::$_messages[$namespace]);
             return true;
@@ -222,7 +222,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         return isset(self::$_session->{$namespace});
     }
 
@@ -237,12 +237,12 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if ($this->hasCurrentMessages($namespace)) {
             return self::$_session->{$namespace};
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -255,7 +255,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if ($this->hasCurrentMessages($namespace)) {
             unset(self::$_session->{$namespace});
             return true;
@@ -269,12 +269,13 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      *
      * @return ArrayObject
      */
-    public function getIterator($namespace = null)
+    #[\ReturnTypeWillChange]
+    public function getIterator($namespace = null): \Traversable
     {
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if ($this->hasMessages($namespace)) {
             return new ArrayObject($this->getMessages($namespace));
         }
@@ -287,12 +288,12 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      *
      * @return int
      */
-    public function count($namespace = null)
+    public function count($namespace = null): int
     {
         if (!is_string($namespace) || $namespace == '') {
             $namespace = $this->getNamespace();
         }
-        
+
         if ($this->hasMessages($namespace)) {
             return count($this->getMessages($namespace));
         }
@@ -304,7 +305,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      * Strategy pattern: proxy to addMessage()
      *
      * @param  string|string[] $message
-     * @return void
+     * @return Zend_Controller_Action_Helper_FlashMessenger
      */
     public function direct($message, $namespace=NULL)
     {

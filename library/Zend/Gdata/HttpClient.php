@@ -140,7 +140,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
     /**
      * Gets the openssl private key id
      *
-     * @return string The private key
+     * @return resource|null The private key
      */
     public function getAuthSubPrivateKeyId() {
         return $this->_authSubPrivateKeyId;
@@ -207,7 +207,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
      * @return array The processed values in an associative array,
      *               using the same names as the params
      */
-    public function filterHttpRequest($method, $url, $headers = array(), $body = null, $contentType = null) {
+    public function filterHttpRequest($method, $url, $headers = [], $body = null, $contentType = null) {
         if ($this->getAuthSubToken() != null) {
             // AuthSub authentication
             if ($this->getAuthSubPrivateKeyId() != null) {
@@ -240,7 +240,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
         } elseif ($this->getClientLoginToken() != null) {
             $headers['authorization'] = 'GoogleLogin auth=' . $this->getClientLoginToken();
         }
-        return array('method' => $method, 'url' => $url, 'body' => $body, 'headers' => $headers, 'contentType' => $contentType);
+        return ['method' => $method, 'url' => $url, 'body' => $body, 'headers' => $headers, 'contentType' => $contentType];
     }
 
     /**
@@ -257,7 +257,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
     /**
      * Return the current connection adapter
      *
-     * @return Zend_Http_Client_Adapter_Interface|string $adapter
+     * @return Zend_Http_Client_Adapter_Interface|null $adapter
      */
     public function getAdapter()
     {

@@ -18,7 +18,7 @@ class Zend_Reflection_TestSampleSingleClass
     /**
      * Enter description here...
      *
-     * @return bool
+     * @return void
      */
     public function someMethod()
     {

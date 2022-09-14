@@ -60,19 +60,19 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
     public function testMessageFilter()
     {
         $filter = new Zend_Log_Filter_Message('/accept/');
-        $this->assertTrue($filter->accept(array('message' => 'foo accept bar')));
-        $this->assertFalse($filter->accept(array('message' => 'foo reject bar')));
+        $this->assertTrue($filter->accept(['message' => 'foo accept bar']));
+        $this->assertFalse($filter->accept(['message' => 'foo reject bar']));
     }
 
     public function testFactory()
     {
-        $cfg = array('log' => array('memory' => array(
+        $cfg = ['log' => ['memory' => [
             'writerName'   => "Mock",
             'filterName'   => "Message",
-            'filterParams' => array(
+            'filterParams' => [
                 'regexp'   => "/42/"
-             ),
-        )));
+             ],
+        ]]];
 
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
@@ -81,13 +81,13 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
     public function testFactoryWithConfig()
     {
         require_once 'Zend/Config.php';
-        $config = new Zend_Config(array('log' => array('memory' => array(
+        $config = new Zend_Config(['log' => ['memory' => [
             'writerName'   => "Mock",
             'filterName'   => "Message",
-            'filterParams' => array(
+            'filterParams' => [
                 'regexp'   => "/42/"
-             ),
-        ))));
+             ],
+        ]]]);
 
         $filter = Zend_Log_Filter_Message::factory($config->log->memory->filterParams);
         $this->assertTrue($filter instanceof Zend_Log_Filter_Message);

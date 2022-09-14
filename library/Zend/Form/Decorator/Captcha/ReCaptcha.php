@@ -25,7 +25,7 @@ require_once 'Zend/Form/Decorator/Abstract.php';
 /**
  * ReCaptcha-based captcha decorator
  *
- * Adds hidden fields for challenge and response input, and JS for populating 
+ * Adds hidden fields for challenge and response input, and JS for populating
  * from known recaptcha IDs
  *
  * @category   Zend
@@ -67,17 +67,17 @@ class Zend_Form_Decorator_Captcha_ReCaptcha extends Zend_Form_Decorator_Abstract
 
         // Create hidden fields for holding the final recaptcha values
         // Placing "id" in "attribs" to ensure it is not overwritten with the name
-        $hidden = $view->formHidden(array(
+        $hidden = $view->formHidden([
             'name'    => $challengeName,
-            'attribs' => array('id' => $challengeId),
-        ));
-        $hidden .= $view->formHidden(array(
+            'attribs' => ['id' => $challengeId],
+        ]);
+        $hidden .= $view->formHidden([
             'name'    => $responseName,
-            'attribs' => array('id'   => $responseId),
-        ));
+            'attribs' => ['id'   => $responseId],
+        ]);
 
         // Create a window.onload event so that we can bind to the form.
-        // Once bound, add an onsubmit event that will replace the hidden field 
+        // Once bound, add an onsubmit event that will replace the hidden field
         // values with those produced by ReCaptcha
         // zendBindEvent mediates between Mozilla's addEventListener and
         // IE's sole support for addEvent.
@@ -94,7 +94,7 @@ function windowOnLoad(fn) {
 }
 function zendBindEvent(el, eventName, eventHandler) {
     if (el.addEventListener){
-        el.addEventListener(eventName, eventHandler, false); 
+        el.addEventListener(eventName, eventHandler, false);
     } else if (el.attachEvent){
         el.attachEvent('on'+eventName, eventHandler);
     }
@@ -106,13 +106,13 @@ windowOnLoad(function(){
         function(e) {
             document.getElementById("$challengeId").value = document.getElementById("recaptcha_challenge_field").value;
             document.getElementById("$responseId").value = document.getElementById("recaptcha_response_field").value;
-        }    
+        }
     );
 });
 </script>
 EOJ;
 
-        // Always place the hidden fields before the captcha markup, and follow 
+        // Always place the hidden fields before the captcha markup, and follow
         // with the JS from above
         switch ($placement) {
             case 'PREPEND':

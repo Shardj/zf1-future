@@ -59,7 +59,7 @@ class Zend_Filter_StripNewlinesTest extends PHPUnit_Framework_TestCase
      */
     public function testBasic ()
     {
-        $valuesExpected = array(
+        $valuesExpected = [
             '' => '',
             "\n" => '',
             "\r" => '',
@@ -68,7 +68,7 @@ class Zend_Filter_StripNewlinesTest extends PHPUnit_Framework_TestCase
             '\r' => '\r',
             '\r\n' => '\r\n',
             "Some text\nthat we have\r\nstuff in" => 'Some textthat we havestuff in'
-        );
+        ];
         foreach ($valuesExpected as $input => $output) {
             $this->assertEquals($output, $this->_filter->filter($input));
         }

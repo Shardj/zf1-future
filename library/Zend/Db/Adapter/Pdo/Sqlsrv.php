@@ -57,7 +57,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
      *
      * @var array Associative array of datatypes to values 0, 1, or 2.
      */
-    protected $_numericDataTypes = array(
+    protected $_numericDataTypes = [
         Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
         Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
@@ -71,7 +71,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
         'NUMERIC'            => Zend_Db::FLOAT_TYPE,
         'REAL'               => Zend_Db::FLOAT_TYPE,
         'SMALLMONEY'         => Zend_Db::FLOAT_TYPE
-    );
+    ];
 
     /**
      * Creates a PDO DSN for the adapter from $this->_config settings.
@@ -93,9 +93,6 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
             }
 
             if(isset($dsn['host'])) {
-                if($dsn['host'] == '127.0.0.1') {
-                    $dsn['host'] = '(local)';
-                }
                 $dsn['Server'] = $dsn['host'];
                 unset($dsn['host']);
             }
@@ -263,14 +260,14 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
 
         $stmt = $this->query($sql);
         $primaryKeysResult = $stmt->fetchAll(Zend_Db::FETCH_NUM);
-        $primaryKeyColumn = array();
+        $primaryKeyColumn = [];
         $pkey_column_name = 3;
         $pkey_key_seq = 4;
         foreach ($primaryKeysResult as $pkeysRow) {
             $primaryKeyColumn[$pkeysRow[$pkey_column_name]] = $pkeysRow[$pkey_key_seq];
         }
 
-        $desc = array();
+        $desc = [];
         $p = 1;
         foreach ($result as $key => $row) {
             $identity = false;
@@ -289,7 +286,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
                 $primaryPosition = null;
             }
 
-            $desc[$this->foldCase($row[$column_name])] = array(
+            $desc[$this->foldCase($row[$column_name])] = [
                 'SCHEMA_NAME'      => null, // @todo
                 'TABLE_NAME'       => $this->foldCase($row[$table_name]),
                 'COLUMN_NAME'      => $this->foldCase($row[$column_name]),
@@ -304,7 +301,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
                 'PRIMARY'          => $isPrimary,
                 'PRIMARY_POSITION' => $primaryPosition,
                 'IDENTITY'         => $identity
-            );
+            ];
         }
         return $desc;
     }
@@ -333,7 +330,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
             throw new Zend_Db_Adapter_Exception("LIMIT argument offset=$offset is not valid");
         }
 
-        if ($offset == 0) {
+        if ($offset === 0) {
             $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . $count . ' ', $sql);
         } else {
             $orderby = stristr($sql, 'ORDER BY');

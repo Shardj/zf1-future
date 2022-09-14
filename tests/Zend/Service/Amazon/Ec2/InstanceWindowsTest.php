@@ -55,9 +55,9 @@ class InstanceWindowsTest extends PHPUnit_Framework_TestCase
         $this->Zend_Service_Amazon_Ec2_Instance_Windows = new Zend_Service_Amazon_Ec2_Instance_Windows('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
-        $client = new Zend_Http_Client(null, array(
+        $client = new Zend_Http_Client(null, [
             'adapter' => $adapter
-        ));
+        ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Instance_Windows::setHttpClient($client);
     }
@@ -110,21 +110,20 @@ class InstanceWindowsTest extends PHPUnit_Framework_TestCase
 
         print_r($return);
 
-        $arrReturn = array(
+        $arrReturn = [
                 "instanceId" => "i-12345678",
                 "bundleId" => "bun-cla322b9",
                 "state" => "bundling",
                 "startTime" => "2008-10-07T11:41:50.000Z",
                 "updateTime" => "2008-10-07T11:51:50.000Z",
                 "progress" => "20%",
-                "storage" => array(
-                        "s3" => array
-                            (
+                "storage" => [
+                        "s3" => [
                                 "bucket" => "my-bucket",
                                 "prefix" => "my-new-image"
-                            )
-                    )
-                );
+                            ]
+                    ]
+                ];
 
         $this->assertSame($arrReturn, $return);
 
@@ -164,20 +163,19 @@ class InstanceWindowsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Windows->cancelBundle('bun-cla322b9');
 
-        $arrReturn = array(    "instanceId" => "i-12345678",
+        $arrReturn = [    "instanceId" => "i-12345678",
                 "bundleId" => "bun-cla322b9",
                 "state" => "canceling",
                 "startTime" => "2008-10-07T11:41:50.000Z",
                 "updateTime" => "2008-10-07T11:51:50.000Z",
                 "progress" => "20%",
-                "storage" => array(
-                        "s3" => array
-                            (
+                "storage" => [
+                        "s3" => [
                                 "bucket" => "my-bucket",
                                 "prefix" => "my-new-image"
-                            )
-                    )
-                );
+                            ]
+                    ]
+                ];
 
         $this->assertSame($arrReturn, $return);
 
@@ -221,23 +219,22 @@ class InstanceWindowsTest extends PHPUnit_Framework_TestCase
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Windows->describeBundle('bun-cla322b9');
 
-        $arrReturn = array(
-            array(
+        $arrReturn = [
+            [
                 "instanceId" => "i-12345678",
                 "bundleId" => "bun-cla322b9",
                 "state" => "bundling",
                 "startTime" => "2008-10-07T11:41:50.000Z",
                 "updateTime" => "2008-10-07T11:51:50.000Z",
                 "progress" => "20%",
-                "storage" => array(
-                        "s3" => array
-                            (
+                "storage" => [
+                        "s3" => [
                                 "bucket" => "my-bucket",
                                 "prefix" => "my-new-image"
-                            )
-                    )
-                )
-            );
+                            ]
+                    ]
+                ]
+            ];
 
         $this->assertSame($arrReturn, $return);
 

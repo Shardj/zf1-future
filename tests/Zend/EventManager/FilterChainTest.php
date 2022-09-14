@@ -53,13 +53,13 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testSubscribeShouldReturnCallbackHandler()
     {
-        $handle = $this->filterchain->attach(array( $this, __METHOD__ ));
+        $handle = $this->filterchain->attach([ $this, __METHOD__ ]);
         $this->assertTrue($handle instanceof Zend_Stdlib_CallbackHandler);
     }
 
     public function testSubscribeShouldAddCallbackHandlerToFilters()
     {
-        $handler  = $this->filterchain->attach(array($this, __METHOD__));
+        $handler  = $this->filterchain->attach([$this, __METHOD__]);
         $handlers = $this->filterchain->getFilters();
         $this->assertEquals(1, count($handlers));
         $this->assertTrue($handlers->contains($handler));
@@ -67,7 +67,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldRemoveCallbackHandlerFromFilters()
     {
-        $handle = $this->filterchain->attach(array( $this, __METHOD__ ));
+        $handle = $this->filterchain->attach([ $this, __METHOD__ ]);
         $handles = $this->filterchain->getFilters();
         $this->assertTrue($handles->contains($handle));
         $this->filterchain->detach($handle);
@@ -77,9 +77,9 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldReturnFalseIfCallbackHandlerDoesNotExist()
     {
-        $handle1 = $this->filterchain->attach(array( $this, __METHOD__ ));
+        $handle1 = $this->filterchain->attach([ $this, __METHOD__ ]);
         $this->filterchain->clearFilters();
-        $handle2 = $this->filterchain->attach(array( $this, 'handleTestTopic' ));
+        $handle2 = $this->filterchain->attach([ $this, 'handleTestTopic' ]);
         $this->assertFalse($this->filterchain->detach($handle1));
     }
 
@@ -91,17 +91,17 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testFilterChainShouldReturnLastResponse()
     {
-        $this->filterchain->attach(array($this, 'filterTrim'));
-        $this->filterchain->attach(array($this, 'filterStrRot13'));
-        $value = $this->filterchain->run($this, array('string' => ' foo '));
+        $this->filterchain->attach([$this, 'filterTrim']);
+        $this->filterchain->attach([$this, 'filterStrRot13']);
+        $value = $this->filterchain->run($this, ['string' => ' foo ']);
         $this->assertEquals(str_rot13(trim(' foo ')), $value);
     }
 
     public function testFilterIsPassedContextAndArguments()
     {
-        $this->filterchain->attach(array( $this, 'filterTestCallback1' ));
-        $obj = (object) array('foo' => 'bar', 'bar' => 'baz');
-        $value = $this->filterchain->run($this, array('object' => $obj));
+        $this->filterchain->attach([ $this, 'filterTestCallback1' ]);
+        $obj = (object) ['foo' => 'bar', 'bar' => 'baz'];
+        $value = $this->filterchain->run($this, ['object' => $obj]);
         $this->assertEquals('filtered', $value);
         $this->assertEquals('filterTestCallback1', $this->message);
         $this->assertEquals('foobarbaz', $obj->foo);
@@ -109,16 +109,16 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testInterceptingFilterShouldReceiveChain()
     {
-        $this->filterchain->attach(array($this, 'filterReceivalCallback'));
+        $this->filterchain->attach([$this, 'filterReceivalCallback']);
         $this->filterchain->run($this);
     }
 
     public function testFilteringStopsAsSoonAsAFilterFailsToCallNext()
     {
-        $this->filterchain->attach(array($this, 'filterTrim'), 10000);
-        $this->filterchain->attach(array($this, 'filterStrRot13'), 1000);
-        $this->filterchain->attach(array($this, 'filterHashMd5'), 100);
-        $value = $this->filterchain->run($this, array('string' => ' foo '));
+        $this->filterchain->attach([$this, 'filterTrim'], 10000);
+        $this->filterchain->attach([$this, 'filterStrRot13'], 1000);
+        $this->filterchain->attach([$this, 'filterHashMd5'], 100);
+        $value = $this->filterchain->run($this, ['string' => ' foo ']);
         $this->assertEquals(str_rot13(trim(' foo ')), $value);
     }
 

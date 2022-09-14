@@ -31,9 +31,9 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  * @subpackage Management
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * 
+ *
  * @property string $operationId The globally unique identifier (GUID) of the operation.
- * @property string $operationObjectId The target object for the operation. 
+ * @property string $operationObjectId The target object for the operation.
  * @property string $operationName The name of the performed operation.
  * @property array  $operationParameters The collection of parameters for the performed operation.
  * @property array  $operationCaller A collection of attributes that identifies the source of the operation.
@@ -41,32 +41,32 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  */
 class Zend_Service_WindowsAzure_Management_SubscriptionOperationInstance
 	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
-{    
+{
     /**
      * Constructor
-     * 
+     *
      * @param string $operationId The globally unique identifier (GUID) of the operation.
-     * @param string $operationObjectId The target object for the operation. 
+     * @param string $operationObjectId The target object for the operation.
      * @param string $operationName The name of the performed operation.
      * @param array  $operationParameters The collection of parameters for the performed operation.
      * @param array  $operationCaller A collection of attributes that identifies the source of the operation.
      * @param array  $operationStatus The current status of the operation.
      */
-    public function __construct($operationId, $operationObjectId, $operationName, $operationParameters = array(), $operationCaller = array(), $operationStatus = array()) 
-    {	        
-        $this->_data = array(
+    public function __construct($operationId, $operationObjectId, $operationName, $operationParameters = [], $operationCaller = [], $operationStatus = [])
+    {
+        $this->_data = [
             'operationid'          => $operationId,
 	        'operationobjectid'    => $operationObjectId,
 	        'operationname'        => $operationName,
 	        'operationparameters'  => $operationParameters,
 	        'operationcaller'      => $operationCaller,
 	        'operationstatus'      => $operationStatus
-        );
+        ];
     }
-    
+
 	/**
 	 * Add operation parameter
-	 * 
+	 *
  	 * @param	string	$name	Name
  	 * @param	string	$value  Value
 	 */

@@ -53,7 +53,7 @@ class Zend_Mobile_Push_Message_Mpns_ToastTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTokenNonStringThrowsException()
     {
-        $token = array('foo' => 'bar');
+        $token = ['foo' => 'bar'];
         $this->_msg->setToken($token);
     }
 
@@ -83,7 +83,7 @@ class Zend_Mobile_Push_Message_Mpns_ToastTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTitleThrowsExceptionOnNonString()
     {
-        $title = array('foo' => 'bar');
+        $title = ['foo' => 'bar'];
         $this->_msg->setTitle($title);
     }
 
@@ -99,7 +99,7 @@ class Zend_Mobile_Push_Message_Mpns_ToastTest extends PHPUnit_Framework_TestCase
      */
     public function testSetMessageThrowsExceptionOnNonString()
     {
-        $msg = array('foo' => 'bar');
+        $msg = ['foo' => 'bar'];
         $this->_msg->setMessage($msg);
     }
 
@@ -115,7 +115,7 @@ class Zend_Mobile_Push_Message_Mpns_ToastTest extends PHPUnit_Framework_TestCase
      */
     public function testSetParamsThrowsExceptionOnNonString()
     {
-        $params = array('foo' => 'bar');
+        $params = ['foo' => 'bar'];
         $this->_msg->setParams($params);
     }
 

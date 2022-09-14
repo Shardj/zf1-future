@@ -56,7 +56,7 @@ class Zend_Service_Audioscrobbler_AudioscrobblerTestCase extends PHPUnit_Framewo
     {
         $this->_httpTestAdapter = new Zend_Http_Client_Adapter_Test();
         $this->_httpClient = new Zend_Http_Client();
-        $this->_httpClient->setConfig(array('adapter' => $this->_httpTestAdapter));
+        $this->_httpClient->setConfig(['adapter' => $this->_httpTestAdapter]);
         $this->_asService = new Zend_Service_Audioscrobbler();
         $this->_asService->setHttpClient($this->_httpClient);
     }

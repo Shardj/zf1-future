@@ -177,7 +177,7 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
     {
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
 
-        $this->assertTrue(array_values($index->getFieldNames()) == array('path', 'modified', 'contents'));
+        $this->assertTrue(array_values($index->getFieldNames()) == ['path', 'modified', 'contents']);
     }
 
     public function testGetDocument()
@@ -203,7 +203,7 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
 
         $this->assertTrue(array_values( $index->termDocs(new Zend_Search_Lucene_Index_Term('packages', 'contents')) ) ==
-                          array(0, 2, 6, 7, 8));
+                          [0, 2, 6, 7, 8]);
     }
 
     public function testTermPositions()
@@ -211,11 +211,11 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
 
         $this->assertTrue($index->termPositions(new Zend_Search_Lucene_Index_Term('packages', 'contents')) ==
-                          array(0 => array(174),
-                                2 => array(40, 742),
-                                6 => array(6, 156, 163),
-                                7 => array(194),
-                                8 => array(55, 190, 405)));
+                          [0 => [174],
+                                2 => [40, 742],
+                                6 => [6, 156, 163],
+                                7 => [194],
+                                8 => [55, 190, 405]]);
     }
 
     public function testDocFreq()
@@ -398,7 +398,7 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
     {
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
 
-        $terms = array();
+        $terms = [];
 
         $index->resetTermsStream();
         while ($index->currentTerm() !== null) {
@@ -413,7 +413,7 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
     {
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
 
-        $terms = array();
+        $terms = [];
 
         $index->resetTermsStream();
         $index->skipTo(new Zend_Search_Lucene_Index_Term('one', 'contents'));
@@ -430,7 +430,7 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
     {
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');
 
-        $terms = array();
+        $terms = [];
 
         $index->resetTermsStream();
         $index->skipTo(new Zend_Search_Lucene_Index_Term('one', 'contents'));
@@ -442,10 +442,10 @@ class Zend_Search_Lucene_LuceneTest extends PHPUnit_Framework_TestCase
         $index->closeTermsStream();
 
         $this->assertTrue($terms ==
-                          array(new Zend_Search_Lucene_Index_Term('one', 'contents'),
+                          [new Zend_Search_Lucene_Index_Term('one', 'contents'),
                                 new Zend_Search_Lucene_Index_Term('only', 'contents'),
                                 new Zend_Search_Lucene_Index_Term('open', 'contents'),
-                               ));
+                               ]);
     }
 
     public function testTermsStreamInterfaceSkipToTermsRetrievingZeroTermsCase()

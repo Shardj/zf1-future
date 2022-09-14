@@ -28,7 +28,7 @@ require_once 'Zend/Uri/Http.php';
  * Note that $this->_baseuri must point to a directory on a web server
  * containing all the files under the _files directory. You should symlink
  * or copy these files and set '_baseuri' properly using the constant in
- * TestConfiguration.php (based on TestConfiguration.php.dist)
+ * TestConfiguration.php (based on TestConfiguration.dist.php)
  *
  * You can also set the proper constant in your test configuration file to
  * point to the right place.
@@ -52,9 +52,9 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
 
     protected $_adapter = null;
 
-    protected $_config = array(
+    protected $_config = [
         'adapter'     => 'Zend_Http_Client_Adapter_Socket'
-    );
+    ];
 
     public function setUp()
     {
@@ -117,7 +117,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
     protected function _getCleanMock($className) {
         $class = new ReflectionClass($className);
         $methods = $class->getMethods();
-        $stubMethods = array();
+        $stubMethods = [];
         foreach ($methods as $method) {
             if ($method->isPublic() || ($method->isProtected()
             && $method->isAbstract())) {
@@ -127,7 +127,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends PHPUnit_Framework_TestCa
         $mocked = $this->getMock(
             $className,
             $stubMethods,
-            array(),
+            [],
             $className . '_SubscriberHttpTestMock_' . uniqid(),
             false
         );

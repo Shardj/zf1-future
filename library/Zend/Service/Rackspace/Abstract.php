@@ -91,13 +91,13 @@ abstract class Zend_Service_Rackspace_Abstract
     protected $cdnUrl;
     /**
      * Server management URL
-     * 
-     * @var string 
+     *
+     * @var string
      */
     protected $managementUrl;
     /**
      * Do we use ServiceNet?
-     * 
+     *
      * @var boolean
      */
     protected $useServiceNet = false;
@@ -121,7 +121,7 @@ abstract class Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception("The key cannot be empty");
         }
-        if (!in_array($authUrl, array(self::US_AUTH_URL, self::UK_AUTH_URL))) {
+        if (!in_array($authUrl, [self::US_AUTH_URL, self::UK_AUTH_URL])) {
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception("The authentication URL should be valid");
         }
@@ -161,7 +161,7 @@ abstract class Zend_Service_Rackspace_Abstract
      *
      * @return string|boolean
      */
-    public function getStorageUrl() 
+    public function getStorageUrl()
     {
         if (empty($this->storageUrl)) {
             if (!$this->authenticate()) {
@@ -175,7 +175,7 @@ abstract class Zend_Service_Rackspace_Abstract
      *
      * @return string|boolean
      */
-    public function getCdnUrl() 
+    public function getCdnUrl()
     {
         if (empty($this->cdnUrl)) {
             if (!$this->authenticate()) {
@@ -186,9 +186,9 @@ abstract class Zend_Service_Rackspace_Abstract
     }
     /**
      * Get the management server URL
-     * 
+     *
      * @return string|boolean
-     */     
+     */
     public function getManagementUrl()
     {
         if (empty($this->managementUrl)) {
@@ -230,20 +230,20 @@ abstract class Zend_Service_Rackspace_Abstract
      */
     public function setAuthUrl($url)
     {
-        if (!empty($url) && in_array($url, array(self::US_AUTH_URL, self::UK_AUTH_URL))) {
+        if (!empty($url) && in_array($url, [self::US_AUTH_URL, self::UK_AUTH_URL])) {
             $this->authUrl = $url;
         } else {
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception("The authentication URL is not valid");
         }
     }
-    
+
     /**
      * Sets whether to use ServiceNet
-     * 
+     *
      * ServiceNet is Rackspace's internal network. Bandwidth on ServiceNet is
      * not charged.
-     * 
+     *
      * @param boolean $useServiceNet
      */
     public function setServiceNet($useServiceNet = true)
@@ -254,7 +254,7 @@ abstract class Zend_Service_Rackspace_Abstract
 
     /**
      * Get whether we're using ServiceNet
-     * 
+     *
      * @return boolean
      */
     public function getServiceNet()
@@ -281,16 +281,16 @@ abstract class Zend_Service_Rackspace_Abstract
      *
      * @return string
      */
-    public function getErrorMsg() 
+    public function getErrorMsg()
     {
         return $this->errorMsg;
     }
     /**
      * Get the error code of the last HTTP call
-     * 
-     * @return strig 
+     *
+     * @return string
      */
-    public function getErrorCode() 
+    public function getErrorCode()
     {
         return $this->errorCode;
     }
@@ -308,8 +308,8 @@ abstract class Zend_Service_Rackspace_Abstract
     }
     /**
      * Return true is the last call was successful
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      */
     public function isSuccessful()
     {
@@ -325,23 +325,23 @@ abstract class Zend_Service_Rackspace_Abstract
      * @param string $body
      * @return Zend_Http_Response
      */
-    protected function httpCall($url,$method,$headers=array(),$data=array(),$body=null)
+    protected function httpCall($url,$method,$headers=[],$data=[],$body=null)
     {
         $client = $this->getHttpClient();
         $client->resetParameters(true);
         if ($method == 'PUT' && empty($body)) {
-            // if left at NULL a PUT request will always have 
+            // if left at NULL a PUT request will always have
             // Content-Type: x-url-form-encoded, which breaks copyObject()
-            $client->setEncType(''); 
+            $client->setEncType('');
         }
         if (empty($headers[self::AUTHUSER_HEADER])) {
             $headers[self::AUTHTOKEN]= $this->getToken();
-        } 
+        }
         $client->setMethod($method);
         if (empty($data['format'])) {
             $data['format']= self::API_FORMAT;
         }
-        $client->setParameterGet($data);    
+        $client->setParameterGet($data);
         if (!empty($body)) {
             $client->setRawData($body);
             if (!isset($headers['Content-Type'])) {
@@ -369,10 +369,10 @@ abstract class Zend_Service_Rackspace_Abstract
             throw new Zend_Service_Rackspace_Exception("User has not been set");
         }
 
-        $headers = array (
+        $headers = [
             self::AUTHUSER_HEADER => $this->user,
             self::AUTHKEY_HEADER => $this->key
-        );
+        ];
         $result = $this->httpCall($this->authUrl.'/'.self::VERSION,'GET', $headers);
         if ($result->getStatus()==204) {
             $this->token = $result->getHeader(self::AUTHTOKEN);
@@ -388,5 +388,5 @@ abstract class Zend_Service_Rackspace_Abstract
         $this->errorMsg = $result->getBody();
         $this->errorCode = $result->getStatus();
         return false;
-    } 
+    }
 }

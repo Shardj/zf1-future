@@ -43,14 +43,14 @@ class Zend_Rest_Client extends Zend_Service_Abstract
      * Data for the query
      * @var array
      */
-    protected $_data = array();
+    protected $_data = [];
 
      /**
      * Zend_Uri of this web service
      * @var Zend_Uri_Http
      */
     protected $_uri = null;
-    
+
     /**
      * Flag indicating the Zend_Http_Client is fresh and needs no reset.
      * Must be set explicitly if you want to keep preset parameters.
@@ -126,18 +126,18 @@ class Zend_Rest_Client extends Zend_Service_Abstract
          * because the Zend_Http_Client instance is shared among all Zend_Service_Abstract subclasses.
          */
         if ($this->_noReset) {
-            // if $_noReset we do not want to reset on this request, 
+            // if $_noReset we do not want to reset on this request,
             // but we do on any subsequent request
             $this->_noReset = false;
         } else {
             self::getHttpClient()->resetParameters();
         }
-        
+
         self::getHttpClient()->setUri($this->_uri);
     }
-    
+
     /**
-     * Tells Zend_Rest_Client not to reset all parameters on it's 
+     * Tells Zend_Rest_Client not to reset all parameters on it's
      * Zend_Http_Client. If you want no reset, this must be called explicitly
      * before every request for which you do not want to reset the parameters.
      * Parameters will accumulate between requests, but as soon as you do not
@@ -252,7 +252,7 @@ class Zend_Rest_Client extends Zend_Service_Abstract
      */
     public function __call($method, $args)
     {
-        $methods = array('post', 'get', 'delete', 'put');
+        $methods = ['post', 'get', 'delete', 'put'];
 
         if (in_array(strtolower($method), $methods)) {
             if (!isset($args[0])) {
@@ -261,27 +261,29 @@ class Zend_Rest_Client extends Zend_Service_Abstract
             $this->_data['rest'] = 1;
             $data = array_slice($args, 1) + $this->_data;
             $response = $this->{'rest' . $method}($args[0], $data);
-            $this->_data = array();//Initializes for next Rest method.
+            $this->_data = [];//Initializes for next Rest method.
             return new Zend_Rest_Client_Result($response->getBody());
-        } else {
-            // More than one arg means it's definitely a Zend_Rest_Server
-            if (sizeof($args) == 1) {
-                // Uses first called function name as method name
-                if (!isset($this->_data['method'])) {
-                    $this->_data['method'] = $method;
-                    $this->_data['arg1']  = $args[0];
-                }
-                $this->_data[$method]  = $args[0];
-            } else {
+        }
+
+        // More than one arg means it's definitely a Zend_Rest_Server
+        if (count($args) === 1) {
+            // Uses first called function name as method name
+            if (!isset($this->_data['method'])) {
                 $this->_data['method'] = $method;
-                if (sizeof($args) > 0) {
-                    foreach ($args as $key => $arg) {
-                        $key = 'arg' . $key;
-                        $this->_data[$key] = $arg;
-                    }
+                $this->_data['arg1']  = $args[0];
+            }
+            $this->_data[$method]  = $args[0];
+        } else {
+            $this->_data['method'] = $method;
+
+            if (count($args) > 0) {
+                foreach ($args as $key => $arg) {
+                    $key = 'arg' . $key;
+                    $this->_data[$key] = $arg;
                 }
             }
-            return $this;
         }
+
+        return $this;
     }
 }

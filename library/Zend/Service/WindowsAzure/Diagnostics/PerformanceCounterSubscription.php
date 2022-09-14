@@ -40,15 +40,15 @@ class Zend_Service_WindowsAzure_Diagnostics_PerformanceCounterSubscription
 {
     /**
      * Constructor
-     * 
+     *
  	 * @param	string	$counterSpecifier					Counter specifier
  	 * @param	int		$sampleRateInSeconds				Sample rate in seconds
 	 */
-    public function __construct($counterSpecifier, $sampleRateInSeconds = 1) 
-    {	        
-        $this->_data = array(
+    public function __construct($counterSpecifier, $sampleRateInSeconds = 1)
+    {
+        $this->_data = [
             'counterspecifier'      => $counterSpecifier,
             'samplerateinseconds' 	=> $sampleRateInSeconds
-        );
+        ];
     }
 }

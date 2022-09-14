@@ -89,7 +89,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals($this->exceptedLenOfMimeMessage,
             $this->mediaMimeStream->getTotalSize());
-        $outputArray = array();
+        $outputArray = [];
         while ($this->mediaMimeStream->hasData()) {
             $outputArray = explode("\r\n", $this->mediaMimeStream->read(400));
         }
@@ -123,7 +123,7 @@ class Zend_Gdata_MediaMimeStreamTest extends PHPUnit_Framework_TestCase
      */
     public function testReadVariousBufferSizes()
     {
-        $bufferSizesToTest = array(2, 20, 33, 44, 88, 100, 201);
+        $bufferSizesToTest = [2, 20, 33, 44, 88, 100, 201];
         foreach($bufferSizesToTest as $sizeToTest) {
             $mediaMimeStream = new Zend_Gdata_MediaMimeStream(
                 $this->smallXMLString, $this->locationOfFakeBinary,

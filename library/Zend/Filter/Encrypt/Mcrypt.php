@@ -47,7 +47,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
      *     'modedirectory' => directory where to find the mode
      * )
      */
-    protected $_encryption = array(
+    protected $_encryption = [
         'key'                 => 'ZendFramework',
         'algorithm'           => 'blowfish',
         'algorithm_directory' => '',
@@ -55,7 +55,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         'mode_directory'      => '',
         'vector'              => null,
         'salt'                => false
-    );
+    ];
 
     /**
      * Internal compression
@@ -81,7 +81,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         } elseif (is_string($options)) {
-            $options = array('key' => $options);
+            $options = ['key' => $options];
         } elseif (!is_array($options)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('Invalid options argument provided to filter');
@@ -109,12 +109,12 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
      * Sets new encryption options
      *
      * @param  string|array $options Encryption options
-     * @return Zend_Filter_File_Encryption
+     * @return Zend_Filter_Encrypt_Mcrypt
      */
     public function setEncryption($options)
     {
         if (is_string($options)) {
-            $options = array('key' => $options);
+            $options = ['key' => $options];
         }
 
         if (!is_array($options)) {
@@ -214,7 +214,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
     public function setCompression($compression)
     {
         if (is_string($this->_compression)) {
-            $compression = array('adapter' => $compression);
+            $compression = ['adapter' => $compression];
         }
 
         $this->_compression = $compression;
@@ -322,8 +322,8 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
      * Initialises the cipher with the set key
      *
      * @param  resource $cipher
+     * @return Zend_Filter_Encrypt_Mcrypt
      * @throws
-     * @return resource
      */
     protected function _initCipher($cipher)
     {

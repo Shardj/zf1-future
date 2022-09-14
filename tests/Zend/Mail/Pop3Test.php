@@ -49,9 +49,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_params = array('host'     => TESTS_ZEND_MAIL_POP3_HOST,
+        $this->_params = ['host'     => TESTS_ZEND_MAIL_POP3_HOST,
                                'user'     => TESTS_ZEND_MAIL_POP3_USER,
-                               'password' => TESTS_ZEND_MAIL_POP3_PASSWORD);
+                               'password' => TESTS_ZEND_MAIL_POP3_PASSWORD];
 
         if (defined('TESTS_ZEND_MAIL_SERVER_TESTDIR') && TESTS_ZEND_MAIL_SERVER_TESTDIR) {
             if (!file_exists(TESTS_ZEND_MAIL_SERVER_TESTDIR . DIRECTORY_SEPARATOR . 'inbox')
@@ -140,7 +140,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
     public function testNoParams()
     {
         try {
-            $mail = new Zend_Mail_Storage_Pop3(array());
+            $mail = new Zend_Mail_Storage_Pop3([]);
         } catch (Exception $e) {
             return; // test ok
         }
@@ -249,7 +249,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
     public function testSize()
     {
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
-        $shouldSizes = array(1 => 397, 89, 694, 452, 497, 101, 139);
+        $shouldSizes = [1 => 397, 89, 694, 452, 497, 101, 139];
 
 
         $sizes = $mail->getSize();

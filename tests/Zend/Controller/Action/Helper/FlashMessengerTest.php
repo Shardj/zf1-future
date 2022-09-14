@@ -106,7 +106,7 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
         $this->request    = new Zend_Controller_Request_Http();
         $this->request->setControllerName('helper-flash-messenger');
         $this->response   = new Zend_Controller_Response_Cli();
-        $this->controller = new HelperFlashMessengerController($this->request, $this->response, array());
+        $this->controller = new HelperFlashMessengerController($this->request, $this->response, []);
         $this->helper     = new Zend_Controller_Action_Helper_FlashMessenger;
     }
 
@@ -159,7 +159,7 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends PHPUnit_Framework
         $this->assertTrue($this->helper->hasCurrentMessages('foobar'));
 
         $foobarMessages = $this->helper->getCurrentMessages('foobar');
-        $this->assertEquals(array('testmessage', 'testmessage2'), $foobarMessages);
+        $this->assertEquals(['testmessage', 'testmessage2'], $foobarMessages);
 
         // Ensure it didnt' bleed over into default namespace
         $defaultMessages = $this->helper->getCurrentMessages();
@@ -229,7 +229,7 @@ class FlashMessengerControllerActionHelper extends Zend_Controller_Action_Helper
 
     public function reset()
     {
-        self::$_messages = array();
+        self::$_messages = [];
         self::$_session = NULL;
         self::$_messageAdded = false;
     }

@@ -95,8 +95,8 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
         $this->_controller->resetInstance();
         $this->assertNull($this->_controller->getParam('bar'));
-        $this->assertSame(array(), $this->_controller->getParams());
-        $this->assertSame(array(), $this->_controller->getControllerDirectory());
+        $this->assertSame([], $this->_controller->getParams());
+        $this->assertSame([], $this->_controller->getControllerDirectory());
     }
 
     /**
@@ -193,7 +193,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     public function testSetGetControllerDirectory()
     {
         $test = $this->_controller->getControllerDirectory();
-        $expected = array('default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files');
+        $expected = ['default' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files'];
         $this->assertSame($expected, $test);
     }
 
@@ -208,7 +208,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
     public function testGetSetParams()
     {
-        $this->_controller->setParams(array('foo' => 'bar'));
+        $this->_controller->setParams(['foo' => 'bar']);
         $params = $this->_controller->getParams();
         $this->assertTrue(isset($params['foo']));
         $this->assertEquals('bar', $params['foo']);
@@ -220,7 +220,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isset($params['baz']));
         $this->assertEquals('bat', $params['baz']);
 
-        $this->_controller->setParams(array('foo' => 'bug'));
+        $this->_controller->setParams(['foo' => 'bug']);
         $params = $this->_controller->getParams();
         $this->assertTrue(isset($params['foo']));
         $this->assertEquals('bug', $params['foo']);
@@ -230,7 +230,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
     public function testClearParams()
     {
-        $this->_controller->setParams(array('foo' => 'bar', 'baz' => 'bat'));
+        $this->_controller->setParams(['foo' => 'bar', 'baz' => 'bat']);
         $params = $this->_controller->getParams();
         $this->assertTrue(isset($params['foo']));
         $this->assertTrue(isset($params['baz']));
@@ -241,12 +241,12 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isset($params['baz']));
 
         $this->_controller->clearParams();
-        $this->assertSame(array(), $this->_controller->getParams());
+        $this->assertSame([], $this->_controller->getParams());
 
-        $this->_controller->setParams(array('foo' => 'bar', 'bar' => 'baz', 'baz' => 'bat'));
-        $this->assertSame(array('foo' => 'bar', 'bar' => 'baz', 'baz' => 'bat'), $this->_controller->getParams());
-        $this->_controller->clearParams(array('foo', 'baz'));
-        $this->assertSame(array('bar' => 'baz'), $this->_controller->getParams());
+        $this->_controller->setParams(['foo' => 'bar', 'bar' => 'baz', 'baz' => 'bat']);
+        $this->assertSame(['foo' => 'bar', 'bar' => 'baz', 'baz' => 'bat'], $this->_controller->getParams());
+        $this->_controller->clearParams(['foo', 'baz']);
+        $this->assertSame(['bar' => 'baz'], $this->_controller->getParams());
     }
 
     public function testSetGetDefaultControllerName()
@@ -424,7 +424,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     public function testSetBaseUrlThrowsExceptionOnNonString()
     {
         try {
-            $this->_controller->setBaseUrl(array());
+            $this->_controller->setBaseUrl([]);
             $this->fail('Should not be able to set non-string base URL');
         } catch (Exception $e) {
             // success

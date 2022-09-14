@@ -111,7 +111,7 @@ if (isset($_POST) && strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
                 in
                 <select name="search_type">
                 <?php
-                $search_types = array (
+                $search_types = [
                 0 => 'Apparel',
                 1 => 'Baby',
                 2 => 'Beauty',
@@ -146,7 +146,7 @@ if (isset($_POST) && strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
                 31 => 'Video Games',
                 32 => 'Wireless',
                 33 => 'Wireless Accessories',
-                );
+                ];
                 foreach ($search_types as $type) {
                     if ($searchFor == $type) {
                             ?>

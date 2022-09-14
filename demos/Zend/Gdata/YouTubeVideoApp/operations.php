@@ -118,7 +118,7 @@ switch ($operation) {
                        $_POST['oldPlaylistTitle']);
         break;
 
-    case (strcmp(substr($operation, 0, 7), 'search_') == 0):
+    case (strcmp(substr($operation, 0, 7), 'search_') === 0):
         // initialize search specific information
         $searchType = substr($operation, 7);
         searchVideos($searchType, $_POST['searchTerm'], $_POST['startIndex'],
@@ -238,7 +238,7 @@ function findFlashUrl($entry)
  * Check the upload status of a video
  *
  * @param string $videoId The video to check.
- * @return string A message about the video's status.
+ * @return void A message about the video's status.
  */
 function checkUpload($videoId)
 {
@@ -462,10 +462,10 @@ function createUploadForm($videoTitle, $videoDescription, $videoCategory, $video
     }
 
     print <<< END
-        <br /><form action="${postUrl}?nexturl=${nextUrl}"
+        <br /><form action="{$postUrl}?nexturl={$nextUrl}"
         method="post" enctype="multipart/form-data">
         <input name="file" type="file"/>
-        <input name="token" type="hidden" value="${tokenValue}"/>
+        <input name="token" type="hidden" value="{$tokenValue}"/>
         <input value="Upload Video File" type="submit" />
         </form>
 END;
@@ -747,9 +747,9 @@ function echoVideoPlayer($videoId)
     print <<<END
         <b>$videoTitle</b><br />
         <object width="425" height="350">
-        <param name="movie" value="${videoUrl}&autoplay=1"></param>
+        <param name="movie" value="{$videoUrl}&autoplay=1"></param>
         <param name="wmode" value="transparent"></param>
-        <embed src="${videoUrl}&autoplay=1" type="application/x-shockwave-flash" wmode="transparent"
+        <embed src="{$videoUrl}&autoplay=1" type="application/x-shockwave-flash" wmode="transparent"
         width="425" height="350"></embed>
         </object>
 END;
@@ -831,15 +831,15 @@ function echoVideoMetadata($entry)
     }
     $flashUrl = htmlspecialchars(findFlashUrl($entry));
     print <<<END
-        <b>Title:</b> ${title}<br />
-        <b>Description:</b> ${description}<br />
-        <b>Author:</b> <a href="${authorUrl}">${authorUsername}</a><br />
-        <b>Tags:</b> ${tags}<br />
-        <b>Duration:</b> ${duration} seconds<br />
-        <b>View count:</b> ${viewCount}<br />
-        <b>Rating:</b> ${rating} (${numRaters} ratings)<br />
-        <b>Flash:</b> <a href="${flashUrl}">${flashUrl}</a><br />
-        <b>Watch page:</b> <a href="${watchPage}">${watchPage}</a> <br />
+        <b>Title:</b> {$title}<br />
+        <b>Description:</b> {$description}<br />
+        <b>Author:</b> <a href="{$authorUrl}">{$authorUsername}</a><br />
+        <b>Tags:</b> {$tags}<br />
+        <b>Duration:</b> {$duration} seconds<br />
+        <b>View count:</b> {$viewCount}<br />
+        <b>Rating:</b> {$rating} ({$numRaters} ratings)<br />
+        <b>Flash:</b> <a href="{$flashUrl}">{$flashUrl}</a><br />
+        <b>Watch page:</b> <a href="{$watchPage}">{$watchPage}</a> <br />
 END;
 }
 

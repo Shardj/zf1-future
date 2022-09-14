@@ -396,7 +396,7 @@ function createEvent ($client, $title = 'Tennis with Beth',
   $gc = new Zend_Gdata_Calendar($client);
   $newEntry = $gc->newEventEntry();
   $newEntry->title = $gc->newTitle(trim($title));
-  $newEntry->where  = array($gc->newWhere($where));
+  $newEntry->where  = [$gc->newWhere($where)];
 
   $newEntry->content = $gc->newContent($desc);
   $newEntry->content->type = 'text';
@@ -404,7 +404,7 @@ function createEvent ($client, $title = 'Tennis with Beth',
   $when = $gc->newWhen();
   $when->startTime = "{$startDate}T{$startTime}:00.000{$tzOffset}:00";
   $when->endTime = "{$endDate}T{$endTime}:00.000{$tzOffset}:00";
-  $newEntry->when = array($when);
+  $newEntry->when = [$when];
 
   $createdEntry = $gc->insertEvent($newEntry);
   return $createdEntry->id->text;
@@ -458,7 +458,7 @@ function createWebContentEvent ($client, $title = 'World Cup 2006',
   $when = $gc->newWhen();
   $when->startTime = $startDate;
   $when->endTime = $endDate;
-  $newEntry->when = array($when);
+  $newEntry->when = [$when];
 
   $wc = $gc->newWebContent();
   $wc->url = $url;
@@ -472,7 +472,7 @@ function createWebContentEvent ($client, $title = 'World Cup 2006',
   $wcLink->href = $icon;
 
   $wcLink->webContent = $wc;
-  $newEntry->link = array($wcLink);
+  $newEntry->link = [$wcLink];
 
   $createdEntry = $gc->insertEvent($newEntry);
   return $createdEntry->id->text;
@@ -496,7 +496,7 @@ function createRecurringEvent ($client, $title = 'Tennis with Beth',
   $gc = new Zend_Gdata_Calendar($client);
   $newEntry = $gc->newEventEntry();
   $newEntry->title = $gc->newTitle(trim($title));
-  $newEntry->where = array($gc->newWhere($where));
+  $newEntry->where = [$gc->newWhere($where)];
 
   $newEntry->content = $gc->newContent($desc);
   $newEntry->content->type = 'text';
@@ -522,7 +522,7 @@ function createRecurringEvent ($client, $title = 'Tennis with Beth',
  *
  * @param  Zend_Http_Client $client  The authenticated client object
  * @param  string           $eventId The event ID string
- * @return Zend_Gdata_Calendar_EventEntry|null if the event is found, null if it's not
+ * @return string|Zend_Gdata_App_Entry|null if the event is found, null if it's not
  */
 function getEvent($client, $eventId)
 {
@@ -550,7 +550,7 @@ function getEvent($client, $eventId)
  * @param  Zend_Http_Client $client   The authenticated client object
  * @param  string           $eventId  The event ID string
  * @param  string           $newTitle The new title to set on this event
- * @return Zend_Gdata_Calendar_EventEntry|null The updated entry
+ * @return string|Zend_Gdata_App_Entry|null The updated entry
  */
 function updateEvent ($client, $eventId, $newTitle)
 {
@@ -582,7 +582,7 @@ function updateEvent ($client, $eventId, $newTitle)
  * @param  string           $eventId The event ID string
  * @param  string           $name    The name of the extended property
  * @param  string           $value   The value of the extended property
- * @return Zend_Gdata_Calendar_EventEntry|null The updated entry
+ * @return Zend_Gdata_App_Entry|null The updated entry
  */
 function addExtendedProperty ($client, $eventId,
     $name='http://www.example.com/schemas/2005#mycal.id', $value='1234')
@@ -590,7 +590,7 @@ function addExtendedProperty ($client, $eventId,
   $gc = new Zend_Gdata_Calendar($client);
   if ($event = getEvent($client, $eventId)) {
     $extProp = $gc->newExtendedProperty($name, $value);
-    $extProps = array_merge($event->extendedProperty, array($extProp));
+    $extProps = array_merge($event->extendedProperty, [$extProp]);
     $event->extendedProperty = $extProps;
     $eventNew = $event->save();
     return $eventNew;
@@ -606,7 +606,7 @@ function addExtendedProperty ($client, $eventId,
  * @param  Zend_Http_Client $client  The authenticated client object
  * @param  string           $eventId The event ID string
  * @param  integer          $minutes Minutes before event to set reminder
- * @return Zend_Gdata_Calendar_EventEntry|null The updated entry
+ * @return Zend_Gdata_App_Entry|null The updated entry
  */
 function setReminder($client, $eventId, $minutes=15)
 {
@@ -618,7 +618,7 @@ function setReminder($client, $eventId, $minutes=15)
         $reminder = $gc->newReminder();
         $reminder->setMinutes($minutes);
         $reminder->setMethod($method);
-        $when->reminders = array($reminder);
+        $when->reminders = [$reminder];
     }
     $eventNew = $event->save();
     return $eventNew;
@@ -670,7 +670,7 @@ function deleteEventByUrl ($client, $url)
 if (isset($argc) && $argc >= 2) {
   switch ($argv[1]) {
     case 'outputCalendar':
-      if ($argc == 4) {
+      if ($argc === 4) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         outputCalendar($client);
       } else {
@@ -679,7 +679,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'outputCalendarMagicCookie':
-      if ($argc == 4) {
+      if ($argc === 4) {
         outputCalendarMagicCookie($argv[2], $argv[3]);
       } else {
         echo "Usage: php {$argv[0]} {$argv[1]} " .
@@ -687,7 +687,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'outputCalendarByDateRange':
-      if ($argc == 6) {
+      if ($argc === 6) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         outputCalendarByDateRange($client, $argv[4], $argv[5]);
       } else {
@@ -696,7 +696,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'outputCalendarByFullTextQuery':
-      if ($argc == 5) {
+      if ($argc === 5) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         outputCalendarByFullTextQuery($client, $argv[4]);
       } else {
@@ -705,7 +705,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'outputCalendarList':
-      if ($argc == 4) {
+      if ($argc === 4) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         outputCalendarList($client);
       } else {
@@ -714,7 +714,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'updateEvent':
-      if ($argc == 6) {
+      if ($argc === 6) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         updateEvent($client, $argv[4], $argv[5]);
       } else {
@@ -723,7 +723,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'setReminder':
-      if ($argc == 6) {
+      if ($argc === 6) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         setReminder($client, $argv[4], $argv[5]);
       } else {
@@ -732,7 +732,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'addExtendedProperty':
-      if ($argc == 7) {
+      if ($argc === 7) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         addExtendedProperty($client, $argv[4], $argv[5], $argv[6]);
       } else {
@@ -741,7 +741,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'deleteEventById':
-      if ($argc == 5) {
+      if ($argc === 5) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         deleteEventById($client, $argv[4]);
       } else {
@@ -750,7 +750,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'deleteEventByUrl':
-      if ($argc == 5) {
+      if ($argc === 5) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         deleteEventByUrl($client, $argv[4]);
       } else {
@@ -759,7 +759,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'createEvent':
-      if ($argc == 12) {
+      if ($argc === 12) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         $id = createEvent($client, $argv[4], $argv[5], $argv[6], $argv[7],
             $argv[8], $argv[9], $argv[10], $argv[11]);
@@ -774,7 +774,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'createQuickAddEvent':
-      if ($argc == 5) {
+      if ($argc === 5) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         $id = createQuickAddEvent($client, $argv[4]);
         print "Event created with ID: $id\n";
@@ -786,7 +786,7 @@ if (isset($argc) && $argc >= 2) {
       }
       break;
     case 'createWebContentEvent':
-        if ($argc == 12) {
+        if ($argc === 12) {
           $client = getClientLoginHttpClient($argv[2], $argv[3]);
           $id = createWebContentEvent($client, $argv[4], $argv[5], $argv[6],
               $argv[7], $argv[8], $argv[9], $argv[10], $argv[11]);
@@ -803,7 +803,7 @@ if (isset($argc) && $argc >= 2) {
         }
         break;
     case 'createRecurringEvent':
-      if ($argc == 7) {
+      if ($argc === 7) {
         $client = getClientLoginHttpClient($argv[2], $argv[3]);
         createRecurringEvent($client, $argv[4], $argv[5], $argv[6]);
       } else {

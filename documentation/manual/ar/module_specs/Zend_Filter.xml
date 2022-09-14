@@ -1,7 +1,7 @@
 <sect1 id="zend.filter.filter">
     <title>Zend_Filter</title>
 
-    <sect2 id="zend.filter.filter.introduction">
+    <sect2 id="zend.filter.introduction">
         <title>مقدمة</title>
         <para>
 
@@ -23,7 +23,7 @@
     ?>]]>
         </programlisting>
     </sect2>
-    <sect2 id="zend.filter.filter.usecases">
+    <sect2 id="zend.filter.usecases">
         <title>امثلة</title>
         <para>
         فى كل من الأمثة التالية , <literal>value$</literal> تمثل قيمة ذات بعد واحد .

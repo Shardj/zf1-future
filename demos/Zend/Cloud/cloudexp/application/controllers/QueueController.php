@@ -29,7 +29,7 @@
 class QueueController extends Zend_Controller_Action
 {
     
-    public $dependencies = array('config');
+    public $dependencies = ['config'];
     
     /**
      * @var Zend_Cloud_QueueService_Adapter
