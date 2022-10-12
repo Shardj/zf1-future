@@ -311,6 +311,9 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
     protected function _commit()
     {
         $this->_connect();
+        if (!$this->_connection->inTransaction()) {
+            return;
+        }
         $this->_connection->commit();
     }
 
@@ -319,6 +322,9 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
      */
     protected function _rollBack() {
         $this->_connect();
+        if (!$this->_connection->inTransaction()) {
+            return;
+        }
         $this->_connection->rollBack();
     }
 
