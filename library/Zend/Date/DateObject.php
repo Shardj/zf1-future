@@ -924,6 +924,12 @@ abstract class Zend_Date_DateObject {
     {
         // timestamp within 32bit
         if (abs($this->_unixTimestamp) <= 0x7FFFFFFF) {
+            if (PHP_VERSION_ID >= 80100) { // on php 8.1
+                $suninfo = date_sun_info($this->_unixTimestamp, $location['latitude'], $location['longitude']);
+                $sunrise = $suninfo['sunrise'];
+                $sunset  = $suninfo['sunset'];
+                return $rise === false ? $sunset : $sunrise;
+            }
             if ($rise === false) {
                 return date_sunset($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
                                    $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
