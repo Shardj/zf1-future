@@ -18,3 +18,4 @@ bin/parallel-lint
 .idea
 .vscode
 tests/Zend/Cache/zend_cache_tmp_dir*
+tests/Zend/Filter/_files/traversed.*
