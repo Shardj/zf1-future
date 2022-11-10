@@ -35,6 +35,8 @@ require_once 'Zend/Filter/Encrypt/Openssl.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
+ * ArgumentCountError: openssl_seal() expects at least 5 arguments, 4 given (on php >= 8) so need php anotation bellow
+ * @requires PHP < 8.0
  */
 class Zend_Filter_Encrypt_OpensslTest extends TestCase
 {

@@ -218,7 +218,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 
     /**
      * Ensures that the filter allows de/encryption
-     *
+     * @requires PHP < 8.0
      * @return void
      */
     public function testEncryptionWithDecryptionOpenssl()
