@@ -17,3 +17,4 @@ bin/parallel-lint
 .php_cs.cache
 .idea
 .vscode
+tests/Zend/Cache/zend_cache_tmp_dir*

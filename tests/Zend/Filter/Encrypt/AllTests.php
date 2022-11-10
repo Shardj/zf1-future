@@ -29,7 +29,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Filter/Encrypt/McryptTest.php';
-require_once 'Zend/Filter/Encrypt/OpensslTest.php';
+// require_once 'Zend/Filter/Encrypt/OpensslTest.php';
 
 /**
  * @category   Zend
@@ -61,7 +61,7 @@ class Zend_Filter_Encrypt_AllTests
         $suite = new TestSuite('Zend Framework - Zend_Filter_Encrypt');
 
         $suite->addTestSuite('Zend_Filter_Encrypt_McryptTest');
-        $suite->addTestSuite('Zend_Filter_Encrypt_OpensslTest');
+        // $suite->addTestSuite('Zend_Filter_Encrypt_OpensslTest');
 
         return $suite;
     }
