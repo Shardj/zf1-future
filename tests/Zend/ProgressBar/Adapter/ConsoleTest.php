@@ -264,7 +264,7 @@ class Zend_ProgressBar_Adapter_ConsoleTest extends TestCase
         $adapter->setOutputStream('zendprogressbaradapterconsole://test1');
         $this->assertArrayHasKey('test1', Zend_ProgressBar_Adapter_Console_MockupStream::$tests);
     }
-
+    /** @doesNotPerformAssertions */
     public function testSetOutputStreamOpenFail()
     {
         try {
