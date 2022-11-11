@@ -744,7 +744,12 @@ class Zend_Controller_FrontTest extends TestCase
 
         $body = $this->_controller->getResponse()->getBody();
         $this->assertStringNotContainsString('Type error action called', $body);
-        $this->assertEquals("EXCEPTION_OTHER\nIndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned", $body);
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            $this->assertEquals("EXCEPTION_OTHER\nReturn value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned", $body);
+        } else {
+            $this->assertEquals("EXCEPTION_OTHER\nIndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned", $body);
+        }
+        
         $this->assertSame(500, $this->_controller->getResponse()->getHttpResponseCode());
     }
 
@@ -778,10 +783,17 @@ class Zend_Controller_FrontTest extends TestCase
             $this->_controller->dispatch($request, $response);
             $this->fail('Should have thrown');
         } catch (Throwable $e) {
-            $this->assertSame(
-                'IndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned',
-                $e->getMessage()
-            );
+            if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+                $this->assertSame(
+                    'Return value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned',
+                    $e->getMessage()
+                );
+            } else {
+                $this->assertSame(
+                    'IndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned',
+                    $e->getMessage()
+                );
+            }
         }
     }
 
@@ -798,7 +810,11 @@ class Zend_Controller_FrontTest extends TestCase
         $this->_controller->dispatch($request, $response);
 
         $body = $this->_controller->getResponse()->getBody();
-        $this->assertEquals("EXCEPTION_OTHER\nMyApp\Controller\Plugin\ThrowingPlugin::produceTypeError(): Return value must be of type MyApp\Controller\Plugin\ThrowingPlugin, stdClass returned", $body);
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            $this->assertEquals("EXCEPTION_OTHER\nReturn value of MyApp\Controller\Plugin\ThrowingPlugin::produceTypeError() must be an instance of MyApp\Controller\Plugin\ThrowingPlugin, instance of stdClass returned", $body);
+        } else {
+            $this->assertEquals("EXCEPTION_OTHER\nMyApp\Controller\Plugin\ThrowingPlugin::produceTypeError(): Return value must be of type MyApp\Controller\Plugin\ThrowingPlugin, stdClass returned", $body);
+        }
         $this->assertSame(500, $this->_controller->getResponse()->getHttpResponseCode());
     }
 }
