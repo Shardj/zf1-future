@@ -5026,7 +5026,7 @@ class Zend_DateTest extends TestCase
 
     /**
      * Temporary skip this test on php < 8.0 because raise issue 'A non-numeric value encountered'
-     * @requires PHP < 8
+     * @requires PHP < 7
      */
     public function testTimesync()
     {
