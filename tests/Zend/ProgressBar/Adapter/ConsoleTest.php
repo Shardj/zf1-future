@@ -264,18 +264,14 @@ class Zend_ProgressBar_Adapter_ConsoleTest extends TestCase
         $adapter->setOutputStream('zendprogressbaradapterconsole://test1');
         $this->assertArrayHasKey('test1', Zend_ProgressBar_Adapter_Console_MockupStream::$tests);
     }
-    /** @doesNotPerformAssertions */
+
     public function testSetOutputStreamOpenFail()
     {
-        try {
-            $adapter = new Zend_ProgressBar_Adapter_Console();
-            $adapter->setOutputStream(null);
-            $this->fail('Expected Zend_ProgressBar_Adapter_Exception');
-        } catch (Zend_ProgressBar_Adapter_Exception $e) {
-        } catch (Error $e) {
-            $this->assertTrue($e instanceof ValueError);
-            $this->assertStringContainsString('cannot be empty', $e->getMessage());
-        }
+        $beforePHP8 = version_compare(PHP_VERSION, '8.0.0', '<');
+        $this->expectException($beforePHP8 ? Zend_ProgressBar_Adapter_Exception::class : ValueError::class);
+        $this->expectExceptionMessage($beforePHP8 ? "Unable to open stream" : "cannot be empty");
+        $adapter = new Zend_ProgressBar_Adapter_Console();
+        $adapter->setOutputStream(null);
     }
 
     public function testSetOutputStreamReplaceStream()
