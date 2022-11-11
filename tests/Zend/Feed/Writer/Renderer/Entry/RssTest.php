@@ -64,11 +64,17 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends TestCase
         $this->_validEntry = null;
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRenderMethodRunsMinimalWriterContainerProperlyBeforeICheckAtomCompliance()
     {
-        $this->expectException(Zend_Feed_Exception::class);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $renderer->render();
+        try {
+            $renderer->render();
+        } catch (Zend_Feed_Exception $e) {
+            $this->fail('Valid Writer object caused an exception when building which should never happen');
+        }
     }
 
     public function testEntryEncodingHasBeenSet()

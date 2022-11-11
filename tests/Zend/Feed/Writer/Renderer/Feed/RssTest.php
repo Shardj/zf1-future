@@ -62,11 +62,17 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends TestCase
         $this->assertTrue($feed->getDataContainer() instanceof Zend_Feed_Writer_Feed);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testBuildMethodRunsMinimalWriterContainerProperlyBeforeICheckRssCompliance()
     {
-        $this->expectException(Zend_Feed_Exception::class);
         $feed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
-        $feed->render();
+        try {
+            $feed->render();
+        } catch (Zend_Feed_Exception $e) {
+            $this->fail('Valid Writer object caused an exception when building which should never happen');
+        }
     }
 
     public function testFeedEncodingHasBeenSet()
