@@ -191,7 +191,7 @@ class Zend_AllTests
         $suite->addTest(Zend_Config_AllTests::suite());
         $suite->addTestSuite('Zend_Console_GetoptTest');
         $suite->addTest(Zend_Controller_AllTests::suite());
-        // $suite->addTestSuite('Zend_CurrencyTest');
+        $suite->addTestSuite('Zend_CurrencyTest');
         // $suite->addTest(Zend_Crypt_AllTests::suite());
         $suite->addTestSuite('Zend_DateTest');
         $suite->addTest(Zend_Date_AllTests::suite());
