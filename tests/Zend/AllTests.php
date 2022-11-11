@@ -45,7 +45,7 @@ require_once 'Zend/Config/AllTests.php';
 require_once 'Zend/Console/GetoptTest.php';
 require_once 'Zend/Controller/AllTests.php';
 require_once 'Zend/CurrencyTest.php';
-// require_once 'Zend/Crypt/AllTests.php';
+require_once 'Zend/Crypt/AllTests.php';
 require_once 'Zend/DateTest.php';
 require_once 'Zend/Date/AllTests.php';
 require_once 'Zend/DebugTest.php';
@@ -192,7 +192,7 @@ class Zend_AllTests
         $suite->addTestSuite('Zend_Console_GetoptTest');
         $suite->addTest(Zend_Controller_AllTests::suite());
         $suite->addTestSuite('Zend_CurrencyTest');
-        // $suite->addTest(Zend_Crypt_AllTests::suite());
+        $suite->addTest(Zend_Crypt_AllTests::suite());
         $suite->addTestSuite('Zend_DateTest');
         $suite->addTest(Zend_Date_AllTests::suite());
         $suite->addTest(Zend_Db_AllTests::suite());

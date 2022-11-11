@@ -36,6 +36,10 @@ require_once 'Zend/Crypt/Exception.php';
  */
 class Zend_Crypt_MathTest extends TestCase
 {
+    /**
+     * on php > 7 will raise "ValueError: bccomp(): Argument #1 ($num1) is not well-formed"
+     * @requires PHP <= 7
+     */
     public function testRand()
     {
         if (!extension_loaded('bcmath')) {
