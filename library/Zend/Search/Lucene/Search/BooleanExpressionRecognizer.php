@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_FSM */
 require_once 'Zend/Search/Lucene/FSM.php';
@@ -100,15 +100,17 @@ class Zend_Search_Lucene_Search_BooleanExpressionRecognizer extends Zend_Search_
      */
     public function __construct()
     {
-        parent::__construct( [self::ST_START,
+        parent::__construct(
+            [self::ST_START,
                                    self::ST_LITERAL,
                                    self::ST_NOT_OPERATOR,
                                    self::ST_AND_OPERATOR,
                                    self::ST_OR_OPERATOR],
-                             [self::IN_LITERAL,
+            [self::IN_LITERAL,
                                    self::IN_NOT_OPERATOR,
                                    self::IN_AND_OPERATOR,
-                                   self::IN_OR_OPERATOR]);
+             self::IN_OR_OPERATOR]
+        );
 
         $emptyOperatorAction    = new Zend_Search_Lucene_FSMAction($this, 'emptyOperatorAction');
         $emptyNotOperatorAction = new Zend_Search_Lucene_FSMAction($this, 'emptyNotOperatorAction');
@@ -136,8 +138,8 @@ class Zend_Search_Lucene_Search_BooleanExpressionRecognizer extends Zend_Search_
 
 
         $this->addEntryAction(self::ST_NOT_OPERATOR, $notOperatorAction);
-        $this->addEntryAction(self::ST_OR_OPERATOR,  $orOperatorAction);
-        $this->addEntryAction(self::ST_LITERAL,      $literalAction);
+        $this->addEntryAction(self::ST_OR_OPERATOR, $orOperatorAction);
+        $this->addEntryAction(self::ST_LITERAL, $literalAction);
     }
 
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,7 +36,6 @@ class Zend_Tool_Project_Provider_Project
     extends Zend_Tool_Project_Provider_Abstract
     //implements Zend_Tool_Framework_Provider_DocblockManifestInterface
 {
-
     protected $_specialties = ['Info'];
 
     /**
@@ -96,7 +96,8 @@ class Zend_Tool_Project_Provider_Project
         $response->appendContent('Note: ', ['separator' => false, 'color' => 'yellow']);
         $response->appendContent(
             'This command created a web project, '
-            . 'for more information setting up your VHOST, please see docs/README');
+            . 'for more information setting up your VHOST, please see docs/README'
+        );
 
         if (!Zend_Tool_Project_Provider_Test::isPHPUnitAvailable()) {
             $response->appendContent('Testing Note: ', ['separator' => false, 'color' => 'yellow']);

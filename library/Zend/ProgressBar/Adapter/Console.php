@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -187,18 +188,18 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
      */
     public function setOutputStream($resource)
     {
-       $stream = @fopen($resource, 'w');
+        $stream = @fopen($resource, 'w');
 
-       if ($stream === false) {
+        if ($stream === false) {
             require_once 'Zend/ProgressBar/Adapter/Exception.php';
             throw new Zend_ProgressBar_Adapter_Exception('Unable to open stream');
-       }
+        }
 
-       if ($this->_outputStream !== null) {
-           fclose($this->_outputStream);
-       }
+        if ($this->_outputStream !== null) {
+            fclose($this->_outputStream);
+        }
 
-       $this->_outputStream = $stream;
+        $this->_outputStream = $stream;
     }
 
     /**
@@ -241,7 +242,7 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
                 // Try to determine the width through stty
                 if (preg_match('#\d+ (\d+)#', (string) @shell_exec('stty size'), $match) === 1) {
                     $this->_width = (int) $match[1];
-                } else if (preg_match('#columns = (\d+);#', (string) @shell_exec('stty'), $match) === 1) {
+                } elseif (preg_match('#columns = (\d+);#', (string) @shell_exec('stty'), $match) === 1) {
                     $this->_width = (int) $match[1];
                 }
             }

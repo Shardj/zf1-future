@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Tool/Framework/Manifest/Interface.php';
  */
 interface Zend_Tool_Framework_Manifest_ActionManifestable extends Zend_Tool_Framework_Manifest_Interface
 {
-
     /**
      * getActions()
      *
@@ -43,5 +43,4 @@ interface Zend_Tool_Framework_Manifest_ActionManifestable extends Zend_Tool_Fram
      * @return array|Zend_Tool_Framework_Action_Interface
      */
     public function getActions();
-
 }

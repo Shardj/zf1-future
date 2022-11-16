@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -370,8 +371,7 @@ class Zend_Queue implements Countable
     {
         if ($this->isSupported('delete')) {
             $deleted = $this->getAdapter()->delete($this->getName());
-        }
-        else {
+        } else {
             $deleted = true;
         }
 
@@ -436,7 +436,7 @@ class Zend_Queue implements Countable
      * @param  integer $timeout
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages=null, $timeout=null)
+    public function receive($maxMessages = null, $timeout = null)
     {
         if (($maxMessages !== null) && !is_integer($maxMessages)) {
             require_once 'Zend/Queue/Exception.php';
@@ -504,7 +504,7 @@ class Zend_Queue implements Countable
     public function getQueues()
     {
         if (!$this->isSupported('getQueues')) {
-            throw new Zend_Queue_Exception( __FUNCTION__ . '() is not supported by ' . get_class($this->getAdapter()));
+            throw new Zend_Queue_Exception(__FUNCTION__ . '() is not supported by ' . get_class($this->getAdapter()));
         }
 
         return $this->getAdapter()->getQueues();

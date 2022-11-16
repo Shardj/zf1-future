@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Index_TermsStream_Interface */
 require_once 'Zend/Search/Lucene/Index/TermsStream/Interface.php';

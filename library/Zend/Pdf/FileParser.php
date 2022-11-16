@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -114,8 +115,10 @@ abstract class Zend_Pdf_FileParser
     {
         if ($dataSource->getSize() == 0) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('The data source has not been properly initialized',
-                                         Zend_Pdf_Exception::BAD_DATA_SOURCE);
+            throw new Zend_Pdf_Exception(
+                'The data source has not been properly initialized',
+                Zend_Pdf_Exception::BAD_DATA_SOURCE
+            );
         }
         $this->_dataSource = $dataSource;
     }
@@ -177,12 +180,14 @@ abstract class Zend_Pdf_FileParser
         $this->_dataSource->moveToOffset($offset);
     }
 
-    public function getOffset() {
-       return $this->_dataSource->getOffset();
+    public function getOffset()
+    {
+        return $this->_dataSource->getOffset();
     }
 
-    public function getSize() {
-       return $this->_dataSource->getSize();
+    public function getSize()
+    {
+        return $this->_dataSource->getSize();
     }
 
     /**
@@ -229,8 +234,10 @@ abstract class Zend_Pdf_FileParser
     {
         if (($size < 1) || ($size > 4)) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid signed integer size: $size",
-                                         Zend_Pdf_Exception::INVALID_INTEGER_SIZE);
+            throw new Zend_Pdf_Exception(
+                "Invalid signed integer size: $size",
+                Zend_Pdf_Exception::INVALID_INTEGER_SIZE
+            );
         }
         $bytes = $this->_dataSource->readBytes($size);
         /* unpack() will not work for this method because it always works in
@@ -257,7 +264,7 @@ abstract class Zend_Pdf_FileParser
                     $number = ($number << 8) | ord($bytes[$i]);
                 }
             }
-        } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
+        } elseif ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
             $number = ord($bytes[$size - 1]);
             if (($number & 0x80) == 0x80) {
                 /* Negative number. See discussion above.
@@ -275,8 +282,10 @@ abstract class Zend_Pdf_FileParser
             }
         } else {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid byte order: $byteOrder",
-                                         Zend_Pdf_Exception::INVALID_BYTE_ORDER);
+            throw new Zend_Pdf_Exception(
+                "Invalid byte order: $byteOrder",
+                Zend_Pdf_Exception::INVALID_BYTE_ORDER
+            );
         }
         return $number;
     }
@@ -304,8 +313,10 @@ abstract class Zend_Pdf_FileParser
     {
         if (($size < 1) || ($size > 4)) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid unsigned integer size: $size",
-                                         Zend_Pdf_Exception::INVALID_INTEGER_SIZE);
+            throw new Zend_Pdf_Exception(
+                "Invalid unsigned integer size: $size",
+                Zend_Pdf_Exception::INVALID_INTEGER_SIZE
+            );
         }
         $bytes = $this->_dataSource->readBytes($size);
         /* unpack() is a bit heavyweight for this simple conversion. Just
@@ -316,15 +327,17 @@ abstract class Zend_Pdf_FileParser
             for ($i = 1; $i < $size; $i++) {
                 $number = ($number << 8) | ord($bytes[$i]);
             }
-        } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
+        } elseif ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
             $number = 0;
             for ($i = --$size; $i >= 0; $i--) {
                 $number |= ord($bytes[$i]) << ($i * 8);
             }
         } else {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid byte order: $byteOrder",
-                                         Zend_Pdf_Exception::INVALID_BYTE_ORDER);
+            throw new Zend_Pdf_Exception(
+                "Invalid byte order: $byteOrder",
+                Zend_Pdf_Exception::INVALID_BYTE_ORDER
+            );
         }
         return $number;
     }
@@ -360,15 +373,19 @@ abstract class Zend_Pdf_FileParser
      * @return float
      * @throws Zend_Pdf_Exception
      */
-    public function readFixed($mantissaBits, $fractionBits,
-                              $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN)
-    {
+    public function readFixed(
+        $mantissaBits,
+        $fractionBits,
+        $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN
+    ) {
         $bitsToRead = $mantissaBits + $fractionBits;
 
         if (($bitsToRead % 8) !== 0) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Fixed-point numbers are whole bytes',
-                                         Zend_Pdf_Exception::BAD_FIXED_POINT_SIZE);
+            throw new Zend_Pdf_Exception(
+                'Fixed-point numbers are whole bytes',
+                Zend_Pdf_Exception::BAD_FIXED_POINT_SIZE
+            );
         }
 
         return $this->readInt(($bitsToRead >> 3), $byteOrder) / (1 << $fractionBits);
@@ -399,10 +416,11 @@ abstract class Zend_Pdf_FileParser
      * @return string
      * @throws Zend_Pdf_Exception
      */
-    public function readStringUTF16($byteCount,
-                                    $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN,
-                                    $characterSet = '')
-    {
+    public function readStringUTF16(
+        $byteCount,
+        $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN,
+        $characterSet = ''
+    ) {
         if ($byteCount == 0) {
             return '';
         }
@@ -412,15 +430,17 @@ abstract class Zend_Pdf_FileParser
                 return $bytes;
             }
             return iconv('UTF-16BE', $characterSet, $bytes);
-        } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
+        } elseif ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
             if ($characterSet == 'UTF-16LE') {
                 return $bytes;
             }
             return iconv('UTF-16LE', $characterSet, $bytes);
         } else {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid byte order: $byteOrder",
-                                         Zend_Pdf_Exception::INVALID_BYTE_ORDER);
+            throw new Zend_Pdf_Exception(
+                "Invalid byte order: $byteOrder",
+                Zend_Pdf_Exception::INVALID_BYTE_ORDER
+            );
         }
     }
 
@@ -482,5 +502,4 @@ abstract class Zend_Pdf_FileParser
         }
         return iconv('ASCII', $characterSet, $bytes);
     }
-
 }

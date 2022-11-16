@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Index_FieldInfo */
 require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
@@ -167,10 +167,12 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
         if (!isset($this->_fields[$field->name])) {
             $fieldNumber = count($this->_fields);
             $this->_fields[$field->name] =
-                                new Zend_Search_Lucene_Index_FieldInfo($field->name,
-                                                                       $field->isIndexed,
-                                                                       $fieldNumber,
-                                                                       $field->storeTermVector);
+                                new Zend_Search_Lucene_Index_FieldInfo(
+                                    $field->name,
+                                    $field->isIndexed,
+                                    $fieldNumber,
+                                    $field->storeTermVector
+                                );
 
             return $fieldNumber;
         } else {
@@ -194,10 +196,12 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
         if (!isset($this->_fields[$fieldInfo->name])) {
             $fieldNumber = count($this->_fields);
             $this->_fields[$fieldInfo->name] =
-                                new Zend_Search_Lucene_Index_FieldInfo($fieldInfo->name,
-                                                                       $fieldInfo->isIndexed,
-                                                                       $fieldNumber,
-                                                                       $fieldInfo->storeTermVector);
+                                new Zend_Search_Lucene_Index_FieldInfo(
+                                    $fieldInfo->name,
+                                    $fieldInfo->isIndexed,
+                                    $fieldNumber,
+                                    $fieldInfo->storeTermVector
+                                );
 
             return $fieldNumber;
         } else {
@@ -293,7 +297,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
                                 ($field->storeTermVector ? 0x02 : 0x00)
 // not supported yet            0x04 /* term positions are stored with the term vectors */ |
 // not supported yet            0x08 /* term offsets are stored with the term vectors */   |
-                               );
+            );
 
             if ($field->isIndexed) {
                 // pre-2.1 index mode (not used now)
@@ -426,7 +430,6 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
         $this->_prevIndexTermInfo = null;
         $this->_lastIndexPosition = 24;
         $this->_termCount         = 0;
-
     }
 
     /**
@@ -444,7 +447,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
 
         $prevDoc = 0;
         foreach ($termDocs as $docId => $termPositions) {
-            $docDelta = ($docId - $prevDoc)*2;
+            $docDelta = ($docId - $prevDoc) * 2;
             $prevDoc = $docId;
             if (count($termPositions) > 1) {
                 $this->_frqFile->writeVInt($docDelta);
@@ -470,10 +473,16 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             $skipOffset = 0;
         }
 
-        $term = new Zend_Search_Lucene_Index_Term($termEntry->text,
-                                                  $this->_fields[$termEntry->field]->number);
-        $termInfo = new Zend_Search_Lucene_Index_TermInfo(count($termDocs),
-                                                          $freqPointer, $proxPointer, $skipOffset);
+        $term = new Zend_Search_Lucene_Index_Term(
+            $termEntry->text,
+            $this->_fields[$termEntry->field]->number
+        );
+        $termInfo = new Zend_Search_Lucene_Index_TermInfo(
+            count($termDocs),
+            $freqPointer,
+            $proxPointer,
+            $skipOffset
+        );
 
         $this->_dumpTermDictEntry($this->_tisFile, $this->_prevTerm, $term, $this->_prevTermInfo, $termInfo);
 
@@ -483,7 +492,6 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
             $indexPosition = $this->_tisFile->tell();
             $this->_tiiFile->writeVInt($indexPosition - $this->_lastIndexPosition);
             $this->_lastIndexPosition = $indexPosition;
-
         }
 
         $this->_termCount++;
@@ -499,7 +507,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
 
         $this->_tiiFile->seek(4);
         // + 1 is used to count an additional special index entry (empty term at the start of the list)
-        $this->_tiiFile->writeLong(($this->_termCount - $this->_termCount % self::$indexInterval)/self::$indexInterval + 1);
+        $this->_tiiFile->writeLong(($this->_termCount - $this->_termCount % self::$indexInterval) / self::$indexInterval + 1);
     }
 
 
@@ -513,10 +521,13 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
      * @param Zend_Search_Lucene_Index_TermInfo $prevTermInfo
      * @param Zend_Search_Lucene_Index_TermInfo $termInfo
      */
-    protected function _dumpTermDictEntry(Zend_Search_Lucene_Storage_File $dicFile,
-                                        &$prevTerm,     Zend_Search_Lucene_Index_Term     $term,
-                                        &$prevTermInfo, Zend_Search_Lucene_Index_TermInfo $termInfo)
-    {
+    protected function _dumpTermDictEntry(
+        Zend_Search_Lucene_Storage_File $dicFile,
+        &$prevTerm,
+        Zend_Search_Lucene_Index_Term     $term,
+        &$prevTermInfo,
+        Zend_Search_Lucene_Index_TermInfo $termInfo
+    ) {
         if (isset($prevTerm) && $prevTerm->field == $term->field) {
             $matchedBytes = 0;
             $maxBytes = min(strlen($prevTerm->text), strlen($term->text));
@@ -534,9 +545,9 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
 
                 if ((ord($term->text[$prefixBytes]) & 0xC0) == 0xC0) {
                     $charBytes++;
-                    if (ord($term->text[$prefixBytes]) & 0x20 ) {
+                    if (ord($term->text[$prefixBytes]) & 0x20) {
                         $charBytes++;
-                        if (ord($term->text[$prefixBytes]) & 0x10 ) {
+                        if (ord($term->text[$prefixBytes]) & 0x10) {
                             $charBytes++;
                         }
                     }
@@ -635,4 +646,3 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
      */
     abstract public function close();
 }
-

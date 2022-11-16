@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mime_Decode
@@ -134,14 +134,13 @@ class Zend_Mail_Part_File extends Zend_Mail_Part
                     $this->_partPos[] = $part;
                 }
                 $part = [$pos];
-            } else if ($line == '--' . $boundary . '--') {
+            } elseif ($line == '--' . $boundary . '--') {
                 $part[1] = $lastPos;
                 $this->_partPos[] = $part;
                 break;
             }
         }
         $this->_countParts = count($this->_partPos);
-
     }
 
 
@@ -170,7 +169,8 @@ class Zend_Mail_Part_File extends Zend_Mail_Part
      *
      * @return int size
      */
-    public function getSize() {
+    public function getSize()
+    {
         return $this->_contentPos[1] - $this->_contentPos[0];
     }
 

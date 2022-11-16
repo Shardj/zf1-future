@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -30,8 +31,7 @@ require_once 'Zend/Feed/Writer/Extension/RendererInterface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Feed_Writer_Extension_RendererAbstract
-    implements Zend_Feed_Writer_Extension_RendererInterface
+abstract class Zend_Feed_Writer_Extension_RendererAbstract implements Zend_Feed_Writer_Extension_RendererInterface
 {
     /**
      * @var DOMDocument

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -121,7 +122,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
      */
     public function getTimestamp()
     {
-    	if (null === $this->_timestamp) {
+        if (null === $this->_timestamp) {
             $this->setTimestamp(new DateTime());
         }
         return $this->_timestamp;
@@ -175,15 +176,15 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
                 $property = $accessor->EntityAccessor;
                 $returnValue[] = (object)[
                     'Name'  => $accessor->AzurePropertyName,
-                	'Type'  => $accessor->AzurePropertyType,
-                	'Value' => $this->$property,
+                    'Type'  => $accessor->AzurePropertyType,
+                    'Value' => $this->$property,
                 ];
-            } else if ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'get') {
+            } elseif ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'get') {
                 $method = $accessor->EntityAccessor;
                 $returnValue[] = (object)[
                     'Name'  => $accessor->AzurePropertyName,
-                	'Type'  => $accessor->AzurePropertyType,
-                	'Value' => $this->$method(),
+                    'Type'  => $accessor->AzurePropertyType,
+                    'Value' => $this->$method(),
                 ];
             }
         }
@@ -211,32 +212,36 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
                 // Cast to correct type
                 if ($accessor->AzurePropertyType != '') {
                     switch (strtolower($accessor->AzurePropertyType)) {
-        	            case 'edm.int32':
-        	            case 'edm.int64':
-        	                $values[$accessor->AzurePropertyName] = (int)$values[$accessor->AzurePropertyName]; break;
-        	            case 'edm.boolean':
-        	                if ($values[$accessor->AzurePropertyName] == 'true' || $values[$accessor->AzurePropertyName] == '1')
-        	                    $values[$accessor->AzurePropertyName] = true;
-        	                else
-        	                    $values[$accessor->AzurePropertyName] = false;
-        	                break;
-        	            case 'edm.double':
-        	                $values[$accessor->AzurePropertyName] = (float)$values[$accessor->AzurePropertyName]; break;
-        	            case 'edm.datetime':
-        	            	$values[$accessor->AzurePropertyName] = $this->_convertToDateTime($values[$accessor->AzurePropertyName]); break;
-        	        }
+                        case 'edm.int32':
+                        case 'edm.int64':
+                            $values[$accessor->AzurePropertyName] = (int)$values[$accessor->AzurePropertyName];
+                            break;
+                        case 'edm.boolean':
+                            if ($values[$accessor->AzurePropertyName] == 'true' || $values[$accessor->AzurePropertyName] == '1') {
+                                $values[$accessor->AzurePropertyName] = true;
+                            } else {
+                                $values[$accessor->AzurePropertyName] = false;
+                            }
+                            break;
+                        case 'edm.double':
+                            $values[$accessor->AzurePropertyName] = (float)$values[$accessor->AzurePropertyName];
+                            break;
+                        case 'edm.datetime':
+                            $values[$accessor->AzurePropertyName] = $this->_convertToDateTime($values[$accessor->AzurePropertyName]);
+                            break;
+                    }
                 }
 
                 // Assign value
                 if ($accessor->EntityType == 'ReflectionProperty') {
                     $property = $accessor->EntityAccessor;
                     $this->$property = $values[$accessor->AzurePropertyName];
-                } else if ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'set') {
+                } elseif ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'set') {
                     $method = $accessor->EntityAccessor;
                     $this->$method($values[$accessor->AzurePropertyName]);
                 }
-            } else if ($throwOnError) {
-				require_once 'Zend/Service/WindowsAzure/Exception.php';
+            } elseif ($throwOnError) {
+                require_once 'Zend/Service/WindowsAzure/Exception.php';
                 throw new Zend_Service_WindowsAzure_Exception("Property '" . $accessor->AzurePropertyName . "' was not found in \$values array");
             }
         }
@@ -293,8 +298,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
         $docComment = $member->getDocComment();
 
         // Check for Azure comment
-        if (strpos($docComment, '@azure') === false)
-        {
+        if (strpos($docComment, '@azure') === false) {
             return null;
         }
 
@@ -317,7 +321,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
             'EntityAccessor'    => $member->getName(),
             'EntityType'        => get_class($member),
             'AzurePropertyName' => $azureProperties[0],
-        	'AzurePropertyType' => isset($azureProperties[1]) ? $azureProperties[1] : ''
+            'AzurePropertyType' => isset($azureProperties[1]) ? $azureProperties[1] : ''
         ];
     }
 
@@ -329,26 +333,25 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
      */
     protected function _convertToDateTime($value = '')
     {
-    	if ($value === '') {
-    		return false;
-    	}
+        if ($value === '') {
+            return false;
+        }
 
-    	if ($value instanceof DateTime) {
-    		return $value;
-    	}
+        if ($value instanceof DateTime) {
+            return $value;
+        }
 
-    	if (@strtotime($value) !== false) {
-	    	try {
-	    		if (substr($value, -1) == 'Z') {
-	    			$value = substr($value, 0, strlen($value) - 1);
-	    		}
-	    		return new DateTime($value, new DateTimeZone('UTC'));
-	    	}
-	    	catch (Exception $ex) {
-	    		return false;
-	    	}
-	    }
+        if (@strtotime($value) !== false) {
+            try {
+                if (substr($value, -1) == 'Z') {
+                    $value = substr($value, 0, strlen($value) - 1);
+                }
+                return new DateTime($value, new DateTimeZone('UTC'));
+            } catch (Exception $ex) {
+                return false;
+            }
+        }
 
-    	return false;
+        return false;
     }
 }

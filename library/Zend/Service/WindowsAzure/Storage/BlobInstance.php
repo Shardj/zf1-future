@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -49,7 +50,7 @@ require_once 'Zend/Service/WindowsAzure/Storage/StorageEntityAbstract.php';
  * @property array   $Metadata        Key/value pairs of meta data
  */
 class Zend_Service_WindowsAzure_Storage_BlobInstance
-	extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+    extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
 {
     /**
      * Constructor
@@ -75,7 +76,7 @@ class Zend_Service_WindowsAzure_Storage_BlobInstance
         $this->_data = [
             'container'        => $containerName,
             'name'             => $name,
-        	'snapshotid'	   => $snapshotId,
+            'snapshotid'       => $snapshotId,
             'etag'             => $etag,
             'lastmodified'     => $lastModified,
             'url'              => $url,

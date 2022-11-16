@@ -58,7 +58,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
         $this->_service = $service;
         if ($posts instanceof DOMNodeList) {
             $this->_constructFromNodeList($posts);
-        } else if (is_array($posts)) {
+        } elseif (is_array($posts)) {
             $this->_constructFromArray($posts);
         }
     }
@@ -73,7 +73,7 @@ class Zend_Service_Delicious_PostList implements Countable, Iterator, ArrayAcces
     {
         for ($i = 0; $i < $nodeList->length; $i++) {
             $curentNode = $nodeList->item($i);
-            if($curentNode->nodeName == 'post') {
+            if ($curentNode->nodeName == 'post') {
                 $this->_addPost(new Zend_Service_Delicious_Post($this->_service, $curentNode));
             }
         }

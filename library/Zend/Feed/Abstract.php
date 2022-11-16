@@ -20,7 +20,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Feed_Element
  */
@@ -113,7 +112,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      */
     public function __wakeup()
     {
-        $doc = new DOMDocument;
+        $doc = new DOMDocument();
         $doc = @Zend_Xml_Security::scan($this->_element, $doc);
 
         if (!$doc) {
@@ -201,7 +200,8 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
     {
         return new $this->_entryClassName(
             null,
-            $this->_entries[$this->_entryIndex]);
+            $this->_entries[$this->_entryIndex]
+        );
     }
 
 
@@ -275,7 +275,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
             throw new Zend_Feed_Exception('Remote feed being imported'
             . ' is an Empty string or comes from an empty HTTP response');
         }
-        $doc = new DOMDocument;
+        $doc = new DOMDocument();
         $doc = Zend_Xml_Security::scan($feed, $doc);
 
         if (!$doc) {

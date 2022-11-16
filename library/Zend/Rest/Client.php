@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Service_Abstract */
 require_once 'Zend/Service/Abstract.php';
@@ -115,7 +115,7 @@ class Zend_Rest_Client extends Zend_Service_Abstract
 
         $uri = $this->_uri->getUri();
 
-        if ($path[0] != '/' && $uri[strlen($uri)-1] != '/') {
+        if ($path[0] != '/' && $uri[strlen($uri) - 1] != '/') {
             $path = '/' . $path;
         }
 

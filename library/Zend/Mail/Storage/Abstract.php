@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -216,10 +217,10 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
      *
      * @return   int
      */
-     public function count(): int
-     {
+    public function count(): int
+    {
         return $this->countMessages();
-     }
+    }
 
 
      /**
@@ -228,16 +229,17 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @param    int     $id
       * @return   boolean
       */
-     public function offsetExists($id): bool
-     {
+    public function offsetExists($id): bool
+    {
         try {
             if ($this->getMessage($id)) {
                 return true;
             }
-        } catch(Zend_Mail_Storage_Exception $e) {}
+        } catch (Zend_Mail_Storage_Exception $e) {
+        }
 
         return false;
-     }
+    }
 
 
      /**
@@ -247,10 +249,10 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return   Zend_Mail_Message message object
       */
      #[\ReturnTypeWillChange]
-     public function offsetGet($id)
-     {
+    public function offsetGet($id)
+    {
         return $this->getMessage($id);
-     }
+    }
 
 
      /**
@@ -261,14 +263,14 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @throws   Zend_Mail_Storage_Exception
       * @return   void
       */
-     public function offsetSet($id, $value): void
-     {
+    public function offsetSet($id, $value): void
+    {
         /**
          * @see Zend_Mail_Storage_Exception
          */
         require_once 'Zend/Mail/Storage/Exception.php';
         throw new Zend_Mail_Storage_Exception('cannot write mail messages via array access');
-     }
+    }
 
 
      /**
@@ -278,10 +280,10 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return   boolean|null success
       */
      #[\ReturnTypeWillChange]
-     public function offsetUnset($id)
-     {
+    public function offsetUnset($id)
+    {
         return $this->removeMessage($id);
-     }
+    }
 
 
      /**
@@ -293,11 +295,11 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   void
       */
-     public function rewind(): void
-     {
+    public function rewind(): void
+    {
         $this->_iterationMax = $this->countMessages();
         $this->_iterationPos = 1;
-     }
+    }
 
 
      /**
@@ -306,10 +308,10 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return   Zend_Mail_Message current message
       */
      #[\ReturnTypeWillChange]
-     public function current()
-     {
+    public function current()
+    {
         return $this->getMessage($this->_iterationPos);
-     }
+    }
 
 
      /**
@@ -318,10 +320,10 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return   int id of current position
       */
      #[\ReturnTypeWillChange]
-     public function key()
-     {
+    public function key()
+    {
         return $this->_iterationPos;
-     }
+    }
 
 
      /**
@@ -329,10 +331,10 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   void
       */
-     public function next(): void
-     {
+    public function next(): void
+    {
         ++$this->_iterationPos;
-     }
+    }
 
 
      /**
@@ -340,13 +342,13 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       *
       * @return   boolean
       */
-     public function valid(): bool
-     {
+    public function valid(): bool
+    {
         if ($this->_iterationMax === null) {
-          $this->_iterationMax = $this->countMessages();
+            $this->_iterationMax = $this->countMessages();
         }
         return $this->_iterationPos && $this->_iterationPos <= $this->_iterationMax;
-     }
+    }
 
 
      /**
@@ -356,16 +358,15 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
       * @return void
       * @throws OutOfBoundsException
       */
-     public function seek($pos): void
-     {
+    public function seek($pos): void
+    {
         if ($this->_iterationMax === null) {
-          $this->_iterationMax = $this->countMessages();
+            $this->_iterationMax = $this->countMessages();
         }
 
         if ($pos > $this->_iterationMax) {
             throw new OutOfBoundsException('this position does not exist');
         }
         $this->_iterationPos = $pos;
-     }
-
+    }
 }

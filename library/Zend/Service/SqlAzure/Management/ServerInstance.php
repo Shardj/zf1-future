@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,7 @@ require_once 'Zend/Service/SqlAzure/Management/ServiceEntityAbstract.php';
  * @property string $Location           The location of the server in Windows Azure.
  */
 class Zend_Service_SqlAzure_Management_ServerInstance
-	extends Zend_Service_SqlAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_SqlAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
@@ -46,7 +47,7 @@ class Zend_Service_SqlAzure_Management_ServerInstance
      * @param string $name               The name of the server.
      * @param string $administratorLogin The administrator login.
      * @param string $location           The location of the server in Windows Azure.
-	 */
+     */
     public function __construct($name, $administratorLogin, $location)
     {
         $this->_data = [

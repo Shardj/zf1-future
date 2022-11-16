@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -30,8 +31,7 @@ require_once 'Zend/Cloud/StorageService/Exception.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_StorageService_Adapter_S3
-    implements Zend_Cloud_StorageService_Adapter
+class Zend_Cloud_StorageService_Adapter_S3 implements Zend_Cloud_StorageService_Adapter
 {
     /*
      * Options array keys for the S3 adapter.
@@ -76,10 +76,12 @@ class Zend_Cloud_StorageService_Adapter_S3
         }
 
         try {
-            $this->_s3 = new Zend_Service_Amazon_S3($options[self::AWS_ACCESS_KEY],
-                                                $options[self::AWS_SECRET_KEY]);
+            $this->_s3 = new Zend_Service_Amazon_S3(
+                $options[self::AWS_ACCESS_KEY],
+                $options[self::AWS_SECRET_KEY]
+            );
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on create: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on create: ' . $e->getMessage(), $e->getCode(), $e);
         }
 
         if (isset($options[self::HTTP_ADAPTER])) {
@@ -114,7 +116,7 @@ class Zend_Cloud_StorageService_Adapter_S3
                 return $this->_s3->getObject($fullPath);
             }
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on fetch: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on fetch: ' . $e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -141,7 +143,7 @@ class Zend_Cloud_StorageService_Adapter_S3
                 empty($options[self::METADATA]) ? null : $options[self::METADATA]
             );
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on store: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on store: ' . $e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -157,7 +159,7 @@ class Zend_Cloud_StorageService_Adapter_S3
         try {
             $this->_s3->removeObject($this->_getFullPath($path, $options));
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on delete: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on delete: ' . $e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -184,9 +186,8 @@ class Zend_Cloud_StorageService_Adapter_S3
                 $fullDestPath,
                 empty($options[self::METADATA]) ? null : $options[self::METADATA]
             );
-
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on copy: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on copy: ' . $e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -211,9 +212,9 @@ class Zend_Cloud_StorageService_Adapter_S3
                 empty($options[self::METADATA]) ? null : $options[self::METADATA]
             );
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on move: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on move: ' . $e->getMessage(), $e->getCode(), $e);
         }
-     }
+    }
 
     /**
      * Rename an item in the storage service to a given name.
@@ -246,7 +247,7 @@ class Zend_Cloud_StorageService_Adapter_S3
             // TODO Support 'prefix' parameter for Zend_Service_Amazon_S3::getObjectsByBucket()
             return $this->_s3->getObjectsByBucket($this->_defaultBucketName);
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on list: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on list: ' . $e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -262,7 +263,7 @@ class Zend_Cloud_StorageService_Adapter_S3
         try {
             return $this->_s3->getInfo($this->_getFullPath($path, $options));
         } catch (Zend_Service_Amazon_S3_Exception  $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on fetch: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on fetch: ' . $e->getMessage(), $e->getCode(), $e);
         }
     }
 
@@ -305,7 +306,7 @@ class Zend_Cloud_StorageService_Adapter_S3
     {
         if (isset($options[self::BUCKET_NAME])) {
             $bucket = $options[self::BUCKET_NAME];
-        } else if (isset($this->_defaultBucketName)) {
+        } elseif (isset($this->_defaultBucketName)) {
             $bucket = $this->_defaultBucketName;
         } else {
             require_once 'Zend/Cloud/StorageService/Exception.php';

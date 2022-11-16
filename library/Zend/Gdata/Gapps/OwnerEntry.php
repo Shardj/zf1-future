@@ -51,7 +51,6 @@ require_once 'Zend/Gdata/Gapps/Extension/Property.php';
  */
 class Zend_Gdata_Gapps_OwnerEntry extends Zend_Gdata_Entry
 {
-
     protected $_entryClassName = 'Zend_Gdata_Gapps_OwnerEntry';
 
     /**
@@ -104,7 +103,6 @@ class Zend_Gdata_Gapps_OwnerEntry extends Zend_Gdata_Entry
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
 
         switch ($absoluteNodeName) {
-
             case $this->lookupNamespace('apps') . ':' . 'property';
                 $property = new Zend_Gdata_Gapps_Extension_Property();
                 $property->transferFromDOM($child);
@@ -153,6 +151,4 @@ class Zend_Gdata_Gapps_OwnerEntry extends Zend_Gdata_Entry
         $this->_property = $value;
         return $this;
     }
-
 }
-

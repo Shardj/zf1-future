@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 class Zend_CodeGenerator_Php_Member_Container extends ArrayObject
 {
-
     /**#@+
      * @param const string
      */
@@ -51,5 +51,4 @@ class Zend_CodeGenerator_Php_Member_Container extends ArrayObject
         $this->_type = $type;
         parent::__construct([], self::ARRAY_AS_PROPS);
     }
-
 }

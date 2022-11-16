@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -119,8 +120,8 @@ class Zend_Feed_Pubsubhubbub_Publisher
         if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .'URL');
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . 'URL');
         }
         $this->_hubUrls[] = $url;
         return $this;
@@ -179,8 +180,8 @@ class Zend_Feed_Pubsubhubbub_Publisher
         if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .'URL');
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . 'URL');
         }
         $this->_updatedTopicUrls[] = $url;
         return $this;
@@ -239,8 +240,8 @@ class Zend_Feed_Pubsubhubbub_Publisher
         if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .'URL');
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . 'URL');
         }
 
         $client = $this->_getHttpClient();
@@ -309,7 +310,7 @@ class Zend_Feed_Pubsubhubbub_Publisher
         if (empty($name) || !is_string($name)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
-                .' of "' . $name . '" must be a non-empty string');
+                . ' of "' . $name . '" must be a non-empty string');
         }
         if ($value === null) {
             $this->removeParameter($name);
@@ -318,7 +319,7 @@ class Zend_Feed_Pubsubhubbub_Publisher
         if (empty($value) || (!is_string($value) && $value !== null)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "value"'
-                .' of "' . $value . '" must be a non-empty string');
+                . ' of "' . $value . '" must be a non-empty string');
         }
         $this->_parameters[$name] = $value;
         return $this;
@@ -350,7 +351,7 @@ class Zend_Feed_Pubsubhubbub_Publisher
         if (empty($name) || !is_string($name)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
-                .' of "' . $name . '" must be a non-empty string');
+                . ' of "' . $name . '" must be a non-empty string');
         }
         if (array_key_exists($name, $this->_parameters)) {
             unset($this->_parameters[$name]);

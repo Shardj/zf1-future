@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -177,8 +178,7 @@ abstract class Zend_Form_Decorator_Abstract implements Zend_Form_Decorator_Inter
     {
         if ((!$element instanceof Zend_Form_Element)
             && (!$element instanceof Zend_Form)
-            && (!$element instanceof Zend_Form_DisplayGroup))
-        {
+            && (!$element instanceof Zend_Form_DisplayGroup)) {
             require_once 'Zend/Form/Decorator/Exception.php';
             throw new Zend_Form_Decorator_Exception('Invalid element type passed to decorator');
         }

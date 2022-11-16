@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -43,7 +44,7 @@ class Zend_Oauth_Signature_Rsa extends Zend_Oauth_Signature_SignatureAbstract
      */
     public function sign(array $params, $method = null, $url = null)
     {
-        $rsa = new Zend_Crypt_Rsa;
+        $rsa = new Zend_Crypt_Rsa();
         $rsa->setHashAlgorithm($this->_hashAlgorithm);
 
         return $rsa->sign(

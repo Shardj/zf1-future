@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -94,7 +95,7 @@ class Zend_Auth_Result
 
         if ($code < self::FAILURE_UNCATEGORIZED) {
             $code = self::FAILURE;
-        } elseif ($code > self::SUCCESS ) {
+        } elseif ($code > self::SUCCESS) {
             $code = 1;
         }
 

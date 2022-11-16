@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Service_Yahoo_Result
  */
@@ -96,13 +95,11 @@ class Zend_Service_Yahoo_WebResult extends Zend_Service_Yahoo_Result
 
         // check if the cache section exists
         $cacheUrl = $this->_xpath->query('./yh:Cache/yh:Url/text()', $result)->item(0);
-        if ($cacheUrl instanceof DOMNode)
-        {
+        if ($cacheUrl instanceof DOMNode) {
             $this->CacheUrl = $cacheUrl->data;
         }
         $cacheSize = $this->_xpath->query('./yh:Cache/yh:Size/text()', $result)->item(0);
-        if ($cacheSize instanceof DOMNode)
-        {
+        if ($cacheSize instanceof DOMNode) {
             $this->CacheSize = (int) $cacheSize->data;
         }
     }

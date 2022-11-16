@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Controller/Router/Route/Abstract.php';
  */
 class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Abstract
 {
-
     /**
      * Routes
      *

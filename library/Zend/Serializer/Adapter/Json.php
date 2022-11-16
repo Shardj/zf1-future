@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,7 +57,7 @@ class Zend_Serializer_Adapter_Json extends Zend_Serializer_Adapter_AdapterAbstra
     {
         $opts = $opts + $this->_options;
 
-        try  {
+        try {
             return Zend_Json::encode($value, $opts['cycleCheck'], $opts);
         } catch (Exception $e) {
             require_once 'Zend/Serializer/Exception.php';

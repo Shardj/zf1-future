@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -29,7 +30,6 @@
  */
 class Zend_Amf_Adobe_DbInspector
 {
-
     /**
      * Connect to the database
      *
@@ -40,7 +40,7 @@ class Zend_Amf_Adobe_DbInspector
      */
     protected function _connect($dbType, $dbDescription)
     {
-        if(is_object($dbDescription)) {
+        if (is_object($dbDescription)) {
             $dbDescription = get_object_vars($dbDescription);
         }
         return Zend_Db::factory($dbType, $dbDescription);

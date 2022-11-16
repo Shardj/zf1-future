@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -1209,7 +1210,8 @@ class Zend_Service_Twitter
             throw new Zend_Service_Twitter_Exception(
                 'Screen name, "' . $name
                 . '" should only contain alphanumeric characters and'
-                . ' underscores, and not exceed 15 characters.');
+                . ' underscores, and not exceed 15 characters.'
+            );
         }
         return $name;
     }

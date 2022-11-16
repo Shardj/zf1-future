@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,7 +36,6 @@ require_once 'Zend/Db/Statement.php';
  */
 class Zend_Db_Statement_Db2 extends Zend_Db_Statement
 {
-
     /**
      * Column names.
      */
@@ -169,7 +169,7 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
     public function errorInfo()
     {
         $error = $this->errorCode();
-        if ($error === false){
+        if ($error === false) {
             return false;
         }
 
@@ -211,7 +211,8 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
             require_once 'Zend/Db/Statement/Db2/Exception.php';
             throw new Zend_Db_Statement_Db2_Exception(
                 db2_stmt_errormsg(),
-                db2_stmt_error());
+                db2_stmt_error()
+            );
         }
 
         $this->_keys = [];
@@ -250,16 +251,16 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
         }
 
         switch ($style) {
-            case Zend_Db::FETCH_NUM :
+            case Zend_Db::FETCH_NUM:
                 $row = db2_fetch_array($this->_stmt);
                 break;
-            case Zend_Db::FETCH_ASSOC :
+            case Zend_Db::FETCH_ASSOC:
                 $row = db2_fetch_assoc($this->_stmt);
                 break;
-            case Zend_Db::FETCH_BOTH :
+            case Zend_Db::FETCH_BOTH:
                 $row = db2_fetch_both($this->_stmt);
                 break;
-            case Zend_Db::FETCH_OBJ :
+            case Zend_Db::FETCH_OBJ:
                 $row = db2_fetch_object($this->_stmt);
                 break;
             case Zend_Db::FETCH_BOUND:

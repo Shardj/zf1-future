@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -52,7 +53,7 @@ class Zend_Filter_StringTrim implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options          = func_get_args();
             $temp['charlist'] = array_shift($options);
             $options          = $temp;

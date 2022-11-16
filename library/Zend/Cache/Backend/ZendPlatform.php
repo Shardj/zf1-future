@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -61,7 +62,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
         }
         if (!function_exists('accelerator_get_configuration')) {
             $licenseInfo = accelerator_license_info();
-            Zend_Cache::throwException('The Zend Platform extension is not loaded correctly: '.$licenseInfo['failure_reason']);
+            Zend_Cache::throwException('The Zend Platform extension is not loaded correctly: ' . $licenseInfo['failure_reason']);
         }
         $accConf = accelerator_get_configuration();
         if (@!$accConf['output_cache_licensed']) {
@@ -71,7 +72,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             Zend_Cache::throwException('The Zend Platform content caching feature must be enabled for using this backend, set the \'zend_accelerator.output_cache_enabled\' directive to On !');
         }
         if (!is_writable($accConf['output_cache_dir'])) {
-            Zend_Cache::throwException('The cache copies directory \''. ini_get('zend_accelerator.output_cache_dir') .'\' must be writable !');
+            Zend_Cache::throwException('The cache copies directory \'' . ini_get('zend_accelerator.output_cache_dir') . '\' must be writable !');
         }
         parent:: __construct($options);
     }
@@ -92,7 +93,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             $lifetime = $this->_directives['lifetime'];
         }
         $res = output_cache_get($id, $lifetime);
-        if($res) {
+        if ($res) {
             return $res[0];
         } else {
             return false;
@@ -138,7 +139,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
         $result2  = (count($tags) === 0);
 
         foreach ($tags as $tag) {
-            $tagid = self::TAGS_PREFIX.$tag;
+            $tagid = self::TAGS_PREFIX . $tag;
             $old_tags = output_cache_get($tagid, $lifetime);
 
             if ($old_tags === false) {
@@ -199,7 +200,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             case Zend_Cache::CLEANING_MODE_MATCHING_TAG:
                 $idlist = null;
                 foreach ($tags as $tag) {
-                    $next_idlist = output_cache_get(self::TAGS_PREFIX.$tag, $this->_directives['lifetime']);
+                    $next_idlist = output_cache_get(self::TAGS_PREFIX . $tag, $this->_directives['lifetime']);
                     if ($idlist) {
                         $idlist = array_intersect_assoc($idlist, $next_idlist);
                     } else {
@@ -227,7 +228,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
                 $idlist = null;
                 foreach ($tags as $tag) {
-                    $next_idlist = output_cache_get(self::TAGS_PREFIX.$tag, $this->_directives['lifetime']);
+                    $next_idlist = output_cache_get(self::TAGS_PREFIX . $tag, $this->_directives['lifetime']);
                     if ($idlist) {
                         $idlist = array_merge_recursive($idlist, $next_idlist);
                     } else {
@@ -276,11 +277,11 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             }
             $file = $d->path . $file;
             if (is_dir($file)) {
-                $result = ($this->_clean($file .'/', $mode)) && ($result);
+                $result = ($this->_clean($file . '/', $mode)) && ($result);
             } else {
                 if ($mode == Zend_Cache::CLEANING_MODE_ALL) {
                     $result = ($this->_remove($file)) && ($result);
-                } else if ($mode == Zend_Cache::CLEANING_MODE_OLD) {
+                } elseif ($mode == Zend_Cache::CLEANING_MODE_OLD) {
                     // Files older than lifetime get deleted from cache
                     if ($this->_directives['lifetime'] !== null) {
                         if ((time() - @filemtime($file)) > $this->_directives['lifetime']) {
@@ -315,9 +316,8 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
             if (!file_exists($file)) {
                 return false;
             }
-            return @touch($file, time() - 2*abs($this->_directives['lifetime']));
+            return @touch($file, time() - 2 * abs($this->_directives['lifetime']));
         }
         return true;
     }
-
 }

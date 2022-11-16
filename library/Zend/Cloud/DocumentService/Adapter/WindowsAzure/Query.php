@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -33,8 +34,7 @@ require_once 'Zend/Cloud/DocumentService/QueryAdapter.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_DocumentService_Adapter_WindowsAzure_Query
-    implements Zend_Cloud_DocumentService_QueryAdapter
+class Zend_Cloud_DocumentService_Adapter_WindowsAzure_Query implements Zend_Cloud_DocumentService_QueryAdapter
 {
     /**
      * Azure concrete query

@@ -44,7 +44,6 @@ require_once 'Zend/Gdata.php';
  */
 class Zend_Gdata_Gbase extends Zend_Gdata
 {
-
     /**
      * Path to the customer items feeds on the Google Base server.
      */

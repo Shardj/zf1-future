@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -130,7 +131,7 @@ class Zend_Feed_Writer_Extension_ITunes_Feed
         if (!isset($this->_data['categories'])) {
             $this->_data['categories'] = [];
         }
-        foreach ($values as $key=>$value) {
+        foreach ($values as $key => $value) {
             if (!is_array($value)) {
                 if (iconv_strlen($value, $this->getEncoding()) > 255) {
                     require_once 'Zend/Feed/Exception.php';

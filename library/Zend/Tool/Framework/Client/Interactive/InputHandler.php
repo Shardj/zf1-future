@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,6 @@
  */
 class Zend_Tool_Framework_Client_Interactive_InputHandler
 {
-
     /**
      * @var Zend_Tool_Framework_Client_Interactive_InputInterface
      */
@@ -69,6 +69,4 @@ class Zend_Tool_Framework_Client_Interactive_InputHandler
 
         return $inputResponse;
     }
-
-
 }

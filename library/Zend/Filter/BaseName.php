@@ -20,7 +20,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Filter_Interface
  */

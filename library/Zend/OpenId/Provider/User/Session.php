@@ -100,5 +100,4 @@ class Zend_OpenId_Provider_User_Session extends Zend_OpenId_Provider_User
         unset($this->_session->logged_in);
         return true;
     }
-
 }

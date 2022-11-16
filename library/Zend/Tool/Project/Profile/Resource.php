@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Tool/Project/Context/Repository.php';
  */
 class Zend_Tool_Project_Profile_Resource extends Zend_Tool_Project_Profile_Resource_Container
 {
-
     /**
      * @var Zend_Tool_Project_Profile
      */
@@ -258,5 +258,4 @@ class Zend_Tool_Project_Profile_Resource extends Zend_Tool_Project_Profile_Resou
             throw new Zend_Tool_Project_Profile_Exception('cannot call ' . $method);
         }
     }
-
 }

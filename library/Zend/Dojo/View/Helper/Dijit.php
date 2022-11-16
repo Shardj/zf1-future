@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -325,7 +326,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
      */
     protected function _createGetParentFormFunction()
     {
-        $function =<<<EOJ
+        $function = <<<EOJ
 if (zend == undefined) {
     var zend = {};
 }

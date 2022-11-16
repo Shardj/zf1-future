@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Mobile/Push/Message/Abstract.php';
  */
 class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
 {
-
     /**
      * Tokens
      *
@@ -78,7 +78,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
             throw new Zend_Mobile_Push_Message_Exception('$token must be a string');
         }
         if (!in_array($token, $this->_token)) {
-           $this->_token[] = $token;
+            $this->_token[] = $token;
         }
         return $this;
     }
@@ -95,7 +95,7 @@ class Zend_Mobile_Push_Message_Gcm extends Zend_Mobile_Push_Message_Abstract
         $this->clearToken();
         if (is_string($token)) {
             $this->addToken($token);
-        } else if (is_array($token)) {
+        } elseif (is_array($token)) {
             foreach ($token as $t) {
                 $this->addToken($t);
             }

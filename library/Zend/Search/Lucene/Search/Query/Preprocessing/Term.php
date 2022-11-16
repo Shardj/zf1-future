@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Query_Processing */
 require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
@@ -98,9 +98,11 @@ class Zend_Search_Lucene_Search_Query_Preprocessing_Term extends Zend_Search_Luc
 
             require_once 'Zend/Search/Lucene/Search/Query/Preprocessing/Term.php';
             foreach ($searchFields as $fieldName) {
-                $subquery = new Zend_Search_Lucene_Search_Query_Preprocessing_Term($this->_word,
-                                                                                   $this->_encoding,
-                                                                                   $fieldName);
+                $subquery = new Zend_Search_Lucene_Search_Query_Preprocessing_Term(
+                    $this->_word,
+                    $this->_encoding,
+                    $fieldName
+                );
                 $rewrittenSubquery = $subquery->rewrite($index);
                 foreach ($rewrittenSubquery->getQueryTerms() as $term) {
                     $query->addTerm($term);

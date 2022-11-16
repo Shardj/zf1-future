@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,8 +32,7 @@ require_once "Zend/Tool/Framework/Client/Response/ContentDecorator/Interface.php
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-class Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize
-    implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+class Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
 {
     public function getName()
     {
@@ -47,7 +47,7 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize
      */
     public function decorate($content, $lineLength)
     {
-        if((int)(string) $lineLength != $lineLength) {
+        if ((int)(string) $lineLength != $lineLength) {
             $lineLength = 72;
         }
 
@@ -55,13 +55,13 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_Blockize
         $lines = explode(PHP_EOL, wordwrap($content, $lineLength, PHP_EOL, false));
         $content = [];
 
-        foreach($lines AS $line) {
-            if(trim($line) === '') {
+        foreach ($lines as $line) {
+            if (trim($line) === '') {
                 continue;
             }
 
-            if(strlen($line) < $lineLength) {
-                $line .= str_repeat(" ", $lineLength-strlen($line));
+            if (strlen($line) < $lineLength) {
+                $line .= str_repeat(" ", $lineLength - strlen($line));
             }
 
             $content[] = $line;

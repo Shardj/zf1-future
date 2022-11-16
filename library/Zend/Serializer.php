@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -62,14 +63,14 @@ class Zend_Serializer
             $adapterClass = $adapterLoader->load($adapterName);
         } catch (Exception $e) {
             require_once 'Zend/Serializer/Exception.php';
-            throw new Zend_Serializer_Exception('Can\'t load serializer adapter "'.$adapterName.'"', 0, $e);
+            throw new Zend_Serializer_Exception('Can\'t load serializer adapter "' . $adapterName . '"', 0, $e);
         }
 
         // ZF-8842:
         // check that the loaded class implements Zend_Serializer_Adapter_AdapterInterface without execute code
         if (!in_array('Zend_Serializer_Adapter_AdapterInterface', class_implements($adapterClass))) {
             require_once 'Zend/Serializer/Exception.php';
-            throw new Zend_Serializer_Exception('The serializer adapter class "'.$adapterClass.'" must implement Zend_Serializer_Adapter_AdapterInterface');
+            throw new Zend_Serializer_Exception('The serializer adapter class "' . $adapterClass . '" must implement Zend_Serializer_Adapter_AdapterInterface');
         }
 
         return new $adapterClass($opts);
@@ -118,7 +119,7 @@ class Zend_Serializer
     protected static function _getDefaultAdapterLoader()
     {
         $loader = new Zend_Loader_PluginLoader();
-        $loader->addPrefixPath('Zend_Serializer_Adapter', dirname(__FILE__).'/Serializer/Adapter');
+        $loader->addPrefixPath('Zend_Serializer_Adapter', dirname(__FILE__) . '/Serializer/Adapter');
         return $loader;
     }
 

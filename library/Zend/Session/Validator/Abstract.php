@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Session/Validator/Interface.php';
  */
 abstract class Zend_Session_Validator_Abstract implements Zend_Session_Validator_Interface
 {
-
     /**
      * SetValidData() - This method should be used to store the environment variables that
      * will be needed in order to validate the session later in the validate() method.
@@ -67,5 +67,4 @@ abstract class Zend_Session_Validator_Abstract implements Zend_Session_Validator
         }
         return null;
     }
-
 }

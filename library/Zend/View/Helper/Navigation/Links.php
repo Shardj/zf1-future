@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -141,9 +142,11 @@ class Zend_View_Helper_Navigation_Links
     public function __call($method, array $arguments = [])
     {
         if (@preg_match('/find(Rel|Rev)(.+)/', $method, $match)) {
-            return $this->findRelation($arguments[0],
-                                       strtolower($match[1]),
-                                       strtolower($match[2]));
+            return $this->findRelation(
+                $arguments[0],
+                strtolower($match[1]),
+                strtolower($match[2])
+            );
         }
 
         return parent::__call($method, $arguments);
@@ -222,9 +225,10 @@ class Zend_View_Helper_Navigation_Links
      * @param  Zend_Navigation_Page $page  page to find links for
      * @return array                       related pages
      */
-    public function findAllRelations(Zend_Navigation_Page $page,
-                                     $flag = null)
-    {
+    public function findAllRelations(
+        Zend_Navigation_Page $page,
+        $flag = null
+    ) {
         if (!is_int($flag)) {
             $flag = self::RENDER_ALL;
         }
@@ -273,7 +277,8 @@ class Zend_View_Helper_Navigation_Links
             require_once 'Zend/View/Exception.php';
             $e = new Zend_View_Exception(sprintf(
                 'Invalid argument: $rel must be "rel" or "rev"; "%s" given',
-                $rel));
+                $rel
+            ));
             $e->setView($this->view);
             throw $e;
         }
@@ -382,8 +387,10 @@ class Zend_View_Helper_Navigation_Links
     {
         $found = null;
         $break = false;
-        $iterator = new RecursiveIteratorIterator($this->_findRoot($page),
-                RecursiveIteratorIterator::SELF_FIRST);
+        $iterator = new RecursiveIteratorIterator(
+            $this->_findRoot($page),
+            RecursiveIteratorIterator::SELF_FIRST
+        );
         foreach ($iterator as $intermediate) {
             if ($intermediate === $page) {
                 // current page; break at next accepted page
@@ -416,8 +423,9 @@ class Zend_View_Helper_Navigation_Links
         $found = null;
         $prev = null;
         $iterator = new RecursiveIteratorIterator(
-                $this->_findRoot($page),
-                RecursiveIteratorIterator::SELF_FIRST);
+            $this->_findRoot($page),
+            RecursiveIteratorIterator::SELF_FIRST
+        );
         foreach ($iterator as $intermediate) {
             if (!$this->accept($intermediate)) {
                 continue;
@@ -711,8 +719,9 @@ class Zend_View_Helper_Navigation_Links
         if (!in_array($attrib, ['rel', 'rev'])) {
             require_once 'Zend/View/Exception.php';
             $e = new Zend_View_Exception(sprintf(
-                    'Invalid relation attribute "%s", must be "rel" or "rev"',
-                    $attrib));
+                'Invalid relation attribute "%s", must be "rel" or "rev"',
+                $attrib
+            ));
             $e->setView($this->view);
             throw $e;
         }

@@ -32,7 +32,6 @@
  */
 abstract class Zend_OpenId_Provider_User
 {
-
     /**
      * Stores information about logged in user
      *

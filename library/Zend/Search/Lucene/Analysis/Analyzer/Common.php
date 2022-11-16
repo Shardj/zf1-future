@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Define constant used to provide correct file processing order    */
 /** @todo Section should be removed with ZF 2.0 release as obsolete  */
@@ -91,4 +91,3 @@ abstract class Zend_Search_Lucene_Analysis_Analyzer_Common extends Zend_Search_L
         return $token;
     }
 }
-

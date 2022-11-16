@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -232,7 +233,7 @@ class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
             throw new Zend_Filter_Exception("Error reading the RAR Archive");
         }
 
-        foreach($filelist as $file) {
+        foreach ($filelist as $file) {
             $file->extract($target);
         }
 

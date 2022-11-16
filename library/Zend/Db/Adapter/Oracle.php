@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -124,10 +125,11 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
         $connectionFuncName = ($this->_config['persistent'] == true) ? 'oci_pconnect' : 'oci_connect';
 
         $this->_connection = @$connectionFuncName(
-                $this->_config['username'],
-                $this->_config['password'],
-                $this->_config['dbname'],
-                $this->_config['charset']);
+            $this->_config['username'],
+            $this->_config['password'],
+            $this->_config['dbname'],
+            $this->_config['charset']
+        );
 
         // check the connection
         if (!$this->_connection) {
@@ -149,7 +151,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
         return ((bool) (is_resource($this->_connection)
                     && (get_resource_type($this->_connection) == 'oci8 connection'
                      || get_resource_type($this->_connection) == 'oci8 persistent connection')));
-        }
+    }
 
     /**
      * Force the connection to close.
@@ -257,7 +259,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
     public function lastSequenceId($sequenceName)
     {
         $this->_connect();
-        $sql = 'SELECT '.$this->quoteIdentifier($sequenceName, true).'.CURRVAL FROM dual';
+        $sql = 'SELECT ' . $this->quoteIdentifier($sequenceName, true) . '.CURRVAL FROM dual';
 
         return $this->fetchOne($sql);
     }
@@ -273,7 +275,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
     public function nextSequenceId($sequenceName)
     {
         $this->_connect();
-        $sql = 'SELECT '.$this->quoteIdentifier($sequenceName, true).'.NEXTVAL FROM dual';
+        $sql = 'SELECT ' . $this->quoteIdentifier($sequenceName, true) . '.NEXTVAL FROM dual';
 
         return $this->fetchOne($sql);
     }
@@ -371,7 +373,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
             }
             $sql .= ' ORDER BY TC.COLUMN_ID';
         } else {
-            $subSql="SELECT AC.OWNER, AC.TABLE_NAME, ACC.COLUMN_NAME, AC.CONSTRAINT_TYPE, ACC.POSITION
+            $subSql = "SELECT AC.OWNER, AC.TABLE_NAME, ACC.COLUMN_NAME, AC.CONSTRAINT_TYPE, ACC.POSITION
                 from ALL_CONSTRAINTS AC, ALL_CONS_COLUMNS ACC
                   WHERE ACC.CONSTRAINT_NAME = AC.CONSTRAINT_NAME
                     AND ACC.TABLE_NAME = AC.TABLE_NAME
@@ -383,7 +385,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
                 $subSql .= ' AND UPPER(ACC.OWNER) = UPPER(:SCNAME)';
                 $bind[':SCNAME'] = $schemaName;
             }
-            $sql="SELECT TC.TABLE_NAME, TC.OWNER, TC.COLUMN_NAME, TC.DATA_TYPE,
+            $sql = "SELECT TC.TABLE_NAME, TC.OWNER, TC.COLUMN_NAME, TC.DATA_TYPE,
                     TC.DATA_DEFAULT, TC.NULLABLE, TC.COLUMN_ID, TC.DATA_LENGTH,
                     TC.DATA_SCALE, TC.DATA_PRECISION, CC.CONSTRAINT_TYPE, CC.POSITION
                 FROM ALL_TAB_COLUMNS TC, ($subSql) CC
@@ -569,7 +571,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
                     " . $sql . "
                 ) z1
             ) z2
-            WHERE z2.\"zend_db_rownum\" BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+            WHERE z2.\"zend_db_rownum\" BETWEEN " . ($offset + 1) . " AND " . ($offset + $count);
     }
 
     /**
@@ -578,7 +580,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
      */
     private function _setExecuteMode($mode)
     {
-        switch($mode) {
+        switch ($mode) {
             case OCI_COMMIT_ON_SUCCESS:
             case OCI_DEFAULT:
             case OCI_DESCRIBE_ONLY:

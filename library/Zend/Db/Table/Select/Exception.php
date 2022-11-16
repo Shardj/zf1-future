@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,4 +37,3 @@ require_once 'Zend/Db/Select/Exception.php';
 class Zend_Db_Table_Select_Exception extends Zend_Db_Select_Exception
 {
 }
-

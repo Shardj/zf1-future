@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,11 +37,8 @@ require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Provider_Action
-    extends Zend_Tool_Project_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Pretendable
+class Zend_Tool_Project_Provider_Action extends Zend_Tool_Project_Provider_Abstract implements Zend_Tool_Framework_Provider_Pretendable
 {
-
     /**
      * createResource()
      *
@@ -142,7 +140,7 @@ class Zend_Tool_Project_Provider_Action
             $response->appendContent(
                 'Note: PHPUnit is required in order to generate controller test stubs.',
                 ['color' => ['yellow']]
-                );
+            );
         }
 
         // Check that there is not a dash or underscore, return if doesnt match regex
@@ -179,7 +177,7 @@ class Zend_Tool_Project_Provider_Action
                     . ' used with other providers is "' . $name . '";'
                     . ' not "' . $originalName . '" as supplied',
                 ['color' => ['yellow']]
-                );
+            );
         }
 
         if ($controllerName !== $originalControllerName) {
@@ -188,7 +186,7 @@ class Zend_Tool_Project_Provider_Action
                     . ' used with other providers is "' . $controllerName . '";'
                     . ' not "' . $originalControllerName . '" as supplied',
                 ['color' => ['yellow']]
-                );
+            );
         }
 
         unset($tense);
@@ -197,17 +195,16 @@ class Zend_Tool_Project_Provider_Action
             $response->appendContent(
                 'Would create an action named ' . $name .
                 ' inside controller at ' . $actionMethodResource->getParentResource()->getContext()->getPath()
-                );
+            );
 
             if ($testActionMethodResource) {
                 $response->appendContent('Would create an action test in ' . $testActionMethodResource->getParentResource()->getContext()->getPath());
             }
-
         } else {
             $response->appendContent(
                 'Creating an action named ' . $name .
                 ' inside controller at ' . $actionMethodResource->getParentResource()->getContext()->getPath()
-                );
+            );
             $actionMethodResource->create();
 
             if ($testActionMethodResource) {
@@ -224,17 +221,14 @@ class Zend_Tool_Project_Provider_Action
             if ($this->_registry->getRequest()->isPretend()) {
                 $response->appendContent(
                     'Would create a view script for the ' . $name . ' action method at ' . $viewResource->getContext()->getPath()
-                    );
+                );
             } else {
                 $response->appendContent(
                     'Creating a view script for the ' . $name . ' action method at ' . $viewResource->getContext()->getPath()
-                    );
+                );
                 $viewResource->create();
                 $this->_storeProfile();
             }
-
         }
-
     }
-
 }

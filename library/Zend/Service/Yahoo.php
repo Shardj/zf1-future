@@ -504,7 +504,7 @@ class Zend_Service_Yahoo
         $this->_compareOptions($options, $validOptions);
 
         if (isset($options['type'])) {
-            switch($options['type']) {
+            switch ($options['type']) {
                 case 'all':
                 case 'any':
                 case 'phrase':
@@ -836,7 +836,7 @@ class Zend_Service_Yahoo
                                                                       'cc_modifiable']);
         }
 
-        if (isset($options['region'])){
+        if (isset($options['region'])) {
             $this->_validateInArray('region', $options['region'], ['ar', 'au', 'at', 'br', 'ca', 'ct', 'dk', 'fi',
                                                                           'fr', 'de', 'in', 'id', 'it', 'my', 'mx',
                                                                           'nl', 'no', 'ph', 'ru', 'sg', 'es', 'se',

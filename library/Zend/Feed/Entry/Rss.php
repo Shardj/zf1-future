@@ -20,7 +20,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Feed_Entry_Abstract
  */

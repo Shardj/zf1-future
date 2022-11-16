@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Feed/Reader/Collection/CollectionAbstract.php';
 class Zend_Feed_Reader_Collection_Category
 extends Zend_Feed_Reader_Collection_CollectionAbstract
 {
-
     /**
      * Return a simple array of the most relevant slice of
      * the collection values. For example, feed categories contain
@@ -42,7 +42,8 @@ extends Zend_Feed_Reader_Collection_CollectionAbstract
      *
      * @return array
      */
-    public function getValues() {
+    public function getValues()
+    {
         $categories = [];
         foreach ($this->getIterator() as $element) {
             if (isset($element['label']) && !empty($element['label'])) {
@@ -53,5 +54,4 @@ extends Zend_Feed_Reader_Collection_CollectionAbstract
         }
         return array_unique($categories);
     }
-
 }

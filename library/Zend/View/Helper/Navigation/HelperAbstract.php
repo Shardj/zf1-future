@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -39,9 +40,7 @@ require_once 'Zend/View/Helper/HtmlElement.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_View_Helper_Navigation_HelperAbstract
-    extends Zend_View_Helper_HtmlElement
-    implements Zend_View_Helper_Navigation_Helper
+abstract class Zend_View_Helper_Navigation_HelperAbstract extends Zend_View_Helper_HtmlElement implements Zend_View_Helper_Navigation_Helper
 {
     /**
      * Container to operate on by default
@@ -367,8 +366,8 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
         if (null === $this->_prefixForId) {
             $prefix             = get_class($this);
             $this->_prefixForId = strtolower(
-                    trim(substr($prefix, strrpos($prefix, '_')), '_')
-                ) . '-';
+                trim(substr($prefix, strrpos($prefix, '_')), '_')
+            ) . '-';
         }
 
         return $this->_prefixForId;
@@ -612,8 +611,9 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
     public function __call($method, array $arguments = [])
     {
         return call_user_func_array(
-                [$this->getContainer(), $method],
-                $arguments);
+            [$this->getContainer(), $method],
+            $arguments
+        );
     }
 
     /**
@@ -660,10 +660,11 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      *                                               'page', or an empty array
      *                                               if not found
      */
-    public function findActive(Zend_Navigation_Container $container,
-                               $minDepth = null,
-                               $maxDepth = -1)
-    {
+    public function findActive(
+        Zend_Navigation_Container $container,
+        $minDepth = null,
+        $maxDepth = -1
+    ) {
         if (!is_int($minDepth)) {
             $minDepth = $this->getMinDepth();
         }
@@ -673,8 +674,10 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
 
         $found  = null;
         $foundDepth = -1;
-        $iterator = new RecursiveIteratorIterator($container,
-                RecursiveIteratorIterator::CHILD_FIRST);
+        $iterator = new RecursiveIteratorIterator(
+            $container,
+            RecursiveIteratorIterator::CHILD_FIRST
+        );
 
         foreach ($iterator as $page) {
             $currDepth = $iterator->getDepth();

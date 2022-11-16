@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * Zend_Search_Lucene_Search_Weight
@@ -63,9 +63,10 @@ class Zend_Search_Lucene_Search_Weight_Phrase extends Zend_Search_Lucene_Search_
      * @param Zend_Search_Lucene_Search_Query_Phrase $query
      * @param Zend_Search_Lucene_Interface           $reader
      */
-    public function __construct(Zend_Search_Lucene_Search_Query_Phrase $query,
-                                Zend_Search_Lucene_Interface           $reader)
-    {
+    public function __construct(
+        Zend_Search_Lucene_Search_Query_Phrase $query,
+        Zend_Search_Lucene_Interface           $reader
+    ) {
         $this->_query  = $query;
         $this->_reader = $reader;
     }
@@ -104,5 +105,3 @@ class Zend_Search_Lucene_Search_Weight_Phrase extends Zend_Search_Lucene_Search_
         $this->_value = $this->_queryWeight * $this->_idf;
     }
 }
-
-

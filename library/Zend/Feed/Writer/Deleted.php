@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -29,7 +30,6 @@ require_once 'Zend/Feed/Writer/Feed/FeedAbstract.php';
  */
 class Zend_Feed_Writer_Deleted
 {
-
     /**
      * Internal array containing all data associated with this entry or item.
      *
@@ -127,7 +127,7 @@ class Zend_Feed_Writer_Deleted
     {
         $zdate = null;
         if ($date === null) {
-            $zdate = new Zend_Date;
+            $zdate = new Zend_Date();
         } elseif ($date instanceof Zend_Date) {
             $zdate = $date;
         } elseif (ctype_digit((string)$date)) {
@@ -198,5 +198,4 @@ class Zend_Feed_Writer_Deleted
         }
         return $this->_data['comment'];
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Db/Statement.php';
  */
 class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
 {
-
     /**
      * The connection_stmt object original string.
      */

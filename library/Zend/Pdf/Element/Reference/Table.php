@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -74,11 +75,13 @@ class Zend_Pdf_Element_Reference_Table
     /**
      * Object constructor
      */
-    public function  __construct()
+    public function __construct()
     {
         $this->_parent = null;
-        $this->_free   = [];  $this->_generations = [];
-        $this->_inuse  = [];  $this->_usedObjects = [];
+        $this->_free   = [];
+        $this->_generations = [];
+        $this->_inuse  = [];
+        $this->_usedObjects = [];
     }
 
 

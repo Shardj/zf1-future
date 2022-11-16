@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Service_Amazon
  */
@@ -70,7 +69,7 @@ class Zend_Service_Amazon_Query extends Zend_Service_Amazon
         if (strtolower($method) === 'category') {
             $this->_searchIndex = $args[0];
             $this->_search['SearchIndex'] = $args[0];
-        } else if (isset($this->_search['SearchIndex']) || $this->_searchIndex !== null || $this->_searchIndex === 'asin') {
+        } elseif (isset($this->_search['SearchIndex']) || $this->_searchIndex !== null || $this->_searchIndex === 'asin') {
             $this->_search[$method] = $args[0];
         } else {
             /**

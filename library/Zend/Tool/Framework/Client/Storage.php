@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Tool/Framework/Client/Storage/AdapterInterface.php';
  */
 class Zend_Tool_Framework_Client_Storage
 {
-
     /**
      * @var Zend_Tool_Framework_Client_Storage_AdapterInterface
      */
@@ -83,7 +83,6 @@ class Zend_Tool_Framework_Client_Storage
         } else {
             return $defaultValue;
         }
-
     }
 
     public function has($name)

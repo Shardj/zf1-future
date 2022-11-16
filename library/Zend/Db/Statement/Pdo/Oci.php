@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -39,7 +40,6 @@ require_once 'Zend/Db/Statement/Pdo.php';
  */
 class Zend_Db_Statement_Pdo_Oci extends Zend_Db_Statement_Pdo
 {
-
     /**
     * Returns an array containing all of the result set rows.
     *

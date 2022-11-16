@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,7 +36,8 @@ require_once 'Zend/Xml/Security.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenXml {
+class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenXml
+{
     /**
      * Xml Schema - WordprocessingML
      *
@@ -50,7 +52,8 @@ class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenX
      * @param boolean $storeContent
      * @throws Zend_Search_Lucene_Exception
      */
-    private function __construct($fileName, $storeContent) {
+    private function __construct($fileName, $storeContent)
+    {
         if (!class_exists('ZipArchive', false)) {
             require_once 'Zend/Search/Lucene/Exception.php';
             throw new Zend_Search_Lucene_Exception('MS Office documents processing functionality requires Zip extension to be loaded');
@@ -71,14 +74,14 @@ class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenX
             throw new Zend_Search_Lucene_Exception('Invalid archive or corrupted .docx file.');
         }
         $relations = Zend_Xml_Security::scan($relationsXml);
-        foreach($relations->Relationship as $rel) {
+        foreach ($relations->Relationship as $rel) {
             if ($rel ["Type"] == Zend_Search_Lucene_Document_OpenXml::SCHEMA_OFFICEDOCUMENT) {
                 // Found office document! Read in contents...
                 $contents = Zend_Xml_Security::scan($package->getFromName(
-                                                                $this->absoluteZipPath(dirname($rel['Target'])
+                    $this->absoluteZipPath(dirname($rel['Target'])
                                                               . '/'
                                                               . basename($rel['Target']))
-                                                                       ));
+                ));
 
                 $contents->registerXPathNamespace('w', Zend_Search_Lucene_Document_Docx::SCHEMA_WORDPROCESSINGML);
                 $paragraphs = $contents->xpath('//w:body/w:p');
@@ -92,12 +95,12 @@ class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenX
                     }
 
                     foreach ($runs as $run) {
-                     if ($run->getName() == 'br') {
-                         // Break element
-                         $documentBody[] = ' ';
-                     } else {
-                         $documentBody[] = (string)$run;
-                     }
+                        if ($run->getName() == 'br') {
+                            // Break element
+                            $documentBody[] = ' ';
+                        } else {
+                            $documentBody[] = (string)$run;
+                        }
                     }
 
                     // Add space after each paragraph. So they are not bound together.
@@ -143,7 +146,8 @@ class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenX
      * @return Zend_Search_Lucene_Document_Docx
      * @throws Zend_Search_Lucene_Document_Exception
      */
-    public static function loadDocxFile($fileName, $storeContent = false) {
+    public static function loadDocxFile($fileName, $storeContent = false)
+    {
         if (!is_readable($fileName)) {
             require_once 'Zend/Search/Lucene/Document/Exception.php';
             throw new Zend_Search_Lucene_Document_Exception('Provided file \'' . $fileName . '\' is not readable.');

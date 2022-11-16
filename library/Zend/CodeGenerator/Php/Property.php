@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/CodeGenerator/Php/Property/DefaultValue.php';
  */
 class Zend_CodeGenerator_Php_Property extends Zend_CodeGenerator_Php_Member_Abstract
 {
-
     /**
      * @var bool
      */
@@ -175,5 +175,4 @@ class Zend_CodeGenerator_Php_Property extends Zend_CodeGenerator_Php_Member_Abst
         }
         return $output;
     }
-
 }

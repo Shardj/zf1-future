@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -95,8 +96,13 @@ abstract class Zend_TimeSync_Protocol
      */
     protected function _connect()
     {
-        $socket = @fsockopen($this->_timeserver, $this->_port, $errno, $errstr,
-                             Zend_TimeSync::$options['timeout']);
+        $socket = @fsockopen(
+            $this->_timeserver,
+            $this->_port,
+            $errno,
+            $errstr,
+            Zend_TimeSync::$options['timeout']
+        );
         if ($socket === false) {
             throw new Zend_TimeSync_Exception('could not connect to ' .
                 "'$this->_timeserver' on port '$this->_port', reason: '$errstr'");

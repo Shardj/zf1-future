@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,7 +36,6 @@ require_once 'Zend/Tool/Project/Profile/Resource/SearchConstraints.php';
  */
 class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator, Countable
 {
-
     /**
      * @var array
      */
@@ -91,14 +91,12 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
         $foundDepth        = 0;
 
         foreach ($riIterator as $currentResource) {
-
             // if current depth is less than found depth, end
             if ($riIterator->getDepth() < $foundDepth) {
                 break;
             }
 
             if (strtolower($currentResource->getName()) == strtolower($currentConstraint->name)) {
-
                 $paramsMatch = true;
 
                 // @todo check to ensure params match (perhaps)
@@ -107,7 +105,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
                     if (!is_array($currentConstraint->params)) {
                         require_once 'Zend/Tool/Project/Profile/Exception.php';
                         throw new Zend_Tool_Project_Profile_Exception('Search parameter specifics must be in the form of an array for key "'
-                            . $currentConstraint->name .'"');
+                            . $currentConstraint->name . '"');
                     }
                     foreach ($currentConstraint->params as $paramName => $paramValue) {
                         if (!isset($currentResourceAttributes[$paramName]) || $currentResourceAttributes[$paramName] != $paramValue) {
@@ -125,9 +123,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
                         break;
                     }
                 }
-
             }
-
         }
 
         return $foundResource;
@@ -141,7 +137,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      * @param array $attributes
      * @return Zend_Tool_Project_Profile_Resource
      */
-    public function createResourceAt($appendResourceOrSearchConstraints, $context, Array $attributes = [])
+    public function createResourceAt($appendResourceOrSearchConstraints, $context, array $attributes = [])
     {
         if (!$appendResourceOrSearchConstraints instanceof Zend_Tool_Project_Profile_Resource_Container) {
             if (($parentResource = $this->search($appendResourceOrSearchConstraints)) == false) {
@@ -164,7 +160,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      * @param array $attributes
      * @return Zend_Tool_Project_Profile_Resource
      */
-    public function createResource($context, Array $attributes = [])
+    public function createResource($context, array $attributes = [])
     {
         if (is_string($context)) {
             $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
@@ -207,7 +203,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      * @param array $attributes
      * @return Zend_Tool_Project_Profile_Resource_Container
      */
-    public function setAttributes(Array $attributes)
+    public function setAttributes(array $attributes)
     {
         foreach ($attributes as $attrName => $attrValue) {
             $setMethod = 'set' . $attrName;
@@ -421,5 +417,4 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
             $this->_subResources[$index] = clone $resource;
         }
     }
-
 }

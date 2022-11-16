@@ -37,7 +37,6 @@ require_once 'Zend/Gdata/App/Extension.php';
  */
 class Zend_Gdata_Media_Extension_MediaCopyright extends Zend_Gdata_Extension
 {
-
     protected $_rootElement = 'copyright';
     protected $_rootNamespace = 'media';
 
@@ -87,11 +86,11 @@ class Zend_Gdata_Media_Extension_MediaCopyright extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'url':
-            $this->_url = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'url':
+                $this->_url = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -112,5 +111,4 @@ class Zend_Gdata_Media_Extension_MediaCopyright extends Zend_Gdata_Extension
         $this->_url = $value;
         return $this;
     }
-
 }

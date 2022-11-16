@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -121,7 +122,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
         $content = 0;
         if (isset($_SERVER['CONTENT_LENGTH'])) {
             $content = $_SERVER['CONTENT_LENGTH'];
-        } else if (!empty($_POST)) {
+        } elseif (!empty($_POST)) {
             $content = serialize($_POST);
         }
 
@@ -352,12 +353,11 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
 
         if (!empty($id)) {
             if (self::isApcAvailable()) {
-
                 $call = call_user_func(self::$_callbackApc, ini_get('apc.rfc1867_prefix') . $id);
                 if (is_array($call)) {
                     $status = $call + $status;
                 }
-            } else if (self::isUploadProgressAvailable()) {
+            } elseif (self::isUploadProgressAvailable()) {
                 $call = call_user_func(self::$_callbackUploadProgress, $id);
                 if (is_array($call)) {
                     $status = $call + $status;
@@ -373,7 +373,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
             if (!is_array($call)) {
                 $status['done']    = true;
                 $status['message'] = 'Failure while retrieving the upload progress';
-            } else if (!empty($status['cancel_upload'])) {
+            } elseif (!empty($status['cancel_upload'])) {
                 $status['done']    = true;
                 $status['message'] = 'The upload has been canceled';
             } else {
@@ -444,7 +444,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
                 }
 
                 $this->_files[$form]['name'] = $form;
-                foreach($this->_files[$form]['multifiles'] as $key => $value) {
+                foreach ($this->_files[$form]['multifiles'] as $key => $value) {
                     $this->_files[$value]['options']   = $this->_options;
                     $this->_files[$value]['validated'] = false;
                     $this->_files[$value]['received']  = false;

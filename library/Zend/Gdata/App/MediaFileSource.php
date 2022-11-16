@@ -71,7 +71,6 @@ class Zend_Gdata_App_MediaFileSource extends Zend_Gdata_App_BaseMediaSource
     {
         if ($this->getFilename() !== null &&
             is_readable($this->getFilename())) {
-
             // Retrieves the file, using the include path
             $fileHandle = fopen($this->getFilename(), 'r', true);
             $result = fread($fileHandle, filesize($this->getFilename()));
@@ -142,5 +141,4 @@ class Zend_Gdata_App_MediaFileSource extends Zend_Gdata_App_BaseMediaSource
     {
         return $this->getFilename();
     }
-
 }

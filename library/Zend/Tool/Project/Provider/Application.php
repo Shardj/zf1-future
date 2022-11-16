@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -26,11 +27,8 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Provider_Application
-    extends Zend_Tool_Project_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Pretendable
+class Zend_Tool_Project_Provider_Application extends Zend_Tool_Project_Provider_Abstract implements Zend_Tool_Framework_Provider_Pretendable
 {
-
     protected $_specialties = ['ClassNamePrefix'];
 
     /**
@@ -73,7 +71,7 @@ class Zend_Tool_Project_Provider_Application
                 'Note: the name provided "' . $originalClassNamePrefix . '" was'
                     . ' altered to "' . $classNamePrefix . '" for correctness.',
                 ['color' => 'yellow']
-                );
+            );
         }
 
         // note to the user
@@ -83,5 +81,4 @@ class Zend_Tool_Project_Provider_Application
         // store profile
         $this->_storeProfile();
     }
-
 }

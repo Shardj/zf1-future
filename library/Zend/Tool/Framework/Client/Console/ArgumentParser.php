@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
  */
 class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Framework_Registry_EnabledInterface
 {
-
     /**
      * @var Zend_Tool_Framework_Registry_Interface
      */
@@ -83,7 +83,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
      * @param array $arguments
      * @return Zend_Tool_Framework_Client_Console_ArgumentParser
      */
-    public function setArguments(Array $arguments)
+    public function setArguments(array $arguments)
     {
         $this->_argumentsOriginal = $this->_argumentsWorking = $arguments;
         return $this;
@@ -163,7 +163,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             $helpResponseOptions = array_merge(
                 $helpResponseOptions,
                 ['actionName' => $this->_request->getActionName()]
-                );
+            );
         }
 
         /* @TODO Action Parameter Requirements */
@@ -195,14 +195,14 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             $helpResponseOptions = array_merge(
                 $helpResponseOptions,
                 ['providerName' => $this->_request->getProviderName()]
-                );
+            );
         }
 
         if ($this->_helpKnownSpecialty) {
             $helpResponseOptions = array_merge(
                 $helpResponseOptions,
                 ['specialtyName' => $this->_request->getSpecialtyName()]
-                );
+            );
         }
 
         // if there are arguments on the command line, lets process them as provider options
@@ -219,7 +219,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
                 $this->_createHelpResponse(array_merge(
                     $helpResponseOptions,
                     ['error' => 'Unknown arguments left on the command line: ' . implode(' ', $this->_argumentsWorking)]
-                    ));
+                ));
             }
             return;
         }
@@ -258,7 +258,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             } elseif ($option == 'verbose') {
                 $this->_request->setVerbose(true);
             } else {
-                $property = '_'.$option;
+                $property = '_' . $option;
                 $this->{$property} = true;
             }
         }
@@ -358,7 +358,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             require_once 'Zend/Tool/Framework/Client/Exception.php';
             throw new Zend_Tool_Framework_Client_Exception(
                 'Provider \'' . $consoleProviderFull . '\' is not a valid provider.'
-                );
+            );
         }
 
         $this->_helpKnownProvider = true;
@@ -390,7 +390,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             require_once 'Zend/Tool/Framework/Client/Exception.php';
             throw new Zend_Tool_Framework_Client_Exception(
                 'Provider \'' . $consoleSpecialtyName . '\' is not a valid specialty.'
-                );
+            );
         }
 
         $this->_helpKnownSpecialty = true;
@@ -420,11 +420,11 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
 
         $actionableMethodLongParamsMetadata = $this->_manifestRepository->getMetadata(
             array_merge($searchParams, ['name' => 'actionableMethodLongParams'])
-            );
+        );
 
         $actionableMethodShortParamsMetadata = $this->_manifestRepository->getMetadata(
             array_merge($searchParams, ['name' => 'actionableMethodShortParams'])
-            );
+        );
 
         $paramNameShortValues = $actionableMethodShortParamsMetadata->getValue();
 
@@ -483,16 +483,15 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
                 // then break out.
                 break;
             }
-
         }
 
         if ($wordStack && $wordArguments) {
             for ($wordIndex = 1; $wordIndex <= count($wordArguments); $wordIndex++) {
-                if (!array_key_exists($wordIndex-1, $wordStack) || !array_key_exists($wordIndex, $wordArguments)) {
+                if (!array_key_exists($wordIndex - 1, $wordStack) || !array_key_exists($wordIndex, $wordArguments)) {
                     break;
                 }
-                $this->_request->setProviderParameter($wordArguments[$wordIndex]['parameterName'], $wordStack[$wordIndex-1]);
-                unset($wordStack[$wordIndex-1]);
+                $this->_request->setProviderParameter($wordArguments[$wordIndex]['parameterName'], $wordStack[$wordIndex - 1]);
+                unset($wordStack[$wordIndex - 1]);
             }
         }
 
@@ -533,7 +532,5 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         } else {
             $helpSystem->respondWithGeneralHelp();
         }
-
     }
-
 }

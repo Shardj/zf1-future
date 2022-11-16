@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -106,7 +107,6 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
         $this->_messageTable = new Zend_Queue_Adapter_Db_Message([
             'db' => $db,
         ]);
-
     }
 
     /**
@@ -394,7 +394,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
 
         // start transaction handling
         try {
-            if ( $maxMessages > 0 ) { // ZF-7666 LIMIT 0 clause not included.
+            if ($maxMessages > 0) { // ZF-7666 LIMIT 0 clause not included.
                 $db->beginTransaction();
 
                 $query = $db->select();

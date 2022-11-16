@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -55,7 +56,8 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
         if (null !== $uri && !is_string($uri)) {
             require_once 'Zend/Navigation/Exception.php';
             throw new Zend_Navigation_Exception(
-                    'Invalid argument: $uri must be a string or null');
+                'Invalid argument: $uri must be a string or null'
+            );
         }
 
         $this->_uri = $uri;
@@ -106,6 +108,7 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
             parent::toArray(),
             [
                 'uri' => $this->getUri()
-            ]);
+            ]
+        );
     }
 }

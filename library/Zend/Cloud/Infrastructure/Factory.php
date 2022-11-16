@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @category   Zend
  * @package    Zend_Cloud
@@ -57,7 +58,8 @@ class Zend_Cloud_Infrastructure_Factory extends Zend_Cloud_AbstractFactory
         } elseif (!$adapter instanceof self::$_adapterInterface) {
             require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception(sprintf(
-                'Adapter must implement "%s"', self::$_adapterInterface
+                'Adapter must implement "%s"',
+                self::$_adapterInterface
             ));
         }
         return $adapter;

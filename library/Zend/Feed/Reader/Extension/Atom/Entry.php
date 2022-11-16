@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -131,7 +132,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
         $content = null;
 
         $el = $this->getXpath()->query($this->getXpathPrefix() . '/atom:content');
-        if($el->length > 0) {
+        if ($el->length > 0) {
             $el = $el->item(0);
             $type = $el->getAttribute('type');
             switch ($type) {
@@ -141,7 +142,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
                 case 'html':
                 case 'text/html':
                     $content = $el->nodeValue;
-                break;
+                    break;
                 case 'xhtml':
                     $this->getXpath()->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
                     $xhtml = $this->getXpath()->query(
@@ -155,7 +156,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
                         $d->saveXML(),
                         $d->lookupPrefix('http://www.w3.org/1999/xhtml')
                     );
-                break;
+                    break;
             }
         }
 
@@ -173,7 +174,9 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     protected function _collectXhtml($xhtml, $prefix)
     {
-        if (!empty($prefix)) $prefix = $prefix . ':';
+        if (!empty($prefix)) {
+            $prefix = $prefix . ':';
+        }
         $matches = [
             "/<\?xml[^<]*>[^<]*<" . $prefix . "div[^<]*/",
             "/<\/" . $prefix . "div>\s*$/"
@@ -205,7 +208,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
         }
 
         if ($dateCreated) {
-            $date = new Zend_Date;
+            $date = new Zend_Date();
             $date->set($dateCreated, Zend_Date::ISO_8601);
         }
 
@@ -234,7 +237,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
         }
 
         if ($dateModified) {
-            $date = new Zend_Date;
+            $date = new Zend_Date();
             $date->set($dateModified, Zend_Date::ISO_8601);
         }
 
@@ -496,7 +499,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
         $link = null;
 
         $list = $this->getXpath()->query(
-            $this->getXpathPrefix() . '//atom:link[@rel="replies" and @type="application/'.$type.'+xml"]/@href'
+            $this->getXpathPrefix() . '//atom:link[@rel="replies" and @type="application/' . $type . '+xml"]/@href'
         );
 
         if ($list->length) {
@@ -533,7 +536,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
         }
 
         if ($list->length) {
-            $categoryCollection = new Zend_Feed_Reader_Collection_Category;
+            $categoryCollection = new Zend_Feed_Reader_Collection_Category();
             foreach ($list as $category) {
                 $categoryCollection[] = [
                     'term' => $category->getAttribute('term'),
@@ -542,7 +545,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
                 ];
             }
         } else {
-            return new Zend_Feed_Reader_Collection_Category;
+            return new Zend_Feed_Reader_Collection_Category();
         }
 
         $this->_data['categories'] = $categoryCollection;

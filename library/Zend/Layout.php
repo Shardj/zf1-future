@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -776,8 +777,7 @@ class Zend_Layout
             $name = $this->getLayout();
         }
 
-        if ($this->inflectorEnabled() && (null !== ($inflector = $this->getInflector())))
-        {
+        if ($this->inflectorEnabled() && (null !== ($inflector = $this->getInflector()))) {
             $name = $this->_inflector->filter(['script' => $name]);
         }
 

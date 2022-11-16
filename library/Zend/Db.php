@@ -31,7 +31,6 @@
  */
 class Zend_Db
 {
-
     /**
      * Use the PROFILER constant in the config of a Zend_Db_Adapter.
      */
@@ -125,17 +124,17 @@ class Zend_Db
     const CASE_UPPER = 1;
     const CURSOR_FWDONLY = 0;
     const CURSOR_SCROLL = 1;
-    const ERR_ALREADY_EXISTS = NULL;
-    const ERR_CANT_MAP = NULL;
-    const ERR_CONSTRAINT = NULL;
-    const ERR_DISCONNECTED = NULL;
-    const ERR_MISMATCH = NULL;
-    const ERR_NO_PERM = NULL;
+    const ERR_ALREADY_EXISTS = null;
+    const ERR_CANT_MAP = null;
+    const ERR_CONSTRAINT = null;
+    const ERR_DISCONNECTED = null;
+    const ERR_MISMATCH = null;
+    const ERR_NO_PERM = null;
     const ERR_NONE = '00000';
-    const ERR_NOT_FOUND = NULL;
-    const ERR_NOT_IMPLEMENTED = NULL;
-    const ERR_SYNTAX = NULL;
-    const ERR_TRUNCATED = NULL;
+    const ERR_NOT_FOUND = null;
+    const ERR_NOT_IMPLEMENTED = null;
+    const ERR_SYNTAX = null;
+    const ERR_TRUNCATED = null;
     const ERRMODE_EXCEPTION = 2;
     const ERRMODE_SILENT = 0;
     const ERRMODE_WARNING = 1;
@@ -162,7 +161,7 @@ class Zend_Db
     const FETCH_UNIQUE = 196608;
     const NULL_EMPTY_STRING = 1;
     const NULL_NATURAL = 0;
-    const NULL_TO_STRING = NULL;
+    const NULL_TO_STRING = null;
     const PARAM_BOOL = 5;
     const PARAM_INPUT_OUTPUT = -2147483648;
     const PARAM_INT = 1;
@@ -282,5 +281,4 @@ class Zend_Db
 
         return $dbAdapter;
     }
-
 }

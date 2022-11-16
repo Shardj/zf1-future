@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 abstract class Zend_CodeGenerator_Abstract
 {
-
     /**
      * @var string
      */
@@ -78,7 +78,7 @@ abstract class Zend_CodeGenerator_Abstract
      * @param array $options
      * @return Zend_CodeGenerator_Abstract
      */
-    public function setOptions(Array $options)
+    public function setOptions(array $options)
     {
         foreach ($options as $optionName => $optionValue) {
             $methodName = 'set' . $optionName;
@@ -116,7 +116,6 @@ abstract class Zend_CodeGenerator_Abstract
      */
     protected function _init()
     {
-
     }
 
     /**
@@ -125,7 +124,6 @@ abstract class Zend_CodeGenerator_Abstract
      */
     protected function _prepare()
     {
-
     }
 
     /**
@@ -143,5 +141,4 @@ abstract class Zend_CodeGenerator_Abstract
     {
         return $this->generate();
     }
-
 }

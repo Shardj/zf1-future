@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Postnet extends Zend_Barcode_Object_ObjectAbstract
 {
-
     /**
      * Coding map
      * - 0 = half bar
@@ -91,7 +91,8 @@ class Zend_Barcode_Object_Postnet extends Zend_Barcode_Object_ObjectAbstract
      * @return void
      */
     protected function _checkParams()
-    {}
+    {
+    }
 
     /**
      * Prepare array to draw barcode

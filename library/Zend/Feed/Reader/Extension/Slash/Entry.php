@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -77,8 +78,9 @@ class Zend_Feed_Reader_Extension_Slash_Entry
         if (!empty($stringParade)) {
             $stringParade = explode(',', $stringParade);
 
-            foreach ($stringParade as $hit)
+            foreach ($stringParade as $hit) {
                 $hitParade[] = $hit + 0; //cast to integer
+            }
         }
 
         $this->_data[$name] = $hitParade;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -30,6 +31,6 @@ require_once 'Zend/Service/WindowsAzure/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Service_WindowsAzure_Diagnostics_Exception
-	extends Zend_Service_WindowsAzure_Exception
+    extends Zend_Service_WindowsAzure_Exception
 {
 }

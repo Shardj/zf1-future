@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mail_Storage_Abstract
@@ -63,8 +63,7 @@ require_once 'Zend/Mail/Storage.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
-                             implements Zend_Mail_Storage_Folder_Interface, Zend_Mail_Storage_Writable_Interface
+class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract implements Zend_Mail_Storage_Folder_Interface, Zend_Mail_Storage_Writable_Interface
 {
     // TODO: with an internal cache we could optimize this class, or create an extra class with
     // such optimizations. Especially the various fetch calls could be combined to one cache call
@@ -248,7 +247,7 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
             $this->_protocol = $params;
             try {
                 $this->selectFolder('INBOX');
-            } catch(Zend_Mail_Storage_Exception $e) {
+            } catch (Zend_Mail_Storage_Exception $e) {
                 /**
                  * @see Zend_Mail_Storage_Exception
                  */
@@ -432,7 +431,7 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
                     array_push($folderStack, $parentFolder);
                     $parentFolder = $folder;
                     break;
-                } else if ($stack) {
+                } elseif ($stack) {
                     $parent = array_pop($stack);
                     $parentFolder = array_pop($folderStack);
                 }
@@ -500,7 +499,7 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
         // TODO: we assume / as the hierarchy delim - need to get that from the folder class!
         if ($parentFolder instanceof Zend_Mail_Storage_Folder) {
             $folder = $parentFolder->getGlobalName() . '/' . $name;
-        } else if ($parentFolder != null) {
+        } elseif ($parentFolder != null) {
             $folder = $parentFolder . '/' . $name;
         } else {
             $folder = $name;
@@ -620,7 +619,8 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
      * @return null
      * @throws Zend_Mail_Storage_Exception
      */
-    public function moveMessage($id, $folder) {
+    public function moveMessage($id, $folder)
+    {
         $this->copyMessage($id, $folder);
         $this->removeMessage($id);
     }
@@ -645,4 +645,3 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
         }
     }
 }
-

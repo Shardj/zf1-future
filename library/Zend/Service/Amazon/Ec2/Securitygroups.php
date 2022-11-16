@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -79,11 +80,11 @@ class Zend_Service_Amazon_Ec2_Securitygroups extends Zend_Service_Amazon_Ec2_Abs
     {
         $params = [];
         $params['Action'] = 'DescribeSecurityGroups';
-        if(is_array($name) && !empty($name)) {
-            foreach($name as $k=>$name) {
-                $params['GroupName.' . ($k+1)] = $name;
+        if (is_array($name) && !empty($name)) {
+            foreach ($name as $k => $name) {
+                $params['GroupName.' . ($k + 1)] = $name;
             }
-        } elseif($name) {
+        } elseif ($name) {
             $params['GroupName.1'] = $name;
         }
 
@@ -94,7 +95,7 @@ class Zend_Service_Amazon_Ec2_Securitygroups extends Zend_Service_Amazon_Ec2_Abs
 
         $nodes = $xpath->query('//ec2:securityGroupInfo/ec2:item');
 
-        foreach($nodes as $node) {
+        foreach ($nodes as $node) {
             $item = [];
 
             $item['ownerId'] = $xpath->evaluate('string(ec2:ownerId/text())', $node);
@@ -103,7 +104,7 @@ class Zend_Service_Amazon_Ec2_Securitygroups extends Zend_Service_Amazon_Ec2_Abs
 
             $ip_nodes = $xpath->query('ec2:ipPermissions/ec2:item', $node);
 
-            foreach($ip_nodes as $ip_node) {
+            foreach ($ip_nodes as $ip_node) {
                 $sItem = [];
 
                 $sItem['ipProtocol'] = $xpath->evaluate('string(ec2:ipProtocol/text())', $ip_node);
@@ -113,11 +114,11 @@ class Zend_Service_Amazon_Ec2_Securitygroups extends Zend_Service_Amazon_Ec2_Abs
                 $ips = $xpath->query('ec2:ipRanges/ec2:item', $ip_node);
 
                 $sItem['ipRanges'] = [];
-                foreach($ips as $ip) {
+                foreach ($ips as $ip) {
                     $sItem['ipRanges'][] = $xpath->evaluate('string(ec2:cidrIp/text())', $ip);
                 }
 
-                if(count($sItem['ipRanges']) === 1) {
+                if (count($sItem['ipRanges']) === 1) {
                     $sItem['ipRanges'] = $sItem['ipRanges'][0];
                 }
 
@@ -194,7 +195,6 @@ class Zend_Service_Amazon_Ec2_Securitygroups extends Zend_Service_Amazon_Ec2_Abs
         $success  = $xpath->evaluate('string(//ec2:return/text())');
 
         return ($success === "true");
-
     }
 
     /**

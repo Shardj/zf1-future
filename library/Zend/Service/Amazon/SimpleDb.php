@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -108,10 +109,10 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
      */
     public function setEndpoint($endpoint)
     {
-        if(!($endpoint instanceof Zend_Uri_Http)) {
+        if (!($endpoint instanceof Zend_Uri_Http)) {
             $endpoint = Zend_Uri::factory($endpoint);
         }
-        if(!$endpoint->valid()) {
+        if (!$endpoint->valid()) {
             require_once 'Zend/Service/Amazon/SimpleDb/Exception.php';
             throw new Zend_Service_Amazon_SimpleDb_Exception("Invalid endpoint supplied");
         }
@@ -139,7 +140,9 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
      * @return array
      */
     public function getAttributes(
-        $domainName, $itemName, $attributeName = null
+        $domainName,
+        $itemName,
+        $attributeName = null
     ) {
         $params               = [];
         $params['Action']     = 'GetAttributes';
@@ -157,13 +160,13 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
 
         // Return an array of arrays
         $attributes = [];
-        foreach($attributeNodes as $attributeNode) {
+        foreach ($attributeNodes as $attributeNode) {
             $name       = (string)$attributeNode->Name;
             $valueNodes = $attributeNode->Value;
             $data       = null;
             if (is_array($valueNodes) && !empty($valueNodes)) {
                 $data = [];
-                foreach($valueNodes as $valueNode) {
+                foreach ($valueNodes as $valueNode) {
                     $data[] = (string)$valueNode;
                 }
             } elseif (isset($valueNodes)) {
@@ -188,7 +191,10 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
      * @return void
      */
     public function putAttributes(
-        $domainName, $itemName, $attributes, $replace = []
+        $domainName,
+        $itemName,
+        $attributes,
+        $replace = []
     ) {
         $params               = [];
         $params['Action']     = 'PutAttributes';
@@ -203,7 +209,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
                 $params['Attribute.' . $index . '.Value'] = $value;
 
                 // Check if it should be replaced
-                if(array_key_exists($attributeName, $replace) && $replace[$attributeName]) {
+                if (array_key_exists($attributeName, $replace) && $replace[$attributeName]) {
                     $params['Attribute.' . $index . '.Replace'] = 'true';
                 }
                 $index++;
@@ -236,7 +242,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
             foreach ($attributes as $attribute) {
                 // attribute value cannot be array, so when several items are passed
                 // they are treated as separate values with the same attribute name
-                foreach($attribute->getValues() as $value) {
+                foreach ($attribute->getValues() as $value) {
                     $params['Item.' . $itemIndex . '.Attribute.' . $attributeIndex . '.Name'] = $attribute->getName();
                     $params['Item.' . $itemIndex . '.Attribute.' . $attributeIndex . '.Value'] = $value;
                     if (isset($replace[$name])
@@ -470,7 +476,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
             $request->setUri($this->getEndpoint());
             $request->setMethod(Zend_Http_Client::POST);
             foreach ($params as $key => $value) {
-                $params_out[] = rawurlencode($key)."=".rawurlencode($value);
+                $params_out[] = rawurlencode($key) . "=" . rawurlencode($value);
             }
             $request->setRawData(join('&', $params_out), Zend_Http_Client::ENC_URLENCODED);
             $httpResponse = $request->request();
@@ -548,7 +554,8 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
             $value = str_replace(
                 ["%7E", "+"],
                 ["~", "%20"],
-                $value);
+                $value
+            );
 
             $arrData[] = urlencode($key) . '=' . $value;
         }

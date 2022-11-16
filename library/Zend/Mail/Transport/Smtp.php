@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mime
@@ -115,7 +115,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
      * @todo Someone please make this compatible
      *       with the SendMail transport class.
      */
-    public function __construct($host = '127.0.0.1', Array $config = [])
+    public function __construct($host = '127.0.0.1', array $config = [])
     {
         if (isset($config['name'])) {
             $this->_name = $config['name'];

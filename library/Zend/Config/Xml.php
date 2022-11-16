@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -133,7 +134,7 @@ class Zend_Config_Xml extends Zend_Config
             }
 
             parent::__construct($dataArray, $allowModifications);
-        } else if (is_array($section)) {
+        } elseif (is_array($section)) {
             $dataArray = [];
             foreach ($section as $sectionName) {
                 if (!isset($config->$sectionName)) {
@@ -282,7 +283,7 @@ class Zend_Config_Xml extends Zend_Config
             foreach ($xmlObject->children() as $key => $value) {
                 if (count($value->children()) > 0 || count($value->children(self::XML_NAMESPACE)) > 0) {
                     $value = $this->_toArray($value);
-                } else if (count($value->attributes()) > 0) {
+                } elseif (count($value->attributes()) > 0) {
                     $attributes = $value->attributes();
                     if (isset($attributes['value'])) {
                         $value = (string) $attributes['value'];
@@ -303,7 +304,7 @@ class Zend_Config_Xml extends Zend_Config
                     $config[$key] = $value;
                 }
             }
-        } else if (!isset($xmlObject['extends']) && !isset($nsAttributes['extends']) && (count($config) === 0)) {
+        } elseif (!isset($xmlObject['extends']) && !isset($nsAttributes['extends']) && (count($config) === 0)) {
             // Object has no children nor attributes and doesn't use the extends
             // attribute: it's a string
             $config = (string) $xmlObject;

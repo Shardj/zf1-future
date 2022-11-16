@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -106,7 +107,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
      *     public function evaluate($other, $description = '', $returnResult = FALSE)
      * We use the new interface for PHP-strict checking, but emulate the old one
      */
-    public function evaluate($other, $assertType = null, $variable = FALSE)
+    public function evaluate($other, $assertType = null, $variable = false)
     {
         if (!$other instanceof Zend_Controller_Response_Abstract) {
             require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
@@ -178,7 +179,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null)
     {
         require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {

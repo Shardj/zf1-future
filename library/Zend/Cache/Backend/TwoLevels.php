@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Cache_Backend_ExtendedInterface
@@ -295,7 +295,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
      */
     public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = [])
     {
-        switch($mode) {
+        switch ($mode) {
             case Zend_Cache::CLEANING_MODE_ALL:
                 $boolFast = $this->_fastBackend->clean(Zend_Cache::CLEANING_MODE_ALL);
                 $boolSlow = $this->_slowBackend->clean(Zend_Cache::CLEANING_MODE_ALL);
@@ -545,5 +545,4 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
         }
         return $this->_fastBackendFillingPercentage;
     }
-
 }

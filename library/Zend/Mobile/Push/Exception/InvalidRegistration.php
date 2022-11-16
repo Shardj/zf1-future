@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,4 +33,5 @@ require_once 'Zend/Mobile/Push/Exception.php';
  * @version    $Id$
  */
 class Zend_Mobile_Push_Exception_InvalidRegistration extends Zend_Mobile_Push_Exception
-{}
+{
+}

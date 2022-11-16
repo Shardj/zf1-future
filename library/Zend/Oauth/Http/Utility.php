@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -88,7 +89,7 @@ class Zend_Oauth_Http_Utility
     public function toEncodedQueryString(array $params, $customParamsOnly = false)
     {
         if ($customParamsOnly) {
-            foreach ($params as $key=>$value) {
+            foreach ($params as $key => $value) {
                 if (preg_match("/^oauth_/", $key)) {
                     unset($params[$key]);
                 }
@@ -142,7 +143,12 @@ class Zend_Oauth_Http_Utility
      * @return string
      */
     public function sign(
-        array $params, $signatureMethod, $consumerSecret, $tokenSecret = null, $method = null, $url = null
+        array $params,
+        $signatureMethod,
+        $consumerSecret,
+        $tokenSecret = null,
+        $method = null,
+        $url = null
     ) {
         $className = '';
         $hashAlgo  = null;

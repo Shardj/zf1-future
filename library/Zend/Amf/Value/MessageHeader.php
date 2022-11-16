@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -69,7 +70,7 @@ class Zend_Amf_Value_MessageHeader
      * @param misc $content
      * @param integer $length
      */
-    public function __construct($name, $mustRead, $data, $length=null)
+    public function __construct($name, $mustRead, $data, $length = null)
     {
         $this->name     = $name;
         $this->mustRead = (bool) $mustRead;

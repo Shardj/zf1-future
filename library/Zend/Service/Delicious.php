@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Rest_Client
  */
@@ -449,7 +448,7 @@ class Zend_Service_Delicious
 
         $res = $this->makeRequest(self::JSON_URL, $parms, 'json');
 
-        if(isset($res[0])) {
+        if (isset($res[0])) {
             return $res[0];
         } else {
             return null;
@@ -593,7 +592,6 @@ class Zend_Service_Delicious
         $rootNode = $response->documentElement;
 
         if ($rootNode && $rootNode->nodeName == 'result') {
-
             if ($rootNode->hasAttribute('code')) {
                 $strResponse = $rootNode->getAttribute('code');
             } else {

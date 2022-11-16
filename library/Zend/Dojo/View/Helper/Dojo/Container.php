@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -216,24 +217,24 @@ class Zend_Dojo_View_Helper_Dojo_Container
      */
     public function setOptions($options)
     {
-        if($options instanceof Zend_Config) {
+        if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }
 
-        foreach($options as $key => $value) {
+        foreach ($options as $key => $value) {
             $key = strtolower($key);
-            switch($key) {
+            switch ($key) {
                 case 'requiremodules':
                     $this->requireModule($value);
                     break;
                 case 'modulepaths':
-                    foreach($value as $module => $path) {
+                    foreach ($value as $module => $path) {
                         $this->registerModulePath($module, $path);
                     }
                     break;
                 case 'layers':
                     $value = (array) $value;
-                    foreach($value as $layer) {
+                    foreach ($value as $layer) {
                         $this->addLayer($layer);
                     }
                     break;
@@ -254,13 +255,13 @@ class Zend_Dojo_View_Helper_Dojo_Container
                     break;
                 case 'stylesheetmodules':
                     $value = (array) $value;
-                    foreach($value as $module) {
+                    foreach ($value as $module) {
                         $this->addStylesheetModule($module);
                     }
                     break;
                 case 'stylesheets':
                     $value = (array) $value;
-                    foreach($value as $stylesheet) {
+                    foreach ($value as $stylesheet) {
                         $this->addStylesheet($stylesheet);
                     }
                     break;
@@ -268,7 +269,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
                     $this->registerDojoStylesheet($value);
                     break;
                 case 'enable':
-                    if($value) {
+                    if ($value) {
                         $this->enable();
                     } else {
                         $this->disable();
@@ -856,7 +857,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
     public function registerDijitLoader()
     {
         if (!$this->_dijitLoaderRegistered) {
-            $js =<<<EOJ
+            $js = <<<EOJ
 function() {
     dojo.forEach(zendDijits, function(info) {
         var n = dojo.byId(info.id);

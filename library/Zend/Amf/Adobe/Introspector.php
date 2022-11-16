@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -88,7 +89,7 @@ class Zend_Amf_Adobe_Introspector
         }
 
         // Transform com.foo.Bar into com_foo_Bar
-        $serviceClass = str_replace('.' , '_', $serviceClass);
+        $serviceClass = str_replace('.', '_', $serviceClass);
 
         // Introspect!
         if (!class_exists($serviceClass)) {
@@ -192,7 +193,7 @@ class Zend_Amf_Adobe_Introspector
                     $ptype = $this->_registerType($type);
                     $arg->setAttribute('type', $ptype);
 
-                    if($param->isDefaultValueAvailable()) {
+                    if ($param->isDefaultValueAvailable()) {
                         $arg->setAttribute('defaultvalue', $param->getDefaultValue());
                     }
 

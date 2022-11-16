@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Weight */
 require_once 'Zend/Search/Lucene/Search/Weight.php';
@@ -54,4 +54,3 @@ class Zend_Search_Lucene_Search_Weight_Empty extends Zend_Search_Lucene_Search_W
     {
     }
 }
-

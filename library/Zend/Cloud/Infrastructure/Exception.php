@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Exception
  *
@@ -22,4 +23,5 @@ require_once 'Zend/Cloud/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Cloud_Infrastructure_Exception extends Zend_Cloud_Exception
-{}
+{
+}

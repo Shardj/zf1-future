@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Crypt/Math/BigInteger/Interface.php';
  */
 class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Interface
 {
-
     /**
      * Initialise a big integer into an extension specific type.
      * @param string $operand
@@ -196,7 +196,7 @@ class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Inter
 
         if (strlen($bigInt) % 2 != 0) {
             $bigInt = '0' . $bigInt;
-        } else if ($bigInt[0] > '7') {
+        } elseif ($bigInt[0] > '7') {
             $bigInt = '00' . $bigInt;
         }
 
@@ -210,12 +210,11 @@ class Zend_Crypt_Math_BigInteger_Gmp implements Zend_Crypt_Math_BigInteger_Inter
     public function hexToDecimal($operand)
     {
         $return = '0';
-        while(strlen($hex)) {
+        while (strlen($hex)) {
             $hex = hexdec(substr($operand, 0, 4));
             $dec = gmp_add(gmp_mul($return, 65536), $hex);
             $operand = substr($operand, 4);
         }
         return $return;
     }
-
 }

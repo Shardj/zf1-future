@@ -77,11 +77,11 @@ class Zend_Service_Rackspace_Servers_SharedIpGroup
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception(self::ERROR_PARAM_NO_SERVERS);
         }
-        $this->service= $service;
+        $this->service = $service;
         $this->name = $data['name'];
         $this->id = $data['id'];
         if (isset($data['servers'])) {
-            $this->serversId= $data['servers'];
+            $this->serversId = $data['servers'];
         }
     }
     /**
@@ -110,11 +110,11 @@ class Zend_Service_Rackspace_Servers_SharedIpGroup
     public function getServersId()
     {
         if (empty($this->serversId)) {
-            $info= $this->service->getSharedIpGroup($this->id);
-            if (($info!==false)) {
-                $info= $info->toArray();
+            $info = $this->service->getSharedIpGroup($this->id);
+            if (($info !== false)) {
+                $info = $info->toArray();
                 if (isset($info['servers'])) {
-                    $this->serversId= $info['servers'];
+                    $this->serversId = $info['servers'];
                 }
             }
         }
@@ -131,7 +131,7 @@ class Zend_Service_Rackspace_Servers_SharedIpGroup
         if (empty($this->serversId)) {
             $this->getServersId();
         }
-        if (in_array($id,$this->serversId)) {
+        if (in_array($id, $this->serversId)) {
             return $this->service->getServer($id);
         }
         return false;
@@ -144,10 +144,10 @@ class Zend_Service_Rackspace_Servers_SharedIpGroup
      * @param  array $files
      * @return Zend_Service_Rackspace_Servers_Server|boolean
      */
-    public function createServer(array $data, $metadata=[],$files=[])
+    public function createServer(array $data, $metadata = [], $files = [])
     {
-        $data['sharedIpGroupId']= (integer) $this->id;
-        return $this->service->createServer($data,$metadata,$files);
+        $data['sharedIpGroupId'] = (int) $this->id;
+        return $this->service->createServer($data, $metadata, $files);
     }
     /**
      * To Array

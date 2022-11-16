@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -91,8 +92,8 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
     public function getMessage()
     {
         $table = $this->_rows;
-        if($this->_header) {
-            array_unshift($table,$this->_header);
+        if ($this->_header) {
+            array_unshift($table, $this->_header);
         }
         return $table;
     }
@@ -108,9 +109,9 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
     {
         $count = $this->getRowCount();
 
-        if($index < 0 || $index > $count-1) {
+        if ($index < 0 || $index > $count - 1) {
             require_once 'Zend/Wildfire/Exception.php';
-            throw new Zend_Wildfire_Exception('Row index('.$index.') out of bounds('.$count.')!');
+            throw new Zend_Wildfire_Exception('Row index(' . $index . ') out of bounds(' . $count . ')!');
         }
 
         return $this->_rows[$index];
@@ -127,9 +128,9 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
     {
         $count = $this->getRowCount();
 
-        if($index < 0 || $index > $count-1) {
+        if ($index < 0 || $index > $count - 1) {
             require_once 'Zend/Wildfire/Exception.php';
-            throw new Zend_Wildfire_Exception('Row index('.$index.') out of bounds('.$count.')!');
+            throw new Zend_Wildfire_Exception('Row index(' . $index . ') out of bounds(' . $count . ')!');
         }
 
         $this->_rows[$index] = $row;
@@ -155,11 +156,11 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
     {
         $count = $this->getRowCount();
 
-        if($count == 0) {
+        if ($count == 0) {
             require_once 'Zend/Wildfire/Exception.php';
             throw new Zend_Wildfire_Exception('Cannot get last row as no rows exist!');
         }
 
-        return $this->_rows[$count-1];
+        return $this->_rows[$count - 1];
     }
 }

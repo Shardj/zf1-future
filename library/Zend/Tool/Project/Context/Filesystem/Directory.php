@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Filesystem/Abstract.php';
  */
 class Zend_Tool_Project_Context_Filesystem_Directory extends Zend_Tool_Project_Context_Filesystem_Abstract
 {
-
     /**
      * getName()
      *
@@ -83,5 +83,4 @@ class Zend_Tool_Project_Context_Filesystem_Directory extends Zend_Tool_Project_C
 
         return $this;
     }
-
 }

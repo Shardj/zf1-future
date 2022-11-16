@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Cache_Backend_Interface
@@ -117,7 +117,7 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
             }
             $this->setOption('servers', $value);
         }
-        $this->_memcache = new Memcached;
+        $this->_memcache = new Memcached();
 
         // setup memcached client options
         foreach ($this->_options['client'] as $name => $value) {
@@ -256,9 +256,9 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
             case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
                 $this->_log(self::TAGS_UNSUPPORTED_BY_CLEAN_OF_LIBMEMCACHED_BACKEND);
                 break;
-               default:
+            default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                   break;
+                break;
         }
     }
 
@@ -438,7 +438,7 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
             $mtime    = $tmp[1];
             $lifetime = $tmp[2];
             $newLifetime = $lifetime - (time() - $mtime) + $extraLifetime;
-            if ($newLifetime <=0) {
+            if ($newLifetime <= 0) {
                 return false;
             }
             // #ZF-5702 : we try replace() first becase set() seems to be slower
@@ -480,5 +480,4 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
             'get_list' => false
         ];
     }
-
 }

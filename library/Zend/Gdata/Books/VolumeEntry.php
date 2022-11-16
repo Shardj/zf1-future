@@ -107,7 +107,6 @@ require_once 'Zend/Gdata/Books/Extension/Viewability.php';
  */
 class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
 {
-
     const THUMBNAIL_LINK_REL = 'http://schemas.google.com/books/2008/thumbnail';
     const PREVIEW_LINK_REL = 'http://schemas.google.com/books/2008/preview';
     const INFO_LINK_REL = 'http://schemas.google.com/books/2008/info';
@@ -157,7 +156,8 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
         if ($this->_creators !== null) {
             foreach ($this->_creators as $creators) {
                 $element->appendChild($creators->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_dates !== null) {
@@ -168,37 +168,43 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
         if ($this->_descriptions !== null) {
             foreach ($this->_descriptions as $descriptions) {
                 $element->appendChild($descriptions->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_formats !== null) {
             foreach ($this->_formats as $formats) {
                 $element->appendChild($formats->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_identifiers !== null) {
             foreach ($this->_identifiers as $identifiers) {
                 $element->appendChild($identifiers->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_languages !== null) {
             foreach ($this->_languages as $languages) {
                 $element->appendChild($languages->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_publishers !== null) {
             foreach ($this->_publishers as $publishers) {
                 $element->appendChild($publishers->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_subjects !== null) {
             foreach ($this->_subjects as $subjects) {
                 $element->appendChild($subjects->getDOM(
-                    $element->ownerDocument));
+                    $element->ownerDocument
+                ));
             }
         }
         if ($this->_titles !== null) {
@@ -208,23 +214,28 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
         }
         if ($this->_comments !== null) {
             $element->appendChild($this->_comments->getDOM(
-                $element->ownerDocument));
+                $element->ownerDocument
+            ));
         }
         if ($this->_embeddability !== null) {
             $element->appendChild($this->_embeddability->getDOM(
-                $element->ownerDocument));
+                $element->ownerDocument
+            ));
         }
         if ($this->_rating !== null) {
             $element->appendChild($this->_rating->getDOM(
-                $element->ownerDocument));
+                $element->ownerDocument
+            ));
         }
         if ($this->_review !== null) {
             $element->appendChild($this->_review->getDOM(
-                $element->ownerDocument));
+                $element->ownerDocument
+            ));
         }
         if ($this->_viewability !== null) {
             $element->appendChild($this->_viewability->getDOM(
-                $element->ownerDocument));
+                $element->ownerDocument
+            ));
         }
         return $element;
     }
@@ -239,79 +250,79 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-        case $this->lookupNamespace('dc') . ':' . 'creator':
-            $creators = new Zend_Gdata_DublinCore_Extension_Creator();
-            $creators->transferFromDOM($child);
-            $this->_creators[] = $creators;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'date':
-            $dates = new Zend_Gdata_DublinCore_Extension_Date();
-            $dates->transferFromDOM($child);
-            $this->_dates[] = $dates;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'description':
-            $descriptions = new Zend_Gdata_DublinCore_Extension_Description();
-            $descriptions->transferFromDOM($child);
-            $this->_descriptions[] = $descriptions;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'format':
-            $formats = new Zend_Gdata_DublinCore_Extension_Format();
-            $formats->transferFromDOM($child);
-            $this->_formats[] = $formats;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'identifier':
-            $identifiers = new Zend_Gdata_DublinCore_Extension_Identifier();
-            $identifiers->transferFromDOM($child);
-            $this->_identifiers[] = $identifiers;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'language':
-            $languages = new Zend_Gdata_DublinCore_Extension_Language();
-            $languages->transferFromDOM($child);
-            $this->_languages[] = $languages;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'publisher':
-            $publishers = new Zend_Gdata_DublinCore_Extension_Publisher();
-            $publishers->transferFromDOM($child);
-            $this->_publishers[] = $publishers;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'subject':
-            $subjects = new Zend_Gdata_DublinCore_Extension_Subject();
-            $subjects->transferFromDOM($child);
-            $this->_subjects[] = $subjects;
-            break;
-        case $this->lookupNamespace('dc') . ':' . 'title':
-            $titles = new Zend_Gdata_DublinCore_Extension_Title();
-            $titles->transferFromDOM($child);
-            $this->_titles[] = $titles;
-            break;
-        case $this->lookupNamespace('gd') . ':' . 'comments':
-            $comments = new Zend_Gdata_Extension_Comments();
-            $comments->transferFromDOM($child);
-            $this->_comments = $comments;
-            break;
-        case $this->lookupNamespace('gbs') . ':' . 'embeddability':
-            $embeddability = new Zend_Gdata_Books_Extension_Embeddability();
-            $embeddability->transferFromDOM($child);
-            $this->_embeddability = $embeddability;
-            break;
-        case $this->lookupNamespace('gd') . ':' . 'rating':
-            $rating = new Zend_Gdata_Extension_Rating();
-            $rating->transferFromDOM($child);
-            $this->_rating = $rating;
-            break;
-        case $this->lookupNamespace('gbs') . ':' . 'review':
-            $review = new Zend_Gdata_Books_Extension_Review();
-            $review->transferFromDOM($child);
-            $this->_review = $review;
-            break;
-        case $this->lookupNamespace('gbs') . ':' . 'viewability':
-            $viewability = new Zend_Gdata_Books_Extension_Viewability();
-            $viewability->transferFromDOM($child);
-            $this->_viewability = $viewability;
-            break;
-        default:
-            parent::takeChildFromDOM($child);
-            break;
+            case $this->lookupNamespace('dc') . ':' . 'creator':
+                $creators = new Zend_Gdata_DublinCore_Extension_Creator();
+                $creators->transferFromDOM($child);
+                $this->_creators[] = $creators;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'date':
+                $dates = new Zend_Gdata_DublinCore_Extension_Date();
+                $dates->transferFromDOM($child);
+                $this->_dates[] = $dates;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'description':
+                $descriptions = new Zend_Gdata_DublinCore_Extension_Description();
+                $descriptions->transferFromDOM($child);
+                $this->_descriptions[] = $descriptions;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'format':
+                $formats = new Zend_Gdata_DublinCore_Extension_Format();
+                $formats->transferFromDOM($child);
+                $this->_formats[] = $formats;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'identifier':
+                $identifiers = new Zend_Gdata_DublinCore_Extension_Identifier();
+                $identifiers->transferFromDOM($child);
+                $this->_identifiers[] = $identifiers;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'language':
+                $languages = new Zend_Gdata_DublinCore_Extension_Language();
+                $languages->transferFromDOM($child);
+                $this->_languages[] = $languages;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'publisher':
+                $publishers = new Zend_Gdata_DublinCore_Extension_Publisher();
+                $publishers->transferFromDOM($child);
+                $this->_publishers[] = $publishers;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'subject':
+                $subjects = new Zend_Gdata_DublinCore_Extension_Subject();
+                $subjects->transferFromDOM($child);
+                $this->_subjects[] = $subjects;
+                break;
+            case $this->lookupNamespace('dc') . ':' . 'title':
+                $titles = new Zend_Gdata_DublinCore_Extension_Title();
+                $titles->transferFromDOM($child);
+                $this->_titles[] = $titles;
+                break;
+            case $this->lookupNamespace('gd') . ':' . 'comments':
+                $comments = new Zend_Gdata_Extension_Comments();
+                $comments->transferFromDOM($child);
+                $this->_comments = $comments;
+                break;
+            case $this->lookupNamespace('gbs') . ':' . 'embeddability':
+                $embeddability = new Zend_Gdata_Books_Extension_Embeddability();
+                $embeddability->transferFromDOM($child);
+                $this->_embeddability = $embeddability;
+                break;
+            case $this->lookupNamespace('gd') . ':' . 'rating':
+                $rating = new Zend_Gdata_Extension_Rating();
+                $rating->transferFromDOM($child);
+                $this->_rating = $rating;
+                break;
+            case $this->lookupNamespace('gbs') . ':' . 'review':
+                $review = new Zend_Gdata_Books_Extension_Review();
+                $review->transferFromDOM($child);
+                $this->_review = $review;
+                break;
+            case $this->lookupNamespace('gbs') . ':' . 'viewability':
+                $viewability = new Zend_Gdata_Books_Extension_Viewability();
+                $viewability->transferFromDOM($child);
+                $this->_viewability = $viewability;
+                break;
+            default:
+                parent::takeChildFromDOM($child);
+                break;
         }
     }
 
@@ -641,7 +652,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
             throw new Zend_Gdata_App_Exception('Slash not found in atom:id');
         }
 
-        return substr($fullId, strrpos($fullId,'/') + 1);
+        return substr($fullId, strrpos($fullId, '/') + 1);
     }
 
     /**
@@ -683,5 +694,4 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
     {
         return $this->getLink(self::ANNOTATION_LINK_REL);
     }
-
 }

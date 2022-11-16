@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -81,7 +82,9 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
                     ) {
                         throw new Zend_Application_Resource_Exception(
                             sprintf(
-                                $eMsgTpl, $module, $bootstrapClass
+                                $eMsgTpl,
+                                $module,
+                                $bootstrapClass
                             )
                         );
                     } elseif ($default == $module) {
@@ -90,7 +93,9 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
                             if (!class_exists($bootstrapClass, false)) {
                                 throw new Zend_Application_Resource_Exception(
                                     sprintf(
-                                        $eMsgTpl, $module, $bootstrapClass
+                                        $eMsgTpl,
+                                        $module,
+                                        $bootstrapClass
                                     )
                                 );
                             }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Controller_Response_Abstract */
 require_once 'Zend/Controller/Response/Abstract.php';

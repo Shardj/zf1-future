@@ -45,7 +45,6 @@ require_once 'Zend/Gdata/Gapps.php';
  */
 class Zend_Gdata_Gapps_Extension_Quota extends Zend_Gdata_Extension
 {
-
     protected $_rootNamespace = 'apps';
     protected $_rootElement = 'quota';
 
@@ -97,11 +96,11 @@ class Zend_Gdata_Gapps_Extension_Quota extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'limit':
-            $this->_limit = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'limit':
+                $this->_limit = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -138,5 +137,4 @@ class Zend_Gdata_Gapps_Extension_Quota extends Zend_Gdata_Extension
     {
         return $this->getLimit();
     }
-
 }

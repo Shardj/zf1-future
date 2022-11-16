@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,7 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  * @property array  $StorageServices   A list of storage services in this affinity gtoup.
  */
 class Zend_Service_WindowsAzure_Management_AffinityGroupInstance
-	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
@@ -51,7 +52,7 @@ class Zend_Service_WindowsAzure_Management_AffinityGroupInstance
      * @property string $location          The location of the affinity group.
      * @property array  $hostedServices    A list of hosted services in this affinity gtoup.
      * @property array  $storageServices   A list of storage services in this affinity gtoup.
-	 */
+     */
     public function __construct($name, $label, $description, $location, $hostedServices = [], $storageServices = [])
     {
         $this->_data = [

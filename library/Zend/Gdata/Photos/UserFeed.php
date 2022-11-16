@@ -71,7 +71,6 @@ require_once 'Zend/Gdata/Photos/CommentEntry.php';
  */
 class Zend_Gdata_Photos_UserFeed extends Zend_Gdata_Feed
 {
-
     /**
      * gphoto:user element
      *
@@ -243,5 +242,4 @@ class Zend_Gdata_Photos_UserFeed extends Zend_Gdata_Feed
         $this->_gphotoThumbnail = $value;
         return $this;
     }
-
 }

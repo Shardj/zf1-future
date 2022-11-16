@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,11 +32,10 @@
  */
 class Zend_Amf_Parse_Resource_MysqliResult
 {
-
     /**
      * mapping taken from http://forums.mysql.com/read.php?52,255868,255895#msg-255895
      */
-    static public $mysqli_type = [
+    public static $mysqli_type = [
         0 => "MYSQLI_TYPE_DECIMAL",
         1 => "MYSQLI_TYPE_TINYINT",
         2 => "MYSQLI_TYPE_SMALLINT",
@@ -101,7 +101,8 @@ class Zend_Amf_Parse_Resource_MysqliResult
      * @param resource $resource
      * @return array
      */
-    public function parse($resource) {
+    public function parse($resource)
+    {
 
         $result = [];
         $fieldcnt = mysqli_num_fields($resource);
@@ -109,17 +110,17 @@ class Zend_Amf_Parse_Resource_MysqliResult
 
         $fields_transform = [];
 
-        for($i=0;$i<$fieldcnt;$i++) {
+        for ($i = 0; $i < $fieldcnt; $i++) {
             $finfo = mysqli_fetch_field_direct($resource, $i);
 
-            if(isset(self::$mysqli_type[$finfo->type])) {
+            if (isset(self::$mysqli_type[$finfo->type])) {
                 $fields_transform[$finfo->name] = self::$mysqli_to_php[self::$mysqli_type[$finfo->type]];
             }
         }
 
-        while($row = mysqli_fetch_assoc($resource)) {
-            foreach($fields_transform as $fieldname => $fieldtype) {
-               settype($row[$fieldname], $fieldtype);
+        while ($row = mysqli_fetch_assoc($resource)) {
+            foreach ($fields_transform as $fieldname => $fieldtype) {
+                settype($row[$fieldname], $fieldtype);
             }
             $result[] = $row;
         }

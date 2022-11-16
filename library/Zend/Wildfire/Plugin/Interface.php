@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -29,7 +30,6 @@
  */
 interface Zend_Wildfire_Plugin_Interface
 {
-
     /**
      * Flush any buffered data.
      *
@@ -44,5 +44,4 @@ interface Zend_Wildfire_Plugin_Interface
      * @return string Returns the URI of the plugin.
      */
     public function getUri();
-
 }

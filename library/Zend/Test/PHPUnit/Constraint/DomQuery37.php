@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -42,8 +43,8 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
     const ASSERT_CONTENT_CONTAINS = 'assertQueryContentContains';
     const ASSERT_CONTENT_REGEX    = 'assertQueryContentRegex';
     const ASSERT_CONTENT_COUNT    = 'assertQueryCount';
-    const ASSERT_CONTENT_COUNT_MIN= 'assertQueryCountMin';
-    const ASSERT_CONTENT_COUNT_MAX= 'assertQueryCountMax';
+    const ASSERT_CONTENT_COUNT_MIN = 'assertQueryCountMin';
+    const ASSERT_CONTENT_COUNT_MAX = 'assertQueryCountMax';
     /**#@-*/
 
     /**
@@ -144,7 +145,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
      *     public function evaluate($other, $description = '', $returnResult = FALSE)
      * We use the new interface for PHP-strict checking, but emulate the old one
      */
-    public function evaluate($content, $assertType = '', $match = FALSE)
+    public function evaluate($content, $assertType = '', $match = false)
     {
         if (strstr($assertType, 'Not')) {
             $this->setNegate(true);
@@ -222,7 +223,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends PHPUnit_Framework_Constrai
      *     protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL)
      * We use the new interface for PHP-strict checking
      */
-    public function fail($other, $description, PHPUnit_Framework_ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, PHPUnit_Framework_ComparisonFailure $cannot_be_used = null)
     {
         require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {

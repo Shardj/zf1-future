@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,6 @@
  */
 class Zend_Crypt
 {
-
     const TYPE_OPENSSL = 'openssl';
     const TYPE_HASH = 'hash';
     const TYPE_MHASH = 'mhash';
@@ -99,13 +99,13 @@ class Zend_Crypt
         if (function_exists('hash')) {
             self::$_type = self::TYPE_HASH;
             if (in_array($algorithm, hash_algos())) {
-               return;
+                return;
             }
         }
         if (function_exists('mhash')) {
             self::$_type = self::TYPE_MHASH;
             if (in_array($algorithm, self::$_supportedAlgosMhash)) {
-               return;
+                return;
             }
         }
         if (function_exists('openssl_digest')) {
@@ -114,7 +114,7 @@ class Zend_Crypt
             }
             self::$_type = self::TYPE_OPENSSL;
             if (in_array($algorithm, self::$_supportedAlgosOpenssl)) {
-               return;
+                return;
             }
         }
         /**
@@ -164,5 +164,4 @@ class Zend_Crypt
         }
         return openssl_digest($data, $algorithm, $binaryOutput);
     }
-
 }

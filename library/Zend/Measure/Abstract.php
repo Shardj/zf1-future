@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -200,7 +201,7 @@ abstract class Zend_Measure_Abstract
 
         try {
             $value = Zend_Locale_Format::getNumber($value, ['locale' => $locale]);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             require_once 'Zend/Measure/Exception.php';
             throw new Zend_Measure_Exception($e->getMessage(), $e->getCode(), $e);
         }
@@ -289,7 +290,7 @@ abstract class Zend_Measure_Abstract
 
             $slength = strlen($value);
             $length  = 0;
-            for($i = 1; $i <= $slength; ++$i) {
+            for ($i = 1; $i <= $slength; ++$i) {
                 if ($value[$slength - $i] != '0') {
                     $length = 26 - $i;
                     break;
@@ -410,7 +411,7 @@ abstract class Zend_Measure_Abstract
 
         if ($value < 0) {
             return -1;
-        } else if ($value > 0) {
+        } elseif ($value > 0) {
             return 1;
         }
 

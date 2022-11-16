@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -43,7 +44,6 @@ require_once 'Zend/Cache/Manager.php';
 class Zend_Controller_Action_Helper_Cache
     extends Zend_Controller_Action_Helper_Abstract
 {
-
     /**
      * Local Cache Manager object used by Helper
      *
@@ -138,7 +138,7 @@ class Zend_Controller_Action_Helper_Cache
                 && method_exists($backend, 'removeRecursively')
             ) {
                 $result = $backend->removeRecursively($encodedCacheId);
-                if (is_null($result) ) {
+                if (is_null($result)) {
                     $result = $backend->removeRecursively($relativeUrl);
                 }
                 return $result;
@@ -146,7 +146,7 @@ class Zend_Controller_Action_Helper_Cache
         }
 
         $result = $cache->remove($encodedCacheId);
-        if (is_null($result) ) {
+        if (is_null($result)) {
             $result = $cache->remove($relativeUrl);
         }
         return $result;
@@ -242,7 +242,7 @@ class Zend_Controller_Action_Helper_Cache
             return $front->getParam('bootstrap')
                 ->getResource('CacheManager');
         }
-        $this->_manager = new Zend_Cache_Manager;
+        $this->_manager = new Zend_Cache_Manager();
         return $this->_manager;
     }
 
@@ -279,11 +279,11 @@ class Zend_Controller_Action_Helper_Cache
     {
         if (method_exists($this->getManager(), $method)) {
             return call_user_func_array(
-                [$this->getManager(), $method], $args
+                [$this->getManager(), $method],
+                $args
             );
         }
         throw new Zend_Controller_Action_Exception('Method does not exist:'
             . $method);
     }
-
 }

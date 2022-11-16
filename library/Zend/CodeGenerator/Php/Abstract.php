@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/CodeGenerator/Abstract.php';
  */
 abstract class Zend_CodeGenerator_Php_Abstract extends Zend_CodeGenerator_Abstract
 {
-
     /**
      * Line feed to use in place of EOL
      *
@@ -93,5 +93,4 @@ abstract class Zend_CodeGenerator_Php_Abstract extends Zend_CodeGenerator_Abstra
     {
         return $this->_indentation;
     }
-
 }

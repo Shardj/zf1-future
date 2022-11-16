@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Service_Flickr_Result
  */
@@ -187,4 +186,3 @@ class Zend_Service_Flickr_ResultSet implements SeekableIterator
         return null !== $this->_results && $this->_currentIndex < $this->_results->length;
     }
 }
-

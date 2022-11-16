@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -142,7 +143,7 @@ class Zend_Paginator_Adapter_DbSelect implements Zend_Paginator_Adapter_Interfac
             $result = $rowCount->query(Zend_Db::FETCH_ASSOC)->fetch();
 
             $this->_rowCount = count($result) > 0 ? $result[$rowCountColumn] : 0;
-        } else if (is_integer($rowCount)) {
+        } elseif (is_integer($rowCount)) {
             $this->_rowCount = $rowCount;
         } else {
             /**
@@ -244,7 +245,7 @@ class Zend_Paginator_Adapter_DbSelect implements Zend_Paginator_Adapter_Interfac
                                ->select()
                                ->bind($rowCount->getBind())
                                ->from($rowCount);
-            } else if ($isDistinct) {
+            } elseif ($isDistinct) {
                 $part = $columnParts[0];
 
                 if ($part[1] !== Zend_Db_Select::SQL_WILDCARD && !($part[1] instanceof Zend_Db_Expr)) {
@@ -256,7 +257,7 @@ class Zend_Paginator_Adapter_DbSelect implements Zend_Paginator_Adapter_Interfac
 
                     $groupPart = $column;
                 }
-            } else if (!empty($groupParts)) {
+            } elseif (!empty($groupParts)) {
                 $groupPart = $db->quoteIdentifier($groupParts[0], true);
             }
 

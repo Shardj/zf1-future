@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -42,8 +43,8 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
     const ASSERT_CONTENT_CONTAINS = 'assertQueryContentContains';
     const ASSERT_CONTENT_REGEX    = 'assertQueryContentRegex';
     const ASSERT_CONTENT_COUNT    = 'assertQueryCount';
-    const ASSERT_CONTENT_COUNT_MIN= 'assertQueryCountMin';
-    const ASSERT_CONTENT_COUNT_MAX= 'assertQueryCountMax';
+    const ASSERT_CONTENT_COUNT_MIN = 'assertQueryCountMin';
+    const ASSERT_CONTENT_COUNT_MAX = 'assertQueryCountMax';
     /**#@-*/
 
     /**

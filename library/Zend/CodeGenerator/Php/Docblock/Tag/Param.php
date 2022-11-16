@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/CodeGenerator/Php/Docblock/Tag.php';
  */
 class Zend_CodeGenerator_Php_Docblock_Tag_Param extends Zend_CodeGenerator_Php_Docblock_Tag
 {
-
     /**
      * @var string
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,6 @@
  */
 class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements Serializable, ArrayAccess
 {
-
     /**
      * Offset to first element
      *
@@ -50,7 +50,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
      * @param int $count Maximum number of elements to show or -1 for all
      * @see LimitIterator::__construct
      */
-    public function __construct (Iterator $it, $offset=0, $count=-1)
+    public function __construct(Iterator $it, $offset = 0, $count = -1)
     {
         parent::__construct($it, $offset, $count);
         $this->_offset = $offset;
@@ -87,7 +87,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
     public function __unserialize(array $dataArr): void
     {
         $this->__construct($dataArr['it'], $dataArr['offset'], $dataArr['count']);
-        $this->seek($dataArr['pos']+$dataArr['offset']);
+        $this->seek($dataArr['pos'] + $dataArr['offset']);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -290,5 +291,4 @@ class Zend_Pdf_Style
 
         return $instructions;
     }
-
 }

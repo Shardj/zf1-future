@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -196,7 +197,7 @@ class Zend_Service_SlideShare_SlideShow
      * @param array $tags An array of tags to set
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setTags(Array $tags)
+    public function setTags(array $tags)
     {
         $this->_tags = $tags;
         return $this;

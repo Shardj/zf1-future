@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -192,7 +193,8 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @param  mixed $offset
      * @return boolean
      */
-    public function offsetExists($offset): bool {
+    public function offsetExists($offset): bool
+    {
         return array_key_exists($offset, $this->_items);
     }
 
@@ -203,7 +205,8 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @return Zend_Tag_Taggable
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset) {
+    public function offsetGet($offset)
+    {
         return $this->_items[$offset];
     }
 
@@ -215,7 +218,8 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @throws OutOfBoundsException When item does not implement Zend_Tag_Taggable
      * @return void
      */
-    public function offsetSet($offset, $item): void {
+    public function offsetSet($offset, $item): void
+    {
         // We need to make that check here, as the method signature must be
         // compatible with ArrayAccess::offsetSet()
         if (!($item instanceof Zend_Tag_Taggable)) {
@@ -236,7 +240,8 @@ class Zend_Tag_ItemList implements Countable, SeekableIterator, ArrayAccess
      * @param  mixed $offset
      * @return void
      */
-    public function offsetUnset($offset): void {
+    public function offsetUnset($offset): void
+    {
         unset($this->_items[$offset]);
     }
 }

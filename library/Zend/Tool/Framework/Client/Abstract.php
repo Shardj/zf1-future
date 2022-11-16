@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
  */
 abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framework_Registry_EnabledInterface
 {
-
     /**
      * @var Zend_Tool_Framework_Registry
      */
@@ -76,7 +76,7 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
         }
     }
 
-    public function setOptions(Array $options)
+    public function setOptions(array $options)
     {
         foreach ($options as $optionName => $optionValue) {
             $setMethodName = 'set' . $optionName;
@@ -137,7 +137,6 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
         if ($this instanceof Zend_Tool_Framework_Client_Interactive_OutputInterface) {
             $this->_registry->getResponse()->setContentCallback([$this, 'handleInteractiveOutput']);
         }
-
     }
 
 
@@ -211,7 +210,6 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
         $inputHandler->setClient($this);
         $inputHandler->setInputRequest($inputRequest);
         return $inputHandler->handle();
-
     }
 
     /**
@@ -223,11 +221,9 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
         $this->initialize();
 
         try {
-
             $this->_preDispatch();
 
             if ($this->_registry->getRequest()->isDispatchable()) {
-
                 if ($this->_registry->getRequest()->getActionName() == null) {
                     require_once 'Zend/Tool/Framework/Client/Exception.php';
                     throw new Zend_Tool_Framework_Client_Exception('Client failed to setup the action name.');
@@ -239,9 +235,7 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
                 }
 
                 $this->_handleDispatch();
-
             }
-
         } catch (Exception $exception) {
             $this->_registry->getResponse()->setException($exception);
         }
@@ -329,5 +323,4 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
             throw new Zend_Tool_Framework_Client_Exception('Not a supported method.');
         }
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -30,7 +31,6 @@
  */
 class Zend_Db_Profiler_Query
 {
-
     /**
      * SQL query string or user comment, set by $query argument in constructor.
      *
@@ -203,11 +203,10 @@ class Zend_Db_Profiler_Query
      */
     public function getStartedMicrotime()
     {
-        if(null === $this->_startedMicrotime) {
+        if (null === $this->_startedMicrotime) {
             return false;
         }
 
         return $this->_startedMicrotime;
     }
 }
-

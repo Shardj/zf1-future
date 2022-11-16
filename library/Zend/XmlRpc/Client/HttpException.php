@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_XmlRpc_Exception
  */
@@ -38,4 +38,5 @@ require_once 'Zend/XmlRpc/Client/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_XmlRpc_Client_HttpException extends Zend_XmlRpc_Client_Exception
-{}
+{
+}

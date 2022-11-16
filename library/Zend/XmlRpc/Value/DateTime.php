@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * Zend_XmlRpc_Value_Scalar
@@ -72,7 +72,7 @@ class Zend_XmlRpc_Value_DateTime extends Zend_XmlRpc_Value_Scalar
             $timestamp = new DateTime($value);
             if ($timestamp === false) { // cannot convert the value to a timestamp
                 require_once 'Zend/XmlRpc/Value/Exception.php';
-                throw new Zend_XmlRpc_Value_Exception('Cannot convert given value \''. $value .'\' to a timestamp');
+                throw new Zend_XmlRpc_Value_Exception('Cannot convert given value \'' . $value . '\' to a timestamp');
             }
 
             $this->_value = $timestamp->format($this->_phpFormatString); // Convert the timestamp to iso8601 format

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -169,8 +170,8 @@ class Zend_Memory_Manager
 
         $memoryLimitStr = trim(ini_get('memory_limit'));
         if ($memoryLimitStr != ''  &&  $memoryLimitStr != -1) {
-            $this->_memoryLimit = (integer)$memoryLimitStr;
-            switch (strtolower($memoryLimitStr[strlen($memoryLimitStr)-1])) {
+            $this->_memoryLimit = (int)$memoryLimitStr;
+            switch (strtolower($memoryLimitStr[strlen($memoryLimitStr) - 1])) {
                 case 'g':
                     $this->_memoryLimit *= 1024;
                     // Break intentionally omitted
@@ -185,7 +186,7 @@ class Zend_Memory_Manager
                     break;
             }
 
-            $this->_memoryLimit = (int)($this->_memoryLimit*2/3);
+            $this->_memoryLimit = (int)($this->_memoryLimit * 2 / 3);
         } // No limit otherwise
     }
 
@@ -253,7 +254,7 @@ class Zend_Memory_Manager
      */
     public function create($value = '')
     {
-        return $this->_create($value,  false);
+        return $this->_create($value, false);
     }
 
     /**
@@ -344,7 +345,7 @@ class Zend_Memory_Manager
         }
 
         // Remove just updated object from list of candidates to unload
-        if( isset($this->_unloadCandidates[$id])) {
+        if (isset($this->_unloadCandidates[$id])) {
             unset($this->_unloadCandidates[$id]);
         }
 

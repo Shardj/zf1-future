@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,7 +32,6 @@
  */
 interface Zend_Db_Statement_Interface
 {
-
     /**
      * Bind a column of the statement result set to a PHP variable.
      *
@@ -199,5 +199,4 @@ interface Zend_Db_Statement_Interface
      * @throws Zend_Db_Statement_Exception
      */
     public function setFetchMode($mode);
-
 }

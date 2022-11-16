@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -47,7 +48,7 @@ class Zend_Ldap_Filter_Mask extends Zend_Ldap_Filter_String
     {
         $args = func_get_args();
         array_shift($args);
-        for ($i = 0; $i<count($args); $i++) {
+        for ($i = 0; $i < count($args); $i++) {
             $args[$i] = self::escapeValue($args[$i]);
         }
         $filter = vsprintf($mask, $args);

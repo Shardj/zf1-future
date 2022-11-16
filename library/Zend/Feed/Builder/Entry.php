@@ -59,7 +59,7 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     public function __get($name)
     {
         if (!$this->offsetExists($name)) {
-            return NULL;
+            return null;
         }
 
         return $this->offsetGet($name);

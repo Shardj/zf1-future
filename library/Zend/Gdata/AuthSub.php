@@ -45,7 +45,6 @@ require_once 'Zend/Version.php';
  */
 class Zend_Gdata_AuthSub
 {
-
     const AUTHSUB_REQUEST_URI      = 'https://www.google.com/accounts/AuthSubRequest';
 
     const AUTHSUB_SESSION_TOKEN_URI = 'https://www.google.com/accounts/AuthSubSessionToken';
@@ -76,15 +75,19 @@ class Zend_Gdata_AuthSub
       * @param string $request_uri (optional) URI to which to direct the
       *                            authentication request.
       */
-     public static function getAuthSubTokenUri($next, $scope, $secure=0, $session=0,
-                                               $request_uri = self::AUTHSUB_REQUEST_URI)
-     {
-         $querystring = '?next=' . urlencode($next)
-             . '&scope=' . urldecode($scope)
-             . '&secure=' . urlencode($secure)
-             . '&session=' . urlencode($session);
-         return $request_uri . $querystring;
-     }
+    public static function getAuthSubTokenUri(
+        $next,
+        $scope,
+        $secure = 0,
+        $session = 0,
+        $request_uri = self::AUTHSUB_REQUEST_URI
+    ) {
+        $querystring = '?next=' . urlencode($next)
+            . '&scope=' . urldecode($scope)
+            . '&secure=' . urlencode($secure)
+            . '&session=' . urlencode($session);
+        return $request_uri . $querystring;
+    }
 
 
     /**
@@ -100,9 +103,10 @@ class Zend_Gdata_AuthSub
      * @throws Zend_Gdata_App_HttpException
      */
     public static function getAuthSubSessionToken(
-            $token, $client = null,
-            $request_uri = self::AUTHSUB_SESSION_TOKEN_URI)
-    {
+        $token,
+        $client = null,
+        $request_uri = self::AUTHSUB_SESSION_TOKEN_URI
+    ) {
         $client = self::getHttpClient($token, $client);
 
         if ($client instanceof Zend_Gdata_HttpClient) {
@@ -136,7 +140,8 @@ class Zend_Gdata_AuthSub
         } else {
             require_once 'Zend/Gdata/App/AuthException.php';
             throw new Zend_Gdata_App_AuthException(
-                    'Token upgrade failed. Reason: ' . $response->getBody());
+                'Token upgrade failed. Reason: ' . $response->getBody()
+            );
         }
     }
 
@@ -149,9 +154,11 @@ class Zend_Gdata_AuthSub
      * @return boolean Whether the revokation was successful
      * @throws Zend_Gdata_App_HttpException
      */
-    public static function AuthSubRevokeToken($token, $client = null,
-                                              $request_uri = self::AUTHSUB_REVOKE_TOKEN_URI)
-    {
+    public static function AuthSubRevokeToken(
+        $token,
+        $client = null,
+        $request_uri = self::AUTHSUB_REVOKE_TOKEN_URI
+    ) {
         $client = self::getHttpClient($token, $client);
 
         if ($client instanceof Zend_Gdata_HttpClient) {
@@ -193,8 +200,10 @@ class Zend_Gdata_AuthSub
      *                            the information request
      */
     public static function getAuthSubTokenInfo(
-            $token, $client = null, $request_uri = self::AUTHSUB_TOKEN_INFO_URI)
-    {
+        $token,
+        $client = null,
+        $request_uri = self::AUTHSUB_TOKEN_INFO_URI
+    ) {
         $client = self::getHttpClient($token, $client);
 
         if ($client instanceof Zend_Gdata_HttpClient) {
@@ -239,10 +248,8 @@ class Zend_Gdata_AuthSub
         $client->setConfig([
                 'strictredirects' => true,
                 'useragent' => $useragent
-            ]
-        );
+            ]);
         $client->setAuthSubToken($token);
         return $client;
     }
-
 }

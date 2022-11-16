@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -79,12 +80,12 @@ class Zend_Oauth_Client extends Zend_Http_Client
         if ($config instanceof Zend_Config && !isset($config->rfc3986_strict)) {
             $config                   = $config->toArray();
             $config['rfc3986_strict'] = true;
-        } else if (null === $config ||
+        } elseif (null === $config ||
                    (is_array($config) && !isset($config['rfc3986_strict']))) {
             $config['rfc3986_strict'] = true;
         }
         parent::__construct($uri, $config);
-        $this->_config = new Zend_Oauth_Config;
+        $this->_config = new Zend_Oauth_Config();
         if ($oauthOptions !== null) {
             if ($oauthOptions instanceof Zend_Config) {
                 $oauthOptions = $oauthOptions->toArray();
@@ -142,12 +143,13 @@ class Zend_Oauth_Client extends Zend_Http_Client
      */
     protected function _prepareBody()
     {
-        if($this->_streamingRequest) {
-            $this->setHeaders(self::CONTENT_LENGTH,
-                $this->raw_post_data->getTotalSize());
+        if ($this->_streamingRequest) {
+            $this->setHeaders(
+                self::CONTENT_LENGTH,
+                $this->raw_post_data->getTotalSize()
+            );
             return $this->raw_post_data;
-        }
-        else {
+        } else {
             return parent::_prepareBody();
         }
     }
@@ -192,15 +194,15 @@ class Zend_Oauth_Client extends Zend_Http_Client
     {
         if ($method == self::GET) {
             $this->setRequestMethod(self::GET);
-        } elseif($method == self::POST) {
+        } elseif ($method == self::POST) {
             $this->setRequestMethod(self::POST);
-        } elseif($method == self::PUT) {
+        } elseif ($method == self::PUT) {
             $this->setRequestMethod(self::PUT);
-        } elseif($method == self::DELETE) {
+        } elseif ($method == self::DELETE) {
             $this->setRequestMethod(self::DELETE);
-        } elseif($method == self::HEAD) {
+        } elseif ($method == self::HEAD) {
             $this->setRequestMethod(self::HEAD);
-        } elseif($method == self::OPTIONS) {
+        } elseif ($method == self::OPTIONS) {
             $this->setRequestMethod(self::OPTIONS);
         }
         return parent::setMethod($method);
@@ -276,11 +278,15 @@ class Zend_Oauth_Client extends Zend_Http_Client
             if (!empty($this->paramsPost)) {
                 $params = array_merge($params, $this->paramsPost);
                 $query  = $this->getToken()->toQueryString(
-                    $this->getUri(true), $this->_config, $params
+                    $this->getUri(true),
+                    $this->_config,
+                    $params
                 );
             }
             $query = $this->getToken()->toQueryString(
-                $this->getUri(true), $this->_config, $params
+                $this->getUri(true),
+                $this->_config,
+                $params
             );
             $this->getUri()->setQuery($query);
             $this->paramsGet = [];

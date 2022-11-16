@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,7 +38,7 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  * @property array  $OperatingSystems  A list of operating systems available under this operating system family.
  */
 class Zend_Service_WindowsAzure_Management_OperatingSystemFamilyInstance
-	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
@@ -45,7 +46,7 @@ class Zend_Service_WindowsAzure_Management_OperatingSystemFamilyInstance
      * @param string $name              Indicates which operating system family this version belongs to. A value of 1 corresponds to the Windows Azure guest operating system that is substantially compatible with Windows Server 2008 SP2. A value of 2 corresponds to the Windows Azure guest operating system that is substantially compatible with Windows Server 2008 R2.
      * @param string $label             A label for the operating system version.
      * @param array  $operatingSystems  A list of operating systems available under this operating system family.
-	 */
+     */
     public function __construct($name, $label, $operatingSystems = [])
     {
         $this->_data = [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -114,7 +115,8 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
              */
             require_once 'Zend/Service/Ebay/Finding/Exception.php';
             throw new Zend_Service_Ebay_Finding_Exception(
-                "Page number '{$number}' is out of range.");
+                "Page number '{$number}' is out of range."
+            );
         }
 
         // prepare arguments
@@ -157,7 +159,8 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
                  */
                 require_once 'Zend/Service/Ebay/Finding/Exception.php';
                 throw new Zend_Service_Ebay_Finding_Exception(
-                    "Invalid operation '{$this->_operation}'.");
+                    "Invalid operation '{$this->_operation}'."
+                );
         }
 
         // prepare options

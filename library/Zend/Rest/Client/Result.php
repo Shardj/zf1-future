@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -29,7 +30,8 @@ require_once 'Zend/Xml/Security.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Rest_Client_Result implements IteratorAggregate {
+class Zend_Rest_Client_Result implements IteratorAggregate
+{
     /**
      * @var SimpleXMLElement
      */
@@ -52,7 +54,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
         set_error_handler([$this, 'handleXmlErrors']);
         $this->_sxml = Zend_Xml_Security::scan($data);
         restore_error_handler();
-        if($this->_sxml === false) {
+        if ($this->_sxml === false) {
             if ($this->_errstr === null) {
                 $message = "An error occured while parsing the REST response with simplexml.";
             } else {
@@ -185,7 +187,9 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     public function getStatus()
     {
         $status = $this->_sxml->xpath('//status/text()');
-        if ( !isset($status[0]) ) return false;
+        if (!isset($status[0])) {
+            return false;
+        }
 
         $status = strtolower($status[0]);
 

@@ -38,7 +38,6 @@ require_once 'Zend/Gdata/Feed.php';
  */
 class Zend_Gdata_Docs_DocumentListFeed extends Zend_Gdata_Feed
 {
-
     /**
      * The classname for individual feed elements.
      *
@@ -64,5 +63,4 @@ class Zend_Gdata_Docs_DocumentListFeed extends Zend_Gdata_Feed
         $this->registerAllNamespaces(Zend_Gdata_Docs::$namespaces);
         parent::__construct($element);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Ean8 extends Zend_Barcode_Object_Ean13
 {
-
     /**
      * Default options for Postnet barcode
      * @return void
@@ -121,7 +121,7 @@ class Zend_Barcode_Object_Ean8 extends Zend_Barcode_Object_Ean13
             $text = $this->getTextToDisplay();
             $characterWidth = (7 * $this->_barThinWidth) * $this->_factor;
             $leftPosition = $this->getQuietZone() + (3 * $this->_barThinWidth) * $this->_factor;
-            for ($i = 0; $i < $this->_barcodeLength; $i ++) {
+            for ($i = 0; $i < $this->_barcodeLength; $i++) {
                 $this->_addText(
                     $text[$i],
                     $this->_fontSize * $this->_factor,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -1147,17 +1148,25 @@ abstract class Zend_Barcode_Object_ObjectAbstract
         if ($this->_offsetLeft === null || $recalculate) {
             $this->_offsetLeft = - min([
                 0 * cos(
-                        $this->_orientation / 180 * pi()) - 0 * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) - 0 * sin(
+                    $this->_orientation / 180 * pi()
+                ),
                 0 * cos(
-                        $this->_orientation / 180 * pi()) - $this->_calculateBarcodeHeight() * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) - $this->_calculateBarcodeHeight() * sin(
+                    $this->_orientation / 180 * pi()
+                ),
                 $this->_calculateBarcodeWidth() * cos(
-                        $this->_orientation / 180 * pi()) - $this->_calculateBarcodeHeight() * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) - $this->_calculateBarcodeHeight() * sin(
+                    $this->_orientation / 180 * pi()
+                ),
                 $this->_calculateBarcodeWidth() * cos(
-                        $this->_orientation / 180 * pi()) - 0 * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) - 0 * sin(
+                    $this->_orientation / 180 * pi()
+                ),
             ]);
         }
         return $this->_offsetLeft;
@@ -1175,17 +1184,25 @@ abstract class Zend_Barcode_Object_ObjectAbstract
         if ($this->_offsetTop === null || $recalculate) {
             $this->_offsetTop = - min([
                 0 * cos(
-                        $this->_orientation / 180 * pi()) + 0 * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) + 0 * sin(
+                    $this->_orientation / 180 * pi()
+                ),
                 $this->_calculateBarcodeHeight() * cos(
-                        $this->_orientation / 180 * pi()) + 0 * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) + 0 * sin(
+                    $this->_orientation / 180 * pi()
+                ),
                 $this->_calculateBarcodeHeight() * cos(
-                        $this->_orientation / 180 * pi()) + $this->_calculateBarcodeWidth() * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) + $this->_calculateBarcodeWidth() * sin(
+                    $this->_orientation / 180 * pi()
+                ),
                 0 * cos(
-                        $this->_orientation / 180 * pi()) + $this->_calculateBarcodeWidth() * sin(
-                        $this->_orientation / 180 * pi()),
+                    $this->_orientation / 180 * pi()
+                ) + $this->_calculateBarcodeWidth() * sin(
+                    $this->_orientation / 180 * pi()
+                ),
             ]);
         }
         return $this->_offsetTop;
@@ -1253,7 +1270,8 @@ abstract class Zend_Barcode_Object_ObjectAbstract
                 $point2,
                 $point3,
                 $point4
-            ], $this->_backgroundColor
+            ],
+            $this->_backgroundColor
         );
 
         $xpos     += $this->getQuietZone();
@@ -1307,7 +1325,9 @@ abstract class Zend_Barcode_Object_ObjectAbstract
                     $point3,
                     $point4,
                     $point1,
-                ], $this->_foreColor, false
+                ],
+                $this->_foreColor,
+                false
             );
         }
     }
@@ -1322,7 +1342,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
             if ($this->_stretchText) {
                 $textLength = strlen($text);
                 $space      = ($this->_calculateWidth() - 2 * $this->getQuietZone()) / $textLength;
-                for ($i = 0; $i < $textLength; $i ++) {
+                for ($i = 0; $i < $textLength; $i++) {
                     $leftPosition = $this->getQuietZone() + $space * ($i + 0.5);
                     $this->_addText(
                         $text[$i],

@@ -38,7 +38,6 @@ require_once 'Zend/Gdata/Extension.php';
  */
 class Zend_Gdata_Extension_ExtendedProperty extends Zend_Gdata_Extension
 {
-
     protected $_rootElement = 'extendedProperty';
     protected $_name = null;
     protected $_value = null;
@@ -65,14 +64,14 @@ class Zend_Gdata_Extension_ExtendedProperty extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'name':
-            $this->_name = $attribute->nodeValue;
-            break;
-        case 'value':
-            $this->_value = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'name':
+                $this->_name = $attribute->nodeValue;
+                break;
+            case 'value':
+                $this->_value = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -102,5 +101,4 @@ class Zend_Gdata_Extension_ExtendedProperty extends Zend_Gdata_Extension
         $this->_value = $value;
         return $this;
     }
-
 }

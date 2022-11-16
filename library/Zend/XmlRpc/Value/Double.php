@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_XmlRpc_Value_Scalar
  */
@@ -36,7 +36,6 @@ require_once 'Zend/XmlRpc/Value/Scalar.php';
  */
 class Zend_XmlRpc_Value_Double extends Zend_XmlRpc_Value_Scalar
 {
-
     /**
      * Set the value of a double native type
      *

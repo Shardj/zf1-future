@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -246,37 +247,45 @@ class Zend_Service_Amazon_Ec2_CloudWatch extends Zend_Service_Amazon_Ec2_Abstrac
             throw new Zend_Service_Amazon_Ec2_Exception('Invalid Metric Type: ' . $options['MeasureName']);
         }
 
-        if(!isset($options['Statistics'])) {
+        if (!isset($options['Statistics'])) {
             $options['Statistics'][] = 'Average';
-        } elseif(!is_array($options['Statistics'])) {
+        } elseif (!is_array($options['Statistics'])) {
             $options['Statistics'][] = $options['Statistics'];
         }
 
-        foreach($options['Statistics'] as $k=>$s) {
-            if(!in_array($s, $this->_validStatistics, true)) continue;
-            $options['Statistics.member.' . ($k+1)] = $s;
+        foreach ($options['Statistics'] as $k => $s) {
+            if (!in_array($s, $this->_validStatistics, true)) {
+                continue;
+            }
+            $options['Statistics.member.' . ($k + 1)] = $s;
             $_usedStatistics[] = $s;
         }
         unset($options['Statistics']);
 
-        if(isset($options['StartTime'])) {
-            if(!is_numeric($options['StartTime'])) $options['StartTime'] = strtotime($options['StartTime']);
+        if (isset($options['StartTime'])) {
+            if (!is_numeric($options['StartTime'])) {
+                $options['StartTime'] = strtotime($options['StartTime']);
+            }
             $options['StartTime'] = gmdate('c', $options['StartTime']);
         } else {
             $options['StartTime'] = gmdate('c', strtotime('-1 hour'));
         }
 
-        if(isset($options['EndTime'])) {
-            if(!is_numeric($options['EndTime'])) $options['EndTime'] = strtotime($options['EndTime']);
+        if (isset($options['EndTime'])) {
+            if (!is_numeric($options['EndTime'])) {
+                $options['EndTime'] = strtotime($options['EndTime']);
+            }
             $options['EndTime'] = gmdate('c', $options['EndTime']);
         } else {
             $options['EndTime'] = gmdate('c');
         }
 
-        if(isset($options['Dimensions'])) {
+        if (isset($options['Dimensions'])) {
             $x = 1;
-            foreach($options['Dimensions'] as $dimKey=>$dimVal) {
-                if(!in_array($dimKey, $this->_validDimensionsKeys, true)) continue;
+            foreach ($options['Dimensions'] as $dimKey => $dimVal) {
+                if (!in_array($dimKey, $this->_validDimensionsKeys, true)) {
+                    continue;
+                }
                 $options['Dimensions.member.' . $x . '.Name'] = $dimKey;
                 $options['Dimensions.member.' . $x . '.Value'] = $dimVal;
                 $x++;
@@ -295,13 +304,13 @@ class Zend_Service_Amazon_Ec2_CloudWatch extends Zend_Service_Amazon_Ec2_Abstrac
 
         $return = [];
         $return['label'] = $xpath->evaluate('string(//ec2:GetMetricStatisticsResult/ec2:Label/text())');
-        foreach ( $nodes as $node ) {
+        foreach ($nodes as $node) {
             $item = [];
 
             $item['Timestamp'] = $xpath->evaluate('string(ec2:Timestamp/text())', $node);
             $item['Unit'] = $xpath->evaluate('string(ec2:Unit/text())', $node);
             $item['Samples'] = $xpath->evaluate('string(ec2:Samples/text())', $node);
-            foreach($_usedStatistics as $us) {
+            foreach ($_usedStatistics as $us) {
                 $item[$us] = $xpath->evaluate('string(ec2:' . $us . '/text())', $node);
             }
 
@@ -310,7 +319,6 @@ class Zend_Service_Amazon_Ec2_CloudWatch extends Zend_Service_Amazon_Ec2_Abstrac
         }
 
         return $return;
-
     }
 
     /**
@@ -336,7 +344,7 @@ class Zend_Service_Amazon_Ec2_CloudWatch extends Zend_Service_Amazon_Ec2_Abstrac
         $nodes = $xpath->query('//ec2:ListMetricsResult/ec2:Metrics/ec2:member');
 
         $return = [];
-        foreach ( $nodes as $node ) {
+        foreach ($nodes as $node) {
             $item = [];
 
             $item['MeasureName'] = $xpath->evaluate('string(ec2:MeasureName/text())', $node);

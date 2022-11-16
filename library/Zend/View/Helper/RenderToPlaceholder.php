@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,7 +36,6 @@ require_once 'Zend/View/Helper/Abstract.php';
 
 class Zend_View_Helper_RenderToPlaceholder extends Zend_View_Helper_Abstract
 {
-
     /**
      * Renders a template and stores the rendered output as a placeholder
      * variable for later use.

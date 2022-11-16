@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -236,9 +237,9 @@ class Zend_Service_Rackspace_Files_Object
      * @param  string $key
      * @return string|array|boolean
      */
-    public function getMetadata($key=null)
+    public function getMetadata($key = null)
     {
-        $result= $this->service->getMetadataObject($this->container,$this->name);
+        $result = $this->service->getMetadataObject($this->container, $this->name);
         if (!empty($result)) {
             if (empty($key)) {
                 return $result['metadata'];
@@ -259,7 +260,7 @@ class Zend_Service_Rackspace_Files_Object
      */
     public function setMetadata($metadata)
     {
-        return $this->service->setMetadataObject($this->container,$this->name,$metadata);
+        return $this->service->setMetadataObject($this->container, $this->name, $metadata);
     }
 
     /**
@@ -273,9 +274,9 @@ class Zend_Service_Rackspace_Files_Object
      * @param  string $content_type
      * @return boolean
      */
-    public function copyTo($container_dest,$name_dest,$metadata=[],$content_type=null)
+    public function copyTo($container_dest, $name_dest, $metadata = [], $content_type = null)
     {
-        return $this->service->copyObject($this->container,$this->name,$container_dest,$name_dest,$metadata,$content_type);
+        return $this->service->copyObject($this->container, $this->name, $container_dest, $name_dest, $metadata, $content_type);
     }
 
     /**
@@ -285,10 +286,10 @@ class Zend_Service_Rackspace_Files_Object
      */
     public function getCdnUrl()
     {
-        $result= $this->service->getInfoCdnContainer($this->container);
-        if ($result!==false) {
+        $result = $this->service->getInfoCdnContainer($this->container);
+        if ($result !== false) {
             if ($result['cdn_enabled']) {
-                return $result['cdn_uri'].'/'.$this->name;
+                return $result['cdn_uri'] . '/' . $this->name;
             }
         }
         return false;
@@ -301,10 +302,10 @@ class Zend_Service_Rackspace_Files_Object
      */
     public function getCdnUrlSsl()
     {
-        $result= $this->service->getInfoCdnContainer($this->container);
-        if ($result!==false) {
+        $result = $this->service->getInfoCdnContainer($this->container);
+        if ($result !== false) {
             if ($result['cdn_enabled']) {
-                return $result['cdn_uri_ssl'].'/'.$this->name;
+                return $result['cdn_uri_ssl'] . '/' . $this->name;
             }
         }
         return false;

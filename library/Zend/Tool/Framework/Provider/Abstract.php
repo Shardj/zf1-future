@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -43,10 +44,8 @@ require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Tool_Framework_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Interface, Zend_Tool_Framework_Registry_EnabledInterface
+abstract class Zend_Tool_Framework_Provider_Abstract implements Zend_Tool_Framework_Provider_Interface, Zend_Tool_Framework_Registry_EnabledInterface
 {
-
     /**
      * @var Zend_Tool_Framework_Registry_Interface
      */
@@ -63,6 +62,4 @@ abstract class Zend_Tool_Framework_Provider_Abstract
         $this->_registry = $registry;
         return $this;
     }
-
-
 }

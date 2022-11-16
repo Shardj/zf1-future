@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -45,9 +46,7 @@ require_once 'Zend/Feed/Writer/Renderer/Feed/Atom/AtomAbstract.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Writer_Renderer_Feed_Atom
-    extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
-    implements Zend_Feed_Writer_Renderer_RendererInterface
+class Zend_Feed_Writer_Renderer_Feed_Atom extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract implements Zend_Feed_Writer_Renderer_RendererInterface
 {
     /**
      * Constructor
@@ -55,7 +54,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom
      * @param  Zend_Feed_Writer_Feed $container
      * @return void
      */
-    public function __construct (Zend_Feed_Writer_Feed $container)
+    public function __construct(Zend_Feed_Writer_Feed $container)
     {
         parent::__construct($container);
     }
@@ -73,7 +72,8 @@ class Zend_Feed_Writer_Renderer_Feed_Atom
         $this->_dom = new DOMDocument('1.0', $this->_container->getEncoding());
         $this->_dom->formatOutput = true;
         $root = $this->_dom->createElementNS(
-            Zend_Feed_Writer::NAMESPACE_ATOM_10, 'feed'
+            Zend_Feed_Writer::NAMESPACE_ATOM_10,
+            'feed'
         );
         $this->setRootElement($root);
         $this->_dom->appendChild($root);
@@ -110,7 +110,8 @@ class Zend_Feed_Writer_Renderer_Feed_Atom
             } else {
                 if (!$this->_dom->documentElement->hasAttribute('xmlns:at')) {
                     $this->_dom->documentElement->setAttribute(
-                        'xmlns:at', 'http://purl.org/atompub/tombstones/1.0'
+                        'xmlns:at',
+                        'http://purl.org/atompub/tombstones/1.0'
                     );
                 }
                 $renderer = new Zend_Feed_Writer_Renderer_Entry_Atom_Deleted($entry);
@@ -127,5 +128,4 @@ class Zend_Feed_Writer_Renderer_Feed_Atom
         }
         return $this;
     }
-
 }

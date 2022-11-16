@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,13 +57,13 @@ class Zend_Service_Rackspace_Servers_SharedIpGroupList implements Countable, Ite
      * @param  array $list
      * @return void
      */
-    public function __construct($service,$list = [])
+    public function __construct($service, $list = [])
     {
         if (!($service instanceof Zend_Service_Rackspace_Servers) || !is_array($list)) {
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception("You must pass a Zend_Service_Rackspace_Servers object and an array");
         }
-        $this->service= $service;
+        $this->service = $service;
         $this->constructFromArray($list);
     }
     /**
@@ -74,7 +75,7 @@ class Zend_Service_Rackspace_Servers_SharedIpGroupList implements Countable, Ite
     private function constructFromArray(array $list)
     {
         foreach ($list as $share) {
-            $this->addSharedIpGroup(new Zend_Service_Rackspace_Servers_SharedIpGroup($this->service,$share));
+            $this->addSharedIpGroup(new Zend_Service_Rackspace_Servers_SharedIpGroup($this->service, $share));
         }
     }
     /**
@@ -83,7 +84,7 @@ class Zend_Service_Rackspace_Servers_SharedIpGroupList implements Countable, Ite
      * @param  Zend_Service_Rackspace_Servers_SharedIpGroup $shared
      * @return Zend_Service_Rackspace_Servers_SharedIpGroupList
      */
-    protected function addSharedIpGroup (Zend_Service_Rackspace_Servers_SharedIpGroup $share)
+    protected function addSharedIpGroup(Zend_Service_Rackspace_Servers_SharedIpGroup $share)
     {
         $this->shared[] = $share;
         return $this;
@@ -95,9 +96,9 @@ class Zend_Service_Rackspace_Servers_SharedIpGroupList implements Countable, Ite
      */
     public function toArray()
     {
-        $array= [];
+        $array = [];
         foreach ($this->shared as $share) {
-            $array[]= $share->toArray();
+            $array[] = $share->toArray();
         }
         return $array;
     }

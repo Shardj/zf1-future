@@ -38,7 +38,6 @@ require_once 'Zend/Gdata/Entry.php';
  */
 class Zend_Gdata_Docs_DocumentListEntry extends Zend_Gdata_Entry
 {
-
     /**
      * Create a new instance of an entry representing a document.
      *
@@ -50,5 +49,4 @@ class Zend_Gdata_Docs_DocumentListEntry extends Zend_Gdata_Entry
         $this->registerAllNamespaces(Zend_Gdata_Docs::$namespaces);
         parent::__construct($element);
     }
-
 }

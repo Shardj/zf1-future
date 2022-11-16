@@ -40,7 +40,6 @@ require_once 'Zend/Http/Client/Adapter/Socket.php';
  */
 class Zend_Gdata_App_LoggingHttpClientAdapterSocket extends Zend_Http_Client_Adapter_Socket
 {
-
     /**
      * The file handle for writing logs
      *
@@ -115,5 +114,4 @@ class Zend_Gdata_App_LoggingHttpClientAdapterSocket extends Zend_Http_Client_Ada
         $this->log("Closing socket\n\n");
         parent::close();
     }
-
 }

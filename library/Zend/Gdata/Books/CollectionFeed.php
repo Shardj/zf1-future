@@ -37,7 +37,6 @@ require_once 'Zend/Gdata/Feed.php';
  */
 class Zend_Gdata_Books_CollectionFeed extends Zend_Gdata_Feed
 {
-
     /**
      * Constructor for Zend_Gdata_Books_CollectionFeed which
      * Describes a Book Search collection feed
@@ -57,6 +56,4 @@ class Zend_Gdata_Books_CollectionFeed extends Zend_Gdata_Feed
      * @var string
      */
     protected $_entryClassName = 'Zend_Gdata_Books_CollectionEntry';
-
 }
-

@@ -31,7 +31,6 @@
  */
 class Zend_Feed_Element implements ArrayAccess
 {
-
     /**
      * @var DOMElement
      */
@@ -134,8 +133,10 @@ class Zend_Feed_Element implements ArrayAccess
     public function saveXml()
     {
         // Return a complete document including XML prologue.
-        $doc = new DOMDocument((string) $this->_element->ownerDocument->version,
-                               (string) $this->_element->ownerDocument->actualEncoding);
+        $doc = new DOMDocument(
+            (string) $this->_element->ownerDocument->version,
+            (string) $this->_element->ownerDocument->actualEncoding
+        );
         $doc->appendChild($doc->importNode($this->_element, true));
         return $doc->saveXML();
     }
@@ -195,7 +196,9 @@ class Zend_Feed_Element implements ArrayAccess
         }
 
         if ($length > 1) {
-            return array_map(function ($e) { return new Zend_Feed_Element($e); }, $nodes);
+            return array_map(function ($e) {
+                return new Zend_Feed_Element($e);
+            }, $nodes);
         }
 
         // When creating anonymous nodes for __set chaining, don't
@@ -215,7 +218,6 @@ class Zend_Feed_Element implements ArrayAccess
         $node->setParent($this);
 
         return $node;
-
     }
 
 
@@ -235,12 +237,17 @@ class Zend_Feed_Element implements ArrayAccess
         if (!$nodes) {
             if (strpos($var, ':') !== false) {
                 [$ns, $elt] = explode(':', $var, 2);
-                $node = $this->_element->ownerDocument->createElementNS(Zend_Feed::lookupNamespace($ns),
-                    $var, htmlspecialchars($val, ENT_NOQUOTES, $this->getEncoding()));
+                $node = $this->_element->ownerDocument->createElementNS(
+                    Zend_Feed::lookupNamespace($ns),
+                    $var,
+                    htmlspecialchars($val, ENT_NOQUOTES, $this->getEncoding())
+                );
                 $this->_element->appendChild($node);
             } else {
-                $node = $this->_element->ownerDocument->createElement($var,
-                    htmlspecialchars($val, ENT_NOQUOTES, $this->getEncoding()));
+                $node = $this->_element->ownerDocument->createElement(
+                    $var,
+                    htmlspecialchars($val, ENT_NOQUOTES, $this->getEncoding())
+                );
                 $this->_element->appendChild($node);
             }
         } elseif (count($nodes) > 1) {
@@ -441,5 +448,4 @@ class Zend_Feed_Element implements ArrayAccess
             return $this->_element->removeAttribute($offset);
         }
     }
-
 }

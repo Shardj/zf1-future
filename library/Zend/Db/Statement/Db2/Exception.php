@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -53,6 +54,4 @@ class Zend_Db_Statement_Db2_Exception extends Zend_Db_Statement_Exception
         $this->message = $msg;
         $this->code = $state;
     }
-
 }
-

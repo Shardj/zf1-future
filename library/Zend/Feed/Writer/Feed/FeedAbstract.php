@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -152,7 +153,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function addAuthors(array $authors)
     {
-        foreach($authors as $author) {
+        foreach ($authors as $author) {
             $this->addAuthor($author);
         }
     }
@@ -180,7 +181,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     {
         $zdate = null;
         if ($date === null) {
-            $zdate = new Zend_Date;
+            $zdate = new Zend_Date();
         } elseif ($date instanceof Zend_Date) {
             $zdate = $date;
         } elseif (ctype_digit((string)$date)) {
@@ -201,7 +202,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     {
         $zdate = null;
         if ($date === null) {
-            $zdate = new Zend_Date;
+            $zdate = new Zend_Date();
         } elseif ($date instanceof Zend_Date) {
             $zdate = $date;
         } elseif (ctype_digit((string)$date)) {
@@ -222,7 +223,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     {
         $zdate = null;
         if ($date === null) {
-            $zdate = new Zend_Date;
+            $zdate = new Zend_Date();
         } elseif ($date instanceof Zend_Date) {
             $zdate = $date;
         } elseif (ctype_digit((string)$date)) {
@@ -307,9 +308,11 @@ class Zend_Feed_Writer_Feed_FeedAbstract
      */
     public function setId($id)
     {
-        if ((empty($id) || !is_string($id) || !Zend_Uri::check($id)) &&
-        !preg_match("#^urn:[a-zA-Z0-9][a-zA-Z0-9\-]{1,31}:([a-zA-Z0-9\(\)\+\,\.\:\=\@\;\$\_\!\*\-]|%[0-9a-fA-F]{2})*#", $id)
-        && !$this->_validateTagUri($id)) {
+        if ((empty($id) ||
+        !is_string($id) ||
+        !Zend_Uri::check($id)) &&
+        !preg_match("#^urn:[a-zA-Z0-9][a-zA-Z0-9\-]{1,31}:([a-zA-Z0-9\(\)\+\,\.\:\=\@\;\$\_\!\*\-]|%[0-9a-fA-F]{2})*#", $id) &&
+        !$this->_validateTagUri($id)) {
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Invalid parameter: parameter must be a non-empty string and valid URI/IRI');
         }
@@ -340,7 +343,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
                 $dvalid = true;
             }
 
-            $validator = new Zend_Validate_EmailAddress;
+            $validator = new Zend_Validate_EmailAddress();
 
             if ($validator->isValid($matches['name'])) {
                 $nvalid = true;
@@ -348,7 +351,6 @@ class Zend_Feed_Writer_Feed_FeedAbstract
                 $nvalid = $validator->isValid('info@' . $matches['name']);
             }
             return $dvalid && $nvalid;
-
         }
         return false;
     }

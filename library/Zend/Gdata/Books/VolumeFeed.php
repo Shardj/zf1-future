@@ -37,7 +37,6 @@ require_once 'Zend/Gdata/Feed.php';
  */
 class Zend_Gdata_Books_VolumeFeed extends Zend_Gdata_Feed
 {
-
     /**
      * Constructor for Zend_Gdata_Books_VolumeFeed which
      * Describes a Book Search volume feed
@@ -57,6 +56,4 @@ class Zend_Gdata_Books_VolumeFeed extends Zend_Gdata_Feed
       * @var string
       */
      protected $_entryClassName = 'Zend_Gdata_Books_VolumeEntry';
-
 }
-

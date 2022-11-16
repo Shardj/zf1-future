@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,7 +57,7 @@ class Zend_Application_Resource_Cachemanager extends Zend_Application_Resource_R
     public function getCacheManager()
     {
         if (null === $this->_manager) {
-            $this->_manager = new Zend_Cache_Manager;
+            $this->_manager = new Zend_Cache_Manager();
 
             $options = $this->getOptions();
             foreach ($options as $key => $value) {

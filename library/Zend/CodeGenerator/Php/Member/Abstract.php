@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/CodeGenerator/Php/Docblock.php';
  */
 abstract class Zend_CodeGenerator_Php_Member_Abstract extends Zend_CodeGenerator_Php_Abstract
 {
-
     /**#@+
      * @param const string
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -47,4 +48,3 @@ class Zend_Search_Lucene_Index_FieldInfo
         $this->payloadsStored  = $payloadsStored;
     }
 }
-

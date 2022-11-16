@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** @see Zend_Db_Adapter_Pdo_Ibm */
 require_once 'Zend/Db/Adapter/Pdo/Ibm.php';
@@ -79,7 +79,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
     {
         // this is still a work in progress
 
-        $sql= "SELECT DISTINCT t.owner, t.tabname, c.colname, c.colno, c.coltype,
+        $sql = "SELECT DISTINCT t.owner, t.tabname, c.colname, c.colno, c.coltype,
                d.default, c.collength, t.tabid
                FROM syscolumns c
                JOIN systables t ON c.tabid = t.tabid
@@ -140,8 +140,8 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
                 'DEFAULT'           => $row[$default],
                 'NULLABLE'          => (bool) !($row[$typename] - 256 >= 0),
                 'LENGTH'            => $row[$length],
-                'SCALE'             => ($row[$typename] == 5 ? $row[$length]&255 : 0),
-                'PRECISION'         => ($row[$typename] == 5 ? (int)($row[$length]/256) : 0),
+                'SCALE'             => ($row[$typename] == 5 ? $row[$length] & 255 : 0),
+                'PRECISION'         => ($row[$typename] == 5 ? (int)($row[$length] / 256) : 0),
                 'UNSIGNED'          => false,
                 'PRIMARY'           => $primary,
                 'PRIMARY_POSITION'  => $primaryPosition,
@@ -288,8 +288,8 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
      */
     public function lastSequenceId($sequenceName)
     {
-        $sql = 'SELECT '.$this->_adapter->quoteIdentifier($sequenceName).'.CURRVAL FROM '
-               .'systables WHERE tabid = 1';
+        $sql = 'SELECT ' . $this->_adapter->quoteIdentifier($sequenceName) . '.CURRVAL FROM '
+               . 'systables WHERE tabid = 1';
 
         return $this->_adapter->fetchOne($sql);
     }
@@ -302,8 +302,8 @@ class Zend_Db_Adapter_Pdo_Ibm_Ids
       */
     public function nextSequenceId($sequenceName)
     {
-        $sql = 'SELECT '.$this->_adapter->quoteIdentifier($sequenceName).'.NEXTVAL FROM '
-               .'systables WHERE tabid = 1';
+        $sql = 'SELECT ' . $this->_adapter->quoteIdentifier($sequenceName) . '.NEXTVAL FROM '
+               . 'systables WHERE tabid = 1';
 
         return $this->_adapter->fetchOne($sql);
     }

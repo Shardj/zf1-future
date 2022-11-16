@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mail_Storage_Abstract
@@ -97,14 +97,14 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
         }
 
         $flags = array_flip($flags);
-           foreach ($this->_files as $file) {
-               foreach ($flags as $flag => $v) {
-                   if (!isset($file['flaglookup'][$flag])) {
-                       continue 2;
-                   }
-               }
-               ++$count;
-           }
+        foreach ($this->_files as $file) {
+            foreach ($flags as $flag => $v) {
+                if (!isset($file['flaglookup'][$flag])) {
+                    continue 2;
+                }
+            }
+            ++$count;
+        }
            return $count;
     }
 
@@ -332,7 +332,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
         if ($dh) {
             $this->_getMaildirFiles($dh, $dirname . '/new/', [Zend_Mail_Storage::FLAG_RECENT]);
             closedir($dh);
-        } else if (file_exists($dirname . '/new/')) {
+        } elseif (file_exists($dirname . '/new/')) {
             /**
              * @see Zend_Mail_Storage_Exception
              */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 class Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator extends RecursiveFilterIterator
 {
-
     protected $_denyDirectoryPattern = null;
     protected $_acceptFilePattern    = null;
 
@@ -83,8 +83,6 @@ class Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator exten
             $this->getInnerIterator()->getChildren(),
             $this->_denyDirectoryPattern,
             $this->_acceptFilePattern
-            );
+        );
     }
-
 }
-

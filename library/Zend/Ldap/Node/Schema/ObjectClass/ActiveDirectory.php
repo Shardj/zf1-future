@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -39,8 +40,7 @@ require_once 'Zend/Ldap/Node/Schema/ObjectClass/Interface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_Schema_Item
-    implements Zend_Ldap_Node_Schema_ObjectClass_Interface
+class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_Schema_Item implements Zend_Ldap_Node_Schema_ObjectClass_Interface
 {
     /**
      * Gets the objectClass name
@@ -59,7 +59,6 @@ class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_S
      */
     public function getOid()
     {
-
     }
 
     /**
@@ -69,7 +68,6 @@ class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_S
      */
     public function getMustContain()
     {
-
     }
 
     /**
@@ -79,7 +77,6 @@ class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_S
      */
     public function getMayContain()
     {
-
     }
 
     /**
@@ -89,7 +86,6 @@ class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_S
      */
     public function getDescription()
     {
-
     }
 
     /**
@@ -99,7 +95,6 @@ class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_S
      */
     public function getType()
     {
-
     }
 
     /**
@@ -110,6 +105,5 @@ class Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory extends Zend_Ldap_Node_S
      */
     public function getParentClasses()
     {
-
     }
 }

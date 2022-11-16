@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,9 +41,7 @@ require_once 'Zend/File/Transfer/Adapter/Http.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-class Zend_Form_Decorator_File
-    extends Zend_Form_Decorator_Abstract
-    implements Zend_Form_Decorator_Marker_File_Interface
+class Zend_Form_Decorator_File extends Zend_Form_Decorator_Abstract implements Zend_Form_Decorator_Marker_File_Interface
 {
     /**
      * Attributes that should not be passed to helper
@@ -113,7 +112,7 @@ class Zend_Form_Decorator_File
 
         if (Zend_File_Transfer_Adapter_Http::isApcAvailable()) {
             $markup[] = $view->formHidden(ini_get('apc.rfc1867_name'), uniqid(), ['id' => 'progress_key']);
-        } else if (Zend_File_Transfer_Adapter_Http::isUploadProgressAvailable()) {
+        } elseif (Zend_File_Transfer_Adapter_Http::isUploadProgressAvailable()) {
             $markup[] = $view->formHidden('UPLOAD_IDENTIFIER', uniqid(), ['id' => 'progress_key']);
         }
 

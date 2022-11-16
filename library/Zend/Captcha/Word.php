@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -42,10 +43,10 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
     /**#@+
      * @var array Character sets
      */
-    static public $V  = ["a", "e", "i", "o", "u", "y"];
-    static public $VN = ["a", "e", "i", "o", "u", "y","2","3","4","5","6","7","8","9"];
-    static public $C  = ["b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z"];
-    static public $CN = ["b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z","2","3","4","5","6","7","8","9"];
+    public static $V  = ["a", "e", "i", "o", "u", "y"];
+    public static $VN = ["a", "e", "i", "o", "u", "y","2","3","4","5","6","7","8","9"];
+    public static $C  = ["b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z"];
+    public static $CN = ["b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z","2","3","4","5","6","7","8","9"];
     /**#@-*/
 
     /**
@@ -331,7 +332,7 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
 
         $totIndexCon = count($consonants) - 1;
         $totIndexVow = count($vowels) - 1;
-        for ($i=0; $i < $wordLen; $i = $i + 2) {
+        for ($i = 0; $i < $wordLen; $i = $i + 2) {
             // generate word with mix of vowels and consonants
             $consonant = $consonants[Zend_Crypt_Math::randInteger(0, $totIndexCon, true)];
             $vowel     = $vowels[Zend_Crypt_Math::randInteger(0, $totIndexVow, true)];

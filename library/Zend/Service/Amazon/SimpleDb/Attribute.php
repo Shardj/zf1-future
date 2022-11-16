@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -58,7 +59,7 @@ class Zend_Service_Amazon_SimpleDb_Attribute
      *
      * @return string
      */
-    public function getItemName ()
+    public function getItemName()
     {
         return $this->_itemName;
     }
@@ -78,7 +79,7 @@ class Zend_Service_Amazon_SimpleDb_Attribute
      *
      * @return string
      */
-    public function getName ()
+    public function getName()
     {
         return $this->_name;
     }

@@ -47,7 +47,6 @@ require_once 'Zend/Gdata/Geo/Entry.php';
  */
 class Zend_Gdata_Geo_Feed extends Zend_Gdata_Feed
 {
-
     /**
      * The classname for individual feed elements.
      *
@@ -60,5 +59,4 @@ class Zend_Gdata_Geo_Feed extends Zend_Gdata_Feed
         $this->registerAllNamespaces(Zend_Gdata_Geo::$namespaces);
         parent::__construct($element);
     }
-
 }

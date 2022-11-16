@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -263,5 +264,4 @@ class Zend_Feed_Writer
         $str[0] = strtolower($str[0]);
         return $str;
     }
-
 }

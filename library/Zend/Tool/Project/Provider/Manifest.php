@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,7 +35,6 @@ require_once 'Zend/Tool/Framework/Manifest/ProviderManifestable.php';
 class Zend_Tool_Project_Provider_Manifest implements
     Zend_Tool_Framework_Manifest_ProviderManifestable
 {
-
     /**
      * getProviders()
      *

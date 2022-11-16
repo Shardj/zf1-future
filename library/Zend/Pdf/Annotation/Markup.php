@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -64,11 +65,13 @@ class Zend_Pdf_Annotation_Markup extends Zend_Pdf_Annotation
 
         if ($annotationDictionary->Subtype === null  ||
             $annotationDictionary->Subtype->getType() != Zend_Pdf_Element::TYPE_NAME  ||
-            !in_array( $annotationDictionary->Subtype->value,
-                       [self::SUBTYPE_HIGHLIGHT,
+            !in_array(
+                $annotationDictionary->Subtype->value,
+                [self::SUBTYPE_HIGHLIGHT,
                              self::SUBTYPE_UNDERLINE,
                              self::SUBTYPE_SQUIGGLY,
-                             self::SUBTYPE_STRIKEOUT] )) {
+                self::SUBTYPE_STRIKEOUT]
+            )) {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Subtype => Markup entry is omitted or has wrong value.');
         }

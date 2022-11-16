@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -41,4 +42,3 @@ class Zend_Dojo_Form_Decorator_StackContainer extends Zend_Dojo_Form_Decorator_D
      */
     protected $_helper = 'StackContainer';
 }
-

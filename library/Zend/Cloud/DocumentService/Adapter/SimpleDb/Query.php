@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -164,12 +165,12 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb_Query
         $adapter = $this->getAdapter()->getClient();
         $i = 0;
         while (false !== ($pos = strpos($where, '?'))) {
-           $where = substr_replace($where, $adapter->quote($args[$i]), $pos);
-           ++$i;
+            $where = substr_replace($where, $adapter->quote($args[$i]), $pos);
+            ++$i;
         }
         if (('(' != $where[0]) || (')' != $where[strlen($where) - 1])) {
             $where = '(' . $where . ')';
         }
         return $where;
     }
- }
+}

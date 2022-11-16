@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -31,7 +32,6 @@ require_once 'Zend/Cloud/StorageService/Exception.php';
  */
 class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_StorageService_Adapter
 {
-
     /**
      * Options array keys for the file system adapter.
      */

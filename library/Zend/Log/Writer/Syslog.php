@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -124,7 +125,7 @@ class Zend_Log_Writer_Syslog extends Zend_Log_Writer_Abstract
      * @param  array|Zend_Config $config
      * @return Zend_Log_Writer_Syslog
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         return new self(self::_parseConfig($config));
     }
@@ -252,8 +253,7 @@ class Zend_Log_Writer_Syslog extends Zend_Log_Writer_Abstract
         }
 
         if ($this->_application !== self::$_lastApplication
-            || $this->_facility !== self::$_lastFacility)
-        {
+            || $this->_facility !== self::$_lastFacility) {
             $this->_initializeSyslog();
         }
 

@@ -73,4 +73,3 @@ class Zend_Service_Flickr_Image
         $this->width    = (int) $image->getAttribute('width');
     }
 }
-

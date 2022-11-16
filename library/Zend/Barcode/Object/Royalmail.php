@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Royalmail extends Zend_Barcode_Object_ObjectAbstract
 {
-
     /**
      * Coding map
      * - 0 = Tracker, Ascender and Descender
@@ -107,7 +107,8 @@ class Zend_Barcode_Object_Royalmail extends Zend_Barcode_Object_ObjectAbstract
      * @return void
      */
     protected function _checkParams()
-    {}
+    {
+    }
 
     /**
      * Prepare array to draw barcode
@@ -118,7 +119,7 @@ class Zend_Barcode_Object_Royalmail extends Zend_Barcode_Object_ObjectAbstract
         $barcodeTable = [];
 
         // Start character (1)
-        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , 5/8];
+        $barcodeTable[] = [1 , $this->_barThinWidth , 0 , 5 / 8];
         $barcodeTable[] = [0 , $this->_barThinWidth , 0 , 1];
 
         // Text to encode
@@ -126,7 +127,7 @@ class Zend_Barcode_Object_Royalmail extends Zend_Barcode_Object_ObjectAbstract
         foreach ($textTable as $char) {
             $bars = str_split($this->_codingMap[$char]);
             foreach ($bars as $b) {
-                $barcodeTable[] = [1 , $this->_barThinWidth , ($b > 1 ? 3/8 : 0) , ($b % 2 ? 5/8 : 1)];
+                $barcodeTable[] = [1 , $this->_barThinWidth , ($b > 1 ? 3 / 8 : 0) , ($b % 2 ? 5 / 8 : 1)];
                 $barcodeTable[] = [0 , $this->_barThinWidth , 0 , 1];
             }
         }
@@ -148,7 +149,7 @@ class Zend_Barcode_Object_Royalmail extends Zend_Barcode_Object_ObjectAbstract
         $values   = str_split($text);
         $rowvalue = 0;
         $colvalue = 0;
-        foreach($values as $row) {
+        foreach ($values as $row) {
             $rowvalue += $this->_rows[$row];
             $colvalue += $this->_columns[$row];
         }

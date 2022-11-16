@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Crypt/Rsa/Key.php';
  */
 class Zend_Crypt_Rsa_Key_Private extends Zend_Crypt_Rsa_Key
 {
-
     protected $_publicKey = null;
 
     public function __construct($pemString, $passPhrase = null)
@@ -71,5 +71,4 @@ class Zend_Crypt_Rsa_Key_Private extends Zend_Crypt_Rsa_Key
         }
         return $this->_publicKey;
     }
-
 }

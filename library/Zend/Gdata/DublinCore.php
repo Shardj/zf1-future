@@ -38,7 +38,6 @@ require_once 'Zend/Gdata.php';
  */
 class Zend_Gdata_DublinCore extends Zend_Gdata
 {
-
     /**
      * Namespaces used for Zend_Gdata_DublinCore
      *
@@ -61,5 +60,4 @@ class Zend_Gdata_DublinCore extends Zend_Gdata
         $this->registerPackage('Zend_Gdata_DublinCore_Extension');
         parent::__construct($client, $applicationId);
     }
-
 }

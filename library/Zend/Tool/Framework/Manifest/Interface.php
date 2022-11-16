@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,6 @@
  */
 interface Zend_Tool_Framework_Manifest_Interface
 {
-
     /**
      * The following methods are completely optional, and any combination of them
      * can be used as part of a manifest.  The manifest repository will process
@@ -78,5 +78,4 @@ interface Zend_Tool_Framework_Manifest_Interface
     public function getProviders();
 
      **/
-
 }

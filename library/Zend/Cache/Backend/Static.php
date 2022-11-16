@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,9 +37,7 @@ require_once 'Zend/Cache/Backend.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cache_Backend_Static
-    extends Zend_Cache_Backend
-    implements Zend_Cache_Backend_Interface
+class Zend_Cache_Backend_Static extends Zend_Cache_Backend implements Zend_Cache_Backend_Interface
 {
     const INNER_CACHE_NAME = 'zend_cache_backend_static_tagcache';
 
@@ -248,7 +247,9 @@ class Zend_Cache_Backend_Static
             $data = $dataUnserialized['data'];
         }
         $ext = $this->_options['file_extension'];
-        if ($extension) $ext = $extension;
+        if ($extension) {
+            $ext = $extension;
+        }
         $file = rtrim($pathName, '/') . '/' . $fileName . $ext;
         if ($this->_options['file_locking']) {
             $result = file_put_contents($file, $data, LOCK_EX);
@@ -281,7 +282,7 @@ class Zend_Cache_Backend_Static
     {
         if (!is_dir($path)) {
             $oldUmask = umask(0);
-            if ( !@mkdir($path, $this->_octdec($this->_options['cache_directory_perm']), true)) {
+            if (!@mkdir($path, $this->_octdec($this->_options['cache_directory_perm']), true)) {
                 $lastErr = error_get_last();
                 umask($oldUmask);
                 Zend_Cache::throwException("Can't create directory: {$lastErr['message']}");
@@ -547,9 +548,9 @@ class Zend_Cache_Backend_Static
 
         // Validation assumes no query string, fragments or scheme included - only the path
         if (!preg_match(
-                '/^(?:\/(?:(?:%[[:xdigit:]]{2}|[A-Za-z0-9-_.!~*\'()\[\]:@&=+$,;])*)?)+$/',
-                $string
-            )
+            '/^(?:\/(?:(?:%[[:xdigit:]]{2}|[A-Za-z0-9-_.!~*\'()\[\]:@&=+$,;])*)?)+$/',
+            $string
+        )
         ) {
             Zend_Cache::throwException("Invalid id or tag '$string' : must be a valid URL path");
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Cache/Backend/Interface.php';
  */
 interface Zend_Cache_Backend_ExtendedInterface extends Zend_Cache_Backend_Interface
 {
-
     /**
      * Return an array of stored cache ids
      *
@@ -122,5 +122,4 @@ interface Zend_Cache_Backend_ExtendedInterface extends Zend_Cache_Backend_Interf
      * @return array associative of with capabilities
      */
     public function getCapabilities();
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Interface.php';
  */
 abstract class Zend_Tool_Project_Context_Filesystem_Abstract implements Zend_Tool_Project_Context_Interface
 {
-
     /**
      * @var Zend_Tool_Project_Profile_Resource
      */
@@ -161,5 +161,4 @@ abstract class Zend_Tool_Project_Context_Filesystem_Abstract implements Zend_Too
      *
      */
     abstract public function delete();
-
 }

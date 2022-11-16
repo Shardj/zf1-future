@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -114,8 +115,7 @@ class Zend_Mobile_Push_Mpns extends Zend_Mobile_Push_Abstract
         $this->close();
 
 
-        switch ($response->getStatus())
-        {
+        switch ($response->getStatus()) {
             case 200:
                 // check headers for response?  need to test how this actually works to correctly handle different states.
                 if ($response->getHeader('NotificationStatus') == 'QueueFull') {

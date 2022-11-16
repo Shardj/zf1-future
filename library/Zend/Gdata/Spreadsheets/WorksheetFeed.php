@@ -36,7 +36,6 @@ require_once 'Zend/Gdata/Feed.php';
  */
 class Zend_Gdata_Spreadsheets_WorksheetFeed extends Zend_Gdata_Feed
 {
-
     /**
      * Constructs a new Zend_Gdata_Spreadsheets_WorksheetFeed object.
      * @param DOMElement $element (optional) The DOMElement on whick to base this element.
@@ -60,5 +59,4 @@ class Zend_Gdata_Spreadsheets_WorksheetFeed extends Zend_Gdata_Feed
      * @var string
      */
     protected $_feedClassName = 'Zend_Gdata_Spreadsheets_WorksheetFeed';
-
 }

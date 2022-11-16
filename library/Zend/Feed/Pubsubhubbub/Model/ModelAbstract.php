@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** @see Zend_Db_Table */
 require_once 'Zend/Db/Table.php';
@@ -59,5 +59,4 @@ class Zend_Feed_Pubsubhubbub_Model_ModelAbstract
             $this->_db = $tableGateway;
         }
     }
-
 }

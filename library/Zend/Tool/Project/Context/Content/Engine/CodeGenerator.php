@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -93,6 +94,4 @@ class Zend_Tool_Project_Context_Content_Engine_CodeGenerator
 
         return $codeGenerator->generate();
     }
-
-
 }

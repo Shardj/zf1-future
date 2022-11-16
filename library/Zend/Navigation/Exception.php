@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,5 +35,4 @@ require_once 'Zend/Exception.php';
  */
 class Zend_Navigation_Exception extends Zend_Exception
 {
-
 }

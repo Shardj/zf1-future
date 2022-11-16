@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,4 +37,5 @@ require_once 'Zend/Service/Exception.php';
  * @license    http://phpazure.codeplex.com/license
  */
 class Zend_Service_Console_Exception extends Zend_Service_Exception
-{}
+{
+}

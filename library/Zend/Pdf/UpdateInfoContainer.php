@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -128,4 +129,3 @@ class Zend_Pdf_UpdateInfoContainer
         return $this->_dump->getRef();
     }
 }
-

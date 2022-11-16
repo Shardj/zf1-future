@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,7 @@ require_once 'Zend/Service/WindowsAzure/Storage/StorageEntityAbstract.php';
  * @property int  $end     Page range end
  */
 class Zend_Service_WindowsAzure_Storage_PageRegionInstance
-	extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+    extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
 {
     /**
      * Constructor

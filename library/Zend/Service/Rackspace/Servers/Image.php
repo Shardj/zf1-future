@@ -95,23 +95,23 @@ class Zend_Service_Rackspace_Servers_Image
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $this->service= $service;
+        $this->service = $service;
         $this->name = $data['name'];
         $this->id = $data['id'];
         if (isset($data['serverId'])) {
-            $this->serverId= $data['serverId'];
+            $this->serverId = $data['serverId'];
         }
         if (isset($data['updated'])) {
-            $this->updated= $data['updated'];
+            $this->updated = $data['updated'];
         }
         if (isset($data['created'])) {
-            $this->created= $data['created'];
+            $this->created = $data['created'];
         }
         if (isset($data['status'])) {
-            $this->status= $data['status'];
+            $this->status = $data['status'];
         }
         if (isset($data['progress'])) {
-            $this->progress= $data['progress'];
+            $this->progress = $data['progress'];
         }
     }
     /**
@@ -166,10 +166,10 @@ class Zend_Service_Rackspace_Servers_Image
      */
     public function getStatus()
     {
-        $data= $this->service->getImage($this->id);
-        if ($data!==false) {
-            $data= $data->toArray();
-            $this->status= $data['status'];
+        $data = $this->service->getImage($this->id);
+        if ($data !== false) {
+            $data = $data->toArray();
+            $this->status = $data['status'];
             return $this->status;
         }
         return false;
@@ -181,10 +181,10 @@ class Zend_Service_Rackspace_Servers_Image
      */
     public function getProgress()
     {
-        $data= $this->service->getImage($this->id);
-        if ($data!==false) {
-            $data= $data->toArray();
-            $this->progress= $data['progress'];
+        $data = $this->service->getImage($this->id);
+        if ($data !== false) {
+            $data = $data->toArray();
+            $this->progress = $data['progress'];
             return $this->progress;
         }
         return false;

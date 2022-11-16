@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -57,7 +58,7 @@ class Zend_Service_Amazon_Ec2_Image extends Zend_Service_Amazon_Ec2_Abstract
     {
         $params                 = [];
         $params['Action']       = 'RegisterImage';
-        $params['ImageLocation']= $imageLocation;
+        $params['ImageLocation'] = $imageLocation;
 
         $response = $this->sendRequest($params);
         $xpath = $response->getXPath();
@@ -105,27 +106,27 @@ class Zend_Service_Amazon_Ec2_Image extends Zend_Service_Amazon_Ec2_Abstract
         $params = [];
         $params['Action'] = 'DescribeImages';
 
-        if(is_array($imageId) && !empty($imageId)) {
-            foreach($imageId as $k=>$name) {
-                $params['ImageId.' . ($k+1)] = $name;
+        if (is_array($imageId) && !empty($imageId)) {
+            foreach ($imageId as $k => $name) {
+                $params['ImageId.' . ($k + 1)] = $name;
             }
-        } elseif($imageId) {
+        } elseif ($imageId) {
             $params['ImageId.1'] = $imageId;
         }
 
-        if(is_array($owner) && !empty($owner)) {
-            foreach($owner as $k=>$name) {
-                $params['Owner.' . ($k+1)] = $name;
+        if (is_array($owner) && !empty($owner)) {
+            foreach ($owner as $k => $name) {
+                $params['Owner.' . ($k + 1)] = $name;
             }
-        } elseif($owner) {
+        } elseif ($owner) {
             $params['Owner.1'] = $owner;
         }
 
-        if(is_array($executableBy) && !empty($executableBy)) {
-            foreach($executableBy as $k=>$name) {
-                $params['ExecutableBy.' . ($k+1)] = $name;
+        if (is_array($executableBy) && !empty($executableBy)) {
+            foreach ($executableBy as $k => $name) {
+                $params['ExecutableBy.' . ($k + 1)] = $name;
             }
-        } elseif($executableBy) {
+        } elseif ($executableBy) {
             $params['ExecutableBy.1'] = $executableBy;
         }
 
@@ -214,26 +215,26 @@ class Zend_Service_Amazon_Ec2_Image extends Zend_Service_Amazon_Ec2_Abstract
         $parmas['ImageId'] = $imageId;
         $params['Attribute'] = $attribute;
 
-        switch($attribute) {
+        switch ($attribute) {
             case 'launchPermission':
                 // break left out
             case 'launchpermission':
                 $params['Attribute'] = 'launchPermission';
                 $params['OperationType'] = $operationType;
 
-                if(is_array($userId) && !empty($userId)) {
-                    foreach($userId as $k=>$name) {
-                        $params['UserId.' . ($k+1)] = $name;
+                if (is_array($userId) && !empty($userId)) {
+                    foreach ($userId as $k => $name) {
+                        $params['UserId.' . ($k + 1)] = $name;
                     }
-                } elseif($userId) {
+                } elseif ($userId) {
                     $params['UserId.1'] = $userId;
                 }
 
-                if(is_array($userGroup) && !empty($userGroup)) {
-                    foreach($userGroup as $k=>$name) {
-                        $params['UserGroup.' . ($k+1)] = $name;
+                if (is_array($userGroup) && !empty($userGroup)) {
+                    foreach ($userGroup as $k => $name) {
+                        $params['UserGroup.' . ($k + 1)] = $name;
                     }
-                } elseif($userGroup) {
+                } elseif ($userGroup) {
                     $params['UserGroup.1'] = $userGroup;
                 }
 
@@ -279,30 +280,29 @@ class Zend_Service_Amazon_Ec2_Image extends Zend_Service_Amazon_Ec2_Abstract
         $return['imageId'] = $xpath->evaluate('string(//ec2:imageId/text())');
 
         // check for launchPermission
-        if($attribute == 'launchPermission') {
+        if ($attribute == 'launchPermission') {
             $lPnodes = $xpath->query('//ec2:launchPermission/ec2:item');
 
-            if($lPnodes->length > 0) {
+            if ($lPnodes->length > 0) {
                 $return['launchPermission'] = [];
-                foreach($lPnodes as $node) {
+                foreach ($lPnodes as $node) {
                     $return['launchPermission'][] = $xpath->evaluate('string(ec2:userId/text())', $node);
                 }
             }
         }
 
         // check for product codes
-        if($attribute == 'productCodes') {
+        if ($attribute == 'productCodes') {
             $pCnodes = $xpath->query('//ec2:productCodes/ec2:item');
-            if($pCnodes->length > 0) {
+            if ($pCnodes->length > 0) {
                 $return['productCodes'] = [];
-                foreach($pCnodes as $node) {
+                foreach ($pCnodes as $node) {
                     $return['productCodes'][] = $xpath->evaluate('string(ec2:productCode/text())', $node);
                 }
             }
         }
 
         return $return;
-
     }
 
     /**

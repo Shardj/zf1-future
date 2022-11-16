@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -64,7 +65,7 @@ class Zend_Pdf_Destination_Zoom extends Zend_Pdf_Destination_Explicit
 
         if ($page instanceof Zend_Pdf_Page) {
             $destinationArray->items[] = $page->getPageDictionary();
-        } else if (is_integer($page)) {
+        } elseif (is_integer($page)) {
             $destinationArray->items[] = new Zend_Pdf_Element_Numeric($page);
         } else {
             require_once 'Zend/Pdf/Exception.php';

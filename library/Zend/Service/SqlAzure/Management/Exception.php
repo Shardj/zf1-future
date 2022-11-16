@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -30,6 +31,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Service_SqlAzure_Management_Exception
-	extends Zend_Service_SqlAzure_Exception
+    extends Zend_Service_SqlAzure_Exception
 {
 }

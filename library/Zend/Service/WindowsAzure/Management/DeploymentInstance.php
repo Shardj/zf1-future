@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -48,7 +49,7 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  * @property array  $RoleList                   The list of roles.
  */
 class Zend_Service_WindowsAzure_Management_DeploymentInstance
-	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
@@ -67,7 +68,7 @@ class Zend_Service_WindowsAzure_Management_DeploymentInstance
      * @param string $upgradeDomainCount         An integer value that indicates the number of upgrade domains in the deployment.
      * @param array  $roleInstanceList           The list of role instances.
      * @param array  $roleList                   The list of roles.
-	 */
+     */
     public function __construct($name, $deploymentSlot, $privateID, $label, $url, $configuration, $status, $upgradeStatus, $upgradeType, $currentUpgradeDomainState, $currentUpgradeDomain, $upgradeDomainCount, $roleInstanceList = [], $roleList = [])
     {
         $this->_data = [

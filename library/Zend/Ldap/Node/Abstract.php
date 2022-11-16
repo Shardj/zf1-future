@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,7 @@ require_once 'Zend/Ldap/Dn.php';
  */
 abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
 {
-    protected static $_systemAttributes=['createtimestamp', 'creatorsname',
+    protected static $_systemAttributes = ['createtimestamp', 'creatorsname',
         'entrycsn', 'entrydn', 'entryuuid', 'hassubordinates', 'modifiersname',
         'modifytimestamp', 'structuralobjectclass', 'subschemasubentry',
         'distinguishedname', 'instancetype', 'name', 'objectcategory', 'objectguid',
@@ -298,10 +299,13 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
     {
         $name = strtolower($name);
         if (isset($this->_currentData[$name])) {
-            if ($emptyExists) return true;
-            return count($this->_currentData[$name])>0;
+            if ($emptyExists) {
+                return true;
+            }
+            return count($this->_currentData[$name]) > 0;
+        } else {
+            return false;
         }
-        else return false;
     }
 
     /**
@@ -330,8 +334,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
     {
         if ($name == 'dn') {
             return $this->getDnString();
-        }
-        else {
+        } else {
             return Zend_Ldap_Attribute::getAttribute($this->_currentData, $name, $index);
         }
     }

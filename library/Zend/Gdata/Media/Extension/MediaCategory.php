@@ -37,7 +37,6 @@ require_once 'Zend/Gdata/App/Extension.php';
  */
 class Zend_Gdata_Media_Extension_MediaCategory extends Zend_Gdata_Extension
 {
-
     protected $_rootElement = 'category';
     protected $_rootNamespace = 'media';
 
@@ -95,14 +94,14 @@ class Zend_Gdata_Media_Extension_MediaCategory extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'scheme':
-            $this->_scheme = $attribute->nodeValue;
-            break;
-        case 'label':
-            $this->_label = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'scheme':
+                $this->_scheme = $attribute->nodeValue;
+                break;
+            case 'label':
+                $this->_label = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -144,5 +143,4 @@ class Zend_Gdata_Media_Extension_MediaCategory extends Zend_Gdata_Extension
         $this->_label = $value;
         return $this;
     }
-
 }

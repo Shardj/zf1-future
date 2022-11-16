@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 interface Zend_Tool_Framework_Client_Storage_AdapterInterface
 {
-
     public function put($name, $value);
 
     public function get($name);
@@ -38,5 +38,4 @@ interface Zend_Tool_Framework_Client_Storage_AdapterInterface
     public function remove($name);
 
     public function getStreamUri($name);
-
 }

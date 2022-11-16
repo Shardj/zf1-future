@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,5 +32,5 @@ require_once 'Zend/Exception.php';
  * @version    $Id$
  */
 class Zend_Soap_Client_Exception extends Zend_Exception
-{}
-
+{
+}

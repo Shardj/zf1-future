@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -119,7 +120,6 @@ class Zend_Pdf_Cmap_SegmentToDelta extends Zend_Pdf_Cmap
     {
         $glyphNumbers = [];
         foreach ($characterCodes as $key => $characterCode) {
-
             /* These tables only cover the 16-bit character range.
              */
             if ($characterCode > 0xffff) {
@@ -171,7 +171,6 @@ class Zend_Pdf_Cmap_SegmentToDelta extends Zend_Pdf_Cmap
                  * glyph number.
                  */
                 $glyphNumbers[$key] = ($characterCode + $this->_segmentTableIdDeltas[$subtableIndex]) % 65536;
-
             } else {
                 /* This segment relies on the glyph index array to determine the
                  * glyph number. The calculation below determines the correct
@@ -185,9 +184,7 @@ class Zend_Pdf_Cmap_SegmentToDelta extends Zend_Pdf_Cmap
                                $this->_segmentTableIdRangeOffsets[$subtableIndex] - $this->_segmentCount +
                                $subtableIndex - 1);
                 $glyphNumbers[$key] = $this->_glyphIndexArray[$glyphIndex];
-
             }
-
         }
         return $glyphNumbers;
     }
@@ -322,8 +319,10 @@ class Zend_Pdf_Cmap_SegmentToDelta extends Zend_Pdf_Cmap
         $actualLength = strlen($cmapData);
         if ($actualLength < 23) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Insufficient table data',
-                                         Zend_Pdf_Exception::CMAP_TABLE_DATA_TOO_SMALL);
+            throw new Zend_Pdf_Exception(
+                'Insufficient table data',
+                Zend_Pdf_Exception::CMAP_TABLE_DATA_TOO_SMALL
+            );
         }
 
         /* Sanity check: Make sure this is right data for this table type.
@@ -331,15 +330,19 @@ class Zend_Pdf_Cmap_SegmentToDelta extends Zend_Pdf_Cmap
         $type = $this->_extractUInt2($cmapData, 0);
         if ($type != Zend_Pdf_Cmap::TYPE_SEGMENT_TO_DELTA) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Wrong cmap table type',
-                                         Zend_Pdf_Exception::CMAP_WRONG_TABLE_TYPE);
+            throw new Zend_Pdf_Exception(
+                'Wrong cmap table type',
+                Zend_Pdf_Exception::CMAP_WRONG_TABLE_TYPE
+            );
         }
 
         $length = $this->_extractUInt2($cmapData, 2);
         if ($length != $actualLength) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Table length ($length) does not match actual length ($actualLength)",
-                                         Zend_Pdf_Exception::CMAP_WRONG_TABLE_LENGTH);
+            throw new Zend_Pdf_Exception(
+                "Table length ($length) does not match actual length ($actualLength)",
+                Zend_Pdf_Exception::CMAP_WRONG_TABLE_LENGTH
+            );
         }
 
         /* Mapping tables should be language-independent. The font may not work
@@ -399,9 +402,10 @@ class Zend_Pdf_Cmap_SegmentToDelta extends Zend_Pdf_Cmap
          */
         if ($offset != $length) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Ending offset ($offset) does not match length ($length)",
-                                         Zend_Pdf_Exception::CMAP_FINAL_OFFSET_NOT_LENGTH);
+            throw new Zend_Pdf_Exception(
+                "Ending offset ($offset) does not match length ($length)",
+                Zend_Pdf_Exception::CMAP_FINAL_OFFSET_NOT_LENGTH
+            );
         }
     }
-
 }

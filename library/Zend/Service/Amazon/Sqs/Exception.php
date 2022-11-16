@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_Service_Amazon/Exception
  */
@@ -35,4 +35,5 @@ require_once 'Zend/Service/Amazon/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Service_Amazon_Sqs_Exception extends Zend_Service_Amazon_Exception
-{}
+{
+}

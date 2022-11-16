@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -74,7 +75,8 @@ class Zend_Application
      * Sets a configuration array to be used for the config parsers on loading the configuration from files
      * @param array $configParserOptions
      */
-    public static function setConfigParserOptions(array $configParserOptions) {
+    public static function setConfigParserOptions(array $configParserOptions)
+    {
         self::$configParserOptions = $configParserOptions;
     }
 
@@ -149,13 +151,15 @@ class Zend_Application
                 $_options = [];
                 foreach ($options['config'] as $tmp) {
                     $_options = $this->mergeOptions(
-                        $_options, $this->_loadConfig($tmp)
+                        $_options,
+                        $this->_loadConfig($tmp)
                     );
                 }
                 $options = $this->mergeOptions($_options, $options);
             } else {
                 $options = $this->mergeOptions(
-                    $this->_loadConfig($options['config']), $options
+                    $this->_loadConfig($options['config']),
+                    $options
                 );
             }
         }

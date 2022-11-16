@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -466,7 +467,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
         $namespace = $this->_resourceTypes[$type]['namespace'];
         $class     = $namespace . '_' . ucfirst($resource);
         if (!isset($this->_resources[$class])) {
-            $this->_resources[$class] = new $class;
+            $this->_resources[$class] = new $class();
         }
         return $this->_resources[$class];
     }

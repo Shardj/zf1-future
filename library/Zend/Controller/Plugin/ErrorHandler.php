@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -97,7 +98,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      * @param  Array $options
      * @return void
      */
-    public function __construct(Array $options = [])
+    public function __construct(array $options = [])
     {
         $this->setErrorHandler($options);
     }
@@ -108,7 +109,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      * @param  array $options
      * @return Zend_Controller_Plugin_ErrorHandler
      */
-    public function setErrorHandler(Array $options = [])
+    public function setErrorHandler(array $options = [])
     {
         if (isset($options['module'])) {
             $this->setErrorHandlerModule($options['module']);

@@ -39,7 +39,6 @@ require_once 'Zend/Gdata/App/Util.php';
  */
 class Zend_Gdata_Query
 {
-
     /**
      * Query parameters.
      *
@@ -395,7 +394,7 @@ class Zend_Gdata_Query
 
     public function __get($name)
     {
-        $method = 'get'.ucfirst($name);
+        $method = 'get' . ucfirst($name);
         if (method_exists($this, $method)) {
             return call_user_func([&$this, $method]);
         } else {
@@ -406,7 +405,7 @@ class Zend_Gdata_Query
 
     public function __set($name, $val)
     {
-        $method = 'set'.ucfirst($name);
+        $method = 'set' . ucfirst($name);
         if (method_exists($this, $method)) {
             return call_user_func([&$this, $method], $val);
         } else {
@@ -414,5 +413,4 @@ class Zend_Gdata_Query
             throw new Zend_Gdata_App_Exception('Property ' . $name . '  does not exist');
         }
     }
-
 }

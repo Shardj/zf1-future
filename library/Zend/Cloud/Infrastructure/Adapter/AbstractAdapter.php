@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -78,7 +79,7 @@ abstract class Zend_Cloud_Infrastructure_Adapter_AbstractAdapter implements Zend
         }
 
         $num = 0;
-        while (($num<$timeout) && ($this->statusInstance($id) != $status)) {
+        while (($num < $timeout) && ($this->statusInstance($id) != $status)) {
             sleep(self::TIME_STEP_STATUS_CHANGE);
             $num += self::TIME_STEP_STATUS_CHANGE;
         }
@@ -129,8 +130,11 @@ abstract class Zend_Cloud_Infrastructure_Adapter_AbstractAdapter implements Zend
         }
 
         $conn = ssh2_connect($host);
-        if (!ssh2_auth_password($conn, $params[Zend_Cloud_Infrastructure_Instance::SSH_USERNAME],
-                $params[Zend_Cloud_Infrastructure_Instance::SSH_PASSWORD])) {
+        if (!ssh2_auth_password(
+            $conn,
+            $params[Zend_Cloud_Infrastructure_Instance::SSH_USERNAME],
+            $params[Zend_Cloud_Infrastructure_Instance::SSH_PASSWORD]
+        )) {
             require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception('SSH authentication failed');
         }

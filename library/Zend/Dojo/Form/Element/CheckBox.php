@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -203,4 +204,3 @@ class Zend_Dojo_Form_Element_CheckBox extends Zend_Dojo_Form_Element_Dijit
         return $this->checked;
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,7 +35,6 @@ require_once 'Zend/Auth/Adapter/Interface.php';
  */
 class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
 {
-
     /**
      * The Zend_Ldap context.
      *
@@ -230,8 +230,9 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
     {
         $options = $this->getLdap()->getOptions();
         $name = $options['accountDomainName'];
-        if (!$name)
+        if (!$name) {
             $name = $options['accountDomainNameShort'];
+        }
         return $name ? $name : '';
     }
 
@@ -279,7 +280,6 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
          * credentials against it.
          */
         foreach ($this->_options as $name => $options) {
-
             if (!is_array($options)) {
                 /**
                  * @see Zend_Auth_Adapter_Exception
@@ -291,8 +291,9 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
             $dname = '';
 
             try {
-                if ($messages[1])
+                if ($messages[1]) {
                     $messages[] = $messages[1];
+                }
                 $messages[1] = '';
                 $messages[] = $this->_optionsToString($options);
 
@@ -344,7 +345,6 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
                     $failedAuthorities[$dname] = $groupResult;
                 }
             } catch (Zend_Ldap_Exception $zle) {
-
                 /* LDAP based authentication is notoriously difficult to diagnose. Therefore
                  * we bend over backwards to capture and record every possible bit of
                  * information when something goes wrong.
@@ -359,11 +359,11 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
                      * server options.
                      */
                     continue;
-                } else if ($err == Zend_Ldap_Exception::LDAP_NO_SUCH_OBJECT) {
+                } elseif ($err == Zend_Ldap_Exception::LDAP_NO_SUCH_OBJECT) {
                     $code = Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND;
                     $messages[0] = "Account not found: $username";
                     $failedAuthorities[$dname] = $zle->getMessage();
-                } else if ($err == Zend_Ldap_Exception::LDAP_INVALID_CREDENTIALS) {
+                } elseif ($err == Zend_Ldap_Exception::LDAP_INVALID_CREDENTIALS) {
                     $code = Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
                     $messages[0] = 'Invalid credentials';
                     $failedAuthorities[$dname] = $zle->getMessage();
@@ -371,10 +371,10 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
                     $line = $zle->getLine();
                     $messages[] = $zle->getFile() . "($line): " . $zle->getMessage();
                     $messages[] = preg_replace(
-						'/\b'.preg_quote(substr($password, 0, 15), '/').'\b/',
-						'*****',
-						$zle->getTraceAsString()
-					);
+                        '/\b' . preg_quote(substr($password, 0, 15), '/') . '\b/',
+                        '*****',
+                        $zle->getTraceAsString()
+                    );
                     $messages[0] = 'An unexpected failure occurred';
                 }
                 $messages[1] = $zle->getMessage();
@@ -414,7 +414,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
                         $value = (int)$value;
                         if (in_array($value, [Zend_Ldap::SEARCH_SCOPE_BASE,
                                 Zend_Ldap::SEARCH_SCOPE_ONE, Zend_Ldap::SEARCH_SCOPE_SUB], true)) {
-                           $adapterOptions[$key] = $value;
+                            $adapterOptions[$key] = $value;
                         }
                         break;
                     case 'memberIsDn':
@@ -520,10 +520,12 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
     {
         $str = '';
         foreach ($options as $key => $val) {
-            if ($key === 'password')
+            if ($key === 'password') {
                 $val = '*****';
-            if ($str)
+            }
+            if ($str) {
                 $str .= ',';
+            }
             $str .= $key . '=' . $val;
         }
         return $str;

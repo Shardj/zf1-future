@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -93,8 +94,7 @@ class Zend_Tool_Project_Provider_Layout extends Zend_Tool_Project_Provider_Abstr
                 $this->_registry->getResponse()->appendContent(
                     'A default layout has been created at '
                     . $layoutScriptFile->getPath()
-                    );
-
+                );
             }
 
             $this->_storeProfile();
@@ -116,7 +116,6 @@ class Zend_Tool_Project_Provider_Layout extends Zend_Tool_Project_Provider_Abstr
         if ($this->_registry->getRequest()->isPretend()) {
             $this->_registry->getResponse()->appendContent('Would remove "resources.layout.layoutPath" key from the application config file.');
         } else {
-
             // Remove the resources.layout.layoutPath directive from application config
             $applicationConfigResource->removeStringItem('resources.layout.layoutPath', $this->_layoutPath, 'production', false);
             $applicationConfigResource->create();
@@ -126,7 +125,7 @@ class Zend_Tool_Project_Provider_Layout extends Zend_Tool_Project_Provider_Abstr
 
             $this->_storeProfile();
         }
-     }
+    }
 
     protected function _getApplicationConfigResource(Zend_Tool_Project_Profile $profile)
     {

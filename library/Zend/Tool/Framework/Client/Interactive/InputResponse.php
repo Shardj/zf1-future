@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,6 @@
  */
 class Zend_Tool_Framework_Client_Interactive_InputResponse
 {
-
     protected $_content = null;
 
     public function __construct($content = null)
@@ -47,6 +47,4 @@ class Zend_Tool_Framework_Client_Interactive_InputResponse
     {
         return $this->_content;
     }
-
-
 }

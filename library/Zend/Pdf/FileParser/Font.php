@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -115,10 +116,11 @@ abstract class Zend_Pdf_FileParser_Font extends Zend_Pdf_FileParser
      * @return string
      * @throws Zend_Pdf_Exception
      */
-    public function readStringUTF16($byteCount,
-                                    $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN,
-                                    $characterSet = '')
-    {
+    public function readStringUTF16(
+        $byteCount,
+        $byteOrder = Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN,
+        $characterSet = ''
+    ) {
         return parent::readStringUTF16($byteCount, $byteOrder, 'UTF-16BE');
     }
 

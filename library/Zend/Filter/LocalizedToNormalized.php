@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -99,10 +100,10 @@ class Zend_Filter_LocalizedToNormalized implements Zend_Filter_Interface
     {
         if (Zend_Locale_Format::isNumber($value, $this->_options)) {
             return Zend_Locale_Format::getNumber($value, $this->_options);
-        } else if (($this->_options['date_format'] === null) && (strpos($value, ':') !== false)) {
+        } elseif (($this->_options['date_format'] === null) && (strpos($value, ':') !== false)) {
             // Special case, no date format specified, detect time input
             return Zend_Locale_Format::getTime($value, $this->_options);
-        } else if (Zend_Locale_Format::checkDateFormat($value, $this->_options)) {
+        } elseif (Zend_Locale_Format::checkDateFormat($value, $this->_options)) {
             // Detect date or time input
             return Zend_Locale_Format::getDate($value, $this->_options);
         }

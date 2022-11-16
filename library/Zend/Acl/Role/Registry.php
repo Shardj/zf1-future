@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Acl_Role_Interface
@@ -267,5 +267,4 @@ class Zend_Acl_Role_Registry
     {
         return $this->_roles;
     }
-
 }

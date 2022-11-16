@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -66,7 +67,7 @@ class Zend_View_Helper_Form extends Zend_View_Helper_FormElement
             unset($attribs['action']);
         }
 
-        if ( array_key_exists('name', $attribs) && empty($attribs['id'])) {
+        if (array_key_exists('name', $attribs) && empty($attribs['id'])) {
             unset($attribs['id']);
         }
 

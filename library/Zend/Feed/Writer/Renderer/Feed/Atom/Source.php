@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,18 +28,15 @@ require_once 'Zend/Feed/Writer/Renderer/Feed/Atom/AtomAbstract.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Writer_Renderer_Feed_Atom_Source
-    extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
-    implements Zend_Feed_Writer_Renderer_RendererInterface
+class Zend_Feed_Writer_Renderer_Feed_Atom_Source extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract implements Zend_Feed_Writer_Renderer_RendererInterface
 {
-
     /**
      * Constructor
      *
      * @param  Zend_Feed_Writer_Feed_Source $container
      * @return void
      */
-    public function __construct (Zend_Feed_Writer_Source $container)
+    public function __construct(Zend_Feed_Writer_Source $container)
     {
         parent::__construct($container);
     }
@@ -90,7 +88,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_Source
      */
     protected function _setGenerator(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getGenerator()) {
+        if (!$this->getDataContainer()->getGenerator()) {
             return;
         }
 
@@ -106,5 +104,4 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_Source
             $generator->setAttribute('version', $gdata['version']);
         }
     }
-
 }

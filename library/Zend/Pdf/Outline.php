@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -279,11 +280,13 @@ abstract class Zend_Pdf_Outline implements RecursiveIterator, Countable
      * @param SplObjectStorage $processedOutlines  List of already processed outlines
      * @return Zend_Pdf_Element
      */
-    abstract public function dumpOutline(Zend_Pdf_ElementFactory_Interface $factory,
-                                                                           $updateNavigation,
-                                                          Zend_Pdf_Element $parent,
-                                                          Zend_Pdf_Element $prev = null,
-                                                          SplObjectStorage $processedOutlines = null);
+    abstract public function dumpOutline(
+        Zend_Pdf_ElementFactory_Interface $factory,
+        $updateNavigation,
+        Zend_Pdf_Element $parent,
+        Zend_Pdf_Element $prev = null,
+        SplObjectStorage $processedOutlines = null
+    );
 
 
     ////////////////////////////////////////////////////////////////////////

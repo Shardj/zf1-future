@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
  */
 class Zend_Tool_Project_Context_Zf_CacheDirectory extends Zend_Tool_Project_Context_Filesystem_Directory
 {
-
     /**
      * @var string
      */
@@ -53,5 +53,4 @@ class Zend_Tool_Project_Context_Zf_CacheDirectory extends Zend_Tool_Project_Cont
     {
         return 'CacheDirectory';
     }
-
 }

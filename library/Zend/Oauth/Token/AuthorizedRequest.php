@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -54,7 +55,7 @@ class Zend_Oauth_Token_AuthorizedRequest extends Zend_Oauth_Token
         if ($utility !== null) {
             $this->_httpUtility = $utility;
         } else {
-            $this->_httpUtility = new Zend_Oauth_Http_Utility;
+            $this->_httpUtility = new Zend_Oauth_Http_Utility();
         }
     }
 

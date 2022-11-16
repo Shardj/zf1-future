@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mail_Storage_Folder
@@ -162,7 +162,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
                     array_push($folderStack, $parentFolder);
                     $parentFolder = $folder;
                     break;
-                } else if ($stack) {
+                } elseif ($stack) {
                     $parent = array_pop($stack);
                     $parentFolder = array_pop($folderStack);
                 }
@@ -232,7 +232,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
 
         try {
             $this->_openMaildir($this->_rootdir . '.' . $folder->getGlobalName());
-        } catch(Zend_Mail_Storage_Exception $e) {
+        } catch (Zend_Mail_Storage_Exception $e) {
             // check what went wrong
             if (!$folder->isSelectable()) {
                 /**

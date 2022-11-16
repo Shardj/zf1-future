@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Amf_Value_Messaging_AbstractMessage */
 require_once 'Zend/Amf/Value/Messaging/AbstractMessage.php';

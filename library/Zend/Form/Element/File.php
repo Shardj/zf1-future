@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -155,7 +156,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
         }
 
         if (empty($type)) {
-            $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
+            $nsSeparator = (false !== strpos($prefix, '\\')) ? '\\' : '_';
             $pluginPrefix = rtrim($prefix, $nsSeparator) . $nsSeparator . 'Transfer' . $nsSeparator . 'Adapter';
             $pluginPath   = rtrim($path, DIRECTORY_SEPARATOR) . '/Transfer/Adapter/';
             $loader       = $this->getPluginLoader(self::TRANSFER_ADAPTER);
@@ -182,7 +183,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
         } elseif (is_string($adapter)) {
             $loader = $this->getPluginLoader(self::TRANSFER_ADAPTER);
             $class  = $loader->load($adapter);
-            $this->_adapter = new $class;
+            $this->_adapter = new $class();
         } else {
             require_once 'Zend/Form/Element/Exception.php';
             throw new Zend_Form_Element_Exception('Invalid adapter specified');
@@ -441,7 +442,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
             }
         }
 
-        if($adapter->isValid($this->getName())) {
+        if ($adapter->isValid($this->getName())) {
             $this->_validated = true;
             return true;
         }
@@ -562,12 +563,12 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function setMultiFile($count)
     {
-        if ((integer) $count < 2) {
+        if ((int) $count < 2) {
             $this->setIsArray(false);
             $this->_counter = 1;
         } else {
             $this->setIsArray(true);
-            $this->_counter = (integer) $count;
+            $this->_counter = (int) $count;
         }
 
         return $this;
@@ -643,27 +644,27 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     {
         if (!is_numeric($setting)) {
             $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $setting = (int) substr($setting, 0, -1);
 
             switch ($type) {
-                case 'K' :
+                case 'K':
                     $setting *= 1024;
                     break;
 
-                case 'M' :
+                case 'M':
                     $setting *= 1024 * 1024;
                     break;
 
-                case 'G' :
+                case 'G':
                     $setting *= 1024 * 1024 * 1024;
                     break;
 
-                default :
+                default:
                     break;
             }
         }
 
-        return (integer) $setting;
+        return (int) $setting;
     }
 
     /**

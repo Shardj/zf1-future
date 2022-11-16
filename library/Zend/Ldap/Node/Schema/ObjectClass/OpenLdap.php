@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -39,8 +40,7 @@ require_once 'Zend/Ldap/Node/Schema/ObjectClass/Interface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_Item
-    implements Zend_Ldap_Node_Schema_ObjectClass_Interface
+class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_Item implements Zend_Ldap_Node_Schema_ObjectClass_Interface
 {
     /**
      * All inherited "MUST" attributes
@@ -143,9 +143,9 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
     {
         if ($this->structural) {
             return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_STRUCTURAL;
-        } else if ($this->abstract) {
+        } elseif ($this->abstract) {
             return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_ABSTRACT;
-        } else if ($this->auxiliary) {
+        } elseif ($this->auxiliary) {
             return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_AUXILIARY;
         } else {
             return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_UNKNOWN;

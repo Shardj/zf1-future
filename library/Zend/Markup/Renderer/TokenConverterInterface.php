@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,7 +32,6 @@
  */
 interface Zend_Markup_Renderer_TokenConverterInterface
 {
-
     /**
      * Convert the token
      *

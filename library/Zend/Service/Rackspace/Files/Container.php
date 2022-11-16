@@ -198,7 +198,7 @@ class Zend_Service_Rackspace_Files_Container
             if (empty($key)) {
                 return $result['metadata'];
             } else {
-                if (isset ($result['metadata'][$key])) {
+                if (isset($result['metadata'][$key])) {
                     return $result['metadata'][$key];
                 }
             }
@@ -257,7 +257,10 @@ class Zend_Service_Rackspace_Files_Container
     public function addObject($name, $file, $metadata = [])
     {
         return $this->service->storeObject(
-            $this->getName(), $name, $file, $metadata
+            $this->getName(),
+            $name,
+            $file,
+            $metadata
         );
     }
 
@@ -285,10 +288,12 @@ class Zend_Service_Rackspace_Files_Container
      * @return bool
      */
     public function copyObject(
-        $obj_source, $container_dest, $obj_dest, $metadata = [],
+        $obj_source,
+        $container_dest,
+        $obj_dest,
+        $metadata = [],
         $content_type = null
-    )
-    {
+    ) {
         return $this->service->copyObject(
             $this->getName(),
             $obj_source,
@@ -322,7 +327,9 @@ class Zend_Service_Rackspace_Files_Container
     public function setMetadataObject($object, $metadata = [])
     {
         return $this->service->setMetadataObject(
-            $this->getName(), $object, $metadata
+            $this->getName(),
+            $object,
+            $metadata
         );
     }
 
@@ -373,7 +380,10 @@ class Zend_Service_Rackspace_Files_Container
     public function enableLogCdn()
     {
         $result = $this->service->updateCdnContainer(
-            $this->getName(), null, null, true
+            $this->getName(),
+            null,
+            null,
+            true
         );
 
         return ($result !== false);
@@ -387,7 +397,10 @@ class Zend_Service_Rackspace_Files_Container
     public function disableLogCdn()
     {
         $result = $this->service->updateCdnContainer(
-            $this->getName(), null, null, false
+            $this->getName(),
+            null,
+            null,
+            false
         );
 
         return ($result !== false);

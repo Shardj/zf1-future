@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Db_Adapter_Pdo_Abstract
  */
@@ -38,7 +38,6 @@ require_once 'Zend/Db/Adapter/Pdo/Abstract.php';
  */
 class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
 {
-
     /**
      * PDO type.
      *
@@ -168,9 +167,9 @@ class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
                 LEFT OUTER JOIN pg_constraint AS co ON (co.conrelid = c.oid
                     AND a.attnum = ANY(co.conkey) AND co.contype = 'p')
                 LEFT OUTER JOIN pg_attrdef AS d ON d.adrelid = c.oid AND d.adnum = a.attnum
-            WHERE a.attnum > 0 AND c.relname = ".$this->quote($tableName);
+            WHERE a.attnum > 0 AND c.relname = " . $this->quote($tableName);
         if ($schemaName) {
-            $sql .= " AND n.nspname = ".$this->quote($schemaName);
+            $sql .= " AND n.nspname = " . $this->quote($schemaName);
         }
         $sql .= ' ORDER BY a.attnum';
 
@@ -195,7 +194,7 @@ class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
         $desc = [];
         foreach ($result as $key => $row) {
             $defaultValue = $row[$default_value];
-            if ($row[$type] == 'varchar' || $row[$type] == 'bpchar' ) {
+            if ($row[$type] == 'varchar' || $row[$type] == 'bpchar') {
                 if (preg_match('/character(?: varying)?(?:\((\d+)\))?/', $row[$complete_type] ?? "", $matches)) {
                     if (isset($matches[1])) {
                         $row[$length] = $matches[1];
@@ -334,5 +333,4 @@ class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
         }
         return $this->_connection->lastInsertId($tableName);
     }
-
 }

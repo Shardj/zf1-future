@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -30,9 +31,7 @@ require_once 'Zend/Feed/Writer/Renderer/RendererAbstract.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Writer_Renderer_Entry_Atom_Deleted
-    extends Zend_Feed_Writer_Renderer_RendererAbstract
-    implements Zend_Feed_Writer_Renderer_RendererInterface
+class Zend_Feed_Writer_Renderer_Entry_Atom_Deleted extends Zend_Feed_Writer_Renderer_RendererAbstract implements Zend_Feed_Writer_Renderer_RendererInterface
 {
     /**
      * Constructor
@@ -40,7 +39,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom_Deleted
      * @param  Zend_Feed_Writer_Deleted $container
      * @return void
      */
-    public function __construct (Zend_Feed_Writer_Deleted $container)
+    public function __construct(Zend_Feed_Writer_Deleted $container)
     {
         parent::__construct($container);
     }
@@ -75,7 +74,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom_Deleted
      */
     protected function _setComment(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getComment()) {
+        if (!$this->getDataContainer()->getComment()) {
             return;
         }
         $c = $dom->createElement('at:comment');
@@ -117,5 +116,4 @@ class Zend_Feed_Writer_Renderer_Entry_Atom_Deleted
             $uri->appendChild($text);
         }
     }
-
 }

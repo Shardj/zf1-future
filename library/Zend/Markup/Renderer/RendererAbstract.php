@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -246,7 +247,8 @@ abstract class Zend_Markup_Renderer_RendererAbstract
             if (empty($options['name'])) {
                 require_once 'Zend/Markup/Renderer/Exception.php';
                 throw new Zend_Markup_Renderer_Exception(
-                        'No alias was provided but tag was defined as such');
+                    'No alias was provided but tag was defined as such'
+                );
             }
 
             $this->_markups[$name] = [
@@ -421,7 +423,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
             if (!($markup['callback'] instanceof Zend_Markup_Renderer_TokenConverterInterface)) {
                 $class = $this->getPluginLoader()->load($name);
 
-                $markup['callback'] = new $class;
+                $markup['callback'] = new $class();
 
                 if (!($markup['callback'] instanceof Zend_Markup_Renderer_TokenConverterInterface)) {
                     require_once 'Zend/Markup/Renderer/Exception.php';
@@ -698,5 +700,4 @@ abstract class Zend_Markup_Renderer_RendererAbstract
      * @return void
      */
     abstract public function addDefaultFilters();
-
 }

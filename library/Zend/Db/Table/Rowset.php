@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Db_Table_Rowset_Abstract
  */

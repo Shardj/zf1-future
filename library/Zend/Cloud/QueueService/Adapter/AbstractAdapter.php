@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -32,8 +33,7 @@ require_once 'Zend/Cloud/QueueService/MessageSet.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Cloud_QueueService_Adapter_AbstractAdapter
-    implements Zend_Cloud_QueueService_Adapter
+abstract class Zend_Cloud_QueueService_Adapter_AbstractAdapter implements Zend_Cloud_QueueService_Adapter
 {
     /**@+ option keys */
     const MESSAGE_CLASS    = 'message_class';

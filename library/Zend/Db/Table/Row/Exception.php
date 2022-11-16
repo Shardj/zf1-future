@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,4 +36,3 @@ require_once 'Zend/Db/Table/Exception.php';
 class Zend_Db_Table_Row_Exception extends Zend_Db_Table_Exception
 {
 }
-

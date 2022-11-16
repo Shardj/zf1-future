@@ -20,7 +20,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Feed_Abstract
  */
@@ -83,7 +82,7 @@ class Zend_Feed_Rss extends Zend_Feed_Abstract
         $rdfTags = $this->_element->getElementsByTagNameNS('http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'RDF');
         if ($rdfTags->length != 0) {
             $this->_element = $rdfTags->item(0);
-        } else  {
+        } else {
             $this->_element = $this->_element->getElementsByTagName('channel')->item(0);
         }
         if (!$this->_element) {
@@ -453,9 +452,11 @@ class Zend_Feed_Rss extends Zend_Feed_Abstract
                 $item->appendChild($comments);
             }
             if (isset($dataentry->commentRss)) {
-                $comments = $this->_element->createElementNS('http://wellformedweb.org/CommentAPI/',
-                                                             'wfw:commentRss',
-                                                             $dataentry->commentRss);
+                $comments = $this->_element->createElementNS(
+                    'http://wellformedweb.org/CommentAPI/',
+                    'wfw:commentRss',
+                    $dataentry->commentRss
+                );
                 $item->appendChild($comments);
             }
 
@@ -486,8 +487,10 @@ class Zend_Feed_Rss extends Zend_Feed_Abstract
     public function saveXml()
     {
         // Return a complete document including XML prologue.
-        $doc = new DOMDocument($this->_element->ownerDocument->version,
-                               $this->_element->ownerDocument->actualEncoding);
+        $doc = new DOMDocument(
+            $this->_element->ownerDocument->version,
+            $this->_element->ownerDocument->actualEncoding
+        );
         $root = $doc->createElement('rss');
 
         // Use rss version 2.0
@@ -526,5 +529,4 @@ class Zend_Feed_Rss extends Zend_Feed_Abstract
 
         echo $this->saveXml();
     }
-
 }

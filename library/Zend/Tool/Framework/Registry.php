@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -415,5 +416,4 @@ class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Inter
         $object->setRegistry($this);
         return $this;
     }
-
 }

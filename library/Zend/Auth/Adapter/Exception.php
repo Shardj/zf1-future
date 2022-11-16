@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_Auth_Exception
  */
@@ -35,4 +35,5 @@ require_once 'Zend/Auth/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Auth_Adapter_Exception extends Zend_Auth_Exception
-{}
+{
+}

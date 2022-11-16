@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Exception
  */
@@ -35,5 +35,5 @@ require_once 'Zend/Mail/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Mail_Protocol_Exception extends Zend_Mail_Exception
-{}
-
+{
+}

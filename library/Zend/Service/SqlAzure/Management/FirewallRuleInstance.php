@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,7 +38,7 @@ require_once 'Zend/Service/SqlAzure/Management/ServiceEntityAbstract.php';
  * @property string $EndIpAddress       The end IP address.
  */
 class Zend_Service_SqlAzure_Management_FirewallRuleInstance
-	extends Zend_Service_SqlAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_SqlAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
@@ -45,7 +46,7 @@ class Zend_Service_SqlAzure_Management_FirewallRuleInstance
      * @param string $name               The name of the firewall rule.
      * @param string $startIpAddress     The start IP address.
      * @param string $endIpAddress       The end IP address.
-	 */
+     */
     public function __construct($name, $startIpAddress, $endIpAddress)
     {
         $this->_data = [

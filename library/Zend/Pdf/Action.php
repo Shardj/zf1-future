@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 require_once 'Zend/Pdf/Element.php';
@@ -86,7 +86,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
                     $processedActions->attach($dictionary->Next);
                     $this->next[] = Zend_Pdf_Action::load($dictionary->Next, $processedActions);
                 }
-            } else if ($dictionary->Next instanceof Zend_Pdf_Element_Array) {
+            } elseif ($dictionary->Next instanceof Zend_Pdf_Element_Array) {
                 foreach ($dictionary->Next->items as $chainedActionDictionary) {
                     // Check if dictionary object is not already processed
                     if (!$processedActions->contains($chainedActionDictionary)) {
@@ -267,7 +267,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
         if (count($this->_originalNextList) != count($this->next)) {
             // If original and current children arrays have different size then children list was updated
             $childListUpdated = true;
-        } else if ( !(array_keys($this->_originalNextList) === array_keys($this->next)) ) {
+        } elseif (!(array_keys($this->_originalNextList) === array_keys($this->next))) {
             // If original and current children arrays have different keys (with a glance to an order) then children list was updated
             $childListUpdated = true;
         } else {
@@ -295,7 +295,6 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
                     require_once 'Zend/Pdf/Element/Array.php';
                     $pdfChildArray = new Zend_Pdf_Element_Array();
                     foreach ($this->next as $child) {
-
                         $pdfChildArray->items[] = $child->dumpAction($factory, $processedActions);
                     }
                     $this->_actionDictionary->Next = $pdfChildArray;

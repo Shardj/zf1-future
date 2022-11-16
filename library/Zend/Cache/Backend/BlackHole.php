@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,9 +37,7 @@ require_once 'Zend/Cache/Backend.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cache_Backend_BlackHole
-    extends Zend_Cache_Backend
-    implements Zend_Cache_Backend_ExtendedInterface
+class Zend_Cache_Backend_BlackHole extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
 {
     /**
      * Test if a cache is available for the given id and (if yes) return it (false else)

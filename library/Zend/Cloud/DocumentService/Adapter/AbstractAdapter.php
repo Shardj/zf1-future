@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -36,8 +37,7 @@ require_once 'Zend/Cloud/DocumentService/Query.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Cloud_DocumentService_Adapter_AbstractAdapter
-    implements Zend_Cloud_DocumentService_Adapter
+abstract class Zend_Cloud_DocumentService_Adapter_AbstractAdapter implements Zend_Cloud_DocumentService_Adapter
 {
     const DOCUMENT_CLASS    = 'document_class';
     const DOCUMENTSET_CLASS = 'documentset_class';

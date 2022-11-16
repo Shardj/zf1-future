@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -68,8 +69,10 @@ class Zend_Feed_Writer_Extension_ITunes_Renderer_Entry
      */
     protected function _appendNamespaces()
     {
-        $this->getRootElement()->setAttribute('xmlns:itunes',
-            'http://www.itunes.com/dtds/podcast-1.0.dtd');
+        $this->getRootElement()->setAttribute(
+            'xmlns:itunes',
+            'http://www.itunes.com/dtds/podcast-1.0.dtd'
+        );
     }
 
     /**

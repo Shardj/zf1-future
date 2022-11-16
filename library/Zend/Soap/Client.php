@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -196,7 +197,7 @@ class Zend_Soap_Client
      */
     public function setOptions($options)
     {
-        if($options instanceof Zend_Config) {
+        if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }
 
@@ -450,7 +451,6 @@ class Zend_Soap_Client
         }
 
         return true;
-
     }
 
     /**
@@ -813,7 +813,7 @@ class Zend_Soap_Client
      */
     public function setStreamContext($context)
     {
-        if(!is_resource($context) || get_resource_type($context) !== "stream-context") {
+        if (!is_resource($context) || get_resource_type($context) !== "stream-context") {
             /**
              * @see Zend_Soap_Client_Exception
              */
@@ -1152,11 +1152,13 @@ class Zend_Soap_Client
         $this->_lastMethod = $name;
 
         $soapHeaders = array_merge($this->_permanentSoapInputHeaders, $this->_soapInputHeaders);
-        $result = $soapClient->__soapCall($name,
-                                                 $this->_preProcessArguments($arguments),
-                                                 null, /* Options are already set to the SOAP client object */
-                                                 (count($soapHeaders) > 0)? $soapHeaders : null,
-                                                 $this->_soapOutputHeaders);
+        $result = $soapClient->__soapCall(
+            $name,
+            $this->_preProcessArguments($arguments),
+            null, /* Options are already set to the SOAP client object */
+            (count($soapHeaders) > 0) ? $soapHeaders : null,
+            $this->_soapOutputHeaders
+        );
 
         // Reset non-permanent input headers
         $this->_soapInputHeaders = [];
@@ -1233,7 +1235,7 @@ class Zend_Soap_Client
      * @param string $value
      * @return Zend_Soap_Client
      */
-    public function setCookie($cookieName, $cookieValue=null)
+    public function setCookie($cookieName, $cookieValue = null)
     {
         $soapClient = $this->getSoapClient();
         $soapClient->__setCookie($cookieName, $cookieValue);

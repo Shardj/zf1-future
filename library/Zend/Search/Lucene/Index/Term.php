@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -57,7 +58,7 @@ class Zend_Search_Lucene_Index_Term
      */
     public function __construct($text, $field = null)
     {
-        $this->field = ($field === null)?  Zend_Search_Lucene::getDefaultSearchField() : $field;
+        $this->field = ($field === null) ?  Zend_Search_Lucene::getDefaultSearchField() : $field;
         $this->text  = $text;
     }
 
@@ -91,9 +92,9 @@ class Zend_Search_Lucene_Index_Term
             if ((ord($str[$prefixBytes]) & 0xC0) == 0xC0) {
                 $charBytes++;
 
-                if (ord($str[$prefixBytes]) & 0x20 ) {
+                if (ord($str[$prefixBytes]) & 0x20) {
                     $charBytes++;
-                    if (ord($str[$prefixBytes]) & 0x10 ) {
+                    if (ord($str[$prefixBytes]) & 0x10) {
                         $charBytes++;
                     }
                 }
@@ -125,9 +126,9 @@ class Zend_Search_Lucene_Index_Term
             $charBytes = 1;
             if ((ord($str[$bytes]) & 0xC0) == 0xC0) {
                 $charBytes++;
-                if (ord($str[$bytes]) & 0x20 ) {
+                if (ord($str[$bytes]) & 0x20) {
                     $charBytes++;
-                    if (ord($str[$bytes]) & 0x10 ) {
+                    if (ord($str[$bytes]) & 0x10) {
                         $charBytes++;
                     }
                 }
@@ -145,4 +146,3 @@ class Zend_Search_Lucene_Index_Term
         return $chars;
     }
 }
-

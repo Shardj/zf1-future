@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -500,7 +501,7 @@ class Zend_Form_Decorator_FormErrors extends Zend_Form_Decorator_Abstract
                              .  $view->formErrors($messages, $this->getOptions())
                              .  $this->getMarkupListItemEnd();
                 }
-            } else if ($subitem instanceof Zend_Form && !$this->ignoreSubForms()) {
+            } elseif ($subitem instanceof Zend_Form && !$this->ignoreSubForms()) {
                 $markup = $this->_recurseForm($subitem, $view);
 
                 if (!empty($markup)) {

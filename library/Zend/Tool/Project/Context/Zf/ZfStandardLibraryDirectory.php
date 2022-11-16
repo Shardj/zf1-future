@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
  */
 class Zend_Tool_Project_Context_Zf_ZfStandardLibraryDirectory extends Zend_Tool_Project_Context_Filesystem_Directory
 {
-
     /**
      * @var string
      */
@@ -65,7 +65,7 @@ class Zend_Tool_Project_Context_Zf_ZfStandardLibraryDirectory extends Zend_Tool_
         if ($zfPath != false) {
             $zfIterator = new RecursiveDirectoryIterator($zfPath);
             foreach ($rii = new RecursiveIteratorIterator($zfIterator, RecursiveIteratorIterator::SELF_FIRST) as $file) {
-                $relativePath = preg_replace('#^'.preg_quote(realpath($zfPath), '#').'#', '', realpath($file->getPath())) . DIRECTORY_SEPARATOR . $file->getFilename();
+                $relativePath = preg_replace('#^' . preg_quote(realpath($zfPath), '#') . '#', '', realpath($file->getPath())) . DIRECTORY_SEPARATOR . $file->getFilename();
                 if (strpos($relativePath, DIRECTORY_SEPARATOR . '.') !== false) {
                     continue;
                 }
@@ -75,7 +75,6 @@ class Zend_Tool_Project_Context_Zf_ZfStandardLibraryDirectory extends Zend_Tool_
                 } else {
                     copy($file->getPathname(), $this->getBaseDirectory() . DIRECTORY_SEPARATOR . $this->getFilesystemName() . $relativePath);
                 }
-
             }
         }
     }
@@ -100,5 +99,4 @@ class Zend_Tool_Project_Context_Zf_ZfStandardLibraryDirectory extends Zend_Tool_
 
         return false;
     }
-
 }

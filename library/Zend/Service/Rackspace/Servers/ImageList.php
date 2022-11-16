@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,13 +57,13 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      * @param  array $list
      * @return void
      */
-    public function __construct($service,$list = [])
+    public function __construct($service, $list = [])
     {
         if (!($service instanceof Zend_Service_Rackspace_Servers) || !is_array($list)) {
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception("You must pass a Zend_Service_Rackspace_Servers object and an array");
         }
-        $this->service= $service;
+        $this->service = $service;
         $this->constructFromArray($list);
     }
     /**
@@ -74,7 +75,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
     private function constructFromArray(array $list)
     {
         foreach ($list as $image) {
-            $this->addImage(new Zend_Service_Rackspace_Servers_Image($this->service,$image));
+            $this->addImage(new Zend_Service_Rackspace_Servers_Image($this->service, $image));
         }
     }
     /**
@@ -83,7 +84,7 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      * @param  Zend_Service_Rackspace_Servers_Image $image
      * @return Zend_Service_Rackspace_Servers_ImageList
      */
-    protected function addImage (Zend_Service_Rackspace_Servers_Image $image)
+    protected function addImage(Zend_Service_Rackspace_Servers_Image $image)
     {
         $this->images[] = $image;
         return $this;
@@ -95,9 +96,9 @@ class Zend_Service_Rackspace_Servers_ImageList implements Countable, Iterator, A
      */
     public function toArray()
     {
-        $array= [];
+        $array = [];
         foreach ($this->images as $image) {
-            $array[]= $image->toArray();
+            $array[] = $image->toArray();
         }
         return $array;
     }

@@ -35,10 +35,8 @@ require_once 'Zend/Gdata/App/Extension/Category.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Gdata_Books_Extension_BooksCategory extends
-    Zend_Gdata_App_Extension_Category
+class Zend_Gdata_Books_Extension_BooksCategory extends Zend_Gdata_App_Extension_Category
 {
-
     /**
      * Constructor for Zend_Gdata_Books_Extension_BooksCategory which
      * Describes a books category
@@ -55,5 +53,4 @@ class Zend_Gdata_Books_Extension_BooksCategory extends
         $this->registerAllNamespaces(Zend_Gdata_Books::$namespaces);
         parent::__construct($term, $scheme, $label);
     }
-
 }

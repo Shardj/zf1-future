@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -59,7 +60,7 @@ class Zend_Amf_Value_TraitsInfo
      * @param  boolean $properties
      * @return void
      */
-    public function __construct($className, $dynamic=false, $externalizable=false, $properties=null)
+    public function __construct($className, $dynamic = false, $externalizable = false, $properties = null)
     {
         $this->_className      = $className;
         $this->_dynamic        = $dynamic;

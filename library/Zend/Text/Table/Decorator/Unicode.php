@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -155,14 +156,14 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
     {
         if ($code <= 0x7F) {
             $char = chr($code);
-        } else if ($code <= 0x7FF) {
+        } elseif ($code <= 0x7FF) {
             $char = chr(0xC0 | $code >> 6)
                   . chr(0x80 | $code & 0x3F);
-        } else if ($code <= 0xFFFF) {
+        } elseif ($code <= 0xFFFF) {
             $char =  chr(0xE0 | $code >> 12)
                   . chr(0x80 | $code >> 6 & 0x3F)
                   . chr(0x80 | $code & 0x3F);
-        } else if ($code <= 0x10FFFF) {
+        } elseif ($code <= 0x10FFFF) {
             $char =  chr(0xF0 | $code >> 18)
                   . chr(0x80 | $code >> 12 & 0x3F)
                   . chr(0x80 | $code >> 6 & 0x3F)

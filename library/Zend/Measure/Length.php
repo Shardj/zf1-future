@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -403,7 +404,7 @@ class Zend_Measure_Length extends Zend_Measure_Abstract
         'CITY_BLOCK_US_SOUTH' => ['160.9344',     'block'],
         'CLICK'           => ['1000',             'click'],
         'CUADRA'          => ['84',               'cuadra'],
-        'CUADRA_ARGENTINA'=> ['130',              'cuadra'],
+        'CUADRA_ARGENTINA' => ['130',              'cuadra'],
         'Length:CUBIT_EGYPT'      => ['0.45',             'cubit'],
         'CUBIT_ROYAL'     => ['0.5235',           'cubit'],
         'CUBIT_UK'        => ['0.4572',           'cubit'],
@@ -425,7 +426,7 @@ class Zend_Measure_Length extends Zend_Measure_Abstract
         'ELLE'            => ['0.6',              'ellen'],
         'ELLE_VIENNA'     => ['0.7793',           'ellen'],
         'EM'              => ['0.0042175176',     'em'],
-        'ESTADIO_PORTUGAL'=> ['261',              'estadio'],
+        'ESTADIO_PORTUGAL' => ['261',              'estadio'],
         'ESTADIO'         => ['174',              'estadio'],
         'EXAMETER'        => ['1.0e+18',          'Em'],
         'FADEN_AUSTRIA'   => ['1.8965',           'faden'],
@@ -494,7 +495,7 @@ class Zend_Measure_Length extends Zend_Measure_Abstract
         'LAP_POOL'        => ['100',              'lap'],
         'LEAGUE_ANCIENT'  => ['2275',             'league'],
         'LEAGUE_NAUTIC'   => ['5556',             'league'],
-        'LEAGUE_UK_NAUTIC'=> ['5559.552',         'league'],
+        'LEAGUE_UK_NAUTIC' => ['5559.552',         'league'],
         'LEAGUE'          => ['4828',             'league'],
         'LEAGUE_US'       => ['4828.0417',        'league'],
         'LEAP'            => ['2.0574',           'leap'],
@@ -572,7 +573,7 @@ class Zend_Measure_Length extends Zend_Measure_Abstract
         'PALM_DUTCH'      => ['0.10',             'palm'],
         'PALM_UK'         => ['0.075',            'palm'],
         'PALM'            => ['0.2286',           'palm'],
-        'PALMO_PORTUGUESE'=> ['0.22',             'palmo'],
+        'PALMO_PORTUGUESE' => ['0.22',             'palmo'],
         'PALMO'           => ['0.20',             'palmo'],
         'PALMO_US'        => ['0.2117',           'palmo'],
         'PARASANG'        => ['6000',             'parasang'],

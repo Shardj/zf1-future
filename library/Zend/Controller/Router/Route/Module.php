@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Controller/Router/Route/Abstract.php';
  */
 class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_Abstract
 {
-
     /**
      * Default values for the route (ie. module, controller, action, params)
      *
@@ -119,8 +119,7 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
         array $defaults = [],
         Zend_Controller_Dispatcher_Interface $dispatcher = null,
         Zend_Controller_Request_Abstract $request = null
-    )
-    {
+    ) {
         $this->_defaults = $defaults;
 
         if (isset($request)) {

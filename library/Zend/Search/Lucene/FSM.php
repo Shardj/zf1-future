@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -232,7 +233,7 @@ abstract class Zend_Search_Lucene_FSM
     public function addRules($rules)
     {
         foreach ($rules as $rule) {
-            $this->addRule($rule[0], $rule[1], $rule[2], isset($rule[3])?$rule[3]:null);
+            $this->addRule($rule[0], $rule[1], $rule[2], isset($rule[3]) ? $rule[3] : null);
         }
     }
 
@@ -265,7 +266,7 @@ abstract class Zend_Search_Lucene_FSM
         }
         if (isset($this->_rules[$sourceState][$input])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Rule for {state,input} pair (' . $sourceState . ', '. $input . ') is already defined.');
+            throw new Zend_Search_Exception('Rule for {state,input} pair (' . $sourceState . ', ' . $input . ') is already defined.');
         }
 
         $this->_rules[$sourceState][$input] = $targetState;
@@ -289,7 +290,7 @@ abstract class Zend_Search_Lucene_FSM
     {
         if (!isset($this->_states[$state])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined state (' . $state. ').');
+            throw new Zend_Search_Exception('Undefined state (' . $state . ').');
         }
 
         if (!isset($this->_entryActions[$state])) {
@@ -311,7 +312,7 @@ abstract class Zend_Search_Lucene_FSM
     {
         if (!isset($this->_states[$state])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined state (' . $state. ').');
+            throw new Zend_Search_Exception('Undefined state (' . $state . ').');
         }
 
         if (!isset($this->_exitActions[$state])) {
@@ -334,11 +335,11 @@ abstract class Zend_Search_Lucene_FSM
     {
         if (!isset($this->_states[$state])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined state (' . $state. ').');
+            throw new Zend_Search_Exception('Undefined state (' . $state . ').');
         }
         if (!isset($this->_inputAphabet[$inputSymbol])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined input symbol (' . $inputSymbol. ').');
+            throw new Zend_Search_Exception('Undefined input symbol (' . $inputSymbol . ').');
         }
 
         if (!isset($this->_inputActions[$state])) {
@@ -364,11 +365,11 @@ abstract class Zend_Search_Lucene_FSM
     {
         if (!isset($this->_states[$sourceState])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined source state (' . $sourceState. ').');
+            throw new Zend_Search_Exception('Undefined source state (' . $sourceState . ').');
         }
         if (!isset($this->_states[$targetState])) {
             require_once 'Zend/Search/Exception.php';
-            throw new Zend_Search_Exception('Undefined source state (' . $targetState. ').');
+            throw new Zend_Search_Exception('Undefined source state (' . $targetState . ').');
         }
 
         if (!isset($this->_transitionActions[$sourceState])) {

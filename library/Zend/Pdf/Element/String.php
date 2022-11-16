@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_Element */
 require_once 'Zend/Pdf/Element.php';
@@ -259,5 +259,4 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
 
         return implode($outEntries);
     }
-
 }

@@ -200,7 +200,7 @@ class Zend_Service_Amazon
      */
     public function getRestClient()
     {
-        if($this->_rest === null) {
+        if ($this->_rest === null) {
             $this->_rest = new Zend_Rest_Client();
         }
         return $this->_rest;
@@ -246,8 +246,9 @@ class Zend_Service_Amazon
 
         $options = array_merge($defaultOptions, $options);
 
-        if($this->_secretKey !== null) {
-            $options['Timestamp'] = gmdate("Y-m-d\TH:i:s\Z");;
+        if ($this->_secretKey !== null) {
+            $options['Timestamp'] = gmdate("Y-m-d\TH:i:s\Z");
+            ;
             ksort($options);
             $options['Signature'] = self::computeSignature($this->_baseUri, $this->_secretKey, $options);
         }
@@ -263,7 +264,7 @@ class Zend_Service_Amazon
      * @param  array $options
      * @return string
      */
-    static public function computeSignature($baseUri, $secretKey, array $options)
+    public static function computeSignature($baseUri, $secretKey, array $options)
     {
         require_once "Zend/Crypt/Hmac.php";
 
@@ -280,15 +281,16 @@ class Zend_Service_Amazon
      * @param  array $options
      * @return string
      */
-    static public function buildRawSignature($baseUri, $options)
+    public static function buildRawSignature($baseUri, $options)
     {
         ksort($options);
         $params = [];
-        foreach($options AS $k => $v) {
-            $params[] = $k."=".rawurlencode($v);
+        foreach ($options as $k => $v) {
+            $params[] = $k . "=" . rawurlencode($v);
         }
 
-        return sprintf("GET\n%s\n/onca/xml\n%s",
+        return sprintf(
+            "GET\n%s\n/onca/xml\n%s",
             str_replace('http://', '', $baseUri),
             implode("&", $params)
         );
@@ -311,7 +313,7 @@ class Zend_Service_Amazon
             $code = $xpath->query('//az:Error/az:Code/text()')->item(0)->data;
             $message = $xpath->query('//az:Error/az:Message/text()')->item(0)->data;
 
-            switch($code) {
+            switch ($code) {
                 case 'AWS.ECommerceService.NoExactMatches':
                     break;
                 default:

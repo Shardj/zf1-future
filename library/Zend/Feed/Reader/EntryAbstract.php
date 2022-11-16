@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -235,7 +236,9 @@ abstract class Zend_Feed_Reader_EntryAbstract
             }
             $className = Zend_Feed_Reader::getPluginLoader()->getClassName($extension);
             $this->_extensions[$extension] = new $className(
-                $this->getElement(), $this->_entryKey, $this->_data['type']
+                $this->getElement(),
+                $this->_entryKey,
+                $this->_data['type']
             );
         }
     }

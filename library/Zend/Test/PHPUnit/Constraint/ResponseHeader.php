@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -24,15 +25,18 @@ if (version_compare(PHPUnit_Runner_Version::id(), '4.1', '>=')) {
     include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ResponseHeader41.php');
 
     class Zend_Test_PHPUnit_Constraint_ResponseHeader extends Zend_Test_PHPUnit_Constraint_ResponseHeader41
-    {}
+    {
+    }
 } elseif (version_compare(PHPUnit_Runner_Version::id(), '3.5', '>=')) {
     include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ResponseHeader37.php');
 
     class Zend_Test_PHPUnit_Constraint_ResponseHeader extends Zend_Test_PHPUnit_Constraint_ResponseHeader37
-    {}
+    {
+    }
 } else {
     include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ResponseHeader34.php');
 
     class Zend_Test_PHPUnit_Constraint_ResponseHeader extends Zend_Test_PHPUnit_Constraint_ResponseHeader34
-    {}
+    {
+    }
 }

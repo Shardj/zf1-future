@@ -51,7 +51,6 @@ require_once 'Zend/Gdata/Photos/PhotoEntry.php';
  */
 class Zend_Gdata_Photos_PhotoFeed extends Zend_Gdata_Feed
 {
-
     /**
      * gphoto:id element
      *
@@ -555,5 +554,4 @@ class Zend_Gdata_Photos_PhotoFeed extends Zend_Gdata_Feed
         $this->_mediaGroup = $value;
         return $this;
     }
-
 }

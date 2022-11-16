@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -75,7 +76,7 @@ class Zend_Tool_Framework_Client_Response
      * @param string $content
      * @return Zend_Tool_Framework_Client_Response
      */
-    public function setContent($content, Array $decoratorOptions = [])
+    public function setContent($content, array $decoratorOptions = [])
     {
         $content = $this->_applyDecorators($content, $decoratorOptions);
 
@@ -90,7 +91,7 @@ class Zend_Tool_Framework_Client_Response
      * @param string $content
      * @return Zend_Tool_Framework_Client_Response
      */
-    public function appendContent($content, Array $decoratorOptions = [])
+    public function appendContent($content, array $decoratorOptions = [])
     {
         $content = $this->_applyDecorators($content, $decoratorOptions);
 
@@ -110,7 +111,7 @@ class Zend_Tool_Framework_Client_Response
      * @param bool $mergeIntoExisting
      * @return Zend_Tool_Framework_Client_Response
      */
-    public function setDefaultDecoratorOptions(Array $decoratorOptions, $mergeIntoExisting = false)
+    public function setDefaultDecoratorOptions(array $decoratorOptions, $mergeIntoExisting = false)
     {
         if ($mergeIntoExisting == false) {
             $this->_defaultDecoratorOptions = [];
@@ -202,7 +203,7 @@ class Zend_Tool_Framework_Client_Response
      * @param array $decoratorOptions
      * @return string
      */
-    protected function _applyDecorators($content, Array $decoratorOptions)
+    protected function _applyDecorators($content, array $decoratorOptions)
     {
         $options = array_merge($this->_defaultDecoratorOptions, $decoratorOptions);
 
@@ -217,7 +218,5 @@ class Zend_Tool_Framework_Client_Response
         }
 
         return $content;
-
     }
-
 }

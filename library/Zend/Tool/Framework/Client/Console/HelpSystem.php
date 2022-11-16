@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 class Zend_Tool_Framework_Client_Console_HelpSystem
 {
-
     /**
      * @var Zend_Tool_Framework_Registry_Interface
      */
@@ -95,8 +95,8 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
             ->appendContent(' provider-name', array_merge(['color' => 'cyan'], $noSeparator))
             ->appendContent(' [--provider-opts]', $noSeparator)
             ->appendContent(' [provider parameters ...]')
-            ->appendContent('    Note: You may use "?" in any place of the above usage string to ask for more specific help information.', ['color'=>'yellow'])
-            ->appendContent('    Example: "zf ? version" will list all available actions for the version provider.', ['color'=>'yellow', 'separator' => 2])
+            ->appendContent('    Note: You may use "?" in any place of the above usage string to ask for more specific help information.', ['color' => 'yellow'])
+            ->appendContent('    Example: "zf ? version" will list all available actions for the version provider.', ['color' => 'yellow', 'separator' => 2])
             ->appendContent('Providers and their actions:', ['color' => 'green']);
 
         $this->_respondWithSystemInformation();
@@ -130,7 +130,7 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
         $this->_response->appendContent(
             'Details for action "' . $actionName . '" and provider "' . $providerName . '"',
             ['color' => 'green']
-            );
+        );
         $this->_respondWithSystemInformation($providerName, $actionName, true);
         return $this;
     }
@@ -207,14 +207,12 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
         }
 
         foreach ($displayProviderMetadatas as $providerMetadata) {
-
             $providerNameDisplayed = false;
 
             $providerName = $providerMetadata->getProviderName();
             $providerSignature = $providerMetadata->getReference();
 
             foreach ($providerSignature->getActions() as $actionInfo) {
-
                 $actionName = $actionInfo->getName();
 
                 // check to see if this action name is valid
@@ -251,7 +249,6 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
                     ]);
 
                 if ($actionableGlobalLongParamMetadata) {
-
                     if (!$providerNameDisplayed) {
                         $this->_respondWithProviderName($providerMetadata);
                         $providerNameDisplayed = true;
@@ -273,9 +270,7 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
                 }
 
                 if ($includeAllSpecialties || $isSingleSpecialProviderAction) {
-
                     foreach ($providerSignature->getSpecialties() as $specialtyName) {
-
                         if ($specialtyName == '_Global') {
                             continue;
                         }
@@ -297,10 +292,9 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
                             'clientName'    => 'console'
                             ]);
 
-                        if($actionableSpecialtyLongMetadata) {
+                        if ($actionableSpecialtyLongMetadata) {
                             $this->_respondWithCommand($providerMetadata, $actionMetadata, $specialtyMetadata, $actionableSpecialtyLongMetadata);
                         }
-
                     }
                 }
 
@@ -312,10 +306,9 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
                     $this->_response->appendContent(
                         'zf ' . $actionMetadata->getValue() . ' ' . $providerMetadata->getValue() . '.?',
                         ['color' => 'cyan', 'separator' => false]
-                        );
+                    );
                     $this->_response->appendContent(' to get specific help on them.', ['color' => 'yellow']);
                 }
-
             }
 
             if ($providerNameDisplayed) {
@@ -350,13 +343,13 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
         Zend_Tool_Framework_Metadata_Tool $providerMetadata,
         Zend_Tool_Framework_Metadata_Tool $actionMetadata,
         Zend_Tool_Framework_Metadata_Tool $specialtyMetadata,
-        Zend_Tool_Framework_Metadata_Tool $parameterLongMetadata)//,
+        Zend_Tool_Framework_Metadata_Tool $parameterLongMetadata
+    ) {//,
         //Zend_Tool_Framework_Metadata_Tool $parameterShortMetadata)
-    {
         $this->_response->appendContent(
             '    zf ' . $actionMetadata->getValue() . ' ' . $providerMetadata->getValue(),
             ['color' => 'cyan', 'separator' => false]
-            );
+        );
 
         if ($specialtyMetadata->getSpecialtyName() != '_Global') {
             $this->_response->appendContent('.' . $specialtyMetadata->getValue(), ['color' => 'cyan', 'separator' => false]);
@@ -365,14 +358,13 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
         foreach ($parameterLongMetadata->getValue() as $paramName => $consoleParamName) {
             $methodInfo = $parameterLongMetadata->getReference();
             $paramString = ' ' . $consoleParamName;
-            if ( ($defaultValue = $methodInfo['parameterInfo'][$paramName]['default']) != null) {
+            if (($defaultValue = $methodInfo['parameterInfo'][$paramName]['default']) != null) {
                 $paramString .= '[=' . $defaultValue . ']';
             }
             $this->_response->appendContent($paramString . '', ['separator' => false]);
         }
 
-       $this->_response->appendContent(null, ['separator' => true]);
-       return $this;
+        $this->_response->appendContent(null, ['separator' => true]);
+        return $this;
     }
-
 }

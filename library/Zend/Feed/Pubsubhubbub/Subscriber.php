@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -216,8 +217,8 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         if (empty($url) || !is_string($url) || !Zend_Uri::check($url)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .' URL');
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . ' URL');
         }
         $this->_topicUrl = $url;
         return $this;
@@ -728,7 +729,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
             ];
         }
         $params['hub.verify'] = [];
-        foreach($vmodes as $vmode) {
+        foreach ($vmodes as $vmode) {
             $params['hub.verify'][] = $vmode;
         }
 
@@ -759,7 +760,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         }
 
         // store subscription to storage
-        $now = new Zend_Date;
+        $now = new Zend_Date();
         $expires = null;
         if (isset($params['hub.lease_seconds'])) {
             $expires = $now->add($params['hub.lease_seconds'], Zend_Date::SECOND)

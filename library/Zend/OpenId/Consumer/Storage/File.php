@@ -37,7 +37,6 @@ require_once "Zend/OpenId/Consumer/Storage.php";
  */
 class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
 {
-
     /**
      * Directory name to store data files in
      *
@@ -76,37 +75,41 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 require_once 'Zend/OpenId/Exception.php';
                 throw new Zend_OpenId_Exception(
                     'Cannot access storage directory ' . $dir,
-                    Zend_OpenId_Exception::ERROR_STORAGE);
+                    Zend_OpenId_Exception::ERROR_STORAGE
+                );
             }
         }
-        if (($f = fopen($this->_dir.'/assoc.lock', 'w+')) === null) {
+        if (($f = fopen($this->_dir . '/assoc.lock', 'w+')) === null) {
             /**
              * @see Zend_OpenId_Exception
              */
             require_once 'Zend/OpenId/Exception.php';
             throw new Zend_OpenId_Exception(
                 'Cannot create a lock file in the directory ' . $dir,
-                Zend_OpenId_Exception::ERROR_STORAGE);
+                Zend_OpenId_Exception::ERROR_STORAGE
+            );
         }
         fclose($f);
-        if (($f = fopen($this->_dir.'/discovery.lock', 'w+')) === null) {
+        if (($f = fopen($this->_dir . '/discovery.lock', 'w+')) === null) {
             /**
              * @see Zend_OpenId_Exception
              */
             require_once 'Zend/OpenId/Exception.php';
             throw new Zend_OpenId_Exception(
                 'Cannot create a lock file in the directory ' . $dir,
-                Zend_OpenId_Exception::ERROR_STORAGE);
+                Zend_OpenId_Exception::ERROR_STORAGE
+            );
         }
         fclose($f);
-        if (($f = fopen($this->_dir.'/nonce.lock', 'w+')) === null) {
+        if (($f = fopen($this->_dir . '/nonce.lock', 'w+')) === null) {
             /**
              * @see Zend_OpenId_Exception
              */
             require_once 'Zend/OpenId/Exception.php';
             throw new Zend_OpenId_Exception(
                 'Cannot create a lock file in the directory ' . $dir,
-                Zend_OpenId_Exception::ERROR_STORAGE);
+                Zend_OpenId_Exception::ERROR_STORAGE
+            );
         }
         fclose($f);
     }
@@ -441,7 +444,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      */
     public function isUniqueNonce($provider, $nonce)
     {
-        $name = $this->_dir . '/nonce_' . md5($provider.';'.$nonce);
+        $name = $this->_dir . '/nonce_' . md5($provider . ';' . $nonce);
         $lock = @fopen($this->_dir . '/nonce.lock', 'w+');
         if ($lock === false) {
             return false;
@@ -456,7 +459,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 fclose($lock);
                 return false;
             }
-            fwrite($f, $provider.';'.$nonce);
+            fwrite($f, $provider . ';' . $nonce);
             fclose($f);
             fclose($lock);
             return true;
@@ -471,7 +474,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
      *
      * @param mixed $date date of expired data
      */
-    public function purgeNonces($date=null)
+    public function purgeNonces($date = null)
     {
         $lock = @fopen($this->_dir . '/nonce.lock', 'w+');
         if ($lock !== false) {

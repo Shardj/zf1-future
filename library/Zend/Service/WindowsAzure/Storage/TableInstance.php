@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,7 @@ require_once 'Zend/Service/WindowsAzure/Storage/StorageEntityAbstract.php';
  * @property string  $Updated         Updated
  */
 class Zend_Service_WindowsAzure_Storage_TableInstance
-	extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+    extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
 {
     /**
      * Constructor

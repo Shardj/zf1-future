@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @category   Zend
  * @package    Zend_Cloud
@@ -89,7 +90,7 @@ class Zend_Cloud_Infrastructure_Instance
 
         if (is_object($data)) {
             if (method_exists($data, 'toArray')) {
-                $data= $data->toArray();
+                $data = $data->toArray();
             } elseif ($data instanceof Traversable) {
                 $data = iterator_to_array($data);
             }

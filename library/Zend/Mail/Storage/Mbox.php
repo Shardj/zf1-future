@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Loader
@@ -448,5 +448,4 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
             }
         }
     }
-
 }

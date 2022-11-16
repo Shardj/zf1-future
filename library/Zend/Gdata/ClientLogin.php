@@ -44,7 +44,6 @@ require_once 'Zend/Version.php';
  */
 class Zend_Gdata_ClientLogin
 {
-
     /**
      * The Google client login URI
      *
@@ -78,19 +77,23 @@ class Zend_Gdata_ClientLogin
      * @throws Zend_Gdata_App_CaptchaRequiredException
      * @return Zend_Gdata_HttpClient
      */
-    public static function getHttpClient($email, $password, $service = 'xapi',
+    public static function getHttpClient(
+        $email,
+        $password,
+        $service = 'xapi',
         $client = null,
         $source = self::DEFAULT_SOURCE,
         $loginToken = null,
         $loginCaptcha = null,
         $loginUri = self::CLIENTLOGIN_URI,
-        $accountType = 'HOSTED_OR_GOOGLE')
-    {
+        $accountType = 'HOSTED_OR_GOOGLE'
+    ) {
         if (! ($email && $password)) {
             require_once 'Zend/Gdata/App/AuthException.php';
             throw new Zend_Gdata_App_AuthException(
-                   'Please set your Google credentials before trying to ' .
-                   'authenticate');
+                'Please set your Google credentials before trying to ' .
+                'authenticate'
+            );
         }
 
         if ($client == null) {
@@ -99,7 +102,8 @@ class Zend_Gdata_ClientLogin
         if (!$client instanceof Zend_Http_Client) {
             require_once 'Zend/Gdata/App/HttpException.php';
             throw new Zend_Gdata_App_HttpException(
-                    'Client is not an instance of Zend_Http_Client.');
+                'Client is not an instance of Zend_Http_Client.'
+            );
         }
 
         // Build the HTTP client for authentication
@@ -109,24 +113,25 @@ class Zend_Gdata_ClientLogin
                 'maxredirects'    => 0,
                 'strictredirects' => true,
                 'useragent' => $useragent
-            ]
-        );
+            ]);
         $client->setParameterPost('accountType', $accountType);
         $client->setParameterPost('Email', (string) $email);
         $client->setParameterPost('Passwd', (string) $password);
         $client->setParameterPost('service', (string) $service);
         $client->setParameterPost('source', (string) $source);
         if ($loginToken || $loginCaptcha) {
-            if($loginToken && $loginCaptcha) {
+            if ($loginToken && $loginCaptcha) {
                 $client->setParameterPost('logintoken', (string) $loginToken);
-                $client->setParameterPost('logincaptcha',
-                        (string) $loginCaptcha);
-            }
-            else {
+                $client->setParameterPost(
+                    'logincaptcha',
+                    (string) $loginCaptcha
+                );
+            } else {
                 require_once 'Zend/Gdata/App/AuthException.php';
                 throw new Zend_Gdata_App_AuthException(
                     'Please provide both a token ID and a user\'s response ' .
-                    'to the CAPTCHA challenge.');
+                    'to the CAPTCHA challenge.'
+                );
             }
         }
 
@@ -158,25 +163,22 @@ class Zend_Gdata_ClientLogin
             $client->setConfig([
                     'strictredirects' => true,
                     'useragent' => $useragent
-                ]
-            );
+                ]);
             return $client;
-
         } elseif ($response->getStatus() == 403) {
             // Check if the server asked for a CAPTCHA
             if (array_key_exists('Error', $goog_resp) &&
                 $goog_resp['Error'] == 'CaptchaRequired') {
                 require_once 'Zend/Gdata/App/CaptchaRequiredException.php';
                 throw new Zend_Gdata_App_CaptchaRequiredException(
-                    $goog_resp['CaptchaToken'], $goog_resp['CaptchaUrl']);
-            }
-            else {
+                    $goog_resp['CaptchaToken'],
+                    $goog_resp['CaptchaUrl']
+                );
+            } else {
                 require_once 'Zend/Gdata/App/AuthException.php';
                 throw new Zend_Gdata_App_AuthException('Authentication with Google failed. Reason: ' .
                     (isset($goog_resp['Error']) ? $goog_resp['Error'] : 'Unspecified.'));
             }
         }
     }
-
 }
-

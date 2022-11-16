@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -91,7 +92,7 @@ class Zend_Log_Writer_Firebug extends Zend_Log_Writer_Abstract
      * @param  array|Zend_Config $config
      * @return Zend_Log_Writer_Firebug
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         return new self();
     }
@@ -152,7 +153,7 @@ class Zend_Log_Writer_Firebug extends Zend_Log_Writer_Abstract
     public function setPriorityStyle($priority, $style)
     {
         $previous = true;
-        if (array_key_exists($priority,$this->_priorityStyles)) {
+        if (array_key_exists($priority, $this->_priorityStyles)) {
             $previous = $this->_priorityStyles[$priority];
         }
         $this->_priorityStyles[$priority] = $style;
@@ -167,7 +168,7 @@ class Zend_Log_Writer_Firebug extends Zend_Log_Writer_Abstract
      */
     public function getPriorityStyle($priority)
     {
-        if (array_key_exists($priority,$this->_priorityStyles)) {
+        if (array_key_exists($priority, $this->_priorityStyles)) {
             return $this->_priorityStyles[$priority];
         }
         return false;
@@ -185,7 +186,7 @@ class Zend_Log_Writer_Firebug extends Zend_Log_Writer_Abstract
             return;
         }
 
-        if (array_key_exists($event['priority'],$this->_priorityStyles)) {
+        if (array_key_exists($event['priority'], $this->_priorityStyles)) {
             $type = $this->_priorityStyles[$event['priority']];
         } else {
             $type = $this->_defaultPriorityStyle;
@@ -193,12 +194,14 @@ class Zend_Log_Writer_Firebug extends Zend_Log_Writer_Abstract
 
         $message = $this->_formatter->format($event);
 
-        $label = isset($event['firebugLabel'])?$event['firebugLabel']:null;
+        $label = isset($event['firebugLabel']) ? $event['firebugLabel'] : null;
 
-        Zend_Wildfire_Plugin_FirePhp::getInstance()->send($message,
-                                                          $label,
-                                                          $type,
-                                                          ['traceOffset'=>4,
-                                                                'fixZendLogOffsetIfApplicable'=>true]);
+        Zend_Wildfire_Plugin_FirePhp::getInstance()->send(
+            $message,
+            $label,
+            $type,
+            ['traceOffset' => 4,
+            'fixZendLogOffsetIfApplicable' => true]
+        );
     }
 }

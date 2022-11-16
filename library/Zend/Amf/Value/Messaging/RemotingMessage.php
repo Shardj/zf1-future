@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Amf/Value/Messaging/AbstractMessage.php';
  */
 class Zend_Amf_Value_Messaging_RemotingMessage extends Zend_Amf_Value_Messaging_AbstractMessage
 {
-
     /**
      * The name of the service to be called including package name
      * @var String
@@ -65,7 +65,7 @@ class Zend_Amf_Value_Messaging_RemotingMessage extends Zend_Amf_Value_Messaging_
         $this->clientId    = $this->generateId();
         $this->destination = null;
         $this->messageId   = $this->generateId();
-        $this->timestamp   = time().'00';
+        $this->timestamp   = time() . '00';
         $this->timeToLive  = 0;
         $this->headers     = new stdClass();
         $this->body        = null;

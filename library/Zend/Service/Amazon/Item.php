@@ -229,7 +229,7 @@ class Zend_Service_Amazon_Item
                     $this->Tracks[] = (string) $t->data;
                 }
             }
-        } else if ($result->length == 1) {
+        } elseif ($result->length == 1) {
             foreach ($xpath->query('./*/text()', $result->item(0)) as $t) {
                 $this->Tracks[] = (string) $t->data;
             }

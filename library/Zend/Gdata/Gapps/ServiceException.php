@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_Exception
  */
@@ -51,7 +50,6 @@ require_once 'Zend/Xml/Security.php';
  */
 class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
 {
-
     protected $_rootElement = "AppsForYourDomainErrors";
 
     /**
@@ -67,7 +65,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      * @return void An array containing a collection of
      *          Zend_Gdata_Gapps_Error objects.
      */
-    public function __construct($errors = null) {
+    public function __construct($errors = null)
+    {
         parent::__construct("Server errors encountered");
         if ($errors !== null) {
             $this->setErrors($errors);
@@ -82,7 +81,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      *          by the server. The error's errorCode must be set.
      * @throws Zend_Gdata_App_Exception
      */
-    public function addError($error) {
+    public function addError($error)
+    {
         // Make sure that we don't try to index an error that doesn't
         // contain an index value.
         if ($error->getErrorCode() == null) {
@@ -102,7 +102,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      *          errorCode value set.
      * @throws Zend_Gdata_App_Exception
      */
-    public function setErrors($array) {
+    public function setErrors($array)
+    {
         $this->_errors = [];
         foreach ($array as $error) {
             $this->addError($error);
@@ -116,7 +117,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      * @return array An associative array containing a collection of
      *          Zend_Gdata_Gapps_Error objects, indexed by error code.
      */
-    public function getErrors() {
+    public function getErrors()
+    {
         return $this->_errors;
     }
 
@@ -126,7 +128,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      * @return Zend_Gdata_Gapps_Error The Error object requested, or null
      *              if not found.
      */
-    public function getError($errorCode) {
+    public function getError($errorCode)
+    {
         return $this->_errors[$errorCode] ?? null;
     }
 
@@ -138,7 +141,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      * @return boolean Whether or not the supplied error code was returned
      *          by the server.
      */
-    public function hasError($errorCode) {
+    public function hasError($errorCode)
+    {
         return array_key_exists($errorCode, $this->_errors);
     }
 
@@ -149,7 +153,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      * @return Zend_Gdata_Gapps_ServiceException Provides a fluent interface.
      * @throws Zend_Gdata_App_Exception
      */
-    public function importFromString($string) {
+    public function importFromString($string)
+    {
         if ($string) {
             // Check to see if an AppsForYourDomainError exists
             //
@@ -188,7 +193,6 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
             require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception('XML passed to transferFromXML cannot be null');
         }
-
     }
 
     /**
@@ -196,7 +200,8 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         $result = "The server encountered the following errors processing the request:";
         foreach ($this->_errors as $error) {
             $result .= "\n" . $error->__toString();

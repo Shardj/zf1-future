@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,8 +32,7 @@ require_once "Zend/Tool/Framework/Client/Response/ContentDecorator/Interface.php
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-class Zend_Tool_Framework_Client_Console_ResponseDecorator_AlignCenter
-    implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+class Zend_Tool_Framework_Client_Console_ResponseDecorator_AlignCenter implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
 {
     public function getName()
     {
@@ -45,18 +45,18 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_AlignCenter
      */
     public function decorate($content, $lineLength)
     {
-        if(!is_numeric($lineLength)) {
+        if (!is_numeric($lineLength)) {
             $lineLength = 72;
         }
-        if(strlen($content) < $lineLength) {
+        if (strlen($content) < $lineLength) {
             $append = false;
             $len = strlen($content);
-            for($i = $len; $i < $lineLength; $i++) {
-                if($append == true) {
-                    $content = $content." ";
+            for ($i = $len; $i < $lineLength; $i++) {
+                if ($append == true) {
+                    $content = $content . " ";
                     $append = false;
                 } else {
-                    $content = " ".$content;
+                    $content = " " . $content;
                     $append = true;
                 }
             }

@@ -37,7 +37,6 @@ require_once 'Zend/Gdata/App/Extension.php';
  */
 class Zend_Gdata_App_Extension_Generator extends Zend_Gdata_App_Extension
 {
-
     protected $_rootElement = 'generator';
     protected $_uri = null;
     protected $_version = null;
@@ -65,14 +64,14 @@ class Zend_Gdata_App_Extension_Generator extends Zend_Gdata_App_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'uri':
-            $this->_uri = $attribute->nodeValue;
-            break;
-        case 'version':
-            $this->_version= $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'uri':
+                $this->_uri = $attribute->nodeValue;
+                break;
+            case 'version':
+                $this->_version = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -111,5 +110,4 @@ class Zend_Gdata_App_Extension_Generator extends Zend_Gdata_App_Extension
         $this->_version = $value;
         return $this;
     }
-
 }

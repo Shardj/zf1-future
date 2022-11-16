@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -54,7 +55,6 @@ require_once 'Zend/Filter/StringToLower.php';
  */
 class Zend_Tool_Project_Context_Zf_ViewScriptFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * @var string
      */
@@ -176,8 +176,7 @@ class Zend_Tool_Project_Context_Zf_ViewScriptFile extends Zend_Tool_Project_Cont
 
 EOS;
         } elseif ($this->_forActionName == 'index' && $controllerName == 'Index' && $moduleName == 'default') {
-
-            $contents =<<<EOS
+            $contents = <<<EOS
 <style>
     a:link,
     a:visited
@@ -222,7 +221,6 @@ EOS;
     </div>
 </div>
 EOS;
-
         } else {
             $controllerName = $this->_resource->getParentResource()->getAttribute('forControllerName');
             $actionName = $this->_forActionName;
@@ -243,5 +241,4 @@ EOS;
             ->addFilter(new Zend_Filter_StringToLower());
         return $filter->filter($actionName);
     }
-
 }

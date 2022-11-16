@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Tool/Project/Profile/Resource.php';
  */
 class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Profile_FileParser_Interface
 {
-
     /**
      * @var Zend_Tool_Project_Profile
      */
@@ -127,7 +127,6 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
         $this->_lazyLoadContexts();
 
         return $this->_profile;
-
     }
 
     /**
@@ -147,7 +146,6 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
         //}
 
         foreach ($resources as $resource) {
-
             if ($resource->isDeleted()) {
                 continue;
             }
@@ -170,9 +168,7 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
             if ($resource->hasChildren()) {
                 self::_serializeRecurser($resource, $newNode);
             }
-
         }
-
     }
 
 
@@ -189,7 +185,6 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
     {
 
         foreach ($xmlIterator as $resourceName => $resourceData) {
-
             $contextName = $resourceName;
             $subResource = new Zend_Tool_Project_Profile_Resource($contextName);
             $subResource->setProfile($this->_profile);
@@ -234,7 +229,5 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
                 $resource->initializeContext();
             }
         }
-
     }
-
 }

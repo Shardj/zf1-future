@@ -53,7 +53,7 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
      * @param float $version SREG version
      * @return void
      */
-    public function __construct(array $props=null, $policy_url=null, $version=1.0)
+    public function __construct(array $props = null, $policy_url = null, $version = 1.0)
     {
         $this->_props = $props;
         $this->_policy_url = $policy_url;
@@ -65,7 +65,8 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
      *
      * @return array
      */
-    public function getProperties() {
+    public function getProperties()
+    {
         if (is_array($this->_props)) {
             return $this->_props;
         } else {
@@ -78,7 +79,8 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
      *
      * @return string
      */
-    public function getPolicyUrl() {
+    public function getPolicyUrl()
+    {
         return $this->_policy_url;
     }
 
@@ -87,7 +89,8 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
      *
      * @return float
      */
-    public function getVersion() {
+    public function getVersion()
+    {
         return $this->_version;
     }
 
@@ -124,13 +127,13 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
             foreach ($this->_props as $prop => $req) {
                 if ($req) {
                     if (isset($required)) {
-                        $required .= ','.$prop;
+                        $required .= ',' . $prop;
                     } else {
                         $required = $prop;
                     }
                 } else {
                     if (isset($optional)) {
-                        $optional .= ','.$prop;
+                        $optional .= ',' . $prop;
                     } else {
                         $optional = $prop;
                     }
@@ -164,9 +167,9 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
     {
         if (isset($params['openid_ns_sreg']) &&
             $params['openid_ns_sreg'] === Zend_OpenId_Extension_Sreg::NAMESPACE_1_1) {
-            $this->_version= 1.1;
+            $this->_version = 1.1;
         } else {
-            $this->_version= 1.0;
+            $this->_version = 1.0;
         }
         if (!empty($params['openid_sreg_policy_url'])) {
             $this->_policy_url = $params['openid_sreg_policy_url'];
@@ -229,9 +232,9 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
     {
         if (isset($params['openid_ns_sreg']) &&
             $params['openid_ns_sreg'] === Zend_OpenId_Extension_Sreg::NAMESPACE_1_1) {
-            $this->_version= 1.1;
+            $this->_version = 1.1;
         } else {
-            $this->_version= 1.0;
+            $this->_version = 1.0;
         }
         $props = [];
         foreach (self::getSregProperties() as $prop) {

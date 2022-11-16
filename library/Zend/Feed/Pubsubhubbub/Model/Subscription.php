@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,11 +37,8 @@ require_once 'Zend/Date.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Pubsubhubbub_Model_Subscription
-    extends Zend_Feed_Pubsubhubbub_Model_ModelAbstract
-    implements Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
+class Zend_Feed_Pubsubhubbub_Model_Subscription extends Zend_Feed_Pubsubhubbub_Model_ModelAbstract implements Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
 {
-
     /**
      * Save subscription to RDMBS
      *
@@ -60,7 +58,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
         $result = $this->_db->find($data['id']);
         if (count($result)) {
             $data['created_time'] = $result->current()->created_time;
-            $now = new Zend_Date;
+            $now = new Zend_Date();
             if (isset($data['lease_seconds'])) {
                 $data['expiration_time'] = $now->add($data['lease_seconds'], Zend_Date::SECOND)
                 ->get('yyyy-MM-dd HH:mm:ss');
@@ -89,7 +87,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
         if (empty($key) || !is_string($key)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "key"'
-                .' of "' . $key . '" must be a non-empty string');
+                . ' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
         if (count($result)) {
@@ -111,7 +109,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
         if (empty($key) || !is_string($key)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "key"'
-                .' of "' . $key . '" must be a non-empty string');
+                . ' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
         if (count($result ?? [])) {
@@ -137,5 +135,4 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
         }
         return false;
     }
-
 }

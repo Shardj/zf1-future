@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -45,13 +46,10 @@ class Zend_Service_WindowsAzure_RetryPolicy_NoRetry extends Zend_Service_Windows
     {
         $returnValue = null;
 
-        try
-        {
+        try {
             $returnValue = call_user_func_array($function, $parameters);
             return $returnValue;
-        }
-        catch (Exception $ex)
-        {
+        } catch (Exception $ex) {
             throw $ex;
         }
     }

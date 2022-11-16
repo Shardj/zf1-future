@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,10 +32,8 @@ require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Framework_Action_Repository
-    implements Zend_Tool_Framework_Registry_EnabledInterface, IteratorAggregate, Countable
+class Zend_Tool_Framework_Action_Repository implements Zend_Tool_Framework_Registry_EnabledInterface, IteratorAggregate, Countable
 {
-
     /**
      * @var Zend_Tool_Framework_Registry_Interface
      */
@@ -135,5 +134,4 @@ class Zend_Tool_Framework_Action_Repository
     {
         return new ArrayIterator($this->_actions);
     }
-
 }

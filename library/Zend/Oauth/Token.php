@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -78,7 +79,7 @@ abstract class Zend_Oauth_Token
         if ($utility !== null) {
             $this->_httpUtility = $utility;
         } else {
-            $this->_httpUtility = new Zend_Oauth_Http_Utility;
+            $this->_httpUtility = new Zend_Oauth_Http_Utility();
         }
     }
 
@@ -156,7 +157,7 @@ abstract class Zend_Oauth_Token
      */
     public function setParams(array $params)
     {
-        foreach ($params as $key=>$value) {
+        foreach ($params as $key => $value) {
             $this->setParam($key, $value);
         }
         return $this;
@@ -279,7 +280,7 @@ abstract class Zend_Oauth_Token
     public function __wakeup()
     {
         if ($this->_httpUtility === null) {
-            $this->_httpUtility = new Zend_Oauth_Http_Utility;
+            $this->_httpUtility = new Zend_Oauth_Http_Utility();
         }
     }
 }

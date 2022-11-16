@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -50,7 +51,7 @@ class Zend_Service_Amazon_Ec2_Keypair extends Zend_Service_Amazon_Ec2_Abstract
 
         $params['Action'] = 'CreateKeyPair';
 
-        if(!$keyName) {
+        if (!$keyName) {
             require_once 'Zend/Service/Amazon/Ec2/Exception.php';
             throw new Zend_Service_Amazon_Ec2_Exception('Invalid Key Name');
         }
@@ -81,11 +82,11 @@ class Zend_Service_Amazon_Ec2_Keypair extends Zend_Service_Amazon_Ec2_Abstract
         $params = [];
 
         $params['Action'] = 'DescribeKeyPairs';
-        if(is_array($keyName) && !empty($keyName)) {
-            foreach($keyName as $k=>$name) {
-                $params['KeyName.' . ($k+1)] = $name;
+        if (is_array($keyName) && !empty($keyName)) {
+            foreach ($keyName as $k => $name) {
+                $params['KeyName.' . ($k + 1)] = $name;
             }
-        } elseif($keyName) {
+        } elseif ($keyName) {
             $params['KeyName.1'] = $keyName;
         }
 
@@ -120,7 +121,7 @@ class Zend_Service_Amazon_Ec2_Keypair extends Zend_Service_Amazon_Ec2_Abstract
 
         $params['Action'] = 'DeleteKeyPair';
 
-        if(!$keyName) {
+        if (!$keyName) {
             require_once 'Zend/Service/Amazon/Ec2/Exception.php';
             throw new Zend_Service_Amazon_Ec2_Exception('Invalid Key Name');
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Tool/Framework/Manifest/Interface.php';
  */
 interface Zend_Tool_Framework_Manifest_MetadataManifestable extends Zend_Tool_Framework_Manifest_Interface
 {
-
     /**
      * getMetadata()
      *
@@ -43,5 +43,4 @@ interface Zend_Tool_Framework_Manifest_MetadataManifestable extends Zend_Tool_Fr
      * @return array|Zend_Tool_Framework_Manifest_Metadata
      */
     public function getMetadata();
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -359,7 +360,6 @@ class Zend_Mail_Protocol_Pop3
         }
 
         return $messages;
-
     }
 
 

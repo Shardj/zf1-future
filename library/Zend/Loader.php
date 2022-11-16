@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -137,11 +138,11 @@ class Zend_Loader
         // Since PHP 8.0 @ doesn't mute the errors, which makes for a lot of clutter on the error log when you are using class_exists() and it doesn't
         // Added stream_resolve_include_path to avoid it.
         if ($once) {
-            if(stream_resolve_include_path($filename)) {
+            if (stream_resolve_include_path($filename)) {
                 @include_once $filename;
             }
         } else {
-            if(stream_resolve_include_path($filename)) {
+            if (stream_resolve_include_path($filename)) {
                 @include $filename;
             }
         }

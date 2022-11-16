@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_XmlRpc_Exception
  */
@@ -39,4 +39,3 @@ require_once 'Zend/XmlRpc/Exception.php';
 class Zend_XmlRpc_Server_Exception extends Zend_XmlRpc_Exception
 {
 }
-

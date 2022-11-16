@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Markup/Renderer/Html/HtmlAbstract.php';
  */
 class Zend_Markup_Renderer_Html_Url extends Zend_Markup_Renderer_Html_HtmlAbstract
 {
-
     /**
      * Convert the token
      *
@@ -73,5 +73,4 @@ class Zend_Markup_Renderer_Html_Url extends Zend_Markup_Renderer_Html_HtmlAbstra
 
         return "<a href=\"{$uri}\"{$attributes}>{$text}</a>";
     }
-
 }

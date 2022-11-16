@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -90,5 +91,4 @@ class Zend_Db_Statement_Pdo_Ibm extends Zend_Db_Statement_Pdo
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
         }
     }
-
 }

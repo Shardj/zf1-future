@@ -42,7 +42,6 @@ require_once 'Zend/Gdata/Extension/FeedLink.php';
  */
 class Zend_Gdata_Extension_Comments extends Zend_Gdata_Extension
 {
-
     protected $_rootElement = 'comments';
     protected $_rel = null;
     protected $_feedLink = null;
@@ -84,11 +83,11 @@ class Zend_Gdata_Extension_Comments extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'rel':
-            $this->_rel = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'rel':
+                $this->_rel = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -113,5 +112,4 @@ class Zend_Gdata_Extension_Comments extends Zend_Gdata_Extension
         $this->_feedLink = $value;
         return $this;
     }
-
 }

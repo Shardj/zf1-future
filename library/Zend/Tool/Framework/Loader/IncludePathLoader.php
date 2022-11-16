@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterat
  */
 class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_Loader_Abstract
 {
-
     /**
      * _getFiles()
      *
@@ -55,7 +55,6 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
         $isZendTraversed = false;
 
         foreach ($paths as $path) {
-
             // default patterns to use
             $filterDenyDirectoryPattern = '.*(/|\\\\).svn';
             $filterAcceptFilePattern    = '.*(?:Manifest|Provider)\.php$';
@@ -84,7 +83,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
                 $rdi,
                 $filterDenyDirectoryPattern,
                 $filterAcceptFilePattern
-                );
+            );
 
             // build the rii with the filter
             $iterator = new RecursiveIteratorIterator($filter);
@@ -92,7 +91,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
             // iterate over the accepted items
             foreach ($iterator as $item) {
                 $file = (string)$item;
-                if($this->_fileIsBlacklisted($file)) {
+                if ($this->_fileIsBlacklisted($file)) {
                     continue;
                 }
 
@@ -125,12 +124,12 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
     protected function _fileIsBlacklisted($file)
     {
         $blacklist = [
-            "PHPUnit".DIRECTORY_SEPARATOR."Framework",
-            "Zend".DIRECTORY_SEPARATOR."OpenId".DIRECTORY_SEPARATOR."Provider"
+            "PHPUnit" . DIRECTORY_SEPARATOR . "Framework",
+            "Zend" . DIRECTORY_SEPARATOR . "OpenId" . DIRECTORY_SEPARATOR . "Provider"
         ];
 
-        foreach($blacklist AS $blacklitedPattern) {
-            if(strpos($file, $blacklitedPattern) !== false) {
+        foreach ($blacklist as $blacklitedPattern) {
+            if (strpos($file, $blacklitedPattern) !== false) {
                 return true;
             }
         }

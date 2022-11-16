@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -65,7 +66,7 @@ class Zend_Test_PHPUnit_Db_Metadata_Generic implements PHPUnit_Extensions_Databa
      * @param Zend_Db_Adapter_Abstract $db
      * @param string $schema
      */
-    public final function __construct(Zend_Db_Adapter_Abstract $db, $schema)
+    final public function __construct(Zend_Db_Adapter_Abstract $db, $schema)
     {
         $this->_connection = $db;
         $this->_schema     = $schema;
@@ -89,7 +90,7 @@ class Zend_Test_PHPUnit_Db_Metadata_Generic implements PHPUnit_Extensions_Databa
      */
     protected function getTableDescription($tableName)
     {
-        if(!isset($this->_tableMetadata[$tableName])) {
+        if (!isset($this->_tableMetadata[$tableName])) {
             $this->_tableMetadata[$tableName] = $this->_connection->describeTable($tableName);
         }
         return $this->_tableMetadata[$tableName];
@@ -121,8 +122,8 @@ class Zend_Test_PHPUnit_Db_Metadata_Generic implements PHPUnit_Extensions_Databa
         $tableMeta = $this->getTableDescription($tableName);
 
         $primaryColumnNames = [];
-        foreach($tableMeta AS $column) {
-            if($column['PRIMARY'] == true) {
+        foreach ($tableMeta as $column) {
+            if ($column['PRIMARY'] == true) {
                 $primaryColumnNames[] = $column['COLUMN_NAME'];
             }
         }

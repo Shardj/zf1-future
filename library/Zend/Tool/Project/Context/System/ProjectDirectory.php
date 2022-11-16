@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -51,13 +52,11 @@ require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Context_System_ProjectDirectory
-    extends Zend_Tool_Project_Context_Filesystem_Directory
-    implements Zend_Tool_Project_Context_System_Interface,
-               Zend_Tool_Project_Context_System_NotOverwritable,
-               Zend_Tool_Project_Context_System_TopLevelRestrictable
+class Zend_Tool_Project_Context_System_ProjectDirectory extends Zend_Tool_Project_Context_Filesystem_Directory implements
+    Zend_Tool_Project_Context_System_Interface,
+    Zend_Tool_Project_Context_System_NotOverwritable,
+    Zend_Tool_Project_Context_System_TopLevelRestrictable
 {
-
     /**
      * @var string
      */
@@ -124,5 +123,4 @@ class Zend_Tool_Project_Context_System_ProjectDirectory
         parent::create();
         return $this;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Cache_Backend_Interface
@@ -314,7 +314,7 @@ class Zend_Cache_Backend_WinCache extends Zend_Cache_Backend implements Zend_Cac
             }
             $lifetime = $tmp[2];
             $newLifetime = $lifetime - (time() - $mtime) + $extraLifetime;
-            if ($newLifetime <=0) {
+            if ($newLifetime <= 0) {
                 return false;
             }
             return wincache_ucache_set($id, [$data, time(), $newLifetime], $newLifetime);
@@ -347,5 +347,4 @@ class Zend_Cache_Backend_WinCache extends Zend_Cache_Backend implements Zend_Cac
             'get_list' => true
         ];
     }
-
 }

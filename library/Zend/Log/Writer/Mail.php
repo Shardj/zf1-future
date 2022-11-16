@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -138,7 +139,7 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
      * @param  array|Zend_Config $config
      * @return Zend_Log_Writer_Mail
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         $config = self::_parseConfig($config);
         $mail = self::_constructMailFromConfig($config);
@@ -148,7 +149,7 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
             $writer->setLayout($config);
         }
         if (isset($config['layoutFormatter'])) {
-            $layoutFormatter = new $config['layoutFormatter'];
+            $layoutFormatter = new $config['layoutFormatter']();
             $writer->setLayoutFormatter($layoutFormatter);
         }
         if (isset($config['subjectPrependText'])) {
@@ -217,7 +218,7 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
                         $address['email'],
                         $address['name']
                     ];
-                } else if (is_array($address) && isset($address['email'])) {
+                } elseif (is_array($address) && isset($address['email'])) {
                     $params = [$address['email']];
                 } else {
                     $params = [$address];
@@ -315,7 +316,8 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
         if (!$this->_layout) {
             throw new Zend_Log_Exception(
                 'cannot set formatter for layout; ' .
-                    'a Zend_Layout instance is not in use');
+                'a Zend_Layout instance is not in use'
+            );
         }
 
         $this->_layoutFormatter = $formatter;
@@ -340,7 +342,8 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
         if ($this->_mail->getSubject()) {
             throw new Zend_Log_Exception(
                 'subject already set on mail; ' .
-                    'cannot set subject prepend text');
+                'cannot set subject prepend text'
+            );
         }
 
         $this->_subjectPrependText = (string) $subject;
@@ -366,7 +369,8 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
             // line and set it on the Zend_Mail object.
             $numEntries = $this->_getFormattedNumEntriesPerPriority();
             $this->_mail->setSubject(
-                "{$this->_subjectPrependText} ({$numEntries})");
+                "{$this->_subjectPrependText} ({$numEntries})"
+            );
         }
 
 
@@ -392,7 +396,8 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
                         "message = {$e->getMessage()}; " .
                         "code = {$e->getCode()}; " .
                         "exception class = " . get_class($e),
-                    E_USER_NOTICE);
+                    E_USER_NOTICE
+                );
             }
         }
 
@@ -407,7 +412,8 @@ class Zend_Log_Writer_Mail extends Zend_Log_Writer_Abstract
                     "message = {$e->getMessage()}; " .
                     "code = {$e->getCode()}; " .
                         "exception class = " . get_class($e),
-                E_USER_WARNING);
+                E_USER_WARNING
+            );
         }
     }
 

@@ -20,7 +20,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Feed_Entry_Abstract
  */
@@ -195,7 +194,7 @@ class Zend_Feed_Entry_Atom extends Zend_Feed_Entry_Abstract
         }
 
         // Update internal properties using $client->responseBody;
-        $newEntry = new DOMDocument;
+        $newEntry = new DOMDocument();
         $newEntry = @Zend_Xml_Security::scan($response->getBody(), $newEntry);
 
         if (!$newEntry) {
@@ -279,5 +278,4 @@ class Zend_Feed_Entry_Atom extends Zend_Feed_Entry_Abstract
 
         return null;
     }
-
 }

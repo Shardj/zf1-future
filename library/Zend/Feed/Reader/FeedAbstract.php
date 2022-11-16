@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -306,7 +307,9 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
             }
             $className = Zend_Feed_Reader::getPluginLoader()->getClassName($extension);
             $this->_extensions[$extension] = new $className(
-                $this->getDomDocument(), $this->_data['type'], $this->_xpath
+                $this->getDomDocument(),
+                $this->_data['type'],
+                $this->_xpath
             );
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** User land classes and interfaces turned on by Zend/Search/Analyzer.php file inclusion. */
 /** @todo Section should be removed with ZF 2.0 release as obsolete                      */
@@ -172,4 +172,3 @@ abstract class Zend_Search_Lucene_Analysis_Analyzer
         return self::$_defaultImpl;
     }
 }
-

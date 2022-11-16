@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Query */
 require_once 'Zend/Search/Lucene/Search/Query.php';
@@ -135,4 +135,3 @@ class Zend_Search_Lucene_Search_Query_Empty extends Zend_Search_Lucene_Search_Qu
         return '<EmptyQuery>';
     }
 }
-

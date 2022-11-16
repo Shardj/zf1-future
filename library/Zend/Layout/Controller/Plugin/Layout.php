@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -114,8 +115,7 @@ class Zend_Layout_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
         if (!$request->isDispatched()
             || $this->getResponse()->isRedirect()
             || ($layout->getMvcSuccessfulActionOnly()
-                && (!empty($helper) && !$helper->isActionControllerSuccessful())))
-        {
+                && (!empty($helper) && !$helper->isActionControllerSuccessful()))) {
             return;
         }
 
@@ -151,6 +151,5 @@ class Zend_Layout_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
             $response->setBody(null);
             throw $e;
         }
-
     }
 }

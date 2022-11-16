@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,6 @@
  */
 abstract class Zend_Cache
 {
-
     /**
      * Standard frontends
      *
@@ -246,5 +246,4 @@ abstract class Zend_Cache
         @fclose($fh);
         return true;
     }
-
 }

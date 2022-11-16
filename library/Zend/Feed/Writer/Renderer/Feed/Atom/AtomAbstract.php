@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -49,7 +50,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      * @param  Zend_Feed_Writer_Feed $container
      * @return void
      */
-    public function __construct ($container)
+    public function __construct($container)
     {
         parent::__construct($container);
     }
@@ -79,7 +80,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getTitle()) {
+        if (!$this->getDataContainer()->getTitle()) {
             require_once 'Zend/Feed/Exception.php';
             $message = 'Atom 1.0 feed elements MUST contain exactly one'
             . ' atom:title element but a title has not been set';
@@ -108,7 +109,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setDescription(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getDescription()) {
+        if (!$this->getDataContainer()->getDescription()) {
             return;
         }
         $subtitle = $dom->createElement('subtitle');
@@ -128,7 +129,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setDateModified(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getDateModified()) {
+        if (!$this->getDataContainer()->getDateModified()) {
             require_once 'Zend/Feed/Exception.php';
             $message = 'Atom 1.0 feed elements MUST contain exactly one'
             . ' atom:updated element but a modification date has not been set';
@@ -158,9 +159,12 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setGenerator(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getGenerator()) {
-            $this->getDataContainer()->setGenerator('Zend_Feed_Writer',
-                Zend_Version::VERSION, 'http://framework.zend.com');
+        if (!$this->getDataContainer()->getGenerator()) {
+            $this->getDataContainer()->setGenerator(
+                'Zend_Feed_Writer',
+                Zend_Version::VERSION,
+                'http://framework.zend.com'
+            );
         }
 
         $gdata = $this->getDataContainer()->getGenerator();
@@ -185,7 +189,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setLink(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getLink()) {
+        if (!$this->getDataContainer()->getLink()) {
             return;
         }
         $link = $dom->createElement('link');
@@ -206,7 +210,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
     protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
     {
         $flinks = $this->getDataContainer()->getFeedLinks();
-        if(!$flinks || !array_key_exists('atom', $flinks)) {
+        if (!$flinks || !array_key_exists('atom', $flinks)) {
             require_once 'Zend/Feed/Exception.php';
             $message = 'Atom 1.0 feed elements SHOULD contain one atom:link '
             . 'element with a rel attribute value of "self".  This is the '
@@ -281,7 +285,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getId()
+        if (!$this->getDataContainer()->getId()
         && !$this->getDataContainer()->getLink()) {
             require_once 'Zend/Feed/Exception.php';
             $message = 'Atom 1.0 feed elements MUST contain exactly one '
@@ -299,7 +303,8 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
 
         if (!$this->getDataContainer()->getId()) {
             $this->getDataContainer()->setId(
-                $this->getDataContainer()->getLink());
+                $this->getDataContainer()->getLink()
+            );
         }
         $id = $dom->createElement('id');
         $root->appendChild($id);
@@ -373,10 +378,10 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
      */
     protected function _setDateCreated(DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getDateCreated()) {
+        if (!$this->getDataContainer()->getDateCreated()) {
             return;
         }
-        if(!$this->getDataContainer()->getDateModified()) {
+        if (!$this->getDataContainer()->getDateModified()) {
             $this->getDataContainer()->setDateModified(
                 $this->getDataContainer()->getDateCreated()
             );

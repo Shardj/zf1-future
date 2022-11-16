@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
  */
 class Zend_Tool_Project_Context_Zf_ConfigFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * @var string
      */
@@ -63,5 +63,4 @@ class Zend_Tool_Project_Context_Zf_ConfigFile extends Zend_Tool_Project_Context_
     {
         return '';
     }
-
 }

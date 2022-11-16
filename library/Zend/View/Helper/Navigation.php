@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -166,8 +167,9 @@ class Zend_View_Helper_Navigation
             $this->view->setHelperPath(null);
 
             $this->view->addHelperPath(
-                    str_replace('_', '/', self::NS),
-                    self::NS);
+                str_replace('_', '/', self::NS),
+                self::NS
+            );
 
             foreach ($paths as $ns => $path) {
                 $this->view->addHelperPath($path, $ns);
@@ -188,9 +190,10 @@ class Zend_View_Helper_Navigation
             if ($strict) {
                 require_once 'Zend/View/Exception.php';
                 $e = new Zend_View_Exception(sprintf(
-                        'Proxy helper "%s" is not an instance of ' .
+                    'Proxy helper "%s" is not an instance of ' .
                         'Zend_View_Helper_Navigation_Helper',
-                        get_class($helper)));
+                    get_class($helper)
+                ));
                 $e->setView($this->view);
                 throw $e;
             }

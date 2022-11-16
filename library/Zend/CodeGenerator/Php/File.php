@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/CodeGenerator/Php/Class.php';
  */
 class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
 {
-
     /**
      * @var array Array of Zend_CodeGenerator_Php_File
      */
@@ -93,7 +93,6 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         $fileName = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $fileName);
 
         self::$_fileCodeGenerators[$fileName] = $fileCodeGenerator;
-
     }
 
     /**
@@ -110,7 +109,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         $realpath = realpath($filePath);
 
         if ($realpath === false) {
-            if ( ($realpath = Zend_Reflection_File::findRealpathInIncludePath($filePath)) === false) {
+            if (($realpath = Zend_Reflection_File::findRealpathInIncludePath($filePath)) === false) {
                 require_once 'Zend/CodeGenerator/Php/Exception.php';
                 throw new Zend_CodeGenerator_Php_Exception('No file for ' . $realpath . ' was found.');
             }
@@ -252,7 +251,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
      * @param array $classes
      * @return Zend_CodeGenerator_Php_File
      */
-    public function setClasses(Array $classes)
+    public function setClasses(array $classes)
     {
         foreach ($classes as $class) {
             $this->setClass($class);
@@ -403,8 +402,8 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         if (null !== ($docblock = $this->getDocblock())) {
             $docblock->setIndentation('');
             $regex = preg_quote(self::$_markerDocblock, '#');
-            if (preg_match('#'.$regex.'#', $output)) {
-                $output  = preg_replace('#'.$regex.'#', $docblock->generate(), $output, 1);
+            if (preg_match('#' . $regex . '#', $output)) {
+                $output  = preg_replace('#' . $regex . '#', $docblock->generate(), $output, 1);
             } else {
                 $output .= $docblock->generate() . self::LINE_FEED;
             }
@@ -428,22 +427,20 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         $classes = $this->getClasses();
         if (!empty($classes)) {
             foreach ($classes as $class) {
-                if($this->getDocblock() == $class->getDocblock()) {
+                if ($this->getDocblock() == $class->getDocblock()) {
                     $class->setDocblock(null);
                 }
                 $regex = str_replace('?', $class->getName(), self::$_markerClass);
                 $regex = preg_quote($regex, '#');
-                if (preg_match('#'.$regex.'#', $output)) {
-                    $output = preg_replace('#'.$regex.'#', $class->generate(), $output, 1);
+                if (preg_match('#' . $regex . '#', $output)) {
+                    $output = preg_replace('#' . $regex . '#', $class->generate(), $output, 1);
                 } else {
                     $output .= $class->generate() . self::LINE_FEED;
                 }
             }
-
         }
 
         if (!empty($body)) {
-
             // add an extra space betwee clsses and
             if (!empty($classes)) {
                 $output .= self::LINE_FEED;
@@ -464,5 +461,4 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         file_put_contents($this->_filename, $this->generate());
         return $this;
     }
-
 }

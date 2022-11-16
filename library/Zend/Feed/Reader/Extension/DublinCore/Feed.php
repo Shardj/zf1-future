@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -253,7 +254,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Feed
         }
 
         if ($date) {
-            $d = new Zend_Date;
+            $d = new Zend_Date();
             $d->set($date, Zend_Date::ISO_8601);
         }
 
@@ -280,7 +281,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Feed
         }
 
         if ($list->length) {
-            $categoryCollection = new Zend_Feed_Reader_Collection_Category;
+            $categoryCollection = new Zend_Feed_Reader_Collection_Category();
             foreach ($list as $category) {
                 $categoryCollection[] = [
                     'term' => $category->nodeValue,
@@ -289,7 +290,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Feed
                 ];
             }
         } else {
-            $categoryCollection = new Zend_Feed_Reader_Collection_Category;
+            $categoryCollection = new Zend_Feed_Reader_Collection_Category();
         }
 
         $this->_data['categories'] = $categoryCollection;

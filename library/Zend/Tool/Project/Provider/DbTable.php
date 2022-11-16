@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -26,11 +27,8 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Provider_DbTable
-    extends Zend_Tool_Project_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Pretendable
+class Zend_Tool_Project_Provider_DbTable extends Zend_Tool_Project_Provider_Abstract implements Zend_Tool_Framework_Provider_Pretendable
 {
-
     protected $_specialties = ['FromDatabase'];
 
     /**
@@ -54,7 +52,7 @@ class Zend_Tool_Project_Provider_DbTable
             throw new Zend_Tool_Project_Provider_Exception(
                 'A models directory was not found' .
                 (($moduleName) ? ' for module ' . $moduleName . '.' : '.')
-                );
+            );
         }
 
         if (!($dbTableDirectory = $modelsDirectory->search('DbTableDirectory'))) {
@@ -123,7 +121,7 @@ class Zend_Tool_Project_Provider_DbTable
                     . ' used with other providers is "' . $name . '";'
                     . ' not "' . $originalName . '" as supplied',
                 ['color' => ['yellow']]
-                );
+            );
         }
 
         try {
@@ -170,14 +168,13 @@ class Zend_Tool_Project_Provider_DbTable
 
         $tableResources = [];
         foreach ($db->listTables() as $actualTableName) {
-
             $dbTableName = $this->_convertTableNameToClassName($actualTableName);
 
             if (!$forceOverwrite && self::hasResource($this->_loadedProfile, $dbTableName, $module)) {
                 throw new Zend_Tool_Project_Provider_Exception(
                     'This DbTable resource already exists, if you wish to overwrite it, '
                     . 'pass the "forceOverwrite" flag to this provider.'
-                    );
+                );
             }
 
             $tableResources[] = self::createResource(
@@ -185,7 +182,7 @@ class Zend_Tool_Project_Provider_DbTable
                 $dbTableName,
                 $actualTableName,
                 $module
-                );
+            );
         }
 
         if (count($tableResources) === 0) {
@@ -194,13 +191,10 @@ class Zend_Tool_Project_Provider_DbTable
 
         // do the creation
         if ($this->_registry->getRequest()->isPretend()) {
-
             foreach ($tableResources as $tableResource) {
                 $this->_registry->getResponse()->appendContent('Would create a DbTable at '  . $tableResource->getContext()->getPath());
             }
-
         } else {
-
             foreach ($tableResources as $tableResource) {
                 $this->_registry->getResponse()->appendContent('Creating a DbTable at ' . $tableResource->getContext()->getPath());
                 $tableResource->create();
@@ -208,8 +202,6 @@ class Zend_Tool_Project_Provider_DbTable
 
             $this->_storeProfile();
         }
-
-
     }
 
     protected function _convertTableNameToClassName($tableName)
@@ -222,5 +214,4 @@ class Zend_Tool_Project_Provider_DbTable
 
         return $this->_nameFilter->filter($tableName);
     }
-
 }

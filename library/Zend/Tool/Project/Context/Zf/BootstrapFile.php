@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@
  */
 class Zend_Tool_Project_Context_Zf_BootstrapFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * @var string
      */
@@ -75,8 +75,6 @@ class Zend_Tool_Project_Context_Zf_BootstrapFile extends Zend_Tool_Project_Conte
         if (($this->_applicationConfigFile === false) || ($this->_applicationDirectory === false)) {
             throw new Exception('To use the BootstrapFile context, your project requires the use of both the "ApplicationConfigFile" and "ApplicationDirectory" contexts.');
         }
-
-
     }
 
     /**
@@ -110,7 +108,7 @@ class Zend_Tool_Project_Context_Zf_BootstrapFile extends Zend_Tool_Project_Conte
                 $this->_applicationInstance = new Zend_Application(
                     'development',
                     $applicationOptions
-                    );
+                );
             }
         }
 

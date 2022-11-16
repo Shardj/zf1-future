@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -26,11 +27,8 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Provider_Controller
-    extends Zend_Tool_Project_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Pretendable
+class Zend_Tool_Project_Provider_Controller extends Zend_Tool_Project_Provider_Abstract implements Zend_Tool_Framework_Provider_Pretendable
 {
-
     /**
      * createResource will create the controllerFile resource at the appropriate location in the
      * profile.  NOTE: it is your job to execute the create() method on the resource, as well as
@@ -60,7 +58,7 @@ class Zend_Tool_Project_Provider_Controller
         return $controllersDirectory->createResource(
             'controllerFile',
             ['controllerName' => $controllerName, 'moduleName' => $moduleName]
-            );
+        );
     }
 
     /**
@@ -78,7 +76,7 @@ class Zend_Tool_Project_Provider_Controller
         }
 
         $controllersDirectory = self::_getControllersDirectoryResource($profile, $moduleName);
-        return ($controllersDirectory &&($controllersDirectory->search(['controllerFile' => ['controllerName' => $controllerName]])) instanceof Zend_Tool_Project_Profile_Resource);
+        return ($controllersDirectory && ($controllersDirectory->search(['controllerFile' => ['controllerName' => $controllerName]])) instanceof Zend_Tool_Project_Profile_Resource);
     }
 
     /**
@@ -124,7 +122,7 @@ class Zend_Tool_Project_Provider_Controller
             $response->appendContent(
                 'Note: PHPUnit is required in order to generate controller test stubs.',
                 ['color' => ['yellow']]
-                );
+            );
         }
 
         $originalName = $name;
@@ -148,7 +146,6 @@ class Zend_Tool_Project_Provider_Controller
             if ($testingEnabled) {
                 $testActionResource = Zend_Tool_Project_Provider_Test::createApplicationResource($this->_loadedProfile, $name, 'index', $module);
             }
-
         } catch (Exception $e) {
             $response->setException($e);
             return;
@@ -162,13 +159,12 @@ class Zend_Tool_Project_Provider_Controller
                     . ' used with other providers is "' . $name . '";'
                     . ' not "' . $originalName . '" as supplied',
                 ['color' => ['yellow']]
-                );
+            );
             unset($tense);
         }
 
         // do the creation
         if ($request->isPretend()) {
-
             $response->appendContent('Would create a controller at '  . $controllerResource->getContext()->getPath());
 
             if (isset($indexActionResource)) {
@@ -179,9 +175,7 @@ class Zend_Tool_Project_Provider_Controller
             if ($testingEnabled) {
                 $response->appendContent('Would create a controller test file at ' . $testActionResource->getParentResource()->getContext()->getPath());
             }
-
         } else {
-
             $response->appendContent('Creating a controller at ' . $controllerResource->getContext()->getPath());
             $controllerResource->create();
 
@@ -200,9 +194,5 @@ class Zend_Tool_Project_Provider_Controller
 
             $this->_storeProfile();
         }
-
     }
-
-
-
 }

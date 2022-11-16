@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -46,11 +47,8 @@ require_once 'Zend/Tool/Project/Profile/Iterator/EnabledResourceFilter.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Provider_Module
-    extends Zend_Tool_Project_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Pretendable
+class Zend_Tool_Project_Provider_Module extends Zend_Tool_Project_Provider_Abstract implements Zend_Tool_Framework_Provider_Pretendable
 {
-
     public static function createResources(Zend_Tool_Project_Profile $profile, $moduleName, Zend_Tool_Project_Profile_Resource $targetModuleResource = null)
     {
 
@@ -81,7 +79,7 @@ class Zend_Tool_Project_Provider_Module
                 'denyNames' => ['ModulesDirectory', 'ViewControllerScriptsDirectory'],
                 'denyType'  => 'Zend_Tool_Project_Context_Filesystem_File'
                 ]
-            );
+        );
 
         // the iterator for the module skeleton
         $targetIterator = new RecursiveIteratorIterator($moduleContextFilterIterator, RecursiveIteratorIterator::SELF_FIRST);
@@ -93,7 +91,6 @@ class Zend_Tool_Project_Provider_Module
 
         // loop through the target module skeleton
         foreach ($targetIterator as $targetSubResource) {
-
             $depthDifference = $targetIterator->getDepth() - $currentDepth;
             $currentDepth = $targetIterator->getDepth();
 
@@ -121,7 +118,6 @@ class Zend_Tool_Project_Provider_Module
             } else {
                 $currentChildResource->setEnabled($targetSubResource->isEnabled());
             }
-
         }
 
         return $moduleDirectory;
@@ -174,8 +170,5 @@ class Zend_Tool_Project_Provider_Module
             // store changes to the profile
             $this->_storeProfile();
         }
-
     }
-
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -173,7 +174,7 @@ class Zend_Cache_Core
      */
     public function setBackend(Zend_Cache_Backend $backendObject)
     {
-        $this->_backend= $backendObject;
+        $this->_backend = $backendObject;
         // some options (listed in $_directivesList) have to be given
         // to the backend too (even if they are not "backend specific")
         $directives = [];
@@ -185,7 +186,6 @@ class Zend_Cache_Core
             $this->_extendedBackend = true;
             $this->_backendCapabilities = $this->_backend->getCapabilities();
         }
-
     }
 
     /**
@@ -304,7 +304,7 @@ class Zend_Cache_Core
 
         $this->_log("Zend_Cache_Core: load item '{$id}'", 7);
         $data = $this->_backend->load($id, $doNotTestCacheValidity);
-        if ($data===false) {
+        if ($data === false) {
             // no cache available
             return false;
         }
@@ -403,7 +403,7 @@ class Zend_Cache_Core
 
         if ($this->_options['write_control']) {
             $data2 = $this->_backend->load($id, true);
-            if ($data!=$data2) {
+            if ($data != $data2) {
                 $this->_log("Zend_Cache_Core::save(): write control of item '{$id}' failed -> removing it", 4);
                 $this->_backend->remove($id);
                 return false;
@@ -695,7 +695,7 @@ class Zend_Cache_Core
         if (!is_array($tags)) {
             Zend_Cache::throwException('Invalid tags array : must be an array');
         }
-        foreach($tags as $tag) {
+        foreach ($tags as $tag) {
             $this->_validateIdOrTag($tag);
         }
         reset($tags);
@@ -762,5 +762,4 @@ class Zend_Cache_Core
         }
         return $id; // no prefix, just return the $id passed
     }
-
 }

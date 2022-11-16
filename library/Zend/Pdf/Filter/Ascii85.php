@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_Filter_Interface */
 require_once 'Zend/Pdf/Filter/Interface.php';
@@ -65,8 +65,8 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
 
             //encode into 5 bytes
             for ($j = 4; $j >= 0; $j--) {
-                $foo = (int) (($b / pow(85,$j)) + 33);
-                $b %= pow(85,$j);
+                $foo = (int) (($b / pow(85, $j)) + 33);
+                $b %= pow(85, $j);
                 $output .= chr($foo);
             }
         }
@@ -77,7 +77,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
             $chunk = substr($data, -$n);
 
             //0 pad the rest
-            for ($j = $n;$j < 4;$j++) {
+            for ($j = $n; $j < 4; $j++) {
                 $chunk .= "\0";
             }
 
@@ -86,8 +86,8 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
 
             //encode just $n + 1
             for ($j = 4; $j >= (4 - $n); $j--) {
-                $foo = (int) (($b / pow(85,$j)) + 33);
-                $b %= pow(85,$j);
+                $foo = (int) (($b / pow(85, $j)) + 33);
+                $b %= pow(85, $j);
                 $output .= chr($foo);
             }
         }
@@ -139,7 +139,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
 
             $c = substr($data, $i, 5);
 
-            if(strlen($c) < 5) {
+            if (strlen($c) < 5) {
                 //partial chunk
                 break;
             }

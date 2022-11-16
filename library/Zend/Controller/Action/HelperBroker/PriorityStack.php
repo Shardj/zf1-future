@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -29,7 +30,6 @@
  */
 class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggregate, ArrayAccess, Countable
 {
-
     protected $_helpersByPriority = [];
     protected $_helpersByNameRef  = [];
     protected $_nextDefaultPriority = 1;
@@ -280,5 +280,4 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
     {
         return $this->_helpersByNameRef;
     }
-
 }

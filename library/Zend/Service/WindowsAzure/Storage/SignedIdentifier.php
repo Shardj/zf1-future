@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,7 @@ require_once 'Zend/Service/WindowsAzure/Storage/StorageEntityAbstract.php';
  * @property string $Permissions  Signed permissions - read (r), write (w), delete (d) and list (l)
  */
 class Zend_Service_WindowsAzure_Storage_SignedIdentifier
-	extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+    extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
 {
     /**
      * Constructor

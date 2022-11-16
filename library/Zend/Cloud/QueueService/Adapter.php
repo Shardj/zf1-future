@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -95,7 +96,7 @@ interface Zend_Cloud_QueueService_Adapter
      * @param  array  $options
      * @return void
      */
-    public function storeQueueMetadata($queueId, $metadata,  $options = null);
+    public function storeQueueMetadata($queueId, $metadata, $options = null);
 
     /**
      * Send a message to the specified queue.
@@ -105,7 +106,7 @@ interface Zend_Cloud_QueueService_Adapter
      * @param  array  $options
      * @return string Message ID
      */
-    public function sendMessage($queueId, $message,  $options = null);
+    public function sendMessage($queueId, $message, $options = null);
 
     /**
      * Recieve at most $max messages from the specified queue and return the
@@ -137,7 +138,7 @@ interface Zend_Cloud_QueueService_Adapter
      * @return void
      *
      */
-    public function deleteMessage($queueId, $message,  $options = null);
+    public function deleteMessage($queueId, $message, $options = null);
 
     /**
      * Get the concrete adapter.

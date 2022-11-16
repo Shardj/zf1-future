@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -179,7 +180,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
                 $method = MCRYPT_RAND;
             }
             $vector = mcrypt_create_iv($size, $method);
-        } else if (strlen($vector) != $size) {
+        } elseif (strlen($vector) != $size) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('The given vector has a wrong size for the set algorithm');
         }
@@ -290,7 +291,8 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
             $this->_encryption['algorithm'],
             $this->_encryption['algorithm_directory'],
             $this->_encryption['mode'],
-            $this->_encryption['mode_directory']);
+            $this->_encryption['mode_directory']
+        );
 
         if ($cipher === false) {
             require_once 'Zend/Filter/Exception.php';
@@ -328,7 +330,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         if (empty($keysizes) || ($this->_encryption['salt'] == true)) {
             $keysize = mcrypt_enc_get_key_size($cipher);
             $key     = substr(md5($key), 0, $keysize);
-        } else if (!in_array(strlen($key), $keysizes)) {
+        } elseif (!in_array(strlen($key), $keysizes)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('The given key has a wrong size for the set algorithm');
         }

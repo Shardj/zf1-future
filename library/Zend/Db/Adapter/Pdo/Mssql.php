@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Db_Adapter_Pdo_Abstract
@@ -170,7 +170,8 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
      * It is necessary to override the abstract PDO transaction functions here, as
      * the PDO driver for MSSQL does not support transactions.
      */
-    protected function _rollBack() {
+    protected function _rollBack()
+    {
         $this->_connect();
         $this->_connection->exec('ROLLBACK TRANSACTION');
         return true;
@@ -314,8 +315,8 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
      * @throws Zend_Db_Adapter_Exception
      * @return string
      */
-     public function limit($sql, $count, $offset = 0)
-     {
+    public function limit($sql, $count, $offset = 0)
+    {
         $count = (int)$count;
         if ($count <= 0) {
             /** @see Zend_Db_Adapter_Exception */
@@ -332,9 +333,9 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
 
         $sql = preg_replace(
             '/^SELECT\s+(DISTINCT\s)?/i',
-            'SELECT $1TOP ' . ($count+$offset) . ' ',
+            'SELECT $1TOP ' . ($count + $offset) . ' ',
             $sql
-            );
+        );
 
         if ($offset > 0) {
             $orderby = stristr($sql, 'ORDER BY');

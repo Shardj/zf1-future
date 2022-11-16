@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -39,7 +40,6 @@ require_once 'Zend/Feed/Writer/Source.php';
  */
 class Zend_Feed_Writer_Entry
 {
-
     /**
      * Internal array containing all data associated with this entry or item.
      *
@@ -144,7 +144,7 @@ class Zend_Feed_Writer_Entry
      */
     public function addAuthors(array $authors)
     {
-        foreach($authors as $author) {
+        foreach ($authors as $author) {
             $this->addAuthor($author);
         }
     }
@@ -213,7 +213,7 @@ class Zend_Feed_Writer_Entry
     {
         $zdate = null;
         if ($date === null) {
-            $zdate = new Zend_Date;
+            $zdate = new Zend_Date();
         } elseif ($date instanceof Zend_Date) {
             $zdate = $date;
         } elseif (ctype_digit((string)$date)) {
@@ -234,7 +234,7 @@ class Zend_Feed_Writer_Entry
     {
         $zdate = null;
         if ($date === null) {
-            $zdate = new Zend_Date;
+            $zdate = new Zend_Date();
         } elseif ($date instanceof Zend_Date) {
             $zdate = $date;
         } elseif (ctype_digit((string)$date)) {
@@ -295,7 +295,7 @@ class Zend_Feed_Writer_Entry
      */
     public function setCommentCount($count)
     {
-        if ( !is_numeric($count) || (int) $count < 0) {
+        if (!is_numeric($count) || (int) $count < 0) {
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Invalid parameter: "count" must be a non-empty integer number');
         }
@@ -713,7 +713,7 @@ class Zend_Feed_Writer_Entry
      */
     public function createSource()
     {
-        $source = new Zend_Feed_Writer_Source;
+        $source = new Zend_Feed_Writer_Source();
         if ($this->getEncoding()) {
             $source->setEncoding($this->getEncoding());
         }

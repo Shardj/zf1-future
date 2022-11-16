@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -199,7 +200,6 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
             } else {
                 return (string) $result->CreateQueueResult->QueueUrl;
             }
-
         } while ($retry);
 
         return false;
@@ -400,9 +400,9 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
             throw new Zend_Service_Amazon_Sqs_Exception($result->Error->Code);
         }
 
-        if(count($result->GetQueueAttributesResult->Attribute) > 1) {
+        if (count($result->GetQueueAttributesResult->Attribute) > 1) {
             $attr_result = [];
-            foreach($result->GetQueueAttributesResult->Attribute as $attribute) {
+            foreach ($result->GetQueueAttributesResult->Attribute as $attribute) {
                 $attr_result[(string)$attribute->Name] = (string)$attribute->Value;
             }
             return $attr_result;
@@ -433,7 +433,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         switch ($action) {
             case 'ListQueues':
             case 'CreateQueue':
-                $client->setUri('http://'.$this->_sqsEndpoint);
+                $client->setUri('http://' . $this->_sqsEndpoint);
                 break;
             default:
                 $client->setUri($queue_url);
@@ -488,7 +488,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
     {
         $parameters['AWSAccessKeyId']   = $this->_getAccessKey();
         $parameters['SignatureVersion'] = $this->_sqsSignatureVersion;
-        $parameters['Timestamp']        = gmdate('Y-m-d\TH:i:s\Z', time()+10);
+        $parameters['Timestamp']        = gmdate('Y-m-d\TH:i:s\Z', time() + 10);
         $parameters['Version']          = $this->_sqsApiVersion;
         $parameters['SignatureMethod']  = $this->_sqsSignatureMethod;
         $parameters['Signature']        = $this->_signParameters($queue_url, $parameters);
@@ -522,8 +522,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         $data .= $this->_sqsEndpoint . "\n";
         if ($queue_url !== null) {
             $data .= parse_url($queue_url, PHP_URL_PATH);
-        }
-        else {
+        } else {
             $data .= '/';
         }
         $data .= "\n";
@@ -532,7 +531,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         unset($paramaters['Signature']);
 
         $arrData = [];
-        foreach($paramaters as $key => $value) {
+        foreach ($paramaters as $key => $value) {
             $arrData[] = $key . '=' . str_replace('%7E', '~', urlencode($value));
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -125,9 +126,13 @@ class Zend_Service_ReCaptcha extends Zend_Service_Abstract
      * @param string $ip
      * @param array|Zend_Config $params
      */
-    public function __construct($publicKey = null, $privateKey = null,
-                                $params = null, $options = null, $ip = null)
-    {
+    public function __construct(
+        $publicKey = null,
+        $privateKey = null,
+        $params = null,
+        $options = null,
+        $ip = null
+    ) {
         if ($publicKey !== null) {
             $this->setPublicKey($publicKey);
         }
@@ -138,7 +143,7 @@ class Zend_Service_ReCaptcha extends Zend_Service_Abstract
 
         if ($ip !== null) {
             $this->setIp($ip);
-        } else if (isset($_SERVER['REMOTE_ADDR'])) {
+        } elseif (isset($_SERVER['REMOTE_ADDR'])) {
             $this->setIp($_SERVER['REMOTE_ADDR']);
         }
 

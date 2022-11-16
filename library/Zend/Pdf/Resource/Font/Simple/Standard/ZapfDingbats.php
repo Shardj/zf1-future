@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 require_once 'Zend/Pdf/Element/Name.php';
@@ -375,7 +375,9 @@ class Zend_Pdf_Resource_Font_Simple_Standard_ZapfDingbats extends Zend_Pdf_Resou
           0x27bd =>   0xc9, 0x27be =>   0xca];
         require_once 'Zend/Pdf/Cmap.php';
         $this->_cmap = Zend_Pdf_Cmap::cmapWithTypeData(
-            Zend_Pdf_Cmap::TYPE_BYTE_ENCODING_STATIC, $cmapData);
+            Zend_Pdf_Cmap::TYPE_BYTE_ENCODING_STATIC,
+            $cmapData
+        );
 
 
         /* Resource dictionary */

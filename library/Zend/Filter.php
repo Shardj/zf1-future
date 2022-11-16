@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@ require_once 'Zend/Filter/Interface.php';
  */
 class Zend_Filter implements Zend_Filter_Interface
 {
-
     const CHAIN_APPEND  = 'append';
     const CHAIN_PREPEND = 'prepend';
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,33 +57,33 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  boolean $details
      * @return Zend_Service_Rackspace_Servers_ServerList|boolean
      */
-    public function listServers($details=false)
+    public function listServers($details = false)
     {
-        $url= '/servers';
+        $url = '/servers';
         if ($details) {
-            $url.= '/detail';
+            $url .= '/detail';
         }
-        $result= $this->httpCall($this->getManagementUrl().$url,'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . $url, 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $servers= json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_ServerList($this,$servers['servers']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '203': // break intentionally omitted
+                $servers = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_ServerList($this, $servers['servers']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -97,30 +98,30 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $result= $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id),'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . '/servers/' . rawurlencode($id), 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $server = json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_Server($this,$server['server']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '203': // break intentionally omitted
+                $server = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_Server($this, $server['server']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -134,7 +135,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  array $files
      * @return Zend_Service_Rackspace_Servers_Server|boolean
      */
-    public function createServer(array $data, $metadata=[],$files=[])
+    public function createServer(array $data, $metadata = [], $files = [])
     {
         if (empty($data) || !is_array($data) || !is_array($metadata) || !is_array($files)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -152,28 +153,33 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_IMAGEID);
         }
-        if (count($files)>self::LIMIT_NUM_FILE) {
+        if (count($files) > self::LIMIT_NUM_FILE) {
             require_once 'Zend/Service/Rackspace/Exception.php';
-            throw new Zend_Service_Rackspace_Exception('You can attach '.self::LIMIT_NUM_FILE.' files maximum');
+            throw new Zend_Service_Rackspace_Exception('You can attach ' . self::LIMIT_NUM_FILE . ' files maximum');
         }
         if (!empty($metadata)) {
-            $data['metadata']= $metadata;
+            $data['metadata'] = $metadata;
         }
-        $data['flavorId']= (integer) $data['flavorId'];
-        $data['imageId']= (integer) $data['imageId'];
+        $data['flavorId'] = (int) $data['flavorId'];
+        $data['imageId'] = (int) $data['imageId'];
         if (!empty($files)) {
             foreach ($files as $serverPath => $filePath) {
                 if (!file_exists($filePath)) {
                     require_once 'Zend/Service/Rackspace/Exception.php';
                     throw new Zend_Service_Rackspace_Exception(
-                            sprintf("The file %s doesn't exist",$filePath));
+                        sprintf("The file %s doesn't exist", $filePath)
+                    );
                 }
-                $content= file_get_contents($filePath);
+                $content = file_get_contents($filePath);
                 if (strlen($content) > self::LIMIT_FILE_SIZE) {
                     require_once 'Zend/Service/Rackspace/Exception.php';
                     throw new Zend_Service_Rackspace_Exception(
-                            sprintf("The size of the file %s is greater than the max size of %d bytes",
-                                    $filePath,self::LIMIT_FILE_SIZE));
+                        sprintf(
+                            "The size of the file %s is greater than the max size of %d bytes",
+                            $filePath,
+                            self::LIMIT_FILE_SIZE
+                        )
+                    );
                 }
                 $data['personality'][] = [
                     'path'     => $serverPath,
@@ -181,31 +187,36 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
                 ];
             }
         }
-        $result = $this->httpCall($this->getManagementUrl().'/servers','POST',
-                null,null,json_encode(['server' => $data]));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers',
+            'POST',
+            null,
+            null,
+            json_encode(['server' => $data])
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '202' : // break intentionally omitted
-                $server = json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_Server($this,$server['server']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '202': // break intentionally omitted
+                $server = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_Server($this, $server['server']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -216,7 +227,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $password
      * @return boolean
      */
-    protected function updateServer($id,$name=null,$password=null)
+    protected function updateServer($id, $name = null, $password = null)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -226,39 +237,44 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception("You must specify the new name or password of server");
         }
-        $data= [];
+        $data = [];
         if (!empty($name)) {
-            $data['name']= $name;
+            $data['name'] = $name;
         }
         if (!empty($password)) {
-            $data['adminPass']= $password;
+            $data['adminPass'] = $password;
         }
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id),'PUT',
-                null,null,json_encode(['server' => $data]));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id),
+            'PUT',
+            null,
+            null,
+            json_encode(['server' => $data])
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '204' : // break intentionally omitted
+            case '204': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -268,7 +284,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $name
      * @return boolean
      */
-    public function changeServerName($id,$name)
+    public function changeServerName($id, $name)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -287,7 +303,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $password
      * @return boolean
      */
-    public function changeServerPassword($id,$password)
+    public function changeServerPassword($id, $password)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -297,7 +313,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception("You must specify the new password of the server");
         }
-        return $this->updateServer($id, null,$password);
+        return $this->updateServer($id, null, $password);
     }
     /**
      * Delete a server
@@ -311,31 +327,31 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You must specify the ID of the server');
         }
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id),'DELETE');
+        $result = $this->httpCall($this->getManagementUrl() . '/servers/' . rawurlencode($id), 'DELETE');
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -346,11 +362,11 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      */
     public function getServerIp($id)
     {
-        $result= $this->getServer($id);
-        if ($result===false) {
+        $result = $this->getServer($id);
+        if ($result === false) {
             return false;
         }
-        $result= $result->toArray();
+        $result = $result->toArray();
         return $result['addresses'];
     }
     /**
@@ -361,8 +377,8 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      */
     public function getServerPublicIp($id)
     {
-        $addresses= $this->getServerIp($id);
-        if ($addresses===false) {
+        $addresses = $this->getServerIp($id);
+        if ($addresses === false) {
             return false;
         }
         return $addresses['public'];
@@ -375,8 +391,8 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      */
     public function getServerPrivateIp($id)
     {
-        $addresses= $this->getServerIp($id);
-        if ($addresses===false) {
+        $addresses = $this->getServerIp($id);
+        if ($addresses === false) {
             return false;
         }
         return $addresses['private'];
@@ -389,7 +405,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $groupId
      * @return boolean
      */
-    public function shareIpAddress($id,$ip,$groupId,$configure=true)
+    public function shareIpAddress($id, $ip, $groupId, $configure = true)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -408,33 +424,38 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the group id to use');
         }
-        $data= [
-            'sharedIpGroupId' => (integer) $groupId,
+        $data = [
+            'sharedIpGroupId' => (int) $groupId,
             'configureServer' => $configure
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/ips/public/'.rawurlencode($ip),'PUT',
-                null,null,json_encode(['shareIp' => $data]));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/ips/public/' . rawurlencode($ip),
+            'PUT',
+            null,
+            null,
+            json_encode(['shareIp' => $data])
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -444,7 +465,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $ip
      * @return boolean
      */
-    public function unshareIpAddress($id,$ip)
+    public function unshareIpAddress($id, $ip)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -459,29 +480,31 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception("The parameter $ip specified is not a valid IP address");
         }
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/ips/public/'.rawurlencode($ip),
-                'DELETE');
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/ips/public/' . rawurlencode($ip),
+            'DELETE'
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -494,49 +517,54 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  boolean $hard
      * @return boolean
      */
-    public function rebootServer($id,$hard=false)
+    public function rebootServer($id, $hard = false)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the ID of the server');
         }
         if (!$hard) {
-            $type= 'SOFT';
+            $type = 'SOFT';
         } else {
-            $type= 'HARD';
+            $type = 'HARD';
         }
-        $data= [
+        $data = [
             'reboot' => [
                 'type' => $type
             ]
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/action',
-                                  'POST', null, null, json_encode($data));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/action',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '202' : // break intentionally omitted
+            case '200':
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -549,7 +577,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $imageId
      * @return boolean
      */
-    public function rebuildServer($id,$imageId)
+    public function rebuildServer($id, $imageId)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -559,37 +587,42 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the new imageId of the server');
         }
-        $data= [
+        $data = [
             'rebuild' => [
-                'imageId' => (integer) $imageId
+                'imageId' => (int) $imageId
             ]
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/action',
-                                  'POST', null, null, json_encode($data));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/action',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -605,7 +638,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $flavorId
      * @return boolean
      */
-    public function resizeServer($id,$flavorId)
+    public function resizeServer($id, $flavorId)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -615,40 +648,45 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the new flavorId of the server');
         }
-        $data= [
+        $data = [
             'resize' => [
-                'flavorId' => (integer) $flavorId
+                'flavorId' => (int) $flavorId
             ]
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/action',
-                                  'POST', null, null, json_encode($data));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/action',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '403' :
-                $this->errorMsg= self::ERROR_RESIZE_NOT_ALLOWED;
+            case '403':
+                $this->errorMsg = self::ERROR_RESIZE_NOT_ALLOWED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -669,38 +707,43 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the ID of the server');
         }
-        $data= [
+        $data = [
             'confirmResize' => null
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/action',
-                                  'POST', null, null, json_encode($data));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/action',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '204' : // break intentionally omitted
+            case '204': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '403' :
-                $this->errorMsg= self::ERROR_RESIZE_NOT_ALLOWED;
+            case '403':
+                $this->errorMsg = self::ERROR_RESIZE_NOT_ALLOWED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -721,38 +764,43 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the ID of the server');
         }
-        $data= [
+        $data = [
             'revertResize' => null
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/action',
-                                  'POST', null, null, json_encode($data));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/action',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
+            case '202': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '403' :
-                $this->errorMsg= self::ERROR_RESIZE_NOT_ALLOWED;
+            case '403':
+                $this->errorMsg = self::ERROR_RESIZE_NOT_ALLOWED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -763,33 +811,33 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  boolean $details
      * @return array|boolean
      */
-    public function listFlavors($details=false)
+    public function listFlavors($details = false)
     {
-        $url= '/flavors';
+        $url = '/flavors';
         if ($details) {
-            $url.= '/detail';
+            $url .= '/detail';
         }
-        $result= $this->httpCall($this->getManagementUrl().$url,'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . $url, 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $flavors= json_decode($result->getBody(),true);
+            case '200':
+            case '203': // break intentionally omitted
+                $flavors = json_decode($result->getBody(), true);
                 return $flavors['flavors'];
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -804,27 +852,27 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception('You didn\'t specified the new flavorId of the server');
         }
-        $result= $this->httpCall($this->getManagementUrl().'/flavors/'.rawurlencode($flavorId),'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . '/flavors/' . rawurlencode($flavorId), 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $flavor= json_decode($result->getBody(),true);
+            case '200':
+            case '203': // break intentionally omitted
+                $flavor = json_decode($result->getBody(), true);
                 return $flavor['flavor'];
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -833,33 +881,33 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  boolean $details
      * @return Zend_Service_Rackspace_Servers_ImageList|boolean
      */
-    public function listImages($details=false)
+    public function listImages($details = false)
     {
-        $url= '/images';
+        $url = '/images';
         if ($details) {
-            $url.= '/detail';
+            $url .= '/detail';
         }
-        $result= $this->httpCall($this->getManagementUrl().$url,'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . $url, 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $images= json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_ImageList($this,$images['images']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '203': // break intentionally omitted
+                $images = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_ImageList($this, $images['images']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -870,30 +918,30 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      */
     public function getImage($id)
     {
-        $result= $this->httpCall($this->getManagementUrl().'/images/'.rawurlencode($id),'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . '/images/' . rawurlencode($id), 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $image= json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_Image($this,$image['image']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '203': // break intentionally omitted
+                $image = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_Image($this, $image['image']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                 $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                 $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -903,7 +951,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $name
      * @return Zend_Service_Rackspace_Servers_Image
      */
-    public function createImage($serverId,$name)
+    public function createImage($serverId, $name)
     {
         if (empty($serverId)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -915,40 +963,45 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
         }
         $data = [
             'image' => [
-                'serverId' => (integer) $serverId,
+                'serverId' => (int) $serverId,
                 'name'     => $name
             ]
         ];
-        $result = $this->httpCall($this->getManagementUrl().'/images', 'POST',
-                                  null, null, json_encode($data));
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/images',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '202' : // break intentionally omitted
-                $image= json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_Image($this,$image['image']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '202': // break intentionally omitted
+                $image = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_Image($this, $image['image']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '403' :
-                $this->errorMsg= self::ERROR_RESIZE_NOT_ALLOWED;
+            case '403':
+                $this->errorMsg = self::ERROR_RESIZE_NOT_ALLOWED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -963,28 +1016,28 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $result = $this->httpCall($this->getManagementUrl().'/images/'.rawurlencode($id),'DELETE');
+        $result = $this->httpCall($this->getManagementUrl() . '/images/' . rawurlencode($id), 'DELETE');
         $status = $result->getStatus();
         switch ($status) {
-            case '204' : // break intentionally omitted
+            case '204': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -999,31 +1052,33 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $result= $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/backup_schedule',
-                                 'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/backup_schedule',
+            'GET'
+        );
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $backup = json_decode($result->getBody(),true);
+            case '200':
+            case '203': // break intentionally omitted
+                $backup = json_decode($result->getBody(), true);
                 return $backup['backupSchedule'];
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -1034,7 +1089,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $daily
      * @return boolean
      */
-    public function changeBackupSchedule($id,$weekly,$daily)
+    public function changeBackupSchedule($id, $weekly, $daily)
     {
         if (empty($id)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -1055,32 +1110,37 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
                 'daily'   => $daily
             ]
         ];
-        $result= $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/backup_schedule',
-                                 'POST',null,null,json_encode($data));
-        $status= $result->getStatus();
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/backup_schedule',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
+        $status = $result->getStatus();
         switch ($status) {
-            case '204' : // break intentionally omitted
+            case '204': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -1095,32 +1155,34 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $result = $this->httpCall($this->getManagementUrl().'/servers/'.rawurlencode($id).'/backup_schedule',
-                                  'DELETE');
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/servers/' . rawurlencode($id) . '/backup_schedule',
+            'DELETE'
+        );
         $status = $result->getStatus();
         switch ($status) {
-            case '204' : // break intentionally omitted
+            case '204': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '409' :
-                $this->errorMsg= self::ERROR_BUILD_IN_PROGRESS;
+            case '409':
+                $this->errorMsg = self::ERROR_BUILD_IN_PROGRESS;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -1129,33 +1191,33 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  boolean $details
      * @return Zend_Service_Rackspace_Servers_SharedIpGroupList|boolean
      */
-    public function listSharedIpGroups($details=false)
+    public function listSharedIpGroups($details = false)
     {
-        $url= '/shared_ip_groups';
+        $url = '/shared_ip_groups';
         if ($details) {
-            $url.= '/detail';
+            $url .= '/detail';
         }
-        $result= $this->httpCall($this->getManagementUrl().$url,'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . $url, 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $groups= json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_SharedIpGroupList($this,$groups['sharedIpGroups']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '203': // break intentionally omitted
+                $groups = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_SharedIpGroupList($this, $groups['sharedIpGroups']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -1170,30 +1232,30 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $result= $this->httpCall($this->getManagementUrl().'/shared_ip_groups/'.rawurlencode($id),'GET');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . '/shared_ip_groups/' . rawurlencode($id), 'GET');
+        $status = $result->getStatus();
         switch ($status) {
-            case '200' :
-            case '203' : // break intentionally omitted
-                $group= json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_SharedIpGroup($this,$group['sharedIpGroup']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '200':
+            case '203': // break intentionally omitted
+                $group = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_SharedIpGroup($this, $group['sharedIpGroup']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -1203,7 +1265,7 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
      * @param  string $serverId
      * @return false|Zend_Service_Rackspace_Servers_SharedIpGroup
      */
-    public function createSharedIpGroup($name,$serverId)
+    public function createSharedIpGroup($name, $serverId)
     {
         if (empty($name)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -1216,30 +1278,35 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
         $data = [
             'sharedIpGroup' => [
                 'name'   => $name,
-                'server' => (integer) $serverId
+                'server' => (int) $serverId
             ]
         ];
-        $result= $this->httpCall($this->getManagementUrl().'/shared_ip_groups',
-                                 'POST',null,null,json_encode($data));
-        $status= $result->getStatus();
+        $result = $this->httpCall(
+            $this->getManagementUrl() . '/shared_ip_groups',
+            'POST',
+            null,
+            null,
+            json_encode($data)
+        );
+        $status = $result->getStatus();
         switch ($status) {
-            case '201' : // break intentionally omitted
-                $group = json_decode($result->getBody(),true);
-                return new Zend_Service_Rackspace_Servers_SharedIpGroup($this,$group['sharedIpGroup']);
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '201': // break intentionally omitted
+                $group = json_decode($result->getBody(), true);
+                return new Zend_Service_Rackspace_Servers_SharedIpGroup($this, $group['sharedIpGroup']);
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
     /**
@@ -1254,28 +1321,28 @@ class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
             require_once 'Zend/Service/Rackspace/Exception.php';
             throw new Zend_Service_Rackspace_Exception(self::ERROR_PARAM_NO_ID);
         }
-        $result= $this->httpCall($this->getManagementUrl().'/shared_ip_groups/'.rawurlencode($id),'DELETE');
-        $status= $result->getStatus();
+        $result = $this->httpCall($this->getManagementUrl() . '/shared_ip_groups/' . rawurlencode($id), 'DELETE');
+        $status = $result->getStatus();
         switch ($status) {
-            case '204' : // break intentionally omitted
+            case '204': // break intentionally omitted
                 return true;
-            case '503' :
-                $this->errorMsg= self::ERROR_SERVICE_UNAVAILABLE;
+            case '503':
+                $this->errorMsg = self::ERROR_SERVICE_UNAVAILABLE;
                 break;
-            case '401' :
-                $this->errorMsg= self::ERROR_UNAUTHORIZED;
+            case '401':
+                $this->errorMsg = self::ERROR_UNAUTHORIZED;
                 break;
-            case '404' :
-                $this->errorMsg= self::ERROR_ITEM_NOT_FOUND;
+            case '404':
+                $this->errorMsg = self::ERROR_ITEM_NOT_FOUND;
                 break;
-            case '413' :
-                $this->errorMsg= self::ERROR_OVERLIMIT;
+            case '413':
+                $this->errorMsg = self::ERROR_OVERLIMIT;
                 break;
             default:
-                $this->errorMsg= $result->getBody();
+                $this->errorMsg = $result->getBody();
                 break;
         }
-        $this->errorCode= $status;
+        $this->errorCode = $status;
         return false;
     }
 }

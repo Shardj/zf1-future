@@ -46,7 +46,6 @@ require_once 'Zend/Gdata/Spreadsheets/Extension/ColCount.php';
  */
 class Zend_Gdata_Spreadsheets_CellFeed extends Zend_Gdata_Feed
 {
-
     /**
     * The classname for individual feed elements.
     *
@@ -156,5 +155,4 @@ class Zend_Gdata_Spreadsheets_CellFeed extends Zend_Gdata_Feed
         $this->_colCount = $colCount;
         return $this;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @version    $Id$
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-
 
 /** Zend_View_Exception */
 require_once 'Zend/View/Exception.php';

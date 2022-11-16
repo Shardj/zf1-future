@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -404,7 +405,8 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
             switch ($this->_verticalPosition) {
                 case 'middle':
                     $this->_topOffset = floor(
-                            ($supportHeight - $barcodeHeight) / 2);
+                        ($supportHeight - $barcodeHeight) / 2
+                    );
                     break;
                 case 'bottom':
                     $this->_topOffset = $supportHeight - $barcodeHeight;
@@ -422,7 +424,8 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
             switch ($this->_horizontalPosition) {
                 case 'center':
                     $this->_leftOffset = floor(
-                            ($supportWidth - $barcodeWidth) / 2);
+                        ($supportWidth - $barcodeWidth) / 2
+                    );
                     break;
                 case 'right':
                     $this->_leftOffset = $supportWidth - $barcodeWidth;

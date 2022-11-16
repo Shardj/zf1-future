@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -392,9 +393,11 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $this->_docCount += $segSize;
 
             $this->_segmentInfos[$segName] =
-                                new Zend_Search_Lucene_Index_SegmentInfo($this->_directory,
-                                                                         $segName,
-                                                                         $segSize);
+                                new Zend_Search_Lucene_Index_SegmentInfo(
+                                    $this->_directory,
+                                    $segName,
+                                    $segSize
+                                );
         }
 
         // Use 2.1 as a target version. Index will be reorganized at update time.
@@ -414,7 +417,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
 
         if ($format == (int)0xFFFFFFFC) {
             $this->_formatVersion = self::FORMAT_2_3;
-        } else if ($format == (int)0xFFFFFFFD) {
+        } elseif ($format == (int)0xFFFFFFFD) {
             $this->_formatVersion = self::FORMAT_2_1;
         } else {
             require_once 'Zend/Search/Lucene/Exception.php';
@@ -474,10 +477,10 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             if ($isCompoundByte == 0xFF) {
                 // The segment is not a compound file
                 $isCompound = false;
-            } else if ($isCompoundByte == 0x00) {
+            } elseif ($isCompoundByte == 0x00) {
                 // The status is unknown
                 $isCompound = null;
-            } else if ($isCompoundByte == 0x01) {
+            } elseif ($isCompoundByte == 0x01) {
                 // The segment is a compound file
                 $isCompound = true;
             }
@@ -485,13 +488,15 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $this->_docCount += $segSize;
 
             $this->_segmentInfos[$segName] =
-                                new Zend_Search_Lucene_Index_SegmentInfo($this->_directory,
-                                                                         $segName,
-                                                                         $segSize,
-                                                                         $delGen,
-                                                                         $docStoreOptions,
-                                                                         $hasSingleNormFile,
-                                                                         $isCompound);
+                                new Zend_Search_Lucene_Index_SegmentInfo(
+                                    $this->_directory,
+                                    $segName,
+                                    $segSize,
+                                    $delGen,
+                                    $docStoreOptions,
+                                    $hasSingleNormFile,
+                                    $isCompound
+                                );
         }
     }
 
@@ -642,9 +647,11 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     {
         if ($this->_writer === null) {
             require_once 'Zend/Search/Lucene/Index/Writer.php';
-            $this->_writer = new Zend_Search_Lucene_Index_Writer($this->_directory,
-                                                                 $this->_segmentInfos,
-                                                                 $this->_formatVersion);
+            $this->_writer = new Zend_Search_Lucene_Index_Writer(
+                $this->_directory,
+                $this->_segmentInfos,
+                $this->_formatVersion
+            );
         }
 
         return $this->_writer;
@@ -984,9 +991,15 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
 
         if (func_num_args() === 1) {
             // sort by scores
-            array_multisort($scores, SORT_DESC, SORT_NUMERIC,
-                            $ids,    SORT_ASC,  SORT_NUMERIC,
-                            $hits);
+            array_multisort(
+                $scores,
+                SORT_DESC,
+                SORT_NUMERIC,
+                $ids,
+                SORT_ASC,
+                SORT_NUMERIC,
+                $hits
+            );
         } else {
             // sort by given field names
 
@@ -1043,11 +1056,11 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
                     $sortArgs[] = &$sortFieldValues[$fieldName];
                 }
 
-                if ($count + 1 < count($argList)  &&  is_integer($argList[$count+1])) {
+                if ($count + 1 < count($argList)  &&  is_integer($argList[$count + 1])) {
                     $count++;
                     $sortArgs[] = &$argList[$count];
 
-                    if ($count + 1 < count($argList)  &&  is_integer($argList[$count+1])) {
+                    if ($count + 1 < count($argList)  &&  is_integer($argList[$count + 1])) {
                         $count++;
                         $sortArgs[] = &$argList[$count];
                     } else {
@@ -1088,7 +1101,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     public function getFieldNames($indexed = false)
     {
         $result = [];
-        foreach( $this->_segmentInfos as $segmentInfo ) {
+        foreach ($this->_segmentInfos as $segmentInfo) {
             $result = array_merge($result, $segmentInfo->getFields($indexed));
         }
         return $result;
@@ -1125,7 +1138,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
         }
 
         $fdxFile = $segmentInfo->openCompoundFile('.fdx');
-        $fdxFile->seek(($id-$segmentStartId)*8, SEEK_CUR);
+        $fdxFile->seek(($id - $segmentStartId) * 8, SEEK_CUR);
         $fieldValuesPosition = $fdxFile->readLong();
 
         $fdtFile = $segmentInfo->openCompoundFile('.fdt');
@@ -1140,20 +1153,24 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $fieldInfo = $segmentInfo->getField($fieldNum);
 
             if (!($bits & 2)) { // Text data
-                $field = new Zend_Search_Lucene_Field($fieldInfo->name,
-                                                      $fdtFile->readString(),
-                                                      'UTF-8',
-                                                      true,
-                                                      $fieldInfo->isIndexed,
-                                                      $bits & 1 );
+                $field = new Zend_Search_Lucene_Field(
+                    $fieldInfo->name,
+                    $fdtFile->readString(),
+                    'UTF-8',
+                    true,
+                    $fieldInfo->isIndexed,
+                    $bits & 1
+                );
             } else {            // Binary data
-                $field = new Zend_Search_Lucene_Field($fieldInfo->name,
-                                                      $fdtFile->readBinary(),
-                                                      '',
-                                                      true,
-                                                      $fieldInfo->isIndexed,
-                                                      $bits & 1,
-                                                      true );
+                $field = new Zend_Search_Lucene_Field(
+                    $fieldInfo->name,
+                    $fdtFile->readBinary(),
+                    '',
+                    true,
+                    $fieldInfo->isIndexed,
+                    $bits & 1,
+                    true
+                );
             }
 
             $doc->addField($field);
@@ -1570,5 +1587,6 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      * @todo Implementation
      */
     public function undeleteAll()
-    {}
+    {
+    }
 }

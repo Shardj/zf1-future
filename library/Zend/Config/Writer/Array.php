@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -49,6 +50,5 @@ class Zend_Config_Writer_Array extends Zend_Config_Writer_FileAbstract
 
         return "<?php\n"
             . "return " . var_export($data, true) . ";\n";
-
     }
 }

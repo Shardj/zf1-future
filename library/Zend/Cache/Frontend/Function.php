@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Cache_Core
@@ -95,7 +95,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
         }
 
         $id = $this->_makeId($callback, $parameters);
-        if ( ($rs = $this->load($id)) && isset($rs[0], $rs[1])) {
+        if (($rs = $this->load($id)) && isset($rs[0], $rs[1])) {
             // A cache is available
             $output = $rs[0];
             $return = $rs[1];
@@ -156,7 +156,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
                 $lastErr = error_get_last();
                 Zend_Cache::throwException("Can't serialize callback object to generate id: {$lastErr['message']}");
             }
-            $name.= '__' . $tmp;
+            $name .= '__' . $tmp;
         }
 
         // generate a unique id for arguments
@@ -175,5 +175,4 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
 
         return md5($name . $argsStr);
     }
-
 }

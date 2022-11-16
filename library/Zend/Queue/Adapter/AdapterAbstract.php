@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -39,8 +40,7 @@ require_once 'Zend/Queue/Adapter/AdapterInterface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Queue_Adapter_AdapterAbstract
-    implements Zend_Queue_Adapter_AdapterInterface
+abstract class Zend_Queue_Adapter_AdapterAbstract implements Zend_Queue_Adapter_AdapterInterface
 {
     /**
      * Default timeout for createQueue() function
@@ -187,5 +187,5 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
         $list = $this->getCapabilities();
 
         return (isset($list[$name]) && $list[$name]);
-     }
+    }
 }

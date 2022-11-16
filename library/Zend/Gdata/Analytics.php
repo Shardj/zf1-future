@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -62,7 +63,6 @@ require_once 'Zend/Gdata/Analytics/AccountQuery.php';
  */
 class Zend_Gdata_Analytics extends Zend_Gdata
 {
-
     const AUTH_SERVICE_NAME = 'analytics';
     const ANALYTICS_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/data';
     const ANALYTICS_ACCOUNT_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/management/accounts';

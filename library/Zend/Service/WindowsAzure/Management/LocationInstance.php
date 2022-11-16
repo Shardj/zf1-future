@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,13 +36,13 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  * @property string $Name         The location name.
  */
 class Zend_Service_WindowsAzure_Management_LocationInstance
-	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
      *
      * @param string $name         The location name.
-	 */
+     */
     public function __construct($name)
     {
         $this->_data = [

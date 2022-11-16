@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,7 +28,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-class Zend_Form_DisplayGroup implements Iterator,Countable
+class Zend_Form_DisplayGroup implements Iterator, Countable
 {
     /**
      * Group attributes
@@ -686,7 +687,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
     {
         $class = $this->getPluginLoader()->load($name);
         if (null === $options) {
-            $decorator = new $class;
+            $decorator = new $class();
         } else {
             $decorator = new $class($options);
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -150,7 +151,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
         }
 
         if ($dateCreated) {
-            $date = new Zend_Date;
+            $date = new Zend_Date();
             $date->set($dateCreated, Zend_Date::ISO_8601);
         }
 
@@ -179,7 +180,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
         }
 
         if ($dateModified) {
-            $date = new Zend_Date;
+            $date = new Zend_Date();
             $date->set($dateModified, Zend_Date::ISO_8601);
         }
 
@@ -308,7 +309,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
         if (!$imageUrl) {
             $image = null;
         } else {
-            $image = ['uri'=>$imageUrl];
+            $image = ['uri' => $imageUrl];
         }
 
         $this->_data['image'] = $image;
@@ -332,7 +333,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
         if (!$imageUrl) {
             $image = null;
         } else {
-            $image = ['uri'=>$imageUrl];
+            $image = ['uri' => $imageUrl];
         }
 
         $this->_data['icon'] = $image;
@@ -483,7 +484,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
         }
 
         if ($list->length) {
-            $categoryCollection = new Zend_Feed_Reader_Collection_Category;
+            $categoryCollection = new Zend_Feed_Reader_Collection_Category();
             foreach ($list as $category) {
                 $categoryCollection[] = [
                     'term' => $category->getAttribute('term'),
@@ -492,7 +493,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
                 ];
             }
         } else {
-            return new Zend_Feed_Reader_Collection_Category;
+            return new Zend_Feed_Reader_Collection_Category();
         }
 
         $this->_data['categories'] = $categoryCollection;

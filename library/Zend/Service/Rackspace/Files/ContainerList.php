@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,13 +57,13 @@ class Zend_Service_Rackspace_Files_ContainerList implements Countable, Iterator,
      * @param  array $list
      * @return void
      */
-    public function __construct($service,$list = [])
+    public function __construct($service, $list = [])
     {
         if (!($service instanceof Zend_Service_Rackspace_Files ) || !is_array($list)) {
             require_once 'Zend/Service/Rackspace/Files/Exception.php';
             throw new Zend_Service_Rackspace_Files_Exception("You must pass a Zend_Service_Rackspace_Files_Exception object and an array");
         }
-        $this->service= $service;
+        $this->service = $service;
         $this->_constructFromArray($list);
     }
     /**
@@ -74,7 +75,7 @@ class Zend_Service_Rackspace_Files_ContainerList implements Countable, Iterator,
     private function _constructFromArray(array $list)
     {
         foreach ($list as $container) {
-            $this->_addObject(new Zend_Service_Rackspace_Files_Container($this->service,$container));
+            $this->_addObject(new Zend_Service_Rackspace_Files_Container($this->service, $container));
         }
     }
     /**
@@ -83,7 +84,7 @@ class Zend_Service_Rackspace_Files_ContainerList implements Countable, Iterator,
      * @param  Zend_Service_Rackspace_Files_Container $obj
      * @return Zend_Service_Rackspace_Files_ContainerList
      */
-    protected function _addObject (Zend_Service_Rackspace_Files_Container $obj)
+    protected function _addObject(Zend_Service_Rackspace_Files_Container $obj)
     {
         $this->objects[] = $obj;
         return $this;

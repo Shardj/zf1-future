@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -127,11 +128,11 @@ class Zend_Service_Amazon_Ec2_Instance_Windows extends Zend_Service_Amazon_Ec2_A
         $params = [];
         $params['Action'] = 'DescribeBundleTasks';
 
-        if(is_array($bundleId) && !empty($bundleId)) {
-            foreach($bundleId as $k=>$name) {
-                $params['bundleId.' . ($k+1)] = $name;
+        if (is_array($bundleId) && !empty($bundleId)) {
+            foreach ($bundleId as $k => $name) {
+                $params['bundleId.' . ($k + 1)] = $name;
             }
-        } elseif(!empty($bundleId)) {
+        } elseif (!empty($bundleId)) {
             $params['bundleId.1'] = $bundleId;
         }
 
@@ -142,7 +143,7 @@ class Zend_Service_Amazon_Ec2_Instance_Windows extends Zend_Service_Amazon_Ec2_A
         $items = $xpath->evaluate('//ec2:bundleInstanceTasksSet/ec2:item');
         $return = [];
 
-        foreach($items as $item) {
+        foreach ($items as $item) {
             $i = [];
             $i['instanceId'] = $xpath->evaluate('string(ec2:instanceId/text())', $item);
             $i['bundleId'] = $xpath->evaluate('string(ec2:bundleId/text())', $item);

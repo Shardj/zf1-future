@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -438,7 +439,7 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
      */
     protected function triggerListeners($event, Zend_EventManager_EventDescription $e, $callback = null)
     {
-        $responses = new Zend_EventManager_ResponseCollection;
+        $responses = new Zend_EventManager_ResponseCollection();
         $listeners = $this->getListeners($event);
 
         // Add shared/wildcard listeners to the list of listeners,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -70,7 +71,7 @@ abstract class Zend_Application_Resource_ResourceAbstract implements Zend_Applic
     {
         if (is_array($options)) {
             $this->setOptions($options);
-        } else if ($options instanceof Zend_Config) {
+        } elseif ($options instanceof Zend_Config) {
             $this->setOptions($options->toArray());
         }
     }

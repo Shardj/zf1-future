@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -43,7 +44,6 @@ require_once 'Zend/Reflection/File.php';
  */
 class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_Tool_Project_Context_Interface
 {
-
     /**
      * @var Zend_Tool_Project_Profile_Resource
      */
@@ -145,7 +145,7 @@ class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_T
             throw new Zend_Tool_Project_Context_Exception(
                 'Could not create action within test controller ' . $file
                 . ' with action name ' . $this->_forActionName
-                );
+            );
         }
 
         $actionParam = $this->getForActionName();
@@ -225,5 +225,4 @@ EOS
         return $controllerCodeGenFile->getClass()->hasMethod('test' . $actionName . 'Action');
     }
     */
-
 }

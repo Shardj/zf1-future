@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -119,9 +120,9 @@ class Zend_Feed_Pubsubhubbub
      */
     public static function getHttpClient()
     {
-        if (!isset(self::$httpClient)):
-            self::$httpClient = new Zend_Http_Client;
-        else:
+        if (!isset(self::$httpClient)) :
+            self::$httpClient = new Zend_Http_Client();
+        else :
             self::$httpClient->resetParameters();
         endif;
         return self::$httpClient;

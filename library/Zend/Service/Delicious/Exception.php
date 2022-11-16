@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Service_Exception
  */
@@ -36,4 +35,5 @@ require_once 'Zend/Service/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Service_Delicious_Exception extends Zend_Service_Exception
-{}
+{
+}

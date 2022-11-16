@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -86,9 +87,9 @@ class Zend_Ldap_Ldif_Encoder
             $matches = [];
             if (substr($line, 0, 1) === ' ' && $last !== null) {
                 $last[2] .= substr($line, 1);
-            } else if (substr($line, 0, 1) === '#') {
+            } elseif (substr($line, 0, 1) === '#') {
                 continue;
-            } else if (preg_match('/^([a-z0-9;-]+)(:[:<]?\s*)([^:<]*)$/i', $line, $matches)) {
+            } elseif (preg_match('/^([a-z0-9;-]+)(:[:<]?\s*)([^:<]*)$/i', $line, $matches)) {
                 $name = strtolower($matches[1]);
                 $type = trim($matches[2]);
                 $value = $matches[3];
@@ -97,13 +98,13 @@ class Zend_Ldap_Ldif_Encoder
                 }
                 if ($name === 'version') {
                     continue;
-                } else if (count($item) > 0 && $name === 'dn') {
+                } elseif (count($item) > 0 && $name === 'dn') {
                     $items[] = $item;
                     $item = [];
                     $last = null;
                 }
                 $last = [$name, $type, $value];
-            } else if (trim($line) === '') {
+            } elseif (trim($line) === '') {
                 continue;
             }
         }
@@ -111,7 +112,7 @@ class Zend_Ldap_Ldif_Encoder
             $this->_pushAttribute($last, $item);
         }
         $items[] = $item;
-        return (count($items)>1) ? $items : $items[0];
+        return (count($items) > 1) ? $items : $items[0];
     }
 
     /**
@@ -130,7 +131,7 @@ class Zend_Ldap_Ldif_Encoder
         }
         if ($name === 'dn') {
             $entry[$name] = $value;
-        } else if (isset($entry[$name]) && $value !== '') {
+        } elseif (isset($entry[$name]) && $value !== '') {
             $entry[$name][] = $value;
         } else {
             $entry[$name] = ($value !== '') ? [$value] : [];
@@ -161,9 +162,9 @@ class Zend_Ldap_Ldif_Encoder
     {
         if (is_scalar($value)) {
             return $this->_encodeString($value);
-        } else if (is_array($value)) {
+        } elseif (is_array($value)) {
             return $this->_encodeAttributes($value);
-        } else if ($value instanceof Zend_Ldap_Node) {
+        } elseif ($value instanceof Zend_Ldap_Node) {
             return $value->toLdif($this->_options);
         }
         return null;

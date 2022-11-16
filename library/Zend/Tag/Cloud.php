@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -147,7 +148,7 @@ class Zend_Tag_Cloud
         foreach ($tags as $tag) {
             if ($tag instanceof Zend_Tag_Taggable) {
                 $itemList[] = $tag;
-            } else if (is_array($tag)) {
+            } elseif (is_array($tag)) {
                 $itemList[] = new Zend_Tag_Item($tag);
             } else {
                 require_once 'Zend/Tag/Cloud/Exception.php';
@@ -169,7 +170,7 @@ class Zend_Tag_Cloud
         $tags = $this->getItemList();
         if ($tag instanceof Zend_Tag_Taggable) {
             $tags[] = $tag;
-        } else if (is_array($tag)) {
+        } elseif (is_array($tag)) {
             $tags[] = new Zend_Tag_Item($tag);
         } else {
             require_once 'Zend/Tag/Cloud/Exception.php';

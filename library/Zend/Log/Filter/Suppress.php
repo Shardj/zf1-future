@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -70,7 +71,7 @@ class Zend_Log_Filter_Suppress extends Zend_Log_Filter_Abstract
      * @return Zend_Log_Filter_Suppress
      * @throws Zend_Log_Exception
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         return new self();
     }

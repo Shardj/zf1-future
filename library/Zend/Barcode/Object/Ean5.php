@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Ean5 extends Zend_Barcode_Object_Ean13
 {
-
     protected $_parities = [
         0 => ['B','B','A','A','A'],
         1 => ['B','A','B','A','A'],
@@ -123,7 +123,7 @@ class Zend_Barcode_Object_Ean5 extends Zend_Barcode_Object_Ean13
         $this->_checkText($text);
         $checksum = 0;
 
-        for ($i = 0 ; $i < $this->_barcodeLength; $i ++) {
+        for ($i = 0; $i < $this->_barcodeLength; $i++) {
             $checksum += (int)$text[$i] * ($i % 2 ? 9 : 3);
         }
 

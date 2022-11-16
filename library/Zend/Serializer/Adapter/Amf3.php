@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -54,7 +55,7 @@ class Zend_Serializer_Adapter_Amf3 extends Zend_Serializer_Adapter_AdapterAbstra
      */
     public function serialize($value, array $opts = [])
     {
-        try  {
+        try {
             $stream     = new Zend_Amf_Parse_OutputStream();
             $serializer = new Zend_Amf_Parse_Amf3_Serializer($stream);
             $serializer->writeTypeMarker($value);

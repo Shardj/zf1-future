@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -41,9 +42,9 @@ require_once 'Zend/Application/Bootstrap/ResourceBootstrapper.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Application_Bootstrap_BootstrapAbstract
-    implements Zend_Application_Bootstrap_Bootstrapper,
-               Zend_Application_Bootstrap_ResourceBootstrapper
+abstract class Zend_Application_Bootstrap_BootstrapAbstract implements
+    Zend_Application_Bootstrap_Bootstrapper,
+    Zend_Application_Bootstrap_ResourceBootstrapper
 {
     /**
      * @var Zend_Application|Zend_Application_Bootstrap_Bootstrapper
@@ -758,7 +759,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
     {
         if (isset($resource->_explicitType)) {
             $pluginName = $resource->_explicitType;
-        } else  {
+        } else {
             $className  = get_class($resource);
             $pluginName = $className;
             $loader     = $this->getPluginLoader();

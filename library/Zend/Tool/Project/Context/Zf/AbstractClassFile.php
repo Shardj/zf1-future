@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
  */
 abstract class Zend_Tool_Project_Context_Zf_AbstractClassFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * getFullClassName()
      *
@@ -80,5 +80,4 @@ abstract class Zend_Tool_Project_Context_Zf_AbstractClassFile extends Zend_Tool_
 
         return $fullClassName;
     }
-
 }

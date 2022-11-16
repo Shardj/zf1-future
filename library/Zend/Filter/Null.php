@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -64,14 +65,14 @@ class Zend_Filter_Null implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = func_get_args();
             $temp    = [];
             if (!empty($options)) {
                 $temp = array_shift($options);
             }
             $options = $temp;
-        } else if (is_array($options) && array_key_exists('type', $options)) {
+        } elseif (is_array($options) && array_key_exists('type', $options)) {
             $options = $options['type'];
         }
 
@@ -101,16 +102,16 @@ class Zend_Filter_Null implements Zend_Filter_Interface
     {
         if (is_array($type)) {
             $detected = 0;
-            foreach($type as $value) {
+            foreach ($type as $value) {
                 if (is_int($value)) {
                     $detected += $value;
-                } else if (in_array($value, $this->_constants)) {
+                } elseif (in_array($value, $this->_constants)) {
                     $detected += array_search($value, $this->_constants);
                 }
             }
 
             $type = $detected;
-        } else if (is_string($type)) {
+        } elseif (is_string($type)) {
             if (in_array($type, $this->_constants)) {
                 $type = array_search($type, $this->_constants);
             }

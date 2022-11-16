@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Db_Statement
  */
@@ -38,7 +38,6 @@ require_once 'Zend/Db/Statement.php';
  */
 class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
 {
-
     /**
      * Column names.
      *
@@ -201,7 +200,7 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
             call_user_func_array(
                 [$this->_stmt, 'bind_param'],
                 array_values($stmtParams)
-                );
+            );
         }
 
         // execute the statement
@@ -229,7 +228,6 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
 
         // statements that have no result set do not return metadata
         if ($this->_meta !== false) {
-
             // get the column names that will result
             $this->_keys = [];
             foreach ($this->_meta->fetch_fields() as $col) {
@@ -340,7 +338,7 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
          * @see Zend_Db_Statement_Mysqli_Exception
          */
         require_once 'Zend/Db/Statement/Mysqli/Exception.php';
-        throw new Zend_Db_Statement_Mysqli_Exception(__FUNCTION__.'() is not implemented');
+        throw new Zend_Db_Statement_Mysqli_Exception(__FUNCTION__ . '() is not implemented');
     }
 
     /**
@@ -358,5 +356,4 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
         $mysqli = $this->_adapter->getConnection();
         return $mysqli->affected_rows;
     }
-
 }

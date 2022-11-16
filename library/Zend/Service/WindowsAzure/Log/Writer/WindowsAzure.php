@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -79,9 +80,10 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
      */
     public function __construct(
         Zend_Service_WindowsAzure_Storage_Table $tableStorageConnection,
-        $tableName, $createTable = true, $bufferMessages = true
-    )
-    {
+        $tableName,
+        $createTable = true,
+        $bufferMessages = true
+    ) {
         if ($tableStorageConnection == null) {
             require_once 'Zend/Service/Log/Exception.php';
             throw new Zend_Service_Log_Exception(
@@ -127,7 +129,8 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
             $this->_tableStorageConnection->startBatch();
             foreach ($this->_messageBuffer as $logEntity) {
                 $this->_tableStorageConnection->insertEntity(
-                    $this->_tableName, $logEntity
+                    $this->_tableName,
+                    $logEntity
                 );
             }
             $this->_tableStorageConnection->commit();
@@ -141,7 +144,7 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
      * @return Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
      * @throws Zend_Service_Log_Exception
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         $config = self::_parseConfig($config);
         $config = array_merge(
@@ -149,7 +152,8 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
                  'connection' => null,
                  'tableName' => null,
                  'createTable' => true,
-            ], $config
+            ],
+            $config
         );
 
         return new self(
@@ -166,11 +170,11 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
      */
     public function setFormatter(
         Zend_Service_Log_Formatter_Interface $formatter
-    )
-    {
+    ) {
         require_once 'Zend/Service/Log/Exception.php';
         throw new Zend_Service_Log_Exception(
-            get_class($this) . ' does not support formatting');
+            get_class($this) . ' does not support formatting'
+        );
     }
 
     /**
@@ -189,7 +193,8 @@ class Zend_Service_WindowsAzure_Log_Writer_WindowsAzure
             $this->_messageBuffer[] = $logEntity;
         } else {
             $this->_tableStorageConnection->insertEntity(
-                $this->_tableName, $logEntity
+                $this->_tableName,
+                $logEntity
             );
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -84,4 +85,3 @@ class Zend_Dojo
         }
     }
 }
-

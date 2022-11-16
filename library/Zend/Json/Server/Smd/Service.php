@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -384,7 +385,7 @@ class Zend_Json_Server_Smd_Service
             }
         } else {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . gettype($type) .'")');
+            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . gettype($type) . '")');
         }
         $this->_return = $type;
         return $this;
@@ -455,7 +456,7 @@ class Zend_Json_Server_Smd_Service
     {
         if (!is_string($type)) {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . $type .'")');
+            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . $type . '")');
         }
 
         if (!array_key_exists($type, $this->_paramMap)) {

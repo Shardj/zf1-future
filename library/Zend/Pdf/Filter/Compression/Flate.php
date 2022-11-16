@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_Filter_Compression */
 require_once 'Zend/Pdf/Filter/Compression.php';
@@ -47,7 +47,6 @@ class Zend_Pdf_Filter_Compression_Flate extends Zend_Pdf_Filter_Compression
         }
 
         if (extension_loaded('zlib')) {
-
             if (($output = @gzcompress($data)) === false) {
                 $err = error_get_last();
                 $phpErrormsg = $err['message'];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Db/Statement.php';
  */
 class Zend_Db_Statement_Oracle extends Zend_Db_Statement
 {
-
     /**
      * Column names.
      */
@@ -111,12 +111,12 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
     protected function _bindParam($parameter, &$variable, $type = null, $length = null, $options = null)
     {
         // default value
-        if ($type === NULL) {
+        if ($type === null) {
             $type = SQLT_CHR;
         }
 
         // default value
-        if ($length === NULL) {
+        if ($length === null) {
             $length = -1;
         }
 
@@ -394,7 +394,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             case Zend_Db::FETCH_OBJ:
                 break;
             case Zend_Db::FETCH_COLUMN:
-                $flags = $flags &~ OCI_FETCHSTATEMENT_BY_ROW;
+                $flags = $flags & ~ OCI_FETCHSTATEMENT_BY_ROW;
                 $flags |= OCI_FETCHSTATEMENT_BY_COLUMN;
                 $flags |= OCI_NUM;
                 break;
@@ -476,7 +476,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             throw new Zend_Db_Statement_Oracle_Exception($error);
         }
 
-        $data = oci_result($this->_stmt, $col+1); //1-based
+        $data = oci_result($this->_stmt, $col + 1); //1-based
         if ($data === false) {
             /**
              * @see Zend_Db_Adapter_Oracle_Exception
@@ -573,5 +573,4 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
 
         return $num_rows;
     }
-
 }

@@ -44,7 +44,6 @@ require_once 'Zend/Gdata/Gapps.php';
  */
 class Zend_Gdata_Gapps_Extension_EmailList extends Zend_Gdata_Extension
 {
-
     protected $_rootNamespace = 'apps';
     protected $_rootElement = 'emailList';
 
@@ -97,11 +96,11 @@ class Zend_Gdata_Gapps_Extension_EmailList extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'name':
-            $this->_name = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'name':
+                $this->_name = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -140,5 +139,4 @@ class Zend_Gdata_Gapps_Extension_EmailList extends Zend_Gdata_Extension
     {
         return $this->getName();
     }
-
 }

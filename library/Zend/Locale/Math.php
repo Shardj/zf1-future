@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -99,7 +100,7 @@ class Zend_Locale_Math
             $roundPos   = $precision;
         } else {
             $triggerPos = $precision;
-            $roundPos   = $precision -1;
+            $roundPos   = $precision - 1;
         }
 
         $triggerDigit = $op1[$triggerPos + $decPos];
@@ -129,7 +130,7 @@ class Zend_Locale_Math
                 return self::Sub($op1, $roundUp, $precision);
             }
         } elseif ($precision >= 0) {
-            return substr($op1, 0, $decPos + ($precision ? $precision + 1: 0));
+            return substr($op1, 0, $decPos + ($precision ? $precision + 1 : 0));
         }
 
         return (string) $op1;
@@ -178,7 +179,8 @@ class Zend_Locale_Math
         $value = str_replace(
             [$convert['thousands_sep'], $convert['positive_sign'], $convert['decimal_point']],
             ["", "", "."],
-            (string)$value);
+            (string)$value
+        );
 
         if (!empty($convert['negative_sign']) && (strpos($value, $convert['negative_sign']))) {
             $value = str_replace($convert['negative_sign'], "", $value);

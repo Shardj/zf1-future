@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Mobile/Push/Message/Apns.php';
  */
 class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
 {
-
     /**
      * @const int apple server uri constants
      */
@@ -158,7 +158,8 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
             $ssl['passphrase'] = $this->_certificatePassphrase;
         }
 
-        $this->_socket = stream_socket_client($uri,
+        $this->_socket = stream_socket_client(
+            $uri,
             $errno,
             $errstr,
             ini_get('default_socket_timeout'),
@@ -170,7 +171,8 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
 
         if (!is_resource($this->_socket)) {
             require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
-            throw new Zend_Mobile_Push_Exception_ServerUnavailable(sprintf('Unable to connect: %s: %d (%s)',
+            throw new Zend_Mobile_Push_Exception_ServerUnavailable(sprintf(
+                'Unable to connect: %s: %d (%s)',
                 $uri,
                 $errno,
                 $errstr
@@ -188,7 +190,8 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
     * @param int $length
     * @return string
     */
-    protected function _read($length) {
+    protected function _read($length)
+    {
         $data = false;
         if (!feof($this->_socket)) {
             $data = fread($this->_socket, $length);
@@ -202,7 +205,8 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
     * @param string $payload
     * @return int
     */
-    protected function _write($payload) {
+    protected function _write($payload)
+    {
         return @fwrite($this->_socket, $payload);
     }
 
@@ -250,8 +254,10 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
     public function feedback()
     {
         if (!$this->_isConnected ||
-            !in_array($this->_currentEnv,
-                [self::SERVER_FEEDBACK_SANDBOX_URI, self::SERVER_FEEDBACK_PRODUCTION_URI])) {
+            !in_array(
+                $this->_currentEnv,
+                [self::SERVER_FEEDBACK_SANDBOX_URI, self::SERVER_FEEDBACK_PRODUCTION_URI]
+            )) {
             $this->connect(self::SERVER_FEEDBACK_PRODUCTION_URI);
         }
 
@@ -310,7 +316,7 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
             $payload['aps']['sound'] = $sound;
         }
 
-        foreach($message->getCustomData() as $k => $v) {
+        foreach ($message->getCustomData() as $k => $v) {
             $payload[$k] = $v;
         }
 

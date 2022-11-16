@@ -62,13 +62,13 @@ class Zend_OpenId
     /**
      * Allows enable/disable stoping execution of PHP script after redirect()
      */
-    static public $exitOnRedirect = true;
+    public static $exitOnRedirect = true;
 
     /**
      * Alternative request URL that can be used to override the default
      * selfUrl() response
      */
-    static public $selfUrl = null;
+    public static $selfUrl = null;
 
     /**
      * Sets alternative request URL that can be used to override the default
@@ -77,7 +77,7 @@ class Zend_OpenId
      * @param string $selfUrl the URL to be set
      * @return string|null the old value of overriding URL
      */
-    static public function setSelfUrl($selfUrl = null)
+    public static function setSelfUrl($selfUrl = null)
     {
         $ret = self::$selfUrl;
         self::$selfUrl = $selfUrl;
@@ -89,7 +89,7 @@ class Zend_OpenId
      *
      * @return string
      */
-    static public function selfUrl()
+    public static function selfUrl()
     {
         if (self::$selfUrl !== null) {
             return self::$selfUrl;
@@ -108,7 +108,7 @@ class Zend_OpenId
                 $url = substr($_SERVER['HTTP_HOST'], 0, $pos);
                 $port = substr($_SERVER['HTTP_HOST'], $pos);
             }
-        } else if (isset($_SERVER['SERVER_NAME'])) {
+        } elseif (isset($_SERVER['SERVER_NAME'])) {
             $url = $_SERVER['SERVER_NAME'];
             if (isset($_SERVER['SERVER_PORT'])) {
                 $port = ':' . $_SERVER['SERVER_PORT'];
@@ -140,13 +140,13 @@ class Zend_OpenId
             } else {
                 $url .= substr($_SERVER['REQUEST_URI'], 0, $query);
             }
-        } else if (isset($_SERVER['SCRIPT_URL'])) {
+        } elseif (isset($_SERVER['SCRIPT_URL'])) {
             $url .= $_SERVER['SCRIPT_URL'];
-        } else if (isset($_SERVER['REDIRECT_URL'])) {
+        } elseif (isset($_SERVER['REDIRECT_URL'])) {
             $url .= $_SERVER['REDIRECT_URL'];
-        } else if (isset($_SERVER['PHP_SELF'])) {
+        } elseif (isset($_SERVER['PHP_SELF'])) {
             $url .= $_SERVER['PHP_SELF'];
-        } else if (isset($_SERVER['SCRIPT_NAME'])) {
+        } elseif (isset($_SERVER['SCRIPT_NAME'])) {
             $url .= $_SERVER['SCRIPT_NAME'];
             if (isset($_SERVER['PATH_INFO'])) {
                 $url .= $_SERVER['PATH_INFO'];
@@ -161,11 +161,11 @@ class Zend_OpenId
      * @param string $url absilute or relative URL
      * @return string
      */
-    static public function absoluteUrl($url)
+    public static function absoluteUrl($url)
     {
         if (empty($url)) {
             return Zend_OpenId::selfUrl();
-        } else if (!preg_match('|^([^:]+)://|', $url)) {
+        } elseif (!preg_match('|^([^:]+)://|', $url)) {
             if (preg_match('|^([^:]+)://([^:@]*(?:[:][^@]*)?@)?([^/:@?#]*)(?:[:]([^/?#]*))?(/[^?]*)?((?:[?](?:[^#]*))?(?:#.*)?)$|', Zend_OpenId::selfUrl(), $reg)) {
                 $scheme = $reg[1];
                 $auth = $reg[2];
@@ -202,9 +202,9 @@ class Zend_OpenId
      * @param array $params variable/value pairs
      * @return string URL encoded query string
      */
-    static public function paramsToQuery($params)
+    public static function paramsToQuery($params)
     {
-        foreach($params as $key => $value) {
+        foreach ($params as $key => $value) {
             if (isset($query)) {
                 $query .= '&' . $key . '=' . urlencode($value);
             } else {
@@ -222,7 +222,7 @@ class Zend_OpenId
      * @param string &$id url to be normalized
      * @return bool
      */
-    static public function normalizeUrl(&$id)
+    public static function normalizeUrl(&$id)
     {
         // RFC 3986, 6.2.2.  Syntax-Based Normalization
 
@@ -238,9 +238,9 @@ class Zend_OpenId
                 ++$i;
                 if ($id[$i] >= '0' && $id[$i] <= '9') {
                     $c = ord($id[$i]) - ord('0');
-                } else if ($id[$i] >= 'A' && $id[$i] <= 'F') {
+                } elseif ($id[$i] >= 'A' && $id[$i] <= 'F') {
                     $c = ord($id[$i]) - ord('A') + 10;
-                } else if ($id[$i] >= 'a' && $id[$i] <= 'f') {
+                } elseif ($id[$i] >= 'a' && $id[$i] <= 'f') {
                     $c = ord($id[$i]) - ord('a') + 10;
                 } else {
                     return false;
@@ -248,9 +248,9 @@ class Zend_OpenId
                 ++$i;
                 if ($id[$i] >= '0' && $id[$i] <= '9') {
                     $c = ($c << 4) | (ord($id[$i]) - ord('0'));
-                } else if ($id[$i] >= 'A' && $id[$i] <= 'F') {
+                } elseif ($id[$i] >= 'A' && $id[$i] <= 'F') {
                     $c = ($c << 4) | (ord($id[$i]) - ord('A') + 10);
-                } else if ($id[$i] >= 'a' && $id[$i] <= 'f') {
+                } elseif ($id[$i] >= 'a' && $id[$i] <= 'f') {
                     $c = ($c << 4) | (ord($id[$i]) - ord('a') + 10);
                 } else {
                     return false;
@@ -324,7 +324,7 @@ class Zend_OpenId
                             } else {
                                     $res .= '/..';
                             }
-                        } else if ($i != $n && $path[$i] != '/') {
+                        } elseif ($i != $n && $path[$i] != '/') {
                             $res .= '/.';
                         }
                     } else {
@@ -342,7 +342,7 @@ class Zend_OpenId
             if ($port == 80) {
                 $port = '';
             }
-        } else if ($scheme === 'https') {
+        } elseif ($scheme === 'https') {
             if ($port == 443) {
                 $port = '';
             }
@@ -383,7 +383,7 @@ class Zend_OpenId
      * @param string &$id identifier to be normalized
      * @return bool
      */
-    static public function normalize(&$id)
+    public static function normalize(&$id)
     {
         $id = trim($id);
         if (strlen($id) === 0) {
@@ -393,9 +393,9 @@ class Zend_OpenId
         // 7.2.1
         if (strpos($id, 'xri://$ip*') === 0) {
             $id = substr($id, strlen('xri://$ip*'));
-        } else if (strpos($id, 'xri://$dns*') === 0) {
+        } elseif (strpos($id, 'xri://$dns*') === 0) {
             $id = substr($id, strlen('xri://$dns*'));
-        } else if (strpos($id, 'xri://') === 0) {
+        } elseif (strpos($id, 'xri://') === 0) {
             $id = substr($id, strlen('xri://'));
         }
 
@@ -427,9 +427,12 @@ class Zend_OpenId
      * @param Zend_Controller_Response_Abstract $response
      * @param string $method redirection method ('GET' or 'POST')
      */
-    static public function redirect($url, $params = null,
-        Zend_Controller_Response_Abstract $response = null, $method = 'GET')
-    {
+    public static function redirect(
+        $url,
+        $params = null,
+        Zend_Controller_Response_Abstract $response = null,
+        $method = 'GET'
+    ) {
         $url = Zend_OpenId::absoluteUrl($url);
         $body = "";
         if (null === $response) {
@@ -441,13 +444,13 @@ class Zend_OpenId
             $body = "<html><body onLoad=\"document.forms[0].submit();\">\n";
             $body .= "<form method=\"POST\" action=\"$url\">\n";
             if (is_array($params) && count($params) > 0) {
-                foreach($params as $key => $value) {
+                foreach ($params as $key => $value) {
                     $body .= '<input type="hidden" name="' . $key . '" value="' . $value . "\">\n";
                 }
             }
             $body .= "<input type=\"submit\" value=\"Continue OpenID transaction\">\n";
             $body .= "</form></body></html>\n";
-        } else if (is_array($params) && count($params) > 0) {
+        } elseif (is_array($params) && count($params) > 0) {
             if (strpos($url, '?') === false) {
                 $url .= '?' . self::paramsToQuery($params);
             } else {
@@ -456,7 +459,7 @@ class Zend_OpenId
         }
         if (!empty($body)) {
             $response->setBody($body);
-        } else if (!$response->canSendHeaders()) {
+        } elseif (!$response->canSendHeaders()) {
             $response->setBody("<script language=\"JavaScript\"" .
                  " type=\"text/javascript\">window.location='$url';" .
                  "</script>");
@@ -475,7 +478,7 @@ class Zend_OpenId
      * @param integer $len length of requested string
      * @return string RAW random binary string
      */
-    static public function randomBytes($len)
+    public static function randomBytes($len)
     {
         return (string) Zend_Crypt_Math::randBytes($len);
     }
@@ -493,23 +496,24 @@ class Zend_OpenId
      * @return string RAW digital signature
      * @throws Zend_OpenId_Exception
      */
-    static public function digest($func, $data)
+    public static function digest($func, $data)
     {
         if (function_exists('openssl_digest')) {
             return openssl_digest($data, $func, true);
-        } else if (function_exists('hash')) {
+        } elseif (function_exists('hash')) {
             return hash($func, $data, true);
-        } else if ($func === 'sha1') {
+        } elseif ($func === 'sha1') {
             return sha1($data, true);
-        } else if ($func === 'sha256') {
+        } elseif ($func === 'sha256') {
             if (function_exists('mhash')) {
-                return mhash(MHASH_SHA256 , $data);
+                return mhash(MHASH_SHA256, $data);
             }
         }
         require_once "Zend/OpenId/Exception.php";
         throw new Zend_OpenId_Exception(
             'Unsupported digest algorithm "' . $func . '".',
-            Zend_OpenId_Exception::UNSUPPORTED_DIGEST);
+            Zend_OpenId_Exception::UNSUPPORTED_DIGEST
+        );
     }
 
     /**
@@ -523,7 +527,7 @@ class Zend_OpenId
      *  variant of the message digest
      * @return string RAW HMAC value
      */
-    static public function hashHmac($macFunc, $data, $secret)
+    public static function hashHmac($macFunc, $data, $secret)
     {
 //        require_once "Zend/Crypt/Hmac.php";
 //        return Zend_Crypt_Hmac::compute($secret, $macFunc, $data, Zend_Crypt_Hmac::BINARY);
@@ -549,11 +553,11 @@ class Zend_OpenId
      * @return GMP|int|resource|string
      * @throws Zend_OpenId_Exception
      */
-    static protected function binToBigNum($bin)
+    protected static function binToBigNum($bin)
     {
         if (extension_loaded('gmp')) {
             return gmp_init(bin2hex($bin), 16);
-        } else if (extension_loaded('bcmath')) {
+        } elseif (extension_loaded('bcmath')) {
             $bn = 0;
             $len = Zend_OpenId::strlen($bin);
             for ($i = 0; $i < $len; $i++) {
@@ -565,7 +569,8 @@ class Zend_OpenId
         require_once "Zend/OpenId/Exception.php";
         throw new Zend_OpenId_Exception(
             'The system doesn\'t have proper big integer extension',
-            Zend_OpenId_Exception::UNSUPPORTED_LONG_MATH);
+            Zend_OpenId_Exception::UNSUPPORTED_LONG_MATH
+        );
     }
 
     /**
@@ -576,14 +581,14 @@ class Zend_OpenId
      * @return string
      * @throws Zend_OpenId_Exception
      */
-    static protected function bigNumToBin($bn)
+    protected static function bigNumToBin($bn)
     {
         if (extension_loaded('gmp')) {
             $s = gmp_strval($bn, 16);
 
             if (strlen($s) % 2 != 0) {
                 $s = '0' . $s;
-            } else if ($s[0] > '7') {
+            } elseif ($s[0] > '7') {
                 $s = '00' . $s;
             }
             return pack("H*", $s);
@@ -600,7 +605,8 @@ class Zend_OpenId
                 require_once "Zend/OpenId/Exception.php";
                 throw new Zend_OpenId_Exception(
                     'Big integer arithmetic error',
-                    Zend_OpenId_Exception::ERROR_LONG_MATH);
+                    Zend_OpenId_Exception::ERROR_LONG_MATH
+                );
             }
 
             $bin = "";
@@ -617,7 +623,8 @@ class Zend_OpenId
         require_once "Zend/OpenId/Exception.php";
         throw new Zend_OpenId_Exception(
             'The system doesn\'t have proper big integer extension',
-            Zend_OpenId_Exception::UNSUPPORTED_LONG_MATH);
+            Zend_OpenId_Exception::UNSUPPORTED_LONG_MATH
+        );
     }
 
     /**
@@ -632,7 +639,7 @@ class Zend_OpenId
      * @param string $priv_key private key in binary representation
      * @return array|false|OpenSSLAsymmetricKey
      */
-    static public function createDhKey($p, $g, $priv_key = null)
+    public static function createDhKey($p, $g, $priv_key = null)
     {
         if (function_exists('openssl_dh_compute_key')) {
             $dh_details = [
@@ -642,7 +649,7 @@ class Zend_OpenId
             if ($priv_key !== null) {
                 $dh_details['priv_key'] = $priv_key;
             }
-            return openssl_pkey_new(['dh'=>$dh_details]);
+            return openssl_pkey_new(['dh' => $dh_details]);
         } else {
             $bn_p        = self::binToBigNum($p);
             $bn_g        = self::binToBigNum($g);
@@ -652,7 +659,7 @@ class Zend_OpenId
             $bn_priv_key = self::binToBigNum($priv_key);
             if (extension_loaded('gmp')) {
                 $bn_pub_key  = gmp_powm($bn_g, $bn_priv_key, $bn_p);
-            } else if (extension_loaded('bcmath')) {
+            } elseif (extension_loaded('bcmath')) {
                 $bn_pub_key  = bcpowmod($bn_g, $bn_priv_key, $bn_p);
             }
             $pub_key     = self::bigNumToBin($bn_pub_key);
@@ -679,7 +686,7 @@ class Zend_OpenId
      * @param mixed $dh Diffie-Hellman key
      * @return array
      */
-    static public function getDhKeyDetails($dh)
+    public static function getDhKeyDetails($dh)
     {
         if (function_exists('openssl_dh_compute_key')) {
             $details = openssl_pkey_get_details($dh);
@@ -700,7 +707,7 @@ class Zend_OpenId
      * @return string
      * @throws Zend_OpenId_Exception
      */
-    static public function computeDhSecret($pub_key, $dh)
+    public static function computeDhSecret($pub_key, $dh)
     {
         if (function_exists('openssl_dh_compute_key')) {
             $ret = openssl_dh_compute_key($pub_key, $dh);
@@ -708,11 +715,11 @@ class Zend_OpenId
                 $ret = "\0" . $ret;
             }
             return $ret;
-        } else if (extension_loaded('gmp')) {
+        } elseif (extension_loaded('gmp')) {
             $bn_pub_key = self::binToBigNum($pub_key);
             $bn_secret  = gmp_powm($bn_pub_key, $dh['priv_key'], $dh['p']);
             return self::bigNumToBin($bn_secret);
-        } else if (extension_loaded('bcmath')) {
+        } elseif (extension_loaded('bcmath')) {
             $bn_pub_key = self::binToBigNum($pub_key);
             $bn_secret  = bcpowmod($bn_pub_key, $dh['priv_key'], $dh['p']);
             return self::bigNumToBin($bn_secret);
@@ -720,7 +727,8 @@ class Zend_OpenId
         require_once "Zend/OpenId/Exception.php";
         throw new Zend_OpenId_Exception(
             'The system doesn\'t have proper big integer extension',
-            Zend_OpenId_Exception::UNSUPPORTED_LONG_MATH);
+            Zend_OpenId_Exception::UNSUPPORTED_LONG_MATH
+        );
     }
 
     /**
@@ -738,7 +746,7 @@ class Zend_OpenId
      * @param string $str binary representation of arbitrary precision integer
      * @return string big-endian signed representation
      */
-    static public function btwoc($str)
+    public static function btwoc($str)
     {
         if (ord($str[0]) > 127) {
             return "\0" . $str;
@@ -752,7 +760,7 @@ class Zend_OpenId
      * @param string $str
      * @return int the string lenght
      */
-    static public function strlen($str)
+    public static function strlen($str)
     {
         if (extension_loaded('mbstring') &&
             (((int)ini_get('mbstring.func_overload')) & 2)) {
@@ -761,5 +769,4 @@ class Zend_OpenId
             return strlen($str);
         }
     }
-
 }

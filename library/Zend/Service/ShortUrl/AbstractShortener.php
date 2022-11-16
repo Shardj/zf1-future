@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,9 +36,7 @@ require_once 'Zend/Service/ShortUrl/Shortener.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Service_ShortUrl_AbstractShortener
-    extends Zend_Service_Abstract
-    implements Zend_Service_ShortUrl_Shortener
+abstract class Zend_Service_ShortUrl_AbstractShortener extends Zend_Service_Abstract implements Zend_Service_ShortUrl_Shortener
 {
     /**
      * Base URI of the service
@@ -59,7 +58,8 @@ abstract class Zend_Service_ShortUrl_AbstractShortener
         if (!Zend_Uri::check($url)) {
             require_once 'Zend/Service/ShortUrl/Exception.php';
             throw new Zend_Service_ShortUrl_Exception(sprintf(
-                'The url "%s" is not valid and cannot be shortened', $url
+                'The url "%s" is not valid and cannot be shortened',
+                $url
             ));
         }
     }

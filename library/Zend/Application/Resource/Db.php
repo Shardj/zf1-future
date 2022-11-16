@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -185,7 +186,7 @@ class Zend_Application_Resource_Db extends Zend_Application_Resource_ResourceAbs
                     $metadataCache = $cacheManager->getCache($cache);
                 }
             }
-        } else if ($cache instanceof Zend_Cache_Core) {
+        } elseif ($cache instanceof Zend_Cache_Core) {
             $metadataCache = $cache;
         }
 

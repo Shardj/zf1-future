@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -111,11 +112,11 @@ class Zend_Measure_Binary extends Zend_Measure_Abstract
         'EXABYTE_SI'       => ['1000000000000000000',       'EB.'],
         'ZETTABYTE'        => ['1180591620717411303424',    'ZB'],
         'ZEBIBYTE'         => ['1180591620717411303424',    'ZiB'],
-        'ZETTA_BINARY_BYTE'=> ['1180591620717411303424',    'ZiB'],
+        'ZETTA_BINARY_BYTE' => ['1180591620717411303424',    'ZiB'],
         'ZETTABYTE_SI'     => ['1000000000000000000000',    'ZB.'],
         'YOTTABYTE'        => ['1208925819614629174706176', 'YB'],
         'YOBIBYTE'         => ['1208925819614629174706176', 'YiB'],
-        'YOTTA_BINARY_BYTE'=> ['1208925819614629174706176', 'YiB'],
+        'YOTTA_BINARY_BYTE' => ['1208925819614629174706176', 'YiB'],
         'YOTTABYTE_SI'     => ['1000000000000000000000000', 'YB.'],
         'STANDARD'         => 'BYTE'
     ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -25,10 +26,8 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Framework_Client_Console_ResponseDecorator_Colorizer
-    implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+class Zend_Tool_Framework_Client_Console_ResponseDecorator_Colorizer implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
 {
-
     protected $_colorOptions = [
         // blacks
         'black'     => '30m',
@@ -87,6 +86,4 @@ class Zend_Tool_Framework_Client_Console_ResponseDecorator_Colorizer
 
         return $newContent;
     }
-
-
 }

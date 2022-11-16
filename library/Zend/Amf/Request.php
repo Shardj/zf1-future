@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -151,7 +152,7 @@ class Zend_Amf_Request
             $data = $this->_deserializer->readTypeMarker();
         } catch (Exception $e) {
             require_once 'Zend/Amf/Exception.php';
-            throw new Zend_Amf_Exception('Unable to parse ' . $name . ' header data: ' . $e->getMessage() . ' '. $e->getLine(), 0, $e);
+            throw new Zend_Amf_Exception('Unable to parse ' . $name . ' header data: ' . $e->getMessage() . ' ' . $e->getLine(), 0, $e);
         }
 
         return new Zend_Amf_Value_MessageHeader($name, $mustRead, $data, $length);
@@ -182,7 +183,7 @@ class Zend_Amf_Request
              * an AMF0 array called Content. The following code gets the object
              * out of the content array and sets it as the message data.
              */
-            if(is_array($data) && $data[0] instanceof Zend_Amf_Value_Messaging_AbstractMessage){
+            if (is_array($data) && $data[0] instanceof Zend_Amf_Value_Messaging_AbstractMessage) {
                 $data = $data[0];
             }
 

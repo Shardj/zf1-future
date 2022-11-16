@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Upce extends Zend_Barcode_Object_Ean13
 {
-
     protected $_parities = [
         0 => [
             0 => ['B','B','B','A','A','A'],
@@ -157,7 +157,7 @@ class Zend_Barcode_Object_Upce extends Zend_Barcode_Object_Ean13
             $characterWidth = (7 * $this->_barThinWidth) * $this->_factor;
             $leftPosition = $this->getQuietZone() - $characterWidth;
 
-            for ($i = 0; $i < $this->_barcodeLength; $i ++) {
+            for ($i = 0; $i < $this->_barcodeLength; $i++) {
                 $fontSize = $this->_fontSize;
 
                 if ($i === 0 || $i === 7) {

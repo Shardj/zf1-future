@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,26 +38,26 @@ require_once 'Zend/Service/WindowsAzure/Diagnostics/LogLevel.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  *
- * @property	int		BufferQuotaInMB						Buffer quota in MB
- * @property	int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes
- * @property	string	ScheduledTransferLogLevelFilter		Scheduled transfer log level filter
+ * @property    int     BufferQuotaInMB                     Buffer quota in MB
+ * @property    int     ScheduledTransferPeriodInMinutes    Scheduled transfer period in minutes
+ * @property    string  ScheduledTransferLogLevelFilter     Scheduled transfer log level filter
  */
 class Zend_Service_WindowsAzure_Diagnostics_ConfigurationLogs
-	extends Zend_Service_WindowsAzure_Diagnostics_ConfigurationObjectBaseAbstract
+    extends Zend_Service_WindowsAzure_Diagnostics_ConfigurationObjectBaseAbstract
 {
     /**
      * Constructor
      *
-	 * @param	int		$bufferQuotaInMB					Buffer quota in MB
-	 * @param	int		$scheduledTransferPeriodInMinutes	Scheduled transfer period in minutes
-	 * @param	string	$scheduledTransferLogLevelFilter	Scheduled transfer log level filter
-	 */
+     * @param   int     $bufferQuotaInMB                    Buffer quota in MB
+     * @param   int     $scheduledTransferPeriodInMinutes   Scheduled transfer period in minutes
+     * @param   string  $scheduledTransferLogLevelFilter    Scheduled transfer log level filter
+     */
     public function __construct($bufferQuotaInMB = 0, $scheduledTransferPeriodInMinutes = 0, $scheduledTransferLogLevelFilter = Zend_Service_WindowsAzure_Diagnostics_LogLevel::UNDEFINED)
     {
         $this->_data = [
-            'bufferquotainmb'        			=> $bufferQuotaInMB,
-            'scheduledtransferperiodinminutes' 	=> $scheduledTransferPeriodInMinutes,
-            'scheduledtransferloglevelfilter'	=> $scheduledTransferLogLevelFilter
+            'bufferquotainmb'                   => $bufferQuotaInMB,
+            'scheduledtransferperiodinminutes'  => $scheduledTransferPeriodInMinutes,
+            'scheduledtransferloglevelfilter'   => $scheduledTransferLogLevelFilter
         ];
     }
 }

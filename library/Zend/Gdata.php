@@ -43,7 +43,6 @@ require_once 'Zend/Gdata/App.php';
  */
 class Zend_Gdata extends Zend_Gdata_App
 {
-
     /**
      * Service name for use with Google's authentication mechanisms
      *
@@ -120,9 +119,12 @@ class Zend_Gdata extends Zend_Gdata_App
      *                                    by passing false to the
      *                                    useObjectMapping() function.
      */
-    public static function import($uri, $client = null,
-        $className='Zend_Gdata_Feed', $useObjectMapping = true)
-    {
+    public static function import(
+        $uri,
+        $client = null,
+        $className = 'Zend_Gdata_Feed',
+        $useObjectMapping = true
+    ) {
         $app = new Zend_Gdata($client);
         $requestData = $app->decodeRequest('GET', $uri);
         $response = $app->performHttpRequest($requestData['method'], $requestData['url']);
@@ -147,7 +149,7 @@ class Zend_Gdata extends Zend_Gdata_App
      *                                    by passing false to the
      *                                    useObjectMapping() function.
      */
-    public function getFeed($location, $className='Zend_Gdata_Feed')
+    public function getFeed($location, $className = 'Zend_Gdata_Feed')
     {
         if (is_string($location)) {
             $uri = $location;
@@ -156,8 +158,9 @@ class Zend_Gdata extends Zend_Gdata_App
         } else {
             require_once 'Zend/Gdata/App/InvalidArgumentException.php';
             throw new Zend_Gdata_App_InvalidArgumentException(
-                    'You must specify the location as either a string URI ' .
-                    'or a child of Zend_Gdata_Query');
+                'You must specify the location as either a string URI ' .
+                'or a child of Zend_Gdata_Query'
+            );
         }
         return parent::getFeed($uri, $className);
     }
@@ -172,7 +175,7 @@ class Zend_Gdata extends Zend_Gdata_App
      *                                     by passing false to the
      *                                     useObjectMapping() function.
      */
-    public function getEntry($location, $className='Zend_Gdata_Entry')
+    public function getEntry($location, $className = 'Zend_Gdata_Entry')
     {
         if (is_string($location)) {
             $uri = $location;
@@ -181,8 +184,9 @@ class Zend_Gdata extends Zend_Gdata_App
         } else {
             require_once 'Zend/Gdata/App/InvalidArgumentException.php';
             throw new Zend_Gdata_App_InvalidArgumentException(
-                    'You must specify the location as either a string URI ' .
-                    'or a child of Zend_Gdata_Query');
+                'You must specify the location as either a string URI ' .
+                'or a child of Zend_Gdata_Query'
+            );
         }
         return parent::getEntry($uri, $className);
     }
@@ -237,5 +241,4 @@ class Zend_Gdata extends Zend_Gdata_App
 
         return false;
     }
-
 }

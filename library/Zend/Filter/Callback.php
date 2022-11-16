@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -56,7 +57,7 @@ class Zend_Filter_Callback implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options) || !array_key_exists('callback', $options)) {
+        } elseif (!is_array($options) || !array_key_exists('callback', $options)) {
             $options          = func_get_args();
             $temp['callback'] = array_shift($options);
             if (!empty($options)) {

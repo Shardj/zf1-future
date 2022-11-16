@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Zf/AbstractClassFile.php';
  */
 class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Zf_AbstractClassFile
 {
-
     /**
      * @var string
      */
@@ -102,6 +102,4 @@ class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Z
             ]);
         return $codeGenFile->generate();
     }
-
-
 }

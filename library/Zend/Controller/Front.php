@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Loader */
 require_once 'Zend/Loader.php';
@@ -285,9 +285,9 @@ class Zend_Controller_Front
      */
     public function addModuleDirectory($path)
     {
-        try{
+        try {
             $dir = new DirectoryIterator($path);
-        } catch(Throwable $e) {
+        } catch (Throwable $e) {
             require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception("Directory $path not readable", 0, $e);
         }
@@ -677,7 +677,7 @@ class Zend_Controller_Front
      */
     public function getParam($name)
     {
-        if(isset($this->_invokeParams[$name])) {
+        if (isset($this->_invokeParams[$name])) {
             return $this->_invokeParams[$name];
         }
 
@@ -909,7 +909,7 @@ class Zend_Controller_Front
 
             try {
                 $router->route($this->_request);
-            }  catch (Throwable $e) {
+            } catch (Throwable $e) {
                 if ($this->throwExceptions()) {
                     throw $e;
                 }

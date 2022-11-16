@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -68,7 +69,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
      * @param  bool $withoutSections
      * @return Zend_Config_Writer_Ini
      */
-    public function setRenderWithoutSections($withoutSections=true)
+    public function setRenderWithoutSections($withoutSections = true)
     {
         $this->_renderWithoutSections = (bool)$withoutSections;
         return $this;
@@ -86,9 +87,9 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
         $extends     = $this->_config->getExtends();
         $sectionName = $this->_config->getSectionName();
 
-        if($this->_renderWithoutSections == true) {
+        if ($this->_renderWithoutSections == true) {
             $iniString .= $this->_addBranch($this->_config);
-        } else if (is_string($sectionName)) {
+        } elseif (is_string($sectionName)) {
             $iniString .= '[' . $sectionName . ']' . "\n"
                        .  $this->_addBranch($this->_config)
                        .  "\n";

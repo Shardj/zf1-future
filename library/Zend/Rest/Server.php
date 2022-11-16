@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -233,9 +234,11 @@ class Zend_Rest_Server implements Zend_Server_Interface
                             new Zend_Rest_Server_Exception(
                                 'Invalid Method Call to ' . $this->_method
                                 . '. Missing argument(s): ' . implode(
-                                    ', ', $missingArgs
+                                    ', ',
+                                    $missingArgs
                                 ) . '.'
-                            ), 400
+                            ),
+                            400
                         );
                     }
 
@@ -320,7 +323,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
         }
 
         return $response;
-     }
+    }
 
     /**
      * Implement Zend_Server_Interface::setClass()
@@ -390,9 +393,10 @@ class Zend_Rest_Server implements Zend_Server_Interface
      * @return void
      */
     protected function _structValue(
-        $struct, DOMDocument $dom, DOMElement $parent
-    )
-    {
+        $struct,
+        DOMDocument $dom,
+        DOMElement $parent
+    ) {
         $struct = (array)$struct;
 
         foreach ($struct as $key => $value) {
@@ -524,13 +528,15 @@ class Zend_Rest_Server implements Zend_Server_Interface
         } elseif (($exception !== null) || 'rest' == $function) {
             $xmlResponse->appendChild(
                 $dom->createElement(
-                    'message', 'An unknown error occured. Please try again.'
+                    'message',
+                    'An unknown error occured. Please try again.'
                 )
             );
         } else {
             $xmlResponse->appendChild(
                 $dom->createElement(
-                    'message', 'Call to ' . $method . ' failed.'
+                    'message',
+                    'Call to ' . $method . ' failed.'
                 )
             );
         }

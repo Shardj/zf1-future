@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -44,7 +45,6 @@ require_once 'Zend/Mobile/Push/Response/Gcm.php';
  */
 class Zend_Mobile_Push_Gcm extends Zend_Mobile_Push_Abstract
 {
-
     /**
      * @const string Server URI
      */
@@ -144,8 +144,7 @@ class Zend_Mobile_Push_Gcm extends Zend_Mobile_Push_Abstract
                            ->request('POST');
         $this->close();
 
-        switch ($response->getStatus())
-        {
+        switch ($response->getStatus()) {
             case 500:
                 require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
                 throw new Zend_Mobile_Push_Exception_ServerUnavailable('The server encountered an internal error, try again');

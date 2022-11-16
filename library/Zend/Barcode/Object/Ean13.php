@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Ean13 extends Zend_Barcode_Object_ObjectAbstract
 {
-
     /**
      * Coding map
      * - 0 = narrow bar
@@ -104,7 +104,8 @@ class Zend_Barcode_Object_Ean13 extends Zend_Barcode_Object_ObjectAbstract
      * @return void
      */
     protected function _checkParams()
-    {}
+    {
+    }
 
     /**
      * Prepare array to draw barcode
@@ -165,7 +166,7 @@ class Zend_Barcode_Object_Ean13 extends Zend_Barcode_Object_ObjectAbstract
         $factor   = 3;
         $checksum = 0;
 
-        for ($i = strlen($text); $i > 0; $i --) {
+        for ($i = strlen($text); $i > 0; $i--) {
             $checksum += (int)$text[$i - 1] * $factor;
             $factor    = 4 - $factor;
         }
@@ -194,7 +195,7 @@ class Zend_Barcode_Object_Ean13 extends Zend_Barcode_Object_ObjectAbstract
             $text = $this->getTextToDisplay();
             $characterWidth = (7 * $this->_barThinWidth) * $this->_factor;
             $leftPosition = $this->getQuietZone() - $characterWidth;
-            for ($i = 0; $i < $this->_barcodeLength; $i ++) {
+            for ($i = 0; $i < $this->_barcodeLength; $i++) {
                 $this->_addText(
                     $text[$i],
                     $this->_fontSize * $this->_factor,

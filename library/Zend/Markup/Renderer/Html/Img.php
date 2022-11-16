@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Markup/Renderer/Html/HtmlAbstract.php';
  */
 class Zend_Markup_Renderer_Html_Img extends Zend_Markup_Renderer_Html_HtmlAbstract
 {
-
     /**
      * Convert the token
      *
@@ -80,5 +80,4 @@ class Zend_Markup_Renderer_Html_Img extends Zend_Markup_Renderer_Html_HtmlAbstra
 
         return "<img src=\"{$uri}\" alt=\"{$alt}\"" . Zend_Markup_Renderer_Html::renderAttributes($token) . " />";
     }
-
 }

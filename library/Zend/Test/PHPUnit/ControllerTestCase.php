@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -896,7 +897,8 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
     {
         $this->_incrementAssertionCount();
         if ($module != $this->request->getModuleName()) {
-            $msg = sprintf('Failed asserting last module used <"%s"> was "%s"',
+            $msg = sprintf(
+                'Failed asserting last module used <"%s"> was "%s"',
                 $this->request->getModuleName(),
                 $module
             );
@@ -935,7 +937,8 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
     {
         $this->_incrementAssertionCount();
         if ($controller != $this->request->getControllerName()) {
-            $msg = sprintf('Failed asserting last controller used <"%s"> was "%s"',
+            $msg = sprintf(
+                'Failed asserting last controller used <"%s"> was "%s"',
                 $this->request->getControllerName(),
                 $controller
             );
@@ -956,7 +959,8 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
     {
         $this->_incrementAssertionCount();
         if ($controller == $this->request->getControllerName()) {
-            $msg = sprintf('Failed asserting last controller used <"%s"> was NOT "%s"',
+            $msg = sprintf(
+                'Failed asserting last controller used <"%s"> was NOT "%s"',
                 $this->request->getControllerName(),
                 $controller
             );
@@ -1014,7 +1018,8 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
         $this->_incrementAssertionCount();
         $router = $this->frontController->getRouter();
         if ($route != $router->getCurrentRouteName()) {
-            $msg = sprintf('Failed asserting matched route was "%s", actual route is %s',
+            $msg = sprintf(
+                'Failed asserting matched route was "%s", actual route is %s',
                 $route,
                 $router->getCurrentRouteName()
             );
@@ -1066,7 +1071,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
     {
         if (null === $this->_request) {
             require_once 'Zend/Controller/Request/HttpTestCase.php';
-            $this->_request = new Zend_Controller_Request_HttpTestCase;
+            $this->_request = new Zend_Controller_Request_HttpTestCase();
         }
         return $this->_request;
     }
@@ -1080,7 +1085,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
     {
         if (null === $this->_response) {
             require_once 'Zend/Controller/Response/HttpTestCase.php';
-            $this->_response = new Zend_Controller_Response_HttpTestCase;
+            $this->_response = new Zend_Controller_Response_HttpTestCase();
         }
         return $this->_response;
     }
@@ -1094,7 +1099,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
     {
         if (null === $this->_query) {
             require_once 'Zend/Dom/Query.php';
-            $this->_query = new Zend_Dom_Query;
+            $this->_query = new Zend_Dom_Query();
         }
         return $this->_query;
     }

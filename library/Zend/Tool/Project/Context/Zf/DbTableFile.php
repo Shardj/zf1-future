@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@
  */
 class Zend_Tool_Project_Context_Zf_DbTableFile extends Zend_Tool_Project_Context_Zf_AbstractClassFile
 {
-
     protected $_dbTableName = null;
 
     protected $_actualTableName = null;
@@ -88,5 +88,4 @@ class Zend_Tool_Project_Context_Zf_DbTableFile extends Zend_Tool_Project_Context
             ]);
         return $codeGenFile->generate();
     }
-
 }

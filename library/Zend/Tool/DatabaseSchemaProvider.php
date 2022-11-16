@@ -1,4 +1,5 @@
 <?php
+
 class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstract
 {
     /**
@@ -22,7 +23,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      */
     protected $_appConfigSectionName;
 
-    public function update($env='development', $dir='./scripts/migrations')
+    public function update($env = 'development', $dir = './scripts/migrations')
     {
         return $this->updateTo(null, $env, $dir);
     }
@@ -39,7 +40,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @return boolean
      */
-    public function updateTo($version, $env='development', $dir='./scripts/migrations')
+    public function updateTo($version, $env = 'development', $dir = './scripts/migrations')
     {
         $this->_init($env);
         $response = $this->_registry->getResponse();
@@ -57,7 +58,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
                     $response->appendContent("Already at version $version");
                     break;
 
-                case Zend_Db_Schema_Manager::RESULT_NO_MIGRATIONS_FOUND :
+                case Zend_Db_Schema_Manager::RESULT_NO_MIGRATIONS_FOUND:
                     $response->appendContent("No migration files found to migrate from {$manager->getCurrentSchemaVersion()} to $version");
                     break;
 
@@ -84,9 +85,9 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @return boolean
      */
-    public function decrement($versions=1, $env='development', $dir='./scripts/migrations')
+    public function decrement($versions = 1, $env = 'development', $dir = './scripts/migrations')
     {
-    	$this->_init($env);
+        $this->_init($env);
         $response = $this->_registry->getResponse();
         try {
             $db = $this->_getDbAdapter();
@@ -122,9 +123,9 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @return bool
      */
-    public function increment($versions=1,$env='development', $dir='./scripts/migrations')
+    public function increment($versions = 1, $env = 'development', $dir = './scripts/migrations')
     {
-    	$this->_init($env);
+        $this->_init($env);
         $response = $this->_registry->getResponse();
         try {
             $db = $this->_getDbAdapter();
@@ -156,11 +157,10 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      * @return boolean
      */
     #[\ReturnTypeWillChange]
-    public function current($env='development', $dir='./migrations')
+    public function current($env = 'development', $dir = './migrations')
     {
         $this->_init($env);
         try {
-
             // Initialize and retrieve DB resource
             $db = $this->_getDbAdapter();
             $manager = new Zend_Db_Schema_Manager($dir, $db, $this->getTablePrefix());
@@ -211,7 +211,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
         $this->_config = $this->_createConfig($appConfigFilePath, $env, true);
 
         // Are there any override config files?
-        foreach($this->_getAppConfigOverridePathList($appConfigFilePath) as $path) {
+        foreach ($this->_getAppConfigOverridePathList($appConfigFilePath) as $path) {
             $overrideConfig = $this->_createConfig($path);
             if (isset($overrideConfig->$env)) {
                 $this->_config->merge($overrideConfig->$env);
@@ -251,7 +251,8 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @return Zend_Config
      */
-    protected function _createConfig($filename, $section = null, $allowModifications = false) {
+    protected function _createConfig($filename, $section = null, $allowModifications = false)
+    {
 
         $options = false;
         if ($allowModifications) {
@@ -377,7 +378,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
 
         // The convention over configuration option
         if ($skipLocal === false) {
-            $appConfigFilePathLocal = realpath($appConfigDir.'/local.ini');
+            $appConfigFilePathLocal = realpath($appConfigDir . '/local.ini');
             if ($appConfigFilePathLocal) {
                 $pathList[100] = $appConfigFilePathLocal;
             }
@@ -395,10 +396,10 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
                 $fileNameList = [200 => $userConfig->name];
             }
 
-            foreach($fileNameList as $order => $fileName) {
-                $path = realpath($appConfigDir.'/'.$fileName);
+            foreach ($fileNameList as $order => $fileName) {
+                $path = realpath($appConfigDir . '/' . $fileName);
                 if ($path) {
-                    $pathList[$order] = $appConfigDir.'/'.$fileName;
+                    $pathList[$order] = $appConfigDir . '/' . $fileName;
                 }
             }
         }
@@ -411,7 +412,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
                 $filePathList = [300 => $userConfig->path];
             }
 
-            foreach($filePathList as $order => $filePath) {
+            foreach ($filePathList as $order => $filePath) {
                 if (file_exists($filePath) === false) {
                     continue;
                 }
@@ -435,17 +436,17 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
     protected function _getDbAdapter()
     {
         if ((null === $this->_db)) {
-            if($this->_config->resources->db){
+            if ($this->_config->resources->db) {
                 $dbConfig = $this->_config->resources->db;
                 $this->_db = Zend_Db::factory($dbConfig->adapter, $dbConfig->params);
-            } elseif($this->_config->resources->multidb){
+            } elseif ($this->_config->resources->multidb) {
                 foreach ($this->_config->resources->multidb as $db) {
-                    if($db->default){
+                    if ($db->default) {
                         $this->_db = Zend_Db::factory($db->adapter, $db);
                     }
                 }
             }
-            if($this->_db instanceof Zend_Db_Adapter_Interface) {
+            if ($this->_db instanceof Zend_Db_Adapter_Interface) {
                 throw new Zend_Db_Schema_Exception('Database was not initialized');
             }
         }
@@ -468,5 +469,4 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
         }
         return $this->_tablePrefix;
     }
-
 }

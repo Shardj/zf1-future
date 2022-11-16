@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -114,7 +115,7 @@ abstract class Zend_Service_Ebay_Abstract
     {
         if (null === $options) {
             $options = [];
-        } else if ($options instanceof Zend_Config) {
+        } elseif ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }
 
@@ -254,9 +255,9 @@ abstract class Zend_Service_Ebay_Abstract
     {
         if (is_bool($value)) {
             $value = $value ? '1' : '0';
-        } else if ($value instanceof Zend_Date) {
+        } elseif ($value instanceof Zend_Date) {
             $value = $value->getIso();
-        } else if ($value instanceof DateTime) {
+        } elseif ($value instanceof DateTime) {
             $value = $value->format(DateTime::ISO8601);
         } else {
             $value = (string) $value;

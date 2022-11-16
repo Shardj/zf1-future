@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Analysis_Analyzer_Common */
 require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common.php';
@@ -93,4 +93,3 @@ class Zend_Search_Lucene_Analysis_Analyzer_Common_Text extends Zend_Search_Lucen
         return $token;
     }
 }
-

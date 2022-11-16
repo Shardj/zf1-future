@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,7 +38,6 @@ require_once 'Zend/Uri.php';
  */
 class Zend_Feed_Reader_FeedSet extends ArrayObject
 {
-
     public $rss = null;
 
     public $rdf = null;
@@ -69,9 +69,9 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
             }
             if (!isset($this->rss) && $link->getAttribute('type') == 'application/rss+xml') {
                 $this->rss = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
-            } elseif(!isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
+            } elseif (!isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
                 $this->atom = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
-            } elseif(!isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
+            } elseif (!isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
                 $this->rdf = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
             }
             $this[] = new self([
@@ -145,5 +145,4 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
         }
         return parent::offsetGet($offset);
     }
-
 }

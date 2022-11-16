@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @version    $Id$
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-
 
 /** Zend_Locale */
 require_once 'Zend/Locale.php';
@@ -58,7 +58,7 @@ class Zend_Translate_Adapter_Array extends Zend_Translate_Adapter
         }
         if (!is_array($data)) {
             require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception("Error including array or file '".$data."'");
+            throw new Zend_Translate_Exception("Error including array or file '" . $data . "'");
         }
 
         if (!isset($this->_data[$locale])) {

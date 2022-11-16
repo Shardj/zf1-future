@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_Gdata_App_Exception
  */

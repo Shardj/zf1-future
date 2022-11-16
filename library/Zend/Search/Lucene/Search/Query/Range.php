@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Query */
 require_once 'Zend/Search/Lucene/Search/Query.php';
@@ -96,7 +96,7 @@ class Zend_Search_Lucene_Search_Query_Range extends Zend_Search_Lucene_Search_Qu
             throw new Zend_Search_Lucene_Exception('Both terms must be for the same field');
         }
 
-        $this->_field     = ($lowerTerm !== null)? $lowerTerm->field : $upperTerm->field;
+        $this->_field     = ($lowerTerm !== null) ? $lowerTerm->field : $upperTerm->field;
         $this->_lowerTerm = $lowerTerm;
         $this->_upperTerm = $upperTerm;
         $this->_inclusive = $inclusive;
@@ -335,8 +335,8 @@ class Zend_Search_Lucene_Search_Query_Range extends Zend_Search_Lucene_Search_Qu
         require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
         $tokens = Zend_Search_Lucene_Analysis_Analyzer::getDefault()->tokenize($docBody, 'UTF-8');
 
-        $lowerTermText = ($this->_lowerTerm !== null)? $this->_lowerTerm->text : null;
-        $upperTermText = ($this->_upperTerm !== null)? $this->_upperTerm->text : null;
+        $lowerTermText = ($this->_lowerTerm !== null) ? $this->_lowerTerm->text : null;
+        $upperTermText = ($this->_upperTerm !== null) ? $this->_upperTerm->text : null;
 
         if ($this->_inclusive) {
             foreach ($tokens as $token) {
@@ -367,13 +367,12 @@ class Zend_Search_Lucene_Search_Query_Range extends Zend_Search_Lucene_Search_Qu
     public function __toString()
     {
         // It's used only for query visualisation, so we don't care about characters escaping
-        return (($this->_field === null)? '' : $this->_field . ':')
-             . (($this->_inclusive)? '[' : '{')
-             . (($this->_lowerTerm !== null)?  $this->_lowerTerm->text : 'null')
+        return (($this->_field === null) ? '' : $this->_field . ':')
+             . (($this->_inclusive) ? '[' : '{')
+             . (($this->_lowerTerm !== null) ?  $this->_lowerTerm->text : 'null')
              . ' TO '
-             . (($this->_upperTerm !== null)?  $this->_upperTerm->text : 'null')
-             . (($this->_inclusive)? ']' : '}')
-             . (($this->getBoost() != 1)? '^' . round($this->getBoost(), 4) : '');
+             . (($this->_upperTerm !== null) ?  $this->_upperTerm->text : 'null')
+             . (($this->_inclusive) ? ']' : '}')
+             . (($this->getBoost() != 1) ? '^' . round($this->getBoost(), 4) : '');
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 
@@ -70,4 +70,3 @@ abstract class Zend_Pdf_Resource_Image extends Zend_Pdf_Resource
      */
     abstract public function getProperties();
 }
-

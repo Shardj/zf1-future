@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Ean2 extends Zend_Barcode_Object_Ean5
 {
-
     protected $_parities = [
         0 => ['A','A'],
         1 => ['A','B'],

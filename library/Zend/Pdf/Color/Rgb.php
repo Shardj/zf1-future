@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 require_once 'Zend/Pdf/Element/Numeric.php';
@@ -72,14 +72,26 @@ class Zend_Pdf_Color_Rgb extends Zend_Pdf_Color
     public function __construct($r, $g, $b)
     {
         /** Clamp values to legal limits. */
-        if ($r < 0) { $r = 0; }
-        if ($r > 1) { $r = 1; }
+        if ($r < 0) {
+            $r = 0;
+        }
+        if ($r > 1) {
+            $r = 1;
+        }
 
-        if ($g < 0) { $g = 0; }
-        if ($g > 1) { $g = 1; }
+        if ($g < 0) {
+            $g = 0;
+        }
+        if ($g > 1) {
+            $g = 1;
+        }
 
-        if ($b < 0) { $b = 0; }
-        if ($b > 1) { $b = 1; }
+        if ($b < 0) {
+            $b = 0;
+        }
+        if ($b > 1) {
+            $b = 1;
+        }
 
         $this->_r = new Zend_Pdf_Element_Numeric($r);
         $this->_g = new Zend_Pdf_Element_Numeric($g);
@@ -98,7 +110,7 @@ class Zend_Pdf_Color_Rgb extends Zend_Pdf_Color
     {
         return $this->_r->toString() . ' '
              . $this->_g->toString() . ' '
-             . $this->_b->toString() .     ($stroking? " RG\n" : " rg\n");
+             . $this->_b->toString() .     ($stroking ? " RG\n" : " rg\n");
     }
 
     /**
@@ -111,4 +123,3 @@ class Zend_Pdf_Color_Rgb extends Zend_Pdf_Color
         return [$this->_r->value, $this->_g->value, $this->_b->value];
     }
 }
-

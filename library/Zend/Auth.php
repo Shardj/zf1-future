@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -48,7 +49,8 @@ class Zend_Auth
      * @return void
      */
     protected function __construct()
-    {}
+    {
+    }
 
     /**
      * Singleton pattern implementation makes "clone" unavailable
@@ -56,7 +58,8 @@ class Zend_Auth
      * @return void
      */
     protected function __clone()
-    {}
+    {
+    }
 
     /**
      * Returns an instance of Zend_Auth

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -200,8 +201,7 @@ class Zend_View_Helper_Doctype extends Zend_View_Helper_Abstract
      */
     public function isStrict()
     {
-        switch ( $this->getDoctype() )
-        {
+        switch ($this->getDoctype()) {
             case self::XHTML1_STRICT:
             case self::XHTML11:
             case self::HTML4_STRICT:
@@ -216,7 +216,8 @@ class Zend_View_Helper_Doctype extends Zend_View_Helper_Abstract
      *
      * @return bool
      */
-    public function isHtml5() {
+    public function isHtml5()
+    {
         return (stristr($this->doctype(), '<!DOCTYPE html>') ? true : false);
     }
 
@@ -225,7 +226,8 @@ class Zend_View_Helper_Doctype extends Zend_View_Helper_Abstract
      *
      * @return bool
      */
-    public function isRdfa() {
+    public function isRdfa()
+    {
         return (stristr($this->getDoctype(), 'rdfa') ? true : false);
     }
 

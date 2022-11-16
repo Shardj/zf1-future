@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -149,7 +150,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
 
         if ($sign == Zend_Search_Lucene_Search_QueryToken::TT_REQUIRED) {
             $this->_nextEntrySign = true;
-        } else if ($sign == Zend_Search_Lucene_Search_QueryToken::TT_PROHIBITED) {
+        } elseif ($sign == Zend_Search_Lucene_Search_QueryToken::TT_PROHIBITED) {
             $this->_nextEntrySign = false;
         } else {
             require_once 'Zend/Search/Lucene/Exception.php';
@@ -348,7 +349,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
 
 
         $subqueries = [];
-        foreach ($conjuctions as  $conjuction) {
+        foreach ($conjuctions as $conjuction) {
             // Check, if it's a one term conjuction
             if (count($conjuction) === 1) {
                 $subqueries[] = $conjuction[0][0]->getQuery($this->_encoding);

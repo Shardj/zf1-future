@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -42,5 +43,4 @@ class Zend_Filter_Word_SeparatorToDash extends Zend_Filter_Word_SeparatorToSepar
     {
         parent::__construct($searchSeparator, '-');
     }
-
 }

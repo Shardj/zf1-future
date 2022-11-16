@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -156,7 +157,6 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
             $val = $this->_parseAttributeType($value);
             $val = new Zend_Ldap_Node_Schema_AttributeType_OpenLdap($val);
             $this->_attributeTypes[$val->getName()] = $val;
-
         }
         foreach ($this->_attributeTypes as $val) {
             if (count($val->sup) > 0) {
@@ -277,13 +277,17 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
     {
         $data = $node->getData();
         $parents = $data['sup'];
-        if ($parents === null || !is_array($parents) || count($parents) < 1) return;
+        if ($parents === null || !is_array($parents) || count($parents) < 1) {
+            return;
+        }
         foreach ($parents as $parent) {
-            if (!array_key_exists($parent, $repository)) continue;
+            if (!array_key_exists($parent, $repository)) {
+                continue;
+            }
             if (!array_key_exists('_parents', $data) || !is_array($data['_parents'])) {
-               $data['_parents'] = [];
-           }
-           $data['_parents'][] = $repository[$parent];
+                $data['_parents'] = [];
+            }
+            $data['_parents'][] = $repository[$parent];
         }
         $node->setData($data);
     }
@@ -456,7 +460,9 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
                     // until the end of the list is reached ')'
                     $data[$token] = [];
                     while ($tmp = array_shift($tokens)) {
-                        if ($tmp == ')') break;
+                        if ($tmp == ')') {
+                            break;
+                        }
                         if ($tmp != '$') {
                             $data[$token][] = Zend_Ldap_Attribute::convertFromLdapValue($tmp);
                         }
@@ -495,8 +501,12 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
                 }
             }
         }
-        if ($tokens[0] == '(') array_shift($tokens);
-        if ($tokens[count($tokens) - 1] == ')') array_pop($tokens);
+        if ($tokens[0] == '(') {
+            array_shift($tokens);
+        }
+        if ($tokens[count($tokens) - 1] == ')') {
+            array_pop($tokens);
+        }
         return $tokens;
     }
 }

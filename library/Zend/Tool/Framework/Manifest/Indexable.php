@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 interface Zend_Tool_Framework_Manifest_Indexable extends Zend_Tool_Framework_Manifest_Interface
 {
-
     /**
      * getActions()
      *
@@ -38,5 +38,4 @@ interface Zend_Tool_Framework_Manifest_Indexable extends Zend_Tool_Framework_Man
      * @return array|Zend_Tool_Framework_Action_Interface
      */
     public function getIndex();
-
 }

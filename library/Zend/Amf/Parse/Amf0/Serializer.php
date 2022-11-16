@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -73,7 +74,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
             if (!$this->writeObjectReference($data, $markerType)) {
                 // Write the Type Marker to denote the following action script data type
                 $this->_stream->writeByte($markerType);
-                switch($markerType) {
+                switch ($markerType) {
                     case Zend_Amf_Constants::AMF0_NUMBER:
                         $this->_stream->writeDouble($data);
                         break;
@@ -137,8 +138,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                     if (($data instanceof DateTime) || ($data instanceof Zend_Date)) {
                         $markerType = Zend_Amf_Constants::AMF0_DATE;
                     } else {
-
-                        if($className = $this->getClassName($data)){
+                        if ($className = $this->getClassName($data)) {
                             //Object is a Typed object set classname
                             $markerType = Zend_Amf_Constants::AMF0_TYPEDOBJECT;
                             $this->_className = $className;
@@ -161,14 +161,14 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                             $markerType = Zend_Amf_Constants::AMF0_OBJECT;
                             break;
                             // check if it is a sparse indexed array
-                         } else if ($key != $i) {
-                             $markerType = Zend_Amf_Constants::AMF0_MIXEDARRAY;
-                             break;
-                         }
+                        } elseif ($key != $i) {
+                            $markerType = Zend_Amf_Constants::AMF0_MIXEDARRAY;
+                            break;
+                        }
                          $i++;
                     }
                     // Dealing with a standard numeric array
-                    if(!$markerType){
+                    if (!$markerType) {
                         $markerType = Zend_Amf_Constants::AMF0_ARRAY;
                         break;
                     }
@@ -207,8 +207,8 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         ) {
             $ref = array_search($object, $this->_referenceObjects, true);
             //handle object reference
-            if($ref !== false){
-                $this->writeTypeMarker($ref,Zend_Amf_Constants::AMF0_REFERENCE);
+            if ($ref !== false) {
+                $this->writeTypeMarker($ref, Zend_Amf_Constants::AMF0_REFERENCE);
                 return true;
             }
 
@@ -229,7 +229,9 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         // Loop each element and write the name of the property.
         foreach ($object as $key => &$value) {
             // skip variables starting with an _ private transient
-            if( $key[0] == "_") continue;
+            if ($key[0] == "_") {
+                continue;
+            }
             $this->_stream->writeUtf($key);
             $this->writeTypeMarker($value);
         }
@@ -256,7 +258,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         } else {
             // Write the length of the numeric array
             $this->_stream->writeLong($length);
-            for ($i=0; $i<$length; $i++) {
+            for ($i = 0; $i < $length; $i++) {
                 $value = isset($array[$i]) ? $array[$i] : null;
                 $this->writeTypeMarker($value);
             }
@@ -350,10 +352,10 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
                 break;
         // By default, use object's class name
             default:
-        $className = get_class($object);
+                $className = get_class($object);
                 break;
         }
-        if(!$className == '') {
+        if (!$className == '') {
             return $className;
         } else {
             return false;

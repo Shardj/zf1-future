@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -88,8 +89,12 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
      * @return array An element info array with keys for name, value,
      * attribs, options, listsep, disable, and escape.
      */
-    protected function _getInfo($name, $value = null, $attribs = null,
-        $options = null, $listsep = null
+    protected function _getInfo(
+        $name,
+        $value = null,
+        $attribs = null,
+        $options = null,
+        $listsep = null
     ) {
         // the baseline info.  note that $name serves a dual purpose;
         // if an array, it's an element info array that will override
@@ -131,10 +136,10 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
 
         // Disable attribute
         if (array_key_exists('disable', $attribs)) {
-           if (is_scalar($attribs['disable'])) {
+            if (is_scalar($attribs['disable'])) {
                 // disable the element
                 $info['disable'] = (bool)$attribs['disable'];
-            } else if (is_array($attribs['disable'])) {
+            } elseif (is_array($attribs['disable'])) {
                 $info['disable'] = $attribs['disable'];
             }
         }
@@ -142,14 +147,16 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         // Set ID for element
         if (array_key_exists('id', $attribs)) {
             $info['id'] = (string)$attribs['id'];
-        } else if (is_string($info['name']) && '' !== $info['name']) {
-            $info['id'] = trim(strtr($info['name'],
-                                     ['[' => '-', ']' => '']), '-');
+        } elseif (is_string($info['name']) && '' !== $info['name']) {
+            $info['id'] = trim(strtr(
+                $info['name'],
+                ['[' => '-', ']' => '']
+            ), '-');
         }
 
         // Remove NULL name attribute override
         if (array_key_exists('name', $attribs) && is_null($attribs['name'])) {
-        	unset($attribs['name']);
+            unset($attribs['name']);
         }
 
         // Override name in info if specified in attribs

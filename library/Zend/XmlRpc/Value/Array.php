@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * Zend_XmlRpc_Value_Collection
@@ -70,4 +70,3 @@ class Zend_XmlRpc_Value_Array extends Zend_XmlRpc_Value_Collection
                   ->closeElement('value');
     }
 }
-

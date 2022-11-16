@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Date
  */
@@ -252,7 +251,7 @@ class Zend_Service_Delicious_Post extends Zend_Service_Delicious_SimplePost
     {
         $parms = [
             'url'        => $this->_url,
-            'description'=> $this->_title,
+            'description' => $this->_title,
             'extended'   => $this->_notes,
             'shared'     => ($this->_shared ? 'yes' : 'no'),
             'tags'       => implode(' ', (array) $this->_tags),

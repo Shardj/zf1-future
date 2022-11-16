@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -35,13 +36,13 @@ require_once 'Zend/Service/WindowsAzure/Storage/StorageEntityAbstract.php';
  * @property string $MessageId         Message ID
  * @property string $InsertionTime     Insertion time
  * @property string $ExpirationTime    Expiration time
- * @property string $PopReceipt  	   Receipt verification for deleting the message from queue.
+ * @property string $PopReceipt        Receipt verification for deleting the message from queue.
  * @property string $TimeNextVisible   Next time the message is visible in the queue
  * @property int    $DequeueCount      Number of times the message has been dequeued. This value is incremented each time the message is subsequently dequeued.
  * @property string $MessageText       Message text
  */
 class Zend_Service_WindowsAzure_Storage_QueueMessage
-	extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
+    extends Zend_Service_WindowsAzure_Storage_StorageEntityAbstract
 {
     /**
      * Constructor
@@ -49,7 +50,7 @@ class Zend_Service_WindowsAzure_Storage_QueueMessage
      * @param string $messageId         Message ID
      * @param string $insertionTime     Insertion time
      * @param string $expirationTime    Expiration time
-     * @param string $popReceipt  	    Receipt verification for deleting the message from queue.
+     * @param string $popReceipt        Receipt verification for deleting the message from queue.
      * @param string $timeNextVisible   Next time the message is visible in the queue
      * @param int    $dequeueCount      Number of times the message has been dequeued. This value is incremented each time the message is subsequently dequeued.
      * @param string $messageText       Message text
@@ -62,7 +63,7 @@ class Zend_Service_WindowsAzure_Storage_QueueMessage
             'expirationtime'  => $expirationTime,
             'popreceipt'      => $popReceipt,
             'timenextvisible' => $timeNextVisible,
-        	'dequeuecount'    => $dequeueCount,
+            'dequeuecount'    => $dequeueCount,
             'messagetext'     => $messageText
         ];
     }

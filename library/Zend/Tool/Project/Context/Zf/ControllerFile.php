@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@
  */
 class Zend_Tool_Project_Context_Zf_ControllerFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * @var string
      */
@@ -123,7 +123,6 @@ class Zend_Tool_Project_Context_Zf_ControllerFile extends Zend_Tool_Project_Cont
 
 
         if ($className == 'ErrorController') {
-
             $codeGenFile = new Zend_CodeGenerator_Php_File([
                 'fileName' => $this->getPath(),
                 'classes' => [
@@ -187,7 +186,6 @@ EOS
                         ])
                     ]
                 ]);
-
         }
 
         // store the generator into the registry so that the addAction command can use the same object later
@@ -219,5 +217,4 @@ EOS
 
         return array_shift($codeGenFileClasses);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Query_Processing */
 require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
@@ -143,9 +143,11 @@ class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase extends Zend_Search_L
             }
 
             foreach ($searchFields as $fieldName) {
-                $subquery = new Zend_Search_Lucene_Search_Query_Preprocessing_Phrase($this->_phrase,
-                                                                                     $this->_phraseEncoding,
-                                                                                     $fieldName);
+                $subquery = new Zend_Search_Lucene_Search_Query_Preprocessing_Phrase(
+                    $this->_phrase,
+                    $this->_phraseEncoding,
+                    $fieldName
+                );
                 $subquery->setSlop($this->getSlop());
 
                 $query->addSubquery($subquery->rewrite($index));

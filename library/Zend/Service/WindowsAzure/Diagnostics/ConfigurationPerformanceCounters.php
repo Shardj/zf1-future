@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,49 +38,49 @@ require_once 'Zend/Service/WindowsAzure/Diagnostics/PerformanceCounterSubscripti
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  *
- * @property	int		BufferQuotaInMB						Buffer quota in MB
- * @property	int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes
- * @property	array	Subscriptions						Subscriptions
+ * @property    int     BufferQuotaInMB                     Buffer quota in MB
+ * @property    int     ScheduledTransferPeriodInMinutes    Scheduled transfer period in minutes
+ * @property    array   Subscriptions                       Subscriptions
  */
 class Zend_Service_WindowsAzure_Diagnostics_ConfigurationPerformanceCounters
-	extends Zend_Service_WindowsAzure_Diagnostics_ConfigurationObjectBaseAbstract
+    extends Zend_Service_WindowsAzure_Diagnostics_ConfigurationObjectBaseAbstract
 {
     /**
      * Constructor
      *
-	 * @param	int		$bufferQuotaInMB					Buffer quota in MB
-	 * @param	int		$scheduledTransferPeriodInMinutes	Scheduled transfer period in minutes
-	 */
+     * @param   int     $bufferQuotaInMB                    Buffer quota in MB
+     * @param   int     $scheduledTransferPeriodInMinutes   Scheduled transfer period in minutes
+     */
     public function __construct($bufferQuotaInMB = 0, $scheduledTransferPeriodInMinutes = 0)
     {
         $this->_data = [
-            'bufferquotainmb'        			=> $bufferQuotaInMB,
-            'scheduledtransferperiodinminutes' 	=> $scheduledTransferPeriodInMinutes,
-        	'subscriptions'						=> []
+            'bufferquotainmb'                   => $bufferQuotaInMB,
+            'scheduledtransferperiodinminutes'  => $scheduledTransferPeriodInMinutes,
+            'subscriptions'                     => []
         ];
     }
 
-	/**
-	 * Add subscription
-	 *
- 	 * @param	string	$counterSpecifier					Counter specifier
- 	 * @param	int		$sampleRateInSeconds				Sample rate in seconds
-	 */
+    /**
+     * Add subscription
+     *
+     * @param   string  $counterSpecifier                   Counter specifier
+     * @param   int     $sampleRateInSeconds                Sample rate in seconds
+     */
     public function addSubscription($counterSpecifier, $sampleRateInSeconds = 1)
     {
 
-    	$this->_data['subscriptions'][$counterSpecifier] = new Zend_Service_WindowsAzure_Diagnostics_PerformanceCounterSubscription($counterSpecifier, $sampleRateInSeconds);
+        $this->_data['subscriptions'][$counterSpecifier] = new Zend_Service_WindowsAzure_Diagnostics_PerformanceCounterSubscription($counterSpecifier, $sampleRateInSeconds);
     }
 
-	/**
-	 * Remove subscription
-	 *
- 	 * @param	string	$counterSpecifier					Counter specifier
-	 */
+    /**
+     * Remove subscription
+     *
+     * @param   string  $counterSpecifier                   Counter specifier
+     */
     public function removeSubscription($counterSpecifier)
     {
-    	if (isset($this->_data['subscriptions'][$counterSpecifier])) {
-    		unset($this->_data['subscriptions'][$counterSpecifier]);
-    	}
+        if (isset($this->_data['subscriptions'][$counterSpecifier])) {
+            unset($this->_data['subscriptions'][$counterSpecifier]);
+        }
     }
 }

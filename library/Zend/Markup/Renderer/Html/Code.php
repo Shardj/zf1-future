@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Markup/Renderer/Html/HtmlAbstract.php';
  */
 class Zend_Markup_Renderer_Html_Code extends Zend_Markup_Renderer_Html_HtmlAbstract
 {
-
     /**
      * Convert the token
      *
@@ -49,5 +49,4 @@ class Zend_Markup_Renderer_Html_Code extends Zend_Markup_Renderer_Html_HtmlAbstr
     {
         return highlight_string($text, true);
     }
-
 }

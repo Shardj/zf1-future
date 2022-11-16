@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -98,28 +99,32 @@ class Zend_Gdata_Spreadsheets_Extension_Cell extends Zend_Gdata_Extension
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         $element->setAttribute('row', $this->_row);
         $element->setAttribute('col', $this->_col);
-        if ($this->_inputValue) $element->setAttribute('inputValue', $this->_inputValue);
-        if ($this->_numericValue) $element->setAttribute('numericValue', $this->_numericValue);
+        if ($this->_inputValue) {
+            $element->setAttribute('inputValue', $this->_inputValue);
+        }
+        if ($this->_numericValue) {
+            $element->setAttribute('numericValue', $this->_numericValue);
+        }
         return $element;
     }
 
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'row':
-            $this->_row = $attribute->nodeValue;
-            break;
-        case 'col':
-            $this->_col = $attribute->nodeValue;
-            break;
-        case 'inputValue':
-            $this->_inputValue = $attribute->nodeValue;
-            break;
-        case 'numericValue':
-            $this->_numericValue = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'row':
+                $this->_row = $attribute->nodeValue;
+                break;
+            case 'col':
+                $this->_col = $attribute->nodeValue;
+                break;
+            case 'inputValue':
+                $this->_inputValue = $attribute->nodeValue;
+                break;
+            case 'numericValue':
+                $this->_numericValue = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -197,5 +202,4 @@ class Zend_Gdata_Spreadsheets_Extension_Cell extends Zend_Gdata_Extension
     {
         $this->_numericValue = $numericValue;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -65,11 +66,11 @@ class Zend_Service_Amazon_Ec2_Elasticip extends Zend_Service_Amazon_Ec2_Abstract
         $params = [];
         $params['Action'] = 'DescribeAddresses';
 
-        if(is_array($publicIp) && !empty($publicIp)) {
-            foreach($publicIp as $k=>$name) {
-                $params['PublicIp.' . ($k+1)] = $name;
+        if (is_array($publicIp) && !empty($publicIp)) {
+            foreach ($publicIp as $k => $name) {
+                $params['PublicIp.' . ($k + 1)] = $name;
             }
-        } elseif($publicIp) {
+        } elseif ($publicIp) {
             $params['PublicIp.1'] = $publicIp;
         }
 
@@ -153,5 +154,4 @@ class Zend_Service_Amazon_Ec2_Elasticip extends Zend_Service_Amazon_Ec2_Abstract
 
         return ($return === "true");
     }
-
 }

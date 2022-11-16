@@ -32,7 +32,6 @@
  */
 class Zend_Gdata_App_Util
 {
-
     /**
      *  Convert timestamp into RFC 3339 date string.
      *  2005-04-19T15:30:00
@@ -92,10 +91,11 @@ class Zend_Gdata_App_Util
             // will have a matching namespce. If that fails, we decrement the
             // version until we find a match.
             while (!$found && $foundKey >= 0) {
-                if (array_key_exists($foundKey, $collection))
+                if (array_key_exists($foundKey, $collection)) {
                     $found = true;
-                else
+                } else {
                     $foundKey--;
+                }
             }
         }
 
@@ -108,5 +108,4 @@ class Zend_Gdata_App_Util
 
         return $foundKey;
     }
-
 }

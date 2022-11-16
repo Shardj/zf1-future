@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -119,7 +120,7 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
      * @param array $parameters
      * @return Zend_CodeGenerator_Php_Method
      */
-    public function setParameters(Array $parameters)
+    public function setParameters(array $parameters)
     {
         foreach ($parameters as $parameter) {
             $this->setParameter($parameter);
@@ -232,5 +233,4 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
 
         return $output;
     }
-
 }

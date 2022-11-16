@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -123,9 +124,9 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
         if ($url['host']) {
             $fileName = isset($url['path']) ? $url['path'] : $url['host'];
 
-    	    if (strpos($fileName, '/') === 0) {
-    	        $fileName = substr($fileName, 1);
-    	    }
+            if (strpos($fileName, '/') === 0) {
+                $fileName = substr($fileName, 1);
+            }
 
             return $fileName;
         }
@@ -157,7 +158,7 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
         // Write mode?
         if (strpbrk($mode, 'wax+')) {
             $this->_writeMode = true;
-    	} else {
+        } else {
             $this->_writeMode = false;
         }
 
@@ -421,9 +422,9 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
         $info = null;
         try {
             $info = $this->_getStorageClient($path)->getBlobInstance(
-                        $this->_getContainerName($path),
-                        $this->_getFileName($path)
-                    );
+                $this->_getContainerName($path),
+                $this->_getFileName($path)
+            );
             $stat['size']  = $info->Size;
 
             // Set the modification time and last modified to the Last-Modified header.

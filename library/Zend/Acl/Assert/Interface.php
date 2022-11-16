@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Acl
@@ -59,6 +59,10 @@ interface Zend_Acl_Assert_Interface
      * @param  string                      $privilege
      * @return boolean
      */
-    public function assert(Zend_Acl $acl, Zend_Acl_Role_Interface $role = null, Zend_Acl_Resource_Interface $resource = null,
-                           $privilege = null);
+    public function assert(
+        Zend_Acl $acl,
+        Zend_Acl_Role_Interface $role = null,
+        Zend_Acl_Resource_Interface $resource = null,
+        $privilege = null
+    );
 }

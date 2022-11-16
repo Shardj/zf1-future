@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @since      Preview Release 0.2
  */
 
-
 /**
  * @see Zend_Session_Exception
  */
@@ -38,6 +38,4 @@ require_once 'Zend/Session/Exception.php';
  */
 class Zend_Session_Validator_Exception extends Zend_Session_Exception
 {
-
 }
-

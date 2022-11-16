@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Analysis_TokenFilter */
 require_once 'Zend/Search/Lucene/Analysis/TokenFilter.php';
@@ -61,4 +61,3 @@ class Zend_Search_Lucene_Analysis_TokenFilter_LowerCaseUtf8 extends Zend_Search_
         return $srcToken;
     }
 }
-

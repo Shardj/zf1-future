@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -43,7 +44,6 @@ require_once 'Zend/CodeGenerator/Php/File.php';
  */
 class Zend_Tool_Project_Context_Zf_ProjectProviderFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * @var string
      */
@@ -148,5 +148,4 @@ class Zend_Tool_Project_Context_Zf_ProjectProviderFile extends Zend_Tool_Project
 
         return $codeGenFile->generate();
     }
-
 }

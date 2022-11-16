@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -47,21 +48,21 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      *
      * @var array
      */
-    static protected $_messages = [];
+    protected static $_messages = [];
 
     /**
      * $_session - Zend_Session storage object
      *
      * @var Zend_Session
      */
-    static protected $_session = null;
+    protected static $_session = null;
 
     /**
      * $_messageAdded - Wether a message has been previously added
      *
      * @var boolean
      */
-    static protected $_messageAdded = false;
+    protected static $_messageAdded = false;
 
     /**
      * $_namespace - Instance namespace, default is 'default'
@@ -307,7 +308,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      * @param  string|string[] $message
      * @return Zend_Controller_Action_Helper_FlashMessenger
      */
-    public function direct($message, $namespace=NULL)
+    public function direct($message, $namespace = null)
     {
         return $this->addMessage($message, $namespace);
     }

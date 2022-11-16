@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -41,7 +42,6 @@ require_once 'Zend/Db/Table/Definition.php';
  */
 class Zend_Db_Table extends Zend_Db_Table_Abstract
 {
-
     /**
      * __construct() - For concrete implementation of Zend_Db_Table
      *
@@ -57,10 +57,11 @@ class Zend_Db_Table extends Zend_Db_Table_Abstract
 
         if (is_string($config)) {
             if (Zend_Registry::isRegistered($config)) {
-                trigger_error(__CLASS__ . '::' . __METHOD__ . '(\'registryName\') is not valid usage of Zend_Db_Table, '
+                trigger_error(
+                    __CLASS__ . '::' . __METHOD__ . '(\'registryName\') is not valid usage of Zend_Db_Table, '
                     . 'try extending Zend_Db_Table_Abstract in your extending classes.',
                     E_USER_NOTICE
-                    );
+                );
                 $config = [self::ADAPTER => $config];
             } else {
                 // process this as table with or without a definition

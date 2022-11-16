@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Feed/Writer/Extension/RendererAbstract.php';
 class Zend_Feed_Writer_Extension_Content_Renderer_Entry
     extends Zend_Feed_Writer_Extension_RendererAbstract
 {
-
     /**
      * Set to TRUE if a rendering method actually renders something. This
      * is used to prevent premature appending of a XML namespace declaration
@@ -66,8 +66,10 @@ class Zend_Feed_Writer_Extension_Content_Renderer_Entry
      */
     protected function _appendNamespaces()
     {
-        $this->getRootElement()->setAttribute('xmlns:content',
-            'http://purl.org/rss/1.0/modules/content/');
+        $this->getRootElement()->setAttribute(
+            'xmlns:content',
+            'http://purl.org/rss/1.0/modules/content/'
+        );
     }
 
     /**

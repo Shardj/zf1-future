@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Tool/Framework/Metadata/Basic.php';
  */
 class Zend_Tool_Framework_Metadata_Tool extends Zend_Tool_Framework_Metadata_Basic
 {
-
     /**
      * @var string
      */
@@ -214,5 +214,4 @@ class Zend_Tool_Framework_Metadata_Tool extends Zend_Tool_Framework_Metadata_Bas
 
         return $string;
     }
-
 }

@@ -89,7 +89,7 @@ class Zend_Service_Amazon_Offer
         $this->MerchantId = (string) $xpath->query('./az:Merchant/az:MerchantId/text()', $dom)->item(0)->data;
         $name = $xpath->query('./az:Merchant/az:Name/text()', $dom);
         if ($name->length == 1) {
-          $this->MerchantName = (string) $name->item(0)->data;
+            $this->MerchantName = (string) $name->item(0)->data;
         }
         $this->GlancePage = (string) $xpath->query('./az:Merchant/az:GlancePage/text()', $dom)->item(0)->data;
         $this->Condition = (string) $xpath->query('./az:OfferAttributes/az:Condition/text()', $dom)->item(0)->data;
@@ -100,7 +100,7 @@ class Zend_Service_Amazon_Offer
             $this->CurrencyCode = (string) $xpath->query('./az:OfferListing/az:Price/az:CurrencyCode/text()', $dom)->item(0)->data;
         }
         $availability = $xpath->query('./az:OfferListing/az:Availability/text()', $dom)->item(0);
-        if($availability instanceof DOMText) {
+        if ($availability instanceof DOMText) {
             $this->Availability = (string) $availability->data;
         }
         $result = $xpath->query('./az:OfferListing/az:IsEligibleForSuperSaverShipping/text()', $dom);

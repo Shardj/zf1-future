@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -46,7 +47,7 @@ class Zend_Tool_Project_Provider_Form extends Zend_Tool_Project_Provider_Abstrac
         return $formsDirectory->createResource(
             'formFile',
             ['formName' => $formName, 'moduleName' => $moduleName]
-            );
+        );
     }
 
     /**
@@ -146,7 +147,6 @@ class Zend_Tool_Project_Provider_Form extends Zend_Tool_Project_Provider_Abstrac
                 $testFormResource = null;
                 // $testFormResource = Zend_Tool_Project_Provider_Test::createApplicationResource($this->_loadedProfile, $name, 'index', $module);
             }
-
         } catch (Exception $e) {
             $response = $this->_registry->getResponse();
             $response->setException($e);
@@ -155,15 +155,12 @@ class Zend_Tool_Project_Provider_Form extends Zend_Tool_Project_Provider_Abstrac
 
         // do the creation
         if ($this->_registry->getRequest()->isPretend()) {
-
             $this->_registry->getResponse()->appendContent('Would create a form at '  . $formResource->getContext()->getPath());
 
             if ($testFormResource) {
                 $this->_registry->getResponse()->appendContent('Would create a form test file at ' . $testFormResource->getContext()->getPath());
             }
-
         } else {
-
             $this->_registry->getResponse()->appendContent('Creating a form at ' . $formResource->getContext()->getPath());
             $formResource->create();
 

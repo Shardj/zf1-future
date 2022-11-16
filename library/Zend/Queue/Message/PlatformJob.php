@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -150,7 +151,8 @@ class Zend_Queue_Message_PlatformJob extends Zend_Queue_Message
      *
      * @return void
      */
-    protected function _setJobProperties() {
+    protected function _setJobProperties()
+    {
 
         if (isset($this->_data['script'])) {
             $this->_job->setScript($this->_data['script']);
@@ -180,7 +182,7 @@ class Zend_Queue_Message_PlatformJob extends Zend_Queue_Message
             $endTime = isset($this->_data['end_time']) ? $this->_data['end_time'] : null;
             $this->_job->setRecurrenceData($this->_data['interval'], $endTime);
         } elseif (isset($this->_data['interval']) && ($this->_data['interval'] === '')) {
-            $this->_job->setRecurrenceData(0,0);
+            $this->_job->setRecurrenceData(0, 0);
         }
 
         if (isset($this->_data['scheduled_time'])) {

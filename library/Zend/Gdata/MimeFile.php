@@ -32,7 +32,6 @@
  */
 class Zend_Gdata_MimeFile
 {
-
     /**
      * A handle to the file that is part of the message.
      *
@@ -60,7 +59,6 @@ class Zend_Gdata_MimeFile
      */
     public function read($bytesRequested)
     {
-      return fread($this->_fileHandle, $bytesRequested);
+        return fread($this->_fileHandle, $bytesRequested);
     }
-
 }

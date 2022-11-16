@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -50,7 +51,7 @@ class Zend_Translate_Adapter_Ini extends Zend_Translate_Adapter
         $this->_data = [];
         if (!file_exists($data)) {
             require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception("Ini file '".$data."' not found");
+            throw new Zend_Translate_Exception("Ini file '" . $data . "' not found");
         }
 
         $inidata = parse_ini_file($data, false);

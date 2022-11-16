@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * Abstract class for extension
@@ -83,5 +83,4 @@ class Zend_View_Helper_FormPassword extends Zend_View_Helper_FormElement
                 . $this->_htmlAttribs($attribs)
                 . $this->getClosingBracket();
     }
-
 }

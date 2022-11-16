@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_Filter_Interface */
 require_once 'Zend/Pdf/Filter/Interface.php';
@@ -98,7 +98,7 @@ class Zend_Pdf_Filter_RunLength implements Zend_Pdf_Filter_Interface
         $output = '';
         $offset = 0;
 
-        while($offset < $dataLength) {
+        while ($offset < $dataLength) {
             $length = ord($data[$offset]);
 
             $offset++;
@@ -114,7 +114,7 @@ class Zend_Pdf_Filter_RunLength implements Zend_Pdf_Filter_Interface
                 $output .= substr($data, $offset, $length);
 
                 $offset += $length;
-            } else if ($length > 128) {
+            } elseif ($length > 128) {
                 $output .= str_repeat($data[$offset], 257 - $length);
 
                 $offset++;
@@ -124,4 +124,3 @@ class Zend_Pdf_Filter_RunLength implements Zend_Pdf_Filter_Interface
         return $output;
     }
 }
-

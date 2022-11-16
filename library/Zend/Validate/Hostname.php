@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -1814,7 +1815,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         'HU'  => [1 => '/^[\x{002d}0-9a-záéíóöúüőű]{1,63}$/iu'],
         'IL'  => [1 => '/^[\x{002d}0-9\x{05D0}-\x{05EA}]{1,63}$/iu',
             2 => '/^[\x{002d}0-9a-z]{1,63}$/i'],
-        'INFO'=> [1 => '/^[\x{002d}0-9a-zäåæéöøü]{1,63}$/iu',
+        'INFO' => [1 => '/^[\x{002d}0-9a-zäåæéöøü]{1,63}$/iu',
             2 => '/^[\x{002d}0-9a-záéíóöúüőű]{1,63}$/iu',
             3 => '/^[\x{002d}0-9a-záæéíðóöúýþ]{1,63}$/iu',
             4 => '/^[\x{AC00}-\x{D7A3}]{1,17}$/iu',
@@ -1851,30 +1852,30 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
             7 => '/^[\x{002d}0-9a-zóąćęłńśźż]{1,63}$/iu',
             8 => '/^[\x{002d}0-9a-zàáâãçéêíòóôõúü]{1,63}$/iu',
             9 => '/^[\x{002d}0-9a-zâîăşţ]{1,63}$/iu',
-            10=> '/^[\x{002d}0-9a-záäéíóôúýčďĺľňŕšťž]{1,63}$/iu',
-            11=> '/^[\x{002d}0-9a-zçë]{1,63}$/iu',
-            12=> '/^[\x{002d}0-9а-ик-шђјљњћџ]{1,63}$/iu',
-            13=> '/^[\x{002d}0-9a-zćčđšž]{1,63}$/iu',
-            14=> '/^[\x{002d}0-9a-zâçöûüğış]{1,63}$/iu',
-            15=> '/^[\x{002d}0-9a-záéíñóúü]{1,63}$/iu',
-            16=> '/^[\x{002d}0-9a-zäõöüšž]{1,63}$/iu',
-            17=> '/^[\x{002d}0-9a-zĉĝĥĵŝŭ]{1,63}$/iu',
-            18=> '/^[\x{002d}0-9a-zâäéëîô]{1,63}$/iu',
-            19=> '/^[\x{002d}0-9a-zàáâäåæçèéêëìíîïðñòôöøùúûüýćčłńřśš]{1,63}$/iu',
-            20=> '/^[\x{002d}0-9a-zäåæõöøüšž]{1,63}$/iu',
-            21=> '/^[\x{002d}0-9a-zàáçèéìíòóùú]{1,63}$/iu',
-            22=> '/^[\x{002d}0-9a-zàáéíóöúüőű]{1,63}$/iu',
-            23=> '/^[\x{002d}0-9ΐά-ώ]{1,63}$/iu',
-            24=> '/^[\x{002d}0-9a-zàáâåæçèéêëðóôöøüþœ]{1,63}$/iu',
-            25=> '/^[\x{002d}0-9a-záäéíóöúüýčďěňřšťůž]{1,63}$/iu',
-            26=> '/^[\x{002d}0-9a-z·àçèéíïòóúü]{1,63}$/iu',
-            27=> '/^[\x{002d}0-9а-ъьюя\x{0450}\x{045D}]{1,63}$/iu',
-            28=> '/^[\x{002d}0-9а-яёіў]{1,63}$/iu',
-            29=> '/^[\x{002d}0-9a-ząčėęįšūųž]{1,63}$/iu',
-            30=> '/^[\x{002d}0-9a-záäåæéëíðóöøúüýþ]{1,63}$/iu',
-            31=> '/^[\x{002d}0-9a-zàâæçèéêëîïñôùûüÿœ]{1,63}$/iu',
-            32=> '/^[\x{002d}0-9а-щъыьэюяёєіїґ]{1,63}$/iu',
-            33=> '/^[\x{002d}0-9א-ת]{1,63}$/iu'],
+            10 => '/^[\x{002d}0-9a-záäéíóôúýčďĺľňŕšťž]{1,63}$/iu',
+            11 => '/^[\x{002d}0-9a-zçë]{1,63}$/iu',
+            12 => '/^[\x{002d}0-9а-ик-шђјљњћџ]{1,63}$/iu',
+            13 => '/^[\x{002d}0-9a-zćčđšž]{1,63}$/iu',
+            14 => '/^[\x{002d}0-9a-zâçöûüğış]{1,63}$/iu',
+            15 => '/^[\x{002d}0-9a-záéíñóúü]{1,63}$/iu',
+            16 => '/^[\x{002d}0-9a-zäõöüšž]{1,63}$/iu',
+            17 => '/^[\x{002d}0-9a-zĉĝĥĵŝŭ]{1,63}$/iu',
+            18 => '/^[\x{002d}0-9a-zâäéëîô]{1,63}$/iu',
+            19 => '/^[\x{002d}0-9a-zàáâäåæçèéêëìíîïðñòôöøùúûüýćčłńřśš]{1,63}$/iu',
+            20 => '/^[\x{002d}0-9a-zäåæõöøüšž]{1,63}$/iu',
+            21 => '/^[\x{002d}0-9a-zàáçèéìíòóùú]{1,63}$/iu',
+            22 => '/^[\x{002d}0-9a-zàáéíóöúüőű]{1,63}$/iu',
+            23 => '/^[\x{002d}0-9ΐά-ώ]{1,63}$/iu',
+            24 => '/^[\x{002d}0-9a-zàáâåæçèéêëðóôöøüþœ]{1,63}$/iu',
+            25 => '/^[\x{002d}0-9a-záäéíóöúüýčďěňřšťůž]{1,63}$/iu',
+            26 => '/^[\x{002d}0-9a-z·àçèéíïòóúü]{1,63}$/iu',
+            27 => '/^[\x{002d}0-9а-ъьюя\x{0450}\x{045D}]{1,63}$/iu',
+            28 => '/^[\x{002d}0-9а-яёіў]{1,63}$/iu',
+            29 => '/^[\x{002d}0-9a-ząčėęįšūųž]{1,63}$/iu',
+            30 => '/^[\x{002d}0-9a-záäåæéëíðóöøúüýþ]{1,63}$/iu',
+            31 => '/^[\x{002d}0-9a-zàâæçèéêëîïñôùûüÿœ]{1,63}$/iu',
+            32 => '/^[\x{002d}0-9а-щъыьэюяёєіїґ]{1,63}$/iu',
+            33 => '/^[\x{002d}0-9א-ת]{1,63}$/iu'],
         'PR'  => [1 => '/^[\x{002d}0-9a-záéíóúñäëïüöâêîôûàèùæçœãõ]{1,63}$/iu'],
         'PT'  => [1 => '/^[\x{002d}0-9a-záàâãçéêíóôõú]{1,63}$/iu'],
         'RS'  => [1 => '/^[\x{002D}\x{0030}-\x{0039}\x{0061}-\x{007A}\x{0107}\x{010D}\x{0111}\x{0161}\x{017E}]{1,63}$/iu)'],
@@ -1921,7 +1922,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         'CN'  => [1 => 20],
         'COM' => [3 => 17, 5 => 20],
         'HK'  => [1 => 15],
-        'INFO'=> [4 => 17],
+        'INFO' => [4 => 17],
         'KR'  => [1 => 17],
         'NET' => [3 => 17, 5 => 20],
         'ORG' => [6 => 17],
@@ -1949,7 +1950,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = func_get_args();
             $temp['allow'] = array_shift($options);
             if (!empty($options)) {
@@ -2072,7 +2073,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      * @param boolean $allowed Set allowed to true to validate IDNs, and false to not validate them
      * @return $this
      */
-    public function setValidateIdn ($allowed)
+    public function setValidateIdn($allowed)
     {
         $this->_options['idn'] = (bool) $allowed;
         return $this;
@@ -2096,7 +2097,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      * @param boolean $allowed Set allowed to true to validate TLDs, and false to not validate them
      * @return $this
      */
-    public function setValidateTld ($allowed)
+    public function setValidateTld($allowed)
     {
         $this->_options['tld'] = (bool) $allowed;
         return $this;
@@ -2293,7 +2294,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
             if ($status && ($this->_options['allow'] & self::ALLOW_DNS)) {
                 return true;
             }
-        } else if ($this->_options['allow'] & self::ALLOW_DNS) {
+        } elseif ($this->_options['allow'] & self::ALLOW_DNS) {
             $this->_error(self::INVALID_HOSTNAME);
         }
 
@@ -2364,7 +2365,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         $char  = 0x80;
 
         for ($indexe = ($separator) ? ($separator + 1) : 0; $indexe < $lengthe; ++$lengthd) {
-            for ($old_index = $index, $pos = 1, $key = 36; 1 ; $key += 36) {
+            for ($old_index = $index, $pos = 1, $key = 36; 1; $key += 36) {
                 $hex   = ord($encoded[$indexe++]);
                 $digit = ($hex - 48 < 10) ? $hex - 22
                        : (($hex - 65 < 26) ? $hex - 65

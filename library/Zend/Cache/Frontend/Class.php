@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -238,7 +239,10 @@ class Zend_Cache_Frontend_Class extends Zend_Cache_Core
                 $data   = [$output, $return];
 
                 $this->save(
-                    $data, $id, $this->_tags, $this->_specificLifetime,
+                    $data,
+                    $id,
+                    $this->_tags,
+                    $this->_specificLifetime,
                     $this->_priority
                 );
             } catch (Exception $e) {

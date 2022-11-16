@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,7 +32,6 @@
  */
 class Zend_Db_Table_Definition
 {
-
     /**
      * @var array
      */
@@ -69,7 +69,7 @@ class Zend_Db_Table_Definition
      * @param array $options
      * @return Zend_Db_Table_Definition
      */
-    public function setOptions(Array $options)
+    public function setOptions(array $options)
     {
         foreach ($options as $optionName => $optionValue) {
             $this->setTableConfig($optionName, $optionValue);
@@ -127,5 +127,4 @@ class Zend_Db_Table_Definition
     {
         return (isset($this->_tableConfigs[$tableName]));
     }
-
 }

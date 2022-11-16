@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -87,8 +88,7 @@ class Zend_View_Helper_Partial extends Zend_View_Helper_Abstract
             $viewsDir = dirname($moduleDir) . '/views';
             $view->addBasePath($viewsDir);
         } elseif ((null == $model) && (null !== $module)
-            && (is_array($module) || is_object($module)))
-        {
+            && (is_array($module) || is_object($module))) {
             $model = $module;
         }
 

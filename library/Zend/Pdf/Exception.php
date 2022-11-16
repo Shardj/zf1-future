@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -337,7 +338,4 @@ class Zend_Pdf_Exception extends Zend_Exception
     const WRONG_IMAGE_TYPE = 0x0802;
     const UNSUPPORTED_IMAGE_ENCODING_OPTIONS = 0x0803;
     const IMAGE_FILE_CORRUPT = 0x0804;
-
-
 }
-

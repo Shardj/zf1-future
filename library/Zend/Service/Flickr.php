@@ -439,7 +439,7 @@ class Zend_Service_Flickr
         if ($options['extras']) {
             $extras = explode(',', $options['extras']);
             $validExtras = ['license', 'date_upload', 'date_taken', 'owner_name', 'icon_server'];
-            foreach($extras as $extra) {
+            foreach ($extras as $extra) {
                 /**
                  * @todo The following does not do anything [yet], so it is commented out.
                  */
@@ -497,14 +497,13 @@ class Zend_Service_Flickr
         if ($options['extras']) {
             $extras = explode(',', $options['extras']);
             $validExtras = ['license', 'date_upload', 'date_taken', 'owner_name', 'icon_server'];
-            foreach($extras as $extra) {
+            foreach ($extras as $extra) {
                 /**
                  * @todo The following does not do anything [yet], so it is commented out.
                  */
                 //in_array(trim($extra), $validExtras);
             }
         }
-
     }
 
 
@@ -552,7 +551,7 @@ class Zend_Service_Flickr
         if (isset($options['extras'])) {
             $extras = explode(',', $options['extras']);
             $validExtras = ['license', 'date_upload', 'date_taken', 'owner_name', 'icon_server'];
-            foreach($extras as $extra) {
+            foreach ($extras as $extra) {
                 /**
                 * @todo The following does not do anything [yet], so it is commented out.
                 */
@@ -621,4 +620,3 @@ class Zend_Service_Flickr
         }
     }
 }
-

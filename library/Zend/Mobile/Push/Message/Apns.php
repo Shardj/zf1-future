@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -91,7 +92,7 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
      * @throws Zend_Mobile_Push_Message_Exception
      * @return Zend_Mobile_Push_Message_Apns
      */
-    public function setAlert($text, $actionLocKey=null, $locKey=null, $locArgs=null, $launchImage=null)
+    public function setAlert($text, $actionLocKey = null, $locKey = null, $locArgs = null, $launchImage = null)
     {
         if ($text !== null && !is_string($text)) {
             throw new Zend_Mobile_Push_Message_Exception('$text must be a string');

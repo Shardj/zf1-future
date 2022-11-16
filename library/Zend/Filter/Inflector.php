@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -74,7 +75,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = func_get_args();
             $temp    = [];
 
@@ -144,7 +145,8 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
      * @param  array $options
      * @return Zend_Filter_Inflector
      */
-    public function setOptions($options) {
+    public function setOptions($options)
+    {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }
@@ -280,7 +282,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
      * @param array $rules
      * @return Zend_Filter_Inflector
      */
-    public function setRules(Array $rules)
+    public function setRules(array $rules)
     {
         $this->clearRules();
         $this->addRules($rules);
@@ -303,7 +305,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
      * @param array
      * @return Zend_Filter_Inflector
      */
-    public function addRules(Array $rules)
+    public function addRules(array $rules)
     {
         $keys = array_keys($rules);
         foreach ($keys as $spec) {
@@ -455,7 +457,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
     public function filter($source)
     {
         // clean source
-        foreach ( (array) $source as $sourceName => $sourceValue) {
+        foreach ((array) $source as $sourceName => $sourceValue) {
             $source[ltrim($sourceName, ':')] = $sourceValue;
         }
 
@@ -466,23 +468,23 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
             if (isset($source[$ruleName])) {
                 if (is_string($ruleValue)) {
                     // overriding the set rule
-                    $processedParts['#'.$pregQuotedTargetReplacementIdentifier.$ruleName.'#'] = str_replace('\\', '\\\\', $source[$ruleName]);
+                    $processedParts['#' . $pregQuotedTargetReplacementIdentifier . $ruleName . '#'] = str_replace('\\', '\\\\', $source[$ruleName]);
                 } elseif (is_array($ruleValue)) {
                     $processedPart = $source[$ruleName];
                     foreach ($ruleValue as $ruleFilter) {
                         $processedPart = $ruleFilter->filter($processedPart);
                     }
-                    $processedParts['#'.$pregQuotedTargetReplacementIdentifier.$ruleName.'#'] = str_replace('\\', '\\\\', $processedPart);
+                    $processedParts['#' . $pregQuotedTargetReplacementIdentifier . $ruleName . '#'] = str_replace('\\', '\\\\', $processedPart);
                 }
             } elseif (is_string($ruleValue)) {
-                $processedParts['#'.$pregQuotedTargetReplacementIdentifier.$ruleName.'#'] = str_replace('\\', '\\\\', $ruleValue);
+                $processedParts['#' . $pregQuotedTargetReplacementIdentifier . $ruleName . '#'] = str_replace('\\', '\\\\', $ruleValue);
             }
         }
 
         // all of the values of processedParts would have been str_replace('\\', '\\\\', ..)'d to disable preg_replace backreferences
         $inflectedTarget = preg_replace(array_keys($processedParts), array_values($processedParts), $this->_target);
 
-        if ($this->_throwTargetExceptionsOn && (preg_match('#(?='.$pregQuotedTargetReplacementIdentifier.'[A-Za-z]{1})#', $inflectedTarget) == true)) {
+        if ($this->_throwTargetExceptionsOn && (preg_match('#(?=' . $pregQuotedTargetReplacementIdentifier . '[A-Za-z]{1})#', $inflectedTarget) == true)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('A replacement identifier ' . $this->_targetReplacementIdentifier . ' was found inside the inflected target, perhaps a rule was not satisfied with a target source?  Unsatisfied inflected target: ' . $inflectedTarget);
         }

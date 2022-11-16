@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -111,9 +112,9 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
         self::LASER            => ['6304', '6706', '6771', '6709'],
         self::MAESTRO          => ['5018', '5020', '5038', '6304', '6759', '6761', '6763'],
         self::MASTERCARD       => ['51', '52', '53', '54', '55', '2221', '2222', '2223',
-	                                '2224', '2225', '2226', '2227', '2228', '2229', '223',
-					'224', '225', '226', '227', '228', '229', '23', '24',
-					'25', '26', '271', '2720'],
+                                    '2224', '2225', '2226', '2227', '2228', '2229', '223',
+                    '224', '225', '226', '227', '228', '229', '23', '24',
+                    '25', '26', '271', '2720'],
         self::SOLO             => ['6334', '6767'],
         self::UNIONPAY         => ['622126', '622127', '622128', '622129', '62213', '62214',
                                         '62215', '62216', '62217', '62218', '62219', '6222', '6223',
@@ -145,7 +146,7 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = func_get_args();
             $temp['type'] = array_shift($options);
             if (!empty($options)) {
@@ -199,7 +200,7 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
             $type = [$type];
         }
 
-        foreach($type as $typ) {
+        foreach ($type as $typ) {
             if (defined('self::' . strtoupper($typ)) && !in_array($typ, $this->_type)) {
                 $this->_type[] = $typ;
             }
@@ -278,7 +279,7 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
             }
         }
 
-        if ($foundp == false){
+        if ($foundp == false) {
             $this->_error(self::PREFIX, $value);
             return false;
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -127,13 +128,13 @@ class Zend_Validate_Int extends Zend_Validate_Abstract
             $valueFiltered = str_replace(
                 [$locale['decimal_point'], $locale['thousands_sep']],
                 ['.', ''],
-                $value);
+                $value
+            );
 
             if ((string)(int)$valueFiltered != $valueFiltered) {
                 $this->_error(self::NOT_INT);
                 return false;
             }
-
         } else {
             try {
                 if (!Zend_Locale_Format::isInteger((string) $value, ['locale' => $this->_locale])) {

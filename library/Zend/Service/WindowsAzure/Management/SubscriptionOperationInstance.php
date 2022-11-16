@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,7 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  * @property array  $operationStatus The current status of the operation.
  */
 class Zend_Service_WindowsAzure_Management_SubscriptionOperationInstance
-	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
@@ -56,22 +57,22 @@ class Zend_Service_WindowsAzure_Management_SubscriptionOperationInstance
     {
         $this->_data = [
             'operationid'          => $operationId,
-	        'operationobjectid'    => $operationObjectId,
-	        'operationname'        => $operationName,
-	        'operationparameters'  => $operationParameters,
-	        'operationcaller'      => $operationCaller,
-	        'operationstatus'      => $operationStatus
+            'operationobjectid'    => $operationObjectId,
+            'operationname'        => $operationName,
+            'operationparameters'  => $operationParameters,
+            'operationcaller'      => $operationCaller,
+            'operationstatus'      => $operationStatus
         ];
     }
 
-	/**
-	 * Add operation parameter
-	 *
- 	 * @param	string	$name	Name
- 	 * @param	string	$value  Value
-	 */
+    /**
+     * Add operation parameter
+     *
+     * @param   string  $name   Name
+     * @param   string  $value  Value
+     */
     public function addOperationParameter($name, $value)
     {
-    	$this->_data['operationparameters'][$name] = $value;
+        $this->_data['operationparameters'][$name] = $value;
     }
 }

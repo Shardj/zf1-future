@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Cache_Backend_Interface
  */
@@ -40,7 +40,6 @@ require_once 'Zend/Cache/Backend.php';
  */
 class Zend_Cache_Backend_Xcache extends Zend_Cache_Backend implements Zend_Cache_Backend_Interface
 {
-
     /**
      * Log message
      */
@@ -184,7 +183,7 @@ class Zend_Cache_Backend_Xcache extends Zend_Cache_Backend implements Zend_Cache
                 }
 
                 $cnt = xcache_count(XC_TYPE_VAR);
-                for ($i=0; $i < $cnt; $i++) {
+                for ($i = 0; $i < $cnt; $i++) {
                     xcache_clear_cache(XC_TYPE_VAR, $i);
                 }
 
@@ -217,5 +216,4 @@ class Zend_Cache_Backend_Xcache extends Zend_Cache_Backend implements Zend_Cache
     {
         return false;
     }
-
 }

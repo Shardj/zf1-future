@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Crypt/Rsa/Key/Public.php';
  */
 class Zend_Crypt_Rsa
 {
-
     const BINARY = 'binary';
     const BASE64 = 'base64';
 
@@ -88,7 +88,7 @@ class Zend_Crypt_Rsa
         if (isset($options['passPhrase'])) {
             $this->_passPhrase = $options['passPhrase'];
         }
-        foreach ($options as $option=>$value) {
+        foreach ($options as $option => $value) {
             switch ($option) {
                 case 'pemString':
                     $this->setPemString($value);
@@ -134,7 +134,8 @@ class Zend_Crypt_Rsa
             $opensslKeyResource = $this->_privateKey->getOpensslKeyResource();
         }
         $result = openssl_sign(
-            $data, $signature,
+            $data,
+            $signature,
             $opensslKeyResource,
             $this->getHashAlgorithm()
         );
@@ -156,9 +157,12 @@ class Zend_Crypt_Rsa
             $signature = base64_decode($signature);
         }
 
-        return openssl_verify($data, $signature,
+        return openssl_verify(
+            $data,
+            $signature,
             $this->getPublicKey()->getOpensslKeyResource(),
-            $this->getHashAlgorithm());
+            $this->getHashAlgorithm()
+        );
     }
 
     /**
@@ -337,5 +341,4 @@ class Zend_Crypt_Rsa
         }
         return null;
     }
-
 }

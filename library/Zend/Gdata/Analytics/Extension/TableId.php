@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@ require_once 'Zend/Gdata/Extension.php';
  */
 class Zend_Gdata_Analytics_Extension_TableId extends Zend_Gdata_Extension
 {
-
     protected $_rootNamespace = 'ga';
     protected $_rootElement = 'tableId';
     protected $_value = null;
@@ -76,7 +76,7 @@ class Zend_Gdata_Analytics_Extension_TableId extends Zend_Gdata_Extension
      */
     protected function takeChildFromDOM($child)
     {
-       $this->_value = $child->nodeValue;
+        $this->_value = $child->nodeValue;
     }
 
     /**

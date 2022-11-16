@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -162,5 +163,4 @@ class Zend_XmlRpc_Client_ServerIntrospection
     {
         return $this->_system->listMethods();
     }
-
 }

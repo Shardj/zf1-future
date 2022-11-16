@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,26 +35,26 @@ require_once 'Zend/Service/WindowsAzure/Management/ServiceEntityAbstract.php';
  *
  * @property string $Url             The address of the hosted service.
  * @property string $ServiceName     The name of the hosted service.
- * @property string $Description	 A description of the hosted service.
+ * @property string $Description     A description of the hosted service.
  * @property string $AffinityGroup   The affinity group with which this hosted service is associated.
  * @property string $Location        The geo-location of the hosted service in Windows Azure, if your hosted service is not associated with an affinity group.
  * @property string $Label           The label for the hosted service.
  * @property array  $Deployments     Deployments for the hosted service.
  */
 class Zend_Service_WindowsAzure_Management_HostedServiceInstance
-	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
+    extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
 {
     /**
      * Constructor
      *
      * @param string $url             The address of the hosted service.
      * @param string $serviceName     The name of the hosted service.
-	 * @param string $description	  A description of the storage account.
-	 * @param string $affinityGroup   The affinity group with which this hosted service is associated.
-	 * @param string $location        The geo-location of the hosted service in Windows Azure, if your hosted service is not associated with an affinity group.
-	 * @param string $label           The label for the hosted service.
-	 * @param array  $deployments     Deployments for the hosted service.
-	 */
+     * @param string $description     A description of the storage account.
+     * @param string $affinityGroup   The affinity group with which this hosted service is associated.
+     * @param string $location        The geo-location of the hosted service in Windows Azure, if your hosted service is not associated with an affinity group.
+     * @param string $label           The label for the hosted service.
+     * @param array  $deployments     Deployments for the hosted service.
+     */
     public function __construct($url, $serviceName, $description = '', $affinityGroup = '', $location = '', $label = '', $deployments = [])
     {
         $this->_data = [

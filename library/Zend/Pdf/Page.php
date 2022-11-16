@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -188,7 +189,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             ) &&
             $param2 instanceof Zend_Pdf_ElementFactory_Interface &&
             $param3 === null
-           ) {
+        ) {
             switch ($param1->getType()) {
                 case Zend_Pdf_Element::TYPE_DICTIONARY:
                     $this->_dictionary = $param1;
@@ -207,9 +208,8 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
                     require_once 'Zend/Pdf/Exception.php';
                     throw new Zend_Pdf_Exception('Unrecognized object type.');
                     break;
-
             }
-        } else if ($param1 instanceof Zend_Pdf_Page && $param2 === null && $param3 === null) {
+        } elseif ($param1 instanceof Zend_Pdf_Page && $param2 === null && $param3 === null) {
             // Duplicate existing page.
             // Let already existing content and resources to be shared between pages
             // We don't give existing content modification functionality, so we don't need "deep copy"
@@ -240,7 +240,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             }
 
             return;
-        } else if (is_string($param1) &&
+        } elseif (is_string($param1) &&
                    ($param2 === null || $param2 instanceof Zend_Pdf_ElementFactory_Interface) &&
                    $param3 === null) {
             if ($param2 !== null) {
@@ -271,7 +271,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
 
             $pageDim = explode(':', $param1);
 
-            if(count($pageDim) === 2 || count($pageDim) === 3) {
+            if (count($pageDim) === 2 || count($pageDim) === 3) {
                 $pageWidth  = $pageDim[0];
                 $pageHeight = $pageDim[1];
             } else {
@@ -285,8 +285,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             /**
              * @todo support of pagesize recalculation to "default user space units"
              */
-
-        } else if (is_numeric($param1) && is_numeric($param2) &&
+        } elseif (is_numeric($param1) && is_numeric($param2) &&
                    ($param3 === null || $param3 instanceof Zend_Pdf_ElementFactory_Interface)) {
             if ($param3 !== null) {
                 $this->_objFactory = $param3;
@@ -299,7 +298,6 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             $this->_safeGS   = true; /** New page created. That's users App responsibility to track GS changes */
             $pageWidth  = $param1;
             $pageHeight = $param2;
-
         } else {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Unrecognized method signature, wrong number of arguments or wrong argument types.');
@@ -430,7 +428,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
                 $resMap = $resDictionary->$resType;
 
                 foreach ($resMap->getKeys() as $resId) {
-                    $resources[$resType][$resId] =new Zend_Pdf_Resource_Unified($resMap->$resId);
+                    $resources[$resType][$resId] = new Zend_Pdf_Resource_Unified($resMap->$resId);
                 }
             }
         }
@@ -487,9 +485,11 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
         // results of clonePage() operation (other resources are still shared)
         $dictionary = new Zend_Pdf_Element_Dictionary();
         foreach ($this->_dictionary->getKeys() as $key) {
-            $dictionary->$key = $this->_dictionary->$key->makeClone($factory->getFactory(),
-                                                                        $processed,
-                                                                        Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES);
+            $dictionary->$key = $this->_dictionary->$key->makeClone(
+                $factory->getFactory(),
+                $processed,
+                Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES
+            );
         }
 
         $this->_dictionary = $factory->newObject($dictionary);
@@ -515,9 +515,11 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
         // results of clonePage() operation (other resources are still shared)
         $dictionary = new Zend_Pdf_Element_Dictionary();
         foreach ($this->_dictionary->getKeys() as $key) {
-            $dictionary->$key = $this->_dictionary->$key->makeClone($factory->getFactory(),
-                                                                        $processed,
-                                                                        Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES);
+            $dictionary->$key = $this->_dictionary->$key->makeClone(
+                $factory->getFactory(),
+                $processed,
+                Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES
+            );
         }
 
         $clonedPage = new Zend_Pdf_Page($factory->newObject($dictionary), $factory);
@@ -659,7 +661,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             $fontDictionary = $fontResources->$fontResourceName;
 
             if (! ($fontDictionary instanceof Zend_Pdf_Element_Reference  ||
-                   $fontDictionary instanceof Zend_Pdf_Element_Object) ) {
+                   $fontDictionary instanceof Zend_Pdf_Element_Object)) {
                 require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Font dictionary has to be an indirect object or object reference.');
             }
@@ -710,7 +712,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             $fontDictionary = $fontResources->$fontResourceName;
 
             if (! ($fontDictionary instanceof Zend_Pdf_Element_Reference  ||
-                   $fontDictionary instanceof Zend_Pdf_Element_Object) ) {
+                   $fontDictionary instanceof Zend_Pdf_Element_Object)) {
                 require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Font dictionary has to be an indirect object or object reference.');
             }
@@ -771,4 +773,3 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
         return $this;
     }
 }
-

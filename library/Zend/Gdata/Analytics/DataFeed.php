@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -42,7 +43,6 @@ require_once 'Zend/Gdata/Analytics/DataEntry.php';
  */
 class Zend_Gdata_Analytics_DataFeed extends Zend_Gdata_Feed
 {
-
     /**
      * The classname for individual feed elements.
      *

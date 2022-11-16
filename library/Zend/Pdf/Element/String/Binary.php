@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_Element_String */
 require_once 'Zend/Pdf/Element/String.php';
@@ -81,7 +81,7 @@ class Zend_Pdf_Element_String_Binary extends Zend_Pdf_Element_String
             $chunks[] = '0';
         }
 
-        return pack('H*' , implode($chunks));
+        return pack('H*', implode($chunks));
     }
 
 

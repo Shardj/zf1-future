@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -528,4 +529,3 @@ abstract class Zend_Pdf_Resource_Font extends Zend_Pdf_Resource
         return ceil(($value / $this->_unitsPerEm) * 1000);    // always round up
     }
 }
-

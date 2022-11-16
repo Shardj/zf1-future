@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -53,7 +54,6 @@ require_once 'Zend/CodeGenerator/Php/Docblock.php';
  */
 class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
 {
-
     /**
      * @var Zend_CodeGenerator_Php_Docblock
      */
@@ -122,7 +122,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
         }
 
         $interfaceNames = [];
-        foreach($interfaces AS $interface) {
+        foreach ($interfaces as $interface) {
             $interfaceNames[] = $interface->getName();
         }
 
@@ -252,7 +252,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * @param array $implementedInterfaces
      * @return Zend_CodeGenerator_Php_Class
      */
-    public function setImplementedInterfaces(Array $implementedInterfaces)
+    public function setImplementedInterfaces(array $implementedInterfaces)
     {
         $this->_implementedInterfaces = $implementedInterfaces;
         return $this;
@@ -274,7 +274,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * @param array $properties
      * @return Zend_CodeGenerator_Php_Class
      */
-    public function setProperties(Array $properties)
+    public function setProperties(array $properties)
     {
         foreach ($properties as $property) {
             $this->setProperty($property);
@@ -289,7 +289,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * @param array $constants
      * @return Zend_CodeGenerator_Php_Class
      */
-    public function setConstants(Array $constants)
+    public function setConstants(array $constants)
     {
         foreach ($constants as $const) {
             $this->setConstant($const);
@@ -439,7 +439,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * @param array $methods
      * @return Zend_CodeGenerator_Php_Class
      */
-    public function setMethods(Array $methods)
+    public function setMethods(array $methods)
     {
         foreach ($methods as $method) {
             $this->setMethod($method);
@@ -567,7 +567,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
 
         $output .= 'class ' . $this->getName();
 
-        if ( !empty( $this->_extendedClass) ) {
+        if (!empty($this->_extendedClass)) {
             $output .= ' extends ' . $this->_extendedClass;
         }
 
@@ -614,5 +614,4 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
         $this->_constants = new Zend_CodeGenerator_Php_Member_Container(Zend_CodeGenerator_Php_Member_Container::TYPE_PROPERTY);
         $this->_methods = new Zend_CodeGenerator_Php_Member_Container(Zend_CodeGenerator_Php_Member_Container::TYPE_METHOD);
     }
-
 }

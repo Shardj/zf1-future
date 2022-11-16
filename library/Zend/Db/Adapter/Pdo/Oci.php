@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Db_Adapter_Pdo_Abstract
  */
@@ -38,7 +38,6 @@ require_once 'Zend/Db/Adapter/Pdo/Abstract.php';
  */
 class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
 {
-
     /**
      * PDO type.
      *
@@ -195,7 +194,7 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
             }
             $sql .= ' ORDER BY TC.COLUMN_ID';
         } else {
-            $subSql="SELECT AC.OWNER, AC.TABLE_NAME, ACC.COLUMN_NAME, AC.CONSTRAINT_TYPE, ACC.POSITION
+            $subSql = "SELECT AC.OWNER, AC.TABLE_NAME, ACC.COLUMN_NAME, AC.CONSTRAINT_TYPE, ACC.POSITION
                 from ALL_CONSTRAINTS AC, ALL_CONS_COLUMNS ACC
                   WHERE ACC.CONSTRAINT_NAME = AC.CONSTRAINT_NAME
                     AND ACC.TABLE_NAME = AC.TABLE_NAME
@@ -207,7 +206,7 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
                 $subSql .= ' AND UPPER(ACC.OWNER) = UPPER(:SCNAME)';
                 $bind[':SCNAME'] = $schemaName;
             }
-            $sql="SELECT TC.TABLE_NAME, TC.OWNER, TC.COLUMN_NAME, TC.DATA_TYPE,
+            $sql = "SELECT TC.TABLE_NAME, TC.OWNER, TC.COLUMN_NAME, TC.DATA_TYPE,
                     TC.DATA_DEFAULT, TC.NULLABLE, TC.COLUMN_ID, TC.DATA_LENGTH,
                     TC.DATA_SCALE, TC.DATA_PRECISION, CC.CONSTRAINT_TYPE, CC.POSITION
                 FROM ALL_TAB_COLUMNS TC, ($subSql) CC
@@ -282,7 +281,7 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
     {
         $this->_connect();
 
-        return $this->fetchOne('SELECT '.$this->quoteIdentifier($sequenceName, true).'.CURRVAL FROM dual');
+        return $this->fetchOne('SELECT ' . $this->quoteIdentifier($sequenceName, true) . '.CURRVAL FROM dual');
     }
 
     /**
@@ -297,7 +296,7 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
     {
         $this->_connect();
 
-        return $this->fetchOne('SELECT '.$this->quoteIdentifier($sequenceName, true).'.NEXTVAL FROM dual');
+        return $this->fetchOne('SELECT ' . $this->quoteIdentifier($sequenceName, true) . '.NEXTVAL FROM dual');
     }
 
     /**
@@ -370,7 +369,6 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
                     " . $sql . "
                 ) z1
             ) z2
-            WHERE z2.\"zend_db_rownum\" BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+            WHERE z2.\"zend_db_rownum\" BETWEEN " . ($offset + 1) . " AND " . ($offset + $count);
     }
-
 }

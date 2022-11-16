@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -96,7 +97,7 @@ class Zend_Reflection_Docblock_Tag implements Reflector
      */
     public function __toString()
     {
-        return "Docblock Tag [ * @".$this->_name." ]".PHP_EOL;
+        return "Docblock Tag [ * @" . $this->_name . " ]" . PHP_EOL;
     }
 
     /**

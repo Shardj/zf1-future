@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,8 +38,7 @@ require_once 'Zend/Feed/Pubsubhubbub/HttpResponse.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
-    implements Zend_Feed_Pubsubhubbub_CallbackInterface
+abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract implements Zend_Feed_Pubsubhubbub_CallbackInterface
 {
     /**
      * An instance of Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface used
@@ -180,7 +180,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
     public function getHttpResponse()
     {
         if ($this->_httpResponse === null) {
-            $this->_httpResponse = new Zend_Feed_Pubsubhubbub_HttpResponse;
+            $this->_httpResponse = new Zend_Feed_Pubsubhubbub_HttpResponse();
         }
         return $this->_httpResponse;
     }
@@ -241,7 +241,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
                 $callbackUrl = substr($callbackUrl, strlen($schemeAndHttpHost));
             }
         } elseif (isset($_SERVER['ORIG_PATH_INFO'])) {
-            $callbackUrl= $_SERVER['ORIG_PATH_INFO'];
+            $callbackUrl = $_SERVER['ORIG_PATH_INFO'];
             if (!empty($_SERVER['QUERY_STRING'])) {
                 $callbackUrl .= '?' . $_SERVER['QUERY_STRING'];
             }

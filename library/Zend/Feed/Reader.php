@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -243,10 +244,10 @@ class Zend_Feed_Reader
             $data = $cache->load($cacheId);
             if ($data) {
                 if ($etag === null) {
-                    $etag = $cache->load($cacheId.'_etag');
+                    $etag = $cache->load($cacheId . '_etag');
                 }
                 if ($lastModified === null) {
-                    $lastModified = $cache->load($cacheId.'_lastmodified');
+                    $lastModified = $cache->load($cacheId . '_lastmodified');
                 }
                 if ($etag) {
                     $client->setHeaders('If-None-Match', $etag);
@@ -269,10 +270,10 @@ class Zend_Feed_Reader
                 $responseXml = $response->getBody();
                 $cache->save($responseXml, $cacheId);
                 if ($response->getHeader('ETag')) {
-                    $cache->save($response->getHeader('ETag'), $cacheId.'_etag');
+                    $cache->save($response->getHeader('ETag'), $cacheId . '_etag');
                 }
                 if ($response->getHeader('Last-Modified')) {
-                    $cache->save($response->getHeader('Last-Modified'), $cacheId.'_lastmodified');
+                    $cache->save($response->getHeader('Last-Modified'), $cacheId . '_lastmodified');
                 }
             }
             if (empty($responseXml)) {
@@ -349,7 +350,7 @@ class Zend_Feed_Reader
      */
     public static function importString($string)
     {
-        $dom = new DOMDocument;
+        $dom = new DOMDocument();
         try {
             $dom = Zend_Xml_Security::scan($string, $dom);
         } catch (Zend_Xml_Exception $e) {
@@ -431,7 +432,7 @@ class Zend_Feed_Reader
         if (LIBXML_VERSION < 20900) {
             $oldValue = libxml_disable_entity_loader(true);
         }
-        $dom = new DOMDocument;
+        $dom = new DOMDocument();
         $status = $dom->loadHTML($responseHtml);
         if (LIBXML_VERSION < 20900) {
             libxml_disable_entity_loader($oldValue);
@@ -449,7 +450,7 @@ class Zend_Feed_Reader
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception($errormsg);
         }
-        $feedSet = new Zend_Feed_Reader_FeedSet;
+        $feedSet = new Zend_Feed_Reader_FeedSet();
         $links = $dom->getElementsByTagName('link');
         $feedSet->addLinks($links, $uri);
         return $feedSet;
@@ -467,11 +468,11 @@ class Zend_Feed_Reader
     {
         if ($feed instanceof Zend_Feed_Reader_FeedInterface) {
             $dom = $feed->getDomDocument();
-        } elseif($feed instanceof DOMDocument) {
+        } elseif ($feed instanceof DOMDocument) {
             $dom = $feed;
-        } elseif(is_string($feed) && !empty($feed)) {
+        } elseif (is_string($feed) && !empty($feed)) {
             //$oldValue = libxml_disable_entity_loader(true);
-            $dom = new DOMDocument;
+            $dom = new DOMDocument();
             try {
                 $dom = Zend_Xml_Security::scan($feed, $dom);
             } catch (Zend_Xml_Exception $e) {
@@ -506,7 +507,7 @@ class Zend_Feed_Reader
             $version = $xpath->evaluate('string(/rss/@version)');
 
             if (strlen($version) > 0) {
-                switch($version) {
+                switch ($version) {
                     case '2.0':
                         $type = self::TYPE_RSS_20;
                         break;
@@ -769,5 +770,4 @@ class Zend_Feed_Reader
         }
         return $array;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -83,4 +84,3 @@ class Zend_Pdf_Resource_Extractor
         return $page->clonePage($this->_factory, $this->_processed);
     }
 }
-

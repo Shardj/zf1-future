@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -79,7 +80,7 @@ interface Zend_Queue_Adapter_AdapterInterface
      * @param  integer $timeout Default visibility timeout
      * @return boolean
      */
-    public function create($name, $timeout=null);
+    public function create($name, $timeout = null);
 
     /**
      * Delete a queue and all of its messages

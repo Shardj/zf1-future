@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -36,7 +37,6 @@ require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
  */
 abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements Zend_Markup_Renderer_TokenConverterInterface
 {
-
     /**
      * The HTML renderer
      *

@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Mime
  */
@@ -155,7 +154,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
      */
     public function connect()
     {
-        return $this->_connect($this->_transport . '://' . $this->_host . ':'. $this->_port);
+        return $this->_connect($this->_transport . '://' . $this->_host . ':' . $this->_port);
     }
 
 
@@ -197,7 +196,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
             if (!stream_socket_enable_crypto(
                 $this->_socket,
                 true,
-                STREAM_CRYPTO_METHOD_TLS_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT
+                STREAM_CRYPTO_METHOD_TLS_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT
             )) {
                 /**
                  * @see Zend_Mail_Protocol_Exception

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,5 +38,4 @@ interface Zend_Log_Formatter_Interface
      * @return string             formatted line to write to the log
      */
     public function format($event);
-
 }

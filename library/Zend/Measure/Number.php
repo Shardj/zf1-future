@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -125,7 +126,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
         '/XC/' => '/F/',
         '/CD/' => '/G/',
         '/CM/' => '/H/',
-        '/M_V/'=> '/J/',
+        '/M_V/' => '/J/',
         '/MQ/' => '/K/',
         '/QR/' => '/N/',
         '/QS/' => '/W/',
@@ -195,7 +196,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
             throw new Zend_Measure_Exception('unknown type of number:' . $type);
         }
 
-        switch($type) {
+        switch ($type) {
             case 'BINARY':
                 preg_match('/[01]+/', $value, $ergebnis);
                 $value = $ergebnis[0];
@@ -284,9 +285,15 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
             $length = strlen($input);
             for ($x = 0; $x < $length; ++$x) {
                 $split[$x] = hexdec($split[$x]);
-                $value     = call_user_func(Zend_Locale_Math::$add, $value,
-                            call_user_func(Zend_Locale_Math::$mul, $split[$x],
-                            call_user_func(Zend_Locale_Math::$pow, $this->_units[$type][0], ($length - $x - 1))));
+                $value     = call_user_func(
+                    Zend_Locale_Math::$add,
+                    $value,
+                    call_user_func(
+                        Zend_Locale_Math::$mul,
+                        $split[$x],
+                        call_user_func(Zend_Locale_Math::$pow, $this->_units[$type][0], ($length - $x - 1))
+                    )
+                );
             }
         }
 
@@ -297,13 +304,13 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
 
             $split = preg_split('//', strrev($input), -1, PREG_SPLIT_NO_EMPTY);
 
-            for ($x =0; $x < sizeof($split); $x++) {
+            for ($x = 0; $x < sizeof($split); $x++) {
                 if ($split[$x] == '/') {
                     continue;
                 }
 
                 $num = self::$_roman[$split[$x]];
-                if (($x > 0 && ($split[$x-1] != '/') && ($num < self::$_roman[$split[$x-1]]))) {
+                if (($x > 0 && ($split[$x - 1] != '/') && ($num < self::$_roman[$split[$x - 1]]))) {
                     $num -= $num;
                 }
 

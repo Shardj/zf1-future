@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@
  */
 class Zend_Tool_Project_Context_Content_Engine_Phtml
 {
-
     /**
      * @var Zend_Tool_Framework_Client_Storage
      */
@@ -84,5 +84,4 @@ class Zend_Tool_Project_Context_Content_Engine_Phtml
 
         return ob_get_clean();
     }
-
 }

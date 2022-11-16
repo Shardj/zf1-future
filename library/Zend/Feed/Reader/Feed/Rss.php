@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -52,7 +53,6 @@ require_once 'Zend/Feed/Reader/Collection/Author.php';
  */
 class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
 {
-
     /**
      * Constructor
      *
@@ -232,7 +232,7 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
                 } else {
                     $dateStandards = [Zend_Date::RSS, Zend_Date::RFC_822,
                     Zend_Date::RFC_2822, Zend_Date::DATES];
-                    $date = new Zend_Date;
+                    $date = new Zend_Date();
                     foreach ($dateStandards as $standard) {
                         try {
                             $date->set($dateModified, $standard);
@@ -242,9 +242,10 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
                                 require_once 'Zend/Feed/Exception.php';
                                 throw new Zend_Feed_Exception(
                                     'Could not load date due to unrecognised'
-                                    .' format (should follow RFC 822 or 2822):'
+                                    . ' format (should follow RFC 822 or 2822):'
                                     . $e->getMessage(),
-                                    0, $e
+                                    0,
+                                    $e
                                 );
                             }
                         }
@@ -294,7 +295,7 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
                 } else {
                     $dateStandards = [Zend_Date::RSS, Zend_Date::RFC_822,
                     Zend_Date::RFC_2822, Zend_Date::DATES];
-                    $date = new Zend_Date;
+                    $date = new Zend_Date();
                     foreach ($dateStandards as $standard) {
                         try {
                             $date->set($lastBuildDate, $standard);
@@ -304,9 +305,10 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
                                 require_once 'Zend/Feed/Exception.php';
                                 throw new Zend_Feed_Exception(
                                     'Could not load date due to unrecognised'
-                                    .' format (should follow RFC 822 or 2822):'
+                                    . ' format (should follow RFC 822 or 2822):'
                                     . $e->getMessage(),
-                                    0, $e
+                                    0,
+                                    $e
                                 );
                             }
                         }
@@ -672,7 +674,7 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
         }
 
         if ($list->length) {
-            $categoryCollection = new Zend_Feed_Reader_Collection_Category;
+            $categoryCollection = new Zend_Feed_Reader_Collection_Category();
             foreach ($list as $category) {
                 $categoryCollection[] = [
                     'term' => $category->nodeValue,
@@ -707,7 +709,7 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
             $entries = $this->_xpath->evaluate('//rss:item');
         }
 
-        foreach($entries as $index=>$entry) {
+        foreach ($entries as $index => $entry) {
             $this->_entries[$index] = $entry;
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -95,5 +96,4 @@ interface Zend_Cache_Backend_Interface
      * @return boolean true if no problem
      */
     public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = []);
-
 }

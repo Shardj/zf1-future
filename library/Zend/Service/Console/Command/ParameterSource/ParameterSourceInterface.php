@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,12 +33,12 @@
  */
 interface Zend_Service_Console_Command_ParameterSource_ParameterSourceInterface
 {
-	/**
-	 * Get value for a named parameter.
-	 *
-	 * @param mixed $parameter Parameter to get a value for
-	 * @param array $argv Argument values passed to the script when run in console.
-	 * @return mixed
-	 */
-	public function getValueForParameter($parameter, $argv = []);
+    /**
+     * Get value for a named parameter.
+     *
+     * @param mixed $parameter Parameter to get a value for
+     * @param array $argv Argument values passed to the script when run in console.
+     * @return mixed
+     */
+    public function getValueForParameter($parameter, $argv = []);
 }

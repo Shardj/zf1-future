@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -29,7 +30,6 @@
  */
 interface Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
 {
-
     /**
      * Save subscription to RDMBS
      *
@@ -61,5 +61,4 @@ interface Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
      * @return bool
      */
     public function deleteSubscription($key);
-
 }

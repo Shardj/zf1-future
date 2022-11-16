@@ -32,7 +32,6 @@
  */
 abstract class Zend_OpenId_Provider_Storage
 {
-
     /**
      * Stores information about session identified by $handle
      *

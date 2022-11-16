@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -29,8 +30,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_DocumentService_Document
-    implements ArrayAccess, IteratorAggregate, Countable
+class Zend_Cloud_DocumentService_Document implements ArrayAccess, IteratorAggregate, Countable
 {
     /** key in document denoting identifier */
     const KEY_FIELD = '_id';

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -235,7 +236,7 @@ class Zend_Service_ReCaptcha_MailHide extends Zend_Service_ReCaptcha
         /* Decide on how much of the local part we want to reveal */
         if (strlen($emailParts[0]) <= 4) {
             $emailParts[0] = substr($emailParts[0], 0, 1);
-        } else if (strlen($emailParts[0]) <= 6) {
+        } elseif (strlen($emailParts[0]) <= 6) {
             $emailParts[0] = substr($emailParts[0], 0, 3);
         } else {
             $emailParts[0] = substr($emailParts[0], 0, 4);

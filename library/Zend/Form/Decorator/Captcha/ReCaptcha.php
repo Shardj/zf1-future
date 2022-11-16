@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -81,7 +82,7 @@ class Zend_Form_Decorator_Captcha_ReCaptcha extends Zend_Form_Decorator_Abstract
         // values with those produced by ReCaptcha
         // zendBindEvent mediates between Mozilla's addEventListener and
         // IE's sole support for addEvent.
-        $js =<<<EOJ
+        $js = <<<EOJ
 <script type="text/javascript" language="JavaScript">
 function windowOnLoad(fn) {
     var old = window.onload;
@@ -125,4 +126,3 @@ EOJ;
         return $content;
     }
 }
-

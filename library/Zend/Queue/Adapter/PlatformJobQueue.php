@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -114,7 +115,7 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
      * @return void
      * @throws Zend_Queue_Exception
      */
-    public function create($name, $timeout=null)
+    public function create($name, $timeout = null)
     {
         require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception('create() is not supported in ' . get_class($this));
@@ -277,7 +278,7 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
 
     public function isJobIdExist($id)
     {
-         return (($this->_zendQueue->getJob($id))? true : false);
+         return (($this->_zendQueue->getJob($id)) ? true : false);
     }
 
     /********************************************************************
@@ -304,7 +305,7 @@ class Zend_Queue_Adapter_PlatformJobQueue extends Zend_Queue_Adapter_AdapterAbst
             'send'                  => true,
             'receive'               => true,
             'deleteMessage'         => true,
-        ];
+         ];
     }
 
     /********************************************************************

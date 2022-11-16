@@ -130,7 +130,7 @@ class Zend_Gdata_Docs extends Zend_Gdata
     {
         if ($location === null) {
             $uri = self::DOCUMENTS_LIST_FEED_URI;
-        } else if ($location instanceof Zend_Gdata_Query) {
+        } elseif ($location instanceof Zend_Gdata_Query) {
             $uri = $location->getQueryUrl();
         } else {
             $uri = $location;
@@ -150,9 +150,9 @@ class Zend_Gdata_Docs extends Zend_Gdata
         if ($location === null) {
             require_once 'Zend/Gdata/App/InvalidArgumentException.php';
             throw new Zend_Gdata_App_InvalidArgumentException(
-                    'Location must not be null'
+                'Location must not be null'
             );
-        } else if ($location instanceof Zend_Gdata_Query) {
+        } elseif ($location instanceof Zend_Gdata_Query) {
             $uri = $location->getQueryUrl();
         } else {
             $uri = $location;
@@ -235,10 +235,12 @@ class Zend_Gdata_Docs extends Zend_Gdata
      * @return Zend_Gdata_App_Entry The entry for the newly
      *         created Google Document.
      */
-    public function uploadFile($fileLocation, $title = null, $mimeType = null,
+    public function uploadFile(
+        $fileLocation,
+        $title = null,
+        $mimeType = null,
         $uri = null
-    )
-    {
+    ) {
         // Set the URI to which the file will be uploaded.
         if ($uri === null) {
             $uri = $this->_defaultPostUri;
@@ -259,9 +261,9 @@ class Zend_Gdata_Docs extends Zend_Gdata
 
         // Set the mime type of the data.
         if ($mimeType === null) {
-          $filenameParts = explode('.', $fileLocation);
-          $fileExtension = end($filenameParts);
-          $mimeType = self::lookupMimeType($fileExtension);
+            $filenameParts = explode('.', $fileLocation);
+            $fileExtension = end($filenameParts);
+            $mimeType = self::lookupMimeType($fileExtension);
         }
 
         // Set the mime type for the upload request.
@@ -314,9 +316,11 @@ class Zend_Gdata_Docs extends Zend_Gdata
      * @return Zend_Gdata_App_Entry The entry returned by the
      *     service after insertion.
      */
-    public function insertDocument($data, $uri,
-        $className = 'Zend_Gdata_Docs_DocumentListEntry')
-    {
+    public function insertDocument(
+        $data,
+        $uri,
+        $className = 'Zend_Gdata_Docs_DocumentListEntry'
+    ) {
         return $this->insertEntry($data, $uri, $className);
     }
 }

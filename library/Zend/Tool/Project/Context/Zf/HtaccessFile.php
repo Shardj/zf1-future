@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,7 +39,6 @@ require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
  */
 class Zend_Tool_Project_Context_Zf_HtaccessFile extends Zend_Tool_Project_Context_Filesystem_File
 {
-
     /**
      * @var string
      */
@@ -83,5 +83,4 @@ RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
 EOS;
         return $output;
     }
-
 }

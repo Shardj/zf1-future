@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -124,7 +125,6 @@ class Zend_Reflection_Parameter extends ReflectionParameter
                 if (isset($params[$this->getPosition()])) {
                     return $params[$this->getPosition()]->getType();
                 }
-
             }
         } catch (Zend_Reflection_Exception $e) {
             if (PHP_VERSION_ID >= 80000) {

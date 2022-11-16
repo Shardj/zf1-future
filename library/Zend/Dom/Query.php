@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -313,7 +314,7 @@ class Zend_Dom_Query
         }
 
         $nodeList = $this->_getNodeList($domDoc, $xpathQuery);
-        if(!$nodeList){
+        if (!$nodeList) {
             require_once 'Zend/Dom/Exception.php';
             throw new Zend_Dom_Exception(sprintf('Error parsing document (type == %s)', $type));
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mime
@@ -233,8 +233,7 @@ abstract class Zend_Mail_Transport_Abstract
     protected function _buildBody()
     {
         if (($text = $this->_mail->getBodyText())
-            && ($html = $this->_mail->getBodyHtml()))
-        {
+            && ($html = $this->_mail->getBodyHtml())) {
             // Generate unique boundary for multipart/alternative
             $mime = new Zend_Mime(null);
             $boundaryLine = $mime->boundaryLine($this->EOL);

@@ -53,7 +53,7 @@ class Zend_Service_Amazon_SimilarProduct
         $xpath->registerNamespace('az', 'http://webservices.amazon.com/AWSECommerceService/2011-08-01');
         foreach (['ASIN', 'Title'] as $el) {
             $text = $xpath->query("./az:$el/text()", $dom)->item(0);
-            if($text instanceof DOMText) {
+            if ($text instanceof DOMText) {
                 $this->$el = (string)$text->data;
             }
         }

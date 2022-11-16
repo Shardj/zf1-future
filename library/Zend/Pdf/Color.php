@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -50,4 +51,3 @@ abstract class Zend_Pdf_Color
      */
     abstract public function getComponents();
 }
-

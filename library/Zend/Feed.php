@@ -36,7 +36,6 @@ require_once 'Zend/Xml/Security.php';
  */
 class Zend_Feed
 {
-
     /**
      * HTTP client object to use for retrieving feeds
      *
@@ -197,7 +196,7 @@ class Zend_Feed
             throw new Zend_Feed_Exception('Document/string being imported'
             . ' is an Empty string or comes from an empty HTTP response');
         }
-        $doc = new DOMDocument;
+        $doc = new DOMDocument();
         $doc = Zend_Xml_Security::scan($string, $doc);
 
         if (!$doc) {

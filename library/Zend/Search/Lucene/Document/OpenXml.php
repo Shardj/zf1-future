@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Document */
 require_once 'Zend/Search/Lucene/Document.php';
@@ -114,12 +114,15 @@ abstract class Zend_Search_Lucene_Document_OpenXml extends Zend_Search_Lucene_Do
      * @param string $path
      * @return string
      */
-    protected function absoluteZipPath($path) {
+    protected function absoluteZipPath($path)
+    {
         $path = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);
         $parts = array_filter(explode(DIRECTORY_SEPARATOR, $path), 'strlen');
         $absolutes = [];
         foreach ($parts as $part) {
-            if ('.' == $part) continue;
+            if ('.' == $part) {
+                continue;
+            }
             if ('..' == $part) {
                 array_pop($absolutes);
             } else {

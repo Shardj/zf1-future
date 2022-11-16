@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /** Zend_Controller_Exception */
 require_once 'Zend/Controller/Exception.php';
 
@@ -33,5 +33,5 @@ require_once 'Zend/Controller/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Controller_Request_Exception extends Zend_Controller_Exception
-{}
-
+{
+}

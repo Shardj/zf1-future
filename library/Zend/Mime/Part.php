@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,7 +35,6 @@ require_once 'Zend/Mime.php';
  */
 class Zend_Mime_Part
 {
-
     /**
      * Type
      *

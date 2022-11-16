@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** @see Zend_Cache_Backend_Interface */
 require_once 'Zend/Cache/Backend/Interface.php';
@@ -60,9 +60,11 @@ class Zend_Cache_Backend_ZendServer_Disk extends Zend_Cache_Backend_ZendServer i
      */
     protected function _store($data, $id, $timeToLive)
     {
-        if (zend_disk_cache_store($this->_options['namespace'] . '::' . $id,
-                                  $data,
-                                  $timeToLive) === false) {
+        if (zend_disk_cache_store(
+            $this->_options['namespace'] . '::' . $id,
+            $data,
+            $timeToLive
+        ) === false) {
             $this->_log('Store operation failed.');
             return false;
         }

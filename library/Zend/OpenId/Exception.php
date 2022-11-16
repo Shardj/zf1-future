@@ -35,7 +35,6 @@ require_once "Zend/Exception.php";
  */
 class Zend_OpenId_Exception extends Zend_Exception
 {
-
     /**
      * The specified digest algotithm is not supported by this PHP installation
      */

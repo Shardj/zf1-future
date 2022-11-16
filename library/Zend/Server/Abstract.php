@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -226,7 +227,7 @@ abstract class Zend_Server_Abstract implements Zend_Server_Interface
                 $reflection = new ReflectionClass($class);
                 $object     = $reflection->newInstanceArgs($invokeArgs);
             } else {
-                $object = new $class;
+                $object = new $class();
             }
         }
         return call_user_func_array([$object, $method], $params);

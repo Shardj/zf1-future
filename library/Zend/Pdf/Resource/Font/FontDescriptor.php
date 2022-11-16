@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 require_once 'Zend/Pdf/Element/Array.php';
@@ -77,7 +77,7 @@ class Zend_Pdf_Resource_Font_FontDescriptor
      * @return Zend_Pdf_Element_Dictionary
      * @throws Zend_Pdf_Exception
      */
-    static public function factory(Zend_Pdf_Resource_Font $font, Zend_Pdf_FileParser_Font_OpenType $fontParser, $embeddingOptions)
+    public static function factory(Zend_Pdf_Resource_Font $font, Zend_Pdf_FileParser_Font_OpenType $fontParser, $embeddingOptions)
     {
         /* The font descriptor object contains the rest of the font metrics and
          * the information about the embedded font program (if applicible).
@@ -148,7 +148,6 @@ class Zend_Pdf_Resource_Font_FontDescriptor
          * First, the developer might specifically request not to embed the font.
          */
         if (!($embeddingOptions & Zend_Pdf_Font::EMBED_DONT_EMBED)) {
-
             /* Second, the font author may have set copyright bits that prohibit
              * the font program from being embedded. Yes this is controversial,
              * but it's the rules:
@@ -169,7 +168,6 @@ class Zend_Pdf_Resource_Font_FontDescriptor
                     require_once 'Zend/Pdf/Exception.php';
                     throw new Zend_Pdf_Exception($message, Zend_Pdf_Exception::FONT_CANT_BE_EMBEDDED);
                 }
-
             } else {
                 /* Otherwise, the default behavior is to embed all custom fonts.
                  */
@@ -191,7 +189,7 @@ class Zend_Pdf_Resource_Font_FontDescriptor
                 }
                 if ($fontParser instanceof Zend_Pdf_FileParser_Font_OpenType_Type1 /* not implemented now */) {
                     $fontDescriptor->FontFile  = $fontFileObject;
-                } else if ($fontParser instanceof Zend_Pdf_FileParser_Font_OpenType_TrueType) {
+                } elseif ($fontParser instanceof Zend_Pdf_FileParser_Font_OpenType_TrueType) {
                     $fontDescriptor->FontFile2 = $fontFileObject;
                 } else {
                     $fontDescriptor->FontFile3 = $fontFileObject;

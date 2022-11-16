@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -364,8 +365,8 @@ class Zend_Measure_Flow_Volume extends Zend_Measure_Abstract
         'MILLION_GALLON_PER_SECOND'   => ['4546.09',                                    'million gal/s'],
         'MILLION_GALLON_US_PER_DAY'   => [['' => '3785.4118', '/' => '86400'],       'million gal/day'],
         'MILLION_GALLON_US_PER_HOUR'  => [['' => '3785.4118', '/' => '3600'],        'million gal/h'],
-        'MILLION_GALLON_US_PER_MINUTE'=> [['' => '3785.4118', '/' => '60'],          'million gal/m'],
-        'MILLION_GALLON_US_PER_SECOND'=> ['3785.4118',                                  'million gal/s'],
+        'MILLION_GALLON_US_PER_MINUTE' => [['' => '3785.4118', '/' => '60'],          'million gal/m'],
+        'MILLION_GALLON_US_PER_SECOND' => ['3785.4118',                                  'million gal/s'],
         'MINERS_INCH_AZ'              => [['' => '0.0424752705', '/' => '60'],       "miner's inch"],
         'MINERS_INCH_CA'              => [['' => '0.0424752705', '/' => '60'],       "miner's inch"],
         'MINERS_INCH_OR'              => [['' => '0.0424752705', '/' => '60'],       "miner's inch"],

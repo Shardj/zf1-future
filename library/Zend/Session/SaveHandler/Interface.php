@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@
  */
 interface Zend_Session_SaveHandler_Interface
 {
-
     /**
      * Open Session - retrieve resources
      *
@@ -77,5 +77,4 @@ interface Zend_Session_SaveHandler_Interface
      * @param int $maxlifetime
      */
     public function gc($maxlifetime);
-
 }

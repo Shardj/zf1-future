@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,7 +32,6 @@
  */
 interface Zend_Session_Validator_Interface
 {
-
     /**
      * Setup() - this method will store the environment variables
      * necessary to be able to validate against in future requests.
@@ -48,5 +48,4 @@ interface Zend_Session_Validator_Interface
      * @return boolean
      */
     public function validate();
-
 }

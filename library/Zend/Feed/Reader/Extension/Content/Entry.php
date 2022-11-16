@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -38,15 +39,14 @@ require_once 'Zend/Feed/Reader/Extension/EntryAbstract.php';
 class Zend_Feed_Reader_Extension_Content_Entry
     extends Zend_Feed_Reader_Extension_EntryAbstract
 {
-
     public function getContent()
     {
         if ($this->getType() !== Zend_Feed_Reader::TYPE_RSS_10
             && $this->getType() !== Zend_Feed_Reader::TYPE_RSS_090
         ) {
-            $content = $this->_xpath->evaluate('string('.$this->getXpathPrefix().'/content:encoded)');
+            $content = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/content:encoded)');
         } else {
-            $content = $this->_xpath->evaluate('string('.$this->getXpathPrefix().'/content:encoded)');
+            $content = $this->_xpath->evaluate('string(' . $this->getXpathPrefix() . '/content:encoded)');
         }
         return $content;
     }

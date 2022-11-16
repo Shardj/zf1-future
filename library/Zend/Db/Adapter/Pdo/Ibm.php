@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -125,7 +126,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
                         $this->_numericDataTypes['MONEY']        = Zend_Db::FLOAT_TYPE;
 
                         break;
-                    }
+                }
             }
         } catch (PDOException $e) {
             /** @see Zend_Db_Adapter_Exception */
@@ -263,7 +264,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
         $newbind = [];
         if (is_array($bind)) {
             foreach ($bind as $name => $value) {
-                if($value !== null) {
+                if ($value !== null) {
                     $newbind[$name] = $value;
                 }
             }
@@ -283,8 +284,8 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      */
     public function limit($sql, $count, $offset = 0)
     {
-       $this->_connect();
-       return $this->_serverType->limit($sql, $count, $offset);
+        $this->_connect();
+        return $this->_serverType->limit($sql, $count, $offset);
     }
 
     /**
@@ -300,7 +301,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
     {
         $this->_connect();
 
-         if ($tableName !== null) {
+        if ($tableName !== null) {
             $sequenceName = $tableName;
             if ($primaryKey) {
                 $sequenceName .= "_$primaryKey";

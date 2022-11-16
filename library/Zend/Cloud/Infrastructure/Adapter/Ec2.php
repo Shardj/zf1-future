@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @category   Zend
  * @package    Zend_Cloud_Infrastructure
@@ -104,7 +105,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
      *
      * @var array
      */
-    protected $mapMetrics= [
+    protected $mapMetrics = [
         Zend_Cloud_Infrastructure_Instance::MONITOR_CPU         => 'CPUUtilization',
         Zend_Cloud_Infrastructure_Instance::MONITOR_DISK_READ   => 'DiskReadBytes',
         Zend_Cloud_Infrastructure_Instance::MONITOR_DISK_WRITE  => 'DiskWriteBytes',
@@ -122,7 +123,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
     {
         if (is_object($options)) {
             if (method_exists($options, 'toArray')) {
-                $options= $options->toArray();
+                $options = $options->toArray();
             } elseif ($options instanceof Traversable) {
                 $options = iterator_to_array($options);
             }
@@ -145,7 +146,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
         $this->region       = '';
 
         if (isset($options[self::AWS_REGION])) {
-            $this->region= $options[self::AWS_REGION];
+            $this->region = $options[self::AWS_REGION];
         }
 
         try {
@@ -223,7 +224,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
 
         $result = [];
         foreach ($this->adapterResult['instances'] as $instance) {
-            $result[]= $this->convertAttributes($instance);
+            $result[] = $this->convertAttributes($instance);
         }
         return new Zend_Cloud_Infrastructure_InstanceList($this, $result);
     }
@@ -268,7 +269,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
      */
     public function rebootInstance($id)
     {
-        $this->adapterResult= $this->ec2->reboot($id);
+        $this->adapterResult = $this->ec2->reboot($id);
         return $this->adapterResult;
     }
 
@@ -286,7 +287,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
         if (empty($this->adapterResult['instances'])) {
             return false;
         }
-        $this->error= false;
+        $this->error = false;
         return new Zend_Cloud_Infrastructure_Instance($this, $this->convertAttributes($this->adapterResult['instances'][0]));
     }
 
@@ -343,7 +344,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
 
         foreach ($this->adapterResult as $result) {
             switch (strtolower($result['platform'])) {
-                case 'windows' :
+                case 'windows':
                     $platform = Zend_Cloud_Infrastructure_Image::IMAGE_WINDOWS;
                     break;
                 default:
@@ -351,7 +352,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
                     break;
             }
 
-            $images[]= [
+            $images[] = [
                 Zend_Cloud_Infrastructure_Image::IMAGE_ID           => $result['imageId'],
                 Zend_Cloud_Infrastructure_Image::IMAGE_NAME         => '',
                 Zend_Cloud_Infrastructure_Image::IMAGE_DESCRIPTION  => $result['imageLocation'],
@@ -360,7 +361,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
                 Zend_Cloud_Infrastructure_Image::IMAGE_PLATFORM     => $platform,
             ];
         }
-        return new Zend_Cloud_Infrastructure_ImageList($images,$this->ec2Image);
+        return new Zend_Cloud_Infrastructure_ImageList($images, $this->ec2Image);
     }
 
     /**
@@ -371,7 +372,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
     public function zonesInstance()
     {
         if (!isset($this->ec2Zone)) {
-            $this->ec2Zone = new Zend_Service_Amazon_Ec2_AvailabilityZones($this->accessKey,$this->accessSecret,$this->region);
+            $this->ec2Zone = new Zend_Service_Amazon_Ec2_AvailabilityZones($this->accessKey, $this->accessSecret, $this->region);
         }
         $this->adapterResult = $this->ec2Zone->describe();
 
@@ -400,7 +401,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
             return false;
         }
 
-        if (!in_array($metric,$this->validMetrics)) {
+        if (!in_array($metric, $this->validMetrics)) {
             require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception(sprintf(
                 'The metric "%s" is not valid',

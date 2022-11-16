@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -109,7 +110,7 @@ class Zend_View_Helper_Translate extends Zend_View_Helper_Abstract
     {
         if ($translate instanceof Zend_Translate_Adapter) {
             $this->_translator = $translate;
-        } else if ($translate instanceof Zend_Translate) {
+        } elseif ($translate instanceof Zend_Translate) {
             $this->_translator = $translate->getAdapter();
         } else {
             require_once 'Zend/View/Exception.php';

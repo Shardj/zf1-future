@@ -67,7 +67,6 @@ require_once 'Zend/Gdata/App/Extension/Control.php';
  */
 class Zend_Gdata_App_Entry extends Zend_Gdata_App_FeedEntryParent
 {
-
     /**
      * Root XML element for Atom entries.
      *
@@ -152,39 +151,39 @@ class Zend_Gdata_App_Entry extends Zend_Gdata_App_FeedEntryParent
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-        case $this->lookupNamespace('atom') . ':' . 'content':
-            $content = new Zend_Gdata_App_Extension_Content();
-            $content->transferFromDOM($child);
-            $this->_content = $content;
-            break;
-        case $this->lookupNamespace('atom') . ':' . 'published':
-            $published = new Zend_Gdata_App_Extension_Published();
-            $published->transferFromDOM($child);
-            $this->_published = $published;
-            break;
-        case $this->lookupNamespace('atom') . ':' . 'source':
-            $source = new Zend_Gdata_App_Extension_Source();
-            $source->transferFromDOM($child);
-            $this->_source = $source;
-            break;
-        case $this->lookupNamespace('atom') . ':' . 'summary':
-            $summary = new Zend_Gdata_App_Extension_Summary();
-            $summary->transferFromDOM($child);
-            $this->_summary = $summary;
-            break;
-        case $this->lookupNamespace('app') . ':' . 'control':
-            $control = new Zend_Gdata_App_Extension_Control();
-            $control->transferFromDOM($child);
-            $this->_control = $control;
-            break;
-        case $this->lookupNamespace('app') . ':' . 'edited':
-            $edited = new Zend_Gdata_App_Extension_Edited();
-            $edited->transferFromDOM($child);
-            $this->_edited = $edited;
-            break;
-        default:
-            parent::takeChildFromDOM($child);
-            break;
+            case $this->lookupNamespace('atom') . ':' . 'content':
+                $content = new Zend_Gdata_App_Extension_Content();
+                $content->transferFromDOM($child);
+                $this->_content = $content;
+                break;
+            case $this->lookupNamespace('atom') . ':' . 'published':
+                $published = new Zend_Gdata_App_Extension_Published();
+                $published->transferFromDOM($child);
+                $this->_published = $published;
+                break;
+            case $this->lookupNamespace('atom') . ':' . 'source':
+                $source = new Zend_Gdata_App_Extension_Source();
+                $source->transferFromDOM($child);
+                $this->_source = $source;
+                break;
+            case $this->lookupNamespace('atom') . ':' . 'summary':
+                $summary = new Zend_Gdata_App_Extension_Summary();
+                $summary->transferFromDOM($child);
+                $this->_summary = $summary;
+                break;
+            case $this->lookupNamespace('app') . ':' . 'control':
+                $control = new Zend_Gdata_App_Extension_Control();
+                $control->transferFromDOM($child);
+                $this->_control = $control;
+                break;
+            case $this->lookupNamespace('app') . ':' . 'edited':
+                $edited = new Zend_Gdata_App_Extension_Edited();
+                $edited->transferFromDOM($child);
+                $this->_edited = $edited;
+                break;
+            default:
+                parent::takeChildFromDOM($child);
+                break;
         }
     }
 
@@ -203,10 +202,12 @@ class Zend_Gdata_App_Entry extends Zend_Gdata_App_FeedEntryParent
      */
     public function save($uri = null, $className = null, $extraHeaders = [])
     {
-        return $this->getService()->updateEntry($this,
-                                                $uri,
-                                                $className,
-                                                $extraHeaders);
+        return $this->getService()->updateEntry(
+            $this,
+            $uri,
+            $className,
+            $extraHeaders
+        );
     }
 
     /**
@@ -265,8 +266,9 @@ class Zend_Gdata_App_Entry extends Zend_Gdata_App_FeedEntryParent
         try {
             $result = $this->service->importUrl($uri, $className, $extraHeaders);
         } catch (Zend_Gdata_App_HttpException $e) {
-            if ($e->getResponse()->getStatus() != '304')
+            if ($e->getResponse()->getStatus() != '304') {
                 throw $e;
+            }
         }
 
         return $result;
@@ -385,5 +387,4 @@ class Zend_Gdata_App_Entry extends Zend_Gdata_App_FeedEntryParent
         $this->_control = $value;
         return $this;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -28,7 +29,6 @@
  */
 class Zend_Tool_Framework_Client_Request
 {
-
     /**
      * @var string
      */
@@ -295,5 +295,4 @@ class Zend_Tool_Framework_Client_Request
     {
         return $this->_isDispatchable;
     }
-
 }

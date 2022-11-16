@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Auth_Adapter_Interface
@@ -409,7 +409,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
                 break;
             case 'digest':
                 $result = $this->_digestAuth($authHeader);
-            break;
+                break;
             default:
                 /**
                  * @see Zend_Auth_Adapter_Exception
@@ -537,7 +537,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         $password = $this->_basicResolver->resolve($creds[0], $this->_realm);
 
         if ($password && $this->_secureStringCompare($password, $creds[1])) {
-            $identity = ['username'=>$creds[0], 'realm'=>$this->_realm];
+            $identity = ['username' => $creds[0], 'realm' => $this->_realm];
             return new Zend_Auth_Result(Zend_Auth_Result::SUCCESS, $identity);
         }
 
@@ -639,7 +639,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         // If our digest matches the client's let them in, otherwise return
         // a 401 code and exit to prevent access to the protected resource.
         if ($this->_secureStringCompare($digest, $data['response'])) {
-            $identity = ['username'=>$data['username'], 'realm'=>$data['realm']];
+            $identity = ['username' => $data['username'], 'realm' => $data['realm']];
             return new Zend_Auth_Result(Zend_Auth_Result::SUCCESS, $identity);
         } else {
             return $this->_challengeClient();
@@ -796,7 +796,6 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         if ($this->_useOpaque) {
             $ret = preg_match('/opaque="([^"]+)"/', $header, $temp);
             if (!$ret || empty($temp[1])) {
-
                 // Big surprise: IE isn't RFC 2617-compliant.
                 if (false !== strpos($this->_request->getHeader('User-Agent'), 'MSIE')) {
                     $temp[1] = '';

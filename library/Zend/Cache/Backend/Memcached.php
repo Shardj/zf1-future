@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Cache_Backend_Interface
@@ -124,14 +124,14 @@ class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Ca
         }
         parent::__construct($options);
         if (isset($this->_options['servers'])) {
-            $value= $this->_options['servers'];
+            $value = $this->_options['servers'];
             if (isset($value['host'])) {
                 // in this case, $value seems to be a simple associative array (one server only)
                 $value = [0 => $value]; // let's transform it into a classical array of associative arrays
             }
             $this->setOption('servers', $value);
         }
-        $this->_memcache = new Memcache;
+        $this->_memcache = new Memcache();
         foreach ($this->_options['servers'] as $server) {
             if (!array_key_exists('port', $server)) {
                 $server['port'] = self::DEFAULT_PORT;
@@ -156,14 +156,25 @@ class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Ca
             }
             if ($this->_options['compatibility']) {
                 // No status for compatibility mode (#ZF-5887)
-                $this->_memcache->addServer($server['host'], $server['port'], $server['persistent'],
-                                        $server['weight'], $server['timeout'],
-                                        $server['retry_interval']);
+                $this->_memcache->addServer(
+                    $server['host'],
+                    $server['port'],
+                    $server['persistent'],
+                    $server['weight'],
+                    $server['timeout'],
+                    $server['retry_interval']
+                );
             } else {
-                $this->_memcache->addServer($server['host'], $server['port'], $server['persistent'],
-                                        $server['weight'], $server['timeout'],
-                                        $server['retry_interval'],
-                                        $server['status'], $server['failure_callback']);
+                $this->_memcache->addServer(
+                    $server['host'],
+                    $server['port'],
+                    $server['persistent'],
+                    $server['weight'],
+                    $server['timeout'],
+                    $server['retry_interval'],
+                    $server['status'],
+                    $server['failure_callback']
+                );
             }
         }
     }
@@ -270,9 +281,9 @@ class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Ca
             case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
                 $this->_log(self::TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND);
                 break;
-               default:
+            default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                   break;
+                break;
         }
     }
 
@@ -468,7 +479,7 @@ class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Ca
             }
             $lifetime = $tmp[2];
             $newLifetime = $lifetime - (time() - $mtime) + $extraLifetime;
-            if ($newLifetime <=0) {
+            if ($newLifetime <= 0) {
                 return false;
             }
             // #ZF-5702 : we try replace() first becase set() seems to be slower
@@ -505,5 +516,4 @@ class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Ca
             'get_list' => false
         ];
     }
-
 }

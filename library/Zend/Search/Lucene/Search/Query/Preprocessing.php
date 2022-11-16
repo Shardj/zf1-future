@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Query */
 require_once 'Zend/Search/Lucene/Search/Query.php';
@@ -124,4 +124,3 @@ abstract class Zend_Search_Lucene_Search_Query_Preprocessing extends Zend_Search
         throw new Zend_Search_Lucene_Exception('Rewrite operation has to be done before retrieving query terms.');
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -131,7 +132,7 @@ class Zend_Barcode_Object_Code25 extends Zend_Barcode_Object_ObjectAbstract
         $factor   = 3;
         $checksum = 0;
 
-        for ($i = strlen($text); $i > 0; $i --) {
+        for ($i = strlen($text); $i > 0; $i--) {
             $checksum += (int) ($text[$i - 1]) * $factor;
             $factor    = 4 - $factor;
         }

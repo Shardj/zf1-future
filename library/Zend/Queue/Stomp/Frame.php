@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,8 +35,7 @@ require_once 'Zend/Queue/Stomp/FrameInterface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Queue_Stomp_Frame
-    implements Zend_Queue_Stomp_FrameInterface
+class Zend_Queue_Stomp_Frame implements Zend_Queue_Stomp_FrameInterface
 {
     const END_OF_FRAME   = "\x00\n";
     const CONTENT_LENGTH = 'content-length';
@@ -149,7 +149,8 @@ class Zend_Queue_Stomp_Frame
      * @return Zend_Queue_Stomp_Frame
      * @throws Zend_Queue_Exception
      */
-    public function setHeader($header, $value) {
+    public function setHeader($header, $value)
+    {
         if (!is_string($header)) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception('$header is not a string: ' . print_r($header, true));
@@ -280,7 +281,7 @@ class Zend_Queue_Stomp_Frame
         $frame = $command . self::EOL;
 
         // Headers
-        foreach ($headers as $key=>$value) {
+        foreach ($headers as $key => $value) {
             $frame .= $key . ': ' . $value . self::EOL;
         }
 
@@ -352,7 +353,7 @@ class Zend_Queue_Stomp_Frame
         }
 
         // crop the body if content-length is present
-        if ($this->getHeader(self::CONTENT_LENGTH) !== false ) {
+        if ($this->getHeader(self::CONTENT_LENGTH) !== false) {
             $length = (int) $this->getHeader(self::CONTENT_LENGTH);
             $body   = substr($body, 0, $length);
         }

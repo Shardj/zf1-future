@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_FileParser_Font_OpenType */
 require_once 'Zend/Pdf/FileParser/Font/OpenType.php';
@@ -61,8 +61,10 @@ class Zend_Pdf_FileParser_Font_OpenType_TrueType extends Zend_Pdf_FileParser_Fon
 
             default:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Not a TrueType font file',
-                                             Zend_Pdf_Exception::WRONG_FONT_TYPE);
+                throw new Zend_Pdf_Exception(
+                    'Not a TrueType font file',
+                    Zend_Pdf_Exception::WRONG_FONT_TYPE
+                );
         }
 
         $this->fontType = Zend_Pdf_Font::TYPE_TRUETYPE;

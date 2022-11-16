@@ -37,7 +37,6 @@ require_once 'Zend/Gdata/Extension.php';
  */
 class Zend_Gdata_Books_Extension_Review extends Zend_Gdata_Extension
 {
-
     protected $_rootNamespace = 'gbs';
     protected $_rootElement = 'review';
     protected $_lang = null;
@@ -92,14 +91,14 @@ class Zend_Gdata_Books_Extension_Review extends Zend_Gdata_Extension
     protected function takeAttributeFromDOM($attribute)
     {
         switch ($attribute->localName) {
-        case 'lang':
-            $this->_lang = $attribute->nodeValue;
-            break;
-        case 'type':
-            $this->_type = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'lang':
+                $this->_lang = $attribute->nodeValue;
+                break;
+            case 'type':
+                $this->_type = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -146,7 +145,4 @@ class Zend_Gdata_Books_Extension_Review extends Zend_Gdata_Extension
         $this->_type = $type;
         return $this;
     }
-
-
 }
-

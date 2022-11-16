@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LICENSE
  *
@@ -31,8 +32,7 @@ require_once 'Zend/Service/Rackspace/Exception.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_StorageService_Adapter_Rackspace
-    implements Zend_Cloud_StorageService_Adapter
+class Zend_Cloud_StorageService_Adapter_Rackspace implements Zend_Cloud_StorageService_Adapter
 {
     const USER                = 'user';
     const API_KEY             = 'key';
@@ -70,7 +70,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
         try {
             $this->_rackspace = new Zend_Service_Rackspace_Files($options[self::USER], $options[self::API_KEY]);
         } catch (Zend_Service_Rackspace_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on create: '.$e->getMessage(), $e->getCode(), $e);
+            throw new Zend_Cloud_StorageService_Exception('Error on create: ' . $e->getMessage(), $e->getCode(), $e);
         }
 
         if (isset($options[self::HTTP_ADAPTER])) {
@@ -90,9 +90,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
       */
     public function fetchItem($path, $options = null)
     {
-        $item = $this->_rackspace->getObject($this->_container,$path, $options);
-        if (!$this->_rackspace->isSuccessful() && ($this->_rackspace->getErrorCode()!='404')) {
-            throw new Zend_Cloud_StorageService_Exception('Error on fetch: '.$this->_rackspace->getErrorMsg());
+        $item = $this->_rackspace->getObject($this->_container, $path, $options);
+        if (!$this->_rackspace->isSuccessful() && ($this->_rackspace->getErrorCode() != '404')) {
+            throw new Zend_Cloud_StorageService_Exception('Error on fetch: ' . $this->_rackspace->getErrorMsg());
         }
         if (!empty($item)) {
             return $item->getContent();
@@ -111,9 +111,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      */
     public function storeItem($destinationPath, $data, $options = null)
     {
-        $this->_rackspace->storeObject($this->_container,$destinationPath,$data,$options);
+        $this->_rackspace->storeObject($this->_container, $destinationPath, $data, $options);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on store: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on store: ' . $this->_rackspace->getErrorMsg());
         }
     }
 
@@ -126,9 +126,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      */
     public function deleteItem($path, $options = null)
     {
-        $this->_rackspace->deleteObject($this->_container,$path);
+        $this->_rackspace->deleteObject($this->_container, $path);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on delete: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on delete: ' . $this->_rackspace->getErrorMsg());
         }
     }
 
@@ -142,9 +142,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      */
     public function copyItem($sourcePath, $destinationPath, $options = null)
     {
-        $this->_rackspace->copyObject($this->_container,$sourcePath,$this->_container,$destinationPath,$options);
+        $this->_rackspace->copyObject($this->_container, $sourcePath, $this->_container, $destinationPath, $options);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on copy: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on copy: ' . $this->_rackspace->getErrorMsg());
         }
     }
 
@@ -163,13 +163,13 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
         try {
             $this->copyItem($sourcePath, $destinationPath, $options);
         } catch (Zend_Service_Rackspace_Exception $e) {
-            throw new Zend_Cloud_StorageService_Exception('Error on move: '.$e->getMessage());
+            throw new Zend_Cloud_StorageService_Exception('Error on move: ' . $e->getMessage());
         }
         try {
             $this->deleteItem($sourcePath);
         } catch (Zend_Service_Rackspace_Exception $e) {
             $this->deleteItem($destinationPath);
-            throw new Zend_Cloud_StorageService_Exception('Error on move: '.$e->getMessage());
+            throw new Zend_Cloud_StorageService_Exception('Error on move: ' . $e->getMessage());
         }
     }
 
@@ -197,9 +197,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      */
     public function fetchMetadata($path, $options = null)
     {
-        $result = $this->_rackspace->getMetadataObject($this->_container,$path);
+        $result = $this->_rackspace->getMetadataObject($this->_container, $path);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on fetch metadata: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on fetch metadata: ' . $this->_rackspace->getErrorMsg());
         }
         $metadata = [];
         if (isset($result['metadata'])) {
@@ -226,9 +226,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
     {
         $this->_rackspace->setMetadataObject($this->_container, $destinationPath, $metadata);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on store metadata: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on store metadata: ' . $this->_rackspace->getErrorMsg());
         }
-     }
+    }
 
     /**
      * Delete a key/value array of metadata at the given path.
@@ -247,19 +247,19 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
             try {
                 $this->storeMetadata($path, $newMetadata);
             } catch (Zend_Service_Rackspace_Exception $e) {
-                throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: '.$e->getMessage());
+                throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: ' . $e->getMessage());
             }
         } else {
             try {
                 $oldMetadata = $this->fetchMetadata($path);
             } catch (Zend_Service_Rackspace_Exception $e) {
-                throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: '.$e->getMessage());
+                throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: ' . $e->getMessage());
             }
             $newMetadata = array_diff_assoc($oldMetadata, $metadata);
             try {
                 $this->storeMetadata($path, $newMetadata);
             } catch (Zend_Service_Rackspace_Exception $e) {
-                throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: '.$e->getMessage());
+                throw new Zend_Cloud_StorageService_Exception('Error on delete metadata: ' . $e->getMessage());
             }
         }
     }
@@ -280,9 +280,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
                 'prefix'    => $path
             ];
         }
-        $files = $this->_rackspace->getObjects($this->_container,$options);
+        $files = $this->_rackspace->getObjects($this->_container, $options);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on get all folders: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on get all folders: ' . $this->_rackspace->getErrorMsg());
         }
         $resultArray = [];
         foreach ($files as $file) {
@@ -307,9 +307,9 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
             ];
         }
 
-        $files = $this->_rackspace->getObjects($this->_container,$options);
+        $files = $this->_rackspace->getObjects($this->_container, $options);
         if (!$this->_rackspace->isSuccessful()) {
-            throw new Zend_Cloud_StorageService_Exception('Error on list items: '.$this->_rackspace->getErrorMsg());
+            throw new Zend_Cloud_StorageService_Exception('Error on list items: ' . $this->_rackspace->getErrorMsg());
         }
         $resultArray = [];
         if (!empty($files)) {

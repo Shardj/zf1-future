@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -183,8 +184,7 @@ class Zend_Server_Reflection_Node
             if (null === $value) {
                 $endPoints[] = $this;
             } elseif ((null !== $value)
-                && $child->hasChildren())
-            {
+                && $child->hasChildren()) {
                 $childEndPoints = $child->getEndPoints();
                 if (!empty($childEndPoints)) {
                     $endPoints = array_merge($endPoints, $childEndPoints);

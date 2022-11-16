@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -79,17 +80,33 @@ class Zend_Pdf_Color_Cmyk extends Zend_Pdf_Color
      */
     public function __construct($c, $m, $y, $k)
     {
-        if ($c < 0) { $c = 0; }
-        if ($c > 1) { $c = 1; }
+        if ($c < 0) {
+            $c = 0;
+        }
+        if ($c > 1) {
+            $c = 1;
+        }
 
-        if ($m < 0) { $m = 0; }
-        if ($m > 1) { $m = 1; }
+        if ($m < 0) {
+            $m = 0;
+        }
+        if ($m > 1) {
+            $m = 1;
+        }
 
-        if ($y < 0) { $y = 0; }
-        if ($y > 1) { $y = 1; }
+        if ($y < 0) {
+            $y = 0;
+        }
+        if ($y > 1) {
+            $y = 1;
+        }
 
-        if ($k < 0) { $k = 0; }
-        if ($k > 1) { $k = 1; }
+        if ($k < 0) {
+            $k = 0;
+        }
+        if ($k > 1) {
+            $k = 1;
+        }
 
         $this->_c = new Zend_Pdf_Element_Numeric($c);
         $this->_m = new Zend_Pdf_Element_Numeric($m);
@@ -110,7 +127,7 @@ class Zend_Pdf_Color_Cmyk extends Zend_Pdf_Color
         return $this->_c->toString() . ' '
              . $this->_m->toString() . ' '
              . $this->_y->toString() . ' '
-             . $this->_k->toString() .     ($stroking? " K\n" : " k\n");
+             . $this->_k->toString() .     ($stroking ? " K\n" : " k\n");
     }
 
     /**
@@ -123,4 +140,3 @@ class Zend_Pdf_Color_Cmyk extends Zend_Pdf_Color
         return [$this->_c->value, $this->_m->value, $this->_y->value, $this->_k->value];
     }
 }
-

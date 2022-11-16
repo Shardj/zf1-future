@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -92,13 +93,13 @@ abstract class Zend_Feed_Reader_Extension_EntryAbstract
         if ($this->getType() == Zend_Feed_Reader::TYPE_RSS_10
             || $this->getType() == Zend_Feed_Reader::TYPE_RSS_090
         ) {
-            $this->setXpathPrefix('//rss:item[' . ($this->_entryKey+1) . ']');
+            $this->setXpathPrefix('//rss:item[' . ($this->_entryKey + 1) . ']');
         } elseif ($this->getType() == Zend_Feed_Reader::TYPE_ATOM_10
                   || $this->getType() == Zend_Feed_Reader::TYPE_ATOM_03
         ) {
-            $this->setXpathPrefix('//atom:entry[' . ($this->_entryKey+1) . ']');
+            $this->setXpathPrefix('//atom:entry[' . ($this->_entryKey + 1) . ']');
         } else {
-            $this->setXpathPrefix('//item[' . ($this->_entryKey+1) . ']');
+            $this->setXpathPrefix('//item[' . ($this->_entryKey + 1) . ']');
         }
     }
 
@@ -195,5 +196,5 @@ abstract class Zend_Feed_Reader_Extension_EntryAbstract
      *
      * @return void
      */
-    protected abstract function _registerNamespaces();
+    abstract protected function _registerNamespaces();
 }

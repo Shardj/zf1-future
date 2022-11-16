@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -51,12 +52,10 @@ require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Project_Context_System_ProjectProfileFile
-    extends Zend_Tool_Project_Context_Filesystem_File
-    implements Zend_Tool_Project_Context_System_Interface,
-               Zend_Tool_Project_Context_System_NotOverwritable
+class Zend_Tool_Project_Context_System_ProjectProfileFile extends Zend_Tool_Project_Context_Filesystem_File implements
+    Zend_Tool_Project_Context_System_Interface,
+    Zend_Tool_Project_Context_System_NotOverwritable
 {
-
     /**
      * @var string
      */
@@ -114,5 +113,4 @@ class Zend_Tool_Project_Context_System_ProjectProfileFile
 
         return $parser->serialize($profile);
     }
-
 }

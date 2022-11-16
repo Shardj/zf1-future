@@ -505,5 +505,4 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
         $this->_gphotoTimestamp = $value;
         return $this;
     }
-
 }

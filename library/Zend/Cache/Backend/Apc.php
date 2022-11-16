@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Cache_Backend_Interface
@@ -185,7 +185,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
     {
         $mem = apcu_sma_info(true);
         $memSize    = $mem['num_seg'] * $mem['seg_size'];
-        $memAvailable= $mem['avail_mem'];
+        $memAvailable = $mem['avail_mem'];
         $memUsed = $memSize - $memAvailable;
 
         if ($memSize === 0) {
@@ -319,7 +319,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
             }
             $lifetime = $tmp[2];
             $newLifetime = $lifetime - (time() - $mtime) + $extraLifetime;
-            if ($newLifetime <=0) {
+            if ($newLifetime <= 0) {
                 return false;
             }
             apcu_store($id, [$data, time(), $newLifetime], $newLifetime);
@@ -353,5 +353,4 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
             'get_list' => true
         ];
     }
-
 }

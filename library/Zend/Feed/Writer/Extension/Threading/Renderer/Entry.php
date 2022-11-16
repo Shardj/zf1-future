@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Feed/Writer/Extension/RendererAbstract.php';
 class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
     extends Zend_Feed_Writer_Extension_RendererAbstract
 {
-
     /**
      * Set to TRUE if a rendering method actually renders something. This
      * is used to prevent premature appending of a XML namespace declaration
@@ -68,8 +68,10 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
      */
     protected function _appendNamespaces()
     {
-        $this->getRootElement()->setAttribute('xmlns:thr',
-            'http://purl.org/syndication/thread/1.0');
+        $this->getRootElement()->setAttribute(
+            'xmlns:thr',
+            'http://purl.org/syndication/thread/1.0'
+        );
     }
 
     /**
@@ -113,7 +115,7 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
         foreach ($links as $link) {
             $flink = $this->_dom->createElement('link');
             $flink->setAttribute('rel', 'replies');
-            $flink->setAttribute('type', 'application/'. $link['type'] .'+xml');
+            $flink->setAttribute('type', 'application/' . $link['type'] . '+xml');
             $flink->setAttribute('href', $link['uri']);
             $count = $this->getDataContainer()->getCommentCount();
             if ($count !== null) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * Zend_Mail_Part
@@ -74,7 +74,7 @@ class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Inte
 
         if (!empty($params['flags'])) {
             // set key and value to the same value for easy lookup
-            $this->_flags = array_merge($this->_flags, array_combine($params['flags'],$params['flags']));
+            $this->_flags = array_merge($this->_flags, array_combine($params['flags'], $params['flags']));
         }
 
         parent::__construct($params);

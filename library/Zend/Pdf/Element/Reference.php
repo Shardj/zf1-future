@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 require_once 'Zend/Pdf/Element/Null.php';
@@ -97,11 +97,11 @@ class Zend_Pdf_Element_Reference extends Zend_Pdf_Element
             $genNum = 0;
         }
 
-        if ( !(is_integer($objNum) && $objNum > 0) ) {
+        if (!(is_integer($objNum) && $objNum > 0)) {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Object number must be positive integer');
         }
-        if ( !(is_integer($genNum) && $genNum >= 0) ) {
+        if (!(is_integer($genNum) && $genNum >= 0)) {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Generation number must be non-negative integer');
         }
@@ -170,12 +170,12 @@ class Zend_Pdf_Element_Reference extends Zend_Pdf_Element
     {
         if (($obj = $this->_factory->fetchObject($this->_objNum . ' ' . $this->_genNum)) === null) {
             $obj = $this->_context->getParser()->getObject(
-                           $this->_context->getRefTable()->getOffset($this->_objNum . ' ' . $this->_genNum . ' R'),
-                           $this->_context
-                                                          );
+                $this->_context->getRefTable()->getOffset($this->_objNum . ' ' . $this->_genNum . ' R'),
+                $this->_context
+            );
         }
 
-        if ($obj === null ) {
+        if ($obj === null) {
             $this->_ref = new Zend_Pdf_Element_Null();
             return;
         }

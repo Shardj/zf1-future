@@ -37,5 +37,4 @@ abstract class Zend_Db_Schema_AbstractChange
      * @return null
      */
     abstract function down();
-
 }

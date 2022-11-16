@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Search_Query */
 require_once 'Zend/Search/Lucene/Search/Query.php';
@@ -111,7 +111,7 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
             }
 
             return substr($word, 0, $questionMarkPosition);
-        } else if ($astrericPosition !== false) {
+        } elseif ($astrericPosition !== false) {
             return substr($word, 0, $astrericPosition);
         }
 
@@ -138,7 +138,7 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
 
         $prefix          = self::_getPrefix($this->_pattern->text);
         $prefixLength    = strlen($prefix);
-        $matchExpression = '/^' . str_replace(['\\?', '\\*'], ['.', '.*'] , preg_quote($this->_pattern->text, '/')) . '$/';
+        $matchExpression = '/^' . str_replace(['\\?', '\\*'], ['.', '.*'], preg_quote($this->_pattern->text, '/')) . '$/';
 
         if ($prefixLength < self::$_minPrefixLength) {
             require_once 'Zend/Search/Lucene/Exception.php';
@@ -319,7 +319,7 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
     {
         $words = [];
 
-        $matchExpression = '/^' . str_replace(['\\?', '\\*'], ['.', '.*'] , preg_quote($this->_pattern->text, '/')) . '$/';
+        $matchExpression = '/^' . str_replace(['\\?', '\\*'], ['.', '.*'], preg_quote($this->_pattern->text, '/')) . '$/';
         if (@preg_match('/\pL/u', 'a') == 1) {
             // PCRE unicode support is turned on
             // add Unicode modifier to the match expression
@@ -361,4 +361,3 @@ class Zend_Search_Lucene_Search_Query_Wildcard extends Zend_Search_Lucene_Search
         return $query;
     }
 }
-

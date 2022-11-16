@@ -21,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_Exception
  */

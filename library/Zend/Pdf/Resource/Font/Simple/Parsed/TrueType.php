@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Internally used classes */
 require_once 'Zend/Pdf/Element/Name.php';
@@ -63,5 +63,4 @@ class Zend_Pdf_Resource_Font_Simple_Parsed_TrueType extends Zend_Pdf_Resource_Fo
         $fontDescriptor = Zend_Pdf_Resource_Font_FontDescriptor::factory($this, $fontParser, $embeddingOptions);
         $this->_resource->FontDescriptor = $this->_objectFactory->newObject($fontDescriptor);
     }
-
 }

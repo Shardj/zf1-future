@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -156,7 +157,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
      * @return boolean
      * @throws Zend_Queue_Exception
      */
-    public function create($name, $timeout=null)
+    public function create($name, $timeout = null)
     {
         if ($this->isExists($name)) {
             return false;
@@ -232,7 +233,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
      * @throws Zend_Queue_Exception (not supported)
      */
     #[\ReturnTypeWillChange]
-    public function count(Zend_Queue $queue=null)
+    public function count(Zend_Queue $queue = null)
     {
         require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception('count() is not supported in this adapter');
@@ -250,7 +251,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
      * @return Zend_Queue_Message
      * @throws Zend_Queue_Exception
      */
-    public function send($message, Zend_Queue $queue=null)
+    public function send($message, Zend_Queue $queue = null)
     {
         if ($queue === null) {
             $queue = $this->_queue;
@@ -297,7 +298,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
      * @return Zend_Queue_Message_Iterator
      * @throws Zend_Queue_Exception
      */
-    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null)
     {
         if ($maxMessages === null) {
             $maxMessages = 1;
@@ -311,7 +312,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
         }
 
         $msgs = [];
-        if ($maxMessages > 0 ) {
+        if ($maxMessages > 0) {
             for ($i = 0; $i < $maxMessages; $i++) {
                 $data = [
                     'handle' => md5(uniqid(rand(), true)),
@@ -396,7 +397,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
      * @return array
      * @throws Zend_Queue_Exception if connection cannot be opened
      */
-    protected function _sendCommand($command, array $terminator, $include_term=false)
+    protected function _sendCommand($command, array $terminator, $include_term = false)
     {
         if (!is_resource($this->_socket)) {
             $this->_socket = fsockopen($this->_host, $this->_port, $errno, $errstr, 10);

@@ -44,7 +44,6 @@ require_once 'Zend/Gdata/Query.php';
  */
 class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
 {
-
     /**
      * Path to the customer items feeds on the Google Base server.
      */

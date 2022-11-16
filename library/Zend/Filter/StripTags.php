@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Filter_Interface
@@ -84,7 +84,7 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if ((!is_array($options)) || (is_array($options) && !array_key_exists('allowTags', $options) &&
+        } elseif ((!is_array($options)) || (is_array($options) && !array_key_exists('allowTags', $options) &&
             !array_key_exists('allowAttribs', $options) && !array_key_exists('allowComments', $options))) {
             $options = func_get_args();
             $temp['allowTags'] = array_shift($options);
@@ -136,8 +136,8 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
      */
     public function setCommentsAllowed($commentsAllowed)
     {
-       $this->commentsAllowed = (boolean) $commentsAllowed;
-       return $this;
+        $this->commentsAllowed = (bool) $commentsAllowed;
+        return $this;
     }
 
     /**
@@ -171,7 +171,7 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
                 $this->_tagsAllowed[$tagName] = [];
             }
             // Otherwise, if a tag was provided with attributes
-            else if (is_string($index) && (is_array($element) || is_string($element))) {
+            elseif (is_string($index) && (is_array($element) || is_string($element))) {
                 // Canonicalize the tag name
                 $tagName = strtolower($index);
                 // Canonicalize the attributes
@@ -249,7 +249,7 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
             if (!preg_match('/--\s*>/s', $value)) {
                 $value = '';
             } else {
-                $value = preg_replace('/<(?:!(?:--[\s\S]*?--\s*)?(>))/s', '',  $value);
+                $value = preg_replace('/<(?:!(?:--[\s\S]*?--\s*)?(>))/s', '', $value);
             }
 
             $value = $start . $value;

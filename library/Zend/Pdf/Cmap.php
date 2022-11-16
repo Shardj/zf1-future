@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -155,8 +156,10 @@ abstract class Zend_Pdf_Cmap
 
             case Zend_Pdf_Cmap::TYPE_HIGH_BYTE_MAPPING:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('High byte mapping cmap currently unsupported',
-                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+                throw new Zend_Pdf_Exception(
+                    'High byte mapping cmap currently unsupported',
+                    Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED
+                );
 
             case Zend_Pdf_Cmap::TYPE_SEGMENT_TO_DELTA:
                 require_once 'Zend/Pdf/Cmap/SegmentToDelta.php';
@@ -168,23 +171,31 @@ abstract class Zend_Pdf_Cmap
 
             case Zend_Pdf_Cmap::TYPE_MIXED_COVERAGE:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Mixed coverage cmap currently unsupported',
-                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+                throw new Zend_Pdf_Exception(
+                    'Mixed coverage cmap currently unsupported',
+                    Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED
+                );
 
             case Zend_Pdf_Cmap::TYPE_TRIMMED_ARRAY:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Trimmed array cmap currently unsupported',
-                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+                throw new Zend_Pdf_Exception(
+                    'Trimmed array cmap currently unsupported',
+                    Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED
+                );
 
             case Zend_Pdf_Cmap::TYPE_SEGMENTED_COVERAGE:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Segmented coverage cmap currently unsupported',
-                                             Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED);
+                throw new Zend_Pdf_Exception(
+                    'Segmented coverage cmap currently unsupported',
+                    Zend_Pdf_Exception::CMAP_TYPE_UNSUPPORTED
+                );
 
             default:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception("Unknown cmap type: $cmapType",
-                                             Zend_Pdf_Exception::CMAP_UNKNOWN_TYPE);
+                throw new Zend_Pdf_Exception(
+                    "Unknown cmap type: $cmapType",
+                    Zend_Pdf_Exception::CMAP_UNKNOWN_TYPE
+                );
         }
     }
 
@@ -271,8 +282,10 @@ abstract class Zend_Pdf_Cmap
     {
         if (($index < 0) | (($index + 1) > strlen($data))) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Index out of range: $index",
-                                         Zend_Pdf_Exception::INDEX_OUT_OF_RANGE);
+            throw new Zend_Pdf_Exception(
+                "Index out of range: $index",
+                Zend_Pdf_Exception::INDEX_OUT_OF_RANGE
+            );
         }
 
         $number = ord($data[$index]);
@@ -301,8 +314,10 @@ abstract class Zend_Pdf_Cmap
     {
         if (($index < 0) | (($index + 1) > strlen($data))) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Index out of range: $index",
-                                         Zend_Pdf_Exception::INDEX_OUT_OF_RANGE);
+            throw new Zend_Pdf_Exception(
+                "Index out of range: $index",
+                Zend_Pdf_Exception::INDEX_OUT_OF_RANGE
+            );
         }
 
         return (ord($data[$index]) << 8) | ord($data[++$index]);
@@ -328,12 +343,13 @@ abstract class Zend_Pdf_Cmap
     {
         if (($index < 0) | (($index + 3) > strlen($data))) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Index out of range: $index",
-                                         Zend_Pdf_Exception::INDEX_OUT_OF_RANGE);
+            throw new Zend_Pdf_Exception(
+                "Index out of range: $index",
+                Zend_Pdf_Exception::INDEX_OUT_OF_RANGE
+            );
         }
 
         return (ord($data[$index]) << 24) | (ord($data[++$index]) << 16) |
                   (ord($data[++$index]) << 8) | ord($data[++$index]);
     }
-
 }

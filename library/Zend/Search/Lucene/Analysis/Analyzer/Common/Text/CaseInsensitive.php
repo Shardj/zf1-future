@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Search_Lucene_Analysis_Analyzer_Common_Text */
 require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common/Text.php';
@@ -44,4 +44,3 @@ class Zend_Search_Lucene_Analysis_Analyzer_Common_Text_CaseInsensitive extends Z
         $this->addFilter(new Zend_Search_Lucene_Analysis_TokenFilter_LowerCase());
     }
 }
-

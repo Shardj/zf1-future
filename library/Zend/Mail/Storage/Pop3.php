@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * @see Zend_Mail_Storage_Abstract
@@ -304,7 +304,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
                 // need to make a real call, because not all server are honest in their capas
                 try {
                     $this->_protocol->top(1, 0, false);
-                } catch(Zend_Mail_Exception $e) {
+                } catch (Zend_Mail_Exception $e) {
                     // ignoring error
                 }
             }
@@ -316,7 +316,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
             $id = null;
             try {
                 $id = $this->_protocol->uniqueid(1);
-            } catch(Zend_Mail_Exception $e) {
+            } catch (Zend_Mail_Exception $e) {
                 // ignoring error
             }
             $this->_has['uniqueid'] = $id ? true : false;

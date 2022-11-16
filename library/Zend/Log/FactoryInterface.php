@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,5 +35,5 @@ interface Zend_Log_FactoryInterface
      * @param  array|Zend_Config $config
      * @return Zend_Log_FactoryInterface
      */
-    static public function factory($config);
+    public static function factory($config);
 }

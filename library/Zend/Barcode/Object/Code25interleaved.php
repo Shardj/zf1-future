@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -110,7 +111,7 @@ class Zend_Barcode_Object_Code25interleaved extends Zend_Barcode_Object_Code25
             $char2 = substr($text, $i + 1, 1);
 
             // Interleave
-            for ($ibar = 0; $ibar < 5; $ibar ++) {
+            for ($ibar = 0; $ibar < 5; $ibar++) {
                 // Draws char1 bar (fore color)
                 $barWidth = (substr($this->_codingMap[$char1], $ibar, 1))
                           ? $this->_barThickWidth

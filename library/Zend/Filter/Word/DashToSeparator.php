@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@ require_once 'Zend/Filter/Word/Separator/Abstract.php';
  */
 class Zend_Filter_Word_DashToSeparator extends Zend_Filter_Word_Separator_Abstract
 {
-
     public function filter($value)
     {
         $this->setMatchPattern('#-#');

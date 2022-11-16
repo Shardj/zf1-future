@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,7 +35,6 @@ require_once 'Zend/Controller/Router/Route/Abstract.php';
  */
 class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
 {
-
     /**
      * Default translator
      *
@@ -171,9 +171,12 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
      * @param mixed|null     $locale
      */
     public function __construct(
-        $route, $defaults = [], $reqs = [], Zend_Translate $translator = null, $locale = null
-    )
-    {
+        $route,
+        $defaults = [],
+        $reqs = [],
+        Zend_Translate $translator = null,
+        $locale = null
+    ) {
         $route               = trim($route, $this->_urlDelimiter);
         $this->_defaults     = (array)$defaults;
         $this->_requirements = (array)$reqs;
@@ -298,7 +301,8 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                 // If it's a variable with requirement, match a regex. If not - everything matches
                 if ($part !== null
                     && !preg_match(
-                        $this->_regexDelimiter . '^' . $part . '$' . $this->_regexDelimiter . 'iu', $pathPart
+                        $this->_regexDelimiter . '^' . $part . '$' . $this->_regexDelimiter . 'iu',
+                        $pathPart
                     )
                 ) {
                     return false;

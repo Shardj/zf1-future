@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_XmlRpc_Value
  */
@@ -36,7 +36,6 @@ require_once 'Zend/XmlRpc/Value.php';
  */
 abstract class Zend_XmlRpc_Value_Collection extends Zend_XmlRpc_Value
 {
-
     /**
      * Set the value of a collection type (array and struct) native types
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,7 +21,6 @@
  * @version    $Id$
  */
 
-
 /**
  * Zend_View_Helper_FormELement
  */
@@ -38,7 +38,6 @@ require_once 'Zend/View/Helper/FormElement.php';
  */
 class Zend_View_Helper_HtmlList extends Zend_View_Helper_FormElement
 {
-
     /**
      * Generates a 'List' element.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -75,7 +76,7 @@ class Zend_Filter_Alpha implements Zend_Filter_Interface
     {
         if ($allowWhiteSpace instanceof Zend_Config) {
             $allowWhiteSpace = $allowWhiteSpace->toArray();
-        } else if (is_array($allowWhiteSpace)) {
+        } elseif (is_array($allowWhiteSpace)) {
             if (array_key_exists('allowwhitespace', $allowWhiteSpace)) {
                 $allowWhiteSpace = $allowWhiteSpace['allowwhitespace'];
             } else {
@@ -83,18 +84,18 @@ class Zend_Filter_Alpha implements Zend_Filter_Interface
             }
         }
 
-        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        $this->allowWhiteSpace = (bool) $allowWhiteSpace;
         if (null === self::$_unicodeEnabled) {
             self::$_unicodeEnabled = (@preg_match('/\pL/u', 'a')) ? true : false;
         }
 
         if (null === self::$_meansEnglishAlphabet) {
             $this->_locale = new Zend_Locale('auto');
-            self::$_meansEnglishAlphabet = in_array($this->_locale->getLanguage(),
-                                                    ['ja', 'ko', 'zh']
-                                                    );
+            self::$_meansEnglishAlphabet = in_array(
+                $this->_locale->getLanguage(),
+                ['ja', 'ko', 'zh']
+            );
         }
-
     }
 
     /**
@@ -115,7 +116,7 @@ class Zend_Filter_Alpha implements Zend_Filter_Interface
      */
     public function setAllowWhiteSpace($allowWhiteSpace)
     {
-        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        $this->allowWhiteSpace = (bool) $allowWhiteSpace;
         return $this;
     }
 
@@ -133,7 +134,7 @@ class Zend_Filter_Alpha implements Zend_Filter_Interface
         if (!self::$_unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
             $pattern = '/[^a-zA-Z' . $whiteSpace . ']/';
-        } else if (self::$_meansEnglishAlphabet) {
+        } elseif (self::$_meansEnglishAlphabet) {
             //The Alphabet means english alphabet.
             $pattern = '/[^a-zA-Z'  . $whiteSpace . ']/u';
         } else {

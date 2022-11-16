@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Tool/Framework/Action/Interface.php';
  */
 class Zend_Tool_Framework_Action_Base implements Zend_Tool_Framework_Action_Interface
 {
-
     /**
      * @var string
      */
@@ -87,7 +87,6 @@ class Zend_Tool_Framework_Action_Base implements Zend_Tool_Framework_Action_Inte
     {
         $className = get_class($this);
 
-        return substr($className, strrpos($className, '_')+1);
+        return substr($className, strrpos($className, '_') + 1);
     }
-
 }

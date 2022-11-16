@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -40,7 +41,6 @@ require_once 'Zend/Validate/Barcode.php';
  */
 class Zend_Barcode_Object_Planet extends Zend_Barcode_Object_Postnet
 {
-
     /**
      * Coding map
      * - 0 = half bar

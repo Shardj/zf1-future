@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,7 +38,6 @@ require_once 'Zend/Application/Resource/ResourceAbstract.php';
  */
 class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceAbstract
 {
-
     /**
      * @var Zend_Mail_Transport_Abstract
      */
@@ -97,7 +97,9 @@ class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceA
                 )
             ) {
                 call_user_func(
-                    $method, $options[$key]['email'], $options[$key]['name']
+                    $method,
+                    $options[$key]['email'],
+                    $options[$key]['name']
                 );
             } else {
                 call_user_func($method, $options[$key]['email']);
@@ -129,7 +131,7 @@ class Zend_Application_Resource_Mail extends Zend_Application_Resource_ResourceA
         unset($options['type']);
         unset($options['register']); //@see ZF-11022
 
-        switch($transportName) {
+        switch ($transportName) {
             case 'Zend_Mail_Transport_Smtp':
                 if (!isset($options['host'])) {
                     throw new Zend_Application_Resource_Exception(

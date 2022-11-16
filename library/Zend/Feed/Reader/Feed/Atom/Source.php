@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@ require_once 'Zend/Feed/Reader/Feed/Atom.php';
  */
 class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
 {
-
     /**
      * Constructor: Create a Source object which is largely just a normal
      * Zend_Feed_Reader_FeedAbstract object only designed to retrieve feed level
@@ -68,39 +68,52 @@ class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function count() {}
+    public function count()
+    {
+    }
 
     /**
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function current() {}
+    public function current()
+    {
+    }
 
     /**
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function key() {}
+    public function key()
+    {
+    }
 
     /**
      * @return void
      */
-    public function next(): void {}
+    public function next(): void
+    {
+    }
 
     /**
      * @return void
      */
-    public function rewind(): void {}
+    public function rewind(): void
+    {
+    }
 
     /**
      * @return void
      */
     #[\ReturnTypeWillChange]
-    public function valid() {}
+    public function valid()
+    {
+    }
 
     /**
      * @return void
      */
-    protected function _indexEntries() {}
-
+    protected function _indexEntries()
+    {
+    }
 }

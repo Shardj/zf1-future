@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -31,10 +32,8 @@ require_once 'Zend/Tool/Framework/Client/Response/ContentDecorator/Interface.php
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
-    implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
 {
-
     /**
      * @var string
      */
@@ -89,5 +88,4 @@ class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
 
         return $content;
     }
-
 }

@@ -32,7 +32,6 @@
  */
 abstract class Zend_OpenId_Consumer_Storage
 {
-
     /**
      * Stores information about association identified by $url/$handle
      *
@@ -128,5 +127,5 @@ abstract class Zend_OpenId_Consumer_Storage
      *
      * @param string $date Date of expired data
      */
-    abstract public function purgeNonces($date=null);
+    abstract public function purgeNonces($date = null);
 }

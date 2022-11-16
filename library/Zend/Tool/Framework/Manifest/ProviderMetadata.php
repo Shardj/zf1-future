@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,5 +28,4 @@
  */
 class Zend_Tool_Framework_Manifest_ProviderMetadata
 {
-
 }

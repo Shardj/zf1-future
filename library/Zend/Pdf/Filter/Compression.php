@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -18,7 +19,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** Zend_Pdf_Filter_Interface */
 require_once 'Zend/Pdf/Filter/Interface.php';
@@ -52,7 +52,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
         // breaking ties in order a,b,c.
         if ($pa <= $pb && $pa <= $pc) {
             return $a;
-        } else if ($pb <= $pc) {
+        } elseif ($pb <= $pc) {
             return $b;
         } else {
             return $c;
@@ -76,7 +76,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
                 $predictor != 10  &&  $predictor != 11  &&   $predictor != 12  &&
                 $predictor != 13  &&  $predictor != 14  &&   $predictor != 15) {
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Invalid value of \'Predictor\' decode param - ' . $predictor . '.' );
+                throw new Zend_Pdf_Exception('Invalid value of \'Predictor\' decode param - ' . $predictor . '.');
             }
             return $predictor;
         } else {
@@ -98,7 +98,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
 
             if ($colors != 1  &&  $colors != 2  &&  $colors != 3  &&  $colors != 4) {
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Invalid value of \'Color\' decode param - ' . $colors . '.' );
+                throw new Zend_Pdf_Exception('Invalid value of \'Color\' decode param - ' . $colors . '.');
             }
             return $colors;
         } else {
@@ -120,9 +120,9 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
 
             if ($bitsPerComponent != 1  &&  $bitsPerComponent != 2  &&
                 $bitsPerComponent != 4  &&  $bitsPerComponent != 8  &&
-                $bitsPerComponent != 16 ) {
+                $bitsPerComponent != 16) {
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception('Invalid value of \'BitsPerComponent\' decode param - ' . $bitsPerComponent . '.' );
+                throw new Zend_Pdf_Exception('Invalid value of \'BitsPerComponent\' decode param - ' . $bitsPerComponent . '.');
             }
             return $bitsPerComponent;
         } else {
@@ -154,7 +154,8 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
      * @return string
      * @throws Zend_Pdf_Exception
      */
-    protected static function _applyEncodeParams($data, $params) {
+    protected static function _applyEncodeParams($data, $params)
+    {
         $predictor        = self::_getPredictorValue($params);
         $colors           = self::_getColorsValue($params);
         $bitsPerComponent = self::_getBitsPerComponentValue($params);
@@ -168,7 +169,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
         /** TIFF Predictor 2 */
         if ($predictor == 2) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Not implemented yet' );
+            throw new Zend_Pdf_Exception('Not implemented yet');
         }
 
         /** Optimal PNG prediction */
@@ -183,18 +184,18 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             $predictor == 12 ||  /** Up prediction      */
             $predictor == 13 ||  /** Average prediction */
             $predictor == 14     /** Paeth prediction   */
-            ) {
+        ) {
             $predictor -= 10;
 
-            if($bitsPerComponent == 16) {
+            if ($bitsPerComponent == 16) {
                 require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception("PNG Prediction with bit depth greater than 8 not yet supported.");
             }
 
-            $bitsPerSample  = $bitsPerComponent*$colors;
-            $bytesPerSample = (int)(($bitsPerSample + 7)/8);           // (int)ceil(...) emulation
-            $bytesPerRow    = (int)(($bitsPerSample*$columns + 7)/8);  // (int)ceil(...) emulation
-            $rows           = strlen($data)/$bytesPerRow;
+            $bitsPerSample  = $bitsPerComponent * $colors;
+            $bytesPerSample = (int)(($bitsPerSample + 7) / 8);           // (int)ceil(...) emulation
+            $bytesPerRow    = (int)(($bitsPerSample * $columns + 7) / 8);  // (int)ceil(...) emulation
+            $rows           = strlen($data) / $bytesPerRow;
             $output         = '';
             $offset         = 0;
 
@@ -249,7 +250,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
                         for ($count2 = 0; $count2 < $bytesPerRow; $count2++) {
                             $newByte = ord($data[$offset++]);
                             // Note. chr() automatically cuts input to 8 bit
-                            $output .= chr($newByte - floor(( $lastSample[$count2 % $bytesPerSample] + $lastRow[$count2])/2));
+                            $output .= chr($newByte - floor(( $lastSample[$count2 % $bytesPerSample] + $lastRow[$count2]) / 2));
                             $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = $newByte;
                         }
                     }
@@ -265,10 +266,12 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
                         for ($count2 = 0; $count2 < $bytesPerRow; $count2++) {
                             $newByte = ord($data[$offset++]);
                             // Note. chr() automatically cuts input to 8 bit
-                            $output .= chr($newByte - self::_paeth( $lastSample[$count2 % $bytesPerSample],
-                                                                    $lastRow[$count2],
-                                                                    ($count2 - $bytesPerSample  <  0)?
-                                                                         0 : $lastRow[$count2 - $bytesPerSample] ));
+                            $output .= chr($newByte - self::_paeth(
+                                $lastSample[$count2 % $bytesPerSample],
+                                $lastRow[$count2],
+                                ($count2 - $bytesPerSample  <  0) ?
+                                0 : $lastRow[$count2 - $bytesPerSample]
+                            ));
                             $lastSample[$count2 % $bytesPerSample] = $currentRow[$count2] = $newByte;
                         }
                         $lastRow = $currentRow;
@@ -279,7 +282,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
         }
 
         require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.' );
+        throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.');
     }
 
     /**
@@ -289,7 +292,8 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
      * @param array $params
      * @return string
      */
-    protected static function _applyDecodeParams($data, $params) {
+    protected static function _applyDecodeParams($data, $params)
+    {
         $predictor        = self::_getPredictorValue($params);
         $colors           = self::_getColorsValue($params);
         $bitsPerComponent = self::_getBitsPerComponentValue($params);
@@ -303,7 +307,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
         /** TIFF Predictor 2 */
         if ($predictor == 2) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Not implemented yet' );
+            throw new Zend_Pdf_Exception('Not implemented yet');
         }
 
         /**
@@ -317,11 +321,10 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
             $predictor == 13 ||  /** Average prediction */
             $predictor == 14 ||  /** Paeth prediction   */
             $predictor == 15     /** Optimal prediction */) {
-
-            $bitsPerSample  = $bitsPerComponent*$colors;
-            $bytesPerSample = ceil($bitsPerSample/8);
-            $bytesPerRow    = ceil($bitsPerSample*$columns/8);
-            $rows           = ceil(strlen($data)/($bytesPerRow + 1));
+            $bitsPerSample  = $bitsPerComponent * $colors;
+            $bytesPerSample = ceil($bitsPerSample / 8);
+            $bytesPerRow    = ceil($bitsPerSample * $columns / 8);
+            $rows           = ceil(strlen($data) / ($bytesPerRow + 1));
             $output         = '';
             $offset         = 0;
 
@@ -355,7 +358,7 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
                     case 3: // Average prediction
                         for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
                             $decodedByte = (ord($data[$offset++]) +
-                                            floor(( $lastSample[$count2 % $bytesPerSample] + $lastRow[$count2])/2)
+                                            floor(( $lastSample[$count2 % $bytesPerSample] + $lastRow[$count2]) / 2)
                                            ) & 0xFF;
                             $lastSample[$count2 % $bytesPerSample] = $lastRow[$count2] = $decodedByte;
                             $output .= chr($decodedByte);
@@ -366,10 +369,12 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
                         $currentRow = [];
                         for ($count2 = 0; $count2 < $bytesPerRow  &&  $offset < strlen($data); $count2++) {
                             $decodedByte = (ord($data[$offset++]) +
-                                            self::_paeth($lastSample[$count2 % $bytesPerSample],
-                                                         $lastRow[$count2],
-                                                         ($count2 - $bytesPerSample  <  0)?
-                                                              0 : $lastRow[$count2 - $bytesPerSample])
+                                            self::_paeth(
+                                                $lastSample[$count2 % $bytesPerSample],
+                                                $lastRow[$count2],
+                                                ($count2 - $bytesPerSample  <  0) ?
+                                                0 : $lastRow[$count2 - $bytesPerSample]
+                                            )
                                            ) & 0xFF;
                             $lastSample[$count2 % $bytesPerSample] = $currentRow[$count2] = $decodedByte;
                             $output .= chr($decodedByte);
@@ -386,6 +391,6 @@ abstract class Zend_Pdf_Filter_Compression implements Zend_Pdf_Filter_Interface
         }
 
         require_once 'Zend/Pdf/Exception.php';
-        throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.' );
+        throw new Zend_Pdf_Exception('Unknown prediction algorithm - ' . $predictor . '.');
     }
 }

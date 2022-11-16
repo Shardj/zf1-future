@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -64,7 +65,7 @@ class Zend_File_Transfer
      */
     public function setAdapter($adapter, $direction = false, $options = [])
     {
-        if (Zend_Loader::isReadable('Zend/File/Transfer/Adapter/' . ucfirst($adapter). '.php')) {
+        if (Zend_Loader::isReadable('Zend/File/Transfer/Adapter/' . ucfirst($adapter) . '.php')) {
             $adapter = 'Zend_File_Transfer_Adapter_' . ucfirst($adapter);
         }
 
@@ -72,7 +73,7 @@ class Zend_File_Transfer
             Zend_Loader::loadClass($adapter);
         }
 
-        $direction = (integer) $direction;
+        $direction = (int) $direction;
         $this->_adapter[$direction] = new $adapter($options);
         if (!$this->_adapter[$direction] instanceof Zend_File_Transfer_Adapter_Abstract) {
             require_once 'Zend/File/Transfer/Exception.php';
@@ -96,7 +97,7 @@ class Zend_File_Transfer
             return $this->_adapter;
         }
 
-        $direction = (integer) $direction;
+        $direction = (int) $direction;
         return $this->_adapter[$direction];
     }
 
@@ -110,7 +111,7 @@ class Zend_File_Transfer
     public function __call($method, array $options)
     {
         if (array_key_exists('direction', $options)) {
-            $direction = (integer) $options['direction'];
+            $direction = (int) $options['direction'];
         } else {
             $direction = 0;
         }

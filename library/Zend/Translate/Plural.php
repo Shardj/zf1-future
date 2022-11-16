@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -64,7 +65,7 @@ class Zend_Translate_Plural
             return $return;
         }
 
-        switch($locale) {
+        switch ($locale) {
             case 'az':
             case 'bo':
             case 'dz':

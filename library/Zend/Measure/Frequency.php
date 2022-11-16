@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -81,6 +82,6 @@ class Zend_Measure_Frequency extends Zend_Measure_Abstract
         'REVOLUTION_PER_SECOND' => ['1',             'rps'],
         'RPM'                   => [['' => '1', '/' => '60'], 'rpm'],
         'TERRAHERTZ'            => ['1000000000000', 'THz'],
-        'STANDARD'              =>'HERTZ'
+        'STANDARD'              => 'HERTZ'
     ];
 }

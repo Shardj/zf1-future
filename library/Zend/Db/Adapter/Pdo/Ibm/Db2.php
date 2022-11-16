@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /** @see Zend_Db_Adapter_Pdo_Ibm */
 require_once 'Zend/Db/Adapter/Pdo/Ibm.php';
@@ -137,7 +137,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
             'SCHEMA_NAME'      => $this->_adapter->foldCase($row[$tabschema]),
             'TABLE_NAME'       => $this->_adapter->foldCase($row[$tabname]),
             'COLUMN_NAME'      => $this->_adapter->foldCase($row[$colname]),
-            'COLUMN_POSITION'  => $row[$colno]+1,
+            'COLUMN_POSITION'  => $row[$colno] + 1,
             'DATA_TYPE'        => $row[$typename],
             'DEFAULT'          => $row[$default],
             'NULLABLE'         => (bool) ($row[$nulls] == 'Y'),
@@ -197,7 +197,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
                   " . $sql . "
               ) z1
           ) z2
-          WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+          WHERE z2.zend_db_rownum BETWEEN " . ($offset + 1) . " AND " . ($offset + $count);
 
         return $limit_sql;
     }
@@ -210,7 +210,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
      */
     public function lastSequenceId($sequenceName)
     {
-        $sql = 'SELECT PREVVAL FOR '.$this->_adapter->quoteIdentifier($sequenceName).' AS VAL FROM SYSIBM.SYSDUMMY1';
+        $sql = 'SELECT PREVVAL FOR ' . $this->_adapter->quoteIdentifier($sequenceName) . ' AS VAL FROM SYSIBM.SYSDUMMY1';
 
         return $this->_adapter->fetchOne($sql);
     }
@@ -223,7 +223,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
      */
     public function nextSequenceId($sequenceName)
     {
-        $sql = 'SELECT NEXTVAL FOR '.$this->_adapter->quoteIdentifier($sequenceName).' AS VAL FROM SYSIBM.SYSDUMMY1';
+        $sql = 'SELECT NEXTVAL FOR ' . $this->_adapter->quoteIdentifier($sequenceName) . ' AS VAL FROM SYSIBM.SYSDUMMY1';
 
         return $this->_adapter->fetchOne($sql);
     }

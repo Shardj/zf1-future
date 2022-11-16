@@ -116,28 +116,28 @@ class Zend_Service_Rackspace_Servers_Server
         $this->name = $data['name'];
         $this->id = $data['id'];
         if (isset($data['imageId'])) {
-            $this->imageId= $data['imageId'];
+            $this->imageId = $data['imageId'];
         }
         if (isset($data['flavorId'])) {
-            $this->flavorId= $data['flavorId'];
+            $this->flavorId = $data['flavorId'];
         }
         if (isset($data['hostId'])) {
-            $this->hostId= $data['hostId'];
+            $this->hostId = $data['hostId'];
         }
         if (isset($data['status'])) {
-            $this->status= $data['status'];
+            $this->status = $data['status'];
         }
         if (isset($data['progress'])) {
-            $this->progress= $data['progress'];
+            $this->progress = $data['progress'];
         }
         if (isset($data['adminPass'])) {
-            $this->adminPass= $data['adminPass'];
+            $this->adminPass = $data['adminPass'];
         }
         if (isset($data['addresses']) && is_array($data['addresses'])) {
-            $this->addresses= $data['addresses'];
+            $this->addresses = $data['addresses'];
         }
         if (isset($data['metadata']) && is_array($data['metadata'])) {
-            $this->metadata= $data['metadata'];
+            $this->metadata = $data['metadata'];
         }
     }
     /**
@@ -201,10 +201,10 @@ class Zend_Service_Rackspace_Servers_Server
      */
     public function getStatus()
     {
-        $data= $this->service->getServer($this->id);
-        if ($data!==false) {
-            $data= $data->toArray();
-            $this->status= $data['status'];
+        $data = $this->service->getServer($this->id);
+        if ($data !== false) {
+            $data = $data->toArray();
+            $this->status = $data['status'];
             return $this->status;
         }
         return false;
@@ -216,10 +216,10 @@ class Zend_Service_Rackspace_Servers_Server
      */
     public function getProgress()
     {
-        $data= $this->service->getServer($this->id);
-        if ($data!==false) {
-            $data= $data->toArray();
-            $this->progress= $data['progress'];
+        $data = $this->service->getServer($this->id);
+        if ($data !== false) {
+            $data = $data->toArray();
+            $this->progress = $data['progress'];
             return $this->progress;
         }
         return false;
@@ -256,7 +256,7 @@ class Zend_Service_Rackspace_Servers_Server
      * @param string $key
      * @return array|string
      */
-    public function getMetadata($key=null)
+    public function getMetadata($key = null)
     {
         if (!empty($key) && isset($this->metadata[$key])) {
             return $this->metadata[$key];
@@ -271,9 +271,9 @@ class Zend_Service_Rackspace_Servers_Server
      */
     public function changeName($name)
     {
-        $result= $this->service->changeServerName($this->id, $name);
-        if ($result!==false) {
-            $this->name= $name;
+        $result = $this->service->changeServerName($this->id, $name);
+        if ($result !== false) {
+            $this->name = $name;
             return true;
         }
         return false;
@@ -286,9 +286,9 @@ class Zend_Service_Rackspace_Servers_Server
      */
     public function changePassword($password)
     {
-        $result=  $this->service->changeServerPassword($this->id, $password);
-        if ($result!==false) {
-            $this->adminPass= $password;
+        $result =  $this->service->changeServerPassword($this->id, $password);
+        if ($result !== false) {
+            $this->adminPass = $password;
             return true;
         }
         return false;
@@ -298,9 +298,9 @@ class Zend_Service_Rackspace_Servers_Server
      *
      * @return boolean
      */
-    public function reboot($hard=false)
+    public function reboot($hard = false)
     {
-        return $this->service->rebootServer($this->id,$hard);
+        return $this->service->rebootServer($this->id, $hard);
     }
     /**
      * To Array

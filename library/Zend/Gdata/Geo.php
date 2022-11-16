@@ -41,7 +41,6 @@ require_once 'Zend/Gdata.php';
  */
 class Zend_Gdata_Geo extends Zend_Gdata
 {
-
     /**
      * Namespaces used for Zend_Gdata_Geo
      *
@@ -66,5 +65,4 @@ class Zend_Gdata_Geo extends Zend_Gdata
         $this->registerPackage('Zend_Gdata_Geo_Extension');
         parent::__construct($client, $applicationId);
     }
-
 }

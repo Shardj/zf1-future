@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -214,8 +215,8 @@ class Zend_Search_Lucene_Field
      */
     public function getUtf8Value()
     {
-        if (strcasecmp($this->encoding, 'utf8' ) === 0  ||
-            strcasecmp($this->encoding, 'utf-8') === 0 ) {
+        if (strcasecmp($this->encoding, 'utf8') === 0  ||
+            strcasecmp($this->encoding, 'utf-8') === 0) {
                 return $this->value;
         }
 
@@ -224,4 +225,3 @@ class Zend_Search_Lucene_Field
             : iconv('ISO8859-1', 'UTF-8', $this->value);
     }
 }
-

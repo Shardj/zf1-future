@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -170,7 +171,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                      ';PORT='     . $this->_config['port'] .
                      ';PROTOCOL=' . $this->_config['protocol'] .
                      ';UID='      . $this->_config['username'] .
-                     ';PWD='      . $this->_config['password'] .';';
+                     ';PWD='      . $this->_config['password'] . ';';
             $this->_connection = $conn_func_name(
                 $dbname,
                 null,
@@ -306,7 +307,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         } else {
             // db2_server_info() does not return result on some i5 OS version
             if ($this->_isI5) {
-                $identQuote ="'";
+                $identQuote = "'";
             }
         }
         return $identQuote;
@@ -383,7 +384,6 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         }
 
         if (!$this->_isI5) {
-
             $sql = "SELECT DISTINCT c.tabschema, c.tabname, c.colname, c.colno,
                 c.typename, c.default, c.nulls, c.length, c.scale,
                 c.identity, tc.type AS tabconsttype, k.colseq
@@ -399,13 +399,11 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                 . $this->quoteInto('UPPER(c.tabname) = UPPER(?)', $tableName);
 
             if ($schemaName) {
-               $sql .= $this->quoteInto(' AND UPPER(c.tabschema) = UPPER(?)', $schemaName);
+                $sql .= $this->quoteInto(' AND UPPER(c.tabschema) = UPPER(?)', $schemaName);
             }
 
             $sql .= " ORDER BY c.colno";
-
         } else {
-
             // DB2 On I5 specific query
             $sql = "SELECT DISTINCT C.TABLE_SCHEMA, C.TABLE_NAME, C.COLUMN_NAME, C.ORDINAL_POSITION,
                 C.DATA_TYPE, C.COLUMN_DEFAULT, C.NULLS ,C.LENGTH, C.SCALE, LEFT(C.IDENTITY,1),
@@ -472,7 +470,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                 'SCHEMA_NAME'      => $this->foldCase($row[$tabschema]),
                 'TABLE_NAME'       => $this->foldCase($row[$tabname]),
                 'COLUMN_NAME'      => $this->foldCase($row[$colname]),
-                'COLUMN_POSITION'  => (!$this->_isI5) ? $row[$colno]+1 : $row[$colno],
+                'COLUMN_POSITION'  => (!$this->_isI5) ? $row[$colno] + 1 : $row[$colno],
                 'DATA_TYPE'        => $row[$typename],
                 'DEFAULT'          => $row[$default],
                 'NULLABLE'         => (bool) ($row[$nulls] == 'Y'),
@@ -524,7 +522,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
     public function nextSequenceId($sequenceName)
     {
         $this->_connect();
-        $sql = 'SELECT NEXTVAL FOR '.$this->quoteIdentifier($sequenceName, true).' AS VAL FROM SYSIBM.SYSDUMMY1';
+        $sql = 'SELECT NEXTVAL FOR ' . $this->quoteIdentifier($sequenceName, true) . ' AS VAL FROM SYSIBM.SYSDUMMY1';
         $value = $this->fetchOne($sql);
         return (string) $value;
     }
@@ -594,7 +592,8 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             require_once 'Zend/Db/Adapter/Db2/Exception.php';
             throw new Zend_Db_Adapter_Db2_Exception(
                 db2_conn_errormsg($this->_connection),
-                db2_conn_error($this->_connection));
+                db2_conn_error($this->_connection)
+            );
         }
 
         $this->_setExecuteMode(DB2_AUTOCOMMIT_ON);
@@ -614,7 +613,8 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             require_once 'Zend/Db/Adapter/Db2/Exception.php';
             throw new Zend_Db_Adapter_Db2_Exception(
                 db2_conn_errormsg($this->_connection),
-                db2_conn_error($this->_connection));
+                db2_conn_error($this->_connection)
+            );
         }
         $this->_setExecuteMode(DB2_AUTOCOMMIT_ON);
     }
@@ -698,7 +698,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                     " . $sql . "
                 ) z1
             ) z2
-            WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+            WHERE z2.zend_db_rownum BETWEEN " . ($offset + 1) . " AND " . ($offset + $count);
     }
 
     /**
@@ -763,7 +763,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         $this->_isI5 = (php_uname('s') == 'OS400') ? true : false;
 
         // if this is set, then us it
-        if (isset($this->_config['os'])){
+        if (isset($this->_config['os'])) {
             if (strtolower($this->_config['os']) === 'i5') {
                 $this->_isI5 = true;
             } else {
@@ -771,7 +771,6 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                 $this->_isI5 = false;
             }
         }
-
     }
 
     /**
@@ -788,7 +787,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         $tables = [];
         if ($schema) {
             $tablesStatement = db2_tables($this->_connection, null, $schema);
-            while ($rowTables = db2_fetch_assoc($tablesStatement) ) {
+            while ($rowTables = db2_fetch_assoc($tablesStatement)) {
                 if ($rowTables['TABLE_NAME'] !== null) {
                     $tables[] = $rowTables['TABLE_NAME'];
                 }
@@ -798,9 +797,9 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             while ($schema = db2_fetch_assoc($schemaStatement)) {
                 if ($schema['TABLE_SCHEM'] !== null) {
                     // list of the tables which belongs to the selected library
-                    $tablesStatement = db2_tables($this->_connection, NULL, $schema['TABLE_SCHEM']);
+                    $tablesStatement = db2_tables($this->_connection, null, $schema['TABLE_SCHEM']);
                     if (is_resource($tablesStatement)) {
-                        while ($rowTables = db2_fetch_assoc($tablesStatement) ) {
+                        while ($rowTables = db2_fetch_assoc($tablesStatement)) {
                             if ($rowTables['TABLE_NAME'] !== null) {
                                 $tables[] = $rowTables['TABLE_NAME'];
                             }
@@ -822,7 +821,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             return $this->fetchOne($sql);
         }
 
-        if (strtoupper($idType) === 'S'){
+        if (strtoupper($idType) === 'S') {
             //check i5_lib option
             $sequenceName = $objectName;
             return $this->lastSequenceId($sequenceName);
@@ -833,7 +832,4 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         $tableName = $objectName;
         return $this->fetchOne('SELECT IDENTITY_VAL_LOCAL() from ' . $this->quoteIdentifier($tableName));
     }
-
 }
-
-

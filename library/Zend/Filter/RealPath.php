@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -73,11 +74,11 @@ class Zend_Filter_RealPath implements Zend_Filter_Interface
 
         if (is_array($exists)) {
             if (isset($exists['exists'])) {
-                $exists = (boolean) $exists['exists'];
+                $exists = (bool) $exists['exists'];
             }
         }
 
-        $this->_exists = (boolean) $exists;
+        $this->_exists = (bool) $exists;
         return $this;
     }
 

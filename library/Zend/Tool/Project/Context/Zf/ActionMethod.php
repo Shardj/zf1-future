@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -43,7 +44,6 @@ require_once 'Zend/Reflection/File.php';
  */
 class Zend_Tool_Project_Context_Zf_ActionMethod implements Zend_Tool_Project_Context_Interface
 {
-
     /**
      * @var Zend_Tool_Project_Profile_Resource
      */
@@ -164,7 +164,7 @@ class Zend_Tool_Project_Context_Zf_ActionMethod implements Zend_Tool_Project_Con
             throw new Zend_Tool_Project_Context_Exception(
                 'Could not create action within controller ' . $this->_controllerPath
                 . ' with action name ' . $this->_actionName
-                );
+            );
         }
         return $this;
     }
@@ -220,5 +220,4 @@ class Zend_Tool_Project_Context_Zf_ActionMethod implements Zend_Tool_Project_Con
         $controllerCodeGenFile = Zend_CodeGenerator_Php_File::fromReflectedFileName($controllerPath, true, true);
         return $controllerCodeGenFile->getClass()->hasMethod($actionName . 'Action');
     }
-
 }

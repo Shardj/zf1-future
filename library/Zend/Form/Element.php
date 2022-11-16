@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -878,7 +879,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         if (null === $value) {
             unset($this->$name);
             unset($this->_attributes[$name]);
-        } else if (property_exists($this, $name)) {
+        } elseif (property_exists($this, $name)) {
             $this->$name = $value;
         } else {
             $this->_attributes[$name] = $value;
@@ -1150,7 +1151,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 $loader->addPrefixPath($prefix, $path);
                 return $this;
             case null:
-                $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
+                $nsSeparator = (false !== strpos($prefix, '\\')) ? '\\' : '_';
                 $prefix = rtrim($prefix, $nsSeparator) . $nsSeparator;
                 $path   = rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
                 foreach ([self::DECORATOR, self::FILTER, self::VALIDATE] as $type) {
@@ -1423,8 +1424,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
 
         if ($this->isRequired()
             && $this->autoInsertNotEmptyValidator()
-            && !$this->getValidator('NotEmpty'))
-        {
+            && !$this->getValidator('NotEmpty')) {
             $validators = $this->getValidators();
             $notEmpty   = ['validator' => 'NotEmpty', 'breakChainOnFailure' => true];
             array_unshift($validators, $notEmpty);
@@ -1435,8 +1435,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         // will get either the static translator attached to Zend_Validate_Abstract
         // or the 'Zend_Translate' from Zend_Registry.
         if (Zend_Validate_Abstract::hasDefaultTranslator() &&
-            !Zend_Form::hasDefaultTranslator())
-        {
+            !Zend_Form::hasDefaultTranslator()) {
             $translator = Zend_Validate_Abstract::getDefaultTranslator();
             if ($this->hasTranslator()) {
                 // only pick up this element's translator if it was attached directly.
@@ -1483,7 +1482,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                             $errors   = $messages;
                         } else {
                             $messages = array_merge($messages, $validator->getMessages());
-                            $errors   = array_merge($errors,   $validator->getErrors());
+                            $errors   = array_merge($errors, $validator->getErrors());
                         }
                     }
                 }
@@ -1505,7 +1504,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
 
             $result          = false;
             $this->_messages = array_merge($this->_messages, $messages);
-            $this->_errors   = array_merge($this->_errors,   $errors);
+            $this->_errors   = array_merge($this->_errors, $errors);
 
             if ($validator->zfBreakChainOnFailure) {
                 break;
@@ -1905,7 +1904,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     {
         $class = $this->getPluginLoader(self::DECORATOR)->load($name);
         if (null === $options) {
-            $decorator = new $class;
+            $decorator = new $class();
         } else {
             $decorator = new $class($options);
         }
@@ -2157,7 +2156,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         }
 
         if (empty($filter['options'])) {
-            $instance = new $name;
+            $instance = new $name();
         } else {
             $r = new ReflectionClass($name);
             if ($r->hasMethod('__construct')) {
@@ -2212,14 +2211,14 @@ class Zend_Form_Element implements Zend_Validate_Interface
         }
 
         if (empty($validator['options'])) {
-            $instance = new $name;
+            $instance = new $name();
         } else {
             $r = new ReflectionClass($name);
             if ($r->hasMethod('__construct')) {
                 $numeric = false;
                 if (is_array($validator['options'])) {
                     $keys    = array_keys($validator['options']);
-                    foreach($keys as $key) {
+                    foreach ($keys as $key) {
                         if (is_numeric($key)) {
                             $numeric = true;
                             break;

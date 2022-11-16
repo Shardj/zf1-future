@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -58,13 +59,13 @@ class Zend_Ldap_Node_RootDse extends Zend_Ldap_Node_Abstract
              */
             require_once 'Zend/Ldap/Node/RootDse/ActiveDirectory.php';
             return new Zend_Ldap_Node_RootDse_ActiveDirectory($dn, $data);
-        } else if (isset($data['dsaname'])) {
+        } elseif (isset($data['dsaname'])) {
             /**
              * @see Zend_Ldap_Node_RootDse_ActiveDirectory
              */
             require_once 'Zend/Ldap/Node/RootDse/eDirectory.php';
             return new Zend_Ldap_Node_RootDse_eDirectory($dn, $data);
-        } else if (isset($data['structuralobjectclass']) &&
+        } elseif (isset($data['structuralobjectclass']) &&
                 $data['structuralobjectclass'][0] === 'OpenLDAProotDSE') {
             /**
              * @see Zend_Ldap_Node_RootDse_OpenLdap

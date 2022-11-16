@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@ require_once 'Zend/Filter/Interface.php';
  */
 class Zend_Filter_StripNewlines implements Zend_Filter_Interface
 {
-
     /**
      * Defined by Zend_Filter_Interface
      *
@@ -41,7 +41,7 @@ class Zend_Filter_StripNewlines implements Zend_Filter_Interface
      * @param  string $value
      * @return string
      */
-    public function filter ($value)
+    public function filter($value)
     {
         return str_replace(["\n", "\r"], '', $value);
     }

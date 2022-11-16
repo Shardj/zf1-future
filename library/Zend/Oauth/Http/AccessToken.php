@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -160,8 +161,10 @@ class Zend_Oauth_Http_AccessToken extends Zend_Oauth_Http
                 $httpClient = $this->getRequestSchemePostBodyClient($params);
                 break;
             case Zend_Oauth::REQUEST_SCHEME_QUERYSTRING:
-                $httpClient = $this->getRequestSchemeQueryStringClient($params,
-                    $this->_consumer->getAccessTokenUrl());
+                $httpClient = $this->getRequestSchemeQueryStringClient(
+                    $params,
+                    $this->_consumer->getAccessTokenUrl()
+                );
                 break;
         }
         return $httpClient->request();
@@ -180,7 +183,7 @@ class Zend_Oauth_Http_AccessToken extends Zend_Oauth_Http
      */
     protected function _cleanParamsOfIllegalCustomParameters(array $params)
     {
-        foreach ($params as $key=>$value) {
+        foreach ($params as $key => $value) {
             if (!preg_match("/^oauth_/", $key)) {
                 unset($params[$key]);
             }

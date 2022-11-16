@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -37,7 +38,6 @@ require_once 'Zend/Controller/Router/Route.php';
  */
 class Zend_Controller_Router_Rewrite extends Zend_Controller_Router_Abstract
 {
-
     /**
      * Whether or not to use default routes
      *
@@ -220,7 +220,8 @@ class Zend_Controller_Router_Rewrite extends Zend_Controller_Router_Abstract
             [
                 $class,
                 'getInstance'
-            ], $info
+            ],
+            $info
         );
 
         if (isset($info->abstract) && $info->abstract && method_exists($route, 'isAbstract')) {
@@ -242,8 +243,7 @@ class Zend_Controller_Router_Rewrite extends Zend_Controller_Router_Abstract
         $name,
         Zend_Controller_Router_Route_Interface $route,
         Zend_Config $childRoutesInfo
-    )
-    {
+    ) {
         foreach ($childRoutesInfo as $childRouteName => $childRouteInfo) {
             if (is_string($childRouteInfo)) {
                 $childRouteName = $childRouteInfo;
@@ -441,7 +441,6 @@ class Zend_Controller_Router_Rewrite extends Zend_Controller_Router_Abstract
     protected function _setRequestParams($request, $params)
     {
         foreach ($params as $param => $value) {
-
             $request->setParam($param, $value);
 
             if ($param === $request->getModuleKey()) {

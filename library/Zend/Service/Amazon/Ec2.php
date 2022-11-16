@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -42,7 +43,7 @@ class Zend_Service_Amazon_Ec2
      */
     public static function factory($section, $key = null, $secret_key = null)
     {
-        switch(strtolower($section)) {
+        switch (strtolower($section)) {
             case 'keypair':
                 $class = 'Zend_Service_Amazon_Ec2_Keypair';
                 break;
@@ -84,4 +85,3 @@ class Zend_Service_Amazon_Ec2
         return new $class($key, $secret_key);
     }
 }
-

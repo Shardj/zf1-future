@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -69,7 +70,7 @@ class Zend_Oauth
     public static function getHttpClient()
     {
         if (!isset(self::$httpClient)) {
-            self::$httpClient = new Zend_Http_Client;
+            self::$httpClient = new Zend_Http_Client();
         } else {
             self::$httpClient->setHeaders('Authorization', null);
             self::$httpClient->resetParameters();

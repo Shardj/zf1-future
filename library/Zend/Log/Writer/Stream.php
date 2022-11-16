@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -91,7 +92,7 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
      * @param  array|Zend_Config $config
      * @return Zend_Log_Writer_Stream
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         $config = self::_parseConfig($config);
         $config = array_merge([

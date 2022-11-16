@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -102,7 +103,7 @@ class Zend_Measure_Viscosity_Dynamic extends Zend_Measure_Abstract
         'POUNDAL_HOUR_PER_SQUARE_FOOT'   => ['0.00041337887',  'pdl h/ft²'],
         'POUNDAL_SECOND_PER_SQUARE_FOOT' => ['1.4881639',      'pdl s/ft²'],
         'REYN'                => ['6894.75729', 'reyn'],
-        'SLUG_PER_FOOT_SECOND'=> ['47.880259',  'slug/ft s'],
+        'SLUG_PER_FOOT_SECOND' => ['47.880259',  'slug/ft s'],
         'WATER_20C'           => ['0.001',      'water (20°)'],
         'WATER_40C'           => ['0.00065',    'water (40°)'],
         'HEAVY_OIL_20C'       => ['0.45',       'oil (20°)'],

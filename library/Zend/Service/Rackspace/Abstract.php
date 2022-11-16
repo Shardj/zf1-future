@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -111,7 +112,7 @@ abstract class Zend_Service_Rackspace_Abstract
      * @param string $key
      * @param string $authUrl
      */
-    public function __construct($user, $key, $authUrl=self::US_AUTH_URL)
+    public function __construct($user, $key, $authUrl = self::US_AUTH_URL)
     {
         if (!isset($user)) {
             require_once 'Zend/Service/Rackspace/Exception.php';
@@ -313,7 +314,7 @@ abstract class Zend_Service_Rackspace_Abstract
      */
     public function isSuccessful()
     {
-        return ($this->errorMsg=='');
+        return ($this->errorMsg == '');
     }
     /**
      * HTTP call
@@ -325,7 +326,7 @@ abstract class Zend_Service_Rackspace_Abstract
      * @param string $body
      * @return Zend_Http_Response
      */
-    protected function httpCall($url,$method,$headers=[],$data=[],$body=null)
+    protected function httpCall($url, $method, $headers = [], $data = [], $body = null)
     {
         $client = $this->getHttpClient();
         $client->resetParameters(true);
@@ -335,23 +336,23 @@ abstract class Zend_Service_Rackspace_Abstract
             $client->setEncType('');
         }
         if (empty($headers[self::AUTHUSER_HEADER])) {
-            $headers[self::AUTHTOKEN]= $this->getToken();
+            $headers[self::AUTHTOKEN] = $this->getToken();
         }
         $client->setMethod($method);
         if (empty($data['format'])) {
-            $data['format']= self::API_FORMAT;
+            $data['format'] = self::API_FORMAT;
         }
         $client->setParameterGet($data);
         if (!empty($body)) {
             $client->setRawData($body);
             if (!isset($headers['Content-Type'])) {
-                $headers['Content-Type']= 'application/json';
+                $headers['Content-Type'] = 'application/json';
             }
         }
         $client->setHeaders($headers);
         $client->setUri($url);
-        $this->errorMsg='';
-        $this->errorCode='';
+        $this->errorMsg = '';
+        $this->errorCode = '';
         return $client->request();
     }
     /**
@@ -373,8 +374,8 @@ abstract class Zend_Service_Rackspace_Abstract
             self::AUTHUSER_HEADER => $this->user,
             self::AUTHKEY_HEADER => $this->key
         ];
-        $result = $this->httpCall($this->authUrl.'/'.self::VERSION,'GET', $headers);
-        if ($result->getStatus()==204) {
+        $result = $this->httpCall($this->authUrl . '/' . self::VERSION, 'GET', $headers);
+        if ($result->getStatus() == 204) {
             $this->token = $result->getHeader(self::AUTHTOKEN);
             $this->cdnUrl = $result->getHeader(self::CDNM_URL);
             $this->managementUrl = $result->getHeader(self::MANAGEMENT_URL);

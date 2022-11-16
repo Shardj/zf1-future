@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -30,7 +31,6 @@
  */
 class Zend_Tool_Project_Profile_Iterator_EnabledResourceFilter extends RecursiveFilterIterator
 {
-
     /**
      * accept() is required by teh RecursiveFilterIterator
      *

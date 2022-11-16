@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/CodeGenerator/Php/Abstract.php';
  */
 class Zend_CodeGenerator_Php_Docblock_Tag extends Zend_CodeGenerator_Php_Abstract
 {
-
     /**
      * @var Zend_Loader_PluginLoader
      */
@@ -96,8 +96,7 @@ class Zend_CodeGenerator_Php_Docblock_Tag extends Zend_CodeGenerator_Php_Abstrac
         if (self::$_pluginLoader == null) {
             require_once 'Zend/Loader/PluginLoader.php';
             self::setPluginLoader(new Zend_Loader_PluginLoader([
-                'Zend_CodeGenerator_Php_Docblock_Tag' => dirname(__FILE__) . '/Tag/'])
-                );
+                'Zend_CodeGenerator_Php_Docblock_Tag' => dirname(__FILE__) . '/Tag/']));
         }
 
         return self::$_pluginLoader;
@@ -173,5 +172,4 @@ class Zend_CodeGenerator_Php_Docblock_Tag extends Zend_CodeGenerator_Php_Abstrac
         }
         return $tag;
     }
-
 }

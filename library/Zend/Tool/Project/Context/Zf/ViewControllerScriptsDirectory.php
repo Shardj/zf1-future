@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -54,7 +55,6 @@ require_once 'Zend/Filter/StringToLower.php';
  */
 class Zend_Tool_Project_Context_Zf_ViewControllerScriptsDirectory extends Zend_Tool_Project_Context_Filesystem_Directory
 {
-
     /**
      * @var string
      */
@@ -107,5 +107,4 @@ class Zend_Tool_Project_Context_Zf_ViewControllerScriptsDirectory extends Zend_T
             ->addFilter(new Zend_Filter_StringToLower());
         return $filter->filter($controllerName);
     }
-
 }

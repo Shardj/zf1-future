@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @copyright  Copyright (c) 2010 Rob Allen (rob@akrabat.com)
  * @version    $Id: $
  */
-
 
 /**
  * @see Zend_Db_Adapter_Pdo_Abstract
@@ -86,13 +86,12 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
         if (isset($dsn['name'])) {
             $dsn = $this->_pdoType . ':' . $dsn['name'];
         } else {
-
-            if(isset($dsn['dbname'])) {
+            if (isset($dsn['dbname'])) {
                 $dsn['Database'] = $dsn['dbname'];
                 unset($dsn['dbname']);
             }
 
-            if(isset($dsn['host'])) {
+            if (isset($dsn['host'])) {
                 $dsn['Server'] = $dsn['host'];
                 unset($dsn['host']);
             }
@@ -144,8 +143,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
         $sql = null;
 
         // Default transaction level in sql server
-        if ($level === null)
-        {
+        if ($level === null) {
             $level = SQLSRV_TXN_READ_COMMITTED;
         }
 
@@ -315,8 +313,8 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
      * @return string
      * @throws Zend_Db_Adapter_Exceptions
      */
-     public function limit($sql, $count, $offset = 0)
-     {
+    public function limit($sql, $count, $offset = 0)
+    {
         $count = (int)$count;
         if ($count <= 0) {
             require_once 'Zend/Db/Adapter/Exception.php';
@@ -340,7 +338,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
                 $order = trim(preg_replace('/\bASC\b|\bDESC\b/i', '', $order));
             }
 
-            $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . ($count+$offset) . ' ', $sql);
+            $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . ($count + $offset) . ' ', $sql);
 
             $sql = 'SELECT * FROM (SELECT TOP ' . $count . ' * FROM (' . $sql . ') AS inner_tbl';
             if ($orderby !== false) {

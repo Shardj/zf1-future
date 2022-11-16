@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -100,7 +101,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
 
         // Support for durable subscriptions
         // Must send client-id header in CONNECT AND activemq.subscriptionName in SUBSCRIBE
-        if(isset($options['client-id'])) {
+        if (isset($options['client-id'])) {
             $connect->setHeader('client-id', $options['client-id']);
         }
 
@@ -110,7 +111,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
             && ($response->getCommand() != 'CONNECTED')
         ) {
             require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception("Unable to authenticate to '".$options['scheme'].'://'.$options['host'].':'.$options['port']."'");
+            throw new Zend_Queue_Exception("Unable to authenticate to '" . $options['scheme'] . '://' . $options['host'] . ':' . $options['port'] . "'");
         }
     }
 
@@ -136,7 +137,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @return void
      * @throws Zend_Queue_Exception
      */
-    public function create($name, $timeout=null)
+    public function create($name, $timeout = null)
     {
         require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception('create() is not supported in ' . get_class($this));
@@ -214,7 +215,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         // Support for durable subscriptions
         // If a client-id is configured in the driver options,
         // set the activemq.subscriptionName header with client-id as the value
-        if(isset($this->_options['driverOptions']['client-id'])) {
+        if (isset($this->_options['driverOptions']['client-id'])) {
             $frame->setHeader('activemq.subscriptionName', $this->_options['driverOptions']['client-id']);
         }
 
@@ -230,7 +231,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @param  Zend_Queue $queue
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null)
     {
         if ($maxMessages === null) {
             $maxMessages = 1;
@@ -246,7 +247,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $data = [];
 
         // signal that we are reading
-        if (!$this->_isSubscribed($queue)){
+        if (!$this->_isSubscribed($queue)) {
             $this->_subscribe($queue);
         }
 
@@ -296,7 +297,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @param  Zend_Queue $queue
      * @return Zend_Queue_Message
      */
-    public function send($message, Zend_Queue $queue=null)
+    public function send($message, Zend_Queue $queue = null)
     {
         if ($queue === null) {
             $queue = $this->_queue;
@@ -308,7 +309,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $frame->setHeader('content-length', strlen($message));
 
         // If persistent driver option is present, set the persistent header
-        if(isset($this->_options['driverOptions']['persistent'])) {
+        if (isset($this->_options['driverOptions']['persistent'])) {
             $frame->setHeader('persistent', $this->_options['driverOptions']['persistent']);
         }
 
@@ -343,7 +344,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * @throws Zend_Queue_Exception (not supported)
      */
     #[\ReturnTypeWillChange]
-    public function count(Zend_Queue $queue=null)
+    public function count(Zend_Queue $queue = null)
     {
         require_once 'Zend/Queue/Exception.php';
         throw new Zend_Queue_Exception('count() is not supported in this adapter');

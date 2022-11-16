@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,7 +34,6 @@ require_once 'Zend/Crypt/Math/BigInteger.php';
  */
 class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
 {
-
     /**
      * Generate a pseudorandom number within the given range.
      * Will attempt to read from a systems RNG if it exists or else utilises

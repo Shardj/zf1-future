@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -34,8 +35,7 @@ require_once 'Zend/Queue/Stomp/Client/ConnectionInterface.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Queue_Stomp_Client_Connection
-    implements Zend_Queue_Stomp_Client_ConnectionInterface
+class Zend_Queue_Stomp_Client_Connection implements Zend_Queue_Stomp_Client_ConnectionInterface
 {
     const READ_TIMEOUT_DEFAULT_USEC = 0; // 0 microseconds
     const READ_TIMEOUT_DEFAULT_SEC = 5; // 5 seconds

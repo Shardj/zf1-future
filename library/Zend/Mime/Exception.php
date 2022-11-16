@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -33,4 +34,3 @@ require_once 'Zend/Exception.php';
 class Zend_Mime_Exception extends Zend_Exception
 {
 }
-

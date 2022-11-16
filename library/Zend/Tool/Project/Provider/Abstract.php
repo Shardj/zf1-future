@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -53,9 +54,7 @@ require_once 'Zend/Tool/Framework/Provider/Initializable.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Tool_Project_Provider_Abstract
-    extends Zend_Tool_Framework_Provider_Abstract
-    implements Zend_Tool_Framework_Provider_Initializable
+abstract class Zend_Tool_Project_Provider_Abstract extends Zend_Tool_Framework_Provider_Abstract implements Zend_Tool_Framework_Provider_Initializable
 {
     const NO_PROFILE_THROW_EXCEPTION = true;
     const NO_PROFILE_RETURN_FALSE    = false;
@@ -76,14 +75,15 @@ abstract class Zend_Tool_Project_Provider_Abstract
     {
         // initialize the ZF Contexts (only once per php request)
         if (!self::$_isInitialized) {
-
             // load all base contexts ONCE
             $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
             $contextRegistry->addContextsFromDirectory(
-                dirname(dirname(__FILE__)) . '/Context/Zf/', 'Zend_Tool_Project_Context_Zf_'
+                dirname(dirname(__FILE__)) . '/Context/Zf/',
+                'Zend_Tool_Project_Context_Zf_'
             );
             $contextRegistry->addContextsFromDirectory(
-                dirname(dirname(__FILE__)) . '/Context/Filesystem/', 'Zend_Tool_Project_Context_Filesystem_'
+                dirname(dirname(__FILE__)) . '/Context/Filesystem/',
+                'Zend_Tool_Project_Context_Filesystem_'
             );
 
             // determine if there are project specfic providers ONCE

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -461,7 +462,7 @@ abstract class Zend_Pdf_Font
      * @throws Zend_Pdf_Exception
      */
     public static function fontWithName($name, $embeddingOptions = 0)
-        {
+    {
         /* First check the cache. Don't duplicate font objects.
          */
         if (isset(Zend_Pdf_Font::$_fontNames[$name])) {
@@ -552,8 +553,10 @@ abstract class Zend_Pdf_Font
 
             default:
                 require_once 'Zend/Pdf/Exception.php';
-                throw new Zend_Pdf_Exception("Unknown font name: $name",
-                                             Zend_Pdf_Exception::BAD_FONT_NAME);
+                throw new Zend_Pdf_Exception(
+                    "Unknown font name: $name",
+                    Zend_Pdf_Exception::BAD_FONT_NAME
+                );
         }
 
         /* Add this new font to the cache array and return it for use.
@@ -659,15 +662,15 @@ abstract class Zend_Pdf_Font
             $filePathKey = md5($filePath);
             Zend_Pdf_Font::$_fontFilePaths[$filePathKey] = $font;
             return $font;
-
         } else {
             /* The type of font could not be determined. Give up.
              */
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Cannot determine font type: $filePath",
-                                         Zend_Pdf_Exception::CANT_DETERMINE_FONT_TYPE);
-         }
-
+            throw new Zend_Pdf_Exception(
+                "Cannot determine font type: $filePath",
+                Zend_Pdf_Exception::CANT_DETERMINE_FONT_TYPE
+            );
+        }
     }
 
 

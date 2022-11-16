@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -158,7 +159,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
             gzwrite($file, $content);
             gzclose($file);
             $compressed = true;
-        } else if ($this->_options['mode'] == 'deflate') {
+        } elseif ($this->_options['mode'] == 'deflate') {
             $compressed = gzdeflate($content, $this->getLevel());
         } else {
             $compressed = gzcompress($content, $this->getLevel());
@@ -203,7 +204,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
             $file       = gzopen($archive, 'r');
             $compressed = gzread($file, $size);
             gzclose($file);
-        } else if ($mode == 'deflate') {
+        } elseif ($mode == 'deflate') {
             $compressed = gzinflate($content);
         } else {
             $compressed = gzuncompress($content);

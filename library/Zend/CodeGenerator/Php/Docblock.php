@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -131,7 +132,7 @@ class Zend_CodeGenerator_Php_Docblock extends Zend_CodeGenerator_Php_Abstract
      * @param array $tags
      * @return Zend_CodeGenerator_Php_Docblock
      */
-    public function setTags(Array $tags)
+    public function setTags(array $tags)
     {
         foreach ($tags as $tag) {
             $this->setTag($tag);
@@ -155,7 +156,7 @@ class Zend_CodeGenerator_Php_Docblock extends Zend_CodeGenerator_Php_Abstract
             throw new Zend_CodeGenerator_Php_Exception(
                 'setTag() expects either an array of method options or an '
                 . 'instance of Zend_CodeGenerator_Php_Docblock_Tag'
-                );
+            );
         }
 
         $this->_tags[] = $tag;

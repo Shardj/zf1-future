@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -32,7 +33,6 @@ require_once 'Zend/Markup/Token.php';
  */
 class Zend_Markup_TokenList implements RecursiveIterator
 {
-
     /**
      * Array of tokens
      *

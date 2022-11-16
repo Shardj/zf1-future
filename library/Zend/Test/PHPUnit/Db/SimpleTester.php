@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -49,9 +50,9 @@ class Zend_Test_PHPUnit_Db_SimpleTester extends PHPUnit_Extensions_Database_Defa
      */
     public function __construct(PHPUnit_Extensions_Database_DB_IDatabaseConnection $connection)
     {
-        if(!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
+        if (!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
             require_once "Zend/Test/PHPUnit/Db/Exception.php";
-            throw new Zend_Test_PHPUnit_Db_Exception("Not a valid Zend_Test_PHPUnit_Db_Connection instance, ".get_class($connection)." given!");
+            throw new Zend_Test_PHPUnit_Db_Exception("Not a valid Zend_Test_PHPUnit_Db_Connection instance, " . get_class($connection) . " given!");
         }
 
         $this->connection = $connection;

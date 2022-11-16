@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -153,8 +154,10 @@ class Zend_Oauth_Http_RequestToken extends Zend_Oauth_Http
                 $httpClient = $this->getRequestSchemePostBodyClient($params);
                 break;
             case Zend_Oauth::REQUEST_SCHEME_QUERYSTRING:
-                $httpClient = $this->getRequestSchemeQueryStringClient($params,
-                    $this->_consumer->getRequestTokenUrl());
+                $httpClient = $this->getRequestSchemeQueryStringClient(
+                    $params,
+                    $this->_consumer->getRequestTokenUrl()
+                );
                 break;
         }
         return $httpClient->request();

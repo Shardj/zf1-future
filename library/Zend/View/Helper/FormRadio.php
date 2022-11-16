@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,7 +20,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 
 /**
  * Abstract class for extension
@@ -68,9 +68,13 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
      *
      * @return string The radio buttons XHTML.
      */
-    public function formRadio($name, $value = null, $attribs = null,
-        $options = null, $listsep = "<br />\n")
-    {
+    public function formRadio(
+        $name,
+        $value = null,
+        $attribs = null,
+        $options = null,
+        $listsep = "<br />\n"
+    ) {
 
         $info = $this->_getInfo($name, $value, $attribs, $options, $listsep);
         extract($info); // name, value, attribs, options, listsep, disable
@@ -132,7 +136,6 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
 
         // add radio buttons to the list.
         foreach ($options as $opt_value => $opt_label) {
-
             // Should the label be escaped?
             if ($escape) {
                 $opt_label = $this->view->escape($opt_label);

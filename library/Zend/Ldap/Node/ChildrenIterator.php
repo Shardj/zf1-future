@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -116,7 +117,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      */
     public function valid(): bool
     {
-        return (current($this->_data)!==false);
+        return (current($this->_data) !== false);
     }
 
     /**
@@ -184,7 +185,9 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      * @param  string $name
      * @return null
      */
-    public function offsetUnset($name): void { }
+    public function offsetUnset($name): void
+    {
+    }
 
     /**
      * Does nothing.
@@ -194,7 +197,9 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      * @param  mixed $value
      * @return null
      */
-    public function offsetSet($name, $value): void { }
+    public function offsetSet($name, $value): void
+    {
+    }
 
     /**
      * Get all children as an array
