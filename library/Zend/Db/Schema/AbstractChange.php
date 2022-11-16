@@ -29,12 +29,12 @@ abstract class Zend_Db_Schema_AbstractChange
      *
      * @return null
      */
-    abstract function up();
+    abstract public function up();
 
     /**
      * Rollback changes made in up()
      *
      * @return null
      */
-    abstract function down();
+    abstract public function down();
 }

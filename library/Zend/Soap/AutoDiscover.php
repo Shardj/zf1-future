@@ -342,9 +342,9 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
      */
     public function addFunction($function, $namespace = '')
     {
-        public static $port;
-        public static $operation;
-        public static $binding;
+        static $port;
+        static $operation;
+        static $binding;
 
         if (!is_array($function)) {
             $function = (array) $function;

@@ -801,10 +801,8 @@ class Zend_OpenId_Consumer
             } else {
                 $this->_setError("Unable to get URI for XRDS discovery");
             }
-        }
-
-        /* HTML-based discovery */
-        elseif (preg_match(
+        } elseif (preg_match(
+            /* HTML-based discovery */
             '/<link[^>]*rel=(["\'])[ \t]*(?:[^ \t"\']+[ \t]+)*?openid2.provider[ \t]*[^"\']*\\1[^>]*href=(["\'])([^"\']+)\\2[^>]*\/?>/i',
             $response,
             $r

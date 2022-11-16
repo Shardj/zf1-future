@@ -169,9 +169,8 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
                 $tagName = strtolower($element);
                 // Store the tag as allowed with no attributes
                 $this->_tagsAllowed[$tagName] = [];
-            }
-            // Otherwise, if a tag was provided with attributes
-            elseif (is_string($index) && (is_array($element) || is_string($element))) {
+            } elseif (is_string($index) && (is_array($element) || is_string($element))) {
+                // Otherwise, if a tag was provided with attributes
                 // Canonicalize the tag name
                 $tagName = strtolower($index);
                 // Canonicalize the attributes

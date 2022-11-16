@@ -81,7 +81,7 @@ class Zend_Service_Yahoo
      */
     public function inlinkDataSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['results'     => '50',
+        static $defaultOptions = ['results'     => '50',
                                        'start'    => 1];
 
         $options = $this->_prepareOptions($query, $options, $defaultOptions);
@@ -132,7 +132,7 @@ class Zend_Service_Yahoo
      */
     public function imageSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['type'       => 'all',
+        static $defaultOptions = ['type'       => 'all',
                                        'results'    => 10,
                                        'start'      => 1,
                                        'format'     => 'any',
@@ -196,7 +196,7 @@ class Zend_Service_Yahoo
      */
     public function localSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['results' => 10,
+        static $defaultOptions = ['results' => 10,
                                        'start'   => 1,
                                        'sort'    => 'distance',
                                        'radius'  => 5];
@@ -250,7 +250,7 @@ class Zend_Service_Yahoo
      */
     public function newsSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['type'     => 'all',
+        static $defaultOptions = ['type'     => 'all',
                                        'start'    => 1,
                                        'sort'     => 'rank'];
 
@@ -298,7 +298,7 @@ class Zend_Service_Yahoo
      */
     public function pageDataSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['results'     => '50',
+        static $defaultOptions = ['results'     => '50',
                                        'start'    => 1];
 
         $options = $this->_prepareOptions($query, $options, $defaultOptions);
@@ -348,7 +348,7 @@ class Zend_Service_Yahoo
      */
     public function videoSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['type'       => 'all',
+        static $defaultOptions = ['type'       => 'all',
                                        'results'    => 10,
                                        'start'      => 1,
                                        'format'     => 'any'];
@@ -405,7 +405,7 @@ class Zend_Service_Yahoo
      */
     public function webSearch($query, array $options = [])
     {
-        public static $defaultOptions = ['type'     => 'all',
+        static $defaultOptions = ['type'     => 'all',
                                        'start'    => 1,
                                        'results'  => 10,
                                        'format'   => 'any'];

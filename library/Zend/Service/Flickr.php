@@ -89,11 +89,13 @@ class Zend_Service_Flickr
      */
     public function tagSearch($query, array $options = [])
     {
-        public static $method = 'flickr.photos.search';
-        public static $defaultOptions = ['per_page' => 10,
-                                       'page'     => 1,
-                                       'tag_mode' => 'or',
-                                       'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'];
+        static $method = 'flickr.photos.search';
+        static $defaultOptions = [
+            'per_page' => 10,
+            'page'     => 1,
+            'tag_mode' => 'or',
+            'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'
+        ];
 
         $options['tags'] = is_array($query) ? implode(',', $query) : $query;
 
@@ -146,8 +148,8 @@ class Zend_Service_Flickr
      */
     public function userSearch($query, array $options = null)
     {
-        public static $method = 'flickr.people.getPublicPhotos';
-        public static $defaultOptions = ['per_page' => 10,
+        static $method = 'flickr.people.getPublicPhotos';
+        static $defaultOptions = ['per_page' => 10,
                                        'page'     => 1,
                                        'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'];
 
@@ -199,8 +201,8 @@ class Zend_Service_Flickr
      */
     public function groupPoolGetPhotos($query, array $options = [])
     {
-        public static $method = 'flickr.groups.pools.getPhotos';
-        public static $defaultOptions = ['per_page' => 10,
+        static $method = 'flickr.groups.pools.getPhotos';
+        static $defaultOptions = ['per_page' => 10,
                                        'page'     => 1,
                                        'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'];
 
@@ -256,7 +258,7 @@ class Zend_Service_Flickr
      */
     public function getIdByUsername($username)
     {
-        public static $method = 'flickr.people.findByUsername';
+        static $method = 'flickr.people.findByUsername';
 
         $options = ['api_key' => $this->apiKey, 'method' => $method, 'username' => (string) $username];
 
@@ -300,7 +302,7 @@ class Zend_Service_Flickr
      */
     public function getIdByEmail($email)
     {
-        public static $method = 'flickr.people.findByEmail';
+        static $method = 'flickr.people.findByEmail';
 
         if (empty($email)) {
             /**
@@ -342,7 +344,7 @@ class Zend_Service_Flickr
      */
     public function getImageDetails($id)
     {
-        public static $method = 'flickr.photos.getSizes';
+        static $method = 'flickr.photos.getSizes';
 
         if (empty($id)) {
             /**
