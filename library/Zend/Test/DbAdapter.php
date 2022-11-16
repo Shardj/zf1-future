@@ -338,7 +338,7 @@ class Zend_Test_DbAdapter extends Zend_Db_Adapter_Abstract
      *
      * @return string
      */
-    function getServerVersion()
+    public function getServerVersion()
     {
         return "1.0.0";
     }

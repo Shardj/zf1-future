@@ -64,7 +64,7 @@ class Zend_Amf_Parse_Resource_MysqliResult
     ];
 
     // Build an associative array for a type look up
-    static $mysqli_to_php = [
+    public static $mysqli_to_php = [
         "MYSQLI_TYPE_DECIMAL"     => 'float',
         "MYSQLI_TYPE_NEWDECIMAL"  => 'float',
         "MYSQLI_TYPE_BIT"         => 'integer',
