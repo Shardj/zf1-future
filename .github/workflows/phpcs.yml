@@ -35,11 +35,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --ignore-platform-req=ext-*
 
       - name: PHPCodeSniffer
-        run: php vendor/bin/phpcs -s -p --report=full --standard=.github/workflows/phpcs-ruleset.xml library
+        run: php bin/phpcs -s -p --report=full --standard=.github/workflows/phpcs-ruleset.xml library
