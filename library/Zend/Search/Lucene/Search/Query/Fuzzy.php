@@ -35,14 +35,14 @@ require_once 'Zend/Search/Lucene/Search/Query.php';
 class Zend_Search_Lucene_Search_Query_Fuzzy extends Zend_Search_Lucene_Search_Query
 {
     /** Default minimum similarity */
-    const DEFAULT_MIN_SIMILARITY = 0.5;
+    public const DEFAULT_MIN_SIMILARITY = 0.5;
 
     /**
      * Maximum number of matched terms.
      * Apache Lucene defines this limitation as boolean query maximum number of clauses:
      * org.apache.lucene.search.BooleanQuery.getMaxClauseCount()
      */
-    const MAX_CLAUSE_COUNT = 1024;
+    public const MAX_CLAUSE_COUNT = 1024;
 
     /**
      * Array of precalculated max distances

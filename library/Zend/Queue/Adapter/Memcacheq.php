@@ -37,9 +37,9 @@ require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
  */
 class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
 {
-    const DEFAULT_HOST = '127.0.0.1';
-    const DEFAULT_PORT = 22201;
-    const EOL          = "\r\n";
+    public const DEFAULT_HOST = '127.0.0.1';
+    public const DEFAULT_PORT = 22201;
+    public const EOL          = "\r\n";
 
     /**
      * @var Memcache

@@ -33,8 +33,8 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_Hex extends Zend_Validate_Abstract
 {
-    const INVALID = 'hexInvalid';
-    const NOT_HEX = 'notHex';
+    public const INVALID = 'hexInvalid';
+    public const NOT_HEX = 'notHex';
 
     /**
      * Validation failure message template definitions

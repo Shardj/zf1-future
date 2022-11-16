@@ -30,9 +30,9 @@
  */
 class Zend_Ldap_Dn implements ArrayAccess
 {
-    const ATTR_CASEFOLD_NONE  = 'none';
-    const ATTR_CASEFOLD_UPPER = 'upper';
-    const ATTR_CASEFOLD_LOWER = 'lower';
+    public const ATTR_CASEFOLD_NONE  = 'none';
+    public const ATTR_CASEFOLD_UPPER = 'upper';
+    public const ATTR_CASEFOLD_LOWER = 'lower';
 
     /**
      * The default case fold to use

@@ -48,12 +48,12 @@ class Zend_Service_WindowsAzure_Storage_Queue extends Zend_Service_WindowsAzure_
     /**
      * Maximal message size (in bytes)
      */
-    const MAX_MESSAGE_SIZE = 8388608;
+    public const MAX_MESSAGE_SIZE = 8388608;
 
     /**
      * Maximal message ttl (in seconds)
      */
-    const MAX_MESSAGE_TTL = 604800;
+    public const MAX_MESSAGE_TTL = 604800;
 
     /**
      * Creates a new Zend_Service_WindowsAzure_Storage_Queue instance

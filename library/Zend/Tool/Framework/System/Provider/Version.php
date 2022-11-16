@@ -39,9 +39,9 @@ class Zend_Tool_Framework_System_Provider_Version implements Zend_Tool_Framework
      */
     protected $_registry = null;
 
-    const MODE_MAJOR = 'major';
-    const MODE_MINOR = 'minor';
-    const MODE_MINI  = 'mini';
+    public const MODE_MAJOR = 'major';
+    public const MODE_MINOR = 'minor';
+    public const MODE_MINI  = 'mini';
 
     protected $_specialties = ['MajorPart', 'MinorPart', 'MiniPart'];
 

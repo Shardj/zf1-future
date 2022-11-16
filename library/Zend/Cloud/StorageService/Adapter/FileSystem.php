@@ -35,7 +35,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
     /**
      * Options array keys for the file system adapter.
      */
-    const LOCAL_DIRECTORY = 'local_directory';
+    public const LOCAL_DIRECTORY = 'local_directory';
 
     /**
      * The directory for the data

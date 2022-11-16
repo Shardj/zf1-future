@@ -29,7 +29,7 @@
  */
 class Zend_Xml_Security
 {
-    const ENTITY_DETECT = 'Detected use of ENTITY in XML, disabled to prevent XXE/XEE attacks';
+    public const ENTITY_DETECT = 'Detected use of ENTITY in XML, disabled to prevent XXE/XEE attacks';
 
     /**
      * Heuristic scan to detect entity in XML

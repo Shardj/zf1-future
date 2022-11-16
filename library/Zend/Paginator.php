@@ -43,13 +43,13 @@ class Zend_Paginator implements Countable, IteratorAggregate
      *
      * @var string
      */
-    const INTERNAL_ADAPTER = 'Zend_Paginator_Adapter_Internal';
+    public const INTERNAL_ADAPTER = 'Zend_Paginator_Adapter_Internal';
 
     /**
      * The cache tag prefix used to namespace Paginator results in the cache
      *
      */
-    const CACHE_TAG_PREFIX = 'Zend_Paginator_';
+    public const CACHE_TAG_PREFIX = 'Zend_Paginator_';
 
     /**
      * Adapter plugin loader

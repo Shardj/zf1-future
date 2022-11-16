@@ -36,24 +36,24 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     /**#@+
      * Plugin loader type constants
      */
-    const DECORATOR = 'DECORATOR';
-    const ELEMENT = 'ELEMENT';
+    public const DECORATOR = 'DECORATOR';
+    public const ELEMENT = 'ELEMENT';
     /**#@-*/
 
     /**#@+
      * Method type constants
      */
-    const METHOD_DELETE = 'delete';
-    const METHOD_GET    = 'get';
-    const METHOD_POST   = 'post';
-    const METHOD_PUT    = 'put';
+    public const METHOD_DELETE = 'delete';
+    public const METHOD_GET    = 'get';
+    public const METHOD_POST   = 'post';
+    public const METHOD_PUT    = 'put';
     /**#@-*/
 
     /**#@+
      * Encoding type constants
      */
-    const ENCTYPE_URLENCODED = 'application/x-www-form-urlencoded';
-    const ENCTYPE_MULTIPART  = 'multipart/form-data';
+    public const ENCTYPE_URLENCODED = 'application/x-www-form-urlencoded';
+    public const ENCTYPE_MULTIPART  = 'multipart/form-data';
     /**#@-*/
 
     /**

@@ -34,8 +34,8 @@ require_once 'Zend/Markup/TokenList.php';
  */
 class Zend_Markup_Token
 {
-    const TYPE_NONE    = 'none';
-    const TYPE_TAG     = 'tag';
+    public const TYPE_NONE    = 'none';
+    public const TYPE_TAG     = 'tag';
 
     /**
      * Children of this token

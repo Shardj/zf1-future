@@ -38,11 +38,11 @@ require_once 'Zend/Crypt/Math.php';
  */
 class Zend_Ldap_Attribute
 {
-    const PASSWORD_HASH_MD5   = 'md5';
-    const PASSWORD_HASH_SMD5  = 'smd5';
-    const PASSWORD_HASH_SHA   = 'sha';
-    const PASSWORD_HASH_SSHA  = 'ssha';
-    const PASSWORD_UNICODEPWD = 'unicodePwd';
+    public const PASSWORD_HASH_MD5   = 'md5';
+    public const PASSWORD_HASH_SMD5  = 'smd5';
+    public const PASSWORD_HASH_SHA   = 'sha';
+    public const PASSWORD_HASH_SSHA  = 'ssha';
+    public const PASSWORD_UNICODEPWD = 'unicodePwd';
 
     /**
      * Sets a LDAP attribute.

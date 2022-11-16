@@ -91,18 +91,18 @@ class Zend_Service_WindowsAzure_Management_Client
     /**
      * Management service URL
      */
-    const URL_MANAGEMENT        = "https://management.core.windows.net";
+    public const URL_MANAGEMENT        = "https://management.core.windows.net";
 
     /**
      * Operations
      */
-    const OP_OPERATIONS                = "operations";
-    const OP_STORAGE_ACCOUNTS          = "services/storageservices";
-    const OP_HOSTED_SERVICES           = "services/hostedservices";
-    const OP_AFFINITYGROUPS            = "affinitygroups";
-    const OP_LOCATIONS                 = "locations";
-    const OP_OPERATINGSYSTEMS          = "operatingsystems";
-    const OP_OPERATINGSYSTEMFAMILIES   = "operatingsystemfamilies";
+    public const OP_OPERATIONS                = "operations";
+    public const OP_STORAGE_ACCOUNTS          = "services/storageservices";
+    public const OP_HOSTED_SERVICES           = "services/hostedservices";
+    public const OP_AFFINITYGROUPS            = "affinitygroups";
+    public const OP_LOCATIONS                 = "locations";
+    public const OP_OPERATINGSYSTEMS          = "operatingsystems";
+    public const OP_OPERATINGSYSTEMFAMILIES   = "operatingsystemfamilies";
 
     /**
      * Current API version

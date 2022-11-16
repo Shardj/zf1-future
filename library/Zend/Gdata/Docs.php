@@ -58,11 +58,11 @@ require_once 'Zend/Gdata/App/Extension/Title.php';
  */
 class Zend_Gdata_Docs extends Zend_Gdata
 {
-    const DOCUMENTS_LIST_FEED_URI = 'https://docs.google.com/feeds/documents/private/full';
-    const DOCUMENTS_FOLDER_FEED_URI = 'https://docs.google.com/feeds/folders/private/full';
-    const DOCUMENTS_CATEGORY_SCHEMA = 'http://schemas.google.com/g/2005#kind';
-    const DOCUMENTS_CATEGORY_TERM = 'http://schemas.google.com/docs/2007#folder';
-    const AUTH_SERVICE_NAME = 'writely';
+    public const DOCUMENTS_LIST_FEED_URI = 'https://docs.google.com/feeds/documents/private/full';
+    public const DOCUMENTS_FOLDER_FEED_URI = 'https://docs.google.com/feeds/folders/private/full';
+    public const DOCUMENTS_CATEGORY_SCHEMA = 'http://schemas.google.com/g/2005#kind';
+    public const DOCUMENTS_CATEGORY_TERM = 'http://schemas.google.com/docs/2007#folder';
+    public const AUTH_SERVICE_NAME = 'writely';
 
     /**
      * @var string

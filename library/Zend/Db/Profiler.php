@@ -34,49 +34,49 @@ class Zend_Db_Profiler
     /**
      * A connection operation or selecting a database.
      */
-    const CONNECT = 1;
+    public const CONNECT = 1;
 
     /**
      * Any general database query that does not fit into the other constants.
      */
-    const QUERY = 2;
+    public const QUERY = 2;
 
     /**
      * Adding new data to the database, such as SQL's INSERT.
      */
-    const INSERT = 4;
+    public const INSERT = 4;
 
     /**
      * Updating existing information in the database, such as SQL's UPDATE.
      *
      */
-    const UPDATE = 8;
+    public const UPDATE = 8;
 
     /**
      * An operation related to deleting data in the database,
      * such as SQL's DELETE.
      */
-    const DELETE = 16;
+    public const DELETE = 16;
 
     /**
      * Retrieving information from the database, such as SQL's SELECT.
      */
-    const SELECT = 32;
+    public const SELECT = 32;
 
     /**
      * Transactional operation, such as start transaction, commit, or rollback.
      */
-    const TRANSACTION = 64;
+    public const TRANSACTION = 64;
 
     /**
      * Inform that a query is stored (in case of filtering)
      */
-    const STORED = 'stored';
+    public const STORED = 'stored';
 
     /**
      * Inform that a query is ignored (in case of filtering)
      */
-    const IGNORED = 'ignored';
+    public const IGNORED = 'ignored';
 
     /**
      * Array of Zend_Db_Profiler_Query objects.

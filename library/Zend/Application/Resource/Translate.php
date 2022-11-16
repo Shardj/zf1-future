@@ -39,7 +39,7 @@ require_once 'Zend/Application/Resource/ResourceAbstract.php';
  */
 class Zend_Application_Resource_Translate extends Zend_Application_Resource_ResourceAbstract
 {
-    const DEFAULT_REGISTRY_KEY = 'Zend_Translate';
+    public const DEFAULT_REGISTRY_KEY = 'Zend_Translate';
 
     /**
      * @var Zend_Translate

@@ -28,14 +28,14 @@
  */
 class Zend_Ldap
 {
-    const SEARCH_SCOPE_SUB  = 1;
-    const SEARCH_SCOPE_ONE  = 2;
-    const SEARCH_SCOPE_BASE = 3;
+    public const SEARCH_SCOPE_SUB  = 1;
+    public const SEARCH_SCOPE_ONE  = 2;
+    public const SEARCH_SCOPE_BASE = 3;
 
-    const ACCTNAME_FORM_DN        = 1;
-    const ACCTNAME_FORM_USERNAME  = 2;
-    const ACCTNAME_FORM_BACKSLASH = 3;
-    const ACCTNAME_FORM_PRINCIPAL = 4;
+    public const ACCTNAME_FORM_DN        = 1;
+    public const ACCTNAME_FORM_USERNAME  = 2;
+    public const ACCTNAME_FORM_BACKSLASH = 3;
+    public const ACCTNAME_FORM_PRINCIPAL = 4;
 
     /**
      * String used with ldap_connect for error handling purposes.

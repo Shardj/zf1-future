@@ -35,7 +35,7 @@ require_once 'Zend/Locale/Data.php';
  */
 class Zend_Locale_Format
 {
-    const STANDARD   = 'auto';
+    public const STANDARD   = 'auto';
 
     private static $_options = ['date_format'   => null,
                                      'number_format' => null,

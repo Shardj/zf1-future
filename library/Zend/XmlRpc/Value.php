@@ -64,29 +64,29 @@ abstract class Zend_XmlRpc_Value
     /**
      * Specify that the XML-RPC native type will be auto detected from a PHP variable type
      */
-    const AUTO_DETECT_TYPE = 'auto_detect';
+    public const AUTO_DETECT_TYPE = 'auto_detect';
 
     /**
      * Specify that the XML-RPC value will be parsed out from a given XML code
      */
-    const XML_STRING = 'xml';
+    public const XML_STRING = 'xml';
 
     /**
      * All the XML-RPC native types
      */
-    const XMLRPC_TYPE_I4        = 'i4';
-    const XMLRPC_TYPE_INTEGER   = 'int';
-    const XMLRPC_TYPE_I8        = 'i8';
-    const XMLRPC_TYPE_APACHEI8  = 'ex:i8';
-    const XMLRPC_TYPE_DOUBLE    = 'double';
-    const XMLRPC_TYPE_BOOLEAN   = 'boolean';
-    const XMLRPC_TYPE_STRING    = 'string';
-    const XMLRPC_TYPE_DATETIME  = 'dateTime.iso8601';
-    const XMLRPC_TYPE_BASE64    = 'base64';
-    const XMLRPC_TYPE_ARRAY     = 'array';
-    const XMLRPC_TYPE_STRUCT    = 'struct';
-    const XMLRPC_TYPE_NIL       = 'nil';
-    const XMLRPC_TYPE_APACHENIL = 'ex:nil';
+    public const XMLRPC_TYPE_I4        = 'i4';
+    public const XMLRPC_TYPE_INTEGER   = 'int';
+    public const XMLRPC_TYPE_I8        = 'i8';
+    public const XMLRPC_TYPE_APACHEI8  = 'ex:i8';
+    public const XMLRPC_TYPE_DOUBLE    = 'double';
+    public const XMLRPC_TYPE_BOOLEAN   = 'boolean';
+    public const XMLRPC_TYPE_STRING    = 'string';
+    public const XMLRPC_TYPE_DATETIME  = 'dateTime.iso8601';
+    public const XMLRPC_TYPE_BASE64    = 'base64';
+    public const XMLRPC_TYPE_ARRAY     = 'array';
+    public const XMLRPC_TYPE_STRUCT    = 'struct';
+    public const XMLRPC_TYPE_NIL       = 'nil';
+    public const XMLRPC_TYPE_APACHENIL = 'ex:nil';
 
     /**
      * Get the native XML-RPC type (the type is one of the Zend_XmlRpc_Value::XMLRPC_TYPE_* constants)

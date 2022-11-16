@@ -62,10 +62,10 @@ require_once 'Zend/Gdata/Books/VolumeFeed.php';
  */
 class Zend_Gdata_Books extends Zend_Gdata
 {
-    const VOLUME_FEED_URI = 'https://books.google.com/books/feeds/volumes';
-    const MY_LIBRARY_FEED_URI = 'https://books.google.com/books/feeds/users/me/collections/library/volumes';
-    const MY_ANNOTATION_FEED_URI = 'https://books.google.com/books/feeds/users/me/volumes';
-    const AUTH_SERVICE_NAME = 'print';
+    public const VOLUME_FEED_URI = 'https://books.google.com/books/feeds/volumes';
+    public const MY_LIBRARY_FEED_URI = 'https://books.google.com/books/feeds/users/me/collections/library/volumes';
+    public const MY_ANNOTATION_FEED_URI = 'https://books.google.com/books/feeds/users/me/volumes';
+    public const AUTH_SERVICE_NAME = 'print';
 
     /**
      * Namespaces used for Zend_Gdata_Books

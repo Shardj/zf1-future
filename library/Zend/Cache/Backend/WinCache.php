@@ -43,8 +43,8 @@ class Zend_Cache_Backend_WinCache extends Zend_Cache_Backend implements Zend_Cac
     /**
      * Log message
      */
-    const TAGS_UNSUPPORTED_BY_CLEAN_OF_WINCACHE_BACKEND = 'Zend_Cache_Backend_WinCache::clean() : tags are unsupported by the WinCache backend';
-    const TAGS_UNSUPPORTED_BY_SAVE_OF_WINCACHE_BACKEND =  'Zend_Cache_Backend_WinCache::save() : tags are unsupported by the WinCache backend';
+    public const TAGS_UNSUPPORTED_BY_CLEAN_OF_WINCACHE_BACKEND = 'Zend_Cache_Backend_WinCache::clean() : tags are unsupported by the WinCache backend';
+    public const TAGS_UNSUPPORTED_BY_SAVE_OF_WINCACHE_BACKEND =  'Zend_Cache_Backend_WinCache::save() : tags are unsupported by the WinCache backend';
 
     /**
      * Constructor

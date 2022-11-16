@@ -45,9 +45,9 @@ require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
  */
 abstract class Zend_Markup_Renderer_RendererAbstract
 {
-    const TYPE_CALLBACK = 4;
-    const TYPE_REPLACE  = 8;
-    const TYPE_ALIAS    = 16;
+    public const TYPE_CALLBACK = 4;
+    public const TYPE_REPLACE  = 8;
+    public const TYPE_ALIAS    = 16;
 
     /**
      * Tag info

@@ -35,7 +35,7 @@ class Zend_View_Helper_Cycle implements Iterator
      * Default name
      * @var string
      */
-    const DEFAULT_NAME = 'default';
+    public const DEFAULT_NAME = 'default';
 
     /**
      * Pointers

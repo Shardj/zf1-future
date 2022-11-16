@@ -39,7 +39,7 @@ class Zend_OpenId_Extension_Sreg extends Zend_OpenId_Extension
      * SREG 1.1 namespace. All OpenID SREG 1.1 messages MUST contain variable
      * openid.ns.sreg with its value.
      */
-    const NAMESPACE_1_1 = "http://openid.net/extensions/sreg/1.1";
+    public const NAMESPACE_1_1 = "http://openid.net/extensions/sreg/1.1";
 
     private $_props;
     private $_policy_url;

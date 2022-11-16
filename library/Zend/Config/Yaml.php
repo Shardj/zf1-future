@@ -38,7 +38,7 @@ class Zend_Config_Yaml extends Zend_Config
     /**
      * Attribute name that indicates what section a config extends from
      */
-    const EXTENDS_NAME = "_extends";
+    public const EXTENDS_NAME = "_extends";
 
     /**
      * Whether to skip extends or not

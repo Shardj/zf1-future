@@ -1045,9 +1045,9 @@ class Zend_Locale
     /**
      * Autosearch constants
      */
-    const BROWSER     = 'browser';
-    const ENVIRONMENT = 'environment';
-    const ZFDEFAULT   = 'default';
+    public const BROWSER     = 'browser';
+    public const ENVIRONMENT = 'environment';
+    public const ZFDEFAULT   = 'default';
 
     /**
      * Defines if old behaviour should be supported

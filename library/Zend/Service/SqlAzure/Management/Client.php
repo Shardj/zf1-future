@@ -56,14 +56,14 @@ class Zend_Service_SqlAzure_Management_Client
     /**
      * Management service URL
      */
-    const URL_MANAGEMENT        = "https://management.database.windows.net:8443";
+    public const URL_MANAGEMENT        = "https://management.database.windows.net:8443";
 
     /**
      * Operations
      */
-    const OP_OPERATIONS                = "operations";
-    const OP_SERVERS                   = "servers";
-    const OP_FIREWALLRULES             = "firewallrules";
+    public const OP_OPERATIONS                = "operations";
+    public const OP_SERVERS                   = "servers";
+    public const OP_FIREWALLRULES             = "firewallrules";
 
     /**
      * Current API version

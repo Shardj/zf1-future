@@ -32,8 +32,8 @@ if (class_exists('Zend_Loader_AutoloaderFactory')) {
  */
 abstract class Zend_Loader_AutoloaderFactory
 {
-    const STANDARD_AUTOLOADER  = 'Zend_Loader_StandardAutoloader';
-    const CLASS_MAP_AUTOLOADER = 'Zend_Loader_ClassMapAutoloader';
+    public const STANDARD_AUTOLOADER  = 'Zend_Loader_StandardAutoloader';
+    public const CLASS_MAP_AUTOLOADER = 'Zend_Loader_ClassMapAutoloader';
 
     /**
      * @var array All autoloaders registered using the factory

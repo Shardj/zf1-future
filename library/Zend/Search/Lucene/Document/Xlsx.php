@@ -43,35 +43,35 @@ class Zend_Search_Lucene_Document_Xlsx extends Zend_Search_Lucene_Document_OpenX
      *
      * @var string
      */
-    const SCHEMA_SPREADSHEETML = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+    public const SCHEMA_SPREADSHEETML = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
 
     /**
      * Xml Schema - DrawingML
      *
      * @var string
      */
-    const SCHEMA_DRAWINGML = 'http://schemas.openxmlformats.org/drawingml/2006/main';
+    public const SCHEMA_DRAWINGML = 'http://schemas.openxmlformats.org/drawingml/2006/main';
 
     /**
      * Xml Schema - Shared Strings
      *
      * @var string
      */
-    const SCHEMA_SHAREDSTRINGS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings';
+    public const SCHEMA_SHAREDSTRINGS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings';
 
     /**
      * Xml Schema - Worksheet relation
      *
      * @var string
      */
-    const SCHEMA_WORKSHEETRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet';
+    public const SCHEMA_WORKSHEETRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet';
 
     /**
      * Xml Schema - Slide notes relation
      *
      * @var string
      */
-    const SCHEMA_SLIDENOTESRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide';
+    public const SCHEMA_SLIDENOTESRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide';
 
     /**
      * Object constructor

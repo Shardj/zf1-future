@@ -43,35 +43,35 @@ abstract class Zend_Search_Lucene_Document_OpenXml extends Zend_Search_Lucene_Do
      *
      * @var string
      */
-    const SCHEMA_RELATIONSHIP = 'http://schemas.openxmlformats.org/package/2006/relationships';
+    public const SCHEMA_RELATIONSHIP = 'http://schemas.openxmlformats.org/package/2006/relationships';
 
     /**
      * Xml Schema - Office document
      *
      * @var string
      */
-    const SCHEMA_OFFICEDOCUMENT = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument';
+    public const SCHEMA_OFFICEDOCUMENT = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument';
 
     /**
      * Xml Schema - Core properties
      *
      * @var string
      */
-    const SCHEMA_COREPROPERTIES = 'http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties';
+    public const SCHEMA_COREPROPERTIES = 'http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties';
 
     /**
      * Xml Schema - Dublin Core
      *
      * @var string
      */
-    const SCHEMA_DUBLINCORE = 'http://purl.org/dc/elements/1.1/';
+    public const SCHEMA_DUBLINCORE = 'http://purl.org/dc/elements/1.1/';
 
     /**
      * Xml Schema - Dublin Core Terms
      *
      * @var string
      */
-    const SCHEMA_DUBLINCORETERMS = 'http://purl.org/dc/terms/';
+    public const SCHEMA_DUBLINCORETERMS = 'http://purl.org/dc/terms/';
 
     /**
      * Extract metadata from document

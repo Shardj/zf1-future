@@ -45,12 +45,12 @@ class Zend_Auth_Storage_Session implements Zend_Auth_Storage_Interface
     /**
      * Default session namespace
      */
-    const NAMESPACE_DEFAULT = 'Zend_Auth';
+    public const NAMESPACE_DEFAULT = 'Zend_Auth';
 
     /**
      * Default session object member name
      */
-    const MEMBER_DEFAULT = 'storage';
+    public const MEMBER_DEFAULT = 'storage';
 
     /**
      * Object to proxy $_SESSION storage

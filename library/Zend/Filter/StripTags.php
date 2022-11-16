@@ -37,7 +37,7 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
     /**
      * Unique ID prefix used for allowing comments
      */
-    const UNIQUE_ID_PREFIX = '__Zend_Filter_StripTags__';
+    public const UNIQUE_ID_PREFIX = '__Zend_Filter_StripTags__';
 
     /**
      * Whether comments are allowed

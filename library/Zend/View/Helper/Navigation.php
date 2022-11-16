@@ -47,7 +47,7 @@ class Zend_View_Helper_Navigation
      *
      * @var string
      */
-    const NS = 'Zend_View_Helper_Navigation';
+    public const NS = 'Zend_View_Helper_Navigation';
 
     /**
      * Default proxy to use in {@link render()}

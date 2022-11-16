@@ -89,19 +89,19 @@ class Zend_Pdf
     /**
      * Version number of generated PDF documents.
      */
-    const PDF_VERSION = '1.4';
+    public const PDF_VERSION = '1.4';
 
     /**
      * PDF file header.
      */
-    const PDF_HEADER  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
+    public const PDF_HEADER  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
 
     /**
      * Form field options
      */
-    const PDF_FORM_FIELD_READONLY = 1;
-    const PDF_FORM_FIELD_REQUIRED = 2;
-    const PDF_FORM_FIELD_NOEXPORT = 4;
+    public const PDF_FORM_FIELD_READONLY = 1;
+    public const PDF_FORM_FIELD_REQUIRED = 2;
+    public const PDF_FORM_FIELD_NOEXPORT = 4;
 
     /**
      * Pages collection

@@ -39,8 +39,8 @@ require_once 'Zend/Crypt/Rsa/Key/Public.php';
  */
 class Zend_Crypt_Rsa
 {
-    const BINARY = 'binary';
-    const BASE64 = 'base64';
+    public const BINARY = 'binary';
+    public const BASE64 = 'base64';
 
     protected $_privateKey;
 

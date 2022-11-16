@@ -47,7 +47,7 @@ class Zend_Form_Element_Captcha extends Zend_Form_Element_Xhtml
     /**
      * Captcha plugin type constant
      */
-    const CAPTCHA = 'CAPTCHA';
+    public const CAPTCHA = 'CAPTCHA';
 
     /**
      * Captcha adapter

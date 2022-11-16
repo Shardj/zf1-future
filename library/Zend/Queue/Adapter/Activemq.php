@@ -47,9 +47,9 @@ require_once 'Zend/Queue/Stomp/Frame.php';
  */
 class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
 {
-    const DEFAULT_SCHEME = 'tcp';
-    const DEFAULT_HOST   = '127.0.0.1';
-    const DEFAULT_PORT   = 61613;
+    public const DEFAULT_SCHEME = 'tcp';
+    public const DEFAULT_HOST   = '127.0.0.1';
+    public const DEFAULT_PORT   = 61613;
 
     /**
      * @var Zend_Queue_Adapter_Stomp_client

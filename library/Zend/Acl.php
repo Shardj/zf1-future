@@ -61,22 +61,22 @@ class Zend_Acl
     /**
      * Rule type: allow
      */
-    const TYPE_ALLOW = 'TYPE_ALLOW';
+    public const TYPE_ALLOW = 'TYPE_ALLOW';
 
     /**
      * Rule type: deny
      */
-    const TYPE_DENY  = 'TYPE_DENY';
+    public const TYPE_DENY  = 'TYPE_DENY';
 
     /**
      * Rule operation: add
      */
-    const OP_ADD = 'OP_ADD';
+    public const OP_ADD = 'OP_ADD';
 
     /**
      * Rule operation: remove
      */
-    const OP_REMOVE = 'OP_REMOVE';
+    public const OP_REMOVE = 'OP_REMOVE';
 
     /**
      * Role registry

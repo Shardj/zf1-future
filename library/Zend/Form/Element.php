@@ -46,9 +46,9 @@ class Zend_Form_Element implements Zend_Validate_Interface
     /**
      * Element Constants
      */
-    const DECORATOR = 'DECORATOR';
-    const FILTER    = 'FILTER';
-    const VALIDATE  = 'VALIDATE';
+    public const DECORATOR = 'DECORATOR';
+    public const FILTER    = 'FILTER';
+    public const VALIDATE  = 'VALIDATE';
 
     /**
      * Default view helper to use

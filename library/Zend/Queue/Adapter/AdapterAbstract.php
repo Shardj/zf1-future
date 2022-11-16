@@ -45,12 +45,12 @@ abstract class Zend_Queue_Adapter_AdapterAbstract implements Zend_Queue_Adapter_
     /**
      * Default timeout for createQueue() function
      */
-    const CREATE_TIMEOUT_DEFAULT = 30;
+    public const CREATE_TIMEOUT_DEFAULT = 30;
 
     /**
      * Default timeout for recieve() function
      */
-    const RECEIVE_TIMEOUT_DEFAULT = 30;
+    public const RECEIVE_TIMEOUT_DEFAULT = 30;
 
     /**
      * User-provided options

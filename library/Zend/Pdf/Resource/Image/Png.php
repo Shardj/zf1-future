@@ -40,25 +40,25 @@ require_once 'Zend/Pdf/Resource/Image.php';
  */
 class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
 {
-    const PNG_COMPRESSION_DEFAULT_STRATEGY = 0;
-    const PNG_COMPRESSION_FILTERED = 1;
-    const PNG_COMPRESSION_HUFFMAN_ONLY = 2;
-    const PNG_COMPRESSION_RLE = 3;
+    public const PNG_COMPRESSION_DEFAULT_STRATEGY = 0;
+    public const PNG_COMPRESSION_FILTERED = 1;
+    public const PNG_COMPRESSION_HUFFMAN_ONLY = 2;
+    public const PNG_COMPRESSION_RLE = 3;
 
-    const PNG_FILTER_NONE = 0;
-    const PNG_FILTER_SUB = 1;
-    const PNG_FILTER_UP = 2;
-    const PNG_FILTER_AVERAGE = 3;
-    const PNG_FILTER_PAETH = 4;
+    public const PNG_FILTER_NONE = 0;
+    public const PNG_FILTER_SUB = 1;
+    public const PNG_FILTER_UP = 2;
+    public const PNG_FILTER_AVERAGE = 3;
+    public const PNG_FILTER_PAETH = 4;
 
-    const PNG_INTERLACING_DISABLED = 0;
-    const PNG_INTERLACING_ENABLED = 1;
+    public const PNG_INTERLACING_DISABLED = 0;
+    public const PNG_INTERLACING_ENABLED = 1;
 
-    const PNG_CHANNEL_GRAY = 0;
-    const PNG_CHANNEL_RGB = 2;
-    const PNG_CHANNEL_INDEXED = 3;
-    const PNG_CHANNEL_GRAY_ALPHA = 4;
-    const PNG_CHANNEL_RGB_ALPHA = 6;
+    public const PNG_CHANNEL_GRAY = 0;
+    public const PNG_CHANNEL_RGB = 2;
+    public const PNG_CHANNEL_INDEXED = 3;
+    public const PNG_CHANNEL_GRAY_ALPHA = 4;
+    public const PNG_CHANNEL_RGB_ALPHA = 6;
 
     protected $_width;
     protected $_height;

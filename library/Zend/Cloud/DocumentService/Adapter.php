@@ -38,7 +38,7 @@
 interface Zend_Cloud_DocumentService_Adapter
 {
     // HTTP adapter to use for connections
-    const HTTP_ADAPTER = 'http_adapter';
+    public const HTTP_ADAPTER = 'http_adapter';
 
     /**
      * Create collection.

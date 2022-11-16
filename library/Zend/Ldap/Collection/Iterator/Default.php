@@ -31,9 +31,9 @@
  */
 class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
 {
-    const ATTRIBUTE_TO_LOWER  = 1;
-    const ATTRIBUTE_TO_UPPER  = 2;
-    const ATTRIBUTE_NATIVE    = 3;
+    public const ATTRIBUTE_TO_LOWER  = 1;
+    public const ATTRIBUTE_TO_UPPER  = 2;
+    public const ATTRIBUTE_NATIVE    = 3;
 
     /**
      * LDAP Connection

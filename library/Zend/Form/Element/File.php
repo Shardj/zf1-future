@@ -37,7 +37,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     /**
      * Plugin loader type
      */
-    const TRANSFER_ADAPTER = 'TRANSFER_ADAPTER';
+    public const TRANSFER_ADAPTER = 'TRANSFER_ADAPTER';
 
     /**
      * @var string Default view helper

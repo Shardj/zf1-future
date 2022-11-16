@@ -33,9 +33,9 @@
  */
 class Zend_Mobile_Push_Response_Gcm
 {
-    const RESULT_MESSAGE_ID = 'message_id';
-    const RESULT_ERROR = 'error';
-    const RESULT_CANONICAL = 'registration_id';
+    public const RESULT_MESSAGE_ID = 'message_id';
+    public const RESULT_ERROR = 'error';
+    public const RESULT_CANONICAL = 'registration_id';
 
     /**
      * Multicast ID

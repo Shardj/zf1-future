@@ -34,9 +34,9 @@ abstract class Zend_Oauth_Token
     /**@+
      * Token constants
      */
-    const TOKEN_PARAM_KEY                = 'oauth_token';
-    const TOKEN_SECRET_PARAM_KEY         = 'oauth_token_secret';
-    const TOKEN_PARAM_CALLBACK_CONFIRMED = 'oauth_callback_confirmed';
+    public const TOKEN_PARAM_KEY                = 'oauth_token';
+    public const TOKEN_SECRET_PARAM_KEY         = 'oauth_token_secret';
+    public const TOKEN_PARAM_CALLBACK_CONFIRMED = 'oauth_callback_confirmed';
     /**@-*/
 
     /**

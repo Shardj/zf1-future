@@ -33,9 +33,9 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_StringLength extends Zend_Validate_Abstract
 {
-    const INVALID   = 'stringLengthInvalid';
-    const TOO_SHORT = 'stringLengthTooShort';
-    const TOO_LONG  = 'stringLengthTooLong';
+    public const INVALID   = 'stringLengthInvalid';
+    public const TOO_SHORT = 'stringLengthTooShort';
+    public const TOO_LONG  = 'stringLengthTooLong';
 
     /**
      * @var array
