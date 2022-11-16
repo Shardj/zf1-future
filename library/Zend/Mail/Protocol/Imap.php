@@ -56,7 +56,7 @@ class Zend_Mail_Protocol_Imap
      * @param  bool     $ssl   use ssl? 'SSL', 'TLS' or false
      * @throws Zend_Mail_Protocol_Exception
      */
-    function __construct($host = '', $port = null, $ssl = false)
+    public function __construct($host = '', $port = null, $ssl = false)
     {
         if ($host) {
             $this->connect($host, $port, $ssl);

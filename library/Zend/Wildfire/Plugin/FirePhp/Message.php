@@ -86,7 +86,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      * @param mixed $message The message
      * @return void
      */
-    function __construct($style, $message)
+    public function __construct($style, $message)
     {
         $this->_style = $style;
         $this->_message = $message;

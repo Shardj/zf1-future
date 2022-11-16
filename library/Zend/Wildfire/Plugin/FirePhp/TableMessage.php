@@ -56,7 +56,7 @@ class Zend_Wildfire_Plugin_FirePhp_TableMessage extends Zend_Wildfire_Plugin_Fir
      *
      * @param string $label The label of the table
      */
-    function __construct($label)
+    public function __construct($label)
     {
         parent::__construct(Zend_Wildfire_Plugin_FirePhp::TABLE, null);
         $this->setLabel($label);

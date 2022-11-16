@@ -40,7 +40,7 @@ class Zend_Db_Adapter_Oracle_Exception extends Zend_Db_Adapter_Exception
     protected $message = 'Unknown exception';
     protected $code = 0;
 
-    function __construct($error = null, $code = 0)
+    public function __construct($error = null, $code = 0)
     {
         if (is_array($error)) {
             if (!isset($error['offset'])) {

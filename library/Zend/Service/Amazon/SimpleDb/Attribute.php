@@ -42,7 +42,7 @@ class Zend_Service_Amazon_SimpleDb_Attribute
      * @param  array $values
      * @return void
      */
-    function __construct($itemName, $name, $values)
+    public function __construct($itemName, $name, $values)
     {
         $this->_itemName = $itemName;
         $this->_name     = $name;

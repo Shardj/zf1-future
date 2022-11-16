@@ -57,7 +57,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace implements Zend_Cloud_StorageS
      * @param  array|Traversable $options
      * @return void
      */
-    function __construct($options = [])
+    public function __construct($options = [])
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();

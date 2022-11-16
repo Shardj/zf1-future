@@ -44,7 +44,7 @@ if (extension_loaded('soap')) {
          * @param string $wsdl
          * @param array $options
          */
-        function __construct($doRequestCallback, $wsdl, $options)
+        public function __construct($doRequestCallback, $wsdl, $options)
         {
             $this->_doRequestCallback = $doRequestCallback;
 
