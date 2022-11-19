@@ -10,7 +10,7 @@ tests/Zend/Translate/Adapter/_files/zend_cache---testid
 tests/TestConfiguration.php
 tests/Zend/Cache/zend_cache_tmp_dir*
 tests/Zend/Filter/_files/traversed.*
-tests/Zend/Filter/_files/app/tests/Zend/Filter/_files/zipextracted.txt
+tests/Zend/Filter/_files/**/zipextracted.txt
 tests/Zend/Mail/_files/test.tmp/INBOX
 tests/Zend/Paginator/_files/test-write-tmp.sqlite
 vendor/*
