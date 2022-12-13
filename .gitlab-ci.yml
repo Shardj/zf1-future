@@ -1,1 +1,59 @@
+include:
+  - template: Composer.gitlab-ci.yml
 
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --cache=true
+  only:
+    - master
+    - tags
+
+test:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  stage: test
+  needs:
+    - build
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - vendor/
+      - bin/
+      - /composer
+      - /composer-cache
+  variables:
+    MYSQL_ROOT_PASSWORD: ''
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: zftest
+    MYSQL_USER: zftest
+    MYSQL_PASSWORD: zftest
+    COMPOSER_HOME: $CI_PROJECT_DIR/composer
+  services:
+    - name: mysql:5.6
+      command: ["mysqld",  '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+    - name: memcached:1
+  before_script:
+    # prepare tests
+    - composer install --no-interaction --prefer-source
+    - cp ./tests/TestConfiguration.gitlab.php ./tests/TestConfiguration.php
+    - echo "waiting for database is up and running ..."
+    - until echo "SELECT 'OK';" | mysql -h mysql --user=root; do sleep 1; done;
+  script:
+    - composer test
+  only:
+    - master
+    - tags
+
+# job comes from Composer.gitlab-ci.yml
+publish:
+  stage: deploy
+  needs:
+    - test
+  only:
+    - master
+    - tags

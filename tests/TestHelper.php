@@ -87,3 +87,7 @@ unset($zfRoot, $zfCoreLibrary, $zfCoreTests, $path);
 
 // Suppress DateTime warnings
 date_default_timezone_set(@date_default_timezone_get());
+
+if (!defined("PHPUnit_MAIN_METHOD")) {
+    define("PHPUnit_MAIN_METHOD", "AllTests::main");
+}

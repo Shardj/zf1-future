@@ -9,7 +9,7 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=7.1",
+        "php": ">=8.1",
         "symfony/polyfill-php81": "^1.24",
         "symfony/polyfill-mbstring": "^1.26"
     },
@@ -45,6 +45,7 @@
     },
     "scripts": {
         "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
+        "test-new": "@php ./tests/runalltests.php",
         "test": [
             "Composer\\Config::disableProcessTimeout",
             "phpunit --bootstrap tests/TestHelper.php tests/Zend/AllTests.php"

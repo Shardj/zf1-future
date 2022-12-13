@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
+chdir(__DIR__);
 
+$_SERVER['TRAVIS_PHP_VERSION'] = '';
 $PHPUNIT = null;
 if (!$PHPUNIT) {
     if (!$PHPUNIT && strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {

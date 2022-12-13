@@ -173,7 +173,8 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
      */
     public function formatClassName($moduleName, $className)
     {
-        return $this->formatModuleName($moduleName) . '_' . $className;
+        $ns = defined('APPLICATION_PATH') && !is_dir(APPLICATION_PATH . '/src/modules/' . $moduleName . '/controllers');
+        return $ns ? '\\FDE\\' . ucfirst($moduleName) . '\\Controller\\'. $className : $this->formatModuleName($moduleName) . '_' . $className;
     }
 
     /**

@@ -1,0 +1,41 @@
+version: '3.2'
+services:
+  php:
+    build:
+      context: .
+    depends_on:
+      - mysql
+      - memcached
+    volumes:
+      - .:/app
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - ${COMPOSER_HOME:?You must export COMPOSER_HOME}:/composer:rw
+      - ${COMPOSER_CACHE_DIR:?You must export COMPOSER_CACHE_DIR}:/composer-cache:rw
+    environment:
+      PHP_IDE_CONFIG: 'serverName=zendframework1.local'
+      # XDEBUG_CONFIG: for mac or when supported on linux: remote_host=host.docker.internal @see https://github.com/moby/moby/pull/40007
+      XDEBUG_CONFIG: 'remote_enable=1 remote_autostart=1 remote_port=9003 remote_host=172.17.0.1 idekey=PHPSTORM'
+    #    tty: true
+    #    stdin_open: true
+    user: "${DOCKER_COMPOSE_RUN_AS_USER:?You must export DOCKER_COMPOSE_RUN_AS_USER for permissions handling, look at README.md}"
+  mysql:
+    image: mysql:5.6
+    hostname: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: zftest
+      MYSQL_USER: zftest
+      MYSQL_PASSWORD: zftest
+    command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+    volumes:
+      - mysqltestRamdisk:/var/lib/mysql
+  memcached:
+    image: "memcached:1"
+
+volumes:
+  mysqltestRamdisk:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
