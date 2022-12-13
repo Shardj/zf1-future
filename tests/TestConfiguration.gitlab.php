@@ -82,4 +82,4 @@ defined('TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED') || define('TESTS_ZEND_DB_ADA
  */
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED',  false);
 
-require_once dirname(__FILE__) . '/TestConfiguration.php.dist';
+require_once dirname(__FILE__) . '/TestConfiguration.dist.php';
