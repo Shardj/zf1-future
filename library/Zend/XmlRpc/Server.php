@@ -465,7 +465,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
     public function setResponseClass($class)
     {
         if (!class_exists($class) ||
-            ($c = new ReflectionClass($class) && !$c->isSubclassOf('Zend_XmlRpc_Response'))) {
+            (($c = new ReflectionClass($class)) && !$c->isSubclassOf('Zend_XmlRpc_Response'))) {
 
             require_once 'Zend/XmlRpc/Server/Exception.php';
             throw new Zend_XmlRpc_Server_Exception('Invalid response class');

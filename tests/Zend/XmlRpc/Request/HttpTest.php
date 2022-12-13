@@ -204,14 +204,6 @@ EOT;
 
 class Zend_XmlRpc_Request_HttpTest_Extension extends Zend_XmlRpc_Request_Http
 {
-    /**
-     * @var string|null
-     */
-    protected $method;
-    /**
-     * @var mixed[]
-     */
-    protected $params;
     public function __construct($method = null, $params = null)
     {
         $this->method = $method;

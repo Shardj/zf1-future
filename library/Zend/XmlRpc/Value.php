@@ -490,7 +490,7 @@ abstract class Zend_XmlRpc_Value
         $xmlVars = get_object_vars($xml);
         list($type, $value) = [key($xmlVars), current($xmlVars)];
 
-        if (!$type && $value === null) {
+        if (!$type && ($value === null || !$value)) {
             $namespaces = ['ex' => 'http://ws.apache.org/xmlrpc/namespaces/extensions'];
             foreach ($namespaces as $namespaceName => $namespaceUri) {
                 $namespaceXml = $xml->children($namespaceUri);
