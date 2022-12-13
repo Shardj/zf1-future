@@ -1,0 +1,2 @@
+include:
+  - template: Composer.gitlab-ci.yml

@@ -481,6 +481,10 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         // Determine if this path has already been registered
         $currentPaths = $this->view->getScriptPaths();
         $path         = str_replace(['/', '\\'], '/', $path);
+
+        // fde new module/namespace support
+        $path         = preg_replace('~(/modules/\w+)/src/views$~', '$1/views', $path, 1);
+
         $pathExists   = false;
         foreach ($currentPaths as $tmpPath) {
             $tmpPath = str_replace(['/', '\\'], '/', $tmpPath);
