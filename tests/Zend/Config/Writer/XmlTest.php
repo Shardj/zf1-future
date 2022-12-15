@@ -188,7 +188,6 @@ class Zend_Config_Writer_XmlTest extends TestCase
 
     public function testMixedArrayFailure()
     {
-        $this->markTestSkipped();
         $config = new Zend_Config(['foo' => ['bar' => ['a', 'b', 'c' => 'd']]]);
 
         try {

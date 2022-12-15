@@ -40,20 +40,17 @@ class Zend_DebugTest extends TestCase
 {
     public function testDebugDefaultSapi()
     {
-        $this->markTestSkipped();
         $sapi = php_sapi_name();
         Zend_Debug::setSapi(null);
         $data = 'string';
-        $result = Zend_Debug::Dump($data, null, false);
         $this->assertEquals($sapi, Zend_Debug::getSapi());
     }
 
     public function testDebugDump()
     {
-        $this->markTestSkipped();
         Zend_Debug::setSapi('cli');
         $data = 'string';
-        $result = Zend_Debug::Dump($data, null, false);
+        $result = Zend_Debug::dump($data, null, false);
         $result = str_replace([PHP_EOL, "\n"], '_', $result);
         $expected = "__string(6) \"string\"__";
         $this->assertEquals($expected, $result);
@@ -61,10 +58,9 @@ class Zend_DebugTest extends TestCase
 
     public function testDebugCgi()
     {
-        $this->markTestSkipped();
         Zend_Debug::setSapi('cgi');
         $data = 'string';
-        $result = Zend_Debug::Dump($data, null, false);
+        $result = Zend_Debug::dump($data, null, false);
 
         // Has to check for two strings, because xdebug internally handles CLI vs Web
         $this->assertContains(
@@ -78,12 +74,11 @@ class Zend_DebugTest extends TestCase
 
     public function testDebugDumpEcho()
     {
-        $this->markTestSkipped();
         Zend_Debug::setSapi('cli');
         $data = 'string';
 
         ob_start();
-        $result1 = Zend_Debug::Dump($data, null, true);
+        $result1 = Zend_Debug::dump($data, null, true);
         $result2 = ob_get_clean();
 
         $this->assertStringContainsString('string(6) "string"', $result1);
@@ -92,11 +87,10 @@ class Zend_DebugTest extends TestCase
 
     public function testDebugDumpLabel()
     {
-        $this->markTestSkipped();
         Zend_Debug::setSapi('cli');
         $data = 'string';
         $label = 'LABEL';
-        $result = Zend_Debug::Dump($data, $label, false);
+        $result = Zend_Debug::dump($data, $label, false);
         $result = str_replace([PHP_EOL, "\n"], '_', $result);
         $expected = "_{$label} _string(6) \"string\"__";
         $this->assertEquals($expected, $result);
@@ -108,7 +102,6 @@ class Zend_DebugTest extends TestCase
      */
     public function testXdebugEnabledAndNonCliSapiDoesNotEscapeSpecialChars()
     {
-        $this->markTestSkipped();
         if (!extension_loaded('xdebug')) {
             $this->markTestSkipped("This test only works in combination with xdebug.");
         }
