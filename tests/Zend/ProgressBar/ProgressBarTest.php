@@ -72,9 +72,8 @@ class Zend_ProgressBar_ProgressBarTest extends TestCase
     }
 
     /**
-     * @runInSeparateProcess
+     *
      */
-
     public function testPersistence()
     {
         $progressBar = $this->_getProgressBar(0, 100, 'foobar');
