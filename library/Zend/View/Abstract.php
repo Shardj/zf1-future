@@ -899,6 +899,10 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function escape($var)
     {
+        if (is_object($var) && !method_exists($var, '__toString')) {
+            return call_user_func($this->_escape, get_class($var), ENT_COMPAT, $this->_encoding);
+        }
+
         if (in_array($this->_escape, ['htmlspecialchars', 'htmlentities'])) {
             return call_user_func($this->_escape, (string) $var, ENT_COMPAT, $this->_encoding);
         }

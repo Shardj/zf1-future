@@ -89,14 +89,22 @@ class Zend_View_Helper_PartialLoop extends Zend_View_Helper_Partial
 
         $content = '';
         // reset the counter if it's call again
-        $this->partialCounter    = 0;
-        $this->partialTotalCount = count($model);
+        $this->partialCounter = 0;
+        if ($model !== null && (is_array($model) || $model instanceof Countable)) {
+            $this->partialTotalCount = count($model);
+        } elseif (is_object($model) && method_exists($model, 'count')) {
+            $this->partialTotalCount = $model->count();
+        } else {
+            $this->partialTotalCount = 0;
+        }
 
-        foreach ($model as $item) {
-            // increment the counter variable
-            $this->partialCounter++;
+        if (is_iterable($model)) {
+            foreach ($model as $item) {
+                // increment the counter variable
+                $this->partialCounter++;
 
-            $content .= $this->partial($name, $module, $item);
+                $content .= $this->partial($name, $module, $item);
+            }
         }
 
         return $content;

@@ -307,7 +307,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
                     $num -= $num;
                 }
 
-                $value += $num;
+                $value     = call_user_func(Zend_Locale_Math::$add, $value, $num);
             }
 
             str_replace('/', '', $value);

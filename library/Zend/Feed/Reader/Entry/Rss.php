@@ -201,9 +201,10 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
             );
         }
 
-        if (count($authors ?? []) === 0) {
+        if ($authors !== null && count($authors) == 0) {
             $authors = null;
         }
+
 
         $this->_data['authors'] = $authors;
 

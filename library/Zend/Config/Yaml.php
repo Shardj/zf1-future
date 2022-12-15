@@ -362,12 +362,12 @@ class Zend_Config_Yaml extends Zend_Config
         $value = trim($value);
 
         // remove quotes from string.
-        if ('"' == substr($value, 0, 1)) {
-            if ('"' == substr($value, -1)) {
+        if ('"' == $value['0']) {
+            if ('"' == $value[strlen($value) -1]) {
                 $value = substr($value, 1, -1);
             }
-        } elseif ('\'' == substr($value, 0, 1) && '\'' == substr($value, -1)) {
-            $value = strtr($value, ["''" => "'", "'" => '']);
+        } elseif ('\'' == $value['0'] && '\'' == $value[strlen($value) -1]) {
+            $value = strtr($value, array("''" => "'", "'" => ''));
         }
 
         // Check for booleans and constants

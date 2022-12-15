@@ -113,6 +113,10 @@ class Zend_Locale_Math_PhpMath extends Zend_Locale_Math
         // Provide the same behavior
         $op2 = ($op2 > 0) ? floor($op2) : ceil($op2);
 
+        if ($op1 === '') {
+            $op1 = 0;
+        }
+
         $result = pow($op1, $op2);
         if (is_infinite($result)  ||  is_nan($result)) {
             require_once 'Zend/Locale/Math/Exception.php';
