@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\Exception;
+
 /**
  * Zend Framework
  *
@@ -30,6 +33,6 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Test_PHPUnit_Constraint_Exception extends PHPUnit_Framework_ExpectationFailedException
+class Zend_Test_PHPUnit_Constraint_Exception extends Exception
 {
 }

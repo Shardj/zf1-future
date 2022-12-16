@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\Constraint\Constraint;
+
 /**
  * Zend Framework
  *
@@ -30,7 +33,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends PHPUnit_Framework_Constraint
+class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends Constraint
 {
     /**#@+
      * Assertion type constants
@@ -111,7 +114,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends PHPUnit_Framework_Co
      * @param  null|string Assertion type
      * @return bool
      */
-    public function evaluate($other, $assertType = null)
+    public function evaluate($other, $assertType = null, $returnResult = false): bool
     {
         if (!$other instanceof Zend_Controller_Response_Abstract) {
             require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
@@ -189,7 +192,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends PHPUnit_Framework_Co
      * @return void
      * @throws PHPUnit_Framework_ExpectationFailedException
      */
-    public function fail($other, $description, $not = false)
+    public function fail($other, $description, $not = false): void
     {
         require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {
@@ -240,7 +243,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends PHPUnit_Framework_Co
      *
      * @return string
      */
-    public function toString()
+    public function toString(): string
     {
         return '';
     }
