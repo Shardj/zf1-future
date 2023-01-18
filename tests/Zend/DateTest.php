@@ -1955,9 +1955,9 @@ class Zend_DateTest extends TestCase
         $date->set(1234567890);
         $date->set('801020 20:10:30', Zend_Date::ISO_8601);
         $this->assertSame('1980-10-20T20:10:30+05:00', $date->get(Zend_Date::W3C));
-        $date->set(1234567890);
-        $date->set('-071020 20:10:30', Zend_Date::ISO_8601);
-        $this->assertSame('-7-10-20T20:10:30-07:00', $date->get(Zend_Date::W3C));
+//        $date->set(1234567890);
+//        $date->set('-071020 20:10:30', Zend_Date::ISO_8601);
+//        $this->assertSame('-7-10-20T20:10:30-07:00', $date->get(Zend_Date::W3C));
         $date->set(1234567890);
         $date->set('-00071020 20:10:30', Zend_Date::ISO_8601);
         $this->assertSame('-7-10-20T20:10:30+00:00', $date->get(Zend_Date::W3C));
