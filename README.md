@@ -1,3 +1,24 @@
+# Attention
+
+This is the new package we use for the fde project since php 8 update for zend framework.
+We have pulled a fork from the original repository: https://github.com/Shardj/zf1-future
+
+Our fork is located in Github: https://github.com/fgrp-fde/zf1-future
+
+We imported the forked repo into Gitlab: https://gitlab-next.fgrp.net/ext/zf1-future
+
+By using repository mirroring, all changes in Gitlab are also transferred to the fork on Github.
+
+If there are changes in the original repo that we also want to have in our project, this is how it works:
+
+1. In the Github project (https://github.com/fgrp-fde/zf1-future) once sync the changes from the original project.
+2. In the GITLAB project, run the following locally:
+   3. Set your upstream to the repository you forked from: `git remote add upstream git@github.com:fgrp-fde/zf1-future.git`
+   4. Then fetch all the branches including master from the original repository: `git fetch upstream`
+   5. Merge this data in your local master branch: `git merge upstream/master`
+   6. Push the changes to your repository i.e. to origin/master: git push origin master`
+
+
 ![zf1-future logo](https://imgur.com/S0i6qOh.png)
 <sub><sup>Thanks to [WebTigers](https://github.com/WebTigers) for the logo</sup></sub>
 # Zend Framework 1 now for PHP 8.1!
