@@ -11,12 +11,25 @@ By using repository mirroring, all changes in Gitlab are also transferred to the
 
 If there are changes in the original repo that we also want to have in our project, this is how it works:
 
-1. In the Github project (https://github.com/fgrp-fde/zf1-future) once sync the changes from the original project.
-2. In the GITLAB project, run the following locally:
-   3. Set your upstream to the repository you forked from: `git remote add upstream git@github.com:fgrp-fde/zf1-future.git`
-   4. Then fetch all the branches including master from the original repository: `git fetch upstream`
-   5. Merge this data in your local master branch: `git merge upstream/master`
-   6. Push the changes to your repository i.e. to origin/master: git push origin master`
+* Sync the changes within the Github project (https://github.com/fgrp-fde/zf1-future) from the original project
+
+* In the GITLAB project, run the following locally:
+  * Set your upstream to the repository you forked from: 
+   ```bash
+  git remote add upstream git@github.com:fgrp-fde/zf1-future.git
+  ```
+   * Then fetch all the branches including master from the original repository: 
+  ```bash
+  git fetch upstream
+  ```
+  * Merge this data in your local master branch:
+  ```bash
+  git merge upstream/master
+   ```
+  * Push the changes to your repository i.e. to origin/master:
+  ```bash
+  git push origin master
+   ```
 
 
 ![zf1-future logo](https://imgur.com/S0i6qOh.png)
