@@ -25,15 +25,15 @@
 /**
  * Zend_Exception
  */
-require_once 'Zend/Exception.php';
+// require_once 'Zend/Exception.php';
 
 /**
  * Zend_Gdata_Gapps_Error
  */
-require_once 'Zend/Gdata/Gapps/Error.php';
+// require_once 'Zend/Gdata/Gapps/Error.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Gdata Gapps Exception class. This is thrown when an

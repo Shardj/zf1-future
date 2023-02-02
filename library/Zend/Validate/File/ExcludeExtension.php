@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_Abstract
  */
-require_once 'Zend/Validate/File/Extension.php';
+// require_once 'Zend/Validate/File/Extension.php';
 
 /**
  * Validator for the excluding file extensions

@@ -17,9 +17,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Amazon/S3.php';
-require_once 'Zend/Cloud/StorageService/Adapter.php';
-require_once 'Zend/Cloud/StorageService/Exception.php';
+// require_once 'Zend/Service/Amazon/S3.php';
+// require_once 'Zend/Cloud/StorageService/Adapter.php';
+// require_once 'Zend/Cloud/StorageService/Exception.php';
 
 /**
  * S3 adapter for unstructured cloud storage.

@@ -25,13 +25,13 @@
 /**
  * @see Zend_Db_Select
  */
-require_once 'Zend/Db/Select.php';
+// require_once 'Zend/Db/Select.php';
 
 
 /**
  * @see Zend_Db_Table_Abstract
  */
-require_once 'Zend/Db/Table/Abstract.php';
+// require_once 'Zend/Db/Table/Abstract.php';
 
 
 /**

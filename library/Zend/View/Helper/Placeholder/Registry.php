@@ -21,13 +21,13 @@
  */
 
 /** Zend_Registry */
-require_once 'Zend/Registry.php';
+// require_once 'Zend/Registry.php';
 
 /** Zend_View_Helper_Placeholder_Container_Abstract */
-require_once 'Zend/View/Helper/Placeholder/Container/Abstract.php';
+// require_once 'Zend/View/Helper/Placeholder/Container/Abstract.php';
 
 /** Zend_View_Helper_Placeholder_Container */
-require_once 'Zend/View/Helper/Placeholder/Container.php';
+// require_once 'Zend/View/Helper/Placeholder/Container.php';
 
 /**
  * Registry for placeholder containers

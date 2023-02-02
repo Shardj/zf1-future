@@ -23,11 +23,11 @@
 /**
  * @see Zend_Ldap_Filter_Abstract
  */
-require_once 'Zend/Ldap/Filter/Abstract.php';
+// require_once 'Zend/Ldap/Filter/Abstract.php';
 /**
  * @see Zend_Ldap_Filter_String
  */
-require_once 'Zend/Ldap/Filter/String.php';
+// require_once 'Zend/Ldap/Filter/String.php';
 
 /**
  * Zend_Ldap_Filter_Logical provides a base implementation for a grouping filter.

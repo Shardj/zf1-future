@@ -23,22 +23,22 @@
 /**
  * @see Zend_Mail_Transport_Abstract
  */
-require_once 'Zend/Mail/Transport/Abstract.php';
+// require_once 'Zend/Mail/Transport/Abstract.php';
 
 /**
  * @see Zend_Mime
  */
-require_once 'Zend/Mime.php';
+// require_once 'Zend/Mime.php';
 
 /**
  * @see Zend_Mime_Message
  */
-require_once 'Zend/Mime/Message.php';
+// require_once 'Zend/Mime/Message.php';
 
 /**
  * @see Zend_Mime_Part
  */
-require_once 'Zend/Mime/Part.php';
+// require_once 'Zend/Mime/Part.php';
 
 
 /**

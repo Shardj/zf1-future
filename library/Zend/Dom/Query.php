@@ -22,18 +22,18 @@
 /**
  * @see Zend_Dom_Query_Css2Xpath
  */
-require_once 'Zend/Dom/Query/Css2Xpath.php';
+// require_once 'Zend/Dom/Query/Css2Xpath.php';
 
 /**
  * @see Zend_Dom_Query_Result
  */
-require_once 'Zend/Dom/Query/Result.php';
+// require_once 'Zend/Dom/Query/Result.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** @see Zend_Xml_Exception */
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * Query DOM structures based on CSS selectors and/or XPath

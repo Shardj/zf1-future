@@ -24,13 +24,13 @@
 /**
  * @see Zend_Session
  */
-require_once 'Zend/Session.php';
+// require_once 'Zend/Session.php';
 
 
 /**
  * @see Zend_Session_Abstract
  */
-require_once 'Zend/Session/Abstract.php';
+// require_once 'Zend/Session/Abstract.php';
 
 
 /**

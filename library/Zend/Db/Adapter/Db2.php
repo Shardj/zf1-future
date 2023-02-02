@@ -24,17 +24,17 @@
 /**
  * @see Zend_Db
  */
-require_once 'Zend/Db.php';
+// require_once 'Zend/Db.php';
 
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Db_Statement_Db2
  */
-require_once 'Zend/Db/Statement/Db2.php';
+// require_once 'Zend/Db/Statement/Db2.php';
 
 
 /**

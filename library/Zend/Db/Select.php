@@ -24,12 +24,12 @@
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Db_Expr
  */
-require_once 'Zend/Db/Expr.php';
+// require_once 'Zend/Db/Expr.php';
 
 
 /**

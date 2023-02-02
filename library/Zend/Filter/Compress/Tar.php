@@ -22,7 +22,7 @@
 /**
  * @see Zend_Filter_Compress_CompressAbstract
  */
-require_once 'Zend/Filter/Compress/CompressAbstract.php';
+// require_once 'Zend/Filter/Compress/CompressAbstract.php';
 
 /**
  * Compression adapter for Tar

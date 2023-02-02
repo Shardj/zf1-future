@@ -23,12 +23,12 @@
 /**
  * @see Zend_Tool_Project_Profile_FileParser_Xml
  */
-require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
+// require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
 
 /**
  * @see Zend_Tool_Project_Profile_Resource_Container
  */
-require_once 'Zend/Tool/Project/Profile/Resource/Container.php';
+// require_once 'Zend/Tool/Project/Profile/Resource/Container.php';
 
 /**
  * This class is the front most class for utilizing Zend_Tool_Project

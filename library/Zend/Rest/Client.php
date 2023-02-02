@@ -22,13 +22,13 @@
 
 
 /** Zend_Service_Abstract */
-require_once 'Zend/Service/Abstract.php';
+// require_once 'Zend/Service/Abstract.php';
 
 /** Zend_Rest_Client_Result */
-require_once 'Zend/Rest/Client/Result.php';
+// require_once 'Zend/Rest/Client/Result.php';
 
 /** Zend_Uri */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /**
  * @category   Zend

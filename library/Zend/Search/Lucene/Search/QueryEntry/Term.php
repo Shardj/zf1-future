@@ -21,7 +21,7 @@
  */
 
 /** Zend_Search_Lucene_Search_QueryEntry */
-require_once 'Zend/Search/Lucene/Search/QueryEntry.php';
+// require_once 'Zend/Search/Lucene/Search/QueryEntry.php';
 
 /**
  * @category   Zend

@@ -22,12 +22,12 @@
 /**
  * @see Zend_Reflection_Class
  */
-require_once 'Zend/Reflection/Class.php';
+// require_once 'Zend/Reflection/Class.php';
 
 /**
  * @see Zend_Reflection_Function
  */
-require_once 'Zend/Reflection/Function.php';
+// require_once 'Zend/Reflection/Function.php';
 
 /**
  * @category   Zend

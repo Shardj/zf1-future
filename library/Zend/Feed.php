@@ -21,7 +21,7 @@
  */
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Feed utility class

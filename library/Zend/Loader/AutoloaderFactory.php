@@ -18,7 +18,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once dirname(__FILE__) . '/SplAutoloader.php';
+// require_once dirname(__FILE__) . '/SplAutoloader.php';
 
 if (class_exists('Zend_Loader_AutoloaderFactory')) return;
 

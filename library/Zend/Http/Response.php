@@ -24,7 +24,7 @@
 /**
  * @see Zend_Http_Header_HeaderValue
  */
-require_once 'Zend/Http/Header/HeaderValue.php';
+// require_once 'Zend/Http/Header/HeaderValue.php';
 
 /**
  * Zend_Http_Response represents an HTTP 1.0 / 1.1 response message. It

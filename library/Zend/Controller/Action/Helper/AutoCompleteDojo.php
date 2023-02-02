@@ -23,7 +23,7 @@
 /**
  * @see Zend_Controller_Action_Helper_AutoComplete_Abstract
  */
-require_once 'Zend/Controller/Action/Helper/AutoComplete/Abstract.php';
+// require_once 'Zend/Controller/Action/Helper/AutoComplete/Abstract.php';
 
 /**
  * Create and send Dojo-compatible autocompletion lists

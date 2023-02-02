@@ -20,10 +20,10 @@
  */
 
 /** Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
+// require_once 'Zend/Form/Element/Xhtml.php';
 
 /** @see Zend_Crypt_Math */
-require_once 'Zend/Crypt/Math.php';
+// require_once 'Zend/Crypt/Math.php';
 
 /**
  * CSRF form protection

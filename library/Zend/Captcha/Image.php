@@ -21,7 +21,7 @@
  */
 
 /** @see Zend_Captcha_Word */
-require_once 'Zend/Captcha/Word.php';
+// require_once 'Zend/Captcha/Word.php';
 
 /**
  * Image-based captcha element

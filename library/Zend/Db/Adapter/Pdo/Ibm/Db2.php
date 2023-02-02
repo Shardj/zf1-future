@@ -22,10 +22,10 @@
 
 
 /** @see Zend_Db_Adapter_Pdo_Ibm */
-require_once 'Zend/Db/Adapter/Pdo/Ibm.php';
+// require_once 'Zend/Db/Adapter/Pdo/Ibm.php';
 
 /** @see Zend_Db_Statement_Pdo_Ibm */
-require_once 'Zend/Db/Statement/Pdo/Ibm.php';
+// require_once 'Zend/Db/Statement/Pdo/Ibm.php';
 
 
 /**

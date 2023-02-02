@@ -21,20 +21,20 @@
  */
 
 /** Zend_Search_Lucene_Index_TermsStream_Interface */
-require_once 'Zend/Search/Lucene/Index/TermsStream/Interface.php';
+// require_once 'Zend/Search/Lucene/Index/TermsStream/Interface.php';
 
 
 /** Zend_Search_Lucene_Search_Similarity */
-require_once 'Zend/Search/Lucene/Search/Similarity.php';
+// require_once 'Zend/Search/Lucene/Search/Similarity.php';
 
 /** Zend_Search_Lucene_Index_FieldInfo */
-require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
+// require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
 
 /** Zend_Search_Lucene_Index_Term */
-require_once 'Zend/Search/Lucene/Index/Term.php';
+// require_once 'Zend/Search/Lucene/Index/Term.php';
 
 /** Zend_Search_Lucene_Index_TermInfo */
-require_once 'Zend/Search/Lucene/Index/TermInfo.php';
+// require_once 'Zend/Search/Lucene/Index/TermInfo.php';
 
 /**
  * @category   Zend

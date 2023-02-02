@@ -24,12 +24,12 @@
 /**
  * @see Zend_Feed_Abstract
  */
-require_once 'Zend/Feed/Abstract.php';
+// require_once 'Zend/Feed/Abstract.php';
 
 /**
  * @see Zend_Feed_Entry_Atom
  */
-require_once 'Zend/Feed/Entry/Atom.php';
+// require_once 'Zend/Feed/Entry/Atom.php';
 
 
 /**

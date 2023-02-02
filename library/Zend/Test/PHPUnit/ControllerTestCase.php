@@ -20,19 +20,19 @@
  */
 
 /** @see Zend_Controller_Front */
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /** @see Zend_Controller_Action_HelperBroker */
-require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
 
 /** @see Zend_Layout */
-require_once 'Zend/Layout.php';
+// require_once 'Zend/Layout.php';
 
 /** @see Zend_Session */
-require_once 'Zend/Session.php';
+// require_once 'Zend/Session.php';
 
 /** @see Zend_Registry */
-require_once 'Zend/Registry.php';
+// require_once 'Zend/Registry.php';
 
 /**
  * Functional testing scaffold for MVC applications

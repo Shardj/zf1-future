@@ -23,7 +23,7 @@
 /**
  * @see Zend_Tool_Framework_Registry_Interface
  */
-require_once 'Zend/Tool/Framework/Registry/Interface.php';
+// require_once 'Zend/Tool/Framework/Registry/Interface.php';
 
 /**
  * @category   Zend

@@ -21,7 +21,7 @@
  */
 
 /** Zend_Controller_Router_Interface */
-require_once 'Zend/Controller/Router/Interface.php';
+// require_once 'Zend/Controller/Router/Interface.php';
 
 /**
  * Simple first implementation of a router, to be replaced

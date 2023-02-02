@@ -23,64 +23,64 @@
 /** @todo Section should be removed with ZF 2.0 release as obsolete                      */
 
 /** Zend_Search_Lucene_Document_Html */
-require_once 'Zend/Search/Lucene/Document/Html.php';
+// require_once 'Zend/Search/Lucene/Document/Html.php';
 
 /** Zend_Search_Lucene_Document_Docx */
-require_once 'Zend/Search/Lucene/Document/Docx.php';
+// require_once 'Zend/Search/Lucene/Document/Docx.php';
 
 /** Zend_Search_Lucene_Document_Pptx */
-require_once 'Zend/Search/Lucene/Document/Pptx.php';
+// require_once 'Zend/Search/Lucene/Document/Pptx.php';
 
 /** Zend_Search_Lucene_Document_Xlsx */
-require_once 'Zend/Search/Lucene/Document/Xlsx.php';
+// require_once 'Zend/Search/Lucene/Document/Xlsx.php';
 
 /** Zend_Search_Lucene_Search_QueryParser */
-require_once 'Zend/Search/Lucene/Search/QueryParser.php';
+// require_once 'Zend/Search/Lucene/Search/QueryParser.php';
 
 /** Zend_Search_Lucene_Search_QueryHit */
-require_once 'Zend/Search/Lucene/Search/QueryHit.php';
+// require_once 'Zend/Search/Lucene/Search/QueryHit.php';
 
 /** Zend_Search_Lucene_Analysis_Analyzer */
-require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
+// require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
 
 /** Zend_Search_Lucene_Search_Query_Term */
-require_once 'Zend/Search/Lucene/Search/Query/Term.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Term.php';
 
 /** Zend_Search_Lucene_Search_Query_Phrase */
-require_once 'Zend/Search/Lucene/Search/Query/Phrase.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Phrase.php';
 
 /** Zend_Search_Lucene_Search_Query_MultiTerm */
-require_once 'Zend/Search/Lucene/Search/Query/MultiTerm.php';
+// require_once 'Zend/Search/Lucene/Search/Query/MultiTerm.php';
 
 /** Zend_Search_Lucene_Search_Query_Wildcard */
-require_once 'Zend/Search/Lucene/Search/Query/Wildcard.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Wildcard.php';
 
 /** Zend_Search_Lucene_Search_Query_Range */
-require_once 'Zend/Search/Lucene/Search/Query/Range.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Range.php';
 
 /** Zend_Search_Lucene_Search_Query_Fuzzy */
-require_once 'Zend/Search/Lucene/Search/Query/Fuzzy.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Fuzzy.php';
 
 /** Zend_Search_Lucene_Search_Query_Boolean */
-require_once 'Zend/Search/Lucene/Search/Query/Boolean.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Boolean.php';
 
 /** Zend_Search_Lucene_Search_Query_Empty */
-require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
 
 /** Zend_Search_Lucene_Search_Query_Insignificant */
-require_once 'Zend/Search/Lucene/Search/Query/Insignificant.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Insignificant.php';
 
 
 /** Internally used classes */
 
 /** Zend_Search_Lucene_Interface */
-require_once 'Zend/Search/Lucene/Interface.php';
+// require_once 'Zend/Search/Lucene/Interface.php';
 
 /** Zend_Search_Lucene_Index_SegmentInfo */
-require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
+// require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
 
 /** Zend_Search_Lucene_LockManager */
-require_once 'Zend/Search/Lucene/LockManager.php';
+// require_once 'Zend/Search/Lucene/LockManager.php';
 
 /**
  * @category   Zend

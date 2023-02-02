@@ -22,7 +22,7 @@
 /**
  * @see Zend_Reflection_Docblock_Tag
  */
-require_once 'Zend/Reflection/Docblock/Tag.php';
+// require_once 'Zend/Reflection/Docblock/Tag.php';
 
 /**
  * @category   Zend

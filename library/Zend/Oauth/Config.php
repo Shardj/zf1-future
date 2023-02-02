@@ -20,13 +20,13 @@
  */
 
 /** Zend_Oauth */
-require_once 'Zend/Oauth.php';
+// require_once 'Zend/Oauth.php';
 
 /** Zend_Uri */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /** Zend_Oauth_Config_Interface */
-require_once 'Zend/Oauth/Config/ConfigInterface.php';
+// require_once 'Zend/Oauth/Config/ConfigInterface.php';
 
 /**
  * @category   Zend

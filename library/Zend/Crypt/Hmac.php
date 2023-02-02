@@ -23,7 +23,7 @@
 /**
  * @see Zend_Crypt
  */
-require_once 'Zend/Crypt.php';
+// require_once 'Zend/Crypt.php';
 
 /**
  * PHP implementation of the RFC 2104 Hash based Message Authentication Code

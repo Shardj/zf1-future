@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_File_Hash
  */
-require_once 'Zend/Validate/File/Hash.php';
+// require_once 'Zend/Validate/File/Hash.php';
 
 /**
  * Validator for the sha1 hash of given files

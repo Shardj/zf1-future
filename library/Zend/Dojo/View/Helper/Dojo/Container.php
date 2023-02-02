@@ -21,7 +21,7 @@
  */
 
 /** Zend_Dojo */
-require_once 'Zend/Dojo.php';
+// require_once 'Zend/Dojo.php';
 
 /**
  * Container for  Dojo View Helper

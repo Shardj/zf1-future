@@ -23,7 +23,7 @@
 /**
  * @see Zend_Auth_Adapter_Interface
  */
-require_once 'Zend/Auth/Adapter/Interface.php';
+// require_once 'Zend/Auth/Adapter/Interface.php';
 
 /**
  * @category   Zend

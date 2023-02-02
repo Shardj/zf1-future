@@ -21,10 +21,10 @@
  */
 
 /** Zend_Search_Lucene_FSM */
-require_once 'Zend/Search/Lucene/FSM.php';
+// require_once 'Zend/Search/Lucene/FSM.php';
 
 /** Zend_Search_Lucene_Search_QueryParser */
-require_once 'Zend/Search/Lucene/Search/QueryToken.php';
+// require_once 'Zend/Search/Lucene/Search/QueryToken.php';
 
 /**
  * @category   Zend

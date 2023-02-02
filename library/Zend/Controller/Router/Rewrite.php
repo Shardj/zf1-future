@@ -21,10 +21,10 @@
  */
 
 /** Zend_Controller_Router_Abstract */
-require_once 'Zend/Controller/Router/Abstract.php';
+// require_once 'Zend/Controller/Router/Abstract.php';
 
 /** Zend_Controller_Router_Route */
-require_once 'Zend/Controller/Router/Route.php';
+// require_once 'Zend/Controller/Router/Route.php';
 
 /**
  * Ruby routing based Router.

@@ -23,12 +23,12 @@
 /**
  * @see Zend_Feed_Builder_Header_Itunes
  */
-require_once 'Zend/Feed/Builder/Header/Itunes.php';
+// require_once 'Zend/Feed/Builder/Header/Itunes.php';
 
 /**
  * @see Zend_Uri
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 
 /**

@@ -25,13 +25,13 @@
 /**
  * @see Zend_Mime
  */
-require_once 'Zend/Mime.php';
+// require_once 'Zend/Mime.php';
 
 
 /**
  * @see Zend_Mail_Protocol_Abstract
  */
-require_once 'Zend/Mail/Protocol/Abstract.php';
+// require_once 'Zend/Mail/Protocol/Abstract.php';
 
 
 /**

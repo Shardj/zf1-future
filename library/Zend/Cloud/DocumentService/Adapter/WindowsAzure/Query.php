@@ -20,7 +20,7 @@
 /*
  * @see Zend_Cloud_DocumentService_QueryAdapter
  */
-require_once 'Zend/Cloud/DocumentService/QueryAdapter.php';
+// require_once 'Zend/Cloud/DocumentService/QueryAdapter.php';
 
 /**
  * Class implementing Query adapter for working with Azure queries in a

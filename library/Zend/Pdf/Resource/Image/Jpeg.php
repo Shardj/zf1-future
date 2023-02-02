@@ -21,12 +21,12 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
 
 
 /** Zend_Pdf_Resource_Image */
-require_once 'Zend/Pdf/Resource/Image.php';
+// require_once 'Zend/Pdf/Resource/Image.php';
 
 /**
  * JPEG image

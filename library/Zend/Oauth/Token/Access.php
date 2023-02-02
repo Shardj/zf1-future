@@ -20,16 +20,16 @@
  */
 
 /** Zend_Oauth_Token */
-require_once 'Zend/Oauth/Token.php';
+// require_once 'Zend/Oauth/Token.php';
 
 /** Zend_Oauth_Http */
-require_once 'Zend/Oauth/Http.php';
+// require_once 'Zend/Oauth/Http.php';
 
 /** Zend_Uri_Http */
-require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Uri/Http.php';
 
 /** Zend_Oauth_Client */
-require_once 'Zend/Oauth/Client.php';
+// require_once 'Zend/Oauth/Client.php';
 
 /**
  * @category   Zend

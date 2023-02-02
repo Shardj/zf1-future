@@ -23,13 +23,13 @@
 /** Internally used classes */
 
 /** Zend_Search_Lucene_Analysis_Analyzer */
-require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
+// require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
 
 /** Zend_Search_Lucene_Search_QueryToken */
-require_once 'Zend/Search/Lucene/Search/QueryToken.php';
+// require_once 'Zend/Search/Lucene/Search/QueryToken.php';
 
 /** Zend_Search_Lucene_FSM */
-require_once 'Zend/Search/Lucene/FSM.php';
+// require_once 'Zend/Search/Lucene/FSM.php';
 
 /**
  * @category   Zend

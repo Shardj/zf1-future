@@ -23,27 +23,27 @@
 /**
  * @see Zend_Queue_Adapter_AdapterAbstract
  */
-require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
 
 /**
  * @see Zend_Db_Select
  */
-require_once 'Zend/Db/Select.php';
+// require_once 'Zend/Db/Select.php';
 
 /**
  * @see Zend_Db
  */
-require_once 'Zend/Db.php';
+// require_once 'Zend/Db.php';
 
 /**
  * @see Zend_Queue_Adapter_Db_Queue
  */
-require_once 'Zend/Queue/Adapter/Db/Queue.php';
+// require_once 'Zend/Queue/Adapter/Db/Queue.php';
 
 /**
  * @see Zend_Queue_Adapter_Db_Message
  */
-require_once 'Zend/Queue/Adapter/Db/Message.php';
+// require_once 'Zend/Queue/Adapter/Db/Message.php';
 
 /**
  * Class for using connecting to a Zend_Db-based queuing system

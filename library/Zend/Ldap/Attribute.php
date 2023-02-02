@@ -22,10 +22,10 @@
 /**
  * @see Zend_Ldap_Converter
  */
-require_once 'Zend/Ldap/Converter.php';
+// require_once 'Zend/Ldap/Converter.php';
 
 /** @see Zend_Crypt_Math */
-require_once 'Zend/Crypt/Math.php';
+// require_once 'Zend/Crypt/Math.php';
 
 /**
  * Zend_Ldap_Attribute is a collection of LDAP attribute related functions.

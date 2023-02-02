@@ -22,32 +22,32 @@
 /**
  * @see Zend_Service_Amazon_Abstract
  */
-require_once 'Zend/Service/Amazon/Abstract.php';
+// require_once 'Zend/Service/Amazon/Abstract.php';
 
 /**
  * @see Zend_Service_Amazon_SimpleDb_Response
  */
-require_once 'Zend/Service/Amazon/SimpleDb/Response.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Response.php';
 
 /**
  * @see Zend_Service_Amazon_SimpleDb_Page
  */
-require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
 
 /**
  * @see Zend_Service_Amazon_SimpleDb_Attribute
  */
-require_once 'Zend/Service/Amazon/SimpleDb/Attribute.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Attribute.php';
 
 /**
  * @see Zend_Service_Amazon_SimpleDb_Exception
  */
-require_once 'Zend/Service/Amazon/SimpleDb/Exception.php';
+// require_once 'Zend/Service/Amazon/SimpleDb/Exception.php';
 
 /**
  * @see Zend_Crypt_Hmac
  */
-require_once 'Zend/Crypt/Hmac.php';
+// require_once 'Zend/Crypt/Hmac.php';
 
 /**
  * @category   Zend

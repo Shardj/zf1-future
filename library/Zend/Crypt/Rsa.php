@@ -23,12 +23,12 @@
 /**
  * @see Zend_Crypt_Rsa_Key_Private
  */
-require_once 'Zend/Crypt/Rsa/Key/Private.php';
+// require_once 'Zend/Crypt/Rsa/Key/Private.php';
 
 /**
  * @see Zend_Crypt_Rsa_Key_Public
  */
-require_once 'Zend/Crypt/Rsa/Key/Public.php';
+// require_once 'Zend/Crypt/Rsa/Key/Public.php';
 
 /**
  * @category   Zend

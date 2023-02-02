@@ -22,12 +22,12 @@
 /**
  * @see Zend_Uri
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /**
  * @see Zend_Validate_Hostname
  */
-require_once 'Zend/Validate/Hostname.php';
+// require_once 'Zend/Validate/Hostname.php';
 
 /**
  * HTTP(S) URI handler

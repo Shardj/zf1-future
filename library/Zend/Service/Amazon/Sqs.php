@@ -23,12 +23,12 @@
 /**
  * @see Zend_Service_Amazon_Abstract
  */
-require_once 'Zend/Service/Amazon/Abstract.php';
+// require_once 'Zend/Service/Amazon/Abstract.php';
 
 /**
  * @see Zend_Crypt_Hmac
  */
-require_once 'Zend/Crypt/Hmac.php';
+// require_once 'Zend/Crypt/Hmac.php';
 
 /**
  * Class for connecting to the Amazon Simple Queue Service (SQS)

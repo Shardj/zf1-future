@@ -22,39 +22,39 @@
 /**
  * @see Zend_Date
  */
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * @see Zend_Date
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /**
  * @see Zend_Feed_Writer
  */
-require_once 'Zend/Feed/Writer.php';
+// require_once 'Zend/Feed/Writer.php';
 
 /**
  * @see Zend_Feed_Writer_Entry
  */
-require_once 'Zend/Feed/Writer/Entry.php';
+// require_once 'Zend/Feed/Writer/Entry.php';
 
 /**
  * @see Zend_Feed_Writer_Deleted
  */
-require_once 'Zend/Feed/Writer/Deleted.php';
+// require_once 'Zend/Feed/Writer/Deleted.php';
 
 /**
  * @see Zend_Feed_Writer_Renderer_Feed_Atom
  */
-require_once 'Zend/Feed/Writer/Renderer/Feed/Atom.php';
+// require_once 'Zend/Feed/Writer/Renderer/Feed/Atom.php';
 
 /**
  * @see Zend_Feed_Writer_Renderer_Feed_Rss
  */
-require_once 'Zend/Feed/Writer/Renderer/Feed/Rss.php';
+// require_once 'Zend/Feed/Writer/Renderer/Feed/Rss.php';
 
-require_once 'Zend/Feed/Writer/Feed/FeedAbstract.php';
+// require_once 'Zend/Feed/Writer/Feed/FeedAbstract.php';
 
 /**
  * @category   Zend

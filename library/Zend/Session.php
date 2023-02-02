@@ -25,17 +25,17 @@
 /**
  * @see Zend_Session_Abstract
  */
-require_once 'Zend/Session/Abstract.php';
+// require_once 'Zend/Session/Abstract.php';
 
 /**
  * @see Zend_Session_Namespace
  */
-require_once 'Zend/Session/Namespace.php';
+// require_once 'Zend/Session/Namespace.php';
 
 /**
  * @see Zend_Session_SaveHandler_Interface
  */
-require_once 'Zend/Session/SaveHandler/Interface.php';
+// require_once 'Zend/Session/SaveHandler/Interface.php';
 
 
 /**

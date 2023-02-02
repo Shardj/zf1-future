@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Amazon_S3
  */
-require_once 'Zend/Service/Amazon/S3.php';
+// require_once 'Zend/Service/Amazon/S3.php';
 
 /**
  * Amazon S3 PHP stream wrapper

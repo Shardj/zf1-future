@@ -23,7 +23,7 @@
 /**
  * @see Zend_Ldap_Collection
  */
-require_once 'Zend/Ldap/Collection.php';
+// require_once 'Zend/Ldap/Collection.php';
 
 
 /**

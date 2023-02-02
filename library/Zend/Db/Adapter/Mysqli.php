@@ -24,22 +24,22 @@
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Db_Profiler
  */
-require_once 'Zend/Db/Profiler.php';
+// require_once 'Zend/Db/Profiler.php';
 
 /**
  * @see Zend_Db_Select
  */
-require_once 'Zend/Db/Select.php';
+// require_once 'Zend/Db/Select.php';
 
 /**
  * @see Zend_Db_Statement_Mysqli
  */
-require_once 'Zend/Db/Statement/Mysqli.php';
+// require_once 'Zend/Db/Statement/Mysqli.php';
 
 
 /**

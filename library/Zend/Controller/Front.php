@@ -21,13 +21,13 @@
 
 
 /** Zend_Loader */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /** Zend_Controller_Action_HelperBroker */
-require_once 'Zend/Controller/Action/HelperBroker.php';
+// require_once 'Zend/Controller/Action/HelperBroker.php';
 
 /** Zend_Controller_Plugin_Broker */
-require_once 'Zend/Controller/Plugin/Broker.php';
+// require_once 'Zend/Controller/Plugin/Broker.php';
 
 /**
  * @category   Zend

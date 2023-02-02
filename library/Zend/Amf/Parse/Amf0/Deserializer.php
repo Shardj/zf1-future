@@ -21,13 +21,13 @@
  */
 
 /** Zend_Amf_Constants */
-require_once 'Zend/Amf/Constants.php';
+// require_once 'Zend/Amf/Constants.php';
 
 /** Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** @see Zend_Amf_Parse_Deserializer */
-require_once 'Zend/Amf/Parse/Deserializer.php';
+// require_once 'Zend/Amf/Parse/Deserializer.php';
 
 /**
  * Read an AMF0 input stream and convert it into PHP data types

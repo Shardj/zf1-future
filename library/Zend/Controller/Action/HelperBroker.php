@@ -23,12 +23,12 @@
 /**
  * @see Zend_Controller_Action_HelperBroker_PriorityStack
  */
-require_once 'Zend/Controller/Action/HelperBroker/PriorityStack.php';
+// require_once 'Zend/Controller/Action/HelperBroker/PriorityStack.php';
 
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /**
  * @category   Zend

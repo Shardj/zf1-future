@@ -22,7 +22,7 @@
 /**
  * @see Zend_Filter_Encrypt
  */
-require_once 'Zend/Filter/Encrypt.php';
+// require_once 'Zend/Filter/Encrypt.php';
 
 /**
  * Encrypts a given file and stores the encrypted file content

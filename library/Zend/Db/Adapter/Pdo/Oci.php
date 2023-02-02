@@ -24,7 +24,7 @@
 /**
  * @see Zend_Db_Adapter_Pdo_Abstract
  */
-require_once 'Zend/Db/Adapter/Pdo/Abstract.php';
+// require_once 'Zend/Db/Adapter/Pdo/Abstract.php';
 
 
 /**

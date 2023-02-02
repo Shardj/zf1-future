@@ -23,20 +23,20 @@
 /**
  * Zend_Http_Client
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * Zend_Cache
  */
-require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache.php';
 
 /**
  * Zend_Service_SlideShare_SlideShow
  */
-require_once 'Zend/Service/SlideShare/SlideShow.php';
+// require_once 'Zend/Service/SlideShare/SlideShow.php';
 
 /** Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * The Zend_Service_SlideShare component is used to interface with the

@@ -17,7 +17,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Cloud/DocumentService/QueryAdapter.php';
+// require_once 'Zend/Cloud/DocumentService/QueryAdapter.php';
 
 /**
  * Generic query object

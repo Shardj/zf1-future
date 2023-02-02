@@ -21,7 +21,7 @@
  */
 
 /** Zend_Search_Lucene_Search_QueryToken */
-require_once 'Zend/Search/Lucene/Search/QueryToken.php';
+// require_once 'Zend/Search/Lucene/Search/QueryToken.php';
 
 
 /**

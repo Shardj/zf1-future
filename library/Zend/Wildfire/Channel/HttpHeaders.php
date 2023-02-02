@@ -21,22 +21,22 @@
  */
 
 /** Zend_Wildfire_Channel_Interface */
-require_once 'Zend/Wildfire/Channel/Interface.php';
+// require_once 'Zend/Wildfire/Channel/Interface.php';
 
 /** Zend_Controller_Request_Abstract */
-require_once('Zend/Controller/Request/Abstract.php');
+// require_once('Zend/Controller/Request/Abstract.php');
 
 /** Zend_Controller_Response_Abstract */
-require_once('Zend/Controller/Response/Abstract.php');
+// require_once('Zend/Controller/Response/Abstract.php');
 
 /** Zend_Controller_Plugin_Abstract */
-require_once 'Zend/Controller/Plugin/Abstract.php';
+// require_once 'Zend/Controller/Plugin/Abstract.php';
 
 /** Zend_Wildfire_Protocol_JsonStream */
-require_once 'Zend/Wildfire/Protocol/JsonStream.php';
+// require_once 'Zend/Wildfire/Protocol/JsonStream.php';
 
 /** Zend_Controller_Front **/
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /**
  * Implements communication via HTTP request and response headers for Wildfire Protocols.

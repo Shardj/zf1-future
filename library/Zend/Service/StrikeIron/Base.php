@@ -24,7 +24,7 @@
 /**
  * @see Zend_Service_StrikeIron_Decorator
  */
-require_once 'Zend/Service/StrikeIron/Decorator.php';
+// require_once 'Zend/Service/StrikeIron/Decorator.php';
 
 
 /**

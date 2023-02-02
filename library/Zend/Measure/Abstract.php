@@ -22,17 +22,17 @@
 /**
  * @see Zend_Locale
  */
-require_once 'Zend/Locale.php';
+// require_once 'Zend/Locale.php';
 
 /**
  * @see Zend_Locale_Math
  */
-require_once 'Zend/Locale/Math.php';
+// require_once 'Zend/Locale/Math.php';
 
 /**
  * @see Zend_Locale_Format
  */
-require_once 'Zend/Locale/Format.php';
+// require_once 'Zend/Locale/Format.php';
 
 /**
  * Abstract class for all measurements

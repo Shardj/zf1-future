@@ -20,13 +20,13 @@
  */
 
 /** @see Zend_Amf_Parse_TypeLoader */
-require_once 'Zend/Amf/Parse/TypeLoader.php';
+// require_once 'Zend/Amf/Parse/TypeLoader.php';
 
 /** @see Zend_Reflection_Class */
-require_once 'Zend/Reflection/Class.php';
+// require_once 'Zend/Reflection/Class.php';
 
 /** @see Zend_Server_Reflection */
-require_once 'Zend/Server/Reflection.php';
+// require_once 'Zend/Server/Reflection.php';
 
 /**
  * This class implements a service for generating AMF service descriptions as XML.

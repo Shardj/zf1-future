@@ -21,7 +21,7 @@
  */
 
 /** Zend_Pdf_Cmap */
-require_once 'Zend/Pdf/Cmap.php';
+// require_once 'Zend/Pdf/Cmap.php';
 
 
 /**

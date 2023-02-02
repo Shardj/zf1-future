@@ -21,7 +21,7 @@
  */
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element.php';
 
 
 /**

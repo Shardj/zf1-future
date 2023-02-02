@@ -21,7 +21,7 @@
  */
 
 /** Zend_Search_Lucene_Storage_File */
-require_once 'Zend/Search/Lucene/Storage/File.php';
+// require_once 'Zend/Search/Lucene/Storage/File.php';
 
 /**
  * @category   Zend

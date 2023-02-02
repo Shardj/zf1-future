@@ -22,15 +22,15 @@
 /**
  * @see Zend_Soap_Wsdl_Strategy_Interface
  */
-require_once "Zend/Soap/Wsdl/Strategy/Interface.php";
+// require_once "Zend/Soap/Wsdl/Strategy/Interface.php";
 
 /**
  * @see Zend_Soap_Wsdl_Strategy_Abstract
  */
-require_once "Zend/Soap/Wsdl/Strategy/Abstract.php";
+// require_once "Zend/Soap/Wsdl/Strategy/Abstract.php";
 
 /** @see Zend_Xml_Security */
-require_once "Zend/Xml/Security.php";
+// require_once "Zend/Xml/Security.php";
 
 /**
  * Zend_Soap_Wsdl

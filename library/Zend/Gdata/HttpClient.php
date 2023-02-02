@@ -23,10 +23,10 @@
 /**
  * Zend_Http_Client
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /** @see Zend_Crypt_Math */
-require_once 'Zend/Crypt/Math.php';
+// require_once 'Zend/Crypt/Math.php';
 
 /**
  * Gdata Http Client object.

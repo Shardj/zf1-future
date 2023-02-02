@@ -21,7 +21,7 @@
  */
 
 /** @see Zend_Barcode_Renderer_RendererAbstract*/
-require_once 'Zend/Barcode/Renderer/RendererAbstract.php';
+// require_once 'Zend/Barcode/Renderer/RendererAbstract.php';
 
 /**
  * Class for rendering the barcode as svg

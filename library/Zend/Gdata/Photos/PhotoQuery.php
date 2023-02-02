@@ -24,7 +24,7 @@
 /**
  * @see Zend_Gdata_Gapps_Picasa_AlbumQuery
  */
-require_once('Zend/Gdata/Photos/AlbumQuery.php');
+// require_once('Zend/Gdata/Photos/AlbumQuery.php');
 
 /**
  * Assists in constructing queries for comment/tag entries.

@@ -24,36 +24,36 @@
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 
 /**
  * @see Zend_Uri
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 
 /**
  * @see Zend_Http_Client_Adapter_Interface
  */
-require_once 'Zend/Http/Client/Adapter/Interface.php';
+// require_once 'Zend/Http/Client/Adapter/Interface.php';
 
 
 /**
  * @see Zend_Http_Header_HeaderValue
  */
-require_once 'Zend/Http/Header/HeaderValue.php';
+// require_once 'Zend/Http/Header/HeaderValue.php';
 
 
 /**
  * @see Zend_Http_Response
  */
-require_once 'Zend/Http/Response.php';
+// require_once 'Zend/Http/Response.php';
 
 /**
  * @see Zend_Http_Response_Stream
  */
-require_once 'Zend/Http/Response/Stream.php';
+// require_once 'Zend/Http/Response/Stream.php';
 
 /**
  * Zend_Http_Client is an implementation of an HTTP client in PHP. The client

@@ -21,7 +21,7 @@
  */
 
 /** @see Zend_Serializer_Adapter_AdapterAbstract */
-require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
 
 /**
  * @link       http://www.python.org

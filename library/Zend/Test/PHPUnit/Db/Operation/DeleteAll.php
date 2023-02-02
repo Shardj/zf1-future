@@ -23,7 +23,7 @@
 /**
  * @see Zend_Test_PHPUnit_Db_Connection
  */
-require_once "Zend/Test/PHPUnit/Db/Connection.php";
+// require_once "Zend/Test/PHPUnit/Db/Connection.php";
 
 /**
  * Delete All Operation that can be executed on set up or tear down of a database tester.

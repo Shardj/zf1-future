@@ -23,12 +23,12 @@
 /**
  * @see Zend_Mime_Decode
  */
-require_once 'Zend/Mime/Decode.php';
+// require_once 'Zend/Mime/Decode.php';
 
 /**
  * @see Zend_Mail_Part
  */
-require_once 'Zend/Mail/Part.php';
+// require_once 'Zend/Mail/Part.php';
 
 
 /**

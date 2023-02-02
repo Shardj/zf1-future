@@ -23,17 +23,17 @@
 /**
  * @see Zend_Service_Amazon_Abstract
  */
-require_once 'Zend/Service/Amazon/Abstract.php';
+// require_once 'Zend/Service/Amazon/Abstract.php';
 
 /**
  * @see Zend_Service_Amazon_Ec2_Response
  */
-require_once 'Zend/Service/Amazon/Ec2/Response.php';
+// require_once 'Zend/Service/Amazon/Ec2/Response.php';
 
 /**
  * @see Zend_Service_Amazon_Ec2_Exception
  */
-require_once 'Zend/Service/Amazon/Ec2/Exception.php';
+// require_once 'Zend/Service/Amazon/Ec2/Exception.php';
 
 /**
  * Provides the basic functionality to send a request to the Amazon Ec2 Query API

@@ -8,7 +8,7 @@
  */
 
 
-require_once 'Zend/Cloud/Infrastructure/Image.php';
+// require_once 'Zend/Cloud/Infrastructure/Image.php';
 
 /**
  * List of images

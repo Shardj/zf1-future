@@ -22,7 +22,7 @@
 /**
  * @see Zend_Filter_PregReplace
  */
-require_once 'Zend/Filter/PregReplace.php';
+// require_once 'Zend/Filter/PregReplace.php';
 
 /**
  * @category   Zend

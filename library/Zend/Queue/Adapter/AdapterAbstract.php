@@ -23,12 +23,12 @@
 /**
  * @see Zend_Queue
  */
-require_once 'Zend/Queue.php';
+// require_once 'Zend/Queue.php';
 
 /**
  * @see Zend_Queue_Adapter_AdapterInterface
  */
-require_once 'Zend/Queue/Adapter/AdapterInterface.php';
+// require_once 'Zend/Queue/Adapter/AdapterInterface.php';
 
 /**
  * Class for connecting to queues performing common operations.

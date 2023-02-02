@@ -21,7 +21,7 @@
  */
 
 /** Zend_Pdf_FileParserDataSource */
-require_once 'Zend/Pdf/FileParserDataSource.php';
+// require_once 'Zend/Pdf/FileParserDataSource.php';
 
 /**
  * Concrete subclass of {@link Zend_Pdf_FileParserDataSource} that provides an

@@ -21,7 +21,7 @@
  */
 
 /** Zend_Search_Lucene_Index_TermsStream_Interface */
-require_once 'Zend/Search/Lucene/Index/TermsStream/Interface.php';
+// require_once 'Zend/Search/Lucene/Index/TermsStream/Interface.php';
 
 
 /**

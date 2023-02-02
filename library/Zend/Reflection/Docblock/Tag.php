@@ -20,7 +20,7 @@
  */
 
 /** Zend_Loader */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /**
  * @category   Zend

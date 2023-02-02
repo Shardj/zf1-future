@@ -17,8 +17,8 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Cloud/StorageService/Adapter.php';
-require_once 'Zend/Cloud/StorageService/Exception.php';
+// require_once 'Zend/Cloud/StorageService/Adapter.php';
+// require_once 'Zend/Cloud/StorageService/Exception.php';
 
 /**
  * FileSystem adapter for unstructured cloud storage.

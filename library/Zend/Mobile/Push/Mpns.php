@@ -21,13 +21,13 @@
  */
 
 /** Zend_Http_Client **/
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /** Zend_Mobile_Push_Abstract **/
-require_once 'Zend/Mobile/Push/Abstract.php';
+// require_once 'Zend/Mobile/Push/Abstract.php';
 
 /** Zend_Mobile_Push_Message_Mpns **/
-require_once 'Zend/Mobile/Push/Message/Mpns.php';
+// require_once 'Zend/Mobile/Push/Message/Mpns.php';
 
 /**
  * Mpns Push

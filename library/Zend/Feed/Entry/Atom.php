@@ -24,10 +24,10 @@
 /**
  * @see Zend_Feed_Entry_Abstract
  */
-require_once 'Zend/Feed/Entry/Abstract.php';
+// require_once 'Zend/Feed/Entry/Abstract.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Concrete class for working with Atom entries.

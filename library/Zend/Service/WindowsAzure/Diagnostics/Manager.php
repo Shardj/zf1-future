@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance
  */
-require_once 'Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php';
 
 /**
  * @category   Zend

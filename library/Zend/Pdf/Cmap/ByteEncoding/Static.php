@@ -21,7 +21,7 @@
  */
 
 /** Zend_Pdf_Cmap_ByteEncoding */
-require_once 'Zend/Pdf/Cmap/ByteEncoding.php';
+// require_once 'Zend/Pdf/Cmap/ByteEncoding.php';
 
 
 /**

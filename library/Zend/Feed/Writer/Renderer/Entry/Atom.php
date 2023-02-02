@@ -22,12 +22,12 @@
 /**
  * @see Zend_Feed_Writer_Renderer_RendererAbstract
  */
-require_once 'Zend/Feed/Writer/Renderer/RendererAbstract.php';
+// require_once 'Zend/Feed/Writer/Renderer/RendererAbstract.php';
 
-require_once 'Zend/Feed/Writer/Renderer/Feed/Atom/Source.php';
+// require_once 'Zend/Feed/Writer/Renderer/Feed/Atom/Source.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * @category   Zend

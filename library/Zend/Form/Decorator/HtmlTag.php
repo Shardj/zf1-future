@@ -22,7 +22,7 @@
 /**
  * @see Zend_Form_Decorator_Abstract
  */
-require_once 'Zend/Form/Decorator/Abstract.php';
+// require_once 'Zend/Form/Decorator/Abstract.php';
 
 /**
  * Zend_Form_Decorator_Element_HtmlTag

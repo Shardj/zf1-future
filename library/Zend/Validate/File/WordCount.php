@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_File_Count
  */
-require_once 'Zend/Validate/File/Count.php';
+// require_once 'Zend/Validate/File/Count.php';
 
 /**
  * Validator for counting all words in a file

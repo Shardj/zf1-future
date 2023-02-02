@@ -23,7 +23,7 @@
 /**
  * Abstract master class for extension.
  */
-require_once 'Zend/View/Abstract.php';
+// require_once 'Zend/View/Abstract.php';
 
 
 /**

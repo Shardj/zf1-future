@@ -23,10 +23,10 @@
 /**
  * @see Zend_Controller_Response_Abstract
  */
-require_once "Zend/Controller/Response/Abstract.php";
+// require_once "Zend/Controller/Response/Abstract.php";
 
 /** @see Zend_Crypt_Math */
-require_once 'Zend/Crypt/Math.php';
+// require_once 'Zend/Crypt/Math.php';
 
 /**
  * Static class that contains common utility functions for

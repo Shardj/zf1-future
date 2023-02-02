@@ -24,7 +24,7 @@
 /**
  * @see Zend_Mime
  */
-require_once 'Zend/Mime.php';
+// require_once 'Zend/Mime.php';
 
 
 /**

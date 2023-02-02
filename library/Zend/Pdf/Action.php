@@ -22,12 +22,12 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element/Array.php';
 
 
 /** Zend_Pdf_Target */
-require_once 'Zend/Pdf/Target.php';
+// require_once 'Zend/Pdf/Target.php';
 
 
 /**

@@ -22,9 +22,9 @@
 /**
  * include needed classes
  */
-require_once 'Zend/Locale.php';
-require_once 'Zend/Locale/Data.php';
-require_once 'Zend/Locale/Format.php';
+// require_once 'Zend/Locale.php';
+// require_once 'Zend/Locale/Data.php';
+// require_once 'Zend/Locale/Format.php';
 
 /**
  * Class for handling currency notations

@@ -24,17 +24,17 @@
 /**
  * @see Zend_Feed_Builder_Interface
  */
-require_once 'Zend/Feed/Builder/Interface.php';
+// require_once 'Zend/Feed/Builder/Interface.php';
 
 /**
  * @see Zend_Feed_Builder_Header
  */
-require_once 'Zend/Feed/Builder/Header.php';
+// require_once 'Zend/Feed/Builder/Header.php';
 
 /**
  * @see Zend_Feed_Builder_Entry
  */
-require_once 'Zend/Feed/Builder/Entry.php';
+// require_once 'Zend/Feed/Builder/Entry.php';
 
 
 /**

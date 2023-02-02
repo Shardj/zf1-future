@@ -21,7 +21,7 @@
  */
 
 /** Zend_View_Helper_Placeholder_Container_Standalone */
-require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
+// require_once 'Zend/View/Helper/Placeholder/Container/Standalone.php';
 
 /**
  * Zend_Layout_View_Helper_HeadLink

@@ -22,7 +22,7 @@
 
 
 /** Zend_Search_Lucene_Search_Query_Processing */
-require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
 
 /**
  * It's an internal abstract class intended to finalize ase a query processing after query parsing.

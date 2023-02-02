@@ -23,7 +23,7 @@
 /**
  * @see Zend_Tag_Cloud_Decorator_Tag
  */
-require_once 'Zend/Tag/Cloud/Decorator/Tag.php';
+// require_once 'Zend/Tag/Cloud/Decorator/Tag.php';
 
 /**
  * Simple HTML decorator for tags

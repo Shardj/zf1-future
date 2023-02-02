@@ -23,7 +23,7 @@
 /**
  * @see Zend_View_Helper_Navigation_HelperAbstract
  */
-require_once 'Zend/View/Helper/Navigation/HelperAbstract.php';
+// require_once 'Zend/View/Helper/Navigation/HelperAbstract.php';
 
 /**
  * Proxy helper for retrieving navigational helpers and forwarding calls

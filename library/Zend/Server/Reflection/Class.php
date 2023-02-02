@@ -21,7 +21,7 @@
 /**
  * Zend_Server_Reflection_Method
  */
-require_once 'Zend/Server/Reflection/Method.php';
+// require_once 'Zend/Server/Reflection/Method.php';
 
 /**
  * Class/Object reflection

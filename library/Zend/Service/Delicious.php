@@ -25,30 +25,30 @@
 /**
  * @see Zend_Rest_Client
  */
-require_once 'Zend/Rest/Client.php';
+// require_once 'Zend/Rest/Client.php';
 
 /**
  * @see Zend_Json_Decoder
  */
-require_once 'Zend/Json/Decoder.php';
+// require_once 'Zend/Json/Decoder.php';
 
 /**
  * @see Zend_Service_Delicious_SimplePost
  */
-require_once 'Zend/Service/Delicious/SimplePost.php';
+// require_once 'Zend/Service/Delicious/SimplePost.php';
 
 /**
  * @see Zend_Service_Delicious_Post
  */
-require_once 'Zend/Service/Delicious/Post.php';
+// require_once 'Zend/Service/Delicious/Post.php';
 
 /**
  * @see Zend_Service_Delicious_PostList
  */
-require_once 'Zend/Service/Delicious/PostList.php';
+// require_once 'Zend/Service/Delicious/PostList.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Zend_Service_Delicious is a concrete implementation of the del.icio.us web service

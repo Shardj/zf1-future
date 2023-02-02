@@ -22,7 +22,7 @@
 /**
  * Zend_Http_UserAgent_Features_Adapter_Interface
  */
-require_once 'Zend/Http/UserAgent/Features/Adapter.php';
+// require_once 'Zend/Http/UserAgent/Features/Adapter.php';
 
 /**
  * Features adapter build with the Tera Wurfl Api

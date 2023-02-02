@@ -24,16 +24,16 @@
 /**
  * @see Zend_Uri_Http
  */
-require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Uri/Http.php';
 
 /**
  * @see Zend_Http_Client_Adapter_Interface
  */
-require_once 'Zend/Http/Client/Adapter/Interface.php';
+// require_once 'Zend/Http/Client/Adapter/Interface.php';
 /**
  * @see Zend_Http_Client_Adapter_Stream
  */
-require_once 'Zend/Http/Client/Adapter/Stream.php';
+// require_once 'Zend/Http/Client/Adapter/Stream.php';
 
 /**
  * An adapter class for Zend_Http_Client based on the curl extension.

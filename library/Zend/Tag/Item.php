@@ -23,7 +23,7 @@
 /**
  * @see Zend_Tag_Taggable
  */
-require_once 'Zend/Tag/Taggable.php';
+// require_once 'Zend/Tag/Taggable.php';
 
 /**
  * @category   Zend

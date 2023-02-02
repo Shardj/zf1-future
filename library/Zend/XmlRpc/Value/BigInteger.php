@@ -24,7 +24,7 @@
 /**
  * Zend_XmlRpc_Value_Integer
  */
-require_once 'Zend/XmlRpc/Value/Integer.php';
+// require_once 'Zend/XmlRpc/Value/Integer.php';
 
 /**
  * @category   Zend

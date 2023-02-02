@@ -22,7 +22,7 @@
 
 
 /** Zend_Search_Lucene_Storage_Directory */
-require_once 'Zend/Search/Lucene/Storage/Directory.php';
+// require_once 'Zend/Search/Lucene/Storage/Directory.php';
 
 
 /**

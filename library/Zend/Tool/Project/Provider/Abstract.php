@@ -23,29 +23,29 @@
 /**
  * @see Zend_Tool_Project_Profile
  */
-require_once 'Zend/Tool/Project/Profile.php';
+// require_once 'Zend/Tool/Project/Profile.php';
 
 /**
  * @see Zend_Tool_Framework_Provider_Abstract
  */
-require_once 'Zend/Tool/Framework/Provider/Abstract.php';
+// require_once 'Zend/Tool/Framework/Provider/Abstract.php';
 
 /**
  * @see Zend_Tool_Project_Context_Repository
  */
-require_once 'Zend/Tool/Project/Context/Repository.php';
+// require_once 'Zend/Tool/Project/Context/Repository.php';
 
 /**
  * @see Zend_Tool_Project_Profile_FileParser_Xml
  */
-require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
+// require_once 'Zend/Tool/Project/Profile/FileParser/Xml.php';
 
 /**
  * @see Zend_Tool_Framework_Registry
  */
-require_once 'Zend/Tool/Framework/Registry.php';
+// require_once 'Zend/Tool/Framework/Registry.php';
 
-require_once 'Zend/Tool/Framework/Provider/Initializable.php';
+// require_once 'Zend/Tool/Framework/Provider/Initializable.php';
 
 /**
  * @category   Zend

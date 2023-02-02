@@ -24,17 +24,17 @@
 /**
  * @see Zend_Gdata_App_Entry
  */
-require_once 'Zend/Gdata/App/Entry.php';
+// require_once 'Zend/Gdata/App/Entry.php';
 
 /**
  * @see Zend_Gdata_App_MediaSource
  */
-require_once 'Zend/Gdata/App/MediaSource.php';
+// require_once 'Zend/Gdata/App/MediaSource.php';
 
 /**
  * @see Zend_Gdata_MediaMimeStream
  */
-require_once 'Zend/Gdata/MediaMimeStream.php';
+// require_once 'Zend/Gdata/MediaMimeStream.php';
 
 /**
  * Concrete class for working with Atom entries containing multi-part data.

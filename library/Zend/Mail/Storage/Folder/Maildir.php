@@ -24,17 +24,17 @@
 /**
  * @see Zend_Mail_Storage_Folder
  */
-require_once 'Zend/Mail/Storage/Folder.php';
+// require_once 'Zend/Mail/Storage/Folder.php';
 
 /**
  * @see Zend_Mail_Storage_Folder_Interface
  */
-require_once 'Zend/Mail/Storage/Folder/Interface.php';
+// require_once 'Zend/Mail/Storage/Folder/Interface.php';
 
 /**
  * @see Zend_Mail_Storage_Maildir
  */
-require_once 'Zend/Mail/Storage/Maildir.php';
+// require_once 'Zend/Mail/Storage/Maildir.php';
 
 
 /**

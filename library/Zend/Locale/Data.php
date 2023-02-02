@@ -23,10 +23,10 @@
 /**
  * include needed classes
  */
-require_once 'Zend/Locale.php';
+// require_once 'Zend/Locale.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Locale data reader, handles the CLDR

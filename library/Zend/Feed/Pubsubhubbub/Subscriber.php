@@ -22,12 +22,12 @@
 /**
  * @see Zend_Feed_Pubsubhubbub
  */
-require_once 'Zend/Feed/Pubsubhubbub.php';
+// require_once 'Zend/Feed/Pubsubhubbub.php';
 
 /**
  * @see Zend_Date
  */
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * @category   Zend

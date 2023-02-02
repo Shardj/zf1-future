@@ -23,7 +23,7 @@
 /**
  * @see Zend_Ldap_Node_Abstract
  */
-require_once 'Zend/Ldap/Node/Abstract.php';
+// require_once 'Zend/Ldap/Node/Abstract.php';
 
 /**
  * Zend_Ldap_Node_RootDse provides a simple data-container for the RootDSE node.

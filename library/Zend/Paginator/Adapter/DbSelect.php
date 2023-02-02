@@ -22,17 +22,17 @@
 /**
  * @see Zend_Paginator_Adapter_Interface
  */
-require_once 'Zend/Paginator/Adapter/Interface.php';
+// require_once 'Zend/Paginator/Adapter/Interface.php';
 
 /**
  * @see Zend_Db
  */
-require_once 'Zend/Db.php';
+// require_once 'Zend/Db.php';
 
 /**
  * @see Zend_Db_Select
  */
-require_once 'Zend/Db/Select.php';
+// require_once 'Zend/Db/Select.php';
 
 /**
  * @category   Zend

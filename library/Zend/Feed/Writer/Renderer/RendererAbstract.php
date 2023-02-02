@@ -20,10 +20,10 @@
  */
 
 /** @see Zend_Feed_Writer */
-require_once 'Zend/Feed/Writer.php';
+// require_once 'Zend/Feed/Writer.php';
 
 /** @see Zend_Version */
-require_once 'Zend/Version.php';
+// require_once 'Zend/Version.php';
 
 /**
  * @category   Zend

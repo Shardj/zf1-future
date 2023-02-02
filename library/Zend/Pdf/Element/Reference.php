@@ -21,11 +21,11 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Null.php';
+// require_once 'Zend/Pdf/Element/Null.php';
 
 
 /** Zend_Pdf_Element */
-require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element.php';
 
 /**
  * PDF file 'reference' element implementation

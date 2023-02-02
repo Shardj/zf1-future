@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Abstract
  */
-require_once 'Zend/Service/Abstract.php';
+// require_once 'Zend/Service/Abstract.php';
 
 /**
  * Abstract Amazon class that handles the credentials for any of the Web Services that

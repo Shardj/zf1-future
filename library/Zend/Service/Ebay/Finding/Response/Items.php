@@ -23,7 +23,7 @@
 /**
  * @see Zend_Service_Ebay_Finding_Response_Histograms
  */
-require_once 'Zend/Service/Ebay/Finding/Response/Histograms.php';
+// require_once 'Zend/Service/Ebay/Finding/Response/Histograms.php';
 
 /**
  * @category   Zend

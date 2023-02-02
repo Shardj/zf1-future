@@ -23,7 +23,7 @@
 /**
  * @see Zend_Queue_Message
  */
-require_once 'Zend/Queue/Message.php';
+// require_once 'Zend/Queue/Message.php';
 
 /**
  * Class for managing Zend Platform JobQueue jobs via Zend_Queue

@@ -20,10 +20,10 @@
  */
 
 /** @see Zend_Cache_Exception */
-require_once 'Zend/Cache/Exception.php';
+// require_once 'Zend/Cache/Exception.php';
 
 /** @see Zend_Cache */
-require_once 'Zend/Cache.php';
+// require_once 'Zend/Cache.php';
 
 /**
  * @category   Zend

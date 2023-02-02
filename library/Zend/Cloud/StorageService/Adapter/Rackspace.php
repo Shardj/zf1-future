@@ -17,10 +17,10 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Cloud/StorageService/Adapter.php';
-require_once 'Zend/Cloud/StorageService/Exception.php';
-require_once 'Zend/Service/Rackspace/Files.php';
-require_once 'Zend/Service/Rackspace/Exception.php';
+// require_once 'Zend/Cloud/StorageService/Adapter.php';
+// require_once 'Zend/Cloud/StorageService/Exception.php';
+// require_once 'Zend/Service/Rackspace/Files.php';
+// require_once 'Zend/Service/Rackspace/Exception.php';
 
 /**
  * Adapter for Rackspace cloud storage

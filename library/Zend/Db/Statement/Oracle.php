@@ -23,7 +23,7 @@
 /**
  * @see Zend_Db_Statement
  */
-require_once 'Zend/Db/Statement.php';
+// require_once 'Zend/Db/Statement.php';
 
 /**
  * Extends for Oracle.

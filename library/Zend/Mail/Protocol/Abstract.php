@@ -25,13 +25,13 @@
 /**
  * @see Zend_Validate
  */
-require_once 'Zend/Validate.php';
+// require_once 'Zend/Validate.php';
 
 
 /**
  * @see Zend_Validate_Hostname
  */
-require_once 'Zend/Validate/Hostname.php';
+// require_once 'Zend/Validate/Hostname.php';
 
 
 /**

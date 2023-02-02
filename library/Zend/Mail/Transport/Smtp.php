@@ -24,17 +24,17 @@
 /**
  * @see Zend_Mime
  */
-require_once 'Zend/Mime.php';
+// require_once 'Zend/Mime.php';
 
 /**
  * @see Zend_Mail_Protocol_Smtp
  */
-require_once 'Zend/Mail/Protocol/Smtp.php';
+// require_once 'Zend/Mail/Protocol/Smtp.php';
 
 /**
  * @see Zend_Mail_Transport_Abstract
  */
-require_once 'Zend/Mail/Transport/Abstract.php';
+// require_once 'Zend/Mail/Transport/Abstract.php';
 
 
 /**

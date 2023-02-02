@@ -21,7 +21,7 @@
  */
 
 /** Zend_Controller_Dispatcher_Interface */
-require_once 'Zend/Controller/Dispatcher/Interface.php';
+// require_once 'Zend/Controller/Dispatcher/Interface.php';
 
 /**
  * @category   Zend

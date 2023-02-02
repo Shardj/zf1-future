@@ -23,7 +23,7 @@
 /**
  * @see Zend_Queue_Stomp_FrameInterface
  */
-require_once 'Zend/Queue/Stomp/FrameInterface.php';
+// require_once 'Zend/Queue/Stomp/FrameInterface.php';
 
 /**
  * This class represents a Stomp Frame

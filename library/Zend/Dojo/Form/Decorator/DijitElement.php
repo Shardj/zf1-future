@@ -19,7 +19,7 @@
  */
 
 /** Zend_Form_Decorator_ViewHelper */
-require_once 'Zend/Form/Decorator/ViewHelper.php';
+// require_once 'Zend/Form/Decorator/ViewHelper.php';
 
 /**
  * Zend_Dojo_Form_Decorator_DijitElement

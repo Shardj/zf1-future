@@ -23,7 +23,7 @@
 /**
  * @see Zend_View_Helper_HtmlElement
  */
-require_once 'Zend/View/Helper/HtmlElement.php';
+// require_once 'Zend/View/Helper/HtmlElement.php';
 
 /**
  * Base helper for form elements.  Extend this, don't use it on its own.

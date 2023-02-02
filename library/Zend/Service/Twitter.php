@@ -23,27 +23,27 @@
 /**
  * @see Zend_Http_Client
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @see Zend_Http_CookieJar
  */
-require_once 'Zend/Http/CookieJar.php';
+// require_once 'Zend/Http/CookieJar.php';
 
 /**
  * @see Zend_Oauth_Consumer
  */
-require_once 'Zend/Oauth/Consumer.php';
+// require_once 'Zend/Oauth/Consumer.php';
 
 /**
  * @see Zend_Oauth_Token_Access
  */
-require_once 'Zend/Oauth/Token/Access.php';
+// require_once 'Zend/Oauth/Token/Access.php';
 
 /**
  * @see Zend_Service_Twitter_Response
  */
-require_once 'Zend/Service/Twitter/Response.php';
+// require_once 'Zend/Service/Twitter/Response.php';
 
 /**
  * @category   Zend

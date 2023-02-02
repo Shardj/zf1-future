@@ -21,10 +21,10 @@
  */
 
 /** Zend_Wildfire_Plugin_FirePhp */
-require_once 'Zend/Wildfire/Plugin/FirePhp.php';
+// require_once 'Zend/Wildfire/Plugin/FirePhp.php';
 
 /** Zend_Wildfire_Plugin_FirePhp_Message */
-require_once 'Zend/Wildfire/Plugin/FirePhp/Message.php';
+// require_once 'Zend/Wildfire/Plugin/FirePhp/Message.php';
 
 /**
  * A message envelope that can be updated for the duration of the requet before

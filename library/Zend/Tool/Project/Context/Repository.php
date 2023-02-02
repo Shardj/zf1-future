@@ -19,9 +19,9 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Tool/Project/Context/System/Interface.php';
-require_once 'Zend/Tool/Project/Context/System/TopLevelRestrictable.php';
-require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
+// require_once 'Zend/Tool/Project/Context/System/Interface.php';
+// require_once 'Zend/Tool/Project/Context/System/TopLevelRestrictable.php';
+// require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
 
 /**
  * @category   Zend

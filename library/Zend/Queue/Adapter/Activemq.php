@@ -23,17 +23,17 @@
 /**
  * @see Zend_Queue_Adapter_AdapterAbstract
  */
-require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
 
 /**
  * @see Zend_Queue_Adapter_Stomp_Client
  */
-require_once 'Zend/Queue/Stomp/Client.php';
+// require_once 'Zend/Queue/Stomp/Client.php';
 
 /**
  * @see Zend_Queue_Adapter_Stomp_Frame
  */
-require_once 'Zend/Queue/Stomp/Frame.php';
+// require_once 'Zend/Queue/Stomp/Frame.php';
 
 /**
  * Class for using Stomp to talk to an Stomp compliant server

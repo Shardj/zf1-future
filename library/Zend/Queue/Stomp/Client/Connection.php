@@ -23,7 +23,7 @@
 /**
  * @see Zend_Queue_Stomp_Client_ConnectionInterface
  */
-require_once 'Zend/Queue/Stomp/Client/ConnectionInterface.php';
+// require_once 'Zend/Queue/Stomp/Client/ConnectionInterface.php';
 
 /**
  * The Stomp client interacts with a Stomp server.

@@ -22,7 +22,7 @@
 /**
  * @see Zend_Filter_Encrypt_Interface
  */
-require_once 'Zend/Filter/Encrypt/Interface.php';
+// require_once 'Zend/Filter/Encrypt/Interface.php';
 
 /**
  * Encryption adapter for openssl

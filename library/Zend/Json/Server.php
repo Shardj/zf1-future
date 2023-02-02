@@ -22,7 +22,7 @@
 /**
  * @see Zend_Server_Abstract
  */
-require_once 'Zend/Server/Abstract.php';
+// require_once 'Zend/Server/Abstract.php';
 
 /**
  * @category   Zend

@@ -23,15 +23,15 @@
 /**
  * @see Zend_Uri_Http
  */
-require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Uri/Http.php';
 /**
  * @see Zend_Http_Response
  */
-require_once 'Zend/Http/Response.php';
+// require_once 'Zend/Http/Response.php';
 /**
  * @see Zend_Http_Client_Adapter_Interface
  */
-require_once 'Zend/Http/Client/Adapter/Interface.php';
+// require_once 'Zend/Http/Client/Adapter/Interface.php';
 
 /**
  * A testing-purposes adapter.

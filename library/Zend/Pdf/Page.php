@@ -20,18 +20,18 @@
  */
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/String/Binary.php';
-require_once 'Zend/Pdf/Element/Boolean.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Null.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
-require_once 'Zend/Pdf/Resource/Unified.php';
+// require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element/String/Binary.php';
+// require_once 'Zend/Pdf/Element/Boolean.php';
+// require_once 'Zend/Pdf/Element/Dictionary.php';
+// require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Null.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/String.php';
+// require_once 'Zend/Pdf/Resource/Unified.php';
 
-require_once 'Zend/Pdf/Canvas/Abstract.php';
+// require_once 'Zend/Pdf/Canvas/Abstract.php';
 
 
 /**

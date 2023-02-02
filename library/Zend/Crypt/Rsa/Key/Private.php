@@ -23,7 +23,7 @@
 /**
  * @see Zend_Crypt_Rsa_Key
  */
-require_once 'Zend/Crypt/Rsa/Key.php';
+// require_once 'Zend/Crypt/Rsa/Key.php';
 
 /**
  * @category   Zend

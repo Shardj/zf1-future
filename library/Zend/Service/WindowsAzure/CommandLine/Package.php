@@ -21,12 +21,12 @@
  */
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
 * @see Zend_Service_Console_Command
 */
-require_once 'Zend/Service/Console/Command.php';
+// require_once 'Zend/Service/Console/Command.php';
 
 /**
  * Package commands

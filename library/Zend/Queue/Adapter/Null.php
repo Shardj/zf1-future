@@ -23,7 +23,7 @@
 /**
  * @see Zend_Queue_Adapter_AdapterAbstract
  */
-require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
 
 /**
  * Class testing.  No supported functions.  Also used to disable a Zend_Queue.

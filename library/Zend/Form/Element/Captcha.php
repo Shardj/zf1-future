@@ -21,10 +21,10 @@
  */
 
 /** @see Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
+// require_once 'Zend/Form/Element/Xhtml.php';
 
 /** @see Zend_Captcha_Adapter */
-require_once 'Zend/Captcha/Adapter.php';
+// require_once 'Zend/Captcha/Adapter.php';
 
 /**
  * Generic captcha element

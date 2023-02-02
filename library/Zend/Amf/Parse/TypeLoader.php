@@ -23,23 +23,23 @@
 /**
  * @see Zend_Amf_Value_Messaging_AcknowledgeMessage
  */
-require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
+// require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
 /**
  * @see Zend_Amf_Value_Messaging_AsyncMessage
  */
-require_once 'Zend/Amf/Value/Messaging/AsyncMessage.php';
+// require_once 'Zend/Amf/Value/Messaging/AsyncMessage.php';
 /**
  * @see Zend_Amf_Value_Messaging_CommandMessage
  */
-require_once 'Zend/Amf/Value/Messaging/CommandMessage.php';
+// require_once 'Zend/Amf/Value/Messaging/CommandMessage.php';
 /**
  * @see Zend_Amf_Value_Messaging_ErrorMessage
  */
-require_once 'Zend/Amf/Value/Messaging/ErrorMessage.php';
+// require_once 'Zend/Amf/Value/Messaging/ErrorMessage.php';
 /**
  * @see Zend_Amf_Value_Messaging_RemotingMessage
  */
-require_once 'Zend/Amf/Value/Messaging/RemotingMessage.php';
+// require_once 'Zend/Amf/Value/Messaging/RemotingMessage.php';
 
 /**
  * Loads a local class and executes the instantiation of that class.

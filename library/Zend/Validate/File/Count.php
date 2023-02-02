@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_Abstract
  */
-require_once 'Zend/Validate/Abstract.php';
+// require_once 'Zend/Validate/Abstract.php';
 
 /**
  * Validator for counting all given files

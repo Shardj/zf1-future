@@ -22,7 +22,7 @@
 /**
  * @see Zend_Feed_Pubsubhubbub
  */
-require_once 'Zend/Feed/Pubsubhubbub.php';
+// require_once 'Zend/Feed/Pubsubhubbub.php';
 
 /**
  * @category   Zend

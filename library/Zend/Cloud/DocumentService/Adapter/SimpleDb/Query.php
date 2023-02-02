@@ -20,7 +20,7 @@
 /*
  * @see Zend_Cloud_DocumentService_Query
  */
-require_once 'Zend/Cloud/DocumentService/Query.php';
+// require_once 'Zend/Cloud/DocumentService/Query.php';
 
 /**
  * Class implementing Query adapter for working with SimpleDb queries in a

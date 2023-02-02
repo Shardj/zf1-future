@@ -24,7 +24,7 @@
 /**
  * Zend_Gdata_App_Util
  */
-require_once 'Zend/Gdata/App/Util.php';
+// require_once 'Zend/Gdata/App/Util.php';
 
 /**
  * Provides a mechanism to build a query URL for Gdata services.

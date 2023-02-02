@@ -24,10 +24,10 @@
 /**
  * @see Zend_Rest_Client
  */
-require_once 'Zend/Rest/Client.php';
+// require_once 'Zend/Rest/Client.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * @category   Zend

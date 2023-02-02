@@ -24,17 +24,17 @@
 /**
  * @see Zend_Mail_Storage_Abstract
  */
-require_once 'Zend/Mail/Storage/Abstract.php';
+// require_once 'Zend/Mail/Storage/Abstract.php';
 
 /**
  * @see Zend_Mail_Protocol_Pop3
  */
-require_once 'Zend/Mail/Protocol/Pop3.php';
+// require_once 'Zend/Mail/Protocol/Pop3.php';
 
 /**
  * @see Zend_Mail_Message
  */
-require_once 'Zend/Mail/Message.php';
+// require_once 'Zend/Mail/Message.php';
 
 
 /**

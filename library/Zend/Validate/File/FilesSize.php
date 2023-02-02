@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_File_Size
  */
-require_once 'Zend/Validate/File/Size.php';
+// require_once 'Zend/Validate/File/Size.php';
 
 /**
  * Validator for the size of all files which will be validated in sum

@@ -24,37 +24,37 @@
 /**
  * @see Zend_Gdata_Photos
  */
-require_once 'Zend/Gdata/Photos.php';
+// require_once 'Zend/Gdata/Photos.php';
 
 /**
  * @see Zend_Gdata_Feed
  */
-require_once 'Zend/Gdata/Feed.php';
+// require_once 'Zend/Gdata/Feed.php';
 
 /**
  * @see Zend_Gdata_Photos_UserEntry
  */
-require_once 'Zend/Gdata/Photos/UserEntry.php';
+// require_once 'Zend/Gdata/Photos/UserEntry.php';
 
 /**
  * @see Zend_Gdata_Photos_AlbumEntry
  */
-require_once 'Zend/Gdata/Photos/AlbumEntry.php';
+// require_once 'Zend/Gdata/Photos/AlbumEntry.php';
 
 /**
  * @see Zend_Gdata_Photos_PhotoEntry
  */
-require_once 'Zend/Gdata/Photos/PhotoEntry.php';
+// require_once 'Zend/Gdata/Photos/PhotoEntry.php';
 
 /**
  * @see Zend_Gdata_Photos_TagEntry
  */
-require_once 'Zend/Gdata/Photos/TagEntry.php';
+// require_once 'Zend/Gdata/Photos/TagEntry.php';
 
 /**
  * @see Zend_Gdata_Photos_CommentEntry
  */
-require_once 'Zend/Gdata/Photos/CommentEntry.php';
+// require_once 'Zend/Gdata/Photos/CommentEntry.php';
 
 /**
  * Data model for a collection of entries for a specific user, usually

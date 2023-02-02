@@ -22,13 +22,13 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element/Dictionary.php';
+// require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
 
 /** Zend_Pdf_Font */
-require_once 'Zend/Pdf/Font.php';
+// require_once 'Zend/Pdf/Font.php';
 
 
 /**

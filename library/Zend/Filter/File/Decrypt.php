@@ -22,7 +22,7 @@
 /**
  * @see Zend_Filter_Decrypt
  */
-require_once 'Zend/Filter/Decrypt.php';
+// require_once 'Zend/Filter/Decrypt.php';
 
 /**
  * Decrypts a given file and stores the decrypted file content

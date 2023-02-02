@@ -23,60 +23,60 @@
 /**
  * @see Zend_Service_WindowsAzure_Management_OperationStatusInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/OperationStatusInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/OperationStatusInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_SubscriptionOperationInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/SubscriptionOperationInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/SubscriptionOperationInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_DeploymentInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/DeploymentInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/DeploymentInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_Blob
  */
-require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_Table
  */
-require_once 'Zend/Service/WindowsAzure/Storage/Table.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/Table.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_HostedServiceInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/HostedServiceInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/HostedServiceInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_CertificateInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/CertificateInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/CertificateInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_AffinityGroupInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/AffinityGroupInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/AffinityGroupInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_LocationInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/LocationInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/LocationInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_OperatingSystemInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/OperatingSystemInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/OperatingSystemInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Management_OperatingSystemFamilyInstance
  */
-require_once 'Zend/Service/WindowsAzure/Management/OperatingSystemFamilyInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Management/OperatingSystemFamilyInstance.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * @category   Zend

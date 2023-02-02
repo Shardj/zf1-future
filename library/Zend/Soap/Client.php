@@ -23,17 +23,17 @@
 /**
  * @see Zend_Soap_Server
  */
-require_once 'Zend/Soap/Server.php';
+// require_once 'Zend/Soap/Server.php';
 
 /**
  * @see Zend_Soap_Client_Local
  */
-require_once 'Zend/Soap/Client/Local.php';
+// require_once 'Zend/Soap/Client/Local.php';
 
 /**
  * @see Zend_Soap_Client_Common
  */
-require_once 'Zend/Soap/Client/Common.php';
+// require_once 'Zend/Soap/Client/Common.php';
 
 /**
  * Zend_Soap_Client

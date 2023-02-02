@@ -19,7 +19,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Rackspace/Files.php';
+// require_once 'Zend/Service/Rackspace/Files.php';
 
 class Zend_Service_Rackspace_Files_Object
 {

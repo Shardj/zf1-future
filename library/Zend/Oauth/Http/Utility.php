@@ -20,10 +20,10 @@
  */
 
 /** Zend_Oauth */
-require_once 'Zend/Oauth.php';
+// require_once 'Zend/Oauth.php';
 
 /** Zend_Oauth_Http */
-require_once 'Zend/Oauth/Http.php';
+// require_once 'Zend/Oauth/Http.php';
 
 /**
  * @category   Zend

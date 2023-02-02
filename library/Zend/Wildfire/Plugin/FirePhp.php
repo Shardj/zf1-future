@@ -21,19 +21,19 @@
  */
 
 /** Zend_Controller_Request_Abstract */
-require_once('Zend/Controller/Request/Abstract.php');
+// require_once('Zend/Controller/Request/Abstract.php');
 
 /** Zend_Controller_Response_Abstract */
-require_once('Zend/Controller/Response/Abstract.php');
+// require_once('Zend/Controller/Response/Abstract.php');
 
 /** Zend_Wildfire_Channel_HttpHeaders */
-require_once 'Zend/Wildfire/Channel/HttpHeaders.php';
+// require_once 'Zend/Wildfire/Channel/HttpHeaders.php';
 
 /** Zend_Wildfire_Protocol_JsonStream */
-require_once 'Zend/Wildfire/Protocol/JsonStream.php';
+// require_once 'Zend/Wildfire/Protocol/JsonStream.php';
 
 /** Zend_Wildfire_Plugin_Interface */
-require_once 'Zend/Wildfire/Plugin/Interface.php';
+// require_once 'Zend/Wildfire/Plugin/Interface.php';
 
 /**
  * Primary class for communicating with the FirePHP Firefox Extension.

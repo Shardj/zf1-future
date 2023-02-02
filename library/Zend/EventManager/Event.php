@@ -18,7 +18,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/EventManager/EventDescription.php';
+// require_once 'Zend/EventManager/EventDescription.php';
 
 /**
  * Representation of an event

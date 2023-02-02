@@ -22,13 +22,13 @@
 /**
  * @see Zend_Server_Interface
  */
-require_once 'Zend/Server/Interface.php';
+// require_once 'Zend/Server/Interface.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** @see Zend_Xml_Exception */
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * Zend_Soap_Server

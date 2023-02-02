@@ -22,12 +22,12 @@
 /**
  * Zend_Mime
  */
-require_once 'Zend/Mime.php';
+// require_once 'Zend/Mime.php';
 
 /**
  * Zend_Mime_Part
  */
-require_once 'Zend/Mime/Part.php';
+// require_once 'Zend/Mime/Part.php';
 
 /**
  * @category   Zend

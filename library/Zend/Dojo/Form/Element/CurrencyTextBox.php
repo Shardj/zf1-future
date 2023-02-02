@@ -20,7 +20,7 @@
  */
 
 /** Zend_Dojo_Form_Element_NumberTextBox */
-require_once 'Zend/Dojo/Form/Element/NumberTextBox.php';
+// require_once 'Zend/Dojo/Form/Element/NumberTextBox.php';
 
 /**
  * CurrencyTextBox dijit

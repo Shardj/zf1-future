@@ -22,7 +22,7 @@
 /**
  * @see Zend_Reflection_Parameter
  */
-require_once 'Zend/Reflection/Parameter.php';
+// require_once 'Zend/Reflection/Parameter.php';
 
 /**
  * @category   Zend

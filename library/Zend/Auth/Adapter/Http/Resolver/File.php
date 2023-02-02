@@ -24,7 +24,7 @@
 /**
  * @see Zend_Auth_Adapter_Http_Resolver_Interface
  */
-require_once 'Zend/Auth/Adapter/Http/Resolver/Interface.php';
+// require_once 'Zend/Auth/Adapter/Http/Resolver/Interface.php';
 
 
 /**

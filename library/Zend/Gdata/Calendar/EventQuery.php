@@ -24,12 +24,12 @@
 /**
  * Zend_Gdata_App_util
  */
-require_once('Zend/Gdata/App/Util.php');
+// require_once('Zend/Gdata/App/Util.php');
 
 /**
  * Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+// require_once('Zend/Gdata/Query.php');
 
 /**
  * Assists in constructing queries for Google Calendar events

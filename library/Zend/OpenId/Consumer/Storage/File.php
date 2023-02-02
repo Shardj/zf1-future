@@ -24,7 +24,7 @@
 /**
  * @see Zend_OpenId_Consumer_Storage
  */
-require_once "Zend/OpenId/Consumer/Storage.php";
+// require_once "Zend/OpenId/Consumer/Storage.php";
 
 /**
  * External storage implemmentation using serialized files

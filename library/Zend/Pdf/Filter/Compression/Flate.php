@@ -21,7 +21,7 @@
 
 
 /** Zend_Pdf_Filter_Compression */
-require_once 'Zend/Pdf/Filter/Compression.php';
+// require_once 'Zend/Pdf/Filter/Compression.php';
 
 /**
  * Flate stream filter

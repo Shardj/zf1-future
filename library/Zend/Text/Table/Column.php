@@ -22,12 +22,12 @@
 /**
  * @see Zend_Text_Table
  */
-require_once 'Zend/Text/Table.php';
+// require_once 'Zend/Text/Table.php';
 
 /**
  * @see Zend_Text_MultiByte
  */
-require_once 'Zend/Text/MultiByte.php';
+// require_once 'Zend/Text/MultiByte.php';
 
 /**
  * Column class for Zend_Text_Table_Row

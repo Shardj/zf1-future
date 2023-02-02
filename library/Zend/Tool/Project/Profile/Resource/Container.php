@@ -23,7 +23,7 @@
 /**
  * @see Zend_Tool_Project_Profile_Resource_SearchConstraints
  */
-require_once 'Zend/Tool/Project/Profile/Resource/SearchConstraints.php';
+// require_once 'Zend/Tool/Project/Profile/Resource/SearchConstraints.php';
 
 /**
  * This class is an iterator that will iterate only over enabled resources

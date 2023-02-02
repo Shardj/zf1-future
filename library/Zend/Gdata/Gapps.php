@@ -24,42 +24,42 @@
 /**
  * @see Zend_Gdata
  */
-require_once 'Zend/Gdata.php';
+// require_once 'Zend/Gdata.php';
 
 /**
  * @see Zend_Gdata_Gapps_UserFeed
  */
-require_once 'Zend/Gdata/Gapps/UserFeed.php';
+// require_once 'Zend/Gdata/Gapps/UserFeed.php';
 
 /**
  * @see Zend_Gdata_Gapps_NicknameFeed
  */
-require_once 'Zend/Gdata/Gapps/NicknameFeed.php';
+// require_once 'Zend/Gdata/Gapps/NicknameFeed.php';
 
 /**
  * @see Zend_Gdata_Gapps_GroupFeed
  */
-require_once 'Zend/Gdata/Gapps/GroupFeed.php';
+// require_once 'Zend/Gdata/Gapps/GroupFeed.php';
 
 /**
  * @see Zend_Gdata_Gapps_MemberFeed
  */
-require_once 'Zend/Gdata/Gapps/MemberFeed.php';
+// require_once 'Zend/Gdata/Gapps/MemberFeed.php';
 
 /**
  * @see Zend_Gdata_Gapps_OwnerFeed
  */
-require_once 'Zend/Gdata/Gapps/OwnerFeed.php';
+// require_once 'Zend/Gdata/Gapps/OwnerFeed.php';
 
 /**
  * @see Zend_Gdata_Gapps_EmailListFeed
  */
-require_once 'Zend/Gdata/Gapps/EmailListFeed.php';
+// require_once 'Zend/Gdata/Gapps/EmailListFeed.php';
 
 /**
  * @see Zend_Gdata_Gapps_EmailListRecipientFeed
  */
-require_once 'Zend/Gdata/Gapps/EmailListRecipientFeed.php';
+// require_once 'Zend/Gdata/Gapps/EmailListRecipientFeed.php';
 
 
 /**

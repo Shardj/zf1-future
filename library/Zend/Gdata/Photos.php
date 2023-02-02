@@ -24,22 +24,22 @@
 /**
  * @see Zend_Gdata
  */
-require_once 'Zend/Gdata.php';
+// require_once 'Zend/Gdata.php';
 
 /**
  * @see Zend_Gdata_Photos_UserFeed
  */
-require_once 'Zend/Gdata/Photos/UserFeed.php';
+// require_once 'Zend/Gdata/Photos/UserFeed.php';
 
 /**
  * @see Zend_Gdata_Photos_AlbumFeed
  */
-require_once 'Zend/Gdata/Photos/AlbumFeed.php';
+// require_once 'Zend/Gdata/Photos/AlbumFeed.php';
 
 /**
  * @see Zend_Gdata_Photos_PhotoFeed
  */
-require_once 'Zend/Gdata/Photos/PhotoFeed.php';
+// require_once 'Zend/Gdata/Photos/PhotoFeed.php';
 
 /**
  * Service class for interacting with the Google Photos Data API.

@@ -21,13 +21,13 @@
  */
 
 /** Zend_Amf_Parse_Deserializer */
-require_once 'Zend/Amf/Parse/Deserializer.php';
+// require_once 'Zend/Amf/Parse/Deserializer.php';
 
 /** Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** Zend_Amf_Parse_TypeLoader */
-require_once 'Zend/Amf/Parse/TypeLoader.php';
+// require_once 'Zend/Amf/Parse/TypeLoader.php';
 
 /**
  * Read an AMF3 input stream and convert it into PHP data types.

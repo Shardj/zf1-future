@@ -21,13 +21,13 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Stream.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/Stream.php';
+// require_once 'Zend/Pdf/Element/Dictionary.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
 
 
 /** Zend_Pdf_Element_Object */
-require_once 'Zend/Pdf/Element/Object.php';
+// require_once 'Zend/Pdf/Element/Object.php';
 
 /**
  * PDF file 'stream object' element implementation

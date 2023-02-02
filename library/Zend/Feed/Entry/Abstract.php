@@ -24,15 +24,15 @@
 /**
  * @see Zend_Feed
  */
-require_once 'Zend/Feed.php';
+// require_once 'Zend/Feed.php';
 
 /**
  * @see Zend_Feed_Element
  */
-require_once 'Zend/Feed/Element.php';
+// require_once 'Zend/Feed/Element.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Zend_Feed_Entry_Abstract represents a single entry in an Atom or RSS

@@ -21,19 +21,19 @@
  */
 
 /** @see Zend_Serializer_Adapter_AdapterAbstract */
-require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
 
 /** @see Zend_Amf_Parse_OutputStream */
-require_once 'Zend/Amf/Parse/OutputStream.php';
+// require_once 'Zend/Amf/Parse/OutputStream.php';
 
 /** @see Zend_Amf_Parse_Amf0_Serializer */
-require_once 'Zend/Amf/Parse/Amf0/Serializer.php';
+// require_once 'Zend/Amf/Parse/Amf0/Serializer.php';
 
 /** @see Zend_Amf_Parse_InputStream */
-require_once 'Zend/Amf/Parse/InputStream.php';
+// require_once 'Zend/Amf/Parse/InputStream.php';
 
 /** @see Zend_Amf_Parse_Amf0_Deserializer */
-require_once 'Zend/Amf/Parse/Amf0/Deserializer.php';
+// require_once 'Zend/Amf/Parse/Amf0/Deserializer.php';
 
 /**
  * @category   Zend

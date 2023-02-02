@@ -22,7 +22,7 @@
 /**
  * @see Zend_Navigation_Container
  */
-require_once 'Zend/Navigation/Container.php';
+// require_once 'Zend/Navigation/Container.php';
 
 /**
  * Base class for Zend_Navigation_Page pages

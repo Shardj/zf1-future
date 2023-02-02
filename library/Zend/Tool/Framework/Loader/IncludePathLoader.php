@@ -23,12 +23,12 @@
 /**
  * @see Zend_Tool_Framework_Loader_Abstract
  */
-require_once 'Zend/Tool/Framework/Loader/Abstract.php';
+// require_once 'Zend/Tool/Framework/Loader/Abstract.php';
 
 /**
  * @see Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator
  */
-require_once 'Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterator.php';
+// require_once 'Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterator.php';
 
 /**
  * @category   Zend

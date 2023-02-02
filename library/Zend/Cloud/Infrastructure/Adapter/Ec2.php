@@ -7,15 +7,15 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Amazon/Ec2/Instance.php';
-require_once 'Zend/Service/Amazon/Ec2/Image.php';
-require_once 'Zend/Service/Amazon/Ec2/Availabilityzones.php';
-require_once 'Zend/Service/Amazon/Ec2/CloudWatch.php';
-require_once 'Zend/Cloud/Infrastructure/Instance.php';
-require_once 'Zend/Cloud/Infrastructure/InstanceList.php';
-require_once 'Zend/Cloud/Infrastructure/Image.php';
-require_once 'Zend/Cloud/Infrastructure/ImageList.php';
-require_once 'Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php';
+// require_once 'Zend/Service/Amazon/Ec2/Instance.php';
+// require_once 'Zend/Service/Amazon/Ec2/Image.php';
+// require_once 'Zend/Service/Amazon/Ec2/Availabilityzones.php';
+// require_once 'Zend/Service/Amazon/Ec2/CloudWatch.php';
+// require_once 'Zend/Cloud/Infrastructure/Instance.php';
+// require_once 'Zend/Cloud/Infrastructure/InstanceList.php';
+// require_once 'Zend/Cloud/Infrastructure/Image.php';
+// require_once 'Zend/Cloud/Infrastructure/ImageList.php';
+// require_once 'Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php';
 
 /**
  * Amazon EC2 adapter for infrastructure service

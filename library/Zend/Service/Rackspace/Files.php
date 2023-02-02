@@ -19,11 +19,11 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Rackspace/Abstract.php';
-require_once 'Zend/Service/Rackspace/Files/ContainerList.php';
-require_once 'Zend/Service/Rackspace/Files/ObjectList.php';
-require_once 'Zend/Service/Rackspace/Files/Container.php';
-require_once 'Zend/Service/Rackspace/Files/Object.php';
+// require_once 'Zend/Service/Rackspace/Abstract.php';
+// require_once 'Zend/Service/Rackspace/Files/ContainerList.php';
+// require_once 'Zend/Service/Rackspace/Files/ObjectList.php';
+// require_once 'Zend/Service/Rackspace/Files/Container.php';
+// require_once 'Zend/Service/Rackspace/Files/Object.php';
 
 /**
  * Zend_Service_Rackspace_Files

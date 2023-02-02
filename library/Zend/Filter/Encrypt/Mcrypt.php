@@ -22,10 +22,10 @@
 /**
  * @see Zend_Filter_Encrypt_Interface
  */
-require_once 'Zend/Filter/Encrypt/Interface.php';
+// require_once 'Zend/Filter/Encrypt/Interface.php';
 
 /** @see Zend_Crypt_Math */
-require_once 'Zend/Crypt/Math.php';
+// require_once 'Zend/Crypt/Math.php';
 
 /**
  * Encryption adapter for mcrypt

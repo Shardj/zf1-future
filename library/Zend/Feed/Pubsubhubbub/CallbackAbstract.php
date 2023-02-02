@@ -23,12 +23,12 @@
 /**
  * @see Zend_Feed_Pubsubhubbub_CallbackInterface
  */
-require_once 'Zend/Feed/Pubsubhubbub/CallbackInterface.php';
+// require_once 'Zend/Feed/Pubsubhubbub/CallbackInterface.php';
 
 /**
  * @see Zend_Feed_Pubsubhubbub_HttpResponse
  */
-require_once 'Zend/Feed/Pubsubhubbub/HttpResponse.php';
+// require_once 'Zend/Feed/Pubsubhubbub/HttpResponse.php';
 
 /**
  * @category   Zend

@@ -22,12 +22,12 @@
 /**
  * @see Zend_Paginator_Adapter_Interface
  */
-require_once 'Zend/Paginator/Adapter/Interface.php';
+// require_once 'Zend/Paginator/Adapter/Interface.php';
 
 /**
  * @see Zend_Paginator_SerializableLimitIterator
  */
-require_once 'Zend/Paginator/SerializableLimitIterator.php';
+// require_once 'Zend/Paginator/SerializableLimitIterator.php';
 
 /**
  * @category   Zend

@@ -21,13 +21,13 @@
  */
 
 /** @see Zend_Feed_Pubsubhubbub_Model_ModelAbstract */
-require_once 'Zend/Feed/Pubsubhubbub/Model/ModelAbstract.php';
+// require_once 'Zend/Feed/Pubsubhubbub/Model/ModelAbstract.php';
 
 /** @see Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface */
-require_once 'Zend/Feed/Pubsubhubbub/Model/SubscriptionInterface.php';
+// require_once 'Zend/Feed/Pubsubhubbub/Model/SubscriptionInterface.php';
 
 /** @see Zend_Date */
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * @category   Zend

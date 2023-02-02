@@ -22,12 +22,12 @@
 /**
  * @see Zend_Loader_PluginLoader
  */
-require_once 'Zend/Loader/PluginLoader.php';
+// require_once 'Zend/Loader/PluginLoader.php';
 
 /**
  * @see Zend_Json
  */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /**
  * @category   Zend

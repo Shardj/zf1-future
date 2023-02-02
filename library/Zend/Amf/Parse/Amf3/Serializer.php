@@ -21,14 +21,14 @@
  */
 
 /** Zend_Amf_Constants */
-require_once 'Zend/Amf/Constants.php';
+// require_once 'Zend/Amf/Constants.php';
 
 
 /** Zend_Amf_Parse_Serializer */
-require_once 'Zend/Amf/Parse/Serializer.php';
+// require_once 'Zend/Amf/Parse/Serializer.php';
 
 /** Zend_Amf_Parse_TypeLoader */
-require_once 'Zend/Amf/Parse/TypeLoader.php';
+// require_once 'Zend/Amf/Parse/TypeLoader.php';
 
 /**
  * Detect PHP object type and convert it to a corresponding AMF3 object type

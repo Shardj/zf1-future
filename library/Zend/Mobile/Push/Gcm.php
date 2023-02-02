@@ -21,16 +21,16 @@
  */
 
 /** Zend_Http_Client **/
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /** Zend_Mobile_Push_Abstract **/
-require_once 'Zend/Mobile/Push/Abstract.php';
+// require_once 'Zend/Mobile/Push/Abstract.php';
 
 /** Zend_Mobile_Push_Message_Gcm **/
-require_once 'Zend/Mobile/Push/Message/Gcm.php';
+// require_once 'Zend/Mobile/Push/Message/Gcm.php';
 
 /** Zend_Mobile_Push_Response_Gcm **/
-require_once 'Zend/Mobile/Push/Response/Gcm.php';
+// require_once 'Zend/Mobile/Push/Response/Gcm.php';
 
 /**
  * GCM Push

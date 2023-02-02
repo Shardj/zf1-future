@@ -22,27 +22,27 @@
 /**
  * @see Zend_Http_Client
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * @see Zend_Uri
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /**
  * @see Zend_Version
  */
-require_once 'Zend/Version.php';
+// require_once 'Zend/Version.php';
 
 /**
  * @see Zend_Feed_Reader
  */
-require_once 'Zend/Feed/Reader.php';
+// require_once 'Zend/Feed/Reader.php';
 
 /**
  * @see Zend_Feed_Abstract
  */
-require_once 'Zend/Feed/Abstract.php';
+// require_once 'Zend/Feed/Abstract.php';
 
 /**
  * @category   Zend

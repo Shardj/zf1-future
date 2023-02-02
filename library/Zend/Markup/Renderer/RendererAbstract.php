@@ -23,15 +23,15 @@
 /**
  * @see Zend_config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 /**
  * @see Zend_Filter
  */
-require_once 'Zend/Filter.php';
+// require_once 'Zend/Filter.php';
 /**
  * @see Zend_Markup_Renderer_TokenConverterInterface
  */
-require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
+// require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
 
 /**
  * Defines the basic rendering functionality

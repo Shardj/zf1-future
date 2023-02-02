@@ -23,7 +23,7 @@
 /**
  * @see Zend_Queue_Adapter_AdapterAbstract
  */
-require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Queue/Adapter/AdapterAbstract.php';
 
 /**
  * Class for using connecting to a Zend_Cache-based queuing system

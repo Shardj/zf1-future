@@ -24,12 +24,12 @@
 /**
  * @see Zend_OpenId
  */
-require_once "Zend/OpenId.php";
+// require_once "Zend/OpenId.php";
 
 /**
  * @see Zend_OpenId_Extension
  */
-require_once "Zend/OpenId/Extension.php";
+// require_once "Zend/OpenId/Extension.php";
 
 /**
  * OpenID provider (server) implementation

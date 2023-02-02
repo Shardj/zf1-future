@@ -22,14 +22,14 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
+// require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/String.php';
 
 
 /** Zend_Pdf_Outline */
-require_once 'Zend/Pdf/Outline.php';
+// require_once 'Zend/Pdf/Outline.php';
 
 /**
  * Traceable PDF outline representation class

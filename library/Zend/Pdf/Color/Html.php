@@ -20,7 +20,7 @@
  */
 
 /** Zend_Pdf_Color */
-require_once 'Zend/Pdf/Color.php';
+// require_once 'Zend/Pdf/Color.php';
 
 
 /**

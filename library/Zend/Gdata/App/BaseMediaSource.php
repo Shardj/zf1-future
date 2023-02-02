@@ -24,7 +24,7 @@
 /**
  * @see Zend_Gdata_App_MediaSource
  */
-require_once 'Zend/Gdata/App/MediaSource.php';
+// require_once 'Zend/Gdata/App/MediaSource.php';
 
 /**
  * Concrete class to use a file handle as an attachment within a MediaEntry.

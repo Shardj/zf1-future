@@ -21,7 +21,7 @@
  */
 
 /** @see Zend_Serializer_Adapter_AdapterInterface */
-require_once 'Zend/Serializer/Adapter/AdapterInterface.php';
+// require_once 'Zend/Serializer/Adapter/AdapterInterface.php';
 
 /**
  * @category   Zend

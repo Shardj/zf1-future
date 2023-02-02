@@ -23,17 +23,17 @@
 /**
  * @see Zend_CodeGenerator_Php_Member_Abstract
  */
-require_once 'Zend/CodeGenerator/Php/Member/Abstract.php';
+// require_once 'Zend/CodeGenerator/Php/Member/Abstract.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Docblock
  */
-require_once 'Zend/CodeGenerator/Php/Docblock.php';
+// require_once 'Zend/CodeGenerator/Php/Docblock.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Parameter
  */
-require_once 'Zend/CodeGenerator/Php/Parameter.php';
+// require_once 'Zend/CodeGenerator/Php/Parameter.php';
 
 /**
  * @category   Zend

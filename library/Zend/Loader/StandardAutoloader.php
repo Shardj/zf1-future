@@ -19,7 +19,7 @@
  */
 
 // Grab SplAutoloader interface
-require_once dirname(__FILE__) . '/SplAutoloader.php';
+// require_once dirname(__FILE__) . '/SplAutoloader.php';
 
 /**
  * PSR-0 compliant autoloader

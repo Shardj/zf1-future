@@ -23,17 +23,17 @@
 /**
  * @see Zend_Reflection_Class
  */
-require_once 'Zend/Reflection/Class.php';
+// require_once 'Zend/Reflection/Class.php';
 
 /**
  * @see Zend_Tool_Framework_Registry
  */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+// require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
 
 /**
  * @see Zend_Tool_Framework_Action_Base
  */
-require_once 'Zend/Tool/Framework/Action/Base.php';
+// require_once 'Zend/Tool/Framework/Action/Base.php';
 
 /**
  * The purpose of Zend_Tool_Framework_Provider_Signature is to derive

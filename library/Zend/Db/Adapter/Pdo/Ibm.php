@@ -21,16 +21,16 @@
  */
 
 /** @see Zend_Db_Adapter_Pdo_Abstract */
-require_once 'Zend/Db/Adapter/Pdo/Abstract.php';
+// require_once 'Zend/Db/Adapter/Pdo/Abstract.php';
 
 /** @see Zend_Db_Abstract_Pdo_Ibm_Db2 */
-require_once 'Zend/Db/Adapter/Pdo/Ibm/Db2.php';
+// require_once 'Zend/Db/Adapter/Pdo/Ibm/Db2.php';
 
 /** @see Zend_Db_Abstract_Pdo_Ibm_Ids */
-require_once 'Zend/Db/Adapter/Pdo/Ibm/Ids.php';
+// require_once 'Zend/Db/Adapter/Pdo/Ibm/Ids.php';
 
 /** @see Zend_Db_Statement_Pdo_Ibm */
-require_once 'Zend/Db/Statement/Pdo/Ibm.php';
+// require_once 'Zend/Db/Statement/Pdo/Ibm.php';
 
 /**
  * @category   Zend

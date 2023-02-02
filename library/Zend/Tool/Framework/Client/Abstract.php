@@ -23,12 +23,12 @@
 /**
  * @see Zend_Loader_Autoloader
  */
-require_once 'Zend/Loader/Autoloader.php';
+// require_once 'Zend/Loader/Autoloader.php';
 
 /**
  * @see Zend_Tool_Framework_Registry_EnabledInterface
  */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+// require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
 
 /**
  * @category   Zend

@@ -21,10 +21,10 @@
  */
 
 /** @see Zend_Log_Filter_Interface */
-require_once 'Zend/Log/Filter/Interface.php';
+// require_once 'Zend/Log/Filter/Interface.php';
 
 /** @see Zend_Log_FactoryInterface */
-require_once 'Zend/Log/FactoryInterface.php';
+// require_once 'Zend/Log/FactoryInterface.php';
 
 /**
  * @category   Zend

@@ -23,7 +23,7 @@
 /**
  * include needed classes
  */
-require_once 'Zend/Locale/Data.php';
+// require_once 'Zend/Locale/Data.php';
 
 /**
  * @category   Zend

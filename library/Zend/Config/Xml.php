@@ -22,13 +22,13 @@
 /**
  * @see Zend_Config
  */
-require_once 'Zend/Config.php';
+// require_once 'Zend/Config.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** @see Zend_Xml_Exception */
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * XML Adapter for Zend_Config

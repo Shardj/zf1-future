@@ -23,7 +23,7 @@
 /**
  * @see Zend_Navigation_Page_Abstract
  */
-require_once 'Zend/Navigation/Page.php';
+// require_once 'Zend/Navigation/Page.php';
 
 /**
  * Represents a page that is defined by specifying a URI

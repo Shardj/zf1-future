@@ -22,11 +22,11 @@
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Name.php';
 
 
 /** Zend_Pdf_Resource_Font_Simple_Standard */
-require_once 'Zend/Pdf/Resource/Font/Simple/Standard.php';
+// require_once 'Zend/Pdf/Resource/Font/Simple/Standard.php';
 
 /**
  * Implementation for the standard PDF font Courier-BoldOblique.

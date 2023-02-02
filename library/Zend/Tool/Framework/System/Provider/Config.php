@@ -22,22 +22,22 @@
 /**
  * @see Zend_Tool_Framework_Provider_Abstract
  */
-require_once "Zend/Tool/Framework/Provider/Abstract.php";
+// require_once "Zend/Tool/Framework/Provider/Abstract.php";
 
 /**
  * @see Zend_Config
  */
-require_once "Zend/Config.php";
+// require_once "Zend/Config.php";
 
 /**
  * @see Zend_Config_Writer_Ini
  */
-require_once "Zend/Config/Writer/Ini.php";
+// require_once "Zend/Config/Writer/Ini.php";
 
 /**
  * @see Zend_Loader
  */
-require_once "Zend/Loader.php";
+// require_once "Zend/Loader.php";
 
 /**
  * Configuration Provider

@@ -17,8 +17,8 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Cloud/Infrastructure/Adapter.php';
-require_once 'Zend/Cloud/Infrastructure/Instance.php';
+// require_once 'Zend/Cloud/Infrastructure/Adapter.php';
+// require_once 'Zend/Cloud/Infrastructure/Instance.php';
 
 /**
  * Abstract infrastructure service adapter

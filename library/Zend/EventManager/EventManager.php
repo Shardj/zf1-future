@@ -18,13 +18,13 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/EventManager/Event.php';
-require_once 'Zend/EventManager/EventCollection.php';
-require_once 'Zend/EventManager/ResponseCollection.php';
-require_once 'Zend/EventManager/SharedEventCollectionAware.php';
-require_once 'Zend/EventManager/StaticEventManager.php';
-require_once 'Zend/Stdlib/CallbackHandler.php';
-require_once 'Zend/Stdlib/PriorityQueue.php';
+// require_once 'Zend/EventManager/Event.php';
+// require_once 'Zend/EventManager/EventCollection.php';
+// require_once 'Zend/EventManager/ResponseCollection.php';
+// require_once 'Zend/EventManager/SharedEventCollectionAware.php';
+// require_once 'Zend/EventManager/StaticEventManager.php';
+// require_once 'Zend/Stdlib/CallbackHandler.php';
+// require_once 'Zend/Stdlib/PriorityQueue.php';
 
 /**
  * Event manager: notification system

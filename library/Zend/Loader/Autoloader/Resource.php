@@ -21,7 +21,7 @@
  */
 
 /** Zend_Loader_Autoloader_Interface */
-require_once 'Zend/Loader/Autoloader/Interface.php';
+// require_once 'Zend/Loader/Autoloader/Interface.php';
 
 /**
  * Resource loader

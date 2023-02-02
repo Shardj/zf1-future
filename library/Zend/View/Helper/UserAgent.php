@@ -20,7 +20,7 @@
  */
 
 /** Zend_View_Helper_Abstract */
-require_once 'Zend/View/Helper/Abstract.php';
+// require_once 'Zend/View/Helper/Abstract.php';
 
 /**
  * Helper for interacting with UserAgent instance

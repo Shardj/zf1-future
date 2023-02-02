@@ -24,17 +24,17 @@
 /**
  * @see Zend_Gdata_Photos
  */
-require_once 'Zend/Gdata/Photos.php';
+// require_once 'Zend/Gdata/Photos.php';
 
 /**
  * @see Zend_Gdata_Feed
  */
-require_once 'Zend/Gdata/Feed.php';
+// require_once 'Zend/Gdata/Feed.php';
 
 /**
  * @see Zend_Gdata_Photos_AlbumEntry
  */
-require_once 'Zend/Gdata/Photos/AlbumEntry.php';
+// require_once 'Zend/Gdata/Photos/AlbumEntry.php';
 
 /**
  * Data model for a collection of album entries, usually

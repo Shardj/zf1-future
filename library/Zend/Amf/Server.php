@@ -20,31 +20,31 @@
  */
 
 /** @see Zend_Server_Interface */
-require_once 'Zend/Server/Interface.php';
+// require_once 'Zend/Server/Interface.php';
 
 /** @see Zend_Server_Reflection */
-require_once 'Zend/Server/Reflection.php';
+// require_once 'Zend/Server/Reflection.php';
 
 /** @see Zend_Amf_Constants */
-require_once 'Zend/Amf/Constants.php';
+// require_once 'Zend/Amf/Constants.php';
 
 /** @see Zend_Amf_Value_MessageBody */
-require_once 'Zend/Amf/Value/MessageBody.php';
+// require_once 'Zend/Amf/Value/MessageBody.php';
 
 /** @see Zend_Amf_Value_MessageHeader */
-require_once 'Zend/Amf/Value/MessageHeader.php';
+// require_once 'Zend/Amf/Value/MessageHeader.php';
 
 /** @see Zend_Amf_Value_Messaging_CommandMessage */
-require_once 'Zend/Amf/Value/Messaging/CommandMessage.php';
+// require_once 'Zend/Amf/Value/Messaging/CommandMessage.php';
 
 /** @see Zend_Loader_PluginLoader */
-require_once 'Zend/Loader/PluginLoader.php';
+// require_once 'Zend/Loader/PluginLoader.php';
 
 /** @see Zend_Amf_Parse_TypeLoader */
-require_once 'Zend/Amf/Parse/TypeLoader.php';
+// require_once 'Zend/Amf/Parse/TypeLoader.php';
 
 /** @see Zend_Auth */
-require_once 'Zend/Auth.php';
+// require_once 'Zend/Auth.php';
 /**
  * An AMF gateway server implementation to allow the connection of the Adobe Flash Player to
  * Zend Framework

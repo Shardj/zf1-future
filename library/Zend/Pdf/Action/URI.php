@@ -21,14 +21,14 @@
  */
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/String.php';
-require_once 'Zend/Pdf/Element/Boolean.php';
+// require_once 'Zend/Pdf/Element/Dictionary.php';
+// require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/String.php';
+// require_once 'Zend/Pdf/Element/Boolean.php';
 
 
 /** Zend_Pdf_Action */
-require_once 'Zend/Pdf/Action.php';
+// require_once 'Zend/Pdf/Action.php';
 
 
 /**

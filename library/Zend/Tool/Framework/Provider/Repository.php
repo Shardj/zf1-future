@@ -23,12 +23,12 @@
 /**
  * @see Zend_Tool_Framework_Provider_Signature
  */
-require_once 'Zend/Tool/Framework/Provider/Signature.php';
+// require_once 'Zend/Tool/Framework/Provider/Signature.php';
 
 /**
  * @see Zend_Tool_Framework_Registry_EnabledInterface
  */
-require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
+// require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
 
 /**
  * @category   Zend

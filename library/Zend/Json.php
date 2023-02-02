@@ -24,10 +24,10 @@
  *
  * @see Zend_Json_Expr
  */
-require_once 'Zend/Json/Expr.php';
+// require_once 'Zend/Json/Expr.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Class for encoding to and decoding from JSON.

@@ -24,7 +24,7 @@
 /**
  * @see Zend_Mail_Transport_Abstract
  */
-require_once 'Zend/Mail/Transport/Abstract.php';
+// require_once 'Zend/Mail/Transport/Abstract.php';
 
 
 /**

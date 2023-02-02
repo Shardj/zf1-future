@@ -22,12 +22,12 @@
 /**
  * @see Zend_Config_Writer
  */
-require_once 'Zend/Config/Writer/FileAbstract.php';
+// require_once 'Zend/Config/Writer/FileAbstract.php';
 
 /**
  * @see Zend_Config_Xml
  */
-require_once 'Zend/Config/Xml.php';
+// require_once 'Zend/Config/Xml.php';
 
 /**
  * @category   Zend

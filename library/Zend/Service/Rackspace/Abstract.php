@@ -19,7 +19,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 abstract class Zend_Service_Rackspace_Abstract
 {

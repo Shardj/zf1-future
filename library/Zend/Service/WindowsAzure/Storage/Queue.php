@@ -23,17 +23,17 @@
 /**
  * see Zend_Service_WindowsAzure_Storage
  */
-require_once 'Zend/Service/WindowsAzure/Storage.php';
+// require_once 'Zend/Service/WindowsAzure/Storage.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_QueueInstance
  */
-require_once 'Zend/Service/WindowsAzure/Storage/QueueInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/QueueInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_QueueMessage
  */
-require_once 'Zend/Service/WindowsAzure/Storage/QueueMessage.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/QueueMessage.php';
 
 /**
  * @category   Zend

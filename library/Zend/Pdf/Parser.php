@@ -20,12 +20,12 @@
  */
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
 
 
 /** Zend_Pdf_StringParser */
-require_once 'Zend/Pdf/StringParser.php';
+// require_once 'Zend/Pdf/StringParser.php';
 
 
 /**

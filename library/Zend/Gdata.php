@@ -24,7 +24,7 @@
 /**
  * Zend_Gdata_App
  */
-require_once 'Zend/Gdata/App.php';
+// require_once 'Zend/Gdata/App.php';
 
 /**
  * Provides functionality to interact with Google data APIs

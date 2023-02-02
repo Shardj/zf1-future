@@ -21,13 +21,13 @@
  */
 
 /** Zend_Json */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /** Zend_Controller_Front */
-require_once 'Zend/Controller/Front.php';
+// require_once 'Zend/Controller/Front.php';
 
 /** Zend_View_Helper_Abstract.php */
-require_once 'Zend/View/Helper/Abstract.php';
+// require_once 'Zend/View/Helper/Abstract.php';
 
 /**
  * Helper for simplifying JSON responses

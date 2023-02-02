@@ -21,7 +21,7 @@
 /**
  * @see Zend_Json_Server_Smd
  */
-require_once 'Zend/Json/Server/Smd.php';
+// require_once 'Zend/Json/Server/Smd.php';
 
 /**
  * Create Service Mapping Description for a method

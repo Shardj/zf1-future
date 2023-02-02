@@ -24,10 +24,10 @@
 /**
  * @see Zend_Gdata_App_Util
  */
-require_once 'Zend/Gdata/App/Util.php';
+// require_once 'Zend/Gdata/App/Util.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Abstract class for all XML elements

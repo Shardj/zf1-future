@@ -24,17 +24,17 @@
 /**
  * @see Zend_Auth_Adapter_Interface
  */
-require_once 'Zend/Auth/Adapter/Interface.php';
+// require_once 'Zend/Auth/Adapter/Interface.php';
 
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Auth_Result
  */
-require_once 'Zend/Auth/Result.php';
+// require_once 'Zend/Auth/Result.php';
 
 
 /**

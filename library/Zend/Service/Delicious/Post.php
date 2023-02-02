@@ -25,12 +25,12 @@
 /**
  * @see Zend_Date
  */
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * @see Zend_Service_Delicious_SimplePost
  */
-require_once 'Zend/Service/Delicious/SimplePost.php';
+// require_once 'Zend/Service/Delicious/SimplePost.php';
 
 
 /**

@@ -23,12 +23,12 @@
 /**
  * @see Zend_Locale
  */
-require_once 'Zend/Locale.php';
+// require_once 'Zend/Locale.php';
 
 /**
  * @see Zend_Translate_Plural
  */
-require_once 'Zend/Translate/Plural.php';
+// require_once 'Zend/Translate/Plural.php';
 
 /**
  * Basic adapter class for each translation source adapter

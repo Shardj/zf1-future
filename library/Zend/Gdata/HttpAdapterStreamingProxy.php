@@ -24,7 +24,7 @@
 /**
  * @see Zend_Http_Client_Adapter_Proxy
  */
-require_once 'Zend/Http/Client/Adapter/Proxy.php';
+// require_once 'Zend/Http/Client/Adapter/Proxy.php';
 
 /**
  * Extends the proxy HTTP adapter to handle streams instead of discrete body

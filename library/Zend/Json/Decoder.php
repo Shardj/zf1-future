@@ -22,7 +22,7 @@
 /**
  * @see Zend_Json
  */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /**
  * Decode JSON encoded string to PHP variable constructs

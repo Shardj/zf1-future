@@ -21,7 +21,7 @@
  */
 
 /** Zend_Search_Lucene_Index_SegmentInfo */
-require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
+// require_once 'Zend/Search/Lucene/Index/SegmentInfo.php';
 
 
 /**

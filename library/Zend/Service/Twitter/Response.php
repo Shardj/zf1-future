@@ -23,12 +23,12 @@
 /**
  * @see Zend_Http_Response
  */
-require_once 'Zend/Http/Response.php';
+// require_once 'Zend/Http/Response.php';
 
 /**
  * @see Zend_Json
  */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /**
  * Representation of a response from Twitter.

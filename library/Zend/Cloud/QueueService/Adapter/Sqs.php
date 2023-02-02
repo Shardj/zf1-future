@@ -17,10 +17,10 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Amazon/Sqs.php';
-require_once 'Zend/Cloud/QueueService/Adapter/AbstractAdapter.php';
-require_once 'Zend/Cloud/QueueService/Exception.php';
-require_once 'Zend/Cloud/QueueService/Message.php';
+// require_once 'Zend/Service/Amazon/Sqs.php';
+// require_once 'Zend/Cloud/QueueService/Adapter/AbstractAdapter.php';
+// require_once 'Zend/Cloud/QueueService/Exception.php';
+// require_once 'Zend/Cloud/QueueService/Message.php';
 
 /**
  * SQS adapter for simple queue service.

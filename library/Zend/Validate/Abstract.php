@@ -22,7 +22,7 @@
 /**
  * @see Zend_Validate_Interface
  */
-require_once 'Zend/Validate/Interface.php';
+// require_once 'Zend/Validate/Interface.php';
 
 /**
  * @category   Zend

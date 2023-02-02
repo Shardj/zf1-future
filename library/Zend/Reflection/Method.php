@@ -22,17 +22,17 @@
 /**
  * @see Zend_Reflection_Class
  */
-require_once 'Zend/Reflection/Class.php';
+// require_once 'Zend/Reflection/Class.php';
 
 /**
  * @see Zend_Reflection_Docblock
  */
-require_once 'Zend/Reflection/Docblock.php';
+// require_once 'Zend/Reflection/Docblock.php';
 
 /**
  * @see Zend_Reflection_Parameter
  */
-require_once 'Zend/Reflection/Parameter.php';
+// require_once 'Zend/Reflection/Parameter.php';
 
 /**
  * @category   Zend

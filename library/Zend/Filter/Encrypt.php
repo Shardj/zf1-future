@@ -22,12 +22,12 @@
 /**
  * @see Zend_Filter_Interface
  */
-require_once 'Zend/Filter/Interface.php';
+// require_once 'Zend/Filter/Interface.php';
 
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /**
  * Encrypts a given string

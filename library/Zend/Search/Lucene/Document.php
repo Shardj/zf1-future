@@ -22,7 +22,7 @@
 
 
 /** Zend_Search_Lucene_Field */
-require_once 'Zend/Search/Lucene/Field.php';
+// require_once 'Zend/Search/Lucene/Field.php';
 
 
 /**

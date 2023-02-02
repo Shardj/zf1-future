@@ -21,10 +21,10 @@
  */
 
 /** Zend_Loader */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /** Zend_Controller_Dispatcher_Abstract */
-require_once 'Zend/Controller/Dispatcher/Abstract.php';
+// require_once 'Zend/Controller/Dispatcher/Abstract.php';
 
 /**
  * @category   Zend

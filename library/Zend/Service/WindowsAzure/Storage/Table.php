@@ -23,27 +23,27 @@
 /**
  * @see Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
  */
-require_once 'Zend/Service/WindowsAzure/Storage/BatchStorageAbstract.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/BatchStorageAbstract.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_TableInstance
  */
-require_once 'Zend/Service/WindowsAzure/Storage/TableInstance.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/TableInstance.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_TableEntityQuery
  */
-require_once 'Zend/Service/WindowsAzure/Storage/TableEntityQuery.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/TableEntityQuery.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Storage_DynamicTableEntity
  */
-require_once 'Zend/Service/WindowsAzure/Storage/DynamicTableEntity.php';
+// require_once 'Zend/Service/WindowsAzure/Storage/DynamicTableEntity.php';
 
 /**
  * @see Zend_Service_WindowsAzure_Credentials_SharedKeyLite
  */
-require_once 'Zend/Service/WindowsAzure/Credentials/SharedKeyLite.php';
+// require_once 'Zend/Service/WindowsAzure/Credentials/SharedKeyLite.php';
 
 /**
  * @category   Zend

@@ -22,17 +22,17 @@
 /**
  * @see Zend_Loader
  */
-require_once 'Zend/Loader.php';
+// require_once 'Zend/Loader.php';
 
 /**
  * @see Zend_Filter
  */
-require_once 'Zend/Filter.php';
+// require_once 'Zend/Filter.php';
 
 /**
  * @see Zend_Validate
  */
-require_once 'Zend/Validate.php';
+// require_once 'Zend/Validate.php';
 
 /**
  * @category   Zend

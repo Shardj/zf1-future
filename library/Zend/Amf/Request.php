@@ -20,19 +20,19 @@
  */
 
 /** @see Zend_Amf_Parse_InputStream */
-require_once 'Zend/Amf/Parse/InputStream.php';
+// require_once 'Zend/Amf/Parse/InputStream.php';
 
 /** @see Zend_Amf_Parse_Amf0_Deserializer */
-require_once 'Zend/Amf/Parse/Amf0/Deserializer.php';
+// require_once 'Zend/Amf/Parse/Amf0/Deserializer.php';
 
 /** @see Zend_Amf_Constants */
-require_once 'Zend/Amf/Constants.php';
+// require_once 'Zend/Amf/Constants.php';
 
 /** @see Zend_Amf_Value_MessageHeader */
-require_once 'Zend/Amf/Value/MessageHeader.php';
+// require_once 'Zend/Amf/Value/MessageHeader.php';
 
 /** @see Zend_Amf_Value_MessageBody */
-require_once 'Zend/Amf/Value/MessageBody.php';
+// require_once 'Zend/Amf/Value/MessageBody.php';
 
 /**
  * Handle the incoming AMF request by deserializing the data to php object

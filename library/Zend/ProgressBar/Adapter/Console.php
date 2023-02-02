@@ -20,12 +20,12 @@
 /**
  * @see Zend_ProgressBar_Adapter
  */
-require_once 'Zend/ProgressBar/Adapter.php';
+// require_once 'Zend/ProgressBar/Adapter.php';
 
 /**
  * @see Zend_Text_MultiByte
  */
-require_once 'Zend/Text/MultiByte.php';
+// require_once 'Zend/Text/MultiByte.php';
 
 /**
  * Zend_ProgressBar_Adapter_Console offers a text-based progressbar for console

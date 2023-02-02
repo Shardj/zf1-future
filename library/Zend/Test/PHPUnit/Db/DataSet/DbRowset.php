@@ -23,7 +23,7 @@
 /**
  * @see Zend_Db_Table_Rowset_Abstract
  */
-require_once "Zend/Db/Table/Rowset/Abstract.php";
+// require_once "Zend/Db/Table/Rowset/Abstract.php";
 
 /**
  * Use a Zend_Db Rowset as a datatable for assertions with other PHPUnit Database extension tables.

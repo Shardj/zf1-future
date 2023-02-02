@@ -21,10 +21,10 @@
  */
 
 /** Zend_Mobile_Push_Abstract **/
-require_once 'Zend/Mobile/Push/Abstract.php';
+// require_once 'Zend/Mobile/Push/Abstract.php';
 
 /** Zend_Mobile_Push_Message_Apns **/
-require_once 'Zend/Mobile/Push/Message/Apns.php';
+// require_once 'Zend/Mobile/Push/Message/Apns.php';
 
 /**
  * APNS Push

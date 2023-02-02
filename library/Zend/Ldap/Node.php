@@ -23,11 +23,11 @@
 /**
  * @see Zend_Ldap
  */
-require_once 'Zend/Ldap.php';
+// require_once 'Zend/Ldap.php';
 /**
  * @see Zend_Ldap_Node_Abstract
  */
-require_once 'Zend/Ldap/Node/Abstract.php';
+// require_once 'Zend/Ldap/Node/Abstract.php';
 
 /**
  * Zend_Ldap_Node provides an object oriented view into a LDAP node.

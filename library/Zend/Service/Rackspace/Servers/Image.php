@@ -20,7 +20,7 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Rackspace/Servers.php';
+// require_once 'Zend/Service/Rackspace/Servers.php';
 
 class Zend_Service_Rackspace_Servers_Image
 {

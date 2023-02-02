@@ -18,9 +18,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/EventManager/Filter.php';
-require_once 'Zend/EventManager/Filter/FilterIterator.php';
-require_once 'Zend/Stdlib/CallbackHandler.php';
+// require_once 'Zend/EventManager/Filter.php';
+// require_once 'Zend/EventManager/Filter/FilterIterator.php';
+// require_once 'Zend/Stdlib/CallbackHandler.php';
 
 /**
  * FilterChain: intercepting filter manager

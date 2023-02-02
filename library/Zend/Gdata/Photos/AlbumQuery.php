@@ -24,7 +24,7 @@
 /**
  * @see Zend_Gdata_Photos_UserQuery
  */
-require_once('Zend/Gdata/Photos/UserQuery.php');
+// require_once('Zend/Gdata/Photos/UserQuery.php');
 
 /**
  * Assists in constructing album queries for various entries.

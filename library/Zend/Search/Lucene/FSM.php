@@ -20,7 +20,7 @@
  */
 
 /** Zend_Search_Lucene_FSMAction */
-require_once 'Zend/Search/Lucene/FSMAction.php';
+// require_once 'Zend/Search/Lucene/FSMAction.php';
 
 /**
  * Abstract Finite State Machine

@@ -21,13 +21,13 @@
  */
 
 /** Zend_Wildfire_Plugin_Interface */
-require_once 'Zend/Wildfire/Plugin/Interface.php';
+// require_once 'Zend/Wildfire/Plugin/Interface.php';
 
 /** Zend_Wildfire_Channel_Interface */
-require_once 'Zend/Wildfire/Channel/Interface.php';
+// require_once 'Zend/Wildfire/Channel/Interface.php';
 
 /** Zend_Json */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /**
  * Encodes messages into the Wildfire JSON Stream Communication Protocol.

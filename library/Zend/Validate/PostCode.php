@@ -22,12 +22,12 @@
 /**
  * @see Zend_Validate_Abstract
  */
-require_once 'Zend/Validate/Abstract.php';
+// require_once 'Zend/Validate/Abstract.php';
 
 /**
  * @see Zend_Locale_Format
  */
-require_once 'Zend/Locale/Format.php';
+// require_once 'Zend/Locale/Format.php';
 
 /**
  * @category   Zend

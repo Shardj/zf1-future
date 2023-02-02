@@ -23,7 +23,7 @@
 /**
  * @see Zend_Tag_Item
  */
-require_once 'Zend/Tag/Item.php';
+// require_once 'Zend/Tag/Item.php';
 
 /**
  * @category   Zend

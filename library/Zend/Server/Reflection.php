@@ -21,12 +21,12 @@
 /**
  * Zend_Server_Reflection_Function
  */
-require_once 'Zend/Server/Reflection/Function.php';
+// require_once 'Zend/Server/Reflection/Function.php';
 
 /**
  * Zend_Server_Reflection_Class
  */
-require_once 'Zend/Server/Reflection/Class.php';
+// require_once 'Zend/Server/Reflection/Class.php';
 
 /**
  * Reflection for determining method signatures to use with server classes

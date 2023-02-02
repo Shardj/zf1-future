@@ -23,17 +23,17 @@
 /**
  * @see Zend_Server_Interface
  */
-require_once 'Zend/Server/Interface.php';
+// require_once 'Zend/Server/Interface.php';
 
 /**
  * @see Zend_Server_Reflection
  */
-require_once 'Zend/Server/Reflection.php';
+// require_once 'Zend/Server/Reflection.php';
 
 /**
  * @see Zend_Server_Abstract
  */
-require_once 'Zend/Server/Abstract.php';
+// require_once 'Zend/Server/Abstract.php';
 
 /**
  * @category   Zend

@@ -22,14 +22,14 @@
 /**
  * @see Zend_Date
  */
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /**
  * @see Zend_Date
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
-require_once 'Zend/Feed/Writer/Source.php';
+// require_once 'Zend/Feed/Writer/Source.php';
 
 /**
  * @category   Zend

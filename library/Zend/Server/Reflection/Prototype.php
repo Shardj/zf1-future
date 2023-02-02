@@ -21,12 +21,12 @@
 /**
  * Zend_Server_Reflection_ReturnValue
  */
-require_once 'Zend/Server/Reflection/ReturnValue.php';
+// require_once 'Zend/Server/Reflection/ReturnValue.php';
 
 /**
  * Zend_Server_Reflection_Parameter
  */
-require_once 'Zend/Server/Reflection/Parameter.php';
+// require_once 'Zend/Server/Reflection/Parameter.php';
 
 /**
  * Method/Function prototypes

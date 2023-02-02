@@ -24,46 +24,46 @@
 /** @todo Section should be removed with ZF 2.0 release as obsolete            */
 
 /** Zend_Pdf_Page */
-require_once 'Zend/Pdf/Page.php';
+// require_once 'Zend/Pdf/Page.php';
 
 /** Zend_Pdf_Style */
-require_once 'Zend/Pdf/Style.php';
+// require_once 'Zend/Pdf/Style.php';
 
 /** Zend_Pdf_Color_GrayScale */
-require_once 'Zend/Pdf/Color/GrayScale.php';
+// require_once 'Zend/Pdf/Color/GrayScale.php';
 
 /** Zend_Pdf_Color_Rgb */
-require_once 'Zend/Pdf/Color/Rgb.php';
+// require_once 'Zend/Pdf/Color/Rgb.php';
 
 /** Zend_Pdf_Color_Cmyk */
-require_once 'Zend/Pdf/Color/Cmyk.php';
+// require_once 'Zend/Pdf/Color/Cmyk.php';
 
 /** Zend_Pdf_Color_Html */
-require_once 'Zend/Pdf/Color/Html.php';
+// require_once 'Zend/Pdf/Color/Html.php';
 
 /** Zend_Pdf_Image */
-require_once 'Zend/Pdf/Image.php';
+// require_once 'Zend/Pdf/Image.php';
 
 /** Zend_Pdf_Font */
-require_once 'Zend/Pdf/Font.php';
+// require_once 'Zend/Pdf/Font.php';
 
 /** Zend_Pdf_Resource_Extractor */
-require_once 'Zend/Pdf/Resource/Extractor.php';
+// require_once 'Zend/Pdf/Resource/Extractor.php';
 
 /** Zend_Pdf_Canvas */
-require_once 'Zend/Pdf/Canvas.php';
+// require_once 'Zend/Pdf/Canvas.php';
 
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element.php';
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/String/Binary.php';
-require_once 'Zend/Pdf/Element/Boolean.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Null.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
+// require_once 'Zend/Pdf/Element.php';
+// require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element/String/Binary.php';
+// require_once 'Zend/Pdf/Element/Boolean.php';
+// require_once 'Zend/Pdf/Element/Dictionary.php';
+// require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Null.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/String.php';
 
 
 /**

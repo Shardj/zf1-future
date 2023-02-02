@@ -20,25 +20,25 @@
  */
 
 /** Zend_Oauth */
-require_once 'Zend/Oauth.php';
+// require_once 'Zend/Oauth.php';
 
 /** Zend_Uri */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /** Zend_Oauth_Http_RequestToken */
-require_once 'Zend/Oauth/Http/RequestToken.php';
+// require_once 'Zend/Oauth/Http/RequestToken.php';
 
 /** Zend_Oauth_Http_UserAuthorization */
-require_once 'Zend/Oauth/Http/UserAuthorization.php';
+// require_once 'Zend/Oauth/Http/UserAuthorization.php';
 
 /** Zend_Oauth_Http_AccessToken */
-require_once 'Zend/Oauth/Http/AccessToken.php';
+// require_once 'Zend/Oauth/Http/AccessToken.php';
 
 /** Zend_Oauth_Token_AuthorizedRequest */
-require_once 'Zend/Oauth/Token/AuthorizedRequest.php';
+// require_once 'Zend/Oauth/Token/AuthorizedRequest.php';
 
 /** Zend_Oauth_Config */
-require_once 'Zend/Oauth/Config.php';
+// require_once 'Zend/Oauth/Config.php';
 
 /**
  * @category   Zend

@@ -24,7 +24,7 @@
 /**
  * @see Zend_Http_Client_Adapter_Socket
  */
-require_once 'Zend/Http/Client/Adapter/Socket.php';
+// require_once 'Zend/Http/Client/Adapter/Socket.php';
 
 /**
  * Extends the default HTTP adapter to handle streams instead of discrete body

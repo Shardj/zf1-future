@@ -24,27 +24,27 @@
 /**
  * @see Zend_Gdata
  */
-require_once 'Zend/Gdata.php';
+// require_once 'Zend/Gdata.php';
 
 /**
  * @see Zend_Gdata_Calendar_EventFeed
  */
-require_once 'Zend/Gdata/Calendar/EventFeed.php';
+// require_once 'Zend/Gdata/Calendar/EventFeed.php';
 
 /**
  * @see Zend_Gdata_Calendar_EventEntry
  */
-require_once 'Zend/Gdata/Calendar/EventEntry.php';
+// require_once 'Zend/Gdata/Calendar/EventEntry.php';
 
 /**
  * @see Zend_Gdata_Calendar_ListFeed
  */
-require_once 'Zend/Gdata/Calendar/ListFeed.php';
+// require_once 'Zend/Gdata/Calendar/ListFeed.php';
 
 /**
  * @see Zend_Gdata_Calendar_ListEntry
  */
-require_once 'Zend/Gdata/Calendar/ListEntry.php';
+// require_once 'Zend/Gdata/Calendar/ListEntry.php';
 
 /**
  * Service class for interacting with the Google Calendar data API

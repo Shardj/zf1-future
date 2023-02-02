@@ -23,12 +23,12 @@
 /**
  * @see Zend_CodeGenerator_Php_Member_Abstract
  */
-require_once 'Zend/CodeGenerator/Php/Member/Abstract.php';
+// require_once 'Zend/CodeGenerator/Php/Member/Abstract.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Property_DefaultValue
  */
-require_once 'Zend/CodeGenerator/Php/Property/DefaultValue.php';
+// require_once 'Zend/CodeGenerator/Php/Property/DefaultValue.php';
 
 /**
  * @category   Zend

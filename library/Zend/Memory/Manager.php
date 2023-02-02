@@ -20,13 +20,13 @@
  */
 
 /** Zend_Memory_Container_Movable */
-require_once 'Zend/Memory/Container/Movable.php';
+// require_once 'Zend/Memory/Container/Movable.php';
 
 /** Zend_Memory_Container_Locked */
-require_once 'Zend/Memory/Container/Locked.php';
+// require_once 'Zend/Memory/Container/Locked.php';
 
 /** Zend_Memory_AccessController */
-require_once 'Zend/Memory/AccessController.php';
+// require_once 'Zend/Memory/AccessController.php';
 
 
 /**

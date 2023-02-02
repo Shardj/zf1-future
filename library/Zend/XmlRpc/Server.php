@@ -23,53 +23,53 @@
 /**
  * Extends Zend_Server_Abstract
  */
-require_once 'Zend/Server/Abstract.php';
+// require_once 'Zend/Server/Abstract.php';
 
 /**
  * XMLRPC Request
  */
-require_once 'Zend/XmlRpc/Request.php';
+// require_once 'Zend/XmlRpc/Request.php';
 
 /**
  * XMLRPC Response
  */
-require_once 'Zend/XmlRpc/Response.php';
+// require_once 'Zend/XmlRpc/Response.php';
 
 /**
  * XMLRPC HTTP Response
  */
-require_once 'Zend/XmlRpc/Response/Http.php';
+// require_once 'Zend/XmlRpc/Response/Http.php';
 
 /**
  * XMLRPC server fault class
  */
-require_once 'Zend/XmlRpc/Server/Fault.php';
+// require_once 'Zend/XmlRpc/Server/Fault.php';
 
 /**
  * XMLRPC server system methods class
  */
-require_once 'Zend/XmlRpc/Server/System.php';
+// require_once 'Zend/XmlRpc/Server/System.php';
 
 /**
  * Convert PHP to and from xmlrpc native types
  */
-require_once 'Zend/XmlRpc/Value.php';
+// require_once 'Zend/XmlRpc/Value.php';
 
 /**
  * Reflection API for function/method introspection
  */
-require_once 'Zend/Server/Reflection.php';
+// require_once 'Zend/Server/Reflection.php';
 
 /**
  * Zend_Server_Reflection_Function_Abstract
  */
-require_once 'Zend/Server/Reflection/Function/Abstract.php';
+// require_once 'Zend/Server/Reflection/Function/Abstract.php';
 
 /**
  * Specifically grab the Zend_Server_Reflection_Method for manually setting up
  * system.* methods and handling callbacks in {@link loadFunctions()}.
  */
-require_once 'Zend/Server/Reflection/Method.php';
+// require_once 'Zend/Server/Reflection/Method.php';
 
 /**
  * An XML-RPC server implementation

@@ -24,10 +24,10 @@
 /**
  * @see Zend_Feed_Element
  */
-require_once 'Zend/Feed/Element.php';
+// require_once 'Zend/Feed/Element.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * The Zend_Feed_Abstract class is an abstract class representing feeds.

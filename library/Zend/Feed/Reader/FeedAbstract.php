@@ -22,12 +22,12 @@
 /**
  * @see Zend_Feed_Reader
  */
-require_once 'Zend/Feed/Reader.php';
+// require_once 'Zend/Feed/Reader.php';
 
 /**
  * @see Zend_feed_Reader_FeedInterface
  */
-require_once 'Zend/Feed/Reader/FeedInterface.php';
+// require_once 'Zend/Feed/Reader/FeedInterface.php';
 
 /**
  * @category   Zend

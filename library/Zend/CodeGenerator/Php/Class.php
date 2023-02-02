@@ -23,27 +23,27 @@
 /**
  * @see Zend_CodeGenerator_Php_Abstract
  */
-require_once 'Zend/CodeGenerator/Php/Abstract.php';
+// require_once 'Zend/CodeGenerator/Php/Abstract.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Member_Container
  */
-require_once 'Zend/CodeGenerator/Php/Member/Container.php';
+// require_once 'Zend/CodeGenerator/Php/Member/Container.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Method
  */
-require_once 'Zend/CodeGenerator/Php/Method.php';
+// require_once 'Zend/CodeGenerator/Php/Method.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Property
  */
-require_once 'Zend/CodeGenerator/Php/Property.php';
+// require_once 'Zend/CodeGenerator/Php/Property.php';
 
 /**
  * @see Zend_CodeGenerator_Php_Docblock
  */
-require_once 'Zend/CodeGenerator/Php/Docblock.php';
+// require_once 'Zend/CodeGenerator/Php/Docblock.php';
 
 /**
  * @category   Zend

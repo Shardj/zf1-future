@@ -22,28 +22,28 @@
 /**
  * @see Zend_Feed
  */
-require_once 'Zend/Feed.php';
+// require_once 'Zend/Feed.php';
 
 /**
  * @see Zend_Feed_Reader_Feed_Rss
  */
-require_once 'Zend/Feed/Reader/Feed/Rss.php';
+// require_once 'Zend/Feed/Reader/Feed/Rss.php';
 
 /**
  * @see Zend_Feed_Reader_Feed_Atom
  */
-require_once 'Zend/Feed/Reader/Feed/Atom.php';
+// require_once 'Zend/Feed/Reader/Feed/Atom.php';
 
 /**
  * @see Zend_Feed_Reader_FeedSet
  */
-require_once 'Zend/Feed/Reader/FeedSet.php';
+// require_once 'Zend/Feed/Reader/FeedSet.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** @see Zend_Xml_Exception */
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * @category   Zend

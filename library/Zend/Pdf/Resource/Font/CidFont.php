@@ -21,15 +21,15 @@
  */
 
 /** Internally used classes */
-require_once 'Zend/Pdf/Element/Array.php';
-require_once 'Zend/Pdf/Element/Dictionary.php';
-require_once 'Zend/Pdf/Element/Name.php';
-require_once 'Zend/Pdf/Element/Numeric.php';
-require_once 'Zend/Pdf/Element/String.php';
+// require_once 'Zend/Pdf/Element/Array.php';
+// require_once 'Zend/Pdf/Element/Dictionary.php';
+// require_once 'Zend/Pdf/Element/Name.php';
+// require_once 'Zend/Pdf/Element/Numeric.php';
+// require_once 'Zend/Pdf/Element/String.php';
 
 
 /** Zend_Pdf_Resource_Font */
-require_once 'Zend/Pdf/Resource/Font.php';
+// require_once 'Zend/Pdf/Resource/Font.php';
 
 /**
  * Adobe PDF CIDFont font object implementation

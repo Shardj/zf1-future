@@ -23,12 +23,12 @@
 /**
  * @see Zend_Controller_Action_Helper_Abstract
  */
-require_once 'Zend/Controller/Action/Helper/Abstract.php';
+// require_once 'Zend/Controller/Action/Helper/Abstract.php';
 
 /**
  * @see Zend_View
  */
-require_once 'Zend/View.php';
+// require_once 'Zend/View.php';
 
 /**
  * View script integration

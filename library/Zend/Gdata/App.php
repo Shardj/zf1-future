@@ -24,30 +24,30 @@
 /**
  * Zend_Gdata_Feed
  */
-require_once 'Zend/Gdata/App/Feed.php';
+// require_once 'Zend/Gdata/App/Feed.php';
 
 /**
  * Zend_Gdata_Http_Client
  */
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /**
  * Zend_Version
  */
-require_once 'Zend/Version.php';
+// require_once 'Zend/Version.php';
 
 /**
  * Zend_Gdata_App_MediaSource
  */
-require_once 'Zend/Gdata/App/MediaSource.php';
+// require_once 'Zend/Gdata/App/MediaSource.php';
 
 /**
  * Zend_Uri/Http
  */
-require_once 'Zend/Uri/Http.php';
+// require_once 'Zend/Uri/Http.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * Provides Atom Publishing Protocol (APP) functionality.  This class and all

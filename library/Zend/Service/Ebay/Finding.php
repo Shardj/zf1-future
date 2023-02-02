@@ -23,10 +23,10 @@
 /**
  * @see Zend_Service_Ebay_Abstract
  */
-require_once 'Zend/Service/Ebay/Abstract.php';
+// require_once 'Zend/Service/Ebay/Abstract.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /**
  * @category   Zend

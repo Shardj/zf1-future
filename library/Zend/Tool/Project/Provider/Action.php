@@ -23,12 +23,12 @@
 /**
  * @see Zend_Tool_Project_Provider_Abstract
  */
-require_once 'Zend/Tool/Project/Provider/Abstract.php';
+// require_once 'Zend/Tool/Project/Provider/Abstract.php';
 
 /**
  * @see Zend_Tool_Framework_Provider_Pretendable
  */
-require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
+// require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
 /**
  * @category   Zend

@@ -21,10 +21,10 @@
  */
 
 /** Zend_Date **/
-require_once 'Zend/Date.php';
+// require_once 'Zend/Date.php';
 
 /** Zend_Service_LiveDocx **/
-require_once 'Zend/Service/LiveDocx.php';
+// require_once 'Zend/Service/LiveDocx.php';
 
 /**
  * @category   Zend

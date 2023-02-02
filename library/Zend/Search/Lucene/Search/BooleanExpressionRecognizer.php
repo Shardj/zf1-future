@@ -22,7 +22,7 @@
 
 
 /** Zend_Search_Lucene_FSM */
-require_once 'Zend/Search/Lucene/FSM.php';
+// require_once 'Zend/Search/Lucene/FSM.php';
 
 /**
  * @category   Zend

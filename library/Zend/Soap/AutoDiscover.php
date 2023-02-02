@@ -23,23 +23,23 @@
 /**
  * @see Zend_Server_Interface
  */
-require_once 'Zend/Server/Interface.php';
+// require_once 'Zend/Server/Interface.php';
 /**
  * @see Zend_Soap_Wsdl
  */
-require_once 'Zend/Soap/Wsdl.php';
+// require_once 'Zend/Soap/Wsdl.php';
 /**
  * @see Zend_Server_Reflection
  */
-require_once 'Zend/Server/Reflection.php';
+// require_once 'Zend/Server/Reflection.php';
 /**
  * @see Zend_Server_Abstract
  */
-require_once 'Zend/Server/Abstract.php';
+// require_once 'Zend/Server/Abstract.php';
 /**
  * @see Zend_Uri
  */
-require_once 'Zend/Uri.php';
+// require_once 'Zend/Uri.php';
 
 /**
  * Zend_Soap_AutoDiscover

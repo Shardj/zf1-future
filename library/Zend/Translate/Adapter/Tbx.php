@@ -21,16 +21,16 @@
 
 
 /** Zend_Locale */
-require_once 'Zend/Locale.php';
+// require_once 'Zend/Locale.php';
 
 /** Zend_Translate_Adapter */
-require_once 'Zend/Translate/Adapter.php';
+// require_once 'Zend/Translate/Adapter.php';
 
 /** @see Zend_Xml_Security */
-require_once 'Zend/Xml/Security.php';
+// require_once 'Zend/Xml/Security.php';
 
 /** @see Zend_Xml_Exception */
-require_once 'Zend/Xml/Exception.php';
+// require_once 'Zend/Xml/Exception.php';
 
 /**
  * @category   Zend

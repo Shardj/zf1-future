@@ -24,12 +24,12 @@
 /**
  * @see Zend_Version
  */
-require_once 'Zend/Version.php';
+// require_once 'Zend/Version.php';
 
 /**
  * @see Zend_Service_Abstract
  */
-require_once 'Zend/Service/Abstract.php';
+// require_once 'Zend/Service/Abstract.php';
 
 
 /**

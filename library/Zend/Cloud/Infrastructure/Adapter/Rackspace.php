@@ -7,12 +7,12 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Rackspace/Servers.php';
-require_once 'Zend/Cloud/Infrastructure/Instance.php';
-require_once 'Zend/Cloud/Infrastructure/InstanceList.php';
-require_once 'Zend/Cloud/Infrastructure/Image.php';
-require_once 'Zend/Cloud/Infrastructure/ImageList.php';
-require_once 'Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php';
+// require_once 'Zend/Service/Rackspace/Servers.php';
+// require_once 'Zend/Cloud/Infrastructure/Instance.php';
+// require_once 'Zend/Cloud/Infrastructure/InstanceList.php';
+// require_once 'Zend/Cloud/Infrastructure/Image.php';
+// require_once 'Zend/Cloud/Infrastructure/ImageList.php';
+// require_once 'Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php';
 
 /**
  * Rackspace servers adapter for infrastructure service

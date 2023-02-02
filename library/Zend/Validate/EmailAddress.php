@@ -22,12 +22,12 @@
 /**
  * @see Zend_Validate_Abstract
  */
-require_once 'Zend/Validate/Abstract.php';
+// require_once 'Zend/Validate/Abstract.php';
 
 /**
  * @see Zend_Validate_Hostname
  */
-require_once 'Zend/Validate/Hostname.php';
+// require_once 'Zend/Validate/Hostname.php';
 
 /**
  * @category   Zend

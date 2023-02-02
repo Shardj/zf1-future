@@ -23,12 +23,12 @@
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-require_once 'Zend/Db/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Db_Statement_Sqlsrv
  */
-require_once 'Zend/Db/Statement/Sqlsrv.php';
+// require_once 'Zend/Db/Statement/Sqlsrv.php';
 
 /**
  * @category   Zend

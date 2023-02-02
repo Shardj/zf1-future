@@ -24,12 +24,12 @@
 /**
  * Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+// require_once('Zend/Gdata/Query.php');
 
 /**
  * Zend_Gdata_Gapps
  */
-require_once('Zend/Gdata/Gapps.php');
+// require_once('Zend/Gdata/Gapps.php');
 
 /**
  * Assists in constructing queries for Google Apps entries. This class

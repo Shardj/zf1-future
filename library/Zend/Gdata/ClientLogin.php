@@ -24,12 +24,12 @@
 /**
  * Zend_Gdata_HttpClient
  */
-require_once 'Zend/Gdata/HttpClient.php';
+// require_once 'Zend/Gdata/HttpClient.php';
 
 /**
  * Zend_Version
  */
-require_once 'Zend/Version.php';
+// require_once 'Zend/Version.php';
 
 /**
  * Class to facilitate Google's "Account Authentication

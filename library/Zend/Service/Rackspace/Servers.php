@@ -19,14 +19,14 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Service/Rackspace/Abstract.php';
-require_once 'Zend/Service/Rackspace/Servers/Server.php';
-require_once 'Zend/Service/Rackspace/Servers/ServerList.php';
-require_once 'Zend/Service/Rackspace/Servers/Image.php';
-require_once 'Zend/Service/Rackspace/Servers/ImageList.php';
-require_once 'Zend/Service/Rackspace/Servers/SharedIpGroup.php';
-require_once 'Zend/Service/Rackspace/Servers/SharedIpGroupList.php';
-require_once 'Zend/Validate/Ip.php';
+// require_once 'Zend/Service/Rackspace/Abstract.php';
+// require_once 'Zend/Service/Rackspace/Servers/Server.php';
+// require_once 'Zend/Service/Rackspace/Servers/ServerList.php';
+// require_once 'Zend/Service/Rackspace/Servers/Image.php';
+// require_once 'Zend/Service/Rackspace/Servers/ImageList.php';
+// require_once 'Zend/Service/Rackspace/Servers/SharedIpGroup.php';
+// require_once 'Zend/Service/Rackspace/Servers/SharedIpGroupList.php';
+// require_once 'Zend/Validate/Ip.php';
 
 class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
 {

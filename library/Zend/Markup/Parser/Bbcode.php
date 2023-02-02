@@ -23,12 +23,12 @@
 /**
  * @see Zend_Markup_TokenList
  */
-require_once 'Zend/Markup/TokenList.php';
+// require_once 'Zend/Markup/TokenList.php';
 
 /**
  * @see Zend_Markup_Parser_ParserInterface
  */
-require_once 'Zend/Markup/Parser/ParserInterface.php';
+// require_once 'Zend/Markup/Parser/ParserInterface.php';
 
 /**
  * @category   Zend

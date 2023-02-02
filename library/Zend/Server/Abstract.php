@@ -19,32 +19,32 @@
  */
 
 /** Zend_Server_Interface */
-require_once 'Zend/Server/Interface.php';
+// require_once 'Zend/Server/Interface.php';
 
 /**
  * Zend_Server_Definition
  */
-require_once 'Zend/Server/Definition.php';
+// require_once 'Zend/Server/Definition.php';
 
 /**
  * Zend_Server_Method_Definition
  */
-require_once 'Zend/Server/Method/Definition.php';
+// require_once 'Zend/Server/Method/Definition.php';
 
 /**
  * Zend_Server_Method_Callback
  */
-require_once 'Zend/Server/Method/Callback.php';
+// require_once 'Zend/Server/Method/Callback.php';
 
 /**
  * Zend_Server_Method_Prototype
  */
-require_once 'Zend/Server/Method/Prototype.php';
+// require_once 'Zend/Server/Method/Prototype.php';
 
 /**
  * Zend_Server_Method_Parameter
  */
-require_once 'Zend/Server/Method/Parameter.php';
+// require_once 'Zend/Server/Method/Parameter.php';
 
 /**
  * Zend_Server_Abstract

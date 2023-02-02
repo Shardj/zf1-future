@@ -21,10 +21,10 @@
  */
 
 /** Zend_Amf_Constants */
-require_once 'Zend/Amf/Constants.php';
+// require_once 'Zend/Amf/Constants.php';
 
 /** @see Zend_Amf_Parse_Serializer */
-require_once 'Zend/Amf/Parse/Serializer.php';
+// require_once 'Zend/Amf/Parse/Serializer.php';
 
 /**
  * Serializer PHP misc types back to there corresponding AMF0 Type Marker.

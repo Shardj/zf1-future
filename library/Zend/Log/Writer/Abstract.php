@@ -21,7 +21,7 @@
  */
 
 /** Zend_Log_Filter_Priority */
-require_once 'Zend/Log/Filter/Priority.php';
+// require_once 'Zend/Log/Filter/Priority.php';
 
 /**
  * @category   Zend

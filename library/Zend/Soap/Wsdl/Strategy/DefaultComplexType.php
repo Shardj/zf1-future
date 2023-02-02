@@ -23,7 +23,7 @@
 /**
  * @see Zend_Soap_Wsdl_Strategy_Abstract
  */
-require_once "Zend/Soap/Wsdl/Strategy/Abstract.php";
+// require_once "Zend/Soap/Wsdl/Strategy/Abstract.php";
 
 /**
  * Zend_Soap_Wsdl_Strategy_DefaultComplexType

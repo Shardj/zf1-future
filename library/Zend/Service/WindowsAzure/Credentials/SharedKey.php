@@ -22,7 +22,7 @@
 /**
  * @see Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
  */
-require_once 'Zend/Service/WindowsAzure/Credentials/CredentialsAbstract.php';
+// require_once 'Zend/Service/WindowsAzure/Credentials/CredentialsAbstract.php';
 
 /**
  * @category   Zend

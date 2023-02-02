@@ -22,7 +22,7 @@
 
 
 /** Zend_Search_Lucene_Search_Query_Processing */
-require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
+// require_once 'Zend/Search/Lucene/Search/Query/Preprocessing.php';
 
 
 /**

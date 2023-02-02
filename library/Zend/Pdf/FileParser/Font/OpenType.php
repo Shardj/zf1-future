@@ -21,7 +21,7 @@
  */
 
 /** Zend_Pdf_FileParser_Font */
-require_once 'Zend/Pdf/FileParser/Font.php';
+// require_once 'Zend/Pdf/FileParser/Font.php';
 
 /**
  * Abstract base class for OpenType font file parsers.

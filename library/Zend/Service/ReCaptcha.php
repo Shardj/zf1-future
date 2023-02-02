@@ -20,13 +20,13 @@
  */
 
 /** @see Zend_Service_Abstract */
-require_once 'Zend/Service/Abstract.php';
+// require_once 'Zend/Service/Abstract.php';
 
 /** @see Zend_Json */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /** @see Zend_Service_ReCaptcha_Response */
-require_once 'Zend/Service/ReCaptcha/Response.php';
+// require_once 'Zend/Service/ReCaptcha/Response.php';
 
 /**
  * Zend_Service_ReCaptcha

@@ -24,12 +24,12 @@
 /**
  * @see Zend_Gdata_Entry
  */
-require_once 'Zend/Gdata/Entry.php';
+// require_once 'Zend/Gdata/Entry.php';
 
 /**
  * @see Zend_Gdata_Spreadsheets_Extension_Custom
  */
-require_once 'Zend/Gdata/Spreadsheets/Extension/Custom.php';
+// require_once 'Zend/Gdata/Spreadsheets/Extension/Custom.php';
 
 /**
  * Concrete class for working with List entries.

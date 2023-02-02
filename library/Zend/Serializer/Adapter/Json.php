@@ -21,10 +21,10 @@
  */
 
 /** @see Zend_Serializer_Adapter_AdapterAbstract */
-require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
+// require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
 
 /** @see Zend_Json */
-require_once 'Zend/Json.php';
+// require_once 'Zend/Json.php';
 
 /**
  * @category   Zend

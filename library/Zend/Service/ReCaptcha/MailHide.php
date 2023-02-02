@@ -20,7 +20,7 @@
  */
 
 /** @see Zend_Service_ReCaptcha */
-require_once 'Zend/Service/ReCaptcha.php';
+// require_once 'Zend/Service/ReCaptcha.php';
 
 /**
  * Zend_Service_ReCaptcha_MailHide
