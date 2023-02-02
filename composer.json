@@ -51,8 +51,11 @@
         ]
     },
     "autoload-dev": {
+        "classmap": [
+            "library"
+        ],
         "psr-0": {
-            "Zend_": "tests/",
+            "Zend_": ["tests/", "library"],
             "resources_": "tests/"
         }
     }
