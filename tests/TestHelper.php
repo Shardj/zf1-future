@@ -63,6 +63,8 @@ $path = [
 ];
 set_include_path(implode(PATH_SEPARATOR, $path));
 
+require_once $zfRoot . '/vendor/autoload.php';
+
 /*
  * Load the user-defined test configuration file, if it exists; otherwise, load
  * the default configuration.
