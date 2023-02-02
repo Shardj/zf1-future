@@ -28,6 +28,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_AllTests::main');
 }
 
+require_once 'vendor/autoload.php';
+
 require_once 'Zend/Acl/AclTest.php';
 require_once 'Zend/Amf/AllTests.php';
 require_once 'Zend/Application/AllTests.php';
