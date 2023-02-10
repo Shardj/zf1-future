@@ -45,20 +45,12 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      */
     public $subject = null;
 
-
     /**
      * Config options for sendmail parameters
      *
      * @var string
      */
     public $parameters;
-
-    /**
-     * EOL character string
-     * @var string
-     * @access public
-     */
-    public $EOL = PHP_EOL;
 
     /**
      * error information
