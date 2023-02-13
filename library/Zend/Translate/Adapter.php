@@ -648,7 +648,7 @@ abstract class Zend_Translate_Adapter {
             }
         }
 
-        if (empty($temp)) {
+        if (empty($temp) || !is_array($temp)) {
             $temp = [];
         }
 
