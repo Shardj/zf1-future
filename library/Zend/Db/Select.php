@@ -609,9 +609,12 @@ class Zend_Db_Select
      * @param mixed $spec The column(s) and direction to order by.
      * @return $this This Zend_Db_Select object.
      */
-    public function order($spec)
+    public function order($spec, $dir = NULL)
     {
         if (!is_array($spec)) {
+            if (is_string($dir)) {
+                $spec = [$spec, $dir];
+            }
             $spec = [$spec];
         }
 
@@ -628,7 +631,11 @@ class Zend_Db_Select
                     continue;
                 }
                 $direction = self::SQL_ASC;
-                if (preg_match('/(.*\W)(' . self::SQL_ASC . '|' . self::SQL_DESC . ')\b/si', $val, $matches)) {
+                if (is_array($val) && count(val) == 2) {
+                    if(strtoupper($val[1]) == self::SQL_DESC)
+                        $direction = self::SQL_DESC;
+                    $val = $val[0];
+                } elseif (preg_match('/(.*\W)(' . self::SQL_ASC . '|' . self::SQL_DESC . ')\b/si', $val, $matches)) {
                     $val = trim($matches[1]);
                     $direction = $matches[2];
                 }
