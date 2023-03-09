@@ -1276,6 +1276,27 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $this->assertEquals(1, $result[0]['product_id']);
     }
 
+    protected function _selectOrderByAscTwoArg()
+    {
+        $select = $this->_db->select()
+            ->from('zfproducts')
+            ->order('product_id', 'ASC');
+        return $select;
+    }
+    
+    public function testSelectOrderByAscTwoArg()
+    {
+        $select = $this->_selectOrderByAscTwoArg();
+        $stmt = $this->_db->query($select);
+        $result = $stmt->fetchAll();
+        $this->assertEquals(
+            3,
+            count($result),
+            'Expected count of result set to be 3'
+        );
+        $this->assertEquals(1, $result[0]['product_id']);
+    }
+
     protected function _selectOrderByPosition()
     {
         $select = $this->_db->select()
@@ -1375,6 +1396,42 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
             'Expected count of result set to be 2'
         );
         $this->assertEquals(3, $result[0]['product_id']);
+    }
+
+    protected function _selectOrderByDescTwoArg()
+    {
+        $select = $this->_db->select()
+            ->from('zfproducts')
+            ->order('product_id', 'DESC');
+        return $select;
+    }
+    
+    public function testSelectOrderByDescTwoArg()
+    {
+        $select = $this->_selectOrderByDescTwoArg();
+        $stmt = $this->_db->query($select);
+        $result = $stmt->fetchAll();
+        $this->assertEquals(
+            3,
+            count($result),
+            'Expected count of result set to be 3'
+        );
+        $this->assertEquals(3, $result[0]['product_id']);
+    }
+    
+    public function testSelectOrderByTwoForms()
+    {
+        $selectA = $this->_db->select()
+            ->from('zfproducts')
+            ->order(['product_name ASC', 'product_id DESC']);
+        $selectB = $this->_db->select()
+            ->from('zfproducts')
+            ->order([['product_name', 'ASC'], ['product_id', 'DESC']]);
+        $this->assertEquals(
+            (string)$selectA,
+            (string)$selectB,
+            'Expected two forms of order call to give same result'
+       );
     }
 
     /**
