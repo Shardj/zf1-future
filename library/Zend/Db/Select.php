@@ -631,7 +631,7 @@ class Zend_Db_Select
                     continue;
                 }
                 $direction = self::SQL_ASC;
-                if (is_array($val) && count(val) == 2) {
+                if (is_array($val) && count($val) == 2) {
                     if(strtoupper($val[1]) == self::SQL_DESC)
                         $direction = self::SQL_DESC;
                     $val = $val[0];
