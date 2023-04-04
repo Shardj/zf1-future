@@ -61,6 +61,14 @@ class Zend_Locale_Data
     private static $_cache = null;
 
     /**
+     * Local copy of cache
+     *
+     * @var array
+     */
+    private static $_cacheList = [];
+    private static $_cacheContent = [];
+
+    /**
      * Internal value to remember if cache supports tags
      *
      * @var boolean
@@ -335,12 +343,16 @@ class Zend_Locale_Data
 
         $val = urlencode((string) $val);
         $id  = self::_filterCacheId('Zend_LocaleL_' . $locale . '_' . $path . '_' . $val);
+        if (isset(self::$_cacheList[$id])) {
+            return self::$_cacheList[$id];
+        }
         if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
-            return unserialize($result);
+            self::$_cacheList[$id] = unserialize($result);
+            return self::$_cacheList[$id];
         }
 
         $temp = [];
-        switch(strtolower((string) $path)) {
+        switch (strtolower((string) $path)) {
             case 'language':
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language', 'type');
                 break;
@@ -947,12 +959,13 @@ class Zend_Locale_Data
 
         if (isset(self::$_cache)) {
             if (self::$_cacheTags) {
-                self::$_cache->save( serialize($temp), $id, ['Zend_Locale']);
+                self::$_cache->save(serialize($temp), $id, ['Zend_Locale']);
             } else {
-                self::$_cache->save( serialize($temp), $id);
+                self::$_cache->save(serialize($temp), $id);
             }
         }
 
+        self::$_cacheList[$id] = $temp;
         return $temp;
     }
 
@@ -982,13 +995,18 @@ class Zend_Locale_Data
         if (is_array($value)) {
             $val = implode('_' , $value);
         }
+
         $val = urlencode((string) $val);
         $id  = self::_filterCacheId('Zend_LocaleC_' . $locale . '_' . $path . '_' . $val);
+        if (isset(self::$_cacheContent[$id])) {
+            return self::$_cacheContent[$id];
+        }
         if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
-            return unserialize($result);
+            self::$_cacheContent[$id] = unserialize($result);
+            return self::$_cacheContent[$id];
         }
 
-        switch(strtolower((string) $path)) {
+        switch (strtolower((string) $path)) {
             case 'language':
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language[@type=\'' . $value . '\']', 'type');
                 break;
@@ -1500,12 +1518,13 @@ class Zend_Locale_Data
         }
         if (isset(self::$_cache)) {
             if (self::$_cacheTags) {
-                self::$_cache->save( serialize($temp), $id, ['Zend_Locale']);
+                self::$_cache->save(serialize($temp), $id, ['Zend_Locale']);
             } else {
-                self::$_cache->save( serialize($temp), $id);
+                self::$_cache->save(serialize($temp), $id);
             }
         }
 
+        self::$_cacheContent[$id] = $temp;
         return $temp;
     }
 
