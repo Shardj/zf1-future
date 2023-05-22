@@ -565,10 +565,10 @@ class Zend_Controller_Front
     {
         $request = $this->getRequest();
         if ((null !== $request) && method_exists($request, 'getBaseUrl')) {
-            return $request->getBaseUrl();
+            return (string) $request->getBaseUrl();
         }
 
-        return $this->_baseUrl;
+        return (string) $this->_baseUrl;
     }
 
     /**

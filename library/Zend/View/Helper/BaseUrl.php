@@ -102,6 +102,7 @@ class Zend_View_Helper_BaseUrl extends Zend_View_Helper_Abstract
      */
     protected function _removeScriptName($url)
     {
+        $url = (string) $url;
         if (!isset($_SERVER['SCRIPT_NAME'])) {
             // We can't do much now can we? (Well, we could parse out by ".")
             return $url;
