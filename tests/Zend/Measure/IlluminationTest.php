@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Measure/Illumination.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Measure
  */
-class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
+class Zend_Measure_IlluminationTest extends TestCase
 {
     /**
      * test for Illumination initialisation
@@ -42,19 +45,20 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationInit()
     {
-        $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertTrue($value instanceof Zend_Measure_Illumination,'Zend_Measure_Illumination Object not returned');
+        $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertTrue($value instanceof Zend_Measure_Illumination, 'Zend_Measure_Illumination Object not returned');
     }
 
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testIlluminationUnknownType()
     {
         try {
-            $value = new Zend_Measure_Illumination('100','Illumination::UNKNOWN','de');
+            $value = new Zend_Measure_Illumination('100', 'Illumination::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -65,11 +69,12 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testIlluminationUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Illumination('novalue',Zend_Measure_Illumination::STANDARD,'de');
+            $value = new Zend_Measure_Illumination('novalue', Zend_Measure_Illumination::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -80,11 +85,12 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected root value
+     * @doesNotPerformAssertions
      */
     public function testIlluminationUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'nolocale');
+            $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -98,8 +104,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationNoLocale()
     {
-        $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD);
-        $this->assertEquals(100, $value->getValue(),'Zend_Measure_Illumination value expected');
+        $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD);
+        $this->assertEquals(100, $value->getValue(), 'Zend_Measure_Illumination value expected');
     }
 
 
@@ -109,7 +115,7 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationValuePositive()
     {
-        $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals(100, $value->getValue(), 'Zend_Measure_Illumination value expected to be a positive integer');
     }
 
@@ -120,7 +126,7 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationValueNegative()
     {
-        $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals(-100, $value->getValue(), 'Zend_Measure_Illumination value expected to be a negative integer');
     }
 
@@ -131,7 +137,7 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationValueDecimal()
     {
-        $value = new Zend_Measure_Illumination('-100,200',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100,200', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals(-100.200, $value->getValue(), 'Zend_Measure_Illumination value expected to be a decimal value');
     }
 
@@ -142,8 +148,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationValueDecimalSeperated()
     {
-        $value = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_Illumination Object not returned');
+        $value = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_Illumination Object not returned');
     }
 
 
@@ -153,8 +159,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationValueString()
     {
-        $value = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_v Object not returned');
+        $value = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_v Object not returned');
     }
 
 
@@ -164,9 +170,9 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationEquality()
     {
-        $value = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $newvalue = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertTrue($value->equals($newvalue),'Zend_Measure_Illumination Object should be equal');
+        $value = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertTrue($value->equals($newvalue), 'Zend_Measure_Illumination Object should be equal');
     }
 
 
@@ -176,9 +182,9 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationNoEquality()
     {
-        $value = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $newvalue = new Zend_Measure_Illumination('-100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertFalse($value->equals($newvalue),'Zend_Measure_Illumination Object should be not equal');
+        $value = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Illumination('-100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertFalse($value->equals($newvalue), 'Zend_Measure_Illumination Object should be not equal');
     }
 
 
@@ -188,8 +194,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationSetPositive()
     {
-        $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'de');
-        $value->setValue('200',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'de');
+        $value->setValue('200', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals(200, $value->getValue(), 'Zend_Measure_Illumination value expected to be a positive integer');
     }
 
@@ -200,8 +206,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationSetNegative()
     {
-        $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
-        $value->setValue('-200',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
+        $value->setValue('-200', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals(-200, $value->getValue(), 'Zend_Measure_Illumination value expected to be a negative integer');
     }
 
@@ -212,8 +218,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationSetDecimal()
     {
-        $value = new Zend_Measure_Illumination('-100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $value->setValue('-200,200',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $value->setValue('-200,200', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals(-200.200, $value->getValue(), 'Zend_Measure_Illumination value expected to be a decimal value');
     }
 
@@ -224,9 +230,9 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationSetDecimalSeperated()
     {
-        $value = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Illumination Object not returned');
+        $value = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Illumination Object not returned');
     }
 
 
@@ -236,21 +242,22 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationSetString()
     {
-        $value = new Zend_Measure_Illumination('-100.100,200',Zend_Measure_Illumination::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Illumination::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Illumination Object not returned');
+        $value = new Zend_Measure_Illumination('-100.100,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Illumination::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Illumination Object not returned');
     }
 
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testIlluminationSetUnknownType()
     {
         try {
-            $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'de');
-            $value->setValue('-200.200,200','Illumination::UNKNOWN','de');
+            $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'de');
+            $value->setValue('-200.200,200', 'Illumination::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -261,12 +268,13 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testIlluminationSetUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'de');
-            $value->setValue('novalue',Zend_Measure_Illumination::STANDARD,'de');
+            $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'de');
+            $value->setValue('novalue', Zend_Measure_Illumination::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -277,12 +285,13 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testIlluminationSetUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Illumination('100',Zend_Measure_Illumination::STANDARD,'de');
-            $value->setValue('200',Zend_Measure_Illumination::STANDARD,'nolocale');
+            $value = new Zend_Measure_Illumination('100', Zend_Measure_Illumination::STANDARD, 'de');
+            $value->setValue('200', Zend_Measure_Illumination::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -308,7 +317,7 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationSetType()
     {
-        $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
         $value->setType(Zend_Measure_Illumination::NOX);
         $this->assertEquals(Zend_Measure_Illumination::NOX, $value->getType(), 'Zend_Measure_Illumination type expected');
     }
@@ -317,11 +326,12 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
     /**
      * test setting unknown type
      * expected new type
+     * @doesNotPerformAssertions
      */
     public function testIlluminationSetTypeFailed()
     {
         try {
-            $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
+            $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
             $value->setType('Illumination::UNKNOWN');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
@@ -336,7 +346,7 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationToString()
     {
-        $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals('-100 lx', $value->toString(), 'Value -100 lx expected');
     }
 
@@ -347,7 +357,7 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIllumination_ToString()
     {
-        $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
+        $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
         $this->assertEquals('-100 lx', $value->__toString(), 'Value -100 lx expected');
     }
 
@@ -358,8 +368,8 @@ class Zend_Measure_IlluminationTest extends PHPUnit_Framework_TestCase
      */
     public function testIlluminationConversionList()
     {
-        $value = new Zend_Measure_Illumination('-100',Zend_Measure_Illumination::STANDARD,'de');
-        $unit  = $value->getConversionList();
+        $value = new Zend_Measure_Illumination('-100', Zend_Measure_Illumination::STANDARD, 'de');
+        $unit = $value->getConversionList();
         $this->assertTrue(is_array($unit), 'Array expected');
     }
 }

@@ -55,7 +55,7 @@ class Zend_Filter implements Zend_Filter_Interface
      *
      * @param  Zend_Filter_Interface $filter
      * @param  string $placement
-     * @return Zend_Filter Provides a fluent interface
+     * @return $this
      */
     public function addFilter(Zend_Filter_Interface $filter, $placement = self::CHAIN_APPEND)
     {
@@ -71,7 +71,7 @@ class Zend_Filter implements Zend_Filter_Interface
      * Add a filter to the end of the chain
      *
      * @param  Zend_Filter_Interface $filter
-     * @return Zend_Filter Provides a fluent interface
+     * @return $this
      */
     public function appendFilter(Zend_Filter_Interface $filter)
     {
@@ -82,7 +82,7 @@ class Zend_Filter implements Zend_Filter_Interface
      * Add a filter to the start of the chain
      *
      * @param  Zend_Filter_Interface $filter
-     * @return Zend_Filter Provides a fluent interface
+     * @return $this
      */
     public function prependFilter(Zend_Filter_Interface $filter)
     {

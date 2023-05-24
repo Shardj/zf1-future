@@ -77,7 +77,7 @@ class Zend_Pdf_Canvas extends Zend_Pdf_Canvas_Abstract
      */
     protected function _addProcSet($procSetName)
     {
-        $this->_procset[$procSetName] = 1;
+        $this->_procSet[$procSetName] = 1;
     }
 
     /**

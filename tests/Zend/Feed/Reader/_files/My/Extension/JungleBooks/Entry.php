@@ -33,7 +33,6 @@ require_once 'Zend/Feed/Reader/Extension/EntryAbstract.php';
  */
 class My_FeedReader_Extension_JungleBooks_Entry extends Zend_Feed_Reader_Extension_EntryAbstract
 {
-
     public function getIsbn()
     {
         if (isset($this->_data['isbn'])) {

@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -57,16 +61,16 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
      * @var array
      */
     protected $config = [
-        'adapter'     => 'Zend_Http_Client_Adapter_Curl'
+        'adapter' => 'Zend_Http_Client_Adapter_Curl'
     ];
 
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('curl')) {
             $this->markTestSkipped('cURL is not installed, marking all Http Client Curl Adapter tests skipped.');
@@ -85,14 +89,14 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     public function testConfigSetAsArray()
     {
         $config = [
-            'timeout'    => 500,
+            'timeout' => 500,
             'someoption' => 'hasvalue'
         ];
 
         $this->_adapter->setConfig($config);
 
         $hasConfig = $this->_adapter->getConfig();
-        foreach($config as $k => $v) {
+        foreach ($config as $k => $v) {
             $this->assertEquals($v, $hasConfig[$k]);
         }
     }
@@ -107,8 +111,8 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
         require_once 'Zend/Config.php';
 
         $config = new Zend_Config([
-            'timeout'  => 400,
-            'nested'   => [
+            'timeout' => 400,
+            'nested' => [
                 'item' => 'value',
             ]
         ]);
@@ -123,11 +127,11 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     /**
      * Check that an exception is thrown when trying to set invalid config
      *
-     * @expectedException Zend_Http_Client_Adapter_Exception
      * @dataProvider invalidConfigProvider
      */
     public function testSetConfigInvalidConfig($config)
     {
+        $this->expectException(Zend_Http_Client_Adapter_Exception::class);
         $this->_adapter->setConfig($config);
     }
 
@@ -136,13 +140,12 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
      * @link http://de2.php.net/manual/en/function.curl-setopt.php#84277
      *
      * This should throw an exception.
-     *
-     * @expectedException Zend_Http_Exception
      */
     public function testSettingInvalidCurlOption()
     {
+        $this->expectException(Zend_Http_Exception::class);
         $config = [
-            'adapter'     => 'Zend_Http_Client_Adapter_Curl',
+            'adapter' => 'Zend_Http_Client_Adapter_Curl',
             'curloptions' => [CURLOPT_CLOSEPOLICY => true],
         ];
         $this->client = new Zend_Http_Client($this->client->getUri(true), $config);
@@ -164,8 +167,8 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
         $this->assertEquals(3, $this->client->getRedirectionsCount(), 'Redirection counter is not as expected');
 
         // Make sure the body does *not* contain the set parameters
-        $this->assertNotContains('swallow', $res->getBody());
-        $this->assertNotContains('Camelot', $res->getBody());
+        $this->assertStringNotContainsString('swallow', $res->getBody());
+        $this->assertStringNotContainsString('Camelot', $res->getBody());
     }
 
     /**
@@ -175,14 +178,14 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
      *
      * Set CURLOPT_FOLLOWLOCATION = false for this type of request and let the Zend_Http_Client handle redirects
      * in his own loop.
-     *
-     * @expectedException Zend_Http_Client_Exception
      */
     public function testRedirectPostToGetWithCurlFollowLocationOptionLeadsToTimeout()
     {
+        $this->expectException(Zend_Http_Client_Exception::class);
         $adapter = new Zend_Http_Client_Adapter_Curl();
         $this->client->setAdapter($adapter);
-        $adapter->setConfig([
+        $adapter->setConfig(
+            [
             'curloptions' => [
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_TIMEOUT => 1,
@@ -240,7 +243,8 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 
     public function testWritingAndNotConnectedWithCurlHandleThrowsException()
     {
-        $this->setExpectedException("Zend_Http_Client_Adapter_Exception", "Trying to write but we are not connected");
+        $this->expectException("Zend_Http_Client_Adapter_Exception");
+        $this->expectExceptionMessage("Trying to write but we are not connected");
 
         $adapter = new Zend_Http_Client_Adapter_Curl();
         $adapter->write("GET", "someUri");
@@ -248,7 +252,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 
     public function testSetConfigIsNotArray()
     {
-        $this->setExpectedException("Zend_Http_Client_Adapter_Exception");
+        $this->expectException("Zend_Http_Client_Adapter_Exception");
 
         $adapter = new Zend_Http_Client_Adapter_Curl();
         $adapter->setConfig("foo");
@@ -286,7 +290,8 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
         ];
 
         $this->assertEquals(
-            $expected, $this->readAttribute($adapter, '_config')
+            $expected,
+            $this->readAttribute($adapter, '_config')
         );
     }
 
@@ -308,7 +313,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     public function testHeadRequest()
     {
         $this->client->setUri($this->baseuri . 'testRawPostData.php');
-        $adapter = new Zend_Http_Client_Adapter_Curl;
+        $adapter = new Zend_Http_Client_Adapter_Curl();
         $this->client->setAdapter($adapter);
         $this->client->request('HEAD');
         $this->assertEquals('', $this->client->getLastResponse()->getBody());

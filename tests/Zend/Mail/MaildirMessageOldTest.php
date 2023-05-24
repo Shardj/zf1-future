@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -56,13 +59,13 @@ class Zend_Mail_Storage_Maildir_OldMessage extends Zend_Mail_Storage_Maildir
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
-class Zend_Mail_MaildirMessageOldTest extends PHPUnit_Framework_TestCase
+class Zend_Mail_MaildirMessageOldTest extends TestCase
 {
     protected $_originalMaildir;
     protected $_maildir;
     protected $_tmpdir;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_originalMaildir = dirname(__FILE__) . '/_files/test.maildir/';
         if (!is_dir($this->_originalMaildir . '/cur/')) {
@@ -112,7 +115,7 @@ class Zend_Mail_MaildirMessageOldTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         foreach (['cur', 'new'] as $dir) {
             $dh = opendir($this->_tmpdir . $dir);
@@ -137,15 +140,15 @@ class Zend_Mail_MaildirMessageOldTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Simple Message', $subject);
     }
 
-/*
-    public function testFetchTopBody()
-    {
-        $mail = new Zend_Mail_Storage_Maildir_OldMessage(array('dirname' => $this->_maildir));
+    /*
+        public function testFetchTopBody()
+        {
+            $mail = new Zend_Mail_Storage_Maildir_OldMessage(array('dirname' => $this->_maildir));
 
-        $content = $mail->getHeader(3, 1)->getContent();
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
-    }
-*/
+            $content = $mail->getHeader(3, 1)->getContent();
+            $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        }
+    */
     public function testFetchMessageHeader()
     {
         $mail = new Zend_Mail_Storage_Maildir_OldMessage(['dirname' => $this->_maildir]);

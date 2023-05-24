@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -50,8 +54,7 @@ require_once 'Zend/Config.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
-    extends Zend_Cloud_DocumentService_TestCase
+class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest extends Zend_Cloud_DocumentService_TestCase
 {
     /**
      * Period to wait for propagation in seconds
@@ -63,7 +66,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
 
     protected $_clientType = 'Zend_Service_WindowsAzure_Storage_Table';
 
-	/**
+    /**
      * Runs the test methods of this class.
      *
      * @access public
@@ -71,23 +74,23 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testQueryStructOrder()
     {
         try {
             parent::testQueryStructOrder();
-        } catch(Zend_Cloud_OperationNotAvailableException $e) {
+        } catch (Zend_Cloud_OperationNotAvailableException $e) {
             $this->_commonDocument->deleteCollection($this->_collectionName("testStructQuery4"));
             $this->markTestSkipped('Azure query sorting not implemented yet');
         }
     }
 
-    static function getConfigArray()
+    public static function getConfigArray()
     {
-         return [
+        return [
             Zend_Cloud_DocumentService_Factory::DOCUMENT_ADAPTER_KEY => 'Zend_Cloud_DocumentService_Adapter_WindowsAzure',
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::ACCOUNT_NAME => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_ACCOUNTNAME'),
             Zend_Cloud_DocumentService_Adapter_WindowsAzure::ACCOUNT_KEY => constant('TESTS_ZEND_SERVICE_WINDOWSAZURE_ONLINE_ACCOUNTKEY'),
@@ -116,36 +119,36 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest
     {
         return [
             [
-	        	parent::ID_FIELD => ["Amazon", "0385333498"],
-	        	"name" =>	"The Sirens of Titan",
-	        	"author" =>	"Kurt Vonnegut",
-	        	"year"	=> 1959,
-	        	"pages" =>	336,
-	        	"keyword" => "Book"
-	        	],
+                parent::ID_FIELD => ["Amazon", "0385333498"],
+                "name" => "The Sirens of Titan",
+                "author" => "Kurt Vonnegut",
+                "year" => 1959,
+                "pages" => 336,
+                "keyword" => "Book"
+                ],
             [
-	        	parent::ID_FIELD => ["Amazon", "0802131786"],
-	        	"name" =>	"Tropic of Cancer",
-	        	"author" =>	"Henry Miller",
-	        	"year"	=> 1934,
-	        	"pages" =>	318,
-	        	"keyword" => "Book"
-	        	],
+                parent::ID_FIELD => ["Amazon", "0802131786"],
+                "name" => "Tropic of Cancer",
+                "author" => "Henry Miller",
+                "year" => 1934,
+                "pages" => 318,
+                "keyword" => "Book"
+                ],
             [
-	        	parent::ID_FIELD => ["Amazon", "B000T9886K"],
-	        	"name" =>	"In Between",
-	        	"author" =>	"Paul Van Dyk",
-	        	"year"	=> 2007,
-	        	"keyword" => "CD"
-	        	],
-	       [
-	        	parent::ID_FIELD => ["Amazon", "1579124585"],
-	        	"name" =>	"The Right Stuff",
-	        	"author" =>	"Tom Wolfe",
-	        	"year"	=> 1979,
-	        	"pages" =>	304,
-	        	"keyword" => "Book"
-	        	],
+                parent::ID_FIELD => ["Amazon", "B000T9886K"],
+                "name" => "In Between",
+                "author" => "Paul Van Dyk",
+                "year" => 2007,
+                "keyword" => "CD"
+                ],
+           [
+                parent::ID_FIELD => ["Amazon", "1579124585"],
+                "name" => "The Right Stuff",
+                "author" => "Tom Wolfe",
+                "year" => 1979,
+                "pages" => 304,
+                "keyword" => "Book"
+                ],
         ];
     }
 

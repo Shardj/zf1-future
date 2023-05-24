@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -66,12 +70,12 @@ class Zend_Dojo_View_Helper_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Dojo_View_Helper');
+        $suite = new TestSuite('Zend Framework - Zend_Dojo_View_Helper');
 
         $suite->addTestSuite('Zend_Dojo_View_Helper_DojoTest');
         $suite->addTestSuite('Zend_Dojo_View_Helper_AccordionContainerTest');

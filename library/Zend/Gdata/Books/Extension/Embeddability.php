@@ -109,7 +109,7 @@ class Zend_Gdata_Books_Extension_Embeddability extends Zend_Gdata_Extension
      *
      * @param string|null $value Programmatic value that describes the
      *        embeddability of a volume in Google Book Search
-     * @return Zend_Gdata_Books_Extension_Embeddability Provides a fluent
+     * @return $this
      *     interface
      */
     public function setValue($value)

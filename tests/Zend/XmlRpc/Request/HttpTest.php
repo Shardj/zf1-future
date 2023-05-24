@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,8 +43,23 @@ require_once 'Zend/XmlRpc/Request/Http.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
-class Zend_XmlRpc_Request_HttpTest extends PHPUnit_Framework_TestCase
+class Zend_XmlRpc_Request_HttpTest extends TestCase
 {
+    /**
+     * @var string|mixed
+     */
+    protected $xml;
+
+    /**
+     * @var \Zend_XmlRpc_Request_Http|mixed
+     */
+    protected $request;
+
+    /**
+     * @var array<string, mixed>|mixed
+     */
+    protected $server;
+
     /**
      * Runs the test methods of this class.
      *
@@ -47,16 +67,16 @@ class Zend_XmlRpc_Request_HttpTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_XmlRpc_Request_HttpTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_XmlRpc_Request_HttpTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
      * Setup environment
      */
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->xml =<<<EOX
+        $this->xml = <<<EOX
 <?xml version="1.0" encoding="UTF-8"?>
 <methodCall>
     <methodName>test.userUpdate</methodName>
@@ -96,9 +116,9 @@ EOX;
                 unset($_SERVER[$key]);
             }
         }
-        $_SERVER['HTTP_USER_AGENT']     = 'Zend_XmlRpc_Client';
-        $_SERVER['HTTP_HOST']           = 'localhost';
-        $_SERVER['HTTP_CONTENT_TYPE']   = 'text/xml';
+        $_SERVER['HTTP_USER_AGENT'] = 'Zend_XmlRpc_Client';
+        $_SERVER['HTTP_HOST'] = 'localhost';
+        $_SERVER['HTTP_CONTENT_TYPE'] = 'text/xml';
         $_SERVER['HTTP_CONTENT_LENGTH'] = strlen($this->xml) + 1;
         Zend_AllTests_StreamWrapper_PhpInput::mockInput($this->xml);
     }
@@ -106,7 +126,7 @@ EOX;
     /**
      * Teardown environment
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         $_SERVER = $this->server;
         unset($this->request);
@@ -121,9 +141,9 @@ EOX;
     public function testGetHeaders()
     {
         $expected = [
-            'User-Agent'     => 'Zend_XmlRpc_Client',
-            'Host'           => 'localhost',
-            'Content-Type'   => 'text/xml',
+            'User-Agent' => 'Zend_XmlRpc_Client',
+            'Host' => 'localhost',
+            'Content-Type' => 'text/xml',
             'Content-Length' => 958
         ];
         $this->assertEquals($expected, $this->request->getHeaders());
@@ -131,7 +151,7 @@ EOX;
 
     public function testGetFullRequest()
     {
-        $expected =<<<EOT
+        $expected = <<<EOT
 User-Agent: Zend_XmlRpc_Client
 Host: localhost
 Content-Type: text/xml
@@ -142,7 +162,7 @@ EOT;
 
         $this->assertEquals($expected, $this->request->getFullRequest());
     }
-
+    /** @doesNotPerformAssertions */
     public function testCanPassInMethodAndParams()
     {
         try {
@@ -167,7 +187,7 @@ EOT;
     {
         $this->assertNull(Zend_AllTests_StreamWrapper_PhpInput::argumentsPassedTo('stream_open'));
         $request = new Zend_XmlRpc_Request_Http();
-        list($path, $mode,) = Zend_AllTests_StreamWrapper_PhpInput::argumentsPassedTo('stream_open');
+        list($path, $mode, ) = Zend_AllTests_StreamWrapper_PhpInput::argumentsPassedTo('stream_open');
         $this->assertSame('php://input', $path);
         $this->assertSame('rb', $mode);
         $this->assertSame($this->xml, $request->getRawRequest());
@@ -184,6 +204,14 @@ EOT;
 
 class Zend_XmlRpc_Request_HttpTest_Extension extends Zend_XmlRpc_Request_Http
 {
+    /**
+     * @var string|null
+     */
+    protected $method;
+    /**
+     * @var mixed[]
+     */
+    protected $params;
     public function __construct($method = null, $params = null)
     {
         $this->method = $method;

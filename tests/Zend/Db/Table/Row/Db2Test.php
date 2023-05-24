@@ -38,10 +38,8 @@ require_once 'Zend/Db/Table/Row/TestCommon.php';
  */
 class Zend_Db_Table_Row_Db2Test extends Zend_Db_Table_Row_TestCommon
 {
-
     public function getDriver()
     {
         return 'Db2';
     }
-
 }

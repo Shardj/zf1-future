@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
-class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_Form_Element_TimeTextBoxTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_Form_Element_TimeTextBox
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_Form_Element_TimeTextBoxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_Form_Element_TimeTextBoxTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view    = $this->getView();
+        $this->view = $this->getView();
         $this->element = $this->getElement();
         $this->element->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -134,11 +149,9 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('T00:15:00', $this->element->dijitParams['constraints']['clickableIncrement']);
     }
 
-    /**
-     * @expectedException Zend_Form_Element_Exception
-     */
     public function testClickableIncrementMutatorShouldRaiseExceptionOnInvalidFormat()
     {
+        $this->expectException(Zend_Form_Element_Exception::class);
         $this->element->setClickableIncrement('en-US');
     }
 
@@ -152,11 +165,9 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('T00:15:00', $this->element->dijitParams['constraints']['visibleIncrement']);
     }
 
-    /**
-     * @expectedException Zend_Form_Element_Exception
-     */
     public function testVisibleIncrementMutatorShouldRaiseExceptionOnInvalidFormat()
     {
+        $this->expectException(Zend_Form_Element_Exception::class);
         $this->element->setVisibleIncrement('en-US');
     }
 
@@ -170,18 +181,16 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('T00:15:00', $this->element->dijitParams['constraints']['visibleRange']);
     }
 
-    /**
-     * @expectedException Zend_Form_Element_Exception
-     */
     public function testVisibleRangeMutatorShouldRaiseExceptionOnInvalidFormat()
     {
+        $this->expectException(Zend_Form_Element_Exception::class);
         $this->element->setVisibleRange('en-US');
     }
 
     public function testShouldRenderTimeTextBoxDijit()
     {
         $html = $this->element->render();
-        $this->assertContains('dojoType="dijit.form.TimeTextBox"', $html);
+        $this->assertStringContainsString('dojoType="dijit.form.TimeTextBox"', $html);
     }
 
     /**
@@ -193,7 +202,7 @@ class Zend_Dojo_Form_Element_TimeTextBoxTest extends PHPUnit_Framework_TestCase
         $html = $this->element->render();
         
         $this->assertSame('T08:00', $this->element->getValue());
-        $this->assertContains('value="T08:00"', $html);
+        $this->assertStringContainsString('value="T08:00"', $html);
     }
 }
 

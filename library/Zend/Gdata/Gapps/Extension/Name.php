@@ -137,7 +137,7 @@ class Zend_Gdata_Gapps_Extension_Name extends Zend_Gdata_Extension
      * represents a user's family name.
      *
      * @param string $value The desired value for this attribute.
-     * @return Zend_Gdata_Gapps_Extension_Name Provides a fluent interface..
+     * @return $this
      */
     public function setFamilyName($value)
     {
@@ -161,7 +161,7 @@ class Zend_Gdata_Gapps_Extension_Name extends Zend_Gdata_Extension
      * represents a user's given name.
      *
      * @param string $value The desired value for this attribute.
-     * @return Zend_Gdata_Gapps_Extension_Name Provides a fluent interface.
+     * @return $this
      */
     public function setGivenName($value)
     {

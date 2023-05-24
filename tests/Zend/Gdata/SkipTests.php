@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -28,9 +31,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_SkipOnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_SkipOnlineTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped("Zend_Gdata online tests are not enabled in TestConfiguration.php");
     }
@@ -41,9 +44,9 @@ class Zend_Gdata_SkipOnlineTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class Zend_Gdata_SkipClientLoginTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_SkipClientLoginTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped("Zend_Gdata authenticated tests are not enabled in TestConfiguration.php");
     }

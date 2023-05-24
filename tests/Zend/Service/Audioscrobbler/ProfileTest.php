@@ -81,7 +81,6 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
         try {
             $response = $as->userGetProfileInformation();
             $this->assertNull($response);
-
         } catch (Exception $e) {
             return;
         }
@@ -89,7 +88,7 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
         $this->fail('Exception was not thrown when submitting bad user info');
     }
 
-    public function testUserGetTopArtists( )
+    public function testUserGetTopArtists()
     {
         $test_response = "HTTP/1.1 200 OK\r\n" .
                         "Content-type: text/xml\r\n" .
@@ -107,7 +106,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                         </artist>
                         </topartists>';
 
-        $this->setAudioscrobblerResponse($test_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($test_response);
+        $as = $this->getAudioscrobblerService();
 
         $as->set('user', 'RJ');
         $response = $as->userGetTopArtists();
@@ -118,7 +118,7 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
         $this->assertNotNull($artist->rank, 1);
     }
 
-    public function testUserGetTopAlbums( )
+    public function testUserGetTopAlbums()
     {
         $testing_response = "HTTP/1.1 200 OK\r\n" .
                         "Content-type: text/xml\r\n" .
@@ -139,7 +139,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                             </image>
                         </album>
                         </topalbums>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'Frith');
         $response = $as->userGetTopAlbums();
         $album = $response->album[0];
@@ -148,7 +149,7 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
         $this->assertEquals((string)$album->name, 'The Warning');
     }
 
-    public function testUserGetTopTracks( )
+    public function testUserGetTopTracks()
     {
         $testing_response = "HTTP/1.1 200 OK\r\n" .
                         "Content-type: text/xml\r\n" .
@@ -172,7 +173,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                             <url>http://www.last.fm/music/Portishead/_/Cowboys</url>
                         </track>
                         </toptracks>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetTopTracks();
         $track = $response->track[0];
@@ -182,7 +184,7 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
         $this->assertEquals((int)$track->playcount, 31);
     }
 
-    public function testUserGetTopTags( )
+    public function testUserGetTopTags()
     {
         $testing_response = "HTTP/1.1 200 OK\r\n" .
                         "Content-type: text/xml\r\n" .
@@ -205,7 +207,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                             <url>http://www.last.fm/tag/mellow</url>
                         </tag>
                         </toptags>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetTopTags();
         $tag = $response->tag[1];
@@ -233,7 +236,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                             <url>http://www.last.fm/tag/80s</url>
                         </tag>
                         </artisttags>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $as->set('artist', 'Metallica');
         $response = $as->userGetTopTagsForArtist();
@@ -261,7 +265,7 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
             $response = $as->userGetTopTagsForArtist();
             $this->fail('userGetTopTagsForArtist() did not throw exception based on bad parameters');
         } catch (Zend_Service_Exception $e) {
-            $this->assertContains('SimpleXML', $e->getMessage());
+            $this->assertStringContainsString('SimpleXML', $e->getMessage());
         }
     }
 
@@ -273,7 +277,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                         '<?xml version="1.0" encoding="UTF-8"?>
                         <albumtags user="RJ" album="Ride the Lightning" artist="Metallica">
                         </albumtags>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $as->set('artist', 'Metallica');
         $as->set('album', 'Ride The Lightning');
@@ -291,7 +296,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                         '<?xml version="1.0" encoding="UTF-8"?>
                         <tracktags user="RJ" artist="Metallica" track="Nothing Else Matters">
                         </tracktags>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $as->set('artist', 'Metallica');
         $as->set('track', 'Nothing Else Matters');
@@ -323,7 +329,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
 
                             </user>
                         </friends>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetFriends();
         $this->assertEquals((string)$response['user'], 'RJ');
@@ -348,7 +355,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                             <match>93.12</match>
                         </user>
                         </neighbours>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetNeighbours();
         $this->assertEquals((string)$response['user'], 'RJ');
@@ -379,7 +387,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                     <date uts="1173202787">6 Mar 2007, 17:39</date>
                         </track>
                         </recenttracks>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetRecentTracks();
         $track = $response->track[0];
@@ -408,7 +417,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                 <date uts="1161129235">17 Oct 2006, 23:53</date>
                             </track>
                             </recentbannedtracks>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetRecentBannedTracks();
         $track = $response->track[0];
@@ -438,7 +448,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                 <date uts="1162310037">31 Oct 2006, 15:53</date>
                             </track>
                             </recentlovedtracks>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetRecentLovedTracks();
         $track = $response->track[1];
@@ -461,7 +472,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                 <chart from="1111924801" to="1112529601"/>
                                 <chart from="1112529601" to="1113134401"/>
                             </weeklychartlist>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetWeeklyChartList();
         $chart = $response->chart[0];
@@ -491,7 +503,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                     <url>http://www.last.fm/music/Guano+Apes</url>
                             </artist>
                             </weeklyartistchart>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetWeeklyArtistChart();
         $this->assertEquals((string)$response['user'], 'RJ');
@@ -521,7 +534,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                 <url>http://www.last.fm/music/Guano+Apes/Walking+on+a+Thin+Line</url>
                             </album>
                             </weeklyalbumchart>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $response = $as->userGetWeeklyAlbumChart();
         $album = $response->album[0];
@@ -551,7 +565,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                     <url>http://www.last.fm/music/The+Doors</url>
                             </artist>
                             </weeklyartistchart>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $from = 1114965332;
         $to = 1115570132;
@@ -586,7 +601,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                 <url>http://www.last.fm/music/Nirvana/Nirvana</url>
                             </album>
                             </weeklyalbumchart>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $from = 1114965332;
         $to = 1115570132;
@@ -620,7 +636,8 @@ class Zend_Service_Audioscrobbler_ProfileTest extends Zend_Service_Audioscrobble
                                             <url>http://www.last.fm/music/Nine+Inch+Nails/_/All+the+Love+in+the+World</url>
                                 </track>
                             </weeklytrackchart>';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
         $as->set('user', 'RJ');
         $from = 1114965332;
         $to = 1115570132;

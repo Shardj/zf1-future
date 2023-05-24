@@ -98,7 +98,7 @@ class Zend_Amf_Request
     /**
      * Takes the raw AMF input stream and converts it into valid PHP objects
      *
-     * @param  Zend_Amf_Parse_InputStream
+     * @param  Zend_Amf_Parse_InputStream $stream
      * @return Zend_Amf_Request
      */
     public function readMessage(Zend_Amf_Parse_InputStream $stream)

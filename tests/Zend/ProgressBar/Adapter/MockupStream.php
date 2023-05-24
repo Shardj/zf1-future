@@ -27,15 +27,15 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_ProgressBar_Adapter_Console_MockupStream {
-
+class Zend_ProgressBar_Adapter_Console_MockupStream
+{
     private $position;
 
     private $test;
 
     public static $tests = [];
 
-    function stream_open($path, $mode, $options, &$opened_path)
+    public function stream_open($path, $mode, $options, &$opened_path)
     {
         $url = parse_url($path);
         $this->test = $url["host"];
@@ -45,14 +45,14 @@ class Zend_ProgressBar_Adapter_Console_MockupStream {
         return true;
     }
 
-    function stream_read($count)
+    public function stream_read($count)
     {
         $ret = substr(self::$tests[$this->test], $this->position, $count);
         $this->position += strlen($ret);
         return $ret;
     }
 
-    function stream_write($data)
+    public function stream_write($data)
     {
         $left = substr(self::$tests[$this->test], 0, $this->position);
         $right = substr(self::$tests[$this->test], $this->position + strlen($data));
@@ -61,17 +61,17 @@ class Zend_ProgressBar_Adapter_Console_MockupStream {
         return strlen($data);
     }
 
-    function stream_tell()
+    public function stream_tell()
     {
         return $this->position;
     }
 
-    function stream_eof()
+    public function stream_eof()
     {
         return $this->position >= strlen(self::$tests[$this->test]);
     }
 
-    function stream_seek($offset, $whence)
+    public function stream_seek($offset, $whence)
     {
         switch ($whence) {
             case SEEK_SET:
@@ -106,7 +106,8 @@ class Zend_ProgressBar_Adapter_Console_MockupStream {
         }
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         unset(self::$tests[$this->test]);
     }
 }

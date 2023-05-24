@@ -41,10 +41,9 @@ require_once 'Zend/Db/Table/TestCommon.php';
  */
 class Zend_Db_Table_Pdo_SqliteTest extends Zend_Db_Table_TestCommon
 {
-
     public function testTableInsertSequence()
     {
-        $this->markTestSkipped($this->getDriver().' does not support sequences.');
+        $this->markTestSkipped($this->getDriver() . ' does not support sequences.');
     }
 
     public function testDbTableSchemaSpecified()
@@ -56,5 +55,4 @@ class Zend_Db_Table_Pdo_SqliteTest extends Zend_Db_Table_TestCommon
     {
         return 'Pdo_Sqlite';
     }
-
 }

@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -47,17 +51,17 @@ class Zend_Filter_File_AllTests
      */
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     /**
      * Creates and returns this test suite
      *
-     * @return PHPUnit_Framework_TestSuite
+     * @return TestSuite
      */
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Filter_File');
+        $suite = new TestSuite('Zend Framework - Zend_Filter_File');
 
         $suite->addTestSuite('Zend_Filter_File_DecryptTest');
         $suite->addTestSuite('Zend_Filter_File_EncryptTest');

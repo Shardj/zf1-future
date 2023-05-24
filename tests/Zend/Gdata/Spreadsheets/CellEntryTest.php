@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,14 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Spreadsheets
  */
-class Zend_Gdata_Spreadsheets_CellEntryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Spreadsheets_CellEntryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_CellEntry|mixed
+     */
+    protected $cellEntry;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->cellEntry = new Zend_Gdata_Spreadsheets_CellEntry();
     }
@@ -60,5 +67,4 @@ class Zend_Gdata_Spreadsheets_CellEntryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->cellEntry->getCell()->getInputValue() == $newCellEntry->getCell()->getInputValue());
         $this->assertTrue($this->cellEntry->getCell()->getNumericValue() == $newCellEntry->getCell()->getNumericValue());
     }
-
 }

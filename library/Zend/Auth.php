@@ -63,7 +63,7 @@ class Zend_Auth
      *
      * Singleton pattern implementation
      *
-     * @return Zend_Auth Provides a fluent interface
+     * @return $this
      */
     public static function getInstance()
     {
@@ -98,7 +98,7 @@ class Zend_Auth
      * Sets the persistent storage handler
      *
      * @param  Zend_Auth_Storage_Interface $storage
-     * @return Zend_Auth Provides a fluent interface
+     * @return $this
      */
     public function setStorage(Zend_Auth_Storage_Interface $storage)
     {

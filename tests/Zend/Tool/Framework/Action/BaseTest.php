@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,9 +39,8 @@ require_once 'Zend/Tool/Framework/Action/Base.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Action
  */
-class Zend_Tool_Framework_Action_BaseTest extends PHPUnit_Framework_TestCase
+class Zend_Tool_Framework_Action_BaseTest extends TestCase
 {
-
     public function testBaseActionCanGetNameViaConstructor()
     {
         $baseAction = new Zend_Tool_Framework_Action_Base('Foo');
@@ -52,6 +54,4 @@ class Zend_Tool_Framework_Action_BaseTest extends PHPUnit_Framework_TestCase
         $baseAction->setName('Foo');
         $this->assertEquals('Foo', $baseAction->getName());
     }
-
-
 }

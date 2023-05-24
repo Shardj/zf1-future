@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -50,15 +55,42 @@ require_once 'Zend/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Module_AutoloaderTest extends TestCase
 {
+    protected $error;
+
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Application_Module_Autoloader
+     */
+    protected $loader;
+
+    /**
+     * @var array
+     */
+    protected $includePath;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -79,11 +111,11 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
 
         $this->loader = new Zend_Application_Module_Autoloader([
             'namespace' => 'FooBar',
-            'basePath'  => realpath(dirname(__FILE__) . '/_files'),
+            'basePath' => realpath(dirname(__FILE__) . '/_files'),
         ]);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -110,7 +142,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testDbTableResourceTypeShouldPointToModelsDbTableSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('models/DbTable', $resources['dbtable']['path']);
+        $this->assertStringContainsString('models/DbTable', $resources['dbtable']['path']);
     }
 
     public function testFormResourceTypeShouldBeLoadedByDefault()
@@ -121,7 +153,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testFormResourceTypeShouldPointToFormsSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('forms', $resources['form']['path']);
+        $this->assertStringContainsString('forms', $resources['form']['path']);
     }
 
     public function testModelResourceTypeShouldBeLoadedByDefault()
@@ -132,7 +164,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testModelResourceTypeShouldPointToModelsSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('models', $resources['model']['path']);
+        $this->assertStringContainsString('models', $resources['model']['path']);
     }
 
     public function testPluginResourceTypeShouldBeLoadedByDefault()
@@ -143,7 +175,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testPluginResourceTypeShouldPointToPluginsSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('plugins', $resources['plugin']['path']);
+        $this->assertStringContainsString('plugins', $resources['plugin']['path']);
     }
 
     public function testServiceResourceTypeShouldBeLoadedByDefault()
@@ -154,7 +186,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testServiceResourceTypeShouldPointToServicesSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('services', $resources['service']['path']);
+        $this->assertStringContainsString('services', $resources['service']['path']);
     }
 
     public function testViewHelperResourceTypeShouldBeLoadedByDefault()
@@ -165,7 +197,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testViewHelperResourceTypeShouldPointToViewHelperSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('views/helpers', $resources['viewhelper']['path']);
+        $this->assertStringContainsString('views/helpers', $resources['viewhelper']['path']);
     }
 
     public function testViewFilterResourceTypeShouldBeLoadedByDefault()
@@ -176,7 +208,7 @@ class Zend_Application_Module_AutoloaderTest extends PHPUnit_Framework_TestCase
     public function testViewFilterResourceTypeShouldPointToViewFilterSubdirectory()
     {
         $resources = $this->loader->getResourceTypes();
-        $this->assertContains('views/filters', $resources['viewfilter']['path']);
+        $this->assertStringContainsString('views/filters', $resources['viewfilter']['path']);
     }
 
     public function testDefaultResourceShouldBeModel()

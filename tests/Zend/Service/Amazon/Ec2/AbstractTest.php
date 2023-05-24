@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,12 +37,12 @@ require_once 'Zend/Service/Amazon/Ec2/Abstract.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
-class Zend_Service_Amazon_Ec2_AbstractTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Amazon_Ec2_AbstractTest extends TestCase
 {
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
     }
@@ -47,17 +50,21 @@ class Zend_Service_Amazon_Ec2_AbstractTest extends PHPUnit_Framework_TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNoKeysThrowException()
     {
         try {
             $class = new TestAmamzonEc2Abstract();
             $this->fail('Exception should be thrown when no keys are passed in.');
-        } catch(Zend_Service_Amazon_Exception $zsae) {}
+        } catch (Zend_Service_Amazon_Exception $zsae) {
+        }
     }
 
     public function testSetRegion()
@@ -68,6 +75,9 @@ class Zend_Service_Amazon_Ec2_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('eu-west-1', $class->returnRegion());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetInvalidRegionThrowsException()
     {
         try {
@@ -92,7 +102,6 @@ class Zend_Service_Amazon_Ec2_AbstractTest extends PHPUnit_Framework_TestCase
 
 class TestAmamzonEc2Abstract extends Zend_Service_Amazon_Ec2_Abstract
 {
-
     public function returnRegion()
     {
         return $this->_region;
@@ -103,4 +112,3 @@ class TestAmamzonEc2Abstract extends Zend_Service_Amazon_Ec2_Abstract
         return $this->signParameters($params);
     }
 }
-

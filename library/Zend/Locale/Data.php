@@ -340,7 +340,7 @@ class Zend_Locale_Data
         }
 
         $temp = [];
-        switch(strtolower($path)) {
+        switch(strtolower((string) $path)) {
             case 'language':
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language', 'type');
                 break;
@@ -988,7 +988,7 @@ class Zend_Locale_Data
             return unserialize($result);
         }
 
-        switch(strtolower($path)) {
+        switch(strtolower((string) $path)) {
             case 'language':
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/languages/language[@type=\'' . $value . '\']', 'type');
                 break;

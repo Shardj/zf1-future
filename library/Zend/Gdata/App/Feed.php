@@ -202,7 +202,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      * atom:feed representation
      *
      * @param array $value The array of Zend_Gdata_App_Entry elements
-     * @return Zend_Gdata_App_Feed Provides a fluent interface
+     * @return $this
      */
     public function setEntry($value)
     {
@@ -214,8 +214,8 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      * Adds an entry representation to the array of entries
      * contained within this feed
      *
-     * @param Zend_Gdata_App_Entry An individual entry to add.
-     * @return Zend_Gdata_App_Feed Provides a fluent interface
+     * @param Zend_Gdata_App_Entry $value An individual entry to add.
+     * @return $this
      */
     public function addEntry($value)
     {
@@ -278,7 +278,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      *
      * @return string|Zend_Gdata_App_Feed Returns the next set of results as a feed of the same
      *          class as this feed, or null if no results exist.
-     *@throws Zend_Gdata_App_Exception
+     * @throws Zend_Gdata_App_Exception
      */
     public function getNextFeed()
     {
@@ -299,7 +299,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      *
      * @return string|Zend_Gdata_App_Feed Returns the previous set of results as a feed of
      *          the same class as this feed, or null if no results exist.
-     *@throws Zend_Gdata_App_Exception
+     * @throws Zend_Gdata_App_Exception
      */
     public function getPreviousFeed()
     {

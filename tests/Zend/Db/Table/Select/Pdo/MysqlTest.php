@@ -42,10 +42,8 @@ require_once 'Zend/Db/Table/Select/TestCommon.php';
  */
 class Zend_Db_Table_Select_Pdo_MysqlTest extends Zend_Db_Table_Select_TestCommon
 {
-
     public function getDriver()
     {
         return 'Pdo_Mysql';
     }
-
 }

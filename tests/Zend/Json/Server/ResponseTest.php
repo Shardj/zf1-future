@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,8 +45,13 @@ require_once 'Zend/Json.php';
  * @group      Zend_Json
  * @group      Zend_Json_Server
  */
-class Zend_Json_Server_ResponseTest extends PHPUnit_Framework_TestCase
+class Zend_Json_Server_ResponseTest extends TestCase
 {
+    /**
+     * @var \Zend_Json_Server_Response|mixed
+     */
+    protected $response;
+
     /**
      * Runs the test methods of this class.
      *
@@ -49,9 +59,8 @@ class Zend_Json_Server_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Json_Server_ResponseTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Json_Server_ResponseTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -60,7 +69,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->response = new Zend_Json_Server_Response();
     }
@@ -71,7 +80,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 

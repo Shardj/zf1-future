@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -43,12 +47,12 @@ class Zend_Service_LiveDocx_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Service - LiveDocX');
+        $suite = new TestSuite('Zend Framework - Zend_Service - LiveDocX');
 
         $suite->addTestSuite('Zend_Service_LiveDocx_LiveDocxTest');
         $suite->addTestSuite('Zend_Service_LiveDocx_MailMergeTest');

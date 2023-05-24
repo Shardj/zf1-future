@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -44,8 +48,8 @@ require_once 'Zend/Cloud/StorageService/Adapter/WindowsAzure.php';
  */
 class Zend_Cloud_StorageService_Adapter_WindowsAzureTest extends Zend_Cloud_StorageService_TestCase
 {
-	protected $_clientType = 'Zend_Service_WindowsAzure_Storage_Blob';
-	/**
+    protected $_clientType = 'Zend_Service_WindowsAzure_Storage_Blob';
+    /**
      * Runs the test methods of this class.
      *
      * @access public
@@ -53,8 +57,8 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzureTest extends Zend_Cloud_Stor
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     protected function _getConfig()

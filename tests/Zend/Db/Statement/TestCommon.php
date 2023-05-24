@@ -39,7 +39,6 @@ require_once 'Zend/Db/Statement/Exception.php';
  */
 abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
 {
-
     public function testStatementConstruct()
     {
         $statementClass = 'Zend_Db_Statement_' . $this->getDriver();
@@ -98,8 +97,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             $stmt = $this->_db->query($sql);
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
         }
     }
 
@@ -174,7 +175,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $this->_db->fetchAll($select);
         $stmt->closeCursor();
 
-        $this->assertEquals([['product_id'=>4, 'product_name'=>'Solaris']], $result);
+        $this->assertEquals([['product_id' => 4, 'product_name' => 'Solaris']], $result);
     }
 
     public function testStatementErrorCodeKeyViolation()
@@ -192,8 +193,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             }
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
         }
         $code = $stmt->errorCode();
         // @todo  what to assert here?
@@ -214,8 +217,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             }
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
         }
         $code = $stmt->errorCode();
         $info = $stmt->errorInfo();
@@ -326,13 +331,17 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             $stmt->setFetchMode(-999);
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->assertRegExp('#invalid fetch mode#i', $e->getMessage());
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
+            $this->assertMatchesRegularExpression('#invalid fetch mode#i', $e->getMessage());
         } catch (Throwable $e) {
-            $this->assertTrue($e instanceof ValueError,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->assertRegExp('#must be a bitmask#i', $e->getMessage());
+            $this->assertTrue(
+                $e instanceof ValueError,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
+            $this->assertMatchesRegularExpression('#must be a bitmask#i', $e->getMessage());
         }
     }
 
@@ -445,12 +454,16 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             $result = $stmt->fetchAll(-99);
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
         } catch (Throwable $e) {
-            $this->assertTrue($e instanceof ValueError,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->assertRegExp('#must be a bitmask#i', $e->getMessage());
+            $this->assertTrue(
+                $e instanceof ValueError,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
+            $this->assertMatchesRegularExpression('#must be a bitmask#i', $e->getMessage());
         }
         $stmt->closeCursor();
     }
@@ -508,8 +521,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $stmt->fetchObject();
         $stmt->closeCursor();
 
-        $this->assertTrue($result instanceof stdClass,
-            'Expecting object of type stdClass, got '.get_class($result));
+        $this->assertTrue(
+            $result instanceof stdClass,
+            'Expecting object of type stdClass, got ' . get_class($result)
+        );
         $this->assertEquals('Linux', $result->product_name);
     }
 
@@ -577,8 +592,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $result = $stmt->fetch(Zend_Db::FETCH_OBJ);
         $stmt->closeCursor();
 
-        $this->assertTrue($result instanceof stdClass,
-            'Expecting object of type stdClass, got '.get_class($result));
+        $this->assertTrue(
+            $result instanceof stdClass,
+            'Expecting object of type stdClass, got ' . get_class($result)
+        );
         $this->assertEquals('Linux', $result->product_name);
     }
 
@@ -592,12 +609,16 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             $result = $stmt->fetch(-99);
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
         } catch (Throwable $e) {
-            $this->assertTrue($e instanceof ValueError,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->assertRegExp('#must be a bitmask#i', $e->getMessage());
+            $this->assertTrue(
+                $e instanceof ValueError,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
+            $this->assertMatchesRegularExpression('#must be a bitmask#i', $e->getMessage());
         }
         $stmt->closeCursor();
     }
@@ -608,7 +629,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $product_id = $this->_db->quoteIdentifier('product_id');
         $product_name = $this->_db->quoteIdentifier('product_name');
 
-        $productIdValue   = 4;
+        $productIdValue = 4;
         $productNameValue = 'AmigaOS';
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
@@ -616,7 +637,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $this->assertTrue($stmt->bindParam(2, $productNameValue), 'Expected bindParam(2) to return true');
 
         // we should be able to set the values after binding them
-        $productIdValue   = 4;
+        $productIdValue = 4;
         $productNameValue = 'Solaris';
 
         // no params as args to execute()
@@ -636,7 +657,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $product_id = $this->_db->quoteIdentifier('product_id');
         $product_name = $this->_db->quoteIdentifier('product_name');
 
-        $productIdValue   = 4;
+        $productIdValue = 4;
         $productNameValue = 'AmigaOS';
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (:id, :name)");
@@ -646,7 +667,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $this->assertTrue($stmt->bindParam('name', $productNameValue), 'Expected bindParam(\'name\') to return true');
 
         // we should be able to set the values after binding them
-        $productIdValue   = 4;
+        $productIdValue = 4;
         $productNameValue = 'Solaris';
 
         // no params as args to execute()
@@ -667,7 +688,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $product_id = $this->_db->quoteIdentifier('product_id');
         $product_name = $this->_db->quoteIdentifier('product_name');
 
-        $productIdValue   = 4;
+        $productIdValue = 4;
         $productNameValue = 'AmigaOS';
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
@@ -675,7 +696,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $this->assertTrue($stmt->bindValue(2, $productNameValue), 'Expected bindValue(2) to return true');
 
         // we should be able to change the values without changing what gets inserted
-        $productIdValue   = 5;
+        $productIdValue = 5;
         $productNameValue = 'Solaris';
 
         // no params as args to execute()
@@ -696,7 +717,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $product_id = $this->_db->quoteIdentifier('product_id');
         $product_name = $this->_db->quoteIdentifier('product_name');
 
-        $productIdValue   = 4;
+        $productIdValue = 4;
         $productNameValue = 'AmigaOS';
 
         $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (:id, :name)");
@@ -706,7 +727,7 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $this->assertTrue($stmt->bindValue('name', $productNameValue), 'Expected bindValue(\'name\') to return true');
 
         // we should be able to change the values without changing what gets inserted
-        $productIdValue   = 5;
+        $productIdValue = 5;
         $productNameValue = 'Solaris';
 
         // no params as args to execute()
@@ -731,18 +752,26 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
 
         $stmt = $this->_db->query("SELECT * FROM $products WHERE $product_id > 1 ORDER BY $product_id ASC");
 
-        $this->assertTrue($stmt->bindColumn(1, $prodIdValue),
-            'Expected bindColumn(product_id) to return true');
-        $this->assertTrue($stmt->bindColumn(2, $prodNameValue),
-            'Expected bindColumn(product_name) to return true');
+        $this->assertTrue(
+            $stmt->bindColumn(1, $prodIdValue),
+            'Expected bindColumn(product_id) to return true'
+        );
+        $this->assertTrue(
+            $stmt->bindColumn(2, $prodNameValue),
+            'Expected bindColumn(product_name) to return true'
+        );
 
-        $this->assertTrue($stmt->fetch(Zend_Db::FETCH_BOUND),
-            'Expected fetch() call 1 to return true');
+        $this->assertTrue(
+            $stmt->fetch(Zend_Db::FETCH_BOUND),
+            'Expected fetch() call 1 to return true'
+        );
         $this->assertEquals(2, $prodIdValue);
         $this->assertEquals('Linux', $prodNameValue);
 
-        $this->assertTrue($stmt->fetch(Zend_Db::FETCH_BOUND),
-            'Expected fetch() call 2 to return true');
+        $this->assertTrue(
+            $stmt->fetch(Zend_Db::FETCH_BOUND),
+            'Expected fetch() call 2 to return true'
+        );
         $this->assertEquals(3, $prodIdValue);
         $this->assertEquals('OS X', $prodNameValue);
 
@@ -759,18 +788,26 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
 
         $stmt = $this->_db->query("SELECT * FROM $products WHERE $product_id > 1 ORDER BY $product_id ASC");
 
-        $this->assertTrue($stmt->bindColumn('product_id', $prodIdValue),
-            'Expected bindColumn(product_id) to return true');
-        $this->assertTrue($stmt->bindColumn('product_name', $prodNameValue),
-            'Expected bindColumn(product_name) to return true');
+        $this->assertTrue(
+            $stmt->bindColumn('product_id', $prodIdValue),
+            'Expected bindColumn(product_id) to return true'
+        );
+        $this->assertTrue(
+            $stmt->bindColumn('product_name', $prodNameValue),
+            'Expected bindColumn(product_name) to return true'
+        );
 
-        $this->assertTrue($stmt->fetch(Zend_Db::FETCH_BOUND),
-            'Expected fetch() call 1 to return true');
+        $this->assertTrue(
+            $stmt->fetch(Zend_Db::FETCH_BOUND),
+            'Expected fetch() call 1 to return true'
+        );
         $this->assertEquals(2, $prodIdValue);
         $this->assertEquals('Linux', $prodNameValue);
 
-        $this->assertTrue($stmt->fetch(Zend_Db::FETCH_BOUND),
-            'Expected fetch() call 2 to return true');
+        $this->assertTrue(
+            $stmt->fetch(Zend_Db::FETCH_BOUND),
+            'Expected fetch() call 2 to return true'
+        );
         $this->assertEquals(3, $prodIdValue);
         $this->assertEquals('OS X', $prodNameValue);
 
@@ -787,18 +824,26 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
 
         $stmt = $this->_db->query("SELECT * FROM $products WHERE $product_id > 1 ORDER BY $product_id ASC");
 
-        $this->assertTrue($stmt->bindColumn(1, $prodIdValue),
-            'Expected bindColumn(1) to return true');
-        $this->assertTrue($stmt->bindColumn('product_name', $prodNameValue),
-            'Expected bindColumn(product_name) to return true');
+        $this->assertTrue(
+            $stmt->bindColumn(1, $prodIdValue),
+            'Expected bindColumn(1) to return true'
+        );
+        $this->assertTrue(
+            $stmt->bindColumn('product_name', $prodNameValue),
+            'Expected bindColumn(product_name) to return true'
+        );
 
-        $this->assertTrue($stmt->fetch(Zend_Db::FETCH_BOUND),
-            'Expected fetch() call 1 to return true');
+        $this->assertTrue(
+            $stmt->fetch(Zend_Db::FETCH_BOUND),
+            'Expected fetch() call 1 to return true'
+        );
         $this->assertEquals(2, $prodIdValue);
         $this->assertEquals('Linux', $prodNameValue);
 
-        $this->assertTrue($stmt->fetch(Zend_Db::FETCH_BOUND),
-            'Expected fetch() call 2 to return true');
+        $this->assertTrue(
+            $stmt->fetch(Zend_Db::FETCH_BOUND),
+            'Expected fetch() call 2 to return true'
+        );
         $this->assertEquals(3, $prodIdValue);
         $this->assertEquals('OS X', $prodNameValue);
 
@@ -836,8 +881,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
             $stmt->nextRowset();
             $this->fail('Expected to catch Zend_Db_Statement_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
             $this->assertEquals('nextRowset() is not implemented', $e->getMessage());
         }
         $stmt->closeCursor();
@@ -853,13 +900,13 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         try {
             $stmt->setAttribute(1234, $value);
         } catch (Zend_Exception $e) {
-            $this->assertContains('This driver doesn\'t support setting attributes', $e->getMessage());
+            $this->assertStringContainsString('This driver doesn\'t support setting attributes', $e->getMessage());
         }
 
         try {
             $this->assertEquals($value, $stmt->getAttribute(1234), "Expected '$value' #1");
         } catch (Zend_Exception $e) {
-            $this->assertContains('This driver doesn\'t support getting attributes', $e->getMessage());
+            $this->assertStringContainsString('driver doesn\'t support getting', $e->getMessage());
             return;
         }
 

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Search/Lucene/Analysis/Analyzer.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_AnalysisTest extends TestCase
 {
     public function testAnalyzer()
     {
@@ -62,19 +65,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'Word');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         4);
+        $this->assertEquals($tokenList[0]->getTermText(), 'Word');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 4);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'Word');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       6);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         10);
+        $this->assertEquals($tokenList[1]->getTermText(), 'Word');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 6);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 10);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'anotherWord');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       12);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         23);
+        $this->assertEquals($tokenList[2]->getTermText(), 'anotherWord');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 12);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 23);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -89,19 +92,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'word');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         4);
+        $this->assertEquals($tokenList[0]->getTermText(), 'word');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 4);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'word');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       6);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         10);
+        $this->assertEquals($tokenList[1]->getTermText(), 'word');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 6);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 10);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'anotherword');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       12);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         23);
+        $this->assertEquals($tokenList[2]->getTermText(), 'anotherword');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 12);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 23);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -116,19 +119,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'Word1');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         5);
+        $this->assertEquals($tokenList[0]->getTermText(), 'Word1');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 5);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'Word2');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       6);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         11);
+        $this->assertEquals($tokenList[1]->getTermText(), 'Word2');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 6);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 11);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'anotherWord');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       12);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         23);
+        $this->assertEquals($tokenList[2]->getTermText(), 'anotherWord');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 12);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 23);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -143,19 +146,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'word1');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         5);
+        $this->assertEquals($tokenList[0]->getTermText(), 'word1');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 5);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'word2');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       6);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         11);
+        $this->assertEquals($tokenList[1]->getTermText(), 'word2');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 6);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 11);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'anotherword');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       12);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         23);
+        $this->assertEquals($tokenList[2]->getTermText(), 'anotherword');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 12);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 23);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -176,19 +179,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'Слово');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         5);
+        $this->assertEquals($tokenList[0]->getTermText(), 'Слово');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 5);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'Слово');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       7);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         12);
+        $this->assertEquals($tokenList[1]->getTermText(), 'Слово');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 7);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 12);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'ДругоеСлово');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       14);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         25);
+        $this->assertEquals($tokenList[2]->getTermText(), 'ДругоеСлово');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 14);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 25);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -209,19 +212,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'Слово1');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         6);
+        $this->assertEquals($tokenList[0]->getTermText(), 'Слово1');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 6);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'Слово2');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       7);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         13);
+        $this->assertEquals($tokenList[1]->getTermText(), 'Слово2');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 7);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 13);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'ДругоеСлово');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       14);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         25);
+        $this->assertEquals($tokenList[2]->getTermText(), 'ДругоеСлово');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 14);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 25);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -246,19 +249,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'слово');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         5);
+        $this->assertEquals($tokenList[0]->getTermText(), 'слово');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 5);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'слово');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       7);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         12);
+        $this->assertEquals($tokenList[1]->getTermText(), 'слово');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 7);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 12);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'другоеслово');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       14);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         25);
+        $this->assertEquals($tokenList[2]->getTermText(), 'другоеслово');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 14);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 25);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -282,19 +285,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'слово1');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         6);
+        $this->assertEquals($tokenList[0]->getTermText(), 'слово1');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 6);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'слово2');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       7);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         13);
+        $this->assertEquals($tokenList[1]->getTermText(), 'слово2');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 7);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 13);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'другоеслово');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       14);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         25);
+        $this->assertEquals($tokenList[2]->getTermText(), 'другоеслово');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 14);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 25);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -314,19 +317,19 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 3);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'Слово');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         5);
+        $this->assertEquals($tokenList[0]->getTermText(), 'Слово');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 5);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'Слово');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       7);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         12);
+        $this->assertEquals($tokenList[1]->getTermText(), 'Слово');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 7);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 12);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[2]->getTermText(),         'ДругоеСлово');
-        $this->assertEquals($tokenList[2]->getStartOffset(),       14);
-        $this->assertEquals($tokenList[2]->getEndOffset(),         25);
+        $this->assertEquals($tokenList[2]->getTermText(), 'ДругоеСлово');
+        $this->assertEquals($tokenList[2]->getStartOffset(), 14);
+        $this->assertEquals($tokenList[2]->getEndOffset(), 25);
         $this->assertEquals($tokenList[2]->getPositionIncrement(), 1);
     }
 
@@ -347,9 +350,9 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 1);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'anotherword');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       12);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         23);
+        $this->assertEquals($tokenList[0]->getTermText(), 'anotherword');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 12);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 23);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
     }
 
@@ -370,14 +373,14 @@ class Zend_Search_Lucene_AnalysisTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(count($tokenList), 2);
 
-        $this->assertEquals($tokenList[0]->getTermText(),         'word');
-        $this->assertEquals($tokenList[0]->getStartOffset(),       0);
-        $this->assertEquals($tokenList[0]->getEndOffset(),         4);
+        $this->assertEquals($tokenList[0]->getTermText(), 'word');
+        $this->assertEquals($tokenList[0]->getStartOffset(), 0);
+        $this->assertEquals($tokenList[0]->getEndOffset(), 4);
         $this->assertEquals($tokenList[0]->getPositionIncrement(), 1);
 
-        $this->assertEquals($tokenList[1]->getTermText(),         'anotherword');
-        $this->assertEquals($tokenList[1]->getStartOffset(),       10);
-        $this->assertEquals($tokenList[1]->getEndOffset(),         21);
+        $this->assertEquals($tokenList[1]->getTermText(), 'anotherword');
+        $this->assertEquals($tokenList[1]->getStartOffset(), 10);
+        $this->assertEquals($tokenList[1]->getEndOffset(), 21);
         $this->assertEquals($tokenList[1]->getPositionIncrement(), 1);
     }
 }

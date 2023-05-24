@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,12 +37,11 @@ require_once 'Zend/Reflection/Function.php';
  * @group      Zend_Reflection
  * @group      Zend_Reflection_Function
  */
-class Zend_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_FunctionTest extends TestCase
 {
+    protected static $_sampleClassFileRequired = false;
 
-    static protected $_sampleClassFileRequired = false;
-
-    public function setup()
+    protected function setUp(): void
     {
         if (self::$_sampleClassFileRequired === false) {
             $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';
@@ -61,6 +63,4 @@ class Zend_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $function = new Zend_Reflection_Function('zend_reflection_test_sample_function6');
         $this->assertEquals(get_class($function->getDocblock()), 'Zend_Reflection_Docblock');
     }
-
 }
-

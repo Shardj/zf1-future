@@ -43,4 +43,3 @@ class Contact
         return 'ContactVO';
     }
 }
-

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -39,14 +42,14 @@ require_once 'Zend/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
-class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
+class Zend_Mail_MaildirFolderTest extends TestCase
 {
     protected $_params;
     protected $_originalDir;
     protected $_tmpdir;
     protected $_subdirs = ['.', '.subfolder', '.subfolder.test'];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_originalDir = dirname(__FILE__) . '/_files/test.maildir/';
 
@@ -106,7 +109,7 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         foreach (array_reverse($this->_subdirs) as $dir) {
             foreach (['cur', 'new'] as $subdir) {
@@ -130,6 +133,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testLoadOk()
     {
         try {
@@ -139,6 +145,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testLoadConfig()
     {
         try {
@@ -148,6 +157,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNoParams()
     {
         try {
@@ -159,6 +171,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->fail('no exception raised with empty params');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testLoadFailure()
     {
         try {
@@ -170,6 +185,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->fail('no exception raised while loading unknown dirname');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testLoadUnknownFolder()
     {
         $this->_params['folder'] = 'UnknownFolder';
@@ -194,6 +212,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($mail->getCurrentFolder(), 'subfolder.test');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testUnknownFolder()
     {
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
@@ -232,9 +253,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
         $iterator = new RecursiveIteratorIterator($mail->getFolders(), RecursiveIteratorIterator::SELF_FIRST);
         // we search for this folder because we can't assume a order while iterating
-        $search_folders = ['subfolder'      => 'subfolder',
+        $search_folders = ['subfolder' => 'subfolder',
                                 'subfolder.test' => 'test',
-                                'INBOX'          => 'INBOX'];
+                                'INBOX' => 'INBOX'];
         $found_folders = [];
 
         foreach ($iterator as $localName => $folder) {
@@ -254,9 +275,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
         $iterator = new RecursiveIteratorIterator($mail->getFolders(), RecursiveIteratorIterator::SELF_FIRST);
         // we search for this folder because we can't assume a order while iterating
-        $search_folders = ['subfolder'      => 'subfolder',
+        $search_folders = ['subfolder' => 'subfolder',
                                 'subfolder.test' => 'test',
-                                'INBOX'          => 'INBOX'];
+                                'INBOX' => 'INBOX'];
         $found_folders = [];
 
         foreach ($iterator as $localName => $folder) {
@@ -339,6 +360,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Message in subfolder', $subject);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNotReadableFolder()
     {
         $stat = stat($this->_params['dirname'] . '.subfolder');
@@ -362,10 +386,13 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         chmod($this->_params['dirname'] . '.subfolder', $stat['mode']);
 
         if (!$check) {
-           $this->fail('no exception while loading invalid dir with subfolder not readable');
+            $this->fail('no exception while loading invalid dir with subfolder not readable');
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNotReadableMaildir()
     {
         $stat = stat($this->_params['dirname']);
@@ -389,10 +416,13 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         chmod($this->_params['dirname'], $stat['mode']);
 
         if (!$check) {
-           $this->fail('no exception while loading not readable maildir');
+            $this->fail('no exception while loading not readable maildir');
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGetInvalidFolder()
     {
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
@@ -408,6 +438,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->fail('no error while getting invalid folder');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGetVanishedFolder()
     {
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);
@@ -423,6 +456,9 @@ class Zend_Mail_MaildirFolderTest extends PHPUnit_Framework_TestCase
         $this->fail('no error while getting vanished folder');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGetNotSelectableFolder()
     {
         $mail = new Zend_Mail_Storage_Folder_Maildir($this->_params);

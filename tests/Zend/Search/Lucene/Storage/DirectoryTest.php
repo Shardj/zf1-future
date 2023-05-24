@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Search/Lucene/Storage/Directory/Filesystem.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_Storage_DirectoryTest extends TestCase
 {
     public function testFilesystem()
     {
@@ -86,7 +89,7 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
         $modifiedAt3 = $directory->fileModified('file3');
 
         $this->assertTrue($modifiedAt2 >= $modifiedAt1);
-        $this->assertTrue($modifiedAt3 >  $modifiedAt2);
+        $this->assertTrue($modifiedAt3 > $modifiedAt2);
 
         $fileObject = $directory->getFileObject('file3');
         $this->assertEquals($fileObject->readBytes($directory->fileLength('file3')), '0123456789');
@@ -113,4 +116,3 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends PHPUnit_Framework_TestCas
         rmdir(dirname(__FILE__) . '/_tempFiles/_files/dir1');
     }
 }
-

@@ -66,7 +66,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      * Sets the spreadsheet key for the query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setSpreadsheetKey($value)
     {
@@ -88,7 +88,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      * Sets the worksheet id for the query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setWorksheetId($value)
     {
@@ -109,7 +109,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      * Sets the row id for the query.
      *
      * @param string $value row id
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setRowId($value)
     {
@@ -130,7 +130,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
     /**
      * Sets the projection for the query.
      * @param string $value Projection
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setProjection($value)
     {
@@ -141,7 +141,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
     /**
      * Sets the visibility for this query.
      * @param string $value visibility
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setVisibility($value)
     {
@@ -171,7 +171,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      * Sets the spreadsheet key for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setSpreadsheetQuery($value)
     {
@@ -200,7 +200,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      * Sets the orderby attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setOrderBy($value)
     {
@@ -229,7 +229,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
      * Sets the reverse attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_ListQuery Provides a fluent interface
+     * @return $this
      */
     public function setReverse($value)
     {

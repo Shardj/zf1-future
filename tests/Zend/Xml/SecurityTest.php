@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,12 +44,12 @@ require_once 'Zend/Xml/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Xml
  */
-class Zend_Xml_SecurityTest extends PHPUnit_Framework_TestCase
+class Zend_Xml_SecurityTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
  
     public function testScanForXEE()
@@ -57,10 +62,10 @@ class Zend_Xml_SecurityTest extends PHPUnit_Framework_TestCase
 </results>
 XML;
 
-        $this->setExpectedException('Zend_Xml_Exception');
+        $this->expectException('Zend_Xml_Exception');
         $result = Zend_Xml_Security::scan($xml);
     }
-
+    /** @doesNotPerformAssertions */
     public function testScanForXXE()
     {
         $file = tempnam(sys_get_temp_dir(), 'Zend_XML_Security');
@@ -161,7 +166,6 @@ XML;
     <result>test</result>
 </results>
 XML;
-
     }
 }
 

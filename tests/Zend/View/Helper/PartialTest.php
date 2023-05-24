@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -45,7 +50,7 @@ require_once 'Zend/Controller/Front.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_PartialTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_Partial
@@ -64,9 +69,8 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_PartialTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_PartialTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -75,7 +79,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->basePath = dirname(__FILE__) . '/_files/modules';
         $this->helper = new Zend_View_Helper_Partial();
@@ -88,7 +92,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->helper);
     }
@@ -103,7 +107,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
         ]);
         $this->helper->setView($view);
         $return = $this->helper->partial('partialOne.phtml');
-        $this->assertContains('This is the first test partial', $return);
+        $this->assertStringContainsString('This is the first test partial', $return);
     }
 
     /**
@@ -117,8 +121,8 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
         $view->message = 'This should never be read';
         $this->helper->setView($view);
         $return = $this->helper->partial('partialThree.phtml', ['message' => 'This message should be read']);
-        $this->assertNotContains($view->message, $return);
-        $this->assertContains('This message should be read', $return, $return);
+        $this->assertStringNotContainsString($view->message, $return);
+        $this->assertStringContainsString('This message should be read', $return, $return);
     }
 
     /**
@@ -132,11 +136,12 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
         ]);
         $this->helper->setView($view);
         $return = $this->helper->partial('partialTwo.phtml', 'foo');
-        $this->assertContains('This is the second partial', $return, $return);
+        $this->assertStringContainsString('This is the second partial', $return, $return);
     }
 
     /**
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testPartialThrowsExceptionWithInvalidModule()
     {
@@ -205,7 +210,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
 
         foreach (get_object_vars($model) as $key => $value) {
             $string = sprintf('%s: %s', $key, $value);
-            $this->assertContains($string, $return);
+            $this->assertStringContainsString($string, $return);
         }
     }
 
@@ -221,7 +226,7 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
 
         foreach ($model->toArray() as $key => $value) {
             $string = sprintf('%s: %s', $key, $value);
-            $this->assertContains($string, $return);
+            $this->assertStringContainsString($string, $return);
         }
     }
 
@@ -238,11 +243,11 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
         $this->helper->setView($view);
         $return = $this->helper->partial('partialObj.phtml', $model);
 
-        $this->assertNotContains('No object model passed', $return);
+        $this->assertStringNotContainsString('No object model passed', $return);
 
         foreach (get_object_vars($model) as $key => $value) {
             $string = sprintf('%s: %s', $key, $value);
-            $this->assertContains($string, $return, "Checking for '$return' containing '$string'");
+            $this->assertStringContainsString($string, $return, "Checking for '$return' containing '$string'");
         }
     }
 
@@ -275,6 +280,19 @@ class Zend_View_Helper_PartialTest extends PHPUnit_Framework_TestCase
     {
         $test = $this->helper->setObjectKey('foo');
         $this->assertSame($this->helper, $test);
+    }
+
+    public function testWhenSecondParamsIsViewModelThenPartialUseGetVarsToSetsViewVariables()
+    {
+        $view = new Zend_View([
+            'scriptPath' => $this->basePath . '/default/views/scripts'
+        ]);
+        $this->helper->setView($view);
+        $view->foo = 'partial script can access first';
+        $view->bar = 'partial script can access second';
+        $return = $this->helper->partial('partialVars.phtml', $view);
+        $this->assertStringContainsString(sprintf('%s: %s', 'foo', 'partial script can access first'), $return);
+        $this->assertStringContainsString(sprintf('%s: %s', 'bar', 'partial script can access second'), $return);
     }
 }
 

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Filter/Int.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_IntTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_IntTest extends TestCase
 {
     /**
      * Zend_Filter_Int object
@@ -48,7 +51,7 @@ class Zend_Filter_IntTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_Int();
     }
@@ -62,12 +65,12 @@ class Zend_Filter_IntTest extends PHPUnit_Framework_TestCase
     {
         $valuesExpected = [
             'string' => 0,
-            '1'      => 1,
-            '-1'     => -1,
-            '1.1'    => 1,
-            '-1.1'   => -1,
-            '0.9'    => 0,
-            '-0.9'   => 0
+            '1' => 1,
+            '-1' => -1,
+            '1.1' => 1,
+            '-1.1' => -1,
+            '0.9' => 0,
+            '-0.9' => 0
             ];
         foreach ($valuesExpected as $input => $output) {
             $this->assertEquals($output, $this->_filter->filter($input));

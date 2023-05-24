@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -19,10 +22,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id $
  */
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Db
@@ -33,9 +32,8 @@
  * @group      Zend_Db_Table
  * @group      Zend_Db_Table_Rowset
  */
-class Zend_Db_Table_Rowset_StaticTest extends PHPUnit_Framework_TestCase
+class Zend_Db_Table_Rowset_StaticTest extends TestCase
 {
-
     public function testStatic()
     {
         $this->markTestIncomplete('Static table tests are not implemented yet');
@@ -45,5 +43,4 @@ class Zend_Db_Table_Rowset_StaticTest extends PHPUnit_Framework_TestCase
     {
         return 'Static';
     }
-
 }

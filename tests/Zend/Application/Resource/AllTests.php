@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -55,12 +59,12 @@ class Zend_Application_Resource_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Application_Resource');
+        $suite = new TestSuite('Zend Framework - Zend_Application_Resource');
 
         $suite->addTestSuite('Zend_Application_Resource_ResourceAbstractTest');
         $suite->addTestSuite('Zend_Application_Resource_CacheManagerTest');

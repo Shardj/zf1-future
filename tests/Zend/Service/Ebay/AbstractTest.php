@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -37,25 +40,25 @@ require_once 'Zend/Config.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Ebay_AbstractTest extends TestCase
 {
     /**
      * @var Zend_Service_Ebay_AbstractConcrete
      */
     protected $_concrete;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_concrete = new Zend_Service_Ebay_AbstractConcrete([]);
     }
 
     public function testConstructor()
     {
-        $array  = ['foo'  => 'bar',
+        $array = ['foo' => 'bar',
                         'some' => 'value'];
         $config = new Zend_Config($array);
 
-        $concreteArray  = new Zend_Service_Ebay_AbstractConcrete($array);
+        $concreteArray = new Zend_Service_Ebay_AbstractConcrete($array);
         $concreteConfig = new Zend_Service_Ebay_AbstractConcrete($config);
 
         foreach (array_keys($array) as $option) {
@@ -65,10 +68,10 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testSetOptions()
     {
-        $array  = ['foo'  => 'bar',
+        $array = ['foo' => 'bar',
                         'some' => 'value'];
         $config = new Zend_Config($array);
-        $concreteArray  = new Zend_Service_Ebay_AbstractConcrete();
+        $concreteArray = new Zend_Service_Ebay_AbstractConcrete();
         $concreteArray->setOption($array);
         $concreteConfig = new Zend_Service_Ebay_AbstractConcrete();
         $concreteConfig->setOption($config);
@@ -82,7 +85,7 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testOptionsToArrayInvalid()
     {
-        $this->setExpectedException('Zend_Service_Ebay_Exception');
+        $this->expectException('Zend_Service_Ebay_Exception');
         Zend_Service_Ebay_Abstract::optionsToArray('invalid');
     }
 
@@ -141,7 +144,7 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
 
     public function testToPhpValueInvalidType()
     {
-        $this->setExpectedException('Zend_Service_Ebay_Exception');
+        $this->expectException('Zend_Service_Ebay_Exception');
         Zend_Service_Ebay_Abstract::toPhpValue('value', 'invalid-type');
     }
 
@@ -150,21 +153,21 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
         $options = [
             'paginationInput' => [
               'entriesPerPage' => 5,
-              'pageNumber'     => 2
+              'pageNumber' => 2
             ],
             'itemFilter' => [
               [
-                  'name'       => 'MaxPrice',
-                  'value'      => 25,
-                  'paramName'  => 'Currency',
+                  'name' => 'MaxPrice',
+                  'value' => 25,
+                  'paramName' => 'Currency',
                   'paramValue' => 'USD'
               ],
               [
-                  'name'  => 'FreeShippingOnly',
+                  'name' => 'FreeShippingOnly',
                   'value' => true
               ],
               [
-                  'name'  => 'ListingType',
+                  'name' => 'ListingType',
                   'value' => [
                       'AuctionWithBIN',
                       'FixedPrice',
@@ -173,26 +176,26 @@ class Zend_Service_Ebay_AbstractTest extends PHPUnit_Framework_TestCase
               ]
             ],
             'productId' => [
-              ''     => 123,
+              '' => 123,
               'type' => 'UPC'
             ]
         ];
 
         $expected = [
             'paginationInput.entriesPerPage' => '5',
-            'paginationInput.pageNumber'     => '2',
-            'itemFilter(0).name'             => 'MaxPrice',
-            'itemFilter(0).value'            => '25',
-            'itemFilter(0).paramName'        => 'Currency',
-            'itemFilter(0).paramValue'       => 'USD',
-            'itemFilter(1).name'             => 'FreeShippingOnly',
-            'itemFilter(1).value'            => '1',
-            'itemFilter(2).name'             => 'ListingType',
-            'itemFilter(2).value(0)'         => 'AuctionWithBIN',
-            'itemFilter(2).value(1)'         => 'FixedPrice',
-            'itemFilter(2).value(2)'         => 'StoreInventory',
-            'productId'                      => '123',
-            'productId.@type'                => 'UPC'
+            'paginationInput.pageNumber' => '2',
+            'itemFilter(0).name' => 'MaxPrice',
+            'itemFilter(0).value' => '25',
+            'itemFilter(0).paramName' => 'Currency',
+            'itemFilter(0).paramValue' => 'USD',
+            'itemFilter(1).name' => 'FreeShippingOnly',
+            'itemFilter(1).value' => '1',
+            'itemFilter(2).name' => 'ListingType',
+            'itemFilter(2).value(0)' => 'AuctionWithBIN',
+            'itemFilter(2).value(1)' => 'FixedPrice',
+            'itemFilter(2).value(2)' => 'StoreInventory',
+            'productId' => '123',
+            'productId.@type' => 'UPC'
         ];
 
         $this->assertEquals($expected, $this->_concrete->optionsToNameValueSyntax($options));

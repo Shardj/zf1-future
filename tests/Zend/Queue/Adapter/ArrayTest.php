@@ -126,4 +126,12 @@ class Zend_Queue_Adapter_ArrayTest extends Zend_Queue_Adapter_AdapterTest
         $messages = $queue->receive(0);
         $this->assertEquals(0, count($messages));
     }
+
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testIsSupportException()
+    {
+        parent::testIsSupportException();
+    }
 }

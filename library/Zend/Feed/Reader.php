@@ -755,7 +755,7 @@ class Zend_Feed_Reader
      * Utility method to apply array_unique operation to a multidimensional
      * array.
      *
-     * @param array
+     * @param array $array
      * @return array
      */
     public static function arrayUnique(array $array)

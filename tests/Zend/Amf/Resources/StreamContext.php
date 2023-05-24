@@ -34,4 +34,3 @@ class Zend_Amf_Parse_Resource_StreamContext
         return stream_context_get_options($resource);
     }
 }
-

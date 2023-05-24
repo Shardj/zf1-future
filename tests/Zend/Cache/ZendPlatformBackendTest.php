@@ -39,8 +39,8 @@ require_once 'CommonBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_ZendPlatformBackendTest extends Zend_Cache_CommonBackendTest {
-
+class Zend_Cache_ZendPlatformBackendTest extends Zend_Cache_CommonBackendTest
+{
     protected $_instance;
 
     public function __construct($name = null, array $data = [], $dataName = '')
@@ -48,9 +48,9 @@ class Zend_Cache_ZendPlatformBackendTest extends Zend_Cache_CommonBackendTest {
         parent::__construct('Zend_Cache_Backend_ZendPlatform', $data, $dataName);
     }
 
-    public function setUp($notag = false)
+    public function setUp($notag = false): void
     {
-        if(!function_exists('output_cache_get')) {
+        if (!function_exists('output_cache_get')) {
             $this->markTestSkipped('Zend Platform is not installed, skipping test');
             return;
         }
@@ -58,12 +58,15 @@ class Zend_Cache_ZendPlatformBackendTest extends Zend_Cache_CommonBackendTest {
         parent::setUp($notag);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         unset($this->_instance);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Backend_ZendPlatform();
@@ -79,7 +82,7 @@ class Zend_Cache_ZendPlatformBackendTest extends Zend_Cache_CommonBackendTest {
 
     public function testGetWithAnExpiredCacheId()
     {
-    sleep(2);
+        sleep(2);
         $this->_instance->setDirectives(['lifetime' => 1]);
         $this->assertEquals('bar : data to cache', $this->_instance->load('bar', true));
         $this->assertFalse($this->_instance->load('bar'));
@@ -87,10 +90,28 @@ class Zend_Cache_ZendPlatformBackendTest extends Zend_Cache_CommonBackendTest {
     }
 
     // Because of limitations of this backend...
-    public function testCleanModeNotMatchingTags2() {}
-    public function testCleanModeNotMatchingTags3() {}
-    public function testCleanModeOld() {}
-    public function testCleanModeNotMatchingTags() {}
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeNotMatchingTags2()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeNotMatchingTags3()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeOld()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeNotMatchingTags()
+    {
+    }
 }
-
-

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,14 @@ require_once 'Zend/Gdata/Gapps/NicknameQuery.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_NicknameQueryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_NicknameQuery|mixed
+     */
+    protected $query;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->query = new Zend_Gdata_Gapps_NicknameQuery();
     }
@@ -44,8 +51,10 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
     public function testDefaultQueryURIGeneration()
     {
         $this->query->setDomain("foo.bar.invalid");
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/foo.bar.invalid/nickname/2.0",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/foo.bar.invalid/nickname/2.0",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the domain accessor methods work and propagate
@@ -54,13 +63,17 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
     {
         $this->query->setDomain("my.domain.com");
         $this->assertEquals("my.domain.com", $this->query->getDomain());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setDomain("hello.world.baz");
         $this->assertEquals("hello.world.baz", $this->query->getDomain());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/hello.world.baz/nickname/2.0",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/hello.world.baz/nickname/2.0",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the username accessor methods work and propagate
@@ -70,13 +83,17 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setDomain("my.domain.com");
         $this->query->setUsername("foo");
         $this->assertEquals("foo", $this->query->getUsername());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0?username=foo",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0?username=foo",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setUsername(null);
         $this->assertEquals(null, $this->query->getUsername());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the nickname accessor methods work and propagate
@@ -86,13 +103,17 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setDomain("my.domain.com");
         $this->query->setNickname("foo");
         $this->assertEquals("foo", $this->query->getNickname());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setNickname("bar");
         $this->assertEquals("bar", $this->query->getNickname());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/bar",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/bar",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the startNickname accessor methods work and
@@ -103,13 +124,17 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setNickname("foo");
         $this->query->setStartNickname("bar");
         $this->assertEquals("bar", $this->query->getStartNickname());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo?startNickname=bar",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo?startNickname=bar",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setStartNickname(null);
         $this->assertEquals(null, $this->query->getStartNickname());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo",
+            $this->query->getQueryUrl()
+        );
     }
 
 
@@ -124,8 +149,10 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("foo", $this->query->getNickname());
         $this->assertEquals("bar", $this->query->getUsername());
         $this->assertEquals("baz", $this->query->getStartNickname());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo?username=bar&startNickname=baz",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/foo?username=bar&startNickname=baz",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setUsername("qux");
         $this->query->setNickname("baz");
@@ -133,8 +160,9 @@ class Zend_Gdata_Gapps_NicknameQueryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("baz", $this->query->getNickname());
         $this->assertEquals("qux", $this->query->getUsername());
         $this->assertEquals("wibble", $this->query->getStartNickname());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/baz?username=qux&startNickname=wibble",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/my.domain.com/nickname/2.0/baz?username=qux&startNickname=wibble",
+            $this->query->getQueryUrl()
+        );
     }
-
 }

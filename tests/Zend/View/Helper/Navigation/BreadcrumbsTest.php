@@ -33,8 +33,7 @@ require_once 'Zend/View/Helper/Navigation/Breadcrumbs.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_Navigation_BreadcrumbsTest
-    extends Zend_View_Helper_Navigation_TestAbstract
+class Zend_View_Helper_Navigation_BreadcrumbsTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     /**
      * Class name for view helper to test
@@ -140,14 +139,14 @@ class Zend_View_Helper_Navigation_BreadcrumbsTest
         $rendered2 = 'Site 2';
 
         $expected = [
-            'registered'       => $rendered1,
-            'supplied'         => $rendered2,
+            'registered' => $rendered1,
+            'supplied' => $rendered2,
             'registered_again' => $rendered1
         ];
 
         $actual = [
-            'registered'       => $this->_helper->render(),
-            'supplied'         => $this->_helper->render($this->_nav2),
+            'registered' => $this->_helper->render(),
+            'supplied' => $this->_helper->render($this->_nav2),
             'registered_again' => $this->_helper->render()
         ];
 
@@ -224,6 +223,9 @@ class Zend_View_Helper_Navigation_BreadcrumbsTest
         $this->assertEquals($expected, $this->_helper->render());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRenderingPartialShouldFailOnInvalidPartialArray()
     {
         $this->_helper->setPartial(['bc.phtml']);
@@ -231,7 +233,8 @@ class Zend_View_Helper_Navigation_BreadcrumbsTest
         try {
             $this->_helper->render();
             $this->fail(
-                '$partial was invalid, but no Zend_View_Exception was thrown');
+                '$partial was invalid, but no Zend_View_Exception was thrown'
+            );
         } catch (Zend_View_Exception $e) {
         }
     }
@@ -240,8 +243,8 @@ class Zend_View_Helper_Navigation_BreadcrumbsTest
     {
         $container = new Zend_Navigation([
             [
-                'label'  => 'Live & Learn',
-                'uri'    => '#',
+                'label' => 'Live & Learn',
+                'uri' => '#',
                 'active' => true
             ]
         ]);
@@ -259,24 +262,24 @@ class Zend_View_Helper_Navigation_BreadcrumbsTest
     {
         $container = new Zend_Navigation([
             [
-                'label'             => 'Page 1',
-                'uri'               => 'p1',
+                'label' => 'Page 1',
+                'uri' => 'p1',
                 'customHtmlAttribs' => [
-                    'rel'   => 'nofollow',
+                    'rel' => 'nofollow',
                     'style' => 'font-weight: bold;',
                 ],
-                'pages'             => [
+                'pages' => [
                     [
-                        'label'             => 'Page 2',
-                        'uri'               => 'p2',
+                        'label' => 'Page 2',
+                        'uri' => 'p2',
                         'customHtmlAttribs' => [
-                            'rel'   => 'nofollow',
+                            'rel' => 'nofollow',
                         ],
-                        'pages'             => [
+                        'pages' => [
                             [
-                                'label'             => 'Page 3',
-                                'uri'               => 'p3',
-                                'active'            => true,
+                                'label' => 'Page 3',
+                                'uri' => 'p3',
+                                'active' => true,
                             ],
                         ],
                     ],

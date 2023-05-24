@@ -37,11 +37,10 @@ require_once 'Zend/Db/Table/Select/TestCommon.php';
  */
 class Zend_Db_Table_Select_Db2Test extends Zend_Db_Table_Select_TestCommon
 {
-
     /**
      * ZF-5234: this test must be done on string field
      */
-    protected function _selectColumnWithColonQuotedParameter ()
+    protected function _selectColumnWithColonQuotedParameter()
     {
         $product_name = $this->_db->quoteIdentifier('product_name');
 
@@ -69,5 +68,4 @@ class Zend_Db_Table_Select_Db2Test extends Zend_Db_Table_Select_TestCommon
     {
         return 'Db2';
     }
-
 }

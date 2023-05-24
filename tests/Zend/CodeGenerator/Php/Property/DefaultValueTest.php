@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,13 +35,12 @@ require_once 'Zend/CodeGenerator/Php/Property/DefaultValue.php';
  * @group Zend_CodeGenerator
  * @group Zend_CodeGenerator_Php
  */
-class Zend_CodeGenerator_Php_Property_DefaultValueTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_Property_DefaultValueTest extends TestCase
 {
-
     public function testPropertyDefaultValueConstructor()
     {
         $propDefaultValue = new Zend_CodeGenerator_Php_Property_DefaultValue();
-        $this->isInstanceOf($propDefaultValue, 'Zend_CodeGenerator_Php_Property_DefaultValue');
+        $this->assertInstanceOf('Zend_CodeGenerator_Php_Property_DefaultValue', $propDefaultValue);
     }
 
     public function testPropertyDefaultValueIsSettable()
@@ -119,8 +121,5 @@ EOS;
         $propDefaultValue->setValue($targetValue);
         $generatedTargetSource = $propDefaultValue->generate();
         $this->assertEquals($expectedSource, $generatedTargetSource);
-
     }
-
-
 }

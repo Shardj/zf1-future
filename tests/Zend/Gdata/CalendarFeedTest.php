@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,18 +37,19 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_CalendarFeedTest extends TestCase
 {
     protected $listFeed = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $listFeedText = file_get_contents(
-                'Zend/Gdata/Calendar/_files/ListFeedSample1.xml',
-                true);
+            'Zend/Gdata/Calendar/_files/ListFeedSample1.xml',
+            true
+        );
         $this->listFeed = new Zend_Gdata_Calendar_ListFeed($listFeedText);
     }
 
@@ -100,7 +104,8 @@ class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
 
         /* Grab XML from $this->listFeed and convert back to objects */
         $newListFeed = new Zend_Gdata_Calendar_ListFeed(
-                $this->listFeed->saveXML());
+            $this->listFeed->saveXML()
+        );
         $newEntryCount = 0;
         foreach ($newListFeed as $entry) {
             $newEntryCount++;
@@ -161,8 +166,12 @@ class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's ID is correct
         $this->assertTrue($feed->getId() instanceof Zend_Gdata_App_Extension_Id);
-        $this->verifyProperty2($feed, "id", "text",
-                "http://www.google.com/calendar/feeds/default");
+        $this->verifyProperty2(
+            $feed,
+            "id",
+            "text",
+            "http://www.google.com/calendar/feeds/default"
+        );
 
         // Assert that all entry's have an Atom ID object
         foreach ($feed as $entry) {
@@ -171,8 +180,12 @@ class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert one of the entry's IDs
         $entry = $feed[1];
-        $this->verifyProperty2($entry, "id", "text",
-                "http://www.google.com/calendar/feeds/default/ri3u1buho56d1k2papoec4c16s%40group.calendar.google.com");
+        $this->verifyProperty2(
+            $entry,
+            "id",
+            "text",
+            "http://www.google.com/calendar/feeds/default/ri3u1buho56d1k2papoec4c16s%40group.calendar.google.com"
+        );
     }
 
     /**
@@ -203,8 +216,12 @@ class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's updated date is correct
         $this->assertTrue($feed->getUpdated() instanceof Zend_Gdata_App_Extension_Updated);
-        $this->verifyProperty2($feed, "updated", "text",
-                "2007-05-30T00:23:26.998Z");
+        $this->verifyProperty2(
+            $feed,
+            "updated",
+            "text",
+            "2007-05-30T00:23:26.998Z"
+        );
 
         // Assert that all entry's have an Atom Published object
         foreach ($feed as $entry) {
@@ -226,8 +243,12 @@ class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getTitle() instanceof Zend_Gdata_App_Extension_Title);
-        $this->verifyProperty2($feed, "title", "text",
-                "GData Ops Demo's Calendar List");
+        $this->verifyProperty2(
+            $feed,
+            "title",
+            "text",
+            "GData Ops Demo's Calendar List"
+        );
 
         // Assert that all entry's have an Atom ID object
         foreach ($feed as $entry) {
@@ -384,5 +405,4 @@ class Zend_Gdata_CalendarFeedTest extends PHPUnit_Framework_TestCase
         $this->verifyProperty2($feed, "generator", "version", "1.0");
         $this->verifyProperty2($feed, "generator", "uri", "http://www.google.com/calendar");
     }
-
 }

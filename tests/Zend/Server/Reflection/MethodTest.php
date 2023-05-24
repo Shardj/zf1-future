@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,17 +37,17 @@ require_once 'Zend/Server/Reflection.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_Reflection_MethodTest extends PHPUnit_Framework_TestCase
+class Zend_Server_Reflection_MethodTest extends TestCase
 {
     protected $_classRaw;
     protected $_class;
     protected $_method;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_classRaw = new ReflectionClass('Zend_Server_Reflection');
-        $this->_method   = $this->_classRaw->getMethod('reflectClass');
-        $this->_class    = new Zend_Server_Reflection_Class($this->_classRaw);
+        $this->_method = $this->_classRaw->getMethod('reflectClass');
+        $this->_class = new Zend_Server_Reflection_Class($this->_classRaw);
     }
 
     /**
@@ -96,6 +99,9 @@ class Zend_Server_Reflection_MethodTest extends PHPUnit_Framework_TestCase
      */
     public function test__wakeup()
     {
+        if (version_compare(phpversion(), '7', '>=')) {
+            $this->markTestSkipped("Serialization of 'ReflectionFunction' is not allowed since PHP7+");
+        }
         $r = new Zend_Server_Reflection_Method($this->_class, $this->_method);
         $s = serialize($r);
         $u = unserialize($s);
@@ -105,6 +111,4 @@ class Zend_Server_Reflection_MethodTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($r->getName(), $u->getName());
         $this->assertEquals($r->getDeclaringClass()->getName(), $u->getDeclaringClass()->getName());
     }
-
-
 }

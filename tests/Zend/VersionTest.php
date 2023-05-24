@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,12 +42,12 @@ require_once 'Zend/Version.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Version
  */
-class Zend_VersionTest extends PHPUnit_Framework_TestCase
+class Zend_VersionTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -53,9 +58,9 @@ class Zend_VersionTest extends PHPUnit_Framework_TestCase
     {
         $expect = -1;
         // unit test breaks if ZF version > 1.x
-        for ($i=0; $i <= 1; $i++) {
-            for ($j=0; $j <= 12; $j++) {
-                for ($k=0; $k < 20; $k++) {
+        for ($i = 0; $i <= 1; $i++) {
+            for ($j = 0; $j <= 22; $j++) {
+                for ($k = 0; $k <= 99; $k++) {
                     foreach (['dev', 'pr', 'PR', 'alpha', 'a1', 'a2', 'beta', 'b1', 'b2', 'RC', 'RC1', 'RC2', 'RC3', '', 'pl1', 'PL1'] as $rel) {
                         $ver = "$i.$j.$k$rel";
                         $normalizedVersion = strtolower(Zend_Version::VERSION);
@@ -73,14 +78,15 @@ class Zend_VersionTest extends PHPUnit_Framework_TestCase
                                 $expect,
                                 "For version '$ver' and Zend_Version::VERSION = '"
                                 . Zend_Version::VERSION . "': result=" . (Zend_Version::compareVersion($ver))
-                                . ', but expected ' . $expect);
+                                . ', but expected ' . $expect
+                            );
                         }
                     }
                 }
             }
         }
         if ($expect === -1) {
-            $this->fail('Unable to recognize Zend_Version::VERSION ('. Zend_Version::VERSION . '); last version compared: ' . $ver);
+            $this->fail('Unable to recognize Zend_Version::VERSION (' . Zend_Version::VERSION . '); last version compared: ' . $ver);
         }
     }
 
@@ -101,7 +107,7 @@ class Zend_VersionTest extends PHPUnit_Framework_TestCase
             $this->markTestIncomplete('http://framework.zend.com/ may be down');
         }
 
-        $this->assertRegExp('/^[1-2](\.[0-9]+){2}/', $actual);
+        $this->assertMatchesRegularExpression('/^[1-2](\.[0-9]+){2}/', $actual);
     }
 }
 

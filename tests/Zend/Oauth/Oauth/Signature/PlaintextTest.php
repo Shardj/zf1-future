@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,9 +34,8 @@ require_once 'Zend/Oauth/Signature/Plaintext.php';
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Signature
  */
-class Zend_Oauth_Signature_PlaintextTest extends PHPUnit_Framework_TestCase
+class Zend_Oauth_Signature_PlaintextTest extends TestCase
 {
-
     public function testSignatureWithoutAccessSecretIsOnlyConsumerSecretString()
     {
         $params = [
@@ -61,5 +63,4 @@ class Zend_Oauth_Signature_PlaintextTest extends PHPUnit_Framework_TestCase
         $signature = new Zend_Oauth_Signature_Plaintext('1234567890', '0987654321');
         $this->assertEquals('1234567890&0987654321', $signature->sign($params));
     }
-
 }

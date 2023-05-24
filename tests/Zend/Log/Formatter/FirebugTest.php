@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -35,21 +40,21 @@ require_once 'Zend/Log/Formatter/Firebug.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
-class Zend_Log_Formatter_FirebugTest extends PHPUnit_Framework_TestCase
+class Zend_Log_Formatter_FirebugTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testFormat()
     {
         $event = [
             'timestamp' => date('c'),
-        	'message' => 'tottakai',
+            'message' => 'tottakai',
             'priority' => 2,
-        	'priorityName' => 'CRIT'
+            'priorityName' => 'CRIT'
         ];
         $formatter = new Zend_Log_Formatter_Firebug();
         $output = $formatter->format($event);

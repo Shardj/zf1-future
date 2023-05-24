@@ -34,7 +34,6 @@ require_once 'Zend/Barcode/Object/Code25.php';
  */
 class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
 {
-
     protected function _getBarcodeObject($options = null)
     {
         return new Zend_Barcode_Object_Code25($options);
@@ -100,11 +99,9 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->assertSame('a', $this->_object->getText());
     }
 
-    /**
-     * @expectedException Zend_Barcode_Object_Exception
-     */
     public function testBadTextDetectedIfChecksumWished()
     {
+        $this->expectException(Zend_Barcode_Object_Exception::class);
         $this->_object->setText('a');
         $this->_object->setWithChecksum(true);
         $this->_object->getText();
@@ -116,22 +113,18 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->assertTrue($this->_object->checkParams());
     }
 
-    /**
-     * @expectedException Zend_Barcode_Object_Exception
-     */
     public function testCheckParamsWithLowRatio()
     {
+        $this->expectException(Zend_Barcode_Object_Exception::class);
         $this->_object->setText('0123456789');
         $this->_object->setBarThinWidth(21);
         $this->_object->setBarThickWidth(40);
         $this->_object->checkParams();
     }
 
-    /**
-     * @expectedException Zend_Barcode_Object_Exception
-     */
     public function testCheckParamsWithHighRatio()
     {
+        $this->expectException(Zend_Barcode_Object_Exception::class);
         $this->_object->setText('0123456789');
         $this->_object->setBarThinWidth(20);
         $this->_object->setBarThickWidth(61);
@@ -160,7 +153,8 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setStretchText(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Code25_0123456789_stretchtext_instructions');
+            'Code25_0123456789_stretchtext_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -170,7 +164,8 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Code25_0123456789_border_instructions');
+            'Code25_0123456789_border_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -180,7 +175,8 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setOrientation(60);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Code25_0123456789_oriented_instructions');
+            'Code25_0123456789_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -191,7 +187,8 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setStretchText(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Code25_0123456789_stretchtext_oriented_instructions');
+            'Code25_0123456789_stretchtext_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -202,7 +199,8 @@ class Zend_Barcode_Object_Code25Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Code25_0123456789_border_oriented_instructions');
+            'Code25_0123456789_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 }

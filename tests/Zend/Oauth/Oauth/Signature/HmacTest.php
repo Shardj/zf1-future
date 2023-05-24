@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,9 +34,8 @@ require_once 'Zend/Oauth/Signature/Hmac.php';
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Signature
  */
-class Zend_Oauth_Signature_HmacTest extends PHPUnit_Framework_TestCase
+class Zend_Oauth_Signature_HmacTest extends TestCase
 {
-
     public function testSignatureWithoutAccessSecretIsHashedWithConsumerSecret()
     {
         $params = [
@@ -61,5 +63,4 @@ class Zend_Oauth_Signature_HmacTest extends PHPUnit_Framework_TestCase
         $signature = new Zend_Oauth_Signature_Hmac('1234567890', '0987654321', 'SHA1');
         $this->assertEquals('b0J6H0jCEo+tvzVJy2G615sM6/M=', $signature->sign($params));
     }
-
 }

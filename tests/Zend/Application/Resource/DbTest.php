@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,15 +42,35 @@ require_once 'Zend/Loader/Autoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_DbTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var Zend_Application_Bootstrap_Bootstrap
+     */
+    protected $bootstrap;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -64,9 +89,9 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
         $this->bootstrap = new ZfAppBootstrap($this->application);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
-    	Zend_Db_Table::setDefaultMetadataCache();
+        Zend_Db_Table::setDefaultMetadataCache();
 
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -116,7 +141,7 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Application/Resource/Db.php';
         $config = [
             'adapter' => 'Pdo_Sqlite',
-            'params'  => [
+            'params' => [
                 'dbname' => ':memory:',
             ],
             'isDefaultTableAdapter' => false,
@@ -132,7 +157,7 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Application/Resource/Db.php';
         $config = [
             'adapter' => 'Pdo_Sqlite',
-            'params'  => [
+            'params' => [
                 'dbname' => ':memory:',
             ],
             'isDefaultTableAdapter' => false,
@@ -155,7 +180,7 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
 
         $config = [
             'adapter' => 'PDO_SQLite',
-            'params'  => [
+            'params' => [
                 'dbname' => ':memory:',
             ],
             'defaultMetadataCache' => $cache,
@@ -189,7 +214,7 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
         $config = [
             'bootstrap' => $this->bootstrap,
             'adapter' => 'PDO_SQLite',
-            'params'  => [
+            'params' => [
                 'dbname' => ':memory:',
             ],
             'defaultMetadataCache' => 'database',
@@ -207,9 +232,9 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
         $config = [
             'bootstrap' => $this->bootstrap,
             'adapter' => 'PDO_SQLite',
-            'params'  => [
-                'dbname'    => ':memory:',
-                'options'   => [
+            'params' => [
+                'dbname' => ':memory:',
+                'options' => [
                     'fetchMode' => 'obj'
                 ]
             ],
@@ -226,15 +251,15 @@ class Zend_Application_Resource_DbTest extends PHPUnit_Framework_TestCase
     {
         $options = [
             'resources' => [
-                'db'    => [
-                    'adapter'  => 'Pdo_Sqlite',
-                    'params'   => [
-                        'dbname'   => ':memory:'
+                'db' => [
+                    'adapter' => 'Pdo_Sqlite',
+                    'params' => [
+                        'dbname' => ':memory:'
                      ],
                      'defaultMetadataCache' => 'default'
                 ],
                 'cachemanager' => [
-                    'default'  => [
+                    'default' => [
                         'backend' => ['name' => 'black-hole']
                     ]
                 ]

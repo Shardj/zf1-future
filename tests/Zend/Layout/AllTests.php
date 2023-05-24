@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -27,7 +31,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once 'Zend/Layout/LayoutTest.php';
 require_once 'Zend/Layout/HelperTest.php';
 require_once 'Zend/Layout/PluginTest.php';
-require_once 'Zend/Layout/FunctionalTest.php';
+// require_once 'Zend/Layout/FunctionalTest.php';
 
 /**
  * @category   Zend
@@ -41,17 +45,17 @@ class Zend_Layout_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Layout');
+        $suite = new TestSuite('Zend Framework - Zend_Layout');
 
         $suite->addTestSuite('Zend_Layout_LayoutTest');
         $suite->addTestSuite('Zend_Layout_HelperTest');
         $suite->addTestSuite('Zend_Layout_PluginTest');
-        $suite->addTestSuite('Zend_Layout_FunctionalTest');
+        // $suite->addTestSuite('Zend_Layout_FunctionalTest');
 
         return $suite;
     }

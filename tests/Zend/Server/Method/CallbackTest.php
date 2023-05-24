@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,8 +43,13 @@ require_once 'Zend/Server/Method/Callback.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
+class Zend_Server_Method_CallbackTest extends TestCase
 {
+    /**
+     * @var Zend_Server_Method_Callback
+     */
+    protected $callback;
+
     /**
      * Runs the test methods of this class.
      *
@@ -47,8 +57,8 @@ class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Server_Method_CallbackTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Server_Method_CallbackTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -57,7 +67,7 @@ class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->callback = new Zend_Server_Method_Callback();
     }
@@ -68,7 +78,7 @@ class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -120,11 +130,9 @@ class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('instance', $this->callback->getType());
     }
 
-    /**
-     * @expectedException Zend_Server_Exception
-     */
     public function testSettingTypeShouldThrowExceptionWhenInvalidTypeProvided()
     {
+        $this->expectException(Zend_Server_Exception::class);
         $this->callback->setType('bogus');
     }
 
@@ -143,8 +151,8 @@ class Zend_Server_Method_CallbackTest extends PHPUnit_Framework_TestCase
     public function testConstructorShouldSetStateFromOptions()
     {
         $options = [
-            'type'   => 'static',
-            'class'  => 'Foo',
+            'type' => 'static',
+            'class' => 'Foo',
             'method' => 'bar',
         ];
         $callback = new Zend_Server_Method_Callback($options);

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,7 +44,7 @@ require_once 'Zend/View/Helper/Placeholder/Container.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_Placeholder_ContainerTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_Placeholder_Container
@@ -53,9 +58,8 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_Placeholder_ContainerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_Placeholder_ContainerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -64,7 +68,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->container = new Zend_View_Helper_Placeholder_Container([]);
     }
@@ -75,7 +79,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->container);
     }
@@ -112,7 +116,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $this->container['foo'] = 'bar';
         $this->container['bar'] = 'baz';
         $expected = ['foo' => 'bar', 'bar' => 'baz'];
-        $return   = $this->container->getValue();
+        $return = $this->container->getValue();
         $this->assertEquals($expected, $return);
     }
 
@@ -204,7 +208,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $this->container->captureEnd();
 
         $value = $this->container->getValue();
-        $this->assertContains('This is content intended for capture', $value);
+        $this->assertStringContainsString('This is content intended for capture', $value);
     }
 
     /**
@@ -221,11 +225,11 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
 
         $this->assertEquals($originalCount + 1, count($this->container));
 
-        $value     = $this->container->getValue();
-        $keys      = array_keys($value);
+        $value = $this->container->getValue();
+        $keys = array_keys($value);
         $lastIndex = array_pop($keys);
         $this->assertEquals('foo', $value[$lastIndex - 1]);
-        $this->assertContains('This is content intended for capture', $value[$lastIndex]);
+        $this->assertStringContainsString('This is content intended for capture', $value[$lastIndex]);
     }
 
     /**
@@ -242,11 +246,11 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
 
         $this->assertEquals($originalCount + 1, count($this->container));
 
-        $value     = $this->container->getValue();
-        $keys      = array_keys($value);
+        $value = $this->container->getValue();
+        $keys = array_keys($value);
         $lastIndex = array_pop($keys);
         $this->assertEquals('foo', $value[$lastIndex]);
-        $this->assertContains('This is content intended for capture', $value[$lastIndex - 1]);
+        $this->assertStringContainsString('This is content intended for capture', $value[$lastIndex - 1]);
     }
 
     /**
@@ -262,7 +266,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $this->assertEquals(1, count($this->container));
 
         $value = $this->container->getValue();
-        $this->assertContains('This is content intended for capture', $value);
+        $this->assertStringContainsString('This is content intended for capture', $value);
     }
 
     /**
@@ -277,7 +281,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $this->assertEquals(1, count($this->container));
         $this->assertTrue(isset($this->container['key']));
         $value = $this->container['key'];
-        $this->assertContains('This is content intended for capture', $value);
+        $this->assertStringContainsString('This is content intended for capture', $value);
     }
 
     /**
@@ -293,7 +297,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $this->assertEquals(1, count($this->container));
         $this->assertTrue(isset($this->container['key']));
         $value = $this->container['key'];
-        $this->assertContains('This is content intended for capture', $value);
+        $this->assertStringContainsString('This is content intended for capture', $value);
     }
 
     /**
@@ -309,7 +313,7 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $this->assertEquals(1, count($this->container));
         $this->assertTrue(isset($this->container['key']));
         $value = $this->container['key'];
-        $this->assertContains('Foobar This is content intended for capture', $value);
+        $this->assertStringContainsString('Foobar This is content intended for capture', $value);
     }
 
     /**
@@ -321,8 +325,8 @@ class Zend_View_Helper_Placeholder_ContainerTest extends PHPUnit_Framework_TestC
         $caught = false;
         try {
             $this->container->captureStart('SET');
-                $this->container->captureStart('SET');
-                $this->container->captureEnd();
+            $this->container->captureStart('SET');
+            $this->container->captureEnd();
             $this->container->captureEnd();
         } catch (Exception $e) {
             $this->container->captureEnd();

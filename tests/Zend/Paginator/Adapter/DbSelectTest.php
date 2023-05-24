@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -46,7 +49,7 @@ require_once dirname(__FILE__) . '/../_files/TestTable.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Paginator
  */
-class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
+class Zend_Paginator_Adapter_DbSelectTest extends TestCase
 {
     /**
      * @var Zend_Paginator_Adapter_DbSelect
@@ -71,10 +74,10 @@ class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('pdo_sqlite')) {
-           $this->markTestSkipped('Pdo_Sqlite extension is not loaded');
+            $this->markTestSkipped('Pdo_Sqlite extension is not loaded');
         }
 
         parent::setUp();
@@ -87,14 +90,14 @@ class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
 
         $this->_query = $this->_db->select()->from('test')
                                             ->order('number ASC'); // ZF-3740
-                                            //->limit(1000, 0); // ZF-3727
+        //->limit(1000, 0); // ZF-3727
 
         $this->_adapter = new Zend_Paginator_Adapter_DbSelect($this->_query);
     }
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->_adapter = null;
         parent::tearDown();
@@ -106,13 +109,16 @@ class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
     public function testCacheIdentifierIsHashOfAssembledSelect()
     {
         $dbAdapter = $this->getMockForAbstractClass('Zend_Db_Adapter_Abstract', [''], '', false);
-        $select    = new Zend_Db_Select($dbAdapter);
+        $select = new Zend_Db_Select($dbAdapter);
         $select->from('ZF_6989');
 
         $paginatorAdapter = new Zend_Paginator_Adapter_DbSelect($select);
 
-        $this->assertSame(md5($select->assemble()), $paginatorAdapter->getCacheIdentifier(),
-                          'Cache identifier incorrect!');
+        $this->assertSame(
+            md5($select->assemble()),
+            $paginatorAdapter->getCacheIdentifier(),
+            'Cache identifier incorrect!'
+        );
     }
     
     public function testGetsItemsAtOffsetZero()
@@ -149,7 +155,7 @@ class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
             $this->_adapter->setRowCount($this->_db->select()->from('test'));
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Paginator_Exception);
-            $this->assertContains('Row count column not found', $e->getMessage());
+            $this->assertStringContainsString('Row count column not found', $e->getMessage());
         }
 
         try {
@@ -293,10 +299,13 @@ class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-5233
+     * @doesNotPerformAssertions
      */
     public function testSelectHasAliasedColumns()
     {
-        $db = $this->_db;
+        $db = new Zend_Db_Adapter_Pdo_Sqlite([
+            'dbname' => dirname(__FILE__) . '/../_files/test-write-tmp.sqlite'
+        ]);
 
         $db->query('DROP TABLE IF EXISTS `sandboxTransaction`');
         $db->query('DROP TABLE IF EXISTS `sandboxForeign`');
@@ -319,34 +328,38 @@ class Zend_Paginator_Adapter_DbSelectTest extends PHPUnit_Framework_TestCase
         );
 
         // Insert some data
-        $db->insert('sandboxTransaction',
+        $db->insert(
+            'sandboxTransaction',
             [
                 'foreign_id' => 1,
                 'name' => 'transaction 1 with foreign_id 1',
             ]
         );
 
-        $db->insert('sandboxTransaction',
+        $db->insert(
+            'sandboxTransaction',
             [
                 'foreign_id' => 1,
                 'name' => 'transaction 2 with foreign_id 1',
             ]
         );
 
-        $db->insert('sandboxForeign',
+        $db->insert(
+            'sandboxForeign',
             [
                 'name' => 'John Doe',
             ]
         );
 
-        $db->insert('sandboxForeign',
+        $db->insert(
+            'sandboxForeign',
             [
                 'name' => 'Jane Smith',
             ]
         );
 
-        $query = $db->select()->from(['a'=>'sandboxTransaction'], [])
-                              ->join(['b'=>'sandboxForeign'], 'a.foreign_id = b.id', ['name'])
+        $query = $db->select()->from(['a' => 'sandboxTransaction'], [])
+                              ->join(['b' => 'sandboxForeign'], 'a.foreign_id = b.id', ['name'])
                               ->distinct(true);
 
         try {

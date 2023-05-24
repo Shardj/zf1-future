@@ -1,5 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,9 +45,8 @@ require_once 'Zend/Http/UserAgent.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_UserAgentTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_UserAgentTest extends TestCase
 {
-
     /**
      * @var Zend_View_Helper_UserAgent
      */
@@ -59,18 +62,17 @@ class Zend_View_Helper_UserAgentTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_UrlTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_UrlTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->helper    = new Zend_View_Helper_UserAgent();
+        $this->helper = new Zend_View_Helper_UserAgent();
         $this->userAgent = new Zend_Http_UserAgent();
     }
 

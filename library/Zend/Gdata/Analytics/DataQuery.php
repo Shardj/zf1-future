@@ -328,7 +328,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
 
     /**
      * @param string $sort
-     * @param boolean[optional] $descending
+     * @param bool $descending [optional]
      * @return Zend_Gdata_Analytics_DataQuery
      */
     public function addSort($sort, $descending=false)

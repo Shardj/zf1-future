@@ -107,7 +107,7 @@ class Zend_Gdata_Media_Extension_MediaRating extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaRating Provides a fluent interface
+     * @return $this
      */
     public function setScheme($value)
     {

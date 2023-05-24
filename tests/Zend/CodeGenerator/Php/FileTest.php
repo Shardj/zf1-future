@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,9 +38,8 @@ require_once 'Zend/Reflection/File.php';
  * @group Zend_CodeGenerator_Php
  * @group Zend_CodeGenerator_Php_File
  */
-class Zend_CodeGenerator_Php_FileTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_FileTest extends TestCase
 {
-
     public function testConstruction()
     {
         $file = new Zend_CodeGenerator_Php_File();
@@ -109,7 +111,6 @@ EOS;
 
         $this->assertEquals(get_class($codeGenFileFromDisk), 'Zend_CodeGenerator_Php_File');
         $this->assertEquals(count($codeGenFileFromDisk->getClasses()), 1);
-
     }
 
     public function testFromReflectionFile()
@@ -142,7 +143,7 @@ class Zend_Reflection_TestSampleSingleClass
     /**
      * Enter description here...
      *
-     * @return bool
+     * @return void
      */
     public function someMethod()
     {
@@ -162,7 +163,6 @@ class Zend_Reflection_TestSampleSingleClass
 EOS;
 
         $this->assertEquals($expectedOutput, $codeGenFileFromDisk->generate());
-
     }
 
     /**
@@ -197,7 +197,7 @@ class Zend_Reflection_TestClassWithCodeInMethod
     /**
      * Enter description here...
      *
-     * @return bool
+     * @return void
      */
     public function someMethod()
     {
@@ -247,7 +247,7 @@ class Zend_Reflection_TestClassWithCodeInMethod
     /**
      * Enter description here...
      *
-     * @return bool
+     * @return void
      */
     public function someMethod()
     {
@@ -287,14 +287,15 @@ EOS;
 
         $targetLength = strlen('require_once \'SampleClass.php\';');
         $this->assertEquals($targetLength, strlen($lines[2]));
-        $this->assertEquals(';', $lines[2][$targetLength-1]);
+        $this->assertEquals(';', $lines[2][$targetLength - 1]);
     }
 
     /**
     * @group ZF-11703
     */
-    public function testNewMethodKeepDocBlock(){
-        $codeGenFile = Zend_CodeGenerator_Php_File::fromReflectedFileName(dirname(__FILE__).'/_files/zf-11703.php', true, true);
+    public function testNewMethodKeepDocBlock()
+    {
+        $codeGenFile = Zend_CodeGenerator_Php_File::fromReflectedFileName(dirname(__FILE__) . '/_files/zf-11703.php', true, true);
         $target = <<<EOS
 <?php
 /**
@@ -331,8 +332,9 @@ EOS;
     /**
     * @group ZF-11703
     */
-    public function testNewMethodKeepTwoDocBlock(){
-        $codeGenFile = Zend_CodeGenerator_Php_File::fromReflectedFileName(dirname(__FILE__).'/_files/zf-11703_1.php', true, true);
+    public function testNewMethodKeepTwoDocBlock()
+    {
+        $codeGenFile = Zend_CodeGenerator_Php_File::fromReflectedFileName(dirname(__FILE__) . '/_files/zf-11703_1.php', true, true);
         $target = <<<EOS
 <?php
 /**
@@ -365,7 +367,7 @@ EOS;
         $codeGenFile->getClass()->setMethod([
             'name' => 'bar2',
             'body' => '// action body'
-            ]);
+        ]);
 
         $this->assertEquals($target, $codeGenFile->generate());
     }

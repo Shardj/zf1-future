@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,24 +34,24 @@ require_once "Zend/Test/DbStatement.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_DbAdapterTest extends PHPUnit_Framework_TestCase
+class Zend_Test_DbAdapterTest extends TestCase
 {
     /**
      * @var Zend_Test_DbAdapter
      */
     private $_adapter = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_adapter = new Zend_Test_DbAdapter();
     }
 
     public function testAppendStatementToStack()
     {
-        $stmt1 = Zend_Test_DbStatement::createSelectStatement( [] );
+        $stmt1 = Zend_Test_DbStatement::createSelectStatement([]);
         $this->_adapter->appendStatementToStack($stmt1);
 
-        $stmt2 = Zend_Test_DbStatement::createSelectStatement( [] );
+        $stmt2 = Zend_Test_DbStatement::createSelectStatement([]);
         $this->_adapter->appendStatementToStack($stmt2);
 
         $this->assertSame($stmt2, $this->_adapter->query("foo"));
@@ -104,7 +107,8 @@ class Zend_Test_DbAdapterTest extends PHPUnit_Framework_TestCase
     {
         $sql = $this->_adapter->limit("foo", 10, 20);
         $this->assertEquals(
-            "foo LIMIT 20,10", $sql
+            "foo LIMIT 20,10",
+            $sql
         );
     }
 

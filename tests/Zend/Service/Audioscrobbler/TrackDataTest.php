@@ -38,7 +38,7 @@ require_once "AudioscrobblerTestCase.php";
  */
 class Zend_Service_Audioscrobbler_TrackDataTest extends Zend_Service_Audioscrobbler_AudioscrobblerTestCase
 {
-    var $header = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n";
+    public $header = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n";
 
     public function testGetTopFans()
     {

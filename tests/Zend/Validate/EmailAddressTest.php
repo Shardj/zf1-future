@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,8 +42,13 @@ require_once 'Zend/Validate/EmailAddress.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_EmailAddressTest extends TestCase
 {
+    /**
+     * @var bool
+     */
+    protected $multipleOptionsDetected;
+
     /**
      * Default instance created for all test methods
      *
@@ -53,8 +63,8 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -62,7 +72,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_validator = new Zend_Validate_EmailAddress();
     }
@@ -128,7 +138,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->_validator->isValid('@example.com'));
         $messages = $this->_validator->getMessages();
         $this->assertEquals(1, count($messages));
-        $this->assertContains('local-part@hostname', current($messages));
+        $this->assertStringContainsString('local-part@hostname', current($messages));
     }
 
     /**
@@ -144,14 +154,14 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(3, count($messages));
 
-        $this->assertContains('Some User', current($messages));
-        $this->assertContains('dot-atom', current($messages));
+        $this->assertStringContainsString('Some User', current($messages));
+        $this->assertStringContainsString('dot-atom', current($messages));
 
-        $this->assertContains('Some User', next($messages));
-        $this->assertContains('quoted-string', current($messages));
+        $this->assertStringContainsString('Some User', next($messages));
+        $this->assertStringContainsString('quoted-string', current($messages));
 
-        $this->assertContains('Some User', next($messages));
-        $this->assertContains('not a valid local part', current($messages));
+        $this->assertStringContainsString('Some User', next($messages));
+        $this->assertStringContainsString('not a valid local part', current($messages));
     }
 
     /**
@@ -179,7 +189,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->_validator->isValid('username@ example . com'));
         $messages = $this->_validator->getMessages();
         $this->assertThat(count($messages), $this->greaterThanOrEqual(1));
-        $this->assertContains('not a valid hostname', current($messages));
+        $this->assertStringContainsString('not a valid hostname', current($messages));
     }
 
     /**
@@ -250,9 +260,9 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->_validator->isValid('User Name <username@example.com>'));
         $messages = $this->_validator->getMessages();
         $this->assertThat(count($messages), $this->greaterThanOrEqual(3));
-        $this->assertContains('not a valid hostname', current($messages));
-        $this->assertContains('cannot match TLD', next($messages));
-        $this->assertContains('does not appear to be a valid local network name', next($messages));
+        $this->assertStringContainsString('not a valid hostname', current($messages));
+        $this->assertStringContainsString('cannot match TLD', next($messages));
+        $this->assertStringContainsString('does not appear to be a valid local network name', next($messages));
     }
 
     /**
@@ -310,11 +320,11 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         }
     }
 
-   /**
-     * Ensures that the validator follows expected behavior for valid email addresses with complex local parts
-     *
-     * @return void
-     */
+    /**
+      * Ensures that the validator follows expected behavior for valid email addresses with complex local parts
+      *
+      * @return void
+      */
     public function testComplexLocalValid()
     {
         $emailAddresses = [
@@ -332,11 +342,11 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
     }
 
 
-   /**
-     * Ensures that the validator follows expected behavior for checking MX records
-     *
-     * @return void
-     */
+    /**
+      * Ensures that the validator follows expected behavior for checking MX records
+      *
+      * @return void
+      */
     public function testMXRecords()
     {
         if (!defined('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
@@ -375,11 +385,11 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         }
     }
 
-   /**
-     * Test changing hostname settings via EmailAddress object
-     *
-     * @return void
-     */
+    /**
+      * Test changing hostname settings via EmailAddress object
+      *
+      * @return void
+      */
     public function testHostnameSettings()
     {
         $validator = new Zend_Validate_EmailAddress();
@@ -511,14 +521,14 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
     {
         $handler = set_error_handler([$this, 'errorHandler'], E_USER_NOTICE);
         $validator = new Zend_Validate_EmailAddress();
-        $options   = $validator->getOptions();
+        $options = $validator->getOptions();
 
         $this->assertEquals(Zend_Validate_Hostname::ALLOW_DNS, $options['allow']);
         $this->assertFalse($options['mx']);
 
         try {
             $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_ALL, true, new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_ALL));
-            $options   = $validator->getOptions();
+            $options = $validator->getOptions();
 
             $this->assertEquals(Zend_Validate_Hostname::ALLOW_ALL, $options['allow']);
             $this->assertTrue($options['mx']);
@@ -629,6 +639,8 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
     public function testIdnHostnameInEmaillAddress()
     {
         if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+            $this->markTestSkipped('idn_to_ascii() is available in intl in PHP 5.3.0+');
+        } elseif (!extension_loaded('intl')) {
             $this->markTestSkipped('idn_to_ascii() is available in intl in PHP 5.3.0+');
         }
         $validator = new Zend_Validate_EmailAddress();

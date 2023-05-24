@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,7 +42,7 @@ require_once 'Zend/Filter/Decompress.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Filter_DecompressTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_DecompressTest extends TestCase
 {
     /**
      * Runs this test suite
@@ -46,18 +51,18 @@ class Zend_Filter_DecompressTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Filter_DecompressTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Filter_DecompressTest');
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('bz2')) {
             $this->markTestSkipped('This filter is tested with the bz2 extension');
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (file_exists(dirname(__FILE__) . '/../_files/compressed.bz2')) {
             unlink(dirname(__FILE__) . '/../_files/compressed.bz2');
@@ -71,9 +76,9 @@ class Zend_Filter_DecompressTest extends PHPUnit_Framework_TestCase
      */
     public function testBasicUsage()
     {
-        $filter  = new Zend_Filter_Decompress('bz2');
+        $filter = new Zend_Filter_Decompress('bz2');
 
-        $text       = 'compress me';
+        $text = 'compress me';
         $compressed = $filter->compress($text);
         $this->assertNotEquals($text, $compressed);
 
@@ -88,14 +93,14 @@ class Zend_Filter_DecompressTest extends PHPUnit_Framework_TestCase
      */
     public function testCompressToFile()
     {
-        $filter   = new Zend_Filter_Decompress('bz2');
+        $filter = new Zend_Filter_Decompress('bz2');
         $archive = dirname(__FILE__) . '/../_files/compressed.bz2';
         $filter->setArchive($archive);
 
         $content = $filter->compress('compress me');
         $this->assertTrue($content);
 
-        $filter2  = new Zend_Filter_Decompress('bz2');
+        $filter2 = new Zend_Filter_Decompress('bz2');
         $content2 = $filter2->filter($archive);
         $this->assertEquals('compress me', $content2);
 
@@ -112,14 +117,14 @@ class Zend_Filter_DecompressTest extends PHPUnit_Framework_TestCase
      */
     public function testDecompressArchive()
     {
-        $filter   = new Zend_Filter_Decompress('bz2');
+        $filter = new Zend_Filter_Decompress('bz2');
         $archive = dirname(__FILE__) . '/../_files/compressed.bz2';
         $filter->setArchive($archive);
 
         $content = $filter->compress('compress me');
         $this->assertTrue($content);
 
-        $filter2  = new Zend_Filter_Decompress('bz2');
+        $filter2 = new Zend_Filter_Decompress('bz2');
         $content2 = $filter2->filter($archive);
         $this->assertEquals('compress me', $content2);
     }

@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -42,12 +46,12 @@ class Zend_Dojo_Form_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Dojo_Form');
+        $suite = new TestSuite('Zend Framework - Zend_Dojo_Form');
 
         $suite->addTest(Zend_Dojo_Form_Decorator_AllTests::suite());
         $suite->addTest(Zend_Dojo_Form_Element_AllTests::suite());

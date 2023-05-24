@@ -79,7 +79,7 @@ abstract class Zend_Gdata_App_Extension_Text extends Zend_Gdata_App_Extension
 
     /*
      * @param string $value
-     * @return Zend_Gdata_App_Extension_Text Provides a fluent interface
+     * @return $this
      */
     public function setType($value)
     {

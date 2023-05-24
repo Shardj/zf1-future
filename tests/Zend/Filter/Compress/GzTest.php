@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,7 +42,7 @@ require_once 'Zend/Filter/Compress/Gz.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_Compress_GzTest extends TestCase
 {
     /**
      * Runs this test suite
@@ -46,18 +51,18 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Filter_Compress_GzTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Filter_Compress_GzTest');
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('zlib')) {
             $this->markTestSkipped('This adapter needs the zlib extension');
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (file_exists(dirname(__FILE__) . '/../_files/compressed.gz')) {
             unlink(dirname(__FILE__) . '/../_files/compressed.gz');
@@ -71,7 +76,7 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
      */
     public function testBasicUsage()
     {
-        $filter  = new Zend_Filter_Compress_Gz();
+        $filter = new Zend_Filter_Compress_Gz();
 
         $content = $filter->compress('compress me');
         $this->assertNotEquals('compress me', $content);
@@ -113,7 +118,7 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
      */
     public function testGzGetSetOptionsInConstructor()
     {
-        $filter2= new Zend_Filter_Compress_Gz(['level' => 8]);
+        $filter2 = new Zend_Filter_Compress_Gz(['level' => 8]);
         $this->assertEquals(['mode' => 'compress', 'level' => 8, 'archive' => null], $filter2->getOptions());
     }
 
@@ -132,8 +137,8 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
         try {
             $filter->setLevel(15);
             $this->fail('Exception expected');
-        } catch(Zend_Filter_Exception $e) {
-            $this->assertContains('must be between', $e->getMessage());
+        } catch (Zend_Filter_Exception $e) {
+            $this->assertStringContainsString('must be between', $e->getMessage());
         }
     }
 
@@ -152,8 +157,8 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
         try {
             $filter->setMode('unknown');
             $this->fail('Exception expected');
-        } catch(Zend_Filter_Exception $e) {
-            $this->assertContains('mode not supported', $e->getMessage());
+        } catch (Zend_Filter_Exception $e) {
+            $this->assertStringContainsString('mode not supported', $e->getMessage());
         }
     }
 
@@ -178,14 +183,14 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
      */
     public function testGzCompressToFile()
     {
-        $filter   = new Zend_Filter_Compress_Gz();
+        $filter = new Zend_Filter_Compress_Gz();
         $archive = dirname(__FILE__) . '/../_files/compressed.gz';
         $filter->setArchive($archive);
 
         $content = $filter->compress('compress me');
         $this->assertTrue($content);
 
-        $filter2  = new Zend_Filter_Compress_Gz();
+        $filter2 = new Zend_Filter_Compress_Gz();
         $content2 = $filter2->decompress($archive);
         $this->assertEquals('compress me', $content2);
 
@@ -202,7 +207,7 @@ class Zend_Filter_Compress_GzTest extends PHPUnit_Framework_TestCase
      */
     public function testGzDeflate()
     {
-        $filter  = new Zend_Filter_Compress_Gz(['mode' => 'deflate']);
+        $filter = new Zend_Filter_Compress_Gz(['mode' => 'deflate']);
 
         $content = $filter->compress('compress me');
         $this->assertNotEquals('compress me', $content);

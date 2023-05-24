@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,9 +37,8 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Photos
  */
-class Zend_Gdata_Photos_PhotosPhotoQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Photos_PhotosPhotoQueryTest extends TestCase
 {
-
     /**
       * Check the consistency of a user feed request
       */
@@ -79,7 +81,7 @@ class Zend_Gdata_Photos_PhotosPhotoQueryTest extends PHPUnit_Framework_TestCase
       * Check for thrown exceptions upon improper photoid setting
       */
     public function testPhotoQueryExceptions()
-      {
+    {
         $query = new Zend_Gdata_Photos_PhotoQuery();
         $query->setUser("sample.user");
         $query->setAlbumId("1");
@@ -89,7 +91,7 @@ class Zend_Gdata_Photos_PhotosPhotoQueryTest extends PHPUnit_Framework_TestCase
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Gdata_App_InvalidArgumentException);
         }
-      }
+    }
 
     /**
       * Check the consistency of a user feed request filtered
@@ -129,5 +131,4 @@ class Zend_Gdata_Photos_PhotosPhotoQueryTest extends PHPUnit_Framework_TestCase
         // Assert that the generated query matches the correct one
         $this->assertEquals($queryString, $generatedString);
     }
-
 }

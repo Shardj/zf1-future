@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Measure/Pressure.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Measure
  */
-class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
+class Zend_Measure_PressureTest extends TestCase
 {
     /**
      * test for Pressure initialisation
@@ -42,19 +45,20 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureInit()
     {
-        $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertTrue($value instanceof Zend_Measure_Pressure,'Zend_Measure_Pressure Object not returned');
+        $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertTrue($value instanceof Zend_Measure_Pressure, 'Zend_Measure_Pressure Object not returned');
     }
 
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testPressureUnknownType()
     {
         try {
-            $value = new Zend_Measure_Pressure('100','Pressure::UNKNOWN','de');
+            $value = new Zend_Measure_Pressure('100', 'Pressure::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -65,11 +69,12 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testPressureUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Pressure('novalue',Zend_Measure_Pressure::STANDARD,'de');
+            $value = new Zend_Measure_Pressure('novalue', Zend_Measure_Pressure::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -80,11 +85,12 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected root value
+     * @doesNotPerformAssertions
      */
     public function testPressureUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'nolocale');
+            $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -98,8 +104,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureNoLocale()
     {
-        $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD);
-        $this->assertEquals(100, $value->getValue(),'Zend_Measure_Pressure value expected');
+        $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD);
+        $this->assertEquals(100, $value->getValue(), 'Zend_Measure_Pressure value expected');
     }
 
 
@@ -109,7 +115,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureValuePositive()
     {
-        $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals(100, $value->getValue(), 'Zend_Measure_Pressure value expected to be a positive integer');
     }
 
@@ -120,7 +126,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureValueNegative()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals(-100, $value->getValue(), 'Zend_Measure_Pressure value expected to be a negative integer');
     }
 
@@ -131,7 +137,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureValueDecimal()
     {
-        $value = new Zend_Measure_Pressure('-100,200',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100,200', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals(-100.200, $value->getValue(), 'Zend_Measure_Pressure value expected to be a decimal value');
     }
 
@@ -142,8 +148,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureValueDecimalSeperated()
     {
-        $value = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_Pressure Object not returned');
+        $value = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_Pressure Object not returned');
     }
 
 
@@ -153,8 +159,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureValueString()
     {
-        $value = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_Pressure Object not returned');
+        $value = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_Pressure Object not returned');
     }
 
 
@@ -164,9 +170,9 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureEquality()
     {
-        $value = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $newvalue = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertTrue($value->equals($newvalue),'Zend_Measure_Pressure Object should be equal');
+        $value = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertTrue($value->equals($newvalue), 'Zend_Measure_Pressure Object should be equal');
     }
 
 
@@ -176,9 +182,9 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureNoEquality()
     {
-        $value = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $newvalue = new Zend_Measure_Pressure('-100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertFalse($value->equals($newvalue),'Zend_Measure_Pressure Object should be not equal');
+        $value = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Pressure('-100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertFalse($value->equals($newvalue), 'Zend_Measure_Pressure Object should be not equal');
     }
 
 
@@ -188,8 +194,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetPositive()
     {
-        $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'de');
-        $value->setValue('200',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'de');
+        $value->setValue('200', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals(200, $value->getValue(), 'Zend_Measure_Pressure value expected to be a positive integer');
     }
 
@@ -200,8 +206,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetNegative()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
-        $value->setValue('-200',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
+        $value->setValue('-200', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals(-200, $value->getValue(), 'Zend_Measure_Pressure value expected to be a negative integer');
     }
 
@@ -212,8 +218,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetDecimal()
     {
-        $value = new Zend_Measure_Pressure('-100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $value->setValue('-200,200',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $value->setValue('-200,200', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals(-200.200, $value->getValue(), 'Zend_Measure_Pressure value expected to be a decimal value');
     }
 
@@ -224,9 +230,9 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetDecimalSeperated()
     {
-        $value = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Pressure Object not returned');
+        $value = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Pressure Object not returned');
     }
 
 
@@ -236,21 +242,22 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetString()
     {
-        $value = new Zend_Measure_Pressure('-100.100,200',Zend_Measure_Pressure::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Pressure::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Pressure Object not returned');
+        $value = new Zend_Measure_Pressure('-100.100,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Pressure::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Pressure Object not returned');
     }
 
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testPressureSetUnknownType()
     {
         try {
-            $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'de');
-            $value->setValue('-200.200,200','Pressure::UNKNOWN','de');
+            $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'de');
+            $value->setValue('-200.200,200', 'Pressure::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -261,12 +268,13 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testPressureSetUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'de');
-            $value->setValue('novalue',Zend_Measure_Pressure::STANDARD,'de');
+            $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'de');
+            $value->setValue('novalue', Zend_Measure_Pressure::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -277,12 +285,13 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testPressureSetUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Pressure('100',Zend_Measure_Pressure::STANDARD,'de');
-            $value->setValue('200',Zend_Measure_Pressure::STANDARD,'nolocale');
+            $value = new Zend_Measure_Pressure('100', Zend_Measure_Pressure::STANDARD, 'de');
+            $value->setValue('200', Zend_Measure_Pressure::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -308,7 +317,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetType()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
         $value->setType(Zend_Measure_Pressure::TON_PER_SQUARE_FOOT);
         $this->assertEquals(Zend_Measure_Pressure::TON_PER_SQUARE_FOOT, $value->getType(), 'Zend_Measure_Pressure type expected');
     }
@@ -320,7 +329,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetType2()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::TON_PER_SQUARE_FOOT,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::TON_PER_SQUARE_FOOT, 'de');
         $value->setType(Zend_Measure_Pressure::STANDARD);
         $this->assertEquals(Zend_Measure_Pressure::STANDARD, $value->getType(), 'Zend_Measure_Pressure type expected');
     }
@@ -332,7 +341,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetComputedType1()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::TON_PER_SQUARE_FOOT,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::TON_PER_SQUARE_FOOT, 'de');
         $value->setType(Zend_Measure_Pressure::TON_PER_SQUARE_INCH);
         $this->assertEquals(Zend_Measure_Pressure::TON_PER_SQUARE_INCH, $value->getType(), 'Zend_Measure_Pressure type expected');
     }
@@ -344,7 +353,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureSetComputedType2()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::TON_PER_SQUARE_INCH,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::TON_PER_SQUARE_INCH, 'de');
         $value->setType(Zend_Measure_Pressure::TON_PER_SQUARE_FOOT);
         $this->assertEquals(Zend_Measure_Pressure::TON_PER_SQUARE_FOOT, $value->getType(), 'Zend_Measure_Pressure type expected');
     }
@@ -353,11 +362,12 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
     /**
      * test setting unknown type
      * expected new type
+     * @doesNotPerformAssertions
      */
     public function testPressureSetTypeFailed()
     {
         try {
-            $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
+            $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
             $value->setType('Pressure::UNKNOWN');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
@@ -372,7 +382,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureToString()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals('-100 N/m²', $value->toString(), 'Value -100 N/m² expected');
     }
 
@@ -383,7 +393,7 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressure_ToString()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
         $this->assertEquals('-100 N/m²', $value->__toString(), 'Value -100 N/m² expected');
     }
 
@@ -394,8 +404,8 @@ class Zend_Measure_PressureTest extends PHPUnit_Framework_TestCase
      */
     public function testPressureConversionList()
     {
-        $value = new Zend_Measure_Pressure('-100',Zend_Measure_Pressure::STANDARD,'de');
-        $unit  = $value->getConversionList();
+        $value = new Zend_Measure_Pressure('-100', Zend_Measure_Pressure::STANDARD, 'de');
+        $unit = $value->getConversionList();
         $this->assertTrue(is_array($unit), 'Array expected');
     }
 }

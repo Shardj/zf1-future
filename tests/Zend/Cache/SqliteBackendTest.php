@@ -39,8 +39,8 @@ require_once 'CommonExtendedBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest {
-
+class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest
+{
     protected $_instance;
     private $_cache_dir;
 
@@ -49,7 +49,7 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest 
         parent::__construct('Zend_Cache_Backend_Sqlite', $data, $dataName);
     }
 
-    public function setUp($notag = false)
+    public function setUp($notag = false): void
     {
         @mkdir($this->getTmpDir());
         $this->_cache_dir = $this->getTmpDir() . DIRECTORY_SEPARATOR;
@@ -59,7 +59,7 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest 
         parent::setUp($notag);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         unset($this->_instance);
@@ -67,11 +67,17 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest 
         $this->rmdir();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Backend_Sqlite(['cache_db_complete_path' => $this->_cache_dir . 'cache.db']);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorWithABadDBPath()
     {
         try {
@@ -114,7 +120,7 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest 
     public function testRemoveCorrectCallWithVacuumOnMemoryDb()
     {
         $this->_instance = new Zend_Cache_Backend_Sqlite([
-            'cache_db_complete_path'  => ':memory:',
+            'cache_db_complete_path' => ':memory:',
             'automatic_vacuum_factor' => 1
         ]);
         parent::setUp();
@@ -126,7 +132,4 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest 
 
         $this->assertGreaterThan(0, $this->_instance->test('bar2'));
     }
-
 }
-
-

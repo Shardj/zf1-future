@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_BorderContainerTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_BorderContainer|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCa
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_BorderContainerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_BorderContainerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_BorderContainer();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -99,9 +114,9 @@ class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCa
     {
         $html = '';
         foreach (['top', 'bottom', 'center', 'left', 'right'] as $pane) {
-            $id      = $pane . 'Pane';
+            $id = $pane . 'Pane';
             $content = 'This is the content of pane ' . $pane;
-            $html   .= $this->view->contentPane($id, $content, ['region' => $pane]);
+            $html .= $this->view->contentPane($id, $content, ['region' => $pane]);
         }
         return $this->helper->borderContainer('container', $html, ['design' => 'headline']);
     }
@@ -109,14 +124,14 @@ class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCa
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getContainer();
-        $this->assertRegexp('/<div[^>]*(dojoType="dijit.layout.BorderContainer")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(dojoType="dijit.layout.BorderContainer")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getContainer();
-        $this->assertNotRegexp('/<div[^>]*(dojoType="dijit.layout.BorderContainer")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<div[^>]*(dojoType="dijit.layout.BorderContainer")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('container'));
     }
 
@@ -127,7 +142,7 @@ class Zend_Dojo_View_Helper_BorderContainerTest extends PHPUnit_Framework_TestCa
     {
         $this->getContainer();
         $this->getContainer();
-        $style  = 'html, body { height: 100%; width: 100%; margin: 0; padding: 0; }';
+        $style = 'html, body { height: 100%; width: 100%; margin: 0; padding: 0; }';
         $styles = $this->helper->view->headStyle()->toString();
         $this->assertEquals(1, substr_count($styles, $style), $styles);
     }

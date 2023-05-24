@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,8 +44,13 @@ require_once 'Zend/Form.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Decorator_FormTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Decorator_Form
+     */
+    protected $decorator;
+
     /**
      * Runs the test methods of this class.
      *
@@ -48,8 +58,8 @@ class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Decorator_FormTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Decorator_FormTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -58,7 +68,7 @@ class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->decorator = new Zend_Form_Decorator_Form();
     }
@@ -69,7 +79,7 @@ class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -120,7 +130,7 @@ class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
              ->setAttrib('id', 'bazbat')
              ->setView($this->getView());
         $html = $form->render();
-        $this->assertContains('id="bazbat"', $html, $html);
+        $this->assertStringContainsString('id="bazbat"', $html, $html);
     }
 
     public function testEmptyFormNameShouldNotRenderEmptyFormId()
@@ -130,7 +140,7 @@ class Zend_Form_Decorator_FormTest extends PHPUnit_Framework_TestCase
              ->setAction('/foo/bar')
              ->setView($this->getView());
         $html = $form->render();
-        $this->assertNotContains('id=""', $html, $html);
+        $this->assertStringNotContainsString('id=""', $html, $html);
     }
 }
 

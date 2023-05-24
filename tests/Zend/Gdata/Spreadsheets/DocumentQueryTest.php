@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,14 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Spreadsheets
  */
-class Zend_Gdata_Spreadsheets_DocumentQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Spreadsheets_DocumentQueryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_DocumentQuery|mixed
+     */
+    protected $docQuery;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->docQuery = new Zend_Gdata_Spreadsheets_DocumentQuery();
     }
@@ -87,5 +94,4 @@ class Zend_Gdata_Spreadsheets_DocumentQueryTest extends PHPUnit_Framework_TestCa
         $this->docQuery->setVisibility('xyz');
         $this->assertTrue($this->docQuery->getVisibility() == 'xyz');
     }
-
 }

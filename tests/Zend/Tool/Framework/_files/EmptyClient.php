@@ -29,11 +29,8 @@ require_once 'Zend/Tool/Framework/Client/Abstract.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Framework_EmptyClient
-    extends Zend_Tool_Framework_Client_Abstract
-    implements Zend_Tool_Framework_Registry_EnabledInterface
+class Zend_Tool_Framework_EmptyClient extends Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framework_Registry_EnabledInterface
 {
-
     protected $_registry = null;
 
     public function getName()
@@ -50,5 +47,4 @@ class Zend_Tool_Framework_EmptyClient
     {
         $this->_registry = $registry;
     }
-
 }

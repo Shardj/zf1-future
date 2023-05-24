@@ -39,8 +39,8 @@ require_once 'CommonExtendedBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_ApcBackendTest extends Zend_Cache_CommonExtendedBackendTest {
-
+class Zend_Cache_ApcBackendTest extends Zend_Cache_CommonExtendedBackendTest
+{
     protected $_instance;
 
     public function __construct($name = null, array $data = [], $dataName = '')
@@ -48,38 +48,53 @@ class Zend_Cache_ApcBackendTest extends Zend_Cache_CommonExtendedBackendTest {
         parent::__construct('Zend_Cache_Backend_Apc', $data, $dataName);
     }
 
-    public function setUp($notag = true)
+    public function setUp($notag = true): void
     {
         $this->_instance = new Zend_Cache_Backend_Apc([]);
         parent::setUp($notag);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         unset($this->_instance);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Backend_Apc();
     }
 
-    public function testCleanModeOld() {
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeOld()
+    {
         $this->_instance->setDirectives(['logging' => false]);
         $this->_instance->clean('old');
         // do nothing, just to see if an error occured
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    public function testCleanModeMatchingTags() {
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeMatchingTags()
+    {
         $this->_instance->setDirectives(['logging' => false]);
         $this->_instance->clean('matchingTag', ['tag1']);
         // do nothing, just to see if an error occured
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    public function testCleanModeNotMatchingTags() {
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeNotMatchingTags()
+    {
         $this->_instance->setDirectives(['logging' => false]);
         $this->_instance->clean('notMatchingTag', ['tag1']);
         // do nothing, just to see if an error occured
@@ -87,19 +102,82 @@ class Zend_Cache_ApcBackendTest extends Zend_Cache_CommonExtendedBackendTest {
     }
 
     // Because of limitations of this backend...
-    public function testGetWithAnExpiredCacheId() {}
-    public function testCleanModeMatchingTags2() {}
-    public function testCleanModeNotMatchingTags2() {}
-    public function testCleanModeNotMatchingTags3() {}
-    public function testGetIdsMatchingTags() {}
-    public function testGetIdsMatchingTags2() {}
-    public function testGetIdsMatchingTags3() {}
-    public function testGetIdsMatchingTags4() {}
-    public function testGetIdsNotMatchingTags() {}
-    public function testGetIdsNotMatchingTags2() {}
-    public function testGetIdsNotMatchingTags3() {}
-    public function testGetTags() {}
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetWithAnExpiredCacheId()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeMatchingTags2()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeNotMatchingTags2()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testCleanModeNotMatchingTags3()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsMatchingTags()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsMatchingTags2()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsMatchingTags3()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsMatchingTags4()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsNotMatchingTags()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsNotMatchingTags2()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetIdsNotMatchingTags3()
+    {
+    }
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testGetTags()
+    {
+    }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSaveCorrectCall()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -107,6 +185,9 @@ class Zend_Cache_ApcBackendTest extends Zend_Cache_CommonExtendedBackendTest {
         $this->_instance->setDirectives(['logging' => true]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSaveWithNullLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -114,19 +195,21 @@ class Zend_Cache_ApcBackendTest extends Zend_Cache_CommonExtendedBackendTest {
         $this->_instance->setDirectives(['logging' => true]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSaveWithSpecificLifeTime()
     {
-
         $this->_instance->setDirectives(['logging' => false]);
         parent::testSaveWithSpecificLifeTime();
         $this->_instance->setDirectives(['logging' => true]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGetMetadatas($notag = true)
     {
         parent::testGetMetadatas($notag);
     }
-
 }
-
-

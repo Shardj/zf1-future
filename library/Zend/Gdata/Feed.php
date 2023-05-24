@@ -187,7 +187,7 @@ class Zend_Gdata_Feed extends Zend_Gdata_App_Feed
      *
      * @param Zend_Gdata_Extension_OpenSearchTotalResults|null $value The
      *        value of the totalResults property. Use null to unset.
-     * @return Zend_Gdata_Feed Provides a fluent interface.
+     * @return $this
      */
     function setTotalResults($value) {
         $this->_totalResults = $value;
@@ -209,7 +209,7 @@ class Zend_Gdata_Feed extends Zend_Gdata_App_Feed
      *
      * @param Zend_Gdata_Extension_OpenSearchStartIndex|null $value The value
      *        for the startIndex property. Use null to unset.
-     * @return Zend_Gdata_Feed Provides a fluent interface.
+     * @return $this
      */
     function setStartIndex($value) {
         $this->_startIndex = $value;
@@ -231,7 +231,7 @@ class Zend_Gdata_Feed extends Zend_Gdata_App_Feed
      *
      * @param Zend_Gdata_Extension_OpenSearchItemsPerPage|null $value The
      *        value for the itemsPerPage property. Use nul to unset.
-     * @return Zend_Gdata_Feed Provides a fluent interface.
+     * @return $this
      */
     function setItemsPerPage($value) {
         $this->_itemsPerPage = $value;

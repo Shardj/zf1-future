@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,19 +36,18 @@ require_once 'Zend/Locale.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
+class resources_languages_Zend_ValidateTest extends TestCase
 {
-
-    protected $_langDir      = null;
-    protected $_languages    = [];
+    protected $_langDir = null;
+    protected $_languages = [];
     protected $_translations = [];
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_langDir = dirname(dirname(dirname(dirname(__FILE__))))
                         . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'languages';
         if (!is_readable($this->_langDir)) {
-            throw new Exception('Language resource directory "'.$this->_langDir.'" not readable.');
+            throw new Exception('Language resource directory "' . $this->_langDir . '" not readable.');
         }
 
         // Show only a specific translation?
@@ -91,6 +93,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if the given language is really a language
+     * @doesNotPerformAssertions
      */
     public function testIsLocale()
     {
@@ -103,11 +106,12 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if all english original keys have the same translations
+     * @doesNotPerformAssertions
      */
     public function testEnglishKeySameAsValue()
     {
         $errors = [];
-        $cnt    = 0;
+        $cnt = 0;
         foreach ($this->_translations['en'] as $key => $value) {
             if ($key !== $value) {
                 ++$cnt;
@@ -122,11 +126,12 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if all translation keys are also available in the english original
+     * @doesNotPerformAssertions
      */
     public function testTranslationAvailableInEnglish()
     {
         $errors = [];
-        $cnt    = 0;
+        $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
             if ($lang == 'en') {
                 continue;
@@ -147,11 +152,12 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if the key is translated
+     * @doesNotPerformAssertions
      */
     public function testTranslationDiffersFromEnglish()
     {
         $errors = [];
-        $cnt    = 0;
+        $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
             if ($lang == 'en') {
                 continue;
@@ -172,11 +178,12 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests if all placeholders from the original are also available within the translation
+     * @doesNotPerformAssertions
      */
     public function testPlaceholder()
     {
         $errors = [];
-        $cnt    = 0;
+        $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
             if ($lang == 'en') { // not needed to test - see testEnglishKeySameAsValue
                 continue;
@@ -205,7 +212,7 @@ class resources_languages_Zend_ValidateTest extends PHPUnit_Framework_TestCase
     public function testAllTranslated()
     {
         $errors = [];
-        $cnt    = 0;
+        $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
             foreach ($this->_translations['en'] as $key => $value) {
                 if ($lang == 'en') {

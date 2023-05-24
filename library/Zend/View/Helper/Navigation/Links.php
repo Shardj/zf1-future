@@ -111,7 +111,7 @@ class Zend_View_Helper_Navigation_Links
      *
      * @param  Zend_Navigation_Container $container  [optional] container to
      *                                               operate on
-     * @return Zend_View_Helper_Navigation_Links     fluent interface, returns
+     * @return $this
      *                                               self
      */
     public function links(Zend_Navigation_Container $container = null)
@@ -179,7 +179,7 @@ class Zend_View_Helper_Navigation_Links
      * {@link renderLink()} method.
      *
      * @param  int $renderFlag                    render flag
-     * @return Zend_View_Helper_Navigation_Links  fluent interface, returns self
+     * @return $this
      */
     public function setRenderFlag($renderFlag)
     {

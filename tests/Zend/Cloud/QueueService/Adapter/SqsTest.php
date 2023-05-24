@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -50,9 +54,9 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
      * @var int
      */
     protected $_waitPeriod = 10;
-	protected $_clientType = 'Zend_Service_Amazon_Sqs';
+    protected $_clientType = 'Zend_Service_Amazon_Sqs';
 
-	/**
+    /**
      * Runs the test methods of this class.
      *
      * @access public
@@ -60,8 +64,8 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -69,7 +73,7 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         // Isolate the tests from slow deletes
@@ -106,7 +110,7 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
             $errorMessage .= "\nHave queue URLs $queueURL1 and $queueURL2\n";
             $this->assertEquals(2, count($queues), $errorMessage);
 
-            // PHPUnit does an identical comparison for assertContains(), so we just
+            // PHPUnit does an identical comparison for assertStringContainsString(), so we just
             // use assertTrue and in_array()
             $this->assertTrue(in_array($queueURL1, $queues));
             $this->assertTrue(in_array($queueURL2, $queues));
@@ -124,7 +128,8 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
         }
     }
 
-    public function testStoreQueueMetadata() {
+    public function testStoreQueueMetadata()
+    {
         $this->markTestSkipped('SQS does not currently support storing metadata');
     }
 

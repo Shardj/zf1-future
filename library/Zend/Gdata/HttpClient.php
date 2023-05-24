@@ -123,7 +123,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
      * @param string $key The private key
      * @param string $passphrase The optional private key passphrase
      * @throws Zend_Gdata_App_InvalidArgumentException
-     * @return Zend_Gdata_HttpClient Provides a fluent interface
+     * @return $this
      */
     public function setAuthSubPrivateKey($key, $passphrase = null) {
         if ($key != null && !function_exists('openssl_pkey_get_private')) {
@@ -159,7 +159,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
      * Sets the AuthSub token used for authentication
      *
      * @param string $token The token
-     * @return Zend_Gdata_HttpClient Provides a fluent interface
+     * @return $this
      */
     public function setAuthSubToken($token) {
         $this->_authSubToken = $token;
@@ -179,7 +179,7 @@ class Zend_Gdata_HttpClient extends Zend_Http_Client
      * Sets the ClientLogin token used for authentication
      *
      * @param string $token The token
-     * @return Zend_Gdata_HttpClient Provides a fluent interface
+     * @return $this
      */
     public function setClientLoginToken($token) {
         $this->_clientLoginToken = $token;

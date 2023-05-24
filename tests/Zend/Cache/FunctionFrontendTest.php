@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -27,12 +30,14 @@ require_once 'Zend/Cache.php';
 require_once 'Zend/Cache/Frontend/Function.php';
 require_once 'Zend/Cache/Backend/Test.php';
 
-function foobar($param1, $param2) {
+function foobar($param1, $param2)
+{
     echo "foobar_output($param1, $param2)";
     return "foobar_return($param1, $param2)";
 }
 
-class fooclass {
+class fooclass
+{
     private static $_instanceCounter = 0;
 
     public function __construct()
@@ -55,11 +60,16 @@ class fooclass {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_FunctionFrontendTest extends PHPUnit_Framework_TestCase {
+class Zend_Cache_FunctionFrontendTest extends TestCase
+{
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend;
 
     private $_instance;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!$this->_instance) {
             $this->_instance = new Zend_Cache_Frontend_Function([]);
@@ -68,11 +78,14 @@ class Zend_Cache_FunctionFrontendTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->_instance);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $options = [
@@ -82,6 +95,9 @@ class Zend_Cache_FunctionFrontendTest extends PHPUnit_Framework_TestCase {
         $test = new Zend_Cache_Frontend_Function($options);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorBadCall()
     {
         $options = [
@@ -199,11 +215,14 @@ class Zend_Cache_FunctionFrontendTest extends PHPUnit_Framework_TestCase {
             $this->markTestSkipped();
         }
 
-        $this->setExpectedException('Zend_Cache_Exception');
+        $this->expectException('Zend_Cache_Exception');
         eval('$closure = function () {};'); // no parse error on php < 5.3
         $this->_instance->call($closure);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCallWithABadSyntax1()
     {
         try {
@@ -213,6 +232,4 @@ class Zend_Cache_FunctionFrontendTest extends PHPUnit_Framework_TestCase {
         }
         $this->fail('Zend_Cache_Exception was expected but not thrown');
     }
-
 }
-

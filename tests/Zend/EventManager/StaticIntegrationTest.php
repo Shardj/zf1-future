@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -36,15 +41,25 @@ require_once 'Zend/EventManager/TestAsset/StaticEventsMock.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
+class Zend_EventManager_StaticIntegrationTest extends TestCase
 {
+    /**
+     * @var \stdClass|mixed
+     */
+    protected $counter;
+
+    /**
+     * @var \stdClass|mixed
+     */
+    protected $test;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_EventManager_StaticEventManager::resetInstance();
     }
@@ -53,8 +68,8 @@ class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
     {
         $this->counter = (object) ['count' => 0];
         Zend_EventManager_StaticEventManager::getInstance()->attach(
-            'Zend_EventManager_TestAsset_ClassWithEvents', 
-            'foo', 
+            'Zend_EventManager_TestAsset_ClassWithEvents',
+            'foo',
             [$this, 'advanceCounter']
         );
         $class = new Zend_EventManager_TestAsset_ClassWithEvents();
@@ -66,8 +81,8 @@ class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
     {
         $this->test = (object) ['results' => []];
         Zend_EventManager_StaticEventManager::getInstance()->attach(
-            'Zend_EventManager_TestAsset_ClassWithEvents', 
-            'foo', 
+            'Zend_EventManager_TestAsset_ClassWithEvents',
+            'foo',
             [$this, 'aggregateStatic']
         );
         $class = new Zend_EventManager_TestAsset_ClassWithEvents();
@@ -80,8 +95,8 @@ class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
     {
         $this->test = (object) ['results' => []];
         Zend_EventManager_StaticEventManager::getInstance()->attach(
-            'Zend_EventManager_TestAsset_ClassWithEvents', 
-            'foo', 
+            'Zend_EventManager_TestAsset_ClassWithEvents',
+            'foo',
             [$this, 'aggregateStatic'],
             10000 // high priority
         );
@@ -97,8 +112,8 @@ class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
     {
         $this->counter = (object) ['count' => 0];
         Zend_EventManager_StaticEventManager::getInstance()->attach(
-            'Zend_EventManager_TestAsset_ClassWithEvents', 
-            'foo', 
+            'Zend_EventManager_TestAsset_ClassWithEvents',
+            'foo',
             [$this, 'advanceCounter']
         );
         $class = new Zend_EventManager_TestAsset_ClassWithEvents();
@@ -111,8 +126,8 @@ class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
     {
         $this->counter = (object) ['count' => 0];
         Zend_EventManager_StaticEventManager::getInstance()->attach(
-            'Zend_EventManager_TestAsset_ClassWithEvents', 
-            'foo', 
+            'Zend_EventManager_TestAsset_ClassWithEvents',
+            'foo',
             [$this, 'advanceCounter']
         );
         $mockStaticEvents = new Zend_EventManager_TestAsset_StaticEventsMock();
@@ -127,8 +142,8 @@ class Zend_EventManager_StaticIntegrationTest extends PHPUnit_Framework_TestCase
     {
         $this->test = (object) ['results' => []];
         Zend_EventManager_StaticEventManager::getInstance()->attach(
-            'Zend_EventManager_TestAsset_ClassWithEvents', 
-            'foo', 
+            'Zend_EventManager_TestAsset_ClassWithEvents',
+            'foo',
             [$this, 'aggregateStatic'],
             100
         );

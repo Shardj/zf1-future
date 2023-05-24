@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,15 +34,14 @@ require_once 'Zend/Gdata/Analytics.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Analytics
  */
-class Zend_GData_Analytics_DataQueryTest extends PHPUnit_Framework_TestCase
+class Zend_GData_Analytics_DataQueryTest extends TestCase
 {
-
     /**
      * @var Zend_GData_Analytics_DataQuery
      */
     public $dataQuery;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->dataQuery = new Zend_GData_Analytics_DataQuery();
     }

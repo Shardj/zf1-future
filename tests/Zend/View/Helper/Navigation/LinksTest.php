@@ -34,8 +34,7 @@ require_once 'Zend/View/Helper/Navigation/Links.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_Navigation_LinksTest
-    extends Zend_View_Helper_Navigation_TestAbstract
+class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     /**
      * Class name for view helper to test
@@ -54,7 +53,7 @@ class Zend_View_Helper_Navigation_LinksTest
     private $_doctypeHelper;
     private $_oldDoctype;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -62,7 +61,8 @@ class Zend_View_Helper_Navigation_LinksTest
         $this->_doctypeHelper = $this->_helper->view->doctype();
         $this->_oldDoctype = $this->_doctypeHelper->getDoctype();
         $this->_doctypeHelper->setDoctype(
-                Zend_View_Helper_Doctype::HTML4_LOOSE);
+            Zend_View_Helper_Doctype::HTML4_LOOSE
+        );
 
         // disable all active pages
         foreach ($this->_helper->findAllByActive(true) as $page) {
@@ -70,7 +70,7 @@ class Zend_View_Helper_Navigation_LinksTest
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->_doctypeHelper->setDoctype($this->_oldDoctype);
     }
@@ -101,14 +101,14 @@ class Zend_View_Helper_Navigation_LinksTest
         $found = $this->_helper->findRelation($active, 'rel', 'example');
 
         $expected = [
-            'type'  => 'Zend_Navigation_Page_Uri',
-            'href'  => 'http://www.example.com/',
+            'type' => 'Zend_Navigation_Page_Uri',
+            'href' => 'http://www.example.com/',
             'label' => null
         ];
 
         $actual = [
-            'type'  => get_class($found),
-            'href'  => $found->getHref(),
+            'type' => get_class($found),
+            'href' => $found->getHref(),
             'label' => $found->getLabel()
         ];
 
@@ -125,14 +125,14 @@ class Zend_View_Helper_Navigation_LinksTest
         $found = $this->_helper->findRelExample($active);
 
         $expected = [
-            'type'  => 'Zend_Navigation_Page_Uri',
-            'href'  => 'http://www.example.com/',
+            'type' => 'Zend_Navigation_Page_Uri',
+            'href' => 'http://www.example.com/',
             'label' => 'An example page'
         ];
 
         $actual = [
-            'type'  => get_class($found),
-            'href'  => $found->getHref(),
+            'type' => get_class($found),
+            'href' => $found->getHref(),
             'label' => $found->getLabel()
         ];
 
@@ -149,14 +149,14 @@ class Zend_View_Helper_Navigation_LinksTest
         $found = $this->_helper->findRelExample($active);
 
         $expected = [
-            'type'  => 'Zend_Navigation_Page_Uri',
-            'href'  => 'http://www.example.com/',
+            'type' => 'Zend_Navigation_Page_Uri',
+            'href' => 'http://www.example.com/',
             'label' => 'An example page'
         ];
 
         $actual = [
-            'type'  => get_class($found),
-            'href'  => $found->getHref(),
+            'type' => get_class($found),
+            'href' => $found->getHref(),
             'label' => $found->getLabel()
         ];
 
@@ -173,14 +173,14 @@ class Zend_View_Helper_Navigation_LinksTest
         $found = $this->_helper->findRelExample($active);
 
         $expected = [
-            'type'  => 'Zend_Navigation_Page_Uri',
-            'href'  => 'http://www.example.com/',
+            'type' => 'Zend_Navigation_Page_Uri',
+            'href' => 'http://www.example.com/',
             'label' => 'An example page'
         ];
 
         $actual = [
-            'type'  => get_class($found),
-            'href'  => $found->getHref(),
+            'type' => get_class($found),
+            'href' => $found->getHref(),
             'label' => $found->getLabel()
         ];
 
@@ -194,11 +194,11 @@ class Zend_View_Helper_Navigation_LinksTest
         $active->addRel('alternate', [
             [
                 'label' => 'foo',
-                'uri'   => 'bar'
+                'uri' => 'bar'
             ],
             [
                 'label' => 'baz',
-                'uri'   => 'bat'
+                'uri' => 'bat'
             ]
         ]);
 
@@ -216,11 +216,11 @@ class Zend_View_Helper_Navigation_LinksTest
         $active->addRel('alternate', new Zend_Config([
             [
                 'label' => 'foo',
-                'uri'   => 'bar'
+                'uri' => 'bar'
             ],
             [
                 'label' => 'baz',
-                'uri'   => 'bat'
+                'uri' => 'bat'
             ]
         ]));
 
@@ -241,7 +241,7 @@ class Zend_View_Helper_Navigation_LinksTest
 
         $samplePage = Zend_Navigation_Page::factory([
             'label' => 'An example page',
-            'uri'   => 'http://www.example.com/'
+            'uri' => 'http://www.example.com/'
         ]);
 
         $active = $this->_helper->findOneByLabel('Page 2');
@@ -253,7 +253,7 @@ class Zend_View_Helper_Navigation_LinksTest
             $found = $this->_helper->findRelation($active, 'rel', $type);
 
             $expected[$type] = $samplePage->getLabel();
-            $actual[$type]   = $found->getLabel();
+            $actual[$type] = $found->getLabel();
 
             $active->removeRel($type);
         }
@@ -430,28 +430,28 @@ class Zend_View_Helper_Navigation_LinksTest
         $this->_helper->setRole($acl->getRole('member'));
 
         $samplePage = Zend_Navigation_Page::factory([
-            'label'    => 'An example page',
-            'uri'      => 'http://www.example.com/',
+            'label' => 'An example page',
+            'uri' => 'http://www.example.com/',
             'resource' => 'protected'
         ]);
 
         $active = $this->_helper->findOneByLabel('Home');
         $expected = [
-            'alternate'  => false,
+            'alternate' => false,
             'stylesheet' => false,
-            'start'      => false,
-            'next'       => 'Page 1',
-            'prev'       => false,
-            'contents'   => false,
-            'index'      => false,
-            'glossary'   => false,
-            'copyright'  => false,
-            'chapter'    => 'array(4)',
-            'section'    => false,
+            'start' => false,
+            'next' => 'Page 1',
+            'prev' => false,
+            'contents' => false,
+            'index' => false,
+            'glossary' => false,
+            'copyright' => false,
+            'chapter' => 'array(4)',
+            'section' => false,
             'subsection' => false,
-            'appendix'   => false,
-            'help'       => false,
-            'bookmark'   => false
+            'appendix' => false,
+            'help' => false,
+            'bookmark' => false
         ];
         $actual = [];
 
@@ -485,7 +485,8 @@ class Zend_View_Helper_Navigation_LinksTest
         $container = $this->_helper->getContainer();
         $iterator = new RecursiveIteratorIterator(
             $container,
-            RecursiveIteratorIterator::SELF_FIRST);
+            RecursiveIteratorIterator::SELF_FIRST
+        );
         foreach ($iterator as $page) {
             $page->resource = 'protected';
         }
@@ -493,11 +494,11 @@ class Zend_View_Helper_Navigation_LinksTest
 
         $active = $this->_helper->findOneByLabel('Home');
         $search = [
-            'start'      => 'Page 1',
-            'next'       => 'Page 1',
-            'prev'       => 'Page 1.1',
-            'chapter'    => 'Home',
-            'section'    => 'Page 1',
+            'start' => 'Page 1',
+            'next' => 'Page 1',
+            'prev' => 'Page 1.1',
+            'chapter' => 'Home',
+            'section' => 'Page 1',
             'subsection' => 'Page 2.2'
         ];
 
@@ -530,7 +531,7 @@ class Zend_View_Helper_Navigation_LinksTest
             $this->fail('An invalid value was given, but a ' .
                         'Zend_View_Exception was not thrown');
         } catch (Zend_View_Exception $e) {
-            $this->assertContains('Invalid argument: $rel', $e->getMessage());
+            $this->assertStringContainsString('Invalid argument: $rel', $e->getMessage());
         }
     }
 
@@ -542,30 +543,30 @@ class Zend_View_Helper_Navigation_LinksTest
             $this->fail('An invalid value was given, but a ' .
                         'Zend_View_Exception was not thrown');
         } catch (Zend_View_Exception $e) {
-            $this->assertContains('Invalid relation attribute', $e->getMessage());
+            $this->assertStringContainsString('Invalid relation attribute', $e->getMessage());
         }
     }
 
     public function testFindAllRelations()
     {
         $expectedRelations = [
-            'alternate'  => ['Forced page'],
+            'alternate' => ['Forced page'],
             'stylesheet' => ['Forced page'],
-            'start'      => ['Forced page'],
-            'next'       => ['Forced page'],
-            'prev'       => ['Forced page'],
-            'contents'   => ['Forced page'],
-            'index'      => ['Forced page'],
-            'glossary'   => ['Forced page'],
-            'copyright'  => ['Forced page'],
-            'chapter'    => ['Forced page'],
-            'section'    => ['Forced page'],
+            'start' => ['Forced page'],
+            'next' => ['Forced page'],
+            'prev' => ['Forced page'],
+            'contents' => ['Forced page'],
+            'index' => ['Forced page'],
+            'glossary' => ['Forced page'],
+            'copyright' => ['Forced page'],
+            'chapter' => ['Forced page'],
+            'section' => ['Forced page'],
             'subsection' => ['Forced page'],
-            'appendix'   => ['Forced page'],
-            'help'       => ['Forced page'],
-            'bookmark'   => ['Forced page'],
-            'canonical'  => ['Forced page'],
-            'home'       => ['Forced page']
+            'appendix' => ['Forced page'],
+            'help' => ['Forced page'],
+            'bookmark' => ['Forced page'],
+            'canonical' => ['Forced page'],
+            'home' => ['Forced page']
         ];
 
         // build expected result
@@ -578,7 +579,7 @@ class Zend_View_Helper_Navigation_LinksTest
         $active = $this->_helper->findOneByLabel('Page 1');
         $forcedRelation = new Zend_Navigation_Page_Uri([
             'label' => 'Forced page',
-            'uri'   => '#'
+            'uri' => '#'
         ]);
 
         // add relations to active page
@@ -603,21 +604,21 @@ class Zend_View_Helper_Navigation_LinksTest
     private function _getFlags()
     {
         return [
-            Zend_View_Helper_Navigation_Links::RENDER_ALTERNATE  => 'alternate',
+            Zend_View_Helper_Navigation_Links::RENDER_ALTERNATE => 'alternate',
             Zend_View_Helper_Navigation_Links::RENDER_STYLESHEET => 'stylesheet',
-            Zend_View_Helper_Navigation_Links::RENDER_START      => 'start',
-            Zend_View_Helper_Navigation_Links::RENDER_NEXT       => 'next',
-            Zend_View_Helper_Navigation_Links::RENDER_PREV       => 'prev',
-            Zend_View_Helper_Navigation_Links::RENDER_CONTENTS   => 'contents',
-            Zend_View_Helper_Navigation_Links::RENDER_INDEX      => 'index',
-            Zend_View_Helper_Navigation_Links::RENDER_GLOSSARY   => 'glossary',
-            Zend_View_Helper_Navigation_Links::RENDER_CHAPTER    => 'chapter',
-            Zend_View_Helper_Navigation_Links::RENDER_SECTION    => 'section',
+            Zend_View_Helper_Navigation_Links::RENDER_START => 'start',
+            Zend_View_Helper_Navigation_Links::RENDER_NEXT => 'next',
+            Zend_View_Helper_Navigation_Links::RENDER_PREV => 'prev',
+            Zend_View_Helper_Navigation_Links::RENDER_CONTENTS => 'contents',
+            Zend_View_Helper_Navigation_Links::RENDER_INDEX => 'index',
+            Zend_View_Helper_Navigation_Links::RENDER_GLOSSARY => 'glossary',
+            Zend_View_Helper_Navigation_Links::RENDER_CHAPTER => 'chapter',
+            Zend_View_Helper_Navigation_Links::RENDER_SECTION => 'section',
             Zend_View_Helper_Navigation_Links::RENDER_SUBSECTION => 'subsection',
-            Zend_View_Helper_Navigation_Links::RENDER_APPENDIX   => 'appendix',
-            Zend_View_Helper_Navigation_Links::RENDER_HELP       => 'help',
-            Zend_View_Helper_Navigation_Links::RENDER_BOOKMARK   => 'bookmark',
-            Zend_View_Helper_Navigation_Links::RENDER_CUSTOM     => 'canonical'
+            Zend_View_Helper_Navigation_Links::RENDER_APPENDIX => 'appendix',
+            Zend_View_Helper_Navigation_Links::RENDER_HELP => 'help',
+            Zend_View_Helper_Navigation_Links::RENDER_BOOKMARK => 'bookmark',
+            Zend_View_Helper_Navigation_Links::RENDER_CUSTOM => 'canonical'
         ];
     }
 
@@ -627,7 +628,7 @@ class Zend_View_Helper_Navigation_LinksTest
         $active->active = true;
 
         $expected = [];
-        $actual   = [];
+        $actual = [];
 
         // build expected and actual result
         foreach ($this->_getFlags() as $newFlag => $type) {
@@ -638,14 +639,14 @@ class Zend_View_Helper_Navigation_LinksTest
             $this->_helper->setRenderFlag($newFlag);
             $expectedOutput = '<link '
                               . 'rel="' . $type . '" '
-                              . 'href="http://www.example.com/">' . constant($this->_helperName.'::EOL')
+                              . 'href="http://www.example.com/">' . constant($this->_helperName . '::EOL')
                             . '<link '
                               . 'rev="' . $type . '" '
                               . 'href="http://www.example.com/">';
             $actualOutput = $this->_helper->render();
 
             $expected[$type] = $expectedOutput;
-            $actual[$type]   = $actualOutput;
+            $actual[$type] = $actualOutput;
 
             // remove forced relation
             $active->removeRel($type);
@@ -665,7 +666,7 @@ class Zend_View_Helper_Navigation_LinksTest
 
         // test data
         $expected = '<link rel="next" href="page2" title="Page 2">'
-                  . constant($this->_helperName.'::EOL')
+                  . constant($this->_helperName . '::EOL')
                   . '<link rel="prev" href="page1" title="Page 1">';
         $actual = $this->_helper->render();
 
@@ -683,7 +684,7 @@ class Zend_View_Helper_Navigation_LinksTest
 
         // build expected and actual result
         $expected = '  <link rel="next" href="page2" title="Page 2">'
-                  . constant($this->_helperName.'::EOL')
+                  . constant($this->_helperName . '::EOL')
                   . '  <link rel="prev" href="page1" title="Page 1">';
         $actual = $this->_helper->render();
 

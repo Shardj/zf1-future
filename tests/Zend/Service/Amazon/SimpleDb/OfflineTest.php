@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -19,7 +22,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: OfflineTest.php 8064 2008-02-16 10:58:39Z thomas $
  */
-
 /**
  * @category   Zend
  * @package    Zend_Service_Amazon_SimpleDb
@@ -27,13 +29,16 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_Amazon_SimpleDb_OfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Amazon_SimpleDb_OfflineTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped('No offline tests for Zend_Service_Amazon_SimpleDb');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNothing()
     {
     }

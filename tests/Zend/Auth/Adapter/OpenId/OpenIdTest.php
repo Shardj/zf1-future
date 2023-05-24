@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -66,19 +69,24 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
-class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
+class Zend_Auth_Adapter_OpenIdTest extends TestCase
 {
-    const ID       = "http://id.myopenid.com/";
-    const REAL_ID  = "http://real_id.myopenid.com/";
-    const SERVER   = "http://www.myopenid.com/";
+    public const ID = "http://id.myopenid.com/";
+    public const REAL_ID = "http://real_id.myopenid.com/";
+    public const SERVER = "http://www.myopenid.com/";
 
-    const HANDLE   = "d41d8cd98f00b204e9800998ecf8427e";
-    const MAC_FUNC = "sha1";
-    const SECRET   = "\x83\x82\xae\xa9\x22\x56\x0e\xce\x83\x3b\xa5\x5f\xa5\x3b\x7a\x97\x5f\x59\x73\x70";
+    public const HANDLE = "d41d8cd98f00b204e9800998ecf8427e";
+    public const MAC_FUNC = "sha1";
+    public const SECRET = "\x83\x82\xae\xa9\x22\x56\x0e\xce\x83\x3b\xa5\x5f\xa5\x3b\x7a\x97\x5f\x59\x73\x70";
+
+    protected function setUp(): void
+    {
+        Zend_Session::$_unitTestEnabled = true;
+    }
 
     public function testAuthenticateInvalid()
     {
-        $adapter = new Zend_Auth_Adapter_OpenId(null, new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files"));
+        $adapter = new Zend_Auth_Adapter_OpenId(null, new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files"));
         $ret = $adapter->authenticate();
         $this->assertFalse($ret->isValid());
         $this->assertSame("", $ret->getIdentity());
@@ -92,7 +100,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
 
     public function testAuthenticateLoginInvalid()
     {
-        $adapter = new Zend_Auth_Adapter_OpenId("%sd", new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files"));
+        $adapter = new Zend_Auth_Adapter_OpenId("%sd", new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files"));
         $ret = $adapter->authenticate();
         $this->assertFalse($ret->isValid());
         $this->assertSame("%sd", $ret->getIdentity());
@@ -107,7 +115,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
     public function testAuthenticateLoginValid()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -122,39 +130,39 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $ret = $adapter->authenticate();
         $this->assertTrue(is_null($ret));
         $headers = $response->getHeaders();
-        $this->assertSame( '', $response->getBody() );
-        $this->assertTrue( is_array($headers) );
-        $this->assertSame( 1, count($headers) );
-        $this->assertTrue( is_array($headers[0]) );
-        $this->assertSame( 3, count($headers[0]) );
-        $this->assertSame( 'Location', $headers[0]['name'] );
-        $this->assertSame( true, $headers[0]['replace'] );
+        $this->assertSame('', $response->getBody());
+        $this->assertTrue(is_array($headers));
+        $this->assertSame(1, count($headers));
+        $this->assertTrue(is_array($headers[0]));
+        $this->assertSame(3, count($headers[0]));
+        $this->assertSame('Location', $headers[0]['name']);
+        $this->assertSame(true, $headers[0]['replace']);
         $url = $headers[0]['value'];
         $url = parse_url($url);
-        $this->assertSame( "http", $url['scheme'] );
-        $this->assertSame( "www.myopenid.com", $url['host'] );
-        $this->assertSame( "/", $url['path'] );
+        $this->assertSame("http", $url['scheme']);
+        $this->assertSame("www.myopenid.com", $url['host']);
+        $this->assertSame("/", $url['path']);
         $q = explode("&", $url['query']);
         $query = [];
-        foreach($q as $var) {
+        foreach ($q as $var) {
             if (list($key, $val) = explode("=", $var, 2)) {
                 $query[$key] = $val;
             }
         }
-        $this->assertTrue( is_array($query) );
-        $this->assertSame( 6, count($query) );
-        $this->assertSame( 'checkid_setup', $query['openid.mode'] );
-        $this->assertSame( 'http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity'] );
-        $this->assertSame( 'http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id'] );
-        $this->assertSame( self::HANDLE, $query['openid.assoc_handle'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root'] );
+        $this->assertTrue(is_array($query));
+        $this->assertSame(6, count($query));
+        $this->assertSame('checkid_setup', $query['openid.mode']);
+        $this->assertSame('http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity']);
+        $this->assertSame('http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id']);
+        $this->assertSame(self::HANDLE, $query['openid.assoc_handle']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root']);
     }
 
     public function testSetIdentity()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -170,39 +178,39 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $ret = $adapter->authenticate();
         $this->assertTrue(is_null($ret));
         $headers = $response->getHeaders();
-        $this->assertSame( '', $response->getBody() );
-        $this->assertTrue( is_array($headers) );
-        $this->assertSame( 1, count($headers) );
-        $this->assertTrue( is_array($headers[0]) );
-        $this->assertSame( 3, count($headers[0]) );
-        $this->assertSame( 'Location', $headers[0]['name'] );
-        $this->assertSame( true, $headers[0]['replace'] );
+        $this->assertSame('', $response->getBody());
+        $this->assertTrue(is_array($headers));
+        $this->assertSame(1, count($headers));
+        $this->assertTrue(is_array($headers[0]));
+        $this->assertSame(3, count($headers[0]));
+        $this->assertSame('Location', $headers[0]['name']);
+        $this->assertSame(true, $headers[0]['replace']);
         $url = $headers[0]['value'];
         $url = parse_url($url);
-        $this->assertSame( "http", $url['scheme'] );
-        $this->assertSame( "www.myopenid.com", $url['host'] );
-        $this->assertSame( "/", $url['path'] );
+        $this->assertSame("http", $url['scheme']);
+        $this->assertSame("www.myopenid.com", $url['host']);
+        $this->assertSame("/", $url['path']);
         $q = explode("&", $url['query']);
         $query = [];
-        foreach($q as $var) {
+        foreach ($q as $var) {
             if (list($key, $val) = explode("=", $var, 2)) {
                 $query[$key] = $val;
             }
         }
-        $this->assertTrue( is_array($query) );
-        $this->assertSame( 6, count($query) );
-        $this->assertSame( 'checkid_setup', $query['openid.mode'] );
-        $this->assertSame( 'http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity'] );
-        $this->assertSame( 'http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id'] );
-        $this->assertSame( self::HANDLE, $query['openid.assoc_handle'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root'] );
+        $this->assertTrue(is_array($query));
+        $this->assertSame(6, count($query));
+        $this->assertSame('checkid_setup', $query['openid.mode']);
+        $this->assertSame('http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity']);
+        $this->assertSame('http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id']);
+        $this->assertSame(self::HANDLE, $query['openid.assoc_handle']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root']);
     }
 
     public function testSetStorage()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -218,39 +226,39 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $ret = $adapter->authenticate();
         $this->assertTrue(is_null($ret));
         $headers = $response->getHeaders();
-        $this->assertSame( '', $response->getBody() );
-        $this->assertTrue( is_array($headers) );
-        $this->assertSame( 1, count($headers) );
-        $this->assertTrue( is_array($headers[0]) );
-        $this->assertSame( 3, count($headers[0]) );
-        $this->assertSame( 'Location', $headers[0]['name'] );
-        $this->assertSame( true, $headers[0]['replace'] );
+        $this->assertSame('', $response->getBody());
+        $this->assertTrue(is_array($headers));
+        $this->assertSame(1, count($headers));
+        $this->assertTrue(is_array($headers[0]));
+        $this->assertSame(3, count($headers[0]));
+        $this->assertSame('Location', $headers[0]['name']);
+        $this->assertSame(true, $headers[0]['replace']);
         $url = $headers[0]['value'];
         $url = parse_url($url);
-        $this->assertSame( "http", $url['scheme'] );
-        $this->assertSame( "www.myopenid.com", $url['host'] );
-        $this->assertSame( "/", $url['path'] );
+        $this->assertSame("http", $url['scheme']);
+        $this->assertSame("www.myopenid.com", $url['host']);
+        $this->assertSame("/", $url['path']);
         $q = explode("&", $url['query']);
         $query = [];
-        foreach($q as $var) {
+        foreach ($q as $var) {
             if (list($key, $val) = explode("=", $var, 2)) {
                 $query[$key] = $val;
             }
         }
-        $this->assertTrue( is_array($query) );
-        $this->assertSame( 6, count($query) );
-        $this->assertSame( 'checkid_setup', $query['openid.mode'] );
-        $this->assertSame( 'http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity'] );
-        $this->assertSame( 'http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id'] );
-        $this->assertSame( self::HANDLE, $query['openid.assoc_handle'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root'] );
+        $this->assertTrue(is_array($query));
+        $this->assertSame(6, count($query));
+        $this->assertSame('checkid_setup', $query['openid.mode']);
+        $this->assertSame('http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity']);
+        $this->assertSame('http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id']);
+        $this->assertSame(self::HANDLE, $query['openid.assoc_handle']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root']);
     }
 
     public function testSetReturnTo()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -266,39 +274,39 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $ret = $adapter->authenticate();
         $this->assertTrue(is_null($ret));
         $headers = $response->getHeaders();
-        $this->assertSame( '', $response->getBody() );
-        $this->assertTrue( is_array($headers) );
-        $this->assertSame( 1, count($headers) );
-        $this->assertTrue( is_array($headers[0]) );
-        $this->assertSame( 3, count($headers[0]) );
-        $this->assertSame( 'Location', $headers[0]['name'] );
-        $this->assertSame( true, $headers[0]['replace'] );
+        $this->assertSame('', $response->getBody());
+        $this->assertTrue(is_array($headers));
+        $this->assertSame(1, count($headers));
+        $this->assertTrue(is_array($headers[0]));
+        $this->assertSame(3, count($headers[0]));
+        $this->assertSame('Location', $headers[0]['name']);
+        $this->assertSame(true, $headers[0]['replace']);
         $url = $headers[0]['value'];
         $url = parse_url($url);
-        $this->assertSame( "http", $url['scheme'] );
-        $this->assertSame( "www.myopenid.com", $url['host'] );
-        $this->assertSame( "/", $url['path'] );
+        $this->assertSame("http", $url['scheme']);
+        $this->assertSame("www.myopenid.com", $url['host']);
+        $this->assertSame("/", $url['path']);
         $q = explode("&", $url['query']);
         $query = [];
-        foreach($q as $var) {
+        foreach ($q as $var) {
             if (list($key, $val) = explode("=", $var, 2)) {
                 $query[$key] = $val;
             }
         }
-        $this->assertTrue( is_array($query) );
-        $this->assertSame( 6, count($query) );
-        $this->assertSame( 'checkid_setup', $query['openid.mode'] );
-        $this->assertSame( 'http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity'] );
-        $this->assertSame( 'http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id'] );
-        $this->assertSame( self::HANDLE, $query['openid.assoc_handle'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Freturn.php', $query['openid.return_to'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root'] );
+        $this->assertTrue(is_array($query));
+        $this->assertSame(6, count($query));
+        $this->assertSame('checkid_setup', $query['openid.mode']);
+        $this->assertSame('http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity']);
+        $this->assertSame('http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id']);
+        $this->assertSame(self::HANDLE, $query['openid.assoc_handle']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Freturn.php', $query['openid.return_to']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root']);
     }
 
     public function testSetRoot()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -314,40 +322,40 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $ret = $adapter->authenticate();
         $this->assertTrue(is_null($ret));
         $headers = $response->getHeaders();
-        $this->assertSame( '', $response->getBody() );
-        $this->assertTrue( is_array($headers) );
-        $this->assertSame( 1, count($headers) );
-        $this->assertTrue( is_array($headers[0]) );
-        $this->assertSame( 3, count($headers[0]) );
-        $this->assertSame( 'Location', $headers[0]['name'] );
-        $this->assertSame( true, $headers[0]['replace'] );
+        $this->assertSame('', $response->getBody());
+        $this->assertTrue(is_array($headers));
+        $this->assertSame(1, count($headers));
+        $this->assertTrue(is_array($headers[0]));
+        $this->assertSame(3, count($headers[0]));
+        $this->assertSame('Location', $headers[0]['name']);
+        $this->assertSame(true, $headers[0]['replace']);
         $url = $headers[0]['value'];
         $url = parse_url($url);
-        $this->assertSame( "http", $url['scheme'] );
-        $this->assertSame( "www.myopenid.com", $url['host'] );
-        $this->assertSame( "/", $url['path'] );
+        $this->assertSame("http", $url['scheme']);
+        $this->assertSame("www.myopenid.com", $url['host']);
+        $this->assertSame("/", $url['path']);
         $q = explode("&", $url['query']);
         $query = [];
-        foreach($q as $var) {
+        foreach ($q as $var) {
             if (list($key, $val) = explode("=", $var, 2)) {
                 $query[$key] = $val;
             }
         }
-        $this->assertTrue( is_array($query) );
-        $this->assertSame( 6, count($query) );
-        $this->assertSame( 'checkid_setup', $query['openid.mode'] );
-        $this->assertSame( 'http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity'] );
-        $this->assertSame( 'http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id'] );
-        $this->assertSame( self::HANDLE, $query['openid.assoc_handle'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Froot.php', $query['openid.trust_root'] );
+        $this->assertTrue(is_array($query));
+        $this->assertSame(6, count($query));
+        $this->assertSame('checkid_setup', $query['openid.mode']);
+        $this->assertSame('http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity']);
+        $this->assertSame('http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id']);
+        $this->assertSame(self::HANDLE, $query['openid.assoc_handle']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Froot.php', $query['openid.trust_root']);
     }
 
     public function testAuthenticateVerifyInvalid()
     {
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
         unset($_SERVER['REQUEST_METHOD']);
-        $_GET = ['openid_mode'=>'id_res',
+        $_GET = ['openid_mode' => 'id_res',
             "openid_return_to" => "http://www.zf-test.com/test.php",
             "openid_assoc_handle" => self::HANDLE,
             "openid_claimed_id" => self::ID,
@@ -357,7 +365,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
             "openid_signed" => "assoc_handle,return_to,claimed_id,identity,response_nonce,mode,signed,op_endpoint",
             "openid_sig" => "h/5AFD25NpzSok5tzHEGCVUkQSw="
         ];
-        $adapter = new Zend_Auth_Adapter_OpenId(null, new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files"));
+        $adapter = new Zend_Auth_Adapter_OpenId(null, new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files"));
         $ret = $adapter->authenticate();
         $this->assertFalse($ret->isValid());
         $this->assertSame(self::ID, $ret->getIdentity());
@@ -372,7 +380,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
     public function testAuthenticateVerifyGetValid()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -400,7 +408,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
     public function testAuthenticateVerifyPostValid()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -429,9 +437,9 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
     public function testSetExtensions()
     {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
-        $this->assertTrue( $storage->delDiscoveryInfo(self::ID) );
-        $this->assertTrue( $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 2.0, $expiresIn) );
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
+        $this->assertTrue($storage->delDiscoveryInfo(self::ID));
+        $this->assertTrue($storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 2.0, $expiresIn));
         $storage->delAssociation(self::SERVER);
         $storage->addAssociation(self::SERVER, self::HANDLE, self::MAC_FUNC, self::SECRET, $expiresIn);
         $storage->purgeNonces();
@@ -439,7 +447,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $_SERVER['SCRIPT_URI'] = "http://www.zf-test.com/test.php";
         $_SERVER['REQUEST_METHOD'] = 'GET';
         $_GET = [
-            "openid_ns"        => Zend_OpenId::NS_2_0,
+            "openid_ns" => Zend_OpenId::NS_2_0,
             "openid_return_to" => "http://www.zf-test.com/test.php",
             "openid_assoc_handle" => self::HANDLE,
             "openid_claimed_id" => self::ID,
@@ -454,7 +462,7 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         ];
         $_POST = [];
         $adapter = new Zend_Auth_Adapter_OpenId(null, $storage);
-        $sreg= new Zend_OpenId_Extension_Sreg(["nickname"=>true,"email"=>false]);
+        $sreg = new Zend_OpenId_Extension_Sreg(["nickname" => true, "email" => false]);
         $this->assertSame($adapter, $adapter->setExtensions($sreg));
         $ret = $adapter->authenticate();
         $this->assertTrue($ret->isValid());
@@ -462,9 +470,10 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $this->assertSame("test", $sreg_data['nickname']);
     }
 
-    function testSetCheckImmediate() {
+    public function testSetCheckImmediate()
+    {
         $expiresIn = time() + 600;
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->addDiscoveryInfo(self::ID, self::REAL_ID, self::SERVER, 1.1, $expiresIn);
         $storage->delAssociation(self::SERVER);
@@ -480,56 +489,60 @@ class Zend_Auth_Adapter_OpenIdTest extends PHPUnit_Framework_TestCase
         $ret = $adapter->authenticate();
         $this->assertTrue(is_null($ret));
         $headers = $response->getHeaders();
-        $this->assertSame( '', $response->getBody() );
-        $this->assertTrue( is_array($headers) );
-        $this->assertSame( 1, count($headers) );
-        $this->assertTrue( is_array($headers[0]) );
-        $this->assertSame( 3, count($headers[0]) );
-        $this->assertSame( 'Location', $headers[0]['name'] );
-        $this->assertSame( true, $headers[0]['replace'] );
+        $this->assertSame('', $response->getBody());
+        $this->assertTrue(is_array($headers));
+        $this->assertSame(1, count($headers));
+        $this->assertTrue(is_array($headers[0]));
+        $this->assertSame(3, count($headers[0]));
+        $this->assertSame('Location', $headers[0]['name']);
+        $this->assertSame(true, $headers[0]['replace']);
         $url = $headers[0]['value'];
         $url = parse_url($url);
-        $this->assertSame( "http", $url['scheme'] );
-        $this->assertSame( "www.myopenid.com", $url['host'] );
-        $this->assertSame( "/", $url['path'] );
+        $this->assertSame("http", $url['scheme']);
+        $this->assertSame("www.myopenid.com", $url['host']);
+        $this->assertSame("/", $url['path']);
         $q = explode("&", $url['query']);
         $query = [];
-        foreach($q as $var) {
+        foreach ($q as $var) {
             if (list($key, $val) = explode("=", $var, 2)) {
                 $query[$key] = $val;
             }
         }
-        $this->assertTrue( is_array($query) );
-        $this->assertSame( 6, count($query) );
-        $this->assertSame( 'checkid_immediate', $query['openid.mode'] );
-        $this->assertSame( 'http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity'] );
-        $this->assertSame( 'http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id'] );
-        $this->assertSame( self::HANDLE, $query['openid.assoc_handle'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to'] );
-        $this->assertSame( 'http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root'] );
+        $this->assertTrue(is_array($query));
+        $this->assertSame(6, count($query));
+        $this->assertSame('checkid_immediate', $query['openid.mode']);
+        $this->assertSame('http%3A%2F%2Freal_id.myopenid.com%2F', $query['openid.identity']);
+        $this->assertSame('http%3A%2F%2Fid.myopenid.com%2F', $query['openid.claimed_id']);
+        $this->assertSame(self::HANDLE, $query['openid.assoc_handle']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com%2Ftest.php', $query['openid.return_to']);
+        $this->assertSame('http%3A%2F%2Fwww.zf-test.com', $query['openid.trust_root']);
     }
 
-    function testSetHttpClient() {
-        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__)."/_files");
+    public function testSetHttpClient()
+    {
+        $storage = new Zend_OpenId_Consumer_Storage_File(dirname(__FILE__) . "/_files");
         $storage->delDiscoveryInfo(self::ID);
         $storage->delAssociation(self::SERVER);
         $adapter = new Zend_Auth_Adapter_OpenId(self::ID, $storage);
-        $http = new Zend_Http_Client(null,
+        $http = new Zend_Http_Client(
+            null,
             [
                 'maxredirects' => 4,
-                'timeout'      => 15,
-                'useragent'    => 'Zend_OpenId'
-            ]);
+                'timeout' => 15,
+                'useragent' => 'Zend_OpenId'
+            ]
+        );
         $test = new Zend_Http_Client_Adapter_Test();
         $http->setAdapter($test);
         $adapter->SetHttpClient($http);
         $ret = $adapter->authenticate();
-        $this->assertSame("GET / HTTP/1.1\r\n".
-                          "Host: id.myopenid.com\r\n".
-                          "Connection: close\r\n".
-                          "Accept-encoding: gzip, deflate\r\n".
+        $this->assertSame(
+            "GET / HTTP/1.1\r\n" .
+                          "Host: id.myopenid.com\r\n" .
+                          "Connection: close\r\n" .
+                          "Accept-encoding: gzip, deflate\r\n" .
                           "User-Agent: Zend_OpenId\r\n\r\n",
-                          $http->getLastRequest());
+            $http->getLastRequest()
+        );
     }
-
 }

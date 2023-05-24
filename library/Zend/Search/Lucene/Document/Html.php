@@ -279,7 +279,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
      *
      * @param DOMText $node
      * @param array   $wordsToHighlight
-     * @param callback $callback   Callback method, used to transform (highlighting) text.
+     * @param callable $callback   Callback method, used to transform (highlighting) text.
      * @param array    $params     Array of additionall callback parameters (first non-optional parameter is a text to transform)
      * @throws Zend_Search_Lucene_Exception
      */
@@ -347,7 +347,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
      *
      * @param DOMNode $contextNode
      * @param array $wordsToHighlight
-     * @param callback $callback   Callback method, used to transform (highlighting) text.
+     * @param callable $callback   Callback method, used to transform (highlighting) text.
      * @param array    $params     Array of additionall callback parameters (first non-optional parameter is a text to transform)
      */
     protected function _highlightNodeRecursive(DOMNode $contextNode, $wordsToHighlight, $callback, $params)
@@ -405,7 +405,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
      * Highlight text using specified View helper or callback function.
      *
      * @param string|array $words  Words to highlight. Words could be organized using the array or string.
-     * @param callback $callback   Callback method, used to transform (highlighting) text.
+     * @param callable $callback   Callback method, used to transform (highlighting) text.
      * @param array    $params     Array of additionall callback parameters passed through into it
      *                             (first non-optional parameter is an HTML fragment for highlighting)
      * @return string

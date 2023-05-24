@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,14 +35,14 @@ require_once 'Zend/Queue/Stomp/Frame.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
-class Zend_Queue_Adapter_ActivemqOfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Queue_Adapter_ActivemqOfflineTest extends TestCase
 {
     /**
      * @group ZF-7948
      */
     public function testSubscribesOncePerQueue()
     {
-        $stompClient = new StompClientMock;
+        $stompClient = new StompClientMock();
         $options['driverOptions']['stompClient'] = $stompClient;
         $adapter = new Zend_Queue_Adapter_Activemq($options);
 
@@ -64,13 +67,16 @@ class StompClientMock extends Zend_Queue_Stomp_Client
     public $frameStack = [];
     public $responseStack = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         // spoof a successful connection in the response stack
-        $frame = new Zend_Queue_Stomp_Frame;
+        $frame = new Zend_Queue_Stomp_Frame();
         $frame->setCommand('CONNECTED');
         $this->responseStack[] = $frame;
     }
-    public function __destruct() {}
+    public function __destruct()
+    {
+    }
 
     public function send(Zend_Queue_Stomp_FrameInterface $frame)
     {
@@ -90,6 +96,6 @@ class StompClientMock extends Zend_Queue_Stomp_Client
 
     public function createFrame()
     {
-        return new Zend_Queue_Stomp_Frame;
+        return new Zend_Queue_Stomp_Frame();
     }
 }

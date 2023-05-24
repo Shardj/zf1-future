@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,7 +42,16 @@ class AllTests
 {
     public static function main()
     {
-        $parameters = [];
+        $parameters = [
+            'configuration' => __DIR__ . '/phpunit.xml',
+            'extensions' => [],
+            'unavailableExtensions' => [],
+            'loadedExtensions' => [],
+            'notLoadedExtensions' => [],
+            'colors' => 'always',
+            'verbose' => true,
+            // 'printer' => \PHPUnit\Util\TestDox\CliTestDoxPrinter::class
+        ];
 
         if (TESTS_GENERATE_REPORT && extension_loaded('xdebug')) {
             $parameters['reportDirectory'] = TESTS_GENERATE_REPORT_TARGET;
@@ -50,13 +63,13 @@ class AllTests
         }
 
         // Run buffered tests as a separate suite first
-        ob_start();
-        PHPUnit_TextUI_TestRunner::run(self::suiteBuffered(), $parameters);
-        if (ob_get_level()) {
-            ob_end_flush();
-        }
+        // ob_start();
+        // (new \PHPUnit\TextUI\TestRunner)->run(self::suiteBuffered(), $parameters);
+        // if (ob_get_level()) {
+        //     ob_end_flush();
+        // }
 
-        PHPUnit_TextUI_TestRunner::run(self::suite(), $parameters);
+        (new TestRunner())->run(self::suite(), $parameters);
     }
 
     /**
@@ -65,11 +78,11 @@ class AllTests
      * These tests require no output be sent prior to running as they rely
      * on internal PHP functions.
      *
-     * @return PHPUnit_Framework_TestSuite
+     * @return TestSuite
      */
     public static function suiteBuffered()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Buffered');
+        $suite = new TestSuite('Zend Framework - Buffered');
 
         $suite->addTest(Zend_AllTests::suiteBuffered());
 
@@ -81,11 +94,11 @@ class AllTests
      *
      * All tests except those that require output buffering.
      *
-     * @return PHPUnit_Framework_TestSuite
+     * @return TestSuite
      */
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework');
+        $suite = new TestSuite('Zend Framework');
 
         $suite->addTest(Zend_AllTests::suite());
         $suite->addTest(resources_AllTests::suite());

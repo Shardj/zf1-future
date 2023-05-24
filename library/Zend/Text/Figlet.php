@@ -461,7 +461,7 @@ class Zend_Text_Figlet
                     $nextChar = null;
                 }
 
-                $char = (ctype_space($nextChar)) ? "\n" : ' ';
+                $char = (ctype_space((string) $nextChar)) ? "\n" : ' ';
             }
 
             $lastCharWasEol = (ctype_space($char) && $char !== "\t" && $char !== ' ');

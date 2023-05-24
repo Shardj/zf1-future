@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,20 +34,29 @@ require_once 'Zend/Oauth/Http/RequestToken.php';
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Http
  */
-class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
+class Zend_Oauth_Http_RequestTokenTest extends TestCase
 {
+    /**
+     * @var \Test_Consumer_32874b|mixed
+     */
+    protected $stubConsumer2;
+
+    /**
+     * @var \Test_Http_Utility_32874|mixed
+     */
+    protected $stubHttpUtility;
 
     protected $stubConsumer = null;
 
-    public function setup()
+    protected function setUp(): void
     {
-        $this->stubConsumer = new Test_Consumer_32874;
-        $this->stubConsumer2 = new Test_Consumer_32874b;
-        $this->stubHttpUtility = new Test_Http_Utility_32874;
-        Zend_Oauth::setHttpClient(new Test_Client_32874);
+        $this->stubConsumer = new Test_Consumer_32874();
+        $this->stubConsumer2 = new Test_Consumer_32874b();
+        $this->stubHttpUtility = new Test_Http_Utility_32874();
+        Zend_Oauth::setHttpClient(new Test_Client_32874());
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         Zend_Oauth::clearHttpClient();
     }
@@ -57,8 +69,8 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorSetsCustomServiceParameters()
     {
-        $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, [1,2,3], $this->stubHttpUtility);
-        $this->assertEquals([1,2,3], $request->getParameters());
+        $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, [1, 2, 3], $this->stubHttpUtility);
+        $this->assertEquals([1, 2, 3], $request->getParameters());
     }
 
     public function testAssembleParametersCorrectlyAggregatesOauthParameters()
@@ -95,8 +107,8 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
     public function testAssembleParametersCorrectlyAggregatesCustomParameters()
     {
         $request = new Zend_Oauth_Http_RequestToken($this->stubConsumer, [
-            'custom_param1'=>'foo',
-            'custom_param2'=>'bar'
+            'custom_param1' => 'foo',
+            'custom_param2' => 'bar'
         ], $this->stubHttpUtility);
         $expectedParams = [
             'oauth_consumer_key' => '1234567890',
@@ -128,10 +140,10 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
         ];
         $client = $request->getRequestSchemeHeaderClient($params);
         $this->assertEquals(
-        'OAuth realm="",oauth_consumer_key="1234567890",oauth_nonce="e807f1fcf82d132f9b'
-        .'b018ca6738a19f",oauth_signature_method="HMAC-SHA1",oauth_timestamp="'
-        .'12345678901",oauth_version="1.0",oauth_callback_url='
-        .'"http%3A%2F%2Fwww.example.com%2Flocal",oauth_signature="6fb42da0e32e07b61c9f0251fe627a9c~"',
+            'OAuth realm="",oauth_consumer_key="1234567890",oauth_nonce="e807f1fcf82d132f9b'
+        . 'b018ca6738a19f",oauth_signature_method="HMAC-SHA1",oauth_timestamp="'
+        . '12345678901",oauth_version="1.0",oauth_callback_url='
+        . '"http%3A%2F%2Fwww.example.com%2Flocal",oauth_signature="6fb42da0e32e07b61c9f0251fe627a9c~"',
             $client->getHeader('Authorization')
         );
     }
@@ -153,10 +165,10 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
         $client = $request->getRequestSchemePostBodyClient($params);
         $this->assertEquals(
             'oauth_consumer_key=1234567890&oauth_nonce=e807f1fcf82d132f9bb018c'
-            .'a6738a19f&oauth_signature_method=HMAC-SHA1&oauth_timestamp=12345'
-            .'678901&oauth_version=1.0&oauth_callback_url=http%3A%2F%2Fwww.example.com%2Flocal'
-            .'&oauth_signature=6fb42da0e32e07b61c9f0251fe627a9c~'
-            .'&custom_param1=foo&custom_param2=bar',
+            . 'a6738a19f&oauth_signature_method=HMAC-SHA1&oauth_timestamp=12345'
+            . '678901&oauth_version=1.0&oauth_callback_url=http%3A%2F%2Fwww.example.com%2Flocal'
+            . '&oauth_signature=6fb42da0e32e07b61c9f0251fe627a9c~'
+            . '&custom_param1=foo&custom_param2=bar',
             $client->getRawData()
         );
     }
@@ -178,47 +190,92 @@ class Zend_Oauth_Http_RequestTokenTest extends PHPUnit_Framework_TestCase
         $client = $request->getRequestSchemeQueryStringClient($params, 'http://www.example.com');
         $this->assertEquals(
             'oauth_consumer_key=1234567890&oauth_nonce=e807f1fcf82d132f9bb018c'
-            .'a6738a19f&oauth_signature_method=HMAC-SHA1&oauth_timestamp=12345'
-            .'678901&oauth_version=1.0&oauth_callback_url=http%3A%2F%2Fwww.example.com%2Flocal'
-            .'&oauth_signature=6fb42da0e32e07b61c9f0251fe627a9c'
-            .'&custom_param1=foo&custom_param2=bar',
+            . 'a6738a19f&oauth_signature_method=HMAC-SHA1&oauth_timestamp=12345'
+            . '678901&oauth_version=1.0&oauth_callback_url=http%3A%2F%2Fwww.example.com%2Flocal'
+            . '&oauth_signature=6fb42da0e32e07b61c9f0251fe627a9c'
+            . '&custom_param1=foo&custom_param2=bar',
             $client->getUri()->getQuery()
         );
     }
-
 }
 
 class Test_Consumer_32874 extends Zend_Oauth_Consumer
 {
-    public function getConsumerKey(){return '1234567890';}
-    public function getSignatureMethod(){return 'HMAC-SHA1';}
-    public function getVersion(){return '1.0';}
-    public function getRequestTokenUrl(){return 'http://www.example.com/request';}
-    public function getCallbackUrl(){return 'http://www.example.com/local';}
+    public function getConsumerKey()
+    {
+        return '1234567890';
+    }
+    public function getSignatureMethod()
+    {
+        return 'HMAC-SHA1';
+    }
+    public function getVersion()
+    {
+        return '1.0';
+    }
+    public function getRequestTokenUrl()
+    {
+        return 'http://www.example.com/request';
+    }
+    public function getCallbackUrl()
+    {
+        return 'http://www.example.com/local';
+    }
 }
 
 class Test_Consumer_32874b extends Zend_Oauth_Consumer
 {
-    public function getConsumerKey(){return '1234567890';}
-    public function getSignatureMethod(){return 'HMAC-SHA1';}
-    public function getVersion(){return '1.0';}
-    public function getRequestTokenUrl(){return 'http://www.example.com/request';}
-    public function getCallbackUrl(){return null;}
+    public function getConsumerKey()
+    {
+        return '1234567890';
+    }
+    public function getSignatureMethod()
+    {
+        return 'HMAC-SHA1';
+    }
+    public function getVersion()
+    {
+        return '1.0';
+    }
+    public function getRequestTokenUrl()
+    {
+        return 'http://www.example.com/request';
+    }
+    public function getCallbackUrl()
+    {
+        return null;
+    }
 }
 
 class Test_Http_Utility_32874 extends Zend_Oauth_Http_Utility
 {
-    public function __construct(){}
-    public function generateNonce(){return md5('1234567890');}
-    public function generateTimestamp(){return '12345678901';}
-    public function sign(array $params, $signatureMethod, $consumerSecret,
-        $accessTokenSecret = null, $method = null, $url = null)
+    public function __construct()
     {
+    }
+    public function generateNonce()
+    {
+        return md5('1234567890');
+    }
+    public function generateTimestamp()
+    {
+        return '12345678901';
+    }
+    public function sign(
+        array $params,
+        $signatureMethod,
+        $consumerSecret,
+        $accessTokenSecret = null,
+        $method = null,
+        $url = null
+    ) {
         return md5('0987654321');
     }
 }
 
 class Test_Client_32874 extends Zend_Http_Client
 {
-    public function getRawData(){return $this->raw_post_data;}
+    public function getRawData()
+    {
+        return $this->raw_post_data;
+    }
 }

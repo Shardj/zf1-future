@@ -83,6 +83,9 @@ class Zend_Queue_Adapter_NullTest extends Zend_Queue_Adapter_AdapterTest
     }
 
     // test the constants
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConst()
     {
     }

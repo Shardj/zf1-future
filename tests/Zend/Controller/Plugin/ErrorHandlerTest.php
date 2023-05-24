@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -21,8 +26,7 @@
  */
 
 // Call Zend_Controller_Plugin_ErrorHandlerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD"))
-{
+if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_Plugin_ErrorHandlerTest::main");
     $basePath = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
     set_include_path(
@@ -54,7 +58,7 @@ require_once 'Zend/Controller/Front.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Plugin
  */
-class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Plugin_ErrorHandlerTest extends TestCase
 {
     /**
      * Request object
@@ -82,9 +86,8 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Plugin_ErrorHandlerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Controller_Plugin_ErrorHandlerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -93,12 +96,12 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         Zend_Controller_Front::getInstance()->resetInstance();
-        $this->request  = new Zend_Controller_Request_Http();
+        $this->request = new Zend_Controller_Request_Http();
         $this->response = new Zend_Controller_Response_Http();
-        $this->plugin   = new Zend_Controller_Plugin_ErrorHandler();
+        $this->plugin = new Zend_Controller_Plugin_ErrorHandler();
 
         $this->plugin->setRequest($this->request);
         $this->plugin->setResponse($this->response);
@@ -110,16 +113,16 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
     public function testSetErrorHandler()
     {
         $this->plugin->setErrorHandler([
-            'module'     => 'myfoo',
+            'module' => 'myfoo',
             'controller' => 'bar',
-            'action'     => 'boobaz',
+            'action' => 'boobaz',
         ]);
 
         $this->assertEquals('myfoo', $this->plugin->getErrorHandlerModule());
@@ -218,6 +221,9 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testPostDispatchDoesNothingWhenCalledRepeatedlyWithoutNewExceptions()
     {
         $this->response->setException(new Exception('Testing other exception'));
@@ -276,8 +282,6 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends PHPUnit_Framework_TestCase
 }
 
 // Call Zend_Controller_Plugin_ErrorHandlerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_ErrorHandlerTest::main")
-{
+if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_ErrorHandlerTest::main") {
     Zend_Controller_Plugin_ErrorHandlerTest::main();
 }
-

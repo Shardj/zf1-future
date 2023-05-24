@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/Alpha.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_AlphaTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_AlphaTest extends TestCase
 {
     /**
      * Zend_Validate_Alpha object
@@ -48,7 +51,7 @@ class Zend_Validate_AlphaTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_validator = new Zend_Validate_Alpha();
     }
@@ -61,15 +64,15 @@ class Zend_Validate_AlphaTest extends PHPUnit_Framework_TestCase
     public function testBasic()
     {
         $valuesExpected = [
-            'abc123'  => false,
+            'abc123' => false,
             'abc 123' => false,
-            'abcxyz'  => true,
+            'abcxyz' => true,
             'AZ@#4.3' => false,
-            'aBc123'  => false,
-            'aBcDeF'  => true,
-            ''        => false,
-            ' '       => false,
-            "\n"      => false
+            'aBc123' => false,
+            'aBcDeF' => true,
+            '' => false,
+            ' ' => false,
+            "\n" => false
             ];
         foreach ($valuesExpected as $input => $result) {
             $this->assertEquals($result, $this->_validator->isValid($input));
@@ -96,24 +99,24 @@ class Zend_Validate_AlphaTest extends PHPUnit_Framework_TestCase
         $this->_validator->setAllowWhiteSpace(true);
 
         $valuesExpected = [
-            'abc123'  => false,
+            'abc123' => false,
             'abc 123' => false,
-            'abcxyz'  => true,
+            'abcxyz' => true,
             'AZ@#4.3' => false,
-            'aBc123'  => false,
-            'aBcDeF'  => true,
-            ''        => false,
-            ' '       => true,
-            "\n"      => true,
-            " \t "    => true,
-            "a\tb c"  => true
+            'aBc123' => false,
+            'aBcDeF' => true,
+            '' => false,
+            ' ' => true,
+            "\n" => true,
+            " \t " => true,
+            "a\tb c" => true
             ];
         foreach ($valuesExpected as $input => $result) {
             $this->assertEquals(
                 $result,
                 $this->_validator->isValid($input),
                 "Expected '$input' to be considered " . ($result ? '' : 'in') . "valid"
-                );
+            );
         }
     }
 

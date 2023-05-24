@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,9 +34,14 @@ require_once 'Zend/Oauth/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Oauth
  */
-class Zend_Oauth_ConfigTest extends PHPUnit_Framework_TestCase
+class Zend_Oauth_ConfigTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var \Zend_Oauth_Config|mixed
+     */
+    protected $config;
+
+    protected function setUp(): void
     {
         $this->config = new Zend_Oauth_Config();
     }

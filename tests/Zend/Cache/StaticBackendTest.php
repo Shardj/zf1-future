@@ -25,8 +25,8 @@ require_once 'CommonBackendTest.php';
  * @package    Zend_Cache
  * @subpackage UnitTests
  */
-class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
-
+class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
+{
     protected $_instance;
     protected $_instance2;
     protected $_cache_dir;
@@ -38,14 +38,17 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         parent::__construct('Zend_Cache_Backend_Static', $data, $dataName);
     }
 
-    public function setUp($notag = false)
+    public function setUp($notag = false): void
     {
         $this->mkdir();
         $this->_cache_dir = $this->mkdir();
-        @mkdir($this->_cache_dir.'/tags');
+        @mkdir($this->_cache_dir . '/tags');
 
-        $this->_innerCache = Zend_Cache::factory('Core','File',
-            ['automatic_serialization'=>true], ['cache_dir'=>$this->_cache_dir.'/tags']
+        $this->_innerCache = Zend_Cache::factory(
+            'Core',
+            'File',
+            ['automatic_serialization' => true],
+            ['cache_dir' => $this->_cache_dir . '/tags']
         );
         $this->_instance = new Zend_Cache_Backend_Static([
             'public_dir' => $this->_cache_dir,
@@ -66,7 +69,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         $this->_instance->save('bar3 : data to cache', bin2hex('/bar3'), ['tag2', 'tag3']);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         unset($this->_instance);
@@ -74,6 +77,9 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         $this->rmdir();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Backend_Static([]);
@@ -89,7 +95,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
 
     public function testOptionsSetTagCache()
     {
-        $test = new Zend_Cache_Backend_Static(['tag_cache'=>$this->_innerCache]);
+        $test = new Zend_Cache_Backend_Static(['tag_cache' => $this->_innerCache]);
         $this->assertTrue($test->getInnerCache() instanceof Zend_Cache_Core);
     }
 
@@ -158,15 +164,9 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
      */
     public function testDirectoryUmaskTriggersError()
     {
-        try {
-            $this->_instance->setOption('cache_directory_umask', '777');
-            $this->fail();
-        } catch (PHPUnit_Framework_Error $e) {
-            $this->assertEquals(
-                "'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead",
-                $e->getMessage()
-            );
-        }
+        $this->expectNotice();
+        $this->expectNoticeMessage("'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead");
+        $this->_instance->setOption('cache_directory_umask', '777');
     }
 
     /**
@@ -174,15 +174,9 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
      */
     public function testFileUmaskTriggersError()
     {
-        try {
-            $this->_instance->setOption('cache_file_umask', '777');
-            $this->fail();
-        } catch (PHPUnit_Framework_Error $e) {
-            $this->assertEquals(
-                "'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead",
-                $e->getMessage()
-            );
-        }
+        $this->expectNotice();
+        $this->expectNoticeMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
+        $this->_instance->setOption('cache_file_umask', '777');
     }
 
     public function testSaveWithSpecificExtensionWithTag()
@@ -200,6 +194,9 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         $this->assertFalse($this->_instance->test(bin2hex('/foo3')));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTestWithAnExistingCacheId()
     {
         $res = $this->_instance->test(bin2hex('/bar'));
@@ -214,6 +211,9 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         $this->assertFalse($this->_instance->test(bin2hex('/barbar')));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTestWithAnExistingCacheIdAndANullLifeTime()
     {
         $this->_instance->setDirectives(['lifetime' => null]);
@@ -294,19 +294,24 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
         file_put_contents($pathFile, '<strong>foo</strong>');
 
         $this->_instance->removeRecursively($id);
-        $this->assertFileNotExists($pathFile);
-        $this->assertFileNotExists(dirname($pathFile));
+        $this->assertFileDoesNotExist($pathFile);
+        $this->assertFileDoesNotExist(dirname($pathFile));
         rmdir($this->_cache_dir . '/issues/');
     }
 
 
     // Irrelevant Tests (from common tests)
-
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGetWithAnExpiredCacheId()
     {
         $this->markTestSkipped('Irrelevant Test');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCleanModeOld()
     {
         $this->markTestSkipped('Irrelevant Test');
@@ -342,5 +347,4 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest {
             throw new Exception("no writable tmpdir found");
         }
     }
-
 }

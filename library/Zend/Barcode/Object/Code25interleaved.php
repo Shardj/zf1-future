@@ -81,7 +81,7 @@ class Zend_Barcode_Object_Code25interleaved extends Zend_Barcode_Object_Code25
         $quietZone       = $this->getQuietZone();
         $startCharacter  = (4 * $this->_barThinWidth) * $this->_factor;
         $characterLength = (3 * $this->_barThinWidth + 2 * $this->_barThickWidth) * $this->_factor;
-        $encodedData     = strlen($this->getText()) * $characterLength;
+        $encodedData     = strlen((string) $this->getText()) * $characterLength;
         $stopCharacter   = ($this->_barThickWidth + 2 * $this->_barThinWidth) * $this->_factor;
         return $quietZone + $startCharacter + $encodedData + $stopCharacter + $quietZone;
     }

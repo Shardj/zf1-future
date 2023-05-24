@@ -36,10 +36,8 @@ require_once 'Zend/Db/Statement/TestCommon.php';
  */
 class Zend_Db_Statement_OdbcTest extends Zend_Db_Statement_TestCommon
 {
-
     public function getDriver()
     {
         return 'Odbc';
     }
-
 }

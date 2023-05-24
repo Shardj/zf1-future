@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/Digits.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_DigitsTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_DigitsTest extends TestCase
 {
     /**
      * Zend_Validate_Digits object
@@ -48,7 +51,7 @@ class Zend_Validate_DigitsTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_validator = new Zend_Validate_Digits();
     }
@@ -61,15 +64,15 @@ class Zend_Validate_DigitsTest extends PHPUnit_Framework_TestCase
     public function testExpectedResultsWithBasicInputValues()
     {
         $valuesExpected = [
-            'abc123'  => false,
+            'abc123' => false,
             'abc 123' => false,
-            'abcxyz'  => false,
+            'abcxyz' => false,
             'AZ@#4.3' => false,
-            '1.23'    => false,
-            '0x9f'    => false,
-            '123'     => true,
-            '09'      => true,
-            ''        => false
+            '1.23' => false,
+            '0x9f' => false,
+            '123' => true,
+            '09' => true,
+            '' => false
             ];
         foreach ($valuesExpected as $input => $result) {
             $this->assertEquals($result, $this->_validator->isValid($input));

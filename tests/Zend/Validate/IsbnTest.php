@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Validate/Isbn.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Validate_IsbnTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_IsbnTest extends TestCase
 {
     /**
      * Ensures that the validator follows expected behavior
@@ -147,19 +150,19 @@ class Zend_Validate_IsbnTest extends PHPUnit_Framework_TestCase
      */
     public function testInitialization()
     {
-        $options = ['type'      => Zend_Validate_Isbn::AUTO,
+        $options = ['type' => Zend_Validate_Isbn::AUTO,
                          'separator' => ' '];
         $validator = new Zend_Validate_Isbn($options);
         $this->assertTrue($validator->getType() == Zend_Validate_Isbn::AUTO);
         $this->assertTrue($validator->getSeparator() == ' ');
 
-        $options = ['type'      => Zend_Validate_Isbn::ISBN10,
+        $options = ['type' => Zend_Validate_Isbn::ISBN10,
                          'separator' => '-'];
         $validator = new Zend_Validate_Isbn($options);
         $this->assertTrue($validator->getType() == Zend_Validate_Isbn::ISBN10);
         $this->assertTrue($validator->getSeparator() == '-');
 
-        $options = ['type'      => Zend_Validate_Isbn::ISBN13,
+        $options = ['type' => Zend_Validate_Isbn::ISBN13,
                          'separator' => ''];
         $validator = new Zend_Validate_Isbn($options);
         $this->assertTrue($validator->getType() == Zend_Validate_Isbn::ISBN13);

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/Int.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_IntTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_IntTest extends TestCase
 {
     /**
      * Zend_Validate_Int object
@@ -48,7 +51,7 @@ class Zend_Validate_IntTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_validator = new Zend_Validate_Int();
     }
@@ -75,8 +78,11 @@ class Zend_Validate_IntTest extends PHPUnit_Framework_TestCase
             ];
 
         foreach ($valuesExpected as $element) {
-            $this->assertEquals($element[1], $this->_validator->isValid($element[0]),
-                'Test failed with ' . var_export($element, 1));
+            $this->assertEquals(
+                $element[1],
+                $this->_validator->isValid($element[0]),
+                'Test failed with ' . var_export($element, 1)
+            );
         }
     }
 

@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class IndexController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for indexAction
      *
@@ -45,5 +44,4 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
     }
-
 }

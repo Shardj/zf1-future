@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,7 +44,7 @@ require_once 'Zend/Validate/Identical.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_IdenticalTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_IdenticalTest extends TestCase
 {
     /**
      * @var Zend_Validate_Identical
@@ -48,13 +53,13 @@ class Zend_Validate_IdenticalTest extends PHPUnit_Framework_TestCase
 
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_IdenticalTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Validate_IdenticalTest');
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->validator = new Zend_Validate_Identical;
+        $this->validator = new Zend_Validate_Identical();
     }
 
     public function testTokenInitiallyNull()

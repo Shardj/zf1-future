@@ -41,21 +41,21 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
      */
     private $_schema;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->_schema=$this->_getLdap()->getSchema();
+        $this->_schema = $this->_getLdap()->getSchema();
     }
 
     public function testSchemaNode()
     {
-        $schema=$this->_getLdap()->getSchema();
+        $schema = $this->_getLdap()->getSchema();
 
         $this->assertEquals($this->_schema, $schema);
         $this->assertSame($this->_schema, $schema);
 
-        $serial=serialize($this->_schema);
-        $schemaUn=unserialize($serial);
+        $serial = serialize($this->_schema);
+        $schemaUn = unserialize($serial);
         $this->assertEquals($this->_schema, $schemaUn);
         $this->assertNotSame($this->_schema, $schemaUn);
     }
@@ -78,36 +78,28 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         }
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testSetterWillThrowException()
     {
-          $this->_schema->objectClass='illegal';
+        $this->expectException(BadMethodCallException::class);
+        $this->_schema->objectClass = 'illegal';
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testOffsetSetWillThrowException()
     {
-          $this->_schema['objectClass']='illegal';
+        $this->expectException(BadMethodCallException::class);
+        $this->_schema['objectClass'] = 'illegal';
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testUnsetterWillThrowException()
     {
-          unset($this->_schema->objectClass);
+        $this->expectException(BadMethodCallException::class);
+        unset($this->_schema->objectClass);
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testOffsetUnsetWillThrowException()
     {
-          unset($this->_schema['objectClass']);
+        $this->expectException(BadMethodCallException::class);
+        unset($this->_schema['objectClass']);
     }
 
     public function testOpenLdapSchema()
@@ -117,11 +109,11 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             $this->markTestSkipped('Test can only be run on an OpenLDAP server');
         }
 
-        $objectClasses=$this->_schema->getObjectClasses();
-        $attributeTypes=$this->_schema->getAttributeTypes();
+        $objectClasses = $this->_schema->getObjectClasses();
+        $attributeTypes = $this->_schema->getAttributeTypes();
 
         $this->assertArrayHasKey('organizationalUnit', $objectClasses);
-        $ou=$objectClasses['organizationalUnit'];
+        $ou = $objectClasses['organizationalUnit'];
         $this->assertTrue($ou instanceof Zend_Ldap_Node_Schema_ObjectClass_OpenLdap);
         $this->assertEquals('organizationalUnit', $ou->getName());
         $this->assertEquals('2.5.6.5', $ou->getOid());
@@ -162,7 +154,7 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertSame($objectClasses['top'], $ou->_parents[0]);
 
         $this->assertArrayHasKey('ou', $attributeTypes);
-        $ou=$attributeTypes['ou'];
+        $ou = $attributeTypes['ou'];
         $this->assertTrue($ou instanceof Zend_Ldap_Node_Schema_AttributeType_OpenLdap);
         $this->assertEquals('ou', $ou->getName());
         $this->assertEquals('2.5.4.11', $ou->getOid());
@@ -198,8 +190,8 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             $this->markTestSkipped('Test can only be run on an Active Directory server');
         }
 
-        $objectClasses=$this->_schema->getObjectClasses();
-        $attributeTypes=$this->_schema->getAttributeTypes();
+        $objectClasses = $this->_schema->getObjectClasses();
+        $attributeTypes = $this->_schema->getAttributeTypes();
     }
 
     public function testeDirectorySchema()
@@ -218,10 +210,10 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             $this->markTestSkipped('Test can only be run on an OpenLDAP server');
         }
 
-        $attributeTypes=$this->_schema->getAttributeTypes();
+        $attributeTypes = $this->_schema->getAttributeTypes();
 
-        $name=$attributeTypes['name'];
-        $cn=$attributeTypes['cn'];
+        $name = $attributeTypes['name'];
+        $cn = $attributeTypes['cn'];
 
         $this->assertEquals('2.5.4.41', $name->getOid());
         $this->assertEquals('2.5.4.3', $cn->getOid());
@@ -252,15 +244,15 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             $this->markTestSkipped('Test can only be run on an OpenLDAP server');
         }
 
-        $objectClasses=$this->_schema->getObjectClasses();
+        $objectClasses = $this->_schema->getObjectClasses();
 
         if (!array_key_exists('certificationAuthority', $objectClasses) ||
                 !array_key_exists('certificationAuthority-V2', $objectClasses)) {
             $this->markTestSkipped('This requires OpenLDAP core schema');
         }
 
-        $ca=$objectClasses['certificationAuthority'];
-        $ca2=$objectClasses['certificationAuthority-V2'];
+        $ca = $objectClasses['certificationAuthority'];
+        $ca2 = $objectClasses['certificationAuthority-V2'];
 
         $this->assertEquals('2.5.6.16', $ca->getOid());
         $this->assertEquals('2.5.6.16.2', $ca2->getOid());
@@ -278,8 +270,10 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
         $this->assertEquals(['authorityRevocationList', 'cACertificate',
             'certificateRevocationList', 'objectClass'], $ca2->getMustContain());
         $this->assertEquals(['deltaRevocationList'], $ca2->may);
-        $this->assertEquals(['crossCertificatePair', 'deltaRevocationList'],
-            $ca2->getMayContain());
+        $this->assertEquals(
+            ['crossCertificatePair', 'deltaRevocationList'],
+            $ca2->getMayContain()
+        );
     }
 
     public function testOpenLdapSchemaAttributeTypeAliases()
@@ -289,11 +283,11 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             $this->markTestSkipped('Test can only be run on an OpenLDAP server');
         }
 
-        $attributeTypes=$this->_schema->getAttributeTypes();
+        $attributeTypes = $this->_schema->getAttributeTypes();
         $this->assertArrayHasKey('cn', $attributeTypes);
         $this->assertArrayHasKey('commonName', $attributeTypes);
-        $ob1=$attributeTypes['cn'];
-        $ob2=$attributeTypes['commonName'];
+        $ob1 = $attributeTypes['cn'];
+        $ob2 = $attributeTypes['commonName'];
         $this->assertSame($ob1, $ob2);
     }
 
@@ -304,11 +298,11 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
             $this->markTestSkipped('Test can only be run on an OpenLDAP server');
         }
 
-        $objectClasses=$this->_schema->getObjectClasses();
+        $objectClasses = $this->_schema->getObjectClasses();
         $this->assertArrayHasKey('OpenLDAProotDSE', $objectClasses);
         $this->assertArrayHasKey('LDAProotDSE', $objectClasses);
-        $ob1=$objectClasses['OpenLDAProotDSE'];
-        $ob2=$objectClasses['LDAProotDSE'];
+        $ob1 = $objectClasses['OpenLDAProotDSE'];
+        $ob2 = $objectClasses['LDAProotDSE'];
         $this->assertSame($ob1, $ob2);
     }
 }

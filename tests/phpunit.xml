@@ -1,13 +1,16 @@
-<phpunit bootstrap="./TestHelper.php">
-    <testsuite name="Zend Framework - Testsuite">
-        <directory>./</directory>
-    </testsuite>
-
-    <!-- Enable this for proper unit testing code coverage reports
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../library/Zend</directory>
-        </whitelist>
-    </filter>
-    -->
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    bootstrap="./TestHelper.php" 
+    colors="true"
+    verbose="true"
+    cacheResult="false"
+    convertDeprecationsToExceptions="false"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions = "true"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd">
+  <coverage/>
+  <testsuite name="Zend Framework - Testsuite">
+    <directory>./Zend/AllTests.php</directory>
+  </testsuite>
 </phpunit>

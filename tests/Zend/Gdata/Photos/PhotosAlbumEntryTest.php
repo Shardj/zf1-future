@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,19 +37,19 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Photos
  */
-class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Photos_PhotosAlbumEntryTest extends TestCase
 {
-
     protected $albumEntry = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $albumEntryText = file_get_contents(
-                '_files/TestAlbumEntry.xml',
-                true);
+            '_files/TestAlbumEntry.xml',
+            true
+        );
         $this->albumEntry = new Zend_Gdata_Photos_AlbumEntry($albumEntryText);
     }
 
@@ -137,8 +140,12 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's ID is correct
         $this->assertTrue($entry->getId() instanceof Zend_Gdata_App_Extension_Id);
-        $this->verifyProperty2($entry, "id", "text",
-                "http://picasaweb.google.com/data/entry/api/user/sample.user/albumid/1");
+        $this->verifyProperty2(
+            $entry,
+            "id",
+            "text",
+            "http://picasaweb.google.com/data/entry/api/user/sample.user/albumid/1"
+        );
     }
 
     /**
@@ -164,8 +171,12 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's updated date is correct
         $this->assertTrue($entry->getUpdated() instanceof Zend_Gdata_App_Extension_Updated);
-        $this->verifyProperty2($entry, "updated", "text",
-                "2007-09-05T20:49:24.000Z");
+        $this->verifyProperty2(
+            $entry,
+            "updated",
+            "text",
+            "2007-09-05T20:49:24.000Z"
+        );
     }
 
     /**
@@ -191,10 +202,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoUser() instanceof Zend_Gdata_Photos_Extension_User);
-        $this->verifyProperty2($entry, "gphotoUser", "text",
-                "sample.user");
-        $this->verifyProperty3($entry, "gphotoUser", "text",
-                "sample.user");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoUser",
+            "text",
+            "sample.user"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoUser",
+            "text",
+            "sample.user"
+        );
     }
 
     /**
@@ -207,10 +226,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoNickname() instanceof Zend_Gdata_Photos_Extension_Nickname);
-        $this->verifyProperty2($entry, "gphotoNickname", "text",
-                "sample");
-        $this->verifyProperty3($entry, "gphotoNickname", "text",
-                "sample");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoNickname",
+            "text",
+            "sample"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoNickname",
+            "text",
+            "sample"
+        );
     }
 
     /**
@@ -223,10 +250,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoName() instanceof Zend_Gdata_Photos_Extension_Name);
-        $this->verifyProperty2($entry, "gphotoName", "text",
-                "Test");
-        $this->verifyProperty3($entry, "gphotoName", "text",
-                "Test");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoName",
+            "text",
+            "Test"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoName",
+            "text",
+            "Test"
+        );
     }
 
     /**
@@ -239,10 +274,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoId() instanceof Zend_Gdata_Photos_Extension_Id);
-        $this->verifyProperty2($entry, "gphotoId", "text",
-                "1");
-        $this->verifyProperty3($entry, "gphotoId", "text",
-                "1");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoId",
+            "text",
+            "1"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoId",
+            "text",
+            "1"
+        );
     }
 
     /**
@@ -255,8 +298,12 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoLocation() instanceof Zend_Gdata_Photos_Extension_Location);
-        $this->verifyProperty2($entry, "gphotoLocation", "text",
-                "");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoLocation",
+            "text",
+            ""
+        );
     }
 
     /**
@@ -269,10 +316,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoAccess() instanceof Zend_Gdata_Photos_Extension_Access);
-        $this->verifyProperty2($entry, "gphotoAccess", "text",
-                "public");
-        $this->verifyProperty3($entry, "gphotoAccess", "text",
-                "public");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoAccess",
+            "text",
+            "public"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoAccess",
+            "text",
+            "public"
+        );
     }
 
     /**
@@ -285,10 +340,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoTimestamp() instanceof Zend_Gdata_Photos_Extension_Timestamp);
-        $this->verifyProperty2($entry, "gphotoTimestamp", "text",
-                "1188975600000");
-        $this->verifyProperty3($entry, "gphotoTimestamp", "text",
-                "1188975600000");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoTimestamp",
+            "text",
+            "1188975600000"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoTimestamp",
+            "text",
+            "1188975600000"
+        );
     }
 
     /**
@@ -301,10 +364,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoNumPhotos() instanceof Zend_Gdata_Photos_Extension_NumPhotos);
-        $this->verifyProperty2($entry, "gphotoNumPhotos", "text",
-                "2");
-        $this->verifyProperty3($entry, "gphotoNumPhotos", "text",
-                "2");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoNumPhotos",
+            "text",
+            "2"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoNumPhotos",
+            "text",
+            "2"
+        );
     }
 
     /**
@@ -317,10 +388,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoCommentingEnabled() instanceof Zend_Gdata_Photos_Extension_CommentingEnabled);
-        $this->verifyProperty2($entry, "gphotoCommentingEnabled", "text",
-                "true");
-        $this->verifyProperty3($entry, "gphotoCommentingEnabled", "text",
-                "true");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoCommentingEnabled",
+            "text",
+            "true"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoCommentingEnabled",
+            "text",
+            "true"
+        );
     }
 
     /**
@@ -333,10 +412,18 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
 
         // Assert that the entry's title is correct
         $this->assertTrue($entry->getGphotoCommentCount() instanceof Zend_Gdata_Photos_Extension_CommentCount);
-        $this->verifyProperty2($entry, "gphotoCommentCount", "text",
-                "0");
-        $this->verifyProperty3($entry, "gphotoCommentCount", "text",
-                "0");
+        $this->verifyProperty2(
+            $entry,
+            "gphotoCommentCount",
+            "text",
+            "0"
+        );
+        $this->verifyProperty3(
+            $entry,
+            "gphotoCommentCount",
+            "text",
+            "0"
+        );
     }
 
     /**
@@ -360,5 +447,4 @@ class Zend_Gdata_Photos_PhotosAlbumEntryTest extends PHPUnit_Framework_TestCase
         $pos = $point->pos;
         $this->assertEquals("42.87194 13.56738", $pos->text);
     }
-
 }

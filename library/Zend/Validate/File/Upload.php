@@ -125,11 +125,11 @@ class Zend_Validate_File_Upload extends Zend_Validate_Abstract
      * Sets the files to be checked
      *
      * @param  array $files The files to check in syntax of Zend_File_Transfer
-     * @return Zend_Validate_File_Upload Provides a fluent interface
+     * @return $this
      */
     public function setFiles($files = [])
     {
-        if (count($files) === 0) {
+        if (count($files ?? []) === 0) {
             $this->_files = $_FILES;
         } else {
             $this->_files = $files;

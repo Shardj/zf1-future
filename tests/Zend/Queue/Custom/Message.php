@@ -45,7 +45,8 @@ class Custom_Message extends Zend_Queue_Message
     /**
      * We adjusted the constructor to accept both an array and an object.
      */
-    public function __construct($mixed) {
+    public function __construct($mixed)
+    {
         // we still have to support the code in Zend_Queue::receive that
         // passes in an array
         if (is_array($mixed)) {
@@ -61,7 +62,8 @@ class Custom_Message extends Zend_Queue_Message
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->_data['body'];
     }
 

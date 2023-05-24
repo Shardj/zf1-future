@@ -37,4 +37,5 @@ require_once 'Zend/Db/Table/Row/Abstract.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class My_ZendDbTable_Row_TestMyRow extends Zend_Db_Table_Row_Abstract
-{}
+{
+}

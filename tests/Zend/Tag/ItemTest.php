@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -35,12 +40,12 @@ require_once 'Zend/Tag/Item.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Tag
  */
-class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
+class Zend_Tag_ItemTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testConstuctor()
@@ -118,7 +123,9 @@ class Zend_Tag_ItemTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($e->getMessage(), 'Weight must be numeric');
         }
     }
-
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSkipOptions()
     {
         $tag = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1, 'param' => 'foobar']);

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,20 +39,19 @@ require_once 'Zend/Tool/Framework/Manifest/Metadata.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Manifest
  */
-class Zend_Tool_Framework_Manifest_MetadataTest extends PHPUnit_Framework_TestCase
+class Zend_Tool_Framework_Manifest_MetadataTest extends TestCase
 {
-
     /**
      * @var Zend_Tool_Framework_Manifest_Metadata
      */
     protected $_metadata = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_metadata = new Zend_Tool_Framework_Manifest_Metadata();
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_metadata = null;
     }
@@ -135,7 +137,6 @@ class Zend_Tool_Framework_Manifest_MetadataTest extends PHPUnit_Framework_TestCa
         $this->assertEquals('Foo', $attributes['name']);
         $this->assertEquals('(null)', $attributes['value']);
         $this->assertEquals('(object)', $attributes['reference']);
-
     }
 
     public function testMetadataObjectCanCastToStringRepresentation()
@@ -150,5 +151,4 @@ class Zend_Tool_Framework_Manifest_MetadataTest extends PHPUnit_Framework_TestCa
 
         $this->assertEquals('Type: Global, Name: Foo, Value: Bar', (string) $this->_metadata);
     }
-
 }

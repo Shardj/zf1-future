@@ -113,7 +113,7 @@ class Zend_Text_Table_Row
      * Get the widths of all columns, which were rendered last
      *
      * @return array|null
-     *@throws Zend_Text_Table_Exception When no columns were rendered yet
+     * @throws Zend_Text_Table_Exception When no columns were rendered yet
      */
     public function getColumnWidths()
     {

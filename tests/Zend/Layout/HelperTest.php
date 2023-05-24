@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,7 +45,7 @@ require_once 'Zend/Controller/Action/HelperBroker.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Layout
  */
-class Zend_Layout_HelperTest extends PHPUnit_Framework_TestCase
+class Zend_Layout_HelperTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -49,9 +54,8 @@ class Zend_Layout_HelperTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Layout_HelperTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Layout_HelperTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -60,7 +64,7 @@ class Zend_Layout_HelperTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Layout_HelperTest_Layout::resetMvcInstance();
         Zend_Controller_Front::getInstance()->resetInstance();
@@ -78,7 +82,7 @@ class Zend_Layout_HelperTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -131,7 +135,7 @@ class Zend_Layout_HelperTest extends PHPUnit_Framework_TestCase
         $helper = new Zend_Layout_Controller_Action_Helper_Layout();
 
         $helper->setOptions([
-            'layout'     => 'foo.phtml',
+            'layout' => 'foo.phtml',
             'layoutPath' => dirname(__FILE__) . '/_files/layouts',
             'contentKey' => 'foo'
         ]);

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/InArray.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_InArrayTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_InArrayTest extends TestCase
 {
     /**
      * Ensures that the validator follows expected behavior
@@ -139,7 +142,7 @@ class Zend_Validate_InArrayTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_InArray(
             [
                 'haystack' => ['test', 0, 'A'],
-                'strict'   => true
+                'strict' => true
             ]
         );
         $this->assertTrue($validator->getStrict());
@@ -158,7 +161,7 @@ class Zend_Validate_InArrayTest extends PHPUnit_Framework_TestCase
     {
         $validator = new Zend_Validate_InArray(
             [
-                'haystack'  => ['test', 0, 'A'],
+                'haystack' => ['test', 0, 'A'],
                 'recursive' => true
             ]
         );
@@ -169,7 +172,7 @@ class Zend_Validate_InArrayTest extends PHPUnit_Framework_TestCase
     {
         $validator = new Zend_Validate_InArray(
             [
-                'haystack'  =>
+                'haystack' =>
                     [
                         'firstDimension' => ['test', 0, 'A'],
                         'secondDimension' => ['value', 2, 'a']],
@@ -220,7 +223,7 @@ class Zend_Validate_InArrayTest extends PHPUnit_Framework_TestCase
         ];
         $validator = new Zend_Validate_InArray(['a']);
         $validator->isValid($input);
-        $messages  = $validator->getMessages();
+        $messages = $validator->getMessages();
         $this->assertEquals(
             "'x, y' was not found in the haystack",
             current($messages)

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Pdf/Element/String.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
-class Zend_Pdf_Element_StringTest extends PHPUnit_Framework_TestCase
+class Zend_Pdf_Element_StringTest extends TestCase
 {
     public function testPDFString()
     {
@@ -50,7 +53,7 @@ class Zend_Pdf_Element_StringTest extends PHPUnit_Framework_TestCase
     public function testToString()
     {
         $stringObj = new Zend_Pdf_Element_String('some text ()');
-        $this->assertEquals($stringObj->toString(), '(some text \\(\\))' );
+        $this->assertEquals($stringObj->toString(), '(some text \\(\\))');
     }
 
     public function testEscape()
@@ -60,8 +63,10 @@ class Zend_Pdf_Element_StringTest extends PHPUnit_Framework_TestCase
 
     public function testUnescape()
     {
-        $this->assertEquals(Zend_Pdf_Element_String::unescape("\\n\\r\\t\\b\\f\\(\\)\\\\  \nsome \\\ntext"),
-                            "\n\r\t\x08\x0C()\\  \nsome text");
+        $this->assertEquals(
+            Zend_Pdf_Element_String::unescape("\\n\\r\\t\\b\\f\\(\\)\\\\  \nsome \\\ntext"),
+            "\n\r\t\x08\x0C()\\  \nsome text"
+        );
     }
 
     /**
@@ -75,8 +80,11 @@ class Zend_Pdf_Element_StringTest extends PHPUnit_Framework_TestCase
             0334 => '\\334'
         ];
         foreach ($input as $k => $v) {
-            $this->assertEquals(Zend_Pdf_Element_String::unescape($v),
-                chr($k), 'expected German Umlaut');
+            $this->assertEquals(
+                Zend_Pdf_Element_String::unescape($v),
+                chr($k),
+                'expected German Umlaut'
+            );
         }
     }
 }

@@ -53,7 +53,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
     /**
      * Test setup
      */
-    public function setUp()
+    protected function setUp(): void
     {
         if (!TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED) {
             $this->markTestSkipped('TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED is not enabled in TestConfiguration.php');

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,39 +35,55 @@ require_once 'Zend/Gdata.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_OpenSearch
  */
-class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_OpenSearchItemsPerPageTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $openSearchItemsPerPageText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_OpenSearchItemsPerPage|mixed
+     */
+    protected $openSearchItemsPerPage;
+
+    protected function setUp(): void
+    {
         $this->openSearchItemsPerPageText = file_get_contents(
-                'Zend/Gdata/_files/OpenSearchItemsPerPageElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/OpenSearchItemsPerPageElementSample1.xml',
+            true
+        );
         $this->openSearchItemsPerPage = new Zend_Gdata_Extension_OpenSearchItemsPerPage();
     }
 
-    public function testEmptyOpenSearchItemsPerPageShouldHaveNoExtensionElements() {
+    public function testEmptyOpenSearchItemsPerPageShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->openSearchItemsPerPage->extensionElements));
         $this->assertTrue(count($this->openSearchItemsPerPage->extensionElements) == 0);
     }
 
-    public function testEmptyOpenSearchItemsPerPageShouldHaveNoExtensionAttributes() {
+    public function testEmptyOpenSearchItemsPerPageShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->openSearchItemsPerPage->extensionAttributes));
         $this->assertTrue(count($this->openSearchItemsPerPage->extensionAttributes) == 0);
     }
 
-    public function testSampleOpenSearchItemsPerPageShouldHaveNoExtensionElements() {
+    public function testSampleOpenSearchItemsPerPageShouldHaveNoExtensionElements()
+    {
         $this->openSearchItemsPerPage->transferFromXML($this->openSearchItemsPerPageText);
         $this->assertTrue(is_array($this->openSearchItemsPerPage->extensionElements));
         $this->assertTrue(count($this->openSearchItemsPerPage->extensionElements) == 0);
     }
 
-    public function testSampleOpenSearchItemsPerPageShouldHaveNoExtensionAttributes() {
+    public function testSampleOpenSearchItemsPerPageShouldHaveNoExtensionAttributes()
+    {
         $this->openSearchItemsPerPage->transferFromXML($this->openSearchItemsPerPageText);
         $this->assertTrue(is_array($this->openSearchItemsPerPage->extensionAttributes));
         $this->assertTrue(count($this->openSearchItemsPerPage->extensionAttributes) == 0);
     }
 
-    public function testNormalOpenSearchItemsPerPageShouldHaveNoExtensionElements() {
+    public function testNormalOpenSearchItemsPerPageShouldHaveNoExtensionElements()
+    {
         $this->openSearchItemsPerPage->text = "200";
 
         $this->assertEquals("200", $this->openSearchItemsPerPage->text);
@@ -86,7 +105,8 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("200", $newOpenSearchItemsPerPage2->text);
     }
 
-    public function testEmptyOpenSearchItemsPerPageToAndFromStringShouldMatch() {
+    public function testEmptyOpenSearchItemsPerPageToAndFromStringShouldMatch()
+    {
         $openSearchItemsPerPageXml = $this->openSearchItemsPerPage->saveXML();
         $newOpenSearchItemsPerPage = new Zend_Gdata_Extension_OpenSearchItemsPerPage();
         $newOpenSearchItemsPerPage->transferFromXML($openSearchItemsPerPageXml);
@@ -94,7 +114,8 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($openSearchItemsPerPageXml == $newOpenSearchItemsPerPageXml);
     }
 
-    public function testOpenSearchItemsPerPageWithValueToAndFromStringShouldMatch() {
+    public function testOpenSearchItemsPerPageWithValueToAndFromStringShouldMatch()
+    {
         $this->openSearchItemsPerPage->text = "200";
         $openSearchItemsPerPageXml = $this->openSearchItemsPerPage->saveXML();
         $newOpenSearchItemsPerPage = new Zend_Gdata_Extension_OpenSearchItemsPerPage();
@@ -104,10 +125,11 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("200", $this->openSearchItemsPerPage->text);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->openSearchItemsPerPage->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->openSearchItemsPerPage->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->openSearchItemsPerPage->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->openSearchItemsPerPage->extensionAttributes['foo2']['value']);
@@ -118,9 +140,9 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newOpenSearchItemsPerPage->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullOpenSearchItemsPerPageToAndFromString() {
+    public function testConvertFullOpenSearchItemsPerPageToAndFromString()
+    {
         $this->openSearchItemsPerPage->transferFromXML($this->openSearchItemsPerPageText);
         $this->assertEquals("25", $this->openSearchItemsPerPage->text);
     }
-
 }

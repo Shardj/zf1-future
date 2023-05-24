@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,38 +35,48 @@ require_once 'Zend/Gdata/Gapps/EmailListRecipientFeed.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_EmailListRecipientFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_EmailListRecipientFeedTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_EmailListRecipientFeed|mixed
+     */
+    protected $emptyEmailListRecipientFeed;
+
     protected $emailListRecipientFeed = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $emailListRecipientFeedText = file_get_contents(
-                'Zend/Gdata/Gapps/_files/EmailListRecipientFeedDataSample1.xml',
-                true);
+            'Zend/Gdata/Gapps/_files/EmailListRecipientFeedDataSample1.xml',
+            true
+        );
         $this->emailListRecipientFeed = new Zend_Gdata_Gapps_EmailListRecipientFeed($emailListRecipientFeedText);
         $this->emptyEmailListRecipientFeed = new Zend_Gdata_Gapps_EmailListRecipientFeed();
     }
 
-    public function testEmptyFeedShouldHaveNoExtensionElements() {
+    public function testEmptyFeedShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->emptyEmailListRecipientFeed->extensionElements));
         $this->assertTrue(count($this->emptyEmailListRecipientFeed->extensionElements) == 0);
     }
 
-    public function testEmptyFeedShouldHaveNoExtensionAttributes() {
+    public function testEmptyFeedShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->emptyEmailListRecipientFeed->extensionAttributes));
         $this->assertTrue(count($this->emptyEmailListRecipientFeed->extensionAttributes) == 0);
     }
 
-    public function testSampleFeedShouldHaveNoExtensionElements() {
+    public function testSampleFeedShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->emailListRecipientFeed->extensionElements));
         $this->assertTrue(count($this->emailListRecipientFeed->extensionElements) == 0);
     }
 
-    public function testSampleFeedShouldHaveNoExtensionAttributes() {
+    public function testSampleFeedShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->emailListRecipientFeed->extensionAttributes));
         $this->assertTrue(count($this->emailListRecipientFeed->extensionAttributes) == 0);
     }
@@ -83,7 +96,8 @@ class Zend_Gdata_Gapps_EmailListRecipientFeedTest extends PHPUnit_Framework_Test
 
         /* Grab XML from $this->emailListRecipientFeed and convert back to objects */
         $newEmailListRecipientFeed = new Zend_Gdata_Gapps_EmailListRecipientFeed(
-                $this->emailListRecipientFeed->saveXML());
+            $this->emailListRecipientFeed->saveXML()
+        );
         $newEntryCount = 0;
         foreach ($newEmailListRecipientFeed as $entry) {
             $newEntryCount++;
@@ -105,5 +119,4 @@ class Zend_Gdata_Gapps_EmailListRecipientFeedTest extends PHPUnit_Framework_Test
         }
         $this->assertEquals(2, $entryCount);
     }
-
 }

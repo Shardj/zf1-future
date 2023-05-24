@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,55 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_WhoTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $whoText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_Who|mixed
+     */
+    protected $who;
+
+    protected function setUp(): void
+    {
         $this->whoText = file_get_contents(
-                'Zend/Gdata/_files/WhoElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/WhoElementSample1.xml',
+            true
+        );
         $this->who = new Zend_Gdata_Extension_Who();
     }
 
-    public function testEmptyWhoShouldHaveNoExtensionElements() {
+    public function testEmptyWhoShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->who->extensionElements));
         $this->assertTrue(count($this->who->extensionElements) == 0);
     }
 
-    public function testEmptyWhoShouldHaveNoExtensionAttributes() {
+    public function testEmptyWhoShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->who->extensionAttributes));
         $this->assertTrue(count($this->who->extensionAttributes) == 0);
     }
 
-    public function testSampleWhoShouldHaveNoExtensionElements() {
+    public function testSampleWhoShouldHaveNoExtensionElements()
+    {
         $this->who->transferFromXML($this->whoText);
         $this->assertTrue(is_array($this->who->extensionElements));
         $this->assertTrue(count($this->who->extensionElements) == 0);
     }
 
-    public function testSampleWhoShouldHaveNoExtensionAttributes() {
+    public function testSampleWhoShouldHaveNoExtensionAttributes()
+    {
         $this->who->transferFromXML($this->whoText);
         $this->assertTrue(is_array($this->who->extensionAttributes));
         $this->assertTrue(count($this->who->extensionAttributes) == 0);
     }
 
-    public function testNormalWhoShouldHaveNoExtensionElements() {
+    public function testNormalWhoShouldHaveNoExtensionElements()
+    {
         $this->who->valueString = "Test Value String";
         $this->who->rel = "http://schemas.google.com/g/2005#event.speaker";
         $this->who->email = "testemail@somewhere.domain.invalid";
@@ -93,7 +112,8 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("testemail@somewhere.domain.invalid", $newWho2->email);
     }
 
-    public function testEmptyWhoToAndFromStringShouldMatch() {
+    public function testEmptyWhoToAndFromStringShouldMatch()
+    {
         $whoXml = $this->who->saveXML();
         $newWho = new Zend_Gdata_Extension_Who();
         $newWho->transferFromXML($whoXml);
@@ -101,7 +121,8 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($whoXml == $newWhoXml);
     }
 
-    public function testWhoWithValueToAndFromStringShouldMatch() {
+    public function testWhoWithValueToAndFromStringShouldMatch()
+    {
         $this->who->valueString = "Test Value String";
         $this->who->rel = "http://schemas.google.com/g/2005#event.speaker";
         $this->who->email = "testemail@somewhere.domain.invalid";
@@ -115,10 +136,11 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("testemail@somewhere.domain.invalid", $this->who->email);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->who->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->who->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->who->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->who->extensionAttributes['foo2']['value']);
@@ -129,7 +151,8 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newWho->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullWhoToAndFromString() {
+    public function testConvertFullWhoToAndFromString()
+    {
         $this->who->transferFromXML($this->whoText);
         $this->assertEquals("Jo", $this->who->valueString);
         $this->assertEquals("http://schemas.google.com/g/2005#event.attendee", $this->who->rel);
@@ -141,5 +164,4 @@ class Zend_Gdata_WhoTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->who->entryLink instanceof Zend_Gdata_Extension_EntryLink);
         $this->assertEquals("http://gmail.com/jo/contacts/Jo", $this->who->entryLink->href);
     }
-
 }

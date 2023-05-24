@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Server/Reflection/Node.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_Reflection_NodeTest extends PHPUnit_Framework_TestCase
+class Zend_Server_Reflection_NodeTest extends TestCase
 {
     /**
      * __construct() test
@@ -63,7 +66,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit_Framework_TestCase
     public function testSetParent()
     {
         $parent = new Zend_Server_Reflection_Node('string');
-        $child  = new Zend_Server_Reflection_Node('array');
+        $child = new Zend_Server_Reflection_Node('array');
 
         $child->setParent($parent);
 
@@ -90,7 +93,7 @@ class Zend_Server_Reflection_NodeTest extends PHPUnit_Framework_TestCase
     public function testAttachChild()
     {
         $parent = new Zend_Server_Reflection_Node('string');
-        $child  = new Zend_Server_Reflection_Node('array');
+        $child = new Zend_Server_Reflection_Node('array');
 
         $parent->attachChild($child);
         $this->assertTrue($parent === $child->getParent());

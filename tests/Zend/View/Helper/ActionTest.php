@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -51,8 +56,33 @@ require_once 'Zend/View.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_ActionTest extends TestCase
 {
+    /**
+     * @var Zend_Controller_Request_Http
+     */
+    protected $request;
+
+    /**
+     * @var Zend_Controller_Response_Http
+     */
+    protected $response;
+
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_Action
+     */
+    protected $helper;
+
+    /**
+     * @var array
+     */
+    protected $_origServer;
+
     /**
      * Runs the test methods of this class.
      *
@@ -60,8 +90,8 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_ActionTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_ActionTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -70,25 +100,25 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_origServer = $_SERVER;
         $_SERVER = [
             'SCRIPT_FILENAME' => __FILE__,
-            'PHP_SELF'        => __FILE__,
+            'PHP_SELF' => __FILE__,
         ];
 
         $front = Zend_Controller_Front::getInstance();
         $front->resetInstance();
 
-        $this->request  = new Zend_Controller_Request_Http('http://framework.zend.com/action-foo');
+        $this->request = new Zend_Controller_Request_Http('http://framework.zend.com/action-foo');
         $this->response = new Zend_Controller_Response_Http();
         $this->response->headersSentThrowsException = false;
         $front->setRequest($this->request)
               ->setResponse($this->response)
               ->addModuleDirectory(dirname(__FILE__) . '/_files/modules');
 
-        $this->view   = new Zend_View();
+        $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_Action();
         $this->helper->setView($this->view);
     }
@@ -99,7 +129,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->request, $this->response, $this->helper);
         $_SERVER = $this->_origServer;
@@ -123,7 +153,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function testInitialStateHasDefaultModuleName()
     {
         $dispatcher = Zend_Controller_Front::getInstance()->getDispatcher();
-        $module     = $dispatcher->getDefaultModule();
+        $module = $dispatcher->getDefaultModule();
         $this->assertEquals($module, $this->helper->defaultModule);
 
         $dispatcher->setDefaultModule('foo');
@@ -160,7 +190,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         $this->helper->response->setHeader('X-Foo', 'Bar')
                                ->setRawHeader('HTTP/1.1');
         $this->helper->resetObjects();
-        $headers    = $this->helper->response->getHeaders();
+        $headers = $this->helper->response->getHeaders();
         $rawHeaders = $this->helper->response->getRawHeaders();
         $this->assertTrue(empty($headers));
         $this->assertTrue(empty($rawHeaders));
@@ -172,7 +202,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function testActionReturnsContentFromDefaultModule()
     {
         $value = $this->helper->action('bar', 'action-foo');
-        $this->assertContains('In default module, FooController::barAction()', $value);
+        $this->assertStringContainsString('In default module, FooController::barAction()', $value);
     }
 
     /**
@@ -181,7 +211,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function testActionReturnsContentFromSpecifiedModule()
     {
         $value = $this->helper->action('bar', 'foo', 'foo');
-        $this->assertContains('In foo module, Foo_FooController::barAction()', $value);
+        $this->assertStringContainsString('In foo module, Foo_FooController::barAction()', $value);
     }
 
     /**
@@ -190,8 +220,8 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function testActionReturnsContentReflectingPassedParams()
     {
         $value = $this->helper->action('baz', 'action-foo', null, ['bat' => 'This is my message']);
-        $this->assertNotContains('BOGUS', $value, var_export($this->helper->request->getUserParams(), 1));
-        $this->assertContains('This is my message', $value);
+        $this->assertStringNotContainsString('BOGUS', $value, var_export($this->helper->request->getUserParams(), 1));
+        $this->assertStringContainsString('This is my message', $value);
     }
 
     /**
@@ -214,6 +244,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
 
     /**
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testConstructorThrowsExceptionWithNoControllerDirsInFrontController()
     {
@@ -227,6 +258,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
 
     /**
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testConstructorThrowsExceptionWithNoRequestInFrontController()
     {
@@ -246,6 +278,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
 
     /**
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testConstructorThrowsExceptionWithNoResponseInFrontController()
     {
@@ -265,7 +298,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function testViewObjectRemainsUnchangedAfterAction()
     {
         $value = $this->helper->action('bar', 'foo', 'foo');
-        $this->assertContains('In foo module, Foo_FooController::barAction()', $value);
+        $this->assertStringContainsString('In foo module, Foo_FooController::barAction()', $value);
         $this->assertNull($this->view->bar);
     }
 
@@ -273,9 +306,9 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     {
         $html = $this->helper->action('nest', 'foo', 'foo');
         $title = $this->view->headTitle()->toString();
-        $this->assertContains(' - ', $title, $title);
-        $this->assertContains('Foo Nest', $title);
-        $this->assertContains('Nested Stuff', $title);
+        $this->assertStringContainsString(' - ', $title, $title);
+        $this->assertStringContainsString('Foo Nest', $title);
+        $this->assertStringContainsString('Nested Stuff', $title);
     }
 
     /**
@@ -293,7 +326,6 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
         $partial->partial('partialActionCall.phtml');
 
         $this->assertSame($this->view, Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->view);
-
     }
 
     /**
@@ -329,7 +361,7 @@ class Zend_View_Helper_ActionTest extends PHPUnit_Framework_TestCase
     public function testActionCalledWithinActionResetsResponseState()
     {
         $value = $this->helper->action('bar-one', 'baz', 'foo');
-        $this->assertRegexp('/Baz-Three-View-Script\s+Baz-Two-View-Script\s+Baz-One-View-Script/s', $value);
+        $this->assertMatchesRegularExpression('/Baz-Three-View-Script\s+Baz-Two-View-Script\s+Baz-One-View-Script/s', $value);
     }
 }
 

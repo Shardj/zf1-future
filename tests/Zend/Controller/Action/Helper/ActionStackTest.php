@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -42,9 +47,8 @@ require_once 'Zend/Controller/Request/Simple.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_Helper_ActionStackTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_Helper_ActionStackTest extends TestCase
 {
-
     /**
      * @var Zend_Controller_Front
      */
@@ -63,9 +67,8 @@ class Zend_Controller_Action_Helper_ActionStackTest extends PHPUnit_Framework_Te
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_Helper_ActionStackTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Controller_Action_Helper_ActionStackTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -74,7 +77,7 @@ class Zend_Controller_Action_Helper_ActionStackTest extends PHPUnit_Framework_Te
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->front = Zend_Controller_Front::getInstance();
         $this->front->resetInstance();
@@ -89,7 +92,7 @@ class Zend_Controller_Action_Helper_ActionStackTest extends PHPUnit_Framework_Te
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -181,7 +184,7 @@ class Zend_Controller_Action_Helper_ActionStackTest extends PHPUnit_Framework_Te
         }
     }
 
-     public function testCannotStackActionIfNoRequestAvailable()
+    public function testCannotStackActionIfNoRequestAvailable()
     {
         $helper = new Zend_Controller_Action_Helper_ActionStack();
         $plugin = $this->front->getPlugin('Zend_Controller_Plugin_ActionStack');

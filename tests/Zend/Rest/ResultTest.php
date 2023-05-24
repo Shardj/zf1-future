@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,46 +39,46 @@ require_once 'Zend/Rest/Client/Result.php';
  * @group      Zend_Rest
  * @group      Zend_Rest_Result
  */
-class Zend_Rest_ResultTest extends PHPUnit_Framework_TestCase
+class Zend_Rest_ResultTest extends TestCase
 {
-    static $path;
+    public static $path;
 
-    public function __construct()
+    public static function setUpBeforeClass(): void
     {
-        self::$path = dirname(__FILE__).'/responses/';
+        self::$path = dirname(__FILE__) . '/responses/';
     }
 
     public function testResponseSuccess()
     {
-        $xml = file_get_contents(self::$path ."returnString.xml");
+        $xml = file_get_contents(self::$path . "returnString.xml");
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertTrue($client->isSuccess());
     }
 
     public function testResponseIsError()
     {
-        $xml = file_get_contents(self::$path ."returnError.xml");
+        $xml = file_get_contents(self::$path . "returnError.xml");
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertTrue($client->isError());
     }
 
     public function testResponseString()
     {
-        $xml = file_get_contents(self::$path ."returnString.xml");
+        $xml = file_get_contents(self::$path . "returnString.xml");
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertEquals("string", $client->__toString());
     }
 
     public function testResponseInt()
     {
-        $xml = file_get_contents(self::$path ."returnInt.xml");
+        $xml = file_get_contents(self::$path . "returnInt.xml");
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertEquals("123", $client->__toString());
     }
 
     public function testResponseArray()
     {
-        $xml = file_get_contents(self::$path ."returnArray.xml");
+        $xml = file_get_contents(self::$path . "returnArray.xml");
         // <foo>bar</foo><baz>1</baz><key_1>0</key_1><bat>123</bat>
         $client = new Zend_Rest_Client_Result($xml);
         foreach ($client as $key => $value) {
@@ -86,7 +89,7 @@ class Zend_Rest_ResultTest extends PHPUnit_Framework_TestCase
 
     public function testResponseObject()
     {
-        $xml = file_get_contents(self::$path ."returnObject.xml");
+        $xml = file_get_contents(self::$path . "returnObject.xml");
         // <foo>bar</foo><baz>1</baz><bat>123</bat><qux>0</qux><status>success</status>
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertEquals("bar", $client->foo());
@@ -98,14 +101,14 @@ class Zend_Rest_ResultTest extends PHPUnit_Framework_TestCase
 
     public function testResponseTrue()
     {
-        $xml = file_get_contents(self::$path ."returnTrue.xml");
+        $xml = file_get_contents(self::$path . "returnTrue.xml");
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertTrue((bool)$client->response);
     }
 
     public function testResponseFalse()
     {
-        $xml = file_get_contents(self::$path ."returnFalse.xml");
+        $xml = file_get_contents(self::$path . "returnFalse.xml");
         $client = new Zend_Rest_Client_Result($xml);
         $this->assertFalse((bool) $client->response());
     }

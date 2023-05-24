@@ -38,35 +38,38 @@ require_once 'Zend/Db/Table/Row/Abstract.php';
  */
 class My_ZendDbTable_Row_TestMockRow extends Zend_Db_Table_Row_Abstract
 {
+    public $parentTable = null;
+    public $dependentTable = null;
+    public $ruleKey = null;
 
-    public $parentTable       = null;
-    public $dependentTable    = null;
-    public $ruleKey           = null;
-
-    public $matchTable        = null;
+    public $matchTable = null;
     public $intersectionTable = null;
-    public $callerRefRuleKey  = null;
-    public $matchRefRuleKey   = null;
+    public $callerRefRuleKey = null;
+    public $matchRefRuleKey = null;
 
     public function findDependentRowset($dependentTable, $ruleKey = null, Zend_Db_Table_Select $select = null)
     {
-        $this->dependentTable    = $dependentTable;
-        $this->ruleKey           = $ruleKey;
+        $this->dependentTable = $dependentTable;
+        $this->ruleKey = $ruleKey;
     }
 
     public function findParentRow($parentTable, $ruleKey = null, Zend_Db_Table_Select $select = null)
     {
-        $this->parentTable       = $parentTable;
-        $this->ruleKey           = $ruleKey;
+        $this->parentTable = $parentTable;
+        $this->ruleKey = $ruleKey;
     }
 
-    public function findManyToManyRowset($matchTable, $intersectionTable, $callerRefRule = null,
-                                         $matchRefRule = null, Zend_Db_Table_Select $select = null)
-    {
-        $this->matchTable        = $matchTable;
+    public function findManyToManyRowset(
+        $matchTable,
+        $intersectionTable,
+        $callerRefRule = null,
+        $matchRefRule = null,
+        Zend_Db_Table_Select $select = null
+    ) {
+        $this->matchTable = $matchTable;
         $this->intersectionTable = $intersectionTable;
-        $this->callerRefRuleKey  = $callerRefRule;
-        $this->matchRefRuleKey   = $matchRefRule;
+        $this->callerRefRuleKey = $callerRefRule;
+        $this->matchRefRuleKey = $matchRefRule;
     }
 
     protected function _transformColumn($columnName)
@@ -75,5 +78,4 @@ class My_ZendDbTable_Row_TestMockRow extends Zend_Db_Table_Row_Abstract
         $columnName = strtolower(preg_replace('/([A-Z])/', '_$1', $columnName));
         return $columnName;
     }
-
 }

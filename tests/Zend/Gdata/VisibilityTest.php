@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,55 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_VisibilityTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $visibilityText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_Visibility|mixed
+     */
+    protected $visibility;
+
+    protected function setUp(): void
+    {
         $this->visibilityText = file_get_contents(
-                'Zend/Gdata/_files/VisibilityElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/VisibilityElementSample1.xml',
+            true
+        );
         $this->visibility = new Zend_Gdata_Extension_Visibility();
     }
 
-    public function testEmptyVisibilityShouldHaveNoExtensionElements() {
+    public function testEmptyVisibilityShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->visibility->extensionElements));
         $this->assertTrue(count($this->visibility->extensionElements) == 0);
     }
 
-    public function testEmptyVisibilityShouldHaveNoExtensionAttributes() {
+    public function testEmptyVisibilityShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->visibility->extensionAttributes));
         $this->assertTrue(count($this->visibility->extensionAttributes) == 0);
     }
 
-    public function testSampleVisibilityShouldHaveNoExtensionElements() {
+    public function testSampleVisibilityShouldHaveNoExtensionElements()
+    {
         $this->visibility->transferFromXML($this->visibilityText);
         $this->assertTrue(is_array($this->visibility->extensionElements));
         $this->assertTrue(count($this->visibility->extensionElements) == 0);
     }
 
-    public function testSampleVisibilityShouldHaveNoExtensionAttributes() {
+    public function testSampleVisibilityShouldHaveNoExtensionAttributes()
+    {
         $this->visibility->transferFromXML($this->visibilityText);
         $this->assertTrue(is_array($this->visibility->extensionAttributes));
         $this->assertTrue(count($this->visibility->extensionAttributes) == 0);
     }
 
-    public function testNormalVisibilityShouldHaveNoExtensionElements() {
+    public function testNormalVisibilityShouldHaveNoExtensionElements()
+    {
         $this->visibility->value = "http://schemas.google.com/g/2005#event.private";
 
         $this->assertEquals("http://schemas.google.com/g/2005#event.private", $this->visibility->value);
@@ -85,7 +104,8 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("http://schemas.google.com/g/2005#event.private", $newVisibility2->value);
     }
 
-    public function testEmptyVisibilityToAndFromStringShouldMatch() {
+    public function testEmptyVisibilityToAndFromStringShouldMatch()
+    {
         $visibilityXml = $this->visibility->saveXML();
         $newVisibility = new Zend_Gdata_Extension_Visibility();
         $newVisibility->transferFromXML($visibilityXml);
@@ -93,7 +113,8 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($visibilityXml == $newVisibilityXml);
     }
 
-    public function testVisibilityWithValueToAndFromStringShouldMatch() {
+    public function testVisibilityWithValueToAndFromStringShouldMatch()
+    {
         $this->visibility->value = "http://schemas.google.com/g/2005#event.private";
         $visibilityXml = $this->visibility->saveXML();
         $newVisibility = new Zend_Gdata_Extension_Visibility();
@@ -103,10 +124,11 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("http://schemas.google.com/g/2005#event.private", $this->visibility->value);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->visibility->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->visibility->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->visibility->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->visibility->extensionAttributes['foo2']['value']);
@@ -117,9 +139,9 @@ class Zend_Gdata_VisibilityTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newVisibility->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullVisibilityToAndFromString() {
+    public function testConvertFullVisibilityToAndFromString()
+    {
         $this->visibility->transferFromXML($this->visibilityText);
         $this->assertEquals("http://schemas.google.com/g/2005#event.confidential", $this->visibility->value);
     }
-
 }

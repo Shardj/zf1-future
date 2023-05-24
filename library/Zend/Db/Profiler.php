@@ -131,7 +131,7 @@ class Zend_Db_Profiler
      * is disabled and will not log any queries sent to it.
      *
      * @param  boolean $enable
-     * @return Zend_Db_Profiler Provides a fluent interface
+     * @return $this
      */
     public function setEnabled($enable)
     {
@@ -158,7 +158,7 @@ class Zend_Db_Profiler
      * elapsed time, set $minimumSeconds to null.
      *
      * @param  integer $minimumSeconds OPTIONAL
-     * @return Zend_Db_Profiler Provides a fluent interface
+     * @return $this
      */
     public function setFilterElapsedSecs($minimumSeconds = null)
     {
@@ -189,7 +189,7 @@ class Zend_Db_Profiler
      * save all queries regardless of type, set $queryType to null.
      *
      * @param  integer $queryTypes OPTIONAL
-     * @return Zend_Db_Profiler Provides a fluent interface
+     * @return $this
      */
     public function setFilterQueryType($queryTypes = null)
     {
@@ -215,7 +215,7 @@ class Zend_Db_Profiler
      * and will even clear queries that were started and may not have
      * been marked as ended.
      *
-     * @return Zend_Db_Profiler Provides a fluent interface
+     * @return $this
      */
     public function clear()
     {

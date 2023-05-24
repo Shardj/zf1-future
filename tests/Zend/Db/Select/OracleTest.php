@@ -37,11 +37,10 @@ require_once 'Zend/Db/Select/TestCommon.php';
  */
 class Zend_Db_Select_OracleTest extends Zend_Db_Select_TestCommon
 {
-
     /**
      * ZF-4330: this test must be done on string field
      */
-    protected function _selectColumnWithColonQuotedParameter ()
+    protected function _selectColumnWithColonQuotedParameter()
     {
         $product_name = $this->_db->quoteIdentifier('product_name');
 
@@ -54,7 +53,7 @@ class Zend_Db_Select_OracleTest extends Zend_Db_Select_TestCommon
     /**
      * ZF-4330 : Oracle doesn't use 'AS' to identify table alias
      */
-    public function testSelectFromSelectObject ()
+    public function testSelectFromSelectObject()
     {
         $select = $this->_selectFromSelectObject();
         $query = $select->assemble();
@@ -68,7 +67,7 @@ class Zend_Db_Select_OracleTest extends Zend_Db_Select_TestCommon
     /**
      * ZF-4330 : for Oracle, we must add order clause
      */
-    public function testSelectWhereOr ()
+    public function testSelectWhereOr()
     {
         $select = $this->_selectWhereOr();
         $select->order('product_id');
@@ -82,7 +81,7 @@ class Zend_Db_Select_OracleTest extends Zend_Db_Select_TestCommon
     /**
      * ZF-4330 : for Oracle, we must add order clause
      */
-    public function testSelectWhereOrWithParameter ()
+    public function testSelectWhereOrWithParameter()
     {
         $select = $this->_selectWhereOrWithParameter();
         $select->order('product_id');
@@ -93,7 +92,7 @@ class Zend_Db_Select_OracleTest extends Zend_Db_Select_TestCommon
         $this->assertEquals(2, $result[1]['product_id']);
     }
 
-    public function getDriver ()
+    public function getDriver()
     {
         return 'Oracle';
     }

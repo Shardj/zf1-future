@@ -127,7 +127,7 @@ class Zend_Gdata_Books_Extension_Review extends Zend_Gdata_Extension
      * Sets the language of link title
      *
      * @param string $lang language of link title
-     * @return Zend_Gdata_Books_Extension_Review Provides a fluent interface
+     * @return $this
      */
     public function setLang($lang)
     {
@@ -139,7 +139,7 @@ class Zend_Gdata_Books_Extension_Review extends Zend_Gdata_Extension
      * Sets the type of text construct (typically 'text', 'html' or 'xhtml')
      *
      * @param string $type type of text construct (typically 'text', 'html' or 'xhtml')
-     * @return Zend_Gdata_Books_Extension_Review Provides a fluent interface
+     * @return $this
      */
     public function setType($type)
     {

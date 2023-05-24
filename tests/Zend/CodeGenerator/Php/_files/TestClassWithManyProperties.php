@@ -2,8 +2,7 @@
 
 class Zend_CodeGenerator_Php_TestClassWithManyProperties
 {
-
-    const FOO = 'foo';
+    public const FOO = 'foo';
 
     public static $fooStaticProperty = null;
 
@@ -27,5 +26,4 @@ class Zend_CodeGenerator_Php_TestClassWithManyProperties
             //PHP_EOL
             ]
         ];
-
 }

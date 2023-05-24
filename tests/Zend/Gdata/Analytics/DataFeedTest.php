@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Analytics
  */
-class Zend_Gdata_Analytics_DataFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Analytics_DataFeedTest extends TestCase
 {
     public $testData = [
         'foobarbaz.de' => 12,
@@ -43,7 +46,7 @@ class Zend_Gdata_Analytics_DataFeedTest extends PHPUnit_Framework_TestCase
     /** @var DataFeed */
     public $dataFeed;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->dataFeed = new Zend_Gdata_Analytics_DataFeed(
             file_get_contents(dirname(__FILE__) . '/_files/TestDataFeed.xml')

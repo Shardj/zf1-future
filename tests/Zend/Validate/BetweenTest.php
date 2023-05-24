@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/Between.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_BetweenTest extends TestCase
 {
     /**
      * Ensures that the validator follows expected behavior
@@ -61,8 +64,11 @@ class Zend_Validate_BetweenTest extends PHPUnit_Framework_TestCase
         foreach ($valuesExpected as $element) {
             $validator = new Zend_Validate_Between(['min' => $element[0], 'max' => $element[1], 'inclusive' => $element[2]]);
             foreach ($element[4] as $input) {
-                $this->assertEquals($element[3], $validator->isValid($input),
-                'Failed values: ' . $input . ":" . implode("\n", $validator->getMessages()));
+                $this->assertEquals(
+                    $element[3],
+                    $validator->isValid($input),
+                    'Failed values: ' . $input . ":" . implode("\n", $validator->getMessages())
+                );
             }
         }
     }

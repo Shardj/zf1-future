@@ -62,7 +62,7 @@ class Zend_Auth_Adapter_Http_Resolver_File implements Zend_Auth_Adapter_Http_Res
      *
      * @param  string $path
      * @throws Zend_Auth_Adapter_Http_Resolver_Exception
-     * @return Zend_Auth_Adapter_Http_Resolver_File Provides a fluent interface
+     * @return $this
      */
     public function setFile($path)
     {

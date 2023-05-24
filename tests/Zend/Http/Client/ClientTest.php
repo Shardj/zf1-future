@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,13 +34,18 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
-class Zend_Http_Client_ClientTest extends PHPUnit_Framework_TestCase
+class Zend_Http_Client_ClientTest extends TestCase
 {
+    /**
+     * @var \Zend_Http_Client|mixed
+     */
+    protected $client;
+
     /**
      * Set up the test case
      *
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client = new Zend_Http_Client();
     }
@@ -45,14 +53,14 @@ class Zend_Http_Client_ClientTest extends PHPUnit_Framework_TestCase
     public function invalidHeaders()
     {
         return [
-            'invalid-name-cr'                      => ["X-Foo-\rBar", 'value'],
-            'invalid-name-lf'                      => ["X-Foo-\nBar", 'value'],
-            'invalid-name-crlf'                    => ["X-Foo-\r\nBar", 'value'],
-            'invalid-value-cr'                     => ['X-Foo-Bar', "value\risEvil"],
-            'invalid-value-lf'                     => ['X-Foo-Bar', "value\nisEvil"],
-            'invalid-value-bad-continuation'       => ['X-Foo-Bar', "value\r\nisEvil"],
-            'invalid-array-value-cr'               => ['X-Foo-Bar', ["value\risEvil"]],
-            'invalid-array-value-lf'               => ['X-Foo-Bar', ["value\nisEvil"]],
+            'invalid-name-cr' => ["X-Foo-\rBar", 'value'],
+            'invalid-name-lf' => ["X-Foo-\nBar", 'value'],
+            'invalid-name-crlf' => ["X-Foo-\r\nBar", 'value'],
+            'invalid-value-cr' => ['X-Foo-Bar', "value\risEvil"],
+            'invalid-value-lf' => ['X-Foo-Bar', "value\nisEvil"],
+            'invalid-value-bad-continuation' => ['X-Foo-Bar', "value\r\nisEvil"],
+            'invalid-array-value-cr' => ['X-Foo-Bar', ["value\risEvil"]],
+            'invalid-array-value-lf' => ['X-Foo-Bar', ["value\nisEvil"]],
             'invalid-array-value-bad-continuation' => ['X-Foo-Bar', ["value\r\nisEvil"]],
         ];
     }
@@ -63,7 +71,7 @@ class Zend_Http_Client_ClientTest extends PHPUnit_Framework_TestCase
      */
     public function testHeadersContainingCRLFInjectionRaiseAnException($name, $value)
     {
-        $this->setExpectedException('Zend_Http_Exception');
+        $this->expectException('Zend_Http_Exception');
         $this->client->setHeaders([
             $name => $value,
         ]);

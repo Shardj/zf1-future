@@ -93,7 +93,7 @@ class Zend_Gdata_App_Extension_Category extends Zend_Gdata_App_Extension
 
     /**
      * @param string|null $value
-     * @return Zend_Gdata_App_Extension_Category Provides a fluent interface
+     * @return $this
      */
     public function setTerm($value)
     {
@@ -111,7 +111,7 @@ class Zend_Gdata_App_Extension_Category extends Zend_Gdata_App_Extension
 
     /**
      * @param string|null $value
-     * @return Zend_Gdata_App_Extension_Category Provides a fluent interface
+     * @return $this
      */
     public function setScheme($value)
     {
@@ -129,7 +129,7 @@ class Zend_Gdata_App_Extension_Category extends Zend_Gdata_App_Extension
 
     /**
      * @param string|null $value
-     * @return Zend_Gdata_App_Extension_Category Provides a fluent interface
+     * @return $this
      */
     public function setLabel($value)
     {

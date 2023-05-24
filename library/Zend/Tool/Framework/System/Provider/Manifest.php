@@ -39,6 +39,10 @@ require_once 'Zend/Tool/Framework/Provider/Interface.php';
 class Zend_Tool_Framework_System_Provider_Manifest
     implements Zend_Tool_Framework_Provider_Interface, Zend_Tool_Framework_Registry_EnabledInterface
 {
+    /**
+     * @var \Zend_Tool_Framework_Registry_Interface|mixed
+     */
+    protected $_registry;
 
     public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
     {

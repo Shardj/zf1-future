@@ -339,7 +339,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
 
     /**
      * @param array $value
-     * @return Zend_Gdata_Media_Extension_MediaGroup Provides a fluent interface
+     * @return $this
      */
     public function setContent($value)
     {
@@ -465,7 +465,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
 
     /**
      * @param array $value
-     * @return Zend_Gdata_Media_Extension_MediaGroup Provides a fluent interface
+     * @return $this
      */
     public function setKeywords($value)
     {
@@ -482,7 +482,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
     }
 
     /**
-     * @param array
+     * @param array $value
      * @return Zend_Gdata_Media_Extension_MediaGroup
      */
     public function setPlayer($value)
@@ -500,7 +500,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
     }
 
     /**
-     * @param array
+     * @param array $value
      * @return Zend_Gdata_Media_Extension_MediaGroup
      */
     public function setRating($value)
@@ -518,7 +518,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
     }
 
     /**
-     * @param array
+     * @param array $value
      * @return Zend_Gdata_Media_Extension_MediaGroup
      */
     public function setRestriction($value)
@@ -536,7 +536,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
     }
 
     /**
-     * @param array
+     * @param array $value
      * @return Zend_Gdata_Media_Extension_MediaGroup
      */
     public function setThumbnail($value)
@@ -554,7 +554,7 @@ class Zend_Gdata_Media_Extension_MediaGroup extends Zend_Gdata_Extension
     }
 
     /**
-     * @param array
+     * @param array $value
      * @return Zend_Gdata_Media_Extension_MediaGroup
      */
     public function setMediaText($value)

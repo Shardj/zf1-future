@@ -1,0 +1,149 @@
+name: PHPUnit-9
+
+on: [push, pull_request]
+
+jobs:
+  phpunit:
+    name: Tests on PHP ${{ matrix.php-version }}
+
+    runs-on: ubuntu-22.04
+
+    env:
+      PHP_EXTENSIONS: none, posix, curl, dom, json, libxml, mbstring, openssl, tokenizer, xml, xmlwriter, ctype, iconv, simplexml, pdo_sqlite, pdo_mysql, fileinfo, json, zip, sqlite, soap, bcmath, mcrypt, igbinary, gd, bz2, lzf, rar, memcached, memcache
+      PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+
+      TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME: github
+      TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD: github
+      TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE: zftest
+      TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME: 127.0.0.1
+
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME: github
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD: github
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE: zftest
+
+      TESTS_ZEND_CACHE_SQLITE_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED: true
+
+      TESTS_ZEND_CACHE_MEMCACHED_ENABLED: true
+      TESTS_ZEND_CACHE_MEMCACHED_HOST: 127.0.0.1
+      TESTS_ZEND_CACHE_MEMCACHED_PORT: 11211
+
+      TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED: true
+      TESTS_ZEND_CACHE_LIBMEMCACHED_HOST: 127.0.0.1
+      TESTS_ZEND_CACHE_LIBMEMCACHED_PORT: 11211
+
+       # https://hub.docker.com/r/bitnami/openldap
+      LDAP_ROOT: "dc=example,dc=com"
+      LDAP_ALLOW_ANON_BINDING: false
+      LDAP_SKIP_DEFAULT_TREE: "yes"
+      LDAP_ADMIN_USERNAME: "admin"
+      LDAP_ADMIN_PASSWORD: "insecure"
+      LDAP_CONFIG_ADMIN_USERNAME: "admin"
+      LDAP_CONFIG_ADMIN_PASSWORD: "configpassword"
+      TESTS_ZEND_LDAP_ONLINE_ENABLED: true
+      TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED: true
+
+      LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
+    services:
+      memcache:
+        image: memcached:1.6.17-alpine
+        ports:
+          - 11211:11211
+
+      mysql:
+        image: bitnami/mysql:8.0.31
+        env:
+          MYSQL_ROOT_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME }}
+          MYSQL_ROOT_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE }}
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+        ports:
+           - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+      postgres:
+        image: postgres:15.1-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME }}
+          POSTGRES_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD }}
+          POSTGRES_DB: ${{ env.TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      openldap:
+        image: bitnami/openldap:2.5
+        ports:
+          - 1389:1389
+        env:
+          LDAP_ROOT: ${{ env.LDAP_ROOT }}
+          LDAP_ALLOW_ANON_BINDING: ${{ env.LDAP_ALLOW_ANON_BINDING }}
+          LDAP_SKIP_DEFAULT_TREE: ${{ env.LDAP_SKIP_DEFAULT_TREE }}
+          LDAP_ADMIN_USERNAME: ${{ env.LDAP_ADMIN_USERNAME }}
+          LDAP_ADMIN_PASSWORD: ${{ env.LDAP_ADMIN_PASSWORD }}
+          LDAP_CONFIG_ADMIN_ENABLED: "yes"
+          LDAP_CONFIG_ADMIN_USERNAME: ${{ env.LDAP_CONFIG_ADMIN_USERNAME }}
+          LDAP_CONFIG_ADMIN_PASSWORD: ${{ env.LDAP_CONFIG_ADMIN_PASSWORD }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "8.0"
+          - "8.1"
+          - "8.2"
+        experimental:
+          - false
+        include:
+          - php-version: "8.3"
+            experimental: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Locale
+        run: |
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
+          echo "All languages..."
+          locale -a
+      
+      - name: Provider config base on env for intergrate test
+        run: cp tests/TestConfiguration.env.php tests/TestConfiguration.php
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: cs2pr
+          extensions: memcached, memcache
+          ini-values: ${{ env.PHP_INI_VALUES }}
+        env:
+          # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
+          fail-fast: true
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Lint PHP source files
+        run: |
+          bin/parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php . --checkstyle | cs2pr
+
+      - name: Setup LDAP
+        run: |
+          sudo apt-get install -y libnss-ldap libpam-ldap ldap-utils
+          tests/resources/openldap/docker-entrypoint-initdb.d/init.sh
+
+      - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }})"
+        run: bin/phpunit -c tests/phpunit.xml
+        continue-on-error: ${{ matrix.experimental }}

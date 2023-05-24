@@ -37,7 +37,6 @@ require_once dirname(__FILE__) . '/../FooController.php';
  */
 class Admin_FooBarController extends FooController
 {
-
     /**
      * Test Function for bazBatAction
      *
@@ -47,5 +46,4 @@ class Admin_FooBarController extends FooController
     {
         $this->_response->appendBody("Admin_FooBar::bazBat action called\n");
     }
-
 }

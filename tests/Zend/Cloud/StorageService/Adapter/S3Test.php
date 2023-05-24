@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,12 +44,11 @@ require_once 'Zend/Cloud/StorageService/Adapter/S3.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_StorageService_Adapter_S3Test
-    extends Zend_Cloud_StorageService_TestCase
+class Zend_Cloud_StorageService_Adapter_S3Test extends Zend_Cloud_StorageService_TestCase
 {
-	protected $_clientType = 'Zend_Service_Amazon_S3';
+    protected $_clientType = 'Zend_Service_Amazon_S3';
 
-	/**
+    /**
      * Runs the test methods of this class.
      *
      * @access public
@@ -53,8 +56,8 @@ class Zend_Cloud_StorageService_Adapter_S3Test
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -62,7 +65,7 @@ class Zend_Cloud_StorageService_Adapter_S3Test
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -94,12 +97,12 @@ class Zend_Cloud_StorageService_Adapter_S3Test
     }
 
 
-	/**
+    /**
      * Tears down this test case
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (!$this->_config) {
             return;
@@ -129,9 +132,9 @@ class Zend_Cloud_StorageService_Adapter_S3Test
 
         $config = new Zend_Config([
             Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY => 'Zend_Cloud_StorageService_Adapter_S3',
-            Zend_Cloud_StorageService_Adapter_S3::AWS_ACCESS_KEY   => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
-            Zend_Cloud_StorageService_Adapter_S3::AWS_SECRET_KEY   => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_SECRETKEY'),
-            Zend_Cloud_StorageService_Adapter_S3::BUCKET_NAME      => constant('TESTS_ZEND_SERVICE_AMAZON_S3_BUCKET'),
+            Zend_Cloud_StorageService_Adapter_S3::AWS_ACCESS_KEY => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
+            Zend_Cloud_StorageService_Adapter_S3::AWS_SECRET_KEY => constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_SECRETKEY'),
+            Zend_Cloud_StorageService_Adapter_S3::BUCKET_NAME => constant('TESTS_ZEND_SERVICE_AMAZON_S3_BUCKET'),
         ]);
 
         return $config;

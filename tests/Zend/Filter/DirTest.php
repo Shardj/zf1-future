@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Filter/Dir.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_DirTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_DirTest extends TestCase
 {
     /**
      * Zend_Filter_Dir object
@@ -48,7 +51,7 @@ class Zend_Filter_DirTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_Dir();
     }
@@ -61,8 +64,8 @@ class Zend_Filter_DirTest extends PHPUnit_Framework_TestCase
     public function testBasic()
     {
         $valuesExpected = [
-            'filename'              => '.',
-            '/path/to/filename'     => '/path/to',
+            'filename' => '.',
+            '/path/to/filename' => '/path/to',
             '/path/to/filename.ext' => '/path/to'
             ];
         foreach ($valuesExpected as $input => $output) {

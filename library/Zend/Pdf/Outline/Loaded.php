@@ -306,7 +306,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
      *                                             used to avoid cyclic references
      * @return void
      * @throws Zend_Pdf_Exception
-     *@internal
+     * @internal
      */
     public function __construct(Zend_Pdf_Element $dictionary, SplObjectStorage $processedDictionaries = null)
     {

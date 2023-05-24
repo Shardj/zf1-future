@@ -57,7 +57,7 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
         return $this->_ldap;
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (!TESTS_ZEND_LDAP_ONLINE_ENABLED) {
             $this->markTestSkipped("Test skipped due to test configuration");
@@ -65,42 +65,49 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
         }
 
         $options = [
-            'host'     => TESTS_ZEND_LDAP_HOST,
+            'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,
             'password' => TESTS_ZEND_LDAP_PASSWORD,
-            'baseDn'   => TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
+            'baseDn' => TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
         ];
-        if (defined('TESTS_ZEND_LDAP_PORT') && TESTS_ZEND_LDAP_PORT != 389)
+        if (defined('TESTS_ZEND_LDAP_PORT') && TESTS_ZEND_LDAP_PORT != 389) {
             $options['port'] = TESTS_ZEND_LDAP_PORT;
-        if (defined('TESTS_ZEND_LDAP_USE_START_TLS'))
+        }
+        if (defined('TESTS_ZEND_LDAP_USE_START_TLS')) {
             $options['useStartTls'] = TESTS_ZEND_LDAP_USE_START_TLS;
-        if (defined('TESTS_ZEND_LDAP_USE_SSL'))
+        }
+        if (defined('TESTS_ZEND_LDAP_USE_SSL')) {
             $options['useSsl'] = TESTS_ZEND_LDAP_USE_SSL;
-        if (defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN'))
+        }
+        if (defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN')) {
             $options['bindRequiresDn'] = TESTS_ZEND_LDAP_BIND_REQUIRES_DN;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT')) {
             $options['accountFilterFormat'] = TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME')) {
             $options['accountDomainName'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT')) {
             $options['accountDomainNameShort'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT;
+        }
 
-        $this->_ldap=new Zend_Ldap($options);
+        $this->_ldap = new Zend_Ldap($options);
         $this->_ldap->bind();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
-        if ($this->_ldap!==null) {
+        if ($this->_ldap !== null) {
             $this->_ldap->disconnect();
-            $this->_ldap=null;
+            $this->_ldap = null;
         }
     }
 
     protected function _createDn($dn)
     {
-        if (substr($dn, -1)!==',') {
-            $dn.=',';
+        if (substr($dn, -1) !== ',') {
+            $dn .= ',';
         }
         $dn = $dn . TESTS_ZEND_LDAP_WRITEABLE_SUBTREE;
         return Zend_Ldap_Dn::fromString($dn)->toString(Zend_Ldap_Dn::ATTR_CASEFOLD_LOWER);
@@ -108,7 +115,7 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
 
     protected function _prepareLdapServer()
     {
-        $this->_nodes=[
+        $this->_nodes = [
             $this->_createDn('ou=Node,') =>
                 ["objectClass" => "organizationalUnit", "ou" => "Node", "postalCode" => "1234"],
             $this->_createDn('ou=Test1,ou=Node,') =>
@@ -127,7 +134,7 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
                 ["objectClass" => "organizationalUnit", "ou" => "Test5", "l" => "a"],
         ];
 
-        $ldap=$this->_ldap->getResource();
+        $ldap = $this->_ldap->getResource();
         foreach ($this->_nodes as $dn => $entry) {
             ldap_add($ldap, $dn, $entry);
         }
@@ -135,7 +142,7 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
 
     protected function _cleanupLdapServer()
     {
-        $ldap=$this->_ldap->getResource();
+        $ldap = $this->_ldap->getResource();
         foreach (array_reverse($this->_nodes) as $dn => $entry) {
             ldap_delete($ldap, $dn);
         }

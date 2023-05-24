@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Measure/Binary.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Measure
  */
-class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
+class Zend_Measure_BinaryTest extends TestCase
 {
     /**
      * test for Binary initialisation
@@ -41,18 +44,19 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryInit()
     {
-        $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'de');
-        $this->assertTrue($value instanceof Zend_Measure_Binary,'Zend_Measure_Binary Object not returned');
+        $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'de');
+        $this->assertTrue($value instanceof Zend_Measure_Binary, 'Zend_Measure_Binary Object not returned');
     }
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testBinaryUnknownType()
     {
         try {
-            $value = new Zend_Measure_Binary('100','Binary::UNKNOWN','de');
+            $value = new Zend_Measure_Binary('100', 'Binary::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -62,11 +66,12 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testBinaryUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Binary('novalue',Zend_Measure_Binary::STANDARD,'de');
+            $value = new Zend_Measure_Binary('novalue', Zend_Measure_Binary::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -76,11 +81,12 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected root value
+     * @doesNotPerformAssertions
      */
     public function testBinaryUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'nolocale');
+            $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -93,8 +99,8 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryNoLocale()
     {
-        $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD);
-        $this->assertTrue(is_object($value),'Object expected because of standard locale');
+        $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD);
+        $this->assertTrue(is_object($value), 'Object expected because of standard locale');
     }
 
     /**
@@ -103,7 +109,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryValuePositive()
     {
-        $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals('100', $value->getValue(), 'Zend_Measure_Binary value expected to be a positive integer');
     }
 
@@ -113,7 +119,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryValueNegative()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals('-100', $value->getValue(), 'Zend_Measure_Binary value expected to be a negative integer');
     }
 
@@ -123,7 +129,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryValueDecimal()
     {
-        $value = new Zend_Measure_Binary('-100,200',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100,200', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals(-100.200, $value->getValue(), 'Zend_Measure_Binary value expected to be a decimal value');
     }
 
@@ -133,8 +139,8 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryValueDecimalSeperated()
     {
-        $value = new Zend_Measure_Binary('-100.100,200',Zend_Measure_Binary::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_Binary Object not returned');
+        $value = new Zend_Measure_Binary('-100.100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_Binary Object not returned');
     }
 
     /**
@@ -143,9 +149,9 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryEquality()
     {
-        $value = new Zend_Measure_Binary('-100.100,200',Zend_Measure_Binary::STANDARD,'de');
-        $newvalue = new Zend_Measure_Binary('-100100,200',Zend_Measure_Binary::STANDARD,'de');
-        $this->assertTrue($value->equals($newvalue),'Zend_Measure_Binary Object should be equal');
+        $value = new Zend_Measure_Binary('-100.100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Binary('-100100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $this->assertTrue($value->equals($newvalue), 'Zend_Measure_Binary Object should be equal');
     }
 
     /**
@@ -154,9 +160,9 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryNoEquality()
     {
-        $value = new Zend_Measure_Binary('-100.100,200',Zend_Measure_Binary::STANDARD,'de');
-        $newvalue = new Zend_Measure_Binary('-100,200',Zend_Measure_Binary::STANDARD,'de');
-        $this->assertFalse($value->equals($newvalue),'Zend_Measure_Binary Object should be not equal');
+        $value = new Zend_Measure_Binary('-100.100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Binary('-100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $this->assertFalse($value->equals($newvalue), 'Zend_Measure_Binary Object should be not equal');
     }
 
     /**
@@ -165,8 +171,8 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetPositive()
     {
-        $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'de');
-        $value->setValue('200',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'de');
+        $value->setValue('200', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals(200, $value->getValue(), 'Zend_Measure_Binary value expected to be a positive integer');
     }
 
@@ -176,8 +182,8 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetNegative()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
-        $value->setValue('-200',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
+        $value->setValue('-200', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals(-200, $value->getValue(), 'Zend_Measure_Binary value expected to be a negative integer');
     }
 
@@ -187,8 +193,8 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetDecimal()
     {
-        $value = new Zend_Measure_Binary('-100,200',Zend_Measure_Binary::STANDARD,'de');
-        $value->setValue('-200,200',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $value->setValue('-200,200', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals(-200.200, $value->getValue(), 'Zend_Measure_Binary value expected to be a decimal value');
     }
 
@@ -198,9 +204,9 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetDecimalSeperated()
     {
-        $value = new Zend_Measure_Binary('-100.100,200',Zend_Measure_Binary::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Binary::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Binary Object not returned');
+        $value = new Zend_Measure_Binary('-100.100,200', Zend_Measure_Binary::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Binary::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Binary Object not returned');
     }
 
     /**
@@ -211,18 +217,19 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
     {
         $value = new Zend_Measure_Binary('-100.100,200', Zend_Measure_Binary::STANDARD, 'de');
         $value->setValue('-200.200,200', Zend_Measure_Binary::STANDARD, 'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Binary Object not returned');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Binary Object not returned');
     }
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testBinarySetUnknownType()
     {
         try {
-            $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'de');
-            $value->setValue('-200.200,200','Binary::UNKNOWN','de');
+            $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'de');
+            $value->setValue('-200.200,200', 'Binary::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -232,12 +239,13 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testBinarySetUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'de');
-            $value->setValue('novalue',Zend_Measure_Binary::STANDARD,'de');
+            $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'de');
+            $value->setValue('novalue', Zend_Measure_Binary::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -247,12 +255,13 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testBinarySetUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Binary('100',Zend_Measure_Binary::STANDARD,'de');
-            $value->setValue('200',Zend_Measure_Binary::STANDARD,'nolocale');
+            $value = new Zend_Measure_Binary('100', Zend_Measure_Binary::STANDARD, 'de');
+            $value->setValue('200', Zend_Measure_Binary::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -276,7 +285,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetType()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
         $value->setType(Zend_Measure_Binary::GIGABYTE);
         $this->assertEquals(Zend_Measure_Binary::GIGABYTE, $value->getType(), 'Zend_Measure_Binary type expected');
     }
@@ -287,7 +296,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetComputedType1()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::MEGABYTE,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::MEGABYTE, 'de');
         $value->setType(Zend_Measure_Binary::TERABYTE);
         $this->assertEquals(Zend_Measure_Binary::TERABYTE, $value->getType(), 'Zend_Measure_Binary type expected');
     }
@@ -298,7 +307,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinarySetComputedType2()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::TERABYTE,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::TERABYTE, 'de');
         $value->setType(Zend_Measure_Binary::KILOBYTE);
         $this->assertEquals(Zend_Measure_Binary::KILOBYTE, $value->getType(), 'Zend_Measure_Binary type expected');
     }
@@ -306,11 +315,12 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
     /**
      * test setting unknown type
      * expected new type
+     * @doesNotPerformAssertions
      */
     public function testBinarySetTypeFailed()
     {
         try {
-            $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
+            $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
             $value->setType('Binary::UNKNOWN');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
@@ -324,7 +334,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryToString()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals('-100 B', $value->toString(), 'Value -100 B expected');
     }
 
@@ -334,7 +344,7 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinary_ToString()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
         $this->assertEquals('-100 B', $value->__toString(), 'Value -100 B expected');
     }
 
@@ -344,8 +354,8 @@ class Zend_Measure_BinaryTest extends PHPUnit_Framework_TestCase
      */
     public function testBinaryConversionList()
     {
-        $value = new Zend_Measure_Binary('-100',Zend_Measure_Binary::STANDARD,'de');
-        $unit  = $value->getConversionList();
+        $value = new Zend_Measure_Binary('-100', Zend_Measure_Binary::STANDARD, 'de');
+        $unit = $value->getConversionList();
         $this->assertTrue(is_array($unit), 'Array expected');
     }
 }

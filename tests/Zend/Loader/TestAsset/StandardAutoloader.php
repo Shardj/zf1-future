@@ -32,7 +32,7 @@ class Zend_Loader_TestAsset_StandardAutoloader extends Zend_Loader_StandardAutol
 {
     /**
      * Get registered namespaces
-     * 
+     *
      * @return array
      */
     public function getNamespaces()
@@ -42,7 +42,7 @@ class Zend_Loader_TestAsset_StandardAutoloader extends Zend_Loader_StandardAutol
 
     /**
      * Get registered prefixes
-     * 
+     *
      * @return array
      */
     public function getPrefixes()

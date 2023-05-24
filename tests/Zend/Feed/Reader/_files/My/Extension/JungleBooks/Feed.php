@@ -31,7 +31,6 @@ require_once 'Zend/Feed/Reader/Extension/FeedAbstract.php';
  */
 class My_FeedReader_Extension_JungleBooks_Feed extends Zend_Feed_Reader_Extension_FeedAbstract
 {
-
     public function getDaysPopularBookLink()
     {
         if (isset($this->_data['dayPopular'])) {

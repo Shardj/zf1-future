@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Filter/Digits.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_DigitsTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_DigitsTest extends TestCase
 {
     /**
      * Zend_Filter_Digits object extended for checking whether Unicode PCRE is enabled
@@ -55,7 +58,7 @@ class Zend_Filter_DigitsTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_Digits();
         if (null === self::$_unicodeEnabled) {
@@ -81,21 +84,21 @@ class Zend_Filter_DigitsTest extends PHPUnit_Framework_TestCase
              * The last contains only singlebyte digits.
              */
             $valuesExpected = [
-                '1９2八3四８'     => '123',
-                'Ｃ 4.5B　6'      => '456',
+                '1９2八3四８' => '123',
+                'Ｃ 4.5B　6' => '456',
                 '9壱8＠7．6，5＃4' => '987654',
-                '789'              => '789'
+                '789' => '789'
                 ];
         } else {
             // POSIX named classes are not supported, use alternative 0-9 match
             // Or filter for the value without mbstring
             $valuesExpected = [
-                'abc123'  => '123',
+                'abc123' => '123',
                 'abc 123' => '123',
-                'abcxyz'  => '',
+                'abcxyz' => '',
                 'AZ@#4.3' => '43',
-                '1.23'    => '123',
-                '0x9f'    => '09'
+                '1.23' => '123',
+                '0x9f' => '09'
                 ];
         }
 
@@ -104,7 +107,7 @@ class Zend_Filter_DigitsTest extends PHPUnit_Framework_TestCase
                 $output,
                 $result = $this->_filter->filter($input),
                 "Expected '$input' to filter to '$output', but received '$result' instead"
-                );
+            );
         }
     }
 }

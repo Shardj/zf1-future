@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
-class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_Form_Element_CheckBoxTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_Form_Element_CheckBox
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_Form_Element_CheckBoxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_Form_Element_CheckBoxTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view    = $this->getView();
+        $this->view = $this->getView();
         $this->element = $this->getElement();
         $this->element->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -100,9 +115,9 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
         $element = new Zend_Dojo_Form_Element_CheckBox(
             'foo',
             [
-                'label'          => 'CheckBox',
-                'class'          => 'someclass',
-                'style'          => 'width: 100px;',
+                'label' => 'CheckBox',
+                'class' => 'someclass',
+                'style' => 'width: 100px;',
             ]
         );
         return $element;
@@ -116,14 +131,14 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testCheckedAttributeNotRenderedByDefault()
     {
         $html = $this->element->render();
-        $this->assertNotContains('checked="checked"', $html);
+        $this->assertStringNotContainsString('checked="checked"', $html);
     }
 
     public function testCheckedAttributeRenderedWhenCheckedFlagTrue()
     {
         $this->element->checked = true;
         $html = $this->element->render();
-        $this->assertContains('checked="checked"', $html);
+        $this->assertStringContainsString('checked="checked"', $html);
     }
 
     public function testCheckedValueDefaultsToOne()
@@ -208,7 +223,7 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testSetOptionsSetsInitialValueAccordingToCheckedAndUncheckedValues()
     {
         $options = [
-            'checkedValue'   => 'foo',
+            'checkedValue' => 'foo',
             'uncheckedValue' => 'bar',
         ];
 
@@ -220,13 +235,13 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
     {
         $options = [
             'test1' => [
-                'value'          => 'foo',
-                'checkedValue'   => 'foo',
+                'value' => 'foo',
+                'checkedValue' => 'foo',
                 'uncheckedValue' => 'bar',
             ],
             'test2' => [
-                'value'          => 'bar',
-                'checkedValue'   => 'foo',
+                'value' => 'bar',
+                'checkedValue' => 'foo',
                 'uncheckedValue' => 'bar',
             ],
         ];
@@ -242,7 +257,7 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testShouldRenderCheckBoxDijit()
     {
         $html = $this->element->render();
-        $this->assertContains('dojoType="dijit.form.CheckBox"', $html);
+        $this->assertStringContainsString('dojoType="dijit.form.CheckBox"', $html);
     }
 
     /**
@@ -251,7 +266,7 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testOptionsShouldNotBeRenderedAsElementAttribute()
     {
         $html = $this->element->render();
-        $this->assertNotContains('options="', $html, $html);
+        $this->assertStringNotContainsString('options="', $html, $html);
     }
 
     /**
@@ -259,13 +274,13 @@ class Zend_Dojo_Form_Element_CheckBoxTest extends PHPUnit_Framework_TestCase
      */
     public function testCheckedValuesCanBePassedInConstructor()
     {
-        $element = new Zend_Dojo_Form_Element_CheckBox('myCheckbox',    [
+        $element = new Zend_Dojo_Form_Element_CheckBox('myCheckbox', [
                     'checkedValue' => 'checkedVal',
                     'unCheckedValue' => 'UNCHECKED',
                 ]);
         $element->setView(new Zend_View());
         $html = $element->render();
-        $this->assertContains('value="checkedVal"', $html, $html);
+        $this->assertStringContainsString('value="checkedVal"', $html, $html);
     }
 }
 

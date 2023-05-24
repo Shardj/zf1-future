@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -19,7 +22,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
 /**
  * @category   Zend
  * @package    Zend_Auth
@@ -28,12 +30,11 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Auth_Adapter_DbTable_BasicSqliteTest_SkipTests extends PHPUnit_Framework_TestCase
+class Zend_Auth_Adapter_DbTable_BasicSqliteTest_SkipTests extends TestCase
 {
-
     public $message = 'Skipped for unspecified reason';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped($this->message);
     }
@@ -42,5 +43,4 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest_SkipTests extends PHPUnit_Framew
     {
         // this is here only so we have at least one test
     }
-
 }

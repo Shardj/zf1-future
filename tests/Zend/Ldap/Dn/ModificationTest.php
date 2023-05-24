@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,12 +37,12 @@ require_once 'Zend/Ldap/Dn.php';
  * @group      Zend_Ldap
  * @group      Zend_Ldap_Dn
  */
-class Zend_Ldap_Dn_ModificationTest extends PHPUnit_Framework_TestCase
+class Zend_Ldap_Dn_ModificationTest extends TestCase
 {
     public function testDnManipulationGet()
     {
-        $dnString='cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example,dc=com';
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dnString = 'cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example,dc=com';
+        $dn = Zend_Ldap_Dn::fromString($dnString);
 
         $this->assertEquals(['cn' => 'Baker, Alice'], $dn->get(0));
         $this->assertEquals(['cn' => 'Users', 'ou' => 'Lab'], $dn->get(1));
@@ -117,17 +120,25 @@ class Zend_Ldap_Dn_ModificationTest extends PHPUnit_Framework_TestCase
 
     public function testDnManipulationSet()
     {
-        $dnString='cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example,dc=com';
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dnString = 'cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example,dc=com';
+        $dn = Zend_Ldap_Dn::fromString($dnString);
 
-        $this->assertEquals('uid=abaker,cn=Users+ou=Lab,dc=example,dc=com',
-            $dn->set(0, ['uid' => 'abaker'])->toString());
-        $this->assertEquals('uid=abaker,ou=Lab,dc=example,dc=com',
-            $dn->set(1, ['ou' => 'Lab'])->toString());
-        $this->assertEquals('uid=abaker,ou=Lab,dc=example+ou=Test,dc=com',
-            $dn->set(2, ['dc' => 'example', 'ou' => 'Test'])->toString());
-        $this->assertEquals('uid=abaker,ou=Lab,dc=example+ou=Test,dc=de\+fr',
-            $dn->set(3, ['dc' => 'de+fr'])->toString());
+        $this->assertEquals(
+            'uid=abaker,cn=Users+ou=Lab,dc=example,dc=com',
+            $dn->set(0, ['uid' => 'abaker'])->toString()
+        );
+        $this->assertEquals(
+            'uid=abaker,ou=Lab,dc=example,dc=com',
+            $dn->set(1, ['ou' => 'Lab'])->toString()
+        );
+        $this->assertEquals(
+            'uid=abaker,ou=Lab,dc=example+ou=Test,dc=com',
+            $dn->set(2, ['dc' => 'example', 'ou' => 'Test'])->toString()
+        );
+        $this->assertEquals(
+            'uid=abaker,ou=Lab,dc=example+ou=Test,dc=de\+fr',
+            $dn->set(3, ['dc' => 'de+fr'])->toString()
+        );
 
         try {
             $dn->set(4, ['dc' => 'de']);
@@ -145,52 +156,64 @@ class Zend_Ldap_Dn_ModificationTest extends PHPUnit_Framework_TestCase
 
     public function testDnManipulationRemove()
     {
-        $dnString='cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example,dc=com';
+        $dnString = 'cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example,dc=com';
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         $this->assertEquals('cn=Users+ou=Lab,dc=example,dc=com', $dn->remove(0)->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         $this->assertEquals('cn=Baker\\, Alice,dc=example,dc=com', $dn->remove(1)->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         $this->assertEquals('cn=Baker\\, Alice,cn=Users+ou=Lab,dc=com', $dn->remove(2)->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example',
-            $dn->remove(3)->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice,cn=Users+ou=Lab,dc=example',
+            $dn->remove(3)->toString()
+        );
 
         try {
-            $dn=Zend_Ldap_Dn::fromString($dnString);
+            $dn = Zend_Ldap_Dn::fromString($dnString);
             $dn->remove(4);
             $this->fail('Expected Zend_Ldap_Exception not thrown');
         } catch (Zend_Ldap_Exception $e) {
             $this->assertEquals('Parameter $index out of bounds', $e->getMessage());
         }
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice,dc=com',
-            $dn->remove(1, 2)->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice,dc=com',
+            $dn->remove(1, 2)->toString()
+        );
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice',
-            $dn->remove(1, 3)->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice',
+            $dn->remove(1, 3)->toString()
+        );
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice',
-            $dn->remove(1, 4)->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice',
+            $dn->remove(1, 4)->toString()
+        );
     }
 
     public function testDnManipulationAppendAndPrepend()
     {
-        $dnString='OU=Sales,DC=example';
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dnString = 'OU=Sales,DC=example';
+        $dn = Zend_Ldap_Dn::fromString($dnString);
 
-        $this->assertEquals('OU=Sales,DC=example,DC=com',
-            $dn->append(['DC' => 'com'])->toString());
+        $this->assertEquals(
+            'OU=Sales,DC=example,DC=com',
+            $dn->append(['DC' => 'com'])->toString()
+        );
 
-        $this->assertEquals('OU=New York,OU=Sales,DC=example,DC=com',
-            $dn->prepend(['OU' => 'New York'])->toString());
+        $this->assertEquals(
+            'OU=New York,OU=Sales,DC=example,DC=com',
+            $dn->prepend(['OU' => 'New York'])->toString()
+        );
 
         try {
             $dn->append(['dc' => 'de', 'ou']);
@@ -208,33 +231,41 @@ class Zend_Ldap_Dn_ModificationTest extends PHPUnit_Framework_TestCase
 
     public function testDnManipulationInsert()
     {
-        $dnString='cn=Baker\\, Alice,cn=Users,dc=example,dc=com';
+        $dnString = 'cn=Baker\\, Alice,cn=Users,dc=example,dc=com';
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice,dc=test,cn=Users,dc=example,dc=com',
-            $dn->insert(0, ['dc' => 'test'])->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice,dc=test,cn=Users,dc=example,dc=com',
+            $dn->insert(0, ['dc' => 'test'])->toString()
+        );
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=test,dc=example,dc=com',
-            $dn->insert(1, ['dc' => 'test'])->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice,cn=Users,dc=test,dc=example,dc=com',
+            $dn->insert(1, ['dc' => 'test'])->toString()
+        );
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=example,dc=test,dc=com',
-            $dn->insert(2, ['dc' => 'test'])->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice,cn=Users,dc=example,dc=test,dc=com',
+            $dn->insert(2, ['dc' => 'test'])->toString()
+        );
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=example,dc=com,dc=test',
-            $dn->insert(3, ['dc' => 'test'])->toString());
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $this->assertEquals(
+            'cn=Baker\\, Alice,cn=Users,dc=example,dc=com,dc=test',
+            $dn->insert(3, ['dc' => 'test'])->toString()
+        );
 
         try {
-            $dn=Zend_Ldap_Dn::fromString($dnString);
+            $dn = Zend_Ldap_Dn::fromString($dnString);
             $dn->insert(4, ['dc' => 'de']);
             $this->fail('Expected Zend_Ldap_Exception not thrown');
         } catch (Zend_Ldap_Exception $e) {
             $this->assertEquals('Parameter $index out of bounds', $e->getMessage());
         }
         try {
-            $dn=Zend_Ldap_Dn::fromString($dnString);
+            $dn = Zend_Ldap_Dn::fromString($dnString);
             $dn->insert(3, ['dc' => 'de', 'ou']);
             $this->fail('Expected Zend_Ldap_Exception not thrown');
         } catch (Zend_Ldap_Exception $e) {
@@ -244,8 +275,8 @@ class Zend_Ldap_Dn_ModificationTest extends PHPUnit_Framework_TestCase
 
     public function testArrayAccessImplementation()
     {
-        $dnString='cn=Baker\\, Alice,cn=Users,dc=example,dc=com';
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dnString = 'cn=Baker\\, Alice,cn=Users,dc=example,dc=com';
+        $dn = Zend_Ldap_Dn::fromString($dnString);
 
         $this->assertEquals(['cn' => 'Baker, Alice'], $dn[0]);
         $this->assertEquals(['cn' => 'Users'], $dn[1]);
@@ -259,36 +290,36 @@ class Zend_Ldap_Dn_ModificationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(isset($dn[-1]));
         $this->assertFalse(isset($dn[4]));
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         unset($dn[0]);
         $this->assertEquals('cn=Users,dc=example,dc=com', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         unset($dn[1]);
         $this->assertEquals('cn=Baker\\, Alice,dc=example,dc=com', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         unset($dn[2]);
         $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=com', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
+        $dn = Zend_Ldap_Dn::fromString($dnString);
         unset($dn[3]);
         $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=example', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $dn[0]=['uid' => 'abaker'];
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $dn[0] = ['uid' => 'abaker'];
         $this->assertEquals('uid=abaker,cn=Users,dc=example,dc=com', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $dn[1]=['ou' => 'Lab'];
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $dn[1] = ['ou' => 'Lab'];
         $this->assertEquals('cn=Baker\\, Alice,ou=Lab,dc=example,dc=com', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $dn[2]=['dc' => 'example', 'ou' => 'Test'];
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $dn[2] = ['dc' => 'example', 'ou' => 'Test'];
         $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=example+ou=Test,dc=com', $dn->toString());
 
-        $dn=Zend_Ldap_Dn::fromString($dnString);
-        $dn[3]=['dc' => 'de+fr'];
+        $dn = Zend_Ldap_Dn::fromString($dnString);
+        $dn[3] = ['dc' => 'de+fr'];
         $this->assertEquals('cn=Baker\\, Alice,cn=Users,dc=example,dc=de\+fr', $dn->toString());
     }
 }

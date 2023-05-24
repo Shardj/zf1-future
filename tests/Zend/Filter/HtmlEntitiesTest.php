@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Filter/HtmlEntities.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_HtmlEntitiesTest extends TestCase
 {
     /**
      * Zend_Filter_HtmlEntities object
@@ -47,7 +50,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_HtmlEntities();
     }
@@ -61,11 +64,11 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
     {
         $valuesExpected = [
             'string' => 'string',
-            '<'      => '&lt;',
-            '>'      => '&gt;',
-            '\''     => '\'',
-            '"'      => '&quot;',
-            '&'      => '&amp;'
+            '<' => '&lt;',
+            '>' => '&gt;',
+            '\'' => '\'',
+            '"' => '&quot;',
+            '&' => '&amp;'
             ];
         foreach ($valuesExpected as $input => $output) {
             $this->assertEquals($output, $this->_filter->filter($input));
@@ -154,7 +157,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
     {
         require_once 'Zend/Config.php';
         $options = ['quotestyle' => 5, 'encoding' => 'ISO-8859-1'];
-        $config  = new Zend_Config($options);
+        $config = new Zend_Config($options);
 
         $filter = new Zend_Filter_HtmlEntities(
             $config
@@ -172,7 +175,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testQuoteStyleQuotesEncodeBoth()
     {
-        $input  = "A 'single' and " . '"double"';
+        $input = "A 'single' and " . '"double"';
         $result = 'A &#039;single&#039; and &quot;double&quot;';
 
         $this->_filter->setQuoteStyle(ENT_QUOTES);
@@ -187,7 +190,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testQuoteStyleQuotesEncodeDouble()
     {
-        $input  = "A 'single' and " . '"double"';
+        $input = "A 'single' and " . '"double"';
         $result = "A 'single' and &quot;double&quot;";
 
         $this->_filter->setQuoteStyle(ENT_COMPAT);
@@ -202,7 +205,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
      */
     public function testQuoteStyleQuotesEncodeNone()
     {
-        $input  = "A 'single' and " . '"double"';
+        $input = "A 'single' and " . '"double"';
         $result = "A 'single' and " . '"double"';
 
         $this->_filter->setQuoteStyle(ENT_NOQUOTES);
@@ -246,7 +249,7 @@ class Zend_Filter_HtmlEntitiesTest extends PHPUnit_Framework_TestCase
         $result = $this->_filter->filter($string);
         restore_error_handler();
 
-        $this->assertContains('&quot;&quot;', $result);
+        $this->assertStringContainsString('&quot;&quot;', $result);
     }
 
     /**

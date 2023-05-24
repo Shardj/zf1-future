@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Filter/StringToLower.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_StringToLowerTest extends TestCase
 {
     /**
      * Zend_Filter_StringToLower object
@@ -48,7 +51,7 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_StringToLower();
     }
@@ -63,7 +66,7 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
         $valuesExpected = [
             'string' => 'string',
             'aBc1@3' => 'abc1@3',
-            'A b C'  => 'a b c'
+            'A b C' => 'a b c'
         ];
 
         foreach ($valuesExpected as $input => $output) {
@@ -80,8 +83,8 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
     public function testWithEncoding()
     {
         $valuesExpected = [
-            'Ü'     => 'ü',
-            'Ñ'     => 'ñ',
+            'Ü' => 'ü',
+            'Ñ' => 'ñ',
             'ÜÑ123' => 'üñ123'
         ];
 
@@ -91,7 +94,7 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
                 $this->assertEquals($output, $this->_filter->filter($input));
             }
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('mbstring is required', $e->getMessage());
+            $this->assertStringContainsString('mbstring is required', $e->getMessage());
         }
     }
 
@@ -108,7 +111,7 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
             $this->_filter->setEncoding('aaaaa');
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('is not supported', $e->getMessage());
+            $this->assertStringContainsString('is not supported', $e->getMessage());
         }
     }
 
@@ -118,8 +121,8 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
     public function testInitiationWithEncoding()
     {
         $valuesExpected = [
-            'Ü'     => 'ü',
-            'Ñ'     => 'ñ',
+            'Ü' => 'ü',
+            'Ñ' => 'ñ',
             'ÜÑ123' => 'üñ123'
         ];
 
@@ -129,7 +132,7 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
                 $this->assertEquals($output, $filter->filter($input));
             }
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('mbstring is required', $e->getMessage());
+            $this->assertStringContainsString('mbstring is required', $e->getMessage());
         }
     }
 
@@ -139,8 +142,8 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
     public function testCaseInsensitiveEncoding()
     {
         $valuesExpected = [
-            'Ü'     => 'ü',
-            'Ñ'     => 'ñ',
+            'Ü' => 'ü',
+            'Ñ' => 'ñ',
             'ÜÑ123' => 'üñ123'
         ];
 
@@ -160,7 +163,7 @@ class Zend_Filter_StringToLowerTest extends PHPUnit_Framework_TestCase
                 $this->assertEquals($output, $this->_filter->filter($input));
             }
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('mbstring is required', $e->getMessage());
+            $this->assertStringContainsString('mbstring is required', $e->getMessage());
         }
     }
 

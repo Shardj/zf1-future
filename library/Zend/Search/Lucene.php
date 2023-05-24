@@ -1106,7 +1106,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     public function getDocument($id)
     {
         if ($id instanceof Zend_Search_Lucene_Search_QueryHit) {
-            /* @var $id Zend_Search_Lucene_Search_QueryHit */
+            /* @var Zend_Search_Lucene_Search_QueryHit $id */
             $id = $id->id;
         }
 
@@ -1311,7 +1311,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     }
 
     /**
-     * Retrive similarity used by index reader
+     * Retrieve similarity used by index reader
      *
      * @return Zend_Search_Lucene_Search_Similarity
      */
@@ -1378,7 +1378,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     public function delete($id)
     {
         if ($id instanceof Zend_Search_Lucene_Search_QueryHit) {
-            /* @var $id Zend_Search_Lucene_Search_QueryHit */
+            /* @var Zend_Search_Lucene_Search_QueryHit $id */
             $id = $id->id;
         }
 

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,12 +43,12 @@ require_once 'Zend/Log/Writer/Stream.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
-class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
+class Zend_Log_Writer_StreamTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testConstructorThrowsWhenResourceIsNotStream()
@@ -54,19 +59,25 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegExp('/not a stream/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/not a stream/i', $e->getMessage());
         } catch (TypeError $e) {
-            $this->assertRegExp('/must be of t/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/must be of t/i', $e->getMessage());
         }
         xml_parser_free($resource);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorWithValidStream()
     {
         $stream = fopen('php://memory', 'w+');
         new Zend_Log_Writer_Stream($stream);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorWithValidUrl()
     {
         new Zend_Log_Writer_Stream('php://memory');
@@ -80,7 +91,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegExp('/existing stream/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/existing stream/i', $e->getMessage());
         }
     }
 
@@ -91,10 +102,10 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegExp('/cannot be opened/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/cannot be opened/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof ValueError);
-            $this->assertRegExp('/cannot be empty/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/cannot be empty/i', $e->getMessage());
         }
     }
 
@@ -110,7 +121,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
         $contents = stream_get_contents($stream);
         fclose($stream);
 
-        $this->assertContains($fields['message'], $contents);
+        $this->assertStringContainsString($fields['message'], $contents);
     }
 
     public function testWriteThrowsWhenStreamWriteFails()
@@ -124,10 +135,10 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegExp('/unable to write/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertRegExp('/resource is not a valid/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/resource is not a valid/i', $e->getMessage());
         }
     }
 
@@ -143,10 +154,10 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegExp('/unable to write/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertRegExp('/resource is not a valid/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/resource is not a valid/i', $e->getMessage());
         }
     }
 
@@ -159,21 +170,21 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
         $formatter = new Zend_Log_Formatter_Simple($expected);
         $writer->setFormatter($formatter);
 
-        $writer->write(['bar'=>'baz']);
+        $writer->write(['bar' => 'baz']);
         rewind($stream);
         $contents = stream_get_contents($stream);
         fclose($stream);
 
-        $this->assertContains($expected, $contents);
+        $this->assertStringContainsString($expected, $contents);
     }
 
     public function testFactoryStream()
     {
         $cfg = ['log' => ['memory' => [
-            'writerName'   => "Mock",
+            'writerName' => "Mock",
             'writerParams' => [
                 'stream' => 'php://memory',
-                'mode'   => 'a'
+                'mode' => 'a'
             ]
         ]]];
 
@@ -184,9 +195,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit_Framework_TestCase
     public function testFactoryUrl()
     {
         $cfg = ['log' => ['memory' => [
-            'writerName'   => "Mock",
+            'writerName' => "Mock",
             'writerParams' => [
-                'url'  => 'http://localhost',
+                'url' => 'http://localhost',
                 'mode' => 'a'
             ]
         ]]];

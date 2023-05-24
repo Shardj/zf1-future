@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,24 +35,39 @@ require_once 'Zend/Gdata/Books.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Books
  */
-class Zend_Gdata_Books_VolumeFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Books_VolumeFeedTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $feedText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Books_VolumeFeed|mixed
+     */
+    protected $feed;
+
+    protected function setUp(): void
+    {
         $this->feedText = file_get_contents(
-                'Zend/Gdata/Books/_files/VolumeFeedDataSample1.xml',
-                true);
+            'Zend/Gdata/Books/_files/VolumeFeedDataSample1.xml',
+            true
+        );
         $this->feed = new Zend_Gdata_Books_VolumeFeed();
     }
 
-    private function verifyAllSamplePropertiesAreCorrect ($volumeFeed) {
-        $this->assertEquals('http://www.google.com/books/feeds/volumes',
-            $volumeFeed->id->text);
+    private function verifyAllSamplePropertiesAreCorrect($volumeFeed)
+    {
+        $this->assertEquals(
+            'http://www.google.com/books/feeds/volumes',
+            $volumeFeed->id->text
+        );
         $this->assertEquals('2008-10-07T16:41:52.000Z', $volumeFeed->updated->text);
         $this->assertEquals('http://schemas.google.com/g/2005#kind', $volumeFeed->category[0]->scheme);
         $this->assertEquals('http://schemas.google.com/books/2008#volume', $volumeFeed->category[0]->term);
         $this->assertEquals('text', $volumeFeed->title->type);
-        $this->assertEquals('Search results for Hamlet', $volumeFeed->title->text);;
+        $this->assertEquals('Search results for Hamlet', $volumeFeed->title->text);
+        ;
         $this->assertEquals('self', $volumeFeed->getLink('self')->rel);
         $this->assertEquals('application/atom+xml', $volumeFeed->getLink('self')->type);
         $this->assertEquals('http://www.google.com/books/feeds/volumes?q=Hamlet&start-index=3&max-results=5', $volumeFeed->getLink('self')->href);
@@ -60,29 +78,34 @@ class Zend_Gdata_Books_VolumeFeedTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(5, $volumeFeed->itemsPerPage->text);
     }
 
-    public function testEmptyEntryShouldHaveNoExtensionElements() {
+    public function testEmptyEntryShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->feed->extensionElements));
         $this->assertEquals(0, count($this->feed->extensionElements));
     }
 
-    public function testEmptyEntryShouldHaveNoExtensionAttributes() {
+    public function testEmptyEntryShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->feed->extensionAttributes));
         $this->assertEquals(0, count($this->feed->extensionAttributes));
     }
 
-    public function testSampleEntryShouldHaveNoExtensionElements() {
+    public function testSampleEntryShouldHaveNoExtensionElements()
+    {
         $this->feed->transferFromXML($this->feedText);
         $this->assertTrue(is_array($this->feed->extensionElements));
         $this->assertEquals(0, count($this->feed->extensionElements));
     }
 
-    public function testSampleEntryShouldHaveNoExtensionAttributes() {
+    public function testSampleEntryShouldHaveNoExtensionAttributes()
+    {
         $this->feed->transferFromXML($this->feedText);
         $this->assertTrue(is_array($this->feed->extensionAttributes));
         $this->assertEquals(0, count($this->feed->extensionAttributes));
     }
 
-    public function testEmptyVolumeFeedToAndFromStringShouldMatch() {
+    public function testEmptyVolumeFeedToAndFromStringShouldMatch()
+    {
         $entryXml = $this->feed->saveXML();
         $newVolumeFeed = new Zend_Gdata_Books_VolumeFeed();
         $newVolumeFeed->transferFromXML($entryXml);
@@ -90,12 +113,14 @@ class Zend_Gdata_Books_VolumeFeedTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($entryXml, $newVolumeFeedXml);
     }
 
-    public function testSamplePropertiesAreCorrect () {
+    public function testSamplePropertiesAreCorrect()
+    {
         $this->feed->transferFromXML($this->feedText);
         $this->verifyAllSamplePropertiesAreCorrect($this->feed);
     }
 
-    public function testConvertVolumeFeedToAndFromString() {
+    public function testConvertVolumeFeedToAndFromString()
+    {
         $this->feed->transferFromXML($this->feedText);
         $entryXml = $this->feed->saveXML();
         $newVolumeFeed = new Zend_Gdata_Books_VolumeFeed();
@@ -104,5 +129,4 @@ class Zend_Gdata_Books_VolumeFeedTest extends PHPUnit_Framework_TestCase
         $newVolumeFeedXml = $newVolumeFeed->saveXML();
         $this->assertEquals($entryXml, $newVolumeFeedXml);
     }
-
 }

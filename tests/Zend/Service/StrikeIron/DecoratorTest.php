@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,7 +38,7 @@ require_once 'Zend/Service/StrikeIron/Decorator.php';
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
-class Zend_Service_StrikeIron_DecoratorTest extends PHPUnit_Framework_TestCase
+class Zend_Service_StrikeIron_DecoratorTest extends TestCase
 {
     public function testNoNoticesWhenDecoratedObjectIsNotAnObject()
     {
@@ -76,7 +79,7 @@ class Zend_Service_StrikeIron_DecoratorTest extends PHPUnit_Framework_TestCase
 
     public function testDecoratorReturnsAnotherDecoratorWhenValueIsAnObject()
     {
-        $object = (object)['Foo' => new stdclass];
+        $object = (object)['Foo' => new stdclass()];
         $decorator = new Zend_Service_StrikeIron_Decorator($object);
         $class = get_class($decorator);
         $this->assertTrue($decorator->Foo instanceof $class);

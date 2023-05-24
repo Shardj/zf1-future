@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Filter/Null.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_NullTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_NullTest extends TestCase
 {
     /**
      * Zend_Filter_Null object
@@ -47,7 +50,7 @@ class Zend_Filter_NullTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_Null();
     }
@@ -276,7 +279,7 @@ class Zend_Filter_NullTest extends PHPUnit_Framework_TestCase
             $this->_filter->setType(true);
             $this->fail();
         } catch (Zend_Exception $e) {
-            $this->assertContains('Unknown', $e->getMessage());
+            $this->assertStringContainsString('Unknown', $e->getMessage());
         }
     }
 

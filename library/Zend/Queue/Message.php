@@ -217,7 +217,7 @@ class Zend_Queue_Message
      * Sets all data in the row from an array.
      *
      * @param  array $data
-     * @return Zend_Queue_Message Provides a fluent interface
+     * @return $this
      */
     public function setFromArray(array $data)
     {

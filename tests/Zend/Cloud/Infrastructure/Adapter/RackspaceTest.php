@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -23,12 +26,12 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
 require_once 'Zend/Cloud/Infrastructure/Adapter/Rackspace.php';
 require_once 'Zend/Cloud/Infrastructure/Factory.php';
 
-class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_TestCase
+class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends TestCase
 {
     /**
      * Timeout in seconds for status change
      */
-    const STATUS_TIMEOUT= 120;
+    public const STATUS_TIMEOUT = 120;
     /**
      * Reference to Infrastructure object
      *
@@ -45,7 +48,7 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
     
     /**
      * Image ID of the instance
-     * 
+     *
      * @var string
      */
     protected static $instanceId;
@@ -53,14 +56,14 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
     /**
      * Setup for each test
      */
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter([ 
-            Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace', 
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER   => 'foo', 
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY    => 'bar', 
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => 'USA'   
-        ]); 
+        $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter([
+            Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace',
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER => 'foo',
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY => 'bar',
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => 'USA'
+        ]);
 
         $this->httpClientAdapterTest = new Zend_Http_Client_Adapter_Test();
 
@@ -70,17 +73,16 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
         
         // load the HTTP response (from a file)
         $shortClassName = 'RackspaceTest';
-        $filename= dirname(__FILE__) . '/_files/' . $shortClassName . '_'. $this->getName().'.response';
+        $filename = dirname(__FILE__) . '/_files/' . $shortClassName . '_' . $this->getName() . '.response';
         
         if (file_exists($filename)) {
             // authentication (from file)
-            $content = dirname(__FILE__) . '/_files/'.$shortClassName . '_testAuthenticate.response';
+            $content = dirname(__FILE__) . '/_files/' . $shortClassName . '_testAuthenticate.response';
             $this->httpClientAdapterTest->setResponse($this->loadResponse($content));
-            $this->assertTrue($this->infrastructure->getAdapter()->authenticate(),'Authentication failed');
+            $this->assertTrue($this->infrastructure->getAdapter()->authenticate(), 'Authentication failed');
             
-            $this->httpClientAdapterTest->setResponse($this->loadResponse($filename)); 
+            $this->httpClientAdapterTest->setResponse($this->loadResponse($filename));
         }
-        
     }
     
     /**
@@ -98,18 +100,18 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
         // not preceded by \r with the sequence \r\n, ensuring that the message
         // is well-formed.
         return preg_replace("#(?<!\r)\n#", "\r\n", $response);
-    }    
+    }
     /**
      * Get Config Array
-     * 
+     *
      * @return array
-     */ 
-    static function getConfigArray()
+     */
+    public static function getConfigArray()
     {
-         return [
+        return [
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace',
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER   => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_USER'),
-            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY    => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_KEY'),
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_USER => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_USER'),
+            Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_KEY => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_KEY'),
             Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION => constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_REGION')
         ];
     }
@@ -124,17 +126,17 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
         $this->assertEquals('rackspace_region', Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_REGION);
         $this->assertEquals('USA', Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_ZONE_USA);
         $this->assertEquals('UK', Zend_Cloud_Infrastructure_Adapter_Rackspace::RACKSPACE_ZONE_UK);
-        $this->assertTrue(Zend_Cloud_Infrastructure_Adapter_Rackspace::MONITOR_CPU_SAMPLES>0);
+        $this->assertTrue(Zend_Cloud_Infrastructure_Adapter_Rackspace::MONITOR_CPU_SAMPLES > 0);
     }
     /**
      * Test construct with missing params
      */
-    public function testConstructExceptionMissingParams() 
+    public function testConstructExceptionMissingParams()
     {
-        $this->setExpectedException(
-            'Zend_Cloud_Infrastructure_Exception',
-            'Invalid options provided'
+        $this->expectException(
+            'Zend_Cloud_Infrastructure_Exception'
         );
+        $this->expectExceptionMessage('Invalid options provided');
         $instance = new Zend_Cloud_Infrastructure_Adapter_Rackspace('foo');
     }
     /**
@@ -152,14 +154,14 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
     public function testCreateInstance()
     {
         $options = [
-            'imageId'  => constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID'),
+            'imageId' => constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID'),
             'flavorId' => constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_FLAVORID'),
             'metadata' => [
                 'foo' => 'bar'
             ]
         ];
         $instance = $this->infrastructure->createInstance(constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGE_NAME'), $options);
-        self::$instanceId= $instance->getId();
+        self::$instanceId = $instance->getId();
         $this->assertEquals(constant('TESTS_ZEND_SERVICE_RACKSPACE_SERVER_IMAGEID'), $instance->getImageId());
     }
     /**
@@ -212,14 +214,14 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends PHPUnit_Framework_
      */
     public function testStartInstance()
     {
-        $this->markTestSkipped('Test start instance skipped');   
+        $this->markTestSkipped('Test start instance skipped');
     }
     /**
      * Test reboot and instance
      */
     public function testRebootInstance()
     {
-        $this->assertTrue($this->infrastructure->rebootInstance(self::$instanceId));    
+        $this->assertTrue($this->infrastructure->rebootInstance(self::$instanceId));
     }
     /**
      * Test destroy instance

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Mime.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mime
  */
-class Zend_MimeTest extends PHPUnit_Framework_TestCase
+class Zend_MimeTest extends TestCase
 {
     public function testBoundary()
     {
@@ -47,7 +50,6 @@ class Zend_MimeTest extends PHPUnit_Framework_TestCase
         $myBoundary = 'mySpecificBoundary';
         $m3 = new Zend_Mime($myBoundary);
         $this->assertEquals($m3->boundary(), $myBoundary);
-
     }
 
     public function testIsPrintable_notPrintable()
@@ -78,9 +80,9 @@ class Zend_MimeTest extends PHPUnit_Framework_TestCase
      */
     public function testEncodeQuotedPrintableWhenTextHasZeroAtTheEnd()
     {
-        $raw = str_repeat('x',72) . '0';
+        $raw = str_repeat('x', 72) . '0';
         $quoted = Zend_Mime::encodeQuotedPrintable($raw, 72);
-        $expected = quoted_printable_decode($quoted);        
+        $expected = quoted_printable_decode($quoted);
         $this->assertEquals($expected, $raw);
     }
 
@@ -104,7 +106,7 @@ class Zend_MimeTest extends PHPUnit_Framework_TestCase
         $mock = new Zend_Mail_Transport_Sendmail_Mock();
         $mail->send($mock);
         $body = quoted_printable_decode($mock->body);
-        $this->assertContains("my body\r\n\r\n...after two newlines", $body, $body);
+        $this->assertStringContainsString("my body\r\n\r\n...after two newlines", $body, $body);
     }
 
     /**
@@ -150,20 +152,21 @@ class Zend_MimeTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-1688
+     * @doesNotPerformAssertions
      */
     public function testLineLengthInQuotedPrintableHeaderEncoding()
     {
         $subject = "Alle meine Entchen schwimmen in dem See, schwimmen in dem See, Köpfchen in das Wasser, Schwänzchen in die Höh!";
         $encoded = Zend_Mime::encodeQuotedPrintableHeader($subject, "UTF-8", 100);
-        foreach(explode(Zend_Mime::LINEEND, $encoded) AS $line ) {
-            if(strlen($line) > 100) {
-                $this->fail("Line '".$line."' is ".strlen($line)." chars long, only 100 allowed.");
+        foreach (explode(Zend_Mime::LINEEND, $encoded) as $line) {
+            if (strlen($line) > 100) {
+                $this->fail("Line '" . $line . "' is " . strlen($line) . " chars long, only 100 allowed.");
             }
         }
         $encoded = Zend_Mime::encodeQuotedPrintableHeader($subject, "UTF-8", 40);
-        foreach(explode(Zend_Mime::LINEEND, $encoded) AS $line ) {
-            if(strlen($line) > 40) {
-                $this->fail("Line '".$line."' is ".strlen($line)." chars long, only 40 allowed.");
+        foreach (explode(Zend_Mime::LINEEND, $encoded) as $line) {
+            if (strlen($line) > 40) {
+                $this->fail("Line '" . $line . "' is " . strlen($line) . " chars long, only 40 allowed.");
             }
         }
     }

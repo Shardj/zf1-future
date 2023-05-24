@@ -84,13 +84,6 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
     protected $_useNumbers = true;
 
     /**
-     * Should both cases be used or only lowercase
-     *
-     * @var boolean
-     */
-    // protected $_useCase = false;
-
-    /**
      * Session lifetime for the captcha data
      *
      * @var integer

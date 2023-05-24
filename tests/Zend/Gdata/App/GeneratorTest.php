@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,22 +36,35 @@ require_once 'Zend/Gdata/App.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
-class Zend_Gdata_App_GeneratorTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_App_GeneratorTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $generatorText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_App_Extension_Generator|mixed
+     */
+    protected $generator;
+
+    protected function setUp(): void
+    {
         $this->generatorText = file_get_contents(
-                'Zend/Gdata/App/_files/GeneratorElementSample1.xml',
-                true);
+            'Zend/Gdata/App/_files/GeneratorElementSample1.xml',
+            true
+        );
         $this->generator = new Zend_Gdata_App_Extension_Generator();
     }
 
-    public function testEmptyGeneratorShouldHaveEmptyExtensionsList() {
+    public function testEmptyGeneratorShouldHaveEmptyExtensionsList()
+    {
         $this->assertTrue(is_array($this->generator->extensionElements));
         $this->assertTrue(count($this->generator->extensionElements) == 0);
     }
 
-    public function testEmptyGeneratorToAndFromStringShouldMatch() {
+    public function testEmptyGeneratorToAndFromStringShouldMatch()
+    {
         $generatorXml = $this->generator->saveXML();
         $newGenerator = new Zend_Gdata_App_Extension_Generator();
         $newGenerator->transferFromXML($generatorXml);
@@ -56,7 +72,8 @@ class Zend_Gdata_App_GeneratorTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($generatorXml == $newGeneratorXml);
     }
 
-    public function testGeneratorToAndFromStringShouldMatch() {
+    public function testGeneratorToAndFromStringShouldMatch()
+    {
         $this->generator->uri = 'http://code.google.com/apis/gdata/';
         $this->generator->version = '1.0';
         $this->generator->text = 'Google data APIs';
@@ -65,18 +82,22 @@ class Zend_Gdata_App_GeneratorTest extends PHPUnit_Framework_TestCase
         $newGenerator->transferFromXML($generatorXml);
         $newGeneratorXml = $newGenerator->saveXML();
         $this->assertEquals($newGeneratorXml, $generatorXml);
-        $this->assertEquals('http://code.google.com/apis/gdata/',
-                $newGenerator->uri);
+        $this->assertEquals(
+            'http://code.google.com/apis/gdata/',
+            $newGenerator->uri
+        );
         $this->assertEquals('1.0', $newGenerator->version);
         $this->assertEquals('Google data APIs', $newGenerator->text);
     }
 
-    public function testConvertGeneratorWithDraftToAndFromString() {
+    public function testConvertGeneratorWithDraftToAndFromString()
+    {
         $this->generator->transferFromXML($this->generatorText);
-        $this->assertEquals('http://code.google.com/apis/gdata/',
-                $this->generator->uri);
+        $this->assertEquals(
+            'http://code.google.com/apis/gdata/',
+            $this->generator->uri
+        );
         $this->assertEquals('1.0', $this->generator->version);
         $this->assertEquals('Google data APIs', $this->generator->text);
     }
-
 }

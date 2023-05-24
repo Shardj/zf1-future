@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_AccordionContainerTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_AccordionContainer|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_AccordionContainerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_AccordionContainerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_AccordionContainer();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -99,10 +114,10 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
     {
         $html = '';
         for ($i = 1; $i < 6; ++$i) {
-            $id      = 'pane' . $i;
-            $title   = 'Pane ' . $i;
+            $id = 'pane' . $i;
+            $title = 'Pane ' . $i;
             $content = 'This is the content of pane ' . $i;
-            $html   .= $this->view->accordionPane($id, $content, ['title' => $title]);
+            $html .= $this->view->accordionPane($id, $content, ['title' => $title]);
         }
         return $this->helper->accordionContainer('container', $html, [], ['style' => 'height: 200px; width: 100px;']);
     }
@@ -110,14 +125,14 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getContainer();
-        $this->assertRegexp('/<div[^>]*(dojoType="dijit.layout.AccordionContainer")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(dojoType="dijit.layout.AccordionContainer")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getContainer();
-        $this->assertNotRegexp('/<div[^>]*(dojoType="dijit.layout.AccordionContainer")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<div[^>]*(dojoType="dijit.layout.AccordionContainer")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('container'));
     }
 
@@ -132,21 +147,19 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
         echo "Captured content ended\n";
         echo $this->view->accordionPane()->captureEnd('bar');
         $html = $this->helper->captureEnd('foo');
-        $this->assertRegexp('/<div[^>]*(id="bar")/', $html);
-        $this->assertRegexp('/<div[^>]*(id="baz")/', $html);
-        $this->assertRegexp('/<div[^>]*(id="foo")/', $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(id="bar")/', $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(id="baz")/', $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(id="foo")/', $html);
         $this->assertEquals(2, substr_count($html, 'dijit.layout.AccordionPane'));
         $this->assertEquals(1, substr_count($html, 'dijit.layout.AccordionContainer'));
-        $this->assertContains('started', $html);
-        $this->assertContains('ended', $html);
-        $this->assertContains('Nested Content', $html);
+        $this->assertStringContainsString('started', $html);
+        $this->assertStringContainsString('ended', $html);
+        $this->assertStringContainsString('Nested Content', $html);
     }
 
-    /**
-     * @expectedException Zend_Dojo_View_Exception
-     */
     public function testCapturingShouldRaiseErrorWhenDuplicateIdDiscovered()
     {
+        $this->expectException(Zend_Dojo_View_Exception::class);
         $this->helper->captureStart('foo', [], ['style' => 'height: 200px; width: 100px;']);
         $this->view->accordionPane()->captureStart('bar', ['title' => 'Captured Pane']);
         $this->view->accordionPane()->captureStart('bar', ['title' => 'Captured Pane']);
@@ -156,11 +169,9 @@ class Zend_Dojo_View_Helper_AccordionContainerTest extends PHPUnit_Framework_Tes
         $html = $this->helper->captureEnd('foo');
     }
 
-    /**
-     * @expectedException Zend_Dojo_View_Exception
-     */
     public function testCapturingShouldRaiseErrorWhenNonexistentIdPassedToEnd()
     {
+        $this->expectException(Zend_Dojo_View_Exception::class);
         $this->helper->captureStart('foo', [], ['style' => 'height: 200px; width: 100px;']);
         $html = $this->helper->captureEnd('bar');
     }

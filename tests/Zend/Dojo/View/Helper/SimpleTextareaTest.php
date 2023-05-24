@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -51,8 +56,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_SimpleTextareaTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_SimpleTextareaTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_SimpleTextarea|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -60,8 +75,8 @@ class Zend_Dojo_View_Helper_SimpleTextareaTest extends PHPUnit_Framework_TestCas
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_SimpleTextareaTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_SimpleTextareaTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -70,12 +85,12 @@ class Zend_Dojo_View_Helper_SimpleTextareaTest extends PHPUnit_Framework_TestCas
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_SimpleTextarea();
         $this->helper->setView($this->view);
     }
@@ -86,7 +101,7 @@ class Zend_Dojo_View_Helper_SimpleTextareaTest extends PHPUnit_Framework_TestCas
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -111,21 +126,21 @@ class Zend_Dojo_View_Helper_SimpleTextareaTest extends PHPUnit_Framework_TestCas
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<textarea[^>]*(dojoType="dijit.form.SimpleTextarea")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<textarea[^>]*(dojoType="dijit.form.SimpleTextarea")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElement();
-        $this->assertNotRegexp('/<textarea[^>]*(dojoType="dijit.form.SimpleTextarea")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<textarea[^>]*(dojoType="dijit.form.SimpleTextarea")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId'));
     }
 
     public function testPassingIdAsAttributeShouldOverrideUsingNameAsId()
     {
         $html = $this->helper->simpleTextarea('foo[bar]', '', [], ['id' => 'foo-bar']);
-        $this->assertContains('id="foo-bar"', $html);
+        $this->assertStringContainsString('id="foo-bar"', $html);
     }
 }
 

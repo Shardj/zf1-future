@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,18 +43,18 @@ require_once 'Zend/Config.php';
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class Zend_Tag_Cloud_Decorator_HtmlTagTest extends PHPUnit_Framework_TestCase
+class Zend_Tag_Cloud_Decorator_HtmlTagTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testDefaultOutput()
     {
         $decorator = new Zend_Tag_Cloud_Decorator_HtmlTag();
-        $expected  = ['<li><a href="http://first" style="font-size: 10px;">foo</a></li>',
+        $expected = ['<li><a href="http://first" style="font-size: 10px;">foo</a></li>',
                            '<li><a href="http://second" style="font-size: 13px;">bar</a></li>',
                            '<li><a href="http://third" style="font-size: 20px;">baz</a></li>'];
 
@@ -60,7 +65,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends PHPUnit_Framework_TestCase
     {
         $decorator = new Zend_Tag_Cloud_Decorator_HtmlTag();
         $decorator->setHtmlTags(['span' => ['class' => 'tag'], 'li']);
-        $expected  = ['<li><span class="tag"><a href="http://first" style="font-size: 10px;">foo</a></span></li>',
+        $expected = ['<li><span class="tag"><a href="http://first" style="font-size: 10px;">foo</a></span></li>',
                            '<li><span class="tag"><a href="http://second" style="font-size: 13px;">bar</a></span></li>',
                            '<li><span class="tag"><a href="http://third" style="font-size: 20px;">baz</a></span></li>'];
 
@@ -74,7 +79,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends PHPUnit_Framework_TestCase
                   ->setMinFontSize(5)
                   ->setMaxFontSize(50);
 
-        $expected  = ['<li><a href="http://first" style="font-size: 5pt;">foo</a></li>',
+        $expected = ['<li><a href="http://first" style="font-size: 5pt;">foo</a></li>',
                            '<li><a href="http://second" style="font-size: 15pt;">bar</a></li>',
                            '<li><a href="http://third" style="font-size: 50pt;">baz</a></li>'];
 
@@ -86,7 +91,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends PHPUnit_Framework_TestCase
         $decorator = new Zend_Tag_Cloud_Decorator_HtmlTag();
         $decorator->setClassList(['small', 'medium', 'large']);
 
-        $expected  = ['<li><a href="http://first" class="small">foo</a></li>',
+        $expected = ['<li><a href="http://first" class="small">foo</a></li>',
                            '<li><a href="http://second" class="medium">bar</a></li>',
                            '<li><a href="http://third" class="large">baz</a></li>'];
 
@@ -180,7 +185,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(10, $decorator->getMaxFontSize());
         $this->assertEquals('pt', $decorator->getFontSizeUnit());
     }
-
+    /** @doesNotPerformAssertions */
     public function testSkipOptions()
     {
         $decorator = new Zend_Tag_Cloud_Decorator_HtmlTag(['options' => 'foobar']);
@@ -189,7 +194,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends PHPUnit_Framework_TestCase
 
     protected function _getTagList()
     {
-        $list   = new Zend_Tag_ItemList();
+        $list = new Zend_Tag_ItemList();
         $list[] = new Zend_Tag_Item(['title' => 'foo', 'weight' => 1, 'params' => ['url' => 'http://first']]);
         $list[] = new Zend_Tag_Item(['title' => 'bar', 'weight' => 3, 'params' => ['url' => 'http://second']]);
         $list[] = new Zend_Tag_Item(['title' => 'baz', 'weight' => 10, 'params' => ['url' => 'http://third']]);

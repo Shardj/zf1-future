@@ -175,7 +175,7 @@ class Zend_Oauth_Consumer extends Zend_Oauth
      * Request Token.
      *
      * @param  array $queryData GET data returned in user's redirect from Provider
-     * @param  Zend_Oauth_Token_Request Request Token information
+     * @param  Zend_Oauth_Token_Request $token Request Token information
      * @param  string $httpMethod
      * @param  Zend_Oauth_Http_AccessToken $request
      * @return Zend_Oauth_Token_Access

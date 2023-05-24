@@ -193,7 +193,7 @@ class Zend_Gdata_Gapps_UserEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Gapps_Extension_Login $value The desired value for
      *          this instance's login property.
-     * @return Zend_Gdata_Gapps_UserEntry Provides a fluent interface.
+     * @return $this
      */
     public function setLogin($value)
     {
@@ -218,7 +218,7 @@ class Zend_Gdata_Gapps_UserEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Gapps_Extension_Name $value The desired value for
      *          this instance's name property.
-     * @return Zend_Gdata_Gapps_UserEntry Provides a fluent interface.
+     * @return $this
      */
     public function setName($value)
     {
@@ -244,7 +244,7 @@ class Zend_Gdata_Gapps_UserEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Gapps_Extension_Quota $value The desired value for
      *          this instance's quota property.
-     * @return Zend_Gdata_Gapps_UserEntry Provides a fluent interface.
+     * @return $this
      */
     public function setQuota($value)
     {
@@ -284,7 +284,7 @@ class Zend_Gdata_Gapps_UserEntry extends Zend_Gdata_Entry
      *
      * @param array $value A collection of
      *          Zend_Gdata_Gapps_Extension_FeedLink objects.
-     * @return Zend_Gdata_Gapps_UserEntry Provides a fluent interface.
+     * @return $this
      */
     public function setFeedLink($value)
     {

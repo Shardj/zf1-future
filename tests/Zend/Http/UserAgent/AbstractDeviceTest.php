@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -44,7 +47,7 @@ require_once 'Zend/Http/UserAgent/Validator.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Http_UserAgent_AbstractDeviceTest extends PHPUnit_Framework_TestCase
+class Zend_Http_UserAgent_AbstractDeviceTest extends TestCase
 {
     public function testUserAgentSafari()
     {
@@ -378,7 +381,6 @@ class Zend_Http_UserAgent_AbstractDeviceTest extends PHPUnit_Framework_TestCase
 
     public function testMatchMobileOtherHeaders()
     {
-
         $userAgent = 'xxxxx';
         $server = [
             'all_http' => '. opera Mini'
@@ -1096,7 +1098,7 @@ audio/vnd.qcelp, application/xhtml+xml'
         $this->assertTrue(Zend_Http_UserAgent_Mobile::match($userAgent, [
             'HTTP_USER_AGENT' => $userAgent
         ]));
-// others
+        // others
         $userAgent = '4thpass KBrowser/2.1';
         $this->assertTrue(Zend_Http_UserAgent_Mobile::match($userAgent, [
             'HTTP_USER_AGENT' => $userAgent
@@ -9981,67 +9983,66 @@ audio/vnd.qcelp, application/xhtml+xml'
         $this->assertTrue(Zend_Http_UserAgent_Mobile::match($userAgent, [
             'HTTP_USER_AGENT' => $userAgent
         ]));
-
     }
 
     public function testMatchBot()
     {
         $userAgent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
-        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'Googlebot/2.1 (+http://www.googlebot.com/bot.html)';
-        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)';
-        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'YahooSeeker/1.2 (compatible; Mozilla 4.0; MSIE 5.5; yahooseeker at yahoo-inc dot com ; http://help.yahoo.com/help/us/shop/merchant/)';
-        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'Mozilla/4.0 compatible ZyBorg/1.0 (wn.zyborg@looksmart.net; http://www.WISEnutbot.com)';
-        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Bot::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function testMatchChecker()
     {
         $userAgent = 'Mozilla/5.0 (compatible; AbiLogicBot/1.0; +http://www.abilogic.com/bot.html)';
-        $this->assertTrue(Zend_Http_UserAgent_Checker::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Checker::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'W3C-checklink/4.5 [4.160] libwww-perl/5.823';
-        $this->assertTrue(Zend_Http_UserAgent_Checker::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Checker::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function testMatchConsole()
     {
         $userAgent = 'Mozilla/5.0 (PLAYSTATION 3; 1.10)';
-        $this->assertTrue(Zend_Http_UserAgent_Console::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Console::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'Opera/9.30 (Nintendo Wii; U; ; 2071; Wii Shop Channel/1.0; en)';
-        $this->assertTrue(Zend_Http_UserAgent_Console::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Console::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function testMatchEmail()
     {
         $userAgent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.1.9) Gecko/20100317 Lightning/1.0b1 Thunderbird/3.0.4';
-        $this->assertTrue(Zend_Http_UserAgent_Email::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Email::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function testMatchFeed()
     {
         $userAgent = 'Bloglines/3.0-rho (http://www.bloglines.com; 3 subscribers)';
-        $this->assertTrue(Zend_Http_UserAgent_Feed::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Feed::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function testMatchOffline()
     {
         $userAgent = 'Offline Explorer/2.5';
-        $this->assertTrue(Zend_Http_UserAgent_Offline::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Offline::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'Wget/1.9.1';
-        $this->assertTrue(Zend_Http_UserAgent_Offline::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Offline::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'WebCopier v3.2a';
-        $this->assertTrue(Zend_Http_UserAgent_Offline::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Offline::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function _testMatchProbe()
@@ -10057,16 +10058,16 @@ audio/vnd.qcelp, application/xhtml+xml'
     public function testMatchText()
     {
         $userAgent = 'Lynx/2.8.6rel.4 libwww-FM/2.14 SSL-MM/1.4.1 OpenSSL/0.9.8k';
-        $this->assertTrue(Zend_Http_UserAgent_Text::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Text::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
 
         $userAgent = 'w3m/0.5.1+cvs-1.968';
-        $this->assertTrue(Zend_Http_UserAgent_Text::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Text::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     public function testMatchValidator()
     {
         $userAgent = 'CSE HTML Validator Lite Online (http://online.htmlvalidator.com/php/onlinevallite.php)';
-        $this->assertTrue(Zend_Http_UserAgent_Validator::match($userAgent,['HTTP_USER_AGENT'=>$userAgent]));
+        $this->assertTrue(Zend_Http_UserAgent_Validator::match($userAgent, ['HTTP_USER_AGENT' => $userAgent]));
     }
 
     /**
@@ -10096,7 +10097,7 @@ audio/vnd.qcelp, application/xhtml+xml'
     {
         $userAgent = 'AppleCoreMedia/1.0.0.8L1 (iPhone; U; CPU OS 4_3_5 like Mac OS X; de_de)';
         $capabilities = Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent($userAgent);
-        $this->assertEquals('AppleCoreMedia', $capabilities['browser_name']);        
+        $this->assertEquals('AppleCoreMedia', $capabilities['browser_name']);
     }
     
     /**
@@ -10134,7 +10135,7 @@ audio/vnd.qcelp, application/xhtml+xml'
      */
     public function testOnlyBrowserNameShouldNotResultInNotices()
     {
-        $userAgent    = 'Mozilla';
+        $userAgent = 'Mozilla';
         $capabilities = Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent($userAgent);
         $this->assertEquals('Mozilla', $capabilities['browser_name']);
     }

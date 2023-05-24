@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,13 +37,11 @@ require_once 'Zend/Reflection/Docblock/Tag/Param.php';
  * @group      Zend_Reflection_Docblock_Tag
  * @group      Zend_Reflection_Docblock_Tag_Param
  */
-class Zend_Reflection_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_Docblock_Tag_ParamTest extends TestCase
 {
+    protected static $_sampleClassFileRequired = false;
 
-
-    static protected $_sampleClassFileRequired = false;
-
-    public function setup()
+    protected function setUp(): void
     {
         if (self::$_sampleClassFileRequired === false) {
             $fileToRequire = dirname(dirname(dirname(__FILE__))) . '/_files/TestSampleClass.php';
@@ -73,14 +74,14 @@ class Zend_Reflection_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($paramTag->getType(), 'int', 'Second Match Failed');
         $this->assertEquals($paramTag->getVariableName(), '$var', 'Third Match Failed');
-        $this->assertEquals($paramTag->getDescription(),'Description of $var', 'Final Match Failed');
+        $this->assertEquals($paramTag->getDescription(), 'Description of $var', 'Final Match Failed');
     }
 
     /**
      * @group ZF-8307
      */
     public function testNamespaceInParam()
-    {    
+    {
         $classReflection = new Zend_Reflection_Class('Zend_Reflection_Docblock_Param_WithNamespace');
         $paramTag = $classReflection->getMethod('doSomething')->getDocblock()->getTag('param');
 
@@ -101,4 +102,3 @@ class Zend_Reflection_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('An array of strings', $param->getDescription());
     }
 }
-

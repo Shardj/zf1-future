@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,20 +38,19 @@ require_once 'Zend/CodeGenerator/Php/Docblock/Tag/Param.php';
  * @group Zend_CodeGenerator
  * @group Zend_CodeGenerator_Php
  */
-class Zend_CodeGenerator_Php_Docblock_Tag_ParamTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_Docblock_Tag_ParamTest extends TestCase
 {
-
     /**
      * @var Zend_CodeGenerator_Php_Docblock_Tag_Param
      */
     protected $_tag = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_tag = new Zend_CodeGenerator_Php_Docblock_Tag_Param();
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_tag = null;
     }
@@ -72,5 +74,4 @@ class Zend_CodeGenerator_Php_Docblock_Tag_ParamTest extends PHPUnit_Framework_Te
         $this->_tag->setDescription('bar bar bar');
         $this->assertEquals('@param string $foo bar bar bar', $this->_tag->generate());
     }
-
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,13 +36,23 @@ require_once 'Zend/Gdata/Docs/DocumentListEntry.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Docsj
  */
-class Zend_Gdata_Docs_DocumentListEntryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Docs_DocumentListEntryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Docs_DocumentListEntry|mixed
+     */
+    protected $doc;
 
-    public function setUp()
+    /**
+     * @var \Zend_Gdata_Docs|mixed
+     */
+    protected $docsClient;
+
+    protected function setUp(): void
     {
         $this->doc = new Zend_Gdata_Docs_DocumentListEntry(
-                file_get_contents('Zend/Gdata/Docs/_files/TestDataDocumentListEntrySample.xml', true));
+            file_get_contents('Zend/Gdata/Docs/_files/TestDataDocumentListEntrySample.xml', true)
+        );
     }
 
     public function testToAndFromString()
@@ -68,5 +81,4 @@ class Zend_Gdata_Docs_DocumentListEntryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->doc->getMediaSource()->getSlug() ===
             'test slug');
     }
-
 }

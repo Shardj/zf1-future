@@ -86,7 +86,7 @@ class Zend_Paginator_Adapter_DbSelect implements Zend_Paginator_Adapter_Interfac
     public function __construct(Zend_Db_Select $select)
     {
         $this->_select = $select;
-        $this->_cacheIdentifier = md5($select->assemble());
+        $this->_cacheIdentifier = md5((string) $select->assemble());
     }
 
     /**

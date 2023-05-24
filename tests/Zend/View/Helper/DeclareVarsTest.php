@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,8 +42,13 @@ require_once 'Zend/View/Helper/DeclareVars.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_DeclareVarsTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_DeclareVarsTest extends TestCase
 {
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
     /**
      * Runs the test methods of this class.
      *
@@ -47,12 +57,11 @@ class Zend_View_Helper_DeclareVarsTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_DeclareVarsTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_DeclareVarsTest");
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $view = new Zend_View();
         $base = str_replace('/', DIRECTORY_SEPARATOR, '/../_templates');
@@ -61,7 +70,7 @@ class Zend_View_Helper_DeclareVarsTest extends PHPUnit_Framework_TestCase
         $this->view = $view;
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->view);
     }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,16 +41,16 @@ require_once 'Zend/Http/Client.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
-class Zend_Feed_AtomPublishingTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_AtomPublishingTest extends TestCase
 {
     protected $_uri;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_uri = 'http://fubar.com/myFeed';
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_Feed::setHttpClient(new Zend_Http_Client());
     }
@@ -80,7 +83,7 @@ class Zend_Feed_AtomPublishingTest extends PHPUnit_Framework_TestCase
     public function testEdit()
     {
         Zend_Feed::setHttpClient(new TestClient());
-        $contents = file_get_contents(dirname(__FILE__) .  '/_files/AtomPublishingTest-before-update.xml');
+        $contents = file_get_contents(dirname(__FILE__) . '/_files/AtomPublishingTest-before-update.xml');
 
         /* The base feed URI is the same as the POST URI, so just supply the
          * Zend_Feed_Entry_Atom object with that. */

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -36,12 +41,12 @@ require_once 'Zend/Tag/Cloud/Decorator/HtmlCloud.php';
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class Zend_Tag_Cloud_Decorator_HtmlCloudTest extends PHPUnit_Framework_TestCase
+class Zend_Tag_Cloud_Decorator_HtmlCloudTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testDefaultOutput()
@@ -88,7 +93,7 @@ class Zend_Tag_Cloud_Decorator_HtmlCloudTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('<div>foo bar</div>', $decorator->render(['foo', 'bar']));
     }
-
+    /** @doesNotPerformAssertions */
     public function testSkipOptions()
     {
         $decorator = new Zend_Tag_Cloud_Decorator_HtmlCloud(['options' => 'foobar']);

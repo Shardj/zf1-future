@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,7 +38,7 @@ require_once 'Zend/Service/Delicious/SimplePost.php';
  * @group      Zend_Service
  * @group      Zend_Service_Delicious
  */
-class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Delicious_SimplePostTest extends TestCase
 {
     /**
      * Ensures that the constructor throws an exception when the title is missing
@@ -49,7 +52,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
             $simplePost = new Zend_Service_Delicious_SimplePost($post);
             $this->fail('Expected Zend_Service_Delicious_Exception not thrown');
         } catch (Zend_Service_Delicious_Exception $e) {
-            $this->assertContains('Title and URL', $e->getMessage());
+            $this->assertStringContainsString('Title and URL', $e->getMessage());
         }
     }
 
@@ -65,7 +68,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
             $simplePost = new Zend_Service_Delicious_SimplePost($post);
             $this->fail('Expected Zend_Service_Delicious_Exception not thrown');
         } catch (Zend_Service_Delicious_Exception $e) {
-            $this->assertContains('Title and URL', $e->getMessage());
+            $this->assertStringContainsString('Title and URL', $e->getMessage());
         }
     }
 
@@ -76,7 +79,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
      */
     public function testGetUrl()
     {
-        $url  = 'something';
+        $url = 'something';
         $post = [
             'd' => 'anything',
             'u' => $url
@@ -86,7 +89,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
             $url,
             $result = $simplePost->getUrl(),
             "Expected getUrl() to return '$url'; got '$result' instead"
-            );
+        );
     }
 
     /**
@@ -96,8 +99,8 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
      */
     public function testGetTitle()
     {
-        $title  = 'something';
-        $post   = [
+        $title = 'something';
+        $post = [
             'd' => $title,
             'u' => 'anything'
             ];
@@ -106,7 +109,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
             $title,
             $result = $simplePost->getTitle(),
             "Expected getTitle() to return '$title'; got '$result' instead"
-            );
+        );
     }
 
     /**
@@ -116,8 +119,8 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
      */
     public function testGetNotes()
     {
-        $notes  = 'something';
-        $post   = [
+        $notes = 'something';
+        $post = [
             'd' => 'anything',
             'u' => 'anything',
             'n' => $notes
@@ -127,7 +130,7 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
             $notes,
             $result = $simplePost->getNotes(),
             "Expected getNotes() to return '$notes'; got '$result' instead"
-            );
+        );
     }
 
     /**
@@ -137,8 +140,8 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
      */
     public function testGetTags()
     {
-        $tags  = 'something';
-        $post  = [
+        $tags = 'something';
+        $post = [
             'd' => 'anything',
             'u' => 'anything',
             't' => $tags
@@ -148,6 +151,6 @@ class Zend_Service_Delicious_SimplePostTest extends PHPUnit_Framework_TestCase
             $tags,
             $result = $simplePost->getTags(),
             "Expected getTags() to return '$tags'; got '$result' instead"
-            );
+        );
     }
 }

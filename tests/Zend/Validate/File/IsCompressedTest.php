@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,7 +45,7 @@ require_once 'Zend/Validate/File/IsCompressed.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_IsCompressedTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -49,8 +54,8 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_IsCompressedTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Validate_File_IsCompressedTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -64,9 +69,10 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
             function_exists('mime_content_type') && ini_get('mime_magic.magicfile') &&
             (mime_content_type(dirname(__FILE__) . '/_files/test.zip') == 'text/plain')
             ) {
-            $this->markTestSkipped('This PHP Version has no finfo, has mime_content_type, '
+            $this->markTestSkipped(
+                'This PHP Version has no finfo, has mime_content_type, '
                 . ' but mime_content_type exhibits buggy behavior on this system.'
-                );
+            );
         }
 
         // Prevent error in the next check
@@ -74,7 +80,7 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('mime_content_type function is not available.');
         }
 
-        // Sometimes mime_content_type() gives application/zip and sometimes 
+        // Sometimes mime_content_type() gives application/zip and sometimes
         // application/x-zip ...
         $expectedMimeType = mime_content_type(dirname(__FILE__) . '/_files/test.zip');
         if (!in_array($expectedMimeType, ['application/zip', 'application/x-zip'])) {
@@ -92,11 +98,11 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
         ];
 
         $files = [
-            'name'     => 'test.zip',
-            'type'     => $expectedMimeType,
-            'size'     => 200,
+            'name' => 'test.zip',
+            'type' => $expectedMimeType,
+            'size' => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/test.zip',
-            'error'    => 0
+            'error' => 0
         ];
 
         foreach ($valuesExpected as $element) {
@@ -179,11 +185,11 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
     public function testErrorMessages()
     {
         $files = [
-            'name'     => 'picture.jpg',
-            'type'     => 'image/jpeg',
-            'size'     => 200,
+            'name' => 'picture.jpg',
+            'type' => 'image/jpeg',
+            'size' => 200,
             'tmp_name' => dirname(__FILE__) . '/_files/picture.jpg',
-            'error'    => 0
+            'error' => 0
         ];
 
         $validator = new Zend_Validate_File_IsCompressed('test/notype');
@@ -208,7 +214,7 @@ class Zend_Validate_File_IsCompressedTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_File_IsCompressed([
             'image/gif',
             'image/jpg',
-            'magicfile'   => $magicFile,
+            'magicfile' => $magicFile,
             'headerCheck' => true]);
 
         $this->assertEquals($magicFile, $validator->getMagicFile());

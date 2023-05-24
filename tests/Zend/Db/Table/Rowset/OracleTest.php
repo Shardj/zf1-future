@@ -37,10 +37,8 @@ require_once 'Zend/Db/Table/Rowset/TestCommon.php';
  */
 class Zend_Db_Table_Rowset_OracleTest extends Zend_Db_Table_Rowset_TestCommon
 {
-
     public function getDriver()
     {
         return 'Oracle';
     }
-
 }

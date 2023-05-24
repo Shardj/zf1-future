@@ -47,37 +47,40 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      *
      * @var array
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         if (defined('TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY') &&
               TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY) {
-
             list($host, $port) = explode(':', TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY, 2);
 
-            if (! $host)
+            if (!$host) {
                 $this->markTestSkipped("No valid proxy host name or address specified.");
+            }
 
             $port = (int) $port;
             if ($port == 0) {
                 $port = 8080;
             } else {
-                if (($port < 1 || $port > 65535))
+                if (($port < 1 || $port > 65535)) {
                     $this->markTestSkipped("$port is not a valid proxy port number. Should be between 1 and 65535.");
+                }
             }
 
             $user = '';
             $pass = '';
             if (defined('TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_USER') &&
-                TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_USER)
-                    $user = TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_USER;
+                TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_USER) {
+                $user = TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_USER;
+            }
 
             if (defined('TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_PASS') &&
-                TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_PASS)
-                    $pass = TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_PASS;
+                TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_PASS) {
+                $pass = TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY_PASS;
+            }
 
 
             $this->config = [
-                'adapter'    => 'Zend_Http_Client_Adapter_Proxy',
+                'adapter' => 'Zend_Http_Client_Adapter_Proxy',
                 'proxy_host' => $host,
                 'proxy_port' => $port,
                 'proxy_user' => $user,
@@ -85,7 +88,6 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
             ];
 
             parent::setUp();
-
         } else {
             $this->markTestSkipped("Zend_Http_Client proxy server tests are not enabled in TestConfiguration.php");
         }
@@ -110,6 +112,9 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         $this->assertEquals($this->client->getLastRequest(), $res->getBody(), 'Response body should be exactly like the last request');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGetLastRequest()
     {
         /**
@@ -123,7 +128,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      * @group ZF-3189
      */
     public function testConnectHandshakeSendsCustomUserAgentHeader()
-    {      
+    {
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         $this->config['useragent'] = 'ZendTest';
@@ -138,7 +143,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         // Perform the request
         $this->client->request();
 
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             "/\r\nUser-Agent: {$this->config['useragent']}\r\n/i",
             $this->client->getAdapter()->getLastConnectHandshakeRequest()
         );
@@ -148,7 +153,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      * @group ZF-3189
      */
     public function testConnectHandshakeSendsCustomUserAgentHeaderWhenSetInHeaders()
-    {      
+    {
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         parent::setUp();
@@ -163,7 +168,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         // Perform the request
         $this->client->request();
         print_r($this->client->getAdapter()->getLastConnectHandshakeRequest());
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             "/\r\nUser-Agent: ZendTest\r\n/i",
             $this->client->getAdapter()->getLastConnectHandshakeRequest()
         );
@@ -173,7 +178,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      * @group ZF-3189
      */
     public function testProxyAdapterDoesNotOverwriteExistingProxyAuthorizationHeader()
-    {      
+    {
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         parent::setUp();
@@ -193,7 +198,6 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         $this->assertEquals(1, preg_match_all('/\r\nProxy-Authorization: ([^\r\n]+)\r\n/i', $resp, $matches));
         $this->assertEquals('FooBarBaz', $matches[1][0]);
     }
-    
 }
 
 /**
@@ -202,7 +206,6 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
  */
 class ZF3189_ProxyAdapter extends Zend_Http_Client_Adapter_Proxy
 {
-    
     /**
      * Retrieve the request data from last CONNECT handshake
      * @return string
@@ -211,5 +214,4 @@ class ZF3189_ProxyAdapter extends Zend_Http_Client_Adapter_Proxy
     {
         return $this->connectHandshakeRequest;
     }
-    
 }

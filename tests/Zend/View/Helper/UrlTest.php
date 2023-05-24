@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -46,8 +51,18 @@ require_once 'Zend/Controller/Request/Http.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_UrlTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_UrlTest extends TestCase
 {
+    /**
+     * @var Zend_Controller_Front
+     */
+    protected $front;
+
+    /**
+     * @var Zend_View_Helper_Url
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -56,9 +71,8 @@ class Zend_View_Helper_UrlTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_UrlTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_UrlTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,7 +81,7 @@ class Zend_View_Helper_UrlTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->front = Zend_Controller_Front::getInstance();
         $this->front->getRouter()->addDefaultRoutes();
@@ -88,7 +102,6 @@ class Zend_View_Helper_UrlTest extends PHPUnit_Framework_TestCase
         $url = $this->helper->url(['controller' => 'ctrl', 'action' => 'act']);
         $this->assertEquals('/ctrl/act', $url);
     }
-
 }
 
 // Call Zend_View_Helper_UrlTest::main() if this source file is executed directly.

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -30,16 +33,16 @@ require_once "Zend/Test/PHPUnit/Db/Connection.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-abstract class Zend_Test_PHPUnit_Db_DataSet_DataSetTestCase extends PHPUnit_Framework_TestCase
+abstract class Zend_Test_PHPUnit_Db_DataSet_DataSetTestCase extends TestCase
 {
     /**
-     * @var PHPUnit_Extensions_Database_DB_IDatabaseConnection
+     * @var \PHPUnit\Extensions\Database\DB\IDatabaseConnection
      */
     protected $connectionMock = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->connectionMock = $this->getMock('Zend_Test_PHPUnit_Db_Connection', [], [], '', false);
+        $this->connectionMock = $this->createMock('Zend_Test_PHPUnit_Db_Connection');
     }
 
     public function decorateConnectionMockWithZendAdapter()

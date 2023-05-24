@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -48,7 +51,7 @@ require_once 'Zend/Http/Client.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
-class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_ImportTest extends TestCase
 {
     protected $_client;
     protected $_feedDir;
@@ -60,7 +63,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
      */
     protected $_adapter;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_adapter = new Zend_Http_Client_Adapter_Test();
         Zend_Feed::setHttpClient(new Zend_Http_Client(null, ['adapter' => $this->_adapter]));
@@ -230,6 +233,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test the import of a RSS feed from an array
+     * @doesNotPerformAssertions
      */
     public function testAtomImportFullArray()
     {
@@ -266,11 +270,11 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test the import of an Atom feed from a builder
+     * @doesNotPerformAssertions
      */
     public function testAtomImportFullBuilder()
     {
         $feed = Zend_Feed::importBuilder(new Zend_Feed_Builder($this->_getFullArray()), 'atom');
-
     }
 
     /**
@@ -326,7 +330,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
             $this->fail('Expected Zend_Feed_Exception not thrown');
         } catch (Zend_Feed_Exception $e) {
             $this->assertTrue($e instanceof Zend_Feed_Exception);
-            $this->assertRegExp('/(XDebug is running|Empty string)/', $e->getMessage());
+            $this->assertMatchesRegularExpression('/(XDebug is running|Empty string)/', $e->getMessage());
         }
     }
 
@@ -367,7 +371,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
                                             'link' => 'http://www.example.com/subscribe'],
                        'skipHours' => [1, 13, 17],
                        'skipDays' => ['Saturday', 'Sunday'],
-                       'itunes'  => ['block' => 'no',
+                       'itunes' => ['block' => 'no',
                                           'keywords' => 'example,itunes,podcast',
                                           'category' => [['main' => 'Technology',
                                                                     'sub' => 'Gadgets'],
@@ -461,7 +465,7 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('testFindFeedsIncludesUriAsArrayKey() requires a network connection');
             return;
         }
-        Zend_Feed::setHttpClient(new Zend_Http_Client);
+        Zend_Feed::setHttpClient(new Zend_Http_Client());
         $feeds = Zend_Feed::findFeeds('http://www.planet-php.net');
         $this->assertEquals([
             'http://www.planet-php.org:80/rss/', 'http://www.planet-php.org:80/rdf/'
@@ -488,6 +492,9 @@ class Zend_Feed_ImportTest extends PHPUnit_Framework_TestCase
         self::fail('This test should create a mangled object that throws when deserialized');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFindFeedsMissingLinkException()
     {
         self::markTestSkipped('Not yet implemented. Currently the only way to reliably test this is to spawn a server process');

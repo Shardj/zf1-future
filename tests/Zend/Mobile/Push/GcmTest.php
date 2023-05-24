@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,12 +37,31 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Gcm
  */
-class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
+class Zend_Mobile_Push_gcmTest extends TestCase
 {
+    /**
+     * @var \Zend_Http_Client_Adapter_Test|mixed
+     */
+    protected $adapter;
+
+    /**
+     * @var \Zend_Http_Client|mixed
+     */
+    protected $client;
+
+    /**
+     * @var \Zend_Mobile_Push_Gcm|mixed
+     */
+    protected $gcm;
+
+    /**
+     * @var \Zend_Mobile_Push_Message_Gcm|mixed
+     */
+    protected $message;
 
     protected function _createJSONResponse($id, $success, $failure, $ids, $results)
     {
-         return json_encode([
+        return json_encode([
             'multicast_id' => $id,
             'success' => $success,
             'failure' => $failure,
@@ -48,7 +70,7 @@ class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
         ]);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->adapter = new Zend_Http_Client_Adapter_Test();
         $this->client = new Zend_Http_Client();
@@ -61,11 +83,9 @@ class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
         $this->message->addData('testKey', 'testValue');
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Exception
-     */
     public function testSetApiKeyThrowsExceptionOnNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Exception::class);
         $this->gcm->setApiKey([]);
     }
 
@@ -90,48 +110,38 @@ class Zend_Mobile_Push_gcmTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($client, $this->gcm->getHttpClient());
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Exception
-     */
     public function testSendThrowsExceptionWithNonValidMessage()
     {
+        $this->expectException(Zend_Mobile_Push_Exception::class);
         $msg = new Zend_Mobile_Push_Message_Gcm();
         $this->gcm->send($msg);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Exception
-     */
     public function testSendThrowsExceptionWithTtlNoId()
     {
+        $this->expectException(Zend_Mobile_Push_Exception::class);
         $msg = $this->message;
         $msg->setTtl(300);
         $this->gcm->send($msg);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Exception_ServerUnavailable
-     */
     public function testSendThrowsExceptionWhenServerUnavailable()
     {
+        $this->expectException(Zend_Mobile_Push_Exception_ServerUnavailable::class);
         $this->adapter->setResponse('HTTP/1.1 500 Internal Server Error' . "\r\n\r\n");
         $this->gcm->send($this->message);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Exception_InvalidAuthToken
-     */
     public function testSendThrowsExceptionWhenInvalidAuthToken()
     {
+        $this->expectException(Zend_Mobile_Push_Exception_InvalidAuthToken::class);
         $this->adapter->setResponse('HTTP/1.1 401 Unauthorized' . "\r\n\r\n");
         $this->gcm->send($this->message);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Exception_InvalidPayload
-     */
     public function testSendThrowsExceptionWhenInvalidPayload()
     {
+        $this->expectException(Zend_Mobile_Push_Exception_InvalidPayload::class);
         $this->adapter->setResponse('HTTP/1.1 400 Bad Request' . "\r\n\r\n");
         $this->gcm->send($this->message);
     }

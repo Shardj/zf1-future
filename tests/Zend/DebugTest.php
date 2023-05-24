@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,9 +36,8 @@ require_once 'Zend/Debug.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Debug
  */
-class Zend_DebugTest extends PHPUnit_Framework_TestCase
+class Zend_DebugTest extends TestCase
 {
-
     public function testDebugDefaultSapi()
     {
         $sapi = php_sapi_name();
@@ -62,7 +64,8 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $result = Zend_Debug::Dump($data, null, false);
 
         // Has to check for two strings, because xdebug internally handles CLI vs Web
-        $this->assertContains($result,
+        $this->assertContains(
+            $result,
             [
                 "<pre>string(6) \"string\"\n</pre>",
                 "<pre>string(6) &quot;string&quot;\n</pre>",
@@ -79,7 +82,7 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $result1 = Zend_Debug::Dump($data, null, true);
         $result2 = ob_get_clean();
 
-        $this->assertContains('string(6) "string"', $result1);
+        $this->assertStringContainsString('string(6) "string"', $result1);
         $this->assertEquals($result1, $result2);
     }
 
@@ -100,7 +103,7 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
      */
     public function testXdebugEnabledAndNonCliSapiDoesNotEscapeSpecialChars()
     {
-        if(!extension_loaded('xdebug')) {
+        if (!extension_loaded('xdebug')) {
             $this->markTestSkipped("This test only works in combination with xdebug.");
         }
 
@@ -108,8 +111,7 @@ class Zend_DebugTest extends PHPUnit_Framework_TestCase
         $a = ["a" => "b"];
 
         $result = Zend_Debug::dump($a, "LABEL", false);
-        $this->assertContains("<pre>", $result);
-        $this->assertContains("</pre>", $result);
+        $this->assertStringContainsString("<pre>", $result);
+        $this->assertStringContainsString("</pre>", $result);
     }
-
 }

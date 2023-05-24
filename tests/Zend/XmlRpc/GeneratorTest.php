@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +36,7 @@ require_once 'Zend/XmlRpc/TestProvider.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_XmlRpc
  */
-class Zend_XmlRpc_GeneratorTest extends PHPUnit_Framework_TestCase
+class Zend_XmlRpc_GeneratorTest extends TestCase
 {
     /**
      * @dataProvider Zend_XmlRpc_TestProvider::provideGenerators
@@ -78,7 +82,7 @@ class Zend_XmlRpc_GeneratorTest extends PHPUnit_Framework_TestCase
     {
         $generator->openElement('test')->closeElement('test');
         $this->assertXml('<test/>', $generator);
-        $this->assertContains('<test/>', $generator->flush());
+        $this->assertStringContainsString('<test/>', $generator->flush());
         $this->assertSame('', (string)$generator);
     }
 
@@ -92,7 +96,7 @@ class Zend_XmlRpc_GeneratorTest extends PHPUnit_Framework_TestCase
         $variant2 = '<element>&lt;&gt;&amp;&quot;\'€</element>';
         try {
             $this->assertXml($variant1, $generator);
-        } catch (PHPUnit_Framework_ExpectationFailedException $e) {
+        } catch (ExpectationFailedException $e) {
             $this->assertXml($variant2, $generator);
         }
     }

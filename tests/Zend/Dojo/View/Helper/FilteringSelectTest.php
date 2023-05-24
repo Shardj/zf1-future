@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_FilteringSelectTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_FilteringSelect|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_FilteringSelectTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_FilteringSelectTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_FilteringSelect();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -135,14 +150,14 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
     public function testShouldAllowDeclarativeDijitCreationAsSelect()
     {
         $html = $this->getElementAsSelect();
-        $this->assertRegexp('/<select[^>]*(dojoType="dijit.form.FilteringSelect")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<select[^>]*(dojoType="dijit.form.FilteringSelect")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreationAsSelect()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElementAsSelect();
-        $this->assertNotRegexp('/<select[^>]*(dojoType="dijit.form.FilteringSelect")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<select[^>]*(dojoType="dijit.form.FilteringSelect")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId'));
     }
 
@@ -152,15 +167,15 @@ class Zend_Dojo_View_Helper_FilteringSelectTest extends PHPUnit_Framework_TestCa
         if (!preg_match('/(<input[^>]*(dojoType="dijit.form.FilteringSelect"))/', $html, $m)) {
             $this->fail('Did not create text input as remoter: ' . $html);
         }
-        $this->assertContains('type="text"', $m[1]);
+        $this->assertStringContainsString('type="text"', $m[1]);
     }
 
     public function testShouldAllowProgrammaticDijitCreationAsRemoter()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElementAsRemoter();
-        $this->assertNotRegexp('/<input[^>]*(dojoType="dijit.form.FilteringSelect")/', $html);
-        $this->assertRegexp('/<input[^>]*(type="text")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*(dojoType="dijit.form.FilteringSelect")/', $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(type="text")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId'));
 
         $this->assertContains('var stateStore;', $this->view->dojo()->getJavascript());

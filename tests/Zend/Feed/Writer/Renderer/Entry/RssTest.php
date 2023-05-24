@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,15 +36,14 @@ require_once 'Zend/Version.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_Writer_Renderer_Entry_RssTest extends TestCase
 {
-
     protected $_validWriter = null;
     protected $_validEntry = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->_validWriter = new Zend_Feed_Writer_Feed;
+        $this->_validWriter = new Zend_Feed_Writer_Feed();
 
         $this->_validWriter->setType('rss');
 
@@ -51,16 +53,20 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->_validEntry = $this->_validWriter->createEntry();
         $this->_validEntry->setTitle('This is a test entry.');
         $this->_validEntry->setDescription('This is a test entry description.');
-        $this->_validEntry->setLink('http://www.example.com/1');;
+        $this->_validEntry->setLink('http://www.example.com/1');
+        ;
         $this->_validWriter->addEntry($this->_validEntry);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->_validWriter = null;
         $this->_validEntry = null;
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRenderMethodRunsMinimalWriterContainerProperlyBeforeICheckAtomCompliance()
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
@@ -96,11 +102,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('This is a test entry.', $entry->getTitle());
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testEntryTitleIfMissingThrowsExceptionIfDescriptionAlsoMissing()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->remove('title');
         $this->_validEntry->remove('description');
@@ -124,11 +128,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('This is a test entry description.', $entry->getDescription());
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testEntryDescriptionIfMissingThrowsExceptionIfAlsoNoTitle()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $atomFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->remove('description');
         $this->_validEntry->remove('title');
@@ -182,7 +184,7 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
 
     public function testEntryIncludesLinkToHtmlVersionOfFeed()
     {
-        $renderer= new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
+        $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $this->assertEquals('http://www.example.com/1', $entry->getLink());
@@ -195,7 +197,7 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $author = $entry->getAuthor();
-        $this->assertEquals(['name'=>'Jane'], $entry->getAuthor());
+        $this->assertEquals(['name' => 'Jane'], $entry->getAuthor());
     }
 
     public function testEntryAuthorCharDataEncoding()
@@ -205,7 +207,7 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $author = $entry->getAuthor();
-        $this->assertEquals(['name'=>'<>&\'"áéíóú'], $entry->getAuthor());
+        $this->assertEquals(['name' => '<>&\'"áéíóú'], $entry->getAuthor());
     }
 
     public function testEntryHoldsAnyEnclosureAdded()
@@ -224,11 +226,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://example.com/audio.mp3', $enc->url);
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testAddsEnclosureThrowsExceptionOnMissingType()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->setEnclosure([
             'uri' => 'http://example.com/audio.mp3',
@@ -237,11 +237,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $renderer->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testAddsEnclosureThrowsExceptionOnMissingLength()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
@@ -250,11 +248,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $renderer->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testAddsEnclosureThrowsExceptionOnNonNumericLength()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
@@ -264,11 +260,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $renderer->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testAddsEnclosureThrowsExceptionOnNegativeLength()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->setEnclosure([
             'type' => 'audio/mpeg',
@@ -287,6 +281,9 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6', $entry->getId());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testEntryIdHasBeenSetWithPermaLinkAsFalseWhenNotUri()
     {
         $this->markTestIncomplete('Untest due to ZFR potential bug');
@@ -322,8 +319,8 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     {
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validEntry->setCommentFeedLinks([
-            ['uri'=>'http://www.example.com/atom/id/1','type'=>'atom'],
-            ['uri'=>'http://www.example.com/rss/id/1','type'=>'rss'],
+            ['uri' => 'http://www.example.com/atom/id/1', 'type' => 'atom'],
+            ['uri' => 'http://www.example.com/rss/id/1', 'type' => 'rss'],
         ]);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
@@ -335,15 +332,15 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testCategoriesCanBeSet()
     {
         $this->_validEntry->addCategories([
-            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2']
+            ['term' => 'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2']
         ]);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $expected = [
-            ['term'=>'cat_dog', 'label' => 'cat_dog', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+            ['term' => 'cat_dog', 'label' => 'cat_dog', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
         ];
         $this->assertEquals($expected, (array) $entry->getCategories());
     }
@@ -354,15 +351,15 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
     public function testCategoriesCharDataEncoding()
     {
         $this->_validEntry->addCategories([
-            ['term'=>'<>&\'"áéíóú', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2']
+            ['term' => '<>&\'"áéíóú', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2']
         ]);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $feed = Zend_Feed_Reader::importString($renderer->render()->saveXml());
         $entry = $feed->current();
         $expected = [
-            ['term'=>'<>&\'"áéíóú', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+            ['term' => '<>&\'"áéíóú', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
         ];
         $this->assertEquals($expected, (array) $entry->getCategories());
     }
@@ -377,7 +374,6 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends PHPUnit_Framework_TestCase
         ]);
         $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $xmlString = $renderer->render()->saveXml();
-        $this->assertContains('<category><![CDATA[This is a test category]]></category>', $xmlString);
+        $this->assertStringContainsString('<category><![CDATA[This is a test category]]></category>', $xmlString);
     }
-
 }

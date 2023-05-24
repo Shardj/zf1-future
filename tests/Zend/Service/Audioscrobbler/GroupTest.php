@@ -259,7 +259,8 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
 </album>
 </weeklyalbumchart>
 ';
-        $this->setAudioscrobblerResponse($testing_response); $as = $this->getAudioscrobblerService();
+        $this->setAudioscrobblerResponse($testing_response);
+        $as = $this->getAudioscrobblerService();
 
         $as->set('group', urlencode('Jazz Club'));
         $response = $as->groupGetWeeklyAlbumChartList();
@@ -273,7 +274,7 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
     }
 
     public function testPreviousWeeklyChartList()
-{
+    {
         $testing_response = $this->header .
 '<?xml version="1.0" encoding="UTF-8"?>
 <weeklyartistchart group="Jazz Club" from="1114965332" to="1115570132">
@@ -292,5 +293,4 @@ class Zend_Service_Audioscrobbler_GroupTest extends Zend_Service_Audioscrobbler_
         $this->assertEquals((int)$response['from'], $from);
         $this->assertEquals((int)$response['to'], $to);
     }
-
 }

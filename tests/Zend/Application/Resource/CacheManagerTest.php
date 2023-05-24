@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -57,15 +62,35 @@ require_once 'Zend/Cache/Core.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_CacheManagerTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var Zend_Application_Bootstrap_Bootstrap
+     */
+    protected $bootstrap;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -84,7 +109,7 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
         $this->bootstrap = new ZfAppBootstrap($this->application);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -104,7 +129,6 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
 
     public function testInitializationCreatesCacheManagerInstance()
     {
-
         $resource = new Zend_Application_Resource_Cachemanager([]);
         $resource->init();
         $this->assertTrue($resource->getCachemanager() instanceof Zend_Cache_Manager);
@@ -132,7 +156,6 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
         $manager = $resource->init();
         $cacheTemplate = $manager->getCacheTemplate('page');
         $this->assertEquals('/foo', $cacheTemplate['backend']['options']['cache_dir']);
-
     }
 
     public function testShouldCreateNewCacheTemplateIfConfigNotMatchesADefaultTemplate()
@@ -224,16 +247,16 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
         $options = [
             'zf9737' => [
                 'frontend' => [
-                    'name'                 => 'custom-naming',
+                    'name' => 'custom-naming',
                     'customFrontendNaming' => false],
-                'backend' => ['name'                    => 'Zend_Cache_Backend_Custom_Naming',
-                                   'customBackendNaming'     => true],
+                'backend' => ['name' => 'Zend_Cache_Backend_Custom_Naming',
+                                   'customBackendNaming' => true],
                 'frontendBackendAutoload' => true]
         ];
 
         $resource = new Zend_Application_Resource_Cachemanager($options);
-        $manager  = $resource->init();
-        $cache    = $manager->getCache('zf9737');
+        $manager = $resource->init();
+        $cache = $manager->getCache('zf9737');
         $this->assertTrue($cache->getBackend() instanceof Zend_Cache_Backend_Custom_Naming);
         $this->assertTrue($cache instanceof Zend_Cache_Frontend_CustomNaming);
     }
@@ -248,7 +271,7 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
                 'frontend' => [
                     'options' => [
                         'logging' => true,
-                        'logger'  => [
+                        'logger' => [
                             new Zend_Log_Writer_Mock()
                         ]
                     ]
@@ -267,7 +290,7 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
 
         $this->assertTrue(is_array($event));
         $this->assertTrue(array_key_exists('message', $event));
-        $this->assertContains('Zend_Cache_Backend_Static', $event['message']);
+        $this->assertStringContainsString('Zend_Cache_Backend_Static', $event['message']);
     }
 }
 

@@ -143,7 +143,7 @@ class Zend_Acl
      * @param  Zend_Acl_Role_Interface|string       $role
      * @param  Zend_Acl_Role_Interface|string|array $parents
      * @uses   Zend_Acl_Role_Registry::add()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function addRole($role, $parents = null)
     {
@@ -217,7 +217,7 @@ class Zend_Acl
      *
      * @param  Zend_Acl_Role_Interface|string $role
      * @uses   Zend_Acl_Role_Registry::remove()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function removeRole($role)
     {
@@ -251,7 +251,7 @@ class Zend_Acl
      * Removes all Roles from the registry
      *
      * @uses   Zend_Acl_Role_Registry::removeAll()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function removeRoleAll()
     {
@@ -278,7 +278,7 @@ class Zend_Acl
      * @param  Zend_Acl_Resource_Interface|string $resource
      * @param  Zend_Acl_Resource_Interface|string $parent
      * @throws Zend_Acl_Exception
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function addResource($resource, $parent = null)
     {
@@ -336,7 +336,7 @@ class Zend_Acl
      * @param  Zend_Acl_Resource_Interface        $resource
      * @param  Zend_Acl_Resource_Interface|string $parent
      * @throws Zend_Acl_Exception
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function add(Zend_Acl_Resource_Interface $resource, $parent = null)
     {
@@ -440,7 +440,7 @@ class Zend_Acl
      *
      * @param  Zend_Acl_Resource_Interface|string $resource
      * @throws Zend_Acl_Exception
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function remove($resource)
     {
@@ -476,7 +476,7 @@ class Zend_Acl
     /**
      * Removes all Resources
      *
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function removeAll()
     {
@@ -497,7 +497,7 @@ class Zend_Acl
      * @param  string|array                             $privileges
      * @param  Zend_Acl_Assert_Interface                $assert
      * @uses   Zend_Acl::setRule()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function allow($roles = null, $resources = null, $privileges = null, Zend_Acl_Assert_Interface $assert = null)
     {
@@ -512,7 +512,7 @@ class Zend_Acl
      * @param  string|array                             $privileges
      * @param  Zend_Acl_Assert_Interface                $assert
      * @uses   Zend_Acl::setRule()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function deny($roles = null, $resources = null, $privileges = null, Zend_Acl_Assert_Interface $assert = null)
     {
@@ -526,7 +526,7 @@ class Zend_Acl
      * @param  Zend_Acl_Resource_Interface|string|array $resources
      * @param  string|array                             $privileges
      * @uses   Zend_Acl::setRule()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function removeAllow($roles = null, $resources = null, $privileges = null)
     {
@@ -540,7 +540,7 @@ class Zend_Acl
      * @param  Zend_Acl_Resource_Interface|string|array $resources
      * @param  string|array                             $privileges
      * @uses   Zend_Acl::setRule()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function removeDeny($roles = null, $resources = null, $privileges = null)
     {
@@ -597,7 +597,7 @@ class Zend_Acl
      * @throws Zend_Acl_Exception
      * @uses   Zend_Acl_Role_Registry::get()
      * @uses   Zend_Acl::get()
-     * @return Zend_Acl Provides a fluent interface
+     * @return $this
      */
     public function setRule($operation, $type, $roles = null, $resources = null, $privileges = null,
                             Zend_Acl_Assert_Interface $assert = null)

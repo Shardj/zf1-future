@@ -237,7 +237,7 @@ class Zend_Queue_Stomp_Frame
     /**
      * Set the body for this frame
      *
-     * @param  string|null
+     * @param  string|null $command
      * @return Zend_Queue_Stomp_Frame
      * @throws Zend_Queue_Exception
      */

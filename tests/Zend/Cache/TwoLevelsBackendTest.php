@@ -40,8 +40,8 @@ require_once 'CommonExtendedBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTest {
-
+class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTest
+{
     protected $_instance;
     private $_cache_dir;
 
@@ -50,7 +50,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         parent::__construct('Zend_Cache_Backend_TwoLevels', $data, $dataName);
     }
 
-    public function setUp($notag = false)
+    public function setUp($notag = false): void
     {
         @mkdir($this->getTmpDir());
         $this->_cache_dir = $this->getTmpDir() . DIRECTORY_SEPARATOR;
@@ -70,12 +70,15 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         parent::setUp($notag);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         unset($this->_instance);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $slowBackend = 'File';
@@ -96,7 +99,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
     public function testSaveOverwritesIfFastIsFull()
     {
         $slowBackend = 'File';
-        $fastBackend = $this->getMock('Zend_Cache_Backend_Apc', ['getFillingPercentage']);
+        $fastBackend = $this->createMock('Zend_Cache_Backend_Apc');
         $fastBackend->expects($this->at(0))
             ->method('getFillingPercentage')
             ->will($this->returnValue(0));
@@ -115,7 +118,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
             'stats_update_factor' => 1
         ]);
 
-        $id = 'test'.uniqid();
+        $id = 'test' . uniqid();
         $this->assertTrue($cache->save(10, $id)); //fast usage at 0%
         
         $this->assertTrue($cache->save(100, $id)); //fast usage at 90%
@@ -128,7 +131,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
     public function testSaveReturnsTrueIfFastIsFullOnFirstSave()
     {
         $slowBackend = 'File';
-        $fastBackend = $this->getMock('Zend_Cache_Backend_Apc', ['getFillingPercentage']);
+        $fastBackend = $this->createMock('Zend_Cache_Backend_Apc');
         $fastBackend->expects($this->any())
             ->method('getFillingPercentage')
             ->will($this->returnValue(90));
@@ -143,15 +146,12 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
             'stats_update_factor' => 1
         ]);
 
-        $id = 'test'.uniqid();
+        $id = 'test' . uniqid();
         
-        $this->assertTrue($cache->save(90, $id)); //fast usage at 90%, failing for 
+        $this->assertTrue($cache->save(90, $id)); //fast usage at 90%, failing for
         $this->assertEquals(90, $cache->load($id));
                 
         $this->assertTrue($cache->save(100, $id)); //fast usage at 90%
         $this->assertEquals(100, $cache->load($id));
     }
-    
 }
-
-

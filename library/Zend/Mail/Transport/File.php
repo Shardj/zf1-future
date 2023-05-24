@@ -124,7 +124,7 @@ class Zend_Mail_Transport_File extends Zend_Mail_Transport_Abstract
     /**
      * Default callback for generating filenames
      *
-     * @param Zend_Mail_Transport_File File transport instance
+     * @param Zend_Mail_Transport_File $transport File transport instance
      * @return string
      */
     public function defaultCallback($transport)

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -44,7 +49,7 @@ require_once 'Zend/Controller/Front.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_BaseUrlTest extends TestCase
 {
     /**
      * Previous baseUrl before changing
@@ -65,14 +70,14 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_BaseUrlTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_BaseUrlTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_previousBaseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $this->_server = $_SERVER;
@@ -81,7 +86,7 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Zend_Controller_Front::getInstance()->setBaseUrl($this->_previousBaseUrl);
         Zend_Controller_Front::getInstance()->resetInstance();
@@ -111,8 +116,8 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
     public function testBaseUrlIsCorrectingFilePath()
     {
         $baseUrls = [
-            ''             => '/file.js',
-            '/subdir'      => '/subdir/file.js',
+            '' => '/file.js',
+            '/subdir' => '/subdir/file.js',
             '/sub/sub/dir' => '/sub/sub/dir/file.js',
         ];
 
@@ -131,8 +136,8 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
     public function testBaseUrlIsAppendedWithFile()
     {
         $baseUrls = [
-            ''             => '/file.js',
-            '/subdir'      => '/subdir/file.js',
+            '' => '/file.js',
+            '/subdir' => '/subdir/file.js',
             '/sub/sub/dir' => '/sub/sub/dir/file.js',
         ];
 
@@ -151,8 +156,8 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
     public function testBaseUrlIsAppendedWithPath()
     {
         $baseUrls = [
-            ''             => '/path/bar',
-            '/subdir'      => '/subdir/path/bar',
+            '' => '/path/bar',
+            '/subdir' => '/subdir/path/bar',
             '/sub/sub/dir' => '/sub/sub/dir/path/bar',
         ];
 
@@ -171,7 +176,7 @@ class Zend_View_Helper_BaseUrlTest extends PHPUnit_Framework_TestCase
     public function testBaseUrlIsAppendedWithRootPath()
     {
         $baseUrls = [
-            ''     => '/',
+            '' => '/',
             '/foo' => '/foo/'
         ];
 

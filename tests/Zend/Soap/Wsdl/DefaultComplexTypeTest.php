@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once "Zend/Soap/Wsdl.php";
  * @group      Zend_Soap
  * @group      Zend_Soap_Wsdl
  */
-class Zend_Soap_Wsdl_DefaultComplexTypeTest extends PHPUnit_Framework_TestCase
+class Zend_Soap_Wsdl_DefaultComplexTypeTest extends TestCase
 {
     /**
      * @var Zend_Soap_Wsdl
@@ -44,7 +47,7 @@ class Zend_Soap_Wsdl_DefaultComplexTypeTest extends PHPUnit_Framework_TestCase
      */
     private $strategy;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->strategy = new Zend_Soap_Wsdl_Strategy_DefaultComplexType();
         $this->wsdl = new Zend_Soap_Wsdl("TestService", "http://framework.zend.com/soap/unittests");
@@ -60,15 +63,15 @@ class Zend_Soap_Wsdl_DefaultComplexTypeTest extends PHPUnit_Framework_TestCase
         $this->strategy->addComplexType("Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected");
 
         $xml = $this->wsdl->toXML();
-        $this->assertNotContains( Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected::PROTECTED_VAR_NAME, $xml);
-        $this->assertNotContains( Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected::PRIVATE_VAR_NAME, $xml);
+        $this->assertStringNotContainsString(Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected::PROTECTED_VAR_NAME, $xml);
+        $this->assertStringNotContainsString(Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected::PRIVATE_VAR_NAME, $xml);
     }
 }
 
 class Zend_Soap_Wsdl_DefaultComplexTypeTest_PublicPrivateProtected
 {
-    const PROTECTED_VAR_NAME = 'bar';
-    const PRIVATE_VAR_NAME = 'baz';
+    public const PROTECTED_VAR_NAME = 'bar';
+    public const PRIVATE_VAR_NAME = 'baz';
 
     /**
      * @var string

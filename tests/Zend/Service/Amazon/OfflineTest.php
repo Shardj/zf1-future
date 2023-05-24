@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -56,7 +59,7 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Service
  * @group      Zend_Service_Amazon
  */
-class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Amazon_OfflineTest extends TestCase
 {
     /**
      * Reference to Amazon service consumer object
@@ -77,7 +80,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_amazon = new Zend_Service_Amazon(constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'));
 
@@ -95,7 +98,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
             $amazon = new Zend_Service_Amazon(constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'), 'oops');
             $this->fail('Expected Zend_Service_Exception not thrown');
         } catch (Zend_Service_Exception $e) {
-            $this->assertContains('Unknown country code', $e->getMessage());
+            $this->assertStringContainsString('Unknown country code', $e->getMessage());
         }
     }
 
@@ -104,7 +107,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testMozardSearchFromFile()
     {
-        $xml = file_get_contents(dirname(__FILE__)."/_files/mozart_result.xml");
+        $xml = file_get_contents(dirname(__FILE__) . "/_files/mozart_result.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
@@ -123,7 +126,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
 
         $result = new Zend_Service_Amazon_ResultSet($dom);
 
-        foreach($result AS $item) {
+        foreach ($result as $item) {
             $trackCount = $mozartTracks[$item->ASIN];
             $this->assertEquals($trackCount, count($item->Tracks));
         }
@@ -131,6 +134,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-2749
+     * @doesNotPerformAssertions
      */
     public function testSimilarProductConstructorMissingAttributeDoesNotThrowNotice()
     {
@@ -147,7 +151,7 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testFullOffersFromFile()
     {
-        $xml = file_get_contents(dirname(__FILE__)."/_files/offers_with_names.xml");
+        $xml = file_get_contents(dirname(__FILE__) . "/_files/offers_with_names.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
@@ -155,43 +159,43 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
             '0439774098' => [
                 'offers' => [
                     'A79CLRHOQ3NF4' => [
-                        'name'  => 'PLEXSUPPLY',
+                        'name' => 'PLEXSUPPLY',
                         'price' => '5153'
                     ],
                     'A2K9NS8DSVOE2W' => [
-                        'name'  => 'nangsuer',
+                        'name' => 'nangsuer',
                         'price' => '5153'
                     ],
                     'A31EVTLIC13ORD' => [
-                        'name'  => 'Wizard of Math',
+                        'name' => 'Wizard of Math',
                         'price' => '7599'
                     ],
                     'A3SKJE188CW5XG' => [
-                        'name'  => 'ReStockIt',
+                        'name' => 'ReStockIt',
                         'price' => '5299'
                     ],
                     'A1729W3053T57N' => [
-                        'name'  => 'The Price Pros',
+                        'name' => 'The Price Pros',
                         'price' => '5487'
                     ],
                     'A29PHU0KPCGV8S' => [
-                        'name'  => 'TheFactoryDepot',
+                        'name' => 'TheFactoryDepot',
                         'price' => '5821'
                     ],
                     'AIHRRFGW11GJ8' => [
-                        'name'  => 'Design Tec Office Products',
+                        'name' => 'Design Tec Office Products',
                         'price' => '5987'
                     ],
                     'A27OK403WRHSGI' => [
-                        'name'  => 'Kaplan Early Learning Company',
+                        'name' => 'Kaplan Early Learning Company',
                         'price' => '7595'
                     ],
                     'A25DVOZOPBFMAN' => [
-                        'name'  => 'Deerso',
+                        'name' => 'Deerso',
                         'price' => '7599'
                     ],
                     'A6IFKC796Y64H' => [
-                        'name'  => 'The Education Station Inc',
+                        'name' => 'The Education Station Inc',
                         'price' => '7599'
                     ],
                 ],
@@ -199,43 +203,43 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
             'B00000194U' => [
                 'offers' => [
                     'A3UOG6723G7MG0' => [
-                        'name'  => 'Efunctional',
+                        'name' => 'Efunctional',
                         'price' => '480'
                     ],
                     'A3SNNXCKUIW1O2' => [
-                        'name'  => 'Universal Mania',
+                        'name' => 'Universal Mania',
                         'price' => '531'
                     ],
                     'A18ACDNYOEMMOL' => [
-                        'name'  => 'ApexSuppliers',
+                        'name' => 'ApexSuppliers',
                         'price' => '589'
                     ],
                     'A2NYACAJP9I1IY' => [
-                        'name'  => 'GizmosForLife',
+                        'name' => 'GizmosForLife',
                         'price' => '608'
                     ],
                     'A1729W3053T57N' => [
-                        'name'  => 'The Price Pros',
+                        'name' => 'The Price Pros',
                         'price' => '628'
                     ],
                     'A29PHU0KPCGV8S' => [
-                        'name'  => 'TheFactoryDepot',
+                        'name' => 'TheFactoryDepot',
                         'price' => '638'
                     ],
                     'A3Q3IAIX1CLBMZ' => [
-                        'name'  => 'ElectroGalaxy',
+                        'name' => 'ElectroGalaxy',
                         'price' => '697'
                     ],
                     'A1PC5XI7QQLW5G' => [
-                        'name'  => 'Long Trading Company',
+                        'name' => 'Long Trading Company',
                         'price' => '860'
                     ],
                     'A2R0FX412W1BDT' => [
-                        'name'  => 'Beach Audio',
+                        'name' => 'Beach Audio',
                         'price' => '896'
                     ],
                     'AKJJGJ0JKT8F1' => [
-                        'name'  => 'Buy.com',
+                        'name' => 'Buy.com',
                         'price' => '899'
                     ],
                 ],
@@ -244,9 +248,9 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
 
         $result = new Zend_Service_Amazon_ResultSet($dom);
 
-        foreach($result AS $item) {
+        foreach ($result as $item) {
             $data = $dataExpected[$item->ASIN];
-            foreach($item->Offers->Offers as $offer) {
+            foreach ($item->Offers->Offers as $offer) {
                 $this->assertEquals($data['offers'][$offer->MerchantId]['name'], $offer->MerchantName);
                 $this->assertEquals($data['offers'][$offer->MerchantId]['price'], $offer->Price);
             }
@@ -267,12 +271,12 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
                     'Version' => '2009-01-06',
                     'Timestamp' => '2009-01-01T12:00:00Z',
                 ],
-                "GET\n".
-                "webservices.amazon.com\n".
-                "/onca/xml\n".
-                "AWSAccessKeyId=00000000000000000000&ItemId=0679722769&Operation=I".
-                "temLookup&ResponseGroup=ItemAttributes%2COffers%2CImages%2CReview".
-                "s&Service=AWSECommerceService&Timestamp=2009-01-01T12%3A00%3A00Z&".
+                "GET\n" .
+                "webservices.amazon.com\n" .
+                "/onca/xml\n" .
+                "AWSAccessKeyId=00000000000000000000&ItemId=0679722769&Operation=I" .
+                "temLookup&ResponseGroup=ItemAttributes%2COffers%2CImages%2CReview" .
+                "s&Service=AWSECommerceService&Timestamp=2009-01-01T12%3A00%3A00Z&" .
                 "Version=2009-01-06",
                 'Nace%2BU3Az4OhN7tISqgs1vdLBHBEijWcBeCqL5xN9xg%3D'
             ],
@@ -290,13 +294,13 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
                     'AssociateTag' => 'mytag-20',
                     'Timestamp' => '2009-01-01T12:00:00Z',
                 ],
-                "GET\n".
-                "ecs.amazonaws.co.uk\n".
-                "/onca/xml\n".
-                "AWSAccessKeyId=00000000000000000000&Actor=Johnny%20Depp&Associate".
-                "Tag=mytag-20&Operation=ItemSearch&ResponseGroup=ItemAttributes%2C".
-                "Offers%2CImages%2CReviews%2CVariations&SearchIndex=DVD&Service=AW".
-                "SECommerceService&Sort=salesrank&Timestamp=2009-01-01T12%3A00%3A0".
+                "GET\n" .
+                "ecs.amazonaws.co.uk\n" .
+                "/onca/xml\n" .
+                "AWSAccessKeyId=00000000000000000000&Actor=Johnny%20Depp&Associate" .
+                "Tag=mytag-20&Operation=ItemSearch&ResponseGroup=ItemAttributes%2C" .
+                "Offers%2CImages%2CReviews%2CVariations&SearchIndex=DVD&Service=AW" .
+                "SECommerceService&Sort=salesrank&Timestamp=2009-01-01T12%3A00%3A0" .
                 "0Z&Version=2009-01-01",
                 'TuM6E5L9u%2FuNqOX09ET03BXVmHLVFfJIna5cxXuHxiU%3D',
             ],
@@ -319,12 +323,14 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             $expectedSignature,
             rawurlencode(Zend_Service_Amazon::computeSignature(
-                $baseUri, '1234567890', $params
+                $baseUri,
+                '1234567890',
+                $params
             ))
         );
     }
 
-	/**
+    /**
      * Testing if Amazon service component can handle return values where the
      * item-list is not empty
      *
@@ -332,20 +338,20 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testAmazonComponentHandlesValidBookResults()
     {
-    	$xml = file_get_contents(dirname(__FILE__)."/_files/amazon-response-valid.xml");
+        $xml = file_get_contents(dirname(__FILE__) . "/_files/amazon-response-valid.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
-    	$result = new Zend_Service_Amazon_ResultSet($dom);
+        $result = new Zend_Service_Amazon_ResultSet($dom);
 
-    	$currentItem = null;
-    	try {
-    		$currentItem = $result->current();
-    	} catch (Zend_Service_Amazon_Exception $e) {
-    		$this->fail('Unexpected exception was triggered');
-    	}
-    	$this->assertTrue($currentItem instanceof Zend_Service_Amazon_Item);
-    	$this->assertEquals('0754512673', $currentItem->ASIN);
+        $currentItem = null;
+        try {
+            $currentItem = $result->current();
+        } catch (Zend_Service_Amazon_Exception $e) {
+            $this->fail('Unexpected exception was triggered');
+        }
+        $this->assertTrue($currentItem instanceof Zend_Service_Amazon_Item);
+        $this->assertEquals('0754512673', $currentItem->ASIN);
     }
 
     /**
@@ -353,20 +359,21 @@ class Zend_Service_Amazon_OfflineTest extends PHPUnit_Framework_TestCase
      * item-list is empty (no results found)
      *
      * @group ZF-9547
+     * @doesNotPerformAssertions
      */
     public function testAmazonComponentHandlesEmptyBookResults()
     {
-    	$xml = file_get_contents(dirname(__FILE__)."/_files/amazon-response-invalid.xml");
+        $xml = file_get_contents(dirname(__FILE__) . "/_files/amazon-response-invalid.xml");
         $dom = new DOMDocument();
         $dom->loadXML($xml);
 
-    	$result = new Zend_Service_Amazon_ResultSet($dom);
+        $result = new Zend_Service_Amazon_ResultSet($dom);
 
-    	try {
-    		$result->current();
-    		$this->fail('Expected exception was not triggered');
-    	} catch (Zend_Service_Amazon_Exception $e) {
-			return;
-    	}
+        try {
+            $result->current();
+            $this->fail('Expected exception was not triggered');
+        } catch (Zend_Service_Amazon_Exception $e) {
+            return;
+        }
     }
 }

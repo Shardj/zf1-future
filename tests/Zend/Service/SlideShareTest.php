@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Service/SlideShare.php';
  * @group      Zend_Service
  * @group      Zend_Service_SlideShare
  */
-class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
+class Zend_Service_SlideShareTest extends TestCase
 {
     /**
      * The Slide share object instance
@@ -62,7 +65,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
             'Core',
             'File',
             [
-                 'lifetime'                => 0,
+                 'lifetime' => 0,
                  'automatic_serialization' => true
             ],
             ['cache_dir' => dirname(__FILE__) . "/SlideShare/_files"]
@@ -72,7 +75,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         return $ss;
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined("TESTS_ZEND_SERVICE_SLIDESHARE_APIKEY")
             || !defined("TESTS_ZEND_SERVICE_SLIDESHARE_SHAREDSECRET")
@@ -112,7 +115,6 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
 
     public function testGetSlideShowByTag()
     {
-
         $ss = $this->_getSSObject();
 
         try {
@@ -137,7 +139,9 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
                 [
                      'zend',
                      'php'
-                ], 0, 1
+                ],
+                0,
+                1
             );
         } catch (Exception $e) {
             $this->fail("Exception Caught retrieving Slideshow List (tag)");
@@ -159,7 +163,9 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
 
         try {
             $results = $ss->getSlideShowsByUsername(
-                TESTS_ZEND_SERVICE_SLIDESHARE_USERNAME, 0, 1
+                TESTS_ZEND_SERVICE_SLIDESHARE_USERNAME,
+                0,
+                1
             );
         } catch (Exception $e) {
             $this->fail("Exception Caught retrieving Slideshow List (tag)");
@@ -176,7 +182,7 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
     {
         $ss = $this->_getSSObject();
 
-        $title    = "Unit Test for ZF SlideShare Component";
+        $title = "Unit Test for ZF SlideShare Component";
         $ppt_file = dirname(__FILE__) . "/SlideShare/_files/demo.ppt";
 
         $show = new Zend_Service_SlideShare_SlideShow();
@@ -189,7 +195,6 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
         try {
             $result = $ss->uploadSlideShow($show, false);
         } catch (Exception $e) {
-
             if ($e->getCode()
                 == Zend_Service_SlideShare::SERVICE_ERROR_NOT_SOURCEOBJ
             ) {
@@ -266,7 +271,8 @@ class Zend_Service_SlideShareTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('Extension "mbstring" not loaded');
         }
         $this->assertEquals(
-            'UTF-8', mb_detect_encoding($slideShow->getTitle())
+            'UTF-8',
+            mb_detect_encoding($slideShow->getTitle())
         );
     }
 }

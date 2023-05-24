@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -19,10 +22,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
-
-
-
 /**
  * @category   Zend
  * @package    Zend_Cache
@@ -31,8 +30,8 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
-
+abstract class Zend_Cache_CommonBackendTest extends TestCase
+{
     protected $_instance;
     protected $_className;
     protected $_root;
@@ -45,7 +44,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         parent::__construct($name, $data, $dataName);
     }
 
-    public function setUp($notag = false)
+    public function setUp($notag = false): void
     {
         $this->mkdir();
         $this->_instance->setDirectives(['logging' => true]);
@@ -82,7 +81,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         if (is_writeable($this->_root)) {
             return $this->_root . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
         } else {
-            if (getenv('TMPDIR')){
+            if (getenv('TMPDIR')) {
                 return getenv('TMPDIR') . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;
             } else {
                 die("no writable tmpdir found");
@@ -90,7 +89,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         if ($this->_instance) {
             $this->_instance->clean();
@@ -98,11 +97,17 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         $this->rmdir();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall()
     {
         $this->fail('PLEASE IMPLEMENT A testConstructorCorrectCall !!!');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorBadOption()
     {
         try {
@@ -114,11 +119,17 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         $this->fail('Zend_Cache_Exception was expected but not thrown');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetDirectivesCorrectCall()
     {
         $this->_instance->setDirectives(['lifetime' => 3600, 'logging' => true]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetDirectivesBadArgument()
     {
         try {
@@ -129,6 +140,9 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         $this->fail('Zend_Cache_Exception was expected but not thrown');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetDirectivesBadDirective()
     {
         // A bad directive (not known by a specific backend) is possible
@@ -136,6 +150,9 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         $this->_instance->setDirectives(['foo' => true, 'lifetime' => 3600]);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetDirectivesBadDirective2()
     {
         try {
@@ -174,6 +191,9 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($this->_instance->test('barbar'));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTestWithAnExistingCacheId()
     {
         $res = $this->_instance->test('bar');
@@ -191,6 +211,9 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
         $this->assertFalse($this->_instance->test('barbar'));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTestWithAnExistingCacheIdAndANullLifeTime()
     {
         $this->_instance->setDirectives(['lifetime' => null]);
@@ -232,10 +255,10 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
     public function testCleanModeAll()
     {
         if ($this instanceof Zend_Cache_MemcachedBackendTest
-            && getenv('TRAVIS')
+            && (getenv('TRAVIS') || getenv('CI'))
         ) {
             $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
+                'Test randomly fail on CI.'
             );
         }
 
@@ -292,7 +315,7 @@ abstract class Zend_Cache_CommonBackendTest extends PHPUnit_Framework_TestCase {
     {
         $this->assertTrue(is_numeric($this->_instance->getOption('LifeTime')));
 
-        $this->setExpectedException('Zend_Cache_Exception');
+        $this->expectException('Zend_Cache_Exception');
         $this->_instance->getOption('unknown');
     }
 }

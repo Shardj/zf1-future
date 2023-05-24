@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,20 +39,19 @@ require_once 'Zend/Tool/Framework/Manifest/ActionMetadata.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Manifest
  */
-class Zend_Tool_Framework_Manifest_ActionMetadataTest extends PHPUnit_Framework_TestCase
+class Zend_Tool_Framework_Manifest_ActionMetadataTest extends TestCase
 {
-
     /**
      * @var Zend_Tool_Framework_Manifest_ActionMetadata
      */
     protected $_metadata = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_metadata = new Zend_Tool_Framework_Manifest_ActionMetadata();
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_metadata = null;
     }
@@ -70,9 +72,9 @@ class Zend_Tool_Framework_Manifest_ActionMetadataTest extends PHPUnit_Framework_
             'reference' => $obj1
             ]);
 
-        $this->assertEquals('Foo',       $metadata->getName());
-        $this->assertEquals('BarBaz',    $metadata->getActionName());
-        $this->assertEquals('Bar',       $metadata->getValue());
+        $this->assertEquals('Foo', $metadata->getName());
+        $this->assertEquals('BarBaz', $metadata->getActionName());
+        $this->assertEquals('Bar', $metadata->getValue());
         $this->assertTrue($obj1 === $metadata->getReference());
     }
 
@@ -87,9 +89,9 @@ class Zend_Tool_Framework_Manifest_ActionMetadataTest extends PHPUnit_Framework_
             'reference' => $obj1
             ]);
 
-        $this->assertEquals('Foo',       $this->_metadata->getName());
-        $this->assertEquals('BarBaz',    $this->_metadata->getActionName());
-        $this->assertEquals('Bar',       $this->_metadata->getValue());
+        $this->assertEquals('Foo', $this->_metadata->getName());
+        $this->assertEquals('BarBaz', $this->_metadata->getActionName());
+        $this->assertEquals('Bar', $this->_metadata->getValue());
         $this->assertTrue($obj1 === $this->_metadata->getReference());
     }
 
@@ -112,5 +114,4 @@ class Zend_Tool_Framework_Manifest_ActionMetadataTest extends PHPUnit_Framework_
 
         $this->assertEquals('Type: Action, Name: Foo, Value: Bar (ActionName: BarBaz)', (string) $this->_metadata);
     }
-
 }

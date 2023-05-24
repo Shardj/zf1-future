@@ -44,24 +44,23 @@ require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
  */
 class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
-
     protected $_numericDataTypes = [
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::INT_TYPE => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'INT'                => Zend_Db::INT_TYPE,
-        'INTEGER'            => Zend_Db::INT_TYPE,
-        'MEDIUMINT'          => Zend_Db::INT_TYPE,
-        'SMALLINT'           => Zend_Db::INT_TYPE,
-        'TINYINT'            => Zend_Db::INT_TYPE,
-        'BIGINT'             => Zend_Db::BIGINT_TYPE,
-        'SERIAL'             => Zend_Db::BIGINT_TYPE,
-        'DEC'                => Zend_Db::FLOAT_TYPE,
-        'DECIMAL'            => Zend_Db::FLOAT_TYPE,
-        'DOUBLE'             => Zend_Db::FLOAT_TYPE,
-        'DOUBLE PRECISION'   => Zend_Db::FLOAT_TYPE,
-        'FIXED'              => Zend_Db::FLOAT_TYPE,
-        'FLOAT'              => Zend_Db::FLOAT_TYPE
+        Zend_Db::FLOAT_TYPE => Zend_Db::FLOAT_TYPE,
+        'INT' => Zend_Db::INT_TYPE,
+        'INTEGER' => Zend_Db::INT_TYPE,
+        'MEDIUMINT' => Zend_Db::INT_TYPE,
+        'SMALLINT' => Zend_Db::INT_TYPE,
+        'TINYINT' => Zend_Db::INT_TYPE,
+        'BIGINT' => Zend_Db::BIGINT_TYPE,
+        'SERIAL' => Zend_Db::BIGINT_TYPE,
+        'DEC' => Zend_Db::FLOAT_TYPE,
+        'DECIMAL' => Zend_Db::FLOAT_TYPE,
+        'DOUBLE' => Zend_Db::FLOAT_TYPE,
+        'DOUBLE PRECISION' => Zend_Db::FLOAT_TYPE,
+        'FIXED' => Zend_Db::FLOAT_TYPE,
+        'FLOAT' => Zend_Db::FLOAT_TYPE
     ];
 
     /**
@@ -94,9 +93,11 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
             $stmt = $this->_db->query($select);
             $result2 = $stmt->fetchAll();
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->fail('Unexpected exception '.get_class($e).' received: '.$e->getMessage());
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
+            $this->fail('Unexpected exception ' . get_class($e) . ' received: ' . $e->getMessage());
         }
 
         $this->assertEquals($result1, $result2);
@@ -116,13 +117,13 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
 
         $db = Zend_Db::factory($this->getDriver(), $params);
 
-        $this->assertTrue((boolean) $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
+        $this->assertTrue((bool) $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
 
         $params['driver_options'] = [PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false];
 
         $db = Zend_Db::factory($this->getDriver(), $params);
 
-        $this->assertFalse((boolean) $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
+        $this->assertFalse((bool) $db->getConnection()->getAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY));
     }
 
     public function testAdapterInsertSequence()
@@ -245,8 +246,8 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testAdapterDescribeTableAttributeColumnFloat()
     {
         $desc = $this->_db->describeTable('zfprice');
-        $this->assertEquals('zfprice',  $desc['price']['TABLE_NAME']);
-        $this->assertRegExp('/float/i', $desc['price']['DATA_TYPE']);
+        $this->assertEquals('zfprice', $desc['price']['TABLE_NAME']);
+        $this->assertMatchesRegularExpression('/float/i', $desc['price']['DATA_TYPE']);
     }
 
     /**
@@ -322,7 +323,7 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testBinaryQuoteWithNulls()
     {
         $binary = pack("xxx");
-        $value  = $this->_db->quote($binary);
+        $value = $this->_db->quote($binary);
         $this->assertEquals('\'\0\0\0\'', $value);
     }
 
@@ -331,6 +332,46 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         return 'Pdo_Mysql';
     }
 
+    public function testGivenBeforePhp81WhenFetchDataOnDigitFieldThenPdoMysqlWillReturnStringDigit()
+    {
+        $params = $this->_util->getParams();
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $db->getConnection();
+
+        $select = $this->_db->select();
+        $select->from('zfproducts');
+        $stmt = $this->_db->query($select);
+        $products = $stmt->fetchAll();
+
+        $productId = $products[0]['product_id'] ?? '-1';
+        $this->assertSame(
+            '1',
+            $productId,
+            "BC with php < 8.1, fetch numeric field type will return 'digit' string instead of int or float type in php >= 8.1.\nSee: https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.pdo.mysql"
+        );
+    }
+
+    /**
+     * https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.pdo.mysql
+     * @inheritDoc
+     */
+    public function testAdapterZendConfigEmptyDriverOptions()
+    {
+        $params = $this->_util->getParams();
+        $params['driver_options'] = [];
+        $params = new Zend_Config($params);
+
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $db->getConnection();
+
+        $config = $db->getConfig();
+
+        if (PHP_VERSION_ID >= 80100) {
+            $this->assertEquals([PDO::ATTR_STRINGIFY_FETCHES => true], $config['driver_options']);
+        } else {
+            $this->assertSame([], $config['driver_options']);
+        }
+    }
 }
 
 class ZendTest_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Mysql

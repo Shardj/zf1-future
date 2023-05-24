@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,19 +45,18 @@ class Zend_Ldap_Ldif_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Ldap_Ldif');
+        $suite = new TestSuite('Zend Framework - Zend_Ldap_Ldif');
 
         $suite->addTestSuite('Zend_Ldap_Ldif_SimpleEncoderTest');
         $suite->addTestSuite('Zend_Ldap_Ldif_SimpleDecoderTest');
 
         if (defined('TESTS_ZEND_LDAP_ONLINE_ENABLED')
                 && constant('TESTS_ZEND_LDAP_ONLINE_ENABLED')) {
-
         } else {
             $suite->addTest(new Zend_Ldap_Ldif_SkipOnlineTests());
         }
@@ -61,9 +65,9 @@ class Zend_Ldap_Ldif_AllTests
     }
 }
 
-class Zend_Ldap_Ldif_SkipOnlineTests extends PHPUnit_Framework_TestCase
+class Zend_Ldap_Ldif_SkipOnlineTests extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped('Zend_Ldap_Ldif online tests not enabled in TestConfiguration.php');
     }

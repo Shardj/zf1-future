@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,15 +44,35 @@ require_once 'Zend/Application/Resource/View.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_ViewTest extends TestCase
 {
+    /**
+     * @var ZfAppBootstrap
+     */
+    protected $bootstrap;
+
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -68,7 +93,7 @@ class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
         Zend_Controller_Action_HelperBroker::resetHelpers();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -108,7 +133,7 @@ class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
         require_once 'Zend/Application/Resource/View.php';
         $resource = new Zend_Application_Resource_View($options);
         $resource->init();
-        $view  = $resource->getView();
+        $view = $resource->getView();
         $paths = $view->getScriptPaths();
         $this->assertContains(dirname(__FILE__) . '/', $paths, var_export($paths, 1));
     }
@@ -118,7 +143,7 @@ class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
         $options = ['doctype' => 'XHTML1_FRAMESET'];
         $resource = new Zend_Application_Resource_View($options);
         $resource->init();
-        $view  = $resource->getView();
+        $view = $resource->getView();
         $this->assertEquals('XHTML1_FRAMESET', $view->doctype()->getDoctype());
     }
 
@@ -183,7 +208,7 @@ class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
      */
     public function testSetMetaCharsetShouldOnlyAvailableForHtml5()
     {
-    	$charset = 'UTF-8';
+        $charset = 'UTF-8';
         $options = [
             'doctype' => 'XHTML1_STRICT',
             'charset' => $charset,
@@ -203,10 +228,10 @@ class Zend_Application_Resource_ViewTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse($view->doctype()->isHtml5());
         $this->assertNull($actual);
-
         $registry = Zend_View_Helper_Placeholder_Registry::getRegistry();
         $registry->deleteContainer('Zend_View_Helper_HeadMeta');
         $registry->deleteContainer('Zend_View_Helper_Doctype');
+        Zend_Registry::_unsetInstance();
     }
     
     /**

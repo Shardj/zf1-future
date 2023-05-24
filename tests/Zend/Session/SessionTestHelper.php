@@ -72,8 +72,7 @@ class Zend_Session_TestHelper
         session_id($args[0]);
         if (isset($args[1]) && !empty($args[1])) {
             $s = new Zend_Session_Namespace($args[1]);
-        }
-        else {
+        } else {
             $s = new Zend_Session_Namespace();
         }
         if (isset($args[2]) && ($args[2] == 'ZF-7196')) {
@@ -116,7 +115,7 @@ class Zend_Session_TestHelper
 
         $result = '';
         foreach ($s->getIterator() as $key => $val) {
-            $result .= "$key === ". (print_r($val,true)) .';';
+            $result .= "$key === " . (print_r($val, true)) . ';';
         }
 
         Zend_Session::writeClose();
@@ -134,13 +133,12 @@ class Zend_Session_TestHelper
         session_id($args[0]);
         if (isset($args[1]) && !empty($args[1])) {
             $s = new Zend_Session_Namespace($args[1]);
-        }
-        else {
+        } else {
             $s = new Zend_Session_Namespace();
         }
         $result = '';
         foreach ($s->getIterator() as $key => $val) {
-            $result .= "$key === ". (str_replace(["\n", ' '],[';',''], print_r($val, true))) .';';
+            $result .= "$key === " . (str_replace(["\n", ' '], [';', ''], print_r($val, true))) . ';';
         }
         // file_put_contents('out.sesstiontest.get', print_r($s->someArray, true));
         Zend_Session::writeClose();
@@ -154,4 +152,3 @@ class Zend_Session_TestHelper
 $testHelper = new Zend_Session_TestHelper();
 
 exit($testHelper->run($argv));
-

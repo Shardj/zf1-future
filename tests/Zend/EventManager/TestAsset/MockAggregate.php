@@ -32,7 +32,6 @@ require_once 'Zend/EventManager/ListenerAggregate.php';
  */
 class Zend_EventManager_TestAsset_MockAggregate implements Zend_EventManager_ListenerAggregate
 {
-
     protected $listeners = [];
     public $priority;
 

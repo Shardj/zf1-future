@@ -310,7 +310,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
     {
         return $this->_getGravatarUrl()
              . '/'
-             . md5(strtolower(trim($this->getEmail())))
+             . md5(strtolower(trim($this->getEmail() ?: '')))
              . '?s='
              . $this->getImgSize()
              . '&d='

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -45,20 +48,30 @@ require_once 'Zend/Queue/Adapter/Array.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
-class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
+class Zend_Queue_QueueTest extends TestCase
 {
-    protected function setUp()
+    /**
+     * @var array<string, mixed[]>|array<string, string>|mixed|array<string, mixed>
+     */
+    protected $config;
+
+    /**
+     * @var \Zend_Queue|mixed
+     */
+    protected $queue;
+
+    protected function setUp(): void
     {
         // Test Zend_Config
         $this->config = [
-            'name'      => 'queue1',
-            'params'    => [],
+            'name' => 'queue1',
+            'params' => [],
         ];
 
         $this->queue = new Zend_Queue('array', $this->config);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -79,9 +92,9 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
     {
         // Test Zend_Config
         $config = [
-            'name'      => 'queue1',
-            'params'    => [],
-            'adapter'   => 'array'
+            'name' => 'queue1',
+            'params' => [],
+            'adapter' => 'array'
         ];
 
         require_once "Zend/Config.php";
@@ -212,7 +225,7 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
             'isExists'
         ];
 
-        foreach ( array_values($func) as $f ) {
+        foreach (array_values($func) as $f) {
             $this->assertTrue(isset($list[$f]));
             $this->assertTrue(is_bool($list[$f]));
         }
@@ -221,9 +234,9 @@ class Zend_Queue_QueueTest extends PHPUnit_Framework_TestCase
     public function test_isSupported()
     {
         $list = $this->queue->getCapabilities();
-        foreach ( $list as $function => $result ) {
+        foreach ($list as $function => $result) {
             $this->assertTrue(is_bool($result));
-            if ( $result ) {
+            if ($result) {
                 $this->assertTrue($this->queue->isSupported($function));
             } else {
                 $this->assertFalse($this->queue->isSupported($function));

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -35,31 +40,41 @@ require_once 'Zend/Stdlib/CallbackHandler.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
+class Zend_EventManager_FilterChainTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * @var \Zend_EventManager_FilterChain|mixed
+     */
+    protected $filterchain;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (isset($this->message)) {
             unset($this->message);
         }
-        $this->filterchain = new Zend_EventManager_FilterChain;
+        $this->filterchain = new Zend_EventManager_FilterChain();
     }
 
     public function testSubscribeShouldReturnCallbackHandler()
     {
-        $handle = $this->filterchain->attach([ $this, __METHOD__ ]);
+        $handle = $this->filterchain->attach([ $this, __FUNCTION__ ]);
         $this->assertTrue($handle instanceof Zend_Stdlib_CallbackHandler);
     }
 
     public function testSubscribeShouldAddCallbackHandlerToFilters()
     {
-        $handler  = $this->filterchain->attach([$this, __METHOD__]);
+        $handler = $this->filterchain->attach([$this, __FUNCTION__]);
         $handlers = $this->filterchain->getFilters();
         $this->assertEquals(1, count($handlers));
         $this->assertTrue($handlers->contains($handler));
@@ -67,7 +82,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldRemoveCallbackHandlerFromFilters()
     {
-        $handle = $this->filterchain->attach([ $this, __METHOD__ ]);
+        $handle = $this->filterchain->attach([ $this, __FUNCTION__ ]);
         $handles = $this->filterchain->getFilters();
         $this->assertTrue($handles->contains($handle));
         $this->filterchain->detach($handle);
@@ -77,7 +92,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
 
     public function testDetachShouldReturnFalseIfCallbackHandlerDoesNotExist()
     {
-        $handle1 = $this->filterchain->attach([ $this, __METHOD__ ]);
+        $handle1 = $this->filterchain->attach([ $this, __FUNCTION__ ]);
         $this->filterchain->clearFilters();
         $handle2 = $this->filterchain->attach([ $this, 'handleTestTopic' ]);
         $this->assertFalse($this->filterchain->detach($handle1));
@@ -146,7 +161,7 @@ class Zend_EventManager_FilterChainTest extends PHPUnit_Framework_TestCase
         if (isset($params['string'])) {
             $params['string'] = trim($params['string']);
         }
-        $return =  $chain->next($context, $params, $chain);
+        $return = $chain->next($context, $params, $chain);
         return $return;
     }
 

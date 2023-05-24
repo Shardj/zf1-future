@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -46,7 +49,7 @@ require_once '_files/ManifestBadMetadata.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Manifest
  */
-class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_TestCase
+class Zend_Tool_Framework_Manifest_RepositoryTest extends TestCase
 {
     /**
      * @var Zend_Tool_Framework_Registry
@@ -58,7 +61,7 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
      */
     protected $_repository = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_repository = new Zend_Tool_Framework_Manifest_Repository();
 
@@ -69,7 +72,7 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
         $this->_registry->setManifestRepository($this->_repository);
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_registry->reset();
         $this->_repository = null;
@@ -95,7 +98,6 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
         $providers = $providerRepository->getProviders();
         $this->assertArrayHasKey('providerone', $providers);
         $this->assertArrayHasKey('providertwo', $providers);
-
     }
 
     public function testAddManfestsWillPersistManifestsAndObeyIndex()
@@ -109,14 +111,11 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
         $this->assertEquals(2, count($manifests));
         $this->assertTrue(array_shift($manifests) instanceof Zend_Tool_Framework_Manifest_ManifestGoodOne);
         $this->assertTrue(array_shift($manifests) instanceof Zend_Tool_Framework_Manifest_ManifestGoodTwo);
-
     }
 
-    /**
-     * @expectedException Zend_Tool_Framework_Manifest_Exception
-     */
     public function testAddManifestThrowsExceptionOnBadGetProviders()
     {
+        $this->expectException(Zend_Tool_Framework_Manifest_Exception::class);
         $this->_repository->addManifest(new Zend_Tool_Framework_Manifest_ManifestBadProvider());
     }
 
@@ -131,11 +130,9 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
         $this->assertEquals(2, count($this->_repository->getManifests()));
     }
 
-    /**
-     * @expectedException Zend_Tool_Framework_Manifest_Exception
-     */
     public function testProcessThrowsExceptionOnBadMetadata()
     {
+        $this->expectException(Zend_Tool_Framework_Manifest_Exception::class);
         $this->_repository->addManifest(new Zend_Tool_Framework_Manifest_ManifestBadMetadata());
         $this->_repository->process();
     }
@@ -197,8 +194,6 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
         $resultMetadatas = $this->_repository->getMetadatas(['name' => 'Bar']);
         $this->assertEquals(1, count($resultMetadatas));
         $this->assertTrue($metadata2 === array_shift($resultMetadatas));
-
-
     }
 
     public function testManifestGetMetadataSingularSearchWorks()
@@ -224,7 +219,6 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
 
         $resultMetadata = $this->_repository->getMetadata(['name' => 'Baz']);
         $this->assertTrue($metadata3 === $resultMetadata);
-
     }
 
     public function testManifestGetMetadatasCollectionSearchWorksWithNonExistentProperties()
@@ -254,7 +248,5 @@ class Zend_Tool_Framework_Manifest_RepositoryTest extends PHPUnit_Framework_Test
         $resultMetadatas = $this->_repository->getMetadatas(['name' => 'Bar', 'blah' => 'boo'], false);
         $this->assertEquals(0, count($resultMetadatas));
         //$this->assertTrue($metadata2 === array_shift($resultMetadatas));
-
     }
-
 }

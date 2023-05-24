@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -45,12 +50,17 @@ require_once 'Zend/Currency.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_CurrencyTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_Currency
      */
     public $helper;
+
+    /**
+     * @var Zend_Cache_Core
+     */
+    protected $_cache;
 
     /**
      * Runs the test methods of this class.
@@ -59,9 +69,8 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_CurrencyTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_CurrencyTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function clearRegistry()
@@ -79,13 +88,16 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->clearRegistry();
         require_once 'Zend/Cache.php';
-        $this->_cache = Zend_Cache::factory('Core', 'File',
-                 ['lifetime' => 120, 'automatic_serialization' => true],
-                 ['cache_dir' => dirname(__FILE__) . '/../../_files/']);
+        $this->_cache = Zend_Cache::factory(
+            'Core',
+            'File',
+            ['lifetime' => 120, 'automatic_serialization' => true],
+            ['cache_dir' => dirname(__FILE__) . '/../../_files/']
+        );
         Zend_Currency::setCache($this->_cache);
 
         $this->helper = new Zend_View_Helper_Currency('de_AT');
@@ -97,7 +109,7 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->helper);
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
@@ -135,9 +147,9 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
             $helper = new Zend_View_Helper_Currency('something');
         } catch (Exception $e) {
             if (substr($e->getMessage(), 0, 15) == 'No region found') {
-                $this->assertContains('within the locale', $e->getMessage());
+                $this->assertStringContainsString('within the locale', $e->getMessage());
             } else {
-                $this->assertContains('not found', $e->getMessage());
+                $this->assertStringContainsString('not found', $e->getMessage());
             }
         }
     }
@@ -148,9 +160,9 @@ class Zend_View_Helper_CurrencyTest extends PHPUnit_Framework_TestCase
             $this->helper->setCurrency('something');
         } catch (Exception $e) {
             if (substr($e->getMessage(), 0, 15) == 'No region found') {
-                $this->assertContains('within the locale', $e->getMessage());
+                $this->assertStringContainsString('within the locale', $e->getMessage());
             } else {
-                $this->assertContains('not found', $e->getMessage());
+                $this->assertStringContainsString('not found', $e->getMessage());
             }
         }
     }

@@ -280,7 +280,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTag extends Zend_Tag_Cloud_Decorator_Tag
                 $attribute = sprintf('class="%s"', htmlspecialchars($tag->getParam('weightValue'), ENT_COMPAT, $enc));
             }
 
-            $tagHtml = sprintf('<a href="%s" %s>%s</a>', htmlspecialchars($tag->getParam('url'), ENT_COMPAT, $enc), $attribute, $tag->getTitle());
+            $tagHtml = sprintf('<a href="%s" %s>%s</a>', htmlspecialchars((string) $tag->getParam('url'), ENT_COMPAT, $enc), $attribute, $tag->getTitle());
 
             foreach ($this->getHtmlTags() as $key => $data) {
                 if (is_array($data)) {

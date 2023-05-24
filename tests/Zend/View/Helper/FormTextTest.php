@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,8 +46,18 @@ require_once 'Zend/Registry.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_FormTextTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_FormTextTest extends TestCase
 {
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_FormText
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -51,8 +66,8 @@ class Zend_View_Helper_FormTextTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormTextTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_FormTextTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -61,7 +76,7 @@ class Zend_View_Helper_FormTextTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
@@ -75,28 +90,28 @@ class Zend_View_Helper_FormTextTest extends PHPUnit_Framework_TestCase
     public function testIdSetFromName()
     {
         $element = $this->helper->formText('foo');
-        $this->assertContains('name="foo"', $element);
-        $this->assertContains('id="foo"', $element);
+        $this->assertStringContainsString('name="foo"', $element);
+        $this->assertStringContainsString('id="foo"', $element);
     }
 
     public function testSetIdFromAttribs()
     {
         $element = $this->helper->formText('foo', null, ['id' => 'bar']);
-        $this->assertContains('name="foo"', $element);
-        $this->assertContains('id="bar"', $element);
+        $this->assertStringContainsString('name="foo"', $element);
+        $this->assertStringContainsString('id="bar"', $element);
     }
 
     public function testSetValue()
     {
         $element = $this->helper->formText('foo', 'bar');
-        $this->assertContains('name="foo"', $element);
-        $this->assertContains('value="bar"', $element);
+        $this->assertStringContainsString('name="foo"', $element);
+        $this->assertStringContainsString('value="bar"', $element);
     }
 
     public function testReadOnlyAttribute()
     {
         $element = $this->helper->formText('foo', null, ['readonly' => 'readonly']);
-        $this->assertContains('readonly="readonly"', $element);
+        $this->assertStringContainsString('readonly="readonly"', $element);
     }
 
     /**
@@ -105,12 +120,12 @@ class Zend_View_Helper_FormTextTest extends PHPUnit_Framework_TestCase
     public function testCanDisableElement()
     {
         $html = $this->helper->formText([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'attribs' => ['disable' => true]
         ]);
 
-        $this->assertRegexp('/<input[^>]*?(disabled="disabled")/', $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*?(disabled="disabled")/', $html);
     }
 
     /**
@@ -119,25 +134,25 @@ class Zend_View_Helper_FormTextTest extends PHPUnit_Framework_TestCase
     public function testDisablingElementDoesNotRenderHiddenElements()
     {
         $html = $this->helper->formText([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'attribs' => ['disable' => true]
         ]);
 
-        $this->assertNotRegexp('/<input[^>]*?(type="hidden")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*?(type="hidden")/', $html);
     }
 
     public function testRendersAsHtmlByDefault()
     {
         $test = $this->helper->formText('foo', 'bar');
-        $this->assertNotContains(' />', $test);
+        $this->assertStringNotContainsString(' />', $test);
     }
 
     public function testCanRendersAsXHtml()
     {
         $this->view->doctype('XHTML1_STRICT');
         $test = $this->helper->formText('foo', 'bar');
-        $this->assertContains(' />', $test);
+        $this->assertStringContainsString(' />', $test);
     }
 }
 

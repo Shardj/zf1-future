@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
-class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_Form_Element_EditorTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_Form_Element_TextBox
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_Form_Element_EditorTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_Form_Element_EditorTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view    = $this->getView();
+        $this->view = $this->getView();
         $this->element = $this->getElement();
         $this->element->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -112,7 +127,7 @@ class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
     public function testShouldRenderEditorDijit()
     {
         $html = $this->element->render();
-        $this->assertContains('dojoType="dijit.Editor"', $html, $html);
+        $this->assertStringContainsString('dojoType="dijit.Editor"', $html, $html);
     }
 
     public function testShouldNotHaveCaptureEventsByDefault()
@@ -248,7 +263,7 @@ class Zend_Dojo_Form_Element_EditorTest extends PHPUnit_Framework_TestCase
         $this->element->removeStyleSheet('/js/custom/styles.css');
         $this->assertFalse($this->element->hasStyleSheet('/js/custom/styles.css'), var_export($this->element->getStyleSheets(), 1));
         $styleSheets = $this->element->getDijitParam('styleSheets');
-        $this->assertNotContains('/js/custom/styles.css', $styleSheets, var_export($styleSheets, 1));
+        $this->assertStringNotContainsString('/js/custom/styles.css', $styleSheets, var_export($styleSheets, 1));
     }
 
     public function testUpdateIntervalShouldHaveDefaultValue()

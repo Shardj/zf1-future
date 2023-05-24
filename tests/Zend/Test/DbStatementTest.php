@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,7 +34,7 @@ require_once "Zend/Test/DbStatement.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_DbStatementTest extends PHPUnit_Framework_TestCase
+class Zend_Test_DbStatementTest extends TestCase
 {
     public function testRowCountDefault()
     {
@@ -127,7 +130,7 @@ class Zend_Test_DbStatementTest extends PHPUnit_Framework_TestCase
 
     public function testFetchColumn_OutOfBounds()
     {
-        $this->setExpectedException("Zend_Db_Statement_Exception");
+        $this->expectException("Zend_Db_Statement_Exception");
 
         $row = ["foo" => "bar", "bar" => "baz"];
 
@@ -152,7 +155,7 @@ class Zend_Test_DbStatementTest extends PHPUnit_Framework_TestCase
 
     public function testFetchObject_ClassNotExists_ThrowsException()
     {
-        $this->setExpectedException("Zend_Db_Statement_Exception");
+        $this->expectException("Zend_Db_Statement_Exception");
 
         $row = ["foo" => "bar", "bar" => "baz"];
 

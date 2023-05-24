@@ -31,6 +31,12 @@
 abstract class Zend_View_Helper_Placeholder_Container_Abstract extends ArrayObject
 {
     /**
+     * View object
+     * @var Zend_View_Interface|null
+     */
+    public $view = null;
+
+    /**
      * Whether or not to override all contents of placeholder
      * @const string
      */

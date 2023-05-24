@@ -41,7 +41,7 @@ class Zend_Service_Audioscrobbler_AlbumDataTest extends Zend_Service_Audioscrobb
 {
     public function testGetAlbumInfo()
     {
-        $albumInfoResponse = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n".
+        $albumInfoResponse = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n" .
 '<?xml version="1.0" encoding="UTF-8"?>
 <album artist="Metallica" title="Metallica">
     <reach>85683</reach>
@@ -118,7 +118,7 @@ class Zend_Service_Audioscrobbler_AlbumDataTest extends Zend_Service_Audioscrobb
             $this->assertEquals((string)$response['title'], 'Metallica');
             $this->assertEquals((string)$track->url, 'http://www.last.fm/music/Metallica/_/Enter+Sandman+%28LP+Version%29');
             $this->assertEquals(count($response->tracks->track), 12);
-        } catch (Exception $e ) {
+        } catch (Exception $e) {
             $this->fail("Exception: [" . $e->getMessage() . "] thrown by test");
         }
     }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,11 +35,11 @@ require_once 'Zend/Mobile/Push/Message/Mpns/Raw.php';
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Mpns
  */
-class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
+class Zend_Mobile_Push_Message_Mpns_RawTest extends TestCase
 {
     private $_msg;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_msg = new Zend_Mobile_Push_Message_Mpns_Raw();
     }
@@ -48,20 +51,16 @@ class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($token, $this->_msg->getToken());
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetTokenNonStringThrowsException()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $token = ['foo' => 'bar'];
         $this->_msg->setToken($token);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetTokenInvalidUrlThrowsException()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $token = 'notaurl';
         $this->_msg->setToken($token);
     }
@@ -78,20 +77,16 @@ class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($msg, $this->_msg->getMessage());
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetMessageThrowsExceptionOnNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $msg = ['foo' => 'bar'];
         $this->_msg->setMessage($msg);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception 
-     */
     public function testSetMessageThrowsExceptionOnNonXml()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $msg = 'foo';
         $this->_msg->setMessage($msg);
     }
@@ -111,11 +106,9 @@ class Zend_Mobile_Push_Message_Mpns_RawTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(Zend_Mobile_Push_Message_Mpns_Raw::DELAY_IMMEDIATE, $this->_msg->getDelay());
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetDelayThrowsExceptionOnInvalidDelay()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $delay = 'foo';
         $this->_msg->setDelay($delay);
     }

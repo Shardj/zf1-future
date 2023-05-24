@@ -128,7 +128,7 @@ class Zend_Validate_StringLength extends Zend_Validate_Abstract
      *
      * @param  integer $min
      * @throws Zend_Validate_Exception
-     * @return Zend_Validate_StringLength Provides a fluent interface
+     * @return $this
      */
     public function setMin($min)
     {
@@ -159,7 +159,7 @@ class Zend_Validate_StringLength extends Zend_Validate_Abstract
      *
      * @param  integer|null $max
      * @throws Zend_Validate_Exception
-     * @return Zend_Validate_StringLength Provides a fluent interface
+     * @return $this
      */
     public function setMax($max)
     {

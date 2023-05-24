@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,10 +36,14 @@ require_once 'Zend/Gdata/ClientLogin.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Books
  */
-class Zend_Gdata_BooksOnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_BooksOnlineTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Books|mixed
+     */
+    protected $gdata;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $user = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL');
         $pass = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_PASSWORD');
@@ -77,7 +84,9 @@ class Zend_Gdata_BooksOnlineTest extends PHPUnit_Framework_TestCase
         foreach ($feed->entries as $entry) {
             $this->assertTrue($entry instanceof Zend_Gdata_Books_VolumeEntry);
             $this->assertEquals(
-                $feed->getHttpClient(), $entry->getHttpClient());
+                $feed->getHttpClient(),
+                $entry->getHttpClient()
+            );
         }
 
         $entry = new Zend_Gdata_Books_VolumeEntry();
@@ -94,14 +103,18 @@ class Zend_Gdata_BooksOnlineTest extends PHPUnit_Framework_TestCase
         foreach ($feed->entries as $entry) {
             $this->assertTrue($entry instanceof Zend_Gdata_Books_VolumeEntry);
             $this->assertEquals(
-                $feed->getHttpClient(), $entry->getHttpClient());
+                $feed->getHttpClient(),
+                $entry->getHttpClient()
+            );
         }
 
         $entry = new Zend_Gdata_Books_VolumeEntry();
         $entry->setId(new Zend_Gdata_App_Extension_Id('Mfer_MFwQrkC'));
         $entry->setRating(new Zend_Gdata_Extension_Rating(3, 1, 5, 1));
-        $newEntry = $this->gdata->insertVolume($entry,
-            Zend_Gdata_Books::MY_ANNOTATION_FEED_URI);
+        $newEntry = $this->gdata->insertVolume(
+            $entry,
+            Zend_Gdata_Books::MY_ANNOTATION_FEED_URI
+        );
         $this->assertTrue($newEntry instanceof Zend_Gdata_Books_VolumeEntry);
         $this->gdata->deleteVolume($newEntry);
     }

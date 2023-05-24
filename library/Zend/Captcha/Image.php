@@ -508,7 +508,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
         $textbox = imageftbbox($fsize, 0, $font, $word);
         $x = ($w - ($textbox[2] - $textbox[0])) / 2;
         $y = ($h - ($textbox[7] - $textbox[1])) / 2;
-        imagefttext($img, $fsize, 0, $x, $y, $text_color, $font, $word);
+        imagefttext($img, $fsize, 0, (int) $x, (int) $y, $text_color, $font, $word);
 
        // generate noise
         for ($i=0; $i<$this->_dotNoiseLevel; $i++) {

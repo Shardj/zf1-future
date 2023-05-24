@@ -36,7 +36,7 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
 {
     // http://msdn.microsoft.com/en-us/library/cc296197(SQL.90).aspx
     protected $_getColumnMetaKeys = [
-        'Name' , 'Type', 'Size', 'Precision', 'Scale', 'Nullable'
+        'Name', 'Type', 'Size', 'Precision', 'Scale', 'Nullable'
     ];
 
     public function testStatementExecuteWithParams()
@@ -72,11 +72,11 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
 
     public function testStatementNextRowset()
     {
-        $products   = $this->_db->quoteIdentifier('zfproducts');
+        $products = $this->_db->quoteIdentifier('zfproducts');
         $product_id = $this->_db->quoteIdentifier('product_id');
 
         $query = "SELECT * FROM $products WHERE $product_id > 1 ORDER BY $product_id ASC";
-        $stmt  = $this->_db->query($query . ';' . $query);
+        $stmt = $this->_db->query($query . ';' . $query);
 
         $result1 = $stmt->fetchAll();
 
@@ -95,11 +95,11 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
      */
     public function testStatementNextRowsetWithProcedure()
     {
-        $products   = $this->_db->quoteIdentifier('zfproducts');
+        $products = $this->_db->quoteIdentifier('zfproducts');
         $product_id = $this->_db->quoteIdentifier('product_id');
         $product_name = $this->_db->quoteIdentifier('product_name');
 
-        $products_procedure   = $this->_db->quoteIdentifier('#InsertIntoProducts');
+        $products_procedure = $this->_db->quoteIdentifier('#InsertIntoProducts');
 
         $prodecure = "CREATE PROCEDURE $products_procedure
                                     @ProductName varchar(100)
@@ -118,7 +118,7 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
         // create procedure
         $this->_db->query($prodecure);
 
-        $stmt  = $this->_db->query('{call ' . $products_procedure .'(?)}', ['Product']);
+        $stmt = $this->_db->query('{call ' . $products_procedure . '(?)}', ['Product']);
 
         $result1 = $stmt->rowCount();
 
@@ -134,14 +134,14 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
         $stmt->closeCursor();
     }
 
-	/*
+    /*
      * @group ZF-7559
      */
     public function testStatementWithProcedure()
     {
-        $products   = $this->_db->quoteIdentifier('zfproducts');
+        $products = $this->_db->quoteIdentifier('zfproducts');
 
-        $products_procedure   = $this->_db->quoteIdentifier('#GetProducts');
+        $products_procedure = $this->_db->quoteIdentifier('#GetProducts');
 
         $prodecure = "CREATE PROCEDURE $products_procedure
                    AS
@@ -152,7 +152,7 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
         // create procedure
         $this->_db->query($prodecure);
 
-        $stmt  = $this->_db->query('EXECUTE ' . $products_procedure);
+        $stmt = $this->_db->query('EXECUTE ' . $products_procedure);
 
         $result1 = $stmt->fetchAll();
 
@@ -163,11 +163,11 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
 
     public function testStatementErrorInfo()
     {
-        $products   = $this->_db->quoteIdentifier('zfproducts');
+        $products = $this->_db->quoteIdentifier('zfproducts');
         $product_id = $this->_db->quoteIdentifier('product_id');
 
         $query = "INVALID SELECT * FROM INVALID TABLE WHERE $product_id > 1 ORDER BY $product_id ASC";
-        $stmt  = new Zend_Db_Statement_Sqlsrv($this->_db, $query);
+        $stmt = new Zend_Db_Statement_Sqlsrv($this->_db, $query);
 
         try {
             $stmt->fetchAll();

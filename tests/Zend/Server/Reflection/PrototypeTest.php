@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,7 +39,7 @@ require_once 'Zend/Server/Reflection/ReturnValue.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_Reflection_PrototypeTest extends PHPUnit_Framework_TestCase
+class Zend_Server_Reflection_PrototypeTest extends TestCase
 {
     /**
      * Zend_Server_Reflection_Prototype object
@@ -59,7 +62,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit_Framework_TestCase
     /**
      * Setup environment
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $class = new ReflectionClass('Zend_Server_Reflection');
         $method = $class->getMethod('reflectClass');
@@ -78,7 +81,7 @@ class Zend_Server_Reflection_PrototypeTest extends PHPUnit_Framework_TestCase
     /**
      * Teardown environment
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->_r);
         unset($this->_parameters);

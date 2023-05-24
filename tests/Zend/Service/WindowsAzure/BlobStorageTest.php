@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,48 +46,52 @@ require_once 'Zend/Service/WindowsAzure/Storage/Blob.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCase
+class Zend_Service_WindowsAzure_BlobStorageTest extends TestCase
 {
-    static $path;
+    public static $path;
     
     public function __construct()
     {
-        self::$path = dirname(__FILE__).'/_files/';
+        self::$path = dirname(__FILE__) . '/_files/';
     }
     
     public static function main()
     {
         if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
-            $suite  = new PHPUnit_Framework_TestSuite("Zend_Service_WindowsAzure_BlobStorageTest");
-            $result = PHPUnit_TextUI_TestRunner::run($suite);
+            $suite = new TestSuite("Zend_Service_WindowsAzure_BlobStorageTest");
+            $result = (new TestRunner())->run($suite);
         }
     }
    
     /**
      * Test setup
      */
-    protected function setUp()
+    protected function setUp(): void
     {
     }
     
     /**
      * Test teardown
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $storageClient = $this->createStorageInstance();
-        for ($i = 1; $i <= self::$uniqId; $i++)
-        {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_CONTAINER_PREFIX . $i); } catch (Exception $e) { }
+        for ($i = 1; $i <= self::$uniqId; $i++) {
+            try {
+                $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_CONTAINER_PREFIX . $i);
+            } catch (Exception $e) {
+            }
         }
-        try { $storageClient->deleteContainer('$root'); } catch (Exception $e) { }
+        try {
+            $storageClient->deleteContainer('$root');
+        } catch (Exception $e) {
+        }
     }
 
     protected function createStorageInstance()
     {
         $storageClient = null;
-        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNONPROD)
-        {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNONPROD) {
             $storageClient = new Zend_Service_WindowsAzure_Storage_Blob(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_HOST_PROD, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_ACCOUNT_PROD, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_KEY_PROD, false, Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::retryN(10, 250));
         } else {
             $storageClient = new Zend_Service_WindowsAzure_Storage_Blob(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_HOST_DEV, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_ACCOUNT_DEV, TESTS_ZEND_SERVICE_WINDOWSAZURE_STORAGE_KEY_DEV, true, Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract::retryN(10, 250));
@@ -108,7 +117,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testContainerExists()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName1 = $this->generateName();
             $containerName2 = $this->generateName();
             $storageClient = $this->createStorageInstance();
@@ -128,7 +137,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testBlobExists()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -148,7 +157,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testCreateContainer()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $result = $storageClient->createContainer($containerName);
@@ -161,12 +170,12 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testGetContainerAcl()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
             $acl = $storageClient->getContainerAcl($containerName);
-            $this->assertEquals(Zend_Service_WindowsAzure_Storage_Blob::ACL_PRIVATE, $acl);        
+            $this->assertEquals(Zend_Service_WindowsAzure_Storage_Blob::ACL_PRIVATE, $acl);
         }
     }
     
@@ -175,7 +184,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testCreateContainerIfNotExists()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             
@@ -196,7 +205,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testSetContainerAcl()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -223,13 +232,13 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testSetContainerAclAdvanced()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
             
-			require_once 'Zend/Service/WindowsAzure/Storage/SignedIdentifier.php';
-			
+            require_once 'Zend/Service/WindowsAzure/Storage/SignedIdentifier.php';
+            
             $storageClient->setContainerAcl(
                 $containerName,
                 Zend_Service_WindowsAzure_Storage_Blob::ACL_PRIVATE,
@@ -248,7 +257,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testSetContainerMetadata()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -267,7 +276,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testListContainers()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName1 = 'testlist1';
             $containerName2 = 'testlist2';
             $containerName3 = 'testlist3';
@@ -295,7 +304,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testListContainersWithMetadata()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName, [
@@ -315,7 +324,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testPutBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -331,7 +340,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testPutBlobData()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -374,7 +383,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testGetBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -399,7 +408,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testGetBlobData()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -419,7 +428,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testSnapshotBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -449,7 +458,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testLeaseBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -462,18 +471,18 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             // Second lease should not be possible
             $exceptionThrown = false;
             try {
-            	$storageClient->leaseBlob($containerName, 'test.txt', Zend_Service_WindowsAzure_Storage_Blob::LEASE_ACQUIRE);
+                $storageClient->leaseBlob($containerName, 'test.txt', Zend_Service_WindowsAzure_Storage_Blob::LEASE_ACQUIRE);
             } catch (Exception $e) {
-            	$exceptionThrown = true;
+                $exceptionThrown = true;
             }
             $this->assertTrue($exceptionThrown);
-			
+            
             // Delete should not be possible
             $exceptionThrown = false;
             try {
-            	$storageClient->deleteBlob($containerName, 'test.txt');
+                $storageClient->deleteBlob($containerName, 'test.txt');
             } catch (Exception $e) {
-            	$exceptionThrown = true;
+                $exceptionThrown = true;
             }
             $this->markTestIncomplete('Test inconclusive. Verify http://social.msdn.microsoft.com/Forums/en/windowsazure/thread/9ae25614-b1da-43ab-abca-644abc034eb3 for info.');
             $this->assertTrue($exceptionThrown);
@@ -481,9 +490,9 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             // But should work when a lease id is supplied
             $exceptionThrown = false;
             try {
-            	$storageClient->putBlobData($containerName, 'test.txt', 'Hello!');
+                $storageClient->putBlobData($containerName, 'test.txt', 'Hello!');
             } catch (Exception $e) {
-            	$exceptionThrown = true;
+                $exceptionThrown = true;
             }
             $this->assertFalse($exceptionThrown);
         }
@@ -494,7 +503,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testSetBlobProperties()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -502,7 +511,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
             
             $storageClient->setBlobProperties($containerName, 'images/WindowsAzure.gif', null, [
                 'x-ms-blob-content-language' => 'nl-BE',
-            	'x-ms-blob-content-type' => 'image/gif'
+                'x-ms-blob-content-type' => 'image/gif'
             ]);
             
             $blobInstance = $storageClient->getBlobInstance($containerName, 'images/WindowsAzure.gif');
@@ -517,7 +526,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testSetBlobMetadata()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -532,23 +541,23 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
         }
     }
     
-	/**
+    /**
      * Test set blob metadata, ensuring no additional headers can be added.
      */
     public function testSetBlobMetadata_Security_AdditionalHeaders()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
             $storageClient->putBlob($containerName, 'images/WindowsAzure.gif', self::$path . 'WindowsAzure.gif');
             
-			$exceptionThrown = false;
+            $exceptionThrown = false;
             try {
-            	// adding a newline should not be possible...
+                // adding a newline should not be possible...
                 $storageClient->setBlobMetadata($containerName, 'images/WindowsAzure.gif', [
-	                'createdby' => "PHPAzure\nx-ms-meta-something:false",
-	            ]);
+                    'createdby' => "PHPAzure\nx-ms-meta-something:false",
+                ]);
             } catch (Exception $ex) {
                 $exceptionThrown = true;
             }
@@ -561,7 +570,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testDeleteBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -579,7 +588,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testListBlobs()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -604,7 +613,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testListBlobsWithAllIncludes()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -636,7 +645,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testCopyBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -731,7 +740,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testPageBlob()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -766,7 +775,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testGetPageRegions()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -792,7 +801,7 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
      */
     public function testPutBlobWithCacheControlHeader()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             $storageClient = $this->createStorageInstance();
             $storageClient->createContainer($containerName);
@@ -832,17 +841,17 @@ class Zend_Service_WindowsAzure_BlobStorageTest extends PHPUnit_Framework_TestCa
     
     /**
      * Create large file
-     * 
+     *
      * @return string Filename
      */
     protected function _createLargeFile()
     {
         $fileName = tempnam('', 'tst');
         $fp = fopen($fileName, 'w');
-        for ($i = 0; $i < Zend_Service_WindowsAzure_Storage_Blob::MAX_BLOB_SIZE / 1024; $i++)
-        {
-            fwrite($fp,
-            	'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' .
+        for ($i = 0; $i < Zend_Service_WindowsAzure_Storage_Blob::MAX_BLOB_SIZE / 1024; $i++) {
+            fwrite(
+                $fp,
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' .
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' .
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' .
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' .

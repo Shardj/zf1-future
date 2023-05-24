@@ -34,6 +34,10 @@ require_once 'Zend/View/Helper/Partial.php';
  */
 class Zend_View_Helper_PartialLoop extends Zend_View_Helper_Partial
 {
+    /**
+     * @var integer
+     */
+    protected $partialTotalCount = 0;
 
     /**
      * Marker to where the pointer is at in the loop

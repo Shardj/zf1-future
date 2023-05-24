@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+
 /**
  * Zend Framework
  *
@@ -41,7 +44,7 @@ class Zend_Soap_Wsdl_AllTests
 {
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Soap_Wsdl');
+        $suite = new TestSuite('Zend Framework - Zend_Soap_Wsdl');
 
         $suite->addTestSuite('Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest');
         $suite->addTestSuite('Zend_Soap_Wsdl_ArrayOfTypeSequenceStrategyTest');

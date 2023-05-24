@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Validate/StringLength.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_StringLengthTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_StringLengthTest extends TestCase
 {
     /**
      * Default instance created for all test methods
@@ -47,7 +50,7 @@ class Zend_Validate_StringLengthTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_validator = new Zend_Validate_StringLength();
     }
@@ -136,7 +139,7 @@ class Zend_Validate_StringLengthTest extends PHPUnit_Framework_TestCase
             $this->assertEquals(
                 "The minimum must be less than or equal to the maximum length, but $min > $max",
                 $e->getMessage()
-                );
+            );
         }
     }
 
@@ -156,7 +159,7 @@ class Zend_Validate_StringLengthTest extends PHPUnit_Framework_TestCase
             $this->assertEquals(
                 "The maximum must be greater than or equal to the minimum length, but $max < $min",
                 $e->getMessage()
-                );
+            );
         }
     }
 
@@ -179,11 +182,11 @@ class Zend_Validate_StringLengthTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Zend_Validate_Exception
      * @group GH-634
      */
     public function testWrongEncoding()
     {
+        $this->expectException(Zend_Validate_Exception::class);
         $this->_validator->setEncoding('');
     }
 

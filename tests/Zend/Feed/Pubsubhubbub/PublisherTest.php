@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -30,16 +33,15 @@ require_once 'Zend/Feed/Pubsubhubbub/Publisher.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_Pubsubhubbub_PublisherTest extends TestCase
 {
-
     protected $_publisher = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $client = new Zend_Http_Client;
+        $client = new Zend_Http_Client();
         Zend_Feed_Pubsubhubbub::setHttpClient($client);
-        $this->_publisher = new Zend_Feed_Pubsubhubbub_Publisher;
+        $this->_publisher = new Zend_Feed_Pubsubhubbub_Publisher();
     }
 
     public function testAddsHubServerUrl()
@@ -92,28 +94,22 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
 
     public function testThrowsExceptionOnSettingEmptyHubServerUrl()
     {
-        try {
-            $this->_publisher->addHubUrl('');
-            $this->fail('Should not fail as an Exception would be raised and caught');
-        } catch (Zend_Feed_Pubsubhubbub_Exception $e) {}
+        $this->expectException(Zend_Feed_Pubsubhubbub_Exception::class);
+        $this->_publisher->addHubUrl('');
     }
 
 
     public function testThrowsExceptionOnSettingNonStringHubServerUrl()
     {
-        try {
-            $this->_publisher->addHubUrl(123);
-            $this->fail('Should not fail as an Exception would be raised and caught');
-        } catch (Zend_Feed_Pubsubhubbub_Exception $e) {}
+        $this->expectException(Zend_Feed_Pubsubhubbub_Exception::class);
+        $this->_publisher->addHubUrl(123);
     }
 
 
     public function testThrowsExceptionOnSettingInvalidHubServerUrl()
     {
-        try {
-            $this->_publisher->addHubUrl('http://');
-            $this->fail('Should not fail as an Exception would be raised and caught');
-        } catch (Zend_Feed_Pubsubhubbub_Exception $e) {}
+        $this->expectException(Zend_Feed_Pubsubhubbub_Exception::class);
+        $this->_publisher->addHubUrl('http://');
     }
 
     public function testAddsUpdatedTopicUrl()
@@ -166,34 +162,28 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
 
     public function testThrowsExceptionOnSettingEmptyUpdatedTopicUrl()
     {
-        try {
-            $this->_publisher->addUpdatedTopicUrl('');
-            $this->fail('Should not fail as an Exception would be raised and caught');
-        } catch (Zend_Feed_Pubsubhubbub_Exception $e) {}
+        $this->expectException(Zend_Feed_Pubsubhubbub_Exception::class);
+        $this->_publisher->addUpdatedTopicUrl('');
     }
 
 
     public function testThrowsExceptionOnSettingNonStringUpdatedTopicUrl()
     {
-        try {
-            $this->_publisher->addUpdatedTopicUrl(123);
-            $this->fail('Should not fail as an Exception would be raised and caught');
-        } catch (Zend_Feed_Pubsubhubbub_Exception $e) {}
+        $this->expectException(Zend_Feed_Pubsubhubbub_Exception::class);
+        $this->_publisher->addUpdatedTopicUrl(123);
     }
 
 
     public function testThrowsExceptionOnSettingInvalidUpdatedTopicUrl()
     {
-        try {
-            $this->_publisher->addUpdatedTopicUrl('http://');
-            $this->fail('Should not fail as an Exception would be raised and caught');
-        } catch (Zend_Feed_Pubsubhubbub_Exception $e) {}
+        $this->expectException(Zend_Feed_Pubsubhubbub_Exception::class);
+        $this->_publisher->addUpdatedTopicUrl('http://');
     }
 
     public function testAddsParameter()
     {
         $this->_publisher->setParameter('foo', 'bar');
-        $this->assertEquals(['foo'=>'bar'], $this->_publisher->getParameters());
+        $this->assertEquals(['foo' => 'bar'], $this->_publisher->getParameters());
     }
 
     public function testAddsParametersFromArray()
@@ -250,7 +240,7 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
 
     public function testNotifiesHubWithCorrectParameters()
     {
-        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess);
+        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess());
         $client = Zend_Feed_Pubsubhubbub::getHttpClient();
         $this->_publisher->addHubUrl('http://www.example.com/hub');
         $this->_publisher->addUpdatedTopicUrl('http://www.example.com/topic');
@@ -261,7 +251,7 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
 
     public function testNotifiesHubWithCorrectParametersAndMultipleTopics()
     {
-        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess);
+        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess());
         $client = Zend_Feed_Pubsubhubbub::getHttpClient();
         $this->_publisher->addHubUrl('http://www.example.com/hub');
         $this->_publisher->addUpdatedTopicUrl('http://www.example.com/topic');
@@ -272,7 +262,7 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
 
     public function testNotifiesHubAndReportsSuccess()
     {
-        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess);
+        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess());
         $client = Zend_Feed_Pubsubhubbub::getHttpClient();
         $this->_publisher->addHubUrl('http://www.example.com/hub');
         $this->_publisher->addUpdatedTopicUrl('http://www.example.com/topic');
@@ -283,7 +273,7 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
 
     public function testNotifiesHubAndReportsFail()
     {
-        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientFail);
+        Zend_Feed_Pubsubhubbub::setHttpClient(new Zend_Feed_Pubsubhubbub_PublisherTest_ClientFail());
         $client = Zend_Feed_Pubsubhubbub::getHttpClient();
         $this->_publisher->addHubUrl('http://www.example.com/hub');
         $this->_publisher->addUpdatedTopicUrl('http://www.example.com/topic');
@@ -291,32 +281,45 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends PHPUnit_Framework_TestCase
         $this->_publisher->notifyAll();
         $this->assertFalse($this->_publisher->isSuccess());
     }
-
 }
 
 // Some stubs for what Http_Client would be doing
 
 class Zend_Feed_Pubsubhubbub_PublisherTest_ClientSuccess extends Zend_Http_Client
 {
-    public function request($method = null) {
-        $response = new Zend_Feed_Pubsubhubbub_PublisherTest_ResponseSuccess;
+    public function request($method = null)
+    {
+        $response = new Zend_Feed_Pubsubhubbub_PublisherTest_ResponseSuccess();
         return $response;
     }
-    public function getBody(){return $this->_prepareBody();}
+    public function getBody()
+    {
+        return $this->_prepareBody();
+    }
 }
 class Zend_Feed_Pubsubhubbub_PublisherTest_ClientFail extends Zend_Http_Client
 {
-    public function request($method = null) {
-        $response = new Zend_Feed_Pubsubhubbub_PublisherTest_ResponseFail;
+    public function request($method = null)
+    {
+        $response = new Zend_Feed_Pubsubhubbub_PublisherTest_ResponseFail();
         return $response;
     }
-    public function getBody(){return $this->_prepareBody();}
+    public function getBody()
+    {
+        return $this->_prepareBody();
+    }
 }
 class Zend_Feed_Pubsubhubbub_PublisherTest_ResponseSuccess
 {
-    public function getStatus(){return 204;}
+    public function getStatus()
+    {
+        return 204;
+    }
 }
 class Zend_Feed_Pubsubhubbub_PublisherTest_ResponseFail
 {
-    public function getStatus(){return 404;}
+    public function getStatus()
+    {
+        return 404;
+    }
 }

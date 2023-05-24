@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,39 +35,55 @@ require_once 'Zend/Gdata.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_NicknameTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_NicknameTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $nicknameText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Gapps_Extension_Nickname|mixed
+     */
+    protected $nickname;
+
+    protected function setUp(): void
+    {
         $this->nicknameText = file_get_contents(
-                'Zend/Gdata/Gapps/_files/NicknameElementSample1.xml',
-                true);
+            'Zend/Gdata/Gapps/_files/NicknameElementSample1.xml',
+            true
+        );
         $this->nickname = new Zend_Gdata_Gapps_Extension_Nickname();
     }
 
-    public function testEmptyNicknameShouldHaveNoExtensionElements() {
+    public function testEmptyNicknameShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->nickname->extensionElements));
         $this->assertTrue(count($this->nickname->extensionElements) == 0);
     }
 
-    public function testEmptyNicknameShouldHaveNoExtensionAttributes() {
+    public function testEmptyNicknameShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->nickname->extensionAttributes));
         $this->assertTrue(count($this->nickname->extensionAttributes) == 0);
     }
 
-    public function testSampleNicknameShouldHaveNoExtensionElements() {
+    public function testSampleNicknameShouldHaveNoExtensionElements()
+    {
         $this->nickname->transferFromXML($this->nicknameText);
         $this->assertTrue(is_array($this->nickname->extensionElements));
         $this->assertTrue(count($this->nickname->extensionElements) == 0);
     }
 
-    public function testSampleNicknameShouldHaveNoExtensionAttributes() {
+    public function testSampleNicknameShouldHaveNoExtensionAttributes()
+    {
         $this->nickname->transferFromXML($this->nicknameText);
         $this->assertTrue(is_array($this->nickname->extensionAttributes));
         $this->assertTrue(count($this->nickname->extensionAttributes) == 0);
     }
 
-    public function testNormalNicknameShouldHaveNoExtensionElements() {
+    public function testNormalNicknameShouldHaveNoExtensionElements()
+    {
         $this->nickname->name = "Trogdor";
 
         $this->assertEquals("Trogdor", $this->nickname->name);
@@ -86,7 +105,8 @@ class Zend_Gdata_Gapps_NicknameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Trogdor", $newNickname2->name);
     }
 
-    public function testEmptyNicknameToAndFromStringShouldMatch() {
+    public function testEmptyNicknameToAndFromStringShouldMatch()
+    {
         $nicknameXml = $this->nickname->saveXML();
         $newNickname = new Zend_Gdata_Gapps_Extension_Nickname();
         $newNickname->transferFromXML($nicknameXml);
@@ -94,7 +114,8 @@ class Zend_Gdata_Gapps_NicknameTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($nicknameXml == $newNicknameXml);
     }
 
-    public function testNicknameWithValueToAndFromStringShouldMatch() {
+    public function testNicknameWithValueToAndFromStringShouldMatch()
+    {
         $this->nickname->name = "Trogdor";
         $nicknameXml = $this->nickname->saveXML();
         $newNickname = new Zend_Gdata_Gapps_Extension_Nickname();
@@ -104,10 +125,11 @@ class Zend_Gdata_Gapps_NicknameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Trogdor", $this->nickname->name);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->nickname->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->nickname->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->nickname->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->nickname->extensionAttributes['foo2']['value']);
@@ -118,9 +140,9 @@ class Zend_Gdata_Gapps_NicknameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newNickname->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullNicknameToAndFromString() {
+    public function testConvertFullNicknameToAndFromString()
+    {
         $this->nickname->transferFromXML($this->nicknameText);
         $this->assertEquals("Jones", $this->nickname->name);
     }
-
 }

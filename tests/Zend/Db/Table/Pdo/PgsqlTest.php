@@ -48,11 +48,11 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
         $table = $this->_table['bugs'];
         $row = [
             'bug_description' => 'New bug',
-            'bug_status'      => 'NEW',
-            'created_on'      => '2007-04-02',
-            'updated_on'      => '2007-04-02',
-            'reported_by'     => 'micky',
-            'assigned_to'     => 'goofy'
+            'bug_status' => 'NEW',
+            'created_on' => '2007-04-02',
+            'updated_on' => '2007-04-02',
+            'reported_by' => 'micky',
+            'assigned_to' => 'goofy'
         ];
         $insertResult = $table->insert($row);
         $lastInsertId = $this->_db->lastInsertId('zfbugs', 'bug_id');
@@ -66,13 +66,13 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
     {
         $table = $this->_table['bugs'];
         $row = [
-            'bug_id'          => null,
+            'bug_id' => null,
             'bug_description' => 'New bug',
-            'bug_status'      => 'NEW',
-            'created_on'      => '2007-04-02',
-            'updated_on'      => '2007-04-02',
-            'reported_by'     => 'micky',
-            'assigned_to'     => 'goofy'
+            'bug_status' => 'NEW',
+            'created_on' => '2007-04-02',
+            'updated_on' => '2007-04-02',
+            'reported_by' => 'micky',
+            'assigned_to' => 'goofy'
         ];
         $insertResult = $table->insert($row);
         $lastInsertId = $this->_db->lastInsertId('zfbugs', 'bug_id');
@@ -84,14 +84,16 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
 
     public function testTableInsertSequence()
     {
-        $table = $this->_getTable('My_ZendDbTable_TableProducts',
-            [Zend_Db_Table_Abstract::SEQUENCE => 'zfproducts_seq']);
+        $table = $this->_getTable(
+            'My_ZendDbTable_TableProducts',
+            [Zend_Db_Table_Abstract::SEQUENCE => 'zfproducts_seq']
+        );
         $row = [
             'product_name' => 'Solaris'
         ];
-        $insertResult         = $table->insert($row);
-        $lastInsertId         = $this->_db->lastInsertId('zfproducts');
-        $lastSequenceId       = $this->_db->lastSequenceId('zfproducts_seq');
+        $insertResult = $table->insert($row);
+        $lastInsertId = $this->_db->lastInsertId('zfproducts');
+        $lastSequenceId = $this->_db->lastSequenceId('zfproducts_seq');
         $this->assertEquals($insertResult, $lastInsertId);
         $this->assertEquals($insertResult, $lastSequenceId);
         $this->assertEquals(4, $insertResult);
@@ -119,8 +121,8 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
         $schema = 'public';
 
         $config = [
-            'db'        => $this->_db,
-            'schema'    => $schema
+            'db' => $this->_db,
+            'schema' => $schema
             ];
 
         $table = new My_ZendDbTable_TableBugs($config);
@@ -142,8 +144,8 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
         $tableName = "$schema.zfbugs";
 
         $config = [
-            'db'        => $this->_db,
-            'name'      => $tableName
+            'db' => $this->_db,
+            'name' => $tableName
             ];
 
         $table = new My_ZendDbTable_TableBugs($config);
@@ -166,9 +168,9 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
         $tableName = "$schema.zfbugs";
 
         $config = [
-            'db'        => $this->_db,
-            'schema'    => 'foo',
-            'name'      => $tableName
+            'db' => $this->_db,
+            'schema' => 'foo',
+            'name' => $tableName
             ];
 
         $table = new My_ZendDbTable_TableBugs($config);
@@ -188,8 +190,8 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
         $schema = 'public';
 
         $config = [
-            'db'        => $this->_db,
-            'schema'    => $schema,
+            'db' => $this->_db,
+            'schema' => $schema,
             ];
 
         $table = new My_ZendDbTable_TableBugs($config);
@@ -199,11 +201,11 @@ class Zend_Db_Table_Pdo_PgsqlTest extends Zend_Db_Table_TestCommon
         $this->assertThat(
             $rowset,
             $this->isInstanceOf('Zend_Db_Table_Rowset')
-            );
+        );
 
         $this->assertEquals(
             4,
             count($rowset)
-            );
+        );
     }
 }

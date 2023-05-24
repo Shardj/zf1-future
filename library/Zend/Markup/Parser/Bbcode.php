@@ -215,7 +215,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 case self::STATE_SCAN:
                     $matches = [];
                     $regex   = '#\G(?<text>[^\[]*)(?<open>\[(?<name>[' . self::NAME_CHARSET . ']+)?)?#';
-                    preg_match($regex, $this->_value, $matches, null, $this->_pointer);
+                    preg_match($regex, $this->_value, $matches, 0, $this->_pointer);
 
                     $this->_pointer += strlen($matches[0]);
 
@@ -257,7 +257,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 case self::STATE_SCANATTRS:
                     $matches = [];
                     $regex   = '#\G((?<end>\s*\])|\s+(?<attribute>[' . self::NAME_CHARSET . ']+)(?<eq>=?))#';
-                    if (!preg_match($regex, $this->_value, $matches, null, $this->_pointer)) {
+                    if (!preg_match($regex, $this->_value, $matches, 0, $this->_pointer)) {
                         break 2;
                     }
 
@@ -296,7 +296,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 case self::STATE_PARSEVALUE:
                     $matches = [];
                     $regex   = '#\G((?<quote>"|\')(?<valuequote>.*?)\\2|(?<value>[^\]\s]+))#';
-                    if (!preg_match($regex, $this->_value, $matches, null, $this->_pointer)) {
+                    if (!preg_match($regex, $this->_value, $matches, 0, $this->_pointer)) {
                         $this->_state = self::STATE_SCANATTRS;
                         break;
                     }
@@ -351,7 +351,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 // add the old items again if there are any
                 if (!empty($oldItems)) {
                     foreach (array_reverse($oldItems) as $item) {
-                        /* @var $token Zend_Markup_Token */
+                        /* @var Zend_Markup_Token $token */
                         $this->_current->addChild($item);
                         $item->setParent($this->_current);
                         $this->_current = $item;

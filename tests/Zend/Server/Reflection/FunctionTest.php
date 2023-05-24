@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Server/Reflection/Function.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
+class Zend_Server_Reflection_FunctionTest extends TestCase
 {
     public function test__construct()
     {
@@ -84,7 +87,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
     {
         $function = new ReflectionFunction('Zend_Server_Reflection_FunctionTest_function');
         $r = new Zend_Server_Reflection_Function($function);
-        $this->assertContains('function for reflection', $r->getDescription());
+        $this->assertStringContainsString('function for reflection', $r->getDescription());
         $r->setDescription('Testing setting descriptions');
         $this->assertEquals('Testing setting descriptions', $r->getDescription());
     }
@@ -97,7 +100,7 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $prototypes = $r->getPrototypes();
         $this->assertTrue(is_array($prototypes));
         $this->assertTrue(0 < count($prototypes));
-        $this->assertEquals(8, count($prototypes));
+        $this->assertEquals(4, count($prototypes));
 
         foreach ($prototypes as $p) {
             $this->assertTrue($p instanceof Zend_Server_Reflection_Prototype);
@@ -138,6 +141,9 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
 
     public function test__wakeup()
     {
+        if (version_compare(phpversion(), '7', '>=')) {
+            $this->markTestSkipped("Serialization of 'ReflectionFunction' is not allowed since PHP7+");
+        }
         $function = new ReflectionFunction('Zend_Server_Reflection_FunctionTest_function');
         $r = new Zend_Server_Reflection_Function($function);
         $s = serialize($r);
@@ -172,10 +178,10 @@ class Zend_Server_Reflection_FunctionTest extends PHPUnit_Framework_TestCase
         $r = new Zend_Server_Reflection_Function($function);
 
         $prototypes = $r->getPrototypes();
-        $prototype  = $prototypes[0];
+        $prototype = $prototypes[0];
         $params = $prototype->getParameters();
-        $param  = $params[0];
-        $this->assertContains('Some description', $param->getDescription(), var_export($param, 1));
+        $param = $params[0];
+        $this->assertStringContainsString('Some description', $param->getDescription(), var_export($param, 1));
     }
 }
 

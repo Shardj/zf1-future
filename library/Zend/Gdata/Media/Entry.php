@@ -122,7 +122,7 @@ class Zend_Gdata_Media_Entry extends Zend_Gdata_Entry
      * Sets the entry's mediaGroup object.
      *
      * @param Zend_Gdata_Media_Extension_MediaGroup $mediaGroup
-     * @return Zend_Gdata_Media_Entry Provides a fluent interface
+     * @return $this
      */
     public function setMediaGroup($mediaGroup)
     {

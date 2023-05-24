@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,8 +42,13 @@ require_once 'Zend/Form/Element/Radio.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Element_RadioTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Element_Radio
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -46,8 +56,8 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Element_RadioTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Element_RadioTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -56,7 +66,7 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->element = new Zend_Form_Element_Radio('foo');
     }
@@ -67,7 +77,7 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -118,10 +128,10 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     public function testCanDisableIndividualRadioOptions()
     {
         $this->element->setMultiOptions([
-                'foo'  => 'Foo',
-                'bar'  => 'Bar',
-                'baz'  => 'Baz',
-                'bat'  => 'Bat',
+                'foo' => 'Foo',
+                'bar' => 'Bar',
+                'baz' => 'Baz',
+                'bat' => 'Bat',
                 'test' => 'Test',
             ])
             ->setAttrib('disable', ['baz', 'test']);
@@ -130,28 +140,28 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
             if (!preg_match('/(<input[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching disabled option for ' . $test);
             }
-            $this->assertRegexp('/<input[^>]*?(disabled="disabled")/', $m[1]);
+            $this->assertMatchesRegularExpression('/<input[^>]*?(disabled="disabled")/', $m[1]);
         }
         foreach (['foo', 'bar', 'bat'] as $test) {
             if (!preg_match('/(<input[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching option for ' . $test);
             }
-            $this->assertNotRegexp('/<input[^>]*?(disabled="disabled")/', $m[1], var_export($m, 1));
+            $this->assertDoesNotMatchRegularExpression('/<input[^>]*?(disabled="disabled")/', $m[1], var_export($m, 1));
         }
     }
 
     public function testSpecifiedSeparatorIsUsedWhenRendering()
     {
         $this->element->setMultiOptions([
-                'foo'  => 'Foo',
-                'bar'  => 'Bar',
-                'baz'  => 'Baz',
-                'bat'  => 'Bat',
+                'foo' => 'Foo',
+                'bar' => 'Bar',
+                'baz' => 'Baz',
+                'bat' => 'Bat',
                 'test' => 'Test',
             ])
             ->setSeparator('--FooBarFunSep--');
         $html = $this->element->render($this->getView());
-        $this->assertContains($this->element->getSeparator(), $html);
+        $this->assertStringContainsString($this->element->getSeparator(), $html);
         $count = substr_count($html, $this->element->getSeparator());
         $this->assertEquals(4, $count);
     }
@@ -159,14 +169,14 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     public function testRadioElementRendersDtDdWrapper()
     {
         $this->element->setMultiOptions([
-                'foo'  => 'Foo',
-                'bar'  => 'Bar',
-                'baz'  => 'Baz',
-                'bat'  => 'Bat',
+                'foo' => 'Foo',
+                'bar' => 'Bar',
+                'baz' => 'Baz',
+                'bat' => 'Bat',
                 'test' => 'Test',
             ]);
         $html = $this->element->render($this->getView());
-        $this->assertRegexp('#<dt[^>]*>&\#160;</dt>.*?<dd#s', $html, $html);
+        $this->assertMatchesRegularExpression('#<dt[^>]*>&\#160;</dt>.*?<dd#s', $html, $html);
     }
 
     /**
@@ -192,12 +202,12 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     public function testRenderingShouldCreateLabelWithoutForAttribute()
     {
         $this->element->setMultiOptions([
-                'foo'  => 'Foo',
-                'bar'  => 'Bar',
+                'foo' => 'Foo',
+                'bar' => 'Bar',
              ])
              ->setLabel('Foo');
         $html = $this->element->render($this->getView());
-        $this->assertNotContains('for="foo"', $html);
+        $this->assertStringNotContainsString('for="foo"', $html);
     }
 
     /**
@@ -206,10 +216,10 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     public function testCreationWithIndividualDecoratorsAsConstructorOptionsWithoutLabel()
     {
         $element = new Zend_Form_Element_Radio([
-            'name'         => 'foo',
+            'name' => 'foo',
             'multiOptions' => [
-                'bar'  => 'Bar',
-                'baz'  => 'Baz',
+                'bar' => 'Bar',
+                'baz' => 'Baz',
             ],
             'decorators' => [
                 'ViewHelper',
@@ -225,10 +235,10 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
     public function testRenderingWithIndividualDecoratorsAsConstructorOptionsWithoutLabel()
     {
         $element = new Zend_Form_Element_Radio([
-            'name'         => 'foo',
+            'name' => 'foo',
             'multiOptions' => [
-                'bar'  => 'Bar',
-                'baz'  => 'Baz',
+                'bar' => 'Bar',
+                'baz' => 'Baz',
             ],
             'decorators' => [
                 'ViewHelper',
@@ -236,7 +246,7 @@ class Zend_Form_Element_RadioTest extends PHPUnit_Framework_TestCase
         ]);
 
         $html = $element->render($this->getView());
-        $this->assertNotContains('<dt id="foo-label">&#160;</dt>', $html);
+        $this->assertStringNotContainsString('<dt id="foo-label">&#160;</dt>', $html);
     }
 
     /**

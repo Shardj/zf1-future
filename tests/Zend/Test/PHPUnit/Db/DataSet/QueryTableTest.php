@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Extensions\Database\DataSet\ITableMetaData;
+
 /**
  * Zend Framework
  *
@@ -43,9 +46,9 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 {
     public function testCreateQueryTableWithoutZendDbConnectionThrowsException()
     {
-        $connectionMock = $this->getMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
+        $connectionMock = $this->createMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
 
-        $this->setExpectedException('Zend_Test_PHPUnit_Db_Exception');
+        $this->expectException('Zend_Test_PHPUnit_Db_Exception');
         $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", "SELECT * FROM foo", $connectionMock);
     }
 
@@ -68,7 +71,8 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
         $data = $queryTable->getRow(0);
 
         $this->assertEquals(
-            ["foo" => "bar"], $data
+            ["foo" => "bar"],
+            $data
         );
     }
 
@@ -93,7 +97,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 
         $statementMock = new Zend_Test_DbStatement();
         $statementMock->append(['foo' => 'bar']);
-        $adapterMock = $this->getMock('Zend_Test_DbAdapter');
+        $adapterMock = $this->createMock('Zend_Test_DbAdapter');
         $adapterMock->expects($this->once())
                     ->method('query')
                     ->with($fixtureSql)
@@ -118,7 +122,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
         $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", null, $this->connectionMock);
 
         $metadata = $queryTable->getTableMetaData();
-        $this->assertTrue($metadata instanceof PHPUnit_Extensions_Database_DataSet_ITableMetaData);
+        $this->assertTrue($metadata instanceof ITableMetaData);
         $this->assertEquals([], $metadata->getColumns());
         $this->assertEquals([], $metadata->getPrimaryKeys());
         $this->assertEquals("foo", $metadata->getTableName());

@@ -37,11 +37,10 @@ require_once 'Zend/Db/Table/Select/TestCommon.php';
  */
 class Zend_Db_Table_Select_Pdo_OciTest extends Zend_Db_Table_Select_TestCommon
 {
-
     /**
      * ZF-4330: this test must be done on string field
      */
-    protected function _selectColumnWithColonQuotedParameter ()
+    protected function _selectColumnWithColonQuotedParameter()
     {
         $product_name = $this->_db->quoteIdentifier('product_name');
 
@@ -54,7 +53,7 @@ class Zend_Db_Table_Select_Pdo_OciTest extends Zend_Db_Table_Select_TestCommon
     /**
      * ZF-4330 : Oracle doesn't use 'AS' to identify table alias
      */
-    public function testSelectFromSelectObject ()
+    public function testSelectFromSelectObject()
     {
         $select = $this->_selectFromSelectObject();
         $query = $select->assemble();
@@ -69,5 +68,4 @@ class Zend_Db_Table_Select_Pdo_OciTest extends Zend_Db_Table_Select_TestCommon
     {
         return 'Pdo_Oci';
     }
-
 }

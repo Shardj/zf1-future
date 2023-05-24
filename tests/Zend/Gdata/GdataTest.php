@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,14 +34,14 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_GdataTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_GdataTest extends TestCase
 {
-
     public function testDefaultHttpClient()
     {
         $gdata = new Zend_Gdata();
         $client = $gdata->getHttpClient();
-        $this->assertTrue($client instanceof Zend_Http_Client,
+        $this->assertTrue(
+            $client instanceof Zend_Http_Client,
             'Expecting object of type Zend_Http_Client, got '
             . (gettype($client) == 'object' ? get_class($client) : gettype($client))
         );
@@ -49,7 +52,8 @@ class Zend_Gdata_GdataTest extends PHPUnit_Framework_TestCase
         $client = new Zend_Http_Client();
         $gdata = new Zend_Gdata($client);
         $client2 = $gdata->getHttpClient();
-        $this->assertTrue($client2 instanceof Zend_Http_Client,
+        $this->assertTrue(
+            $client2 instanceof Zend_Http_Client,
             'Expecting object of type Zend_Http_Client, got '
             . (gettype($client) == 'object' ? get_class($client) : gettype($client))
         );
@@ -63,8 +67,11 @@ class Zend_Gdata_GdataTest extends PHPUnit_Framework_TestCase
             $gdata = new Zend_Gdata($obj);
             $this->fail('Expecting to catch Zend_Gdata_App_HttpException');
         } catch (Exception $e) {
-            $this->assertThat($e, $this->isInstanceOf('Zend_Gdata_App_HttpException'),
-                'Expecting Zend_Gdata_App_HttpException, got '.get_class($e));
+            $this->assertThat(
+                $e,
+                $this->isInstanceOf('Zend_Gdata_App_HttpException'),
+                'Expecting Zend_Gdata_App_HttpException, got ' . get_class($e)
+            );
             $this->assertEquals('Argument is not an instance of Zend_Http_Client.', $e->getMessage());
         }
     }
@@ -78,8 +85,10 @@ class Zend_Gdata_GdataTest extends PHPUnit_Framework_TestCase
             $feed = $gdata->getFeed(new stdClass());
             $this->fail('Expecting to catch Zend_Gdata_App_InvalidArgumentException');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Gdata_App_InvalidArgumentException,
-                'Expecting Zend_Gdata_App_InvalidArgumentException, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Gdata_App_InvalidArgumentException,
+                'Expecting Zend_Gdata_App_InvalidArgumentException, got ' . get_class($e)
+            );
             $this->assertEquals('You must specify the location as either a string URI or a child of Zend_Gdata_Query', $e->getMessage());
         }
     }
@@ -93,10 +102,11 @@ class Zend_Gdata_GdataTest extends PHPUnit_Framework_TestCase
             $feed = $gdata->getEntry(new stdClass());
             $this->fail('Expecting to catch Zend_Gdata_App_InvalidArgumentException');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Gdata_App_InvalidArgumentException,
-                'Expecting Zend_Gdata_App_InvalidArgumentException, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Gdata_App_InvalidArgumentException,
+                'Expecting Zend_Gdata_App_InvalidArgumentException, got ' . get_class($e)
+            );
             $this->assertEquals('You must specify the location as either a string URI or a child of Zend_Gdata_Query', $e->getMessage());
         }
     }
-
 }

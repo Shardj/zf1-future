@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,24 +35,39 @@ require_once 'Zend/Gdata/Gapps.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_EmailListEntryTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Gapps_EmailListEntry|mixed
+     */
+    protected $entry;
+
+    protected function setUp(): void
+    {
         $this->entryText = file_get_contents(
-                'Zend/Gdata/Gapps/_files/EmailListEntryDataSample1.xml',
-                true);
+            'Zend/Gdata/Gapps/_files/EmailListEntryDataSample1.xml',
+            true
+        );
         $this->entry = new Zend_Gdata_Gapps_EmailListEntry();
     }
 
-    private function verifyAllSamplePropertiesAreCorrect ($emailListEntry) {
-        $this->assertEquals('https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales',
-            $emailListEntry->id->text);
+    private function verifyAllSamplePropertiesAreCorrect($emailListEntry)
+    {
+        $this->assertEquals(
+            'https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales',
+            $emailListEntry->id->text
+        );
         $this->assertEquals('1970-01-01T00:00:00.000Z', $emailListEntry->updated->text);
         $this->assertEquals('http://schemas.google.com/g/2005#kind', $emailListEntry->category[0]->scheme);
         $this->assertEquals('http://schemas.google.com/apps/2006#emailList', $emailListEntry->category[0]->term);
         $this->assertEquals('text', $emailListEntry->title->type);
-        $this->assertEquals('us-sales', $emailListEntry->title->text);;
+        $this->assertEquals('us-sales', $emailListEntry->title->text);
+        ;
         $this->assertEquals('self', $emailListEntry->getLink('self')->rel);
         $this->assertEquals('application/atom+xml', $emailListEntry->getLink('self')->type);
         $this->assertEquals('https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales', $emailListEntry->getLink('self')->href);
@@ -61,29 +79,34 @@ class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/', $emailListEntry->getFeedLink('http://schemas.google.com/apps/2006#emailList.recipients')->href);
     }
 
-    public function testEmptyEntryShouldHaveNoExtensionElements() {
+    public function testEmptyEntryShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->entry->extensionElements));
         $this->assertTrue(count($this->entry->extensionElements) == 0);
     }
 
-    public function testEmptyEntryShouldHaveNoExtensionAttributes() {
+    public function testEmptyEntryShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->entry->extensionAttributes));
         $this->assertTrue(count($this->entry->extensionAttributes) == 0);
     }
 
-    public function testSampleEntryShouldHaveNoExtensionElements() {
+    public function testSampleEntryShouldHaveNoExtensionElements()
+    {
         $this->entry->transferFromXML($this->entryText);
         $this->assertTrue(is_array($this->entry->extensionElements));
         $this->assertTrue(count($this->entry->extensionElements) == 0);
     }
 
-    public function testSampleEntryShouldHaveNoExtensionAttributes() {
+    public function testSampleEntryShouldHaveNoExtensionAttributes()
+    {
         $this->entry->transferFromXML($this->entryText);
         $this->assertTrue(is_array($this->entry->extensionAttributes));
         $this->assertTrue(count($this->entry->extensionAttributes) == 0);
     }
 
-    public function testEmptyEmailListEntryToAndFromStringShouldMatch() {
+    public function testEmptyEmailListEntryToAndFromStringShouldMatch()
+    {
         $entryXml = $this->entry->saveXML();
         $newEmailListEntry = new Zend_Gdata_Gapps_EmailListEntry();
         $newEmailListEntry->transferFromXML($entryXml);
@@ -91,14 +114,15 @@ class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($entryXml == $newEmailListEntryXml);
     }
 
-    public function testGetFeedLinkReturnsAllStoredEntriesWhenUsedWithNoParameters() {
+    public function testGetFeedLinkReturnsAllStoredEntriesWhenUsedWithNoParameters()
+    {
         // Prepare test data
         $entry1 = new Zend_Gdata_Extension_FeedLink();
         $entry1->rel = "first";
-        $entry1->href= "foo";
+        $entry1->href = "foo";
         $entry2 = new Zend_Gdata_Extension_FeedLink();
         $entry2->rel = "second";
-        $entry2->href= "bar";
+        $entry2->href = "bar";
         $data = [$entry1, $entry2];
 
         // Load test data and run test
@@ -106,14 +130,15 @@ class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, count($this->entry->feedLink));
     }
 
-    public function testGetFeedLinkCanReturnEntriesByRelValue() {
+    public function testGetFeedLinkCanReturnEntriesByRelValue()
+    {
         // Prepare test data
         $entry1 = new Zend_Gdata_Extension_FeedLink();
         $entry1->rel = "first";
-        $entry1->href= "foo";
+        $entry1->href = "foo";
         $entry2 = new Zend_Gdata_Extension_FeedLink();
         $entry2->rel = "second";
-        $entry2->href= "bar";
+        $entry2->href = "bar";
         $data = [$entry1, $entry2];
 
         // Load test data and run test
@@ -122,12 +147,14 @@ class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($entry2, $this->entry->getFeedLink('second'));
     }
 
-    public function testSamplePropertiesAreCorrect () {
+    public function testSamplePropertiesAreCorrect()
+    {
         $this->entry->transferFromXML($this->entryText);
         $this->verifyAllSamplePropertiesAreCorrect($this->entry);
     }
 
-    public function testConvertEmailListEntryToAndFromString() {
+    public function testConvertEmailListEntryToAndFromString()
+    {
         $this->entry->transferFromXML($this->entryText);
         $entryXml = $this->entry->saveXML();
         $newEmailListEntry = new Zend_Gdata_Gapps_EmailListEntry();
@@ -136,5 +163,4 @@ class Zend_Gdata_Gapps_EmailListEntryTest extends PHPUnit_Framework_TestCase
         $newEmailListEntryXml = $newEmailListEntry->saveXML();
         $this->assertEquals($entryXml, $newEmailListEntryXml);
     }
-
 }

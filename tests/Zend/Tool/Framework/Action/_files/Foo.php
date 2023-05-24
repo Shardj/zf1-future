@@ -35,6 +35,4 @@ class Zend_Tool_Framework_Action_Foo implements Zend_Tool_Framework_Action_Inter
     {
         return 'Foo';
     }
-
-
 }

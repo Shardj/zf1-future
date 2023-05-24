@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Pdf/Element/Boolean.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
-class Zend_Pdf_Element_BooleanTest extends PHPUnit_Framework_TestCase
+class Zend_Pdf_Element_BooleanTest extends TestCase
 {
     public function testPDFBoolean()
     {
@@ -46,7 +49,7 @@ class Zend_Pdf_Element_BooleanTest extends PHPUnit_Framework_TestCase
         try {
             $boolObj = new Zend_Pdf_Element_Boolean('some input');
         } catch (Zend_Pdf_Exception $e) {
-            $this->assertRegExp('/must be boolean/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/must be boolean/i', $e->getMessage());
             return;
         }
         $this->fail('Expected Zend_Pdf_Exception to be thrown');
@@ -54,7 +57,7 @@ class Zend_Pdf_Element_BooleanTest extends PHPUnit_Framework_TestCase
 
     public function testGetType()
     {
-        $boolObj = new Zend_Pdf_Element_Boolean((boolean) 100);
+        $boolObj = new Zend_Pdf_Element_Boolean((bool) 100);
         $this->assertEquals($boolObj->getType(), Zend_Pdf_Element::TYPE_BOOL);
     }
 

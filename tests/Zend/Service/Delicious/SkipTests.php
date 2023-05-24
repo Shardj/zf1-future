@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -19,8 +22,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
-
 /**
  * @category   Zend
  * @package    Zend_Service_Delicious
@@ -30,13 +31,16 @@
  * @group      Zend_Service
  * @group      Zend_Service_Delicious
  */
-class Zend_Service_Delicious_SkipTests extends PHPUnit_Framework_TestCase
+class Zend_Service_Delicious_SkipTests extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped('Zend_Service_Delicious tests not enabled in TestConfiguration.php');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNothing()
     {
     }

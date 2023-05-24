@@ -34,7 +34,6 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
  */
 class Zend_Db_Statement_Pdo_IbmTest extends Zend_Db_Statement_Pdo_TestCommon
 {
-
     public function getDriver()
     {
         return 'Pdo_Ibm';
@@ -90,13 +89,13 @@ class Zend_Db_Statement_Pdo_IbmTest extends Zend_Db_Statement_Pdo_TestCommon
         try {
             $stmt->setAttribute(1234, $value);
         } catch (Zend_Exception $e) {
-            $this->assertContains('This driver doesn\'t support setting attributes', $e->getMessage());
+            $this->assertStringContainsString('This driver doesn\'t support setting attributes', $e->getMessage());
         }
 
         try {
             $this->assertEquals($value, $stmt->getAttribute(1234), "Expected '$value' #1");
         } catch (Zend_Exception $e) {
-            $this->assertContains('Driver does not support this function: 1 Unknown attribute', $e->getMessage());
+            $this->assertStringContainsString('Driver does not support this function: 1 Unknown attribute', $e->getMessage());
             return;
         }
 

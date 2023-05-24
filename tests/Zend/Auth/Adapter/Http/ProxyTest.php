@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -52,7 +55,7 @@ require_once 'Zend/Controller/Response/Http.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
-class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
+class Zend_Auth_Adapter_Http_ProxyTest extends TestCase
 {
     /**
      * Path to test files
@@ -61,7 +64,7 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
      */
     protected $_filesPath;
 
-    /**
+    /**OB`
      * HTTP Basic configuration
      *
      * @var array
@@ -101,29 +104,29 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function __construct()
+    protected function setUp(): void
     {
-        $this->_filesPath      = dirname(__FILE__) . '/_files';
-        $this->_basicResolver  = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htbasic.1");
+        $this->_filesPath = dirname(__FILE__) . '/_files';
+        $this->_basicResolver = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htbasic.1");
         $this->_digestResolver = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htdigest.3");
-        $this->_basicConfig    = [
+        $this->_basicConfig = [
             'accept_schemes' => 'basic',
-            'realm'          => 'Test Realm',
-            'proxy_auth'     => true
+            'realm' => 'Test Realm',
+            'proxy_auth' => true
         ];
-        $this->_digestConfig   = [
+        $this->_digestConfig = [
             'accept_schemes' => 'digest',
-            'realm'          => 'Test Realm',
+            'realm' => 'Test Realm',
             'digest_domains' => '/ http://localhost/',
-            'nonce_timeout'  => 300,
-            'proxy_auth'     => true
+            'nonce_timeout' => 300,
+            'proxy_auth' => true
         ];
-        $this->_bothConfig     = [
+        $this->_bothConfig = [
             'accept_schemes' => 'basic digest',
-            'realm'          => 'Test Realm',
+            'realm' => 'Test Realm',
             'digest_domains' => '/ http://localhost/',
-            'nonce_timeout'  => 300,
-            'proxy_auth'     => true
+            'nonce_timeout' => 300,
+            'proxy_auth' => true
         ];
     }
 
@@ -163,7 +166,7 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         extract($data); // $result, $status, $headers
 
         // The expected Proxy-Authenticate header values
-        $basic  = 'Basic realm="' . $this->_bothConfig['realm'] . '"';
+        $basic = 'Basic realm="' . $this->_bothConfig['realm'] . '"';
         $digest = $this->_digestChallenge();
 
         // Make sure the result is false
@@ -176,7 +179,7 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Proxy-Authenticate', $headers[1]['name']);
 
         // Check to see if the expected challenges match the actual
-        $this->assertEquals($basic,  $headers[0]['value']);
+        $this->assertEquals($basic, $headers[0]['value']);
         $this->assertEquals($digest, $headers[1]['value']);
     }
 
@@ -272,7 +275,7 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         $tampered = $this->_digestReply('Bryce', 'ThisIsNotMyPassword');
         $tampered = preg_replace(
             '/ nonce="[a-fA-F0-9]{32}", /',
-            ' nonce="' . str_repeat('0', 32).'", ',
+            ' nonce="' . str_repeat('0', 32) . '", ',
             $tampered
         );
 
@@ -300,7 +303,8 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         $bad = $this->_digestReply('Bryce', 'ThisIsNotMyPassword');
         $bad = preg_replace(
             '/realm="([^"]+)"/',  // cut out the realm
-            '', $bad
+            '',
+            $bad
         );
 
         $data = $this->_doAuth($bad, 'digest');
@@ -317,8 +321,8 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
     public function _doAuth($clientHeader, $scheme)
     {
         // Set up stub request and response objects
-        $request  = $this->getMock('Zend_Controller_Request_Http');
-        $response = new Zend_Controller_Response_Http;
+        $request = $this->createMock('Zend_Controller_Request_Http');
+        $response = new Zend_Controller_Response_Http();
         $response->setHttpResponseCode(200);
         $response->headersSentThrowsException = false;
 
@@ -360,8 +364,8 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
         $result = $a->authenticate();
 
         $return = [
-            'result'  => $result,
-            'status'  => $response->getHttpResponseCode(),
+            'result' => $result,
+            'status' => $response->getHttpResponseCode(),
             'headers' => $response->getHeaders()
         ];
         return $return;
@@ -375,8 +379,8 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
     protected function _digestChallenge()
     {
         $timeout = ceil(time() / 300) * 300;
-        $nonce   = md5($timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
-        $opaque  = md5('Opaque Data:Zend_Auth_Adapter_Http');
+        $nonce = md5($timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
+        $opaque = md5('Opaque Data:Zend_Auth_Adapter_Http');
         $wwwauth = 'Digest '
                  . 'realm="' . $this->_digestConfig['realm'] . '", '
                  . 'domain="' . $this->_digestConfig['digest_domains'] . '", '
@@ -397,11 +401,11 @@ class Zend_Auth_Adapter_Http_ProxyTest extends PHPUnit_Framework_TestCase
      */
     protected function _digestReply($user, $pass)
     {
-        $nc       = '00000001';
-        $timeout  = ceil(time() / 300) * 300;
-        $nonce    = md5($timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
-        $opaque   = md5('Opaque Data:Zend_Auth_Adapter_Http');
-        $cnonce   = md5('cnonce');
+        $nc = '00000001';
+        $timeout = ceil(time() / 300) * 300;
+        $nonce = md5($timeout . ':PHPUnit:Zend_Auth_Adapter_Http');
+        $opaque = md5('Opaque Data:Zend_Auth_Adapter_Http');
+        $cnonce = md5('cnonce');
         $response = md5(md5($user . ':' . $this->_digestConfig['realm'] . ':' . $pass) . ":$nonce:$nc:$cnonce:auth:"
                   . md5('GET:/'));
         $cauth = 'Digest '

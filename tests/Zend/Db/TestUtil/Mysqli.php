@@ -39,15 +39,14 @@ require_once 'Zend/Db/TestUtil/Common.php';
  */
 class Zend_Db_TestUtil_Mysqli extends Zend_Db_TestUtil_Common
 {
-
     public function getParams(array $constants = [])
     {
         $constants = [
-            'host'     => 'TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME',
+            'host' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME',
             'username' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME',
             'password' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD',
-            'dbname'   => 'TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE',
-            'port'     => 'TESTS_ZEND_DB_ADAPTER_MYSQL_PORT'
+            'dbname' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE',
+            'port' => 'TESTS_ZEND_DB_ADAPTER_MYSQL_PORT'
         ];
         return parent::getParams($constants);
     }
@@ -96,11 +95,11 @@ class Zend_Db_TestUtil_Mysqli extends Zend_Db_TestUtil_Common
     protected function _getColumnsPrice()
     {
         return [
-            'product_id'    => 'INTEGER NOT NULL',
-            'price_name'    => 'VARCHAR(100)',
-            'price'         => 'FLOAT(10,8)',
-            'price_total'   => 'DECIMAL(10,2) NOT NULL',
-            'PRIMARY KEY'   => 'product_id'
+            'product_id' => 'INTEGER NOT NULL',
+            'price_name' => 'VARCHAR(100)',
+            'price' => 'FLOAT(10,8)',
+            'price_total' => 'DECIMAL(10,2) NOT NULL',
+            'PRIMARY KEY' => 'product_id'
             ];
     }
 
@@ -112,9 +111,9 @@ class Zend_Db_TestUtil_Mysqli extends Zend_Db_TestUtil_Common
     {
         return [
             [
-                'product_id'   => 1,
-                'price_name'   => 'Price 1',
-                'price_total'  => 200.45
+                'product_id' => 1,
+                'price_name' => 'Price 1',
+                'price_total' => 200.45
             ]
         ];
     }

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -55,12 +60,12 @@ class Zend_Ldap_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Ldap');
+        $suite = new TestSuite('Zend Framework - Zend_Ldap');
 
         $suite->addTestSuite('Zend_Ldap_OfflineTest');
         $suite->addTestSuite('Zend_Ldap_AttributeTest');
@@ -95,9 +100,9 @@ class Zend_Ldap_AllTests
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
-class Zend_Ldap_SkipOnlineTests extends PHPUnit_Framework_TestCase
+class Zend_Ldap_SkipOnlineTests extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped('Zend_Ldap online tests not enabled in TestConfiguration.php');
     }
@@ -113,4 +118,3 @@ class Zend_Ldap_SkipOnlineTests extends PHPUnit_Framework_TestCase
 if (PHPUnit_MAIN_METHOD == 'Zend_Ldap_AllTests::main') {
     Zend_Ldap_AllTests::main();
 }
-

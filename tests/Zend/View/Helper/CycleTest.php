@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -21,7 +26,7 @@
  */
 
 // Call Zend_View_Helper_CycleTest::main() if this source file is executed directly.
-if (! defined("PHPUnit_MAIN_METHOD")) {
+if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_View_Helper_CycleTest::main");
 }
 
@@ -39,7 +44,7 @@ require_once 'Zend/View/Helper/Cycle.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_CycleTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_CycleTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_Cycle
@@ -53,8 +58,8 @@ class Zend_View_Helper_CycleTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite = new PHPUnit_Framework_TestSuite("Zend_View_Helper_CycleTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_CycleTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -63,7 +68,7 @@ class Zend_View_Helper_CycleTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->helper = new Zend_View_Helper_Cycle();
     }
@@ -74,7 +79,7 @@ class Zend_View_Helper_CycleTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->helper);
     }
@@ -146,24 +151,22 @@ class Zend_View_Helper_CycleTest extends PHPUnit_Framework_TestCase
     {
         $this->helper->assign([5, 8, 3]);
         $this->assertEquals(5, (string) $this->helper->next());
-        $this->assertEquals(2, (string) $this->helper->cycle([2,38,1],'cycle2')->next());
+        $this->assertEquals(2, (string) $this->helper->cycle([2, 38, 1], 'cycle2')->next());
         $this->assertEquals(8, (string) $this->helper->cycle()->next());
         $this->assertEquals(38, (string) $this->helper->setName('cycle2')->next());
     }
 
     public function testTwoCyclesInLoop()
     {
-        $expected = [5,4,2,3];
-        $expected2 = [7,34,8,6];
-        for($i=0;$i<4;$i++) {
-          $this->assertEquals($expected[$i], (string) $this->helper->cycle($expected)->next());
-          $this->assertEquals($expected2[$i], (string) $this->helper->cycle($expected2,'cycle2')->next());
+        $expected = [5, 4, 2, 3];
+        $expected2 = [7, 34, 8, 6];
+        for ($i = 0;$i < 4;$i++) {
+            $this->assertEquals($expected[$i], (string) $this->helper->cycle($expected)->next());
+            $this->assertEquals($expected2[$i], (string) $this->helper->cycle($expected2, 'cycle2')->next());
         }
     }
-
 }
 // Call Zend_View_Helper_CycleTest::main() if this source file is executed directly.
 if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_CycleTest::main") {
     Zend_View_Helper_CycleTest::main();
 }
-

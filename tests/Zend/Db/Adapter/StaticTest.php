@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -45,14 +48,13 @@ require_once 'Zend/Db/Adapter/Static.php';
  * @group      Zend_Db
  * @group      Zend_Db_Adapter
  */
-class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
+class Zend_Db_Adapter_StaticTest extends TestCase
 {
-
     protected static $_isCaseSensitiveFileSystem = null;
 
     public function testDbConstructor()
     {
-        $db = new Zend_Db_Adapter_Static( ['dbname' => 'dummy'] );
+        $db = new Zend_Db_Adapter_Static(['dbname' => 'dummy']);
         $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract);
         $this->assertEquals('dummy', $db->config['dbname']);
     }
@@ -65,7 +67,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 $db = new Zend_Db_Adapter_Static('scalar');
                 $this->fail('Expected exception not thrown');
             } catch (Exception $e) {
-                $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
+                $this->assertStringContainsString('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
             }
         } else {
             $this->markTestIncomplete('Failure to meet type hint results in fatal error in PHP < 5.2.0');
@@ -88,7 +90,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
 
     public function testDbFactory()
     {
-        $db = Zend_Db::factory('Static', ['dbname' => 'dummy'] );
+        $db = Zend_Db::factory('Static', ['dbname' => 'dummy']);
         $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract);
         $this->assertTrue(class_exists('Zend_Db_Adapter_Static'));
         $this->assertTrue($db instanceof Zend_Db_Adapter_Static);
@@ -107,7 +109,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $db = Zend_Db::factory('Static', ['dbname' => 'dummy', 'adapterNamespace' => 'Testnamespace']);
         } catch (Zend_Exception $e) {
             set_include_path($ip);
-            $this->fail('Caught exception of type '.get_class($e).' where none was expected: '.$e->getMessage());
+            $this->fail('Caught exception of type ' . get_class($e) . ' where none was expected: ' . $e->getMessage());
         }
 
         set_include_path($ip);
@@ -132,8 +134,10 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $this->fail('Expected to catch Zend_Db_Exception');
         } catch (Zend_Exception $e) {
             set_include_path($ip);
-            $this->assertTrue($e instanceof Zend_Db_Exception,
-                'Expected exception of type Zend_Db_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Exception,
+                'Expected exception of type Zend_Db_Exception, got ' . get_class($e)
+            );
             $this->assertEquals("Adapter class 'Zend_Version' does not extend Zend_Db_Adapter_Abstract", $e->getMessage());
         }
     }
@@ -144,8 +148,10 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $db = Zend_Db::factory(null);
             $this->fail('Expected to catch Zend_Db_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Exception,
-                'Expected exception of type Zend_Db_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Exception,
+                'Expected exception of type Zend_Db_Exception, got ' . get_class($e)
+            );
             $this->assertEquals($e->getMessage(), 'Adapter name must be specified in a string');
         }
     }
@@ -158,7 +164,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 $db = Zend_Db::factory('Static', 'scalar');
                 $this->fail('Expected exception not thrown');
             } catch (Exception $e) {
-                $this->assertContains('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
+                $this->assertStringContainsString('Adapter parameters must be in an array or a Zend_Config object', $e->getMessage());
             }
         } else {
             $this->markTestIncomplete('Failure to meet type hint results in fatal error in PHP < 5.2.0');
@@ -173,7 +179,7 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
                 $db = Zend_Db::factory('Static');
                 $this->fail('Expected exception not thrown');
             } catch (Exception $e) {
-                $this->assertContains('Configuration must have a key for \'dbname\' that names the database instance', $e->getMessage());
+                $this->assertStringContainsString('Configuration must have a key for \'dbname\' that names the database instance', $e->getMessage());
             }
         } else {
             $this->markTestIncomplete('Failure to meet type hint results in fatal error in PHP < 5.2.0');
@@ -186,8 +192,10 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $db = Zend_Db::factory('Static', []);
             $this->fail('Expected to catch Zend_Db_Adapter_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Adapter_Exception,
-                'Expected exception of type Zend_Db_Adapter_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Adapter_Exception,
+                'Expected exception of type Zend_Db_Adapter_Exception, got ' . get_class($e)
+            );
             $this->assertEquals("Configuration must have a key for 'dbname' that names the database instance", $e->getMessage());
         }
     }
@@ -218,8 +226,10 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $db = Zend_Db::factory($config1);
             $this->fail('Expected to catch Zend_Db_Exception');
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Exception,
-                'Expected exception of type Zend_Db_Exception, got '.get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Exception,
+                'Expected exception of type Zend_Db_Exception, got ' . get_class($e)
+            );
             $this->assertEquals($e->getMessage(), 'Adapter name must be specified in a string');
         }
     }
@@ -311,14 +321,13 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $adapter = Zend_Db::factory(
                 'Dbadapter',
                 ['dbname' => 'dummy', 'adapterNamespace' => 'Test_MyCompany1']
-                );
+            );
         } catch (Exception $e) {
             set_include_path($oldIncludePath);
             $this->fail('Could not load file for reason: ' . $e->getMessage());
         }
         $this->assertEquals('Test_MyCompany1_Dbadapter', get_class($adapter));
         set_include_path($oldIncludePath);
-
     }
 
     /**
@@ -339,10 +348,10 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $adapter = Zend_Db::factory(
                 'Dbadapter',
                 ['dbname' => 'dummy', 'adapterNamespace' => 'Test_MyCompany2']
-                );
+            );
         } catch (Exception $e) {
             set_include_path($oldIncludePath);
-            $this->assertContains('failed to open stream', strtolower($e->getMessage()));
+            $this->assertStringContainsString('File "Test/MyCompany2/Dbadapter.php" does not exist or class "Test_MyCompany2_Dbadapter" was not found in the file', $e->getMessage());
             return;
         }
 
@@ -362,14 +371,13 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
             $adapter = Zend_Db::factory(
                 'DB_ADAPTER',
                 ['dbname' => 'dummy', 'adapterNamespace' => 'Test_MyCompany1']
-                );
+            );
         } catch (Exception $e) {
             set_include_path($oldIncludePath);
             $this->fail('Could not load file for reason: ' . $e->getMessage());
         }
         $this->assertEquals('Test_MyCompany1_Db_Adapter', get_class($adapter));
         set_include_path($oldIncludePath);
-
     }
 
     /**
@@ -412,5 +420,4 @@ class Zend_Db_Adapter_StaticTest extends PHPUnit_Framework_TestCase
     {
         return 'Static';
     }
-
 }

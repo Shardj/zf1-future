@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -39,21 +42,24 @@ require_once 'Zend/Mail/Transport/Smtp.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
-class Zend_Mail_SmtpTest extends PHPUnit_Framework_TestCase
+class Zend_Mail_SmtpTest extends TestCase
 {
     protected $_params;
     protected $_transport;
     protected $_connection;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->_params = ['host'     => TESTS_ZEND_MAIL_SMTP_HOST,
-                               'port'     => TESTS_ZEND_MAIL_SMTP_PORT,
+        $this->_params = ['host' => TESTS_ZEND_MAIL_SMTP_HOST,
+                               'port' => TESTS_ZEND_MAIL_SMTP_PORT,
                                'username' => TESTS_ZEND_MAIL_SMTP_USER,
                                'password' => TESTS_ZEND_MAIL_SMTP_PASSWORD,
-                               'auth'     => TESTS_ZEND_MAIL_SMTP_AUTH];
+                               'auth' => TESTS_ZEND_MAIL_SMTP_AUTH];
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTransportSetup()
     {
         try {

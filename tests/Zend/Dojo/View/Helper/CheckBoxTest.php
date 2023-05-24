@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_CheckBoxTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_CheckBox|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_CheckBoxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_CheckBoxTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_CheckBox();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -103,7 +118,7 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
             [],
             [],
             [
-                'checked'   => 'foo',
+                'checked' => 'foo',
                 'unChecked' => 'bar',
             ]
         );
@@ -112,14 +127,14 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<input[^>]*(dojoType="dijit.form.CheckBox")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(dojoType="dijit.form.CheckBox")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElement();
-        $this->assertNotRegexp('/<input[^>]*(dojoType="dijit.form.CheckBox")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*(dojoType="dijit.form.CheckBox")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId'));
     }
 
@@ -129,7 +144,7 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
         if (!preg_match('/(<input[^>]*(type="hidden")[^>]*>)/s', $html, $m)) {
             $this->fail('Missing hidden element with unchecked value');
         }
-        $this->assertContains('value="bar"', $m[1]);
+        $this->assertStringContainsString('value="bar"', $m[1]);
     }
 
     public function testShouldCheckElementWhenValueMatchesCheckedValue()
@@ -138,7 +153,7 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
         if (!preg_match('/(<input[^>]*(type="checkbox")[^>]*>)/s', $html, $m)) {
             $this->fail('Missing checkbox element: ' . $html);
         }
-        $this->assertContains('checked="checked"', $m[1]);
+        $this->assertStringContainsString('checked="checked"', $m[1]);
     }
 
     /**
@@ -147,14 +162,14 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testElementShouldUseCheckedValueForCheckboxInput()
     {
         $html = $this->helper->checkBox('foo', '0', [], [], [
-            'checkedValue'   => '1',
+            'checkedValue' => '1',
             'unCheckedValue' => '0',
         ]);
         if (!preg_match('#(<input[^>]*(?:type="checkbox")[^>]*>)#s', $html, $matches)) {
             $this->fail('Did not find checkbox in html: ' . $html);
         }
-        $this->assertContains('value="1"', $matches[1]);
-        $this->assertNotContains('checked', $matches[1]);
+        $this->assertStringContainsString('value="1"', $matches[1]);
+        $this->assertStringNotContainsString('checked', $matches[1]);
     }
 
     /**
@@ -163,7 +178,7 @@ class Zend_Dojo_View_Helper_CheckBoxTest extends PHPUnit_Framework_TestCase
     public function testElementShouldCreateAppropriateIdWhenNameIncludesArrayNotation()
     {
         $html = $this->helper->checkBox('foo[bar]', '0');
-        $this->assertContains('id="foo-bar"', $html);
+        $this->assertStringContainsString('id="foo-bar"', $html);
     }
 }
 

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,7 +42,7 @@ require_once 'Zend/Filter/Compress/Lzf.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Filter_Compress_LzfTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_Compress_LzfTest extends TestCase
 {
     /**
      * Runs this test suite
@@ -46,11 +51,11 @@ class Zend_Filter_Compress_LzfTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Filter_Compress_LzfTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Filter_Compress_LzfTest');
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('lzf')) {
             $this->markTestSkipped('This adapter needs the lzf extension');
@@ -64,9 +69,9 @@ class Zend_Filter_Compress_LzfTest extends PHPUnit_Framework_TestCase
      */
     public function testBasicUsage()
     {
-        $filter  = new Zend_Filter_Compress_Lzf();
+        $filter = new Zend_Filter_Compress_Lzf();
 
-        $text       = 'compress me';
+        $text = 'compress me';
         $compressed = $filter->compress($text);
         $this->assertNotEquals($text, $compressed);
 

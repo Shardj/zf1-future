@@ -30,17 +30,13 @@ require_once 'Zend/Tool/Framework/Metadata/Basic.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Tool_Framework_Manifest_ManifestBadMetadata
-    implements Zend_Tool_Framework_Manifest_MetadataManifestable
+class Zend_Tool_Framework_Manifest_ManifestBadMetadata implements Zend_Tool_Framework_Manifest_MetadataManifestable
 {
-
     public function getMetadata()
     {
         return [
             new Zend_Tool_Framework_Metadata_Basic(['name' => 'FooTwo', 'value' => 'Baz1']),
             new ArrayObject()
             ];
-
     }
-
 }

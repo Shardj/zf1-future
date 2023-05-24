@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -33,15 +38,20 @@ require_once 'Zend/Stdlib/PriorityQueue.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Stdlib_PriorityQueueTest extends PHPUnit_Framework_TestCase
+class Zend_Stdlib_PriorityQueueTest extends TestCase
 {
+    /**
+     * @var \Zend_Stdlib_PriorityQueue|mixed
+     */
+    protected $queue;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->queue = new Zend_Stdlib_PriorityQueue();
         $this->queue->insert('foo', 3);
@@ -76,7 +86,7 @@ class Zend_Stdlib_PriorityQueueTest extends PHPUnit_Framework_TestCase
             'baz',
             'bat',
         ];
-        $test     = $this->queue->toArray();
+        $test = $this->queue->toArray();
         $this->assertSame($expected, $test, var_export($test, 1));
     }
 
@@ -88,7 +98,7 @@ class Zend_Stdlib_PriorityQueueTest extends PHPUnit_Framework_TestCase
             2,
             1,
         ];
-        $test     = $this->queue->toArray(Zend_Stdlib_PriorityQueue::EXTR_PRIORITY);
+        $test = $this->queue->toArray(Zend_Stdlib_PriorityQueue::EXTR_PRIORITY);
         $this->assertSame($expected, $test, var_export($test, 1));
     }
 
@@ -100,7 +110,7 @@ class Zend_Stdlib_PriorityQueueTest extends PHPUnit_Framework_TestCase
             ['data' => 'baz', 'priority' => 2],
             ['data' => 'bat', 'priority' => 1],
         ];
-        $test     = $this->queue->toArray(Zend_Stdlib_PriorityQueue::EXTR_BOTH);
+        $test = $this->queue->toArray(Zend_Stdlib_PriorityQueue::EXTR_BOTH);
         $this->assertSame($expected, $test, var_export($test, 1));
     }
 

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,22 +38,25 @@ require_once 'Zend/Config.php';
  * @group      Zend_Service
  * @group      Zend_Service_ReCaptcha
  */
-class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
+class Zend_Service_ReCaptcha_MailHideTest extends TestCase
 {
     protected $_publicKey = TESTS_ZEND_SERVICE_RECAPTCHA_MAILHIDE_PUBLIC_KEY;
     protected $_privateKey = TESTS_ZEND_SERVICE_RECAPTCHA_MAILHIDE_PRIVATE_KEY;
     protected $_mailHide = null;
 
-    public function setUp() {
+    protected function setUp(): void
+    {
         $this->_mailHide = new Zend_Service_ReCaptcha_MailHide();
     }
 
-    public function testSetGetPrivateKey() {
+    public function testSetGetPrivateKey()
+    {
         $this->_mailHide->setPrivateKey($this->_privateKey);
         $this->assertSame($this->_privateKey, $this->_mailHide->getPrivateKey());
     }
 
-    public function testSetGetEmail() {
+    public function testSetGetEmail()
+    {
         $mail = 'mail@example.com';
 
         $this->_mailHide->setEmail($mail);
@@ -58,7 +64,8 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
         $this->assertSame('example.com', $this->_mailHide->getEmailDomainPart());
     }
 
-    public function testEmailLocalPart() {
+    public function testEmailLocalPart()
+    {
         $this->_mailHide->setEmail('abcd@example.com');
         $this->assertSame('a', $this->_mailHide->getEmailLocalPart());
 
@@ -69,7 +76,8 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
         $this->assertSame('abcd', $this->_mailHide->getEmailLocalPart());
     }
 
-    public function testConstructor() {
+    public function testConstructor()
+    {
         $mail = 'mail@example.com';
 
         $options = [
@@ -89,7 +97,8 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
         $this->assertSame($options['lang'], $_options['lang']);
     }
 
-    public function testGetHtml() {
+    public function testGetHtml()
+    {
         $mail = 'mail@example.com';
 
         $this->_mailHide->setEmail($mail);
@@ -98,17 +107,19 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
 
         $html = $this->_mailHide->getHtml();
 
-        $this->assertRegExp('#^m<a href=".*?">\.\.\.</a>@example\.com$#', $html);
+        $this->assertMatchesRegularExpression('#^m<a href=".*?">\.\.\.</a>@example\.com$#', $html);
     }
 
-    public function testGetHtmlWithNoEmail() {
-        $this->setExpectedException('Zend_Service_ReCaptcha_MailHide_Exception');
+    public function testGetHtmlWithNoEmail()
+    {
+        $this->expectException('Zend_Service_ReCaptcha_MailHide_Exception');
 
         $html = $this->_mailHide->getHtml();
     }
 
-    public function testGetHtmlWithMissingPublicKey() {
-        $this->setExpectedException('Zend_Service_ReCaptcha_MailHide_Exception');
+    public function testGetHtmlWithMissingPublicKey()
+    {
+        $this->expectException('Zend_Service_ReCaptcha_MailHide_Exception');
 
         $mail = 'mail@example.com';
 
@@ -118,8 +129,9 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
         $html = $this->_mailHide->getHtml();
     }
 
-    public function testGetHtmlWithMissingPrivateKey() {
-        $this->setExpectedException('Zend_Service_ReCaptcha_MailHide_Exception');
+    public function testGetHtmlWithMissingPrivateKey()
+    {
+        $this->expectException('Zend_Service_ReCaptcha_MailHide_Exception');
 
         $mail = 'mail@example.com';
 
@@ -129,7 +141,8 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
         $html = $this->_mailHide->getHtml();
     }
 
-    public function testGetHtmlWithParamter() {
+    public function testGetHtmlWithParamter()
+    {
         $mail = 'mail@example.com';
 
         $this->_mailHide->setPublicKey($this->_publicKey);
@@ -137,6 +150,6 @@ class Zend_Service_ReCaptcha_MailHideTest extends PHPUnit_Framework_TestCase
 
         $html = $this->_mailHide->getHtml($mail);
 
-        $this->assertRegExp('#m<a href=".*?">\.\.\.</a>@example\.com$#', $html);
+        $this->assertMatchesRegularExpression('#m<a href=".*?">\.\.\.</a>@example\.com$#', $html);
     }
 }

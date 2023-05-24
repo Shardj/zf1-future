@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -39,12 +42,11 @@ require_once dirname(__FILE__) . '/_files/ZF9018TestClass.php';
  * @group      Zend_Reflection
  * @group      Zend_Reflection_Method
  */
-class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_MethodTest extends TestCase
 {
+    protected static $_sampleClassFileRequired = false;
 
-    static protected $_sampleClassFileRequired = false;
-
-    public function setup()
+    protected function setUp(): void
     {
         if (self::$_sampleClassFileRequired === false) {
             $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';
@@ -71,8 +73,8 @@ class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
     {
         $reflectionMethod = new Zend_Reflection_Method('Zend_Reflection_TestSampleClass5', 'doSomething');
 
-        $this->assertEquals($reflectionMethod->getStartLine(), 106);
-        $this->assertEquals($reflectionMethod->getStartLine(true), 90);
+        $this->assertEquals($reflectionMethod->getStartLine(), 107);
+        $this->assertEquals($reflectionMethod->getStartLine(true), 91);
     }
 
     public function testGetBodyReturnsCorrectBody()
@@ -91,7 +93,7 @@ class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
      */
     public function testGetBodyReturnsCorrectBodyWhenContentEndsWithClosingCurlyBrace()
     {
-        $body = '        if ( true ) {
+        $body = '        if (true) {
             echo "True";
         } else {
             echo "False";
@@ -106,7 +108,7 @@ class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
      */
     public function testGetBodyReturnsCorrectBodyWhenMethodWithInlineOpenBraceHasBodyWhichEndsWithClosingCurlyBrace()
     {
-        $body = '        if ( true ) {
+        $body = '        if (true) {
             echo "True";
         } else {
             echo "False";
@@ -140,6 +142,4 @@ class Zend_Reflection_MethodTest extends PHPUnit_Framework_TestCase
         $reflectionMethod = new Zend_Reflection_Method('Zend_Reflection_TestSampleClass7', 'testInlineMethod');
         $this->assertEquals($body, $reflectionMethod->getBody());
     }
-
 }
-

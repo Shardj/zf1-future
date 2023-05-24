@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -43,16 +46,16 @@ require_once 'Zend/Config/Writer/Ini.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Config
  */
-class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
+class Zend_Config_Writer_IniTest extends TestCase
 {
     protected $_tempName;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_tempName = tempnam(dirname(__FILE__) . '/temp', 'tmp');
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         @unlink($this->_tempName);
     }
@@ -65,7 +68,7 @@ class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('No filename was set', $expected->getMessage());
+            $this->assertStringContainsString('No filename was set', $expected->getMessage());
         }
     }
 
@@ -77,7 +80,7 @@ class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('No config was set', $expected->getMessage());
+            $this->assertStringContainsString('No config was set', $expected->getMessage());
         }
     }
 
@@ -89,7 +92,7 @@ class Zend_Config_Writer_IniTest extends PHPUnit_Framework_TestCase
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('Could not write to file', $expected->getMessage());
+            $this->assertStringContainsString('Could not write to file', $expected->getMessage());
         }
     }
 
@@ -238,7 +241,7 @@ ECS;
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('Value can not contain double quotes "', $expected->getMessage());
+            $this->assertStringContainsString('Value can not contain double quotes "', $expected->getMessage());
         }
     }
 
@@ -248,14 +251,14 @@ ECS;
     public function testZF6289_NonSectionElementsAndSectionJumbling()
     {
         $config = new Zend_Config([
-            'one'   => 'element',
-            'two'   => ['type' => 'section'],
+            'one' => 'element',
+            'two' => ['type' => 'section'],
             'three' => 'element',
-            'four'  => ['type' => 'section'],
-            'five'  => 'element'
+            'four' => ['type' => 'section'],
+            'five' => 'element'
         ]);
 
-        $writer = new Zend_Config_Writer_Ini;
+        $writer = new Zend_Config_Writer_Ini();
         $iniString = $writer->setConfig($config)->render($config);
 
         $expected = <<<ECS

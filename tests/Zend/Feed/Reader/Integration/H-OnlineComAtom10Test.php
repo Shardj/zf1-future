@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,25 +34,29 @@ require_once 'Zend/Feed/Reader.php';
  * @group      Zend_Feed
  * @group      Zend_Feed_Reader
  */
-class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framework_TestCase
+class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $_options = [];
 
     protected $_feedSamplePath = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         Zend_Feed_Reader::reset();
         $this->_feedSamplePath = dirname(__FILE__) . '/_files/h-online.com-atom10.xml';
         $this->_options = Zend_Date::setOptions();
-        foreach($this->_options as $k=>$v) {
+        foreach ($this->_options as $k => $v) {
             if (is_null($v)) {
                 unset($this->_options[$k]);
             }
         }
-        Zend_Date::setOptions(['format_type'=>'iso']);
+        Zend_Date::setOptions(['format_type' => 'iso']);
     }
     
-    public function teardown()
+    protected function tearDown(): void
     {
         Zend_Date::setOptions($this->_options);
     }
@@ -67,7 +74,7 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framewor
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath)
         );
-        $this->assertEquals([['name'=>'The H']], (array) $feed->getAuthors());
+        $this->assertEquals([['name' => 'The H']], (array) $feed->getAuthors());
     }
 
     public function testGetsSingleAuthor()
@@ -75,7 +82,7 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framewor
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath)
         );
-        $this->assertEquals(['name'=>'The H'], $feed->getAuthor());
+        $this->assertEquals(['name' => 'The H'], $feed->getAuthor());
     }
 
     public function testGetsCopyright()
@@ -154,7 +161,7 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framewor
             file_get_contents($this->_feedSamplePath)
         );
         $entry = $feed->current();
-        $this->assertEquals([['name'=>'The H']], (array) $entry->getAuthors());
+        $this->assertEquals([['name' => 'The H']], (array) $entry->getAuthors());
     }
 
     public function testGetsEntrySingleAuthor()
@@ -163,7 +170,7 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framewor
             file_get_contents($this->_feedSamplePath)
         );
         $entry = $feed->current();
-        $this->assertEquals(['name'=>'The H'], $entry->getAuthor());
+        $this->assertEquals(['name' => 'The H'], $entry->getAuthor());
     }
 
     public function testGetsEntryDescription()
@@ -211,8 +218,10 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framewor
             file_get_contents($this->_feedSamplePath)
         );
         $entry = $feed->current();
-        $this->assertEquals('http://www.h-online.com/security/McAfee-update-brings-systems-down-again--/news/113689/from/rss',
-            $entry->getPermaLink());
+        $this->assertEquals(
+            'http://www.h-online.com/security/McAfee-update-brings-systems-down-again--/news/113689/from/rss',
+            $entry->getPermaLink()
+        );
     }
 
     public function testGetsEntryEncoding()
@@ -223,5 +232,4 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends PHPUnit_Framewor
         $entry = $feed->current();
         $this->assertEquals('UTF-8', $entry->getEncoding());
     }
-
 }

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -43,8 +48,13 @@ require_once 'Zend/Validate/File/Upload.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_File
  */
-class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
+class Zend_File_Transfer_Adapter_HttpTest extends TestCase
 {
+    /**
+     * @var Zend_File_Transfer_Adapter_HttpTest_MockAdapter
+     */
+    protected $adapter;
+
     /**
      * Runs the test methods of this class.
      *
@@ -52,8 +62,8 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_File_Transfer_Adapter_HttpTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_File_Transfer_Adapter_HttpTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -62,7 +72,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $_FILES = [
             'txt' => [
@@ -80,14 +90,14 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
     public function testEmptyAdapter()
     {
         $files = $this->adapter->getFileName();
-        $this->assertContains('test.txt', $files);
+        $this->assertStringContainsString('test.txt', $files);
     }
 
     public function testAutoSetUploadValidator()
@@ -101,19 +111,15 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($test instanceof Zend_Validate_File_Upload);
     }
 
-    /**
-     * @expectedException Zend_File_Transfer_Exception
-     */
     public function testSendingFiles()
     {
+        $this->expectException(Zend_File_Transfer_Exception::class);
         $this->adapter->send();
     }
 
-    /**
-     * @expectedException Zend_File_Transfer_Exception
-     */
     public function testFileIsSent()
     {
+        $this->expectException(Zend_File_Transfer_Exception::class);
         $this->adapter->isSent();
     }
 
@@ -144,7 +150,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
         try {
             $this->assertFalse($this->adapter->receive('unknownFile'));
         } catch (Zend_File_Transfer_Exception $e) {
-            $this->assertContains('not find', $e->getMessage());
+            $this->assertStringContainsString('not find', $e->getMessage());
         }
     }
 
@@ -225,7 +231,8 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             ['exe_0_' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'file1.txt',
                   'exe_1_' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'file2.txt'],
-            $adapter->getFileName('exe', false));
+            $adapter->getFileName('exe', false)
+        );
     }
 
     public function testNoUploadInProgress()
@@ -237,7 +244,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
         }
 
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
-        $this->assertContains('No upload in progress', $status);
+        $this->assertStringContainsString('No upload in progress', $status);
     }
 
     public function testUploadProgressFailure()
@@ -251,27 +258,26 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
         $_GET['progress_key'] = 'mykey';
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
         $this->assertEquals([
-            'total'   => 100,
+            'total' => 100,
             'current' => 100,
-            'rate'    => 10,
-            'id'      => 'mykey',
-            'done'    => false,
+            'rate' => 10,
+            'id' => 'mykey',
+            'done' => false,
             'message' => '100B - 100B'], $status);
 
         $this->adapter->switchApcToUP();
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
         $this->assertEquals([
-            'total'          => 100,
-            'bytes_total'    => 100,
-            'current'        => 100,
+            'total' => 100,
+            'bytes_total' => 100,
+            'current' => 100,
             'bytes_uploaded' => 100,
-            'rate'           => 10,
-            'speed_average'  => 10,
-            'cancel_upload'  => true,
-            'message'        => 'The upload has been canceled',
-            'done'           => true,
-            'id'      => 'mykey'], $status);
-
+            'rate' => 10,
+            'speed_average' => 10,
+            'cancel_upload' => true,
+            'message' => 'The upload has been canceled',
+            'done' => true,
+            'id' => 'mykey'], $status);
     }
 
     public function testUploadProgressAdapter()
@@ -313,7 +319,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends PHPUnit_Framework_TestCase
         $_FILES = [];
         $adapter = new Zend_File_Transfer_Adapter_HttpTest_MockAdapter();
         $this->assertFalse($adapter->isValidParent());
-        $this->assertContains('exceeds the defined ini size', current($adapter->getMessages()));
+        $this->assertStringContainsString('exceeds the defined ini size', current($adapter->getMessages()));
     }
 }
 

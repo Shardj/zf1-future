@@ -38,7 +38,7 @@ require_once "AudioscrobblerTestCase.php";
  */
 class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobbler_AudioscrobblerTestCase
 {
-    var $header = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n";
+    public $header = "HTTP/1.1 200 OK\r\nContent-type: text/xml\r\n\r\n";
 
     public function testGetTopTags()
     {
@@ -48,8 +48,8 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
             $as = new Zend_Service_Audioscrobbler();
             $response = $as->tagGetTopTags();
             $this->assertNotNull(count($response->tag));
-        } catch (Exception $e ) {
-                $this->fail("Exception: [" . $e->getMessage() . "] thrown by test");
+        } catch (Exception $e) {
+            $this->fail("Exception: [" . $e->getMessage() . "] thrown by test");
         }
     }
 
@@ -128,7 +128,7 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
 
     public function testGetTopTracks()
     {
-            $testing_response = $this->header .
+        $testing_response = $this->header .
 '<?xml version="1.0" encoding="UTF-8"?>
 <tag tag="rock" count="785836">
 <track name="Dani California" count="295" streamable="yes">
@@ -163,5 +163,4 @@ class Zend_Service_Audioscrobbler_TagDataTest extends Zend_Service_Audioscrobble
         $this->assertNotNull((string)$artist->name);
         $this->assertEquals((string)$response['tag'], strtolower($as->get('tag')));
     }
-
 }

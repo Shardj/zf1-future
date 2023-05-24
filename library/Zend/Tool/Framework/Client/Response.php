@@ -56,7 +56,7 @@ class Zend_Tool_Framework_Client_Response
     /**
      * setContentCallback()
      *
-     * @param callback $callback
+     * @param callable $callback
      * @return Zend_Tool_Framework_Client_Response
      */
     public function setContentCallback($callback)

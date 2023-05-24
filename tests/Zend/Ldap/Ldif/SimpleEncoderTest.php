@@ -132,12 +132,12 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 
     public function testSorting()
     {
-        $data=[
-            'cn'          => ['name'],
-            'dn'          => 'cn=name,dc=example,dc=org',
-            'host'        => ['a', 'b', 'c'],
-            'empty'       => [],
-            'boolean'     => ['TRUE', 'FALSE'],
+        $data = [
+            'cn' => ['name'],
+            'dn' => 'cn=name,dc=example,dc=org',
+            'host' => ['a', 'b', 'c'],
+            'empty' => [],
+            'boolean' => ['TRUE', 'FALSE'],
             'objectclass' => ['account', 'top'],
         ];
         $expected = 'version: 1' . PHP_EOL .
@@ -192,12 +192,12 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 
     public function testSupressVersionHeader()
     {
-        $data=[
-            'cn'          => ['name'],
-            'dn'          => 'cn=name,dc=example,dc=org',
-            'host'        => ['a', 'b', 'c'],
-            'empty'       => [],
-            'boolean'     => ['TRUE', 'FALSE'],
+        $data = [
+            'cn' => ['name'],
+            'dn' => 'cn=name,dc=example,dc=org',
+            'host' => ['a', 'b', 'c'],
+            'empty' => [],
+            'boolean' => ['TRUE', 'FALSE'],
             'objectclass' => ['account', 'top'],
         ];
         $expected = 'dn: cn=name,dc=example,dc=org' . PHP_EOL .
@@ -216,28 +216,28 @@ class Zend_Ldap_Ldif_SimpleEncoderTest extends Zend_Ldap_TestCase
 
     public function testEncodingWithJapaneseCharacters()
     {
-        $data=[
-            'dn'                         => 'uid=rogasawara,ou=営業部,o=Airius',
-            'objectclass'                => ['top', 'person', 'organizationalPerson', 'inetOrgPerson'],
-            'uid'                        => ['rogasawara'],
-            'mail'                       => ['rogasawara@airius.co.jp'],
-            'givenname;lang-ja'          => ['ロドニー'],
-            'sn;lang-ja'                 => ['小笠原'],
-            'cn;lang-ja'                 => ['小笠原 ロドニー'],
-            'title;lang-ja'              => ['営業部 部長'],
-            'preferredlanguage'          => ['ja'],
-            'givenname'                  => ['ロドニー'],
-            'sn'                         => ['小笠原'],
-            'cn'                         => ['小笠原 ロドニー'],
-            'title'                      => ['営業部 部長'],
+        $data = [
+            'dn' => 'uid=rogasawara,ou=営業部,o=Airius',
+            'objectclass' => ['top', 'person', 'organizationalPerson', 'inetOrgPerson'],
+            'uid' => ['rogasawara'],
+            'mail' => ['rogasawara@airius.co.jp'],
+            'givenname;lang-ja' => ['ロドニー'],
+            'sn;lang-ja' => ['小笠原'],
+            'cn;lang-ja' => ['小笠原 ロドニー'],
+            'title;lang-ja' => ['営業部 部長'],
+            'preferredlanguage' => ['ja'],
+            'givenname' => ['ロドニー'],
+            'sn' => ['小笠原'],
+            'cn' => ['小笠原 ロドニー'],
+            'title' => ['営業部 部長'],
             'givenname;lang-ja;phonetic' => ['ろどにー'],
-            'sn;lang-ja;phonetic'        => ['おがさわら'],
-            'cn;lang-ja;phonetic'        => ['おがさわら ろどにー'],
-            'title;lang-ja;phonetic'     => ['えいぎょうぶ ぶちょう'],
-            'givenname;lang-en'          => ['Rodney'],
-            'sn;lang-en'                 => ['Ogasawara'],
-            'cn;lang-en'                 => ['Rodney Ogasawara'],
-            'title;lang-en'              => ['Sales, Director'],
+            'sn;lang-ja;phonetic' => ['おがさわら'],
+            'cn;lang-ja;phonetic' => ['おがさわら ろどにー'],
+            'title;lang-ja;phonetic' => ['えいぎょうぶ ぶちょう'],
+            'givenname;lang-en' => ['Rodney'],
+            'sn;lang-en' => ['Ogasawara'],
+            'cn;lang-en' => ['Rodney Ogasawara'],
+            'title;lang-en' => ['Sales, Director'],
         ];
         $expected = 'dn:: dWlkPXJvZ2FzYXdhcmEsb3U95Za25qWt6YOoLG89QWlyaXVz' . PHP_EOL .
             'objectclass: top' . PHP_EOL .

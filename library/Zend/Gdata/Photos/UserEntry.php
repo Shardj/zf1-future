@@ -229,7 +229,7 @@ class Zend_Gdata_Photos_UserEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:nickname attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Nickname|null The requested attribute.
-     *@see setGphotoNickname
+     * @see setGphotoNickname
      */
     public function getGphotoNickname()
     {
@@ -344,7 +344,7 @@ class Zend_Gdata_Photos_UserEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:user attribute.
      *
      * @return Zend_Gdata_Photos_Extension_User|null The requested attribute.
-     *@see setGphotoUser
+     * @see setGphotoUser
      */
     public function getGphotoUser()
     {

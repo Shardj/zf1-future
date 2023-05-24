@@ -103,7 +103,7 @@ class Zend_Gdata_App_MediaFileSource extends Zend_Gdata_App_BaseMediaSource
      * Set the filename which is to be read.
      *
      * @param string $value The desired file handle.
-     * @return Zend_Gdata_App_MediaFileSource Provides a fluent interface.
+     * @return $this
      */
     public function setFilename($value)
     {
@@ -125,7 +125,7 @@ class Zend_Gdata_App_MediaFileSource extends Zend_Gdata_App_BaseMediaSource
      * Set the content type for the file attached (example image/png)
      *
      * @param string $value The content type
-     * @return Zend_Gdata_App_MediaFileSource Provides a fluent interface
+     * @return $this
      */
     public function setContentType($value)
     {

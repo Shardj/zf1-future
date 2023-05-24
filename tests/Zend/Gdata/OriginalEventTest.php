@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,55 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_OriginalEventTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $originalEventText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_OriginalEvent|mixed
+     */
+    protected $originalEvent;
+
+    protected function setUp(): void
+    {
         $this->originalEventText = file_get_contents(
-                'Zend/Gdata/_files/OriginalEventElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/OriginalEventElementSample1.xml',
+            true
+        );
         $this->originalEvent = new Zend_Gdata_Extension_OriginalEvent();
     }
 
-    public function testEmptyOriginalEventShouldHaveNoExtensionElements() {
+    public function testEmptyOriginalEventShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->originalEvent->extensionElements));
         $this->assertTrue(count($this->originalEvent->extensionElements) == 0);
     }
 
-    public function testEmptyOriginalEventShouldHaveNoExtensionAttributes() {
+    public function testEmptyOriginalEventShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->originalEvent->extensionAttributes));
         $this->assertTrue(count($this->originalEvent->extensionAttributes) == 0);
     }
 
-    public function testSampleOriginalEventShouldHaveNoExtensionElements() {
+    public function testSampleOriginalEventShouldHaveNoExtensionElements()
+    {
         $this->originalEvent->transferFromXML($this->originalEventText);
         $this->assertTrue(is_array($this->originalEvent->extensionElements));
         $this->assertTrue(count($this->originalEvent->extensionElements) == 0);
     }
 
-    public function testSampleOriginalEventShouldHaveNoExtensionAttributes() {
+    public function testSampleOriginalEventShouldHaveNoExtensionAttributes()
+    {
         $this->originalEvent->transferFromXML($this->originalEventText);
         $this->assertTrue(is_array($this->originalEvent->extensionAttributes));
         $this->assertTrue(count($this->originalEvent->extensionAttributes) == 0);
     }
 
-    public function testNormalOriginalEventShouldHaveNoExtensionElements() {
+    public function testNormalOriginalEventShouldHaveNoExtensionElements()
+    {
         $this->originalEvent->href = "http://www.google.com/calendar/feeds/nobody@gmail.com/private/composite";
         $this->originalEvent->id = "abcdef123456789";
 
@@ -89,7 +108,8 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("abcdef123456789", $newOriginalEvent2->id);
     }
 
-    public function testEmptyOriginalEventToAndFromStringShouldMatch() {
+    public function testEmptyOriginalEventToAndFromStringShouldMatch()
+    {
         $originalEventXml = $this->originalEvent->saveXML();
         $newOriginalEvent = new Zend_Gdata_Extension_OriginalEvent();
         $newOriginalEvent->transferFromXML($originalEventXml);
@@ -97,7 +117,8 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($originalEventXml == $newOriginalEventXml);
     }
 
-    public function testOriginalEventWithValueToAndFromStringShouldMatch() {
+    public function testOriginalEventWithValueToAndFromStringShouldMatch()
+    {
         $this->originalEvent->href = "http://www.google.com/calendar/feeds/nobody@gmail.com/private/composite";
         $this->originalEvent->id = "abcdef123456789";
         $originalEventXml = $this->originalEvent->saveXML();
@@ -109,10 +130,11 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("abcdef123456789", $this->originalEvent->id);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->originalEvent->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->originalEvent->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->originalEvent->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->originalEvent->extensionAttributes['foo2']['value']);
@@ -123,12 +145,12 @@ class Zend_Gdata_OriginalEventTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newOriginalEvent->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullOriginalEventToAndFromString() {
+    public function testConvertFullOriginalEventToAndFromString()
+    {
         $this->originalEvent->transferFromXML($this->originalEventText);
         $this->assertEquals("http://www.google.com/calendar/feeds/userID/private/full/123456789", $this->originalEvent->href);
         $this->assertEquals("i8fl1nrv2bl57c1qgr3f0onmgg", $this->originalEvent->id);
         $this->assertTrue($this->originalEvent->when instanceof Zend_Gdata_Extension_When);
         $this->assertEquals("2006-03-17T22:00:00.000Z", $this->originalEvent->when->startTime);
     }
-
 }

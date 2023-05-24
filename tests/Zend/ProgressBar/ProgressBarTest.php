@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -43,7 +48,7 @@ require_once 'Zend/ProgressBar/Adapter.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_ProgressBar
  */
-class Zend_ProgressBar_ProgressBarTest extends PHPUnit_Framework_TestCase
+class Zend_ProgressBar_ProgressBarTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -52,8 +57,8 @@ class Zend_ProgressBar_ProgressBarTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_ProgressBar_ProgressBarTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_ProgressBar_ProgressBarTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testGreaterMin()
@@ -62,7 +67,7 @@ class Zend_ProgressBar_ProgressBarTest extends PHPUnit_Framework_TestCase
             $progressBar = $this->_getProgressBar(1, 0);
             $this->fail('An expected Zend_Console_Exception has not been raised');
         } catch (Zend_ProgressBar_Exception $expected) {
-            $this->assertContains('$max must be greater than $min', $expected->getMessage());
+            $this->assertStringContainsString('$max must be greater than $min', $expected->getMessage());
         }
     }
 
@@ -185,17 +190,16 @@ class Zend_ProgressBar_Adapter_MockUp extends Zend_ProgressBar_Adapter
 
     public function notify($current, $max, $percent, $timeTaken, $timeRemaining, $text)
     {
-        $this->_current       = $current;
-        $this->_max           = $max;
-        $this->_percent       = $percent;
-        $this->_timeTaken     = $timeTaken;
+        $this->_current = $current;
+        $this->_max = $max;
+        $this->_percent = $percent;
+        $this->_timeTaken = $timeTaken;
         $this->_timeRemaining = $timeRemaining;
-        $this->_text          = $text;
+        $this->_text = $text;
     }
 
     public function finish()
     {
-
     }
 
     public function getCurrent()

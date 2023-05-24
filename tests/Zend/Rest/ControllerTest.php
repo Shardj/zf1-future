@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -44,10 +49,11 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 class Zend_Rest_TestController extends Zend_Rest_Controller
 {
     public $testValue = '';
-    public function __construct(Zend_Controller_Request_Abstract $request,
-                                Zend_Controller_Response_Abstract $response,
-                                array $invokeArgs = [])
-    {
+    public function __construct(
+        Zend_Controller_Request_Abstract $request,
+        Zend_Controller_Response_Abstract $response,
+        array $invokeArgs = []
+    ) {
         $this->testValue = '';
     }
     public function indexAction()
@@ -74,7 +80,6 @@ class Zend_Rest_TestController extends Zend_Rest_Controller
     {
         $this->testValue = 'deleteAction';
     }
-
 }
 /**
  * @category   Zend
@@ -84,7 +89,7 @@ class Zend_Rest_TestController extends Zend_Rest_Controller
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Rest
  */
-class Zend_Rest_ControllerTest extends PHPUnit_Framework_TestCase
+class Zend_Rest_ControllerTest extends TestCase
 {
     protected $_testController;
 
@@ -96,12 +101,11 @@ class Zend_Rest_ControllerTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Rest_ControllerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Rest_ControllerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $request = new Zend_Controller_Request_HttpTestCase();
         $response = new Zend_Controller_Response_HttpTestCase();

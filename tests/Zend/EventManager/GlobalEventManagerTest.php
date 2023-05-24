@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -34,15 +39,20 @@ require_once 'Zend/EventManager/EventManager.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_EventManager_GlobalEventManagerTest extends PHPUnit_Framework_TestCase
+class Zend_EventManager_GlobalEventManagerTest extends TestCase
 {
+    /**
+     * @var \stdClass|mixed
+     */
+    protected $test;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_EventManager_GlobalEventManager::setEventCollection(null);
     }
@@ -90,7 +100,7 @@ class Zend_EventManager_GlobalEventManagerTest extends PHPUnit_Framework_TestCas
         $events = Zend_EventManager_GlobalEventManager::getEvents();
         $this->assertEquals([], $events);
 
-        $this->test = new stdClass;
+        $this->test = new stdClass();
         $listener = Zend_EventManager_GlobalEventManager::attach('foo.bar', [$this, 'aggregateEventMetadata']);
         $events = Zend_EventManager_GlobalEventManager::getEvents();
         $this->assertEquals(['foo.bar'], $events);
@@ -105,7 +115,7 @@ class Zend_EventManager_GlobalEventManagerTest extends PHPUnit_Framework_TestCas
 
     public function aggregateEventMetadata($e)
     {
-        $this->test->event  = $e->getName();
+        $this->test->event = $e->getName();
         $this->test->target = $e->getTarget();
         $this->test->params = $e->getParams();
         return $this->test->params;

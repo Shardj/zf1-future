@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,8 +45,18 @@ require_once 'Zend/View/Helper/FormLabel.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_FormLabelTest extends TestCase
 {
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_FormLabel
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -50,9 +65,8 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormLabelTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_FormLabelTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -61,7 +75,7 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_FormLabel();
@@ -74,7 +88,7 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -116,11 +130,11 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
     public function testCanDisableEscapingLabelValue()
     {
         $label = $this->helper->formLabel('foo', '<b>Label This!</b>', ['escape' => false]);
-        $this->assertContains('<b>Label This!</b>', $label);
+        $this->assertStringContainsString('<b>Label This!</b>', $label);
         $label = $this->helper->formLabel(['name' => 'foo', 'value' => '<b>Label This!</b>', 'escape' => false]);
-        $this->assertContains('<b>Label This!</b>', $label);
+        $this->assertStringContainsString('<b>Label This!</b>', $label);
         $label = $this->helper->formLabel(['name' => 'foo', 'value' => '<b>Label This!</b>', 'attribs' => ['escape' => false]]);
-        $this->assertContains('<b>Label This!</b>', $label);
+        $this->assertStringContainsString('<b>Label This!</b>', $label);
     }
 
     /**
@@ -129,7 +143,7 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
     public function testHelperShouldAllowSuppressionOfForAttribute()
     {
         $label = $this->helper->formLabel('foo', 'bar', ['disableFor' => true]);
-        $this->assertNotContains('for="foo"', $label);
+        $this->assertStringNotContainsString('for="foo"', $label);
     }
 
     /**
@@ -138,7 +152,7 @@ class Zend_View_Helper_FormLabelTest extends PHPUnit_Framework_TestCase
     public function testShouldNotRenderDisableForAttributeIfForIsSuppressed()
     {
         $label = $this->helper->formLabel('foo', 'bar', ['disableFor' => true]);
-        $this->assertNotContains('disableFor=', $label, 'Output contains disableFor attribute!');
+        $this->assertStringNotContainsString('disableFor=', $label, 'Output contains disableFor attribute!');
     }
 }
 

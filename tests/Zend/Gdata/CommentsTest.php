@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,54 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_CommentsTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $commentsText;
+    /**
+     * @var \Zend_Gdata_Extension_Comments|mixed
+     */
+    protected $comments;
 
-    public function setUp() {
+    protected function setUp(): void
+    {
         $this->commentsText = file_get_contents(
-                'Zend/Gdata/_files/CommentsElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/CommentsElementSample1.xml',
+            true
+        );
         $this->comments = new Zend_Gdata_Extension_Comments();
     }
 
-    public function testEmptyCommentsShouldHaveNoExtensionElements() {
+    public function testEmptyCommentsShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->comments->extensionElements));
         $this->assertTrue(count($this->comments->extensionElements) == 0);
     }
 
-    public function testEmptyCommentsShouldHaveNoExtensionAttributes() {
+    public function testEmptyCommentsShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->comments->extensionAttributes));
         $this->assertTrue(count($this->comments->extensionAttributes) == 0);
     }
 
-    public function testSampleCommentsShouldHaveNoExtensionElements() {
+    public function testSampleCommentsShouldHaveNoExtensionElements()
+    {
         $this->comments->transferFromXML($this->commentsText);
         $this->assertTrue(is_array($this->comments->extensionElements));
         $this->assertTrue(count($this->comments->extensionElements) == 0);
     }
 
-    public function testSampleCommentsShouldHaveNoExtensionAttributes() {
+    public function testSampleCommentsShouldHaveNoExtensionAttributes()
+    {
         $this->comments->transferFromXML($this->commentsText);
         $this->assertTrue(is_array($this->comments->extensionAttributes));
         $this->assertTrue(count($this->comments->extensionAttributes) == 0);
     }
 
-    public function testNormalCommentsShouldHaveNoExtensionElements() {
+    public function testNormalCommentsShouldHaveNoExtensionElements()
+    {
         $this->comments->rel = "http://schemas.google.com/g/2005#regular";
 
         $this->assertEquals("http://schemas.google.com/g/2005#regular", $this->comments->rel);
@@ -85,7 +103,8 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("http://schemas.google.com/g/2005#regular", $newComments2->rel);
     }
 
-    public function testEmptyCommentsToAndFromStringShouldMatch() {
+    public function testEmptyCommentsToAndFromStringShouldMatch()
+    {
         $commentsXml = $this->comments->saveXML();
         $newComments = new Zend_Gdata_Extension_Comments();
         $newComments->transferFromXML($commentsXml);
@@ -93,7 +112,8 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($commentsXml == $newCommentsXml);
     }
 
-    public function testCommentsWithValueToAndFromStringShouldMatch() {
+    public function testCommentsWithValueToAndFromStringShouldMatch()
+    {
         $this->comments->rel = "http://schemas.google.com/g/2005#regular";
         $commentsXml = $this->comments->saveXML();
         $newComments = new Zend_Gdata_Extension_Comments();
@@ -103,10 +123,11 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("http://schemas.google.com/g/2005#regular", $this->comments->rel);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->comments->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->comments->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->comments->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->comments->extensionAttributes['foo2']['value']);
@@ -117,11 +138,11 @@ class Zend_Gdata_CommentsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newComments->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullCommentsToAndFromString() {
+    public function testConvertFullCommentsToAndFromString()
+    {
         $this->comments->transferFromXML($this->commentsText);
         $this->assertEquals("http://schemas.google.com/g/2005#reviews", $this->comments->rel);
         $this->assertTrue($this->comments->feedLink instanceof Zend_Gdata_Extension_FeedLink);
         $this->assertEquals("http://example.com/restaurants/SanFrancisco/432432/reviews", $this->comments->feedLink->href);
     }
-
 }

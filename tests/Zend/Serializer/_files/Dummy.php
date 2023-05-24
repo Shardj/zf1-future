@@ -28,4 +28,5 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Serializer_Adapter_Dummy
-{}
+{
+}

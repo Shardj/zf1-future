@@ -27,15 +27,17 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class ServiceB {
-    function __construct() {
+class ServiceB
+{
+    public function __construct()
+    {
         //Construction...
     }
 
     /**
      * @return string
      */
-    public function getMenu( )
+    public function getMenu()
     {
         return 'myMenuB';
     }

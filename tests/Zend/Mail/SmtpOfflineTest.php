@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -44,17 +47,17 @@ require_once 'Zend/Mail/Transport/Smtp.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
-class Zend_Mail_SmtpOfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Mail_SmtpOfflineTest extends TestCase
 {
     protected $_params;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->_params = ['host'     => TESTS_ZEND_MAIL_SMTP_HOST,
-                               'port'     => TESTS_ZEND_MAIL_SMTP_PORT,
+        $this->_params = ['host' => TESTS_ZEND_MAIL_SMTP_HOST,
+                               'port' => TESTS_ZEND_MAIL_SMTP_PORT,
                                'username' => TESTS_ZEND_MAIL_SMTP_USER,
                                'password' => TESTS_ZEND_MAIL_SMTP_PASSWORD,
-                               'auth'     => TESTS_ZEND_MAIL_SMTP_AUTH];
+                               'auth' => TESTS_ZEND_MAIL_SMTP_AUTH];
     }
 
     /**
@@ -62,7 +65,7 @@ class Zend_Mail_SmtpOfflineTest extends PHPUnit_Framework_TestCase
      */
     public function testReturnPathIsUsedAsMailFrom()
     {
-        $connectionMock = $this->getMock('Zend_Mail_Protocol_Smtp');
+        $connectionMock = $this->createMock('Zend_Mail_Protocol_Smtp');
         $connectionMock->expects($this->once())
                        ->method('mail')
                        ->with('return@example.com');

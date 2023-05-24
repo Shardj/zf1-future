@@ -106,7 +106,7 @@ class Zend_Validate_Callback extends Zend_Validate_Abstract
      *
      * @param  string|array $callback
      * @throws Zend_Validate_Exception
-     * @return Zend_Validate_Callback Provides a fluent interface
+     * @return $this
      */
     public function setCallback($callback)
     {
@@ -132,7 +132,7 @@ class Zend_Validate_Callback extends Zend_Validate_Abstract
      * Sets options for the callback
      *
      * @param  mixed $options
-     * @return Zend_Validate_Callback Provides a fluent interface
+     * @return $this
      */
     public function setOptions($options)
     {

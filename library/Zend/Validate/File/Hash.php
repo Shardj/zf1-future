@@ -95,7 +95,7 @@ class Zend_Validate_File_Hash extends Zend_Validate_Abstract
      * Sets the hash for one or multiple files
      *
      * @param  string|array $options
-     * @return Zend_Validate_File_Hash Provides a fluent interface
+     * @return $this
      */
     public function setHash($options)
     {
@@ -110,7 +110,7 @@ class Zend_Validate_File_Hash extends Zend_Validate_Abstract
      *
      * @param  string|array $options
      * @throws Zend_Validate_Exception
-     * @return Zend_Validate_File_Hash Provides a fluent interface
+     * @return $this
      */
     public function addHash($options)
     {

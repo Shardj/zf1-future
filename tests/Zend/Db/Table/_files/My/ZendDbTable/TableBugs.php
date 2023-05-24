@@ -46,28 +46,26 @@ require_once 'TableAccounts.php';
  */
 class My_ZendDbTable_TableBugs extends Zend_Db_Table_Abstract
 {
-
     protected $_name = 'zfbugs';
     protected $_primary = 'bug_id'; // Deliberate non-array value
 
     protected $_dependentTables = ['My_ZendDbTable_TableBugsProducts'];
 
-    protected $_referenceMap    = [
+    protected $_referenceMap = [
         'Reporter' => [
-            'columns'           => ['reported_by'],
-            'refTableClass'     => 'My_ZendDbTable_TableAccounts',
-            'refColumns'        => ['account_name']
+            'columns' => ['reported_by'],
+            'refTableClass' => 'My_ZendDbTable_TableAccounts',
+            'refColumns' => ['account_name']
         ],
         'Engineer' => [
-            'columns'           => ['assigned_to'],
-            'refTableClass'     => 'My_ZendDbTable_TableAccounts',
-            'refColumns'        => ['account_name']
+            'columns' => ['assigned_to'],
+            'refTableClass' => 'My_ZendDbTable_TableAccounts',
+            'refColumns' => ['account_name']
         ],
         'Verifier' => [
-            'columns'           => ['verified_by'],
-            'refTableClass'     => 'My_ZendDbTable_TableAccounts',
-            'refColumns'        => ['account_name']
+            'columns' => ['verified_by'],
+            'refTableClass' => 'My_ZendDbTable_TableAccounts',
+            'refColumns' => ['account_name']
         ]
     ];
-
 }

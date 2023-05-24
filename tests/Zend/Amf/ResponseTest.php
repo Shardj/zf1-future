@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -44,8 +49,18 @@ require_once 'Zend/Date.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Amf
  */
-class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
+class Zend_Amf_ResponseTest extends TestCase
 {
+    /**
+     * @var \Zend_Amf_Value_MessageHeader|mixed
+     */
+    protected $header1;
+
+    /**
+     * @var \Zend_Amf_Value_MessageHeader|mixed
+     */
+    protected $header2;
+
     // The message response status code.
     public $responseURI = "/2/onResult";
 
@@ -62,14 +77,14 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Amf_ResponseTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Amf_ResponseTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
      * Setup environment
      */
-    public function setUp()
+    protected function setUp(): void
     {
         date_default_timezone_set('America/Chicago');
         Zend_Locale::setDefault('en_US');
@@ -80,7 +95,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     /**
      * Teardown environment
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->_response);
     }
@@ -114,7 +129,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/stringAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/stringAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -128,7 +143,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPhpArraySerializedToAmf3Array()
     {
         // Create php object to serialize
-        $data = ["g", "f", "e","d","c","b","a"];
+        $data = ["g", "f", "e", "d", "c", "b", "a"];
 
         // Create an acknowlege message for a response to a RemotingMessage
         $acknowledgeMessage = new Zend_Amf_Value_Messaging_AcknowledgeMessage(null);
@@ -149,7 +164,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/arrayAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/arrayAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -161,7 +176,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpFloatSerializedToAmf3Number()
     {
-        $data    =  31.57;
+        $data = 31.57;
 
         // Create an acknowlege message for a response to a RemotingMessage
         $acknowledgeMessage = new Zend_Amf_Value_Messaging_AcknowledgeMessage(null);
@@ -182,7 +197,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/numberAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/numberAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -210,7 +225,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124569971300';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -219,7 +234,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/dateAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/dateAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -229,7 +244,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     {
         // Create php object to serialize
         $date = new Zend_Date('October 23, 1978', null, 'en_US');
-        $date->set('4:20:00',Zend_Date::TIMES);
+        $date->set('4:20:00', Zend_Date::TIMES);
         $data = $date;
 
         // Create an acknowlege message for a response to a RemotingMessage
@@ -242,7 +257,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124569971300';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -251,7 +266,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/dateAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/dateAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -276,7 +291,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124570001000';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -285,7 +300,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/largeIntAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/largeIntAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -310,7 +325,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124570048300';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -319,7 +334,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/boolTrueAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/boolTrueAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -344,7 +359,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124570031900';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -353,7 +368,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/boolFalseAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/boolFalseAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -374,7 +389,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $contact->lastname = 'Smith';
         $contact->email = 'jsmith@adobe.com';
         $contact->mobile = '123-456-7890';
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         $contact = new Contact();
         $contact->id = '23';
@@ -382,7 +397,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $contact->lastname = 'Flex';
         $contact->email = 'was@here.com';
         $contact->mobile = '123-456-7890';
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         // Create an acknowlege message for a response to a RemotingMessage
         $acknowledgeMessage = new Zend_Amf_Value_Messaging_AcknowledgeMessage(null);
@@ -394,7 +409,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124570415500';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -403,7 +418,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/classMapAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/classMapAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -425,7 +440,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $contact->email = 'jsmith@adobe.com';
         $contact->mobile = '123-456-7890';
         unset($contact->_explicitType);
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         $contact = new Contact();
         $contact->id = '23';
@@ -434,7 +449,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $contact->email = 'was@here.com';
         $contact->mobile = '123-456-7890';
         unset($contact->_explicitType);
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         // Create an acknowlege message for a response to a RemotingMessage
         $acknowledgeMessage = new Zend_Amf_Value_Messaging_AcknowledgeMessage(null);
@@ -446,7 +461,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124570415500';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -455,7 +470,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/classMapAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/classMapAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -477,7 +492,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $contact->lastname = 'Smith';
         $contact->email = 'jsmith@adobe.com';
         $contact->mobile = '123-456-7890';
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         $contact = new Contact();
         $contact->id = '23';
@@ -485,7 +500,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $contact->lastname = 'Flex';
         $contact->email = 'was@here.com';
         $contact->mobile = '123-456-7890';
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         // Create an acknowlege message for a response to a RemotingMessage
         $acknowledgeMessage = new Zend_Amf_Value_Messaging_AcknowledgeMessage(null);
@@ -497,7 +512,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124570415500';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -506,7 +521,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/classMapAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/classMapAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -534,7 +549,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '122766401600';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -543,7 +558,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/domdocumentAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/domdocumentAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -573,7 +588,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '122766401600';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -582,7 +597,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/domdocumentAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/domdocumentAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -607,7 +622,7 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $acknowledgeMessage->timestamp = '124518243200';
         $acknowledgeMessage->body = $data;
 
-        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI,null,$acknowledgeMessage);
+        $newBody = new Zend_Amf_Value_MessageBody($this->responseURI, null, $acknowledgeMessage);
 
         // serialize the data to an AMF output stream
         $this->_response->setObjectEncoding(0x03);
@@ -616,11 +631,10 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/referenceObjectAmf3Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/referenceObjectAmf3Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
-
     }
 
 
@@ -632,14 +646,14 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPhpStringSerializedToAmf0String()
     {
         $data = "zyxwvutsrqpmlkjihgfedcba";
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/stringAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/stringAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -651,15 +665,15 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpArraySerializedToAmf0Array()
     {
-        $data = ["g", "f", "e","d","c","b","a"];
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $data = ["g", "f", "e", "d", "c", "b", "a"];
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/arrayAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/arrayAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -672,17 +686,16 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpNestedArraySerializedToAmf0Array()
     {
-        $data = ["items"=>["a","b"]];
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $data = ["items" => ["a", "b"]];
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/nestedArrayAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/nestedArrayAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
-
     }
 
     /**
@@ -693,16 +706,15 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPhpSparseArraySerializedToAmf0Array()
     {
         $data = [1 => 'foo', 5 => 'bar'];
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/sparseArrayAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/sparseArrayAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
-
     }
 
     /**
@@ -714,16 +726,15 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPhpStringKeyArrayToAmf0Object()
     {
         $data = ['foo' => 5, 'bar' => 23];
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/stringKeyArrayAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/stringKeyArrayAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
-
     }
 
     /**
@@ -732,49 +743,49 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpObjectSerializedToAmf0Object()
     {
-        $data =  ['b'=>'bar',"a" =>'foo'];
+        $data = ['b' => 'bar', "a" => 'foo'];
         $data = (object) $data;
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/objectAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/objectAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
     }
 
     public function testPhpObjectSerializedToAmf0TypedObjectClassMap()
     {
-        Zend_Amf_Parse_TypeLoader::setMapping("ContactVO","Contact");
+        Zend_Amf_Parse_TypeLoader::setMapping("ContactVO", "Contact");
 
         $data = [];
         $contact = new Contact();
-        $contact->id        = '15';
+        $contact->id = '15';
         $contact->firstname = 'Joe';
-        $contact->lastname  = 'Smith';
-        $contact->email     = 'jsmith@adobe.com';
-        $contact->mobile    = '123-456-7890';
+        $contact->lastname = 'Smith';
+        $contact->email = 'jsmith@adobe.com';
+        $contact->mobile = '123-456-7890';
         unset($contact->_explicitType);
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         $contact = new Contact();
-        $contact->id        = '23';
+        $contact->id = '23';
         $contact->firstname = 'Adobe';
-        $contact->lastname  = 'Flex';
-        $contact->email     = 'was@here.com';
-        $contact->mobile    = '123-456-7890';
+        $contact->lastname = 'Flex';
+        $contact->email = 'was@here.com';
+        $contact->mobile = '123-456-7890';
         unset($contact->_explicitType);
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/typedObjectAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/typedObjectAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
     }
@@ -785,100 +796,100 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $data = [];
 
         $contact = new Contact();
-        $contact->id        = '15';
+        $contact->id = '15';
         $contact->firstname = 'Joe';
-        $contact->lastname  = 'Smith';
-        $contact->email     = 'jsmith@adobe.com';
-        $contact->mobile    = '123-456-7890';
-        array_push( $data, $contact );
+        $contact->lastname = 'Smith';
+        $contact->email = 'jsmith@adobe.com';
+        $contact->mobile = '123-456-7890';
+        array_push($data, $contact);
 
         $contact = new Contact();
-        $contact->id        = '23';
+        $contact->id = '23';
         $contact->firstname = 'Adobe';
-        $contact->lastname  = 'Flex';
-        $contact->email     = 'was@here.com';
-        $contact->mobile    = '123-456-7890';
-        array_push( $data, $contact );
+        $contact->lastname = 'Flex';
+        $contact->email = 'was@here.com';
+        $contact->mobile = '123-456-7890';
+        array_push($data, $contact);
 
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/typedObjectAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/typedObjectAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
     }
 
-   public function testPhpObjectSerializedToAmf0TypedObjectGetAsClassName()
+    public function testPhpObjectSerializedToAmf0TypedObjectGetAsClassName()
     {
         $data = [];
 
         $contact = new Contact();
-        $contact->id        = '15';
+        $contact->id = '15';
         $contact->firstname = 'Joe';
-        $contact->lastname  = 'Smith';
-        $contact->email     = 'jsmith@adobe.com';
-        $contact->mobile    = '123-456-7890';
+        $contact->lastname = 'Smith';
+        $contact->email = 'jsmith@adobe.com';
+        $contact->mobile = '123-456-7890';
         unset($contact->_explicitType);
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         $contact = new Contact();
-        $contact->id        = '23';
+        $contact->id = '23';
         $contact->firstname = 'Adobe';
-        $contact->lastname  = 'Flex';
-        $contact->email     = 'was@here.com';
-        $contact->mobile    = '123-456-7890';
+        $contact->lastname = 'Flex';
+        $contact->email = 'was@here.com';
+        $contact->mobile = '123-456-7890';
         unset($contact->_explicitType);
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/typedObjectAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/typedObjectAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
     }
 
-   /**
-    * The feature test allows for php to just retun it's class name if nothing is specified. Using
-    * _explicitType, setClassMap, getASClassName() should only be used now if you want to override the
-    * PHP class name for specifying the return type.
-    * @group ZF-6130
-    */
+    /**
+     * The feature test allows for php to just retun it's class name if nothing is specified. Using
+     * _explicitType, setClassMap, getASClassName() should only be used now if you want to override the
+     * PHP class name for specifying the return type.
+     * @group ZF-6130
+     */
     public function testPhpObjectNameSerializedToAmf0ClassName()
     {
         $data = [];
 
         $contact = new ContactVO();
-        $contact->id        = '15';
+        $contact->id = '15';
         $contact->firstname = 'Joe';
-        $contact->lastname  = 'Smith';
-        $contact->email     = 'jsmith@adobe.com';
-        $contact->mobile    = '123-456-7890';
+        $contact->lastname = 'Smith';
+        $contact->email = 'jsmith@adobe.com';
+        $contact->mobile = '123-456-7890';
 
-        array_push( $data, $contact );
+        array_push($data, $contact);
 
         $contact = new ContactVO();
-        $contact->id        = '23';
+        $contact->id = '23';
         $contact->firstname = 'Adobe';
-        $contact->lastname  = 'Flex';
-        $contact->email     = 'was@here.com';
-        $contact->mobile    = '123-456-7890';
-        array_push( $data, $contact );
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $contact->lastname = 'Flex';
+        $contact->email = 'was@here.com';
+        $contact->mobile = '123-456-7890';
+        array_push($data, $contact);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/typedObjectAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/typedObjectAmf0Response.bin');
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
     }
@@ -889,15 +900,15 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
      */
     public function testPhpFloatSerializedToAmf0Number()
     {
-        $data =  31.57;
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $data = 31.57;
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/numberAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/numberAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -913,14 +924,14 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
         $dateSrc = '1978-10-23 4:20 America/Chicago';
         $date = new DateTime($dateSrc, new DateTimeZone('America/Chicago'));
         $data = $date;
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/dateAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/dateAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -929,16 +940,16 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testZendDateSerializedToAmf0Date()
     {
         $date = new Zend_Date('October 23, 1978', null, 'en_US');
-        $date->set('4:20:00',Zend_Date::TIMES);
+        $date->set('4:20:00', Zend_Date::TIMES);
 
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$date);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $date);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/dateAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/dateAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -951,14 +962,14 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPhpBoolTrueSerializedToAmf0Bool()
     {
         $data = true;
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/boolTrueAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/boolTrueAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -971,14 +982,14 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPhpBoolFalseSerializedToAmf0Bool()
     {
         $data = false;
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/boolFalseAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/boolFalseAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -987,14 +998,14 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
     public function testPHPNullSerializedToAmf0Null()
     {
         $data = null;
-        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult',null,$data);
+        $newBody = new Zend_Amf_Value_MessageBody('/1/onResult', null, $data);
         $this->_response->setObjectEncoding(0x00);
         $this->_response->addAmfBody($newBody);
         $this->_response->finalize();
         $testResponse = $this->_response->getResponse();
 
         // Load the expected response.
-        $mockResponse = file_get_contents(dirname(__FILE__) .'/Response/mock/nullAmf0Response.bin');
+        $mockResponse = file_get_contents(dirname(__FILE__) . '/Response/mock/nullAmf0Response.bin');
 
         // Check that the response matches the expected serialized value
         $this->assertEquals($mockResponse, $testResponse);
@@ -1045,8 +1056,10 @@ class Zend_Amf_ResponseTest extends PHPUnit_Framework_TestCase
  * Used to test recursive cyclic references in the serializer.
  *@group ZF-6205
  */
-class ReferenceTest {
-    public function getReference() {
+class ReferenceTest
+{
+    public function getReference()
+    {
         $o = new TestObject();
         $o->recursive = new TestObject();
         $o->recursive->recursive = $o;
@@ -1056,11 +1069,11 @@ class ReferenceTest {
 /**
  * @see ReferenceTest
  */
-class TestObject {
+class TestObject
+{
     public $recursive;
 }
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Amf_ResponseTest::main') {
     Zend_Amf_ResponseTest::main();
 }
-

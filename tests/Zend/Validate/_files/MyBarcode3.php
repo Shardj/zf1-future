@@ -1,8 +1,8 @@
 <?php
+
 class MyBarcode3 extends Zend_Validate_Barcode_AdapterAbstract
 {
-    protected $_length     = [1,3,6, -1];
+    protected $_length = [1, 3, 6, -1];
     protected $_characters = 128;
-    protected $_checksum   = '_mod10';
+    protected $_checksum = '_mod10';
 }
-?>

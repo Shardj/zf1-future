@@ -5,7 +5,6 @@
 
 class Foo
 {
-
     public function bar()
     {
         // action body

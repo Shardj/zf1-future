@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,14 +36,13 @@ require_once 'Zend/Version.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_Writer_Renderer_Feed_RssTest extends TestCase
 {
-
     protected $_validWriter = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->_validWriter = new Zend_Feed_Writer_Feed;
+        $this->_validWriter = new Zend_Feed_Writer_Feed();
         $this->_validWriter->setTitle('This is a test feed.');
         $this->_validWriter->setDescription('This is a test description.');
         $this->_validWriter->setLink('http://www.example.com');
@@ -48,18 +50,21 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->_validWriter->setType('rss');
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->_validWriter = null;
     }
 
     public function testSetsWriterInConstructor()
     {
-        $writer = new Zend_Feed_Writer_Feed;
+        $writer = new Zend_Feed_Writer_Feed();
         $feed = new Zend_Feed_Writer_Renderer_Feed_Rss($writer);
         $this->assertTrue($feed->getDataContainer() instanceof Zend_Feed_Writer_Feed);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testBuildMethodRunsMinimalWriterContainerProperlyBeforeICheckRssCompliance()
     {
         $feed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
@@ -95,11 +100,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('This is a test feed.', $feed->getTitle());
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testFeedTitleIfMissingThrowsException()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validWriter->remove('title');
         $rssFeed->render();
@@ -125,11 +128,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('This is a test description.', $feed->getDescription());
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testFeedDescriptionThrowsExceptionIfMissing()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validWriter->remove('description');
         $rssFeed->render();
@@ -156,6 +157,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1234567890, $feed->getDateModified()->get(Zend_Date::TIMESTAMP));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFeedUpdatedDateIfMissingThrowsNoException()
     {
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
@@ -181,6 +185,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('FooFeedBuilder 1.00 (http://www.example.com)', $feed->getGenerator());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFeedGeneratorIfMissingThrowsNoException()
     {
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
@@ -205,6 +212,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('fr', $feed->getLanguage());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFeedLanguageIfMissingThrowsNoException()
     {
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
@@ -228,11 +238,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://www.example.com', $feed->getLink());
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testFeedLinkToHtmlVersionOfFeedIfMissingThrowsException()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $this->_validWriter->remove('link');
         $rssFeed->render();
@@ -247,6 +255,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://www.example.com/rss', $feed->getFeedLink());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFeedLinkToXmlRssWhereTheFeedWillBeAvailableIfMissingThrowsNoException()
     {
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
@@ -273,7 +284,7 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
         $author = $feed->getAuthor();
-        $this->assertEquals(['name'=>'Joe'], $feed->getAuthor());
+        $this->assertEquals(['name' => 'Joe'], $feed->getAuthor());
     }
 
     /**
@@ -286,7 +297,7 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $atomFeed->render();
         $feed = Zend_Feed_Reader::importString($atomFeed->saveXml());
         $author = $feed->getAuthor();
-        $this->assertEquals(['name'=>'<>&\'"áéíóú'], $feed->getAuthor());
+        $this->assertEquals(['name' => '<>&\'"áéíóú'], $feed->getAuthor());
     }
 
     public function testCopyrightCanBeSet()
@@ -313,15 +324,15 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
     public function testCategoriesCanBeSet()
     {
         $this->_validWriter->addCategories([
-            ['term'=>'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2']
+            ['term' => 'cat_dog', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2']
         ]);
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $rssFeed->render();
         $feed = Zend_Feed_Reader::importString($rssFeed->saveXml());
         $expected = [
-            ['term'=>'cat_dog', 'label' => 'cat_dog', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+            ['term' => 'cat_dog', 'label' => 'cat_dog', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
         ];
         $this->assertEquals($expected, (array) $feed->getCategories());
     }
@@ -332,15 +343,15 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
     public function testCategoriesCharDataEncoding()
     {
         $this->_validWriter->addCategories([
-            ['term'=>'<>&\'"áéíóú', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2']
+            ['term' => '<>&\'"áéíóú', 'label' => 'Cats & Dogs', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2']
         ]);
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $rssFeed->render();
         $feed = Zend_Feed_Reader::importString($rssFeed->saveXml());
         $expected = [
-            ['term'=>'<>&\'"áéíóú', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
-            ['term'=>'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
+            ['term' => '<>&\'"áéíóú', 'label' => '<>&\'"áéíóú', 'scheme' => 'http://example.com/schema1'],
+            ['term' => 'cat_dog2', 'label' => 'cat_dog2', 'scheme' => null]
         ];
         $this->assertEquals($expected, (array) $feed->getCategories());
     }
@@ -401,11 +412,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $feed->getImage());
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionOnMissingLink()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'title' => 'Image ALT'
@@ -414,11 +423,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionOnMissingTitle()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com'
@@ -427,11 +434,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionOnMissingUri()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'link' => 'http://www.example.com',
             'title' => 'Image ALT'
@@ -440,11 +445,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalDescriptionInvalid()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -455,11 +458,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalDescriptionEmpty()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -470,11 +471,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalHeightNotAnInteger()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -486,11 +485,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalHeightEmpty()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -502,11 +499,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalHeightGreaterThan400()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -518,11 +513,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalWidthNotAnInteger()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -534,11 +527,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalWidthEmpty()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -550,11 +541,9 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed->render();
     }
 
-    /**
-     * @expectedException Zend_Feed_Exception
-     */
     public function testImageThrowsExceptionIfOptionalWidthGreaterThan144()
     {
+        $this->expectException(Zend_Feed_Exception::class);
         $this->_validWriter->setImage([
             'uri' => 'http://www.example.com/logo.gif',
             'link' => 'http://www.example.com',
@@ -565,6 +554,4 @@ class Zend_Feed_Writer_Renderer_Feed_RssTest extends PHPUnit_Framework_TestCase
         $rssFeed = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
         $rssFeed->render();
     }
-
-
 }

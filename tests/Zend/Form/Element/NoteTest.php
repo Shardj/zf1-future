@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,8 +44,13 @@ require_once 'Zend/Form/Element/Note.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Element_NoteTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Element_Note
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -48,8 +58,8 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Element_NoteTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Element_NoteTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -58,7 +68,7 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->element = new Zend_Form_Element_Note('foo');
     }
@@ -69,7 +79,7 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -110,11 +120,11 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
         $validators = [
             [
                 'options' => ['Alnum'],
-                'value'   => 'aa11?? ',
+                'value' => 'aa11?? ',
             ],
             [
                 'options' => ['Alpha'],
-                'value'   => 'aabb11',
+                'value' => 'aabb11',
             ],
             [
                 'options' => [
@@ -125,23 +135,23 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
                         'max' => 10,
                     ]
                 ],
-                'value'   => '11',
+                'value' => '11',
             ],
             [
                 'options' => ['Date'],
-                'value'   => '10.10.2000',
+                'value' => '10.10.2000',
             ],
             [
                 'options' => ['Digits'],
-                'value'   => '1122aa',
+                'value' => '1122aa',
             ],
             [
                 'options' => ['EmailAddress'],
-                'value'   => 'foo',
+                'value' => 'foo',
             ],
             [
                 'options' => ['Float'],
-                'value'   => '10a01',
+                'value' => '10a01',
             ],
             [
                 'options' => [
@@ -149,26 +159,26 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
                     false,
                     ['min' => 10],
                 ],
-                'value'   => '9',
+                'value' => '9',
             ],
             [
                 'options' => ['Hex'],
-                'value'   => '123ABCDEFGH',
+                'value' => '123ABCDEFGH',
             ],
             [
                 'options' => [
                     'InArray',
                     false,
                     [
-                        'key'      => 'value',
+                        'key' => 'value',
                         'otherkey' => 'othervalue',
                     ]
                 ],
-                'value'   => 'foo',
+                'value' => 'foo',
             ],
             [
                 'options' => ['Int'],
-                'value'   => '1234.5',
+                'value' => '1234.5',
             ],
             [
                 'options' => [
@@ -176,11 +186,11 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
                     false,
                     ['max' => 10],
                 ],
-                'value'   => '11',
+                'value' => '11',
             ],
             [
                 'options' => ['NotEmpty'],
-                'value'   => '',
+                'value' => '',
             ],
             [
                 'options' => [
@@ -188,7 +198,7 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
                     false,
                     ['pattern' => '/^Test/'],
                 ],
-                'value'   => 'Pest',
+                'value' => 'Pest',
             ],
             [
                 'options' => [
@@ -199,7 +209,7 @@ class Zend_Form_Element_NoteTest extends PHPUnit_Framework_TestCase
                         20,
                     ]
                 ],
-                'value'   => 'foo',
+                'value' => 'foo',
             ],
         ];
 

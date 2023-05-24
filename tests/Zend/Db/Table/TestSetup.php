@@ -41,7 +41,6 @@ require_once 'Zend/Db/TestSetup.php';
  */
 abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
 {
-
     /**
      * @var array of Zend_Db_Table_Abstract
      */
@@ -49,17 +48,17 @@ abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
 
     protected $_runtimeIncludePath = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->_table['accounts']      = $this->_getTable('My_ZendDbTable_TableAccounts');
-        $this->_table['bugs']          = $this->_getTable('My_ZendDbTable_TableBugs');
+        $this->_table['accounts'] = $this->_getTable('My_ZendDbTable_TableAccounts');
+        $this->_table['bugs'] = $this->_getTable('My_ZendDbTable_TableBugs');
         $this->_table['bugs_products'] = $this->_getTable('My_ZendDbTable_TableBugsProducts');
-        $this->_table['products']      = $this->_getTable('My_ZendDbTable_TableProducts');
+        $this->_table['products'] = $this->_getTable('My_ZendDbTable_TableProducts');
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         if ($this->_runtimeIncludePath) {
             $this->_restoreIncludePath();
@@ -92,5 +91,4 @@ abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
         set_include_path($this->_runtimeIncludePath);
         $this->_runtimeIncludePath = null;
     }
-
 }

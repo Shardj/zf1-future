@@ -88,7 +88,7 @@ class Zend_View_Helper_Navigation
      *
      * @param  Zend_Navigation_Container $container  [optional] container to
      *                                               operate on
-     * @return Zend_View_Helper_Navigation           fluent interface, returns
+     * @return $this
      *                                               self
      */
     public function navigation(Zend_Navigation_Container $container = null)
@@ -237,7 +237,7 @@ class Zend_View_Helper_Navigation
      * Sets the default proxy to use in {@link render()}
      *
      * @param  string $proxy                default proxy
-     * @return Zend_View_Helper_Navigation  fluent interface, returns self
+     * @return $this
      */
     public function setDefaultProxy($proxy)
     {
@@ -261,7 +261,7 @@ class Zend_View_Helper_Navigation
      * @param bool $injectContainer         [optional] whether container should
      *                                      be injected when proxying. Default
      *                                      is true.
-     * @return Zend_View_Helper_Navigation  fluent interface, returns self
+     * @return $this
      */
     public function setInjectContainer($injectContainer = true)
     {
@@ -285,7 +285,7 @@ class Zend_View_Helper_Navigation
      * @param  bool $injectAcl              [optional] whether ACL should be
      *                                      injected when proxying. Default is
      *                                      true.
-     * @return Zend_View_Helper_Navigation  fluent interface, returns self
+     * @return $this
      */
     public function setInjectAcl($injectAcl = true)
     {
@@ -309,7 +309,7 @@ class Zend_View_Helper_Navigation
      * @param  bool $injectTranslator       [optional] whether translator should
      *                                      be injected when proxying. Default
      *                                      is true.
-     * @return Zend_View_Helper_Navigation  fluent interface, returns self
+     * @return $this
      */
     public function setInjectTranslator($injectTranslator = true)
     {

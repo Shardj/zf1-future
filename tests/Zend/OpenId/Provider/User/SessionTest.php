@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,14 +37,24 @@ require_once 'Zend/OpenId/Provider/User/Session.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_OpenId
  */
-class Zend_OpenId_Provider_User_SessionTest extends PHPUnit_Framework_TestCase
+class Zend_OpenId_Provider_User_SessionTest extends TestCase
 {
-    const USER1     = "test_user1";
-    const USER2     = "test_user2";
+    /**
+     * @var \Zend_OpenId_Provider_User_Session|mixed
+     */
+    protected $_user1;
+
+    /**
+     * @var \Zend_OpenId_Provider_User_Session|mixed
+     */
+    protected $_user2;
+
+    public const USER1 = "test_user1";
+    public const USER2 = "test_user2";
 
     private $_user;
 
-    public function __construct()
+    protected function setUp(): void
     {
         $this->_user1 = new Zend_OpenId_Provider_User_Session();
         $this->_user2 = new Zend_OpenId_Provider_User_Session(new Zend_Session_Namespace("openid2"));
@@ -55,20 +68,20 @@ class Zend_OpenId_Provider_User_SessionTest extends PHPUnit_Framework_TestCase
     {
         $user = $this->_user1;
         $user->delLoggedInUser();
-        $this->assertTrue( $user->setLoggedInUser(self::USER1) );
-        $this->assertSame( self::USER1, $user->getLoggedInUser() );
-        $this->assertTrue( $user->setLoggedInUser(self::USER2) );
-        $this->assertSame( self::USER2, $user->getLoggedInUser() );
-        $this->assertTrue( $user->delLoggedInUser() );
-        $this->assertFalse( $user->getLoggedInUser());
+        $this->assertTrue($user->setLoggedInUser(self::USER1));
+        $this->assertSame(self::USER1, $user->getLoggedInUser());
+        $this->assertTrue($user->setLoggedInUser(self::USER2));
+        $this->assertSame(self::USER2, $user->getLoggedInUser());
+        $this->assertTrue($user->delLoggedInUser());
+        $this->assertFalse($user->getLoggedInUser());
 
         $user = $this->_user2;
         $user->delLoggedInUser();
-        $this->assertTrue( $user->setLoggedInUser(self::USER1) );
-        $this->assertSame( self::USER1, $user->getLoggedInUser() );
-        $this->assertTrue( $user->setLoggedInUser(self::USER2) );
-        $this->assertSame( self::USER2, $user->getLoggedInUser() );
-        $this->assertTrue( $user->delLoggedInUser() );
-        $this->assertFalse( $user->getLoggedInUser());
+        $this->assertTrue($user->setLoggedInUser(self::USER1));
+        $this->assertSame(self::USER1, $user->getLoggedInUser());
+        $this->assertTrue($user->setLoggedInUser(self::USER2));
+        $this->assertSame(self::USER2, $user->getLoggedInUser());
+        $this->assertTrue($user->delLoggedInUser());
+        $this->assertFalse($user->getLoggedInUser());
     }
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,13 +41,13 @@ require_once 'Zend/Http/Client.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
-class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_AbstractFeedTest extends TestCase
 {
     public $baseUri;
 
     public $remoteFeedNames = [];
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI')
             || !constant('TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI')
@@ -55,10 +58,11 @@ class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
         Zend_Feed::setHttpClient(new Zend_Http_Client());
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (!$this->baseUri) {
-            return parent::tearDown();
+            parent::tearDown();
+            return;
         }
 
         $basePath = dirname(__FILE__) . '/_files/';
@@ -74,10 +78,10 @@ class Zend_Feed_AbstractFeedTest extends PHPUnit_Framework_TestCase
     public function prepareFeed($filename)
     {
         $basePath = dirname(__FILE__) . '/_files/';
-        $path     = $basePath . $filename;
-        $remote   = str_replace('.xml', '.remote.xml', $filename);
-        $string   = file_get_contents($path);
-        $string   = str_replace('XXE_URI', $this->baseUri . '/xxe-info.txt', $string);
+        $path = $basePath . $filename;
+        $remote = str_replace('.xml', '.remote.xml', $filename);
+        $string = file_get_contents($path);
+        $string = str_replace('XXE_URI', $this->baseUri . '/xxe-info.txt', $string);
         file_put_contents($basePath . '/' . $remote, $string);
         return $remote;
     }

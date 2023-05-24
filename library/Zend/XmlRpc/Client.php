@@ -166,7 +166,7 @@ class Zend_XmlRpc_Client
     /**
      * Sets the object used to introspect remote servers
      *
-     * @param  Zend_XmlRpc_Client_ServerIntrospection
+     * @param  Zend_XmlRpc_Client_ServerIntrospection $introspector
      * @return Zend_XmlRpc_Client_ServerIntrospection
      */
     public function setIntrospector(Zend_XmlRpc_Client_ServerIntrospection $introspector)

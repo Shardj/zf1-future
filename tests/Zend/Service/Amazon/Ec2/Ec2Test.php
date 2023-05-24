@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,9 +37,8 @@ require_once 'Zend/Service/Amazon/Ec2.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
-class Zend_Service_Amazon_Ec2_Ec2Test extends PHPUnit_Framework_TestCase
+class Zend_Service_Amazon_Ec2_Ec2Test extends TestCase
 {
-
     /**
      * @var Zend_Service_Amazon_Ec2
      */
@@ -45,7 +47,7 @@ class Zend_Service_Amazon_Ec2_Ec2Test extends PHPUnit_Framework_TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
     }
@@ -53,7 +55,7 @@ class Zend_Service_Amazon_Ec2_Ec2Test extends PHPUnit_Framework_TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
@@ -94,6 +96,4 @@ class Zend_Service_Amazon_Ec2_Ec2Test extends PHPUnit_Framework_TestCase
         $object = Zend_Service_Amazon_Ec2::factory('security', 'access_key', 'secret_access_key');
         $this->assertTrue($object instanceof Zend_Service_Amazon_Ec2_Securitygroups);
     }
-
 }
-

@@ -58,7 +58,7 @@ class Zend_Queue_Adapter_DbTest extends Zend_Queue_Adapter_AdapterTest
     /**
      * Test setup
      */
-    public function setUp()
+    protected function setUp(): void
     {
         if (!TESTS_ZEND_QUEUE_DB) {
             $this->markTestSkipped('TESTS_ZEND_QUEUE_DB is not enabled in TestConfiguration.php');
@@ -103,7 +103,7 @@ class Zend_Queue_Adapter_DbTest extends Zend_Queue_Adapter_AdapterTest
         }
 
         return [
-            'options'       => [Zend_Db_Select::FOR_UPDATE => true],
+            'options' => [Zend_Db_Select::FOR_UPDATE => true],
             'driverOptions' => $driverOptions,
         ];
     }
@@ -161,4 +161,3 @@ class Zend_Queue_Adapter_DbTest extends Zend_Queue_Adapter_AdapterTest
         $this->assertEquals(0, count($messages));
     }
 }
-

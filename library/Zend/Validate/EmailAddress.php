@@ -170,7 +170,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      * Set options for the email validator
      *
      * @param array $options
-     * @return Zend_Validate_EmailAddress Provides a fluent inteface
+     * @return $this
      */
     public function setOptions(array $options = [])
     {
@@ -209,7 +209,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      *
      * @param  string $messageString
      * @param  string $messageKey     OPTIONAL
-     * @return Zend_Validate_Abstract Provides a fluent interface
+     * @return $this
      * @throws Zend_Validate_Exception
      */
     public function setMessage($messageString, $messageKey = null)
@@ -283,7 +283,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      *
      * @param boolean $mx Set allowed to true to validate for MX records, and false to not validate them
      * @throws Zend_Validate_Exception
-     * @return Zend_Validate_EmailAddress Provides a fluent inteface
+     * @return $this
      */
     public function setValidateMx($mx)
     {
@@ -310,7 +310,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      * Set whether we check MX record should be a deep validation
      *
      * @param boolean $deep Set deep to true to perform a deep validation process for MX records
-     * @return Zend_Validate_EmailAddress Provides a fluent inteface
+     * @return $this
      */
     public function setDeepMxCheck($deep)
     {
@@ -333,7 +333,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      * or only the local part of the email address
      *
      * @param boolean $domain
-     * @return Zend_Validate_EmailAddress Provides a fluent inteface
+     * @return $this
      */
     public function setDomainCheck($domain = true)
     {
@@ -429,7 +429,9 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
             // Quoted-string characters are: DQUOTE *(qtext/quoted-pair) DQUOTE
             $qtext      = '\x20-\x21\x23-\x5b\x5d-\x7e'; // %d32-33 / %d35-91 / %d93-126
             $quotedPair = '\x20-\x7e'; // %d92 %d32-126
-            if (preg_match('/^"(['. $qtext .']|\x5c[' . $quotedPair . '])*"$/', $this->localPart)) {
+            if ((0 === (strcmp($this->localPart, strip_tags($this->localPart))))
+                && (0 === (strcmp($this->localPart, htmlspecialchars_decode($this->localPart))))
+                && (preg_match('/^"(['. $qtext .']|\x5c[' . $quotedPair . '])*"$/', $this->localPart))) {
                 $result = true;
             } else {
                 $this->_error(self::DOT_ATOM);

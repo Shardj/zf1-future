@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_CurrencyTextBox|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCa
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_CurrencyTextBoxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_CurrencyTextBoxTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_CurrencyTextBox();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -101,9 +116,9 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCa
             'elementId',
             '3',
             [
-                'required'    => true,
+                'required' => true,
                 'constraints' => '{fractional:true}',
-                'currency'    => 'USD',
+                'currency' => 'USD',
             ],
             []
         );
@@ -112,21 +127,21 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends PHPUnit_Framework_TestCa
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<input[^>]*(dojoType="dijit.form.CurrencyTextBox")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(dojoType="dijit.form.CurrencyTextBox")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElement();
-        $this->assertNotRegexp('/<input[^>]*(dojoType="dijit.form.CurrencyTextBox")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*(dojoType="dijit.form.CurrencyTextBox")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId'));
     }
 
     public function testShouldCreateTextInput()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<input[^>]*(type="text")/', $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(type="text")/', $html);
     }
 }
 

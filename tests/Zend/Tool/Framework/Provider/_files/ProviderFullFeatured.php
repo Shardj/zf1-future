@@ -31,7 +31,6 @@ require_once 'Zend/Tool/Framework/Provider/Abstract.php';
  */
 class Zend_Tool_Framework_Provider_ProviderFullFeatured extends Zend_Tool_Framework_Provider_Abstract
 {
-
     protected $_specialties = ['Hi', 'BloodyMurder', 'ForYourTeam'];
 
     public function getName()
@@ -41,38 +40,30 @@ class Zend_Tool_Framework_Provider_ProviderFullFeatured extends Zend_Tool_Framew
 
     public function say($what)
     {
-
     }
 
     public function scream($what = 'HELLO')
     {
-
     }
 
     public function sayHi()
     {
-
     }
 
     public function screamBloodyMurder()
     {
-
     }
 
     public function screamForYourTeam()
     {
-
     }
 
     protected function _iAmNotCallable()
     {
-
     }
 
     public function _testReturnInternals()
     {
         return [$this->_registry->getRequest(), $this->_registry->getResponse()];
     }
-
 }
-

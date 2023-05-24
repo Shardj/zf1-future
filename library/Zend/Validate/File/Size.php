@@ -177,7 +177,7 @@ class Zend_Validate_File_Size extends Zend_Validate_Abstract
      *
      * @param  integer $min The minimum filesize
      * @throws Zend_Validate_Exception When min is greater than max
-     * @return Zend_Validate_File_Size Provides a fluent interface
+     * @return $this
      */
     public function setMin($min)
     {
@@ -218,8 +218,8 @@ class Zend_Validate_File_Size extends Zend_Validate_Abstract
      * Sets the maximum filesize
      *
      * @param  integer $max The maximum filesize
-     * @return Zend_Validate_File_Size Provides a fluent interface
-     *@throws Zend_Validate_Exception When max is smaller than min
+     * @return $this
+     * @throws Zend_Validate_Exception When max is smaller than min
      */
     public function setMax($max)
     {
@@ -353,7 +353,7 @@ class Zend_Validate_File_Size extends Zend_Validate_Abstract
         if (!is_numeric($value)) {
             $value = substr($value, 0, -1);
         }
-
+        $value = trim((string) $value);
         switch (strtoupper($type)) {
             case 'Y':
                 $value *= (1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024);

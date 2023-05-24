@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -37,14 +40,29 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Rest
  * @group      Zend_Rest_Client
  */
-class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
+class Zend_Rest_ClientTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var string
+     */
+    protected $path;
+
+    /**
+     * @var Zend_Http_Client_Adapter_Test
+     */
+    protected $adapter;
+
+    /**
+     * @var Zend_Rest_Client
+     */
+    protected $rest;
+
+    protected function setUp(): void
     {
         $this->path = dirname(__FILE__) . '/responses/';
 
         $this->adapter = new Zend_Http_Client_Adapter_Test();
-        $client        = new Zend_Http_Client(null, [
+        $client = new Zend_Http_Client(null, [
             'adapter' => $this->adapter
         ]);
         Zend_Rest_Client::setHttpClient($client);
@@ -54,11 +72,11 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
     
     /**
      * @group ZF-10664
-     * 
-     * Test that you can post a file using a preset 
+     *
+     * Test that you can post a file using a preset
      * Zend_Http_Client that has a file to post,
      * by calling $restClient->setNoReset() prior to issuing the
-     * restPost() call.    
+     * restPost() call.
      */
     public function testCanPostFileInPresetHttpClient()
     {
@@ -105,7 +123,9 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
 
     public function testRestGetThrowsExceptionWithNoUri()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $this->expectException(Zend_Rest_Client_Exception::class);
+        $this->expectExceptionMessage('URI object must be set before performing call');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -116,20 +136,13 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
                   . "\r\n"
                   . $expXml;
         $this->adapter->setResponse($response);
-
         $rest = new Zend_Rest_Client();
-
-        try {
-            $response = $rest->restGet('/rest/');
-            $this->fail('Should throw exception if no URI in object');
-        } catch (Exception $e) {
-            // success
-        }
+        $response = $rest->restGet('/rest/');
     }
 
     public function testRestFixesPathWithMissingSlashes()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -145,12 +158,12 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
 
         $response = $rest->restGet('rest');
         $this->assertTrue($response instanceof Zend_Http_Response);
-        $this->assertContains($expXml, $response->getBody());
+        $this->assertStringContainsString($expXml, $response->getBody());
     }
 
     public function testRestGet()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -164,12 +177,12 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
 
         $response = $this->rest->restGet('/rest/');
         $this->assertTrue($response instanceof Zend_Http_Response);
-        $this->assertContains($expXml, $response->getBody());
+        $this->assertStringContainsString($expXml, $response->getBody());
     }
 
     public function testRestPost()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -181,19 +194,19 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
                   . $expXml;
         $this->adapter->setResponse($response);
 
-        $reqXml   = file_get_contents($this->path . 'returnInt.xml');
+        $reqXml = file_get_contents($this->path . 'returnInt.xml');
         $response = $this->rest->restPost('/rest/', $reqXml);
         $this->assertTrue($response instanceof Zend_Http_Response);
         $body = $response->getBody();
-        $this->assertContains($expXml, $response->getBody());
+        $this->assertStringContainsString($expXml, $response->getBody());
 
         $request = Zend_Rest_Client::getHttpClient()->getLastRequest();
-        $this->assertContains($reqXml, $request, $request);
+        $this->assertStringContainsString($reqXml, $request, $request);
     }
 
     public function testRestPostWithArrayData()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -208,15 +221,15 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
         $response = $this->rest->restPost('/rest/', ['foo' => 'bar', 'baz' => 'bat']);
         $this->assertTrue($response instanceof Zend_Http_Response);
         $body = $response->getBody();
-        $this->assertContains($expXml, $response->getBody());
+        $this->assertStringContainsString($expXml, $response->getBody());
 
         $request = Zend_Rest_Client::getHttpClient()->getLastRequest();
-        $this->assertContains('foo=bar&baz=bat', $request, $request);
+        $this->assertStringContainsString('foo=bar&baz=bat', $request, $request);
     }
 
     public function testRestPut()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -228,19 +241,19 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
                   . $expXml;
         $this->adapter->setResponse($response);
 
-        $reqXml   = file_get_contents($this->path . 'returnInt.xml');
+        $reqXml = file_get_contents($this->path . 'returnInt.xml');
         $response = $this->rest->restPut('/rest/', $reqXml);
         $this->assertTrue($response instanceof Zend_Http_Response);
         $body = $response->getBody();
-        $this->assertContains($expXml, $response->getBody());
+        $this->assertStringContainsString($expXml, $response->getBody());
 
         $request = Zend_Rest_Client::getHttpClient()->getLastRequest();
-        $this->assertContains($reqXml, $request, $request);
+        $this->assertStringContainsString($reqXml, $request, $request);
     }
 
     public function testRestDelete()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -252,19 +265,19 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
                   . $expXml;
         $this->adapter->setResponse($response);
 
-        $reqXml   = file_get_contents($this->path . 'returnInt.xml');
+        $reqXml = file_get_contents($this->path . 'returnInt.xml');
         $response = $this->rest->restDelete('/rest/', $reqXml);
         $this->assertTrue($response instanceof Zend_Http_Response);
         $body = $response->getBody();
-        $this->assertContains($expXml, $response->getBody());
+        $this->assertStringContainsString($expXml, $response->getBody());
         
         $request = Zend_Rest_Client::getHttpClient()->getLastRequest();
-        $this->assertContains($reqXml, $request, $request);
+        $this->assertStringContainsString($reqXml, $request, $request);
     }
 
     public function testCallWithHttpMethod()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -284,7 +297,7 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
 
     public function testCallAsObjectMethodReturnsClient()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -303,7 +316,7 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
 
     public function testCallAsObjectMethodChainPerformsRequest()
     {
-        $expXml   = file_get_contents($this->path . 'returnString.xml');
+        $expXml = file_get_contents($this->path . 'returnString.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -326,12 +339,9 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
      */
     public function testInvalidXmlInClientResultLeadsToException()
     {
-        try {
-            $result = new Zend_Rest_Client_Result("invalidxml");
-            $this->fail();
-        } catch(Zend_Rest_Client_Result_Exception $e) {
-
-        }
+        $this->expectException(Zend_Rest_Client_Result_Exception::class);
+        $this->expectExceptionMessage('An error occured while parsing the REST response with simplexml');
+        $result = new Zend_Rest_Client_Result("invalidxml");
     }
     
     /**
@@ -339,7 +349,7 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
      */
     public function testCallStatusGetterOnResponseObjectWhenServerResponseHasNoStatusXmlElement()
     {
-        $expXml   = file_get_contents($this->path . 'returnEmptyStatus.xml');
+        $expXml = file_get_contents($this->path . 'returnEmptyStatus.xml');
         $response = "HTTP/1.0 200 OK\r\n"
                   . "X-powered-by: PHP/5.2.0\r\n"
                   . "Content-type: text/xml\r\n"
@@ -355,5 +365,4 @@ class Zend_Rest_ClientTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($response instanceof Zend_Rest_Client_Result);
         $this->assertFalse($response->getStatus());
     }
-
 }

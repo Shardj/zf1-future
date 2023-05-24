@@ -42,7 +42,6 @@ require_once 'Zend/Db/Profiler/TestCommon.php';
  */
 class Zend_Db_Profiler_MysqliTest extends Zend_Db_Profiler_TestCommon
 {
-
     public function getDriver()
     {
         return 'Mysqli';

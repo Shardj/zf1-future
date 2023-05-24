@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,15 +43,35 @@ require_once 'Zend/Application/Resource/UserAgent.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_UseragentTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var ZfAppBootstrap
+     */
+    protected $bootstrap;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -67,7 +92,7 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
         Zend_Controller_Action_HelperBroker::resetHelpers();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -99,7 +124,7 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
         $resource = new Zend_Application_Resource_Useragent($options);
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
-        $ua      = $resource->getUserAgent();
+        $ua = $resource->getUserAgent();
         $storage = $ua->getStorage();
         $this->assertTrue($storage instanceof Zend_Http_UserAgent_Storage_NonPersistent);
     }
@@ -111,7 +136,7 @@ class Zend_Application_Resource_UseragentTest extends PHPUnit_Framework_TestCase
         $resource->setBootstrap($this->bootstrap);
         $resource->init();
 
-        $view   = $this->bootstrap->getResource('view');
+        $view = $this->bootstrap->getResource('view');
         $helper = $view->getHelper('userAgent');
 
         $expected = $resource->getUserAgent();

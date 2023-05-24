@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,39 +35,55 @@ require_once 'Zend/Gdata/Calendar.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_Calendar_QuickAddTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Calendar_QuickAddTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $quickAddText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_QuickAdd|mixed
+     */
+    protected $quickAdd;
+
+    protected function setUp(): void
+    {
         $this->quickAddText = file_get_contents(
-                'Zend/Gdata/Calendar/_files/QuickAddElementSample1.xml',
-                true);
+            'Zend/Gdata/Calendar/_files/QuickAddElementSample1.xml',
+            true
+        );
         $this->quickAdd = new Zend_Gdata_Calendar_Extension_QuickAdd();
     }
 
-    public function testEmptyQuickAddShouldHaveNoExtensionElements() {
+    public function testEmptyQuickAddShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->quickAdd->extensionElements));
         $this->assertTrue(count($this->quickAdd->extensionElements) == 0);
     }
 
-    public function testEmptyQuickAddShouldHaveNoExtensionAttributes() {
+    public function testEmptyQuickAddShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->quickAdd->extensionAttributes));
         $this->assertTrue(count($this->quickAdd->extensionAttributes) == 0);
     }
 
-    public function testSampleQuickAddShouldHaveNoExtensionElements() {
+    public function testSampleQuickAddShouldHaveNoExtensionElements()
+    {
         $this->quickAdd->transferFromXML($this->quickAddText);
         $this->assertTrue(is_array($this->quickAdd->extensionElements));
         $this->assertTrue(count($this->quickAdd->extensionElements) == 0);
     }
 
-    public function testSampleQuickAddShouldHaveNoExtensionAttributes() {
+    public function testSampleQuickAddShouldHaveNoExtensionAttributes()
+    {
         $this->quickAdd->transferFromXML($this->quickAddText);
         $this->assertTrue(is_array($this->quickAdd->extensionAttributes));
         $this->assertTrue(count($this->quickAdd->extensionAttributes) == 0);
     }
 
-    public function testNormalQuickAddShouldHaveNoExtensionElements() {
+    public function testNormalQuickAddShouldHaveNoExtensionElements()
+    {
         $this->quickAdd->value = false;
         $this->assertEquals($this->quickAdd->value, false);
         $this->assertEquals(count($this->quickAdd->extensionElements), 0);
@@ -84,7 +103,8 @@ class Zend_Gdata_Calendar_QuickAddTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($newQuickAdd2->value, false);
     }
 
-    public function testEmptyQuickAddToAndFromStringShouldMatch() {
+    public function testEmptyQuickAddToAndFromStringShouldMatch()
+    {
         $quickAddXml = $this->quickAdd->saveXML();
         $newQuickAdd = new Zend_Gdata_Calendar_Extension_QuickAdd();
         $newQuickAdd->transferFromXML($quickAddXml);
@@ -92,7 +112,8 @@ class Zend_Gdata_Calendar_QuickAddTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($quickAddXml == $newQuickAddXml);
     }
 
-    public function testQuickAddWithValueToAndFromStringShouldMatch() {
+    public function testQuickAddWithValueToAndFromStringShouldMatch()
+    {
         $this->quickAdd->value = false;
         $quickAddXml = $this->quickAdd->saveXML();
         $newQuickAdd = new Zend_Gdata_Calendar_Extension_QuickAdd();
@@ -102,10 +123,11 @@ class Zend_Gdata_Calendar_QuickAddTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(false, $newQuickAdd->value);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->quickAdd->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->quickAdd->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->quickAdd->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->quickAdd->extensionAttributes['foo2']['value']);
@@ -116,9 +138,9 @@ class Zend_Gdata_Calendar_QuickAddTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newQuickAdd->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullQuickAddToAndFromString() {
+    public function testConvertFullQuickAddToAndFromString()
+    {
         $this->quickAdd->transferFromXML($this->quickAddText);
         $this->assertEquals($this->quickAdd->value, true);
     }
-
 }

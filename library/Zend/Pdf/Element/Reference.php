@@ -159,7 +159,7 @@ class Zend_Pdf_Element_Reference extends Zend_Pdf_Element
 
     /**
      * Dereference.
-     * Take inderect object, take $value member of this object (must be Zend_Pdf_Element),
+     * Take indirect object, take $value member of this object (must be Zend_Pdf_Element),
      * take reference to the $value member of this object and assign it to
      * $value member of current PDF Reference object
      * $obj can be null

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,20 +38,19 @@ require_once 'Zend/CodeGenerator/Php/Docblock.php';
  * @group Zend_CodeGenerator
  * @group Zend_CodeGenerator_Php
  */
-class Zend_CodeGenerator_Php_DocblockTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_DocblockTest extends TestCase
 {
-
     /**
      * @var Zend_CodeGenerator_Php_Docblock
      */
     protected $_docblock = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_docblock = new Zend_CodeGenerator_Php_Docblock();
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_docblock = null;
     }
@@ -82,7 +84,5 @@ class Zend_CodeGenerator_Php_DocblockTest extends PHPUnit_Framework_TestCase
 EOS;
 
         $this->assertEquals($target, $this->_docblock->generate());
-
     }
-
 }

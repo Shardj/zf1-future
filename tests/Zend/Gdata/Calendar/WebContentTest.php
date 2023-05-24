@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,39 +35,55 @@ require_once 'Zend/Gdata/Calendar.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Calendar_WebContentTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $webContentText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_WebContent|mixed
+     */
+    protected $webContent;
+
+    protected function setUp(): void
+    {
         $this->webContentText = file_get_contents(
-                'Zend/Gdata/Calendar/_files/WebContentElementSample1.xml',
-                true);
+            'Zend/Gdata/Calendar/_files/WebContentElementSample1.xml',
+            true
+        );
         $this->webContent = new Zend_Gdata_Calendar_Extension_WebContent();
     }
 
-    public function testEmptyWebContentShouldHaveNoExtensionElements() {
+    public function testEmptyWebContentShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->webContent->extensionElements));
         $this->assertTrue(count($this->webContent->extensionElements) == 0);
     }
 
-    public function testEmptyWebContentShouldHaveNoExtensionAttributes() {
+    public function testEmptyWebContentShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->webContent->extensionAttributes));
         $this->assertTrue(count($this->webContent->extensionAttributes) == 0);
     }
 
-    public function testSampleWebContentShouldHaveNoExtensionElements() {
+    public function testSampleWebContentShouldHaveNoExtensionElements()
+    {
         $this->webContent->transferFromXML($this->webContentText);
         $this->assertTrue(is_array($this->webContent->extensionElements));
         $this->assertTrue(count($this->webContent->extensionElements) == 0);
     }
 
-    public function testSampleWebContentShouldHaveNoExtensionAttributes() {
+    public function testSampleWebContentShouldHaveNoExtensionAttributes()
+    {
         $this->webContent->transferFromXML($this->webContentText);
         $this->assertTrue(is_array($this->webContent->extensionAttributes));
         $this->assertTrue(count($this->webContent->extensionAttributes) == 0);
     }
 
-    public function testNormalWebContentShouldHaveNoExtensionElements() {
+    public function testNormalWebContentShouldHaveNoExtensionElements()
+    {
         $this->webContent->url = "http://nowhere.invalid/";
         $this->webContent->height = "100";
         $this->webContent->width = "200";
@@ -94,7 +113,8 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($newWebContent2->width, "200");
     }
 
-    public function testEmptyWebContentToAndFromStringShouldMatch() {
+    public function testEmptyWebContentToAndFromStringShouldMatch()
+    {
         $webContentXml = $this->webContent->saveXML();
         $newWebContent = new Zend_Gdata_Calendar_Extension_WebContent();
         $newWebContent->transferFromXML($webContentXml);
@@ -102,7 +122,8 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($webContentXml == $newWebContentXml);
     }
 
-    public function testWebContentWithValueToAndFromStringShouldMatch() {
+    public function testWebContentWithValueToAndFromStringShouldMatch()
+    {
         $this->webContent->url = "http://nowhere.invalid/";
         $this->webContent->height = "100";
         $this->webContent->width = "200";
@@ -116,10 +137,11 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->webContent->width, "200");
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->webContent->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->webContent->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->webContent->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->webContent->extensionAttributes['foo2']['value']);
@@ -130,11 +152,11 @@ class Zend_Gdata_Calendar_WebContentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newWebContent->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullWebContentToAndFromString() {
+    public function testConvertFullWebContentToAndFromString()
+    {
         $this->webContent->transferFromXML($this->webContentText);
         $this->assertEquals($this->webContent->url, "http://www.google.com/logos/july4th06.gif");
         $this->assertEquals($this->webContent->height, "120");
         $this->assertEquals($this->webContent->width, "276");
     }
-
 }

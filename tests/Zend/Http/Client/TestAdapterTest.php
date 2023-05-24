@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Http
  * @group      Zend_Http_Client
  */
-class Zend_Http_Client_TestAdapterTest extends PHPUnit_Framework_TestCase
+class Zend_Http_Client_TestAdapterTest extends TestCase
 {
     /**
      * Test adapter
@@ -47,7 +50,7 @@ class Zend_Http_Client_TestAdapterTest extends PHPUnit_Framework_TestCase
      * Set up the test adapter before running the test
      *
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->adapter = new Zend_Http_Client_Adapter_Test();
     }
@@ -56,36 +59,47 @@ class Zend_Http_Client_TestAdapterTest extends PHPUnit_Framework_TestCase
      * Tear down the test adapter after running the test
      *
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->adapter = null;
     }
 
     /**
      * Make sure an exception is thrown on invalid cofiguration
-     *
-     * @expectedException Zend_Http_Client_Adapter_Exception
      */
     public function testSetConfigThrowsOnInvalidConfig()
     {
+        $this->expectException(Zend_Http_Client_Adapter_Exception::class);
         $this->adapter->setConfig('foo');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetConfigReturnsQuietly()
     {
         $this->adapter->setConfig(['foo' => 'bar']);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConnectReturnsQuietly()
     {
         $this->adapter->connect('http://foo');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCloseReturnsQuietly()
     {
         $this->adapter->close();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFailRequestOnDemand()
     {
         $this->adapter->setNextRequestWillFail(true);
@@ -193,7 +207,7 @@ class Zend_Http_Client_TestAdapterTest extends PHPUnit_Framework_TestCase
             } catch (Exception $e) {
                 $class = 'Zend_Http_Client_Adapter_Exception';
                 $this->assertTrue($e instanceof $class);
-                $this->assertRegexp('/out of range/i', $e->getMessage());
+                $this->assertMatchesRegularExpression('/out of range/i', $e->getMessage());
             }
         }
     }
@@ -215,7 +229,7 @@ class Zend_Http_Client_TestAdapterTest extends PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    static public function validHttpResponseProvider()
+    public static function validHttpResponseProvider()
     {
         return [
            ["HTTP/1.1 200 OK\r\n\r\n"],

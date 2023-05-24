@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class BazController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for preDispatch
      *
@@ -66,5 +65,4 @@ class BazController extends Zend_Controller_Action
     {
         $this->_response->appendBody("Default Baz::bar action called\n");
     }
-
 }

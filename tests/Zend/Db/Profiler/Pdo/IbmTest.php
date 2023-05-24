@@ -45,5 +45,4 @@ class Zend_Db_Profiler_Pdo_IbmTest extends Zend_Db_Profiler_TestCommon
     {
         return 'Pdo_Ibm';
     }
-
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,12 +37,15 @@ require_once 'Zend/Filter/Encrypt.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_DecryptTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_DecryptTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('mcrypt') && !extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the mcrypt or openssl extension');
+        }
+        if (extension_loaded('mcrypt') && version_compare(PHP_VERSION, '7.1.0', '>=')) {
+            $this->markTestSkipped('mcrypt_* function has been DEPRECATED as of PHP 7.1.0 and REMOVED as of PHP 7.2.0. Relying on this function is highly discouraged.');
         }
     }
 
@@ -58,7 +64,7 @@ class Zend_Filter_DecryptTest extends PHPUnit_Framework_TestCase
         $valuesExpected = [
             'STRING' => 'STRING',
             'ABC1@3' => 'ABC1@3',
-            'A b C'  => 'A B C'
+            'A b C' => 'A B C'
         ];
 
         $enc = $filter->getEncryption();
@@ -108,7 +114,8 @@ cAkcoMuBcgWhIn/46C1PAkEAzLK/ibrdMQLOdO4SuDgj/2nc53NZ3agl61ew8Os6
 d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 -----END RSA PRIVATE KEY-----
 '],
-            $key);
+            $key
+        );
     }
 
 
@@ -143,13 +150,13 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
         $filter->setVector('testvect');
         $this->assertEquals(
             [
-                'key'                 => 'testkey',
-                'algorithm'           => MCRYPT_BLOWFISH,
+                'key' => 'testkey',
+                'algorithm' => MCRYPT_BLOWFISH,
                 'algorithm_directory' => '',
-                'mode'                => MCRYPT_MODE_CBC,
-                'mode_directory'      => '',
-                'vector'              => 'testvect',
-                'salt'                => '',
+                'mode' => MCRYPT_MODE_CBC,
+                'mode_directory' => '',
+                'vector' => 'testvect',
+                'salt' => '',
             ],
             $filter->getEncryption()
         );
@@ -170,16 +177,17 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
         $filter->setVector('testvect');
         $filter->setEncryption(
             ['mode' => MCRYPT_MODE_ECB,
-                  'algorithm' => MCRYPT_3DES]);
+                  'algorithm' => MCRYPT_3DES]
+        );
         $this->assertEquals(
             [
-                'mode'                => MCRYPT_MODE_ECB,
-                'algorithm'           => MCRYPT_3DES,
-                'key'                 => 'testkey',
+                'mode' => MCRYPT_MODE_ECB,
+                'algorithm' => MCRYPT_3DES,
+                'key' => 'testkey',
                 'algorithm_directory' => '',
-                'mode_directory'      => '',
-                'vector'              => 'testvect',
-                'salt'                => '',
+                'mode_directory' => '',
+                'vector' => 'testvect',
+                'salt' => '',
             ],
             $filter->getEncryption()
         );
@@ -210,7 +218,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
 
     /**
      * Ensures that the filter allows de/encryption
-     *
+     * @requires PHP < 8.0
      * @return void
      */
     public function testEncryptionWithDecryptionOpenssl()
@@ -258,7 +266,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
             $filter->setAdapter('TestAdapter');
             $this->fail('Exception expected on setting a non adapter');
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('does not implement Zend_Filter_Encrypt_Interface', $e->getMessage());
+            $this->assertStringContainsString('does not implement Zend_Filter_Encrypt_Interface', $e->getMessage());
         }
     }
 
@@ -276,7 +284,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
             $filter->getUnknownMethod();
             $this->fail('Exception expected on calling a non existing method');
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('Unknown method', $e->getMessage());
+            $this->assertStringContainsString('Unknown method', $e->getMessage());
         }
     }
 }

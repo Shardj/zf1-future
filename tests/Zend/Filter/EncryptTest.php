@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,12 +37,19 @@ require_once 'Zend/Filter/Decrypt.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_EncryptTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_EncryptTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('mcrypt') && !extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the mcrypt or openssl extension');
+        }
+    }
+
+    protected function skipTestSincePhp71McryptIsDeprecated()
+    {
+        if (extension_loaded('mcrypt') && version_compare(PHP_VERSION, '7.1.0', '>=')) {
+            $this->markTestSkipped('mcrypt_* function has been DEPRECATED as of PHP 7.1.0 and REMOVED as of PHP 7.2.0. Relying on this function is highly discouraged.');
         }
     }
 
@@ -53,12 +63,12 @@ class Zend_Filter_EncryptTest extends PHPUnit_Framework_TestCase
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('Mcrypt extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $valuesExpected = [
             'STRING' => 'STRING',
             'ABC1@3' => 'ABC1@3',
-            'A b C'  => 'A B C'
+            'A b C' => 'A B C'
         ];
 
         $enc = $filter->getEncryption();
@@ -71,6 +81,7 @@ class Zend_Filter_EncryptTest extends PHPUnit_Framework_TestCase
 
     /**
      * Ensures that the filter follows expected behavior
+     * @requires PHP < 8.0
      *
      * @return void
      */
@@ -84,7 +95,7 @@ class Zend_Filter_EncryptTest extends PHPUnit_Framework_TestCase
         $valuesExpected = [
             'STRING' => 'STRING',
             'ABC1@3' => 'ABC1@3',
-            'A b C'  => 'A B C'
+            'A b C' => 'A B C'
         ];
 
         $filter->setPublicKey(dirname(__FILE__) . '/_files/publickey.pem');
@@ -110,7 +121,8 @@ FDD4V7XpcNU63QIDAQABMA0GCSqGSIb3DQEBBAUAA4GBAFQ22OU/PAN7rRDr23NS
 PIDs9E7uuizAKDhRRRvho8BS
 -----END CERTIFICATE-----
 '],
-            $key);
+            $key
+        );
         foreach ($valuesExpected as $input => $output) {
             $this->assertNotEquals($output, $filter->filter($input));
         }
@@ -127,7 +139,7 @@ PIDs9E7uuizAKDhRRRvho8BS
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('Mcrypt extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $this->assertEquals('testvect', $filter->getVector());
@@ -143,7 +155,7 @@ PIDs9E7uuizAKDhRRRvho8BS
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('Mcrypt extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $this->assertEquals(
@@ -168,12 +180,13 @@ PIDs9E7uuizAKDhRRRvho8BS
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('Mcrypt extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $filter->setEncryption(
             ['mode' => MCRYPT_MODE_ECB,
-                  'algorithm' => MCRYPT_3DES]);
+                  'algorithm' => MCRYPT_3DES]
+        );
         $this->assertEquals(
             ['key' => 'testkey',
                   'algorithm' => MCRYPT_3DES,
@@ -196,7 +209,7 @@ PIDs9E7uuizAKDhRRRvho8BS
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('Mcrypt extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt(['adapter' => 'Mcrypt', 'key' => 'testkey']);
         $filter->setVector('testvect');
         $output = $filter->filter('teststring');
@@ -211,6 +224,7 @@ PIDs9E7uuizAKDhRRRvho8BS
 
     /**
      * Ensures that the filter allows de/encryption
+     * @requires PHP < 8.0
      *
      * @return void
      */
@@ -219,7 +233,7 @@ PIDs9E7uuizAKDhRRRvho8BS
         if (!extension_loaded('openssl')) {
             $this->markTestSkipped('Openssl extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt(['adapter' => 'Openssl']);
         $filter->setPublicKey(dirname(__FILE__) . '/_files/publickey.pem');
         $output = $filter->filter('teststring');
@@ -247,7 +261,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
         if (!extension_loaded('mcrypt') || !extension_loaded('openssl')) {
             $this->markTestSkipped('Mcrypt or Openssl extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt();
         $filter->setAdapter('Openssl');
         $this->assertEquals('Openssl', $filter->getAdapter());
@@ -259,7 +273,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
             $filter->setAdapter('TestAdapter2');
             $this->fail('Exception expected on setting a non adapter');
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('does not implement Zend_Filter_Encrypt_Interface', $e->getMessage());
+            $this->assertStringContainsString('does not implement Zend_Filter_Encrypt_Interface', $e->getMessage());
         }
     }
 
@@ -271,13 +285,13 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt');
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('Mcrypt extension not installed');
         }
-
+        $this->skipTestSincePhp71McryptIsDeprecated();
         $filter = new Zend_Filter_Encrypt();
         try {
             $filter->getUnknownMethod();
             $this->fail('Exception expected on calling a non existing method');
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('Unknown method', $e->getMessage());
+            $this->assertStringContainsString('Unknown method', $e->getMessage());
         }
     }
 }
