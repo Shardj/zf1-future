@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -58,12 +61,11 @@ require_once 'Zend/Search/Lucene/Document/Html.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_DocumentTest extends TestCase
 {
-
     private function _clearDirectory($dirName)
     {
-        if (!file_exists($dirName) || !is_dir($dirName))  {
+        if (!file_exists($dirName) || !is_dir($dirName)) {
             return;
         }
 
@@ -79,34 +81,34 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
 
     public function testCreate()
     {
-        $document =  new Zend_Search_Lucene_Document();
+        $document = new Zend_Search_Lucene_Document();
 
         $this->assertEquals($document->boost, 1);
     }
 
     public function testFields()
     {
-        $document =  new Zend_Search_Lucene_Document();
+        $document = new Zend_Search_Lucene_Document();
 
-        $document->addField(Zend_Search_Lucene_Field::Text('title',      'Title'));
+        $document->addField(Zend_Search_Lucene_Field::Text('title', 'Title'));
         $document->addField(Zend_Search_Lucene_Field::Text('annotation', 'Annotation'));
-        $document->addField(Zend_Search_Lucene_Field::Text('body',       'Document body, document body, document body...'));
+        $document->addField(Zend_Search_Lucene_Field::Text('body', 'Document body, document body, document body...'));
 
         $fieldnamesDiffArray = array_diff($document->getFieldNames(), ['title', 'annotation', 'body']);
         $this->assertTrue(is_array($fieldnamesDiffArray));
         $this->assertEquals(count($fieldnamesDiffArray), 0);
 
-        $this->assertEquals($document->title,      'Title');
+        $this->assertEquals($document->title, 'Title');
         $this->assertEquals($document->annotation, 'Annotation');
-        $this->assertEquals($document->body,       'Document body, document body, document body...');
+        $this->assertEquals($document->body, 'Document body, document body, document body...');
 
-        $this->assertEquals($document->getField('title')->value,      'Title');
+        $this->assertEquals($document->getField('title')->value, 'Title');
         $this->assertEquals($document->getField('annotation')->value, 'Annotation');
-        $this->assertEquals($document->getField('body')->value,       'Document body, document body, document body...');
+        $this->assertEquals($document->getField('body')->value, 'Document body, document body, document body...');
 
-        $this->assertEquals($document->getFieldValue('title'),      'Title');
+        $this->assertEquals($document->getFieldValue('title'), 'Title');
         $this->assertEquals($document->getFieldValue('annotation'), 'Annotation');
-        $this->assertEquals($document->getFieldValue('body'),       'Document body, document body, document body...');
+        $this->assertEquals($document->getFieldValue('body'), 'Document body, document body, document body...');
 
 
         if (PHP_OS == 'AIX') {
@@ -121,13 +123,13 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
 
     public function testAddFieldMethodChaining()
     {
-        $document =  new Zend_Search_Lucene_Document();
+        $document = new Zend_Search_Lucene_Document();
         $this->assertTrue($document->addField(Zend_Search_Lucene_Field::Text('title', 'Title')) instanceof Zend_Search_Lucene_Document);
 
-        $document =  new Zend_Search_Lucene_Document();
-        $document->addField(Zend_Search_Lucene_Field::Text('title',      'Title'))
+        $document = new Zend_Search_Lucene_Document();
+        $document->addField(Zend_Search_Lucene_Field::Text('title', 'Title'))
                  ->addField(Zend_Search_Lucene_Field::Text('annotation', 'Annotation'))
-                 ->addField(Zend_Search_Lucene_Field::Text('body',       'Document body, document body, document body...'));
+                 ->addField(Zend_Search_Lucene_Field::Text('body', 'Document body, document body, document body...'));
     }
 
 
@@ -145,11 +147,13 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $doc = Zend_Search_Lucene_Document_Html::loadHTML('<HTML><HEAD><TITLE>Page title</TITLE></HEAD><BODY>Document body.</BODY></HTML>');
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
-        $doc->highlightExtended('document',
-                                ['Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
+        $doc->highlightExtended(
+            'document',
+            ['Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
                                       'extendedHighlightingCallback'],
-                                ['style="color:black;background-color:#ff66ff"',
-                                      '(!!!)']);
+            ['style="color:black;background-color:#ff66ff"',
+                                      '(!!!)']
+        );
         $this->assertTrue(strpos($doc->getHTML(), '<b style="color:black;background-color:#ff66ff">Document</b>(!!!) body.') !== false);
     }
 
@@ -161,7 +165,7 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $doc->highlight(['document', 'body'], '#66ffff');
         $highlightedHTML = $doc->getHTML();
         $this->assertTrue(strpos($highlightedHTML, '<b style="color:black;background-color:#66ffff">Document</b>') !== false);
-        $this->assertTrue(strpos($highlightedHTML, '<b style="color:black;background-color:#66ffff">body</b>')     !== false);
+        $this->assertTrue(strpos($highlightedHTML, '<b style="color:black;background-color:#66ffff">body</b>') !== false);
     }
 
     public function testHtmlExtendedHighlightingCorrectWrongHtml()
@@ -169,17 +173,19 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $doc = Zend_Search_Lucene_Document_Html::loadHTML('<HTML><HEAD><TITLE>Page title</TITLE></HEAD><BODY>Document body.</BODY></HTML>');
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
-        $doc->highlightExtended('document',
-                                ['Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
+        $doc->highlightExtended(
+            'document',
+            ['Zend_Search_Lucene_DocumentTest_DocHighlightingContainer',
                                       'extendedHighlightingCallback'],
-                                ['style="color:black;background-color:#ff66ff"',
-                                      '<h3>(!!!)' /* Wrong HTML here, <h3> tag is not closed */]);
+            ['style="color:black;background-color:#ff66ff"',
+                                      '<h3>(!!!)' /* Wrong HTML here, <h3> tag is not closed */]
+        );
         $this->assertTrue(strpos($doc->getHTML(), '<b style="color:black;background-color:#ff66ff">Document</b><h3>(!!!)</h3> body.') !== false);
     }
 
     public function testHtmlLinksProcessing()
     {
-        $doc =  Zend_Search_Lucene_Document_Html::loadHTMLFile(dirname(__FILE__) . '/_indexSource/_files/contributing.documentation.html', true);
+        $doc = Zend_Search_Lucene_Document_Html::loadHTMLFile(dirname(__FILE__) . '/_indexSource/_files/contributing.documentation.html', true);
         $this->assertTrue($doc instanceof Zend_Search_Lucene_Document_Html);
 
         $this->assertTrue(array_values($doc->getHeaderLinks()) ==
@@ -227,14 +233,14 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Document body.'
-                .   '<img src="img.png" width="640" height="480" alt="some image" usemap="#some_map" />'
-                .   '<map name="some_map">'
-                .     '<area shape="rect" coords="0,0,100,100" href="link3.html" alt="Link 3" />'
-                .     '<area shape="rect" coords="200,200,300,300" href="link4.html" alt="Link 4" />'
-                .   '</map>'
-                .   '<a href="link1.html">Link 1</a>.'
-                .   '<a href="link2.html" rel="nofollow">Link 1</a>.'
+                . 'Document body.'
+                . '<img src="img.png" width="640" height="480" alt="some image" usemap="#some_map" />'
+                . '<map name="some_map">'
+                . '<area shape="rect" coords="0,0,100,100" href="link3.html" alt="Link 3" />'
+                . '<area shape="rect" coords="200,200,300,300" href="link4.html" alt="Link 4" />'
+                . '</map>'
+                . '<a href="link1.html">Link 1</a>.'
+                . '<a href="link2.html" rel="nofollow">Link 1</a>.'
                 . '</BODY>'
               . '</HTML>';
 
@@ -252,9 +258,9 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Document body.'
-                .   '<a href="link1.html">Link 1</a>.'
-                .   '<a href="link2.html" rel="nofollow">Link 1</a>.'
+                . 'Document body.'
+                . '<a href="link1.html">Link 1</a>.'
+                . '<a href="link2.html" rel="nofollow">Link 1</a>.'
                 . '</BODY>'
               . '</HTML>';
 
@@ -322,7 +328,7 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($xlsxDocument->getFieldValue('title'), 'Test document');
         $this->assertEquals($xlsxDocument->getFieldValue('description'), 'This is a test document which can be used to demonstrate something.');
         $this->assertTrue($xlsxDocument->getFieldValue('body') != '');
-        $this->assertTrue( strpos($xlsxDocument->getFieldValue('body'), 'ipsum') !== false );
+        $this->assertTrue(strpos($xlsxDocument->getFieldValue('body'), 'ipsum') !== false);
     }
 
     /**
@@ -336,7 +342,8 @@ class Zend_Search_Lucene_DocumentTest extends PHPUnit_Framework_TestCase
 }
 
 
-class Zend_Search_Lucene_DocumentTest_DocHighlightingContainer {
+class Zend_Search_Lucene_DocumentTest_DocHighlightingContainer
+{
     public static function extendedHighlightingCallback($stringToHighlight, $param1, $param2)
     {
         return '<b ' . $param1 . '>' . $stringToHighlight . '</b>' . $param2;

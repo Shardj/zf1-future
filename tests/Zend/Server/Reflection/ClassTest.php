@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Server/Reflection.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
+class Zend_Server_Reflection_ClassTest extends TestCase
 {
     /**
      * __construct() test
@@ -130,6 +133,10 @@ class Zend_Server_Reflection_ClassTest extends PHPUnit_Framework_TestCase
      */
     public function test__wakeup()
     {
+        if (version_compare(phpversion(), '7', '>=')) {
+            $this->markTestSkipped("Serialization of 'ReflectionFunction' is not allowed since PHP7+");
+            return;
+        }
         $r = new Zend_Server_Reflection_Class(new ReflectionClass('Zend_Server_Reflection'));
         $s = serialize($r);
         $u = unserialize($s);

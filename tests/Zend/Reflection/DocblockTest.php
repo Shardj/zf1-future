@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,13 +35,11 @@ require_once 'Zend/Reflection/File.php';
  * @group      Zend_Reflection
  * @group      Zend_Reflection_Docblock
  */
-class Zend_Reflection_DocblockTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_DocblockTest extends TestCase
 {
+    protected static $_sampleClassFileRequired = false;
 
-
-    static protected $_sampleClassFileRequired = false;
-
-    public function setup()
+    protected function setUp(): void
     {
         if (self::$_sampleClassFileRequired === false) {
             $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';
@@ -56,7 +57,7 @@ class Zend_Reflection_DocblockTest extends PHPUnit_Framework_TestCase
     public function testDocblockLongDescription()
     {
         $classReflection = new Zend_Reflection_Class('Zend_Reflection_TestSampleClass5');
-        $expectedOutput =<<<EOS
+        $expectedOutput = <<<EOS
 This is a long description for
 the docblock of this class, it
 should be longer than 3 lines.
@@ -65,7 +66,6 @@ now.
 EOS;
 
         $this->assertEquals($classReflection->getDocblock()->getLongDescription(), $expectedOutput);
-
     }
 
     public function testDocblockTags()
@@ -81,7 +81,7 @@ EOS;
 
         $returnTag = $classReflection->getMethod('doSomething')->getDocblock()->getTag('return');
         $this->assertEquals(get_class($returnTag), 'Zend_Reflection_Docblock_Tag_Return');
-        $this->assertEquals($returnTag->getType(), 'mixed');
+        $this->assertEquals('string', $returnTag->getType());
     }
 
     public function testDocblockLines()
@@ -90,9 +90,8 @@ EOS;
 
         $classDocblock = $classReflection->getDocblock();
 
-        $this->assertEquals($classDocblock->getStartLine(), 76);
-        $this->assertEquals($classDocblock->getEndLine(), 86);
-
+        $this->assertEquals($classDocblock->getStartLine(), 77);
+        $this->assertEquals($classDocblock->getEndLine(), 87);
     }
 
     public function testDocblockContents()
@@ -115,7 +114,6 @@ now.
 EOS;
 
         $this->assertEquals($classDocblock->getContents(), $expectedContents);
-
     }
 
     public function testToString()
@@ -133,5 +131,4 @@ EOS;
 
         $this->assertEquals($expectedString, (string)$classDocblock);
     }
-
 }

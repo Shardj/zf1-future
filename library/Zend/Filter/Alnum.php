@@ -111,7 +111,7 @@ class Zend_Filter_Alnum implements Zend_Filter_Interface
      * Sets the allowWhiteSpace option
      *
      * @param boolean $allowWhiteSpace
-     * @return Zend_Filter_Alnum Provides a fluent interface
+     * @return $this
      */
     public function setAllowWhiteSpace($allowWhiteSpace)
     {

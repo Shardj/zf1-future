@@ -47,7 +47,12 @@ require_once 'Zend/Pdf/Resource/Font/Simple/Standard.php';
  */
 class Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBold extends Zend_Pdf_Resource_Font_Simple_Standard
 {
-  /**** Public Interface ****/
+    /**
+     * @var bool
+     */
+    protected $_isMonospaced;
+
+    /**** Public Interface ****/
 
 
   /* Object Lifecycle */

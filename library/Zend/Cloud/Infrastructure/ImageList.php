@@ -71,7 +71,7 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
     /**
      * Add an image
      *
-     * @param  Image
+     * @param  Image $image
      * @return Zend_Cloud_Infrastructure_ImageList
      */
     protected function addImage(Zend_Cloud_Infrastructure_Image $image)

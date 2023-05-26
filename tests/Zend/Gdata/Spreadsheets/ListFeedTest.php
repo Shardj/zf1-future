@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,22 +35,26 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Spreadsheets
  */
-class Zend_Gdata_Spreadsheets_ListFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Spreadsheets_ListFeedTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_ListFeed|mixed
+     */
+    protected $listFeed;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->listFeed = new Zend_Gdata_Spreadsheets_ListFeed(
-                file_get_contents(dirname(__FILE__) . '/_files/TestDataListFeedSample1.xml'),
-                true);
+            file_get_contents(dirname(__FILE__) . '/_files/TestDataListFeedSample1.xml'),
+            true
+        );
     }
 
     public function testToAndFromString()
     {
         $this->assertTrue(count($this->listFeed->entries) == 2);
         $this->assertTrue($this->listFeed->entries->count() == 2);
-        foreach($this->listFeed->entries as $entry)
-        {
+        foreach ($this->listFeed->entries as $entry) {
             $this->assertTrue($entry instanceof Zend_Gdata_Spreadsheets_ListEntry);
         }
 
@@ -58,11 +65,8 @@ class Zend_Gdata_Spreadsheets_ListFeedTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue(count($newListFeed->entries) == 2);
         $this->assertTrue($newListFeed->entries->count() == 2);
-        foreach($newListFeed->entries as $entry)
-        {
+        foreach ($newListFeed->entries as $entry) {
             $this->assertTrue($entry instanceof Zend_Gdata_Spreadsheets_ListEntry);
         }
-
     }
-
 }

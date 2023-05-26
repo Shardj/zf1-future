@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Measure/Current.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Measure
  */
-class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
+class Zend_Measure_CurrentTest extends TestCase
 {
     /**
      * test for Current initialisation
@@ -41,19 +44,20 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentInit()
     {
-        $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'de');
-        $this->assertTrue($value instanceof Zend_Measure_Current,'Zend_Measure_Current Object not returned');
+        $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertTrue($value instanceof Zend_Measure_Current, 'Zend_Measure_Current Object not returned');
     }
 
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testCurrentUnknownType()
     {
         try {
-            $value = new Zend_Measure_Current('100','Current::UNKNOWN','de');
+            $value = new Zend_Measure_Current('100', 'Current::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -64,11 +68,12 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testCurrentUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Current('novalue',Zend_Measure_Current::STANDARD,'de');
+            $value = new Zend_Measure_Current('novalue', Zend_Measure_Current::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -79,11 +84,12 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected root value
+     * @doesNotPerformAssertions
      */
     public function testCurrentUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'nolocale');
+            $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -97,8 +103,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentNoLocale()
     {
-        $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD);
-        $this->assertEquals(100, $value->getValue(),'Zend_Measure_Current value expected');
+        $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD);
+        $this->assertEquals(100, $value->getValue(), 'Zend_Measure_Current value expected');
     }
 
 
@@ -108,7 +114,7 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentValuePositive()
     {
-        $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals(100, $value->getValue(), 'Zend_Measure_Current value expected to be a positive integer');
     }
 
@@ -119,7 +125,7 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentValueNegative()
     {
-        $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals(-100, $value->getValue(), 'Zend_Measure_Current value expected to be a negative integer');
     }
 
@@ -130,7 +136,7 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentValueDecimal()
     {
-        $value = new Zend_Measure_Current('-100,200',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100,200', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals(-100.200, $value->getValue(), 'Zend_Measure_Current value expected to be a decimal value');
     }
 
@@ -141,8 +147,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentValueDecimalSeperated()
     {
-        $value = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_Current Object not returned');
+        $value = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_Current Object not returned');
     }
 
 
@@ -152,8 +158,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentValueString()
     {
-        $value = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $this->assertEquals(-100100.200, $value->getValue(),'Zend_Measure_Current Object not returned');
+        $value = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertEquals(-100100.200, $value->getValue(), 'Zend_Measure_Current Object not returned');
     }
 
 
@@ -163,9 +169,9 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentEquality()
     {
-        $value = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $newvalue = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $this->assertTrue($value->equals($newvalue),'Zend_Measure_Current Object should be equal');
+        $value = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertTrue($value->equals($newvalue), 'Zend_Measure_Current Object should be equal');
     }
 
 
@@ -175,9 +181,9 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentNoEquality()
     {
-        $value = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $newvalue = new Zend_Measure_Current('-100,200',Zend_Measure_Current::STANDARD,'de');
-        $this->assertFalse($value->equals($newvalue),'Zend_Measure_Current Object should be not equal');
+        $value = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $newvalue = new Zend_Measure_Current('-100,200', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertFalse($value->equals($newvalue), 'Zend_Measure_Current Object should be not equal');
     }
 
 
@@ -187,8 +193,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentSetPositive()
     {
-        $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'de');
-        $value->setValue('200',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'de');
+        $value->setValue('200', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals(200, $value->getValue(), 'Zend_Measure_Current value expected to be a positive integer');
     }
 
@@ -199,8 +205,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentSetNegative()
     {
-        $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
-        $value->setValue('-200',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
+        $value->setValue('-200', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals(-200, $value->getValue(), 'Zend_Measure_Current value expected to be a negative integer');
     }
 
@@ -211,8 +217,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentSetDecimal()
     {
-        $value = new Zend_Measure_Current('-100,200',Zend_Measure_Current::STANDARD,'de');
-        $value->setValue('-200,200',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100,200', Zend_Measure_Current::STANDARD, 'de');
+        $value->setValue('-200,200', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals(-200.200, $value->getValue(), 'Zend_Measure_Current value expected to be a decimal value');
     }
 
@@ -223,9 +229,9 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentSetDecimalSeperated()
     {
-        $value = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Current::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Current Object not returned');
+        $value = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Current Object not returned');
     }
 
 
@@ -235,21 +241,22 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentSetString()
     {
-        $value = new Zend_Measure_Current('-100.100,200',Zend_Measure_Current::STANDARD,'de');
-        $value->setValue('-200.200,200',Zend_Measure_Current::STANDARD,'de');
-        $this->assertEquals(-200200.200, $value->getValue(),'Zend_Measure_Current Object not returned');
+        $value = new Zend_Measure_Current('-100.100,200', Zend_Measure_Current::STANDARD, 'de');
+        $value->setValue('-200.200,200', Zend_Measure_Current::STANDARD, 'de');
+        $this->assertEquals(-200200.200, $value->getValue(), 'Zend_Measure_Current Object not returned');
     }
 
 
     /**
      * test for exception unknown type
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testCurrentSetUnknownType()
     {
         try {
-            $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'de');
-            $value->setValue('-200.200,200','Current::UNKNOWN','de');
+            $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'de');
+            $value->setValue('-200.200,200', 'Current::UNKNOWN', 'de');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -260,12 +267,13 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown value
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testCurrentSetUnknownValue()
     {
         try {
-            $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'de');
-            $value->setValue('novalue',Zend_Measure_Current::STANDARD,'de');
+            $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'de');
+            $value->setValue('novalue', Zend_Measure_Current::STANDARD, 'de');
             $this->fail('Exception expected because of empty value');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -276,12 +284,13 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
     /**
      * test for exception unknown locale
      * expected exception
+     * @doesNotPerformAssertions
      */
     public function testCurrentSetUnknownLocale()
     {
         try {
-            $value = new Zend_Measure_Current('100',Zend_Measure_Current::STANDARD,'de');
-            $value->setValue('200',Zend_Measure_Current::STANDARD,'nolocale');
+            $value = new Zend_Measure_Current('100', Zend_Measure_Current::STANDARD, 'de');
+            $value->setValue('200', Zend_Measure_Current::STANDARD, 'nolocale');
             $this->fail('Exception expected because of unknown locale');
         } catch (Zend_Measure_Exception $e) {
             // success
@@ -307,7 +316,7 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentSetType()
     {
-        $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
         $value->setType(Zend_Measure_Current::NANOAMPERE);
         $this->assertEquals(Zend_Measure_Current::NANOAMPERE, $value->getType(), 'Zend_Measure_Current type expected');
     }
@@ -316,11 +325,12 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
     /**
      * test setting unknown type
      * expected new type
+     * @doesNotPerformAssertions
      */
     public function testCurrentSetTypeFailed()
     {
         try {
-            $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
+            $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
             $value->setType('Current::UNKNOWN');
             $this->fail('Exception expected because of unknown type');
         } catch (Zend_Measure_Exception $e) {
@@ -335,7 +345,7 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentToString()
     {
-        $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals('-100 A', $value->toString(), 'Value -100 A expected');
     }
 
@@ -346,7 +356,7 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrent_ToString()
     {
-        $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
+        $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
         $this->assertEquals('-100 A', $value->__toString(), 'Value -100 A expected');
     }
 
@@ -357,8 +367,8 @@ class Zend_Measure_CurrentTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrentConversionList()
     {
-        $value = new Zend_Measure_Current('-100',Zend_Measure_Current::STANDARD,'de');
-        $unit  = $value->getConversionList();
+        $value = new Zend_Measure_Current('-100', Zend_Measure_Current::STANDARD, 'de');
+        $unit = $value->getConversionList();
         $this->assertTrue(is_array($unit), 'Array expected');
     }
 }

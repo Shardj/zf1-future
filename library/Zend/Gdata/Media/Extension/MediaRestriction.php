@@ -120,7 +120,7 @@ class Zend_Gdata_Media_Extension_MediaRestriction extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaRestriction Provides a fluent interface
+     * @return $this
      */
     public function setRelationship($value)
     {
@@ -138,7 +138,7 @@ class Zend_Gdata_Media_Extension_MediaRestriction extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaRestriction Provides a fluent interface
+     * @return $this
      */
     public function setType($value)
     {

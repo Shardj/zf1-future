@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,9 +36,8 @@ require_once 'Zend/Feed/Entry/Atom.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
-class Zend_Feed_ElementTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_ElementTest extends TestCase
 {
-
     public function testIsInitialized()
     {
         $e = new Zend_Feed_Entry_Atom();
@@ -87,7 +89,7 @@ class Zend_Feed_ElementTest extends PHPUnit_Framework_TestCase
         $value = 'value';
 
         $e = new Zend_Feed_Entry_Atom();
-        $e->test['attr']            = $value;
+        $e->test['attr'] = $value;
         $e->test['namespace1:attr'] = $value;
         $e->test['namespace2:attr'] = $value;
 
@@ -101,7 +103,7 @@ class Zend_Feed_ElementTest extends PHPUnit_Framework_TestCase
         $value = 'value';
 
         $e = new Zend_Feed_Entry_Atom();
-        $e->test['attr']            = $value;
+        $e->test['attr'] = $value;
         $e->test['namespace1:attr'] = $value;
         $e->test['namespace2:attr'] = $value;
 
@@ -124,11 +126,11 @@ class Zend_Feed_ElementTest extends PHPUnit_Framework_TestCase
     public function testValuesWithXmlSpecialChars()
     {
         $testAmp = '&';
-        $testLt  = '<';
-        $testGt  = '>';
+        $testLt = '<';
+        $testGt = '>';
 
         $e = new Zend_Feed_Entry_Atom();
-        $e->testAmp           = $testAmp;
+        $e->testAmp = $testAmp;
         $e->{'namespace1:lt'} = $testLt;
         $e->{'namespace1:gt'} = $testGt;
 
@@ -142,17 +144,17 @@ class Zend_Feed_ElementTest extends PHPUnit_Framework_TestCase
      */
     public function testAttributesWithXmlSpecialChars()
     {
-        $testAmp   = '&';
-        $testLt    = '<';
-        $testGt    = '>';
-        $testQuot  = '"';
+        $testAmp = '&';
+        $testLt = '<';
+        $testGt = '>';
+        $testQuot = '"';
         $testSquot = "'";
 
         $e = new Zend_Feed_Entry_Atom();
-        $e->test['amp']              = $testAmp;
-        $e->test['namespace1:lt']    = $testLt;
-        $e->test['namespace1:gt']    = $testGt;
-        $e->test['namespace1:quot']  = $testQuot;
+        $e->test['amp'] = $testAmp;
+        $e->test['namespace1:lt'] = $testLt;
+        $e->test['namespace1:gt'] = $testGt;
+        $e->test['namespace1:quot'] = $testQuot;
         $e->test['namespace1:squot'] = $testSquot;
 
         $this->assertEquals($testAmp, $e->test['amp']);
@@ -161,5 +163,4 @@ class Zend_Feed_ElementTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($testQuot, $e->test['namespace1:quot']);
         $this->assertEquals($testSquot, $e->test['namespace1:squot']);
     }
-
 }

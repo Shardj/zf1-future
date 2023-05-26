@@ -2,7 +2,6 @@
 
 class Zend_Acl_UseCase1_UserIsBlogPostOwnerAssertion implements Zend_Acl_Assert_Interface
 {
-
     public $lastAssertRole = null;
     public $lastAssertResource = null;
     public $lastAssertPrivilege = null;

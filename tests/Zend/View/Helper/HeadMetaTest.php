@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,7 +53,7 @@ require_once 'Zend/View.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_HeadMetaTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_HeadMeta
@@ -61,14 +66,23 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
     public $basePath;
 
     /**
+     * @var boolean
+     */
+    protected $error;
+
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+    /**
      * Runs the test methods of this class.
      *
      * @return void
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_HeadMetaTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_HeadMetaTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -77,7 +91,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->error = false;
         foreach ([Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY, 'Zend_View_Helper_Doctype'] as $key) {
@@ -87,9 +101,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
             }
         }
         $this->basePath = dirname(__FILE__) . '/_files/modules';
-        $this->view     = new Zend_View();
+        $this->view = new Zend_View();
         $this->view->doctype('XHTML1_STRICT');
-        $this->helper   = new Zend_View_Helper_HeadMeta();
+        $this->helper = new Zend_View_Helper_HeadMeta();
         $this->helper->setView($this->view);
     }
 
@@ -99,7 +113,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->helper);
     }
@@ -126,6 +140,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($placeholder instanceof Zend_View_Helper_HeadMeta);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testAppendPrependAndSetThrowExceptionsWhenNonMetaValueProvided()
     {
         try {
@@ -168,7 +185,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
             $values = $this->helper->getArrayCopy();
             $this->assertEquals($i + 1, count($values));
 
-            $item   = $values[$i];
+            $item = $values[$i];
             $this->assertObjectHasAttribute('type', $item);
             $this->assertObjectHasAttribute('modifiers', $item);
             $this->assertObjectHasAttribute('content', $item);
@@ -250,6 +267,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->_testOverloadSet('http-equiv');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testOverloadingThrowsExceptionWithFewerThanTwoArgs()
     {
         try {
@@ -259,6 +279,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testOverloadingThrowsExceptionWithInvalidMethodType()
     {
         try {
@@ -297,13 +320,13 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $metas = substr_count($string, 'http-equiv="');
         $this->assertEquals(1, $metas);
 
-        $this->assertContains('http-equiv="screen" content="projection"', $string);
-        $this->assertContains('name="keywords" content="foo bar"', $string);
-        $this->assertContains('lang="us_en"', $string);
-        $this->assertContains('scheme="foo"', $string);
-        $this->assertNotContains('bogus', $string);
-        $this->assertNotContains('unused', $string);
-        $this->assertContains('name="title" content="boo bah"', $string);
+        $this->assertStringContainsString('http-equiv="screen" content="projection"', $string);
+        $this->assertStringContainsString('name="keywords" content="foo bar"', $string);
+        $this->assertStringContainsString('lang="us_en"', $string);
+        $this->assertStringContainsString('scheme="foo"', $string);
+        $this->assertStringNotContainsString('bogus', $string);
+        $this->assertStringNotContainsString('unused', $string);
+        $this->assertStringContainsString('name="title" content="boo bah"', $string);
     }
 
     /**
@@ -316,6 +339,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $string = @$this->helper->toString();
         $this->assertEquals('', $string);
         $this->assertTrue(is_string($this->error));
+        restore_error_handler();
     }
 
     public function testHeadMetaHelperCreatesItemEntry()
@@ -357,9 +381,9 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->view->doctype('HTML4_STRICT');
         $this->helper->headMeta('some content', 'foo');
         $test = $this->helper->toString();
-        $this->assertNotContains('/>', $test);
-        $this->assertContains('some content', $test);
-        $this->assertContains('foo', $test);
+        $this->assertStringNotContainsString('/>', $test);
+        $this->assertStringContainsString('some content', $test);
+        $this->assertStringContainsString('foo', $test);
     }
 
     /**
@@ -369,9 +393,10 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
     {
         $this->view->doctype('XHTML1_RDFA');
         $this->helper->headMeta('foo', 'og:title', 'property');
-        $this->assertEquals('<meta property="og:title" content="foo" />',
-                            $this->helper->toString()
-                           );
+        $this->assertEquals(
+            '<meta property="og:title" content="foo" />',
+            $this->helper->toString()
+        );
     }
 
     /**
@@ -383,7 +408,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
             $this->helper->headMeta('foo', 'og:title', 'property');
             $this->fail('meta property attribute should not be supported on default doctype');
         } catch (Zend_View_Exception $e) {
-            $this->assertContains('Invalid value passed', $e->getMessage());
+            $this->assertStringContainsString('Invalid value passed', $e->getMessage());
         }
     }
 
@@ -431,7 +456,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             '<meta http-equiv="pragma" content="bar" />' . PHP_EOL . '<meta http-equiv="Cache-control" content="baz" />' . PHP_EOL . '<meta name="keywords" content="bat" />',
             $view->headMeta()->toString()
-            );
+        );
     }
 
     /**
@@ -449,7 +474,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             '<meta name="description" content="foo" />' . PHP_EOL . '<meta http-equiv="pragma" content="baz" />' . PHP_EOL . '<meta http-equiv="Cache-control" content="baz" />' . PHP_EOL . '<meta name="keywords" content="bar" />',
             $view->headMeta()->toString()
-            );
+        );
     }
 
     /**
@@ -465,7 +490,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             '<meta name="bar" content="some content" />' . PHP_EOL . '<meta name="keywords" content="foo" />',
             $view->headMeta()->toString()
-            );
+        );
     }
 
     /**
@@ -473,7 +498,6 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
      */
     public function testContainerMaintainsCorrectOrderOfItems()
     {
-
         $this->helper->offsetSetName(1, 'keywords', 'foo');
         $this->helper->offsetSetName(10, 'description', 'foo');
         $this->helper->offsetSetHttpEquiv(20, 'pragma', 'baz');
@@ -489,48 +513,53 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $test);
     }
 
-	/**
-	 * @group ZF-7722
-	 */
-	public function testCharsetValidateFail()
-	{
-		$view = new Zend_View();
-		$view->doctype('HTML4_STRICT');
+    /**
+  * @group ZF-7722
+  * @doesNotPerformAssertions
+  */
+    public function testCharsetValidateFail()
+    {
+        $view = new Zend_View();
+        $view->doctype('HTML4_STRICT');
 
-		try {
-			$view->headMeta()->setCharset('utf-8');
-			$this->fail('Should not be able to set charset for a HTML4 doctype');
-		} catch (Zend_View_Exception $e) {}
-	}
+        try {
+            $view->headMeta()->setCharset('utf-8');
+            $this->fail('Should not be able to set charset for a HTML4 doctype');
+        } catch (Zend_View_Exception $e) {
+        }
+    }
 
-	/**
-	 * @group ZF-7722
-	 */
-	public function testCharset() {
-		$view = new Zend_View();
-		$view->doctype('HTML5');
+    /**
+     * @group ZF-7722
+     */
+    public function testCharset()
+    {
+        $view = new Zend_View();
+        $view->doctype('HTML5');
 
-		$view->headMeta()->setCharset('utf-8');
-		$this->assertEquals(
-			'<meta charset="utf-8">',
-			$view->headMeta()->toString());
+        $view->headMeta()->setCharset('utf-8');
+        $this->assertEquals(
+            '<meta charset="utf-8">',
+            $view->headMeta()->toString()
+        );
 
-		$view->doctype('XHTML5');
+        $view->doctype('XHTML5');
 
-		$this->assertEquals(
-			'<meta charset="utf-8"/>',
-			$view->headMeta()->toString());
-	}
+        $this->assertEquals(
+            '<meta charset="utf-8"/>',
+            $view->headMeta()->toString()
+        );
+    }
     
     /**
      * @group ZF-11835
      */
-    public function testConditional() 
+    public function testConditional()
     {
         $html = $this->helper->appendHttpEquiv('foo', 'bar', ['conditional' => 'lt IE 7'])->toString();
         
-        $this->assertRegExp("|^<!--\[if lt IE 7\]>|", $html);
-        $this->assertRegExp("|<!\[endif\]-->$|", $html);
+        $this->assertMatchesRegularExpression("|^<!--\[if lt IE 7\]>|", $html);
+        $this->assertMatchesRegularExpression("|<!\[endif\]-->$|", $html);
     }
 
     /**
@@ -540,7 +569,7 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
     {
         $expected = '<meta name="foo" content="bar" />';
         $helper = new Zend_View_Helper_HeadMeta();
-        $result = (string)$helper->headMeta()->appendName('foo','bar');
+        $result = (string)$helper->headMeta()->appendName('foo', 'bar');
         $this->assertEquals($expected, $result);
     }
 
@@ -550,8 +579,8 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
     public function testConditionalNoIE()
     {
         $html = $this->helper->appendHttpEquiv('foo', 'bar', ['conditional' => '!IE'])->toString();
-        $this->assertContains('<!--[if !IE]><!--><', $html);
-        $this->assertContains('<!--<![endif]-->', $html);
+        $this->assertStringContainsString('<!--[if !IE]><!--><', $html);
+        $this->assertStringContainsString('<!--<![endif]-->', $html);
     }
 
     /**
@@ -560,8 +589,8 @@ class Zend_View_Helper_HeadMetaTest extends PHPUnit_Framework_TestCase
     public function testConditionalNoIEWidthSpace()
     {
         $html = $this->helper->appendHttpEquiv('foo', 'bar', ['conditional' => '! IE'])->toString();
-        $this->assertContains('<!--[if ! IE]><!--><', $html);
-        $this->assertContains('<!--<![endif]-->', $html);
+        $this->assertStringContainsString('<!--[if ! IE]><!--><', $html);
+        $this->assertStringContainsString('<!--<![endif]-->', $html);
     }
 }
 

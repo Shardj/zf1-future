@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,7 +43,7 @@ require_once 'Zend/Validate/File/Upload.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_UploadTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -47,8 +52,8 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_UploadTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Validate_File_UploadTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -59,60 +64,60 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
     public function testBasic()
     {
         $_FILES = [
-            'test'  => [
-                'name'     => 'test1',
-                'type'     => 'text',
-                'size'     => 200,
+            'test' => [
+                'name' => 'test1',
+                'type' => 'text',
+                'size' => 200,
                 'tmp_name' => 'tmp_test1',
-                'error'    => 0],
+                'error' => 0],
             'test2' => [
-                'name'     => 'test2',
-                'type'     => 'text2',
-                'size'     => 202,
+                'name' => 'test2',
+                'type' => 'text2',
+                'size' => 202,
                 'tmp_name' => 'tmp_test2',
-                'error'    => 1],
+                'error' => 1],
             'test3' => [
-                'name'     => 'test3',
-                'type'     => 'text3',
-                'size'     => 203,
+                'name' => 'test3',
+                'type' => 'text3',
+                'size' => 203,
                 'tmp_name' => 'tmp_test3',
-                'error'    => 2],
+                'error' => 2],
             'test4' => [
-                'name'     => 'test4',
-                'type'     => 'text4',
-                'size'     => 204,
+                'name' => 'test4',
+                'type' => 'text4',
+                'size' => 204,
                 'tmp_name' => 'tmp_test4',
-                'error'    => 3],
+                'error' => 3],
             'test5' => [
-                'name'     => 'test5',
-                'type'     => 'text5',
-                'size'     => 205,
+                'name' => 'test5',
+                'type' => 'text5',
+                'size' => 205,
                 'tmp_name' => 'tmp_test5',
-                'error'    => 4],
+                'error' => 4],
             'test6' => [
-                'name'     => 'test6',
-                'type'     => 'text6',
-                'size'     => 206,
+                'name' => 'test6',
+                'type' => 'text6',
+                'size' => 206,
                 'tmp_name' => 'tmp_test6',
-                'error'    => 5],
+                'error' => 5],
             'test7' => [
-                'name'     => 'test7',
-                'type'     => 'text7',
-                'size'     => 207,
+                'name' => 'test7',
+                'type' => 'text7',
+                'size' => 207,
                 'tmp_name' => 'tmp_test7',
-                'error'    => 6],
+                'error' => 6],
             'test8' => [
-                'name'     => 'test8',
-                'type'     => 'text8',
-                'size'     => 208,
+                'name' => 'test8',
+                'type' => 'text8',
+                'size' => 208,
                 'tmp_name' => 'tmp_test8',
-                'error'    => 7],
+                'error' => 7],
             'test9' => [
-                'name'     => 'test9',
-                'type'     => 'text9',
-                'size'     => 209,
+                'name' => 'test9',
+                'type' => 'text9',
+                'size' => 209,
                 'tmp_name' => 'tmp_test9',
-                'error'    => 8]
+                'error' => 8]
         ];
 
         $validator = new Zend_Validate_File_Upload();
@@ -172,34 +177,34 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
     public function testGetFiles()
     {
         $_FILES = [
-            'test'  => [
-                'name'     => 'test1',
-                'type'     => 'text',
-                'size'     => 200,
+            'test' => [
+                'name' => 'test1',
+                'type' => 'text',
+                'size' => 200,
                 'tmp_name' => 'tmp_test1',
-                'error'    => 0],
+                'error' => 0],
             'test2' => [
-                'name'     => 'test3',
-                'type'     => 'text2',
-                'size'     => 202,
+                'name' => 'test3',
+                'type' => 'text2',
+                'size' => 202,
                 'tmp_name' => 'tmp_test2',
-                'error'    => 1]];
+                'error' => 1]];
 
         $files = [
-            'test'  => [
-                'name'     => 'test1',
-                'type'     => 'text',
-                'size'     => 200,
+            'test' => [
+                'name' => 'test1',
+                'type' => 'text',
+                'size' => 200,
                 'tmp_name' => 'tmp_test1',
-                'error'    => 0]];
+                'error' => 0]];
 
         $files1 = [
             'test2' => [
-                'name'     => 'test3',
-                'type'     => 'text2',
-                'size'     => 202,
+                'name' => 'test3',
+                'type' => 'text2',
+                'size' => 202,
                 'tmp_name' => 'tmp_test2',
-                'error'    => 1]];
+                'error' => 1]];
 
         $validator = new Zend_Validate_File_Upload();
         $this->assertEquals($files, $validator->getFiles('test'));
@@ -210,7 +215,7 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
             $this->assertEquals([], $validator->getFiles('test5'));
             $this->fail("Missing exception");
         } catch (Zend_Validate_Exception $e) {
-            $this->assertContains("was not found", $e->getMessage());
+            $this->assertStringContainsString("was not found", $e->getMessage());
         }
     }
 
@@ -222,26 +227,26 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
     public function testSetFiles()
     {
         $files = [
-            'test'  => [
-                'name'     => 'test1',
-                'type'     => 'text',
-                'size'     => 200,
+            'test' => [
+                'name' => 'test1',
+                'type' => 'text',
+                'size' => 200,
                 'tmp_name' => 'tmp_test1',
-                'error'    => 0],
+                'error' => 0],
             'test2' => [
-                'name'     => 'test2',
-                'type'     => 'text2',
-                'size'     => 202,
+                'name' => 'test2',
+                'type' => 'text2',
+                'size' => 202,
                 'tmp_name' => 'tmp_test2',
-                'error'    => 1]];
+                'error' => 1]];
 
         $_FILES = [
-            'test'  => [
-                'name'     => 'test3',
-                'type'     => 'text3',
-                'size'     => 203,
+            'test' => [
+                'name' => 'test3',
+                'type' => 'text3',
+                'size' => 203,
                 'tmp_name' => 'tmp_test3',
-                'error'    => 2]];
+                'error' => 2]];
 
 
         $validator = new Zend_Validate_File_Upload();
@@ -258,7 +263,7 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
      */
     public function testGetFilesReturnsEmptyArrayWhenFilesSuperglobalIsNull()
     {
-        $_FILES = NULL;
+        $_FILES = null;
         $validator = new Zend_Validate_File_Upload();
         $validator->setFiles();
         $this->assertEquals([], $validator->getFiles());
@@ -270,7 +275,7 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
     public function testGetFilesReturnsEmptyArrayAfterSetFilesIsCalledWithNull()
     {
         $validator = new Zend_Validate_File_Upload();
-        $validator->setFiles(NULL);
+        $validator->setFiles([]);
         $this->assertEquals([], $validator->getFiles());
     }
 
@@ -281,11 +286,11 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
     {
         $_FILES = [
             'foo' => [
-                'name'     => 'bar',
-                'type'     => 'text',
-                'size'     => 100,
+                'name' => 'bar',
+                'type' => 'text',
+                'size' => 100,
                 'tmp_name' => 'tmp_bar',
-                'error'    => 7,
+                'error' => 7,
             ]
         ];
 
@@ -299,7 +304,6 @@ class Zend_Validate_File_UploadTest extends PHPUnit_Framework_TestCase
             $validator->getMessages()
         );
     }
-
 }
 
 // Call Zend_Validate_File_UploadTest::main() if this source file is executed directly.

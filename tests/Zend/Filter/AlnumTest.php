@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Filter/Alnum.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_AlnumTest extends TestCase
 {
     /**
      * Zend_Filter_Alnum object
@@ -69,7 +72,7 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_filter = new Zend_Filter_Alnum();
         if (null === self::$_unicodeEnabled) {
@@ -77,9 +80,10 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
         }
         if (null === self::$_meansEnglishAlphabet) {
             $this->_locale = new Zend_Locale('auto');
-            self::$_meansEnglishAlphabet = in_array($this->_locale->getLanguage(),
-                                                    ['ja']
-                                                    );
+            self::$_meansEnglishAlphabet = in_array(
+                $this->_locale->getLanguage(),
+                ['ja']
+            );
         }
     }
 
@@ -93,13 +97,14 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
         if (!self::$_unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
             $valuesExpected = [
-                'abc123'  => 'abc123',
+                'abc123' => 'abc123',
                 'abc 123' => 'abc123',
-                'abcxyz'  => 'abcxyz',
+                'abcxyz' => 'abcxyz',
                 'AZ@#4.3' => 'AZ43',
-                ''        => ''
+                '' => ''
                 ];
-        } if (self::$_meansEnglishAlphabet) {
+        }
+        if (self::$_meansEnglishAlphabet) {
             //The Alphabet means english alphabet.
             /**
              * The first element contains multibyte alphabets and digits.
@@ -109,20 +114,20 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
              * The third  contains various multibyte or singebyte characters.
              */
             $valuesExpected = [
-                'aＡBｂ3４5６'  => 'aB35',
-                'z７ Ｙ8　x９'  => 'z8x',
+                'aＡBｂ3４5６' => 'aB35',
+                'z７ Ｙ8　x９' => 'z8x',
                 '，s1.2r３#:q,' => 's12rq',
             ];
         } else {
             //The Alphabet means each language's alphabet.
             $valuesExpected = [
-                'abc123'  => 'abc123',
+                'abc123' => 'abc123',
                 'abc 123' => 'abc123',
-                'abcxyz'  => 'abcxyz',
-                'če2t3ně'         => 'če2t3ně',
-                'grz5e4gżółka'    => 'grz5e4gżółka',
-                'Be3l5gië'        => 'Be3l5gië',
-                ''        => ''
+                'abcxyz' => 'abcxyz',
+                'če2t3ně' => 'če2t3ně',
+                'grz5e4gżółka' => 'grz5e4gżółka',
+                'Be3l5gië' => 'Be3l5gië',
+                '' => ''
                 ];
         }
         foreach ($valuesExpected as $input => $output) {
@@ -130,7 +135,7 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
                 $output,
                 $result = $this->_filter->filter($input),
                 "Expected '$input' to filter to '$output', but received '$result' instead"
-                );
+            );
         }
     }
 
@@ -146,30 +151,31 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
         if (!self::$_unicodeEnabled) {
             // POSIX named classes are not supported, use alternative a-zA-Z match
             $valuesExpected = [
-                'abc123'  => 'abc123',
+                'abc123' => 'abc123',
                 'abc 123' => 'abc 123',
-                'abcxyz'  => 'abcxyz',
+                'abcxyz' => 'abcxyz',
                 'AZ@#4.3' => 'AZ43',
-                ''        => '',
-                "\n"      => "\n",
-                " \t "    => " \t "
+                '' => '',
+                "\n" => "\n",
+                " \t " => " \t "
                 ];
-        } if (self::$_meansEnglishAlphabet) {
+        }
+        if (self::$_meansEnglishAlphabet) {
             //The Alphabet means english alphabet.
             $valuesExpected = [
-                'a B ４5'  => 'a B 5',
-                'z3　x'  => 'z3x'
+                'a B ４5' => 'a B 5',
+                'z3　x' => 'z3x'
                 ];
         } else {
             //The Alphabet means each language's alphabet.
             $valuesExpected = [
-                'abc123'  => 'abc123',
+                'abc123' => 'abc123',
                 'abc 123' => 'abc 123',
-                'abcxyz'  => 'abcxyz',
-                'če2 t3ně'         => 'če2 t3ně',
-                'gr z5e4gżółka'    => 'gr z5e4gżółka',
-                'Be3l5 gië'        => 'Be3l5 gië',
-                ''        => '',
+                'abcxyz' => 'abcxyz',
+                'če2 t3ně' => 'če2 t3ně',
+                'gr z5e4gżółka' => 'gr z5e4gżółka',
+                'Be3l5 gië' => 'Be3l5 gië',
+                '' => '',
             ];
         }
         foreach ($valuesExpected as $input => $output) {
@@ -177,7 +183,7 @@ class Zend_Filter_AlnumTest extends PHPUnit_Framework_TestCase
                 $output,
                 $result = $this->_filter->filter($input),
                 "Expected '$input' to filter to '$output', but received '$result' instead"
-                );
+            );
         }
     }
 }

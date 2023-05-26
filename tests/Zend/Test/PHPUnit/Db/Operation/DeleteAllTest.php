@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Extensions\Database\DataSet\FlatXmlDataSet;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,20 +36,20 @@ require_once "Zend/Test/PHPUnit/Db/Operation/DeleteAll.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends TestCase
 {
     private $operation = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->operation = new Zend_Test_PHPUnit_Db_Operation_DeleteAll();
     }
 
     public function testDeleteAll()
     {
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
+        $dataSet = new FlatXmlDataSet(dirname(__FILE__) . "/_files/truncateFixture.xml");
 
-        $testAdapter = $this->getMock('Zend_Test_DbAdapter');
+        $testAdapter = $this->createMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->at(0))
                     ->method('delete')
                     ->with('foo');
@@ -60,14 +64,14 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends PHPUnit_Framework_Tes
 
     public function testDeleteQueryErrorTransformsException()
     {
-        $this->setExpectedException('PHPUnit_Extensions_Database_Operation_Exception');
+        $this->expectException('PHPUnit_Extensions_Database_Operation_Exception');
 
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
+        $dataSet = new FlatXmlDataSet(dirname(__FILE__) . "/_files/truncateFixture.xml");
 
-        $testAdapter = $this->getMock('Zend_Test_DbAdapter');
+        $testAdapter = $this->createMock('Zend_Test_DbAdapter');
         $testAdapter->expects($this->any())
                     ->method('delete')
-                    ->will($this->throwException(new Exception));
+                    ->will($this->throwException(new Exception()));
 
         $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
 
@@ -76,10 +80,10 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends PHPUnit_Framework_Tes
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->setExpectedException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException("Zend_Test_PHPUnit_Db_Exception");
 
-        $dataSet = $this->getMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
-        $connection = $this->getMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
+        $dataSet = $this->createMock('PHPUnit_Extensions_Database_DataSet_IDataSet');
+        $connection = $this->createMock('PHPUnit_Extensions_Database_DB_IDatabaseConnection');
 
         $this->operation->execute($connection, $dataSet);
     }

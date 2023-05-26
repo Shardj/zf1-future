@@ -131,9 +131,8 @@ class Zend_Soap_AutoDiscover_TestFixingMultiplePrototypes
      * @param integer $d
      * @return void
      */
-    function testFunc($a=100, $b=200, $d=300)
+    public function testFunc($a = 100, $b = 200, $d = 300)
     {
-
     }
 }
 
@@ -144,13 +143,14 @@ class Zend_Soap_AutoDiscover_TestFixingMultiplePrototypes
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Soap_AutoDiscover_Test {
+class Zend_Soap_AutoDiscover_Test
+{
     /**
      * Test Function 1
      *
      * @return string
      */
-    function testFunc1()
+    public function testFunc1()
     {
         return "Hello World";
     }
@@ -161,7 +161,7 @@ class Zend_Soap_AutoDiscover_Test {
      * @param string $who Some Arg
      * @return string
      */
-    function testFunc2($who)
+    public function testFunc2($who)
     {
         return "Hello $who!";
     }
@@ -173,7 +173,7 @@ class Zend_Soap_AutoDiscover_Test {
      * @param int $when Some
      * @return string
      */
-    function testFunc3($who, $when)
+    public function testFunc3($who, $when)
     {
         return "Hello $who, How are you $when";
     }
@@ -183,7 +183,7 @@ class Zend_Soap_AutoDiscover_Test {
      *
      * @return string
      */
-    static function testFunc4()
+    public static function testFunc4()
     {
         return "I'm Static!";
     }
@@ -237,7 +237,6 @@ class Zend_Soap_AutoDiscoverTestClass2
      */
     public function addMultiple($test)
     {
-
     }
 }
 
@@ -348,20 +347,23 @@ class Zend_Soap_AutoDiscover_MyService
      *    @param string $foo
      *    @return void
      */
-    public function foo($foo) {
+    public function foo($foo)
+    {
     }
     /**
      *    @param string $bar
      *    @return void
      */
-    public function bar($bar) {
+    public function bar($bar)
+    {
     }
 
     /**
      *    @param string $baz
      *    @return void
      */
-    public function baz($baz) {
+    public function baz($baz)
+    {
     }
 }
 
@@ -378,27 +380,31 @@ class Zend_Soap_AutoDiscover_MyServiceSequence
      *    @param string $foo
      *    @return void
      */
-    public function foo($foo) {
+    public function foo($foo)
+    {
     }
     /**
      *    @param string $bar
      *    @return void
      */
-    public function bar($bar) {
+    public function bar($bar)
+    {
     }
 
     /**
      *    @param string $baz
      *    @return void
      */
-    public function baz($baz) {
+    public function baz($baz)
+    {
     }
 
     /**
      *    @param string $baz
      *    @return void
      */
-    public function bazNested($baz) {
+    public function bazNested($baz)
+    {
     }
 }
 
@@ -434,7 +440,9 @@ class Zend_Soap_AutoDiscover_Recursion
     /**
      * @return void
      */
-    public function create() {}
+    public function create()
+    {
+    }
 }
 
 /**
@@ -442,7 +450,6 @@ class Zend_Soap_AutoDiscover_Recursion
  */
 function Zend_Soap_AutoDiscover_OneWay($message)
 {
-
 }
 
 /**
@@ -460,6 +467,5 @@ class Zend_Soap_AutoDiscover_NoReturnType
      */
     public function pushOneWay($message)
     {
-
     }
 }

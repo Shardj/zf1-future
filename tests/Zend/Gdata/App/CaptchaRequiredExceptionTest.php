@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,28 +34,33 @@
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
-class Zend_Gdata_App_CaptchaRequiredExceptionTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_App_CaptchaRequiredExceptionTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_App_CaptchaRequiredException|mixed
+     */
+    protected $exampleException;
 
-    public function setUp() {
+    protected function setUp(): void
+    {
         $this->exampleException = new Zend_Gdata_App_CaptchaRequiredException('testtoken', 'Captcha?ctoken=testtoken');
     }
 
-    public function testExceptionContainsValidInformation() {
+    public function testExceptionContainsValidInformation()
+    {
         $this->assertEquals('testtoken', $this->exampleException->getCaptchaToken());
         $this->assertEquals('https://www.google.com/accounts/Captcha?ctoken=testtoken', $this->exampleException->getCaptchaUrl());
     }
 
-    public function testExceptionIsThrowable() {
+    public function testExceptionIsThrowable()
+    {
         $caught = false;
         try {
             throw $this->exampleException;
-        }
-        catch(Zend_Gdata_App_CaptchaRequiredException $e) {
+        } catch (Zend_Gdata_App_CaptchaRequiredException $e) {
             $caught = true;
         }
 
         $this->assertTrue($caught);
     }
-
 }

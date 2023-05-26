@@ -38,6 +38,11 @@ class Zend_Translate_Adapter_Csv extends Zend_Translate_Adapter
     private $_data    = [];
 
     /**
+     * @var resource
+     */
+    private $_file;
+
+    /**
      * Generates the adapter
      *
      * @param  array|Zend_Config $options Translation content

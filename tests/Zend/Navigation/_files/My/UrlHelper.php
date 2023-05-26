@@ -31,7 +31,7 @@ require_once 'Zend/Controller/Action/Helper/Url.php';
  */
 class My_UrlHelper extends Zend_Controller_Action_Helper_Url
 {
-    const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
+    public const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
 
     public function url($urlOptions = [], $name = null, $reset = false, $encode = true)
     {

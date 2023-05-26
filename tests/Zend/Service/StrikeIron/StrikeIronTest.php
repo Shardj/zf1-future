@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,13 +37,28 @@ require_once 'Zend/Service/StrikeIron.php';
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
-class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
+class Zend_Service_StrikeIron_StrikeIronTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var \stdclass|mixed
+     */
+    protected $soapClient;
+
+    /**
+     * @var array<string, \stdclass>|mixed
+     */
+    protected $options;
+
+    /**
+     * @var \Zend_Service_StrikeIron|mixed
+     */
+    protected $strikeIron;
+
+    protected function setUp(): void
     {
         // stub out SOAPClient instance
         $this->soapClient = new stdclass();
-        $this->options    = ['client' => $this->soapClient];
+        $this->options = ['client' => $this->soapClient];
         $this->strikeIron = new Zend_Service_StrikeIron($this->options);
     }
 
@@ -50,8 +68,8 @@ class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
             $this->strikeIron->getService(['class' => 'BadServiceNameHere']);
             $this->fail();
         } catch (Zend_Service_StrikeIron_Exception $e) {
-            $this->assertRegExp('/could not be loaded/i', $e->getMessage());
-            $this->assertRegExp('/not found/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/could not be loaded/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/not found/i', $e->getMessage());
         }
     }
 
@@ -87,7 +105,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
     public function testFactoryMergesItsOptionsWithConstructorOptions()
     {
         $options = ['class' => 'Zend_Service_StrikeIron_StrikeIronTest_StubbedBase',
-                         'foo'   => 'bar'];
+                         'foo' => 'bar'];
 
         $mergedOptions = array_merge($options, $this->options);
         unset($mergedOptions['class']);
@@ -95,7 +113,6 @@ class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
         $stub = $this->strikeIron->getService($options);
         $this->assertEquals($mergedOptions, $stub->options);
     }
-
 }
 
 /**
@@ -109,6 +126,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends PHPUnit_Framework_TestCase
  */
 class Zend_Service_StrikeIron_StrikeIronTest_StubbedBase
 {
+    protected $options;
     public function __construct($options)
     {
         $this->options = $options;

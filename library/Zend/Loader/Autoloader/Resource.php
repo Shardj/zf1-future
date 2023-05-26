@@ -35,6 +35,11 @@ require_once 'Zend/Loader/Autoloader/Interface.php';
 class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interface
 {
     /**
+     * @var array<string, mixed>|array<string, object>
+     */
+    protected $_resources;
+
+    /**
      * @var string Base path to resource classes
      */
     protected $_basePath;

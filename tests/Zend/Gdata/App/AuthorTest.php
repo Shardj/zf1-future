@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,22 +35,35 @@ require_once 'Zend/Gdata/App.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
-class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_App_AuthorTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $authorText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_App_Extension_Author|mixed
+     */
+    protected $author;
+
+    protected function setUp(): void
+    {
         $this->authorText = file_get_contents(
-                'Zend/Gdata/App/_files/AuthorElementSample1.xml',
-                true);
+            'Zend/Gdata/App/_files/AuthorElementSample1.xml',
+            true
+        );
         $this->author = new Zend_Gdata_App_Extension_Author();
     }
 
-    public function testEmptyAuthorShouldHaveEmptyExtensionsList() {
+    public function testEmptyAuthorShouldHaveEmptyExtensionsList()
+    {
         $this->assertTrue(is_array($this->author->extensionElements));
         $this->assertTrue(count($this->author->extensionElements) == 0);
     }
 
-    public function testNormalAuthorShouldHaveNoExtensionElements() {
+    public function testNormalAuthorShouldHaveNoExtensionElements()
+    {
         $this->author->name = new Zend_Gdata_App_Extension_Name('Jeff Scudder');
         $this->assertEquals($this->author->name->text, 'Jeff Scudder');
         $this->assertEquals(count($this->author->extensionElements), 0);
@@ -67,7 +83,8 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($newAuthor2->name->text, 'Jeff Scudder');
     }
 
-    public function testEmptyAuthorToAndFromStringShouldMatch() {
+    public function testEmptyAuthorToAndFromStringShouldMatch()
+    {
         $authorXml = $this->author->saveXML();
         $newAuthor = new Zend_Gdata_App_Extension_Author();
         $newAuthor->transferFromXML($authorXml);
@@ -75,12 +92,15 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($authorXml == $newAuthorXml);
     }
 
-    public function testAuthorWithNameEmailToAndFromStringShouldMatch() {
+    public function testAuthorWithNameEmailToAndFromStringShouldMatch()
+    {
         $this->author->name = new Zend_Gdata_App_Extension_Name('Jeff Scudder');
         $this->author->email = new Zend_Gdata_App_Extension_Email(
-                'api.jscudder@gmail.com');
+            'api.jscudder@gmail.com'
+        );
         $this->author->uri = new Zend_Gdata_App_Extension_Uri(
-                'http://code.google.com/apis/gdata/');
+            'http://code.google.com/apis/gdata/'
+        );
         $authorXml = $this->author->saveXML();
         $newAuthor = new Zend_Gdata_App_Extension_Author();
         $newAuthor->transferFromXML($authorXml);
@@ -91,10 +111,11 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('http://code.google.com/apis/gdata/', $newAuthor->uri->text);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->author->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->author->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->author->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->author->extensionAttributes['foo2']['value']);
@@ -107,12 +128,14 @@ class Zend_Gdata_App_AuthorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newAuthor->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullAuthorToAndFromString() {
+    public function testConvertFullAuthorToAndFromString()
+    {
         $this->author->transferFromXML($this->authorText);
         $this->assertEquals($this->author->name->text, 'John Doe');
-        $this->assertEquals($this->author->email->text,
-                'johndoes@someemailadress.com');
+        $this->assertEquals(
+            $this->author->email->text,
+            'johndoes@someemailadress.com'
+        );
         $this->assertEquals($this->author->uri->text, 'http://www.google.com');
     }
-
 }

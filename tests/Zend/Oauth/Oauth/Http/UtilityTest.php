@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,7 +34,7 @@ require_once 'Zend/Oauth/Http/Utility.php';
  * @group      Zend_Oauth
  * @group      Zend_Oauth_Http
  */
-class Zend_Oauth_Http_UtilityTest extends PHPUnit_Framework_TestCase
+class Zend_Oauth_Http_UtilityTest extends TestCase
 {
     // see: http://wiki.oauth.net/TestCases (Parameter Encoding Tests)
 
@@ -94,5 +97,4 @@ class Zend_Oauth_Http_UtilityTest extends PHPUnit_Framework_TestCase
         $string = '、';
         $this->assertEquals('%E3%80%81', Zend_Oauth_Http_Utility::urlEncode($string));
     }
-
 }

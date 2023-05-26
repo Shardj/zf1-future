@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -40,9 +43,19 @@ require_once 'Zend/Service/StrikeIron/USAddressVerification.php';
  * @group      Zend_Service
  * @group      Zend_Service_StrikeIron
  */
-class Zend_Service_StrikeIron_USAddressVerificationTest extends PHPUnit_Framework_TestCase
+class Zend_Service_StrikeIron_USAddressVerificationTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var \stdclass|mixed
+     */
+    protected $soapClient;
+
+    /**
+     * @var \Zend_Service_StrikeIron_USAddressVerification|mixed
+     */
+    protected $service;
+
+    protected function setUp(): void
     {
         $this->soapClient = new stdclass();
         $this->service = new Zend_Service_StrikeIron_USAddressVerification(['client' => $this->soapClient]);

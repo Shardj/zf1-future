@@ -42,7 +42,7 @@ abstract class Zend_Amf_Parse_Serializer
      *
      * @var bool
      */
-    protected $mbStringFunctionsOverloaded;
+    protected $_mbStringFunctionsOverloaded;
 
     /**
      * Constructor

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -34,20 +39,25 @@ require_once 'Zend/EventManager/StaticEventManager.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCase
+class Zend_EventManager_StaticEventManagerTest extends TestCase
 {
+    /**
+     * @var \stdClass|mixed
+     */
+    protected $test;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_EventManager_StaticEventManager::resetInstance();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_EventManager_StaticEventManager::resetInstance();
     }
@@ -55,7 +65,7 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
     public function testOperatesAsASingleton()
     {
         $expected = Zend_EventManager_StaticEventManager::getInstance();
-        $test     = Zend_EventManager_StaticEventManager::getInstance();
+        $test = Zend_EventManager_StaticEventManager::getInstance();
         $this->assertSame($expected, $test);
     }
 
@@ -79,8 +89,8 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
         $events = Zend_EventManager_StaticEventManager::getInstance();
         $events->attach('foo', 'bar', [$this, __FUNCTION__]);
         $this->assertContains('bar', $events->getEvents('foo'));
-        $expected  = [$this, __FUNCTION__];
-        $found     = false;
+        $expected = [$this, __FUNCTION__];
+        $found = false;
         $listeners = $events->getListeners('foo', 'bar');
         $this->assertTrue($listeners instanceof Zend_Stdlib_PriorityQueue);
         $this->assertTrue(0 < count($listeners), 'Empty listeners!');
@@ -101,7 +111,7 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
         $this->assertContains('test', $events->getEvents('bar'));
         $expected = [$this, __FUNCTION__];
         foreach (['foo', 'test'] as $event) {
-            $found     = false;
+            $found = false;
             $listeners = $events->getListeners('bar', $event);
             $this->assertTrue($listeners instanceof Zend_Stdlib_PriorityQueue);
             $this->assertTrue(0 < count($listeners), 'Empty listeners!');
@@ -123,7 +133,7 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
         $this->assertContains('bar', $events->getEvents('test'));
         $expected = [$this, __FUNCTION__];
         foreach (['foo', 'test'] as $id) {
-            $found     = false;
+            $found = false;
             $listeners = $events->getListeners($id, 'bar');
             $this->assertTrue($listeners instanceof Zend_Stdlib_PriorityQueue);
             $this->assertTrue(0 < count($listeners), 'Empty listeners!');
@@ -146,7 +156,7 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
         $expected = [$this, __FUNCTION__];
         foreach (['bar', 'baz'] as $resource) {
             foreach (['foo', 'test'] as $event) {
-                $found     = false;
+                $found = false;
                 $listeners = $events->getListeners($resource, $event);
                 $this->assertTrue($listeners instanceof Zend_Stdlib_PriorityQueue);
                 $this->assertTrue(0 < count($listeners), 'Empty listeners!');
@@ -163,9 +173,9 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
 
     public function testListenersAttachedUsingWildcardEventWillBeTriggeredByResource()
     {
-        $this->test         = new stdClass;
+        $this->test = new stdClass();
         $this->test->events = [];
-        $callback           = [$this, 'setEventName'];
+        $callback = [$this, 'setEventName'];
 
         $staticEvents = Zend_EventManager_StaticEventManager::getInstance();
         $staticEvents->attach('bar', '*', $callback);
@@ -231,6 +241,9 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
         $this->assertEquals(1, count($events->getListeners('foo', 'bat')));
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCanPassArrayOfIdentifiersToConstructor()
     {
         $identifiers = ['foo', 'bar'];
@@ -239,10 +252,10 @@ class Zend_EventManager_StaticEventManagerTest extends PHPUnit_Framework_TestCas
 
     public function testListenersAttachedToAnyIdentifierProvidedToEventManagerWillBeTriggered()
     {
-        $identifiers           = ['foo', 'bar'];
-        $manager               = new Zend_EventManager_EventManager($identifiers);
-        $events                = Zend_EventManager_StaticEventManager::getInstance();
-        $this->test            = new stdClass;
+        $identifiers = ['foo', 'bar'];
+        $manager = new Zend_EventManager_EventManager($identifiers);
+        $events = Zend_EventManager_StaticEventManager::getInstance();
+        $this->test = new stdClass();
         $this->test->triggered = 0;
         $events->attach('foo', 'bar', [$this, 'advanceTriggered']);
         $events->attach('foo', 'bar', [$this, 'advanceTriggered']);

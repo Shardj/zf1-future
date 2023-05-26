@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Search/Lucene/Index/FieldInfo.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_Index_FieldInfoTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_Index_FieldInfoTest extends TestCase
 {
     public function testCreate()
     {
@@ -46,4 +49,3 @@ class Zend_Search_Lucene_Index_FieldInfoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($fieldInfo->storeTermVector, false);
     }
 }
-

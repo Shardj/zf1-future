@@ -36,8 +36,7 @@ require_once 'Zend/View/Helper/Navigation/Sitemap.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_Navigation_SitemapTest
-    extends Zend_View_Helper_Navigation_TestAbstract
+class Zend_View_Helper_Navigation_SitemapTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     protected $_front;
     protected $_oldRequest;
@@ -58,7 +57,7 @@ class Zend_View_Helper_Navigation_SitemapTest
      */
     protected $_helper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         date_default_timezone_set('Europe/Berlin');
 
@@ -91,7 +90,7 @@ class Zend_View_Helper_Navigation_SitemapTest
         $this->_helper->setFormatOutput(true);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         if (null !== $this->_oldRequest) {
             $this->_front->setRequest($this->_oldRequest);
@@ -149,13 +148,13 @@ class Zend_View_Helper_Navigation_SitemapTest
         $rendered2 = $this->_getExpected('sitemap/default2.xml');
 
         $expected = [
-            'registered'       => $rendered1,
-            'supplied'         => $rendered2,
+            'registered' => $rendered1,
+            'supplied' => $rendered2,
             'registered_again' => $rendered1
         ];
         $actual = [
-            'registered'       => $this->_helper->render(),
-            'supplied'         => $this->_helper->render($this->_nav2),
+            'registered' => $this->_helper->render(),
+            'supplied' => $this->_helper->render($this->_nav2),
             'registered_again' => $this->_helper->render()
         ];
 
@@ -223,8 +222,9 @@ class Zend_View_Helper_Navigation_SitemapTest
             $this->_helper->render($nav);
         } catch (Zend_View_Exception $e) {
             $expected = sprintf(
-                    'Encountered an invalid URL for Sitemap XML: "%s"',
-                    'http://w..');
+                'Encountered an invalid URL for Sitemap XML: "%s"',
+                'http://w..'
+            );
             $actual = $e->getMessage();
             $this->assertEquals($expected, $actual);
             return;
@@ -250,7 +250,7 @@ class Zend_View_Helper_Navigation_SitemapTest
             $this->fail('An invalid server URL was given, but a ' .
                         'Zend_Uri_Exception was not thrown');
         } catch (Zend_Uri_Exception $e) {
-            $this->assertContains('Illegal scheme', $e->getMessage());
+            $this->assertStringContainsString('Illegal scheme', $e->getMessage());
         }
     }
 
@@ -291,8 +291,9 @@ class Zend_View_Helper_Navigation_SitemapTest
             $this->_helper->render($nav);
         } catch (Zend_View_Exception $e) {
             $expected = sprintf(
-                    'Sitemap is invalid according to XML Schema at "%s"',
-                    Zend_View_Helper_Navigation_Sitemap::SITEMAP_XSD);
+                'Sitemap is invalid according to XML Schema at "%s"',
+                Zend_View_Helper_Navigation_Sitemap::SITEMAP_XSD
+            );
             $actual = $e->getMessage();
             $this->assertEquals($expected, $actual);
             return;
@@ -310,7 +311,7 @@ class Zend_View_Helper_Navigation_SitemapTest
         $this->_helper->setFormatOutput(false);
 
         $expected = $this->_helper->render();
-        $actual   = $this->_getExpected('sitemap/without_whitespace.xml');
+        $actual = $this->_getExpected('sitemap/without_whitespace.xml');
 
         $this->assertEquals($expected, $actual);
     }

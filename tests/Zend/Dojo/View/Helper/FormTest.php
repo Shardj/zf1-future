@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_FormTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_Form|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_FormTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_FormTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_Form();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -103,14 +118,14 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getForm();
-        $this->assertRegexp('/<form[^>]*(dojoType="dijit.form.Form")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<form[^>]*(dojoType="dijit.form.Form")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getForm();
-        $this->assertNotRegexp('/<form[^>]*(dojoType="dijit.form.Form")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<form[^>]*(dojoType="dijit.form.Form")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('myForm'));
     }
 
@@ -118,20 +133,20 @@ class Zend_Dojo_View_Helper_FormTest extends PHPUnit_Framework_TestCase
     {
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
         $html = $this->view->form('foo');
-        $this->assertRegexp('/<form[^>]*(dojoType="dijit.form.Form")/', $html, $html);
-        $this->assertRegexp('/<form[^>]*(id="foo")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<form[^>]*(dojoType="dijit.form.Form")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<form[^>]*(id="foo")/', $html, $html);
     }
 
     public function testShouldNotRenderIdAsHtmlIdWhenIdPassedAsAttrib()
     {
         $html = $this->helper->form('foo', ['id' => 'bar']);
-        $this->assertRegexp('/<form[^>]*(id="bar")/', $html);
+        $this->assertMatchesRegularExpression('/<form[^>]*(id="bar")/', $html);
     }
     
     public function testShouldNotRenderClosingTagIfContentIsFalse()
     {
         $html = $this->helper->form('foo');
-        $this->assertNotRegexp('/<\/form>/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<\/form>/', $html);
     }
 }
 

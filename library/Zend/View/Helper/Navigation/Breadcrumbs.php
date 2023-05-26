@@ -71,7 +71,7 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      *
      * @param  Zend_Navigation_Container $container     [optional] container to
      *                                                  operate on
-     * @return Zend_View_Helper_Navigation_Breadcrumbs  fluent interface,
+     * @return $this
      *                                                  returns self
      */
     public function breadcrumbs(Zend_Navigation_Container $container = null)
@@ -89,7 +89,7 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      * Sets breadcrumb separator
      *
      * @param  string $separator                        separator string
-     * @return Zend_View_Helper_Navigation_Breadcrumbs  fluent interface,
+     * @return $this
      *                                                  returns self
      */
     public function setSeparator($separator)
@@ -116,7 +116,7 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      *
      * @param  bool $linkLast                           whether last page should
      *                                                  be hyperlinked
-     * @return Zend_View_Helper_Navigation_Breadcrumbs  fluent interface,
+     * @return $this
      *                                                  returns self
      */
     public function setLinkLast($linkLast)
@@ -146,7 +146,7 @@ class Zend_View_Helper_Navigation_Breadcrumbs
      *                                                  to use, and the module
      *                                                  where the script can be
      *                                                  found.
-     * @return Zend_View_Helper_Navigation_Breadcrumbs  fluent interface,
+     * @return $this
      *                                                  returns self
      */
     public function setPartial($partial)

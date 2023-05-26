@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,12 +36,12 @@ require_once 'Zend/Feed.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Feed
  */
-class Zend_Feed_IteratorTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_IteratorTest extends TestCase
 {
     private $_feed;
     private $_nsfeed;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_feed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeed.xml');
         $this->_nsfeed = Zend_Feed::importFile(dirname(__FILE__) . '/_files/TestAtomFeedNamespaced.xml');
@@ -119,5 +122,4 @@ class Zend_Feed_IteratorTest extends PHPUnit_Framework_TestCase
             $last = $current;
         }
     }
-
 }

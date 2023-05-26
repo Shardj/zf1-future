@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -37,21 +40,21 @@ require_once 'Zend/Session/SaveHandler/DbTable.php';
  * @group      Zend_Session
  * @group      Zend_Db_Table
  */
-class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
+class Zend_Session_SaveHandler_DbTableTest extends TestCase
 {
     /**
      * @var array
      */
     protected $_saveHandlerTableConfig = [
-        'name'              => 'sessions',
-        'primary'           => [
+        'name' => 'sessions',
+        'primary' => [
             'id',
             'save_path',
             'name',
         ],
-        Zend_Session_SaveHandler_DbTable::MODIFIED_COLUMN    => 'modified',
-        Zend_Session_SaveHandler_DbTable::LIFETIME_COLUMN    => 'lifetime',
-        Zend_Session_SaveHandler_DbTable::DATA_COLUMN        => 'data',
+        Zend_Session_SaveHandler_DbTable::MODIFIED_COLUMN => 'modified',
+        Zend_Session_SaveHandler_DbTable::LIFETIME_COLUMN => 'lifetime',
+        Zend_Session_SaveHandler_DbTable::DATA_COLUMN => 'data',
         Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT => [
             Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT_SESSION_ID,
             Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT_SESSION_SAVE_PATH,
@@ -77,8 +80,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
+        Zend_Session::$_unitTestEnabled = true;
         $this->_setupDb($this->_saveHandlerTableConfig['primary']);
     }
 
@@ -87,13 +91,16 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         if ($this->_db instanceof Zend_Db_Adapter_Abstract) {
             $this->_dropTable();
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConfigPrimaryAssignmentFullConfig()
     {
         $this->_usedSaveHandlers[] =
@@ -110,10 +117,13 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
                 $saveHandler = new Zend_Session_SaveHandler_DbTable(null);
             $this->fail('Expected Zend_Session_SaveHandler_Exception not thrown');
         } catch (Zend_Session_SaveHandler_Exception $e) {
-            $this->assertContains('$config must be', $e->getMessage());
+            $this->assertStringContainsString('$config must be', $e->getMessage());
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTableNameSchema()
     {
         $config = $this->_saveHandlerTableConfig;
@@ -122,18 +132,21 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
             $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTableEmptyNamePullFromSavePath()
     {
         $config = $this->_saveHandlerTableConfig;
         unset($config['name']);
         try {
-            $savePath = ini_get('session.save_path');
-            ini_set('session.save_path', dirname(__FILE__));
+            // $savePath = ini_get('session.save_path');
+            // ini_set('session.save_path', dirname(__FILE__));
             $this->_usedSaveHandlers[] =
                 $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
             $this->fail();
         } catch (Zend_Session_SaveHandler_Exception $e) {
-            ini_set('session.save_path', $savePath);
+            // ini_set('session.save_path', $savePath);
             /**
              * @todo Test something other than that an exception is thrown
              */
@@ -142,7 +155,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
     public function testPrimaryAssignmentIdNotSet()
     {
-        $this->setExpectedException('Zend_Session_SaveHandler_Exception');
+        $this->expectException('Zend_Session_SaveHandler_Exception');
         $config = $this->_saveHandlerTableConfig;
         $config['primary'] = ['id'];
         $config[Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT]
@@ -154,6 +167,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
          */
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testPrimaryAssignmentNotArray()
     {
         $config = $this->_saveHandlerTableConfig;
@@ -169,7 +185,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
     public function testModifiedColumnNotSet()
     {
-        $this->setExpectedException('Zend_Session_SaveHandler_Exception');
+        $this->expectException('Zend_Session_SaveHandler_Exception');
         $config = $this->_saveHandlerTableConfig;
         unset($config[Zend_Session_SaveHandler_DbTable::MODIFIED_COLUMN]);
         $this->_usedSaveHandlers[] =
@@ -181,7 +197,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
     public function testLifetimeColumnNotSet()
     {
-        $this->setExpectedException('Zend_Session_SaveHandler_Exception');
+        $this->expectException('Zend_Session_SaveHandler_Exception');
         $config = $this->_saveHandlerTableConfig;
         unset($config[Zend_Session_SaveHandler_DbTable::LIFETIME_COLUMN]);
         $this->_usedSaveHandlers[] =
@@ -193,7 +209,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 
     public function testDataColumnNotSet()
     {
-        $this->setExpectedException('Zend_Session_SaveHandler_Exception');
+        $this->expectException('Zend_Session_SaveHandler_Exception');
         $config = $this->_saveHandlerTableConfig;
         unset($config[Zend_Session_SaveHandler_DbTable::DATA_COLUMN]);
         $this->_usedSaveHandlers[] =
@@ -203,6 +219,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
          */
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testDifferentArraySize()
     {
         //different number of args between primary and primaryAssignment
@@ -219,6 +238,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testEmptyPrimaryAssignment()
     {
         //test the default - no primaryAssignment
@@ -232,6 +254,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
          */
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSessionIdPresent()
     {
         //test that the session Id must be in the primary assignment config
@@ -250,6 +275,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testModifiedColumnDefined()
     {
         //test the default - no primaryAssignment
@@ -267,6 +295,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testLifetimeColumnDefined()
     {
         //test the default - no primaryAssignment
@@ -284,6 +315,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testDataColumnDefined()
     {
         //test the default - no primaryAssignment
@@ -307,7 +341,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         unset($config['lifetime']);
         $this->_usedSaveHandlers[] =
             $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
-        $this->assertSame($saveHandler->getLifetime(), (int) ini_get('session.gc_maxlifetime'),
+        $this->assertSame(
+            $saveHandler->getLifetime(),
+            (int) ini_get('session.gc_maxlifetime'),
             'lifetime must default to session.gc_maxlifetime'
         );
 
@@ -334,6 +370,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($saveHandler->getOverrideLifetime(), '');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSessionSaving()
     {
         $this->_dropTable();
@@ -366,8 +405,10 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         session_write_close();
 
         foreach ($this->_db->query('SELECT * FROM Sessions')->fetchAll() as $row) {
-            $this->assertSame($row[$config[Zend_Session_SaveHandler_DbTable::DATA_COLUMN]],
-                $testAgainst, 'Data was not saved properly'
+            $this->assertSame(
+                $row[$config[Zend_Session_SaveHandler_DbTable::DATA_COLUMN]],
+                $testAgainst,
+                'Data was not saved properly'
             );
         }
     }
@@ -511,6 +552,9 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
         $this->assertSame(27, $saveHandler->getLifetime());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testZendConfig()
     {
         $this->_usedSaveHandlers[] =
@@ -525,8 +569,8 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
      */
     public function testDestroyWithAutoQuoteIdentifiersEnabledAndDisabled()
     {
-        $id       = uniqid();
-        $config   = $this->_saveHandlerTableConfig;
+        $id = uniqid();
+        $config = $this->_saveHandlerTableConfig;
         $configDb = [
             'options' => [
                 'autoQuoteIdentifiers' => false,
@@ -543,7 +587,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
                           ->getLastQueryProfile()
                           ->getQuery();
         $partQueryExpected = "WHERE (id = '$id') AND (save_path = '') AND (name = '')";
-        $this->assertContains($partQueryExpected, $lastQuery);
+        $this->assertStringContainsString($partQueryExpected, $lastQuery);
 
         $configDb = [
             'options' => [
@@ -561,7 +605,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
                           ->getLastQueryProfile()
                           ->getQuery();
         $partQueryExpected = "WHERE (\"id\" = '$id') AND (\"save_path\" = '') AND (\"name\" = '')";
-        $this->assertContains($partQueryExpected, $lastQuery);
+        $this->assertStringContainsString($partQueryExpected, $lastQuery);
     }
 
     /**
@@ -586,7 +630,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
                           ->getLastQueryProfile()
                           ->getQuery();
         $partQueryExpected = "WHERE (modified + lifetime < ";
-        $this->assertContains($partQueryExpected, $lastQuery);
+        $this->assertStringContainsString($partQueryExpected, $lastQuery);
 
         $configDb = [
             'options' => [
@@ -604,7 +648,7 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
                           ->getLastQueryProfile()
                           ->getQuery();
         $partQueryExpected = "WHERE (\"modified\" + \"lifetime\" < ";
-        $this->assertContains($partQueryExpected, $lastQuery);
+        $this->assertStringContainsString($partQueryExpected, $lastQuery);
     }
 
     /**
@@ -652,8 +696,11 @@ class Zend_Session_SaveHandler_DbTableTest extends PHPUnit_Framework_TestCase
 /**
  * This class is used by Zend_Session_SaveHandler_AllTests to produce one skip message when pdo_sqlite is unavailable
  */
-class Zend_Session_SaveHandler_DbTableTestSkip extends PHPUnit_Framework_TestCase
+class Zend_Session_SaveHandler_DbTableTestSkip extends TestCase
 {
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNothing()
     {
         $this->markTestSkipped('The pdo_sqlite extension must be available and enabled for this test');

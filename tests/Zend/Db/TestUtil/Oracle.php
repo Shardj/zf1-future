@@ -38,7 +38,6 @@ require_once 'Zend/Db/TestUtil/Pdo/Oci.php';
  */
 class Zend_Db_TestUtil_Oracle extends Zend_Db_TestUtil_Pdo_Oci
 {
-
     protected function _rawQuery($sql)
     {
         $conn = $this->_db->getConnection();
@@ -46,14 +45,13 @@ class Zend_Db_TestUtil_Oracle extends Zend_Db_TestUtil_Pdo_Oci
         if (!$stmt) {
             $e = oci_error($conn);
             require_once 'Zend/Db/Exception.php';
-            throw new Zend_Db_Exception("SQL parse error for \"$sql\": ".$e['message']);
+            throw new Zend_Db_Exception("SQL parse error for \"$sql\": " . $e['message']);
         }
         $retval = oci_execute($stmt);
         if (!$retval) {
             $e = oci_error($conn);
             require_once 'Zend/Db/Exception.php';
-            throw new Zend_Db_Exception("SQL execute error for \"$sql\": ".$e['message']);
+            throw new Zend_Db_Exception("SQL execute error for \"$sql\": " . $e['message']);
         }
     }
-
 }

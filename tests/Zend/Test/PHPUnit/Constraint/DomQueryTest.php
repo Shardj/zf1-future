@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Test/PHPUnit/Constraint/DomQuery.php';
  * @group      Zend_Test
  * @group      Zend_Test_PHPUnit
  */
-class Zend_Test_PHPUnit_Constraint_DomQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Test_PHPUnit_Constraint_DomQueryTest extends TestCase
 {
     /**
      * @group ZF-4010
@@ -59,8 +62,11 @@ class Zend_Test_PHPUnit_Constraint_DomQueryTest extends PHPUnit_Framework_TestCa
     </body>
 </html>';
         $assertion = new Zend_Test_PHPUnit_Constraint_DomQuery('input#input-0 @value');
-        $result = $assertion->evaluate($html,
-            Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_CONTAINS, 'value1');
+        $result = $assertion->evaluate(
+            $html,
+            Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_CONTAINS,
+            'value1'
+        );
         $this->assertTrue($result);
     }
     
@@ -87,8 +93,11 @@ class Zend_Test_PHPUnit_Constraint_DomQueryTest extends PHPUnit_Framework_TestCa
     </body>
 </html>';
         $assertion = new Zend_Test_PHPUnit_Constraint_DomQuery('input#input-3 @value');
-        $result = $assertion->evaluate($html,
-            Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_COUNT, 0);
+        $result = $assertion->evaluate(
+            $html,
+            Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_COUNT,
+            0
+        );
         $this->assertTrue($result);
     }
 }

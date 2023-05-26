@@ -34,20 +34,19 @@ require_once 'Zend/Db/Adapter/Pdo/TestCommon.php';
  */
 class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
-
     protected $_numericDataTypes = [
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::INT_TYPE => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'INTEGER'            => Zend_Db::INT_TYPE,
-        'SERIAL'             => Zend_Db::INT_TYPE,
-        'SMALLINT'           => Zend_Db::INT_TYPE,
-        'BIGINT'             => Zend_Db::BIGINT_TYPE,
-        'BIGSERIAL'          => Zend_Db::BIGINT_TYPE,
-        'DECIMAL'            => Zend_Db::FLOAT_TYPE,
-        'DOUBLE PRECISION'   => Zend_Db::FLOAT_TYPE,
-        'NUMERIC'            => Zend_Db::FLOAT_TYPE,
-        'REAL'               => Zend_Db::FLOAT_TYPE
+        Zend_Db::FLOAT_TYPE => Zend_Db::FLOAT_TYPE,
+        'INTEGER' => Zend_Db::INT_TYPE,
+        'SERIAL' => Zend_Db::INT_TYPE,
+        'SMALLINT' => Zend_Db::INT_TYPE,
+        'BIGINT' => Zend_Db::BIGINT_TYPE,
+        'BIGSERIAL' => Zend_Db::BIGINT_TYPE,
+        'DECIMAL' => Zend_Db::FLOAT_TYPE,
+        'DOUBLE PRECISION' => Zend_Db::FLOAT_TYPE,
+        'NUMERIC' => Zend_Db::FLOAT_TYPE,
+        'REAL' => Zend_Db::FLOAT_TYPE
     ];
 
     public function testAdapterDescribeTablePrimaryAuto()
@@ -67,20 +66,26 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     {
         $row = [
             'bug_description' => 'New bug',
-            'bug_status'      => 'NEW',
-            'created_on'      => '2007-04-02',
-            'updated_on'      => '2007-04-02',
-            'reported_by'     => 'micky',
-            'assigned_to'     => 'goofy'
+            'bug_status' => 'NEW',
+            'created_on' => '2007-04-02',
+            'updated_on' => '2007-04-02',
+            'reported_by' => 'micky',
+            'assigned_to' => 'goofy'
         ];
         $rowsAffected = $this->_db->insert('zfbugs', $row);
         $this->assertEquals(1, $rowsAffected);
         $lastInsertId = $this->_db->lastInsertId('zfbugs', 'bug_id');
         $lastSequenceId = $this->_db->lastSequenceId('zfbugs_bug_id_seq');
-        $this->assertEquals((string) $lastInsertId, (string) $lastSequenceId,
-            'Expected last insert id to be equal to last sequence id');
-        $this->assertEquals('5', (string) $lastInsertId,
-            'Expected new id to be 5');
+        $this->assertEquals(
+            (string) $lastInsertId,
+            (string) $lastSequenceId,
+            'Expected last insert id to be equal to last sequence id'
+        );
+        $this->assertEquals(
+            '5',
+            (string) $lastInsertId,
+            'Expected new id to be 5'
+        );
     }
 
     public function testAdapterInsertSequence()
@@ -93,10 +98,16 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->assertEquals(1, $rowsAffected);
         $lastInsertId = $this->_db->lastInsertId('zfproducts');
         $lastSequenceId = $this->_db->lastSequenceId('zfproducts_seq');
-        $this->assertEquals((string) $lastInsertId, (string) $lastSequenceId,
-            'Expected last insert id to be equal to last sequence id');
-        $this->assertEquals('4', (string) $lastInsertId,
-            'Expected new id to be 4');
+        $this->assertEquals(
+            (string) $lastInsertId,
+            (string) $lastSequenceId,
+            'Expected last insert id to be equal to last sequence id'
+        );
+        $this->assertEquals(
+            '4',
+            (string) $lastInsertId,
+            'Expected new id to be 4'
+        );
     }
 
     public function testAdapterInsertDbExpr()
@@ -108,14 +119,14 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $expr = new Zend_Db_Expr('2+3');
 
         $row = [
-            'bug_id'          => $expr,
+            'bug_id' => $expr,
             'bug_description' => 'New bug 5',
-            'bug_status'      => 'NEW',
-            'created_on'      => '2007-04-02',
-            'updated_on'      => '2007-04-02',
-            'reported_by'     => 'micky',
-            'assigned_to'     => 'goofy',
-            'verified_by'     => 'dduck'
+            'bug_status' => 'NEW',
+            'created_on' => '2007-04-02',
+            'updated_on' => '2007-04-02',
+            'reported_by' => 'micky',
+            'assigned_to' => 'goofy',
+            'verified_by' => 'dduck'
         ];
         $rowsAffected = $this->_db->insert('zfbugs', $row);
         $this->assertEquals(1, $rowsAffected);
@@ -176,7 +187,7 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->assertEquals("id = 'St John''s Wort'", $value);
     }
 
-    function getDriver()
+    public function getDriver()
     {
         return 'Pdo_Pgsql';
     }
@@ -186,12 +197,14 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testAdapterCharacterVarying()
     {
-        $this->_util->createTable('zf_pgsql_charvary',
-                                  ['pg_id' => 'character varying(4) NOT NULL',
-                                        'pg_info' => "character varying(1) NOT NULL DEFAULT 'A'::character varying"]);
+        $this->_util->createTable(
+            'zf_pgsql_charvary',
+            ['pg_id' => 'character varying(4) NOT NULL',
+                                        'pg_info' => "character varying(1) NOT NULL DEFAULT 'A'::character varying"]
+        );
         $description = $this->_db->describeTable('zf_pgsql_charvary');
         $this->_util->dropTable('zf_pgsql_charvary');
-        $this->assertEquals(null , $description['pg_id']['DEFAULT']);
+        $this->assertEquals(null, $description['pg_id']['DEFAULT']);
         $this->assertEquals('A', $description['pg_info']['DEFAULT']);
     }
 
@@ -200,8 +213,10 @@ class Zend_Db_Adapter_Pdo_PgsqlTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testAdapterBpchar()
     {
-        $this->_util->createTable('zf_pgsql_bpchar',
-                                  ['pg_name' => "character(100) DEFAULT 'Default'::bpchar"]);
+        $this->_util->createTable(
+            'zf_pgsql_bpchar',
+            ['pg_name' => "character(100) DEFAULT 'Default'::bpchar"]
+        );
         $description = $this->_db->describeTable('zf_pgsql_bpchar');
         $this->_util->dropTable('zf_pgsql_bpchar');
         $this->assertEquals('Default', $description['pg_name']['DEFAULT']);

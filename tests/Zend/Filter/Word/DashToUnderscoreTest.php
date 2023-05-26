@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,7 +43,7 @@ require_once 'Zend/Filter/Word/DashToUnderscore.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_Word_DashToUnderscoreTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_Word_DashToUnderscoreTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -48,15 +53,14 @@ class Zend_Filter_Word_DashToUnderscoreTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Filter_Word_DashToUnderscoreTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Filter_Word_DashToUnderscoreTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testFilterSeparatesCamelCasedWordsWithDashes()
     {
-        $string   = 'dash-separated-words';
-        $filter   = new Zend_Filter_Word_DashToUnderscore();
+        $string = 'dash-separated-words';
+        $filter = new Zend_Filter_Word_DashToUnderscore();
         $filtered = $filter->filter($string);
 
         $this->assertNotEquals($string, $filtered);

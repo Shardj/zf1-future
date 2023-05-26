@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,12 +46,12 @@ require_once 'Zend/Service/WindowsAzure/Credentials/SharedAccessSignature.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends PHPUnit_Framework_TestCase
+class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest");
+        $result = (new TestRunner())->run($suite);
     }
     
     /**
@@ -108,7 +113,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends PH
         $credentials = new Zend_Service_WindowsAzure_Credentials_SharedAccessSignature('myaccount', '', false);
         $result = $credentials->createSignedQueryString(
             'pictures/blob.txt',
-        	'',
+            '',
             'b',
             'w',
             '2009-02-09',

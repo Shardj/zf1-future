@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -42,7 +47,7 @@ require_once 'Zend/Registry.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_FormFileTest extends TestCase
 {
     /**
      * @var Zend_View
@@ -62,8 +67,8 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormFileTest");
-        PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_FormFileTest");
+        (new TestRunner())->run($suite);
     }
 
     /**
@@ -72,7 +77,7 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
@@ -89,11 +94,11 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
     public function testCanDisableElement()
     {
         $html = $this->helper->formFile([
-            'name'    => 'foo',
+            'name' => 'foo',
             'attribs' => ['disable' => true]
         ]);
 
-        $this->assertRegexp('/<input[^>]*?(disabled="disabled")/', $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*?(disabled="disabled")/', $html);
     }
 
     /**
@@ -102,11 +107,11 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
     public function testDisablingElementDoesNotRenderHiddenElements()
     {
         $html = $this->helper->formFile([
-            'name'    => 'foo',
+            'name' => 'foo',
             'attribs' => ['disable' => true]
         ]);
 
-        $this->assertNotRegexp('/<input[^>]*?(type="hidden")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*?(type="hidden")/', $html);
     }
 
 
@@ -115,7 +120,7 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
         $test = $this->helper->formFile([
             'name' => 'foo',
         ]);
-        $this->assertNotContains(' />', $test);
+        $this->assertStringNotContainsString(' />', $test);
     }
 
     public function testCanRendersAsXHtml()
@@ -124,7 +129,7 @@ class Zend_View_Helper_FormFileTest extends PHPUnit_Framework_TestCase
         $test = $this->helper->formFile([
             'name' => 'foo',
         ]);
-        $this->assertContains(' />', $test);
+        $this->assertStringContainsString(' />', $test);
     }
 
     /**

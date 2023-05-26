@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,7 +41,7 @@ require_once 'Zend/Ldap.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
-class Zend_Auth_Adapter_Ldap_OfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Auth_Adapter_Ldap_OfflineTest extends TestCase
 {
     /**
      * Authentication adapter instance
@@ -54,7 +57,7 @@ class Zend_Auth_Adapter_Ldap_OfflineTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_adapter = new Zend_Auth_Adapter_Ldap();
     }

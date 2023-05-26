@@ -1,4 +1,8 @@
 <?php
+
+use MyApp\Controller\Plugin\ThrowingPlugin;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
 /**
  * Zend Framework
  *
@@ -21,7 +25,7 @@
  */
 
 // Call Zend_Controller_FrontTest::main() if this source file is executed directly.
-use MyApp\Controller\Plugin\ThrowingPlugin;
+use PHPUnit\TextUI\TestRunner;
 
 if (!defined("PHPUnit_MAIN_METHOD")) {
     define("PHPUnit_MAIN_METHOD", "Zend_Controller_FrontTest::main");
@@ -54,7 +58,7 @@ require_once 'Zend/Controller/Action/Helper/ViewRenderer.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Front
  */
-class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_FrontTest extends TestCase
 {
     protected $_controller = null;
 
@@ -66,12 +70,11 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_FrontTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Controller_FrontTest");
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_controller = Zend_Controller_Front::getInstance();
         $this->_controller->resetInstance();
@@ -83,7 +86,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         Zend_Controller_Action_HelperBroker::resetHelpers();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->_controller);
     }
@@ -128,6 +131,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($request instanceof Zend_Controller_Request_Http);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetRequestThrowsExceptionWithBadRequest()
     {
         try {
@@ -150,6 +156,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($response instanceof Zend_Controller_Response_Cli);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetResponseThrowsExceptionWithBadResponse()
     {
         try {
@@ -172,6 +181,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($router instanceof Zend_Controller_Router_Rewrite);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetRouterThrowsExceptionWithBadRouter()
     {
         try {
@@ -274,7 +286,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->setResponse(new Zend_Controller_Response_Cli());
         $response = $this->_controller->dispatch($request);
 
-        $this->assertContains('Index action called', $response->getBody());
+        $this->assertStringContainsString('Index action called', $response->getBody());
     }
 
     /**
@@ -286,7 +298,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->setResponse(new Zend_Controller_Response_Cli());
         $response = $this->_controller->dispatch($request);
 
-        $this->assertContains('Index action called', $response->getBody());
+        $this->assertStringContainsString('Index action called', $response->getBody());
     }
 
     /**
@@ -333,9 +345,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $response = $this->_controller->dispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Bar action called', $body, $body);
-        $this->assertContains('preDispatch called', $body, $body);
-        $this->assertContains('postDispatch called', $body, $body);
+        $this->assertStringContainsString('Bar action called', $body, $body);
+        $this->assertStringContainsString('preDispatch called', $body, $body);
+        $this->assertStringContainsString('postDispatch called', $body, $body);
     }
 
     /**
@@ -350,8 +362,8 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $response = $this->_controller->dispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('foo: bar', $body, $body);
-        $this->assertContains('baz: bat', $body);
+        $this->assertStringContainsString('foo: bar', $body, $body);
+        $this->assertStringContainsString('baz: bat', $body);
     }
 
     /**
@@ -365,7 +377,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $response = $this->_controller->dispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Bar action called', $body);
+        $this->assertStringContainsString('Bar action called', $body);
         $params = $request->getParams();
         $this->assertTrue(isset($params['var1']));
         $this->assertEquals('baz', $params['var1']);
@@ -385,7 +397,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $response = $this->_controller->dispatch($request, $response);
 
         $body = $response->getBody();
-        $this->assertContains('Bar action called', $body);
+        $this->assertStringContainsString('Bar action called', $body);
     }
 
     /**
@@ -421,6 +433,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($request->getBaseUrl(), $this->_controller->getBaseUrl());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetBaseUrlThrowsExceptionOnNonString()
     {
         try {
@@ -438,11 +453,11 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
     public function testBaseUrlPushedToRequest()
     {
         $this->_controller->setBaseUrl('/index.php');
-        $request  = new Zend_Controller_Request_Http('http://example.com/index');
+        $request = new Zend_Controller_Request_Http('http://example.com/index');
         $response = new Zend_Controller_Response_Cli();
         $response = $this->_controller->dispatch($request, $response);
 
-        $this->assertContains('index.php', $request->getBaseUrl());
+        $this->assertStringContainsString('index.php', $request->getBaseUrl());
     }
 
     /**
@@ -464,6 +479,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
 
     /**
      * Test that with throwExceptions() set, an exception is thrown
+     * @doesNotPerformAssertions
      */
     public function testThrowExceptionsThrows()
     {
@@ -513,9 +529,12 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $body = ob_get_clean();
 
         $actual = $this->_controller->getResponse()->getBody();
-        $this->assertContains($actual, $body);
+        $this->assertStringContainsString($actual, $body);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRunStatically()
     {
         $request = new Zend_Controller_Request_Http('http://example.com/index/index');
@@ -523,6 +542,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         Zend_Controller_Front::run(dirname(__FILE__) . DIRECTORY_SEPARATOR . '_files');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRunDynamically()
     {
         $request = new Zend_Controller_Request_Http('http://example.com/index/index');
@@ -538,7 +560,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $response = $this->_controller->dispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Admin_Foo::bar action called', $body, $body);
+        $this->assertStringContainsString('Admin_Foo::bar action called', $body, $body);
     }
 
     public function testModuleControllerDirectoryName()
@@ -558,9 +580,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isset($controllerDirs['default']));
         $this->assertFalse(isset($controllerDirs['.svn']));
 
-        $this->assertContains('modules' . DIRECTORY_SEPARATOR . 'foo', $controllerDirs['foo']);
-        $this->assertContains('modules' . DIRECTORY_SEPARATOR . 'bar', $controllerDirs['bar']);
-        $this->assertContains('modules' . DIRECTORY_SEPARATOR . 'default', $controllerDirs['default']);
+        $this->assertStringContainsString('modules' . DIRECTORY_SEPARATOR . 'foo', $controllerDirs['foo']);
+        $this->assertStringContainsString('modules' . DIRECTORY_SEPARATOR . 'bar', $controllerDirs['bar']);
+        $this->assertStringContainsString('modules' . DIRECTORY_SEPARATOR . 'default', $controllerDirs['default']);
     }
 
     /**#@+
@@ -573,16 +595,16 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $request->setModuleName('bar');
         $this->_controller->setRequest($request);
         $dir = $this->_controller->getModuleDirectory();
-        $this->assertContains('modules' . DIRECTORY_SEPARATOR . 'bar', $dir);
-        $this->assertNotContains('controllers', $dir);
+        $this->assertStringContainsString('modules' . DIRECTORY_SEPARATOR . 'bar', $dir);
+        $this->assertStringNotContainsString('controllers', $dir);
     }
 
     public function testShouldAllowRetrievingSpecifiedModuleDirectory()
     {
         $this->testAddModuleDirectory();
         $dir = $this->_controller->getModuleDirectory('foo');
-        $this->assertContains('modules' . DIRECTORY_SEPARATOR . 'foo', $dir);
-        $this->assertNotContains('controllers', $dir);
+        $this->assertStringContainsString('modules' . DIRECTORY_SEPARATOR . 'foo', $dir);
+        $this->assertStringNotContainsString('controllers', $dir);
     }
 
     public function testShouldReturnNullWhenRetrievingNonexistentModuleDirectory()
@@ -614,8 +636,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
             $this->fail('Exception expected but not thrown');
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Exception);
-            $this->assertRegExp(
-                '/Directory \w+ not readable/', $e->getMessage()
+            $this->assertMatchesRegularExpression(
+                '/Directory \w+ not readable/',
+                $e->getMessage()
             );
         }
     }
@@ -626,7 +649,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->addModuleDirectory($moduleDir);
         $barDir = $this->_controller->getControllerDirectory('bar');
         $this->assertNotNull($barDir);
-        $this->assertContains('modules' . DIRECTORY_SEPARATOR . 'bar', $barDir);
+        $this->assertStringContainsString('modules' . DIRECTORY_SEPARATOR . 'bar', $barDir);
     }
 
     public function testGetControllerDirectoryByModuleNameReturnsNullOnBadModule()
@@ -675,13 +698,13 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $response = new Zend_Controller_Response_Http();
         $responsePost = $this->_controller->dispatch($request, $response);
 
-        $requestPost  = $this->_controller->getRequest();
+        $requestPost = $this->_controller->getRequest();
 
         $this->assertNotSame($request, $requestPost);
         $this->assertNotSame($response, $responsePost);
 
-        $this->assertContains('Reset action called', $responsePost->getBody());
-        $this->assertNotContains('Reset action called', $response->getBody());
+        $this->assertStringContainsString('Reset action called', $responsePost->getBody());
+        $this->assertStringNotContainsString('Reset action called', $response->getBody());
     }
 
     public function testViewRendererHelperRegisteredWhenDispatched()
@@ -720,9 +743,13 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->dispatch($request, $response);
 
         $body = $this->_controller->getResponse()->getBody();
-        $this->assertNotContains('Type error action called', $body);
-        $this->assertContains('EXCEPTION_OTHER', $body);
-        $this->assertContains('Return value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned', $body);
+        $this->assertStringNotContainsString('Type error action called', $body);
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            $this->assertEquals("EXCEPTION_OTHER\nReturn value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned", $body);
+        } else {
+            $this->assertEquals("EXCEPTION_OTHER\nIndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned", $body);
+        }
+        
         $this->assertSame(500, $this->_controller->getResponse()->getHttpResponseCode());
     }
 
@@ -738,9 +765,9 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->dispatch($request, $response);
 
         $body = $this->_controller->getResponse()->getBody();
-        $this->assertNotContains('Exception action called', $body);
-        $this->assertContains('EXCEPTION_OTHER', $body);
-        $this->assertContains('This is an exception message', $body);
+        $this->assertStringNotContainsString('Exception action called', $body);
+        $this->assertStringContainsString('EXCEPTION_OTHER', $body);
+        $this->assertStringContainsString('This is an exception message', $body);
         $this->assertSame(500, $this->_controller->getResponse()->getHttpResponseCode());
     }
 
@@ -755,11 +782,18 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         try {
             $this->_controller->dispatch($request, $response);
             $this->fail('Should have thrown');
-        } catch (\Throwable $e) {
-            $this->assertSame(
-                'Return value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned',
-                $e->getMessage()
-            );
+        } catch (Throwable $e) {
+            if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+                $this->assertSame(
+                    'Return value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned',
+                    $e->getMessage()
+                );
+            } else {
+                $this->assertSame(
+                    'IndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned',
+                    $e->getMessage()
+                );
+            }
         }
     }
 
@@ -776,13 +810,16 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->dispatch($request, $response);
 
         $body = $this->_controller->getResponse()->getBody();
-        $this->assertContains('EXCEPTION_OTHER', $body);
-        $this->assertContains('Return value of MyApp\Controller\Plugin\ThrowingPlugin::produceTypeError() must be an instance of MyApp\Controller\Plugin\ThrowingPlugin, instance of stdClass returned', $body);
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            $this->assertEquals("EXCEPTION_OTHER\nReturn value of MyApp\Controller\Plugin\ThrowingPlugin::produceTypeError() must be an instance of MyApp\Controller\Plugin\ThrowingPlugin, instance of stdClass returned", $body);
+        } else {
+            $this->assertEquals("EXCEPTION_OTHER\nMyApp\Controller\Plugin\ThrowingPlugin::produceTypeError(): Return value must be of type MyApp\Controller\Plugin\ThrowingPlugin, stdClass returned", $body);
+        }
         $this->assertSame(500, $this->_controller->getResponse()->getHttpResponseCode());
     }
 }
 
 // Call Zend_Controller_FrontTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_FrontTest::main") {
-    Zend_Controller_FrontTest::main();
-}
+// if (PHPUnit_MAIN_METHOD == "Zend_Controller_FrontTest::main") {
+//     Zend_Controller_FrontTest::main();
+// }

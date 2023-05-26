@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -39,7 +42,7 @@ require_once 'Zend/Db.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Db
  */
-abstract class Zend_Db_TestSetup extends PHPUnit_Framework_TestCase
+abstract class Zend_Db_TestSetup extends TestCase
 {
     /**
      * @var Zend_Db_TestUtil_Common
@@ -51,13 +54,13 @@ abstract class Zend_Db_TestSetup extends PHPUnit_Framework_TestCase
      */
     protected $_db = null;
 
-    public abstract function getDriver();
+    abstract public function getDriver();
 
     /**
      * Subclasses should call parent::setUp() before
      * doing their own logic, e.g. creating metadata.
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_setUpTestUtil();
         $this->_setUpAdapter();
@@ -85,8 +88,10 @@ abstract class Zend_Db_TestSetup extends PHPUnit_Framework_TestCase
             $this->_db->getConnection();
         } catch (Zend_Exception $e) {
             $this->_db = null;
-            $this->assertTrue($e instanceof Zend_Db_Adapter_Exception,
-                'Expecting Zend_Db_Adapter_Exception, got ' . get_class($e));
+            $this->assertTrue(
+                $e instanceof Zend_Db_Adapter_Exception,
+                'Expecting Zend_Db_Adapter_Exception, got ' . get_class($e)
+            );
             $this->markTestSkipped($e->getMessage());
         } catch (Throwable $e) {
             // DB2 constants
@@ -100,11 +105,10 @@ abstract class Zend_Db_TestSetup extends PHPUnit_Framework_TestCase
      * Subclasses should call parent::tearDown() after
      * doing their own logic, e.g. deleting metadata.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->_util->tearDown();
         $this->_db->closeConnection();
         $this->_db = null;
     }
-
 }

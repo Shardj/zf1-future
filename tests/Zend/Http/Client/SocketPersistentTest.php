@@ -51,8 +51,8 @@ class Zend_Http_Client_SocketPersistentTest extends Zend_Http_Client_SocketTest
      * @var array
      */
     protected $config = [
-        'adapter'    => 'Zend_Http_Client_Adapter_Socket',
+        'adapter' => 'Zend_Http_Client_Adapter_Socket',
         'persistent' => true,
-        'keepalive'  => true
+        'keepalive' => true
     ];
 }

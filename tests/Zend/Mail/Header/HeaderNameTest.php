@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -25,7 +28,7 @@
  */
 require_once 'Zend/Mail/Header/HeaderName.php';
 
-class Zend_Mail_Header_HeaderNameTest extends PHPUnit_Framework_TestCase
+class Zend_Mail_Header_HeaderNameTest extends TestCase
 {
     /**
      * Data for filter name
@@ -90,7 +93,8 @@ class Zend_Mail_Header_HeaderNameTest extends PHPUnit_Framework_TestCase
      */
     public function testAssertValidRaisesExceptionForInvalidNames($name)
     {
-        $this->setExpectedException('Zend_Mail_Exception', 'Invalid');
+        $this->expectException('Zend_Mail_Exception');
+        $this->expectExceptionMessage('Invalid');
         Zend_Mail_Header_HeaderName::assertValid($name);
     }
 }

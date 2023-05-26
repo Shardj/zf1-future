@@ -28,6 +28,10 @@
  */
 class Zend_Tool_Framework_Loader_IncludePathLoader_RecursiveFilterIterator extends RecursiveFilterIterator
 {
+    /**
+     * @var mixed|\ReflectionClass
+     */
+    public $ref;
 
     protected $_denyDirectoryPattern = null;
     protected $_acceptFilePattern    = null;

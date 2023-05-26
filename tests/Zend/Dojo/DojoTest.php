@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -50,7 +55,7 @@ require_once 'Zend/View.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Dojo
  */
-class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_DojoTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -59,8 +64,8 @@ class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_DojoTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_DojoTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -69,7 +74,7 @@ class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
     }
 
@@ -79,7 +84,7 @@ class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -97,7 +102,7 @@ class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
                 ->addElement('text', 'bat');
         $form->addDisplayGroup(['foo', 'bar'], 'foobar')
              ->addSubForm($subForm, 'sub')
-             ->setView(new Zend_View);
+             ->setView(new Zend_View());
         return $form;
     }
 
@@ -150,7 +155,7 @@ class Zend_Dojo_DojoTest extends PHPUnit_Framework_TestCase
 
     public function testEnableViewShouldSetAppropriateViewHelperPaths()
     {
-        $view = new Zend_View;
+        $view = new Zend_View();
         Zend_Dojo::enableView($view);
         $helperLoader = $view->getPluginLoader('helper');
         $paths = $helperLoader->getPaths('Zend_Dojo_View_Helper');

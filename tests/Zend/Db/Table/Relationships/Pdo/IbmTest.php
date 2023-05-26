@@ -42,13 +42,12 @@ require_once 'Zend/Db/Table/Relationships/TestCommon.php';
  */
 class Zend_Db_Table_Relationships_Pdo_IbmTest extends Zend_Db_Table_Relationships_TestCommon
 {
-
     public function getDriver()
     {
         return 'Pdo_Ibm';
     }
 
-     public function testTableRelationshipCascadingUpdateUsageBasicString()
+    public function testTableRelationshipCascadingUpdateUsageBasicString()
     {
         $server = $this->_util->getServer();
 

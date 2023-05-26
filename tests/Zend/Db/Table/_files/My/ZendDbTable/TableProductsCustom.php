@@ -41,7 +41,7 @@ require_once 'TableBugsProductsCustom.php';
  */
 class My_ZendDbTable_TableProductsCustom extends My_ZendDbTable_TableProducts
 {
-    protected $_rowClass    = 'My_ZendDbTable_Row_TestMyRow';
+    protected $_rowClass = 'My_ZendDbTable_Row_TestMyRow';
     protected $_rowsetClass = 'My_ZendDbTable_Rowset_TestMyRowset';
 
     protected $_dependentTables = ['My_ZendDbTable_TableBugsProductsCustom'];

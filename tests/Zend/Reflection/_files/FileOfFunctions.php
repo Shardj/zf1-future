@@ -20,7 +20,8 @@
  * @version    $Id$
  */
 
-function zend_reflection_function1() {
+function zend_reflection_function1()
+{
     return 'foo';
 }
 
@@ -30,12 +31,11 @@ function zend_reflection_function1() {
  *
  * This is the long description for funciton two
  *
- * @param unknown_type $one
- * @param unknown_type $two
+ * @param mixed $one
+ * @param mixed $two
  * @return string
  */
-function zend_reflection_function2($one, $two = 'two') {
-
+function zend_reflection_function2($one, $two = 'two')
+{
     return 'blah';
 }
-

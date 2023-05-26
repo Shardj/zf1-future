@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,20 +38,19 @@ require_once 'Zend/CodeGenerator/Php/Docblock/Tag/Return.php';
  * @group Zend_CodeGenerator
  * @group Zend_CodeGenerator_Php
  */
-class Zend_CodeGenerator_Php_Docblock_Tag_ReturnTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_Docblock_Tag_ReturnTest extends TestCase
 {
-
     /**
      * @var Zend_CodeGenerator_Php_Docblock_Tag
      */
     protected $_tag = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_tag = new Zend_CodeGenerator_Php_Docblock_Tag_Return();
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_tag = null;
     }
@@ -58,5 +60,4 @@ class Zend_CodeGenerator_Php_Docblock_Tag_ReturnTest extends PHPUnit_Framework_T
         $this->_tag->setDatatype('Foo');
         $this->assertEquals('Foo', $this->_tag->getDatatype());
     }
-
 }

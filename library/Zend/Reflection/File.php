@@ -40,6 +40,11 @@ class Zend_Reflection_File implements Reflector
     /**
      * @var string
      */
+    protected $_fileName         = null;
+
+    /**
+     * @var string
+     */
     protected $_filepath        = null;
 
     /**

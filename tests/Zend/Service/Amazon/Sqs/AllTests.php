@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -46,17 +50,17 @@ class Zend_Service_Amazon_Sqs_AllTests
      */
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     /**
      * Creates and returns this test suite
      *
-     * @return PHPUnit_Framework_TestSuite
+     * @return TestSuite
      */
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Service_Amazon_Sqs');
+        $suite = new TestSuite('Zend Framework - Zend_Service_Amazon_Sqs');
 
         $suite->addTestSuite('Zend_Service_Amazon_Sqs_OfflineTest');
 

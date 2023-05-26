@@ -58,6 +58,11 @@ require_once 'Zend/Crypt/Hmac.php';
  */
 class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
 {
+    /**
+     * @var \Zend_Uri|mixed
+     */
+    protected $_endpoint;
+
     /* Notes */
     // TODO SSL is required
 
@@ -458,7 +463,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
         $params = $this->_addRequiredParameters($params);
 
         try {
-            /* @var $request Zend_Http_Client */
+            /* @var Zend_Http_Client $request */
             $request = self::getHttpClient();
             $request->resetParameters();
 

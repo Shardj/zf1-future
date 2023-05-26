@@ -47,7 +47,7 @@ class Zend_Cloud_Exception extends Zend_Exception
     }
 
     public function getClientException() {
-        return $this->_getPrevious();
+        return $this->getPrevious();
     }
 }
 

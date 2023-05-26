@@ -38,7 +38,6 @@ require_once 'Zend/Db/Table/Select/TestCommon.php';
  */
 class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommon
 {
-
     public function testSelectFromQualified()
     {
         $this->markTestSkipped($this->getDriver() . ' does not support qualified table names');
@@ -71,11 +70,17 @@ class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommo
         $bugs_products = $this->_db->quoteIdentifier('zfbugs_products');
         $bug_id = $this->_db->quoteIdentifier('bug_id');
         $key = "$bugs_products.$bug_id";
-        $this->assertEquals(3, count($result),
-            'Expected count of first result set to be 2');
+        $this->assertEquals(
+            3,
+            count($result),
+            'Expected count of first result set to be 2'
+        );
         $this->assertEquals(1, $result[0][$key]);
-        $this->assertEquals(3, $result[0]['thecount'],
-            'Expected count(*) of first result set to be 2');
+        $this->assertEquals(
+            3,
+            $result[0]['thecount'],
+            'Expected count(*) of first result set to be 2'
+        );
         $this->assertEquals(2, $result[1][$key]);
         $this->assertEquals(1, $result[1]['thecount']);
     }
@@ -92,11 +97,17 @@ class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommo
         $bugs_products = $this->_db->quoteIdentifier('zfbugs_products');
         $bug_id = $this->_db->quoteIdentifier('bug_id');
         $key = "$bugs_products.$bug_id";
-        $this->assertEquals(3, count($result),
-            'Expected count of first result set to be 2');
+        $this->assertEquals(
+            3,
+            count($result),
+            'Expected count of first result set to be 2'
+        );
         $this->assertEquals(1, $result[0][$key]);
-        $this->assertEquals(3, $result[0]['thecount'],
-            'Expected count(*) of first result set to be 2');
+        $this->assertEquals(
+            3,
+            $result[0]['thecount'],
+            'Expected count(*) of first result set to be 2'
+        );
         $this->assertEquals(2, $result[1][$key]);
         $this->assertEquals(1, $result[1]['thecount']);
     }
@@ -199,8 +210,11 @@ class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommo
             ->order('productId DESC');
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" DESC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
 
     /**
@@ -213,8 +227,11 @@ class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommo
             ->order(['productId DESC', 'userId ASC']);
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" DESC, "userId" ASC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
 
     /**
@@ -227,8 +244,11 @@ class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommo
             ->order(['productId', 'userId DESC']);
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" ASC, "userId" DESC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
 
     /**
@@ -242,8 +262,10 @@ class Zend_Db_Table_Select_Pdo_SqliteTest extends Zend_Db_Table_Select_TestCommo
             ->order('IF("productId" > 5,1,0) ASC');
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF("productId" > 5,1,0) ASC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
-
 }

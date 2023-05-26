@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,14 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Spreadsheets
  */
-class Zend_Gdata_Spreadsheets_WorksheetEntryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Spreadsheets_WorksheetEntryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Spreadsheets_WorksheetEntry|mixed
+     */
+    protected $wksEntry;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->wksEntry = new Zend_Gdata_Spreadsheets_WorksheetEntry();
     }
@@ -53,5 +60,4 @@ class Zend_Gdata_Spreadsheets_WorksheetEntryTest extends PHPUnit_Framework_TestC
         $this->assertTrue($this->wksEntry->getRowCount()->getText() == $newWksEntry->getRowCount()->getText());
         $this->assertTrue($this->wksEntry->getColumnCount()->getText() == $newWksEntry->getColumnCount()->getText());
     }
-
 }

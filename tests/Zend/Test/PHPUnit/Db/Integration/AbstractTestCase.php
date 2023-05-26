@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Extensions\Database\DataSet\FlatXmlDataSet;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,7 +42,7 @@ require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Test
  */
-abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit_Framework_TestCase
+abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends TestCase
 {
     /**
      * @var Zend_Db_Adapter_Abstract
@@ -52,10 +56,12 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
         $dataSet->addTable($this->createBarTable());
 
         $this->assertEquals(
-            "foo", $dataSet->getTableMetaData('foo')->getTableName()
+            "foo",
+            $dataSet->getTableMetaData('foo')->getTableName()
         );
         $this->assertEquals(
-            "bar", $dataSet->getTableMetaData("bar")->getTableName()
+            "bar",
+            $dataSet->getTableMetaData("bar")->getTableName()
         );
 
         $this->assertEquals(["foo", "bar"], $dataSet->getTableNames());
@@ -71,8 +77,8 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
         $dataSet = new Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet();
         $dataSet->addTable($fooTable);
 
-        $xmlDataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(
-            dirname(__FILE__)."/_files/sqliteIntegrationFixture.xml"
+        $xmlDataSet = new FlatXmlDataSet(
+            dirname(__FILE__) . "/_files/sqliteIntegrationFixture.xml"
         );
 
         if (method_exists($xmlDataSet, 'assertEquals')) {
@@ -92,8 +98,8 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
 
     public function testSimpleTesterSetupAndRowsetEquals()
     {
-        $dataSet = new PHPUnit_Extensions_Database_DataSet_FlatXmlDataSet(
-            dirname(__FILE__)."/_files/sqliteIntegrationFixture.xml"
+        $dataSet = new FlatXmlDataSet(
+            dirname(__FILE__) . "/_files/sqliteIntegrationFixture.xml"
         );
         $fooDataTable = $dataSet->getTable("foo");
 

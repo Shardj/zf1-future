@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Runner\Version;
+
 /**
  * Zend Framework
  *
@@ -23,10 +26,10 @@
 /**
  * Include PHPUnit dependencies
  */
-if (version_compare(PHPUnit_Runner_Version::id(), '4.0.0', '<')) {
+if (version_compare(Version::id(), '4.0.0', '<')) {
     require_once 'PHPUnit/Runner/Version.php';
 
-    $phpunitVersion = PHPUnit_Runner_Version::id();
+    $phpunitVersion = Version::id();
     if ($phpunitVersion == '@package_version@' || version_compare($phpunitVersion, '3.5.5', '>=')) {
         require_once 'PHPUnit/Autoload.php'; // >= PHPUnit 3.5.5
     } else {
@@ -43,9 +46,9 @@ error_reporting(E_ALL | E_STRICT);
  * Determine the root, library, and tests directories of the framework
  * distribution.
  */
-$zfRoot        = realpath(dirname(dirname(__FILE__)));
+$zfRoot = realpath(dirname(dirname(__FILE__)));
 $zfCoreLibrary = "$zfRoot/library";
-$zfCoreTests   = "$zfRoot/tests";
+$zfCoreTests = "$zfRoot/tests";
 
 /*
  * Prepend the Zend Framework library/ and tests/ directories to the
@@ -57,7 +60,7 @@ $path = [
     $zfCoreLibrary,
     $zfCoreTests,
     get_include_path()
-    ];
+];
 set_include_path(implode(PATH_SEPARATOR, $path));
 
 /*
@@ -84,4 +87,3 @@ unset($zfRoot, $zfCoreLibrary, $zfCoreTests, $path);
 
 // Suppress DateTime warnings
 date_default_timezone_set(@date_default_timezone_get());
-

@@ -35,6 +35,11 @@ require_once 'Zend/Json.php';
 class Zend_Json_Decoder
 {
     /**
+     * @var mixed|string|null|bool|int|float
+     */
+    protected $_tokenValue;
+
+    /**
      * Parse tokens used to decode the JSON object. These are not
      * for public consumption, they are just used internally to the
      * class.

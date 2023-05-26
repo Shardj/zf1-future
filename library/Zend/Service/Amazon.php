@@ -209,7 +209,7 @@ class Zend_Service_Amazon
     /**
      * Set REST client
      *
-     * @param Zend_Rest_Client
+     * @param Zend_Rest_Client $client
      * @return Zend_Service_Amazon
      */
     public function setRestClient(Zend_Rest_Client $client)

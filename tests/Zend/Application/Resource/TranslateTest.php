@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,8 +42,13 @@ require_once 'Zend/Loader/Autoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_TranslateTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
     /**
      * @var array
      */
@@ -67,11 +77,11 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
 
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -91,7 +101,7 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
         Zend_Registry::_unsetInstance();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -150,8 +160,10 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
     public function testTranslationIsAddedIfRegistryKeyExistsAlready()
     {
         $options1 = ['foo' => 'bar'];
-        $options2 = array_merge_recursive($this->_translationOptions,
-                                          ['data' => ['message4' => 'bericht4']]);
+        $options2 = array_merge_recursive(
+            $this->_translationOptions,
+            ['data' => ['message4' => 'bericht4']]
+        );
 
         $translate = new Zend_Translate(Zend_Translate::AN_ARRAY, $options1);
         Zend_Registry::set('Zend_Translate', $translate);
@@ -218,10 +230,10 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-10352
-     * @expectedException Zend_Application_Resource_Exception
      */
     public function testToUseTheTwoKeysContentAndDataShouldThrowsException()
     {
+        $this->expectException(Zend_Application_Resource_Exception::class);
         $options = [
             'adapter' => 'array',
             'content' => [
@@ -244,10 +256,10 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
      */
     public function testLogFactory()
     {
-        $options                    = $this->_translationOptions;
-        $options['log'][0]          = new Zend_Log_Writer_Mock();
+        $options = $this->_translationOptions;
+        $options['log'][0] = new Zend_Log_Writer_Mock();
         $options['logUntranslated'] = true;
-        $options['locale']          = 'en';
+        $options['locale'] = 'en';
 
         $resource = new Zend_Application_Resource_Translate($options);
         $resource->setBootstrap($this->bootstrap);

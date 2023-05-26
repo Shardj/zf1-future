@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,41 +35,41 @@ require_once 'Zend/Pdf/Filter/RunLength.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
-class Zend_Pdf_Filter_RunLengthTest extends PHPUnit_Framework_TestCase
+class Zend_Pdf_Filter_RunLengthTest extends TestCase
 {
     public function testSimpleStringEncode()
     {
-        $decodedContents  = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWW'
+        $decodedContents = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWW'
                           . 'WWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW';
         $encodedContents = Zend_Pdf_Filter_RunLength::encode($decodedContents);
-        $testString  = "\xF5W\x00B\xF5W\xFEB\xE9W\x00B\xF3W\x80";
+        $testString = "\xF5W\x00B\xF5W\xFEB\xE9W\x00B\xF3W\x80";
         $this->assertEquals($encodedContents, $testString);
     }
 
     public function testSimpleStringDecode()
     {
-        $encodedContents  = "\xF5W\x00B\xF5W\xFEB\xE9W\x00B\xF3W\x80";
+        $encodedContents = "\xF5W\x00B\xF5W\xFEB\xE9W\x00B\xF3W\x80";
         $decodedContents = Zend_Pdf_Filter_RunLength::decode($encodedContents);
-        $testString  = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWW'
+        $testString = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWW'
                      . 'WWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW';
         $this->assertEquals($decodedContents, $testString);
     }
 
     public function testRepeatBytesLongerThan128BytesEncode()
     {
-        $decodedContents  = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+        $decodedContents = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                           . 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                           . 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                           . 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                           . 'AAAAAAAAAAAAAAAAAAAAAABBBCDEFFFF';
         $encodedContents = Zend_Pdf_Filter_RunLength::encode($decodedContents);
-        $testString  = "\x81A\xEBA\xFEB\x02CDE\xFDF\x80";
+        $testString = "\x81A\xEBA\xFEB\x02CDE\xFDF\x80";
         $this->assertEquals($encodedContents, $testString);
     }
 
     public function testRepeatBytesLongerThan128BytesDecode()
     {
-        $testString  = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+        $testString = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                      . 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                      . 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
                      . 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
@@ -79,4 +82,3 @@ class Zend_Pdf_Filter_RunLengthTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(Zend_Pdf_Filter_RunLength::decode($encodedContents), $testString);
     }
 }
-

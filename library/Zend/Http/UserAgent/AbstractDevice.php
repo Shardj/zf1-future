@@ -33,6 +33,10 @@ require_once 'Zend/Http/UserAgent/Device.php';
 abstract class Zend_Http_UserAgent_AbstractDevice
     implements Zend_Http_UserAgent_Device
 {
+    public $device_os;
+
+    public $list;
+
     /**
      * Browser signature
      *

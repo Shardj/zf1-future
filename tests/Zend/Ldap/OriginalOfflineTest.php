@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Ldap.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
-class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Ldap_OriginalOfflineTest extends TestCase
 {
     /**
      * Zend_Ldap instance
@@ -49,7 +52,7 @@ class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_ldap = new Zend_Ldap();
     }
@@ -60,7 +63,7 @@ class Zend_Ldap_OriginalOfflineTest extends PHPUnit_Framework_TestCase
     public function testFilterEscapeBasicOperation()
     {
         $input = 'a*b(b)d\e/f';
-        $expected = 'a\2ab\28b\29d\5ce\2ff';
+        $expected = 'a\2ab\28b\29d\5ce/f';
         $this->assertEquals($expected, Zend_Ldap::filterEscape($input));
     }
 

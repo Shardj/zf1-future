@@ -38,8 +38,8 @@ class Zend_Ldap_Node_RootDseTest extends Zend_Ldap_OnlineTestCase
 {
     public function testLoadRootDseNode()
     {
-        $root1=$this->_getLdap()->getRootDse();
-        $root2=$this->_getLdap()->getRootDse();
+        $root1 = $this->_getLdap()->getRootDse();
+        $root2 = $this->_getLdap()->getRootDse();
 
         $this->assertEquals($root1, $root2);
         $this->assertSame($root1, $root2);
@@ -47,7 +47,7 @@ class Zend_Ldap_Node_RootDseTest extends Zend_Ldap_OnlineTestCase
 
     public function testSupportCheckMethods()
     {
-        $root=$this->_getLdap()->getRootDse();
+        $root = $this->_getLdap()->getRootDse();
 
         $this->assertTrue(is_bool($root->supportsSaslMechanism('GSSAPI')));
         $this->assertTrue(is_bool($root->supportsSaslMechanism(['GSSAPI', 'DIGEST-MD5'])));
@@ -88,10 +88,10 @@ class Zend_Ldap_Node_RootDseTest extends Zend_Ldap_OnlineTestCase
 
     public function testGetters()
     {
-        $root=$this->_getLdap()->getRootDse();
+        $root = $this->_getLdap()->getRootDse();
 
         $this->assertTrue(is_array($root->getNamingContexts()));
-        $this->assertTrue(is_array($root->getSubschemaSubentry()));
+        $this->assertTrue(is_string($root->getSubschemaSubentry()));
 
         switch ($root->getServerType()) {
             case Zend_Ldap_Node_RootDse::SERVER_TYPE_ACTIVEDIRECTORY:
@@ -132,46 +132,38 @@ class Zend_Ldap_Node_RootDseTest extends Zend_Ldap_OnlineTestCase
 
     protected function _assertNullOrString($value)
     {
-        if ($value===null) {
+        if ($value === null) {
             $this->assertNull($value);
         } else {
             $this->assertTrue(is_string($value));
         }
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testSetterWillThrowException()
     {
-          $root=$this->_getLdap()->getRootDse();
-          $root->objectClass='illegal';
+        $this->expectException(BadMethodCallException::class);
+        $root = $this->_getLdap()->getRootDse();
+        $root->objectClass = 'illegal';
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testOffsetSetWillThrowException()
     {
-          $root=$this->_getLdap()->getRootDse();
-          $root['objectClass']='illegal';
+        $this->expectException(BadMethodCallException::class);
+        $root = $this->_getLdap()->getRootDse();
+        $root['objectClass'] = 'illegal';
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testUnsetterWillThrowException()
     {
-          $root=$this->_getLdap()->getRootDse();
-          unset($root->objectClass);
+        $this->expectException(BadMethodCallException::class);
+        $root = $this->_getLdap()->getRootDse();
+        unset($root->objectClass);
     }
 
-    /**
-     * @expectedException BadMethodCallException
-     */
     public function testOffsetUnsetWillThrowException()
     {
-          $root=$this->_getLdap()->getRootDse();
-          unset($root['objectClass']);
+        $this->expectException(BadMethodCallException::class);
+        $root = $this->_getLdap()->getRootDse();
+        unset($root['objectClass']);
     }
 }

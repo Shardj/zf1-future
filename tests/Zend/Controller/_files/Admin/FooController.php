@@ -37,7 +37,6 @@ require_once dirname(__FILE__) . '/../FooController.php';
  */
 class Admin_FooController extends FooController
 {
-
     /**
      * Test Function for indexAction
      *
@@ -57,5 +56,4 @@ class Admin_FooController extends FooController
     {
         $this->_response->appendBody("Admin_Foo::bar action called\n");
     }
-
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -24,7 +27,8 @@ require_once 'Zend/Oauth.php';
 require_once 'Zend/Oauth/Config.php';
 require_once 'Zend/Oauth/Client.php';
 
-class Test_Oauth_Client extends Zend_Oauth_Client {
+class Test_Oauth_Client extends Zend_Oauth_Client
+{
     public function getSignableParametersAsQueryString()
     {
         return $this->_getSignableParametersAsQueryString();
@@ -39,9 +43,14 @@ class Test_Oauth_Client extends Zend_Oauth_Client {
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Oauth
  */
-class Zend_Oauth_ClientTest extends PHPUnit_Framework_TestCase
+class Zend_Oauth_ClientTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var \Zend_Oauth_Client|mixed
+     */
+    protected $client;
+
+    protected function setUp(): void
     {
         $this->client = new Zend_Oauth_Client([]);
     }

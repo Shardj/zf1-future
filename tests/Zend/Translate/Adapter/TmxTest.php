@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -33,8 +38,13 @@ require_once 'Zend/Translate/Adapter/Tmx.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Translate
  */
-class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
+class Zend_Translate_Adapter_TmxTest extends TestCase
 {
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
     /**
      * Runs the test methods of this class.
      *
@@ -42,8 +52,8 @@ class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Translate_Adapter_TmxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Translate_Adapter_TmxTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testCreate()
@@ -55,14 +65,14 @@ class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
             $adapter = new Zend_Translate_Adapter_Tmx(dirname(__FILE__) . '/_files/nofile.tmx', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('is not readable', $e->getMessage());
+            $this->assertStringContainsString('is not readable', $e->getMessage());
         }
 
         try {
             $adapter = new Zend_Translate_Adapter_Tmx(dirname(__FILE__) . '/_files/failed.tmx', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('Mismatched tag at line', $e->getMessage());
+            $this->assertStringContainsString('Mismatched tag at line', $e->getMessage());
         }
     }
     
@@ -75,7 +85,7 @@ class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
             $adapter = new Zend_Translate_Adapter_Tmx(dirname(__FILE__) . '/_files/nofile.tmx', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('nofile.tmx', $e->getMessage());
+            $this->assertStringContainsString('nofile.tmx', $e->getMessage());
         }
     }
 
@@ -118,7 +128,7 @@ class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.tmx', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.tmx', 'de', ['clear' => true]);
@@ -131,17 +141,17 @@ class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
         $adapter = new Zend_Translate_Adapter_Tmx(dirname(__FILE__) . '/_files/translation_en.tmx', 'en');
         $adapter->setOptions(['testoption' => 'testkey']);
         $expected = [
-            'testoption'      => 'testkey',
-            'clear'           => false,
-            'content'         => dirname(__FILE__) . '/_files/translation_en.tmx',
-            'scan'            => null,
-            'locale'          => 'en',
-            'ignore'          => '.',
-            'disableNotices'  => false,
-            'log'             => false,
-            'logMessage'      => 'Untranslated message within \'%locale%\': %message%',
+            'testoption' => 'testkey',
+            'clear' => false,
+            'content' => dirname(__FILE__) . '/_files/translation_en.tmx',
+            'scan' => null,
+            'locale' => 'en',
+            'ignore' => '.',
+            'disableNotices' => false,
+            'log' => false,
+            'logMessage' => 'Untranslated message within \'%locale%\': %message%',
             'logUntranslated' => false,
-            'reload'          => false
+            'reload' => false
         ];
         $options = $adapter->getOptions();
 
@@ -176,7 +186,7 @@ class Zend_Translate_Adapter_TmxTest extends PHPUnit_Framework_TestCase
             $adapter->setLocale('nolocale');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         set_error_handler([$this, 'errorHandlerIgnore']);

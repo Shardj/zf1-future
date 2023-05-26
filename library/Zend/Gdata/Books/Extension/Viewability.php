@@ -109,7 +109,7 @@ class Zend_Gdata_Books_Extension_Viewability extends Zend_Gdata_Extension
      *
      * @param string $value programmatic value that describes the viewability
      *     of a volume in Googl eBook Search
-     * @return Zend_Gdata_Books_Extension_Viewability Provides a fluent
+     * @return $this
      *     interface
      */
     public function setValue($value)

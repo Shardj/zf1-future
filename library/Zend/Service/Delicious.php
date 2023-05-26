@@ -130,7 +130,7 @@ class Zend_Service_Delicious
      *
      * @param  string $uname Client user name
      * @param  string $pass  Client password
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function setAuth($uname, $pass)
     {
@@ -182,7 +182,7 @@ class Zend_Service_Delicious
      *
      * @param  string $old Old tag name
      * @param  string $new New tag name
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function renameTag($old, $new)
     {
@@ -214,7 +214,7 @@ class Zend_Service_Delicious
      *
      * @param  string $bundle Name of new bundle
      * @param  array  $tags   Array of tags
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function addBundle($bundle, array $tags)
     {
@@ -230,7 +230,7 @@ class Zend_Service_Delicious
      * Delete a bundle
      *
      * @param  string $bundle Name of bundle to be deleted
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function deleteBundle($bundle)
     {
@@ -245,7 +245,7 @@ class Zend_Service_Delicious
      * Delete a post
      *
      * @param  string $url URL of post to be deleted
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function deletePost($url)
     {

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,15 +42,40 @@ require_once 'Zend/Loader/Autoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_ModulesTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var Zend_Controller_Front
+     */
+    protected $front;
+
+    /**
+     * @var Zend_Application_Bootstrap_Bootstrap
+     */
+    protected $bootstrap;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -67,7 +97,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         $this->front->resetInstance();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -143,9 +173,9 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         $resource->init();
         $bootstraps = $resource->getExecutedBootstraps();
         $this->assertEquals(4, count((array)$bootstraps));
-        $this->assertArrayHasKey('bar',     (array)$bootstraps);
+        $this->assertArrayHasKey('bar', (array)$bootstraps);
         $this->assertArrayHasKey('foo-bar', (array)$bootstraps);
-        $this->assertArrayHasKey('foo',     (array)$bootstraps);
+        $this->assertArrayHasKey('foo', (array)$bootstraps);
         $this->assertArrayHasKey('default', (array)$bootstraps);
     }
 
@@ -164,9 +194,9 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
         $resource->setBootstrap($this->bootstrap);
         $bootstraps = $resource->init();
         $this->assertEquals(4, count((array)$bootstraps));
-        $this->assertArrayHasKey('bar',     (array)$bootstraps);
+        $this->assertArrayHasKey('bar', (array)$bootstraps);
         $this->assertArrayHasKey('foo-bar', (array)$bootstraps);
-        $this->assertArrayHasKey('foo',     (array)$bootstraps);
+        $this->assertArrayHasKey('foo', (array)$bootstraps);
         $this->assertArrayHasKey('default', (array)$bootstraps);
     }
     
@@ -202,8 +232,7 @@ class Zend_Application_Resource_ModulesTest extends PHPUnit_Framework_TestCase
 }
 
 require_once 'Zend/Application/Resource/Modules.php';
-class ZendTest_Application_Resource_ModulesHalf
-    extends Zend_Application_Resource_Modules 
+class ZendTest_Application_Resource_ModulesHalf extends Zend_Application_Resource_Modules
 {
     protected function bootstrapBootstraps($bootstraps)
     {

@@ -26,7 +26,17 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-abstract class Zend_Date_DateObject {
+abstract class Zend_Date_DateObject
+{
+    /**
+     * Minimum allowed year value
+     */
+    public const YEAR_MIN_VALUE = -10000;
+
+    /**
+     * Maximum allowed year value
+     */
+    public const YEAR_MAX_VALUE = 10000;
 
     /**
      * UNIX Timestamp
@@ -139,9 +149,10 @@ abstract class Zend_Date_DateObject {
      * @param  integer  $second
      * @param  integer  $month
      * @param  integer  $day
-     * @param  integer  $year
+     * @param  integer  $year    Added limitation: $year value must be between -10 000 and 10 000
+     *                           Original method implementation causes 504 error if it gets too big(small) year value
      * @param  boolean  $gmt     OPTIONAL true = other arguments are for UTC time, false = arguments are for local time/date
-     * @return  integer|float  timestamp (number of seconds elapsed relative to 1970/01/01 00:00:00 GMT/UTC)
+     * @return integer|float     timestamp (number of seconds elapsed relative to 1970/01/01 00:00:00 GMT/UTC)
      */
     protected function mktime($hour, $minute, $second, $month, $day, $year, $gmt = false)
     {
@@ -186,6 +197,11 @@ abstract class Zend_Date_DateObject {
             $overlap = ceil((1 - $month) / 12);
             $year   -= $overlap;
             $month  += $overlap * 12;
+        }
+
+        if ($year > self::YEAR_MAX_VALUE || $year < self::YEAR_MIN_VALUE) {
+            throw new Zend_Date_Exception('Invalid year, it must be between ' . self::YEAR_MIN_VALUE . ' and '
+                . self::YEAR_MAX_VALUE);
         }
 
         $date = 0;
@@ -924,6 +940,12 @@ abstract class Zend_Date_DateObject {
     {
         // timestamp within 32bit
         if (abs($this->_unixTimestamp) <= 0x7FFFFFFF) {
+            if (PHP_VERSION_ID >= 80100) { // on php 8.1
+                $suninfo = date_sun_info($this->_unixTimestamp, $location['latitude'], $location['longitude']);
+                $sunrise = $suninfo['sunrise'];
+                $sunset  = $suninfo['sunset'];
+                return $rise === false ? $sunset : $sunrise;
+            }
             if ($rise === false) {
                 return date_sunset($this->_unixTimestamp, SUNFUNCS_RET_TIMESTAMP, $location['latitude'],
                                    $location['longitude'], 90 + $horizon, $this->getGmtOffset() / 3600);
@@ -1018,7 +1040,7 @@ abstract class Zend_Date_DateObject {
      * If no timezone can be detected or the given timezone is wrong UTC will be set.
      *
      * @param  string  $zone      OPTIONAL timezone for date calculation; defaults to date_default_timezone_get()
-     * @return Zend_Date_DateObject Provides fluent interface
+     * @return $this
      * @throws Zend_Date_Exception
      */
     public function setTimezone($zone = null)

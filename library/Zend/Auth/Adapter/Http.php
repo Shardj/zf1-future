@@ -266,7 +266,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
      * Setter for the _basicResolver property
      *
      * @param  Zend_Auth_Adapter_Http_Resolver_Interface $resolver
-     * @return Zend_Auth_Adapter_Http Provides a fluent interface
+     * @return $this
      */
     public function setBasicResolver(Zend_Auth_Adapter_Http_Resolver_Interface $resolver)
     {
@@ -289,7 +289,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
      * Setter for the _digestResolver property
      *
      * @param  Zend_Auth_Adapter_Http_Resolver_Interface $resolver
-     * @return Zend_Auth_Adapter_Http Provides a fluent interface
+     * @return $this
      */
     public function setDigestResolver(Zend_Auth_Adapter_Http_Resolver_Interface $resolver)
     {
@@ -312,7 +312,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
      * Setter for the Request object
      *
      * @param  Zend_Controller_Request_Http $request
-     * @return Zend_Auth_Adapter_Http Provides a fluent interface
+     * @return $this
      */
     public function setRequest(Zend_Controller_Request_Http $request)
     {
@@ -335,7 +335,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
      * Setter for the Response object
      *
      * @param  Zend_Controller_Response_Http $response
-     * @return Zend_Auth_Adapter_Http Provides a fluent interface
+     * @return $this
      */
     public function setResponse(Zend_Controller_Response_Http $response)
     {

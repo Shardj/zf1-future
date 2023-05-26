@@ -256,12 +256,7 @@ class Zend_Pdf_StringParser
             }
         } else {
             $start = $this->offset;
-            $compare = '';
-            if( version_compare( phpversion(), '5.2.5' ) >= 0) {
-                $compare = "()<>[]{}/%\x00\t\n\f\r ";
-            } else {
-                $compare = "()<>[]{}/%\x00\t\n\r ";
-            }
+            $compare = "()<>[]{}/%\x00\t\n\f\r ";
 
             $this->offset += strcspn($this->data, $compare, $this->offset);
 
@@ -537,7 +532,7 @@ class Zend_Pdf_StringParser
 
 
     /**
-     * Read inderect object from a PDF stream
+     * Read indirect object from a PDF stream
      *
      * @param integer $offset
      * @param Zend_Pdf_Element_Reference_Context $context

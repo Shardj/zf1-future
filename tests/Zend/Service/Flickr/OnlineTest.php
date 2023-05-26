@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -29,7 +32,7 @@
  * @group      Zend_Service
  * @group      Zend_Service_Flickr
  */
-class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Flickr_OnlineTest extends TestCase
 {
     /**
      * Reference to Flickr service consumer object
@@ -50,7 +53,7 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         /**
          * @see Zend_Service_Flickr
@@ -77,8 +80,8 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
     public function testGroupPoolGetPhotosBasic()
     {
         $options = ['per_page' => 10,
-                         'page'     => 1,
-                         'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'];
+                         'page' => 1,
+                         'extras' => 'license, date_upload, date_taken, owner_name, icon_server'];
 
         $resultSet = $this->_flickr->groupPoolGetPhotos('20083316@N00', $options);
 
@@ -93,7 +96,7 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
             $resultSet->seek(-1);
             $this->fail('Expected OutOfBoundsException not thrown');
         } catch (OutOfBoundsException $e) {
-            $this->assertContains('Illegal index', $e->getMessage());
+            $this->assertStringContainsString('Illegal index', $e->getMessage());
         }
 
         $resultSet->seek(9);
@@ -102,7 +105,7 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
             $resultSet->seek(10);
             $this->fail('Expected OutOfBoundsException not thrown');
         } catch (OutOfBoundsException $e) {
-            $this->assertContains('Illegal index', $e->getMessage());
+            $this->assertStringContainsString('Illegal index', $e->getMessage());
         }
 
         $resultSet->rewind();
@@ -124,8 +127,8 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
     public function testUserSearchBasic()
     {
         $options = ['per_page' => 10,
-                         'page'     => 1,
-                         'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'];
+                         'page' => 1,
+                         'extras' => 'license, date_upload, date_taken, owner_name, icon_server'];
 
         $resultSet = $this->_flickr->userSearch('darby.felton@yahoo.com', $options);
 
@@ -140,7 +143,7 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
             $resultSet->seek(-1);
             $this->fail('Expected OutOfBoundsException not thrown');
         } catch (OutOfBoundsException $e) {
-            $this->assertContains('Illegal index', $e->getMessage());
+            $this->assertStringContainsString('Illegal index', $e->getMessage());
         }
 
         $resultSet->seek(9);
@@ -149,7 +152,7 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
             $resultSet->seek(10);
             $this->fail('Expected OutOfBoundsException not thrown');
         } catch (OutOfBoundsException $e) {
-            $this->assertContains('Illegal index', $e->getMessage());
+            $this->assertStringContainsString('Illegal index', $e->getMessage());
         }
 
         $resultSet->rewind();
@@ -183,10 +186,10 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
     {
         $options = [
             'per_page' => 10,
-            'page'     => 1,
+            'page' => 1,
             'tag_mode' => 'or',
-            'sort'     => 'date-taken-asc',
-            'extras'   => 'license, date_upload, date_taken, owner_name, icon_server'
+            'sort' => 'date-taken-asc',
+            'extras' => 'license, date_upload, date_taken, owner_name, icon_server'
             ];
 
         $resultSet = $this->_flickr->tagSearch('php', $options);
@@ -208,7 +211,7 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
     /**
      *  @see ZF-6397
      */
-    function testTotalForEmptyResultSet()
+    public function testTotalForEmptyResultSet()
     {
         $this->assertEquals(0, $this->_flickr->tagSearch('zendflickrtesttagnoresults')->totalResults());
     }
@@ -223,8 +226,11 @@ class Zend_Service_Flickr_OnlineTest extends PHPUnit_Framework_TestCase
  * @group      Zend_Service
  * @group      Zend_Service_Flickr
  */
-class Zend_Service_Flickr_OnlineTest_Skip extends PHPUnit_Framework_TestCase
+class Zend_Service_Flickr_OnlineTest_Skip extends TestCase
 {
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNothing()
     {
         $this->markTestSkipped('Zend_Service_Flickr online tests not enabled in TestConfiguration.php');

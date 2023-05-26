@@ -32,6 +32,7 @@ require_once 'Zend/Validate/Interface.php';
  */
 abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
 {
+    public $zfBreakChainOnFailure;
     /**
      * The value to be validated
      *
@@ -135,7 +136,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
      *
      * @param  string $messageString
      * @param  string $messageKey     OPTIONAL
-     * @return Zend_Validate_Abstract Provides a fluent interface
+     * @return $this
      * @throws Zend_Validate_Exception
      */
     public function setMessage($messageString, $messageKey = null)

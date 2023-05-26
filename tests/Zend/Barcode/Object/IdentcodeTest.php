@@ -34,7 +34,6 @@ require_once 'Zend/Barcode/Object/Identcode.php';
  */
 class Zend_Barcode_Object_IdentcodeTest extends Zend_Barcode_Object_TestCommon
 {
-
     protected function _getBarcodeObject($options = null)
     {
         return new Zend_Barcode_Object_Identcode($options);
@@ -92,11 +91,9 @@ class Zend_Barcode_Object_IdentcodeTest extends Zend_Barcode_Object_TestCommon
         $this->assertSame('00.123 456.789 0', $this->_object->getTextToDisplay());
     }
 
-    /**
-     * @expectedException Zend_Barcode_Object_Exception
-     */
     public function testBadTextDetectedIfChecksumWished()
     {
+        $this->expectException(Zend_Barcode_Object_Exception::class);
         $this->_object->setText('a');
         $this->_object->setWithChecksum(true);
         $this->_object->getText();
@@ -131,7 +128,8 @@ class Zend_Barcode_Object_IdentcodeTest extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Identcode_00123456789_border_instructions');
+            'Identcode_00123456789_border_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -141,7 +139,8 @@ class Zend_Barcode_Object_IdentcodeTest extends Zend_Barcode_Object_TestCommon
         $this->_object->setOrientation(60);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Identcode_00123456789_oriented_instructions');
+            'Identcode_00123456789_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -152,7 +151,8 @@ class Zend_Barcode_Object_IdentcodeTest extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Identcode_00123456789_border_oriented_instructions');
+            'Identcode_00123456789_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 

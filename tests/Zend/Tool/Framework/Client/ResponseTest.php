@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,9 +41,8 @@ require_once 'Zend/Tool/Framework/Client/Response/ContentDecorator/Separator.php
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Client
  */
-class Zend_Tool_Framework_Client_ResponseTest extends PHPUnit_Framework_TestCase
+class Zend_Tool_Framework_Client_ResponseTest extends TestCase
 {
-
     /**
      * @var Zend_Tool_Framework_Client_Response
      */
@@ -48,7 +50,7 @@ class Zend_Tool_Framework_Client_ResponseTest extends PHPUnit_Framework_TestCase
 
     protected $_responseBuffer = [];
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_response = new Zend_Tool_Framework_Client_Response();
     }
@@ -92,11 +94,9 @@ class Zend_Tool_Framework_Client_ResponseTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('my response exception', $this->_response->getException()->getMessage());
     }
 
-    /**
-     * @expectedException Zend_Tool_Framework_Client_Exception
-     */
     public function testSetCallbackThrowsExceptionOnInvalidCallback()
     {
+        $this->expectException(Zend_Tool_Framework_Client_Exception::class);
         $this->_response->setContentCallback(5);
     }
 

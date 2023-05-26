@@ -41,24 +41,23 @@ require_once 'Zend/Db/Adapter/Mysqli.php';
  */
 class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
 {
-
     protected $_numericDataTypes = [
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::INT_TYPE => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'INT'                => Zend_Db::INT_TYPE,
-        'INTEGER'            => Zend_Db::INT_TYPE,
-        'MEDIUMINT'          => Zend_Db::INT_TYPE,
-        'SMALLINT'           => Zend_Db::INT_TYPE,
-        'TINYINT'            => Zend_Db::INT_TYPE,
-        'BIGINT'             => Zend_Db::BIGINT_TYPE,
-        'SERIAL'             => Zend_Db::BIGINT_TYPE,
-        'DEC'                => Zend_Db::FLOAT_TYPE,
-        'DECIMAL'            => Zend_Db::FLOAT_TYPE,
-        'DOUBLE'             => Zend_Db::FLOAT_TYPE,
-        'DOUBLE PRECISION'   => Zend_Db::FLOAT_TYPE,
-        'FIXED'              => Zend_Db::FLOAT_TYPE,
-        'FLOAT'              => Zend_Db::FLOAT_TYPE
+        Zend_Db::FLOAT_TYPE => Zend_Db::FLOAT_TYPE,
+        'INT' => Zend_Db::INT_TYPE,
+        'INTEGER' => Zend_Db::INT_TYPE,
+        'MEDIUMINT' => Zend_Db::INT_TYPE,
+        'SMALLINT' => Zend_Db::INT_TYPE,
+        'TINYINT' => Zend_Db::INT_TYPE,
+        'BIGINT' => Zend_Db::BIGINT_TYPE,
+        'SERIAL' => Zend_Db::BIGINT_TYPE,
+        'DEC' => Zend_Db::FLOAT_TYPE,
+        'DECIMAL' => Zend_Db::FLOAT_TYPE,
+        'DOUBLE' => Zend_Db::FLOAT_TYPE,
+        'DOUBLE PRECISION' => Zend_Db::FLOAT_TYPE,
+        'FIXED' => Zend_Db::FLOAT_TYPE,
+        'FLOAT' => Zend_Db::FLOAT_TYPE
     ];
 
     /**
@@ -231,8 +230,8 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
     public function testAdapterDescribeTableAttributeColumnFloat()
     {
         $desc = $this->_db->describeTable('zfprice');
-        $this->assertEquals('zfprice',  $desc['price']['TABLE_NAME']);
-        $this->assertRegExp('/float/i', $desc['price']['DATA_TYPE']);
+        $this->assertEquals('zfprice', $desc['price']['TABLE_NAME']);
+        $this->assertMatchesRegularExpression('/float/i', $desc['price']['DATA_TYPE']);
     }
 
     /**
@@ -293,5 +292,4 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
     {
         return 'Mysqli';
     }
-
 }

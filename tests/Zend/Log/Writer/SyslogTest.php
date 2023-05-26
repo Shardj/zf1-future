@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -35,14 +40,17 @@ require_once 'Zend/Log/Writer/Syslog.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
-class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
+class Zend_Log_Writer_SyslogTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testWrite()
     {
         $fields = ['message' => 'foo', 'priority' => LOG_NOTICE];
@@ -54,7 +62,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
     {
         $cfg = [
             'application' => 'my app',
-            'facility'    => LOG_USER
+            'facility' => LOG_USER
         ];
 
         $writer = Zend_Log_Writer_Syslog::factory($cfg);
@@ -71,7 +79,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
             $writer->setFacility(LOG_USER * 1000);
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertContains('Invalid log facility provided', $e->getMessage());
+            $this->assertStringContainsString('Invalid log facility provided', $e->getMessage());
         }
     }
 
@@ -88,7 +96,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
             $writer->setFacility(LOG_AUTH);
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertContains('Only LOG_USER is a valid', $e->getMessage());
+            $this->assertStringContainsString('Only LOG_USER is a valid', $e->getMessage());
         }
     }
 
@@ -97,7 +105,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
      */
     public function testFluentInterface()
     {
-        $writer   = new Zend_Log_Writer_Syslog();
+        $writer = new Zend_Log_Writer_Syslog();
         $instance = $writer->setFacility(LOG_USER)
                            ->setApplicationName('my_app');
 
@@ -115,11 +123,12 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-8382
+     * @doesNotPerformAssertions
      */
     public function testWriteWithFormatter()
     {
         $event = [
-        	'message' => 'tottakai',
+            'message' => 'tottakai',
             'priority' => Zend_Log::ERR
         ];
 

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,7 +46,7 @@ require_once 'Zend/Controller/Front.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Plugin
  */
-class Zend_Controller_Plugin_PutHandlerTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Plugin_PutHandlerTest extends TestCase
 {
     /**
      * Request object
@@ -63,9 +68,8 @@ class Zend_Controller_Plugin_PutHandlerTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Plugin_PutHandlerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Controller_Plugin_PutHandlerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -74,11 +78,11 @@ class Zend_Controller_Plugin_PutHandlerTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         Zend_Controller_Front::getInstance()->resetInstance();
-        $this->request  = new Zend_Controller_Request_HttpTestCase();
-        $this->plugin   = new Zend_Controller_Plugin_PutHandler();
+        $this->request = new Zend_Controller_Request_HttpTestCase();
+        $this->plugin = new Zend_Controller_Plugin_PutHandler();
 
         $this->plugin->setRequest($this->request);
     }
@@ -98,4 +102,3 @@ class Zend_Controller_Plugin_PutHandlerTest extends PHPUnit_Framework_TestCase
 if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_PutHandlerTest::main") {
     Zend_Controller_Plugin_PutHandlerTest::main();
 }
-

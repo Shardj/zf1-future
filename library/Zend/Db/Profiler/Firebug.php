@@ -83,7 +83,7 @@ class Zend_Db_Profiler_Firebug extends Zend_Db_Profiler
      * is disabled and will not log any queries sent to it.
      *
      * @param  boolean $enable
-     * @return Zend_Db_Profiler Provides a fluent interface
+     * @return $this
      */
     public function setEnabled($enable)
     {
@@ -133,7 +133,7 @@ class Zend_Db_Profiler_Firebug extends Zend_Db_Profiler
 
         $this->_totalElapsedTime += $profile->getElapsedSecs();
 
-        $this->_message->addRow([(string)round($profile->getElapsedSecs(),5),
+        $this->_message->addRow([(string)round((float)$profile->getElapsedSecs(),5),
                                       $profile->getQuery(),
                                       ($params=$profile->getQueryParams())?$params:null]);
 

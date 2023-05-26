@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -30,57 +33,103 @@ require_once 'Zend/Gdata/Entry.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_EntryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_EntryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Entry|mixed
+     */
+    protected $entry;
 
-    public function setUp() {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $entryText;
+
+    /**
+     * @var string|mixed
+     */
+    protected $etagLocalName;
+
+    /**
+     * @var string|mixed
+     */
+    protected $expectedEtag;
+
+    /**
+     * @var string|mixed
+     */
+    protected $expectedMismatchExceptionMessage;
+
+    /**
+     * @var string|mixed
+     */
+    protected $gdNamespace;
+
+    /**
+     * @var string|mixed
+     */
+    protected $openSearchNamespacev1;
+
+    /**
+     * @var string|mixed
+     */
+    protected $openSearchNamespacev2;
+
+    protected function setUp(): void
+    {
         $this->entry = new Zend_Gdata_Entry();
         $this->entryText = file_get_contents(
-                'Zend/Gdata/_files/EntrySample1.xml',
-                true);
+            'Zend/Gdata/_files/EntrySample1.xml',
+            true
+        );
         $this->etagLocalName = 'etag';
         $this->expectedEtag = 'W/"CkcHQH8_fCp7ImA9WxRTGEw."';
         $this->expectedMismatchExceptionMessage = "ETag mismatch";
         $this->gdNamespace = 'http://schemas.google.com/g/2005';
         $this->openSearchNamespacev1 = 'http://a9.com/-/spec/opensearchrss/1.0/';
         $this->openSearchNamespacev2 = 'http://a9.com/-/spec/opensearch/1.1/';
-
     }
 
-    public function testXMLHasNoEtagsWhenUsingV1() {
+    public function testXMLHasNoEtagsWhenUsingV1()
+    {
         $etagData = 'Quux';
         $this->entry->setEtag($etagData);
         $domNode = $this->entry->getDOM(null, 1, null);
         $this->assertNull($domNode->attributes->getNamedItemNS($this->gdNamespace, $this->etagLocalName));
     }
 
-    public function testXMLHasNoEtagsWhenUsingV1X() {
+    public function testXMLHasNoEtagsWhenUsingV1X()
+    {
         $etagData = 'Quux';
         $this->entry->setEtag($etagData);
         $domNode = $this->entry->getDOM(null, 1, 1);
         $this->assertNull($domNode->attributes->getNamedItemNS($this->gdNamespace, $this->etagLocalName));
     }
 
-    public function testXMLHasEtagsWhenUsingV2() {
+    public function testXMLHasEtagsWhenUsingV2()
+    {
         $etagData = 'Quux';
         $this->entry->setEtag($etagData);
         $domNode = $this->entry->getDOM(null, 2, null);
         $this->assertEquals($etagData, $domNode->attributes->getNamedItemNS($this->gdNamespace, $this->etagLocalName)->nodeValue);
     }
 
-    public function testXMLHasEtagsWhenUsingV2X() {
+    public function testXMLHasEtagsWhenUsingV2X()
+    {
         $etagData = 'Quux';
         $this->entry->setEtag($etagData);
         $domNode = $this->entry->getDOM(null, 2, 1);
         $this->assertEquals($etagData, $domNode->attributes->getNamedItemNS($this->gdNamespace, $this->etagLocalName)->nodeValue);
     }
 
-    public function testXMLETagsPropagateToEntry() {
+    public function testXMLETagsPropagateToEntry()
+    {
         $this->entry->transferFromXML($this->entryText);
         $this->assertEquals($this->expectedEtag, $this->entry->getEtag());
     }
 
-    public function testXMLandHTMLEtagsDifferingThrowsException() {
+    public function testXMLandHTMLEtagsDifferingThrowsException()
+    {
         $exceptionCaught = false;
         $this->entry->setEtag("Foo");
         try {
@@ -91,36 +140,48 @@ class Zend_Gdata_EntryTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($exceptionCaught, "Exception Zend_Gdata_IO_Exception expected");
     }
 
-    public function testHttpAndXmlEtagsDifferingThrowsExceptionWithMessage() {
+    public function testHttpAndXmlEtagsDifferingThrowsExceptionWithMessage()
+    {
         $messageCorrect = false;
         $this->entry->setEtag("Foo");
         try {
             $this->entry->transferFromXML($this->entryText);
         } catch (Zend_Gdata_App_IOException $e) {
-            if ($e->getMessage() == $this->expectedMismatchExceptionMessage)
+            if ($e->getMessage() == $this->expectedMismatchExceptionMessage) {
                 $messageCorrect = true;
+            }
         }
         $this->assertTrue($messageCorrect, "Exception Zend_Gdata_IO_Exception message incorrect");
     }
 
-    public function testNothingBadHappensWhenHttpAndXmlEtagsMatch() {
+    public function testNothingBadHappensWhenHttpAndXmlEtagsMatch()
+    {
         $this->entry->setEtag($this->expectedEtag);
         $this->entry->transferFromXML($this->entryText);
         $this->assertEquals($this->expectedEtag, $this->entry->getEtag());
     }
 
-    public function testLookUpOpenSearchv1Namespace() {
-        $this->assertEquals($this->openSearchNamespacev1,
-            $this->entry->lookupNamespace('openSearch', 1, 0));
-        $this->assertEquals($this->openSearchNamespacev1,
-            $this->entry->lookupNamespace('openSearch', 1, null));
+    public function testLookUpOpenSearchv1Namespace()
+    {
+        $this->assertEquals(
+            $this->openSearchNamespacev1,
+            $this->entry->lookupNamespace('openSearch', 1, 0)
+        );
+        $this->assertEquals(
+            $this->openSearchNamespacev1,
+            $this->entry->lookupNamespace('openSearch', 1, null)
+        );
     }
 
-    public function testLookupOpenSearchv2Namespace() {
-        $this->assertEquals($this->openSearchNamespacev2,
-            $this->entry->lookupNamespace('openSearch', 2, 0));
-        $this->assertEquals($this->openSearchNamespacev2,
-            $this->entry->lookupNamespace('openSearch', 2, null));
+    public function testLookupOpenSearchv2Namespace()
+    {
+        $this->assertEquals(
+            $this->openSearchNamespacev2,
+            $this->entry->lookupNamespace('openSearch', 2, 0)
+        );
+        $this->assertEquals(
+            $this->openSearchNamespacev2,
+            $this->entry->lookupNamespace('openSearch', 2, null)
+        );
     }
-
 }

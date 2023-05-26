@@ -114,7 +114,7 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
                 .' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
-        if (count($result)) {
+        if (count($result ?? [])) {
             return true;
         }
         return false;

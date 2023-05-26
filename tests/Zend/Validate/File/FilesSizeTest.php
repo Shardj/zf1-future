@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,8 +43,12 @@ require_once 'Zend/Validate/File/FilesSize.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_FilesSizeTest extends TestCase
 {
+    /**
+     * @var bool
+     */
+    protected $multipleOptionsDetected;
     /**
      * Runs the test methods of this class.
      *
@@ -47,11 +56,11 @@ class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_FilesSizeTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Validate_File_FilesSizeTest");
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->multipleOptionsDetected = false;
     }
@@ -118,7 +127,7 @@ class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
             $validator = new Zend_Validate_File_FilesSize(['min' => 100, 'max' => 1]);
             $this->fail("Missing exception");
         } catch (Zend_Validate_Exception $e) {
-            $this->assertContains("greater than or equal", $e->getMessage());
+            $this->assertStringContainsString("greater than or equal", $e->getMessage());
         }
 
         $validator = new Zend_Validate_File_FilesSize(['min' => 1, 'max' => 100]);
@@ -140,7 +149,7 @@ class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
             $validator->setMin(20000);
             $this->fail("Missing exception");
         } catch (Zend_Validate_Exception $e) {
-            $this->assertContains("less than or equal", $e->getMessage());
+            $this->assertStringContainsString("less than or equal", $e->getMessage());
         }
     }
 
@@ -158,7 +167,7 @@ class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
             $validator = new Zend_Validate_File_FilesSize(['min' => 100, 'max' => 1]);
             $this->fail("Missing exception");
         } catch (Zend_Validate_Exception $e) {
-            $this->assertContains("greater than or equal", $e->getMessage());
+            $this->assertStringContainsString("greater than or equal", $e->getMessage());
         }
 
         $validator = new Zend_Validate_File_FilesSize(['min' => 1, 'max' => 100000]);
@@ -185,6 +194,9 @@ class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('976.56kB', $validator->getMax());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorShouldRaiseErrorWhenPassedMultipleOptions()
     {
         $handler = set_error_handler([$this, 'errorHandler'], E_USER_NOTICE);
@@ -204,16 +216,16 @@ class Zend_Validate_File_FilesSizeTest extends PHPUnit_Framework_TestCase
             dirname(__FILE__) . '/_files/testsize.mo',
             dirname(__FILE__) . '/_files/testsize.mo',
             dirname(__FILE__) . '/_files/testsize2.mo']));
-        $this->assertContains('9.76kB', current($validator->getMessages()));
-        $this->assertContains('1.55kB', current($validator->getMessages()));
+        $this->assertStringContainsString('9.76kB', current($validator->getMessages()));
+        $this->assertStringContainsString('1.55kB', current($validator->getMessages()));
 
         $validator = new Zend_Validate_File_FilesSize(['min' => 9999, 'max' => 10000, 'bytestring' => false]);
         $this->assertFalse($validator->isValid([
             dirname(__FILE__) . '/_files/testsize.mo',
             dirname(__FILE__) . '/_files/testsize.mo',
             dirname(__FILE__) . '/_files/testsize2.mo']));
-        $this->assertContains('9999', current($validator->getMessages()));
-        $this->assertContains('1588', current($validator->getMessages()));
+        $this->assertStringContainsString('9999', current($validator->getMessages()));
+        $this->assertStringContainsString('1588', current($validator->getMessages()));
     }
 
     public function errorHandler($errno, $errstr)

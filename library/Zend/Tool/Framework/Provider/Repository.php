@@ -80,7 +80,7 @@ class Zend_Tool_Framework_Provider_Repository
     /**
      * Set the ProcessOnAdd flag
      *
-     * @param unknown_type $processOnAdd
+     * @param bool $processOnAdd
      * @return Zend_Tool_Framework_Provider_Repository
      */
     public function setProcessOnAdd($processOnAdd = true)

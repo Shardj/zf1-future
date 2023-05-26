@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -51,8 +56,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_Form
  */
-class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_Form_Element_ButtonTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_Form_Element_Button
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -60,8 +75,8 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_Form_Element_ButtonTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_Form_Element_ButtonTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -70,12 +85,12 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view    = $this->getView();
+        $this->view = $this->getView();
         $this->element = $this->getElement();
         $this->element->setView($this->view);
     }
@@ -86,7 +101,7 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -126,7 +141,7 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
         $decorator = $this->element->getDecorator('DijitElement');
         $decorator->setElement($this->element);
         $html = $decorator->render('');
-        $this->assertRegexp('/<(input|button)[^>]*?>Submit Button/', $html, 'Label: ' . $this->element->getLabel() . "\nHTML: " . $html);
+        $this->assertMatchesRegularExpression('/<(input|button)[^>]*?>Submit Button/', $html, 'Label: ' . $this->element->getLabel() . "\nHTML: " . $html);
     }
 
     public function testConstructorSetsLabelToNameIfNoLabelProvided()
@@ -174,7 +189,7 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
     public function testShouldRenderButtonDijit()
     {
         $html = $this->element->render();
-        $this->assertContains('dojoType="dijit.form.Button"', $html);
+        $this->assertStringContainsString('dojoType="dijit.form.Button"', $html);
     }
 
     /**
@@ -185,8 +200,8 @@ class Zend_Dojo_Form_Element_ButtonTest extends PHPUnit_Framework_TestCase
         $this->element->setLabel('Button Label')
                       ->setView($this->getView());
         $html = $this->element->render();
-        $this->assertContains('Button Label', $html, $html);
-        $this->assertNotContains('value="', $html);
+        $this->assertStringContainsString('Button Label', $html, $html);
+        $this->assertStringNotContainsString('value="', $html);
     }
 }
 

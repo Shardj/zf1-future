@@ -33,8 +33,8 @@ require_once 'CommonBackendTest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest {
-
+class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest
+{
     private $_capabilities;
 
     public function __construct($name = null, array $data = [], $dataName = '')
@@ -42,7 +42,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
         parent::__construct($name);
     }
 
-    public function setUp($notag = false)
+    public function setUp($notag = false): void
     {
         parent::setUp($notag);
         $this->_capabilities = $this->_instance->getCapabilities();
@@ -71,6 +71,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['get_list'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIds();
@@ -84,6 +85,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getTags();
@@ -98,6 +100,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsMatchingTags(['tag3']);
@@ -111,6 +114,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsMatchingTags(['tag2']);
@@ -122,6 +126,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsMatchingTags(['tag9999']);
@@ -133,6 +138,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsMatchingTags(['tag3', 'tag4']);
@@ -144,6 +150,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsNotMatchingTags(['tag3']);
@@ -154,6 +161,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsNotMatchingTags(['tag1']);
@@ -166,6 +174,7 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
     {
         if (!($this->_capabilities['tags'])) {
             # unsupported by this backend
+            $this->expectNotToPerformAssertions();
             return;
         }
         $res = $this->_instance->getIdsNotMatchingTags(['tag1', 'tag4']);
@@ -210,7 +219,4 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest 
         $this->assertTrue(isset($res['infinite_lifetime']));
         $this->assertTrue(isset($res['get_list']));
     }
-
 }
-
-

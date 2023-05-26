@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,7 +41,7 @@ require_once 'Zend/Search/Lucene/Storage/File/Memory.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_Storage_FileTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_Storage_FileTest extends TestCase
 {
     public function testFilesystem()
     {
@@ -61,11 +64,11 @@ class Zend_Search_Lucene_Storage_FileTest extends PHPUnit_Framework_TestCase
         $file->seek(0, SEEK_SET);
         $this->assertEquals($file->tell(), 0);
 
-        $this->assertEquals($file->readByte(),   10);
+        $this->assertEquals($file->readByte(), 10);
         $this->assertEquals($file->readBytes(8), "\xFF\x00\xAA\x11\xBB\x44\x66\x99");
-        $this->assertEquals($file->readInt(),    49057123);
-        $this->assertEquals($file->readLong(),   753823522);
-        $this->assertEquals($file->readVInt(),   234586758);
+        $this->assertEquals($file->readInt(), 49057123);
+        $this->assertEquals($file->readLong(), 753823522);
+        $this->assertEquals($file->readVInt(), 234586758);
         $this->assertEquals($file->readString(), "UTF-8 string with non-ascii (Cyrillic) symbols\nUTF-8 строка с не-ASCII (кириллическими) символами");
         $this->assertEquals($file->readBinary(), "\xFF\x00\xAA\x11\xBB\x44\x66\x99");
 
@@ -85,7 +88,8 @@ class Zend_Search_Lucene_Storage_FileTest extends PHPUnit_Framework_TestCase
         $file->writeLong(753823522);
         $file->writeVInt(234586758);
         $file->writeString("UTF-8 string with non-ascii (Cyrillic) symbols\nUTF-8 строка с не-ASCII (кириллическими) символами");
-        $file->writeVInt(8); $file->writeBytes("\xFF\x00\xAA\x11\xBB\x44\x66\x99");
+        $file->writeVInt(8);
+        $file->writeBytes("\xFF\x00\xAA\x11\xBB\x44\x66\x99");
         $file->flush();
         $file->unlock();
         $file->close();
@@ -121,11 +125,11 @@ class Zend_Search_Lucene_Storage_FileTest extends PHPUnit_Framework_TestCase
         $file->seek(0, SEEK_SET);
         $this->assertEquals($file->tell(), 0);
 
-        $this->assertEquals($file->readByte(),   10);
+        $this->assertEquals($file->readByte(), 10);
         $this->assertEquals($file->readBytes(8), "\xFF\x00\xAA\x11\xBB\x44\x66\x99");
-        $this->assertEquals($file->readInt(),    49057123);
-        $this->assertEquals($file->readLong(),   753823522);
-        $this->assertEquals($file->readVInt(),   234586758);
+        $this->assertEquals($file->readInt(), 49057123);
+        $this->assertEquals($file->readLong(), 753823522);
+        $this->assertEquals($file->readVInt(), 234586758);
         $this->assertEquals($file->readString(), "UTF-8 string with non-ascii (Cyrillic) symbols\nUTF-8 строка с не-ASCII (кириллическими) символами");
         $this->assertEquals($file->readBinary(), "\xFF\x00\xAA\x11\xBB\x44\x66\x99");
 
@@ -134,4 +138,3 @@ class Zend_Search_Lucene_Storage_FileTest extends PHPUnit_Framework_TestCase
         $file->unlock();
     }
 }
-

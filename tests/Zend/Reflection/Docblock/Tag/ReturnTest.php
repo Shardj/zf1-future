@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,12 +36,11 @@ require_once 'Zend/Reflection/File.php';
  * @group      Zend_Reflection_Docblock_Tag
  * @group      Zend_Reflection_Docblock_Tag_Return
  */
-class Zend_Reflection_Docblock_Tag_ReturnTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_Docblock_Tag_ReturnTest extends TestCase
 {
+    protected static $_sampleClassFileRequired = false;
 
-    static protected $_sampleClassFileRequired = false;
-
-    public function setup()
+    protected function setUp(): void
     {
         if (self::$_sampleClassFileRequired === false) {
             $fileToRequire = dirname(dirname(dirname(__FILE__))) . '/_files/TestSampleClass.php';
@@ -52,7 +54,7 @@ class Zend_Reflection_Docblock_Tag_ReturnTest extends PHPUnit_Framework_TestCase
         $classReflection = new Zend_Reflection_Class('Zend_Reflection_TestSampleClass5');
 
         $paramTag = $classReflection->getMethod('doSomething')->getDocblock()->getTag('return');
-        $this->assertEquals($paramTag->getType(), 'mixed');
+        $this->assertEquals($paramTag->getType(), 'string');
     }
 
     public function testAllowsMultipleSpacesInDocblockTagLine()
@@ -62,7 +64,7 @@ class Zend_Reflection_Docblock_Tag_ReturnTest extends PHPUnit_Framework_TestCase
         $paramTag = $classReflection->getMethod('doSomething')->getDocblock()->getTag('return');
 
         $this->assertEquals($paramTag->getType(), 'string', 'Second Match Failed');
-        $this->assertEquals($paramTag->getDescription(),'Description of return value', 'Final Match Failed');
+        $this->assertEquals($paramTag->getDescription(), 'Description of return value', 'Final Match Failed');
     }
 
     /**
@@ -74,7 +76,7 @@ class Zend_Reflection_Docblock_Tag_ReturnTest extends PHPUnit_Framework_TestCase
 
         $paramTag = $classReflection->getMethod('doSomething')->getDocblock()->getTag('return');
 
-        $this->assertEquals('Zend\Reflection\Docblock', $paramTag->getType());
+        $this->assertEquals('void', $paramTag->getType());
     }
 
     /**

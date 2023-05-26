@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,8 +43,13 @@ require_once 'Zend/Form/Element.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Decorator_CallbackTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Decorator_Callback
+     */
+    protected $decorator;
+
     /**
      * Runs the test methods of this class.
      *
@@ -47,9 +57,8 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Decorator_CallbackTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Decorator_CallbackTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -58,7 +67,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->decorator = new Zend_Form_Decorator_Callback();
     }
@@ -69,7 +78,7 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -97,103 +106,103 @@ class Zend_Form_Decorator_CallbackTest extends PHPUnit_Framework_TestCase
             $this->decorator->setCallback(true);
             $this->fail('Only string or array callbacks should be allowed');
         } catch (Zend_Form_Exception $e) {
-            $this->assertContains('Invalid', $e->getMessage());
+            $this->assertStringContainsString('Invalid', $e->getMessage());
         }
 
         try {
-            $o = new stdClass;
+            $o = new stdClass();
             $this->decorator->setCallback($o);
             $this->fail('Only string or array callbacks should be allowed');
         } catch (Zend_Form_Exception $e) {
-            $this->assertContains('Invalid', $e->getMessage());
+            $this->assertStringContainsString('Invalid', $e->getMessage());
         }
 
         try {
             $this->decorator->setCallback(['foo', 'bar', 'baz']);
             $this->fail('Only arrays of two elements should be allowed as callbacks');
         } catch (Zend_Form_Exception $e) {
-            $this->assertContains('Invalid', $e->getMessage());
+            $this->assertStringContainsString('Invalid', $e->getMessage());
         }
 
         try {
             $this->decorator->setCallback(['foo']);
             $this->fail('Only arrays of two elements should be allowed as callbacks');
         } catch (Zend_Form_Exception $e) {
-            $this->assertContains('Invalid', $e->getMessage());
+            $this->assertStringContainsString('Invalid', $e->getMessage());
         }
     }
 
     public function testRenderCallsFunctionCallback()
     {
         $callback = 'Zend_Form_Decorator_CallbackTest_TestCallback';
-        $element  = new Zend_Form_Element('foobar');
+        $element = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
         $this->decorator->setOptions(['callback' => $callback])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
-        $this->assertContains('foo bar', $content);
-        $this->assertContains($element->getName(), $content);
-        $this->assertContains($element->getLabel(), $content);
+        $this->assertStringContainsString('foo bar', $content);
+        $this->assertStringContainsString($element->getName(), $content);
+        $this->assertStringContainsString($element->getLabel(), $content);
     }
 
     public function testRenderCallsMethodCallback()
     {
         $callback = ['Zend_Form_Decorator_CallbackTest_TestCallbackClass', 'direct'];
-        $element  = new Zend_Form_Element('foobar');
+        $element = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
         $this->decorator->setOptions(['callback' => $callback])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
-        $this->assertContains('foo bar', $content);
-        $this->assertContains($element->getName(), $content);
-        $this->assertContains($element->getLabel(), $content);
-        $this->assertContains('Item ', $content);
+        $this->assertStringContainsString('foo bar', $content);
+        $this->assertStringContainsString($element->getName(), $content);
+        $this->assertStringContainsString($element->getLabel(), $content);
+        $this->assertStringContainsString('Item ', $content);
     }
 
     public function testRenderCanPrepend()
     {
         $callback = 'Zend_Form_Decorator_CallbackTest_TestCallback';
-        $element  = new Zend_Form_Element('foobar');
+        $element = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
         $this->decorator->setOptions(['callback' => $callback, 'placement' => 'prepend'])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
-        $this->assertContains('foo bar', $content);
-        $this->assertContains($element->getName(), $content);
-        $this->assertContains($element->getLabel(), $content);
-        $this->assertRegexp('/foo bar$/s', $content);
+        $this->assertStringContainsString('foo bar', $content);
+        $this->assertStringContainsString($element->getName(), $content);
+        $this->assertStringContainsString($element->getLabel(), $content);
+        $this->assertMatchesRegularExpression('/foo bar$/s', $content);
     }
 
     public function testRenderCanReplaceContent()
     {
         $callback = 'Zend_Form_Decorator_CallbackTest_TestCallback';
-        $element  = new Zend_Form_Element('foobar');
+        $element = new Zend_Form_Element('foobar');
         $element->setLabel('Label Me');
 
         $this->decorator->setOptions(['callback' => $callback, 'placement' => false])
                         ->setElement($element);
 
         $content = $this->decorator->render('foo bar');
-        $this->assertNotContains('foo bar', $content, $content);
-        $this->assertContains($element->getName(), $content);
-        $this->assertContains($element->getLabel(), $content);
+        $this->assertStringNotContainsString('foo bar', $content, $content);
+        $this->assertStringContainsString($element->getName(), $content);
+        $this->assertStringContainsString($element->getLabel(), $content);
     }
 }
 
 function Zend_Form_Decorator_CallbackTest_TestCallback($content, $element, array $options)
 {
-    $name  = $element->getName();
+    $name = $element->getName();
     $label = '';
     if (method_exists($element, 'getLabel')) {
         $label = $element->getLabel();
     }
-    $html =<<<EOH
+    $html = <<<EOH
 $label: $name
 
 EOH;
@@ -204,12 +213,12 @@ class Zend_Form_Decorator_CallbackTest_TestCallbackClass
 {
     public static function direct($content, $element, array $options)
     {
-        $name  = $element->getName();
+        $name = $element->getName();
         $label = '';
         if (method_exists($element, 'getLabel')) {
             $label = $element->getLabel();
         }
-        $html =<<<EOH
+        $html = <<<EOH
 Item "$label": $name
 
 EOH;

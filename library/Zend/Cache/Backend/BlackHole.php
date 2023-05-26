@@ -105,7 +105,7 @@ class Zend_Cache_Backend_BlackHole
      *                     ($tags can be an array of strings or a single string)
      *
      * @param  string $mode clean mode
-     * @param  tags array $tags array of tags
+     * @param  array $tags array of tags
      * @return boolean true if no problem
      */
     public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = [])

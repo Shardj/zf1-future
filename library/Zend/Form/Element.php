@@ -177,7 +177,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     protected $_required = false;
 
     /**
-     * @var Zend_Translate
+     * @var Zend_Translate_Adapter
      */
     protected $_translator;
 
@@ -204,6 +204,13 @@ class Zend_Form_Element implements Zend_Validate_Interface
      * @var array
      */
     protected $_validatorRules = [];
+
+    /**
+     * List of element attributes
+     *
+     * @var array
+     */
+    protected $_attributes = [];
 
     /**
      * Element value
@@ -405,7 +412,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     /**
      * Set translator object for localization
      *
-     * @param  Zend_Translate|null $translator
+     * @param  Zend_Translate|Zend_Translate_Adapter|null $translator
      * @return Zend_Form_Element
      */
     public function setTranslator($translator = null)
@@ -426,7 +433,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     /**
      * Retrieve localization translator object
      *
-     * @return Zend_Translate|null
+     * @return Zend_Translate_Adapter|null
      */
     public function getTranslator()
     {
@@ -870,8 +877,11 @@ class Zend_Form_Element implements Zend_Validate_Interface
 
         if (null === $value) {
             unset($this->$name);
-        } else {
+            unset($this->_attributes[$name]);
+        } else if (property_exists($this, $name)) {
             $this->$name = $value;
+        } else {
+            $this->_attributes[$name] = $value;
         }
 
         return $this;
@@ -901,8 +911,13 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function getAttrib($name)
     {
         $name = (string) $name;
-        if (isset($this->$name)) {
+
+        if (property_exists($this, $name)) {
             return $this->$name;
+        }
+
+        if (isset($this->_attributes[$name])) {
+            return $this->_attributes[$name];
         }
 
         return null;
@@ -915,13 +930,15 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function getAttribs()
     {
-        $attribs = get_object_vars($this);
-        unset($attribs['helper']);
-        foreach ($attribs as $key => $value) {
-            if ('_' == substr($key, 0, 1)) {
-                unset($attribs[$key]);
+        $attribs = $this->_attributes;
+
+        foreach (get_object_vars($this) as $key => $value) {
+            if ('_' != substr($key, 0, 1)) {
+                $attribs[$key] = $value;
             }
         }
+
+        unset($attribs['helper']);
 
         return $attribs;
     }
@@ -963,11 +980,11 @@ class Zend_Form_Element implements Zend_Validate_Interface
             throw new Zend_Form_Exception(sprintf('Cannot retrieve value for protected/private property "%s"', $key));
         }
 
-        if (!isset($this->$key)) {
+        if (!isset($this->_attributes[$key])) {
             return null;
         }
 
-        return $this->$key;
+        return $this->_attributes[$key];
     }
 
     /**
@@ -980,6 +997,34 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function __set($key, $value)
     {
         $this->setAttrib($key, $value);
+    }
+
+    /**
+     * Check for set attribute
+     *
+     * @param  string $key
+     * @return bool
+     */
+    public function __isset($key)
+    {
+        return isset($this->_attributes[$key]);
+    }
+
+    /**
+     * Unset attribute
+     *
+     * @param  string $key
+     * @return void
+     */
+    public function __unset($key)
+    {
+        if ('_' == $key[0]) {
+            require_once 'Zend/Form/Exception.php';
+            throw new Zend_Form_Exception(sprintf('Cannot unset value for protected/private property "%s"', $key));
+        }
+
+        unset($this->$key);
+        unset($this->_attributes[$key]);
     }
 
     /**
@@ -2292,7 +2337,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                     }
                 }
             } else {
-                $messages[$key] = str_replace('%value%', $value, $message);
+                $messages[$key] = str_replace('%value%', (string) $value, $message);
             }
         }
         return $messages;

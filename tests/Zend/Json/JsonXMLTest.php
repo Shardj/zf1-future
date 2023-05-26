@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -20,7 +23,7 @@
  * @version    $Id$
  */
 
-error_reporting( E_ALL | E_STRICT ); // now required for each test suite
+error_reporting(E_ALL | E_STRICT); // now required for each test suite
 
 /**
  * Zend_Json
@@ -36,7 +39,7 @@ require_once 'Zend/Json.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Json
  */
-class Zend_Json_JsonXMLTest extends PHPUnit_Framework_TestCase
+class Zend_Json_JsonXMLTest extends TestCase
 {
     /**
      * xml2json Test 1
@@ -420,7 +423,7 @@ EOT;
         // Test if it is not a NULL object.
         $this->assertNotNull($phpArray, "JSON result for XML input 5 is NULL");
         // Test for one of the expected CDATA fields in the JSON result.
-        $this->assertContains("Lois & Clark", $phpArray['tvshows']['show'][1]['name'], "The CDATA name converted from XML input 5 is not correct");
+        $this->assertStringContainsString("Lois & Clark", $phpArray['tvshows']['show'][1]['name'], "The CDATA name converted from XML input 5 is not correct");
     } // End of function testUsingXML5
 
     /**
@@ -502,9 +505,9 @@ EOT;
         // Test if it is not a NULL object.
         $this->assertNotNull($phpArray, "JSON result for XML input 6 is NULL");
         // Test for one of the expected fields in the JSON result.
-        $this->assertContains("Zend", $phpArray['demo']['framework']['name'], "The framework name field converted from XML input 6 is not correct");
+        $this->assertStringContainsString("Zend", $phpArray['demo']['framework']['name'], "The framework name field converted from XML input 6 is not correct");
         // Test for one of the expected CDATA fields in the JSON result.
-        $this->assertContains('echo getMovies()->asXML();', $phpArray['demo']['listing']['code'], "The CDATA code converted from XML input 6 is not correct");
+        $this->assertStringContainsString('echo getMovies()->asXML();', $phpArray['demo']['listing']['code'], "The CDATA code converted from XML input 6 is not correct");
     } // End of function testUsingXML6
 
     /**
@@ -552,7 +555,8 @@ EOT;
      *  @group ZF-3257
      */
 
-    public function testUsingXML8() {
+    public function testUsingXML8()
+    {
 
         // Set the XML contents that will be tested here.
         $xmlStringContents = <<<EOT
@@ -583,37 +587,36 @@ EOT;
 
         $this->assertSame("bar", $phpArray['a']['@text'], "The text element of a is not correct");
         $this->assertSame("foo", $phpArray['a']['b']['@attributes']['id'], "The id attribute of b is not correct");
-
     }
 
     /**
      * @group ZF-11385
-     * @expectedException Zend_Json_Exception
      * @dataProvider providerNestingDepthIsHandledProperly
      */
     public function testNestingDepthIsHandledProperlyWhenNestingDepthExceedsMaximum($xmlStringContents)
-    {        
+    {
+        $this->expectException(Zend_Json_Exception::class);
         Zend_Json::$maxRecursionDepthAllowed = 1;
         Zend_Json::fromXml($xmlStringContents, true);
     }
-    
+
     /**
      * @group ZF-11385
      * @dataProvider providerNestingDepthIsHandledProperly
      */
     public function testNestingDepthIsHandledProperlyWhenNestingDepthDoesNotExceedMaximum($xmlStringContents)
-    {   
+    {
         try {
             Zend_Json::$maxRecursionDepthAllowed = 25;
             $jsonString = Zend_Json::fromXml($xmlStringContents, true);
             $jsonArray = Zend_Json::decode($jsonString);
             $this->assertNotNull($jsonArray, "JSON decode result is NULL");
             $this->assertSame('A', $jsonArray['response']['message_type']['defaults']['close_rules']['after_responses']);
-        } catch ( Zend_Json_Exception $ex ) {
+        } catch (Zend_Json_Exception $ex) {
             $this->fail('Zend_Json::fromXml does not implement recursion check properly');
         }
     }
-    
+
     /**
      * XML document provider for ZF-11385 tests
      * @return array
@@ -660,7 +663,4 @@ EOT;
 EOT;
         return [[$xmlStringContents]];
     }
-    
 } // End of class Zend_Json_JsonXMLTest
-
-

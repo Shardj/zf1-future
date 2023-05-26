@@ -111,7 +111,7 @@ class Zend_Test_DbAdapter extends Zend_Db_Adapter_Abstract
     }
 
     /**
-     * @var string
+     * @param string $symbol
      */
     public function setQuoteIdentifierSymbol($symbol)
     {

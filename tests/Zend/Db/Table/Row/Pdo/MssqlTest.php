@@ -37,7 +37,6 @@ require_once 'Zend/Db/Table/Row/TestCommon.php';
  */
 class Zend_Db_Table_Row_Pdo_MssqlTest extends Zend_Db_Table_Row_TestCommon
 {
-
     public function testTableRowSaveInsert()
     {
         $this->markTestIncomplete($this->getDriver() . ': DEFAULT or NULL are not allowed as explicit identity values.');
@@ -57,5 +56,4 @@ class Zend_Db_Table_Row_Pdo_MssqlTest extends Zend_Db_Table_Row_TestCommon
     {
         return 'Pdo_Mssql';
     }
-
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,12 @@ require_once 'Zend/Filter/Encrypt/Openssl.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
+ * ArgumentCountError: openssl_seal() expects at least 5 arguments, 4 given (on php >= 8) so need php anotation bellow
+ * @requires PHP < 8.0
  */
-class Zend_Filter_Encrypt_OpensslTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_Encrypt_OpensslTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the openssl extension');
@@ -53,7 +58,7 @@ class Zend_Filter_Encrypt_OpensslTest extends PHPUnit_Framework_TestCase
         $valuesExpected = [
             'STRING' => 'STRING',
             'ABC1@3' => 'ABC1@3',
-            'A b C'  => 'A B C'
+            'A b C' => 'A B C'
         ];
 
         $key = $filter->getPublicKey();
@@ -78,7 +83,8 @@ FDD4V7XpcNU63QIDAQABMA0GCSqGSIb3DQEBBAUAA4GBAFQ22OU/PAN7rRDr23NS
 PIDs9E7uuizAKDhRRRvho8BS
 -----END CERTIFICATE-----
 '],
-            $key);
+            $key
+        );
         foreach ($valuesExpected as $input => $output) {
             $this->assertNotEquals($output, $filter->encrypt($input));
         }
@@ -144,7 +150,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
             $filter->setPublicKey(123);
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('not valid', $e->getMessage());
+            $this->assertStringContainsString('not valid', $e->getMessage());
         }
 
         $filter->setPublicKey(['private' => dirname(__FILE__) . '/../_files/publickey.pem']);
@@ -160,7 +166,7 @@ bK22CwD/l7SMBOz4M9XH0Jb0OhNxLza4XMDu0ANMIpnkn1KOcmQ4gB8fmAbBt';
             $filter->setPrivateKey(123);
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('not valid', $e->getMessage());
+            $this->assertStringContainsString('not valid', $e->getMessage());
         }
 
         $filter->setPrivateKey(['public' => dirname(__FILE__) . '/../_files/privatekey.pem']);
@@ -203,7 +209,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $filter->decrypt('unknown');
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('Please give a private key', $e->getMessage());
+            $this->assertStringContainsString('Please give a private key', $e->getMessage());
         }
 
         $filter->setPrivateKey(['public' => dirname(__FILE__) . '/../_files/privatekey.pem']);
@@ -211,7 +217,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $filter->decrypt('unknown');
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('Please give a envelope key', $e->getMessage());
+            $this->assertStringContainsString('Please give a envelope key', $e->getMessage());
         }
 
         $filter->setEnvelopeKey('unknown');
@@ -219,7 +225,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $filter->decrypt('unknown');
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('was not able to decrypt', $e->getMessage());
+            $this->assertStringContainsString('was not able to decrypt', $e->getMessage());
         }
     }
 
@@ -233,7 +239,7 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $filter->encrypt('unknown');
             $this->fail();
         } catch (Zend_Filter_Exception $e) {
-            $this->assertContains('without public key', $e->getMessage());
+            $this->assertStringContainsString('without public key', $e->getMessage());
         }
     }
 

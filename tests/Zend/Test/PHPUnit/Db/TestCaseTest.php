@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Extensions\Database\DataSet\CompositeDataSet;
+use PHPUnit\Extensions\Database\DB\IDatabaseConnection;
+use PHPUnit\Extensions\Database\ITester;
+
 /**
  * Zend Framework
  *
@@ -38,23 +43,27 @@ require_once "Zend/Test/DbAdapter.php";
  */
 class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCase
 {
+    protected $databaseTester;
+
     /**
      * Contains a Database Connection
      *
-     * @var PHPUnit_Extensions_Database_DB_IDatabaseConnection
+     * @var \PHPUnit\Extensions\Database\DB\IDatabaseConnection
      */
     protected $_connectionMock = null;
 
     /**
      * Returns the test database connection.
      *
-     * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
+     * @return \PHPUnit\Extensions\Database\DB\IDatabaseConnection
      */
     protected function getConnection()
     {
-        if($this->_connectionMock == null) {
+        if ($this->_connectionMock == null) {
             $this->_connectionMock = $this->getMock(
-                'Zend_Test_PHPUnit_Db_Connection', [], [new Zend_Test_DbAdapter(), "schema"]
+                'Zend_Test_PHPUnit_Db_Connection',
+                [],
+                [new Zend_Test_DbAdapter(), "schema"]
             );
         }
         return $this->_connectionMock;
@@ -63,21 +72,21 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
     /**
      * Returns the test dataset.
      *
-     * @return PHPUnit_Extensions_Database_DataSet_IDataSet
+     * @return \PHPUnit\Extensions\Database\DataSet\IDataSet
      */
     protected function getDataSet()
     {
-        return new PHPUnit_Extensions_Database_DataSet_CompositeDataSet([]);
+        return new CompositeDataSet([]);
     }
 
     public function testDatabaseTesterIsInitialized()
     {
-        $this->assertTrue($this->databaseTester instanceof PHPUnit_Extensions_Database_ITester);
+        $this->assertTrue($this->databaseTester instanceof ITester);
     }
 
     public function testDatabaseTesterNestsDefaultConnection()
     {
-        $this->assertTrue($this->databaseTester->getConnection() instanceof PHPUnit_Extensions_Database_DB_IDatabaseConnection);
+        $this->assertTrue($this->databaseTester->getConnection() instanceof IDatabaseConnection);
     }
 
     public function testCheckZendDbConnectionConvenienceMethodReturnType()

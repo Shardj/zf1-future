@@ -128,5 +128,4 @@ class Db_MockHasResult extends Zend_Db_Adapter_Abstract
     {
         return null;
     }
-
 }

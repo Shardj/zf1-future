@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -33,8 +38,13 @@ require_once 'Zend/Translate/Adapter/Ini.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Translate
  */
-class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
+class Zend_Translate_Adapter_IniTest extends TestCase
 {
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
     /**
      * Runs the test methods of this class.
      *
@@ -42,8 +52,8 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Translate_Adapter_IniTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Translate_Adapter_IniTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testCreate()
@@ -55,7 +65,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
             $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/nofile.ini', 'en');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('not found', $e->getMessage());
+            $this->assertStringContainsString('not found', $e->getMessage());
         }
 
         set_error_handler([$this, 'errorHandlerIgnore']);
@@ -106,7 +116,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ini', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('The given Language', $e->getMessage());
+            $this->assertStringContainsString('The given Language', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ini', 'de', ['clear' => true]);
@@ -119,17 +129,17 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
         $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini', 'en');
         $adapter->setOptions(['testoption' => 'testkey']);
         $expected = [
-            'testoption'      => 'testkey',
-            'clear'           => false,
-            'content'         => dirname(__FILE__) . '/_files/translation_en.ini',
-            'scan'            => null,
-            'locale'          => 'en',
-            'ignore'          => '.',
-            'disableNotices'  => false,
-            'log'             => false,
-            'logMessage'      => 'Untranslated message within \'%locale%\': %message%',
+            'testoption' => 'testkey',
+            'clear' => false,
+            'content' => dirname(__FILE__) . '/_files/translation_en.ini',
+            'scan' => null,
+            'locale' => 'en',
+            'ignore' => '.',
+            'disableNotices' => false,
+            'log' => false,
+            'logMessage' => 'Untranslated message within \'%locale%\': %message%',
             'logUntranslated' => false,
-            'reload'          => false,
+            'reload' => false,
         ];
         $options = $adapter->getOptions();
 
@@ -164,7 +174,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit_Framework_TestCase
             $adapter->setLocale('nolocale');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('The given Language', $e->getMessage());
+            $this->assertStringContainsString('The given Language', $e->getMessage());
         }
 
         set_error_handler([$this, 'errorHandlerIgnore']);

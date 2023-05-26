@@ -295,7 +295,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
      * @param string $name - programmatic name of a key, in a <key,value> pair in the current namespace
      * @param mixed $value - value in the <key,value> pair to assign to the $name key
      * @return void
-     *@throws Zend_Session_Exception
+     * @throws Zend_Session_Exception
      */
     public function __set($name, $value)
     {

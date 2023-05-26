@@ -65,11 +65,11 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
     public function testSelectFromSchemaSpecified()
     {
         $schema = 'public';
-        $table  = 'zfbugs';
+        $table = 'zfbugs';
 
         $sql = $this->_db->select()->from($table, '*', $schema);
 
-        $this->assertRegExp("/FROM \"$schema\".\"$table\"/", $sql->__toString());
+        $this->assertMatchesRegularExpression("/FROM \"$schema\".\"$table\"/", $sql->__toString());
 
         $rowset = $this->_db->fetchAll($sql);
 
@@ -84,13 +84,13 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
     public function testSelectFromSchemaInName()
     {
         $schema = 'public';
-        $table  = 'zfbugs';
+        $table = 'zfbugs';
 
-        $name   = "$schema.$table";
+        $name = "$schema.$table";
 
         $sql = $this->_db->select()->from($name);
 
-        $this->assertRegExp("/FROM \"$schema\".\"$table\"/", $sql->__toString());
+        $this->assertMatchesRegularExpression("/FROM \"$schema\".\"$table\"/", $sql->__toString());
 
         $rowset = $this->_db->fetchAll($sql);
 
@@ -105,13 +105,13 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
     public function testSelectFromSchemaInNameOverridesSchemaArgument()
     {
         $schema = 'public';
-        $table  = 'zfbugs';
+        $table = 'zfbugs';
 
-        $name   = "$schema.$table";
+        $name = "$schema.$table";
 
         $sql = $this->_db->select()->from($name, '*', 'ignored');
 
-        $this->assertRegExp("/FROM \"$schema\".\"$table\"/", $sql->__toString());
+        $this->assertMatchesRegularExpression("/FROM \"$schema\".\"$table\"/", $sql->__toString());
 
         $rowset = $this->_db->fetchAll($sql);
 
@@ -121,7 +121,7 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
     /**
      * This test must be done on string field
      */
-    protected function _selectColumnWithColonQuotedParameter ()
+    protected function _selectColumnWithColonQuotedParameter()
     {
         $product_name = $this->_db->quoteIdentifier('product_name');
 
@@ -152,8 +152,11 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
             ->order('productId DESC');
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" DESC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
 
     /**
@@ -166,8 +169,11 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
             ->order(['productId DESC', 'userId ASC']);
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" DESC, "userId" ASC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
 
     /**
@@ -180,8 +186,11 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
             ->order(['productId', 'userId DESC']);
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" ASC, "userId" DESC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
 
     /**
@@ -195,7 +204,10 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
             ->order('IF("productId" > 5,1,0) ASC');
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF("productId" > 5,1,0) ASC';
-        $this->assertEquals($expected, $select->assemble(),
-            'Order direction of field failed');
+        $this->assertEquals(
+            $expected,
+            $select->assemble(),
+            'Order direction of field failed'
+        );
     }
- }
+}

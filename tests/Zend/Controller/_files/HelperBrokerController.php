@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class HelperBrokerController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for testGetRedirectorAction
      *

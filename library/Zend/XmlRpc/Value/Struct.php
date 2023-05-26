@@ -61,7 +61,7 @@ class Zend_XmlRpc_Value_Struct extends Zend_XmlRpc_Value_Collection
 
         if (is_array($this->_value)) {
             foreach ($this->_value as $name => $val) {
-                /* @var $val Zend_XmlRpc_Value */
+                /* @var Zend_XmlRpc_Value $val */
                 $generator->openElement('member')
                           ->openElement('name', $name)
                           ->closeElement('name');

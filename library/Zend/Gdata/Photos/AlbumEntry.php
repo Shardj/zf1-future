@@ -336,7 +336,7 @@ class Zend_Gdata_Photos_AlbumEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:access attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Access|null The requested attribute.
-     *@see setGphotoAccess
+     * @see setGphotoAccess
      */
     public function getGphotoAccess()
     {
@@ -359,7 +359,7 @@ class Zend_Gdata_Photos_AlbumEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:location attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Location|null The requested attribute.
-     *@see setGphotoLocation
+     * @see setGphotoLocation
      */
     public function getGphotoLocation()
     {
@@ -382,7 +382,7 @@ class Zend_Gdata_Photos_AlbumEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:name attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Name|null The requested attribute.
-     *@see setGphotoName
+     * @see setGphotoName
      */
     public function getGphotoName()
     {
@@ -428,7 +428,7 @@ class Zend_Gdata_Photos_AlbumEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:commentCount attribute.
      *
      * @return Zend_Gdata_Photos_Extension_CommentCount|null The requested attribute.
-     *@see setGphotoCommentCount
+     * @see setGphotoCommentCount
      */
     public function getGphotoCommentCount()
     {
@@ -474,7 +474,7 @@ class Zend_Gdata_Photos_AlbumEntry extends Zend_Gdata_Entry
      * Get the value for this element's gphoto:id attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Id|null The requested attribute.
-     *@see setGphotoId
+     * @see setGphotoId
      */
     public function getGphotoId()
     {

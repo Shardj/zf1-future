@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -28,7 +33,7 @@ require_once 'Zend/Ldap/Node/OfflineTest.php';
 require_once 'Zend/Ldap/Node/AttributeIterationTest.php';
 
 if (defined('TESTS_ZEND_LDAP_ONLINE_ENABLED')
-	&& constant('TESTS_ZEND_LDAP_ONLINE_ENABLED')) {
+    && constant('TESTS_ZEND_LDAP_ONLINE_ENABLED')) {
     require_once 'Zend/Ldap/Node/OnlineTest.php';
     require_once 'Zend/Ldap/Node/ChildrenTest.php';
     require_once 'Zend/Ldap/Node/ChildrenIterationTest.php';
@@ -50,12 +55,12 @@ class Zend_Ldap_Node_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Ldap_Node');
+        $suite = new TestSuite('Zend Framework - Zend_Ldap_Node');
 
         $suite->addTestSuite('Zend_Ldap_Node_OfflineTest');
         $suite->addTestSuite('Zend_Ldap_Node_AttributeIterationTest');
@@ -76,9 +81,9 @@ class Zend_Ldap_Node_AllTests
     }
 }
 
-class Zend_Ldap_Node_SkipOnlineTests extends PHPUnit_Framework_TestCase
+class Zend_Ldap_Node_SkipOnlineTests extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped('Zend_Ldap_Node online tests not enabled in TestConfiguration.php');
     }

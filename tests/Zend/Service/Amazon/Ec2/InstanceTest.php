@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -37,8 +40,12 @@ require_once 'Zend/Service/Amazon/Ec2/Instance.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
-class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Amazon_Ec2_InstanceTest extends TestCase
 {
+    /**
+     * @var \Zend_Http_Client_Adapter_Test|mixed
+     */
+    protected $adapter;
 
     /**
      * @var Zend_Service_Amazon_Ec2_Instance
@@ -48,7 +55,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -60,13 +67,12 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
         ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Instance::setHttpClient($client);
-
     }
 
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->adapter);
 
@@ -307,14 +313,14 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
     {
         $arrStart = [
             'maxStart' => 3,
-            'keyName'   => 'example-key-name',
-            'securityGroup'    => 'default',
-            'userData'          => 'instance_id=www3',
-            'placement'         => 'us-east-1b',
-            'kernelId'          => 'aki-4438dd2d',
-            'ramdiskId'         => 'ari-4538dd2c',
-            'blockDeviceVirtualName'    => 'vertdevice',
-            'blockDeviceName'       => '/dev/sdv'
+            'keyName' => 'example-key-name',
+            'securityGroup' => 'default',
+            'userData' => 'instance_id=www3',
+            'placement' => 'us-east-1b',
+            'kernelId' => 'aki-4438dd2d',
+            'ramdiskId' => 'ari-4538dd2c',
+            'blockDeviceVirtualName' => 'vertdevice',
+            'blockDeviceName' => '/dev/sdv'
         ];
 
         try {
@@ -404,14 +410,14 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
         $arrStart = [
             'imageId' => 'ami-60a54009',
             'maxStart' => 3,
-            'keyName'   => 'example-key-name',
-            'securityGroup'    => 'default',
-            'userData'          => 'instance_id=www3',
-            'placement'         => 'us-east-1b',
-            'kernelId'          => 'aki-4438dd2d',
-            'ramdiskId'         => 'ari-4538dd2c',
-            'blockDeviceVirtualName'    => 'vertdevice',
-            'blockDeviceName'       => '/dev/sdv'
+            'keyName' => 'example-key-name',
+            'securityGroup' => 'default',
+            'userData' => 'instance_id=www3',
+            'placement' => 'us-east-1b',
+            'kernelId' => 'aki-4438dd2d',
+            'ramdiskId' => 'ari-4538dd2c',
+            'blockDeviceVirtualName' => 'vertdevice',
+            'blockDeviceName' => '/dev/sdv'
         ];
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->run($arrStart);
@@ -421,11 +427,10 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $arrInstanceIds = ['i-2ba64342', 'i-2bc64242', 'i-2be64332'];
 
-        foreach($return['instances'] as $k => $r) {
+        foreach ($return['instances'] as $k => $r) {
             $this->assertEquals($arrInstanceIds[$k], $r['instanceId']);
             $this->assertEquals($k, $r['amiLaunchIndex']);
         }
-
     }
 
     public function testRunMultipleSecurityGroups()
@@ -474,14 +479,14 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $arrStart = [
             'imageId' => 'ami-60a54009',
-            'keyName'   => 'example-key-name',
-            'securityGroup'    => ['default','web'],
-            'userData'          => 'instance_id=www3',
-            'placement'         => 'us-east-1b',
-            'kernelId'          => 'aki-4438dd2d',
-            'ramdiskId'         => 'ari-4538dd2c',
-            'blockDeviceVirtualName'    => 'vertdevice',
-            'blockDeviceName'       => '/dev/sdv'
+            'keyName' => 'example-key-name',
+            'securityGroup' => ['default', 'web'],
+            'userData' => 'instance_id=www3',
+            'placement' => 'us-east-1b',
+            'kernelId' => 'aki-4438dd2d',
+            'ramdiskId' => 'ari-4538dd2c',
+            'blockDeviceVirtualName' => 'vertdevice',
+            'blockDeviceName' => '/dev/sdv'
         ];
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance->run($arrStart);
@@ -523,7 +528,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(1, count($return));
 
-        foreach($return as $r) {
+        foreach ($return as $r) {
             $this->assertEquals('i-28a64341', $r['instanceId']);
         }
     }
@@ -573,7 +578,7 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(2, count($return));
 
-        foreach($return as $k=>$r) {
+        foreach ($return as $k => $r) {
             $this->assertEquals($arrInstanceIds[$k], $r['instanceId']);
         }
     }
@@ -649,9 +654,9 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
         $return = $this->Zend_Service_Amazon_Ec2_Instance->consoleOutput('i-28a64341');
 
         $arrOutput = [
-            'instanceId'    => 'i-28a64341',
-            'timestamp'     => '2007-01-03 15:00:00',
-            'output'        => "Linux version 2.6.16-xenU (builder@patchbat.amazonsa) (gcc version 4.0.1 20050727 (Red Hat 4.0.1-5)) #1 SMP Thu Oct 26 08:41:26 SAST 2006\n"
+            'instanceId' => 'i-28a64341',
+            'timestamp' => '2007-01-03 15:00:00',
+            'output' => "Linux version 2.6.16-xenU (builder@patchbat.amazonsa) (gcc version 4.0.1 20050727 (Red Hat 4.0.1-5)) #1 SMP Thu Oct 26 08:41:26 SAST 2006\n"
 . "BIOS-provided physical RAM map:\n"
 . "Xen: 0000000000000000 - 000000006a400000 (usable)\n"
 . "980MB HIGHMEM available.\n"
@@ -722,6 +727,4 @@ class Zend_Service_Amazon_Ec2_InstanceTest extends PHPUnit_Framework_TestCase
         $arrReturn = [['instanceid' => 'i-43a4412a', 'monitorstate' => 'pending']];
         $this->assertSame($arrReturn, $return);
     }
-
 }
-

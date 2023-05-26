@@ -183,7 +183,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
         $archive = $this->getArchive();
         $mode    = $this->getMode();
         // check $content for NULL bytes or else file_exists will error out
-        if (strpos($content, '/\0/') === false && @file_exists($content)) {
+        if (strpos((string) $content, '/\0/') === false && @file_exists($content)) {
             $archive = $content;
         }
 

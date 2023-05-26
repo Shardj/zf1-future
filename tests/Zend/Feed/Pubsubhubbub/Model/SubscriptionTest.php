@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -29,7 +32,7 @@ require_once 'Zend/Feed/Pubsubhubbub/Model/Subscription.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Feed_Pubsubhubbub_Model_SubscriptionTest extends PHPUnit_Framework_TestCase
+class Zend_Feed_Pubsubhubbub_Model_SubscriptionTest extends TestCase
 {
     /**
      * @group ZF-10069
@@ -82,18 +85,18 @@ class Zend_Feed_Pubsubhubbub_Model_SubscriptionTest extends PHPUnit_Framework_Te
     protected function _createTable()
     {
         $sql = "CREATE TABLE subscription ("
-             .      "id varchar(32) NOT NULL DEFAULT '', "
-             .      "topic_url varchar(255) DEFAULT NULL, "
-             .      "hub_url varchar(255) DEFAULT NULL, "
-             .      "created_time datetime DEFAULT NULL, "
-             .      "lease_seconds bigint(20) DEFAULT NULL, "
-             .      "verify_token varchar(255) DEFAULT NULL, "
-             .      "secret varchar(255) DEFAULT NULL, "
-             .      "expiration_time datetime DEFAULT NULL, "
-             .      "subscription_state varchar(12) DEFAULT NULL, "
-             .      "PRIMARY KEY (id) "
+             . "id varchar(32) NOT NULL DEFAULT '', "
+             . "topic_url varchar(255) DEFAULT NULL, "
+             . "hub_url varchar(255) DEFAULT NULL, "
+             . "created_time datetime DEFAULT NULL, "
+             . "lease_seconds bigint(20) DEFAULT NULL, "
+             . "verify_token varchar(255) DEFAULT NULL, "
+             . "secret varchar(255) DEFAULT NULL, "
+             . "expiration_time datetime DEFAULT NULL, "
+             . "subscription_state varchar(12) DEFAULT NULL, "
+             . "PRIMARY KEY (id) "
              . ");";
 
-       Zend_Db_Table::getDefaultAdapter()->getConnection()->query($sql);
+        Zend_Db_Table::getDefaultAdapter()->getConnection()->query($sql);
     }
 }

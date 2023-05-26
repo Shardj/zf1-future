@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class ViewController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for indexAction
      *
@@ -96,5 +95,4 @@ class ViewController extends Zend_Controller_Action
     {
         $this->renderScript('custom/renderScript.php', 'foo');
     }
-
 }

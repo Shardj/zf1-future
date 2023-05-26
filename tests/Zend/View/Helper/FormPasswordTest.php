@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -42,8 +47,18 @@ require_once 'Zend/Registry.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_FormPasswordTest extends TestCase
 {
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_FormPassword
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -52,8 +67,8 @@ class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormPasswordTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_FormPasswordTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -62,7 +77,7 @@ class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
@@ -79,12 +94,12 @@ class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
     public function testCanDisableElement()
     {
         $html = $this->helper->formPassword([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'attribs' => ['disable' => true]
         ]);
 
-        $this->assertRegexp('/<input[^>]*?(disabled="disabled")/', $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*?(disabled="disabled")/', $html);
     }
 
     /**
@@ -93,31 +108,31 @@ class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
     public function testDisablingElementDoesNotRenderHiddenElements()
     {
         $html = $this->helper->formPassword([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'attribs' => ['disable' => true]
         ]);
 
-        $this->assertNotRegexp('/<input[^>]*?(type="hidden")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*?(type="hidden")/', $html);
     }
 
     public function testShouldRenderAsHtmlByDefault()
     {
         $test = $this->helper->formPassword('foo', 'bar');
-        $this->assertNotContains(' />', $test);
+        $this->assertStringNotContainsString(' />', $test);
     }
 
     public function testShouldAllowRenderingAsXhtml()
     {
         $this->view->doctype('XHTML1_STRICT');
         $test = $this->helper->formPassword('foo', 'bar');
-        $this->assertContains(' />', $test);
+        $this->assertStringContainsString(' />', $test);
     }
 
     public function testShouldNotRenderValueByDefault()
     {
         $test = $this->helper->formPassword('foo', 'bar');
-        $this->assertNotContains('bar', $test);
+        $this->assertStringNotContainsString('bar', $test);
     }
 
     /**
@@ -126,7 +141,7 @@ class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
     public function testShouldRenderValueWhenRenderPasswordFlagPresentAndTrue()
     {
         $test = $this->helper->formPassword('foo', 'bar', ['renderPassword' => true]);
-        $this->assertContains('value="bar"', $test);
+        $this->assertStringContainsString('value="bar"', $test);
     }
 
     /**
@@ -135,9 +150,9 @@ class Zend_View_Helper_FormPasswordTest extends PHPUnit_Framework_TestCase
     public function testRenderPasswordAttribShouldNeverBeRendered()
     {
         $test = $this->helper->formPassword('foo', 'bar', ['renderPassword' => true]);
-        $this->assertNotContains('renderPassword', $test);
+        $this->assertStringNotContainsString('renderPassword', $test);
         $test = $this->helper->formPassword('foo', 'bar', ['renderPassword' => false]);
-        $this->assertNotContains('renderPassword', $test);
+        $this->assertStringNotContainsString('renderPassword', $test);
     }
 }
 

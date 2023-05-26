@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -45,7 +50,7 @@ require_once 'Zend/Registry.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_HeadScriptTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_HeadScript
@@ -64,8 +69,8 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_HeadScriptTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_HeadScriptTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -74,7 +79,7 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $regKey = Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY;
         if (Zend_Registry::isRegistered($regKey)) {
@@ -91,7 +96,7 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->helper);
     }
@@ -113,24 +118,31 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($placeholder instanceof Zend_View_Helper_HeadScript);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetPrependAppendAndOffsetSetThrowExceptionsOnInvalidItems()
     {
         try {
             $this->helper->append('foo');
             $this->fail('Append should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+        }
         try {
             $this->helper->offsetSet(1, 'foo');
             $this->fail('OffsetSet should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+        }
         try {
             $this->helper->prepend('foo');
             $this->fail('Prepend should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+        }
         try {
             $this->helper->set('foo');
             $this->fail('Set should throw exception with invalid item');
-        } catch (Zend_View_Exception $e) { }
+        } catch (Zend_View_Exception $e) {
+        }
     }
 
     protected function _inflectAction($type)
@@ -249,6 +261,9 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
         $this->_testOverloadOffsetSet('script');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testOverloadingThrowsExceptionWithInvalidMethod()
     {
         try {
@@ -258,6 +273,9 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testOverloadingWithTooFewArgumentsRaisesException()
     {
         try {
@@ -315,11 +333,11 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
         $scripts = substr_count($string, '><');
         $this->assertEquals(1, $scripts);
 
-        $this->assertContains('src="foo"', $string);
-        $this->assertContains('bar', $string);
-        $this->assertContains('baz', $string);
+        $this->assertStringContainsString('src="foo"', $string);
+        $this->assertStringContainsString('bar', $string);
+        $this->assertStringContainsString('baz', $string);
 
-        $doc = new DOMDocument;
+        $doc = new DOMDocument();
         $dom = $doc->loadHtml($string);
         $this->assertTrue($dom !== false);
     }
@@ -332,7 +350,7 @@ class Zend_View_Helper_HeadScriptTest extends PHPUnit_Framework_TestCase
         $values = $this->helper->getArrayCopy();
         $this->assertEquals(1, count($values), var_export($values, 1));
         $item = array_shift($values);
-        $this->assertContains('foobar', $item->source);
+        $this->assertStringContainsString('foobar', $item->source);
     }
 
     public function testIndentationIsHonored()
@@ -348,10 +366,10 @@ document.write(bar.strlen());');
 
         $scripts = substr_count($string, '    <script');
         $this->assertEquals(2, $scripts);
-        $this->assertContains('    //', $string);
-        $this->assertContains('var', $string);
-        $this->assertContains('document', $string);
-        $this->assertContains('    document', $string);
+        $this->assertStringContainsString('    //', $string);
+        $this->assertStringContainsString('var', $string);
+        $this->assertStringContainsString('document', $string);
+        $this->assertStringContainsString('    document', $string);
     }
 
     public function testDoesNotAllowDuplicateFiles()
@@ -365,7 +383,7 @@ document.write(bar.strlen());');
     {
         $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['bogus' => 'deferred']);
         $test = $this->helper->headScript()->toString();
-        $this->assertNotContains('bogus="deferred"', $test);
+        $this->assertStringNotContainsString('bogus="deferred"', $test);
     }
 
     public function testCanRenderArbitraryAttributesOnRequest()
@@ -373,9 +391,12 @@ document.write(bar.strlen());');
         $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['bogus' => 'deferred'])
              ->setAllowArbitraryAttributes(true);
         $test = $this->helper->headScript()->toString();
-        $this->assertContains('bogus="deferred"', $test);
+        $this->assertStringContainsString('bogus="deferred"', $test);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCanPerformMultipleSerialCaptures()
     {
         $this->helper->headScript()->captureStart();
@@ -400,7 +421,7 @@ document.write(bar.strlen());');
             $this->fail('Should not be able to nest captures');
         } catch (Zend_View_Exception $e) {
             $this->helper->headScript()->captureEnd();
-            $this->assertContains('Cannot nest', $e->getMessage());
+            $this->assertStringContainsString('Cannot nest', $e->getMessage());
         }
     }
 
@@ -418,7 +439,7 @@ document.write(bar.strlen());');
     {
         $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['conditional' => 'lt IE 7']);
         $test = $this->helper->headScript()->toString();
-        $this->assertContains('<!--[if lt IE 7]>', $test);
+        $this->assertStringContainsString('<!--[if lt IE 7]>', $test);
     }
 
     public function testConditionalScriptWidthIndentation()
@@ -426,7 +447,7 @@ document.write(bar.strlen());');
         $this->helper->headScript()->appendFile('/js/foo.js', 'text/javascript', ['conditional' => 'lt IE 7']);
         $this->helper->headScript()->setIndent(4);
         $test = $this->helper->headScript()->toString();
-        $this->assertContains('    <!--[if lt IE 7]>', $test);
+        $this->assertStringContainsString('    <!--[if lt IE 7]>', $test);
     }
 
     /**
@@ -434,7 +455,6 @@ document.write(bar.strlen());');
      */
     public function testContainerMaintainsCorrectOrderOfItems()
     {
-
         $this->helper->offsetSetFile(1, 'test1.js');
         $this->helper->offsetSetFile(20, 'test2.js');
         $this->helper->offsetSetFile(10, 'test3.js');
@@ -472,11 +492,13 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendFile(
-            '/js/foo.js', 'text/javascript', ['conditional' => 'lt IE 7']
+            '/js/foo.js',
+            'text/javascript',
+            ['conditional' => 'lt IE 7']
         );
         $test = $this->helper->toString();
 
-        $this->assertNotContains('conditional', $test);
+        $this->assertStringNotContainsString('conditional', $test);
     }
 
     /**
@@ -486,11 +508,13 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendScript(
-            '// some script', 'text/javascript', ['noescape' => true]
+            '// some script',
+            'text/javascript',
+            ['noescape' => true]
         );
         $test = $this->helper->toString();
 
-        $this->assertNotContains('noescape', $test);
+        $this->assertStringNotContainsString('noescape', $test);
     }
 
     /**
@@ -499,12 +523,14 @@ document.write(bar.strlen());');
     public function testNoEscapeDefaultsToFalse()
     {
         $this->helper->appendScript(
-            '// some script' . PHP_EOL, 'text/javascript', []
+            '// some script' . PHP_EOL,
+            'text/javascript',
+            []
         );
         $test = $this->helper->toString();
 
-        $this->assertContains('//<!--', $test);
-        $this->assertContains('//-->', $test);
+        $this->assertStringContainsString('//<!--', $test);
+        $this->assertStringContainsString('//-->', $test);
     }
 
     /**
@@ -513,12 +539,14 @@ document.write(bar.strlen());');
     public function testNoEscapeTrue()
     {
         $this->helper->appendScript(
-            '// some script' . PHP_EOL, 'text/javascript', ['noescape' => true]
+            '// some script' . PHP_EOL,
+            'text/javascript',
+            ['noescape' => true]
         );
         $test = $this->helper->toString();
 
-        $this->assertNotContains('//<!--', $test);
-        $this->assertNotContains('//-->', $test);
+        $this->assertStringNotContainsString('//<!--', $test);
+        $this->assertStringNotContainsString('//-->', $test);
     }
 
     /**
@@ -528,11 +556,13 @@ document.write(bar.strlen());');
     {
         $this->helper->setAllowArbitraryAttributes(true);
         $this->helper->appendFile(
-            '/js/foo.js', 'text/javascript', ['conditional' => '!IE']
+            '/js/foo.js',
+            'text/javascript',
+            ['conditional' => '!IE']
         );
         $test = $this->helper->toString();
-        $this->assertContains('<!--[if !IE]><!--><', $test);
-        $this->assertContains('<!--<![endif]-->', $test);
+        $this->assertStringContainsString('<!--[if !IE]><!--><', $test);
+        $this->assertStringContainsString('<!--<![endif]-->', $test);
     }
 }
 

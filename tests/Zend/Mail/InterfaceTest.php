@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,11 +36,11 @@ require_once 'Zend/Mail/Storage/Mbox.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
-class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
+class Zend_Mail_InterfaceTest extends TestCase
 {
     protected $_mboxFile;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_mboxFile = dirname(__FILE__) . '/_files/test.mbox/INBOX';
     }
@@ -71,7 +74,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
         $subject = $list[1]->subject;
         $this->assertEquals('Simple Message', $subject);
     }
-
+    /** @doesNotPerformAssertions */
     public function testArraySetFail()
     {
         $list = new Zend_Mail_Storage_Mbox(['filename' => $this->_mboxFile]);
@@ -152,7 +155,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
             $this->fail('exception raised while calling noop thru fallback');
         }
     }
-
+    /** @doesNotPerformAssertions */
     public function testWrongVariable()
     {
         $list = new Zend_Mail_Storage_Mbox(['filename' => $this->_mboxFile]);
@@ -172,7 +175,7 @@ class Zend_Mail_InterfaceTest extends PHPUnit_Framework_TestCase
         $headers = $list[1]->getHeaders();
         $this->assertTrue(count($headers) > 0);
     }
-
+    /** @doesNotPerformAssertions */
     public function testWrongHeader()
     {
         $list = new Zend_Mail_Storage_Mbox(['filename' => $this->_mboxFile]);

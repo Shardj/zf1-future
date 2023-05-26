@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class Bar_IndexController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for indexAction
      *
@@ -55,5 +54,4 @@ class Bar_IndexController extends Zend_Controller_Action
     public function testAction()
     {
     }
-
 }

@@ -125,7 +125,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      * only that parameter; if an array of parameter names is provided, clears
      * each.
      *
-     * @param null|string|array single key or array of keys for params to clear
+     * @param null|string|array $name single key or array of keys for params to clear
      * @return Zend_Controller_Router_Abstract
      */
     public function clearParams($name = null)

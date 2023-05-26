@@ -1,12 +1,13 @@
 <?php
+
 return
 [
-  0 => 
+  0 =>
   [
     'type' => 'text',
     'text' => 'ERROR:',
     'size' => 10,
-    'position' => 
+    'position' =>
     [
       0 => 5,
       1 => 18,
@@ -16,12 +17,12 @@ return
     'alignment' => 'left',
     'orientation' => 0,
   ],
-  1 => 
+  1 =>
   [
     'type' => 'text',
     'text' => 'This is an error text',
     'size' => 10,
-    'position' => 
+    'position' =>
     [
       0 => 5,
       1 => 32,

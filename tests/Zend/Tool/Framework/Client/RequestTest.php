@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,15 +39,14 @@ require_once 'Zend/Tool/Framework/Client/Request.php';
  * @group Zend_Tool_Framework
  * @group Zend_Tool_Framework_Client
  */
-class Zend_Tool_Framework_Client_RequestTest extends PHPUnit_Framework_TestCase
+class Zend_Tool_Framework_Client_RequestTest extends TestCase
 {
-
     /**
      * @var Zend_Tool_Framework_Client_Request
      */
     protected $_request = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_request = new Zend_Tool_Framework_Client_Request();
     }
@@ -110,5 +112,4 @@ class Zend_Tool_Framework_Client_RequestTest extends PHPUnit_Framework_TestCase
     protected $_isPretend = false;
     protected $_isDispatchable = true;
     */
-
 }

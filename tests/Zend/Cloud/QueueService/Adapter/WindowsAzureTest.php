@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -50,9 +54,9 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
      * @var int
      */
     protected $_waitPeriod = 10;
-	protected $_clientType = 'Zend_Service_WindowsAzure_Storage_Queue';
+    protected $_clientType = 'Zend_Service_WindowsAzure_Storage_Queue';
 
-	/**
+    /**
      * Runs the test methods of this class.
      *
      * @access public
@@ -60,8 +64,8 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -69,7 +73,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->_wait();

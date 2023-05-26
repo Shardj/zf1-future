@@ -36,7 +36,6 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  */
 class My_Decorator_TableRow extends Zend_Form_Decorator_Abstract
 {
-
     /**
      * Test Function for render
      *
@@ -48,5 +47,4 @@ class My_Decorator_TableRow extends Zend_Form_Decorator_Abstract
         $e = $this->getElement();
         return "<tr><td>{$e->getLabel()}</td><td>{$content}</td><td>{$e->getDescription()}</td></tr>";
     }
-
 }

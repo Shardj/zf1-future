@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -43,14 +46,38 @@ class Zend_Search_Lucene_FSM_testClass
     public $action7Passed = false;
     public $action8Passed = false;
 
-    public function action1()  { $this->action1Passed = true; }
-    public function action2()  { $this->action2Passed = true; }
-    public function action3()  { $this->action3Passed = true; }
-    public function action4()  { $this->action4Passed = true; }
-    public function action5()  { $this->action5Passed = true; }
-    public function action6()  { $this->action6Passed = true; }
-    public function action7()  { $this->action7Passed = true; }
-    public function action8()  { $this->action8Passed = true; }
+    public function action1()
+    {
+        $this->action1Passed = true;
+    }
+    public function action2()
+    {
+        $this->action2Passed = true;
+    }
+    public function action3()
+    {
+        $this->action3Passed = true;
+    }
+    public function action4()
+    {
+        $this->action4Passed = true;
+    }
+    public function action5()
+    {
+        $this->action5Passed = true;
+    }
+    public function action6()
+    {
+        $this->action6Passed = true;
+    }
+    public function action7()
+    {
+        $this->action7Passed = true;
+    }
+    public function action8()
+    {
+        $this->action8Passed = true;
+    }
 }
 
 /**
@@ -62,17 +89,17 @@ class Zend_Search_Lucene_FSM_testClass
  */
 class Zend_Search_Lucene_FSM_testFSMClass extends Zend_Search_Lucene_FSM
 {
-    const OPENED            = 0;
-    const CLOSED            = 1;
-    const CLOSED_AND_LOCKED = 2;
+    public const OPENED = 0;
+    public const CLOSED = 1;
+    public const CLOSED_AND_LOCKED = 2;
 
-    const OPENED_AND_LOCKED = 3; // Wrong state, should not be used
+    public const OPENED_AND_LOCKED = 3; // Wrong state, should not be used
 
 
-    const OPEN   = 0;
-    const CLOSE  = 1;
-    const LOCK   = 3;
-    const UNLOCK = 4;
+    public const OPEN = 0;
+    public const CLOSE = 1;
+    public const LOCK = 3;
+    public const UNLOCK = 4;
 
     /**
      * Object to trace FSM actions
@@ -88,10 +115,10 @@ class Zend_Search_Lucene_FSM_testFSMClass extends Zend_Search_Lucene_FSM
         $this->addStates([self::OPENED, self::CLOSED, self::CLOSED_AND_LOCKED]);
         $this->addInputSymbols([self::OPEN, self::CLOSE, self::LOCK, self::UNLOCK]);
 
-        $unlockAction     = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action4');
-        $openAction       = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action6');
+        $unlockAction = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action4');
+        $openAction = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action6');
         $closeEntryAction = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action2');
-        $closeExitAction  = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action8');
+        $closeExitAction = new Zend_Search_Lucene_FSMAction($this->actionTracer, 'action8');
 
         $this->addRules([ [self::OPENED,            self::CLOSE,  self::CLOSED],
                                [self::CLOSED,            self::OPEN,   self::OPEN],
@@ -117,7 +144,7 @@ class Zend_Search_Lucene_FSM_testFSMClass extends Zend_Search_Lucene_FSM
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_FSMTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_FSMTest extends TestCase
 {
     public function testCreate()
     {
@@ -134,12 +161,12 @@ class Zend_Search_Lucene_FSMTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($doorFSM->getState(), Zend_Search_Lucene_FSM_testFSMClass::OPENED);
 
         $doorFSM->setState(Zend_Search_Lucene_FSM_testFSMClass::CLOSED_AND_LOCKED);
-        $this->assertEquals($doorFSM->getState(), Zend_Search_Lucene_FSM_testFSMClass::CLOSED_AND_LOCKED );
+        $this->assertEquals($doorFSM->getState(), Zend_Search_Lucene_FSM_testFSMClass::CLOSED_AND_LOCKED);
 
         $wrongStateExceptionCatched = false;
         try {
             $doorFSM->setState(Zend_Search_Lucene_FSM_testFSMClass::OPENED_AND_LOCKED);
-        } catch(Zend_Search_Exception $e) {
+        } catch (Zend_Search_Exception $e) {
             $wrongStateExceptionCatched = true;
         }
         $this->assertTrue($wrongStateExceptionCatched);
@@ -175,7 +202,7 @@ class Zend_Search_Lucene_FSMTest extends PHPUnit_Framework_TestCase
         $wrongInputExceptionCatched = false;
         try {
             $doorFSM->process(Zend_Search_Lucene_FSM_testFSMClass::LOCK);
-        } catch(Zend_Search_Exception $e) {
+        } catch (Zend_Search_Exception $e) {
             $wrongInputExceptionCatched = true;
         }
         $this->assertTrue($wrongInputExceptionCatched);
@@ -202,4 +229,3 @@ class Zend_Search_Lucene_FSMTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($doorFSM->actionTracer->action6Passed);
     }
 }
-

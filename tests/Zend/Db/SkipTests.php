@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,13 +35,13 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Db
  */
-abstract class Zend_Db_Skip_CommonTest extends PHPUnit_Framework_TestCase
+abstract class Zend_Db_Skip_CommonTest extends TestCase
 {
     public $message = null;
 
     abstract public function getDriver();
 
-    public function setUp()
+    protected function setUp(): void
     {
         $driver = $this->getDriver();
         $message = 'Skipping ' . $this->getDriver();
@@ -176,7 +179,7 @@ class Zend_Db_Skip_FirebirdTest extends Zend_Db_Skip_CommonTest
  */
 class Zend_Db_Skip_Pdo_IbmTest extends Zend_Db_Skip_CommonTest
 {
-    function getDriver()
+    public function getDriver()
     {
         return 'Pdo_Ibm';
     }
@@ -192,7 +195,7 @@ class Zend_Db_Skip_Pdo_IbmTest extends Zend_Db_Skip_CommonTest
  */
 class Zend_Db_Skip_Pdo_MssqlTest extends Zend_Db_Skip_CommonTest
 {
-    function getDriver()
+    public function getDriver()
     {
         return 'Pdo_Mssql';
     }

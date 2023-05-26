@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,55 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_TransparencyTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $transparencyText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_Transparency|mixed
+     */
+    protected $transparency;
+
+    protected function setUp(): void
+    {
         $this->transparencyText = file_get_contents(
-                'Zend/Gdata/_files/TransparencyElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/TransparencyElementSample1.xml',
+            true
+        );
         $this->transparency = new Zend_Gdata_Extension_Transparency();
     }
 
-    public function testEmptyTransparencyShouldHaveNoExtensionElements() {
+    public function testEmptyTransparencyShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->transparency->extensionElements));
         $this->assertTrue(count($this->transparency->extensionElements) == 0);
     }
 
-    public function testEmptyTransparencyShouldHaveNoExtensionAttributes() {
+    public function testEmptyTransparencyShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->transparency->extensionAttributes));
         $this->assertTrue(count($this->transparency->extensionAttributes) == 0);
     }
 
-    public function testSampleTransparencyShouldHaveNoExtensionElements() {
+    public function testSampleTransparencyShouldHaveNoExtensionElements()
+    {
         $this->transparency->transferFromXML($this->transparencyText);
         $this->assertTrue(is_array($this->transparency->extensionElements));
         $this->assertTrue(count($this->transparency->extensionElements) == 0);
     }
 
-    public function testSampleTransparencyShouldHaveNoExtensionAttributes() {
+    public function testSampleTransparencyShouldHaveNoExtensionAttributes()
+    {
         $this->transparency->transferFromXML($this->transparencyText);
         $this->assertTrue(is_array($this->transparency->extensionAttributes));
         $this->assertTrue(count($this->transparency->extensionAttributes) == 0);
     }
 
-    public function testNormalTransparencyShouldHaveNoExtensionElements() {
+    public function testNormalTransparencyShouldHaveNoExtensionElements()
+    {
         $this->transparency->value = "http://schemas.google.com/g/2005#event.opaque";
 
         $this->assertEquals("http://schemas.google.com/g/2005#event.opaque", $this->transparency->value);
@@ -85,7 +104,8 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("http://schemas.google.com/g/2005#event.opaque", $newTransparency2->value);
     }
 
-    public function testEmptyTransparencyToAndFromStringShouldMatch() {
+    public function testEmptyTransparencyToAndFromStringShouldMatch()
+    {
         $transparencyXml = $this->transparency->saveXML();
         $newTransparency = new Zend_Gdata_Extension_Transparency();
         $newTransparency->transferFromXML($transparencyXml);
@@ -93,7 +113,8 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($transparencyXml == $newTransparencyXml);
     }
 
-    public function testTransparencyWithValueToAndFromStringShouldMatch() {
+    public function testTransparencyWithValueToAndFromStringShouldMatch()
+    {
         $this->transparency->value = "http://schemas.google.com/g/2005#event.opaque";
         $transparencyXml = $this->transparency->saveXML();
         $newTransparency = new Zend_Gdata_Extension_Transparency();
@@ -103,10 +124,11 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("http://schemas.google.com/g/2005#event.opaque", $this->transparency->value);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->transparency->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->transparency->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->transparency->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->transparency->extensionAttributes['foo2']['value']);
@@ -117,9 +139,9 @@ class Zend_Gdata_TransparencyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newTransparency->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullTransparencyToAndFromString() {
+    public function testConvertFullTransparencyToAndFromString()
+    {
         $this->transparency->transferFromXML($this->transparencyText);
         $this->assertEquals("http://schemas.google.com/g/2005#event.transparent", $this->transparency->value);
     }
-
 }

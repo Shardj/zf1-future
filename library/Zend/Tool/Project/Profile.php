@@ -43,6 +43,10 @@ require_once 'Zend/Tool/Project/Profile/Resource/Container.php';
  */
 class Zend_Tool_Project_Profile extends Zend_Tool_Project_Profile_Resource_Container
 {
+    /**
+     * @var Zend_Tool_Project_Profile_Resource_Container
+     */
+    protected $_topResources;
 
     /**
      * @var bool

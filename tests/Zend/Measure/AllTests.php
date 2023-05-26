@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -72,12 +76,12 @@ class Zend_Measure_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Measure');
+        $suite = new TestSuite('Zend Framework - Zend_Measure');
 
         $suite->addTestSuite('Zend_Measure_Cooking_VolumeTest');
         $suite->addTestSuite('Zend_Measure_Cooking_WeightTest');

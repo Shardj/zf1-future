@@ -38,13 +38,12 @@ require_once 'Zend/Db/Adapter/Pdo/TestCommon.php';
  */
 class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
-
     protected $_numericDataTypes = [
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::INT_TYPE => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'INTEGER'            => Zend_Db::BIGINT_TYPE,
-        'REAL'               => Zend_Db::FLOAT_TYPE
+        Zend_Db::FLOAT_TYPE => Zend_Db::FLOAT_TYPE,
+        'INTEGER' => Zend_Db::BIGINT_TYPE,
+        'REAL' => Zend_Db::FLOAT_TYPE
     ];
 
     /**
@@ -77,9 +76,11 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
             $stmt = $this->_db->query($select);
             $result2 = $stmt->fetchAll();
         } catch (Zend_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Db_Statement_Exception,
-                'Expecting object of type Zend_Db_Statement_Exception, got '.get_class($e));
-            $this->fail('Unexpected exception '.get_class($e).' received: '.$e->getMessage());
+            $this->assertTrue(
+                $e instanceof Zend_Db_Statement_Exception,
+                'Expecting object of type Zend_Db_Statement_Exception, got ' . get_class($e)
+            );
+            $this->fail('Unexpected exception ' . get_class($e) . ' received: ' . $e->getMessage());
         }
 
         $this->assertEquals($result1, $result2);
@@ -221,7 +222,7 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
     protected function _testAdapterAlternateStatement($stmtClass)
     {
         $ip = get_include_path();
-        $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR .  '..' . DIRECTORY_SEPARATOR . '_files';
+        $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '_files';
         $newIp = $dir . PATH_SEPARATOR . $ip;
         set_include_path($newIp);
 
@@ -244,8 +245,10 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
 
         $stmt = $db->prepare("SELECT COUNT(*) FROM $bugs");
 
-        $this->assertTrue($stmt instanceof $stmtClass,
-            'Expecting object of type ' . $stmtClass . ', got ' . get_class($stmt));
+        $this->assertTrue(
+            $stmt instanceof $stmtClass,
+            'Expecting object of type ' . $stmtClass . ', got ' . get_class($stmt)
+        );
     }
 
     /**
@@ -255,7 +258,29 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testAdapterQuoteNullByteCharacter()
     {
         $string = "1\0";
-        $value  = $this->_db->quote($string);
+        $value = $this->_db->quote($string);
         $this->assertEquals("'1\\000'", $value);
+    }
+
+    /**
+     * https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.pdo.sqlite
+     * @inheritDoc
+     */
+    public function testAdapterZendConfigEmptyDriverOptions()
+    {
+        $params = $this->_util->getParams();
+        $params['driver_options'] = [];
+        $params = new Zend_Config($params);
+
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $db->getConnection();
+
+        $config = $db->getConfig();
+
+        if (PHP_VERSION_ID >= 80100) {
+            $this->assertEquals([PDO::ATTR_STRINGIFY_FETCHES => true], $config['driver_options']);
+        } else {
+            $this->assertEquals([], $config['driver_options']);
+        }
     }
 }

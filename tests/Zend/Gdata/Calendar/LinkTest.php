@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,39 +36,55 @@ require_once 'Zend/Gdata/Calendar.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Calendar_LinkTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $linkText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Calendar_Extension_Link|mixed
+     */
+    protected $link;
+
+    protected function setUp(): void
+    {
         $this->linkText = file_get_contents(
-                'Zend/Gdata/Calendar/_files/LinkElementSample1.xml',
-                true);
+            'Zend/Gdata/Calendar/_files/LinkElementSample1.xml',
+            true
+        );
         $this->link = new Zend_Gdata_Calendar_Extension_Link();
     }
 
-    public function testEmptyLinkShouldHaveNoExtensionElements() {
+    public function testEmptyLinkShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->link->extensionElements));
         $this->assertTrue(count($this->link->extensionElements) == 0);
     }
 
-    public function testEmptyLinkShouldHaveNoExtensionAttributes() {
+    public function testEmptyLinkShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->link->extensionAttributes));
         $this->assertTrue(count($this->link->extensionAttributes) == 0);
     }
 
-    public function testSampleLinkShouldHaveNoExtensionElements() {
+    public function testSampleLinkShouldHaveNoExtensionElements()
+    {
         $this->link->transferFromXML($this->linkText);
         $this->assertTrue(is_array($this->link->extensionElements));
         $this->assertTrue(count($this->link->extensionElements) == 0);
     }
 
-    public function testSampleLinkShouldHaveNoExtensionAttributes() {
+    public function testSampleLinkShouldHaveNoExtensionAttributes()
+    {
         $this->link->transferFromXML($this->linkText);
         $this->assertTrue(is_array($this->link->extensionAttributes));
         $this->assertTrue(count($this->link->extensionAttributes) == 0);
     }
 
-    public function testNormalLinkShouldHaveNoExtensionElements() {
+    public function testNormalLinkShouldHaveNoExtensionElements()
+    {
         $this->link->rel = "http://nowhere.invalid/";
         $this->link->title = "Somewhere";
         $this->link->href = "http://somewhere.invalid/";
@@ -109,7 +128,8 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($newLink2->webcontent->width, "2");
     }
 
-    public function testEmptyLinkToAndFromStringShouldMatch() {
+    public function testEmptyLinkToAndFromStringShouldMatch()
+    {
         $linkXml = $this->link->saveXML();
         $newLink = new Zend_Gdata_Calendar_Extension_Link();
         $newLink->transferFromXML($linkXml);
@@ -117,7 +137,8 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($linkXml == $newLinkXml);
     }
 
-    public function testLinkWithValueToAndFromStringShouldMatch() {
+    public function testLinkWithValueToAndFromStringShouldMatch()
+    {
         $this->link->rel = "http://nowhere.invalid/";
         $this->link->title = "Somewhere";
         $this->link->href = "http://somewhere.invalid/";
@@ -137,10 +158,11 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->link->webcontent->width, "2");
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->link->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->link->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->link->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->link->extensionAttributes['foo2']['value']);
@@ -151,7 +173,8 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newLink->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullLinkToAndFromString() {
+    public function testConvertFullLinkToAndFromString()
+    {
         $this->link->transferFromXML($this->linkText);
         $this->assertEquals($this->link->rel, "http://schemas.google.com/gCal/2005/webContent");
         $this->assertEquals($this->link->title, "Independence Day");
@@ -161,5 +184,4 @@ class Zend_Gdata_Calendar_LinkTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->link->webcontent->height, "120");
         $this->assertEquals($this->link->webcontent->width, "276");
     }
-
 }

@@ -81,7 +81,7 @@ interface Zend_Application_Bootstrap_ResourceBootstrapper
     /**
      * Set plugin loader to use to fetch resources
      *
-     * @param  Zend_Loader_PluginLoader_Interface Zend_Loader_PluginLoader
+     * @param  Zend_Loader_PluginLoader_Interface $loader Zend_Loader_PluginLoader
      * @return Zend_Application_Bootstrap_ResourceBootstrapper
      */
     public function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader);

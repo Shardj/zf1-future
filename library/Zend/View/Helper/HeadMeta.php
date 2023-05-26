@@ -186,7 +186,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
      * Not valid in a non-HTML5 doctype
      *
      * @param string $charset
-     * @return Zend_View_Helper_HeadMeta Provides a fluent interface
+     * @return $this
      */
     public function setCharset($charset)
     {

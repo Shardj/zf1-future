@@ -41,12 +41,17 @@ require_once 'Zend/Pdf/Target.php';
 abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveIterator, Countable
 {
     /**
+     * Array of child outlines (array of Zend_Pdf_Outline objects)
+     * @var array
+     */
+    public $childOutlines = [];
+
+    /**
      * Action dictionary
      *
      * @var Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference
      */
     protected $_actionDictionary;
-
 
     /**
      * An original list of chained actions

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,8 +45,18 @@ require_once 'Zend/Registry.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_FormMultiCheckboxTest extends TestCase
 {
+    /**
+     * @var Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var Zend_View_Helper_FormMultiCheckbox
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -49,8 +64,8 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_FormMultiCheckboxTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_FormMultiCheckboxTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -59,13 +74,13 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
             unset($registry['Zend_View_Helper_Doctype']);
         }
-        $this->view   = new Zend_View();
+        $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_FormMultiCheckbox();
         $this->helper->setView($this->view);
         ob_start();
@@ -77,7 +92,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         ob_end_clean();
     }
@@ -90,8 +105,8 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
             'baz' => 'Baz'
         ];
         $html = $this->helper->formMultiCheckbox([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'options' => $options,
         ]);
         foreach ($options as $key => $value) {
@@ -99,10 +114,10 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
             if (!preg_match($pattern, $html, $matches)) {
                 $this->fail('Failed to match ' . $pattern . ': ' . $html);
             }
-            $this->assertContains($value, $matches[5], var_export($matches, 1));
-            $this->assertContains('type="checkbox"', $matches[3], var_export($matches, 1));
-            $this->assertContains('name="foo[]"', $matches[3], var_export($matches, 1));
-            $this->assertContains('value="' . $key . '"', $matches[3], var_export($matches, 1));
+            $this->assertStringContainsString($value, $matches[5], var_export($matches, 1));
+            $this->assertStringContainsString('type="checkbox"', $matches[3], var_export($matches, 1));
+            $this->assertStringContainsString('name="foo[]"', $matches[3], var_export($matches, 1));
+            $this->assertStringContainsString('value="' . $key . '"', $matches[3], var_export($matches, 1));
         }
     }
 
@@ -114,8 +129,8 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
             'baz' => 'Baz'
         ];
         $html = $this->helper->formMultiCheckbox([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'options' => $options,
         ]);
         foreach ($options as $key => $value) {
@@ -123,7 +138,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
             if (!preg_match($pattern, $html, $matches)) {
                 $this->fail('Failed to match ' . $pattern . ': ' . $html);
             }
-            $this->assertNotContains(' />', $matches[1]);
+            $this->assertStringNotContainsString(' />', $matches[1]);
         }
     }
 
@@ -136,8 +151,8 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
             'baz' => 'Baz'
         ];
         $html = $this->helper->formMultiCheckbox([
-            'name'    => 'foo',
-            'value'   => 'bar',
+            'name' => 'foo',
+            'value' => 'bar',
             'options' => $options,
         ]);
         foreach ($options as $key => $value) {
@@ -145,7 +160,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends PHPUnit_Framework_TestCase
             if (!preg_match($pattern, $html, $matches)) {
                 $this->fail('Failed to match ' . $pattern . ': ' . $html);
             }
-            $this->assertContains(' />', $matches[1]);
+            $this->assertStringContainsString(' />', $matches[1]);
         }
     }
 }

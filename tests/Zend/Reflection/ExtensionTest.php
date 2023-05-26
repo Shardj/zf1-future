@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,9 +35,8 @@ require_once 'Zend/Reflection/Extension.php';
  * @group      Zend_Reflection
  * @group      Zend_Reflection_Extension
  */
-class Zend_Reflection_ExtensionTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_ExtensionTest extends TestCase
 {
-
     public function testClassReturn()
     {
         $extension = new Zend_Reflection_Extension('Reflection');
@@ -49,4 +51,3 @@ class Zend_Reflection_ExtensionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(get_class(array_shift($extensionFunctions)), 'Zend_Reflection_Function');
     }
 }
-

@@ -37,17 +37,16 @@ require_once 'Zend/Db/TestUtil/Pdo/Common.php';
  */
 class Zend_Db_TestUtil_Pdo_Mssql extends Zend_Db_TestUtil_Pdo_Common
 {
-
     public function getParams(array $constants = [])
     {
         $constants = [
-            'host'     => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_HOSTNAME',
+            'host' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_HOSTNAME',
             'username' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_USERNAME',
             'password' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PASSWORD',
-            'dbname'   => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_DATABASE',
-            'port'     => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PORT',
-            'pdoType'  => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PDOTYPE',
-            'charset'  => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_CHARSET',
+            'dbname' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_DATABASE',
+            'port' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PORT',
+            'pdoType' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PDOTYPE',
+            'charset' => 'TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_CHARSET',
         ];
 
         return parent::getParams($constants);
@@ -64,24 +63,24 @@ class Zend_Db_TestUtil_Pdo_Mssql extends Zend_Db_TestUtil_Pdo_Common
     protected function _getColumnsDocuments()
     {
         return [
-            'doc_id'       => 'INTEGER NOT NULL',
-            'doc_clob'     => 'VARCHAR(8000)',
-            'doc_blob'     => 'VARCHAR(8000)',
-            'PRIMARY KEY'  => 'doc_id'
+            'doc_id' => 'INTEGER NOT NULL',
+            'doc_clob' => 'VARCHAR(8000)',
+            'doc_blob' => 'VARCHAR(8000)',
+            'PRIMARY KEY' => 'doc_id'
             ];
     }
 
     protected function _getColumnsBugs()
     {
         return [
-            'bug_id'          => 'IDENTITY',
+            'bug_id' => 'IDENTITY',
             'bug_description' => 'VARCHAR(100) NULL',
-            'bug_status'      => 'VARCHAR(20) NULL',
-            'created_on'      => 'DATETIME NULL',
-            'updated_on'      => 'DATETIME NULL',
-            'reported_by'     => 'VARCHAR(100) NULL',
-            'assigned_to'     => 'VARCHAR(100) NULL',
-            'verified_by'     => 'VARCHAR(100) NULL'
+            'bug_status' => 'VARCHAR(20) NULL',
+            'created_on' => 'DATETIME NULL',
+            'updated_on' => 'DATETIME NULL',
+            'reported_by' => 'VARCHAR(100) NULL',
+            'assigned_to' => 'VARCHAR(100) NULL',
+            'verified_by' => 'VARCHAR(100) NULL'
         ];
     }
 

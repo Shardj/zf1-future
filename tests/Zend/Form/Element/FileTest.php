@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -43,7 +48,7 @@ require_once 'Zend/View.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Element_FileTest extends TestCase
 {
     /**
      * @var Zend_Form_Element_File
@@ -62,8 +67,8 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Element_FileTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Element_FileTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -72,7 +77,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Form::setDefaultTranslator(null);
@@ -85,7 +90,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -95,7 +100,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         $paths = $loader->getPaths('Zend_Form_Decorator');
         $this->assertTrue(is_array($paths));
 
-        $loader = new Zend_Loader_PluginLoader;
+        $loader = new Zend_Loader_PluginLoader();
         $this->element->setPluginLoader($loader, 'decorator');
         $test = $this->element->getPluginLoader('decorator');
         $this->assertSame($loader, $test);
@@ -118,7 +123,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
             $string = ucwords($string);
             $string = str_replace(' ', '_', $string);
             $prefix = 'Foo_' . $string;
-            $paths  = $loader->getPaths($prefix);
+            $paths = $loader->getPaths($prefix);
             $this->assertTrue(is_array($paths), "Failed asserting paths found for prefix $prefix");
         }
     }
@@ -137,12 +142,10 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
         $this->assertSame($adapter, $test);
     }
 
-    /**
-     * @expectedException Zend_Form_Element_Exception
-     */
     public function testElementShouldThrowExceptionWhenAddingAdapterOfInvalidType()
     {
-        $this->element->setTransferAdapter(new stdClass);
+        $this->expectException(Zend_Form_Element_Exception::class);
+        $this->element->setTransferAdapter(new stdClass());
     }
 
     public function testShouldRegisterPluginLoaderWithFileTransferAdapterPathByDefault()
@@ -170,13 +173,13 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
                           new Zend_Validate_File_Upload(),
                       ]);
         $validators = $this->element->getValidators();
-        $test       = $this->element->getTransferAdapter()->getValidators();
+        $test = $this->element->getTransferAdapter()->getValidators();
         $this->assertEquals($validators, $test);
         $this->assertTrue(is_array($test));
         $this->assertEquals(3, count($test));
 
         $validator = $this->element->getValidator('count');
-        $test      = $this->element->getTransferAdapter()->getValidator('count');
+        $test = $this->element->getTransferAdapter()->getValidator('count');
         $this->assertNotNull($validator);
         $this->assertSame($validator, $test);
 
@@ -189,7 +192,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
             ['validator' => 'Count', 'options' => 1],
         ]);
         $validators = $this->element->getValidators();
-        $test       = $this->element->getTransferAdapter()->getValidators();
+        $test = $this->element->getTransferAdapter()->getValidators();
         $this->assertSame($validators, $test);
         $this->assertTrue(is_array($test));
         $this->assertEquals(3, count($test), var_export($test, 1));
@@ -206,7 +209,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     {
         $this->markTestIncomplete('Unsure how to accurately test');
 
-        $this->element->setTransferAdapter(new Zend_Form_Element_FileTest_MockAdapter);
+        $this->element->setTransferAdapter(new Zend_Form_Element_FileTest_MockAdapter());
         $this->element->addValidator('Regex', '/([a-z0-9]{13})$/i');
         $this->assertTrue($this->element->isValid('foo.jpg'));
     }
@@ -246,8 +249,8 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 
         $form->setView(new Zend_View());
         $output = (string) $form;
-        $this->assertContains('name="file1"', $output);
-        $this->assertContains('name="file2"', $output);
+        $this->assertStringContainsString('name="file1"', $output);
+        $this->assertStringContainsString('name="file2"', $output);
     }
 
     public function testMultiFileInSubSubSubform()
@@ -268,7 +271,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 
         $form->setView(new Zend_View());
         $output = (string) $form;
-        $this->assertContains('name="file[]"', $output);
+        $this->assertStringContainsString('name="file[]"', $output);
         $this->assertEquals(2, substr_count($output, 'file[]'));
     }
 
@@ -290,7 +293,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 
         $form->setView(new Zend_View());
         $output = (string) $form;
-        $this->assertNotContains('name="file[]"', $output);
+        $this->assertStringNotContainsString('name="file[]"', $output);
     }
 
     public function testSettingMaxFileSize()
@@ -396,7 +399,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
             $content = $this->element->render(new Zend_View());
             $this->fail();
         } catch (Zend_Form_Element_Exception $e) {
-            $this->assertContains('No file decorator found', $e->getMessage());
+            $this->assertStringContainsString('No file decorator found', $e->getMessage());
         }
     }
 
@@ -445,7 +448,7 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
 
     public function testDefaultDecoratorsContainDescription()
     {
-        $element    = new Zend_Form_Element_File('baz');
+        $element = new Zend_Form_Element_File('baz');
         $decorators = $element->getDecorator('Description');
         $this->assertTrue($decorators instanceof Zend_Form_Decorator_Description);
     }
@@ -454,23 +457,23 @@ class Zend_Form_Element_FileTest extends PHPUnit_Framework_TestCase
     {
         if (!is_numeric($setting)) {
             $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $setting = (int) substr($setting, 0, -1);
 
             switch ($type) {
-                case 'M' :
+                case 'M':
                     $setting *= 1024;
                     break;
 
-                case 'G' :
+                case 'G':
                     $setting *= 1024 * 1024;
                     break;
 
-                default :
+                default:
                     break;
             }
         }
 
-        return (integer) $setting;
+        return (int) $setting;
     }
 
     /**
@@ -589,58 +592,58 @@ class Zend_Form_Element_FileTest_MockAdapter extends Zend_File_Transfer_Adapter_
         $testfile = dirname(__FILE__) . '/../../File/Transfer/Adapter/_files/test.txt';
         $this->_files = [
             'foo' => [
-                'name'       => 'foo.jpg',
-                'type'       => 'image/jpeg',
-                'size'       => 126976,
-                'tmp_name'   => '/tmp/489127ba5c89c',
-                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
-                'validated'  => false,
-                'received'   => false,
-                'filtered'   => false,
+                'name' => 'foo.jpg',
+                'type' => 'image/jpeg',
+                'size' => 126976,
+                'tmp_name' => '/tmp/489127ba5c89c',
+                'options' => ['ignoreNoFile' => false, 'useByteString' => true],
+                'validated' => false,
+                'received' => false,
+                'filtered' => false,
                 'validators' => [],
             ],
             'bar' => [
-                'name'       => 'bar.png',
-                'type'       => 'image/png',
-                'size'       => 91136,
-                'tmp_name'   => '/tmp/489128284b51f',
-                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
-                'validated'  => false,
-                'received'   => false,
-                'filtered'   => false,
+                'name' => 'bar.png',
+                'type' => 'image/png',
+                'size' => 91136,
+                'tmp_name' => '/tmp/489128284b51f',
+                'options' => ['ignoreNoFile' => false, 'useByteString' => true],
+                'validated' => false,
+                'received' => false,
+                'filtered' => false,
                 'validators' => [],
             ],
             'baz' => [
-                'name'       => 'baz.text',
-                'type'       => 'text/plain',
-                'size'       => 1172,
-                'tmp_name'   => $testfile,
-                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
-                'validated'  => false,
-                'received'   => false,
-                'filtered'   => false,
+                'name' => 'baz.text',
+                'type' => 'text/plain',
+                'size' => 1172,
+                'tmp_name' => $testfile,
+                'options' => ['ignoreNoFile' => false, 'useByteString' => true],
+                'validated' => false,
+                'received' => false,
+                'filtered' => false,
                 'validators' => [],
             ],
             'file_1_' => [
-                'name'       => 'baz.text',
-                'type'       => 'text/plain',
-                'size'       => 1172,
-                'tmp_name'   => '/tmp/4891286cceff3',
-                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
-                'validated'  => false,
-                'received'   => false,
-                'filtered'   => false,
+                'name' => 'baz.text',
+                'type' => 'text/plain',
+                'size' => 1172,
+                'tmp_name' => '/tmp/4891286cceff3',
+                'options' => ['ignoreNoFile' => false, 'useByteString' => true],
+                'validated' => false,
+                'received' => false,
+                'filtered' => false,
                 'validators' => [],
             ],
             'file_2_' => [
-                'name'       => 'baz.text',
-                'type'       => 'text/plain',
-                'size'       => 1172,
-                'tmp_name'   => '/tmp/4891286cceff3',
-                'options'   => ['ignoreNoFile' => false, 'useByteString' => true],
-                'validated'  => false,
-                'received'   => false,
-                'filtered'   => false,
+                'name' => 'baz.text',
+                'type' => 'text/plain',
+                'size' => 1172,
+                'tmp_name' => '/tmp/4891286cceff3',
+                'options' => ['ignoreNoFile' => false, 'useByteString' => true],
+                'validated' => false,
+                'received' => false,
+                'filtered' => false,
                 'validators' => [],
             ],
             ];

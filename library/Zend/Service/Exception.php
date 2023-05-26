@@ -33,5 +33,15 @@ require_once 'Zend/Exception.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Service_Exception extends Zend_Exception
-{}
+{
+    /**
+     * @var string
+     */
+    public $error;
+
+    /**
+     * @var string
+     */
+    public $response;
+}
 

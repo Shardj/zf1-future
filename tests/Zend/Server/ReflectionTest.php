@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Server/Reflection.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Server
  */
-class Zend_Server_ReflectionTest extends PHPUnit_Framework_TestCase
+class Zend_Server_ReflectionTest extends TestCase
 {
     /**
      * reflectClass() test

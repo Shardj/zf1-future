@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,8 +45,13 @@ require_once 'Zend/Json.php';
  * @group      Zend_Json
  * @group      Zend_Json_Server
  */
-class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
+class Zend_Json_Server_SmdTest extends TestCase
 {
+    /**
+     * @var \Zend_Json_Server_Smd|mixed
+     */
+    protected $smd;
+
     /**
      * Runs the test methods of this class.
      *
@@ -49,9 +59,8 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Json_Server_SmdTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Json_Server_SmdTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -60,7 +69,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->smd = new Zend_Json_Server_Smd();
     }
@@ -71,7 +80,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -93,7 +102,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
                 $this->smd->setTransport($transport);
                 $this->fail('Invalid transport should throw exception');
             } catch (Zend_Json_Server_Exception $e) {
-                $this->assertContains('Invalid transport', $e->getMessage());
+                $this->assertStringContainsString('Invalid transport', $e->getMessage());
             }
         }
     }
@@ -119,7 +128,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
                 $this->smd->setEnvelope($env);
                 $this->fail('Invalid envelope type should throw exception');
             } catch (Zend_Json_Server_Exception $e) {
-                $this->assertContains('Invalid envelope', $e->getMessage());
+                $this->assertStringContainsString('Invalid envelope', $e->getMessage());
             }
         }
     }
@@ -144,7 +153,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
                 $this->smd->setContentType($type);
                 $this->fail('Invalid content type should raise exception');
             } catch (Zend_Json_Server_Exception $e) {
-                $this->assertContains('Invalid content type', $e->getMessage());
+                $this->assertStringContainsString('Invalid content type', $e->getMessage());
             }
         }
     }
@@ -228,12 +237,12 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
     {
         $service = new Zend_Json_Server_Smd_Service('foo');
         $this->smd->addService($service);
-        $test    = new Zend_Json_Server_Smd_Service('foo');
+        $test = new Zend_Json_Server_Smd_Service('foo');
         try {
             $this->smd->addService($test);
             $this->fail('Adding service with existing service name should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('already register', $e->getMessage());
+            $this->assertStringContainsString('already register', $e->getMessage());
         }
     }
 
@@ -244,15 +253,15 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
                 $this->smd->addService($service);
                 $this->fail('Attempt to register invalid service should throw exception');
             } catch (Zend_Json_Server_Exception $e) {
-                $this->assertContains('Invalid service', $e->getMessage());
+                $this->assertStringContainsString('Invalid service', $e->getMessage());
             }
         }
     }
 
     public function testShouldBeAbleToAddManyServicesAtOnceWithArrayOfServiceObjects()
     {
-        $one   = new Zend_Json_Server_Smd_Service('one');
-        $two   = new Zend_Json_Server_Smd_Service('two');
+        $one = new Zend_Json_Server_Smd_Service('one');
+        $two = new Zend_Json_Server_Smd_Service('two');
         $three = new Zend_Json_Server_Smd_Service('three');
         $services = [$one, $two, $three];
         $this->smd->addServices($services);
@@ -362,7 +371,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
         $options = $this->getOptions();
         $this->smd->setOptions($options);
         $json = $this->smd->toJson();
-        $smd  = Zend_Json::decode($json);
+        $smd = Zend_Json::decode($json);
         $this->validateServiceArray($smd, $options);
     }
 
@@ -371,25 +380,25 @@ class Zend_Json_Server_SmdTest extends PHPUnit_Framework_TestCase
         $options = $this->getOptions();
         $this->smd->setOptions($options);
         $json = $this->smd->__toString();
-        $smd  = Zend_Json::decode($json);
+        $smd = Zend_Json::decode($json);
         $this->validateServiceArray($smd, $options);
     }
 
     public function getOptions()
     {
         return [
-            'target'   => '/test/me',
-            'id'       => '/test/me',
+            'target' => '/test/me',
+            'id' => '/test/me',
             'services' => [
                 [
-                    'name'   => 'foo',
+                    'name' => 'foo',
                     'params' => [
                         ['type' => 'boolean'],
                     ],
                     'return' => 'boolean',
                 ],
                 [
-                    'name'   => 'bar',
+                    'name' => 'bar',
                     'params' => [
                         ['type' => 'integer'],
                     ],

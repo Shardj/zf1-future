@@ -32,11 +32,9 @@
  */
 class ContactVO
 {
-  public $id = 0;
-  public $firstname = "";
-  public $lastname = "";
-  public $email = "";
-  public $mobile = "";
-
+    public $id = 0;
+    public $firstname = "";
+    public $lastname = "";
+    public $email = "";
+    public $mobile = "";
 }
-

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,38 +35,48 @@ require_once 'Zend/Gdata/Gapps/GroupFeed.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_GroupFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_GroupFeedTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_GroupFeed|mixed
+     */
+    protected $emptyGroupFeed;
+
     protected $groupFeed = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $groupFeedText = file_get_contents(
-                'Zend/Gdata/Gapps/_files/GroupFeedDataSample1.xml',
-                true);
+            'Zend/Gdata/Gapps/_files/GroupFeedDataSample1.xml',
+            true
+        );
         $this->groupFeed = new Zend_Gdata_Gapps_GroupFeed($groupFeedText);
         $this->emptyGroupFeed = new Zend_Gdata_Gapps_GroupFeed();
     }
 
-    public function testEmptyFeedShouldHaveNoExtensionElements() {
+    public function testEmptyFeedShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->emptyGroupFeed->extensionElements));
         $this->assertTrue(count($this->emptyGroupFeed->extensionElements) == 0);
     }
 
-    public function testEmptyFeedShouldHaveNoExtensionAttributes() {
+    public function testEmptyFeedShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->emptyGroupFeed->extensionAttributes));
         $this->assertTrue(count($this->emptyGroupFeed->extensionAttributes) == 0);
     }
 
-    public function testSampleFeedShouldHaveNoExtensionElements() {
+    public function testSampleFeedShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->groupFeed->extensionElements));
         $this->assertTrue(count($this->groupFeed->extensionElements) == 0);
     }
 
-    public function testSampleFeedShouldHaveNoExtensionAttributes() {
+    public function testSampleFeedShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->groupFeed->extensionAttributes));
         $this->assertTrue(count($this->groupFeed->extensionAttributes) == 0);
     }
@@ -83,7 +96,8 @@ class Zend_Gdata_Gapps_GroupFeedTest extends PHPUnit_Framework_TestCase
 
         /* Grab XML from $this->groupFeed and convert back to objects */
         $newGroupFeed = new Zend_Gdata_Gapps_GroupFeed(
-                $this->groupFeed->saveXML());
+            $this->groupFeed->saveXML()
+        );
         $newEntryCount = 0;
         foreach ($newGroupFeed as $entry) {
             $newEntryCount++;
@@ -105,5 +119,4 @@ class Zend_Gdata_Gapps_GroupFeedTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals(2, $entryCount);
     }
-
 }

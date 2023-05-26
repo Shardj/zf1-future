@@ -21,14 +21,14 @@
  */
 
 return [
-    'notDigits'         => 'Translating the notDigits string',
+    'notDigits' => 'Translating the notDigits string',
     'digitsStringEmpty' => 'Translating the stringEmpty string',
-    'stringEmpty'       => 'Translating the stringEmpty string',
-    'isEmpty'           => 'Translating the isEmpty string',
+    'stringEmpty' => 'Translating the stringEmpty string',
+    'isEmpty' => 'Translating the isEmpty string',
 
-    'submit'      => 'Submit Button',
-    'foovalue'    => 'Foo Value',
-    'barvalue'    => 'Bar Value',
-    'Foo'         => 'Foo Translation',
-    'Bar'         => 'Bar Translation',
+    'submit' => 'Submit Button',
+    'foovalue' => 'Foo Value',
+    'barvalue' => 'Bar Value',
+    'Foo' => 'Foo Translation',
+    'Bar' => 'Bar Translation',
 ];

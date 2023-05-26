@@ -60,8 +60,8 @@ defined('TESTS_ZEND_CACHE_SQLITE_ENABLED') || define('TESTS_ZEND_CACHE_SQLITE_EN
  * the native Mysqli adapters, but the other properties are shared between the
  * two MySQL-related Zend_Db adapters.
  */
-defined('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED',  true);
-defined('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED',  true);
+defined('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED', true);
+defined('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED', true);
 defined('TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME') || define('TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME', 'travis');
 defined('TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD') || define('TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD', '');
 defined('TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE') || define('TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE', 'zftest');
@@ -71,15 +71,43 @@ defined('TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE') || define('TESTS_ZEND_DB_ADAPTER
  *
  * Username and password are irrelevant for SQLite.
  */
-defined('TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED',  true);
+defined('TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED', true);
 
 /**
  * Zend_Db_Adapter_Pdo_Pgsql
  */
-defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED',  true);
+defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED', true);
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME', 'postgres');
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD', '');
 defined('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE') || define('TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE', 'zftest');
 
+/**
+ * Zend_Auth_Adapter_Ldap online tests
+ * (See also TESTS_ZEND_LDAP_* configuration constants below)
+ */
+defined('TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED') || define('TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED', true);
+
+
+/**
+ * Zend_Ldap tests
+ */
+defined('TESTS_ZEND_LDAP_HOST') || define('TESTS_ZEND_LDAP_HOST', 'localhost');
+defined('TESTS_ZEND_LDAP_PORT') || define('TESTS_ZEND_LDAP_PORT', 1389);
+defined('TESTS_ZEND_LDAP_USE_START_TLS') || define('TESTS_ZEND_LDAP_USE_START_TLS', false);
+defined('TESTS_ZEND_LDAP_USE_SSL') || define('TESTS_ZEND_LDAP_USE_SSL', false);
+defined('TESTS_ZEND_LDAP_USERNAME') || define('TESTS_ZEND_LDAP_USERNAME', 'cn=admin,dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_PRINCIPAL_NAME') || define('TESTS_ZEND_LDAP_PRINCIPAL_NAME', 'admin@example.com');
+defined('TESTS_ZEND_LDAP_PASSWORD') || define('TESTS_ZEND_LDAP_PASSWORD', 'insecure');
+defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN') || define('TESTS_ZEND_LDAP_BIND_REQUIRES_DN', 'true');
+defined('TESTS_ZEND_LDAP_BASE_DN') || define('TESTS_ZEND_LDAP_BASE_DN', 'dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT') || define('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT', '(&(objectClass=account)(uid=%s))');
+defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME') || define('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME', 'example.com');
+defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT') || define('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT', 'EXAMPLE');
+defined('TESTS_ZEND_LDAP_ALT_USERNAME') || define('TESTS_ZEND_LDAP_ALT_USERNAME', 'user1');
+defined('TESTS_ZEND_LDAP_ALT_PRINCIPAL_NAME') || define('TESTS_ZEND_LDAP_ALT_PRINCIPAL_NAME', 'user1@example.com');
+defined('TESTS_ZEND_LDAP_ALT_DN') || define('TESTS_ZEND_LDAP_ALT_DN', 'uid=user1,dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_ALT_PASSWORD') || define('TESTS_ZEND_LDAP_ALT_PASSWORD', 'user1');
+defined('TESTS_ZEND_LDAP_WRITEABLE_SUBTREE') || define('TESTS_ZEND_LDAP_WRITEABLE_SUBTREE', 'ou=test,dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_ONLINE_ENABLED') || define('TESTS_ZEND_LDAP_ONLINE_ENABLED', true);
 
 require_once dirname(__FILE__) . '/TestConfiguration.dist.php';

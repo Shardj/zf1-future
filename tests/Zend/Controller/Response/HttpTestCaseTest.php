@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,8 +44,13 @@ require_once 'Zend/Controller/Response/HttpTestCase.php';
  * @group      Zend_Controller
  * @group      Zend_Controller_Response
  */
-class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Response_HttpTestCaseTest extends TestCase
 {
+    /**
+     * @var \Zend_Controller_Response_HttpTestCase|mixed
+     */
+    protected $response;
+
     /**
      * Runs the test methods of this class.
      *
@@ -48,8 +58,8 @@ class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCa
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Response_HttpTestCaseTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Controller_Response_HttpTestCaseTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -58,7 +68,7 @@ class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->response = new Zend_Controller_Response_HttpTestCase();
     }
@@ -69,7 +79,7 @@ class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCa
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -88,7 +98,7 @@ class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCa
         $this->response->setHeader('X-Foo-Bar', 'baz')
                        ->setBody('Body to emit');
         $test = $this->response->sendResponse();
-        $this->assertContains("X-Foo-Bar: baz\n\nBody to emit", $test);
+        $this->assertStringContainsString("X-Foo-Bar: baz\n\nBody to emit", $test);
     }
 
     public function testOutputBodyShouldReturnStringInsteadOfEchoingOutput()
@@ -101,7 +111,7 @@ class Zend_Controller_Response_HttpTestCaseTest extends PHPUnit_Framework_TestCa
         $test = ob_get_clean();
         $this->assertTrue(empty($test));
         $this->assertFalse(empty($content));
-        $this->assertContains("Baz Content\nFoo Content\nBar Content\n", $content, $content);
+        $this->assertStringContainsString("Baz Content\nFoo Content\nBar Content\n", $content, $content);
     }
 
     public function testSendHeadersShouldReturnArrayOfHeadersInsteadOfSendingHeaders()

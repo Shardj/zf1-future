@@ -1,5 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,7 +42,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_Helper_NamespaceTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_Helper_NamespaceTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -47,8 +51,8 @@ class Zend_Controller_Action_Helper_NamespaceTest extends PHPUnit_Framework_Test
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Controller_Action_Helper_NamespaceTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Controller_Action_Helper_NamespaceTest');
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -63,7 +67,7 @@ class Zend_Controller_Action_Helper_NamespaceTest extends PHPUnit_Framework_Test
         require_once dirname(__FILE__) . '/../../_files/Helpers/NamespacedHelper.php';
         
         $className = 'MyApp\Controller\Action\Helper\NamespacedHelper';
-        $helper = new $className;
+        $helper = new $className();
         $this->assertEquals('NamespacedHelper', $helper->getName());
     }
 }

@@ -74,7 +74,7 @@ class Custom_Queue extends Zend_Queue
      */
     public function send($message)
     {
-        if (! ($message instanceof Custom_Message || $message instanceof Custom_Messages) ) {
+        if (!($message instanceof Custom_Message || $message instanceof Custom_Messages)) {
             /**
              * @see Zend_Queue_Exception
              */
@@ -84,7 +84,7 @@ class Custom_Queue extends Zend_Queue
         if ($message instanceof Custom_Message) {
             $response = parent::send($message->__toString());
         } else {
-            foreach($message as $i => $one) {
+            foreach ($message as $i => $one) {
                 $response = parent::send($one->__toString());
             }
         }

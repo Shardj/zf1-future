@@ -102,7 +102,7 @@ class Zend_Paginator_SerializableLimitIterator extends LimitIterator implements 
         $currentOffset = $this->key();
         $this->seek($offset);
         $current = $this->current();
-        $this->seek($currentOffset);
+        $this->seek((int) $currentOffset);
         return $current;
     }
 

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -44,41 +49,46 @@ require_once 'Zend/Service/WindowsAzure/Credentials/SharedAccessSignature.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Framework_TestCase
+class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends TestCase
 {
-    static $path;
+    public static $path;
     
     public function __construct()
     {
-        self::$path = dirname(__FILE__).'/_files/';
+        self::$path = dirname(__FILE__) . '/_files/';
     }
     
     public static function main()
     {
         if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
-            $suite  = new PHPUnit_Framework_TestSuite("Zend_Service_WindowsAzure_BlobStorageSharedAccessTest");
-            $result = PHPUnit_TextUI_TestRunner::run($suite);
+            $suite = new TestSuite("Zend_Service_WindowsAzure_BlobStorageSharedAccessTest");
+            $result = (new TestRunner())->run($suite);
         }
     }
    
     /**
      * Test setup
      */
-    protected function setUp()
+    protected function setUp(): void
     {
     }
     
     /**
      * Test teardown
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $storageClient = $this->createAdministrativeStorageInstance();
-        for ($i = 1; $i <= self::$uniqId; $i++)
-        {
-            try { $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOBSA_CONTAINER_PREFIX . $i); } catch (Exception $e) { }
+        for ($i = 1; $i <= self::$uniqId; $i++) {
+            try {
+                $storageClient->deleteContainer(TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOBSA_CONTAINER_PREFIX . $i);
+            } catch (Exception $e) {
+            }
         }
-        try { $storageClient->deleteContainer('$root'); } catch (Exception $e) { }
+        try {
+            $storageClient->deleteContainer('$root');
+        } catch (Exception $e) {
+        }
     }
 
     protected function createStorageInstance()
@@ -132,7 +142,7 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
      */
     public function testSharedAccess_OnlyWrite()
     {
-    	if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
+        if (TESTS_ZEND_SERVICE_WINDOWSAZURE_BLOB_RUNTESTS) {
             $containerName = $this->generateName();
             
             // Account owner performs this part
@@ -142,10 +152,10 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
             $sharedAccessUrl = $administrativeStorageClient->generateSharedAccessUrl(
                 $containerName,
                 '',
-            	'c', 
-            	'w',
-            	$administrativeStorageClient->isoDate(time() - 500),
-            	$administrativeStorageClient->isoDate(time() + 3000)
+                'c',
+                'w',
+                $administrativeStorageClient->isoDate(time() - 500),
+                $administrativeStorageClient->isoDate(time() + 3000)
             );
 
             
@@ -189,10 +199,10 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
             $sharedAccessUrl1 = $administrativeStorageClient->generateSharedAccessUrl(
                 $containerName,
                 '',
-            	'c', 
-            	'w',
-            	$administrativeStorageClient->isoDate(time() - 500),
-            	$administrativeStorageClient->isoDate(time() + 3000)
+                'c',
+                'w',
+                $administrativeStorageClient->isoDate(time() - 500),
+                $administrativeStorageClient->isoDate(time() + 3000)
             );
             $sharedAccessUrl2 = str_replace($administrativeStorageClient->getAccountName(), 'bogusaccount', $sharedAccessUrl1);
 
@@ -204,10 +214,10 @@ class Zend_Service_WindowsAzure_BlobStorageSharedAccessTest extends PHPUnit_Fram
 
             $exceptionThrown = false;
             try {
-	            $credentials->setPermissionSet([
-	                $sharedAccessUrl1,
-	                $sharedAccessUrl2
-	            ]);
+                $credentials->setPermissionSet([
+                    $sharedAccessUrl1,
+                    $sharedAccessUrl2
+                ]);
             } catch (Exception $ex) {
                 $exceptionThrown = true;
             }

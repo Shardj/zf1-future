@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class IndexController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for indexAction
      *
@@ -84,7 +83,7 @@ class IndexController extends Zend_Controller_Action
                 ->setActionName('reset')
                 ->setDispatched(false);
         $response = new Zend_Controller_Response_Http();
-        $front    = Zend_Controller_Front::getInstance();
+        $front = Zend_Controller_Front::getInstance();
         $front->setRequest($request)
               ->setResponse($response);
     }
@@ -107,7 +106,7 @@ class IndexController extends Zend_Controller_Action
 
     public function exceptionAction()
     {
-        throw new \Exception('This is an exception message');
+        throw new Exception('This is an exception message');
         $this->_response->appendBody('Exception action called');
     }
 

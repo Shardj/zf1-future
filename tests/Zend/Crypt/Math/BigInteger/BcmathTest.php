@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -30,61 +33,60 @@ require_once 'Zend/Crypt/Math/BigInteger/Bcmath.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Crypt
  */
-class Zend_Crypt_Math_BigInteger_BcmathTest extends PHPUnit_Framework_TestCase
+class Zend_Crypt_Math_BigInteger_BcmathTest extends TestCase
 {
-
     private $_math = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('bcmath')) {
             $this->markTestSkipped('Skipped: Zend_Crypt_Math_BigInteger_BcmathTest due to ext/bcmath being unavailable');
             return;
         }
-        $this->_math = new Zend_Crypt_Math_BigInteger_Bcmath;
+        $this->_math = new Zend_Crypt_Math_BigInteger_Bcmath();
     }
 
     public function testAdd()
     {
-        $this->assertEquals('2', $this->_math->add(1,1));
+        $this->assertEquals('2', $this->_math->add(1, 1));
     }
 
     public function testSubtract()
     {
-        $this->assertEquals('-2', $this->_math->subtract(2,4));
+        $this->assertEquals('-2', $this->_math->subtract(2, 4));
     }
 
     public function testCompare()
     {
-        $this->assertEquals('0', $this->_math->compare(2,2));
-        $this->assertEquals('-1', $this->_math->compare(2,4));
-        $this->assertEquals('1', $this->_math->compare(4,2));
+        $this->assertEquals('0', $this->_math->compare(2, 2));
+        $this->assertEquals('-1', $this->_math->compare(2, 4));
+        $this->assertEquals('1', $this->_math->compare(4, 2));
     }
 
     public function testDivide()
     {
-        $this->assertEquals('2', $this->_math->divide(4,2));
-        $this->assertEquals('2', $this->_math->divide(9,4));
+        $this->assertEquals('2', $this->_math->divide(4, 2));
+        $this->assertEquals('2', $this->_math->divide(9, 4));
     }
 
     public function testModulus()
     {
-        $this->assertEquals('1', $this->_math->modulus(3,2));
+        $this->assertEquals('1', $this->_math->modulus(3, 2));
     }
 
     public function testMultiply()
     {
-        $this->assertEquals('4', $this->_math->multiply(2,2));
+        $this->assertEquals('4', $this->_math->multiply(2, 2));
     }
 
     public function testPow()
     {
-        $this->assertEquals('4', $this->_math->pow(2,2));
+        $this->assertEquals('4', $this->_math->pow(2, 2));
     }
 
     public function testPowMod()
     {
-        $this->assertEquals('1', $this->_math->powmod(2,2,3));
+        $this->assertEquals('1', $this->_math->powmod(2, 2, 3));
     }
 
     public function testSqrt()
@@ -95,7 +97,7 @@ class Zend_Crypt_Math_BigInteger_BcmathTest extends PHPUnit_Framework_TestCase
     public function testIntegerToBinaryConversion()
     {
         $binary = base64_decode(
-        'ANz5OguIOXLsDhmYmsWizjEOHTdxfo2Vcbt2I3MYZuYe91ouJ4mLBX+YkcLiemOcPym2CBRYHNOyyjmG0mg3BVd9RcLn5S3IHHoXGHblzqdLFEi/368Ygo79JRnxTkXjgmY0rxlJ5bU1zIKaSDuKdiI+XUkKJX8Fvf8W8vsixYOr'
+            'ANz5OguIOXLsDhmYmsWizjEOHTdxfo2Vcbt2I3MYZuYe91ouJ4mLBX+YkcLiemOcPym2CBRYHNOyyjmG0mg3BVd9RcLn5S3IHHoXGHblzqdLFEi/368Ygo79JRnxTkXjgmY0rxlJ5bU1zIKaSDuKdiI+XUkKJX8Fvf8W8vsixYOr'
         );
         $integer = '155172898181473697471232257763715539915724801966915404479707795314057629378541917580651227423698188993727816152646631438561595825688188889951272158842675419950341258706556549803580104870537681476726513255747040765857479291291572334510643245094715007229621094194349783925984760375594985848253359305585439638443';
         $gmpBinary = $this->_math->integerToBinary($integer);
@@ -105,11 +107,10 @@ class Zend_Crypt_Math_BigInteger_BcmathTest extends PHPUnit_Framework_TestCase
     public function testBinaryToIntegerConversion()
     {
         $binary = base64_decode(
-        'ANz5OguIOXLsDhmYmsWizjEOHTdxfo2Vcbt2I3MYZuYe91ouJ4mLBX+YkcLiemOcPym2CBRYHNOyyjmG0mg3BVd9RcLn5S3IHHoXGHblzqdLFEi/368Ygo79JRnxTkXjgmY0rxlJ5bU1zIKaSDuKdiI+XUkKJX8Fvf8W8vsixYOr'
+            'ANz5OguIOXLsDhmYmsWizjEOHTdxfo2Vcbt2I3MYZuYe91ouJ4mLBX+YkcLiemOcPym2CBRYHNOyyjmG0mg3BVd9RcLn5S3IHHoXGHblzqdLFEi/368Ygo79JRnxTkXjgmY0rxlJ5bU1zIKaSDuKdiI+XUkKJX8Fvf8W8vsixYOr'
         );
         $integer = '155172898181473697471232257763715539915724801966915404479707795314057629378541917580651227423698188993727816152646631438561595825688188889951272158842675419950341258706556549803580104870537681476726513255747040765857479291291572334510643245094715007229621094194349783925984760375594985848253359305585439638443';
         $gmpInteger = $this->_math->binaryToInteger($binary);
         $this->assertEquals($integer, $gmpInteger);
     }
-
 }

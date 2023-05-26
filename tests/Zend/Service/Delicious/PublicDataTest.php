@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,11 +39,11 @@ require_once 'Zend/Service/Delicious.php';
  * @group      Zend_Service
  * @group      Zend_Service_Delicious
  */
-class Zend_Service_Delicious_PublicDataTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Delicious_PublicDataTest extends TestCase
 {
-    const TEST_UNAME = 'zfTestUser';
-    const TEST_PASS  = 'zfuser';
-    const TEST_URL  = 'http://framework.zend.com/';
+    public const TEST_UNAME = 'zfTestUser';
+    public const TEST_PASS = 'zfuser';
+    public const TEST_URL = 'http://framework.zend.com/';
 
     /**
      * @var Zend_Service_Delicious
@@ -50,7 +53,7 @@ class Zend_Service_Delicious_PublicDataTest extends PHPUnit_Framework_TestCase
     /**
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $httpClient = new Zend_Http_Client();
         $httpClient->setConfig([
@@ -138,7 +141,7 @@ class Zend_Service_Delicious_PublicDataTest extends PHPUnit_Framework_TestCase
 
         foreach ($filterPostList as $post) {
             $this->assertTrue(is_array($post->getTags()));
-            $this->assertContains('zfSite', $post->getTags());
+            $this->assertStringContainsString('zfSite', $post->getTags());
         }
     }
 
@@ -147,7 +150,8 @@ class Zend_Service_Delicious_PublicDataTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function testGetUrlDetails() {
+    public function testGetUrlDetails()
+    {
         $details = $this->_delicious->getUrlDetails(self::TEST_URL);
 
         $this->assertTrue(is_array($details));

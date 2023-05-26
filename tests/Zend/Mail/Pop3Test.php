@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -43,14 +46,14 @@ require_once 'Zend/Config.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Mail
  */
-class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
+class Zend_Mail_Pop3Test extends TestCase
 {
     protected $_params;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->_params = ['host'     => TESTS_ZEND_MAIL_POP3_HOST,
-                               'user'     => TESTS_ZEND_MAIL_POP3_USER,
+        $this->_params = ['host' => TESTS_ZEND_MAIL_POP3_HOST,
+                               'user' => TESTS_ZEND_MAIL_POP3_USER,
                                'password' => TESTS_ZEND_MAIL_POP3_PASSWORD];
 
         if (defined('TESTS_ZEND_MAIL_SERVER_TESTDIR') && TESTS_ZEND_MAIL_SERVER_TESTDIR) {
@@ -63,8 +66,10 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
             }
 
             $this->_cleanDir(TESTS_ZEND_MAIL_SERVER_TESTDIR);
-            $this->_copyDir(dirname(__FILE__) . '/_files/test.' . TESTS_ZEND_MAIL_SERVER_FORMAT,
-                            TESTS_ZEND_MAIL_SERVER_TESTDIR);
+            $this->_copyDir(
+                dirname(__FILE__) . '/_files/test.' . TESTS_ZEND_MAIL_SERVER_FORMAT,
+                TESTS_ZEND_MAIL_SERVER_TESTDIR
+            );
         }
     }
 
@@ -93,7 +98,7 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
             if ($entry == '.' || $entry == '..' || $entry == '.svn') {
                 continue;
             }
-            $fullname = $dir  . DIRECTORY_SEPARATOR . $entry;
+            $fullname = $dir . DIRECTORY_SEPARATOR . $entry;
             $destname = $dest . DIRECTORY_SEPARATOR . $entry;
             if (is_dir($fullname)) {
                 mkdir($destname);
@@ -105,6 +110,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         closedir($dh);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConnectOk()
     {
         try {
@@ -114,6 +122,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConnectConfig()
     {
         try {
@@ -124,6 +135,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
     }
 
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConnectFailure()
     {
         $this->_params['host'] = 'example.example';
@@ -137,6 +151,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->fail('no exception raised while connecting to example.example');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNoParams()
     {
         try {
@@ -148,6 +165,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->fail('no exception raised with empty params');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConnectSSL()
     {
         if (!TESTS_ZEND_MAIL_POP3_SSL) {
@@ -162,6 +182,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConnectTLS()
     {
         if (!TESTS_ZEND_MAIL_POP3_TLS) {
@@ -176,6 +199,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testInvalidService()
     {
         $this->_params['port'] = TESTS_ZEND_MAIL_POP3_INVALID_PORT;
@@ -189,6 +215,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->fail('no exception while connection to invalid port');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testWrongService()
     {
         $this->_params['port'] = TESTS_ZEND_MAIL_POP3_WRONG_PORT;
@@ -202,6 +231,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->fail('no exception while connection to wrong port');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testClose()
     {
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
@@ -227,6 +259,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->assertFalse($mail->hasCreate);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNoop()
     {
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
@@ -272,15 +307,15 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->assertEquals('Simple Message', $subject);
     }
 
-/*
-    public function testFetchTopBody()
-    {
-        $mail = new Zend_Mail_Storage_Pop3($this->_params);
+    /*
+        public function testFetchTopBody()
+        {
+            $mail = new Zend_Mail_Storage_Pop3($this->_params);
 
-        $content = $mail->getHeader(3, 1)->getContent();
-        $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
-    }
-*/
+            $content = $mail->getHeader(3, 1)->getContent();
+            $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
+        }
+    */
 
     public function testFetchMessageHeader()
     {
@@ -299,21 +334,23 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->assertEquals('Fair river! in thy bright, clear flow', trim($content));
     }
 
-/*
-    public function testFailedRemove()
-    {
-        $mail = new Zend_Mail_Storage_Pop3($this->_params);
+    /*
+            public function testFailedRemove()
+            {
+                $mail = new Zend_Mail_Storage_Pop3($this->_params);
 
-        try {
-            $mail->removeMessage(1);
-        } catch (Exception $e) {
-            return; // test ok
-        }
+                try {
+                    $mail->removeMessage(1);
+                } catch (Exception $e) {
+                    return; // test ok
+                }
 
-        $this->fail('no exception raised while deleting message (mbox is read-only)');
-    }
-*/
-
+                $this->fail('no exception raised while deleting message (mbox is read-only)');
+            }
+        */
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testWithInstanceConstruction()
     {
         $protocol = new Zend_Mail_Protocol_Pop3($this->_params['host']);
@@ -328,6 +365,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->fail('no exception raised while fetching with wrong transport');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRequestAfterClose()
     {
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
@@ -384,11 +424,14 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
             }
 
             if ($mail->getNumberByUniqueId($id) != $num) {
-                    $this->fail('reverse lookup failed');
+                $this->fail('reverse lookup failed');
             }
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testWrongUniqueId()
     {
         $mail = new Zend_Mail_Storage_Pop3($this->_params);
@@ -401,6 +444,9 @@ class Zend_Mail_Pop3Test extends PHPUnit_Framework_TestCase
         $this->fail('no exception while getting number for invalid id');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testReadAfterClose()
     {
         $protocol = new Zend_Mail_Protocol_Pop3($this->_params['host']);

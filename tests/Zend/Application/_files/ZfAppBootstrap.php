@@ -33,6 +33,10 @@ class ZfAppBootstrap extends Zend_Application_Bootstrap_BootstrapAbstract
     public $fooExecuted = 0;
     public $executedFooResource = false;
     public $executedFooBarResource = false;
+    public $executedFoobarResource = false;
+    public $foo = null;
+    public $bar = null;
+    public $default = null;
 
     protected $_arbitraryValue;
 

@@ -49,8 +49,12 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
         Zend_Ldap_Attribute::setAttribute($data, 'uid', 'newuser', false);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'account', true);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'simpleSecurityObject', true);
-        Zend_Ldap_Attribute::setPassword($data, $password,
-            Zend_Ldap_Attribute::PASSWORD_HASH_SSHA, 'userPassword');
+        Zend_Ldap_Attribute::setPassword(
+            $data,
+            $password,
+            Zend_Ldap_Attribute::PASSWORD_HASH_SSHA,
+            'userPassword'
+        );
 
         try {
             $this->_getLdap()->add($dn, $data);
@@ -83,8 +87,12 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
         Zend_Ldap_Attribute::setAttribute($data, 'uid', 'newuser', false);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'account', true);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'simpleSecurityObject', true);
-        Zend_Ldap_Attribute::setPassword($data, $password,
-            Zend_Ldap_Attribute::PASSWORD_HASH_SSHA, 'userPassword');
+        Zend_Ldap_Attribute::setPassword(
+            $data,
+            $password,
+            Zend_Ldap_Attribute::PASSWORD_HASH_SSHA,
+            'userPassword'
+        );
 
         try {
             $this->_getLdap()->add($dn, $data);
@@ -93,8 +101,12 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
 
             $newPasswd = 'newpasswd';
             $newData = [];
-            Zend_Ldap_Attribute::setPassword($newData, $newPasswd,
-                Zend_Ldap_Attribute::PASSWORD_HASH_SHA, 'userPassword');
+            Zend_Ldap_Attribute::setPassword(
+                $newData,
+                $newPasswd,
+                Zend_Ldap_Attribute::PASSWORD_HASH_SHA,
+                'userPassword'
+            );
             $this->_getLdap()->update($dn, $newData);
 
             try {
@@ -142,8 +154,12 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'person', true);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'organizationalPerson', true);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'user', true);
-        Zend_Ldap_Attribute::setPassword($data, $password,
-            Zend_Ldap_Attribute::PASSWORD_UNICODEPWD, 'unicodePwd');
+        Zend_Ldap_Attribute::setPassword(
+            $data,
+            $password,
+            Zend_Ldap_Attribute::PASSWORD_UNICODEPWD,
+            'unicodePwd'
+        );
 
         try {
             $this->_getLdap()->add($dn, $data);
@@ -184,8 +200,12 @@ class Zend_Ldap_ChangePasswordTest extends Zend_Ldap_OnlineTestCase
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'person', true);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'organizationalPerson', true);
         Zend_Ldap_Attribute::setAttribute($data, 'objectClass', 'user', true);
-        Zend_Ldap_Attribute::setPassword($data, $password,
-            Zend_Ldap_Attribute::PASSWORD_UNICODEPWD, 'unicodePwd');
+        Zend_Ldap_Attribute::setPassword(
+            $data,
+            $password,
+            Zend_Ldap_Attribute::PASSWORD_UNICODEPWD,
+            'unicodePwd'
+        );
 
         try {
             $this->_getLdap()->add($dn, $data);

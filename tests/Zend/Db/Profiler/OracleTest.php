@@ -38,7 +38,6 @@ require_once 'Zend/Db/Profiler/TestCommon.php';
  */
 class Zend_Db_Profiler_OracleTest extends Zend_Db_Profiler_TestCommon
 {
-
     public function testProfilerPreparedStatementWithParams()
     {
         $bug_id = $this->_db->quoteIdentifier('bug_id', true);
@@ -57,14 +56,14 @@ class Zend_Db_Profiler_OracleTest extends Zend_Db_Profiler_TestCommon
 
         // analyze query profiles
         $profiles = $this->_db->getProfiler()->getQueryProfiles(null, true);
-        $this->assertTrue(is_array($profiles), 'Expected array, got '.gettype($profiles));
+        $this->assertTrue(is_array($profiles), 'Expected array, got ' . gettype($profiles));
         $this->assertEquals(1, count($profiles), 'Expected to find 1 profile');
         $qp = $profiles[0];
         $this->assertTrue($qp instanceof Zend_Db_Profiler_Query);
 
         // analyze query in the profile
         $sql = $qp->getQuery();
-        $this->assertContains(" = :bug_id", $sql);
+        $this->assertStringContainsString(" = :bug_id", $sql);
         $params = $qp->getQueryParams();
         $this->assertTrue(is_array($params));
         $this->assertEquals([':bug_id' => 2], $params);
@@ -77,14 +76,14 @@ class Zend_Db_Profiler_OracleTest extends Zend_Db_Profiler_TestCommon
 
         // analyze query profiles
         $profiles = $this->_db->getProfiler()->getQueryProfiles(null, true);
-        $this->assertTrue(is_array($profiles), 'Expected array, got '.gettype($profiles));
+        $this->assertTrue(is_array($profiles), 'Expected array, got ' . gettype($profiles));
         $this->assertEquals(2, count($profiles), 'Expected to find 2 profiles');
         $qp = $profiles[1];
         $this->assertTrue($qp instanceof Zend_Db_Profiler_Query);
 
         // analyze query in the profile
         $sql = $qp->getQuery();
-        $this->assertContains(" = :bug_id", $sql);
+        $this->assertStringContainsString(" = :bug_id", $sql);
         $params = $qp->getQueryParams();
         $this->assertTrue(is_array($params));
         $this->assertEquals([':bug_id' => 3], $params);
@@ -118,7 +117,7 @@ class Zend_Db_Profiler_OracleTest extends Zend_Db_Profiler_TestCommon
 
         // analyze query in the profile
         $sql = $qp->getQuery();
-        $this->assertContains(" = :bug_id", $sql);
+        $this->assertStringContainsString(" = :bug_id", $sql);
         $params = $qp->getQueryParams();
         $this->assertTrue(is_array($params));
         $this->assertEquals([':bug_id' => 2], $params);
@@ -139,7 +138,7 @@ class Zend_Db_Profiler_OracleTest extends Zend_Db_Profiler_TestCommon
 
         // analyze query in the profile
         $sql = $qp->getQuery();
-        $this->assertContains(" = :bug_id", $sql);
+        $this->assertStringContainsString(" = :bug_id", $sql);
         $params = $qp->getQueryParams();
         $this->assertTrue(is_array($params));
         $this->assertEquals([':bug_id' => 3], $params);
@@ -163,16 +162,19 @@ class Zend_Db_Profiler_OracleTest extends Zend_Db_Profiler_TestCommon
         $this->assertEquals($queryType, $prof->getFilterQueryType());
 
         $this->_db->query("SELECT * FROM $bugs");
-        $this->_db->query("INSERT INTO $bugs ($bug_id, $bug_status) VALUES (:id, :status)", [':id' => 100,':status' => 'NEW']);
+        $this->_db->query("INSERT INTO $bugs ($bug_id, $bug_status) VALUES (:id, :status)", [':id' => 100, ':status' => 'NEW']);
         $this->_db->query("DELETE FROM $bugs");
-        $this->_db->query("UPDATE $bugs SET $bug_status = :status", [':status'=>'FIXED']);
+        $this->_db->query("UPDATE $bugs SET $bug_status = :status", [':status' => 'FIXED']);
 
         $qps = $prof->getQueryProfiles();
         $this->assertTrue(is_array($qps), 'Expecting some query profiles, got none');
         foreach ($qps as $qp) {
             $qtype = $qp->getQueryType();
-            $this->assertEquals($queryType, $qtype,
-                "Found query type $qtype, which should have been filtered out");
+            $this->assertEquals(
+                $queryType,
+                $qtype,
+                "Found query type $qtype, which should have been filtered out"
+            );
         }
 
         $prof->setEnabled(false);

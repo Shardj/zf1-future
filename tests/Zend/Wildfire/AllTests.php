@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,12 +42,12 @@ class Zend_Wildfire_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Wildfire');
+        $suite = new TestSuite('Zend Framework - Zend_Wildfire');
 
         $suite->addTestSuite('Zend_Wildfire_WildfireTest');
 

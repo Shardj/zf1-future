@@ -34,7 +34,6 @@ require_once 'Zend/Barcode/Object/Error.php';
  */
 class Zend_Barcode_Object_ErrorTest extends Zend_Barcode_Object_TestCommon
 {
-
     protected function _getBarcodeObject($options = null)
     {
         return new Zend_Barcode_Object_Error($options);

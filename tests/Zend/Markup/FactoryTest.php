@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,9 +37,11 @@ require_once 'Zend/Markup.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Markup_FactoryTest extends PHPUnit_Framework_TestCase
+class Zend_Markup_FactoryTest extends TestCase
 {
-
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFactory()
     {
         Zend_Markup::addParserPath('Zend_Markup_Test_Parser', 'Zend/Markup/Test/Parser');
@@ -44,7 +49,6 @@ class Zend_Markup_FactoryTest extends PHPUnit_Framework_TestCase
 
         Zend_Markup::factory('MockParser', 'MockRenderer');
     }
-
 }
 
 // Call Zend_Markup_BbcodeTest::main() if this source file is executed directly.

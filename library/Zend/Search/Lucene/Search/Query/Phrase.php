@@ -37,6 +37,11 @@ require_once 'Zend/Search/Lucene/Search/Query.php';
 class Zend_Search_Lucene_Search_Query_Phrase extends Zend_Search_Lucene_Search_Query
 {
     /**
+     * @var \Zend_Search_Lucene_Search_Weight_Term[]
+     */
+    private $_weights;
+
+    /**
      * Terms to find.
      * Array of Zend_Search_Lucene_Index_Term objects.
      *

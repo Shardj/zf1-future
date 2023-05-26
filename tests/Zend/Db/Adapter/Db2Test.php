@@ -41,16 +41,15 @@ require_once 'Zend/Db/Adapter/Db2.php';
  */
 class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
 {
-
     protected $_numericDataTypes = [
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::INT_TYPE => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'INTEGER'            => Zend_Db::INT_TYPE,
-        'SMALLINT'           => Zend_Db::INT_TYPE,
-        'BIGINT'             => Zend_Db::BIGINT_TYPE,
-        'DECIMAL'            => Zend_Db::FLOAT_TYPE,
-        'NUMERIC'            => Zend_Db::FLOAT_TYPE
+        Zend_Db::FLOAT_TYPE => Zend_Db::FLOAT_TYPE,
+        'INTEGER' => Zend_Db::INT_TYPE,
+        'SMALLINT' => Zend_Db::INT_TYPE,
+        'BIGINT' => Zend_Db::BIGINT_TYPE,
+        'DECIMAL' => Zend_Db::FLOAT_TYPE,
+        'NUMERIC' => Zend_Db::FLOAT_TYPE
     ];
 
     public function testAdapterDescribeTablePrimaryAuto()
@@ -66,36 +65,36 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
     {
         $desc = $this->_db->describeTable('zfproducts');
 
-        $this->assertEquals('zfproducts',        $desc['product_name']['TABLE_NAME'], 'Expected table name to be zfproducts');
-        $this->assertEquals('product_name',      $desc['product_name']['COLUMN_NAME'], 'Expected column name to be product_name');
-        $this->assertEquals(2,                   $desc['product_name']['COLUMN_POSITION'], 'Expected column position to be 2');
-        $this->assertRegExp('/varchar/i',        $desc['product_name']['DATA_TYPE'], 'Expected data type to be VARCHAR');
-        $this->assertEquals('',                  $desc['product_name']['DEFAULT'], 'Expected default to be empty string');
-        $this->assertTrue(                       $desc['product_name']['NULLABLE'], 'Expected product_name to be nullable');
+        $this->assertEquals('zfproducts', $desc['product_name']['TABLE_NAME'], 'Expected table name to be zfproducts');
+        $this->assertEquals('product_name', $desc['product_name']['COLUMN_NAME'], 'Expected column name to be product_name');
+        $this->assertEquals(2, $desc['product_name']['COLUMN_POSITION'], 'Expected column position to be 2');
+        $this->assertMatchesRegularExpression('/varchar/i', $desc['product_name']['DATA_TYPE'], 'Expected data type to be VARCHAR');
+        $this->assertEquals('', $desc['product_name']['DEFAULT'], 'Expected default to be empty string');
+        $this->assertTrue($desc['product_name']['NULLABLE'], 'Expected product_name to be nullable');
         if (!$this->_db->isI5()) {
-            $this->assertEquals(0,                   $desc['product_name']['SCALE'], 'Expected scale to be 0');
+            $this->assertEquals(0, $desc['product_name']['SCALE'], 'Expected scale to be 0');
         } else {
-            $this->assertNull(                   $desc['product_name']['SCALE'], 'Expected scale to be 0');
+            $this->assertNull($desc['product_name']['SCALE'], 'Expected scale to be 0');
         }
-        $this->assertEquals(0,                   $desc['product_name']['PRECISION'], 'Expected precision to be 0');
-        $this->assertFalse(                      $desc['product_name']['PRIMARY'], 'Expected product_name not to be a primary key');
-        $this->assertNull(                       $desc['product_name']['PRIMARY_POSITION'], 'Expected product_name to return null for PRIMARY_POSITION');
-        $this->assertFalse(                      $desc['product_name']['IDENTITY'], 'Expected product_name to return false for IDENTITY');
+        $this->assertEquals(0, $desc['product_name']['PRECISION'], 'Expected precision to be 0');
+        $this->assertFalse($desc['product_name']['PRIMARY'], 'Expected product_name not to be a primary key');
+        $this->assertNull($desc['product_name']['PRIMARY_POSITION'], 'Expected product_name to return null for PRIMARY_POSITION');
+        $this->assertFalse($desc['product_name']['IDENTITY'], 'Expected product_name to return false for IDENTITY');
     }
 
     public function testAdapterDescribeTablePrimaryKeyColumn()
     {
         $desc = $this->_db->describeTable('zfproducts');
 
-        $this->assertEquals('zfproducts',        $desc['product_id']['TABLE_NAME'], 'Expected table name to be zfproducts');
-        $this->assertEquals('product_id',        $desc['product_id']['COLUMN_NAME'], 'Expected column name to be product_id');
-        $this->assertEquals(1,                   $desc['product_id']['COLUMN_POSITION'], 'Expected column position to be 1');
-        $this->assertEquals('',                  $desc['product_id']['DEFAULT'], 'Expected default to be empty string');
-        $this->assertFalse(                      $desc['product_id']['NULLABLE'], 'Expected product_id not to be nullable');
-        $this->assertEquals(0,                   $desc['product_id']['SCALE'], 'Expected scale to be 0');
-        $this->assertEquals(0,                   $desc['product_id']['PRECISION'], 'Expected precision to be 0');
-        $this->assertTrue(                       $desc['product_id']['PRIMARY'], 'Expected product_id to be a primary key');
-        $this->assertEquals(1,                   $desc['product_id']['PRIMARY_POSITION']);
+        $this->assertEquals('zfproducts', $desc['product_id']['TABLE_NAME'], 'Expected table name to be zfproducts');
+        $this->assertEquals('product_id', $desc['product_id']['COLUMN_NAME'], 'Expected column name to be product_id');
+        $this->assertEquals(1, $desc['product_id']['COLUMN_POSITION'], 'Expected column position to be 1');
+        $this->assertEquals('', $desc['product_id']['DEFAULT'], 'Expected default to be empty string');
+        $this->assertFalse($desc['product_id']['NULLABLE'], 'Expected product_id not to be nullable');
+        $this->assertEquals(0, $desc['product_id']['SCALE'], 'Expected scale to be 0');
+        $this->assertEquals(0, $desc['product_id']['PRECISION'], 'Expected precision to be 0');
+        $this->assertTrue($desc['product_id']['PRIMARY'], 'Expected product_id to be a primary key');
+        $this->assertEquals(1, $desc['product_id']['PRIMARY_POSITION']);
     }
 
     /**
@@ -369,5 +368,4 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
     {
         return 'Db2';
     }
-
 }

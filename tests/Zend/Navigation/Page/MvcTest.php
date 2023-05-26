@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -36,7 +39,7 @@ require_once 'Zend/Controller/Router/Route/Chain.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
-class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
+class Zend_Navigation_Page_MvcTest extends TestCase
 {
     /**
      * @var Zend_Controller_Front
@@ -53,7 +56,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
      */
     protected $_oldRouter;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_front = Zend_Controller_Front::getInstance();
         $this->_oldRequest = $this->_front->getRequest();
@@ -67,8 +70,9 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         $this->_front->getRouter()->addDefaultRoutes();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
+        unset($_SERVER['HTTP_HOST']);
         if (null !== $this->_oldRequest) {
             $this->_front->setRequest($this->_oldRequest);
         } else {
@@ -108,10 +112,10 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route(
                 'lolcat/:action/:page',
                 [
-                    'module'     => 'default',
+                    'module' => 'default',
                     'controller' => 'foobar',
-                    'action'     => 'bazbat',
-                    'page'       => 1
+                    'action' => 'bazbat',
+                    'page' => 1
                 ]
             )
         );
@@ -125,12 +129,12 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testGetHrefWithFragmentIdentifier()
     {
         $page = new Zend_Navigation_Page_Mvc([
-            'label'              => 'foo',
+            'label' => 'foo',
             'fragment' => 'qux',
-            'controller'         => 'mycontroller',
-            'action'             => 'myaction',
-            'route'              => 'myroute',
-            'params'             => [
+            'controller' => 'mycontroller',
+            'action' => 'myaction',
+            'route' => 'myroute',
+            'params' => [
                 'page' => 1337
             ]
         ]);
@@ -140,16 +144,16 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route(
                 'lolcat/:action/:page',
                 [
-                    'module'     => 'default',
+                    'module' => 'default',
                     'controller' => 'foobar',
-                    'action'     => 'bazbat',
-                    'page'       => 1
+                    'action' => 'bazbat',
+                    'page' => 1
                 ]
             )
         );
  
         $this->assertEquals('/lolcat/myaction/1337#qux', $page->getHref());
-    } 
+    }
 
     public function testIsActiveReturnsTrueOnIdenticalModuleControllerAction()
     {
@@ -264,10 +268,10 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route(
                 'lolcat/:action/:page',
                 [
-                    'module'     => 'default',
+                    'module' => 'default',
                     'controller' => 'foobar',
-                    'action'     => 'bazbat',
-                    'page'       => 1
+                    'action' => 'bazbat',
+                    'page' => 1
                 ]
             )
         );
@@ -290,19 +294,19 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         // Parent
         $page = new Zend_Navigation_Page_Mvc([
             'controller' => 'index',
-            'action'     => 'index',
+            'action' => 'index',
         ]);
 
         // Child
         $page->addPage(new Zend_Navigation_Page_Mvc([
             'controller' => 'index',
-            'action'     => 'foo',
+            'action' => 'foo',
         ]));
 
         // Front controller
         $this->_front->getRequest()->setParams([
             'controller' => 'index',
-            'action'     => 'foo'
+            'action' => 'foo'
         ]);
 
         $this->assertFalse($page->isActive());
@@ -338,7 +342,6 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
                     $msg .= 'Zend_Navigation_Exception was thrown';
                     $this->fail($msg);
                 } catch (Zend_Navigation_Exception $e) {
-
                 }
             }
         }
@@ -372,7 +375,6 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
                     $msg .= 'Zend_Navigation_Exception was thrown';
                     $this->fail($msg);
                 } catch (Zend_Navigation_Exception $e) {
-
                 }
             }
         }
@@ -511,13 +513,13 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         // Page
         $page = new Zend_Navigation_Page_Mvc([
             'controller' => 'foo',
-            'action'     => 'bar',
+            'action' => 'bar',
         ]);
 
         // Front controller
         $this->_front->getRequest()->setParams([
             'controller' => 'foo',
-            'action'     => 'bar'
+            'action' => 'bar'
         ]);
 
         $this->assertTrue($page->isActive());
@@ -532,8 +534,8 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testSetAndGetEncodeUrl()
     {
         $page = new Zend_Navigation_Page_Mvc([
-            'label'      => 'foo',
-            'action'     => 'index',
+            'label' => 'foo',
+            'action' => 'index',
             'controller' => 'index',
         ]);
         
@@ -547,10 +549,10 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testEncodeUrlIsRouteAware()
     {
         $page = new Zend_Navigation_Page_Mvc([
-            'label'      => 'foo',
-            'route'      => 'myroute',
-            'encodeUrl'  => false,
-            'params'     => [
+            'label' => 'foo',
+            'route' => 'myroute',
+            'encodeUrl' => false,
+            'params' => [
                 'contentKey' => 'pagexy/subpage',
             ]
         ]);
@@ -560,9 +562,9 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route_Regex(
                 '(.+)\.html',
                 [
-                    'module'     => 'default',
+                    'module' => 'default',
                     'controller' => 'foobar',
-                    'action'     => 'bazbat',
+                    'action' => 'bazbat',
                 ],
                 [
                     1 => 'contentKey'
@@ -606,8 +608,8 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     {
         $page = new Zend_Navigation_Page_Mvc([
             'controller' => 'foo',
-            'action'     => 'bar',
-            'scheme'     => 'https',
+            'action' => 'bar',
+            'scheme' => 'https',
         ]);
 
         $this->assertEquals(
@@ -622,13 +624,13 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testHrefGeneratedWithSchemeIsRouteAware()
     {
         $page = new Zend_Navigation_Page_Mvc([
-            'action'     => 'myaction',
+            'action' => 'myaction',
             'controller' => 'mycontroller',
-            'route'      => 'myroute',
-            'params'     => [
+            'route' => 'myroute',
+            'params' => [
                 'page' => 1337,
             ],
-            'scheme'     => 'https',
+            'scheme' => 'https',
         ]);
 
         $this->_front->getRouter()->addRoute(
@@ -636,10 +638,10 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route(
                 'lolcat/:action/:page',
                 [
-                    'module'     => 'default',
+                    'module' => 'default',
                     'controller' => 'foobar',
-                    'action'     => 'bazbat',
-                    'page'       => 1,
+                    'action' => 'bazbat',
+                    'page' => 1,
                 ]
             )
         );
@@ -653,25 +655,25 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testToArrayMethod()
     {
         $options = [
-            'accesskey'  => null,
-            'label'      => 'foo',
-            'action'     => 'index',
+            'accesskey' => null,
+            'label' => 'foo',
+            'action' => 'index',
             'controller' => 'index',
             'customHtmlAttribs' => [],
-            'module'     => 'test',
-            'fragment'   => 'bar',
-            'id'         => 'my-id',
-            'class'      => 'my-class',
-            'title'      => 'my-title',
-            'target'     => 'my-target',
-            'order'      => 100,
-            'pages'      => [],
-            'active'     => true,
-            'visible'    => false,
-            'encodeUrl'  => false,
-            'scheme'     => 'https',
-            'foo'        => 'bar',
-            'meaning'    => 42
+            'module' => 'test',
+            'fragment' => 'bar',
+            'id' => 'my-id',
+            'class' => 'my-class',
+            'title' => 'my-title',
+            'target' => 'my-target',
+            'order' => 100,
+            'pages' => [],
+            'active' => true,
+            'visible' => false,
+            'encodeUrl' => false,
+            'scheme' => 'https',
+            'foo' => 'bar',
+            'meaning' => 42
         ];
 
         $page = new Zend_Navigation_Page_Mvc($options);
@@ -679,13 +681,13 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         $toArray = $page->toArray();
 
         $options['reset_params'] = true;
-        $options['route']        = null;
-        $options['params']       = [];
-        $options['privilege']    = null;
-        $options['rel']          = [];
-        $options['resource']     = null;
-        $options['rev']          = [];
-        $options['type']         = 'Zend_Navigation_Page_Mvc';
+        $options['route'] = null;
+        $options['params'] = [];
+        $options['privilege'] = null;
+        $options['rel'] = [];
+        $options['resource'] = null;
+        $options['rev'] = [];
+        $options['type'] = 'Zend_Navigation_Page_Mvc';
 
         $this->assertEquals(
             $options,
@@ -730,7 +732,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         );
 
         $expected = My_SchemeHelper::RETURN_URL;
-        $actual   = $page->getHref();
+        $actual = $page->getHref();
 
         $old = new Zend_View_Helper_ServerUrl();
         Zend_Navigation_Page_Mvc::setSchemeHelper($old);
@@ -744,12 +746,12 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testNullValuesInMatchedRouteWillStillReturnMatchedPage()
     {
         $page = new Zend_Navigation_Page_Mvc([
-            'route'      => 'default',
-            'module'     => 'default',
+            'route' => 'default',
+            'module' => 'default',
             'controller' => 'index',
-            'action'     => 'index',
-            'label'      => 'Home',
-            'title'      => 'Home',
+            'action' => 'index',
+            'label' => 'Home',
+            'title' => 'Home',
         ]);
 
         $this->_front->getRouter()->addRoute(
@@ -757,25 +759,25 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route(
                 ':locale/:module/:controller/:action/*',
                 [
-                    'locale'     => null,
-                    'module'     => 'default',
+                    'locale' => null,
+                    'module' => 'default',
                     'controller' => 'index',
-                    'action'     => 'index',
+                    'action' => 'index',
                 ],
                 [
-                    'locale'     => '.*',
-                    'module'     => '.*',
+                    'locale' => '.*',
+                    'module' => '.*',
                     'controller' => '.*',
-                    'action'     => '.*',
+                    'action' => '.*',
                 ]
             )
         );
 
         $this->_front->getRequest()->setParams([
-            'locale'     => 'en_US',
-            'module'     => 'default',
+            'locale' => 'en_US',
+            'module' => 'default',
             'controller' => 'index',
-            'action'     => 'index',
+            'action' => 'index',
         ]);
 
         $this->assertEquals(true, $page->isActive());
@@ -787,21 +789,21 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
     public function testNullValueInParameters()
     {
         // Create pages
-        $pages         = [];
+        $pages = [];
         $pages['home'] = new Zend_Navigation_Page_Mvc(
             [
-                 'label'      => 'Home',
-                 'route'      => 'page',
-                 'params'     => [
+                 'label' => 'Home',
+                 'route' => 'page',
+                 'params' => [
                      'slug' => '',
                  ],
             ]
         );
         $pages['news'] = new Zend_Navigation_Page_Mvc(
             [
-                 'label'      => 'News',
-                 'route'      => 'page',
-                 'params'     => [
+                 'label' => 'News',
+                 'route' => 'page',
+                 'params' => [
                      'slug' => 'news',
                  ],
             ]
@@ -813,9 +815,9 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
             new Zend_Controller_Router_Route_Regex(
                 '((?!(admin|page)).*)',
                 [
-                    'module'     => 'page',
+                    'module' => 'page',
                     'controller' => 'index',
-                    'action'     => 'index',
+                    'action' => 'index',
                 ],
                 [
                     1 => 'slug',
@@ -827,10 +829,10 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         // Set request
         $this->_front->getRequest()->setParams(
             [
-                 'module'     => 'page',
+                 'module' => 'page',
                  'controller' => 'index',
-                 'action'     => 'index',
-                 'slug'       => 'news',
+                 'action' => 'index',
+                 'slug' => 'news',
             ]
         );
 
@@ -847,7 +849,7 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         $page = new Zend_Navigation_Page_Mvc(
             [
                  'action' => 'myaction',
-                 'route'  => 'myroute',
+                 'route' => 'myroute',
                  'params' => [
                      'page' => 1337,
                      'item' => 1234
@@ -861,9 +863,9 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
         $foo = new Zend_Controller_Router_Route(
             'lolcat/:action',
             [
-                 'module'     => 'default',
+                 'module' => 'default',
                  'controller' => 'foobar',
-                 'action'     => 'bazbat'
+                 'action' => 'bazbat'
             ]
         );
         $bar = new Zend_Controller_Router_Route(
@@ -880,11 +882,11 @@ class Zend_Navigation_Page_MvcTest extends PHPUnit_Framework_TestCase
 
         $this->_front->getRequest()->setParams(
             [
-                 'module'     => 'default',
+                 'module' => 'default',
                  'controller' => 'foobar',
-                 'action'     => 'myaction',
-                 'page'       => 1337,
-                 'item'       => 1234
+                 'action' => 'myaction',
+                 'page' => 1337,
+                 'item' => 1234
             ]
         );
 

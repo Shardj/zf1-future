@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,15 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_SubmitButtonTest extends TestCase
 {
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_SubmitButton|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +69,8 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_SubmitButtonTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_SubmitButtonTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +79,12 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_SubmitButton();
         $this->helper->setView($this->view);
     }
@@ -83,7 +95,7 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -108,16 +120,16 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<input[^>]*(type="submit")/', $html, $html);
-        $this->assertRegexp('/<input[^>]*(dojoType="dijit.form.Button")/', $html, $html);
-        $this->assertRegexp('/<input[^>]*(label="foo")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(type="submit")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(dojoType="dijit.form.Button")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(label="foo")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElement();
-        $this->assertNotRegexp('/<input[^>]*(dojoType="dijit.form.Button")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*(dojoType="dijit.form.Button")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId'));
     }
 
@@ -127,7 +139,7 @@ class Zend_Dojo_View_Helper_SubmitButtonTest extends PHPUnit_Framework_TestCase
     public function testHelperShouldRenderContentKeyAsLabelWhenPassed()
     {
         $html = $this->helper->submitButton('foo', '', ['content' => 'Label']);
-        $this->assertRegexp('/<input[^>]*(value="Label")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<input[^>]*(value="Label")/', $html, $html);
     }
 }
 

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -35,7 +40,7 @@ require_once 'Zend/Log/Writer/Abstract.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
-class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
+class Zend_Log_Writer_AbstractTest extends TestCase
 {
     /**
      * @var Zend_Log_Writer_Abstract
@@ -44,11 +49,11 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
 
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_writer = new Zend_Log_Writer_AbstractTest_Concrete();
     }
@@ -64,7 +69,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
 
         require_once 'Zend/Log/Formatter/Simple.php';
         $this->_writer->setFormatter(new Zend_Log_Formatter_Simple());
-        $this->setExpectedException('PHPUnit_Framework_Error');
+        $this->expectException('PHPUnit_Framework_Error');
         $this->_writer->setFormatter(new StdClass());
     }
 
@@ -73,7 +78,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit_Framework_TestCase
         $this->_writer->addFilter(1);
         require_once 'Zend/Log/Filter/Message.php';
         $this->_writer->addFilter(new Zend_Log_Filter_Message('/mess/'));
-        $this->setExpectedException('Zend_Log_Exception');
+        $this->expectException('Zend_Log_Exception');
         $this->_writer->addFilter(new StdClass());
     }
 
@@ -96,7 +101,7 @@ class Zend_Log_Writer_AbstractTest_Concrete extends Zend_Log_Writer_Abstract
     {
     }
 
-    static public function factory($config)
+    public static function factory($config)
     {
     }
 }

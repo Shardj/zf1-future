@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Validate/Iban.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_IbanTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_IbanTest extends TestCase
 {
     /**
      * Ensures that the validator follows expected behavior
@@ -45,13 +48,16 @@ class Zend_Validate_IbanTest extends PHPUnit_Framework_TestCase
         $validator = new Zend_Validate_Iban();
         $valuesExpected = [
             'AD1200012030200359100100' => true,
-            'AT611904300234573201'     => true,
+            'AT611904300234573201' => true,
             'AT61 1904 3002 3457 3201' => false,
             'AD1200012030200354100100' => false,
         ];
         foreach ($valuesExpected as $input => $result) {
-            $this->assertEquals($result, $validator->isValid($input),
-                                "'$input' expected to be " . ($result ? '' : 'in') . 'valid');
+            $this->assertEquals(
+                $result,
+                $validator->isValid($input),
+                "'$input' expected to be " . ($result ? '' : 'in') . 'valid'
+            );
         }
     }
 
@@ -62,7 +68,7 @@ class Zend_Validate_IbanTest extends PHPUnit_Framework_TestCase
             $validator->setLocale('de_QA');
             $this->fail();
         } catch (Zend_Validate_Exception $e) {
-            $this->assertContains('IBAN validation', $e->getMessage());
+            $this->assertStringContainsString('IBAN validation', $e->getMessage());
         }
 
         $validator->setLocale('de_DE');

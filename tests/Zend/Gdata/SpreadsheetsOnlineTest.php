@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,10 +36,24 @@ require_once 'Zend/Gdata/ClientLogin.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Spreadsheets
  */
-class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_SpreadsheetsOnlineTest extends TestCase
 {
+    /**
+     * @var mixed
+     */
+    protected $sprKey;
 
-    public function setUp()
+    /**
+     * @var mixed
+     */
+    protected $wksId;
+
+    /**
+     * @var \Zend_Gdata_Spreadsheets|mixed
+     */
+    protected $gdata;
+
+    protected function setUp(): void
     {
         $user = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL');
         $pass = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_PASSWORD');
@@ -53,11 +70,11 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
 
         $spreadsheets = $this->gdata->getSpreadsheets();
         $testedContents = false;
-        foreach($spreadsheets as $spreadsheet) {
+        foreach ($spreadsheets as $spreadsheet) {
             $spreadsheetCount++;
             $worksheetCount = 0;
             $this->assertTrue($spreadsheet instanceof Zend_Gdata_Spreadsheets_SpreadsheetEntry, 'not instance of SpreadsheetEntry');
-            foreach($spreadsheet->getWorksheets() as $worksheet) {
+            foreach ($spreadsheet->getWorksheets() as $worksheet) {
                 $this->assertTrue($worksheet instanceof Zend_Gdata_Spreadsheets_WorksheetEntry, 'not instance of WorksheetEntry');
                 $worksheetCount++;
                 if ($spreadsheet->getTitle()->getText() == 'PHP Unit Test Sheet') {
@@ -267,7 +284,8 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
         $ssTest->delete($entry);
     }
 
-    public function testCustomElementsCollected() {
+    public function testCustomElementsCollected()
+    {
         $rowData = [];
         $rowData['a1'] = 'new';
         $rowData['b1'] = 'row';
@@ -291,5 +309,4 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends PHPUnit_Framework_TestCase
         $ssTest = new Zend_Gdata_Spreadsheets($entry->getHttpClient());
         $ssTest->delete($entry);
     }
-
 }

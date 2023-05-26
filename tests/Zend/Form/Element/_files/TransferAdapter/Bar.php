@@ -21,6 +21,8 @@
  */
 namespace Zend\Form\Element\FileTest\Adapter;
 
+use Zend_File_Transfer_Adapter_Abstract;
+
 /**
  * @category   Zend
  * @package    Zend_Form
@@ -28,7 +30,7 @@ namespace Zend\Form\Element\FileTest\Adapter;
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Bar extends \Zend_File_Transfer_Adapter_Abstract
+class Bar extends Zend_File_Transfer_Adapter_Abstract
 {
     public $received = false;
 

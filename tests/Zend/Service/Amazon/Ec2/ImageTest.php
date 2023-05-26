@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -37,8 +40,12 @@ require_once 'Zend/Service/Amazon/Ec2/Image.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
-class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Amazon_Ec2_ImageTest extends TestCase
 {
+    /**
+     * @var \Zend_Http_Client_Adapter_Test|mixed
+     */
+    protected $adapter;
 
     /**
      * @var Zend_Service_Amazon_Ec2_Image
@@ -48,7 +55,7 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -62,7 +69,7 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         Zend_Service_Amazon_Ec2_Image::setHttpClient($client);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->Zend_Service_Amazon_Ec2_Image = null;
 
@@ -88,7 +95,6 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         $return = $this->Zend_Service_Amazon_Ec2_Image->deregister('ami-61a54008');
 
         $this->assertTrue($return);
-
     }
 
     public function testDescribeSingleImageMultipleImagesByIds()
@@ -134,28 +140,28 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $arrImage = [
             [
-                'imageId'   => 'ami-be3adfd7',
-                'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'false',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd7',
+                'imageLocation' => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'false',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ],
             [
-                'imageId'   => 'ami-be3adfd6',
-                'imageLocation'   => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'true',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd6',
+                'imageLocation' => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'true',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ]
         ];
 
@@ -194,16 +200,16 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $arrImage = [
             [
-                'imageId'   => 'ami-be3adfd7',
-                'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'false',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd7',
+                'imageLocation' => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'false',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ]
         ];
 
@@ -253,28 +259,28 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $arrImage = [
             [
-                'imageId'   => 'ami-be3adfd7',
-                'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '2060296256884',
-                'isPublic'   => 'false',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd7',
+                'imageLocation' => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '2060296256884',
+                'isPublic' => 'false',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ],
             [
-                'imageId'   => 'ami-be3adfd6',
-                'imageLocation'   => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'true',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd6',
+                'imageLocation' => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'true',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ]
         ];
 
@@ -313,16 +319,16 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $arrImage = [
             [
-                'imageId'   => 'ami-be3adfd7',
-                'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'false',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd7',
+                'imageLocation' => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'false',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ]
         ];
 
@@ -372,28 +378,28 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $arrImage = [
             [
-                'imageId'   => 'ami-be3adfd7',
-                'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '2060296256884',
-                'isPublic'   => 'false',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd7',
+                'imageLocation' => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '2060296256884',
+                'isPublic' => 'false',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ],
             [
-                'imageId'   => 'ami-be3adfd6',
-                'imageLocation'   => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'true',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd6',
+                'imageLocation' => 'ec2-public-images/ubuntu-8.10-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'true',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ]
         ];
 
@@ -432,16 +438,16 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
 
         $arrImage = [
             [
-                'imageId'   => 'ami-be3adfd7',
-                'imageLocation'   => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
-                'imageState'   => 'available',
-                'imageOwnerId'   => '206029621532',
-                'isPublic'   => 'false',
-                'architecture'   => 'i386',
-                'imageType'   => 'machine',
-                'kernelId'   => 'aki-4438dd2d',
-                'ramdiskId'   => 'ari-4538dd2c',
-                'platform'   => '',
+                'imageId' => 'ami-be3adfd7',
+                'imageLocation' => 'ec2-public-images/fedora-8-i386-base-v1.04.manifest.xml',
+                'imageState' => 'available',
+                'imageOwnerId' => '206029621532',
+                'isPublic' => 'false',
+                'architecture' => 'i386',
+                'imageType' => 'machine',
+                'kernelId' => 'aki-4438dd2d',
+                'ramdiskId' => 'ari-4538dd2c',
+                'platform' => '',
             ]
         ];
 
@@ -542,12 +548,16 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($return);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testModifyAttributeThrowsExceptionOnInvalidAttribute()
     {
         try {
             $return = $this->Zend_Service_Amazon_Ec2_Image->modifyAttribute('ami-61a54008', 'invalidPermission', 'add', '495219933132', 'all');
             $this->fail('An exception should be throw if you are modifying an invalid attirubte');
-        } catch (Zend_Service_Amazon_Ec2_Exception $zsaee) {}
+        } catch (Zend_Service_Amazon_Ec2_Exception $zsaee) {
+        }
     }
 
     public function testModifyAttributeProuctCodes()
@@ -569,7 +579,6 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         $return = $this->Zend_Service_Amazon_Ec2_Image->modifyAttribute('ami-61a54008', 'productCodes', null, null, null, '774F4FF8');
 
         $this->assertTrue($return);
-
     }
 
     public function testRegister()
@@ -591,7 +600,6 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         $return = $this->Zend_Service_Amazon_Ec2_Image->register('mybucket-myimage.manifest.xml');
 
         $this->assertEquals('ami-61a54008', $return);
-
     }
 
     public function testResetAttribute()
@@ -613,8 +621,5 @@ class Zend_Service_Amazon_Ec2_ImageTest extends PHPUnit_Framework_TestCase
         $return = $this->Zend_Service_Amazon_Ec2_Image->resetAttribute('ami-61a54008', 'launchPermission');
 
         $this->assertTrue($return);
-
     }
-
 }
-

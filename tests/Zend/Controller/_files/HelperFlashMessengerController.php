@@ -33,7 +33,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class HelperFlashMessengerController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for indexAction
      *
@@ -71,7 +70,5 @@ class HelperFlashMessengerController extends Zend_Controller_Action
         if ($flashmessenger->getResponse() === $this->getResponse()) {
             $this->getResponse()->appendBody('6');
         }
-
     }
-
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/Hostname.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_HostnameTest extends TestCase
 {
     /**
      * Default instance created for all test methods
@@ -44,11 +47,16 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
     protected $_validator;
 
     /**
+     * @var string
+     */
+    protected $_origEncoding;
+
+    /**
      * Creates a new Zend_Validate_Hostname object for each test method
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_origEncoding = PHP_VERSION_ID < 50600
                     ? iconv_get_encoding('internal_encoding')
@@ -59,7 +67,7 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
     /**
      * Reset iconv
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (PHP_VERSION_ID < 50600) {
             iconv_set_encoding('internal_encoding', $this->_origEncoding);
@@ -420,7 +428,7 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
     {
         $valuesExpected = [
             [Zend_Validate_Hostname::ALLOW_ALL, true, ['example.', 'example.com.', '~ex%20ample.com.']],
-            [Zend_Validate_Hostname::ALLOW_ALL, false, ['example..',]],
+            [Zend_Validate_Hostname::ALLOW_ALL, false, ['example..', ]],
             [Zend_Validate_Hostname::ALLOW_ALL, true, ['1.2.3.4.']],
             [Zend_Validate_Hostname::ALLOW_DNS, false, ['example..', '~ex%20ample..']],
             [Zend_Validate_Hostname::ALLOW_LOCAL, true, ['example.', 'example.com.']],

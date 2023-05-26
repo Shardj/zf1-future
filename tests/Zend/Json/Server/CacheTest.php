@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,8 +44,18 @@ require_once 'Zend/Json/Server.php';
  * @group      Zend_Json
  * @group      Zend_Json_Server
  */
-class Zend_Json_Server_CacheTest extends PHPUnit_Framework_TestCase
+class Zend_Json_Server_CacheTest extends TestCase
 {
+    /**
+     * @var \Zend_Json_Server|mixed
+     */
+    protected $server;
+
+    /**
+     * @var string|bool|mixed
+     */
+    protected $cacheFile;
+
     /**
      * Runs the test methods of this class.
      *
@@ -48,9 +63,8 @@ class Zend_Json_Server_CacheTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Json_Server_CacheTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Json_Server_CacheTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -59,7 +73,7 @@ class Zend_Json_Server_CacheTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->server = new Zend_Json_Server();
         $this->server->setClass('Zend_Json_Server_CacheTest_Foo', 'foo');
@@ -81,7 +95,7 @@ class Zend_Json_Server_CacheTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (file_exists($this->cacheFile)) {
             unlink($this->cacheFile);

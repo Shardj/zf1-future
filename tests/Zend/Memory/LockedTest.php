@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,7 +34,7 @@ require_once 'Zend/Memory.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Memory
  */
-class Zend_Memory_Container_LockedTest extends PHPUnit_Framework_TestCase
+class Zend_Memory_Container_LockedTest extends TestCase
 {
     /**
      * tests the Movable memory container object creation
@@ -77,18 +80,19 @@ class Zend_Memory_Container_LockedTest extends PHPUnit_Framework_TestCase
         $memObject = new Zend_Memory_Container_Locked('0123456789');
 
         // It's always locked
-        $this->assertTrue((boolean)$memObject->isLocked());
+        $this->assertTrue((bool)$memObject->isLocked());
 
         $memObject->lock();
-        $this->assertTrue((boolean)$memObject->isLocked());
+        $this->assertTrue((bool)$memObject->isLocked());
 
         $memObject->unlock();
         // It's always locked
-        $this->assertTrue((boolean)$memObject->isLocked());
+        $this->assertTrue((bool)$memObject->isLocked());
     }
 
     /**
      * tests the touch() method
+     * @doesNotPerformAssertions
      */
     public function testTouch()
     {

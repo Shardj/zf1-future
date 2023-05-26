@@ -34,7 +34,6 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
  */
 class Zend_Db_Statement_Pdo_SqliteTest extends Zend_Db_Statement_Pdo_TestCommon
 {
-
     public function testStatementBindParamByName()
     {
         $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding parameters');
@@ -62,5 +61,4 @@ class Zend_Db_Statement_Pdo_SqliteTest extends Zend_Db_Statement_Pdo_TestCommon
     {
         return 'Pdo_Sqlite';
     }
-
 }

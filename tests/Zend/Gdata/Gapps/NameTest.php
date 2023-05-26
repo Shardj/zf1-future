@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,39 +35,55 @@ require_once 'Zend/Gdata.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_NameTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $theNameText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Gapps_Extension_Name|mixed
+     */
+    protected $theName;
+
+    protected function setUp(): void
+    {
         $this->theNameText = file_get_contents(
-                'Zend/Gdata/Gapps/_files/NameElementSample1.xml',
-                true);
+            'Zend/Gdata/Gapps/_files/NameElementSample1.xml',
+            true
+        );
         $this->theName = new Zend_Gdata_Gapps_Extension_Name();
     }
 
-    public function testEmptyNameShouldHaveNoExtensionElements() {
+    public function testEmptyNameShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->theName->extensionElements));
         $this->assertTrue(count($this->theName->extensionElements) == 0);
     }
 
-    public function testEmptyNameShouldHaveNoExtensionAttributes() {
+    public function testEmptyNameShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->theName->extensionAttributes));
         $this->assertTrue(count($this->theName->extensionAttributes) == 0);
     }
 
-    public function testSampleNameShouldHaveNoExtensionElements() {
+    public function testSampleNameShouldHaveNoExtensionElements()
+    {
         $this->theName->transferFromXML($this->theNameText);
         $this->assertTrue(is_array($this->theName->extensionElements));
         $this->assertTrue(count($this->theName->extensionElements) == 0);
     }
 
-    public function testSampleNameShouldHaveNoExtensionAttributes() {
+    public function testSampleNameShouldHaveNoExtensionAttributes()
+    {
         $this->theName->transferFromXML($this->theNameText);
         $this->assertTrue(is_array($this->theName->extensionAttributes));
         $this->assertTrue(count($this->theName->extensionAttributes) == 0);
     }
 
-    public function testNormalNameShouldHaveNoExtensionElements() {
+    public function testNormalNameShouldHaveNoExtensionElements()
+    {
         $this->theName->givenName = "John";
         $this->theName->familyName = "Doe";
 
@@ -90,7 +109,8 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Doe", $newName2->familyName);
     }
 
-    public function testEmptyNameToAndFromStringShouldMatch() {
+    public function testEmptyNameToAndFromStringShouldMatch()
+    {
         $nameXml = $this->theName->saveXML();
         $newName = new Zend_Gdata_Gapps_Extension_Name();
         $newName->transferFromXML($nameXml);
@@ -98,7 +118,8 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($nameXml == $newNameXml);
     }
 
-    public function testNameWithValueToAndFromStringShouldMatch() {
+    public function testNameWithValueToAndFromStringShouldMatch()
+    {
         $this->theName->givenName = "John";
         $this->theName->familyName = "Doe";
         $nameXml = $this->theName->saveXML();
@@ -110,10 +131,11 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Doe", $this->theName->familyName);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->theName->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->theName->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->theName->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->theName->extensionAttributes['foo2']['value']);
@@ -124,10 +146,10 @@ class Zend_Gdata_Gapps_NameTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newName->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullNameToAndFromString() {
+    public function testConvertFullNameToAndFromString()
+    {
         $this->theName->transferFromXML($this->theNameText);
         $this->assertEquals("Susan", $this->theName->givenName);
         $this->assertEquals("Jones", $this->theName->familyName);
     }
-
 }

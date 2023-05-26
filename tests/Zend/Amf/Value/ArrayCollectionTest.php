@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -35,10 +40,8 @@ require_once 'Zend/Amf/Value/Messaging/ArrayCollection.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Amf
  */
-class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
+class Zend_Amf_Value_ArrayCollectionTest extends TestCase
 {
-
-
     /**
      * Refrence to the array collection
      * @var Zend_Amf_Value_Message_ArrayCollection
@@ -56,20 +59,19 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Amf_Value_ArrayCollectionTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Amf_Value_ArrayCollectionTest");
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $data = [];
         $data[] = ['foo' => 'foo1', 'bar' => 'bar1'];
         $data[] = ['foo' => 'foo2', 'bar' => 'bar2'];
         $this->_data = $data;
-
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->_arrayCollection);
         unset($this->_data);
@@ -107,7 +109,7 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
         $this->_arrayCollection = new Zend_Amf_Value_Messaging_ArrayCollection($this->_data);
         $total = count($this->_arrayCollection);
         $count = 0;
-        foreach($this->_arrayCollection as $row) {
+        foreach ($this->_arrayCollection as $row) {
             $count++;
         }
         $this->assertEquals(2, $count);
@@ -129,7 +131,7 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
     {
         $this->_arrayCollection = new Zend_Amf_Value_Messaging_ArrayCollection($this->_data);
         $data = ['fooSet' => 'fooSet2', 'barSet' => 'barSet2'];
-        $this->_arrayCollection->offsetSet(1,$data);
+        $this->_arrayCollection->offsetSet(1, $data);
         $this->assertEquals($data, $this->_arrayCollection->offsetGet(1));
     }
 
@@ -201,8 +203,6 @@ class Zend_Amf_Value_ArrayCollectionTest extends PHPUnit_Framework_TestCase
 
     }
     */
-
-
 }
 
 class Zend_Amf_Value_ArrayCollectionTest_SerializableData

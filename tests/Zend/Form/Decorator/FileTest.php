@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,8 +46,18 @@ require_once 'Zend/View/Helper/FormElement.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Decorator_FileTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Decorator_File
+     */
+    protected $decorator;
+
+    /**
+     * @var Zend_Form_Element_File
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -50,9 +65,8 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Decorator_FileTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Decorator_FileTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -61,7 +75,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->decorator = new Zend_Form_Decorator_File();
     }
@@ -72,7 +86,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -114,14 +128,14 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
     {
         $this->setupSingleElement();
         $test = $this->decorator->render(null);
-        $this->assertRegexp('#foo#s', $test);
+        $this->assertMatchesRegularExpression('#foo#s', $test);
     }
 
     public function testRenderMultiFiles()
     {
         $this->setupMultiElement();
         $test = $this->decorator->render(null);
-        $this->assertRegexp('#foo\[\]#s', $test);
+        $this->assertMatchesRegularExpression('#foo\[\]#s', $test);
     }
 
     public function setupElementWithMaxFileSize()
@@ -142,8 +156,8 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
 
         $this->setupElementWithMaxFileSize();
         $test = $this->decorator->render(null);
-        $this->assertRegexp('#MAX_FILE_SIZE#s', $test);
-        $this->assertRegexp('#' . $max . '#s', $test);
+        $this->assertMatchesRegularExpression('#MAX_FILE_SIZE#s', $test);
+        $this->assertMatchesRegularExpression('#' . $max . '#s', $test);
     }
 
     public function testPlacementInitiallyAppends()
@@ -168,7 +182,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
                         ->setOption('placement', 'prepend');
 
         $file = $this->decorator->render('content');
-        $this->assertRegexp('#<input[^>]*>.*?(content)#s', $file, $file);
+        $this->assertMatchesRegularExpression('#<input[^>]*>.*?(content)#s', $file, $file);
     }
     
     /**
@@ -187,7 +201,7 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
         $mockOutput = $element->render();
         
         // Ensure the view helper was changed
-        $this->assertRegexp('/FormFileMock/s', $mockOutput);
+        $this->assertMatchesRegularExpression('/FormFileMock/s', $mockOutput);
         $this->assertNotEquals($defaultOutput, $mockOutput);
     }
 
@@ -195,29 +209,29 @@ class Zend_Form_Decorator_FileTest extends PHPUnit_Framework_TestCase
     {
         if (!is_numeric($setting)) {
             $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $setting = (int) substr($setting, 0, -1);
 
             switch ($type) {
-                case 'M' :
+                case 'M':
                     $setting *= 1024;
                     break;
 
-                case 'G' :
+                case 'G':
                     $setting *= 1024 * 1024;
                     break;
 
-                default :
+                default:
                     break;
             }
         }
 
-        return (integer) $setting;
+        return (int) $setting;
     }
 }
 
 class Zend_View_Helper_FormFileMock extends Zend_View_Helper_FormElement
 {
-    public function formFileMock($name, $attribs=NULL)
+    public function formFileMock($name, $attribs = null)
     {
         return "FormFileMock";
     }

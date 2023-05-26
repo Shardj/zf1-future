@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,18 +37,19 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_CalendarEventTest extends TestCase
 {
     protected $eventFeed = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $eventFeedText = file_get_contents(
-                'Zend/Gdata/Calendar/_files/TestDataEventFeedSample1.xml',
-                true);
+            'Zend/Gdata/Calendar/_files/TestDataEventFeedSample1.xml',
+            true
+        );
         $this->eventFeed = new Zend_Gdata_Calendar_EventFeed($eventFeedText);
     }
 
@@ -100,7 +104,8 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         /* Grab XML from $this->eventFeed and convert back to objects */
         $newEventFeed = new Zend_Gdata_Calendar_EventFeed(
-                $this->eventFeed->saveXML());
+            $this->eventFeed->saveXML()
+        );
         $newEntryCount = 0;
         foreach ($newEventFeed as $entry) {
             $newEntryCount++;
@@ -161,8 +166,12 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's ID is correct
         $this->assertTrue($feed->getId() instanceof Zend_Gdata_App_Extension_Id);
-        $this->verifyProperty2($feed, "id", "text",
-                "http://www.google.com/calendar/feeds/default/private/full");
+        $this->verifyProperty2(
+            $feed,
+            "id",
+            "text",
+            "http://www.google.com/calendar/feeds/default/private/full"
+        );
 
         // Assert that all entry's have an Atom ID object
         foreach ($feed as $entry) {
@@ -171,8 +180,12 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         // Assert one of the entry's IDs
         $entry = $feed[1];
-        $this->verifyProperty2($entry, "id", "text",
-                "http://www.google.com/calendar/feeds/default/private/full/2qt3ao5hbaq7m9igr5ak9esjo0");
+        $this->verifyProperty2(
+            $entry,
+            "id",
+            "text",
+            "http://www.google.com/calendar/feeds/default/private/full/2qt3ao5hbaq7m9igr5ak9esjo0"
+        );
     }
 
     /**
@@ -203,8 +216,12 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's updated date is correct
         $this->assertTrue($feed->getUpdated() instanceof Zend_Gdata_App_Extension_Updated);
-        $this->verifyProperty2($feed, "updated", "text",
-                "2007-03-20T21:29:57.000Z");
+        $this->verifyProperty2(
+            $feed,
+            "updated",
+            "text",
+            "2007-03-20T21:29:57.000Z"
+        );
 
         // Assert that all entry's have an Atom Published object
         foreach ($feed as $entry) {
@@ -226,8 +243,12 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getTitle() instanceof Zend_Gdata_App_Extension_Title);
-        $this->verifyProperty2($feed, "title", "text",
-                "GData Ops Demo");
+        $this->verifyProperty2(
+            $feed,
+            "title",
+            "text",
+            "GData Ops Demo"
+        );
 
         // Assert that all entry's have an Atom ID object
         foreach ($feed as $entry) {
@@ -249,8 +270,12 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getSubtitle() instanceof Zend_Gdata_App_Extension_Subtitle);
-        $this->verifyProperty2($feed, "subtitle", "text",
-                "Demo Feed");
+        $this->verifyProperty2(
+            $feed,
+            "subtitle",
+            "text",
+            "Demo Feed"
+        );
     }
 
     /**
@@ -263,8 +288,12 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's timezone is correct
         $this->assertTrue($feed->getTimezone() instanceof Zend_Gdata_Calendar_Extension_Timezone);
-        $this->verifyProperty2($feed, "timezone", "value",
-                "America/Los_Angeles");
+        $this->verifyProperty2(
+            $feed,
+            "timezone",
+            "value",
+            "America/Los_Angeles"
+        );
     }
 
     /**
@@ -490,5 +519,4 @@ class Zend_Gdata_CalendarEventTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($quickAdd instanceof Zend_Gdata_Calendar_Extension_QuickAdd);
         $this->verifyProperty($quickAdd, "value", true);
     }
-
 }

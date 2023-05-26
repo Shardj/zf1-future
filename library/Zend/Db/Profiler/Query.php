@@ -65,10 +65,6 @@ class Zend_Db_Profiler_Query
     protected $_boundParams = [];
 
     /**
-     * @var array
-     */
-
-    /**
      * Class constructor.  A query is about to be started, save the query text ($query) and its
      * type (one of the Zend_Db_Profiler::* constants).
      *

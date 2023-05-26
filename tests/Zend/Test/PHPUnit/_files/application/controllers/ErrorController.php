@@ -42,14 +42,14 @@ class ErrorController extends Zend_Controller_Action
                 $this->getResponse()->setHttpResponseCode(404);
                 $this->view->message = 'Page not found';
                 $this->view->request = $errors->request;
-                $this->view->info    = $errors->exception;
+                $this->view->info = $errors->exception;
                 break;
             default:
                 // application error
                 $this->getResponse()->setHttpResponseCode(500);
                 $this->view->message = 'Application error';
                 $this->view->request = $errors->request;
-                $this->view->info    = $errors->exception;
+                $this->view->info = $errors->exception;
                 break;
         }
     }

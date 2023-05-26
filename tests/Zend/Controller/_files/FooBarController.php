@@ -36,7 +36,6 @@ require_once 'Zend/Controller/Action.php';
  */
 class FooBarController extends Zend_Controller_Action
 {
-
     /**
      * Test Function for bazBatAction
      *
@@ -46,5 +45,4 @@ class FooBarController extends Zend_Controller_Action
     {
         $this->render();
     }
-
 }

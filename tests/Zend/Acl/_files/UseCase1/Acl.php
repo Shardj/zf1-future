@@ -2,7 +2,6 @@
 
 class Zend_Acl_UseCase1_Acl extends Zend_Acl
 {
-
     public $customAssertion = null;
 
     public function __construct()
@@ -19,5 +18,4 @@ class Zend_Acl_UseCase1_Acl extends Zend_Acl
         $this->allow('contributor', 'blogPost', 'modify', $this->customAssertion);
         $this->allow('publisher', 'blogPost', 'publish');
     }
-
 }

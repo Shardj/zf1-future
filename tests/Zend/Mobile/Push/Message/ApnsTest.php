@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,9 +35,14 @@ require_once 'Zend/Mobile/Push/Message/Apns.php';
  * @group      Zend_Mobile_Push
  * @group      Zend_Mobile_Push_Apns
  */
-class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
+class Zend_Mobile_Push_Message_ApnsTest extends TestCase
 {
-    public function setUp()
+    /**
+     * @var \Zend_Mobile_Push_Message_Apns|mixed
+     */
+    protected $message;
+
+    protected function setUp(): void
     {
         $this->message = new Zend_Mobile_Push_Message_Apns();
     }
@@ -49,43 +57,33 @@ class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($checkText['body'], $text);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetAlertThrowsExceptionOnTextNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setAlert([]);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetAlertThrowsExceptionOnActionLocKeyNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setAlert('text', []);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetAlertThrowsExceptionOnLocKeyNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setAlert('text', 'button', []);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetAlertThrowsExceptionOnLocArgsNonArray()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setAlert('text', 'button', 'action', 'whoa');
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetAlertThrowsExceptionOnLaunchImageNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setAlert('text', 'button', 'action', ['locale'], []);
     }
 
@@ -96,19 +94,15 @@ class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->message->getBadge(), $num);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetBadgeNonNumericThrowsException()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setBadge('string!');
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetBadgeNegativeNumberThrowsException()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setBadge(-5);
     }
 
@@ -125,11 +119,9 @@ class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->message->getExpire(), $expire);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetExpireNonNumericThrowsException()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setExpire('sting!');
     }
 
@@ -140,11 +132,9 @@ class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->message->getSound(), $sound);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testSetSoundThrowsExceptionOnNonString()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->setSound([]);
     }
 
@@ -165,19 +155,15 @@ class Zend_Mobile_Push_Message_ApnsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->message->getCustomData(), $expected);
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testAddCustomDataThrowsExceptionOnNonStringKey()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->addCustomData(['key'], 'val');
     }
 
-    /**
-     * @expectedException Zend_Mobile_Push_Message_Exception
-     */
     public function testAddCustomDataThrowsExceptionOnReservedKeyAps()
     {
+        $this->expectException(Zend_Mobile_Push_Message_Exception::class);
         $this->message->addCustomData('aps', 'val');
     }
 

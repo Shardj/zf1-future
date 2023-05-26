@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -62,7 +65,7 @@ require_once 'Zend/Debug.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
-class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
+class Zend_Auth_Adapter_Http_ObjectTest extends TestCase
 {
     /**
      * Path to test files
@@ -111,26 +114,26 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function __construct()
+    protected function setUp(): void
     {
-        $this->_filesPath      = dirname(__FILE__) . '/_files';
-        $this->_basicResolver  = new Zend_Auth_Adapter_Http_Resolver_File("$this->_filesPath/htbasic.1");
+        $this->_filesPath = dirname(__FILE__) . '/_files';
+        $this->_basicResolver = new Zend_Auth_Adapter_Http_Resolver_File("$this->_filesPath/htbasic.1");
         $this->_digestResolver = new Zend_Auth_Adapter_Http_Resolver_File("$this->_filesPath/htdigest.3");
-        $this->_basicConfig    = [
+        $this->_basicConfig = [
             'accept_schemes' => 'basic',
-            'realm'          => 'Test Realm'
+            'realm' => 'Test Realm'
         ];
-        $this->_digestConfig   = [
+        $this->_digestConfig = [
             'accept_schemes' => 'digest',
-            'realm'          => 'Test Realm',
+            'realm' => 'Test Realm',
             'digest_domains' => '/ http://localhost/',
-            'nonce_timeout'  => 300
+            'nonce_timeout' => 300
         ];
-        $this->_bothConfig     = [
+        $this->_bothConfig = [
             'accept_schemes' => 'basic digest',
-            'realm'          => 'Test Realm',
+            'realm' => 'Test Realm',
             'digest_domains' => '/ http://localhost/',
-            'nonce_timeout'  => 300
+            'nonce_timeout' => 300
         ];
     }
 
@@ -164,30 +167,33 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
         unset($t);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testInvalidConfigs()
     {
         $badConfigs = [
             'bad1' => [
                 'auth_type' => 'bogus',
-                'realm'     => 'Test Realm'
+                'realm' => 'Test Realm'
             ],
             'bad2' => [
-                'auth_type'      => 'digest',
-                'realm'          => 'Bad: "Chars"'."\n",
+                'auth_type' => 'digest',
+                'realm' => 'Bad: "Chars"' . "\n",
                 'digest_domains' => '/ /admin',
-                'nonce_timeout'  => 300
+                'nonce_timeout' => 300
             ],
             'bad3' => [
-                'auth_type'      => 'digest',
-                'realm'          => 'Test Realm',
-                'digest_domains' => 'no"quotes'."\tor tabs",
-                'nonce_timeout'  => 300
+                'auth_type' => 'digest',
+                'realm' => 'Test Realm',
+                'digest_domains' => 'no"quotes' . "\tor tabs",
+                'nonce_timeout' => 300
             ],
             'bad4' => [
-                'auth_type'      => 'digest',
-                'realm'          => 'Test Realm',
+                'auth_type' => 'digest',
+                'realm' => 'Test Realm',
                 'digest_domains' => '/ /admin',
-                'nonce_timeout'  => 'junk'
+                'nonce_timeout' => 'junk'
             ]
         ];
 
@@ -202,6 +208,9 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testAuthenticateArgs()
     {
         $a = new Zend_Auth_Adapter_Http($this->_basicConfig);
@@ -213,8 +222,8 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
             // Good, it threw an exception
         }
 
-        $request  = $this->getMock('Zend_Controller_Request_Http');
-        $response = $this->getMock('Zend_Controller_Response_Http');
+        $request = $this->createMock('Zend_Controller_Request_Http');
+        $response = $this->createMock('Zend_Controller_Response_Http');
 
         // If this throws an exception, it fails
         $a->setRequest($request)
@@ -222,10 +231,13 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
           ->authenticate();
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNoResolvers()
     {
-        $request  = $this->getMock('Zend_Controller_Request_Http');
-        $response = $this->getMock('Zend_Controller_Response_Http');
+        $request = $this->createMock('Zend_Controller_Request_Http');
+        $response = $this->createMock('Zend_Controller_Response_Http');
 
         // Stub request for Basic auth
         $request->expects($this->any())
@@ -238,14 +250,14 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
             $a->setRequest($request)
               ->setResponse($response);
             $result = $a->authenticate();
-            $this->fail("Tried Basic authentication without a resolver.\n" . Zend_Debug::dump($result->getMessages(),null,false));
+            $this->fail("Tried Basic authentication without a resolver.\n" . Zend_Debug::dump($result->getMessages(), null, false));
         } catch (Zend_Auth_Adapter_Exception $e) {
             // Good, it threw an exception
             unset($a);
         }
 
         // Stub request for Digest auth, must be reseted (recreated)
-        $request  = $this->getMock('Zend_Controller_Request_Http');
+        $request = $this->createMock('Zend_Controller_Request_Http');
         $request->expects($this->any())
                 ->method('getHeader')
                 ->will($this->returnValue('Digest <followed by a space caracter'));
@@ -256,7 +268,7 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
             $a->setRequest($request)
               ->setResponse($response);
             $result = $a->authenticate();
-            $this->fail("Tried Digest authentication without a resolver.\n" . Zend_Debug::dump($result->getMessages(),null,false));
+            $this->fail("Tried Digest authentication without a resolver.\n" . Zend_Debug::dump($result->getMessages(), null, false));
         } catch (Zend_Auth_Adapter_Exception $e) {
             // Good, it threw an exception
             unset($a);
@@ -265,8 +277,8 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
 
     public function testWrongResolverUsed()
     {
-        $response = $this->getMock('Zend_Controller_Response_Http');
-        $request  = $this->getMock('Zend_Controller_Request_Http');
+        $response = $this->createMock('Zend_Controller_Response_Http');
+        $request = $this->createMock('Zend_Controller_Request_Http');
         $request->expects($this->any())
                 ->method('getHeader')
                 ->will($this->returnValue('Basic <followed by a space caracter')); // A basic Header will be provided by that request
@@ -277,13 +289,13 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
           ->setRequest($request)
           ->setResponse($response);
         $result = $a->authenticate();
-        $this->assertEquals($result->getCode(),Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID);
+        $this->assertEquals($result->getCode(), Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID);
     }
 
     public function testUnsupportedScheme()
     {
-        $response = $this->getMock('Zend_Controller_Response_Http');
-        $request  = $this->getMock('Zend_Controller_Request_Http');
+        $response = $this->createMock('Zend_Controller_Response_Http');
+        $request = $this->createMock('Zend_Controller_Request_Http');
         $request->expects($this->any())
                 ->method('getHeader')
                 ->will($this->returnValue('NotSupportedScheme <followed by a space caracter'));
@@ -293,6 +305,6 @@ class Zend_Auth_Adapter_Http_ObjectTest extends PHPUnit_Framework_TestCase
           ->setRequest($request)
           ->setResponse($response);
         $result = $a->authenticate();
-        $this->assertEquals($result->getCode(),Zend_Auth_Result::FAILURE_UNCATEGORIZED);
+        $this->assertEquals($result->getCode(), Zend_Auth_Result::FAILURE_UNCATEGORIZED);
     }
 }

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -42,8 +47,13 @@ require_once 'Zend/Filter/PregReplace.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_PregReplaceTest extends TestCase
 {
+    /**
+     * @var \Zend_Filter_PregReplace|mixed
+     */
+    protected $filter;
+
     /**
      * Runs the test methods of this class.
      *
@@ -51,11 +61,11 @@ class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Filter_PregReplaceTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Filter_PregReplaceTest');
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->filter = new Zend_Filter_PregReplace();
     }
@@ -63,14 +73,14 @@ class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
     public function testPassingMatchPatternToConstructorSetsMatchPattern()
     {
         $pattern = '#^controller/(?P<action>[a-z_-]+)#';
-        $filter  = new Zend_Filter_PregReplace($pattern);
+        $filter = new Zend_Filter_PregReplace($pattern);
         $this->assertEquals($pattern, $filter->getMatchPattern());
     }
 
     public function testPassingReplacementToConstructorSetsReplacement()
     {
         $replace = 'foo/bar';
-        $filter  = new Zend_Filter_PregReplace(null, $replace);
+        $filter = new Zend_Filter_PregReplace(null, $replace);
         $this->assertEquals($replace, $filter->getReplacement());
     }
 
@@ -114,7 +124,7 @@ class Zend_Filter_PregReplaceTest extends PHPUnit_Framework_TestCase
         $this->assertNotEquals($string, $filtered);
         $this->assertEquals('foo/bar', $filtered);
     }
-
+    /** @doesNotPerformAssertions */
     public function testFilterThrowsExceptionWhenNoMatchPatternPresent()
     {
         $string = 'controller/action';

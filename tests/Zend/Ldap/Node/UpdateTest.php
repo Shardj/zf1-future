@@ -40,13 +40,13 @@ require_once 'Zend/Ldap/Node.php';
  */
 class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->_prepareLdapServer();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         foreach ($this->_getLdap()->getBaseNode()->searchChildren('objectClass=*') as $child) {
             $this->_getLdap()->delete($child->getDn(), true);
@@ -67,91 +67,91 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
         if (array_key_exists('objectclass', $entry) && count($entry['objectclass']) > 0) {
             if ($entry['objectclass'][0] !== 'top') {
-                $entry['objectclass']=array_merge(['top'], $entry['objectclass']);
+                $entry['objectclass'] = array_merge(['top'], $entry['objectclass']);
             }
         }
     }
 
     public function testSimpleUpdateOneValue()
     {
-        $dn=$this->_createDn('ou=Test1,');
-        $node1=Zend_Ldap_Node::fromLdap($dn, $this->_getLdap());
-        $node1->l='f';
+        $dn = $this->_createDn('ou=Test1,');
+        $node1 = Zend_Ldap_Node::fromLdap($dn, $this->_getLdap());
+        $node1->l = 'f';
         $node1->update();
 
         $this->assertTrue($this->_getLdap()->exists($dn));
-        $node2=$this->_getLdap()->getEntry($dn);
+        $node2 = $this->_getLdap()->getEntry($dn);
         $this->_stripActiveDirectorySystemAttributes($node2);
         unset($node2['dn']);
-        $node1=$node1->getData(false);
+        $node1 = $node1->getData(false);
         $this->_stripActiveDirectorySystemAttributes($node1);
         $this->assertEquals($node2, $node1);
     }
 
     public function testAddNewNode()
     {
-        $dn=$this->_createDn('ou=Test,');
-        $node1=Zend_Ldap_Node::create($dn, ['organizationalUnit']);
-        $node1->l='a';
+        $dn = $this->_createDn('ou=Test,');
+        $node1 = Zend_Ldap_Node::create($dn, ['organizationalUnit']);
+        $node1->l = 'a';
         $node1->update($this->_getLdap());
 
         $this->assertTrue($this->_getLdap()->exists($dn));
-        $node2=$this->_getLdap()->getEntry($dn);
+        $node2 = $this->_getLdap()->getEntry($dn);
         $this->_stripActiveDirectorySystemAttributes($node2);
         unset($node2['dn']);
-        $node1=$node1->getData(false);
+        $node1 = $node1->getData(false);
         $this->_stripActiveDirectorySystemAttributes($node1);
         $this->assertEquals($node2, $node1);
     }
 
     public function testMoveExistingNode()
     {
-        $dnOld=$this->_createDn('ou=Test1,');
-        $dnNew=$this->_createDn('ou=Test,');
-        $node1=Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
-        $node1->l='f';
+        $dnOld = $this->_createDn('ou=Test1,');
+        $dnNew = $this->_createDn('ou=Test,');
+        $node1 = Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
+        $node1->l = 'f';
         $node1->setDn($dnNew);
         $node1->update();
 
         $this->assertFalse($this->_getLdap()->exists($dnOld));
         $this->assertTrue($this->_getLdap()->exists($dnNew));
-        $node2=$this->_getLdap()->getEntry($dnNew);
+        $node2 = $this->_getLdap()->getEntry($dnNew);
         $this->_stripActiveDirectorySystemAttributes($node2);
         unset($node2['dn']);
-        $node1=$node1->getData(false);
+        $node1 = $node1->getData(false);
         $this->_stripActiveDirectorySystemAttributes($node1);
         $this->assertEquals($node2, $node1);
     }
 
     public function testMoveNewNode()
     {
-        $dnOld=$this->_createDn('ou=Test,');
-        $dnNew=$this->_createDn('ou=TestNew,');
-        $node1=Zend_Ldap_Node::create($dnOld, ['organizationalUnit']);
-        $node1->l='a';
+        $dnOld = $this->_createDn('ou=Test,');
+        $dnNew = $this->_createDn('ou=TestNew,');
+        $node1 = Zend_Ldap_Node::create($dnOld, ['organizationalUnit']);
+        $node1->l = 'a';
         $node1->setDn($dnNew);
         $node1->update($this->_getLdap());
 
         $this->assertFalse($this->_getLdap()->exists($dnOld));
         $this->assertTrue($this->_getLdap()->exists($dnNew));
-        $node2=$this->_getLdap()->getEntry($dnNew);
+        $node2 = $this->_getLdap()->getEntry($dnNew);
         $this->_stripActiveDirectorySystemAttributes($node2);
         unset($node2['dn']);
-        $node1=$node1->getData(false);
+        $node1 = $node1->getData(false);
         $this->_stripActiveDirectorySystemAttributes($node1);
         $this->assertEquals($node2, $node1);
     }
 
     public function testModifyDeletedNode()
     {
-        $dn=$this->_createDn('ou=Test1,');
-        $node1=Zend_Ldap_Node::create($dn, ['organizationalUnit']);
+        $dn = $this->_createDn('ou=Test1,');
+        $node1 = Zend_Ldap_Node::create($dn, ['organizationalUnit']);
         $node1->delete();
         $node1->update($this->_getLdap());
 
         $this->assertFalse($this->_getLdap()->exists($dn));
 
-        $node1->l='a';
+        $node1->l = 'a';
         $node1->update();
 
         $this->assertFalse($this->_getLdap()->exists($dn));
@@ -159,8 +159,8 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
     public function testAddDeletedNode()
     {
-        $dn=$this->_createDn('ou=Test,');
-        $node1=Zend_Ldap_Node::create($dn, ['organizationalUnit']);
+        $dn = $this->_createDn('ou=Test,');
+        $node1 = Zend_Ldap_Node::create($dn, ['organizationalUnit']);
         $node1->delete();
         $node1->update($this->_getLdap());
 
@@ -169,9 +169,9 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
     public function testMoveDeletedExistingNode()
     {
-        $dnOld=$this->_createDn('ou=Test1,');
-        $dnNew=$this->_createDn('ou=Test,');
-        $node1=Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
+        $dnOld = $this->_createDn('ou=Test1,');
+        $dnNew = $this->_createDn('ou=Test,');
+        $node1 = Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
         $node1->setDn($dnNew);
         $node1->delete();
         $node1->update();
@@ -182,9 +182,9 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
     public function testMoveDeletedNewNode()
     {
-        $dnOld=$this->_createDn('ou=Test,');
-        $dnNew=$this->_createDn('ou=TestNew,');
-        $node1=Zend_Ldap_Node::create($dnOld, ['organizationalUnit']);
+        $dnOld = $this->_createDn('ou=Test,');
+        $dnNew = $this->_createDn('ou=TestNew,');
+        $node1 = Zend_Ldap_Node::create($dnOld, ['organizationalUnit']);
         $node1->setDn($dnNew);
         $node1->delete();
         $node1->update($this->_getLdap());
@@ -195,22 +195,22 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
 
     public function testMoveNode()
     {
-        $dnOld=$this->_createDn('ou=Test1,');
-        $dnNew=$this->_createDn('ou=Test,');
+        $dnOld = $this->_createDn('ou=Test1,');
+        $dnNew = $this->_createDn('ou=Test,');
 
-        $node=Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
+        $node = Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
         $node->setDn($dnNew);
         $node->update();
         $this->assertFalse($this->_getLdap()->exists($dnOld));
         $this->assertTrue($this->_getLdap()->exists($dnNew));
 
-        $node=Zend_Ldap_Node::fromLdap($dnNew, $this->_getLdap());
+        $node = Zend_Ldap_Node::fromLdap($dnNew, $this->_getLdap());
         $node->move($dnOld);
         $node->update();
         $this->assertFalse($this->_getLdap()->exists($dnNew));
         $this->assertTrue($this->_getLdap()->exists($dnOld));
 
-        $node=Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
+        $node = Zend_Ldap_Node::fromLdap($dnOld, $this->_getLdap());
         $node->rename($dnNew);
         $node->update();
         $this->assertFalse($this->_getLdap()->exists($dnOld));

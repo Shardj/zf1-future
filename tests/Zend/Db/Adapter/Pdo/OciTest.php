@@ -34,14 +34,13 @@ require_once 'Zend/Db/Adapter/Pdo/TestCommon.php';
  */
 class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
 {
-
     protected $_numericDataTypes = [
-        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::INT_TYPE => Zend_Db::INT_TYPE,
         Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
-        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE,
-        'BINARY_DOUBLE'      => Zend_Db::FLOAT_TYPE,
-        'BINARY_FLOAT'       => Zend_Db::FLOAT_TYPE,
-        'NUMBER'             => Zend_Db::FLOAT_TYPE
+        Zend_Db::FLOAT_TYPE => Zend_Db::FLOAT_TYPE,
+        'BINARY_DOUBLE' => Zend_Db::FLOAT_TYPE,
+        'BINARY_FLOAT' => Zend_Db::FLOAT_TYPE,
+        'NUMBER' => Zend_Db::FLOAT_TYPE
     ];
 
     public function testAdapterDescribeTablePrimaryAuto()
@@ -53,23 +52,23 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
     {
         $desc = $this->_db->describeTable('zfproducts');
 
-        $this->assertEquals('zfproducts',        $desc['product_id']['TABLE_NAME']);
-        $this->assertEquals('product_id',        $desc['product_id']['COLUMN_NAME']);
-        $this->assertEquals(1,                   $desc['product_id']['COLUMN_POSITION']);
-        $this->assertEquals('',                  $desc['product_id']['DEFAULT']);
-        $this->assertFalse(                      $desc['product_id']['NULLABLE']);
-        $this->assertEquals(0,                   $desc['product_id']['SCALE']);
+        $this->assertEquals('zfproducts', $desc['product_id']['TABLE_NAME']);
+        $this->assertEquals('product_id', $desc['product_id']['COLUMN_NAME']);
+        $this->assertEquals(1, $desc['product_id']['COLUMN_POSITION']);
+        $this->assertEquals('', $desc['product_id']['DEFAULT']);
+        $this->assertFalse($desc['product_id']['NULLABLE']);
+        $this->assertEquals(0, $desc['product_id']['SCALE']);
         // Oracle reports precsion 11 for integers
-        $this->assertEquals(11,                  $desc['product_id']['PRECISION']);
-        $this->assertTrue(                       $desc['product_id']['PRIMARY'], 'Expected product_id to be a primary key');
-        $this->assertEquals(1,                   $desc['product_id']['PRIMARY_POSITION']);
-        $this->assertFalse(                      $desc['product_id']['IDENTITY']);
+        $this->assertEquals(11, $desc['product_id']['PRECISION']);
+        $this->assertTrue($desc['product_id']['PRIMARY'], 'Expected product_id to be a primary key');
+        $this->assertEquals(1, $desc['product_id']['PRIMARY_POSITION']);
+        $this->assertFalse($desc['product_id']['IDENTITY']);
     }
 
     public function testAdapterInsert()
     {
         $row = [
-            'product_id'   => new Zend_Db_Expr($this->_db->quoteIdentifier('zfproducts_seq').'.NEXTVAL'),
+            'product_id' => new Zend_Db_Expr($this->_db->quoteIdentifier('zfproducts_seq') . '.NEXTVAL'),
             'product_name' => 'Solaris',
         ];
         $rowsAffected = $this->_db->insert('zfproducts', $row);
@@ -85,7 +84,7 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function testAdapterInsertDbExpr()
     {
         $row = [
-            'product_id'   => new Zend_Db_Expr($this->_db->quoteIdentifier('zfproducts_seq').'.NEXTVAL'),
+            'product_id' => new Zend_Db_Expr($this->_db->quoteIdentifier('zfproducts_seq') . '.NEXTVAL'),
             'product_name' => new Zend_Db_Expr('UPPER(\'Solaris\')')
         ];
         $rowsAffected = $this->_db->insert('zfproducts', $row);
@@ -187,8 +186,8 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchAll("SELECT * FROM $documents WHERE $document_id = 1");
-        $expected = 'this is the clob that never ends...'.
-                    'this is the clob that never ends...'.
+        $expected = 'this is the clob that never ends...' .
+                    'this is the clob that never ends...' .
                     'this is the clob that never ends...';
         $this->assertEquals($expected, stream_get_contents($value[0]['doc_clob']));
     }
@@ -201,8 +200,8 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchRow("SELECT * FROM $documents WHERE $document_id = 1");
-        $expected = 'this is the clob that never ends...'.
-                    'this is the clob that never ends...'.
+        $expected = 'this is the clob that never ends...' .
+                    'this is the clob that never ends...' .
                     'this is the clob that never ends...';
         $this->assertEquals($expected, stream_get_contents($value['doc_clob']));
     }
@@ -215,8 +214,8 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchAssoc("SELECT * FROM $documents WHERE $document_id = 1");
-        $expected = 'this is the clob that never ends...'.
-                    'this is the clob that never ends...'.
+        $expected = 'this is the clob that never ends...' .
+                    'this is the clob that never ends...' .
                     'this is the clob that never ends...';
         $this->assertEquals($expected, stream_get_contents($value[1]['doc_clob']));
     }
@@ -230,8 +229,8 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $document_clob = $this->_db->quoteIdentifier('doc_clob');
         $value = $this->_db->fetchCol("SELECT $document_clob FROM $documents WHERE $document_id = 1");
-        $expected = 'this is the clob that never ends...'.
-                    'this is the clob that never ends...'.
+        $expected = 'this is the clob that never ends...' .
+                    'this is the clob that never ends...' .
                     'this is the clob that never ends...';
         $this->assertEquals($expected, stream_get_contents($value[0]));
     }
@@ -245,8 +244,8 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $document_clob = $this->_db->quoteIdentifier('doc_clob');
         $value = $this->_db->fetchOne("SELECT $document_clob FROM $documents WHERE $document_id = 1");
-        $expected = 'this is the clob that never ends...'.
-                    'this is the clob that never ends...'.
+        $expected = 'this is the clob that never ends...' .
+                    'this is the clob that never ends...' .
                     'this is the clob that never ends...';
         $this->assertEquals($expected, stream_get_contents($value));
     }

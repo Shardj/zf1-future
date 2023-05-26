@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -40,7 +43,7 @@ require_once 'Zend/Auth/Adapter/Digest.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Auth
  */
-class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
+class Zend_Auth_Adapter_DigestTest extends TestCase
 {
     /**
      * Path to test files
@@ -54,7 +57,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function __construct()
+    protected function setUp(): void
     {
         $this->_filesPath = dirname(__FILE__) . '/Digest/_files';
     }
@@ -73,7 +76,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
             $this->fail('Expected Zend_Auth_Adapter_Exception not thrown upon authentication attempt before setting '
                       . 'a required option');
         } catch (Zend_Auth_Adapter_Exception $e) {
-            $this->assertContains('must be set before authentication', $e->getMessage());
+            $this->assertStringContainsString('must be set before authentication', $e->getMessage());
         }
     }
 
@@ -90,7 +93,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
             $this->fail('Expected Zend_Auth_Adapter_Exception not thrown upon authenticating against nonexistent '
                       . 'file');
         } catch (Zend_Auth_Adapter_Exception $e) {
-            $this->assertContains('Cannot open', $e->getMessage());
+            $this->assertStringContainsString('Cannot open', $e->getMessage());
         }
     }
 
@@ -102,7 +105,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
     public function testUserExistsRealmNonexistent()
     {
         $filename = "$this->_filesPath/.htdigest.1";
-        $realm    = 'Nonexistent Realm';
+        $realm = 'Nonexistent Realm';
         $username = 'someUser';
         $password = 'somePassword';
 
@@ -115,7 +118,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
         $messages = $result->getMessages();
         $this->assertEquals(1, count($messages));
         $this->assertEquals($result->getCode(), Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND);
-        $this->assertContains('combination not found', $messages[0]);
+        $this->assertStringContainsString('combination not found', $messages[0]);
 
         $identity = $result->getIdentity();
         $this->assertEquals($identity['realm'], $realm);
@@ -130,7 +133,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
     public function testUserNonexistentRealmExists()
     {
         $filename = "$this->_filesPath/.htdigest.1";
-        $realm    = 'Some Realm';
+        $realm = 'Some Realm';
         $username = 'nonexistentUser';
         $password = 'somePassword';
 
@@ -143,7 +146,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
 
         $messages = $result->getMessages();
         $this->assertEquals(1, count($messages));
-        $this->assertContains('combination not found', $messages[0]);
+        $this->assertStringContainsString('combination not found', $messages[0]);
 
         $identity = $result->getIdentity();
         $this->assertEquals($identity['realm'], $realm);
@@ -158,7 +161,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
     public function testIncorrectPassword()
     {
         $filename = "$this->_filesPath/.htdigest.1";
-        $realm    = 'Some Realm';
+        $realm = 'Some Realm';
         $username = 'someUser';
         $password = 'incorrectPassword';
 
@@ -171,7 +174,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
 
         $messages = $result->getMessages();
         $this->assertEquals(1, count($messages));
-        $this->assertContains('Password incorrect', $messages[0]);
+        $this->assertStringContainsString('Password incorrect', $messages[0]);
 
         $identity = $result->getIdentity();
         $this->assertEquals($identity['realm'], $realm);
@@ -186,7 +189,7 @@ class Zend_Auth_Adapter_DigestTest extends PHPUnit_Framework_TestCase
     public function testAuthenticationSuccess()
     {
         $filename = "$this->_filesPath/.htdigest.1";
-        $realm    = 'Some Realm';
+        $realm = 'Some Realm';
         $username = 'someUser';
         $password = 'somePassword';
 

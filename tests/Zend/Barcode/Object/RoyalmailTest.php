@@ -34,7 +34,6 @@ require_once 'Zend/Barcode/Object/Royalmail.php';
  */
 class Zend_Barcode_Object_RoyalmailTest extends Zend_Barcode_Object_TestCommon
 {
-
     protected function _getBarcodeObject($options = null)
     {
         return new Zend_Barcode_Object_Royalmail($options);
@@ -86,11 +85,9 @@ class Zend_Barcode_Object_RoyalmailTest extends Zend_Barcode_Object_TestCommon
         $this->assertSame('012345W', $this->_object->getTextToDisplay());
     }
 
-    /**
-     * @expectedException Zend_Barcode_Object_Exception
-     */
     public function testBadTextDetectedIfChecksumWished()
     {
+        $this->expectException(Zend_Barcode_Object_Exception::class);
         $this->_object->setText('a');
         $this->_object->setWithChecksum(true);
         $this->_object->getText();
@@ -125,7 +122,8 @@ class Zend_Barcode_Object_RoyalmailTest extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Royalmail_012345_border_instructions');
+            'Royalmail_012345_border_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -135,7 +133,8 @@ class Zend_Barcode_Object_RoyalmailTest extends Zend_Barcode_Object_TestCommon
         $this->_object->setOrientation(60);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Royalmail_012345_oriented_instructions');
+            'Royalmail_012345_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -146,7 +145,8 @@ class Zend_Barcode_Object_RoyalmailTest extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Royalmail_012345_border_oriented_instructions');
+            'Royalmail_012345_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 

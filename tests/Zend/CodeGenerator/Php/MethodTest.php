@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,21 +41,19 @@ require_once '_files/TestSampleSingleClass.php';
  * @group Zend_CodeGenerator
  * @group Zend_CodeGenerator_Php
  */
-class Zend_CodeGenerator_Php_MethodTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_MethodTest extends TestCase
 {
-
-
     /**
      * @var Zend_CodeGenerator_Php_Method
      */
     protected $_method = null;
 
-    public function setup()
+    protected function setUp(): void
     {
         $this->_method = new Zend_CodeGenerator_Php_Method();
     }
 
-    public function teardown()
+    protected function tearDown(): void
     {
         $this->_method = null;
     }
@@ -60,7 +61,7 @@ class Zend_CodeGenerator_Php_MethodTest extends PHPUnit_Framework_TestCase
     public function testMethodConstructor()
     {
         $codeGenMethod = new Zend_CodeGenerator_Php_Method();
-        $this->isInstanceOf($codeGenMethod, 'Zend_CodeGenerator_Php_Method');
+        $this->assertInstanceOf('Zend_CodeGenerator_Php_Method', $codeGenMethod);
     }
 
     public function testMethodParameterAccessors()
@@ -98,7 +99,7 @@ class Zend_CodeGenerator_Php_MethodTest extends PHPUnit_Framework_TestCase
     /**
      * Enter description here...
      *
-     * @return bool
+     * @return void
      */
     public function someMethod()
     {
@@ -197,5 +198,4 @@ EOS;
 EOS;
         $this->assertEquals($expected, $codeGenProperty->generate());
     }
-
 }

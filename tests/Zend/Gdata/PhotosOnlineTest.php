@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,12 +38,11 @@ require_once 'Zend/Gdata/App/InvalidArgumentException.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Photos
  */
-class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_PhotosOnlineTest extends TestCase
 {
-
     protected $photos = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $user = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL');
         $pass = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_PASSWORD');
@@ -76,7 +78,8 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $album->setTitle($client->newTitle("testAlbum"));
         $album->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#album',
-            'http://schemas.google.com/g/2005#kind')]);
+            'http://schemas.google.com/g/2005#kind'
+        )]);
 
         $newAlbum = $client->insertAlbumEntry($album);
         $this->assertEquals($album->getTitle(), $newAlbum->getTitle());
@@ -101,7 +104,8 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $photo->setTitle($client->newTitle("test photo"));
         $photo->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#photo',
-            'http://schemas.google.com/g/2005#kind')]);
+            'http://schemas.google.com/g/2005#kind'
+        )]);
 
         $newPhoto = $client->insertPhotoEntry($photo, $album);
         $this->assertEquals($photo->getTitle(), $newPhoto->getTitle());
@@ -139,7 +143,8 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $comment->setContent($client->newContent("test comment"));
         $comment->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#comment',
-            'http://schemas.google.com/g/2005#kind')]);
+            'http://schemas.google.com/g/2005#kind'
+        )]);
 
         $newComment = $client->insertCommentEntry($comment, $photo);
         $this->assertEquals($comment->getContent(), $newComment->getContent());
@@ -157,7 +162,8 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
         $tag->setContent($client->newContent("test tag"));
         $tag->setCategory([$client->newCategory(
             'http://schemas.google.com/photos/2007#tag',
-            'http://schemas.google.com/g/2005#kind')]);
+            'http://schemas.google.com/g/2005#kind'
+        )]);
 
         $newTag = $client->insertTagEntry($tag, $photo);
         $this->assertEquals($tag->getTitle(), $newTag->getTitle());
@@ -199,15 +205,23 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
             constant('TESTS_ZEND_GDATA_PHOTOS_USERNAME');
 
         $userEntry = $client->getUserEntry($userEntryUri);
-        $this->verifyProperty($userEntry, "id", "text",
-                "http://picasaweb.google.com/data/entry/api/user/" .
-                constant('TESTS_ZEND_GDATA_PHOTOS_USERNAME'));
+        $this->verifyProperty(
+            $userEntry,
+            "id",
+            "text",
+            "http://picasaweb.google.com/data/entry/api/user/" .
+                constant('TESTS_ZEND_GDATA_PHOTOS_USERNAME')
+        );
 
 
         $userFeed = $client->getUserFeed(constant('TESTS_ZEND_GDATA_PHOTOS_USERNAME'));
-        $this->verifyProperty($userFeed, "id", "text",
-                "http://picasaweb.google.com/data/feed/api/user/" .
-                constant('TESTS_ZEND_GDATA_PHOTOS_USERNAME'));
+        $this->verifyProperty(
+            $userFeed,
+            "id",
+            "text",
+            "http://picasaweb.google.com/data/feed/api/user/" .
+                constant('TESTS_ZEND_GDATA_PHOTOS_USERNAME')
+        );
     }
 
     public function testCreatePhotoCommentAndTag()
@@ -284,5 +298,4 @@ class Zend_Gdata_PhotosOnlineTest extends PHPUnit_Framework_TestCase
             $this->assertTrue($e instanceof Zend_Gdata_App_InvalidArgumentException);
         }
     }
-
 }

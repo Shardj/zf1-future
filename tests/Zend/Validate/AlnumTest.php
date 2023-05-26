@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/Alnum.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_AlnumTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_AlnumTest extends TestCase
 {
     /**
      * Zend_Validate_Alnum object
@@ -48,7 +51,7 @@ class Zend_Validate_AlnumTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_validator = new Zend_Validate_Alnum();
     }
@@ -61,14 +64,14 @@ class Zend_Validate_AlnumTest extends PHPUnit_Framework_TestCase
     public function testExpectedResultsWithBasicInputValues()
     {
         $valuesExpected = [
-            'abc123'  => true,
+            'abc123' => true,
             'abc 123' => false,
-            'abcxyz'  => true,
+            'abcxyz' => true,
             'AZ@#4.3' => false,
-            'aBc123'  => true,
-            ''        => false,
-            ' '       => false,
-            "\n"      => false,
+            'aBc123' => true,
+            '' => false,
+            ' ' => false,
+            "\n" => false,
             'foobar1' => true
             ];
         foreach ($valuesExpected as $input => $result) {
@@ -96,15 +99,15 @@ class Zend_Validate_AlnumTest extends PHPUnit_Framework_TestCase
         $this->_validator->setAllowWhiteSpace(true);
 
         $valuesExpected = [
-            'abc123'  => true,
+            'abc123' => true,
             'abc 123' => true,
-            'abcxyz'  => true,
+            'abcxyz' => true,
             'AZ@#4.3' => false,
-            'aBc123'  => true,
-            ''        => false,
-            ' '       => true,
-            "\n"      => true,
-            " \t "    => true,
+            'aBc123' => true,
+            '' => false,
+            ' ' => true,
+            "\n" => true,
+            " \t " => true,
             'foobar1' => true
             ];
         foreach ($valuesExpected as $input => $result) {
@@ -112,7 +115,7 @@ class Zend_Validate_AlnumTest extends PHPUnit_Framework_TestCase
                 $result,
                 $this->_validator->isValid($input),
                 "Expected '$input' to be considered " . ($result ? '' : 'in') . "valid"
-                );
+            );
         }
     }
 

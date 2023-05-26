@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_VerticalSliderTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_VerticalSlider|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_VerticalSliderTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_VerticalSliderTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_VerticalSlider();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -101,8 +116,8 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
             'elementId',
             '',
             [
-                'minimum'        => -10,
-                'maximum'        => 10,
+                'minimum' => -10,
+                'maximum' => 10,
                 'discreteValues' => 11,
                 'topDecoration' => [
                     'labels' => [
@@ -174,14 +189,14 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<div[^>]*(dojoType="dijit.form.VerticalSlider")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(dojoType="dijit.form.VerticalSlider")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getElement();
-        $this->assertNotRegexp('/<div[^>]*(dojoType="dijit.form.VerticalSlider")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<div[^>]*(dojoType="dijit.form.VerticalSlider")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('elementId-slider'));
     }
 
@@ -189,7 +204,7 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
     {
         $html = $this->getElement();
         // Note that ' is converted to &#39; in Zend_View_Helper_HtmlElement::_htmlAttribs() (line 116)
-        $this->assertContains('onChange="dojo.byId(&#39;elementId&#39;).value = arguments[0];"', $html, $html);
+        $this->assertStringContainsString('onChange="dojo.byId(&#39;elementId&#39;).value = arguments[0];"', $html, $html);
     }
 
     public function testShouldCreateHiddenElementWithValue()
@@ -198,24 +213,24 @@ class Zend_Dojo_View_Helper_VerticalSliderTest extends PHPUnit_Framework_TestCas
         if (!preg_match('/(<input[^>]*(type="hidden")[^>]*>)/', $html, $m)) {
             $this->fail('No hidden element found');
         }
-        $this->assertContains('id="elementId"', $m[1]);
-        $this->assertContains('value="', $m[1]);
+        $this->assertStringContainsString('id="elementId"', $m[1]);
+        $this->assertStringContainsString('value="', $m[1]);
     }
 
     public function testShouldCreateLeftAndRightDecorationsWhenRequested()
     {
         $html = $this->getElement();
-        $this->assertRegexp('/<div[^>]*(dojoType="dijit.form.VerticalRule")/', $html, $html);
-        $this->assertRegexp('/<ol[^>]*(dojoType="dijit.form.VerticalRuleLabels")/', $html, $html);
-        $this->assertContains('leftDecoration', $html);
-        $this->assertContains('rightDecoration', $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(dojoType="dijit.form.VerticalRule")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<ol[^>]*(dojoType="dijit.form.VerticalRuleLabels")/', $html, $html);
+        $this->assertStringContainsString('leftDecoration', $html);
+        $this->assertStringContainsString('rightDecoration', $html);
     }
 
     public function testShouldIgnoreTopAndBottomDecorationsWhenPassed()
     {
         $html = $this->getElement();
-        $this->assertNotContains('topDecoration', $html);
-        $this->assertNotContains('bottomDecoration', $html);
+        $this->assertStringNotContainsString('topDecoration', $html);
+        $this->assertStringNotContainsString('bottomDecoration', $html);
     }
 }
 

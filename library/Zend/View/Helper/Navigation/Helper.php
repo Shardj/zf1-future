@@ -39,7 +39,7 @@ interface Zend_View_Helper_Navigation_Helper
      *                                               null, which indicates that
      *                                               the container should be
      *                                               reset.
-     * @return Zend_View_Helper_Navigation_Helper    fluent interface, returns
+     * @return $this
      *                                               self
      */
     public function setContainer(Zend_Navigation_Container $container = null);
@@ -59,7 +59,7 @@ interface Zend_View_Helper_Navigation_Helper
      *                                             {@link Zend_Translate_Adapter}
      *                                             or {@link Zend_Translate},
      *                                             or null. Default is null.
-     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     * @return $this
      *                                             self
      */
     public function setTranslator($translator = null);
@@ -75,7 +75,7 @@ interface Zend_View_Helper_Navigation_Helper
      * Sets ACL to use when iterating pages
      *
      * @param  Zend_Acl $acl                       [optional] ACL instance
-     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     * @return $this
      *                                             self
      */
     public function setAcl(Zend_Acl $acl = null);
@@ -97,7 +97,7 @@ interface Zend_View_Helper_Navigation_Helper
      *                                             {@link Zend_Acl_Role_Interface},
      *                                             or null. Default is null.
      * @throws Zend_View_Exception                 if $role is invalid
-     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     * @return $this
      *                                             self
      */
     public function setRole($role = null);
@@ -115,7 +115,7 @@ interface Zend_View_Helper_Navigation_Helper
      * @param  bool $useAcl                        [optional] whether ACL
      *                                             should be used. Default is
      *                                             true.
-     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     * @return $this
      *                                             self
      */
     public function setUseAcl($useAcl = true);
@@ -138,7 +138,7 @@ interface Zend_View_Helper_Navigation_Helper
      * Render invisible items?
      *
      * @param  bool $renderInvisible                       [optional] boolean flag
-     * @return Zend_View_Helper_Navigation_HelperAbstract  fluent interface
+     * @return $this
      *                                                     returns self
      */
     public function setRenderInvisible($renderInvisible = true);
@@ -149,7 +149,7 @@ interface Zend_View_Helper_Navigation_Helper
      * @param  bool $useTranslator                 [optional] whether
      *                                             translator should be used.
      *                                             Default is true.
-     * @return Zend_View_Helper_Navigation_Helper  fluent interface, returns
+     * @return $this
      *                                             self
      */
     public function setUseTranslator($useTranslator = true);

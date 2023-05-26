@@ -148,7 +148,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             setService() instead.
      * @param  Zend_Http_Client $httpClient
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setHttpClient(Zend_Http_Client $httpClient)
     {
@@ -164,7 +164,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * will be used.
      *
      * @return Zend_Http_Client
-     *@deprecated Deprecated as of Zend Framework 1.7. Use
+     * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             getService() instead.
      */
     public function getHttpClient()
@@ -181,7 +181,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * perform network requests, such as when calling save() and delete().
      *
      * @param Zend_Gdata_App $instance The new service instance.
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface.
+     * @return $this
      */
     public function setService($instance)
     {
@@ -294,7 +294,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * author is represented by an atom:author element
      *
      * @param array $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setAuthor($value)
     {
@@ -318,7 +318,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * category is represented in an atom feed by an atom:category element.
      *
      * @param array $value Array of Zend_Gdata_App_Extension_Category
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setCategory($value)
     {
@@ -342,7 +342,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * is represented in an atom feed by an atom:contributor XML element
      *
      * @param array $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setContributor($value)
     {
@@ -360,7 +360,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
 
     /**
      * @param Zend_Gdata_App_Extension_Id $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setId($value)
     {
@@ -474,7 +474,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
 
     /**
      * @param array $value The array of Zend_Gdata_App_Extension_Link elements
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setLink($value)
     {
@@ -492,7 +492,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
 
     /**
      * @param Zend_Gdata_App_Extension_Rights $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setRights($value)
     {
@@ -534,7 +534,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * an atom:title element in a feed or entry
      *
      * @param Zend_Gdata_App_Extension_Title $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setTitle($value)
     {
@@ -552,7 +552,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
 
     /**
      * @param Zend_Gdata_App_Extension_Updated $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setUpdated($value)
     {
@@ -565,7 +565,7 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * unsets the Etag.
      *
      * @param string|null $value
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface
+     * @return $this
      */
     public function setEtag($value) {
         $this->_etag = $value;

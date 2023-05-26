@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -44,8 +49,18 @@ require_once 'Zend/Controller/Response/Http.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
 {
+    /**
+     * @var \Zend_Controller_Router_Interface|mixed
+     */
+    protected $router;
+
+    /**
+     * @var array<string, mixed>|mixed
+     */
+    protected $_server;
+
     /**
      * @var Zend_Controller_Action_Helper_Redirector
      */
@@ -71,9 +86,8 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Controller_Action_Helper_RedirectorTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Controller_Action_Helper_RedirectorTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -84,16 +98,16 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
      *
      * Also resets the front controller instance.
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $front = Zend_Controller_Front::getInstance();
         $front->resetInstance();
         Zend_Controller_Action_HelperBroker::removeHelper('viewRenderer');
 
         $this->redirector = new Zend_Controller_Action_Helper_Redirector();
-        $this->router     = $front->getRouter();
-        $this->request    = new Zend_Controller_Request_Http();
-        $this->response   = new Zend_Controller_Response_Http();
+        $this->router = $front->getRouter();
+        $this->request = new Zend_Controller_Request_Http();
+        $this->response = new Zend_Controller_Response_Http();
         $this->controller = new Zend_Controller_Action_Helper_Redirector_TestController(
             $this->request,
             $this->response,
@@ -114,7 +128,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
     /**
      * Unset all properties
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->redirector);
         unset($this->controller);
@@ -160,6 +174,9 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRedirectorShouldOnlyAllowValidHttpRedirectCodes()
     {
         try {
@@ -327,10 +344,13 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         $this->assertEquals('/blog/list/error', $this->redirector->getRedirectUrl());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGotoAndExit()
     {
         $this->markTestSkipped(
-          "Testing Zend_Controller_Action_Helper_Redirector::gotoAndExit() would break the test suite"
+            "Testing Zend_Controller_Action_Helper_Redirector::gotoAndExit() would break the test suite"
         );
     }
 
@@ -355,10 +375,13 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         $this->assertEquals('/blog/archive/281', $this->redirector->getRedirectUrl());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGotoRouteAndExit()
     {
         $this->markTestSkipped(
-          "Testing Zend_Controller_Action_Helper_Redirector::gotoRouteAndExit() would break the test suite"
+            "Testing Zend_Controller_Action_Helper_Redirector::gotoRouteAndExit() would break the test suite"
         );
     }
 
@@ -371,17 +394,23 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         $this->assertEquals('/foo/bar', $this->redirector->getRedirectUrl());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testGotoUrlAndExit()
     {
         $this->markTestSkipped(
-          "Testing Zend_Controller_Action_Helper_Redirector::gotoUrlAndExit() would break the test suite"
+            "Testing Zend_Controller_Action_Helper_Redirector::gotoUrlAndExit() would break the test suite"
         );
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRedirectAndExit()
     {
         $this->markTestSkipped(
-          "Testing Zend_Controller_Action_Helper_Redirector::redirectAndExit() would break the test suite"
+            "Testing Zend_Controller_Action_Helper_Redirector::redirectAndExit() would break the test suite"
         );
     }
 
@@ -408,9 +437,9 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
 
     public function testUseAbsoluteUriSetsFullUriInResponse()
     {
-        $_SERVER['HTTP_HOST']   = 'foobar.example.com';
+        $_SERVER['HTTP_HOST'] = 'foobar.example.com';
         $_SERVER['SERVER_PORT'] = '4443';
-        $_SERVER['HTTPS']       = 1;
+        $_SERVER['HTTPS'] = 1;
         $this->redirector->setUseAbsoluteUri(true);
         $this->redirector->gotoUrl('/bar/baz');
         $headers = $this->response->getHeaders();
@@ -427,7 +456,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
      */
     public function testUseAbsoluteUriStripsPortFromServerHttpHost()
     {
-        $_SERVER['HTTP_HOST']   = 'foobar.example.com:8080';
+        $_SERVER['HTTP_HOST'] = 'foobar.example.com:8080';
         $_SERVER['SERVER_PORT'] = '8080';
         $this->redirector->setUseAbsoluteUri(true);
         $this->redirector->gotoUrl('/bar/baz');
@@ -498,7 +527,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
         $this->redirector->gotoUrl('/bar/baz');
         $test = $this->redirector->getRedirectUrl();
 
-        $this->assertNotContains('https://', $test);
+        $this->assertStringNotContainsString('https://', $test);
         $this->assertEquals('http://localhost/bar/baz', $test);
     }
 
@@ -542,7 +571,8 @@ class Zend_Controller_Action_Helper_RedirectorTest extends PHPUnit_Framework_Tes
 
         $this->router->removeRoute('default');
         $this->router->addRoute('default', new Zend_Controller_Router_Route(
-            ':baz/:foo/:bar/*', [
+            ':baz/:foo/:bar/*',
+            [
                 'baz' => 'default',
                 'foo' => 'index',
                 'bar' => 'index'
@@ -580,6 +610,3 @@ class Zend_Controller_Action_Helper_Redirector_TestController extends Zend_Contr
 if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_RedirectorTest::main") {
     Zend_Controller_Action_Helper_RedirectorTest::main();
 }
-
-
-

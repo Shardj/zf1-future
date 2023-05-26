@@ -67,14 +67,14 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
     public function testConfigSetAsArray()
     {
         $config = [
-            'timeout'    => 500,
+            'timeout' => 500,
             'someoption' => 'hasvalue'
         ];
 
         $this->_adapter->setConfig($config);
 
         $hasConfig = $this->_adapter->getConfig();
-        foreach($config as $k => $v) {
+        foreach ($config as $k => $v) {
             $this->assertEquals($v, $hasConfig[$k]);
         }
     }
@@ -89,8 +89,8 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
         require_once 'Zend/Config.php';
 
         $config = new Zend_Config([
-            'timeout'  => 400,
-            'nested'   => [
+            'timeout' => 400,
+            'nested' => [
                 'item' => 'value',
             ]
         ]);
@@ -105,11 +105,11 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
     /**
      * Check that an exception is thrown when trying to set invalid config
      *
-     * @expectedException Zend_Http_Client_Adapter_Exception
      * @dataProvider invalidConfigProvider
      */
     public function testSetConfigInvalidConfig($config)
     {
+        $this->expectException(Zend_Http_Client_Adapter_Exception::class);
         $this->_adapter->setConfig($config);
     }
 
@@ -119,7 +119,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
 
     public function testGetNewStreamContext()
     {
-        $adapter = new $this->config['adapter'];
+        $adapter = new $this->config['adapter']();
         $context = $adapter->getStreamContext();
 
         $this->assertEquals('stream-context', get_resource_type($context));
@@ -127,7 +127,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
 
     public function testSetNewStreamContextResource()
     {
-        $adapter = new $this->config['adapter'];
+        $adapter = new $this->config['adapter']();
         $context = stream_context_create();
 
         $adapter->setStreamContext($context);
@@ -137,7 +137,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
 
     public function testSetNewStreamContextOptions()
     {
-        $adapter = new $this->config['adapter'];
+        $adapter = new $this->config['adapter']();
         $options = [
             'socket' => [
                 'bindto' => '1.2.3.4:0'
@@ -157,11 +157,11 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
      * Test that setting invalid options / context causes an exception
      *
      * @dataProvider      invalidContextProvider
-     * @expectedException Zend_Http_Client_Adapter_Exception
      */
     public function testSetInvalidContextOptions($invalid)
     {
-        $adapter = new $this->config['adapter'];
+        $this->expectException(Zend_Http_Client_Adapter_Exception::class);
+        $adapter = new $this->config['adapter']();
         $adapter->setStreamContext($invalid);
     }
 
@@ -171,7 +171,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
             $this->markTestSkipped();
         }
 
-        $adapter = new $this->config['adapter'];
+        $adapter = new $this->config['adapter']();
         $adapter->setStreamContext([
             'ssl' => [
                 'capture_peer_cert' => true,
@@ -238,7 +238,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
      *
      * @return array
      */
-    static public function invalidContextProvider()
+    public static function invalidContextProvider()
     {
         return [
             [new stdClass()],

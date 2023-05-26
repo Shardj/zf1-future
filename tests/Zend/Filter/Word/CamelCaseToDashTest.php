@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,7 +43,7 @@ require_once 'Zend/Filter/Word/CamelCaseToDash.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_Word_CamelCaseToDashTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_Word_CamelCaseToDashTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -48,15 +53,14 @@ class Zend_Filter_Word_CamelCaseToDashTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Filter_Word_CamelCaseToDashTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Filter_Word_CamelCaseToDashTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testFilterSeparatesCamelCasedWordsWithDashes()
     {
-        $string   = 'CamelCasedWords';
-        $filter   = new Zend_Filter_Word_CamelCaseToDash();
+        $string = 'CamelCasedWords';
+        $filter = new Zend_Filter_Word_CamelCaseToDash();
         $filtered = $filter->filter($string);
 
         $this->assertNotEquals($string, $filtered);

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -48,8 +53,18 @@ require_once 'Zend/Dojo/View/Helper/Dojo.php';
  * @group      Zend_Dojo
  * @group      Zend_Dojo_View
  */
-class Zend_Dojo_View_Helper_TabContainerTest extends PHPUnit_Framework_TestCase
+class Zend_Dojo_View_Helper_TabContainerTest extends TestCase
 {
+    /**
+     * @var \Zend_View
+     */
+    protected $view;
+
+    /**
+     * @var \Zend_Dojo_View_Helper_TabContainer|mixed
+     */
+    protected $helper;
+
     /**
      * Runs the test methods of this class.
      *
@@ -57,8 +72,8 @@ class Zend_Dojo_View_Helper_TabContainerTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Dojo_View_Helper_TabContainerTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Dojo_View_Helper_TabContainerTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,12 +82,12 @@ class Zend_Dojo_View_Helper_TabContainerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
 
-        $this->view   = $this->getView();
+        $this->view = $this->getView();
         $this->helper = new Zend_Dojo_View_Helper_TabContainer();
         $this->helper->setView($this->view);
     }
@@ -83,7 +98,7 @@ class Zend_Dojo_View_Helper_TabContainerTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -99,9 +114,9 @@ class Zend_Dojo_View_Helper_TabContainerTest extends PHPUnit_Framework_TestCase
     {
         $html = '';
         foreach (['top', 'bottom', 'center', 'left', 'right'] as $pane) {
-            $id      = $pane . 'Pane';
+            $id = $pane . 'Pane';
             $content = 'This is the content of pane ' . $pane;
-            $html   .= $this->view->contentPane($id, $content, ['region' => $pane]);
+            $html .= $this->view->contentPane($id, $content, ['region' => $pane]);
         }
         return $this->helper->tabContainer('container', $html, ['design' => 'headline']);
     }
@@ -109,14 +124,14 @@ class Zend_Dojo_View_Helper_TabContainerTest extends PHPUnit_Framework_TestCase
     public function testShouldAllowDeclarativeDijitCreation()
     {
         $html = $this->getContainer();
-        $this->assertRegexp('/<div[^>]*(dojoType="dijit.layout.TabContainer")/', $html, $html);
+        $this->assertMatchesRegularExpression('/<div[^>]*(dojoType="dijit.layout.TabContainer")/', $html, $html);
     }
 
     public function testShouldAllowProgrammaticDijitCreation()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
         $html = $this->getContainer();
-        $this->assertNotRegexp('/<div[^>]*(dojoType="dijit.layout.TabContainer")/', $html);
+        $this->assertDoesNotMatchRegularExpression('/<div[^>]*(dojoType="dijit.layout.TabContainer")/', $html);
         $this->assertNotNull($this->view->dojo()->getDijit('container'));
     }
 }

@@ -198,7 +198,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      *
      * @param  int   $index
      * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
+     * @return $this
      * @throws Zend_Ldap_Exception if index is illegal
      */
     public function set($index, array $value)
@@ -214,7 +214,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      *
      * @param  int $index
      * @param  int $length
-     * @return Zend_Ldap_Dn Provides a fluent interface
+     * @return $this
      * @throws Zend_Ldap_Exception if index is illegal
      */
     public function remove($index, $length = 1)
@@ -232,7 +232,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      * Append a DN part
      *
      * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
+     * @return $this
      */
     public function append(array $value)
     {
@@ -245,7 +245,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      * Prepend a DN part
      *
      * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
+     * @return $this
      */
     public function prepend(array $value)
     {
@@ -259,7 +259,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      *
      * @param  int   $index
      * @param  array $value
-     * @return Zend_Ldap_Dn Provides a fluent interface
+     * @return $this
      * @throws Zend_Ldap_Exception if index is illegal
      */
     public function insert($index, array $value)

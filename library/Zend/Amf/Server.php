@@ -210,7 +210,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
     }
 
     /**
-     * @param namespace of all incoming sessions defaults to Zend_Amf
+     * @param  string $namespace namespace of all incoming sessions defaults to Zend_Amf
      * @return Zend_Amf_Server
      * @throws Zend_Session_Exception
      */

@@ -102,7 +102,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
 
     /**
      * @param  Zend_Rest_Client $client
-     * @return Zend_Service_Ebay_Finding Provides a fluent interface
+     * @return $this
      */
     public function setClient($client)
     {

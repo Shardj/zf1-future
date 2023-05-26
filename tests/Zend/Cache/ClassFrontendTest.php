@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -59,7 +62,8 @@ class test
         echo $this->dummyMethod($param1, $param2);
     }
 
-    private function dummyMethod($param1, $param2) {
+    private function dummyMethod($param1, $param2)
+    {
         return "foobar_output($param1,$param2)";
     }
 
@@ -78,12 +82,22 @@ class test
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cache
  */
-class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
+class Zend_Cache_ClassFrontendTest extends TestCase
 {
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend1;
+
+    /**
+     * @var \Zend_Cache_Backend_Test|mixed
+     */
+    protected $_backend2;
+
     private $_instance1;
     private $_instance2;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!$this->_instance1) {
             $options1 = [
@@ -103,12 +117,15 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->_instance1);
         unset($this->_instance2);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall1()
     {
         $options = [
@@ -118,6 +135,9 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
         $test = new Zend_Cache_Frontend_Class($options);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorCorrectCall2()
     {
         $options = [
@@ -127,6 +147,9 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
         $test = new Zend_Cache_Frontend_Class($options);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorBadCall()
     {
         $options = [
@@ -243,9 +266,11 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
 
         $this->assertNull($return);
         $this->assertEquals('foobar_output(param1,param2)', $data);
-      
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorWithABadCachedEntity()
     {
         try {
@@ -261,6 +286,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-5034
+     * @doesNotPerformAssertions
      */
     public function testCallingConstructorWithInvalidOptionShouldNotRaiseException()
     {
@@ -283,7 +309,8 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
         try {
             $this->_instance2->throwException();
             $this->fail("An exception should be thrown");
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
         echo 'end';
 
         $output = ob_get_clean();
@@ -295,7 +322,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit_Framework_TestCase
      */
     public function testThrowExceptionOnInvalidCallback()
     {
-        $this->setExpectedException('Zend_Cache_Exception');
+        $this->expectException('Zend_Cache_Exception');
         $this->_instance2->unknownMethod();
     }
 }

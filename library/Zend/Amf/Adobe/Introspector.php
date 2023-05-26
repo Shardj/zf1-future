@@ -39,6 +39,11 @@ require_once 'Zend/Server/Reflection.php';
 class Zend_Amf_Adobe_Introspector
 {
     /**
+     * @var \DOMElement|mixed
+     */
+    protected $_ops;
+
+    /**
      * Options used:
      * - server: instance of Zend_Amf_Server to use
      * - directories: directories where class files may be looked up
@@ -166,7 +171,7 @@ class Zend_Amf_Adobe_Introspector
         foreach ($refclass->getMethods() as $method) {
             if (!$method->isPublic()
                 || $method->isConstructor()
-                || ('__' == substr($method->name, 0, 2))
+                || ('__' == substr((string) $method->name, 0, 2))
             ) {
                 continue;
             }

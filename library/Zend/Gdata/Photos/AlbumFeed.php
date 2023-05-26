@@ -257,7 +257,7 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
      * Get the value for this element's gphoto:user attribute.
      *
      * @return Zend_Gdata_Photos_Extension_User|null The requested attribute.
-     *@see setGphotoUser
+     * @see setGphotoUser
      */
     public function getGphotoUser()
     {
@@ -280,7 +280,7 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
      * Get the value for this element's gphoto:access attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Access|null The requested attribute.
-     *@see setGphotoAccess
+     * @see setGphotoAccess
      */
     public function getGphotoAccess()
     {
@@ -326,7 +326,7 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
      * Get the value for this element's gphoto:name attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Name|null The requested attribute.
-     *@see setGphotoName
+     * @see setGphotoName
      */
     public function getGphotoName()
     {
@@ -418,7 +418,7 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
      * Get the value for this element's gphoto:id attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Id|null The requested attribute.
-     *@see setGphotoId
+     * @see setGphotoId
      */
     public function getGphotoId()
     {
@@ -464,7 +464,7 @@ class Zend_Gdata_Photos_AlbumFeed extends Zend_Gdata_Feed
      * Get the value for this element's gphoto:nickname attribute.
      *
      * @return Zend_Gdata_Photos_Extension_Nickname|null The requested attribute.
-     *@see setGphotoNickname
+     * @see setGphotoNickname
      */
     public function getGphotoNickname()
     {

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,7 +37,7 @@ require_once 'Zend/Validate/LessThan.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_LessThanTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_LessThanTest extends TestCase
 {
     /**
      * Ensures that the validator follows expected behavior

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -42,7 +47,7 @@ require_once 'Zend/Controller/Response/Cli.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Layout
  */
-class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
+class Zend_Layout_PluginTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -51,9 +56,8 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Layout_PluginTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Layout_PluginTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -62,7 +66,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Controller_Front::getInstance()->resetInstance();
 
@@ -82,7 +86,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_Layout::resetMvcInstance();
     }
@@ -113,7 +117,7 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
     public function testGetLayoutReturnsLayoutObjectWhenPulledFromPluginBroker()
     {
         $layout = Zend_Layout::startMvc();
-        $front  = Zend_Controller_Front::getInstance();
+        $front = Zend_Controller_Front::getInstance();
         $this->assertTrue($front->hasPlugin('Zend_Layout_Controller_Plugin_Layout'));
         $plugin = $front->getPlugin('Zend_Layout_Controller_Plugin_Layout');
         $this->assertSame($layout, $plugin->getLayout());
@@ -121,8 +125,8 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
 
     public function testPostDispatchRendersLayout()
     {
-        $front    = Zend_Controller_Front::getInstance();
-        $request  = new Zend_Controller_Request_Simple();
+        $front = Zend_Controller_Front::getInstance();
+        $request = new Zend_Controller_Request_Simple();
         $response = new Zend_Controller_Response_Cli();
 
         $request->setDispatched(true);
@@ -143,14 +147,14 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
         $plugin->postDispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Application content', $body, $body);
-        $this->assertContains('Site Layout', $body, $body);
+        $this->assertStringContainsString('Application content', $body, $body);
+        $this->assertStringContainsString('Site Layout', $body, $body);
     }
 
     public function testPostDispatchDoesNotRenderLayoutWhenForwardDetected()
     {
-        $front    = Zend_Controller_Front::getInstance();
-        $request  = new Zend_Controller_Request_Simple();
+        $front = Zend_Controller_Front::getInstance();
+        $request = new Zend_Controller_Request_Simple();
         $response = new Zend_Controller_Response_Cli();
 
         $request->setDispatched(false);
@@ -168,14 +172,14 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
         $plugin->postDispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Application content', $body);
-        $this->assertNotContains('Site Layout', $body);
+        $this->assertStringContainsString('Application content', $body);
+        $this->assertStringNotContainsString('Site Layout', $body);
     }
 
     public function testPostDispatchDoesNotRenderLayoutWhenLayoutDisabled()
     {
-        $front    = Zend_Controller_Front::getInstance();
-        $request  = new Zend_Controller_Request_Simple();
+        $front = Zend_Controller_Front::getInstance();
+        $request = new Zend_Controller_Request_Simple();
         $response = new Zend_Controller_Response_Cli();
 
         $request->setDispatched(true);
@@ -194,8 +198,8 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
         $plugin->postDispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Application content', $body);
-        $this->assertNotContains('Site Layout', $body);
+        $this->assertStringContainsString('Application content', $body);
+        $this->assertStringNotContainsString('Site Layout', $body);
     }
 
     /**
@@ -203,8 +207,8 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
      */
     public function testPostDispatchDoesNotRenderLayoutWhenResponseRedirected()
     {
-        $front    = Zend_Controller_Front::getInstance();
-        $request  = new Zend_Controller_Request_Simple();
+        $front = Zend_Controller_Front::getInstance();
+        $request = new Zend_Controller_Request_Simple();
         $response = new Zend_Controller_Response_Cli();
 
         $request->setDispatched(true);
@@ -224,8 +228,8 @@ class Zend_Layout_PluginTest extends PHPUnit_Framework_TestCase
         $plugin->postDispatch($request);
 
         $body = $response->getBody();
-        $this->assertContains('Application content', $body);
-        $this->assertNotContains('Site Layout', $body);
+        $this->assertStringContainsString('Application content', $body);
+        $this->assertStringNotContainsString('Site Layout', $body);
     }
 }
 

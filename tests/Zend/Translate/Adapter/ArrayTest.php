@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,7 +42,7 @@ require_once 'Zend/Translate/Adapter/Array.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Translate
  */
-class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
+class Zend_Translate_Adapter_ArrayTest extends TestCase
 {
     /**
      * Error flag
@@ -53,11 +58,11 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Translate_Adapter_ArrayTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Translate_Adapter_ArrayTest");
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (Zend_Translate_Adapter_Array::hasCache()) {
             Zend_Translate_Adapter_Array::clearCache();
@@ -65,7 +70,7 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         if (Zend_Translate_Adapter_Array::hasCache()) {
             Zend_Translate_Adapter_Array::clearCache();
@@ -84,14 +89,14 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
             $adapter = new Zend_Translate_Adapter_Array('hastofail', 'en');
             $this->fail('Exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('Error including array or file', $e->getMessage());
+            $this->assertStringContainsString('Error including array or file', $e->getMessage());
         }
 
         try {
             $adapter = new Zend_Translate_Adapter_Array(dirname(__FILE__) . '/_files/failed.php', 'en');
             $this->fail('Exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('Error including array or file', $e->getMessage());
+            $this->assertStringContainsString('Error including array or file', $e->getMessage());
         }
     }
 
@@ -138,7 +143,7 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.php', 'xx');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.php', 'de', ['clear' => true]);
@@ -151,17 +156,17 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
         $adapter = new Zend_Translate_Adapter_Array(dirname(__FILE__) . '/_files/translation_en.php', 'en');
         $adapter->setOptions(['testoption' => 'testkey']);
         $expected = [
-            'testoption'      => 'testkey',
-            'clear'           => false,
-            'content'         => dirname(__FILE__) . '/_files/translation_en.php',
-            'scan'            => null,
-            'locale'          => 'en',
-            'ignore'          => '.',
-            'disableNotices'  => false,
-            'log'             => false,
-            'logMessage'      => 'Untranslated message within \'%locale%\': %message%',
+            'testoption' => 'testkey',
+            'clear' => false,
+            'content' => dirname(__FILE__) . '/_files/translation_en.php',
+            'scan' => null,
+            'locale' => 'en',
+            'ignore' => '.',
+            'disableNotices' => false,
+            'log' => false,
+            'logMessage' => 'Untranslated message within \'%locale%\': %message%',
             'logUntranslated' => false,
-            'reload'          => false,
+            'reload' => false,
         ];
 
         $options = $adapter->getOptions();
@@ -197,7 +202,7 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
             $adapter->setLocale('nolocale');
             $this->fail("exception expected");
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         set_error_handler([$this, 'errorHandlerIgnore']);
@@ -283,21 +288,24 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
     public function testCaching()
     {
         require_once 'Zend/Cache.php';
-        $cache = Zend_Cache::factory('Core', 'File',
+        $cache = Zend_Cache::factory(
+            'Core',
+            'File',
             ['lifetime' => 120, 'automatic_serialization' => true],
-            ['cache_dir' => dirname(__FILE__) . '/_files/']);
+            ['cache_dir' => dirname(__FILE__) . '/_files/']
+        );
 
         $this->assertFalse(Zend_Translate_Adapter_Array::hasCache());
         Zend_Translate_Adapter_Array::setCache($cache);
         $this->assertTrue(Zend_Translate_Adapter_Array::hasCache());
 
         $adapter = new Zend_Translate_Adapter_Array(dirname(__FILE__) . '/_files/translation_en.php', 'en');
-        $cache   = Zend_Translate_Adapter_Array::getCache();
+        $cache = Zend_Translate_Adapter_Array::getCache();
         $this->assertTrue($cache instanceof Zend_Cache_Core);
-        unset ($adapter);
+        unset($adapter);
 
         $adapter = new Zend_Translate_Adapter_Array(dirname(__FILE__) . '/_files/translation_en.php', 'en');
-        $cache   = Zend_Translate_Adapter_Array::getCache();
+        $cache = Zend_Translate_Adapter_Array::getCache();
         $this->assertTrue($cache instanceof Zend_Cache_Core);
 
         Zend_Translate_Adapter_Array::removeCache();
@@ -314,16 +322,19 @@ class Zend_Translate_Adapter_ArrayTest extends PHPUnit_Framework_TestCase
     public function testLoadingFilesIntoCacheAfterwards()
     {
         require_once 'Zend/Cache.php';
-        $cache = Zend_Cache::factory('Core', 'File',
+        $cache = Zend_Cache::factory(
+            'Core',
+            'File',
             ['lifetime' => 120, 'automatic_serialization' => true],
-            ['cache_dir' => dirname(__FILE__) . '/_files/']);
+            ['cache_dir' => dirname(__FILE__) . '/_files/']
+        );
 
         $this->assertFalse(Zend_Translate_Adapter_Array::hasCache());
         Zend_Translate_Adapter_Array::setCache($cache);
         $this->assertTrue(Zend_Translate_Adapter_Array::hasCache());
 
         $adapter = new Zend_Translate_Adapter_Array(dirname(__FILE__) . '/_files/translation_en.php', 'en');
-        $cache   = Zend_Translate_Adapter_Array::getCache();
+        $cache = Zend_Translate_Adapter_Array::getCache();
         $this->assertTrue($cache instanceof Zend_Cache_Core);
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.php', 'ru', ['reload' => true]);

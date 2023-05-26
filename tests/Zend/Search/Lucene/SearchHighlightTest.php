@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,7 +36,7 @@ require_once 'Zend/Search/Lucene.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Search_Lucene
  */
-class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
+class Zend_Search_Lucene_SearchHighlightTest extends TestCase
 {
     /**
      * Wildcard pattern minimum preffix
@@ -49,7 +52,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
      */
     protected $_defaultPrefixLength;
 
-    public function setUp()
+    protected function setUp(): void
     {
         require_once 'Zend/Search/Lucene/Search/Query/Wildcard.php';
         $this->_wildcardMinPrefix = Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength();
@@ -60,7 +63,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         Zend_Search_Lucene_Search_Query_Fuzzy::setDefaultPrefixLength(0);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength($this->_wildcardMinPrefix);
         Zend_Search_Lucene_Search_Query_Fuzzy::setDefaultPrefixLength($this->_defaultPrefixLength);
@@ -73,8 +76,10 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
 
         $highlightedHtmlFragment = $query->htmlFragmentHighlightMatches('Text highlighting using Zend_Search_Lucene is the right way to go!');
 
-        $this->assertEquals($highlightedHtmlFragment,
-                            'Text highlighting using Zend_Search_Lucene is <b style="color:black;background-color:#66ffff">the</b> <b style="color:black;background-color:#66ffff">right</b> <b style="color:black;background-color:#66ffff">way</b> to <b style="color:black;background-color:#ff66ff">go</b>!');
+        $this->assertEquals(
+            $highlightedHtmlFragment,
+            'Text highlighting using Zend_Search_Lucene is <b style="color:black;background-color:#66ffff">the</b> <b style="color:black;background-color:#66ffff">right</b> <b style="color:black;background-color:#66ffff">way</b> to <b style="color:black;background-color:#ff66ff">go</b>!'
+        );
     }
 
 //    public function testHtmlFragmentHighlightMatchesCyrillic()
@@ -108,7 +113,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Text highlighting using Zend_Search_Lucene is the right way to go!'
+                . 'Text highlighting using Zend_Search_Lucene is the right way to go!'
                 . '</BODY>'
               . '</HTML>';
 
@@ -127,7 +132,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Text highlighting using Zend_Search_Lucene is the right way to go!'
+                . 'Text highlighting using Zend_Search_Lucene is the right way to go!'
                 . '</BODY>'
               . '</HTML>';
 
@@ -146,7 +151,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Test of text highlighting using wildcard query with question mark. Testing...'
+                . 'Test of text highlighting using wildcard query with question mark. Testing...'
                 . '</BODY>'
               . '</HTML>';
 
@@ -165,7 +170,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Test of text highlighting using wildcard query with question mark. Testing...'
+                . 'Test of text highlighting using wildcard query with question mark. Testing...'
                 . '</BODY>'
               . '</HTML>';
 
@@ -184,8 +189,8 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Test of text fuzzy search terms highlighting. '
-                .   'Words: test, text, latest, left, list, next, ...'
+                . 'Test of text fuzzy search terms highlighting. '
+                . 'Words: test, text, latest, left, list, next, ...'
                 . '</BODY>'
               . '</HTML>';
 
@@ -205,8 +210,8 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Test of text fuzzy search terms highlighting. '
-                .   'Words: test, text, latest, left, list, next, ...'
+                . 'Test of text fuzzy search terms highlighting. '
+                . 'Words: test, text, latest, left, list, next, ...'
                 . '</BODY>'
               . '</HTML>';
 
@@ -229,8 +234,8 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Test of text using range query. '
-                .   'It has to match "business", "by", "buss" and "but" words, but has to skip "bus"'
+                . 'Test of text using range query. '
+                . 'It has to match "business", "by", "buss" and "but" words, but has to skip "bus"'
                 . '</BODY>'
               . '</HTML>';
 
@@ -251,8 +256,8 @@ class Zend_Search_Lucene_SearchHighlightTest extends PHPUnit_Framework_TestCase
         $html = '<HTML>'
                 . '<HEAD><TITLE>Page title</TITLE></HEAD>'
                 . '<BODY>'
-                .   'Test of text using range query. '
-                .   'It has to match "buss" and "but" words, but has to skip "business", "by" and "bus"'
+                . 'Test of text using range query. '
+                . 'It has to match "buss" and "but" words, but has to skip "business", "by" and "bus"'
                 . '</BODY>'
               . '</HTML>';
 

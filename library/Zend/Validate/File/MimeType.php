@@ -156,42 +156,10 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
     /**
      * Returns the actual set magicfile
      *
-     * Note that for PHP 5.3.0 or higher, we don't use $_ENV['MAGIC'] or try to
-     * find a magic file in a common location as PHP now has a built-in internal
-     * magic file.
-     *
      * @return string
-     * @throws Zend_Validate_Exception
      */
     public function getMagicFile()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')
-            && null === $this->_magicfile) {
-            if (!empty($_ENV['MAGIC'])) {
-                $this->setMagicFile($_ENV['MAGIC']);
-            } elseif (
-                !(@ini_get('safe_mode') == 'On' || @ini_get('safe_mode') === 1)
-                && $this->shouldTryCommonMagicFiles() // @see ZF-11784
-            ) {
-                require_once 'Zend/Validate/Exception.php';
-                foreach ($this->_magicFiles as $file) {
-                    // supressing errors which are thrown due to openbase_dir restrictions
-                    try {
-                        $this->setMagicFile($file);
-                        if ($this->_magicfile !== null) {
-                            break;
-                        }
-                    } catch (Zend_Validate_Exception $e) {
-                        // Intentionally, catch and fall through
-                    }
-                }
-            }
-
-            if ($this->_magicfile === null) {
-                $this->_magicfile = false;
-            }
-        }
-
         return $this->_magicfile;
     }
 
@@ -202,7 +170,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      *
      * @param  string $file
      * @throws Zend_Validate_Exception When finfo can not read the magicfile
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      */
     public function setMagicFile($file)
     {
@@ -241,7 +209,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * specified by Zend_Validate_File_MimeType::_magicFiles
      *
      * @param  boolean $flag
-     * @return Zend_Validate_File_MimeType Provides fluent interface
+     * @return $this
      * @see http://framework.zend.com/issues/browse/ZF-11784
      */
     public function setTryCommonMagicFilesFlag($flag = true)
@@ -277,7 +245,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Note that this is unsave and therefor the default value is false
      *
      * @param  boolean $headerCheck
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      */
     public function enableHeaderCheck($headerCheck = true)
     {
@@ -306,7 +274,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Sets the mimetypes
      *
      * @param string|array $mimetype The mimetypes to validate
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      * @throws Zend_Validate_Exception
      */
     public function setMimeType($mimetype)
@@ -320,7 +288,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Adds the mimetypes
      *
      * @param  string|array $mimetype The mimetypes to add for validation
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      * @throws Zend_Validate_Exception
      */
     public function addMimeType($mimetype)

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Service/Ebay/Finding.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Ebay_Finding_OnlineTest extends TestCase
 {
     /**
      * @var Zend_Service_Ebay_Finding
@@ -41,14 +44,14 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
 
     protected $_httpClientOriginal;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_finding = new Zend_Service_Ebay_Finding(constant('TESTS_ZEND_SERVICE_EBAY_ONLINE_APPID'));
         $this->_httpClientOriginal = Zend_Rest_Client::getHttpClient();
         Zend_Rest_Client::setHttpClient(new Zend_Http_Client());
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_Rest_Client::setHttpClient($this->_httpClientOriginal);
     }
@@ -63,21 +66,21 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
             $this->fail('No exception found');
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Service_Ebay_Finding_Exception);
-            $this->assertContains('eBay error', $e->getMessage());
+            $this->assertStringContainsString('eBay error', $e->getMessage());
         }
     }
 
     public function testResponseTypeFinds()
     {
-        $services =  ['findItemsAdvanced'     => ['tolkien'],
-                           'findItemsByCategory'   => ['10181'],
-                           'findItemsByKeywords'   => ['harry+potter'],
-                           'findItemsByProduct'    => ['53039031'],
+        $services = ['findItemsAdvanced' => ['tolkien'],
+                           'findItemsByCategory' => ['10181'],
+                           'findItemsByKeywords' => ['harry+potter'],
+                           'findItemsByProduct' => ['53039031'],
                            'findItemsInEbayStores' => ["Laura_Chen's_Small_Store"]];
 
-        $item     = null;
+        $item = null;
         $category = null;
-        $store    = null;
+        $store = null;
         foreach ($services as $service => $params) {
             $response = call_user_func_array([$this->_finding, $service], $params);
             $this->assertTrue($response instanceof Zend_Service_Ebay_Finding_Response_Items);
@@ -135,7 +138,7 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
             $this->fail('No exception found for page #0');
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Service_Ebay_Finding_Exception);
-            $this->assertContains('Page number ', $e->getMessage());
+            $this->assertStringContainsString('Page number ', $e->getMessage());
         }
 
         // out of range, one page after last one
@@ -145,7 +148,7 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
             $this->fail("No exception found for page out of range #$number");
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Service_Ebay_Finding_Exception);
-            $this->assertContains('Page number ', $e->getMessage());
+            $this->assertStringContainsString('Page number ', $e->getMessage());
         }
 
         // page next
@@ -180,13 +183,16 @@ class Zend_Service_Ebay_Finding_OnlineTest extends PHPUnit_Framework_TestCase
  * @group      Zend_Service
  * @group      Zend_Service_Ebay
  */
-class Zend_Service_Ebay_Finding_OnlineSkipTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Ebay_Finding_OnlineSkipTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->markTestSkipped('Zend_Service_Ebay online tests not enabled with an APPID in TestConfiguration.php');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testNothing()
     {
     }

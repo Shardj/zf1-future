@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -48,19 +51,29 @@ require_once 'Zend/Queue/Adapter/Array.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
-abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
+abstract class Zend_Queue_QueueBaseTest extends TestCase
 {
-    protected function setUp()
+    /**
+     * @var array
+     */
+    protected $config;
+
+    /**
+     * @var Zend_Queue
+     */
+    protected $queue;
+
+    protected function setUp(): void
     {
         // Test Zend_Config
         $this->config = [
-            'name'      => 'queue1',
+            'name' => 'queue1',
         ];
 
         $this->queue = new Zend_Queue('Null', $this->config);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -81,9 +94,9 @@ abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
     {
         // Test Zend_Config
         $config = [
-            'name'      => 'queue1',
-            'params'    => [],
-            'adapter'   => 'array'
+            'name' => 'queue1',
+            'params' => [],
+            'adapter' => 'array'
         ];
 
         $zend_config = new Zend_Config($config);
@@ -174,9 +187,9 @@ abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
 
     public function testSendAndCountAndReceiveAndDeleteMessage()
     {
-        if (! $this->queue->isSupported('send')
-            && ! $this->queue->isSupported('receive')
-            && ! $this->queue->isSupported('count')) {
+        if (!$this->queue->isSupported('send')
+            && !$this->queue->isSupported('receive')
+            && !$this->queue->isSupported('count')) {
             $this->markTestSkipped('send/count/receive are not supported');
             return;
         }
@@ -190,7 +203,7 @@ abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
             $this->assertTrue(true);
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertContains('must be of type string', $e->getMessage());
+            $this->assertStringContainsString('must be of type string', $e->getMessage());
         }
 
         $message = 'Hello world'; // never gets boring!
@@ -236,7 +249,7 @@ abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
             'isExists'
         ];
 
-        foreach ( array_values($func) as $f ) {
+        foreach (array_values($func) as $f) {
             $this->assertTrue(isset($list[$f]));
             $this->assertTrue(is_bool($list[$f]));
         }
@@ -245,9 +258,9 @@ abstract class Zend_Queue_QueueBaseTest extends PHPUnit_Framework_TestCase
     public function testIsSupported()
     {
         $list = $this->queue->getCapabilities();
-        foreach ( $list as $function => $result ) {
+        foreach ($list as $function => $result) {
             $this->assertTrue(is_bool($result));
-            if ( $result ) {
+            if ($result) {
                 $this->assertTrue($this->queue->isSupported($function));
             } else {
                 $this->assertFalse($this->queue->isSupported($function));

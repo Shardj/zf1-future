@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -39,15 +42,14 @@ require_once 'Zend/Controller/Action/Helper/Redirector.php';
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
  */
-class Zend_Controller_Action_HelperBroker_PriorityStackTest extends PHPUnit_Framework_TestCase
+class Zend_Controller_Action_HelperBroker_PriorityStackTest extends TestCase
 {
-
     /**
      * @var Zend_Controller_Action_HelperBroker_PriorityStack
      */
     public $stack = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->stack = new Zend_Controller_Action_HelperBroker_PriorityStack();
     }
@@ -112,5 +114,4 @@ class Zend_Controller_Action_HelperBroker_PriorityStackTest extends PHPUnit_Fram
         $this->assertEquals('Zend_Controller_Action_Helper_Redirector', get_class($this->stack->offsetGet('Redirector')));
         $this->assertEquals('Zend_Controller_Action_Helper_Redirector', get_class($this->stack->offsetGet(2)));
     }
-
 }

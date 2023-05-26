@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,17 +42,16 @@ require_once 'Zend/Db/Profiler/AllTests.php';
  */
 class Zend_Db_AllTests
 {
-
     protected static $_skipTestSuite = null;
 
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Db');
+        $suite = new TestSuite('Zend Framework - Zend_Db');
 
         /**
          * Static tests should always be enabled,
@@ -94,7 +97,7 @@ class Zend_Db_AllTests
 
         $ext = [
             'Oracle' => 'oci8',
-            'Db2'    => 'ibm_db2',
+            'Db2' => 'ibm_db2',
             'Mysqli' => 'mysqli',
             'Sqlsrv' => 'sqlsrv',
             /**
@@ -123,7 +126,6 @@ class Zend_Db_AllTests
         }
 
         try {
-
             Zend_Loader::loadClass("Zend_Db_Adapter_{$driver}Test");
             Zend_Loader::loadClass("Zend_Db_Profiler_{$driver}Test");
             Zend_Loader::loadClass("Zend_Db_Statement_{$driver}Test");
@@ -146,7 +148,6 @@ class Zend_Db_AllTests
             $suite->addTestSuite("Zend_Db_Table_Rowset_{$driver}Test");
             $suite->addTestSuite("Zend_Db_Table_Row_{$driver}Test");
             $suite->addTestSuite("Zend_Db_Table_Relationships_{$driver}Test");
-
         } catch (Zend_Exception $e) {
             self::_skipTestSuite($driver, "cannot load test classes: " . $e->getMessage());
         }
@@ -159,12 +160,11 @@ class Zend_Db_AllTests
         $skipTest->message = $message;
 
         if (self::$_skipTestSuite === null) {
-            self::$_skipTestSuite = new PHPUnit_Framework_TestSuite('Zend_Db skipped test suites');
+            self::$_skipTestSuite = new TestSuite('Zend_Db skipped test suites');
         }
 
         self::$_skipTestSuite->addTest($skipTest);
     }
-
 }
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Db_AllTests::main') {

@@ -42,7 +42,7 @@ require_once dirname(__FILE__) . '/AdapterTest.php';
  */
 class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_AdapterTest
 {
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST')
             || !constant('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST')
@@ -67,7 +67,7 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
     public function getTestConfig()
     {
         return ['daemonOptions' => [
-            'host'     => constant('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST'),
+            'host' => constant('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST'),
             'password' => constant('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS'),
         ]];
     }
@@ -88,11 +88,11 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
 
     public function testFailedConstructor()
     {
-      try {
+        try {
             $queue = $this->createQueue(__FUNCTION__, []);
             $this->fail('The test should fail if no host and password are passed');
         } catch (Exception $e) {
-            $this->assertTrue( true, 'Job Queue host and password should be provided');
+            $this->assertTrue(true, 'Job Queue host and password should be provided');
         }
 
         try {
@@ -125,7 +125,7 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
 
         $list = $queue->receive();
         $this->assertTrue($list instanceof Zend_Queue_Message_Iterator);
-        foreach ( $list as $message ) {
+        foreach ($list as $message) {
             $this->assertTrue($message instanceof Zend_Queue_Message_PlatformJob);
             $queue->deleteMessage($message);
         }
@@ -154,7 +154,6 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
 
         // delete the queue we created
         $queue->deleteQueue();
-
     }
 
     public function testReceive()
@@ -234,10 +233,9 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
 
         // delete the queue we created
         $queue->deleteQueue();
-
     }
 
-     public function testCount()
+    public function testCount()
     {
         if (!$queue = $this->createQueue(__FUNCTION__)) {
             return;
@@ -298,14 +296,14 @@ class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_Adapter
 
         $messages = $queue->receive(5);
 
-        foreach($messages as $i => $message) {
+        foreach ($messages as $i => $message) {
             $this->assertEquals($message->getJob()->getScript(), $scriptName);
             $queue->deleteMessage($message);
         }
 
         for ($i = 0; $i < 5; $i++) {
             $messages = $queue->receive();
-            $message  = $messages->current();
+            $message = $messages->current();
             $queue->deleteMessage($message);
         }
 

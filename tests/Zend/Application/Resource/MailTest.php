@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,15 +42,35 @@ require_once 'Zend/Loader/Autoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Resource_MailTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
+    /**
+     * @var Zend_Application_Bootstrap_Bootstrap
+     */
+    protected $bootstrap;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -63,7 +88,7 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
         Zend_Controller_Front::getInstance()->resetInstance();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_Mail::clearDefaultTransport();
 
@@ -130,7 +155,7 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
 
     public function testDefaultFromAndReplyTo()
     {
-        $options = ['defaultfrom'    => ['email' => 'foo@example.com',
+        $options = ['defaultfrom' => ['email' => 'foo@example.com',
                                                    'name' => 'Foo Bar'],
                          'defaultreplyto' => ['email' => 'john@example.com',
                                                    'name' => 'John Doe']];
@@ -147,7 +172,8 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
     /**
      * Got notice: Undefined index:  type
      */
-    public function testDefaultTransport() {
+    public function testDefaultTransport()
+    {
         $options = ['transport' => [//'type' => 'sendmail', // dont define type
                                               'register' => true]];
         $resource = new Zend_Application_Resource_Mail([]);
@@ -161,8 +187,9 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
     /**
     * @group ZF-8811
     */
-    public function testDefaultsCaseSensivity() {
-        $options = ['defaultFroM'    => ['email' => 'f00@example.com', 'name' => null],
+    public function testDefaultsCaseSensivity()
+    {
+        $options = ['defaultFroM' => ['email' => 'f00@example.com', 'name' => null],
                          'defAultReplyTo' => ['email' => 'j0hn@example.com', 'name' => null]];
         $resource = new Zend_Application_Resource_Mail([]);
         $resource->setBootstrap($this->bootstrap);
@@ -177,7 +204,8 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
     /**
      * @group ZF-8981
      */
-    public function testNumericRegisterDirectiveIsPassedOnCorrectly() {
+    public function testNumericRegisterDirectiveIsPassedOnCorrectly()
+    {
         $options = ['transport' => ['type' => 'sendmail',
                                               'register' => '1']]; // Culprit
         $resource = new Zend_Application_Resource_Mail([]);
@@ -191,7 +219,8 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
     /**
      * @group ZF-9136
      */
-    public function testCustomMailTransportWithFQName() {
+    public function testCustomMailTransportWithFQName()
+    {
         $options = ['transport' => ['type' => 'Zend_Mail_Transport_Sendmail']];
         $resource = new Zend_Application_Resource_Mail([]);
         $resource->setBootstrap($this->bootstrap);
@@ -203,7 +232,8 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
     /**
      * @group ZF-9136
      */
-    public function testCustomMailTransportWithWrongCasesAsShouldBe() {
+    public function testCustomMailTransportWithWrongCasesAsShouldBe()
+    {
         $options = ['transport' => ['type' => 'Zend_Application_Resource_mailTestCAsE']];
         $resource = new Zend_Application_Resource_Mail([]);
         $resource->setBootstrap($this->bootstrap);
@@ -217,7 +247,7 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
      */
     public function testOptionRegisterIsUnset()
     {
-        $options = ['transport' => 
+        $options = ['transport' =>
                         ['register' => 1,
                               'type' => 'Zend_Mail_Transport_Sendmail']];
 
@@ -228,10 +258,8 @@ class Zend_Application_Resource_MailTest extends PHPUnit_Framework_TestCase
         $parameters = $resource->getMail()->parameters;
         $this->assertTrue(empty($parameters));
     }
-
 }
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_MailTest::main') {
     Zend_Application_Resource_MailTest::main();
 }
-

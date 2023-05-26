@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,55 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_RecurrenceTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $recurrenceText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_Recurrence|mixed
+     */
+    protected $recurrence;
+
+    protected function setUp(): void
+    {
         $this->recurrenceText = file_get_contents(
-                'Zend/Gdata/_files/RecurrenceElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/RecurrenceElementSample1.xml',
+            true
+        );
         $this->recurrence = new Zend_Gdata_Extension_Recurrence();
     }
 
-    public function testEmptyRecurrenceShouldHaveNoExtensionElements() {
+    public function testEmptyRecurrenceShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->recurrence->extensionElements));
         $this->assertTrue(count($this->recurrence->extensionElements) == 0);
     }
 
-    public function testEmptyRecurrenceShouldHaveNoExtensionAttributes() {
+    public function testEmptyRecurrenceShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->recurrence->extensionAttributes));
         $this->assertTrue(count($this->recurrence->extensionAttributes) == 0);
     }
 
-    public function testSampleRecurrenceShouldHaveNoExtensionElements() {
+    public function testSampleRecurrenceShouldHaveNoExtensionElements()
+    {
         $this->recurrence->transferFromXML($this->recurrenceText);
         $this->assertTrue(is_array($this->recurrence->extensionElements));
         $this->assertTrue(count($this->recurrence->extensionElements) == 0);
     }
 
-    public function testSampleRecurrenceShouldHaveNoExtensionAttributes() {
+    public function testSampleRecurrenceShouldHaveNoExtensionAttributes()
+    {
         $this->recurrence->transferFromXML($this->recurrenceText);
         $this->assertTrue(is_array($this->recurrence->extensionAttributes));
         $this->assertTrue(count($this->recurrence->extensionAttributes) == 0);
     }
 
-    public function testNormalRecurrenceShouldHaveNoExtensionElements() {
+    public function testNormalRecurrenceShouldHaveNoExtensionElements()
+    {
         $this->recurrence->text = "Foo";
 
         $this->assertEquals("Foo", $this->recurrence->text);
@@ -85,7 +104,8 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Foo", $newRecurrence2->text);
     }
 
-    public function testEmptyRecurrenceToAndFromStringShouldMatch() {
+    public function testEmptyRecurrenceToAndFromStringShouldMatch()
+    {
         $recurrenceXml = $this->recurrence->saveXML();
         $newRecurrence = new Zend_Gdata_Extension_Recurrence();
         $newRecurrence->transferFromXML($recurrenceXml);
@@ -93,7 +113,8 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($recurrenceXml == $newRecurrenceXml);
     }
 
-    public function testRecurrenceWithValueToAndFromStringShouldMatch() {
+    public function testRecurrenceWithValueToAndFromStringShouldMatch()
+    {
         $this->recurrence->text = "Foo";
         $recurrenceXml = $this->recurrence->saveXML();
         $newRecurrence = new Zend_Gdata_Extension_Recurrence();
@@ -103,10 +124,11 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Foo", $this->recurrence->text);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->recurrence->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->recurrence->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->recurrence->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->recurrence->extensionAttributes['foo2']['value']);
@@ -117,9 +139,9 @@ class Zend_Gdata_RecurrenceTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newRecurrence->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullRecurrenceToAndFromString() {
+    public function testConvertFullRecurrenceToAndFromString()
+    {
         $this->recurrence->transferFromXML($this->recurrenceText);
         $this->assertEquals("DTSTART;VALUE=DATE:20070501\nDTEND;VALUE=DATE:20070502\nRRULE:FREQ=WEEKLY;BYDAY=Tu;UNTIL=20070904", $this->recurrence->text);
     }
-
 }

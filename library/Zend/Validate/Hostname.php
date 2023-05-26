@@ -2046,7 +2046,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      * Sets the allow option
      *
      * @param  integer $allow
-     * @return Zend_Validate_Hostname Provides a fluent interface
+     * @return $this
      */
     public function setAllow($allow)
     {

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -39,11 +42,11 @@ require_once 'Zend/Ldap.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
-class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
+class Zend_Ldap_CanonTest extends TestCase
 {
     protected $_options = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
@@ -51,20 +54,27 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
             'password' => TESTS_ZEND_LDAP_PASSWORD,
             'baseDn' => TESTS_ZEND_LDAP_BASE_DN,
         ];
-        if (defined('TESTS_ZEND_LDAP_PORT'))
+        if (defined('TESTS_ZEND_LDAP_PORT')) {
             $this->_options['port'] = TESTS_ZEND_LDAP_PORT;
-        if (defined('TESTS_ZEND_LDAP_USE_START_TLS'))
+        }
+        if (defined('TESTS_ZEND_LDAP_USE_START_TLS')) {
             $this->_options['useStartTls'] = TESTS_ZEND_LDAP_USE_START_TLS;
-        if (defined('TESTS_ZEND_LDAP_USE_SSL'))
+        }
+        if (defined('TESTS_ZEND_LDAP_USE_SSL')) {
             $this->_options['useSsl'] = TESTS_ZEND_LDAP_USE_SSL;
-        if (defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN'))
+        }
+        if (defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN')) {
             $this->_options['bindRequiresDn'] = TESTS_ZEND_LDAP_BIND_REQUIRES_DN;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT')) {
             $this->_options['accountFilterFormat'] = TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME')) {
             $this->_options['accountDomainName'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT')) {
             $this->_options['accountDomainNameShort'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT;
+        }
     }
 
     public function testPlainCanon()
@@ -131,22 +141,32 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $options = $this->_options;
         $ldap = new Zend_Ldap($options);
 
-        $canonDn = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME,
-            Zend_Ldap::ACCTNAME_FORM_DN);
+        $canonDn = $ldap->getCanonicalAccountName(
+            TESTS_ZEND_LDAP_ALT_USERNAME,
+            Zend_Ldap::ACCTNAME_FORM_DN
+        );
         $this->assertEquals(TESTS_ZEND_LDAP_ALT_DN, $canonDn);
-        $canonUsername = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME,
-            Zend_Ldap::ACCTNAME_FORM_USERNAME);
+        $canonUsername = $ldap->getCanonicalAccountName(
+            TESTS_ZEND_LDAP_ALT_USERNAME,
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        );
         $this->assertEquals(TESTS_ZEND_LDAP_ALT_USERNAME, $canonUsername);
-        $canonBackslash = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME,
-            Zend_Ldap::ACCTNAME_FORM_BACKSLASH);
+        $canonBackslash = $ldap->getCanonicalAccountName(
+            TESTS_ZEND_LDAP_ALT_USERNAME,
+            Zend_Ldap::ACCTNAME_FORM_BACKSLASH
+        );
         $this->assertEquals(
             TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\' . TESTS_ZEND_LDAP_ALT_USERNAME,
-            $canonBackslash);
-        $canonPrincipal = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME,
-            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL);
+            $canonBackslash
+        );
+        $canonPrincipal = $ldap->getCanonicalAccountName(
+            TESTS_ZEND_LDAP_ALT_USERNAME,
+            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL
+        );
         $this->assertEquals(
             TESTS_ZEND_LDAP_ALT_USERNAME . '@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-            $canonPrincipal);
+            $canonPrincipal
+        );
 
         $options['accountCanonicalForm'] = Zend_Ldap::ACCTNAME_FORM_USERNAME;
         $ldap->setOptions($options);
@@ -157,13 +177,17 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $ldap->setOptions($options);
         $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME);
         $this->assertEquals(
-            TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\' . TESTS_ZEND_LDAP_ALT_USERNAME, $canon);
+            TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\' . TESTS_ZEND_LDAP_ALT_USERNAME,
+            $canon
+        );
 
         $options['accountCanonicalForm'] = Zend_Ldap::ACCTNAME_FORM_PRINCIPAL;
         $ldap->setOptions($options);
         $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME);
         $this->assertEquals(
-            TESTS_ZEND_LDAP_ALT_USERNAME . '@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME, $canon);
+            TESTS_ZEND_LDAP_ALT_USERNAME . '@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
+            $canon
+        );
 
         unset($options['accountCanonicalForm']);
 
@@ -171,7 +195,9 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $ldap->setOptions($options);
         $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME);
         $this->assertEquals(
-            TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\' . TESTS_ZEND_LDAP_ALT_USERNAME, $canon);
+            TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\' . TESTS_ZEND_LDAP_ALT_USERNAME,
+            $canon
+        );
 
         unset($options['accountDomainNameShort']);
         $ldap->setOptions($options);
@@ -182,7 +208,9 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $ldap->setOptions($options);
         $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME);
         $this->assertEquals(
-            TESTS_ZEND_LDAP_ALT_USERNAME . '@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME, $canon);
+            TESTS_ZEND_LDAP_ALT_USERNAME . '@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
+            $canon
+        );
     }
 
     public function testDefaultAccountFilterFormat()
@@ -196,7 +224,7 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
             $canon = $ldap->getCanonicalAccountName('invalid', Zend_Ldap::ACCTNAME_FORM_DN);
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('(&(objectClass=posixAccount)(uid=invalid))', $zle->getMessage());
+            $this->assertStringContainsString('(&(objectClass=posixAccount)(uid=invalid))', $zle->getMessage());
         }
 
         $options['bindRequiresDn'] = false;
@@ -205,7 +233,7 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
             $canon = $ldap->getCanonicalAccountName('invalid', Zend_Ldap::ACCTNAME_FORM_DN);
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('(&(objectClass=user)(sAMAccountName=invalid))', $zle->getMessage());
+            $this->assertStringContainsString('(&(objectClass=user)(sAMAccountName=invalid))', $zle->getMessage());
         }
     }
 
@@ -214,61 +242,85 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $options = $this->_options;
         $ldap = new Zend_Ldap($options);
         try {
-            $canon = $ldap->getCanonicalAccountName('invalid\invalid',
-                Zend_Ldap::ACCTNAME_FORM_USERNAME);
+            $canon = $ldap->getCanonicalAccountName(
+                'invalid\invalid',
+                Zend_Ldap::ACCTNAME_FORM_USERNAME
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Binding domain is not an authority for user: invalid\invalid',
-                $zle->getMessage());
+            $this->assertStringContainsString(
+                'Binding domain is not an authority for user: invalid\invalid',
+                $zle->getMessage()
+            );
         }
         try {
-            $canon = $ldap->getCanonicalAccountName('invalid@invalid.tld',
-                Zend_Ldap::ACCTNAME_FORM_USERNAME);
+            $canon = $ldap->getCanonicalAccountName(
+                'invalid@invalid.tld',
+                Zend_Ldap::ACCTNAME_FORM_USERNAME
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Binding domain is not an authority for user: invalid@invalid.tld',
-                $zle->getMessage());
+            $this->assertStringContainsString(
+                'Binding domain is not an authority for user: invalid@invalid.tld',
+                $zle->getMessage()
+            );
         }
 
         unset($options['accountDomainName']);
         $ldap = new Zend_Ldap($options);
-        $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME);
+        $canon = $ldap->getCanonicalAccountName(
+            TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        );
         $this->assertEquals('invalid', $canon);
         try {
-            $canon = $ldap->getCanonicalAccountName('invalid@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-                Zend_Ldap::ACCTNAME_FORM_USERNAME);
+            $canon = $ldap->getCanonicalAccountName(
+                'invalid@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
+                Zend_Ldap::ACCTNAME_FORM_USERNAME
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Binding domain is not an authority for user: invalid@' .
+            $this->assertStringContainsString(
+                'Binding domain is not an authority for user: invalid@' .
                 TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-                $zle->getMessage());
+                $zle->getMessage()
+            );
         }
 
         unset($options['accountDomainNameShort']);
         $options['accountDomainName'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME;
         $ldap = new Zend_Ldap($options);
         try {
-            $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
-                Zend_Ldap::ACCTNAME_FORM_USERNAME);
+            $canon = $ldap->getCanonicalAccountName(
+                TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
+                Zend_Ldap::ACCTNAME_FORM_USERNAME
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Binding domain is not an authority for user: ' .
+            $this->assertStringContainsString(
+                'Binding domain is not an authority for user: ' .
                 TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
-                $zle->getMessage());
+                $zle->getMessage()
+            );
         }
 
-        $canon = $ldap->getCanonicalAccountName('invalid@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-            Zend_Ldap::ACCTNAME_FORM_USERNAME);
+        $canon = $ldap->getCanonicalAccountName(
+            'invalid@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        );
         $this->assertEquals('invalid', $canon);
 
         unset($options['accountDomainName']);
         $ldap = new Zend_Ldap($options);
-        $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME);
+        $canon = $ldap->getCanonicalAccountName(
+            TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\invalid',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        );
         $this->assertEquals('invalid', $canon);
-        $canon = $ldap->getCanonicalAccountName('invalid@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-            Zend_Ldap::ACCTNAME_FORM_USERNAME);
+        $canon = $ldap->getCanonicalAccountName(
+            'invalid@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        );
         $this->assertEquals('invalid', $canon);
     }
 
@@ -278,23 +330,31 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $ldap = new Zend_Ldap($options);
 
         try {
-            $canon = $ldap->getCanonicalAccountName('0@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-                Zend_Ldap::ACCTNAME_FORM_USERNAME);
+            $canon = $ldap->getCanonicalAccountName(
+                '0@' . TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
+                Zend_Ldap::ACCTNAME_FORM_USERNAME
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Invalid account name syntax: 0@' .
+            $this->assertStringContainsString(
+                'Invalid account name syntax: 0@' .
                 TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME,
-                $zle->getMessage());
+                $zle->getMessage()
+            );
         }
 
         try {
-            $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\0',
-                Zend_Ldap::ACCTNAME_FORM_USERNAME);
+            $canon = $ldap->getCanonicalAccountName(
+                TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\0',
+                Zend_Ldap::ACCTNAME_FORM_USERNAME
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Invalid account name syntax: ' .
+            $this->assertStringContainsString(
+                'Invalid account name syntax: ' .
                 TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT . '\\0',
-                $zle->getMessage());
+                $zle->getMessage()
+            );
         }
     }
 
@@ -307,8 +367,10 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
             $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME, 99);
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Unknown canonical name form: 99',
-                $zle->getMessage());
+            $this->assertStringContainsString(
+                'Unknown canonical name form: 99',
+                $zle->getMessage()
+            );
         }
     }
 
@@ -318,23 +380,31 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         unset($options['accountDomainName']);
         $ldap = new Zend_Ldap($options);
         try {
-            $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME,
-                Zend_Ldap::ACCTNAME_FORM_PRINCIPAL);
+            $canon = $ldap->getCanonicalAccountName(
+                TESTS_ZEND_LDAP_ALT_USERNAME,
+                Zend_Ldap::ACCTNAME_FORM_PRINCIPAL
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Option required: accountDomainName',
-                $zle->getMessage());
+            $this->assertStringContainsString(
+                'Option required: accountDomainName',
+                $zle->getMessage()
+            );
         }
 
         unset($options['accountDomainNameShort']);
         $ldap = new Zend_Ldap($options);
         try {
-            $canon = $ldap->getCanonicalAccountName(TESTS_ZEND_LDAP_ALT_USERNAME,
-                Zend_Ldap::ACCTNAME_FORM_BACKSLASH);
+            $canon = $ldap->getCanonicalAccountName(
+                TESTS_ZEND_LDAP_ALT_USERNAME,
+                Zend_Ldap::ACCTNAME_FORM_BACKSLASH
+            );
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertContains('Option required: accountDomainNameShort',
-                $zle->getMessage());
+            $this->assertStringContainsString(
+                'Option required: accountDomainNameShort',
+                $zle->getMessage()
+            );
         }
     }
 
@@ -345,22 +415,33 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         unset($options['accountDomainNameShort']);
         $options['tryUsernameSplit'] = true;
         $ldap = new Zend_Ldap($options);
-        $this->assertEquals('username', $ldap->getCanonicalAccountName('username@example.com',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
-        $this->assertEquals('username', $ldap->getCanonicalAccountName('EXAMPLE\username',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
-        $this->assertEquals('username', $ldap->getCanonicalAccountName('username',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
+        $this->assertEquals('username', $ldap->getCanonicalAccountName(
+            'username@example.com',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
+        $this->assertEquals('username', $ldap->getCanonicalAccountName(
+            'EXAMPLE\username',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
+        $this->assertEquals('username', $ldap->getCanonicalAccountName(
+            'username',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
 
         $options['tryUsernameSplit'] = false;
         $ldap = new Zend_Ldap($options);
-        $this->assertEquals('username@example.com',
-            $ldap->getCanonicalAccountName('username@example.com', Zend_Ldap::ACCTNAME_FORM_USERNAME));
-        $this->assertEquals('example\username', $ldap->getCanonicalAccountName('EXAMPLE\username',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
-        $this->assertEquals('username', $ldap->getCanonicalAccountName('username',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
-
+        $this->assertEquals(
+            'username@example.com',
+            $ldap->getCanonicalAccountName('username@example.com', Zend_Ldap::ACCTNAME_FORM_USERNAME)
+        );
+        $this->assertEquals('example\username', $ldap->getCanonicalAccountName(
+            'EXAMPLE\username',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
+        $this->assertEquals('username', $ldap->getCanonicalAccountName(
+            'username',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
     }
 
     /**
@@ -373,25 +454,43 @@ class Zend_Ldap_CanonTest extends PHPUnit_Framework_TestCase
         $options['accountDomainNameShort'] = 'EXAMPLE';
         $ldap = new Zend_Ldap($options);
 
-        $this->assertEquals('schäfer', $ldap->getCanonicalAccountName('SCHÄFER@example.com',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
-        $this->assertEquals('schäfer', $ldap->getCanonicalAccountName('EXAMPLE\SCHÄFER',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
-        $this->assertEquals('schäfer', $ldap->getCanonicalAccountName('SCHÄFER',
-            Zend_Ldap::ACCTNAME_FORM_USERNAME));
+        $this->assertEquals('schäfer', $ldap->getCanonicalAccountName(
+            'SCHÄFER@example.com',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
+        $this->assertEquals('schäfer', $ldap->getCanonicalAccountName(
+            'EXAMPLE\SCHÄFER',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
+        $this->assertEquals('schäfer', $ldap->getCanonicalAccountName(
+            'SCHÄFER',
+            Zend_Ldap::ACCTNAME_FORM_USERNAME
+        ));
 
-        $this->assertEquals('schäfer@example.com', $ldap->getCanonicalAccountName('SCHÄFER@example.com',
-            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL));
-        $this->assertEquals('schäfer@example.com', $ldap->getCanonicalAccountName('EXAMPLE\SCHÄFER',
-            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL));
-        $this->assertEquals('schäfer@example.com', $ldap->getCanonicalAccountName('SCHÄFER',
-            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL));
+        $this->assertEquals('schäfer@example.com', $ldap->getCanonicalAccountName(
+            'SCHÄFER@example.com',
+            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL
+        ));
+        $this->assertEquals('schäfer@example.com', $ldap->getCanonicalAccountName(
+            'EXAMPLE\SCHÄFER',
+            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL
+        ));
+        $this->assertEquals('schäfer@example.com', $ldap->getCanonicalAccountName(
+            'SCHÄFER',
+            Zend_Ldap::ACCTNAME_FORM_PRINCIPAL
+        ));
 
-        $this->assertEquals('EXAMPLE\schäfer', $ldap->getCanonicalAccountName('SCHÄFER@example.com',
-            Zend_Ldap::ACCTNAME_FORM_BACKSLASH));
-        $this->assertEquals('EXAMPLE\schäfer', $ldap->getCanonicalAccountName('EXAMPLE\SCHÄFER',
-            Zend_Ldap::ACCTNAME_FORM_BACKSLASH));
-        $this->assertEquals('EXAMPLE\schäfer', $ldap->getCanonicalAccountName('SCHÄFER',
-            Zend_Ldap::ACCTNAME_FORM_BACKSLASH));
+        $this->assertEquals('EXAMPLE\schäfer', $ldap->getCanonicalAccountName(
+            'SCHÄFER@example.com',
+            Zend_Ldap::ACCTNAME_FORM_BACKSLASH
+        ));
+        $this->assertEquals('EXAMPLE\schäfer', $ldap->getCanonicalAccountName(
+            'EXAMPLE\SCHÄFER',
+            Zend_Ldap::ACCTNAME_FORM_BACKSLASH
+        ));
+        $this->assertEquals('EXAMPLE\schäfer', $ldap->getCanonicalAccountName(
+            'SCHÄFER',
+            Zend_Ldap::ACCTNAME_FORM_BACKSLASH
+        ));
     }
 }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,15 +38,15 @@ require_once 'Zend/Service/Delicious.php';
  * @group      Zend_Service
  * @group      Zend_Service_Delicious
  */
-class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Delicious_PrivateDataTest extends TestCase
 {
-    const TEST_UNAME = 'zfTestUser';
-    const TEST_PASS  = 'zfuser';
+    public const TEST_UNAME = 'zfTestUser';
+    public const TEST_PASS = 'zfuser';
 
-    private static $TEST_POST_TITLE  = 'test - title';
-    private static $TEST_POST_URL    = 'http://zfdev.com/unittests/delicious/test_url_1';
-    private static $TEST_POST_NOTES  = 'test - note';
-    private static $TEST_POST_TAGS   = ['testTag1','testTag2'];
+    private static $TEST_POST_TITLE = 'test - title';
+    private static $TEST_POST_URL = 'http://zfdev.com/unittests/delicious/test_url_1';
+    private static $TEST_POST_NOTES = 'test - note';
+    private static $TEST_POST_TAGS = ['testTag1', 'testTag2'];
     private static $TEST_POST_SHARED = false;
 
     /**
@@ -55,7 +58,7 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $httpClient = new Zend_Http_Client();
         $httpClient->setConfig([
@@ -150,11 +153,11 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
         // test tag adding to tag
         $newTagName = uniqid('tag');
         $newPost->addTag($newTagName);
-        $this->assertContains($newTagName, $newPost->getTags());
+        $this->assertStringContainsString($newTagName, $newPost->getTags());
 
         // test tag removeing
         $newPost->removeTag($newTagName);
-        $this->assertNotContains($newTagName, $newPost->getTags());
+        $this->assertStringNotContainsString($newTagName, $newPost->getTags());
 
         // send post to del.icio.us
         $newPost->save();
@@ -199,7 +202,7 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($posts instanceof Zend_Service_Delicious_PostList);
 
         foreach ($posts as $post) {
-            $this->assertContains('zfSite', $post->getTags());
+            $this->assertStringContainsString('zfSite', $post->getTags());
         }
     }
 
@@ -215,7 +218,7 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(count($posts) <= 10);
 
         foreach ($posts as $post) {
-            $this->assertContains('zfSite', $post->getTags());
+            $this->assertStringContainsString('zfSite', $post->getTags());
         }
     }
 
@@ -231,7 +234,7 @@ class Zend_Service_Delicious_PrivateDataTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(count($posts) <= 10);
 
         foreach ($posts as $post) {
-            $this->assertContains('zfSite', $post->getTags());
+            $this->assertStringContainsString('zfSite', $post->getTags());
         }
     }
 

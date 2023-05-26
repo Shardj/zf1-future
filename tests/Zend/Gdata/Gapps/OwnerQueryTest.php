@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,14 @@ require_once 'Zend/Gdata/Gapps/OwnerQuery.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_OwnerQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_OwnerQueryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_OwnerQuery|mixed
+     */
+    protected $query;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->query = new Zend_Gdata_Gapps_OwnerQuery();
     }
@@ -47,13 +54,17 @@ class Zend_Gdata_Gapps_OwnerQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setGroupId("something");
         $this->query->setDomain("my.domain.com");
         $this->assertEquals("my.domain.com", $this->query->getDomain());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/something/owner",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/something/owner",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setDomain("hello.world.baz");
         $this->assertEquals("hello.world.baz", $this->query->getDomain());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/hello.world.baz/something/owner",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/hello.world.baz/something/owner",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the groupId accessor methods work and propagate
@@ -63,13 +74,17 @@ class Zend_Gdata_Gapps_OwnerQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setDomain("my.domain.com");
         $this->query->setGroupId("foo");
         $this->assertEquals("foo", $this->query->getGroupId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/owner",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/owner",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setGroupId("bar");
         $this->assertEquals("bar", $this->query->getGroupId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/bar/owner",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/bar/owner",
+            $this->query->getQueryUrl()
+        );
     }
 
     public function testCanSetOwnerEmailProperty()
@@ -78,14 +93,16 @@ class Zend_Gdata_Gapps_OwnerQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setGroupId("foo");
         $this->query->setOwnerEmail("bar@blah.com");
         $this->assertEquals("bar@blah.com", $this->query->getOwnerEmail());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/owner/bar@blah.com",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/owner/bar@blah.com",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setOwnerEmail('baz@blah.com');
         $this->assertEquals('baz@blah.com', $this->query->getOwnerEmail());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/owner/baz@blah.com",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/owner/baz@blah.com",
+            $this->query->getQueryUrl()
+        );
     }
-
 }
-

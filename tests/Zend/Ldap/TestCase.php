@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,19 +36,19 @@ require_once 'Zend/Ldap/Node.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Ldap
  */
-abstract class Zend_Ldap_TestCase extends PHPUnit_Framework_TestCase
+abstract class Zend_Ldap_TestCase extends TestCase
 {
     /**
      * @return array
      */
     protected function _createTestArrayData()
     {
-        $data=[
-            'dn'          => 'cn=name,dc=example,dc=org',
-            'cn'          => ['name'],
-            'host'        => ['a', 'b', 'c'],
-            'empty'       => [],
-            'boolean'     => ['TRUE', 'FALSE'],
+        $data = [
+            'dn' => 'cn=name,dc=example,dc=org',
+            'cn' => ['name'],
+            'host' => ['a', 'b', 'c'],
+            'empty' => [],
+            'boolean' => ['TRUE', 'FALSE'],
             'objectclass' => ['account', 'top'],
         ];
         return $data;

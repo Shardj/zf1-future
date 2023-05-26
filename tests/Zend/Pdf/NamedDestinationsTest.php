@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,9 +35,9 @@ require_once 'Zend/Pdf.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
-class Zend_Pdf_NamedDestinationsTest extends PHPUnit_Framework_TestCase
+class Zend_Pdf_NamedDestinationsTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         date_default_timezone_set('GMT');
     }
@@ -65,7 +68,7 @@ class Zend_Pdf_NamedDestinationsTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($pdf->getNamedDestination('Page2') === $destination2);
         $this->assertTrue($pdf->getNamedDestination('Page9') === null);
 
-        $pdf->setNamedDestination('Page1',   $destination1);
+        $pdf->setNamedDestination('Page1', $destination1);
         $pdf->setNamedDestination('Page1_1', Zend_Pdf_Destination_Fit::create(1));
         $pdf->setNamedDestination('Page9_1', Zend_Pdf_Destination_Fit::create(9)); // will be egnored
 

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -42,14 +45,14 @@ require_once 'Zend/Service/Ebay/Finding/Response/Items.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
+class Zend_Service_Ebay_OfflineTest extends TestCase
 {
     /**
      * @var Zend_Service_Ebay_Finding
      */
     protected $_finding;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_finding = new Zend_Service_Ebay_Finding('foo');
     }
@@ -62,7 +65,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_finding->setClient(new ClientCustom()) instanceof Zend_Service_Ebay_Finding);
         $this->assertTrue($this->_finding->getClient() instanceof ClientCustom);
 
-        $this->setExpectedException('Zend_Service_Ebay_Finding_Exception');
+        $this->expectException('Zend_Service_Ebay_Finding_Exception');
         $this->_finding->setClient(new stdClass());
     }
 
@@ -72,7 +75,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $this->_finding->getOption(Zend_Service_Ebay_Finding::OPTION_APP_ID));
 
         $options = [
-            Zend_Service_Ebay_Finding::OPTION_APP_ID    => 'app-id',
+            Zend_Service_Ebay_Finding::OPTION_APP_ID => 'app-id',
             Zend_Service_Ebay_Finding::OPTION_GLOBAL_ID => 'EBAY-GB',
             'foo' => 'bar'
         ];
@@ -81,7 +84,7 @@ class Zend_Service_Ebay_OfflineTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('app-id', $finding->getOption(Zend_Service_Ebay_Finding::OPTION_APP_ID));
         $this->assertEquals('bar', $finding->getOption('foo'));
 
-        $this->setExpectedException('Zend_Service_Ebay_Finding_Exception');
+        $this->expectException('Zend_Service_Ebay_Finding_Exception');
         $finding = new Zend_Service_Ebay_Finding(['foo' => 'bar']);
     }
 

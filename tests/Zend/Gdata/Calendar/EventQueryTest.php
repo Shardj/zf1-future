@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,14 +36,17 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_Calendar_EventQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Calendar_EventQueryTest extends TestCase
 {
-
-    const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
-    const ZEND_CONFERENCE_EVENT = 'bn2h4o4mc3a03ci4t48j3m56pg';
-    const ZEND_CONFERENCE_EVENT_COMMENT = 'i9q87onko1uphfs7i21elnnb4g';
-    const SAMPLE_RFC3339 = "2007-06-05T18:38:00";
-    public function setUp()
+    /**
+     * @var \Zend_Gdata_Calendar_EventQuery|mixed
+     */
+    protected $query;
+    public const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
+    public const ZEND_CONFERENCE_EVENT = 'bn2h4o4mc3a03ci4t48j3m56pg';
+    public const ZEND_CONFERENCE_EVENT_COMMENT = 'i9q87onko1uphfs7i21elnnb4g';
+    public const SAMPLE_RFC3339 = "2007-06-05T18:38:00";
+    protected function setUp(): void
     {
         $this->query = new Zend_Gdata_Calendar_EventQuery();
     }
@@ -48,8 +54,10 @@ class Zend_Gdata_Calendar_EventQueryTest extends PHPUnit_Framework_TestCase
     public function testDefaultBaseUrlForQuery()
     {
         $queryUrl = $this->query->getQueryUrl();
-        $this->assertEquals('https://www.google.com/calendar/feeds/default/public/full',
-                $queryUrl);
+        $this->assertEquals(
+            'https://www.google.com/calendar/feeds/default/public/full',
+            $queryUrl
+        );
     }
 
     public function testAlternateBaseUrlForQuery()
@@ -234,7 +242,6 @@ class Zend_Gdata_Calendar_EventQueryTest extends PHPUnit_Framework_TestCase
         // Test unsetting
         $this->query->futureEvents = null;
         $this->assertFalse($this->query->futureEvents != null);
-
     }
 
     public function testCustomQueryURIGeneration()
@@ -245,26 +252,30 @@ class Zend_Gdata_Calendar_EventQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setProjection("composite");
         $this->query->setEvent(self::ZEND_CONFERENCE_EVENT);
         $this->query->setComments(self::ZEND_CONFERENCE_EVENT_COMMENT);
-        $this->assertEquals("https://www.google.com/calendar/feeds/developer-calendar@google.com/private/composite/" .
+        $this->assertEquals(
+            "https://www.google.com/calendar/feeds/developer-calendar@google.com/private/composite/" .
                 self::ZEND_CONFERENCE_EVENT . "/comments/" . self::ZEND_CONFERENCE_EVENT_COMMENT,
-                $this->query->getQueryUrl());
+            $this->query->getQueryUrl()
+        );
     }
 
     public function testDefaultQueryURIGeneration()
     {
         $this->query->resetParameters();
-        $this->assertEquals("https://www.google.com/calendar/feeds/default/public/full",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://www.google.com/calendar/feeds/default/public/full",
+            $this->query->getQueryUrl()
+        );
     }
 
     public function testCanNullifyParameters()
     {
-       $testURI = "http://www.google.com/calendar/feeds/foo%40group.calendar.google.com/private/full";
-       $this->query = new Zend_Gdata_Calendar_EventQuery($testURI);
-       $this->query->setUser(null);
-       $this->query->setVisibility(null);
-       $this->query->setProjection(null);
-       $result = $this->query->getQueryUrl();
-       $this->assertEquals($testURI, $result);
+        $testURI = "http://www.google.com/calendar/feeds/foo%40group.calendar.google.com/private/full";
+        $this->query = new Zend_Gdata_Calendar_EventQuery($testURI);
+        $this->query->setUser(null);
+        $this->query->setVisibility(null);
+        $this->query->setProjection(null);
+        $result = $this->query->getQueryUrl();
+        $this->assertEquals($testURI, $result);
     }
 }

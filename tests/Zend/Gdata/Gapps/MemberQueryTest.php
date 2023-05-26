@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,10 +35,14 @@ require_once 'Zend/Gdata/Gapps/MemberQuery.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_MemberQueryTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_MemberQueryTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_MemberQuery|mixed
+     */
+    protected $query;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->query = new Zend_Gdata_Gapps_MemberQuery();
     }
@@ -47,13 +54,17 @@ class Zend_Gdata_Gapps_MemberQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setGroupId("something");
         $this->query->setDomain("my.domain.com");
         $this->assertEquals("my.domain.com", $this->query->getDomain());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/something/member",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/something/member",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setDomain("hello.world.baz");
         $this->assertEquals("hello.world.baz", $this->query->getDomain());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/hello.world.baz/something/member",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/hello.world.baz/something/member",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the groupId accessor methods work and propagate
@@ -63,13 +74,17 @@ class Zend_Gdata_Gapps_MemberQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setDomain("my.domain.com");
         $this->query->setGroupId("foo");
         $this->assertEquals("foo", $this->query->getGroupId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setGroupId("bar");
         $this->assertEquals("bar", $this->query->getGroupId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/bar/member",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/bar/member",
+            $this->query->getQueryUrl()
+        );
     }
 
     // Test to make sure that the memberId accessor methods work and propagate
@@ -80,14 +95,18 @@ class Zend_Gdata_Gapps_MemberQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setGroupId("foo");
         $this->query->setMemberId("bar");
         $this->assertEquals("bar", $this->query->getMemberId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member/bar",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member/bar",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setGroupId("baz");
         $this->query->setMemberId(null);
         $this->assertEquals(null, $this->query->getMemberId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/baz/member",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/baz/member",
+            $this->query->getQueryUrl()
+        );
     }
 
     public function testCanSetStartMemberIdProperty()
@@ -96,14 +115,16 @@ class Zend_Gdata_Gapps_MemberQueryTest extends PHPUnit_Framework_TestCase
         $this->query->setGroupId("foo");
         $this->query->setStartMemberId("bar");
         $this->assertEquals("bar", $this->query->getStartMemberId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member?start=bar",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member?start=bar",
+            $this->query->getQueryUrl()
+        );
 
         $this->query->setStartMemberId(null);
         $this->assertEquals(null, $this->query->getStartMemberId());
-        $this->assertEquals("https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member",
-                $this->query->getQueryUrl());
+        $this->assertEquals(
+            "https://apps-apis.google.com/a/feeds/group/2.0/my.domain.com/foo/member",
+            $this->query->getQueryUrl()
+        );
     }
-
 }
-

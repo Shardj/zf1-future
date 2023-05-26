@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,14 +41,13 @@ require_once 'Zend/View/Helper/Placeholder.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_RenderToPlaceholderTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_RenderToPlaceholderTest extends TestCase
 {
-
     protected $_view = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->_view = new Zend_View(['scriptPath'=>dirname(__FILE__).'/_files/scripts/']);
+        $this->_view = new Zend_View(['scriptPath' => dirname(__FILE__) . '/_files/scripts/']);
     }
 
     public function testDefaultEmpty()
@@ -54,6 +56,4 @@ class Zend_View_Helper_RenderToPlaceholderTest extends PHPUnit_Framework_TestCas
         $placeholder = new Zend_View_Helper_Placeholder();
         $this->assertEquals("Foo Bar\n", $placeholder->placeholder('fooPlaceholder')->getValue());
     }
-
 }
-

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -26,7 +29,7 @@ require_once 'Zend/Service/ShortUrl/TinyUrlCom.php';
  * @package  Zend_Service
  * @subpackage  UnitTests
  */
-class Zend_Service_ShortUrl_TinyUrlComTest extends PHPUnit_Framework_TestCase
+class Zend_Service_ShortUrl_TinyUrlComTest extends TestCase
 {
     /**
      * Zend_Service_TinyUrlCom object
@@ -40,7 +43,7 @@ class Zend_Service_ShortUrl_TinyUrlComTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp ()
+    public function setUp(): void
     {
         if (!defined('TESTS_ZEND_SERVICE_SHORTURL_TINYURL_ENABLED')
             || !constant('TESTS_ZEND_SERVICE_SHORTURL_TINYURL_ENABLED')
@@ -55,20 +58,20 @@ class Zend_Service_ShortUrl_TinyUrlComTest extends PHPUnit_Framework_TestCase
 
     public function testShortenEmptyUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->shorten('');
     }
 
     public function testShortenIncorrectUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->shorten('wrongAdress.cccc');
     }
 
     public function testShorten()
     {
         $urls = [
-            'http://framework.zend.com/'           => 'http://tinyurl.com/rxtuq',
+            'http://framework.zend.com/' => 'http://tinyurl.com/rxtuq',
             'http://framework.zend.com/manual/en/' => 'http://tinyurl.com/ynvdzf'
         ];
 
@@ -80,7 +83,7 @@ class Zend_Service_ShortUrl_TinyUrlComTest extends PHPUnit_Framework_TestCase
     public function testUnshorten()
     {
         $urls = [
-            'http://framework.zend.com/'           => 'http://tinyurl.com/rxtuq',
+            'http://framework.zend.com/' => 'http://tinyurl.com/rxtuq',
             'http://framework.zend.com/manual/en/' => 'http://tinyurl.com/ynvdzf'
         ];
 
@@ -91,19 +94,19 @@ class Zend_Service_ShortUrl_TinyUrlComTest extends PHPUnit_Framework_TestCase
 
     public function testUnshortenEmptyUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->unshorten('');
     }
 
     public function testUnshortenIncorrectUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->unshorten('wrongAdress.cccc');
     }
 
     public function testUnshortenWrongUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->unshorten('http://zend.com');
     }
 }

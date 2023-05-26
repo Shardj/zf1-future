@@ -93,7 +93,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
     /**
      * setResource()
      *
-     * @param unknown_type $resource
+     * @param Zend_Tool_Project_Profile_Resource $resource
      */
     public function setResource(Zend_Tool_Project_Profile_Resource $resource)
     {

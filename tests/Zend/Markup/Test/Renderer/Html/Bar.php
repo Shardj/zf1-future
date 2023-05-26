@@ -36,7 +36,6 @@ require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
  */
 class Zend_Markup_Test_Renderer_Html_Bar implements Zend_Markup_Renderer_TokenConverterInterface
 {
-
     /**
      * Convert the token
      *
@@ -55,5 +54,4 @@ class Zend_Markup_Test_Renderer_Html_Bar implements Zend_Markup_Renderer_TokenCo
 
         return "[foo{$bar}]" . $text . '[/foo]';
     }
-
 }

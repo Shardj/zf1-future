@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,48 +35,66 @@ require_once 'Zend/Gdata/Gapps.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_ErrorTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_ErrorTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_Error|mixed
+     */
+    protected $error;
 
-    public function setUp() {
+    protected function setUp(): void
+    {
         $this->error = new Zend_Gdata_Gapps_Error();
     }
 
-    public function testCanSetAndGetErrorCodeUsingConstant() {
+    public function testCanSetAndGetErrorCodeUsingConstant()
+    {
         $this->error->setErrorCode(
-            Zend_Gdata_Gapps_Error::INVALID_EMAIL_ADDRESS);
-        $this->assertEquals(Zend_Gdata_Gapps_Error::INVALID_EMAIL_ADDRESS,
-            $this->error->getErrorCode());
+            Zend_Gdata_Gapps_Error::INVALID_EMAIL_ADDRESS
+        );
+        $this->assertEquals(
+            Zend_Gdata_Gapps_Error::INVALID_EMAIL_ADDRESS,
+            $this->error->getErrorCode()
+        );
     }
 
-    public function testCanSetAndGetErrorCodeUsingInteger() {
+    public function testCanSetAndGetErrorCodeUsingInteger()
+    {
         $this->error->setErrorCode(123);
         $this->assertEquals(123, $this->error->getErrorCode());
     }
 
-   public function testCanSetAndGetReason() {
+    public function testCanSetAndGetReason()
+    {
         $text = "The foo is missing a bar.";
         $this->error->setReason($text);
         $this->assertEquals($text, $this->error->getReason());
     }
 
-    public function testCanSetAndGetInvalidInput() {
-         $text = "for___baz";
-         $this->error->setInvalidInput($text);
-         $this->assertEquals($text, $this->error->getInvalidInput());
+    public function testCanSetAndGetInvalidInput()
+    {
+        $text = "for___baz";
+        $this->error->setInvalidInput($text);
+        $this->assertEquals($text, $this->error->getInvalidInput());
     }
 
-    public function testContstructorAllowsSettingAllVariables() {
+    public function testContstructorAllowsSettingAllVariables()
+    {
         $this->error = new Zend_Gdata_Gapps_Error(
             Zend_Gdata_Gapps_Error::USER_DELETED_RECENTLY,
-            "foo", "bar");
-        $this->assertEquals(Zend_Gdata_Gapps_Error::USER_DELETED_RECENTLY,
-            $this->error->getErrorCode());
+            "foo",
+            "bar"
+        );
+        $this->assertEquals(
+            Zend_Gdata_Gapps_Error::USER_DELETED_RECENTLY,
+            $this->error->getErrorCode()
+        );
         $this->assertEquals("foo", $this->error->getReason());
         $this->assertEquals("bar", $this->error->getInvalidInput());
     }
 
-    public function testToStringProvidesHelpfulMessage() {
+    public function testToStringProvidesHelpfulMessage()
+    {
         $this->error->setErrorCode(Zend_Gdata_Gapps_Error::USER_SUSPENDED);
         $this->error->setReason("The foo is missing a bar.");
         $this->error->setInvalidInput("for___baz");
@@ -84,5 +105,4 @@ class Zend_Gdata_Gapps_ErrorTest extends PHPUnit_Framework_TestCase
         $this->error->setInvalidInput("blah");
         $this->assertEquals("Error 1000: Unknown error.\n\tInvalid Input: \"blah\"", $this->error->__toString());
     }
-
 }

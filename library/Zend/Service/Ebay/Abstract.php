@@ -55,7 +55,7 @@ abstract class Zend_Service_Ebay_Abstract
     /**
      * @param  string|Zend_Config|array $name
      * @param  mixed                    $value
-     * @return Zend_Service_Ebay_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setOption($name, $value = null)
     {
@@ -96,7 +96,7 @@ abstract class Zend_Service_Ebay_Abstract
 
     /**
      * @param  mixed $client
-     * @return Zend_Service_Ebay_Abstract Provides a fluent interface
+     * @return $this
      */
     abstract public function setClient($client);
 
@@ -270,7 +270,7 @@ abstract class Zend_Service_Ebay_Abstract
      * @param  string $value
      * @param  string $type
      * @return bool|float|string
-     *@throws Zend_Service_Ebay_Finding_Exception When $type is not valid
+     * @throws Zend_Service_Ebay_Finding_Exception When $type is not valid
      * @see    http://developer.ebay.com/DevZone/finding/CallRef/types/simpleTypes.html
      */
     public static function toPhpValue($value, $type)

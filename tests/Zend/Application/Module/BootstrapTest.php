@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,15 +42,30 @@ require_once 'Zend/Loader/Autoloader.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
  */
-class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
+class Zend_Application_Module_BootstrapTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    protected $loaders;
+
+    /**
+     * @var Zend_Loader_Autoloader
+     */
+    protected $autoloader;
+
+    /**
+     * @var Zend_Application
+     */
+    protected $application;
+
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -63,7 +83,7 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
         Zend_Controller_Front::getInstance()->resetInstance();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -93,7 +113,7 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
     {
         $loader = new Zend_Loader_Autoloader_Resource([
             'namespace' => 'Foo',
-            'basePath'  => dirname(__FILE__),
+            'basePath' => dirname(__FILE__),
         ]);
         $this->application->setOptions(['resourceLoader' => $loader]);
 
@@ -142,12 +162,12 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
         $this->application->setOptions([
             'resources' => [
                 'frontController' => [
-                    'baseUrl'             => '/foo',
+                    'baseUrl' => '/foo',
                     'controllerDirectory' => dirname(__FILE__),
                 ],
             ],
             'bootstrap' => [
-                'path'  => dirname(__FILE__) . '/../_files/ZfAppBootstrap.php',
+                'path' => dirname(__FILE__) . '/../_files/ZfAppBootstrap.php',
                 'class' => 'ZfAppBootstrap',
             ],
             'ZfModule' => [
@@ -177,12 +197,12 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
             'resources' => [
                 'modules' => [],
                 'frontController' => [
-                    'baseUrl'             => '/foo',
-                    'moduleDirectory'     => dirname(__FILE__) . '/../_files/modules',
+                    'baseUrl' => '/foo',
+                    'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
                 ],
             ],
             'bootstrap' => [
-                'path'  => dirname(__FILE__) . '/../_files/ZfAppBootstrap.php',
+                'path' => dirname(__FILE__) . '/../_files/ZfAppBootstrap.php',
                 'class' => 'ZfAppBootstrap',
             ]
         ]);
@@ -209,15 +229,15 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
             'resources' => [
                 'modules' => [],
                 'frontController' => [
-                    'baseUrl'             => '/foo',
-                    'moduleDirectory'     => dirname(__FILE__) . '/../_files/modules',
+                    'baseUrl' => '/foo',
+                    'moduleDirectory' => dirname(__FILE__) . '/../_files/modules',
                 ],
             ],
             'pluginPaths' => [
                 'ZfModuleBootstrap_Resource' => dirname(__FILE__),
             ],
             'bootstrap' => [
-                'path'  => dirname(__FILE__) . '/../_files/ZfAppBootstrap.php',
+                'path' => dirname(__FILE__) . '/../_files/ZfAppBootstrap.php',
                 'class' => 'ZfAppBootstrap',
             ]
         ]);
@@ -226,7 +246,7 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
         $modules = $appBootstrap->getResource('Modules');
         foreach ($modules as $bootstrap) {
             $loader = $bootstrap->getPluginLoader();
-            $paths  = $loader->getPaths();
+            $paths = $loader->getPaths();
             $this->assertTrue(array_key_exists('ZfModuleBootstrap_Resource_', $paths));
         }
     }

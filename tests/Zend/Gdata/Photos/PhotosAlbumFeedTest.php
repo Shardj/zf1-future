@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,19 +37,19 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Photos
  */
-class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Photos_PhotosAlbumFeedTest extends TestCase
 {
-
     protected $albumFeed = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $albumFeedText = file_get_contents(
-                '_files/TestAlbumFeed.xml',
-                true);
+            '_files/TestAlbumFeed.xml',
+            true
+        );
         $this->albumFeed = new Zend_Gdata_Photos_AlbumFeed($albumFeedText);
     }
 
@@ -125,7 +128,8 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         /* Grab XML from $this->albumFeed and convert back to objects */
         $newListFeed = new Zend_Gdata_Photos_UserFeed(
-                $this->albumFeed->saveXML());
+            $this->albumFeed->saveXML()
+        );
         $newEntryCount = 0;
         foreach ($newListFeed as $entry) {
             $newEntryCount++;
@@ -186,8 +190,12 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's ID is correct
         $this->assertTrue($feed->getId() instanceof Zend_Gdata_App_Extension_Id);
-        $this->verifyProperty2($feed, "id", "text",
-                "http://picasaweb.google.com/data/feed/api/user/sample.user/albumid/1");
+        $this->verifyProperty2(
+            $feed,
+            "id",
+            "text",
+            "http://picasaweb.google.com/data/feed/api/user/sample.user/albumid/1"
+        );
 
         // Assert that all entries have an Atom ID object
         foreach ($feed as $entry) {
@@ -196,8 +204,12 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert one of the entry's IDs
         $entry = $feed[0];
-        $this->verifyProperty2($entry, "id", "text",
-                "http://picasaweb.google.com/data/entry/api/user/sample.user/albumid/1/photoid/2");
+        $this->verifyProperty2(
+            $entry,
+            "id",
+            "text",
+            "http://picasaweb.google.com/data/entry/api/user/sample.user/albumid/1/photoid/2"
+        );
     }
 
     /**
@@ -230,8 +242,12 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's updated date is correct
         $this->assertTrue($feed->getUpdated() instanceof Zend_Gdata_App_Extension_Updated);
-        $this->verifyProperty2($feed, "updated", "text",
-                "2007-09-21T18:23:05.000Z");
+        $this->verifyProperty2(
+            $feed,
+            "updated",
+            "text",
+            "2007-09-21T18:23:05.000Z"
+        );
 
         // Assert that all entries have an Atom Updated object
         foreach ($feed as $entry) {
@@ -275,8 +291,12 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getSubtitle() instanceof Zend_Gdata_App_Extension_Subtitle);
-        $this->verifyProperty2($feed, "subtitle", "text",
-                "");
+        $this->verifyProperty2(
+            $feed,
+            "subtitle",
+            "text",
+            ""
+        );
     }
 
     /**
@@ -304,8 +324,12 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getIcon() instanceof Zend_Gdata_App_Extension_Icon);
-        $this->verifyProperty2($feed, "icon", "text",
-                "http://lh6.google.com/sample.user/Rt8WNoDZEJE/AAAAAAAAABk/HQGlDhpIgWo/s160-c/Test.jpg");
+        $this->verifyProperty2(
+            $feed,
+            "icon",
+            "text",
+            "http://lh6.google.com/sample.user/Rt8WNoDZEJE/AAAAAAAAABk/HQGlDhpIgWo/s160-c/Test.jpg"
+        );
     }
 
     /**
@@ -318,10 +342,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoUser() instanceof Zend_Gdata_Photos_Extension_User);
-        $this->verifyProperty2($feed, "gphotoUser", "text",
-                "sample.user");
-        $this->verifyProperty3($feed, "gphotoUser", "text",
-                "sample.user");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoUser",
+            "text",
+            "sample.user"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoUser",
+            "text",
+            "sample.user"
+        );
     }
 
     /**
@@ -334,10 +366,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoNickname() instanceof Zend_Gdata_Photos_Extension_Nickname);
-        $this->verifyProperty2($feed, "gphotoNickname", "text",
-                "sample");
-        $this->verifyProperty3($feed, "gphotoNickname", "text",
-                "sample");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoNickname",
+            "text",
+            "sample"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoNickname",
+            "text",
+            "sample"
+        );
     }
 
     /**
@@ -350,8 +390,12 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoName() instanceof Zend_Gdata_Photos_Extension_Name);
-        $this->verifyProperty2($feed, "gphotoName", "text",
-                "Test");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoName",
+            "text",
+            "Test"
+        );
     }
 
     /**
@@ -364,10 +408,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoId() instanceof Zend_Gdata_Photos_Extension_Id);
-        $this->verifyProperty2($feed, "gphotoId", "text",
-                "1");
-        $this->verifyProperty3($feed, "gphotoId", "text",
-                "1");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoId",
+            "text",
+            "1"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoId",
+            "text",
+            "1"
+        );
     }
 
     /**
@@ -380,10 +432,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoLocation() instanceof Zend_Gdata_Photos_Extension_Location);
-        $this->verifyProperty2($feed, "gphotoLocation", "text",
-                "");
-        $this->verifyProperty3($feed, "gphotoLocation", "text",
-                "");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoLocation",
+            "text",
+            ""
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoLocation",
+            "text",
+            ""
+        );
     }
 
     /**
@@ -396,10 +456,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoAccess() instanceof Zend_Gdata_Photos_Extension_Access);
-        $this->verifyProperty2($feed, "gphotoAccess", "text",
-                "public");
-        $this->verifyProperty3($feed, "gphotoAccess", "text",
-                "public");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoAccess",
+            "text",
+            "public"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoAccess",
+            "text",
+            "public"
+        );
     }
 
     /**
@@ -412,10 +480,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoTimestamp() instanceof Zend_Gdata_Photos_Extension_Timestamp);
-        $this->verifyProperty2($feed, "gphotoTimestamp", "text",
-                "1188975600000");
-        $this->verifyProperty3($feed, "gphotoTimestamp", "text",
-                "1188975600000");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoTimestamp",
+            "text",
+            "1188975600000"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoTimestamp",
+            "text",
+            "1188975600000"
+        );
     }
 
     /**
@@ -428,10 +504,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoNumPhotos() instanceof Zend_Gdata_Photos_Extension_NumPhotos);
-        $this->verifyProperty2($feed, "gphotoNumPhotos", "text",
-                "2");
-        $this->verifyProperty3($feed, "gphotoNumPhotos", "text",
-                "2");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoNumPhotos",
+            "text",
+            "2"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoNumPhotos",
+            "text",
+            "2"
+        );
     }
 
     /**
@@ -444,10 +528,18 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoCommentingEnabled() instanceof Zend_Gdata_Photos_Extension_CommentingEnabled);
-        $this->verifyProperty2($feed, "gphotoCommentingEnabled", "text",
-                "true");
-        $this->verifyProperty3($feed, "gphotoCommentingEnabled", "text",
-                "true");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoCommentingEnabled",
+            "text",
+            "true"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoCommentingEnabled",
+            "text",
+            "true"
+        );
     }
 
     /**
@@ -460,10 +552,17 @@ class Zend_Gdata_Photos_PhotosAlbumFeedTest extends PHPUnit_Framework_TestCase
 
         // Assert that the feed's title is correct
         $this->assertTrue($feed->getGphotoCommentCount() instanceof Zend_Gdata_Photos_Extension_CommentCount);
-        $this->verifyProperty2($feed, "gphotoCommentCount", "text",
-                "0");
-        $this->verifyProperty3($feed, "gphotoCommentCount", "text",
-                "0");
+        $this->verifyProperty2(
+            $feed,
+            "gphotoCommentCount",
+            "text",
+            "0"
+        );
+        $this->verifyProperty3(
+            $feed,
+            "gphotoCommentCount",
+            "text",
+            "0"
+        );
     }
-
 }

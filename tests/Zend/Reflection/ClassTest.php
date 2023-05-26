@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,12 +36,11 @@ require_once 'Zend/Reflection/Class.php';
  * @group      Zend_Reflection
  * @group      Zend_Reflection_Class
  */
-class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
+class Zend_Reflection_ClassTest extends TestCase
 {
+    protected static $_sampleClassFileRequired = false;
 
-    static protected $_sampleClassFileRequired = false;
-
-    public function setup()
+    protected function setUp(): void
     {
         // ensure we are only required this file once per runtime
         if (self::$_sampleClassFileRequired === false) {
@@ -50,7 +52,6 @@ class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
 
     public function testMethodReturns()
     {
-
         $reflectionClass = new Zend_Reflection_Class('Zend_Reflection_TestSampleClass2');
 
         $methodByName = $reflectionClass->getMethod('getProp1');
@@ -84,7 +85,6 @@ class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
         $parent = $reflectionClass->getParentClass();
         $this->assertEquals('Zend_Reflection_Class', get_class($parent));
         $this->assertEquals('ArrayObject', $parent->getName());
-
     }
 
     public function testInterfaceReturn()
@@ -96,7 +96,6 @@ class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
 
         $interface = array_shift($interfaces);
         $this->assertEquals('Zend_Reflection_TestSampleClassInterface', $interface->getName());
-
     }
 
     public function testGetContentsReturnsContents()
@@ -121,7 +120,7 @@ class Zend_Reflection_ClassTest extends PHPUnit_Framework_TestCase
     #[\ReturnTypeWillChange]
     public function getIterator()
     {
-        return array();
+        return [];
     }
 
 }
@@ -134,15 +133,14 @@ EOS;
     {
         $reflectionClass = new Zend_Reflection_Class('Zend_Reflection_TestSampleClass5');
 
-        $this->assertEquals(87, $reflectionClass->getStartLine());
-        $this->assertEquals(76, $reflectionClass->getStartLine(true));
+        $this->assertEquals(88, $reflectionClass->getStartLine());
+        $this->assertEquals(77, $reflectionClass->getStartLine(true));
     }
 
 
     public function testGetDeclaringFileReturnsFilename()
     {
         $reflectionClass = new Zend_Reflection_Class('Zend_Reflection_TestSampleClass2');
-        $this->assertContains('TestSampleClass.php', $reflectionClass->getDeclaringFile()->getFileName()); //ns(, $reflectionClass->getDeclaringFile());
+        $this->assertStringContainsString('TestSampleClass.php', $reflectionClass->getDeclaringFile()->getFileName()); //ns(, $reflectionClass->getDeclaringFile());
     }
-
 }

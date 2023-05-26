@@ -109,7 +109,7 @@ class Zend_Crypt_Hmac extends Zend_Crypt
      *
      * @param string $hash
      * @return void
-     *@throws Zend_Crypt_Hmac_Exception
+     * @throws Zend_Crypt_Hmac_Exception
      */
     protected static function _setHashAlgorithm($hash)
     {

@@ -290,7 +290,7 @@ class Zend_Reflection_Docblock implements Reflector
 
         }
 
-        $this->_shortDescription = rtrim($this->_shortDescription);
-        $this->_longDescription  = rtrim($this->_longDescription);
+        $this->_shortDescription = rtrim((string) $this->_shortDescription);
+        $this->_longDescription  = rtrim((string) $this->_longDescription);
     }
 }

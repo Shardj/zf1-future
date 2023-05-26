@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -32,15 +37,15 @@ require_once 'Zend/Http/UserAgent/Features/Adapter/Browscap.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends PHPUnit_Framework_TestCase
+class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         $browscap = ini_get('browscap');
         if (empty($browscap) || !file_exists($browscap)) {
@@ -52,19 +57,19 @@ class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends PHPUnit_Framewor
     {
         $request['http_user_agent'] = 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A102 Safari/419.3';
         $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, []);
-        $this->assertEquals(1,                           $adapter['ismobiledevice']);
-        $this->assertEquals(1,                           $adapter['javascript']);
-        $this->assertEquals(3,                           $adapter['cssversion']);
-        $this->assertEquals('iPhone',                    $adapter['mobile_browser']);
-        $this->assertContains('^mozilla/.\\..*(iphone;.*cpu', $adapter['browser_name_regex']);
+        $this->assertEquals(1, $adapter['ismobiledevice']);
+        $this->assertEquals(1, $adapter['javascript']);
+        $this->assertEquals(3, $adapter['cssversion']);
+        $this->assertEquals('iPhone', $adapter['mobile_browser']);
+        $this->assertStringContainsString('^mozilla/.\\..*(iphone;.*cpu', $adapter['browser_name_regex']);
 
         $request['http_user_agent'] = 'SonyEricssonK700i/R2AC SEMC-Browser/4.0.2 Profile/MIDP-2.0 Configuration/CLDC-1.1';
         $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, []);
-        $this->assertEquals(1,                           $adapter['ismobiledevice']);
-        $this->assertEquals(1,                           $adapter['javascript']);
-        $this->assertEquals(1,                           $adapter['cssversion']);
-        $this->assertEquals('SEMC Browser',              $adapter['mobile_browser']);
-        $this->assertEquals('^.*semc-browser/.*$',       $adapter['browser_name_regex']);
+        $this->assertEquals(1, $adapter['ismobiledevice']);
+        $this->assertEquals(1, $adapter['javascript']);
+        $this->assertEquals(1, $adapter['cssversion']);
+        $this->assertEquals('SEMC Browser', $adapter['mobile_browser']);
+        $this->assertEquals('^.*semc-browser/.*$', $adapter['browser_name_regex']);
     }
 }
 

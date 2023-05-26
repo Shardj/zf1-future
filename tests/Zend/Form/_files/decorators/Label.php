@@ -36,7 +36,6 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  */
 class My_Decorator_Label extends Zend_Form_Decorator_Abstract
 {
-
     /**
      * Test Function for render
      *
@@ -47,5 +46,4 @@ class My_Decorator_Label extends Zend_Form_Decorator_Abstract
     {
         return $content;
     }
-
 }

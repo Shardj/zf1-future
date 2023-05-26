@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,8 +42,13 @@ require_once 'Zend/Form/Element/Select.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Element_SelectTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Element_Select
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -46,8 +56,8 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Element_SelectTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Element_SelectTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -56,7 +66,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->element = new Zend_Form_Element_Select('foo');
     }
@@ -67,7 +77,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -119,18 +129,18 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
             ])
             ->setAttrib('disable', ['baz', 'test']);
         $html = $this->element->render($this->getView());
-        $this->assertNotRegexp('/<select[^>]*?(disabled="disabled")/', $html, $html);
+        $this->assertDoesNotMatchRegularExpression('/<select[^>]*?(disabled="disabled")/', $html, $html);
         foreach (['baz', 'test'] as $test) {
             if (!preg_match('/(<option[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching disabled option for ' . $test);
             }
-            $this->assertRegexp('/<option[^>]*?(disabled="disabled")/', $m[1]);
+            $this->assertMatchesRegularExpression('/<option[^>]*?(disabled="disabled")/', $m[1]);
         }
         foreach (['foo', 'bat'] as $test) {
             if (!preg_match('/(<option[^>]*?(value="' . $test . '")[^>]*>)/', $html, $m)) {
                 $this->fail('Unable to find matching option for ' . $test);
             }
-            $this->assertNotRegexp('/<option[^>]*?(disabled="disabled")/', $m[1], var_export($m, 1));
+            $this->assertDoesNotMatchRegularExpression('/<option[^>]*?(disabled="disabled")/', $m[1], var_export($m, 1));
         }
     }
 
@@ -138,6 +148,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
      * No explicit assertions; just checking for error conditions
      *
      * @group ZF-2847
+     * @doesNotPerformAssertions
      */
     public function testTranslationShouldNotRaiseWarningsWithNestedGroups()
     {
@@ -177,7 +188,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
         if (!preg_match('#(<option[^>]*(?:value="somewhat")[^>]*>)#s', $html, $matches)) {
             $this->fail('Could not find option: ' . $html);
         }
-        $this->assertNotContains('selected', $matches[1]);
+        $this->assertStringNotContainsString('selected', $matches[1]);
     }
 
     /**
@@ -193,8 +204,8 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
         ]);
         $this->element->setView($this->getView());
         $html = $this->element->render();
-        $this->assertNotContains('unused', $html, $html);
-        $this->assertContains('bar', $html, $html);
+        $this->assertStringNotContainsString('unused', $html, $html);
+        $this->assertStringContainsString('bar', $html, $html);
     }
 
     /**
@@ -247,7 +258,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
     {
         $this->element->addMultiOption('1', '£' . number_format(1));
         $html = $this->element->render($this->getView());
-        $this->assertContains('>£', $html);
+        $this->assertStringContainsString('>£', $html);
     }
 
     /**
@@ -259,7 +270,7 @@ class Zend_Form_Element_SelectTest extends PHPUnit_Framework_TestCase
                       ->setIsArray(true)
                       ->setDecorators(['ViewHelper']);
 
-        $actual   = $this->element->render($this->getView());
+        $actual = $this->element->render($this->getView());
         $expected = PHP_EOL
                   . '<select name="foo[]" id="foo">'
                   . "\n"

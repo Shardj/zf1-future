@@ -61,6 +61,11 @@ require_once 'Zend/Validate/EmailAddress.php';
 class Zend_Feed_Writer_Feed_FeedAbstract
 {
     /**
+     * @var array
+     */
+    protected $_extensions = [];
+
+    /**
      * Contains all Feed level date to append in feed output
      *
      * @var array
@@ -169,7 +174,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed creation date
      *
-     * @param null|integer|Zend_Date
+     * @param null|integer|Zend_Date $date
      */
     public function setDateCreated($date = null)
     {
@@ -190,7 +195,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed modification date
      *
-     * @param null|integer|Zend_Date
+     * @param null|integer|Zend_Date $date
      */
     public function setDateModified($date = null)
     {
@@ -211,7 +216,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set the feed last-build date. Ignored for Atom 1.0.
      *
-     * @param null|integer|Zend_Date
+     * @param null|integer|Zend_Date $date
      */
     public function setLastBuildDate($date = null)
     {

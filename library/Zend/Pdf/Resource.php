@@ -118,7 +118,7 @@ abstract class Zend_Pdf_Resource
      * @param Zend_Pdf_ElementFactory_Interface $factory
      * @param array $processed
      * @return void
-     *@internal
+     * @internal
      */
     public function cloneResource($factory, &$processed)
     {

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,8 +46,18 @@ require_once 'Zend/Registry.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_AbstractTest extends TestCase
 {
+    /**
+     * @var Zend_Validate_AbstractTest_Concrete
+     */
+    protected $validator;
+
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
     /**
      * Runs this test suite
      *
@@ -50,8 +65,8 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite('Zend_Validate_AbstractTest');
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite('Zend_Validate_AbstractTest');
+        $result = (new TestRunner())->run($suite);
     }
 
     public function clearRegistry()
@@ -67,14 +82,14 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->clearRegistry();
         Zend_Validate_Abstract::setDefaultTranslator(null);
         $this->validator = new Zend_Validate_AbstractTest_Concrete();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $this->clearRegistry();
         Zend_Validate_Abstract::setDefaultTranslator(null);
@@ -156,8 +171,8 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->validator->isValid('bar'));
         $messages = $this->validator->getMessages();
         $this->assertTrue(array_key_exists('fooMessage', $messages));
-        $this->assertContains('bar', $messages['fooMessage']);
-        $this->assertContains('This is the translated message for ', $messages['fooMessage']);
+        $this->assertStringContainsString('bar', $messages['fooMessage']);
+        $this->assertStringContainsString('This is the translated message for ', $messages['fooMessage']);
     }
 
     public function testCanTranslateMessagesInsteadOfKeys()
@@ -171,8 +186,8 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->validator->isValid('bar'));
         $messages = $this->validator->getMessages();
         $this->assertTrue(array_key_exists('fooMessage', $messages));
-        $this->assertContains('bar', $messages['fooMessage']);
-        $this->assertContains('This is the translated message for ', $messages['fooMessage']);
+        $this->assertStringContainsString('bar', $messages['fooMessage']);
+        $this->assertStringContainsString('This is the translated message for ', $messages['fooMessage']);
     }
 
     public function testObscureValueFlagFalseByDefault()
@@ -196,8 +211,8 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
         $messages = $this->validator->getMessages();
         $this->assertTrue(isset($messages['fooMessage']));
         $message = $messages['fooMessage'];
-        $this->assertNotContains('foobar', $message);
-        $this->assertContains('******', $message);
+        $this->assertStringNotContainsString('foobar', $message);
+        $this->assertStringContainsString('******', $message);
     }
 
     /**
@@ -233,8 +248,8 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->validator->isValid('bar'));
         $messages = $this->validator->getMessages();
         $this->assertTrue(array_key_exists('fooMessage', $messages));
-        $this->assertContains('bar', $messages['fooMessage']);
-        $this->assertContains('This is the translated message for ', $messages['fooMessage']);
+        $this->assertStringContainsString('bar', $messages['fooMessage']);
+        $this->assertStringContainsString('This is the translated message for ', $messages['fooMessage']);
 
         $this->validator->setDisableTranslator(true);
         $this->assertTrue($this->validator->translatorIsDisabled());
@@ -242,19 +257,23 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->validator->isValid('bar'));
         $messages = $this->validator->getMessages();
         $this->assertTrue(array_key_exists('fooMessage', $messages));
-        $this->assertContains('bar', $messages['fooMessage']);
-        $this->assertContains('bar was passed', $messages['fooMessage']);
+        $this->assertStringContainsString('bar', $messages['fooMessage']);
+        $this->assertStringContainsString('bar was passed', $messages['fooMessage']);
     }
 
     public function testGetMessageTemplates()
     {
         $messages = $this->validator->getMessageTemplates();
         $this->assertEquals(
-            ['fooMessage' => '%value% was passed'], $messages);
+            ['fooMessage' => '%value% was passed'],
+            $messages
+        );
 
         $this->assertEquals(
             [
-                Zend_Validate_AbstractTest_Concrete::FOO_MESSAGE => '%value% was passed'], $messages);
+                Zend_Validate_AbstractTest_Concrete::FOO_MESSAGE => '%value% was passed'],
+            $messages
+        );
     }
 
     public function testMaximumErrorMessageLength()
@@ -294,7 +313,7 @@ class Zend_Validate_AbstractTest extends PHPUnit_Framework_TestCase
 
 class Zend_Validate_AbstractTest_Concrete extends Zend_Validate_Abstract
 {
-    const FOO_MESSAGE = 'fooMessage';
+    public const FOO_MESSAGE = 'fooMessage';
 
     protected $_messageTemplates = [
         'fooMessage' => '%value% was passed',

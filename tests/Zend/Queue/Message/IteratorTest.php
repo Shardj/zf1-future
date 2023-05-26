@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -47,33 +50,50 @@ require_once 'Zend/Queue/Adapter/Null.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Queue
  */
-class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
+class Zend_Queue_Message_IteratorTest extends TestCase
 {
-    protected function setUp()
+    /**
+     * @var array
+     */
+    protected $options;
+
+    /**
+     * @var Zend_Queue
+     */
+    protected $queue;
+
+    protected $messages;
+
+    /**
+     * @var int
+     */
+    protected $message_count;
+
+    protected function setUp(): void
     {
         // Test Zend_Config
         $this->options = [
-            'name'      => 'queue1',
-            'params'    => [],
+            'name' => 'queue1',
+            'params' => [],
         ];
 
         $this->queue = new Zend_Queue('array', $this->options);
 
         // construct messages
         $this->message_count = 5;
-        $data  = [];
+        $data = [];
         $datum = [];
         for ($i = 0; $i < $this->message_count; $i++) {
             $data[] = [
-                'id' => $i+1,
+                'id' => $i + 1,
                 'handle' => null,
                 'body' => 'Hello world' // This is my 2524'th time writing that.
             ];
         }
 
         $options = [
-            'queue'    => $this->queue,
-            'data'     => $data,
+            'queue' => $this->queue,
+            'data' => $data,
             'messageClass' => $this->queue->getMessageClass()
         ];
 
@@ -97,7 +117,7 @@ class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
         }
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -108,7 +128,7 @@ class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
         // parameter validation
         try {
             $config = $this->options;
-            $config['data']='ops';
+            $config['data'] = 'ops';
 
             $classname = $this->queue->getMessageSetClass();
             Zend_Loader::loadClass($classname);
@@ -160,5 +180,4 @@ class Zend_Queue_Message_IteratorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->message_count, count($array));
         $this->assertEquals('Hello world', $array[0]['body']);
     }
-
 }

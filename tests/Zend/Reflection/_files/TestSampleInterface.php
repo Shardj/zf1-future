@@ -9,6 +9,4 @@
 
 interface Zend_Reflection_TestSampleInterface
 {
-
 }
-

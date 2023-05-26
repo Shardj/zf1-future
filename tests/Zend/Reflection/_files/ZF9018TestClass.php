@@ -4,15 +4,16 @@ class ZF9018TestClass
 {
     public function doSomething($var)
     {
-        if ( true ) {
+        if (true) {
             echo "True";
         } else {
             echo "False";
         }
     }
 
-    public function doSomethingOpenBraceInline($var) {
-        if ( true ) {
+    public function doSomethingOpenBraceInline($var)
+    {
+        if (true) {
             echo "True";
         } else {
             echo "False";

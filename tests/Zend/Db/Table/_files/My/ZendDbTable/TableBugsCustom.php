@@ -46,28 +46,28 @@ class My_ZendDbTable_TableBugsCustom extends My_ZendDbTable_TableBugs
 
     protected $_metadataCacheInClass = false;
 
-    protected $_rowClass    = 'My_ZendDbTable_Row_TestMyRow';
+    protected $_rowClass = 'My_ZendDbTable_Row_TestMyRow';
     protected $_rowsetClass = 'My_ZendDbTable_Rowset_TestMyRowset';
 
     protected $_dependentTables = ['My_ZendDbTable_TableBugsProductsCustom'];
 
-    protected $_referenceMap    = [
+    protected $_referenceMap = [
         'Reporter' => [
-            'columns'           => ['reported_by'],
-            'refTableClass'     => 'My_ZendDbTable_TableAccountsCustom',
-            'refColumns'        => ['account_name'],
-            'onDelete'          => self::CASCADE,
-            'onUpdate'          => self::CASCADE
+            'columns' => ['reported_by'],
+            'refTableClass' => 'My_ZendDbTable_TableAccountsCustom',
+            'refColumns' => ['account_name'],
+            'onDelete' => self::CASCADE,
+            'onUpdate' => self::CASCADE
         ],
         'Engineer' => [
-            'columns'           => 'assigned_to',
-            'refTableClass'     => 'My_ZendDbTable_TableAccountsCustom',
-            'refColumns'        => 'account_name'
+            'columns' => 'assigned_to',
+            'refTableClass' => 'My_ZendDbTable_TableAccountsCustom',
+            'refColumns' => 'account_name'
         ],
         'Verifier' => [
-            'columns'           => 'verified_by',
-            'refTableClass'     => 'My_ZendDbTable_TableAccountsCustom',
-            'refColumns'        => 'account_name'
+            'columns' => 'verified_by',
+            'refTableClass' => 'My_ZendDbTable_TableAccountsCustom',
+            'refColumns' => 'account_name'
         ]
     ];
 

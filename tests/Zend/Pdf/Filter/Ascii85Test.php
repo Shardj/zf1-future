@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Pdf/Filter/Ascii85.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
-class Zend_Pdf_Filter_Ascii85Test extends PHPUnit_Framework_TestCase
+class Zend_Pdf_Filter_Ascii85Test extends TestCase
 {
     public function testStringDivisibleBy4Encode()
     {
@@ -54,7 +57,7 @@ class Zend_Pdf_Filter_Ascii85Test extends PHPUnit_Framework_TestCase
     {
         $decodedContents = 'Lorem ipsum dolor sit amet, consectetur cras amet.';
         $encodedContents = Zend_Pdf_Filter_Ascii85::encode($decodedContents);
-        $testString  = "9Q+r_D'3P3F*2=BA8c:&EZfF;F<G\"/ATTIG@rH7+ARfgn"
+        $testString = "9Q+r_D'3P3F*2=BA8c:&EZfF;F<G\"/ATTIG@rH7+ARfgn"
                      . "FEMUH@rc\"!+CT+uF=m~>";
         $this->assertEquals($encodedContents, $testString);
     }

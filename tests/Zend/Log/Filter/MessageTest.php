@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,12 +43,12 @@ require_once 'Zend/Log/Filter/Message.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Log
  */
-class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
+class Zend_Log_Filter_MessageTest extends TestCase
 {
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testMessageFilterRecognizesInvalidRegularExpression()
@@ -53,7 +58,7 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
             $this->fail();
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
-            $this->assertRegexp('/invalid reg/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/invalid reg/i', $e->getMessage());
         }
     }
 
@@ -67,10 +72,10 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
     public function testFactory()
     {
         $cfg = ['log' => ['memory' => [
-            'writerName'   => "Mock",
-            'filterName'   => "Message",
+            'writerName' => "Mock",
+            'filterName' => "Message",
             'filterParams' => [
-                'regexp'   => "/42/"
+                'regexp' => "/42/"
              ],
         ]]];
 
@@ -82,10 +87,10 @@ class Zend_Log_Filter_MessageTest extends PHPUnit_Framework_TestCase
     {
         require_once 'Zend/Config.php';
         $config = new Zend_Config(['log' => ['memory' => [
-            'writerName'   => "Mock",
-            'filterName'   => "Message",
+            'writerName' => "Mock",
+            'filterName' => "Message",
             'filterParams' => [
-                'regexp'   => "/42/"
+                'regexp' => "/42/"
              ],
         ]]]);
 

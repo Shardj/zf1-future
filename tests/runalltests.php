@@ -26,7 +26,7 @@ if (!$PHPUNIT) {
         $PHPUNIT = `for %i in (phpunit.bat) do @echo.   %~\$PATH:i)`;
     } else {
         $PHPUNIT = trim(`echo \$PHPUNIT`);
-        if ( empty($PHPUNIT) ) {
+        if (empty($PHPUNIT)) {
             $PHPUNIT = `which phpunit`;
             $PHPUNIT = trim($PHPUNIT);
         }

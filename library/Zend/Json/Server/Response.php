@@ -30,6 +30,11 @@
 class Zend_Json_Server_Response
 {
     /**
+     * @var string
+     */
+    protected $_args;
+
+    /**
      * Response error
      * @var null|Zend_Json_Server_Error
      */

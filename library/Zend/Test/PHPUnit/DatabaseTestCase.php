@@ -136,7 +136,7 @@ abstract class Zend_Test_PHPUnit_DatabaseTestCase extends PHPUnit_Extensions_Dat
      * Create a data table based on a Zend_Db_Table_Rowset instance
      *
      * @param  Zend_Db_Table_Rowset_Abstract $rowset
-     * @param  string
+     * @param  string $tableName
      * @return Zend_Test_PHPUnit_Db_DataSet_DbRowset
      */
     protected function createDbRowset(Zend_Db_Table_Rowset_Abstract $rowset, $tableName = null)

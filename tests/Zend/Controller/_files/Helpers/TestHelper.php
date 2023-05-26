@@ -34,7 +34,6 @@
  */
 class MyApp_TestHelper extends Zend_Controller_Action_Helper_Abstract
 {
-
     /**
      * Test Function for direct
      *
@@ -44,5 +43,4 @@ class MyApp_TestHelper extends Zend_Controller_Action_Helper_Abstract
     {
         $this->getResponse()->appendBody('running direct call');
     }
-
 }

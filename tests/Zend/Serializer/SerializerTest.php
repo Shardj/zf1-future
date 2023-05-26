@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,15 +35,14 @@ require_once 'Zend/Serializer.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Serializer_SerializerTest extends PHPUnit_Framework_TestCase
+class Zend_Serializer_SerializerTest extends TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         Zend_Serializer::resetAdapterLoader();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -64,13 +66,15 @@ class Zend_Serializer_SerializerTest extends PHPUnit_Framework_TestCase
 
     public function testFactoryUnknownAdapter()
     {
-        $this->setExpectedException('Zend_Serializer_Exception','Can\'t load serializer adapter');
+        $this->expectException('Zend_Serializer_Exception');
+        $this->expectExceptionMessage('Can\'t load serializer adapter');
         Zend_Serializer::factory('unknown');
     }
     
     public function testFactoryOnADummyClassAdapter()
     {
-        $this->setExpectedException('Zend_Serializer_Exception','must implement Zend_Serializer_Adapter_AdapterInterface');
+        $this->expectException('Zend_Serializer_Exception');
+        $this->expectExceptionMessage('must implement Zend_Serializer_Adapter_AdapterInterface');
         Zend_Serializer::setAdapterLoader(new Zend_Loader_PluginLoader(['Zend_Serializer_Adapter' => dirname(__FILE__) . '/_files']));
         Zend_Serializer::factory('dummy');
     }
@@ -128,5 +132,4 @@ class Zend_Serializer_SerializerTest extends PHPUnit_Framework_TestCase
         $expected = $adapter->unserialize($value);
         $this->assertEquals($expected, Zend_Serializer::unserialize($value, ['adapter' => $adapter]));
     }
-
 }

@@ -36,10 +36,8 @@ require_once 'Zend/Db/Table/Relationships/TestCommon.php';
  */
 class Zend_Db_Table_Relationships_OracleTest extends Zend_Db_Table_Relationships_TestCommon
 {
-
     public function getDriver()
     {
         return 'Oracle';
     }
-
 }

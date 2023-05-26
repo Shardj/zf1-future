@@ -124,7 +124,7 @@ class Zend_Gdata_Query
     /**
      * @param string $name
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setParam($name, $value)
     {
@@ -142,7 +142,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setAlt($value)
     {
@@ -156,7 +156,7 @@ class Zend_Gdata_Query
 
     /**
      * @param int $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setMaxResults($value)
     {
@@ -170,7 +170,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setQuery($value)
     {
@@ -184,7 +184,7 @@ class Zend_Gdata_Query
 
     /**
      * @param int $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setStartIndex($value)
     {
@@ -198,7 +198,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setUpdatedMax($value)
     {
@@ -212,7 +212,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setUpdatedMin($value)
     {
@@ -226,7 +226,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setPublishedMax($value)
     {
@@ -240,7 +240,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setPublishedMin($value)
     {
@@ -254,7 +254,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setAuthor($value)
     {
@@ -376,7 +376,7 @@ class Zend_Gdata_Query
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Query Provides a fluent interface
+     * @return $this
      */
     public function setCategory($value)
     {

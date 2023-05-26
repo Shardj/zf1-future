@@ -39,7 +39,6 @@ require_once 'Zend/Markup/Parser/ParserInterface.php';
  */
 class Zend_Markup_Test_Parser_MockParser implements Zend_Markup_Parser_ParserInterface
 {
-
     /**
      * Parse a string
      *
@@ -65,7 +64,7 @@ class Zend_Markup_Test_Parser_MockParser implements Zend_Markup_Parser_ParserInt
         }
 
         // initialize variables
-        $tree    = new Zend_Markup_TokenList();
+        $tree = new Zend_Markup_TokenList();
         $current = new Zend_Markup_Token(
             '',
             Zend_Markup_Token::TYPE_NONE,

@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -52,7 +57,7 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Cloud
  */
-class Zend_Cloud_StorageService_FactoryTest extends PHPUnit_Framework_TestCase
+class Zend_Cloud_StorageService_FactoryTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -61,8 +66,8 @@ class Zend_Cloud_StorageService_FactoryTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testGetStorageAdapterKey()
@@ -85,8 +90,8 @@ class Zend_Cloud_StorageService_FactoryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Zend_Cloud_StorageService_Adapter_FileSystem', get_class($fileSystemAdapter));
 
         // Azure adapter
-        $azureConfig    = new Zend_Config_Ini(realpath(dirname(__FILE__) . '/_files/config/windowsazure.ini'));
-        $azureConfig    = $azureConfig->toArray();
+        $azureConfig = new Zend_Config_Ini(realpath(dirname(__FILE__) . '/_files/config/windowsazure.ini'));
+        $azureConfig = $azureConfig->toArray();
         $azureContainer = $azureConfig[Zend_Cloud_StorageService_Adapter_WindowsAzure::CONTAINER];
         $azureConfig[Zend_Cloud_StorageService_Adapter_WindowsAzure::HTTP_ADAPTER] = $httptest;
         $q = "?";
@@ -96,10 +101,10 @@ class Zend_Cloud_StorageService_FactoryTest extends PHPUnit_Framework_TestCase
         $acctName = $doc->createAttribute('AccountName');
         $acctName->value = 'http://myaccount.blob.core.windows.net';
         $root->appendChild($acctName);
-        $maxResults     = $doc->createElement('MaxResults', 1);
-        $containers     = $doc->createElement('Containers');
-        $container      = $doc->createElement('Container');
-        $containerName  = $doc->createElement('Name', $azureContainer);
+        $maxResults = $doc->createElement('MaxResults', 1);
+        $containers = $doc->createElement('Containers');
+        $container = $doc->createElement('Container');
+        $containerName = $doc->createElement('Name', $azureContainer);
         $container->appendChild($containerName);
         $containers->appendChild($container);
         $root->appendChild($maxResults);
@@ -117,8 +122,8 @@ class Zend_Cloud_StorageService_FactoryTest extends PHPUnit_Framework_TestCase
     {
         // No need to overdo it; we'll test the array config with just one adapter.
         $fileSystemConfig = [
-            Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY        => 'Zend_Cloud_StorageService_Adapter_FileSystem',
-            Zend_Cloud_StorageService_Adapter_FileSystem::LOCAL_DIRECTORY => dirname(__FILE__) ."/_files/data",
+            Zend_Cloud_StorageService_Factory::STORAGE_ADAPTER_KEY => 'Zend_Cloud_StorageService_Adapter_FileSystem',
+            Zend_Cloud_StorageService_Adapter_FileSystem::LOCAL_DIRECTORY => dirname(__FILE__) . "/_files/data",
         ];
         $fileSystemAdapter = Zend_Cloud_StorageService_Factory::getAdapter($fileSystemConfig);
         $this->assertEquals('Zend_Cloud_StorageService_Adapter_FileSystem', get_class($fileSystemAdapter));

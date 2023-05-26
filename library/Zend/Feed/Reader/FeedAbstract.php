@@ -89,7 +89,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
     /**
      * Constructor
      *
-     * @param DomDocument The DOM object for the feed's XML
+     * @param DomDocument $domDocument The DOM object for the feed's XML
      * @param string $type Feed type
      */
     public function __construct(DOMDocument $domDocument, $type = null)

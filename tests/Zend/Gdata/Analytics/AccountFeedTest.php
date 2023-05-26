@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,12 +35,12 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Analytics
  */
-class Zend_Gdata_Analytics_AccountFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Analytics_AccountFeedTest extends TestCase
 {
     /** @var AccountFeed */
     public $accountFeed;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->accountFeed = new Zend_Gdata_Analytics_AccountFeed(
             file_get_contents(dirname(__FILE__) . '/_files/TestAccountFeed.xml')
@@ -53,7 +56,7 @@ class Zend_Gdata_Analytics_AccountFeedTest extends PHPUnit_Framework_TestCase
         }
     }
 
-	public function testFirstAccountProperties()
+    public function testFirstAccountProperties()
     {
         $account = $this->accountFeed->entries[0];
         $this->assertEquals(876543, "{$account->accountId}");

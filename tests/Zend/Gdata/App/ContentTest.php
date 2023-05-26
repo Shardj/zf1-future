@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,25 +35,44 @@ require_once 'Zend/Gdata/App.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
-class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_App_ContentTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $contentText;
 
-    public function setUp() {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $contentText2;
+
+    /**
+     * @var \Zend_Gdata_App_Extension_Content|mixed
+     */
+    protected $content;
+
+    protected function setUp(): void
+    {
         $this->contentText = file_get_contents(
-                'Zend/Gdata/App/_files/ContentElementSample1.xml',
-                true);
+            'Zend/Gdata/App/_files/ContentElementSample1.xml',
+            true
+        );
         $this->contentText2 = file_get_contents(
-                'Zend/Gdata/App/_files/ContentElementSample2.xml',
-                true);
+            'Zend/Gdata/App/_files/ContentElementSample2.xml',
+            true
+        );
         $this->content = new Zend_Gdata_App_Extension_Content();
     }
 
-    public function testEmptyContentShouldHaveEmptyExtensionsList() {
+    public function testEmptyContentShouldHaveEmptyExtensionsList()
+    {
         $this->assertTrue(is_array($this->content->extensionElements));
         $this->assertTrue(count($this->content->extensionElements) == 0);
     }
 
-    public function testEmptyContentToAndFromStringShouldMatch() {
+    public function testEmptyContentToAndFromStringShouldMatch()
+    {
         $contentXml = $this->content->saveXML();
         $newContent = new Zend_Gdata_App_Extension_Content();
         $newContent->transferFromXML($contentXml);
@@ -58,7 +80,8 @@ class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($contentXml == $newContentXml);
     }
 
-    public function testContentWithTextAndTypeToAndFromStringShouldMatch() {
+    public function testContentWithTextAndTypeToAndFromStringShouldMatch()
+    {
         $this->content->text = '<img src="http://www.example.com/image.jpg"/>';
         $this->content->type = 'xhtml';
         $contentXml = $this->content->saveXML();
@@ -70,7 +93,8 @@ class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('xhtml', $newContent->type);
     }
 
-    public function testContentWithSrcAndTypeToAndFromStringShouldMatch() {
+    public function testContentWithSrcAndTypeToAndFromStringShouldMatch()
+    {
         $this->content->src = 'http://www.example.com/image.png';
         $this->content->type = 'image/png';
         $contentXml = $this->content->saveXML();
@@ -82,16 +106,17 @@ class Zend_Gdata_App_ContentTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('image/png', $newContent->type);
     }
 
-    public function testConvertContentWithSrcAndTypeToAndFromString() {
+    public function testConvertContentWithSrcAndTypeToAndFromString()
+    {
         $this->content->transferFromXML($this->contentText);
         $this->assertEquals('http://www.example.com/image.png', $this->content->src);
         $this->assertEquals('image/png', $this->content->type);
     }
 
-    public function testConvertContentWithTextAndTypeToAndFromString() {
+    public function testConvertContentWithTextAndTypeToAndFromString()
+    {
         $this->content->transferFromXML($this->contentText2);
         $this->assertEquals('xhtml', $this->content->type);
         $this->assertEquals(1, count($this->content->extensionElements));
     }
-
 }

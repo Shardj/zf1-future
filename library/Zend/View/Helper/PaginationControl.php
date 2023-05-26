@@ -78,7 +78,7 @@ class Zend_View_Helper_PaginationControl
      * if so, uses that.  Also, if no scrolling style or partial are specified,
      * the defaults will be used (if set).
      *
-     * @param  Zend_Paginator (Optional) $paginator
+     * @param  Zend_Paginator $paginator (Optional) $paginator
      * @param  string $scrollingStyle (Optional) Scrolling style
      * @param  string $partial (Optional) View partial
      * @param  array|string $params (Optional) params to pass to the partial

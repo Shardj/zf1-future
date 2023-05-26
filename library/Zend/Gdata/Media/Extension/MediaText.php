@@ -147,7 +147,7 @@ class Zend_Gdata_Media_Extension_MediaText extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaText Provides a fluent interface
+     * @return $this
      */
     public function setType($value)
     {
@@ -165,7 +165,7 @@ class Zend_Gdata_Media_Extension_MediaText extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaText Provides a fluent interface
+     * @return $this
      */
     public function setLang($value)
     {
@@ -183,7 +183,7 @@ class Zend_Gdata_Media_Extension_MediaText extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaText Provides a fluent interface
+     * @return $this
      */
     public function setStart($value)
     {
@@ -201,7 +201,7 @@ class Zend_Gdata_Media_Extension_MediaText extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaText Provides a fluent interface
+     * @return $this
      */
     public function setEnd($value)
     {

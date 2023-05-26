@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -25,6 +28,10 @@
  */
 require_once 'Zend/TimeSync.php';
 
+if (!defined('PHPUnit_MAIN_METHOD')) {
+    define('PHPUnit_MAIN_METHOD', 'Zend_TranslateTest::main');
+}
+
 /**
  * @category   Zend
  * @package    Zend_TimeSync
@@ -33,18 +40,18 @@ require_once 'Zend/TimeSync.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_TimeSync
  */
-class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
+class Zend_TimeSyncTest extends TestCase
 {
     public $timeservers = [
         // invalid servers
-        'server_a'  => 'ntp://be.foo.bar.org',
-        'server_b'  => 'sntp://be.foo.bar.org',
-        'server_c'  => 'sntp://foo:bar@be.foo.bar.org:123',
+        'server_a' => 'ntp://be.foo.bar.org',
+        'server_b' => 'sntp://be.foo.bar.org',
+        'server_c' => 'sntp://foo:bar@be.foo.bar.org:123',
 
         // valid servers
-        'server_d'  => 'ntp://be.pool.ntp.org',
-        'server_e'  => 'ntp://time.windows.com',
-        'server_f'  => 'sntp://time-C.timefreq.bldrdoc.gov'
+        'server_d' => 'ntp://be.pool.ntp.org',
+        'server_e' => 'ntp://time.windows.com',
+        'server_f' => 'sntp://time-C.timefreq.bldrdoc.gov'
     ];
 
     /**
@@ -120,6 +127,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      * cause the default scheme to be used (ntp)
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testInitUnknownScheme()
     {
@@ -155,7 +163,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
     {
         $options = [
             'timeout' => 5,
-            'foo'     => 'bar'
+            'foo' => 'bar'
         ];
 
         $server = new Zend_TimeSync();
@@ -169,6 +177,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      * Test getting an option that is not set
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testGetInvalidOptionKey()
     {
@@ -186,6 +195,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      * Test marking a none existing timeserver as current
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testSetUnknownCurrent()
     {
@@ -203,6 +213,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      * Test getting the current timeserver when none is set
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testGetUnknownCurrent()
     {
@@ -220,6 +231,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
      * Test getting a none existing timeserver
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testGetUnknownServer()
     {
@@ -247,7 +259,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
             $result = $server->getDate();
             $this->assertTrue($result instanceof Zend_Date);
         } catch (Zend_TimeSync_Exception $e) {
-            $this->assertContains('all timeservers are bogus', $e->getMessage());
+            $this->assertStringContainsString('all timeservers are bogus', $e->getMessage());
         }
     }
 
@@ -264,7 +276,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
             $result = $server->getDate();
             $this->assertTrue($result instanceof Zend_Date);
         } catch (Zend_TimeSync_Exception $e) {
-            $this->assertContains('all timeservers are bogus', $e->getMessage());
+            $this->assertStringContainsString('all timeservers are bogus', $e->getMessage());
         }
     }
 
@@ -281,7 +293,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
             $result = $server->getDate();
             $this->assertTrue($result instanceof Zend_Date);
         } catch (Zend_TimeSync_Exception $e) {
-            $this->assertContains('all timeservers are bogus', $e->getMessage());
+            $this->assertStringContainsString('all timeservers are bogus', $e->getMessage());
         }
     }
 
@@ -304,7 +316,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
         } catch (Zend_TimeSync_Exception $e) {
             $exceptions = $e->get();
 
-            foreach($exceptions as $key => $exception) {
+            foreach ($exceptions as $key => $exception) {
                 $this->assertTrue($exception instanceof Zend_TimeSync_Exception);
             }
         }
@@ -333,7 +345,7 @@ class Zend_TimeSyncTest extends PHPUnit_Framework_TestCase
     {
         $server = new Zend_TimeSync('time.windows.com');
         try {
-            $date   = $server->getDate();
+            $date = $server->getDate();
             $result = $server->getInfo();
 
             $this->assertTrue(count($result) > 0);

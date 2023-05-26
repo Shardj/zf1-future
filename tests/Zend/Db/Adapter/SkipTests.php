@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -30,11 +33,11 @@
  * @group      Zend_Db
  * @group      Zend_Db_Adapter
  */
-abstract class Zend_Db_Adapter_Skip_CommonTest extends PHPUnit_Framework_TestCase
+abstract class Zend_Db_Adapter_Skip_CommonTest extends TestCase
 {
     abstract public function getDriver();
 
-    public function setUp()
+    protected function setUp(): void
     {
         $driver = $this->getDriver();
         $this->markTestSkipped("Testing Zend_Db_Adapter_$driver is not enabled in TestConfiguration.php");
@@ -120,7 +123,7 @@ class Zend_Db_Adapter_Skip_MysqliTest extends Zend_Db_Adapter_Skip_CommonTest
  */
 class Zend_Db_Adapter_Skip_Pdo_MssqlTest extends Zend_Db_Adapter_Skip_CommonTest
 {
-    function getDriver()
+    public function getDriver()
     {
         return 'Pdo_Mssql';
     }
@@ -205,4 +208,3 @@ class Zend_Db_Adapter_Skip_Pdo_SqliteTest extends Zend_Db_Adapter_Skip_CommonTes
         return 'Pdo_Sqlite';
     }
 }
-

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,8 +37,18 @@ require_once 'Zend/Filter.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_FilterTest extends PHPUnit_Framework_TestCase
+class Zend_FilterTest extends TestCase
 {
+    /**
+     * @var null|bool
+     */
+    protected $error;
+
+    /**
+     * @var bool
+     */
+    protected $_errorOccurred;
+
     /**
      * Zend_Filter object
      *
@@ -48,9 +61,9 @@ class Zend_FilterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->error   = null;
+        $this->error = null;
         $this->_filter = new Zend_Filter();
     }
 
@@ -59,7 +72,7 @@ class Zend_FilterTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         Zend_Filter::setDefaultNamespaces([]);
     }
@@ -138,10 +151,10 @@ class Zend_FilterTest extends PHPUnit_Framework_TestCase
      *
      * @group  ZF-2724
      * @return void
-     * @expectedException Zend_Filter_Exception
      */
     public function testStaticFactoryClassNotFound()
     {
+        $this->expectException(Zend_Filter_Exception::class);
         Zend_Filter::filterStatic('1234', 'UnknownFilter');
     }
 

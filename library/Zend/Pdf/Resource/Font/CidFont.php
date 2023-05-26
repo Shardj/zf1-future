@@ -57,6 +57,11 @@ require_once 'Zend/Pdf/Resource/Font.php';
 abstract class Zend_Pdf_Resource_Font_CidFont extends Zend_Pdf_Resource_Font
 {
     /**
+     * @var mixed
+     */
+    protected $_isMonospaced;
+
+    /**
      * Object representing the font's cmap (character to glyph map).
      * @var Zend_Pdf_Cmap
      */

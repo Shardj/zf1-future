@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,26 +46,26 @@ require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Service_WindowsAzure_RetryPolicyTest extends PHPUnit_Framework_TestCase
+class Zend_Service_WindowsAzure_RetryPolicyTest extends TestCase
 {
     /**
      * Helper variable for counting retries
-     * 
+     *
      * @var int
      */
     protected $_executedRetries = 0;
     
     /**
-     * Helper variable for setting Exception count 
-     * 
+     * Helper variable for setting Exception count
+     *
      * @var int
      */
     protected $_exceptionCount = 0;
     
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Service_WindowsAzure_RetryPolicyTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Service_WindowsAzure_RetryPolicyTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**

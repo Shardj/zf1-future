@@ -31,7 +31,7 @@ require_once 'Zend/View/Helper/ServerUrl.php';
  */
 class My_SchemeHelper extends Zend_View_Helper_ServerUrl
 {
-    const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
+    public const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
 
     public function serverUrl($requestUri = null)
     {

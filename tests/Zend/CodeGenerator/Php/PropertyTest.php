@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,10 +37,9 @@ require_once 'Zend/Reflection/Class.php';
  * @group Zend_CodeGenerator
  * @group Zend_CodeGenerator_Php
  */
-class Zend_CodeGenerator_Php_PropertyTest extends PHPUnit_Framework_TestCase
+class Zend_CodeGenerator_Php_PropertyTest extends TestCase
 {
-
-    public function setup()
+    protected function setUp(): void
     {
         if (!class_exists('Zend_CodeGenerator_Php_TestClassWithManyProperties')) {
             require_once dirname(__FILE__) . '/_files/TestClassWithManyProperties.php';
@@ -47,7 +49,7 @@ class Zend_CodeGenerator_Php_PropertyTest extends PHPUnit_Framework_TestCase
     public function testPropertyConstructor()
     {
         $codeGenProperty = new Zend_CodeGenerator_Php_Property();
-        $this->isInstanceOf($codeGenProperty, 'Zend_CodeGenerator_Php_Property');
+        $this->assertInstanceOf('Zend_CodeGenerator_Php_Property', $codeGenProperty);
     }
 
     public function testPropertyReturnsSimpleValue()
@@ -172,12 +174,12 @@ EOS;
             'defaultValue' => new stdClass(),
         ]);
 
-        $this->setExpectedException("Zend_CodeGenerator_Php_Exception");
+        $this->expectException("Zend_CodeGenerator_Php_Exception");
 
         $codeGenProperty->generate();
     }
 
-    static public function dataSetTypeSetValueGenerate()
+    public static function dataSetTypeSetValueGenerate()
     {
         return [
             ['string', 'foo', "'foo';"],
@@ -218,7 +220,8 @@ EOS;
      */
     public function testSetBogusTypeSetValueGenerateUseAutoDetection($type, $value, $code)
     {
-        if($type == 'constant') {
+        if ($type == 'constant') {
+            $this->expectNotToPerformAssertions();
             return; // constant can only be detected explicitly
         }
 
@@ -236,8 +239,8 @@ EOS;
     {
         $property = new Zend_CodeGenerator_Php_Property([
             'defaultValue' => ['value' => 1.337, 'type' => 'string'],
-            'name'         => 'ZF8849',
-            'const'        => true
+            'name' => 'ZF8849',
+            'const' => true
         ]);
 
         $this->assertEquals(

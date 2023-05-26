@@ -40,6 +40,8 @@ require_once 'Zend/Queue/Adapter/Db.php';
  */
 class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
 {
+    protected $_msg_table;
+
     /**
      * Return the first element in the queue
      *
@@ -48,7 +50,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
      * @param  Zend_Queue $queue
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages=null, $timeout=null, Zend_Queue $queue=null)
+    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null)
     {
         if ($maxMessages === null) {
             $maxMessages = 1;
@@ -84,7 +86,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
                 $data['handle'] = md5(uniqid(rand(), true));
 
                 $update = [
-                    'handle'  => $data['handle'],
+                    'handle' => $data['handle'],
                     'timeout' => $microtime
                 ];
 
@@ -111,8 +113,8 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
         }
 
         $config = [
-            'queue'    => $queue,
-            'data'     => $msgs,
+            'queue' => $queue,
+            'data' => $msgs,
             'messageClass' => $queue->getMessageClass()
         ];
 

@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,12 +42,12 @@ class Zend_Translate_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Translate');
+        $suite = new TestSuite('Zend Framework - Zend_Translate');
 
         $suite->addTestSuite('Zend_Translate_Adapter_AllTests');
 
@@ -51,7 +55,6 @@ class Zend_Translate_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Translate_Adapter_AllTests::main') {
+if (PHPUnit_MAIN_METHOD == 'Zend_Translate_AllTests::main') {
     Zend_Translate_AllTests::main();
 }
-

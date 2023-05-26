@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,7 +35,7 @@ require_once 'Zend/Feed.php';
  * @group      Zend_Feed
  */
 
-class AtomTest extends PHPUnit_Framework_TestCase
+class AtomTest extends TestCase
 {
     public function testConstructorElementException()
     {
@@ -40,7 +43,7 @@ class AtomTest extends PHPUnit_Framework_TestCase
             new Zend_Feed_Entry_Rss(null, 'foo');
         } catch (Exception $e) {
             self::assertInstanceOf('Zend_Feed_Exception', $e);
-            self::assertContains('message not available', $e->getMessage());
+            self::assertStringContainsString('message not available', $e->getMessage());
 
             return;
         }

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -38,8 +41,12 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
  * @group      Zend_Service_Amazon
  * @group      Zend_Service_Amazon_Ec2
  */
-class InstanceReservedTest extends PHPUnit_Framework_TestCase
+class InstanceReservedTest extends TestCase
 {
+    /**
+     * @var \Zend_Http_Client_Adapter_Test|mixed
+     */
+    protected $adapter;
 
     /**
      * @var Zend_Service_Amazon_Ec2_Instance_Reserved
@@ -49,7 +56,7 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->Zend_Service_Amazon_Ec2_Instance_Reserved = new Zend_Service_Amazon_Ec2_Instance_Reserved('access_key', 'secret_access_key');
@@ -60,13 +67,12 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
         ]);
         $this->adapter = $adapter;
         Zend_Service_Amazon_Ec2_Instance_Reserved::setHttpClient($client);
-
     }
 
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->adapter);
         $this->Zend_Service_Amazon_Ec2_Instance_Reserved = null;
@@ -87,21 +93,21 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
                     . "Expires: Tue, 31 Mar 1981 05:00:00 GMT\r\n"
                     . "Connection: close\r\n"
                     . "\r\n"
-                    ."<DescribeReservedInstancesResponse xmlns=\"http://ec2.amazonaws.com/doc/2009-04-04/\">\r\n"
-                    ."  <reservedInstancesSet>\r\n"
-                    ."    <item>\r\n"
-                    ."      <reservedInstancesId>4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8</reservedInstancesId>\r\n"
-                    ."      <instanceType>m1.small</instanceType>\r\n"
-                    ."      <availabilityZone>us-east-1a</availabilityZone>\r\n"
-                    ."      <duration>12</duration>\r\n"
-                    ."      <usagePrice>0.00</usagePrice>\r\n"
-                    ."      <fixedPrice>0.00</fixedPrice>\r\n"
-                    ."      <instanceCount>19</instanceCount>\r\n"
-                    ."      <productDescription>m1.small offering in us-east-1a</productDescription>\r\n"
-                    ."      <state>Active</state>\r\n"
-                    ."    </item>\r\n"
-                    ."  </reservedInstancesSet>\r\n"
-                    ."</DescribeReservedInstancesResponse>";
+                    . "<DescribeReservedInstancesResponse xmlns=\"http://ec2.amazonaws.com/doc/2009-04-04/\">\r\n"
+                    . "  <reservedInstancesSet>\r\n"
+                    . "    <item>\r\n"
+                    . "      <reservedInstancesId>4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8</reservedInstancesId>\r\n"
+                    . "      <instanceType>m1.small</instanceType>\r\n"
+                    . "      <availabilityZone>us-east-1a</availabilityZone>\r\n"
+                    . "      <duration>12</duration>\r\n"
+                    . "      <usagePrice>0.00</usagePrice>\r\n"
+                    . "      <fixedPrice>0.00</fixedPrice>\r\n"
+                    . "      <instanceCount>19</instanceCount>\r\n"
+                    . "      <productDescription>m1.small offering in us-east-1a</productDescription>\r\n"
+                    . "      <state>Active</state>\r\n"
+                    . "    </item>\r\n"
+                    . "  </reservedInstancesSet>\r\n"
+                    . "</DescribeReservedInstancesResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Reserved->describeInstances('4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8');
@@ -121,7 +127,6 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
         ];
 
         $this->assertSame($arrReturn, $return);
-
     }
 
     /**
@@ -138,19 +143,19 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
                     . "Expires: Tue, 31 Mar 1981 05:00:00 GMT\r\n"
                     . "Connection: close\r\n"
                     . "\r\n"
-                    ."<DescribeReservedInstancesOfferingsResponse xmlns=\"http://ec2.amazonaws.com/doc/2009-04-04/\">\r\n"
-                    ."  <reservedInstancesOfferingsSet>\r\n"
-                    ."    <item>\r\n"
-                    ."      <reservedInstancesOfferingId>4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8</reservedInstancesOfferingId>\r\n"
-                    ."      <instanceType>m1.small</instanceType>\r\n"
-                    ."      <availabilityZone>us-east-1a</availabilityZone>\r\n"
-                    ."      <duration>12</duration>\r\n"
-                    ."      <usagePrice>0.00</usagePrice>\r\n"
-                    ."      <fixedPrice>0.00</fixedPrice>\r\n"
-                    ."      <productDescription>m1.small offering in us-east-1a</productDescription>\r\n"
-                    ."    </item>\r\n"
-                    ."  </reservedInstancesOfferingsSet>\r\n"
-                    ."</DescribeReservedInstancesOfferingsResponse>";
+                    . "<DescribeReservedInstancesOfferingsResponse xmlns=\"http://ec2.amazonaws.com/doc/2009-04-04/\">\r\n"
+                    . "  <reservedInstancesOfferingsSet>\r\n"
+                    . "    <item>\r\n"
+                    . "      <reservedInstancesOfferingId>4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8</reservedInstancesOfferingId>\r\n"
+                    . "      <instanceType>m1.small</instanceType>\r\n"
+                    . "      <availabilityZone>us-east-1a</availabilityZone>\r\n"
+                    . "      <duration>12</duration>\r\n"
+                    . "      <usagePrice>0.00</usagePrice>\r\n"
+                    . "      <fixedPrice>0.00</fixedPrice>\r\n"
+                    . "      <productDescription>m1.small offering in us-east-1a</productDescription>\r\n"
+                    . "    </item>\r\n"
+                    . "  </reservedInstancesOfferingsSet>\r\n"
+                    . "</DescribeReservedInstancesOfferingsResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Reserved->describeOfferings();
@@ -168,7 +173,6 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
         ];
 
         $this->assertSame($arrReturn, $return);
-
     }
 
     /**
@@ -185,16 +189,13 @@ class InstanceReservedTest extends PHPUnit_Framework_TestCase
                     . "Expires: Tue, 31 Mar 1981 05:00:00 GMT\r\n"
                     . "Connection: close\r\n"
                     . "\r\n"
-                    ."<PurchaseReservedInstancesOfferingResponse xmlns=\"http://ec2.amazonaws.com/doc/2009-04-04/\">\r\n"
-                    ."  <reservedInstancesId>4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8</reservedInstancesId>\r\n"
-                    ."</PurchaseReservedInstancesOfferingResponse>";
+                    . "<PurchaseReservedInstancesOfferingResponse xmlns=\"http://ec2.amazonaws.com/doc/2009-04-04/\">\r\n"
+                    . "  <reservedInstancesId>4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8</reservedInstancesId>\r\n"
+                    . "</PurchaseReservedInstancesOfferingResponse>";
         $this->adapter->setResponse($rawHttpResponse);
 
         $return = $this->Zend_Service_Amazon_Ec2_Instance_Reserved->purchaseOffering('4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8');
 
         $this->assertSame('4b2293b4-5813-4cc8-9ce3-1957fc1dcfc8', $return);
-
     }
-
 }
-

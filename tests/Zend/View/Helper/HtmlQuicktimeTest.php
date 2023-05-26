@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -37,13 +42,17 @@ require_once 'Zend/View/Helper/HtmlQuicktime.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-class Zend_View_Helper_HtmlQuicktimeTest extends PHPUnit_Framework_TestCase
+class Zend_View_Helper_HtmlQuicktimeTest extends TestCase
 {
     /**
      * @var Zend_View_Helper_HtmlQuicktime
      */
     public $helper;
 
+    /**
+     * @var Zend_View
+     */
+    protected $view;
     /**
      * Runs the test methods of this class.
      *
@@ -52,9 +61,8 @@ class Zend_View_Helper_HtmlQuicktimeTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_View_Helper_HtmlQuicktimeTest");
-        PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_View_Helper_HtmlQuicktimeTest");
+        (new TestRunner())->run($suite);
     }
 
     /**
@@ -63,14 +71,14 @@ class Zend_View_Helper_HtmlQuicktimeTest extends PHPUnit_Framework_TestCase
      *
      * @access protected
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_HtmlQuicktime();
         $this->helper->setView($this->view);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->helper);
     }
@@ -84,8 +92,8 @@ class Zend_View_Helper_HtmlQuicktimeTest extends PHPUnit_Framework_TestCase
                             . ' classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"'
                             . ' codebase="http://www.apple.com/qtactivex/qtplugin.cab">';
 
-        $this->assertContains($objectStartElement, $htmlQuicktime);
-        $this->assertContains('</object>', $htmlQuicktime);
+        $this->assertStringContainsString($objectStartElement, $htmlQuicktime);
+        $this->assertStringContainsString('</object>', $htmlQuicktime);
     }
 }
 

@@ -64,7 +64,7 @@ abstract class Zend_Controller_Action_Helper_AutoComplete_Abstract extends Zend_
     /**
      * Disable layouts and view renderer
      *
-     * @return Zend_Controller_Action_Helper_AutoComplete_Abstract Provides a fluent interface
+     * @return $this
      */
     public function disableLayouts()
     {

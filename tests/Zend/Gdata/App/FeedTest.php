@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -33,22 +36,35 @@ require_once 'Zend/Gdata/App.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_App
  */
-class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_App_FeedTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $feedText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_App_Feed|mixed
+     */
+    protected $feed;
+
+    protected function setUp(): void
+    {
         $this->feedText = file_get_contents(
-                'Zend/Gdata/App/_files/FeedSample1.xml',
-                true);
+            'Zend/Gdata/App/_files/FeedSample1.xml',
+            true
+        );
         $this->feed = new Zend_Gdata_App_Feed();
     }
 
-    public function testEmptyFeedShouldHaveEmptyExtensionsList() {
+    public function testEmptyFeedShouldHaveEmptyExtensionsList()
+    {
         $this->assertTrue(is_array($this->feed->extensionElements));
         $this->assertTrue(count($this->feed->extensionElements) == 0);
     }
 
-    public function testEmptyFeedToAndFromStringShouldMatch() {
+    public function testEmptyFeedToAndFromStringShouldMatch()
+    {
         $feedXml = $this->feed->saveXML();
         $newFeed = new Zend_Gdata_App_Feed();
         $newFeed->transferFromXML($feedXml);
@@ -56,7 +72,8 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($feedXml == $newFeedXml);
     }
 
-    public function testConvertFeedToAndFromString() {
+    public function testConvertFeedToAndFromString()
+    {
         $this->feed->transferFromXML($this->feedText);
         $feedXml = $this->feed->saveXML();
         $newFeed = new Zend_Gdata_App_Feed();
@@ -67,38 +84,63 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('2005-07-31T12:29:29Z', $newFeed->updated->text);
         $this->assertEquals('tag:example.org,2003:3', $newFeed->id->text);
         $this->assertEquals(2, count($newFeed->link));
-        $this->assertEquals('http://example.org/',
-                $newFeed->getAlternateLink()->href);
-        $this->assertEquals('en',
-                $newFeed->getAlternateLink()->hrefLang);
-        $this->assertEquals('text/html',
-                $newFeed->getAlternateLink()->type);
-        $this->assertEquals('http://example.org/feed.atom',
-                $newFeed->getSelfLink()->href);
-        $this->assertEquals('application/atom+xml',
-                $newFeed->getSelfLink()->type);
-        $this->assertEquals('Copyright (c) 2003, Mark Pilgrim',
-                $newFeed->rights->text);
+        $this->assertEquals(
+            'http://example.org/',
+            $newFeed->getAlternateLink()->href
+        );
+        $this->assertEquals(
+            'en',
+            $newFeed->getAlternateLink()->hrefLang
+        );
+        $this->assertEquals(
+            'text/html',
+            $newFeed->getAlternateLink()->type
+        );
+        $this->assertEquals(
+            'http://example.org/feed.atom',
+            $newFeed->getSelfLink()->href
+        );
+        $this->assertEquals(
+            'application/atom+xml',
+            $newFeed->getSelfLink()->type
+        );
+        $this->assertEquals(
+            'Copyright (c) 2003, Mark Pilgrim',
+            $newFeed->rights->text
+        );
         $entry = $newFeed->entry[0];
         $this->assertEquals('Atom draft-07 snapshot', $entry->title->text);
-        $this->assertEquals('tag:example.org,2003:3.2397',
-                $entry->id->text);
+        $this->assertEquals(
+            'tag:example.org,2003:3.2397',
+            $entry->id->text
+        );
         $this->assertEquals('2005-07-31T12:29:29Z', $entry->updated->text);
-        $this->assertEquals('2003-12-13T08:29:29-04:00',
-                $entry->published->text);
-        $this->assertEquals('Mark Pilgrim',
-                $entry->author[0]->name->text);
-        $this->assertEquals('http://example.org/',
-                $entry->author[0]->uri->text);
+        $this->assertEquals(
+            '2003-12-13T08:29:29-04:00',
+            $entry->published->text
+        );
+        $this->assertEquals(
+            'Mark Pilgrim',
+            $entry->author[0]->name->text
+        );
+        $this->assertEquals(
+            'http://example.org/',
+            $entry->author[0]->uri->text
+        );
         $this->assertEquals(2, count($entry->contributor));
-        $this->assertEquals('Sam Ruby',
-                $entry->contributor[0]->name->text);
-        $this->assertEquals('Joe Gregorio',
-                $entry->contributor[1]->name->text);
+        $this->assertEquals(
+            'Sam Ruby',
+            $entry->contributor[0]->name->text
+        );
+        $this->assertEquals(
+            'Joe Gregorio',
+            $entry->contributor[1]->name->text
+        );
         $this->assertEquals('xhtml', $entry->content->type);
     }
 
-    public function testCanAddIndividualEntries() {
+    public function testCanAddIndividualEntries()
+    {
         $this->feed->transferFromXML($this->feedText);
         $this->assertEquals(1, count($this->feed->entry));
         $oldTitle = $this->feed->entry[0]->title->text;
@@ -110,13 +152,15 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Foo", $this->feed->entry[1]->title->text);
     }
 
-    public function testCanSetAndGetEtag() {
+    public function testCanSetAndGetEtag()
+    {
         $data = "W/&amp;FooBarBaz&amp;";
         $this->feed->setEtag($data);
         $this->assertEquals($this->feed->getEtag(), $data);
     }
 
-    public function testSetServicePropagatesToChildren() {
+    public function testSetServicePropagatesToChildren()
+    {
         // Setup
         $entries = [new Zend_Gdata_App_Entry(),
                          new Zend_Gdata_App_Entry()];
@@ -132,16 +176,20 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
         if (!is_object($service)) {
             $this->fail('No feed service received');
         }
-        $this->assertEquals('Zend_Gdata_App',
-                            get_class($service));
+        $this->assertEquals(
+            'Zend_Gdata_App',
+            get_class($service)
+        );
 
         foreach ($entries as $entry) {
             $service = $entry->getService();
             if (!is_object($service)) {
                 $this->fail('No entry service received');
             }
-            $this->assertEquals('Zend_Gdata_App',
-                                get_class($service));
+            $this->assertEquals(
+                'Zend_Gdata_App',
+                get_class($service)
+            );
         }
 
         // Set null service instance and test for propagation
@@ -272,7 +320,7 @@ class Zend_Gdata_App_FeedTest extends PHPUnit_Framework_TestCase
      */
     public function testCount()
     {
-        $feed =  new Zend_Gdata_App_Feed();
+        $feed = new Zend_Gdata_App_Feed();
         $feed->addEntry('foo')
              ->addEntry('bar');
 

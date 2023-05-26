@@ -351,7 +351,7 @@ abstract class Zend_Db_Adapter_Abstract
      * 'instance', just as if an associative array had been passed instead.
      *
      * @param  Zend_Db_Profiler|Zend_Config|array|boolean $profiler
-     * @return Zend_Db_Adapter_Abstract Provides a fluent interface
+     * @return $this
      * @throws Zend_Db_Profiler_Exception if the object instance or class specified
      *         is not Zend_Db_Profiler or an extension of that class.
      */
@@ -438,7 +438,7 @@ abstract class Zend_Db_Adapter_Abstract
     /**
      * Set the default statement class.
      *
-     * @return Zend_Db_Adapter_Abstract Fluent interface
+     * @return $this
      */
     public function setStatementClass($class)
     {

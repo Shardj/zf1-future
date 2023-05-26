@@ -38,23 +38,27 @@ require_once 'Zend/Db/TestSetup.php';
  */
 class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
 {
-
     /**
      * @return void
      */
     public function testProfilerFactoryFalse()
     {
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
-                'dbname'   => 'dummy',
+                'dbname' => 'dummy',
                 'profiler' => false
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got '.get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got '.get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
         $this->assertFalse($prof->getEnabled());
     }
 
@@ -63,17 +67,22 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
      */
     public function testProfilerFactoryTrue()
     {
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => true
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got '.get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got '.get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
         $this->assertTrue($prof->getEnabled());
     }
 
@@ -92,17 +101,22 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
             'Zend_Db_Profiler_ProfilerCustom'
             ];
         foreach ($profilerStrings as $profilerString) {
-            $db = Zend_Db::factory('Static',
+            $db = Zend_Db::factory(
+                'Static',
                 [
-                    'dbname'   => 'dummy',
+                    'dbname' => 'dummy',
                     'profiler' => $profilerString
                     ]
-                );
-            $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-                'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db));
+            );
+            $this->assertTrue(
+                $db instanceof Zend_Db_Adapter_Abstract,
+                'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+            );
             $prof = $db->getProfiler();
-            $this->assertTrue($prof instanceof Zend_Db_Profiler,
-                'Expected object of type Zend_Db_Profiler, got ' . get_class($prof));
+            $this->assertTrue(
+                $prof instanceof Zend_Db_Profiler,
+                'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+            );
             $this->assertTrue($prof->getEnabled());
         }
     }
@@ -114,19 +128,26 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
     {
         require_once 'Zend/Db/Profiler/ProfilerCustom.php';
         $profiler = new Zend_Db_Profiler_ProfilerCustom();
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => $profiler
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof));
-        $this->assertTrue($prof instanceof Zend_Db_Profiler_ProfilerCustom,
-            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got ' . get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler_ProfilerCustom,
+            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got ' . get_class($prof)
+        );
         $this->assertFalse($prof->getEnabled());
     }
 
@@ -135,7 +156,8 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
      */
     public function testProfilerFactoryArrayEnabled()
     {
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => [
@@ -143,11 +165,15 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
                 ]
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got '.get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got '.get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
         $this->assertTrue($prof->getEnabled());
     }
 
@@ -156,7 +182,8 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
      */
     public function testProfilerFactoryArrayClass()
     {
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => [
@@ -164,13 +191,19 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
                 ]
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got '.get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got '.get_class($prof));
-        $this->assertTrue($prof instanceof Zend_Db_Profiler_ProfilerCustom,
-            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got '.get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler_ProfilerCustom,
+            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got ' . get_class($prof)
+        );
         $this->assertFalse($prof->getEnabled());
     }
 
@@ -181,7 +214,8 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
     {
         require_once 'Zend/Db/Profiler/ProfilerCustom.php';
         $profiler = new Zend_Db_Profiler_ProfilerCustom();
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => [
@@ -189,13 +223,19 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
                 ]
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got '.get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got '.get_class($prof));
-        $this->assertTrue($prof instanceof Zend_Db_Profiler_ProfilerCustom,
-            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got '.get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler_ProfilerCustom,
+            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got ' . get_class($prof)
+        );
         $this->assertFalse($prof->getEnabled());
     }
 
@@ -208,19 +248,26 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
         $config = new Zend_Config([
             'class' => 'Zend_Db_Profiler_ProfilerCustom'
         ]);
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => $config
             ]
         );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got '.get_class($db));
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $prof = $db->getProfiler();
-        $this->assertTrue($prof instanceof Zend_Db_Profiler,
-            'Expected object of type Zend_Db_Profiler, got '.get_class($prof));
-        $this->assertTrue($prof instanceof Zend_Db_Profiler_ProfilerCustom,
-            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got '.get_class($prof));
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler,
+            'Expected object of type Zend_Db_Profiler, got ' . get_class($prof)
+        );
+        $this->assertTrue(
+            $prof instanceof Zend_Db_Profiler_ProfilerCustom,
+            'Expected object of type Zend_Db_Profiler_ProfilerCustom, got ' . get_class($prof)
+        );
         $this->assertFalse($prof->getEnabled());
     }
 
@@ -234,14 +281,17 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
         require_once 'Zend/Db/Profiler/ProfilerCustom.php';
         $profiler = new Zend_Db_Profiler_ProfilerCustom();
         $profiler->setEnabled(true);
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
-                'dbname'   => 'dummy',
+                'dbname' => 'dummy',
                 'profiler' => $profiler
                 ]
-            );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db));
+        );
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $profiler2 = $db->getProfiler();
         $this->assertSame($profiler, $profiler2);
         $this->assertTrue($profiler->getEnabled());
@@ -256,15 +306,16 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
     {
         $profilerInvalid = new stdClass();
         try {
-            $db = Zend_Db::factory('Static',
+            $db = Zend_Db::factory(
+                'Static',
                 [
-                    'dbname'   => 'dummy',
+                    'dbname' => 'dummy',
                     'profiler' => $profilerInvalid
                     ]
-                );
+            );
             $this->fail('Expected Zend_Db_Profiler_Exception not thrown');
         } catch (Zend_Db_Profiler_Exception $e) {
-            $this->assertContains('Profiler argument must be an instance of', $e->getMessage());
+            $this->assertStringContainsString('Profiler argument must be an instance of', $e->getMessage());
         }
     }
 
@@ -281,14 +332,17 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
         require_once 'Zend/Config.php';
         $config = new Zend_Config(['instance' => $profiler]);
 
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
-                'dbname'   => 'dummy',
+                'dbname' => 'dummy',
                 'profiler' => $config
                 ]
-            );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db));
+        );
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $profiler2 = $db->getProfiler();
         $this->assertSame($profiler, $profiler2);
         $this->assertFalse($profiler->getEnabled());
@@ -303,17 +357,20 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
     {
         require_once 'Zend/Db/Profiler/ProfilerCustom.php';
         $profiler = new Zend_Db_Profiler_ProfilerCustom();
-        $db = Zend_Db::factory('Static',
+        $db = Zend_Db::factory(
+            'Static',
             [
                 'dbname' => 'dummy',
                 'profiler' => [
                     'instance' => $profiler,
-                    'class'    => 'stdClass'
+                    'class' => 'stdClass'
                     ]
                 ]
-            );
-        $this->assertTrue($db instanceof Zend_Db_Adapter_Abstract,
-            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db));
+        );
+        $this->assertTrue(
+            $db instanceof Zend_Db_Adapter_Abstract,
+            'Expected object of type Zend_Db_Adapter_Abstract, got ' . get_class($db)
+        );
         $profiler2 = $db->getProfiler();
         $this->assertSame($profiler, $profiler2);
         $this->assertFalse($profiler->getEnabled());
@@ -404,78 +461,78 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
 
         $queries = [
             [
-                'sql'          => '',
-                'typeGiven'    => null,
+                'sql' => '',
+                'typeGiven' => null,
                 'typeExpected' => Zend_Db_Profiler::QUERY
                 ],
             [
-                'sql'          => '',
-                'typeGiven'    => Zend_Db_Profiler::QUERY,
+                'sql' => '',
+                'typeGiven' => Zend_Db_Profiler::QUERY,
                 'typeExpected' => Zend_Db_Profiler::QUERY
                 ],
             [
-                'sql'          => 'something',
-                'typeGiven'    => null,
+                'sql' => 'something',
+                'typeGiven' => null,
                 'typeExpected' => Zend_Db_Profiler::QUERY
                 ],
             [
-                'sql'          => 'INSERT',
-                'typeGiven'    => null,
+                'sql' => 'INSERT',
+                'typeGiven' => null,
                 'typeExpected' => Zend_Db_Profiler::INSERT
                 ],
             [
-                'sql'          => 'sqlInsert',
-                'typeGiven'    => Zend_Db_Profiler::INSERT,
+                'sql' => 'sqlInsert',
+                'typeGiven' => Zend_Db_Profiler::INSERT,
                 'typeExpected' => Zend_Db_Profiler::INSERT
                 ],
             [
-                'sql'          => 'INSERT',
-                'typeGiven'    => Zend_Db_Profiler::UPDATE,
+                'sql' => 'INSERT',
+                'typeGiven' => Zend_Db_Profiler::UPDATE,
                 'typeExpected' => Zend_Db_Profiler::UPDATE
                 ],
             [
-                'sql'          => 'UPDATE',
-                'typeGiven'    => null,
+                'sql' => 'UPDATE',
+                'typeGiven' => null,
                 'typeExpected' => Zend_Db_Profiler::UPDATE
                 ],
             [
-                'sql'          => 'sqlUpdate',
-                'typeGiven'    => Zend_Db_Profiler::UPDATE,
+                'sql' => 'sqlUpdate',
+                'typeGiven' => Zend_Db_Profiler::UPDATE,
                 'typeExpected' => Zend_Db_Profiler::UPDATE
                 ],
             [
-                'sql'          => 'UPDATE',
-                'typeGiven'    => Zend_Db_Profiler::DELETE,
+                'sql' => 'UPDATE',
+                'typeGiven' => Zend_Db_Profiler::DELETE,
                 'typeExpected' => Zend_Db_Profiler::DELETE
                 ],
             [
-                'sql'          => 'DELETE',
-                'typeGiven'    => null,
+                'sql' => 'DELETE',
+                'typeGiven' => null,
                 'typeExpected' => Zend_Db_Profiler::DELETE
                 ],
             [
-                'sql'          => 'sqlDelete',
-                'typeGiven'    => Zend_Db_Profiler::DELETE,
+                'sql' => 'sqlDelete',
+                'typeGiven' => Zend_Db_Profiler::DELETE,
                 'typeExpected' => Zend_Db_Profiler::DELETE
                 ],
             [
-                'sql'          => 'DELETE',
-                'typeGiven'    => Zend_Db_Profiler::SELECT,
+                'sql' => 'DELETE',
+                'typeGiven' => Zend_Db_Profiler::SELECT,
                 'typeExpected' => Zend_Db_Profiler::SELECT
                 ],
             [
-                'sql'          => 'SELECT',
-                'typeGiven'    => null,
+                'sql' => 'SELECT',
+                'typeGiven' => null,
                 'typeExpected' => Zend_Db_Profiler::SELECT
                 ],
             [
-                'sql'          => 'sqlSelect',
-                'typeGiven'    => Zend_Db_Profiler::SELECT,
+                'sql' => 'sqlSelect',
+                'typeGiven' => Zend_Db_Profiler::SELECT,
                 'typeExpected' => Zend_Db_Profiler::SELECT
                 ],
             [
-                'sql'          => 'SELECT',
-                'typeGiven'    => Zend_Db_Profiler::INSERT,
+                'sql' => 'SELECT',
+                'typeGiven' => Zend_Db_Profiler::INSERT,
                 'typeExpected' => Zend_Db_Profiler::INSERT
                 ]
             ];
@@ -518,7 +575,7 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
             $prof->queryEnd('invalid');
             $this->fail('Expected Zend_Db_Profiler_Exception not thrown');
         } catch (Zend_Db_Profiler_Exception $e) {
-            $this->assertContains('no query with handle', $e->getMessage());
+            $this->assertStringContainsString('no query with handle', $e->getMessage());
         }
     }
 
@@ -540,7 +597,7 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
             $prof->queryEnd($queryId);
             $this->fail('Expected Zend_Db_Profiler_Exception not thrown');
         } catch (Zend_Db_Profiler_Exception $e) {
-            $this->assertContains('has already ended', $e->getMessage());
+            $this->assertStringContainsString('has already ended', $e->getMessage());
         }
     }
 
@@ -608,7 +665,7 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
             $this->_db->getProfiler()->getQueryProfile('invalid');
             $this->fail('Expected Zend_Db_Profiler_Exception not thrown');
         } catch (Zend_Db_Profiler_Exception $e) {
-            $this->assertContains('not found', $e->getMessage());
+            $this->assertStringContainsString('not found', $e->getMessage());
         }
     }
 
@@ -679,7 +736,7 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
         $this->assertThat(
             $prof->getTotalElapsedSecs(),
             $this->greaterThan($numQueries - 0.1)
-            );
+        );
     }
 
     /**
@@ -715,12 +772,12 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
         $this->assertThat(
             $prof->getTotalElapsedSecs(Zend_Db_Profiler::SELECT),
             $this->lessThan(1)
-            );
+        );
 
         $this->assertThat(
             $prof->getTotalElapsedSecs(Zend_Db_Profiler::UPDATE),
             $this->greaterThan(1.9)
-            );
+        );
     }
 
     /**
@@ -809,5 +866,4 @@ class Zend_Db_Profiler_StaticTest extends Zend_Db_TestSetup
     {
         return 'Static';
     }
-
 }

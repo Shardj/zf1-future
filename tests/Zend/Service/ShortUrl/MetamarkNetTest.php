@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -27,7 +30,7 @@ require_once 'Zend/Service/ShortUrl/MetamarkNet.php';
  * @subpackage  UnitTests
  * @see http://metamark.net/docs/api/rest.html
  */
-class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
+class Zend_Service_ShortUrl_MetamarkNetTest extends TestCase
 {
     /**
      * Zend_Service_ShortUrl_MetamarkNet object
@@ -41,7 +44,7 @@ class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp ()
+    public function setUp(): void
     {
         if (!defined('TESTS_ZEND_SERVICE_SHORTURL_METAMARKNET_ENABLED')
             || !constant('TESTS_ZEND_SERVICE_SHORTURL_METAMARKNET_ENABLED')
@@ -56,20 +59,20 @@ class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
 
     public function testShortenEmptyUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->shorten('');
     }
 
     public function testShortenIncorrectUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->shorten('wrongAdress.cccc');
     }
 
     public function testShorten()
     {
         $urls = [
-            'http://framework.zend.com/'           => 'http://xrl.us/bh4ptf',
+            'http://framework.zend.com/' => 'http://xrl.us/bh4ptf',
             'http://framework.zend.com/manual/en/' => 'http://xrl.us/bh4pth'
         ];
 
@@ -81,7 +84,7 @@ class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
     public function testUnshorten()
     {
         $urls = [
-            'http://framework.zend.com/'           => 'http://xrl.us/bh4ptf',
+            'http://framework.zend.com/' => 'http://xrl.us/bh4ptf',
             'http://framework.zend.com/manual/en/' => 'http://xrl.us/bh4pth'
         ];
 
@@ -92,19 +95,19 @@ class Zend_Service_ShortUrl_MetamarkNetTest extends PHPUnit_Framework_TestCase
 
     public function testUnshortenEmptyUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->unshorten('');
     }
 
     public function testUnshortenIncorrectUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->unshorten('wrongAdress.cccc');
     }
 
     public function testUnshortenWrongUrlException()
     {
-        $this->setExpectedException('Zend_Service_ShortUrl_Exception');
+        $this->expectException('Zend_Service_ShortUrl_Exception');
         $this->_s->unshorten('http://www.zend.com');
     }
 }

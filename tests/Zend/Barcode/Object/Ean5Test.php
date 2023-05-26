@@ -34,7 +34,6 @@ require_once 'Zend/Barcode/Object/Ean5.php';
  */
 class Zend_Barcode_Object_Ean5Test extends Zend_Barcode_Object_TestCommon
 {
-
     protected function _getBarcodeObject($options = null)
     {
         return new Zend_Barcode_Object_Ean5($options);
@@ -121,7 +120,8 @@ class Zend_Barcode_Object_Ean5Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Ean5_45678_border_instructions');
+            'Ean5_45678_border_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -131,7 +131,8 @@ class Zend_Barcode_Object_Ean5Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setOrientation(60);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Ean5_45678_oriented_instructions');
+            'Ean5_45678_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 
@@ -142,7 +143,8 @@ class Zend_Barcode_Object_Ean5Test extends Zend_Barcode_Object_TestCommon
         $this->_object->setWithBorder(true);
         $this->_object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Ean5_45678_border_oriented_instructions');
+            'Ean5_45678_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->_object->getInstructions());
     }
 

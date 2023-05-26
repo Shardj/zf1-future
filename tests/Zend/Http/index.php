@@ -78,13 +78,12 @@ function printBrowserDetails($browser)
         Zend_Debug::dump($device->getAllFeatures());
         print '</fieldset>';
     }
-
 }
 
 $options = [
-    '', 
-    'mobile, text, desktop', 
-    'bot, mobile, validator, checker, console, offline, email, text', 
+    '',
+    'mobile, text, desktop',
+    'bot, mobile, validator, checker, console, offline, email, text',
     'text, bot, validator, checker, console, offline, email'
 ];
 ?>

@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,39 +34,55 @@ require_once 'Zend/Gdata.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Gdata
  */
-class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_WhereTest extends TestCase
 {
+    /**
+     * @var string|bool|mixed
+     */
+    protected $whereText;
 
-    public function setUp() {
+    /**
+     * @var \Zend_Gdata_Extension_Where|mixed
+     */
+    protected $where;
+
+    protected function setUp(): void
+    {
         $this->whereText = file_get_contents(
-                'Zend/Gdata/_files/WhereElementSample1.xml',
-                true);
+            'Zend/Gdata/_files/WhereElementSample1.xml',
+            true
+        );
         $this->where = new Zend_Gdata_Extension_Where();
     }
 
-    public function testEmptyWhereShouldHaveNoExtensionElements() {
+    public function testEmptyWhereShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->where->extensionElements));
         $this->assertTrue(count($this->where->extensionElements) == 0);
     }
 
-    public function testEmptyWhereShouldHaveNoExtensionAttributes() {
+    public function testEmptyWhereShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->where->extensionAttributes));
         $this->assertTrue(count($this->where->extensionAttributes) == 0);
     }
 
-    public function testSampleWhereShouldHaveNoExtensionElements() {
+    public function testSampleWhereShouldHaveNoExtensionElements()
+    {
         $this->where->transferFromXML($this->whereText);
         $this->assertTrue(is_array($this->where->extensionElements));
         $this->assertTrue(count($this->where->extensionElements) == 0);
     }
 
-    public function testSampleWhereShouldHaveNoExtensionAttributes() {
+    public function testSampleWhereShouldHaveNoExtensionAttributes()
+    {
         $this->where->transferFromXML($this->whereText);
         $this->assertTrue(is_array($this->where->extensionAttributes));
         $this->assertTrue(count($this->where->extensionAttributes) == 0);
     }
 
-    public function testNormalWhereShouldHaveNoExtensionElements() {
+    public function testNormalWhereShouldHaveNoExtensionElements()
+    {
         $this->where->valueString = "Test Value String";
         $this->where->rel = "http://schemas.google.com/g/2005#event.alternate";
         $this->where->label = "Test Label";
@@ -93,7 +112,8 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Test Label", $newWhere2->label);
     }
 
-    public function testEmptyWhereToAndFromStringShouldMatch() {
+    public function testEmptyWhereToAndFromStringShouldMatch()
+    {
         $whereXml = $this->where->saveXML();
         $newWhere = new Zend_Gdata_Extension_Where();
         $newWhere->transferFromXML($whereXml);
@@ -101,7 +121,8 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($whereXml == $newWhereXml);
     }
 
-    public function testWhereWithValueToAndFromStringShouldMatch() {
+    public function testWhereWithValueToAndFromStringShouldMatch()
+    {
         $this->where->valueString = "Test Value String";
         $this->where->rel = "http://schemas.google.com/g/2005#event.alternate";
         $this->where->label = "Test Label";
@@ -115,10 +136,11 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Test Label", $this->where->label);
     }
 
-    public function testExtensionAttributes() {
+    public function testExtensionAttributes()
+    {
         $extensionAttributes = $this->where->extensionAttributes;
-        $extensionAttributes['foo1'] = ['name'=>'foo1', 'value'=>'bar'];
-        $extensionAttributes['foo2'] = ['name'=>'foo2', 'value'=>'rab'];
+        $extensionAttributes['foo1'] = ['name' => 'foo1', 'value' => 'bar'];
+        $extensionAttributes['foo2'] = ['name' => 'foo2', 'value' => 'rab'];
         $this->where->extensionAttributes = $extensionAttributes;
         $this->assertEquals('bar', $this->where->extensionAttributes['foo1']['value']);
         $this->assertEquals('rab', $this->where->extensionAttributes['foo2']['value']);
@@ -129,7 +151,8 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('rab', $newWhere->extensionAttributes['foo2']['value']);
     }
 
-    public function testConvertFullWhereToAndFromString() {
+    public function testConvertFullWhereToAndFromString()
+    {
         $this->where->transferFromXML($this->whereText);
         $this->assertEquals("Joe's Pub", $this->where->valueString);
         $this->assertEquals("http://schemas.google.com/g/2005#event", $this->where->rel);
@@ -137,5 +160,4 @@ class Zend_Gdata_WhereTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->where->entryLink instanceof Zend_Gdata_Extension_EntryLink);
         $this->assertEquals("http://local.example.com/10018/JoesPub", $this->where->entryLink->href);
     }
-
 }

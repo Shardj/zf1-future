@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -39,8 +44,13 @@ require_once 'Zend/Translate/Adapter/Array.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Form
  */
-class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
+class Zend_Form_Element_ImageTest extends TestCase
 {
+    /**
+     * @var Zend_Form_Element_Image
+     */
+    protected $element;
+
     /**
      * Runs the test methods of this class.
      *
@@ -48,8 +58,8 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Form_Element_ImageTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Form_Element_ImageTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -58,7 +68,7 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->element = new Zend_Form_Element_Image('foo');
     }
@@ -69,7 +79,7 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
      *
      * @return void
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -116,14 +126,14 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
     {
         $this->testCanSetImageSourceViaAccessors();
         $html = $this->element->render(new Zend_View());
-        $this->assertContains('src="foo.gif"', $html);
+        $this->assertStringContainsString('src="foo.gif"', $html);
     }
 
     public function testHelperAttributeNotRenderedWhenRenderingImage()
     {
         $this->testCanSetImageSourceViaAccessors();
         $html = $this->element->render(new Zend_View());
-        $this->assertNotContains('helper="', $html);
+        $this->assertStringNotContainsString('helper="', $html);
     }
 
     public function testValueEmptyWhenRenderingImageByDefault()
@@ -133,14 +143,14 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
         if (!strstr($html, 'value="')) {
             return;
         }
-        $this->assertContains('value=""', $html);
+        $this->assertStringContainsString('value=""', $html);
     }
 
     public function testLabelUsedAsAltAttribute()
     {
         $this->element->setLabel('Foo Bar');
         $html = $this->element->render(new Zend_View());
-        $this->assertRegexp('#<input[^>]*alt="Foo Bar"#', $html);
+        $this->assertMatchesRegularExpression('#<input[^>]*alt="Foo Bar"#', $html);
     }
 
     public function testImageValueRenderedAsElementValue()
@@ -148,7 +158,7 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
         $this->element->setImageValue('foo')
              ->setImage('foo.gif');
         $html = $this->element->render(new Zend_View());
-        $this->assertRegexp('#<input[^>]*value="foo"#', $html, $html);
+        $this->assertMatchesRegularExpression('#<input[^>]*value="foo"#', $html, $html);
     }
 
     public function testIsCheckedReturnsSetValueMatchesImageValue()
@@ -173,9 +183,9 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
         $translator = new Zend_Translate_Adapter_Array(["bar" => "baz"], 'de');
         $this->element->setTranslator($translator);
         $html = $this->element->render(new Zend_View());
-        $this->assertContains('title', $html);
-        $this->assertContains('baz', $html);
-        $this->assertNotContains('bar', $html);
+        $this->assertStringContainsString('title', $html);
+        $this->assertStringContainsString('baz', $html);
+        $this->assertStringNotContainsString('bar', $html);
     }
 
     public function testTitleAttributeDoesNotGetTranslatedIfTranslatorIsDisabled()
@@ -186,9 +196,9 @@ class Zend_Form_Element_ImageTest extends PHPUnit_Framework_TestCase
         // now disable translator and see if that works
         $this->element->setDisableTranslator(true);
         $html = $this->element->render(new Zend_View());
-        $this->assertContains('title', $html);
-        $this->assertContains('bar', $html);
-        $this->assertNotContains('baz', $html);
+        $this->assertStringContainsString('title', $html);
+        $this->assertStringContainsString('bar', $html);
+        $this->assertStringNotContainsString('baz', $html);
     }
 
     /**

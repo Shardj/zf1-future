@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -34,13 +37,17 @@ require_once 'Zend/Http/Client.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Calendar
  */
-class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_CalendarOnlineTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Calendar|mixed
+     */
+    protected $gdata;
 
-    const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
-    const ZEND_CONFERENCE_EVENT = 'bn2h4o4mc3a03ci4t48j3m56pg';
+    public const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
+    public const ZEND_CONFERENCE_EVENT = 'bn2h4o4mc3a03ci4t48j3m56pg';
 
-    public function setUp()
+    protected function setUp(): void
     {
         $user = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL');
         $pass = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_PASSWORD');
@@ -70,15 +77,15 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(strpos($eventFeed->title->text, TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL)
                 !== false);
         $eventCount = 0;
-        foreach ( $eventFeed as $event ) {
+        foreach ($eventFeed as $event) {
             $this->assertTrue($event instanceof Zend_Gdata_Calendar_EventEntry);
             $eventCount++;
         }
-        $this->assertTrue($eventCount > 0 );
+        $this->assertTrue($eventCount > 0);
         $this->assertTrue(count($eventFeed) == $eventCount);
     }
 
-    function getEvent($eventId)
+    public function getEvent($eventId)
     {
         $query = $this->gdata->newEventQuery();
         $query->setUser('default');
@@ -88,19 +95,24 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
 
         $eventEntry = $this->gdata->getCalendarEventEntry($query);
         $this->assertTrue(
-                $eventEntry instanceof Zend_Gdata_Calendar_EventEntry);
+            $eventEntry instanceof Zend_Gdata_Calendar_EventEntry
+        );
         return $eventEntry;
     }
 
     public function createEvent(
-            $title = 'Tennis with Beth',
-            $desc='Meet for a quick lesson', $where = 'On the courts',
-            $startDate = '2008-01-20', $startTime = '10:00',
-            $endDate = '2008-01-20', $endTime = '11:00', $tzOffset = '-08')
-    {
+        $title = 'Tennis with Beth',
+        $desc = 'Meet for a quick lesson',
+        $where = 'On the courts',
+        $startDate = '2008-01-20',
+        $startTime = '10:00',
+        $endDate = '2008-01-20',
+        $endTime = '11:00',
+        $tzOffset = '-08'
+    ) {
         $newEntry = $this->gdata->newEventEntry();
         $newEntry->title = $this->gdata->newTitle(trim($title));
-        $newEntry->where  = [$this->gdata->newWhere($where)];
+        $newEntry->where = [$this->gdata->newWhere($where)];
 
         $newEntry->content = $this->gdata->newContent($desc);
         $newEntry->content->type = 'text';
@@ -119,20 +131,28 @@ class Zend_Gdata_CalendarOnlineTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('email in 30 minutes', $reminder->__toString());
         $this->assertEquals($title, $createdEntry->title->text);
         $this->assertEquals($desc, $createdEntry->content->text);
-        $this->assertEquals(strtotime($when->startTime),
-                strtotime($createdEntry->when[0]->startTime));
-        $this->assertEquals(strtotime($when->endTime),
-                strtotime($createdEntry->when[0]->endTime));
-        $this->assertEquals($reminder->method,
-                $createdEntry->when[0]->reminders[0]->method);
-        $this->assertEquals($reminder->minutes,
-                $createdEntry->when[0]->reminders[0]->minutes);
+        $this->assertEquals(
+            strtotime($when->startTime),
+            strtotime($createdEntry->when[0]->startTime)
+        );
+        $this->assertEquals(
+            strtotime($when->endTime),
+            strtotime($createdEntry->when[0]->endTime)
+        );
+        $this->assertEquals(
+            $reminder->method,
+            $createdEntry->when[0]->reminders[0]->method
+        );
+        $this->assertEquals(
+            $reminder->minutes,
+            $createdEntry->when[0]->reminders[0]->minutes
+        );
         $this->assertEquals($where, $createdEntry->where[0]->valueString);
 
         return $createdEntry;
     }
 
-    function updateEvent ($eventId, $newTitle)
+    public function updateEvent($eventId, $newTitle)
     {
         $eventOld = $this->getEvent($eventId);
         $eventOld->title = $this->gdata->newTitle($newTitle);

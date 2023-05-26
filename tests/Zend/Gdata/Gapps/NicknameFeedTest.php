@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -32,38 +35,48 @@ require_once 'Zend/Gdata/Gapps/NicknameFeed.php';
  * @group      Zend_Gdata
  * @group      Zend_Gdata_Gapps
  */
-class Zend_Gdata_Gapps_NicknameFeedTest extends PHPUnit_Framework_TestCase
+class Zend_Gdata_Gapps_NicknameFeedTest extends TestCase
 {
+    /**
+     * @var \Zend_Gdata_Gapps_NicknameFeed|mixed
+     */
+    protected $emptyNicknameFeed;
+
     protected $nicknameFeed = null;
 
     /**
       * Called before each test to setup any fixtures.
       */
-    public function setUp()
+    protected function setUp(): void
     {
         $nicknameFeedText = file_get_contents(
-                'Zend/Gdata/Gapps/_files/NicknameFeedDataSample1.xml',
-                true);
+            'Zend/Gdata/Gapps/_files/NicknameFeedDataSample1.xml',
+            true
+        );
         $this->nicknameFeed = new Zend_Gdata_Gapps_NicknameFeed($nicknameFeedText);
         $this->emptyNicknameFeed = new Zend_Gdata_Gapps_NicknameFeed();
     }
 
-    public function testEmptyFeedShouldHaveNoExtensionElements() {
+    public function testEmptyFeedShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->emptyNicknameFeed->extensionElements));
         $this->assertTrue(count($this->emptyNicknameFeed->extensionElements) == 0);
     }
 
-    public function testEmptyFeedShouldHaveNoExtensionAttributes() {
+    public function testEmptyFeedShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->emptyNicknameFeed->extensionAttributes));
         $this->assertTrue(count($this->emptyNicknameFeed->extensionAttributes) == 0);
     }
 
-    public function testSampleFeedShouldHaveNoExtensionElements() {
+    public function testSampleFeedShouldHaveNoExtensionElements()
+    {
         $this->assertTrue(is_array($this->nicknameFeed->extensionElements));
         $this->assertTrue(count($this->nicknameFeed->extensionElements) == 0);
     }
 
-    public function testSampleFeedShouldHaveNoExtensionAttributes() {
+    public function testSampleFeedShouldHaveNoExtensionAttributes()
+    {
         $this->assertTrue(is_array($this->nicknameFeed->extensionAttributes));
         $this->assertTrue(count($this->nicknameFeed->extensionAttributes) == 0);
     }
@@ -83,7 +96,8 @@ class Zend_Gdata_Gapps_NicknameFeedTest extends PHPUnit_Framework_TestCase
 
         /* Grab XML from $this->nicknameFeed and convert back to objects */
         $newNicknameFeed = new Zend_Gdata_Gapps_NicknameFeed(
-                $this->nicknameFeed->saveXML());
+            $this->nicknameFeed->saveXML()
+        );
         $newEntryCount = 0;
         foreach ($newNicknameFeed as $entry) {
             $newEntryCount++;
@@ -105,5 +119,4 @@ class Zend_Gdata_Gapps_NicknameFeedTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals(2, $entryCount);
     }
-
 }

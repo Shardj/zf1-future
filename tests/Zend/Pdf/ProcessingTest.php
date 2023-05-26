@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -31,9 +34,9 @@ require_once 'Zend/Pdf.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Pdf
  */
-class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
+class Zend_Pdf_ProcessingTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         date_default_timezone_set('GMT');
     }
@@ -82,31 +85,34 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
               ->drawCircle(85, 375, 25);
 
         // Draw sectors
-        $page2->drawCircle(200, 375, 25, 2*M_PI/3, -M_PI/6)
+        $page2->drawCircle(200, 375, 25, 2 * M_PI / 3, -M_PI / 6)
               ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
-              ->drawCircle(200, 375, 25, M_PI/6, 2*M_PI/3)
+              ->drawCircle(200, 375, 25, M_PI / 6, 2 * M_PI / 3)
               ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
-              ->drawCircle(200, 375, 25, -M_PI/6, M_PI/6);
+              ->drawCircle(200, 375, 25, -M_PI / 6, M_PI / 6);
 
         // Draw ellipse
         $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
               ->drawEllipse(250, 400, 400, 350)
               ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
-              ->drawEllipse(250, 400, 400, 350, M_PI/6, 2*M_PI/3)
+              ->drawEllipse(250, 400, 400, 350, M_PI / 6, 2 * M_PI / 3)
               ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
-              ->drawEllipse(250, 400, 400, 350, -M_PI/6, M_PI/6);
+              ->drawEllipse(250, 400, 400, 350, -M_PI / 6, M_PI / 6);
 
         // Draw and fill polygon
         $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
         $x = [];
         $y = [];
         for ($count = 0; $count < 8; $count++) {
-            $x[] = 140 + 25*cos(3*M_PI_4*$count);
-            $y[] = 375 + 25*sin(3*M_PI_4*$count);
+            $x[] = 140 + 25 * cos(3 * M_PI_4 * $count);
+            $y[] = 375 + 25 * sin(3 * M_PI_4 * $count);
         }
-        $page2->drawPolygon($x, $y,
-                            Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                            Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+        $page2->drawPolygon(
+            $x,
+            $y,
+            Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
+            Zend_Pdf_Page::FILL_METHOD_EVEN_ODD
+        );
 
         // Draw line
         $page2->setLineWidth(0.5)
@@ -131,7 +137,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         $pdf->pages = array_reverse($pdf->pages);
 
         // Mark page as modified
-        foreach ($pdf->pages as $page){
+        foreach ($pdf->pages as $page) {
             $page->saveGS();
 
             // Create new Style
@@ -142,7 +148,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
                  ->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD), 32);
 
 
-            $page->rotate(0, 0, M_PI_2/3)
+            $page->rotate(0, 0, M_PI_2 / 3)
                  ->drawText('Modified by Zend Framework!', 150, 0)
                  ->restoreGS();
         }
@@ -188,31 +194,34 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
               ->drawCircle(85, 375, 25);
 
         // Draw sectors
-        $page2->drawCircle(200, 375, 25, 2*M_PI/3, -M_PI/6)
+        $page2->drawCircle(200, 375, 25, 2 * M_PI / 3, -M_PI / 6)
               ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
-              ->drawCircle(200, 375, 25, M_PI/6, 2*M_PI/3)
+              ->drawCircle(200, 375, 25, M_PI / 6, 2 * M_PI / 3)
               ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
-              ->drawCircle(200, 375, 25, -M_PI/6, M_PI/6);
+              ->drawCircle(200, 375, 25, -M_PI / 6, M_PI / 6);
 
         // Draw ellipse
         $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 0))
               ->drawEllipse(250, 400, 400, 350)
               ->setFillColor(new Zend_Pdf_Color_Cmyk(1, 0, 0, 0))
-              ->drawEllipse(250, 400, 400, 350, M_PI/6, 2*M_PI/3)
+              ->drawEllipse(250, 400, 400, 350, M_PI / 6, 2 * M_PI / 3)
               ->setFillColor(new Zend_Pdf_Color_Rgb(1, 1, 0))
-              ->drawEllipse(250, 400, 400, 350, -M_PI/6, M_PI/6);
+              ->drawEllipse(250, 400, 400, 350, -M_PI / 6, M_PI / 6);
 
         // Draw and fill polygon
         $page2->setFillColor(new Zend_Pdf_Color_Rgb(1, 0, 1));
         $x = [];
         $y = [];
         for ($count = 0; $count < 8; $count++) {
-            $x[] = 140 + 25*cos(3*M_PI_4*$count);
-            $y[] = 375 + 25*sin(3*M_PI_4*$count);
+            $x[] = 140 + 25 * cos(3 * M_PI_4 * $count);
+            $y[] = 375 + 25 * sin(3 * M_PI_4 * $count);
         }
-        $page2->drawPolygon($x, $y,
-                            Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
-                            Zend_Pdf_Page::FILL_METHOD_EVEN_ODD);
+        $page2->drawPolygon(
+            $x,
+            $y,
+            Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE,
+            Zend_Pdf_Page::FILL_METHOD_EVEN_ODD
+        );
 
         // Draw line
         $page2->setLineWidth(0.5)
@@ -247,7 +256,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         $xpath->registerNamespace('pdf', $pdfPreffixNamespaceURI);
 
         $titleNodeset = $xpath->query('/rdf:RDF/rdf:Description/pdf:Title');
-        $titleNode    = $titleNodeset->item(0);
+        $titleNode = $titleNodeset->item(0);
         $this->assertEquals($titleNode->nodeValue, 'PDF as a Standard for Archiving');
 
 
@@ -274,7 +283,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         $xpath1->registerNamespace('pdf', $pdfPreffixNamespaceURI1);
 
         $titleNodeset1 = $xpath->query('/rdf:RDF/rdf:Description/pdf:Title');
-        $titleNode1    = $titleNodeset->item(0);
+        $titleNode1 = $titleNodeset->item(0);
         $this->assertEquals($titleNode1->nodeValue, 'PDF as a Standard for Archiving (modified using RDF data)');
         unset($pdf1);
 
@@ -298,7 +307,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         }
 
         $outputPageSet = [];
-        foreach ($pdf->pages as $srcPage){
+        foreach ($pdf->pages as $srcPage) {
             $page = new Zend_Pdf_Page($srcPage);
 
             $outputPageSet[] = $srcPage;
@@ -314,7 +323,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
                  ->setFont(Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA_BOLD), 32);
 
 
-            $page->rotate(0, 0, M_PI_2/3);
+            $page->rotate(0, 0, M_PI_2 / 3);
             $page->drawText('Modified by Zend Framework!', 150, 0);
             $page->restoreGS();
         }
@@ -330,7 +339,7 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
         $pdf1 = Zend_Pdf::load(dirname(__FILE__) . '/_files/output.pdf');
 
         $this->assertTrue($pdf1 instanceof Zend_Pdf);
-        $this->assertEquals($srcPageCount*2, count($pdf1->pages));
+        $this->assertEquals($srcPageCount * 2, count($pdf1->pages));
         unset($pdf1);
 
         unlink(dirname(__FILE__) . '/_files/output.pdf');
@@ -366,16 +375,18 @@ class Zend_Pdf_ProcessingTest extends PHPUnit_Framework_TestCase
 
 class ExtendedZendPdf extends Zend_Pdf
 {
-    public function __get($name) {
-        if(isset($this->$name)) {
+    public function __get($name)
+    {
+        if (isset($this->$name)) {
             return $this->$name;
         }
     }
 }
 class ExtendedZendPdfPage extends Zend_Pdf_Page
 {
-    public function __get($name) {
-        if(isset($this->$name)) {
+    public function __get($name)
+    {
+        if (isset($this->$name)) {
             return $this->$name;
         }
     }

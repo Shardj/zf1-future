@@ -308,6 +308,9 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
         if(!empty($this->_config['driver_options'])) {
             foreach($this->_config['driver_options'] as $option=>$value) {
                 if(is_string($option)) {
+                    if ($option === 'flags') {
+                        continue;
+                    }
                     // Suppress warnings here
                     // Ignore it if it's not a valid constant
                     $option = @constant(strtoupper($option));
@@ -327,7 +330,10 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
             $this->_config['password'],
             $this->_config['dbname'],
             $port,
-            $socket
+            $socket,
+            isset($this->_config['driver_options'], $this->_config['driver_options']['flags'])
+                ? (int)$this->_config['driver_options']['flags']
+                : 0
         );
 
         if ($_isConnected === false || mysqli_connect_errno()) {
@@ -542,7 +548,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
     /**
      * Retrieve server version in PHP style
      *
-     *@return string
+     * @return string
      */
     public function getServerVersion()
     {

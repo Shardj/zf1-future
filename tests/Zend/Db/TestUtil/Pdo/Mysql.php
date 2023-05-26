@@ -63,4 +63,3 @@ class Zend_Db_TestUtil_Pdo_Mysql extends Zend_Db_TestUtil_Mysqli
         return $constants;
     }
 }
-

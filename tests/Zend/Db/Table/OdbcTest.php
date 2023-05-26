@@ -37,10 +37,8 @@ require_once 'Zend/Db/Table/TestCommon.php';
  */
 class Zend_Db_Table_OdbcTest extends Zend_Db_Table_TestCommon
 {
-
     public function getDriver()
     {
         return 'Odbc';
     }
-
 }

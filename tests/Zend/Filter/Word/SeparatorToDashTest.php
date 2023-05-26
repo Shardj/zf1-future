@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -38,7 +43,7 @@ require_once 'Zend/Filter/Word/SeparatorToDash.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
  */
-class Zend_Filter_Word_SeparatorToDashTest extends PHPUnit_Framework_TestCase
+class Zend_Filter_Word_SeparatorToDashTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -48,15 +53,14 @@ class Zend_Filter_Word_SeparatorToDashTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Filter_Word_SeparatorToDashTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Filter_Word_SeparatorToDashTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testFilterSeparatesDashedWordsWithDefaultSpaces()
     {
-        $string   = 'dash separated words';
-        $filter   = new Zend_Filter_Word_SeparatorToDash();
+        $string = 'dash separated words';
+        $filter = new Zend_Filter_Word_SeparatorToDash();
         $filtered = $filter->filter($string);
 
         $this->assertNotEquals($string, $filtered);
@@ -65,14 +69,13 @@ class Zend_Filter_Word_SeparatorToDashTest extends PHPUnit_Framework_TestCase
 
     public function testFilterSeparatesDashedWordsWithSomeString()
     {
-        $string   = 'dash=separated=words';
-        $filter   = new Zend_Filter_Word_SeparatorToDash('=');
+        $string = 'dash=separated=words';
+        $filter = new Zend_Filter_Word_SeparatorToDash('=');
         $filtered = $filter->filter($string);
 
         $this->assertNotEquals($string, $filtered);
         $this->assertEquals('dash-separated-words', $filtered);
     }
-
 }
 
 // Call Zend_Filter_Word_SeparatorToDashTest::main() if this source file is executed directly.

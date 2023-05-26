@@ -1,4 +1,9 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -40,7 +45,7 @@ require_once 'Zend/Validate/File/NotExists.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Validate
  */
-class Zend_Validate_File_NotExistsTest extends PHPUnit_Framework_TestCase
+class Zend_Validate_File_NotExistsTest extends TestCase
 {
     /**
      * Runs the test methods of this class.
@@ -49,8 +54,8 @@ class Zend_Validate_File_NotExistsTest extends PHPUnit_Framework_TestCase
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite("Zend_Validate_File_NotExistsTest");
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite("Zend_Validate_File_NotExistsTest");
+        $result = (new TestRunner())->run($suite);
     }
 
     /**
@@ -67,11 +72,11 @@ class Zend_Validate_File_NotExistsTest extends PHPUnit_Framework_TestCase
         ];
 
         $files = [
-            'name'        => 'testsize.mo',
-            'type'        => 'text',
-            'size'        => 200,
-            'tmp_name'    => dirname(__FILE__) . '/_files/testsize.mo',
-            'error'       => 0
+            'name' => 'testsize.mo',
+            'type' => 'text',
+            'size' => 200,
+            'tmp_name' => dirname(__FILE__) . '/_files/testsize.mo',
+            'error' => 0
         ];
 
         foreach ($valuesExpected as $element) {
@@ -85,7 +90,7 @@ class Zend_Validate_File_NotExistsTest extends PHPUnit_Framework_TestCase
                 $element[2],
                 $validator->isValid($element[1], $files),
                 "Tested with " . var_export($element, 1)
-                );
+            );
         }
 
         $valuesExpected = [
@@ -94,11 +99,11 @@ class Zend_Validate_File_NotExistsTest extends PHPUnit_Framework_TestCase
         ];
 
         $files = [
-            'name'        => 'testsize.mo',
-            'type'        => 'text',
-            'size'        => 200,
-            'tmp_name'    => dirname(__FILE__) . '/_files/testsize.mo',
-            'error'       => 0,
+            'name' => 'testsize.mo',
+            'type' => 'text',
+            'size' => 200,
+            'tmp_name' => dirname(__FILE__) . '/_files/testsize.mo',
+            'error' => 0,
             'destination' => dirname(__FILE__) . '/_files'
         ];
 

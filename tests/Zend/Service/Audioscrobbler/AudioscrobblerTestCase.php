@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -35,7 +38,7 @@ require_once "Zend/Http/Client/Adapter/Test.php";
  * @group      Zend_Service
  * @group      Zend_Service_Audioscrobbler
  */
-class Zend_Service_Audioscrobbler_AudioscrobblerTestCase extends PHPUnit_Framework_TestCase
+class Zend_Service_Audioscrobbler_AudioscrobblerTestCase extends TestCase
 {
     /**
      * @var Zend_Http_Client
@@ -52,7 +55,7 @@ class Zend_Service_Audioscrobbler_AudioscrobblerTestCase extends PHPUnit_Framewo
      */
     private $_asService = null;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_httpTestAdapter = new Zend_Http_Client_Adapter_Test();
         $this->_httpClient = new Zend_Http_Client();

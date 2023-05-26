@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,12 +45,12 @@ class Zend_Service_Rackspace_AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        (new TestRunner())->run(self::suite());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Zend Framework - Zend_Service_Rackspace');
+        $suite = new TestSuite('Zend Framework - Zend_Service_Rackspace');
 
         $suite->addTest(Zend_Service_Rackspace_Files_AllTests::suite());
         $suite->addTest(Zend_Service_Rackspace_Servers_AllTests::suite());

@@ -31,6 +31,10 @@
  */
 class ZF
 {
+    /**
+     * @var string
+     */
+    protected $_executable = '';
 
     /**
      * @var bool

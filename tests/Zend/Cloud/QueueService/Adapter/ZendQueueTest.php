@@ -1,4 +1,8 @@
 <?php
+
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\TextUI\TestRunner;
+
 /**
  * Zend Framework
  *
@@ -41,8 +45,7 @@ require_once 'Zend/Cloud/QueueService/Adapter/ZendQueue.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Cloud_QueueService_Adapter_ZendQueueTest
-    extends Zend_Cloud_QueueService_TestCase
+class Zend_Cloud_QueueService_Adapter_ZendQueueTest extends Zend_Cloud_QueueService_TestCase
 {
     /**
      * Period to wait for propagation in seconds
@@ -51,9 +54,9 @@ class Zend_Cloud_QueueService_Adapter_ZendQueueTest
      * @var int
      */
     protected $_waitPeriod = 0;
-	protected $_clientType = 'Zend_Queue';
+    protected $_clientType = 'Zend_Queue';
 
-	/**
+    /**
      * Runs the test methods of this class.
      *
      * @access public
@@ -61,8 +64,8 @@ class Zend_Cloud_QueueService_Adapter_ZendQueueTest
      */
     public static function main()
     {
-        $suite  = new PHPUnit_Framework_TestSuite(__CLASS__);
-        $result = PHPUnit_TextUI_TestRunner::run($suite);
+        $suite = new TestSuite(__CLASS__);
+        $result = (new TestRunner())->run($suite);
     }
 
     public function testPeekMessages()
@@ -79,7 +82,6 @@ class Zend_Cloud_QueueService_Adapter_ZendQueueTest
 
         return $config;
     }
-
 }
 
 if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_QueueService_Adapter_ZendQueueTest::main') {

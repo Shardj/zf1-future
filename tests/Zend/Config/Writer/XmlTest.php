@@ -1,4 +1,7 @@
 <?php
+
+use PHPUnit\Framework\TestCase;
+
 /**
  * Zend Framework
  *
@@ -43,16 +46,16 @@ require_once 'Zend/Config/Writer/Xml.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Config
  */
-class Zend_Config_Writer_XmlTest extends PHPUnit_Framework_TestCase
+class Zend_Config_Writer_XmlTest extends TestCase
 {
     protected $_tempName;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->_tempName = tempnam(dirname(__FILE__) . '/temp', 'tmp');
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         @unlink($this->_tempName);
     }
@@ -65,7 +68,7 @@ class Zend_Config_Writer_XmlTest extends PHPUnit_Framework_TestCase
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('No filename was set', $expected->getMessage());
+            $this->assertStringContainsString('No filename was set', $expected->getMessage());
         }
     }
 
@@ -77,7 +80,7 @@ class Zend_Config_Writer_XmlTest extends PHPUnit_Framework_TestCase
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('No config was set', $expected->getMessage());
+            $this->assertStringContainsString('No config was set', $expected->getMessage());
         }
     }
 
@@ -89,7 +92,7 @@ class Zend_Config_Writer_XmlTest extends PHPUnit_Framework_TestCase
             $writer->write();
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            $this->assertContains('Could not write to file', $expected->getMessage());
+            $this->assertStringContainsString('Could not write to file', $expected->getMessage());
         }
     }
 
@@ -148,10 +151,11 @@ class Zend_Config_Writer_XmlTest extends PHPUnit_Framework_TestCase
 
     /**
      * @group ZF-6773
+     * @doesNotPerformAssertions
      */
     public function testWriteMultidimensionalArrayWithNumericKeys()
     {
-        $writer = new Zend_Config_Writer_Xml;
+        $writer = new Zend_Config_Writer_Xml();
         $writer->write($this->_tempName, new Zend_Config([
             'notification' => [
                 'adress' => [
