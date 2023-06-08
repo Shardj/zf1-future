@@ -176,7 +176,7 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
         $params = [];
 
         if (!$partial) {
-            $path = trim($path, self::URI_DELIMITER);
+            $path = trim((string) $path, self::URI_DELIMITER);
         } else {
             $matchedPath = $path;
         }

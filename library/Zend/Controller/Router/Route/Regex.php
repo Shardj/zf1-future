@@ -120,7 +120,7 @@ class Zend_Controller_Router_Route_Regex extends Zend_Controller_Router_Route_Ab
     public function match($path, $partial = false)
     {
         if (!$partial) {
-            $path  = trim(urldecode($path), self::URI_DELIMITER);
+            $path  = trim(urldecode((string) $path), self::URI_DELIMITER);
             $regex = '#^' . $this->_regex . '$#i';
         } else {
             $regex = '#^' . $this->_regex . '#i';

@@ -232,7 +232,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
         $matchedPath     = '';
 
         if (!$partial) {
-            $path = trim($path, $this->_urlDelimiter);
+            $path = trim((string) $path, $this->_urlDelimiter);
         }
 
         if ($path !== '') {
