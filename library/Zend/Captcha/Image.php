@@ -488,7 +488,7 @@ class Zend_Captcha_Image extends Zend_Captcha_Word
 
         $w     = $this->getWidth();
         $h     = $this->getHeight();
-        $fsize = $this->getFontSize();
+        $fsize = filter_var($this->getFontSize(), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
         $img_file   = $this->getImgDir() . $id . $this->getSuffix();
         if(empty($this->_startImage)) {
