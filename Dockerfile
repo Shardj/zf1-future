@@ -1,4 +1,4 @@
-FROM php:8.1-cli-buster
+FROM php:8.2-cli-buster
 
 ARG XDEBUG_VERSION=3.1.6
 
