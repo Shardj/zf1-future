@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,19 +55,19 @@ class Zend_Paginator_Adapter_IteratorTest extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $iterator = new ArrayIterator(range(1, 101));
         $this->_adapter = new Zend_Paginator_Adapter_Iterator($iterator);
     }
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_adapter = null;
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testGetsItemsAtOffsetZero()

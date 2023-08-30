@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -64,7 +64,7 @@ class Zend_Validate_EmailAddressTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -72,7 +72,7 @@ class Zend_Validate_EmailAddressTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validator = new Zend_Validate_EmailAddress();
     }
@@ -658,6 +658,6 @@ class Zend_Validate_EmailAddressTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_EmailAddressTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Validate_EmailAddressTest::main') {
     Zend_Validate_EmailAddressTest::main();
 }

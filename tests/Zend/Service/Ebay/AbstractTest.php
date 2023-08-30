@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Service_Ebay_AbstractTest extends TestCase
      */
     protected $_concrete;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_concrete = new Zend_Service_Ebay_AbstractConcrete([]);
     }

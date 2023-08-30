@@ -155,7 +155,7 @@ class Zend_Tool_Project_Provider_DbTable
 
         $bootstrapResource = $this->_loadedProfile->search('BootstrapFile');
 
-        /* @var $zendApp Zend_Application */
+        /* @var Zend_Application $zendApp */
         $zendApp = $bootstrapResource->getApplicationInstance();
 
         try {
@@ -165,7 +165,7 @@ class Zend_Tool_Project_Provider_DbTable
             return;
         }
 
-        /* @var $db Zend_Db_Adapter_Abstract */
+        /* @var Zend_Db_Adapter_Abstract $db */
         $db = $zendApp->getBootstrap()->getResource('db');
 
         $tableResources = [];

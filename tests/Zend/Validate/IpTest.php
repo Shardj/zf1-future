@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Validate_IpTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validator = new Zend_Validate_Ip();
     }

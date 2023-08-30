@@ -88,7 +88,7 @@ class Zend_Controller_Action_Helper_Json extends Zend_Controller_Action_Helper_A
      *
      * @param  mixed   $data
      * @param  boolean|array $keepLayouts
-     * @param  $encodeData Encode $data as JSON?
+     * @param  bool $encodeData Encode $data as JSON?
      * NOTE:   if boolean, establish $keepLayouts to true|false
      *         if array, admit params for Zend_Json::encode as enableJsonExprFinder=>true|false
      *         if $keepLayouts and parmas for Zend_Json::encode are required

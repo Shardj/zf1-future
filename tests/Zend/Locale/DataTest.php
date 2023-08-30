@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_Locale_DataTest extends TestCase
 {
     private $_cache = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory(
@@ -54,7 +54,7 @@ class Zend_Locale_DataTest extends TestCase
     }
 
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Calendar_TimezoneTest extends TestCase
      */
     protected $timezone;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->timezoneText = file_get_contents(
             'Zend/Gdata/Calendar/_files/TimezoneElementSample1.xml',

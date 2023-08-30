@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -52,7 +52,7 @@ class Zend_Service_Ebay_OfflineTest extends TestCase
      */
     protected $_finding;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_finding = new Zend_Service_Ebay_Finding('foo');
     }

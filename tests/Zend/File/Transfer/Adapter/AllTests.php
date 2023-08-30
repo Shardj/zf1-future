@@ -43,7 +43,7 @@ class Zend_File_Transfer_Adapter_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -57,6 +57,6 @@ class Zend_File_Transfer_Adapter_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_File_Transfer_Adapter_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_File_Transfer_Adapter_AllTests::main') {
     Zend_File_Transfer_Adapter_AllTests::main();
 }

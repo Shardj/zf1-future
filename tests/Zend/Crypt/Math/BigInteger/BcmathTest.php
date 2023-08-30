@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -37,7 +37,7 @@ class Zend_Crypt_Math_BigInteger_BcmathTest extends TestCase
 {
     private $_math = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('bcmath')) {
             $this->markTestSkipped('Skipped: Zend_Crypt_Math_BigInteger_BcmathTest due to ext/bcmath being unavailable');

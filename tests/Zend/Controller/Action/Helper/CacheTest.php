@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -40,10 +40,10 @@ class Zend_Controller_Action_Helper_CacheTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Action_Helper_CacheTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_requestUriOld =
             isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : null;
@@ -57,7 +57,7 @@ class Zend_Controller_Action_Helper_CacheTest extends TestCase
         $this->front->setRequest($this->request);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $_SERVER['REQUEST_URI'] = $this->_requestUriOld;
     }
@@ -307,6 +307,6 @@ class Mock_Zend_Cache_Page_TestingEncodedCacheId extends Zend_Cache_Core
     public function end() {$this->res = 'verified';}
 }**/
 
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_CacheTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_CacheTest::main") {
     Zend_Controller_Action_Helper_CacheTest::main();
 }

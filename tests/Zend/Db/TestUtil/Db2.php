@@ -34,11 +34,11 @@ require_once 'Zend/Db/TestUtil/Common.php';
  */
 class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 {
-    public function setUp(Zend_Db_Adapter_Abstract $db)
+    public function set_up(Zend_Db_Adapter_Abstract $db)
     {
         $this->setAdapter($db);
         $this->createSequence('zfproducts_seq');
-        parent::setUp($db);
+        parent::set_up($db);
     }
 
     public function getParams(array $constants = [])

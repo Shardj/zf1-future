@@ -134,9 +134,9 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends Constraint
     /**
      * Evaluate an object to see if it fits the constraints
      *
-     * @param  string       Response content to be matched against (haystack)
-     * @param  null|string  Assertion type
-     * @param  string       (optional) String to match (needle), may be required depending on assertion type
+     * @param  string $content Response content to be matched against (haystack)
+     * @param  null|string $assertType Assertion type
+     * @param  string $match (optional) String to match (needle), may be required depending on assertion type
      * @return bool
      *
      * NOTE:
@@ -212,9 +212,9 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends Constraint
      * Report Failure
      *
      * @see    PHPUnit_Framework_Constraint for implementation details
-     * @param  mixed    CSS selector path
-     * @param  string   Failure description
-     * @param  object   Cannot be used, null
+     * @param  mixed $other CSS selector path
+     * @param  string $description Failure description
+     * @param  object $cannot_be_used Cannot be used, null
      * @return void
      * @throws PHPUnit_Framework_ExpectationFailedException
      * NOTE:

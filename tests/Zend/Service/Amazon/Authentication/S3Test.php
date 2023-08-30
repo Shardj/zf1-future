@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,11 +44,11 @@ class Zend_Service_Amazon_Authentication_S3Test extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
-        // TODO Auto-generated Zend_Service_Amazon_Authentication_S3Test::setUp()
+        // TODO Auto-generated Zend_Service_Amazon_Authentication_S3Test::set_up()
 
 
         $this->Zend_Service_Amazon_Authentication_S3 = new Zend_Service_Amazon_Authentication_S3('0PN5J17HBGZHT7JJ3X82', 'uV3F3YluFJax1cknvbcGwgjvx4QpvB+leU8dUj2o', '2006-03-01');
@@ -57,14 +57,14 @@ class Zend_Service_Amazon_Authentication_S3Test extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        // TODO Auto-generated Zend_Service_Amazon_Authentication_S3Test::tearDown()
+        // TODO Auto-generated Zend_Service_Amazon_Authentication_S3Test::tear_down()
 
 
         $this->Zend_Service_Amazon_Authentication_S3 = null;
 
-        parent::tearDown();
+        parent::tear_down();
     }
 
 

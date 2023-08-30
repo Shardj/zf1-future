@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -80,7 +80,7 @@ class Zend_Service_Flickr_OfflineTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_flickr = new Zend_Service_Flickr(constant('TESTS_ZEND_SERVICE_FLICKR_ONLINE_APIKEY'));
         $this->_flickrProxy = new Zend_Service_Flickr_OfflineTest_FlickrProtectedMethodProxy(

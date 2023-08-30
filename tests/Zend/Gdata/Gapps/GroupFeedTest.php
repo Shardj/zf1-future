@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Gapps_GroupFeedTest extends TestCase
     /**
       * Called before each test to setup any fixtures.
       */
-    protected function setUp(): void
+    protected function set_up()
     {
         $groupFeedText = file_get_contents(
             'Zend/Gdata/Gapps/_files/GroupFeedDataSample1.xml',

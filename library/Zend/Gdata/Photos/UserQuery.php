@@ -81,7 +81,7 @@ class Zend_Gdata_Photos_UserQuery extends Zend_Gdata_Query
      * 'api' or 'base'. Normally, 'api' will be desired. Default is 'api'.
      *
      * @param string $value
-     * @return Zend_Gdata_Photos_UserQuery Provides a fluent interface
+     * @return $this
      */
     public function setProjection($value)
     {
@@ -105,7 +105,7 @@ class Zend_Gdata_Photos_UserQuery extends Zend_Gdata_Query
      * 'feed' or 'entry'. Normally, 'feed' will be desired. Default is 'feed'.
      *
      * @param string $value
-     * @return Zend_Gdata_Photos_UserQuery Provides a fluent interface
+     * @return $this
      */
     public function setType($value)
     {

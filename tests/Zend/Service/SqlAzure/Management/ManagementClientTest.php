@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -63,14 +63,14 @@ class Zend_Service_SqlAzure_Management_ManagementClientTest extends TestCase
     {
         if (TESTS_ZEND_SERVICE_WINDOWSAZURE_SQLMANAGEMENT_RUNTESTS) {
             $suite = new TestSuite("Zend_Service_SqlAzure_Management_ManagementClientTest");
-            $result = (new TestRunner())->run($suite);
+            $result = (new resources_Runner())->run($suite);
         }
     }
     
     /**
      * Test teardown
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // Clean up server
         $managementClient = $this->createManagementClient();
@@ -143,6 +143,6 @@ class Zend_Service_SqlAzure_Management_ManagementClientTest extends TestCase
 }
 
 // Call Zend_Service_SqlAzure_Management_ManagementClientTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Service_SqlAzure_Management_ManagementClientTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Service_SqlAzure_Management_ManagementClientTest::main") {
     Zend_Service_SqlAzure_Management_ManagementClientTest::main();
 }

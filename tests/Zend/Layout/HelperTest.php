@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,7 +55,7 @@ class Zend_Layout_HelperTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Layout_HelperTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -64,7 +64,7 @@ class Zend_Layout_HelperTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Layout_HelperTest_Layout::resetMvcInstance();
         Zend_Controller_Front::getInstance()->resetInstance();
@@ -82,7 +82,7 @@ class Zend_Layout_HelperTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -157,6 +157,6 @@ class Zend_Layout_HelperTest_Layout extends Zend_Layout
 }
 
 // Call Zend_Layout_HelperTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Layout_HelperTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Layout_HelperTest::main") {
     Zend_Layout_HelperTest::main();
 }

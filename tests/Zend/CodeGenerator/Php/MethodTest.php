@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,12 +48,12 @@ class Zend_CodeGenerator_Php_MethodTest extends TestCase
      */
     protected $_method = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_method = new Zend_CodeGenerator_Php_Method();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_method = null;
     }

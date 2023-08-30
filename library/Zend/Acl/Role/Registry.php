@@ -58,7 +58,7 @@ class Zend_Acl_Role_Registry
      * @param  Zend_Acl_Role_Interface              $role
      * @param  Zend_Acl_Role_Interface|string|array $parents
      * @throws Zend_Acl_Role_Registry_Exception
-     * @return Zend_Acl_Role_Registry Provides a fluent interface
+     * @return $this
      */
     public function add(Zend_Acl_Role_Interface $role, $parents = null)
     {
@@ -225,7 +225,7 @@ class Zend_Acl_Role_Registry
      *
      * @param  Zend_Acl_Role_Interface|string $role
      * @throws Zend_Acl_Role_Registry_Exception
-     * @return Zend_Acl_Role_Registry Provides a fluent interface
+     * @return $this
      */
     public function remove($role)
     {
@@ -254,7 +254,7 @@ class Zend_Acl_Role_Registry
     /**
      * Removes all Roles from the registry
      *
-     * @return Zend_Acl_Role_Registry Provides a fluent interface
+     * @return $this
      */
     public function removeAll()
     {

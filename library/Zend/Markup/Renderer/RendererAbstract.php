@@ -471,7 +471,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     /**
      * Get the markup name
      *
-     * @param Zend_Markup_Token
+     * @param Zend_Markup_Token $token
      *
      * @return string
      */

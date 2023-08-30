@@ -85,7 +85,7 @@ class Zend_Feed_Writer
     /**
      * Set plugin loader for use with Extensions
      *
-     * @param  Zend_Loader_PluginLoader_Interface
+     * @param  Zend_Loader_PluginLoader_Interface $loader
      */
     public static function setPluginLoader(Zend_Loader_PluginLoader_Interface $loader)
     {

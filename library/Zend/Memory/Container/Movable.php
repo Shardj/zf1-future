@@ -263,7 +263,7 @@ class Zend_Memory_Container_Movable extends Zend_Memory_Container {
      * Check if object is marked as swapped
      *
      * @return int
-     *@internal
+     * @internal
      */
     public function isSwapped()
     {

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Navigation_PageFactoryTest extends TestCase
 {
     protected $_oldIncludePath;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // store old include path
         $this->_oldIncludePath = get_include_path();
@@ -50,7 +50,7 @@ class Zend_Navigation_PageFactoryTest extends TestCase
         set_include_path($addToPath . PATH_SEPARATOR . $this->_oldIncludePath);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // reset include path
         set_include_path($this->_oldIncludePath);

@@ -75,7 +75,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     protected $_smdMethods;
 
     /**
-     * @var Zend_Server_Description
+     * @var Zend_Server_Definition
      */
     protected $_table;
 
@@ -351,7 +351,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Add service method to service map
      *
-     * @param Zend_Server_Reflection_Function $method
+     * @param Zend_Server_Method_Definition $method
      * @return void
      * @throws Zend_Json_Server_Exception
      */

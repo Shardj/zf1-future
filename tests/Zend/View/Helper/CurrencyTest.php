@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,7 +70,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_CurrencyTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function clearRegistry()
@@ -88,7 +88,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->clearRegistry();
         require_once 'Zend/Cache.php';
@@ -109,7 +109,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
@@ -207,6 +207,6 @@ class Zend_View_Helper_CurrencyTest extends TestCase
 }
 
 // Call Zend_View_Helper_TranslateTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_TranslateTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_TranslateTest::main") {
     Zend_View_Helper_TranslateTest::main();
 }

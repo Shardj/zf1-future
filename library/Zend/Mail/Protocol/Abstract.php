@@ -259,7 +259,7 @@ abstract class Zend_Mail_Protocol_Abstract
     /**
      * Add the transaction log
      *
-     * @param  string new transaction
+     * @param  string $value new transaction
      * @return void
      */
     protected function _addLog($value)
@@ -285,8 +285,25 @@ abstract class Zend_Mail_Protocol_Abstract
         $errorNum = 0;
         $errorStr = '';
 
-        // open connection
-        $this->_socket = @stream_socket_client($remote, $errorNum, $errorStr, self::TIMEOUT_CONNECTION);
+        $context = stream_context_create();
+
+        if (($result = $this->_setStreamContextVerifyPeer($this->_verifyPeer, $context)) === false) {
+            /**
+             * @see Zend_Mail_Protocol_Exception
+             */
+            require_once 'Zend/Mail/Protocol/Exception.php';
+            throw new Zend_Mail_Protocol_Exception('Could not set stream context verify_peer value');
+        }
+
+        if (($result = $this->_setStreamContextVerifyPeerName($this->_verifyPeerName, $context)) === false) {
+            /**
+             * @see Zend_Mail_Protocol_Exception
+             */
+            require_once 'Zend/Mail/Protocol/Exception.php';
+            throw new Zend_Mail_Protocol_Exception('Could not set stream context verify_peer_name value');
+        }
+
+        $this->_socket = stream_socket_client($remote, $errorNum, $errorStr, self::TIMEOUT_CONNECTION, STREAM_CLIENT_CONNECT, $context);
 
         if ($this->_socket === false) {
             if ($errorNum == 0) {
@@ -305,22 +322,6 @@ abstract class Zend_Mail_Protocol_Abstract
              */
             require_once 'Zend/Mail/Protocol/Exception.php';
             throw new Zend_Mail_Protocol_Exception('Could not set stream timeout');
-        }
-
-        if (($result = $this->_setStreamContextVerifyPeer($this->_verifyPeer)) === false) {
-            /**
-             * @see Zend_Mail_Protocol_Exception
-             */
-            require_once 'Zend/Mail/Protocol/Exception.php';
-            throw new Zend_Mail_Protocol_Exception('Could not set stream context verify_peer value');
-        }
-
-        if (($result = $this->_setStreamContextVerifyPeerName($this->_verifyPeerName)) === false) {
-            /**
-             * @see Zend_Mail_Protocol_Exception
-             */
-            require_once 'Zend/Mail/Protocol/Exception.php';
-            throw new Zend_Mail_Protocol_Exception('Could not set stream context verify_peer_name value');
         }
 
         return $result;
@@ -476,32 +477,35 @@ abstract class Zend_Mail_Protocol_Abstract
      * Set stream timeout
      *
      * @param integer $timeout
+     * @param resource|null $context
      * @return boolean
      */
-    protected function _setStreamTimeout($timeout)
+    protected function _setStreamTimeout($timeout, $context = null)
     {
-        return stream_set_timeout($this->_socket, $timeout);
+        return stream_set_timeout($context ?? $this->_socket, $timeout);
     }
-
+    
     /**
      * Set stream SSL context verify_peer value
      *
      * @param bool $value
+     * @param resource|null $context
      * @return boolean
      */
-    protected function _setStreamContextVerifyPeer($value)
+    protected function _setStreamContextVerifyPeer($value, $context = null)
     {
-        return stream_context_set_option($this->_socket, 'ssl', 'verify_peer', $value);
+        return stream_context_set_option($context ?? $this->_socket, 'ssl', 'verify_peer', $value);
     }
 
     /**
      * Set stream SSL context verify_peer_name value
      *
      * @param bool $value
+     * @param resource|null $context
      * @return boolean
      */
-    protected function _setStreamContextVerifyPeerName($value)
+    protected function _setStreamContextVerifyPeerName($value, $context = null)
     {
-        return stream_context_set_option($this->_socket, 'ssl', 'verify_peer_name', $value);
+        return stream_context_set_option($context ?? $this->_socket, 'ssl', 'verify_peer_name', $value);
     }
 }

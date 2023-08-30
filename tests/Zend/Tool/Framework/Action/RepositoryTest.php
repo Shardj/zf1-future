@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,12 +49,12 @@ class Zend_Tool_Framework_Action_RepositoryTest extends TestCase
      */
     protected $_repository = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_repository = new Zend_Tool_Framework_Action_Repository();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_repository = null;
     }

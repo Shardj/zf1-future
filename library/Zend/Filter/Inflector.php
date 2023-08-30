@@ -242,7 +242,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
      * Set a Target
      * ex: 'scripts/:controller/:action.:suffix'
      *
-     * @param string
+     * @param string $target
      * @return Zend_Filter_Inflector
      */
     public function setTarget($target)
@@ -300,7 +300,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
      *     'suffix'      => 'phtml'
      *     );
      *
-     * @param array
+     * @param array $rules
      * @return Zend_Filter_Inflector
      */
     public function addRules(Array $rules)

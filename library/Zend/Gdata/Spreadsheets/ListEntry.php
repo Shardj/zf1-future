@@ -132,7 +132,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
      * custom row elements were previously stored, they will be overwritten.
      * @param array $custom The custom row elements to be contained in this
      *          list entry.
-     * @return Zend_Gdata_Spreadsheets_ListEntry Provides a fluent interface.
+     * @return $this
      */
     public function setCustom($custom)
     {
@@ -147,7 +147,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
      * Add an individual custom row element to this list entry.
      * @param Zend_Gdata_Spreadsheets_Extension_Custom $custom The custom
      *             element to be added.
-     * @return Zend_Gdata_Spreadsheets_ListEntry Provides a fluent interface.
+     * @return $this
      */
     public function addCustom($custom)
     {
@@ -160,7 +160,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
      * Remove an individual row element from this list entry by index. This
      * will cause the array to be re-indexed.
      * @param int $index The index of the custom element to be deleted.
-     * @return Zend_Gdata_Spreadsheets_ListEntry Provides a fluent interface.
+     * @return $this
      * @throws Zend_Gdata_App_InvalidArgumentException
      */
     public function removeCustom($index)
@@ -185,7 +185,7 @@ class Zend_Gdata_Spreadsheets_ListEntry extends Zend_Gdata_Entry
     /**
      * Remove an individual row element from this list entry by name.
      * @param string $name The name of the custom element to be deleted.
-     * @return Zend_Gdata_Spreadsheets_ListEntry Provides a fluent interface.
+     * @return $this
      * @throws Zend_Gdata_App_InvalidArgumentException
      */
     public function removeCustomByName($name)

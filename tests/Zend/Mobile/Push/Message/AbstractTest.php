@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Mobile_Push_Message_AbstractTest extends TestCase
      */
     protected $msg;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->msg = new Zend_Mobile_Push_Message_AbstractProxy();
     }

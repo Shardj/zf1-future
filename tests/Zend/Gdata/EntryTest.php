@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -75,7 +75,7 @@ class Zend_Gdata_EntryTest extends TestCase
      */
     protected $openSearchNamespacev2;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->entry = new Zend_Gdata_Entry();
         $this->entryText = file_get_contents(

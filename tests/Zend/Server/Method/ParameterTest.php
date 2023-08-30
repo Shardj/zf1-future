@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -58,7 +58,7 @@ class Zend_Server_Method_ParameterTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Server_Method_ParameterTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -67,7 +67,7 @@ class Zend_Server_Method_ParameterTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->parameter = new Zend_Server_Method_Parameter();
     }
@@ -78,7 +78,7 @@ class Zend_Server_Method_ParameterTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -204,6 +204,6 @@ class Zend_Server_Method_ParameterTest extends TestCase
 }
 
 // Call Zend_Server_Method_ParameterTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Server_Method_ParameterTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Server_Method_ParameterTest::main") {
     Zend_Server_Method_ParameterTest::main();
 }

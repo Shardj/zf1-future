@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,7 +49,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_serverBackup = $_SERVER;
         unset($_SERVER['HTTPS']);
@@ -58,7 +58,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $_SERVER = $this->_serverBackup;
     }

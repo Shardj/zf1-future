@@ -153,7 +153,7 @@ abstract class Zend_Service_Amazon_Ec2_Abstract extends Zend_Service_Amazon_Abst
         $params = $this->addRequiredParameters($params);
 
         try {
-            /* @var $request Zend_Http_Client */
+            /* @var Zend_Http_Client $request */
             $request = self::getHttpClient();
             $request->resetParameters();
 

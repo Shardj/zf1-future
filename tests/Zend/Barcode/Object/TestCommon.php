@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -51,12 +51,12 @@ abstract class Zend_Barcode_Object_TestCommon extends TestCase
         return include_once(dirname(__FILE__) . "/_files/$fileName.php");
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_object = $this->_getBarcodeObject();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_object = null;
     }

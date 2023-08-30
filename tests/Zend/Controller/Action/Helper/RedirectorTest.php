@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -87,7 +87,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Action_Helper_RedirectorTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -98,7 +98,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
      *
      * Also resets the front controller instance.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $front = Zend_Controller_Front::getInstance();
         $front->resetInstance();
@@ -128,7 +128,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
     /**
      * Unset all properties
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->redirector);
         unset($this->controller);
@@ -607,6 +607,6 @@ class Zend_Controller_Action_Helper_Redirector_TestController extends Zend_Contr
 }
 
 // Call Zend_Controller_Action_Helper_RedirectorTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_RedirectorTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_RedirectorTest::main") {
     Zend_Controller_Action_Helper_RedirectorTest::main();
 }

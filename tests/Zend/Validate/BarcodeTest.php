@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -345,7 +345,6 @@ class Zend_Validate_BarcodeTest extends TestCase
 
     public function testINTELLIGENTMAIL()
     {
-        $this->markTestSkipped('on linux not found Zend\Validate\Barcode\Intelligentmail.php');
         $barcode = new Zend_Validate_Barcode('intelligentmail');
         $this->assertTrue($barcode->isValid('01234567094987654321'));
         $this->assertFalse($barcode->isValid('123'));

@@ -421,7 +421,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
     /**
      * Adds to the stack of view script paths in LIFO order.
      *
-     * @param string|array The directory (-ies) to add.
+     * @param string|array $path The directory (-ies) to add.
      * @return Zend_View_Abstract
      */
     public function addScriptPath($path)
@@ -435,7 +435,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      *
      * To clear all paths, use Zend_View::setScriptPath(null).
      *
-     * @param string|array The directory (-ies) to set as the path.
+     * @param string|array $path The directory (-ies) to set as the path.
      * @return Zend_View_Abstract
      */
     public function setScriptPath($path)
@@ -536,7 +536,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
     /**
      * Adds to the stack of helper paths in LIFO order.
      *
-     * @param string|array The directory (-ies) to add.
+     * @param string|array $path The directory (-ies) to add.
      * @param string $classPrefix Class prefix to use with classes in this
      * directory; defaults to Zend_View_Helper
      * @return Zend_View_Abstract
@@ -646,7 +646,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
     /**
      * Adds to the stack of filter paths in LIFO order.
      *
-     * @param string|array The directory (-ies) to add.
+     * @param string|array $path The directory (-ies) to add.
      * @param string $classPrefix Class prefix to use with classes in this
      * directory; defaults to Zend_View_Filter
      * @return Zend_View_Abstract
@@ -661,7 +661,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      *
      * To clear all paths, use Zend_View::setFilterPath(null).
      *
-     * @param string|array The directory (-ies) to set as the path.
+     * @param string|array $path The directory (-ies) to set as the path.
      * @param string $classPrefix The class prefix to apply to all elements in
      * $path; defaults to Zend_View_Filter
      * @return Zend_View_Abstract
@@ -732,7 +732,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
     /**
      * Add one or more filters to the stack in FIFO order.
      *
-     * @param string|array One or more filters to add.
+     * @param string|array $name One or more filters to add.
      * @return Zend_View_Abstract
      */
     public function addFilter($name)
@@ -748,7 +748,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      *
      * To clear all filters, use Zend_View::setFilter(null).
      *
-     * @param string|array One or more filters to set.
+     * @param string|array $name One or more filters to set.
      * @return Zend_View_Abstract
      */
     public function setFilter($name)
@@ -802,10 +802,10 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      * names (with the corresponding array values).
      *
      * @see    __set()
-     * @param  string|array The assignment strategy to use.
-     * @param  mixed (Optional) If assigning a named variable, use this
+     * @param  string|array $spec The assignment strategy to use.
+     * @param  mixed $value (Optional) If assigning a named variable, use this
      * as the value.
-     * @return Zend_View_Abstract Fluent interface
+     * @return $this
      * @throws Zend_View_Exception if $spec is neither a string nor an array,
      * or if an attempt to set a private or protected member is detected
      */

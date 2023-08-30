@@ -65,7 +65,7 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -73,9 +73,9 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         // Isolate the tests from slow deletes
         $this->_wait();
     }
@@ -153,6 +153,6 @@ class Zend_Cloud_QueueService_Adapter_SqsTest extends Zend_Cloud_QueueService_Te
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_QueueService_Adapter_SqsTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_QueueService_Adapter_SqsTest::main') {
     Zend_Cloud_QueueService_Adapter_SqsTest::main();
 }

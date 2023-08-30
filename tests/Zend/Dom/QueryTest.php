@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -68,7 +68,7 @@ class Zend_Dom_QueryTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Dom_QueryTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -77,7 +77,7 @@ class Zend_Dom_QueryTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->query = new Zend_Dom_Query();
     }
@@ -88,7 +88,7 @@ class Zend_Dom_QueryTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -403,6 +403,6 @@ XML;
 }
 
 // Call Zend_Dom_QueryTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Dom_QueryTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Dom_QueryTest::main") {
     Zend_Dom_QueryTest::main();
 }

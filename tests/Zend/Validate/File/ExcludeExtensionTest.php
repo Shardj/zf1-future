@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,7 +55,7 @@ class Zend_Validate_File_ExcludeExtensionTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Validate_File_ExcludeExtensionTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -191,6 +191,6 @@ class Zend_Validate_File_ExcludeExtensionTest extends TestCase
 }
 
 // Call Zend_Validate_File_ExcludeExtensionTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_ExcludeExtensionTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Validate_File_ExcludeExtensionTest::main") {
     Zend_Validate_File_ExtensionTest::main();
 }

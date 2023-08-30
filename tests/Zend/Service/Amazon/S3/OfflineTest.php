@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
  */
 class Zend_Service_Amazon_S3_OfflineTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('No offline tests for Zend_Service_Amazon_S3');
     }

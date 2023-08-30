@@ -47,7 +47,7 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
      * Sets page URI
      *
      * @param  string $uri                page URI, must a string or null
-     * @return Zend_Navigation_Page_Uri   fluent interface, returns self
+     * @return $this
      * @throws Zend_Navigation_Exception  if $uri is invalid
      */
     public function setUri($uri)

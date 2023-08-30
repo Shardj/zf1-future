@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Tool_Project_ProfileTest extends TestCase
      */
     protected $_standardProfileFromData = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_projectDirectory = dirname(__FILE__) . '/_files/project1/';
         $this->_projectProfileFile = dirname(__FILE__) . '/_files/.zfproject.xml.orig';
@@ -63,7 +63,7 @@ class Zend_Tool_Project_ProfileTest extends TestCase
         $this->_standardProfileFromData->setAttribute('projectDirectory', $this->_projectDirectory);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_removeProjectFiles();
     }

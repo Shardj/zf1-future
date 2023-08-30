@@ -103,7 +103,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
     protected $_order;
 
     /**
-     * @var Zend_Translate
+     * @var Zend_Translate_Adapter
      */
     protected $_translator;
 
@@ -965,7 +965,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
     /**
      * Retrieve translator object
      *
-     * @return Zend_Translate|null
+     * @return Zend_Translate_Adapter|null
      */
     public function getTranslator()
     {

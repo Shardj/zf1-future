@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -60,7 +60,7 @@ class Zend_Controller_Plugin_ActionStackTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Plugin_ActionStackTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -69,7 +69,7 @@ class Zend_Controller_Plugin_ActionStackTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->removeRegistryEntry();
         $this->registry = Zend_Registry::getInstance();
@@ -81,7 +81,7 @@ class Zend_Controller_Plugin_ActionStackTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->removeRegistryEntry();
     }
@@ -399,6 +399,6 @@ class Zend_Controller_Plugin_ActionStack_Registry extends Zend_Registry
 }
 
 // Call Zend_Controller_Plugin_ActionStackTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_ActionStackTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Plugin_ActionStackTest::main") {
     Zend_Controller_Plugin_ActionStackTest::main();
 }

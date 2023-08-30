@@ -135,7 +135,7 @@ abstract class Zend_Gdata_App_Base
      * This represents any raw text contained within the XML element
      *
      * @param string $value Child text node
-     * @return Zend_Gdata_App_Base Returns an object of the same type as 'this' to provide a fluent interface.
+     * @return $this
      */
     public function setText($value)
     {
@@ -160,7 +160,7 @@ abstract class Zend_Gdata_App_Base
      * child XML elements to any data model class.
      *
      * @param array $value All extension elements
-     * @return Zend_Gdata_App_Base Returns an object of the same type as 'this' to provide a fluent interface.
+     * @return $this
      */
     public function setExtensionElements($value)
     {
@@ -189,7 +189,7 @@ abstract class Zend_Gdata_App_Base
      * This can be used to add arbitrary attributes to any data model element
      *
      * @param array $value All extension attributes
-     * @return Zend_Gdata_App_Base Returns an object of the same type as 'this' to provide a fluent interface.
+     * @return $this
      */
     public function setExtensionAttributes($value)
     {

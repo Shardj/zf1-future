@@ -250,6 +250,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
                 $this->_recursiveMkdirAndChmod($id);
             }
             if (!is_writable($path)) {
+                $this->_log('Zend_Cache_Backend_File::save() : path ' . $path . ' is not writable');
                 return false;
             }
         }
@@ -1011,14 +1012,20 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         $result = false;
         $f = @fopen($file, 'ab+');
         if ($f) {
-            if ($this->_options['file_locking']) @flock($f, LOCK_EX);
+            if ($this->_options['file_locking']) {
+                @flock($f, LOCK_EX);
+            }
             fseek($f, 0);
             ftruncate($f, 0);
             $tmp = @fwrite($f, $string);
             if (!($tmp === FALSE)) {
                 $result = true;
+            } else {
+                $this->_log("Zend_Cache_Backend_File::_filePutContents() : failed to write contents");
             }
             @fclose($f);
+        } else {
+            $this->_log("Zend_Cache_Backend_File::_filePutContents() : we can't obtain handle");
         }
         @chmod($file, $this->_options['cache_file_perm']);
         return $result;

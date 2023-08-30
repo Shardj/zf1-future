@@ -50,7 +50,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         parent::__construct('Zend_Cache_Backend_TwoLevels', $data, $dataName);
     }
 
-    public function setUp($notag = false): void
+    public function set_up($notag = false)
     {
         @mkdir($this->getTmpDir());
         $this->_cache_dir = $this->getTmpDir() . DIRECTORY_SEPARATOR;
@@ -67,12 +67,12 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
             'fast_backend_options' => $fastBackendOptions,
             'slow_backend_options' => $slowBackendOptions
         ]);
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
     }
 
@@ -99,30 +99,45 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
     public function testSaveOverwritesIfFastIsFull()
     {
         $slowBackend = 'File';
-        $fastBackend = $this->createMock('Zend_Cache_Backend_Apc');
-        $fastBackend->expects($this->at(0))
+        $fastBackend = $this->createPartialMock('Zend_Cache_Backend_Apc', ['getFillingPercentage']);
+        $fastBackend->expects($this->exactly(2))
             ->method('getFillingPercentage')
-            ->will($this->returnValue(0));
-        $fastBackend->expects($this->at(1))
-            ->method('getFillingPercentage')
-            ->will($this->returnValue(90));
-
+            ->willReturn(0, 90);
 
         $slowBackendOptions = [
-            'cache_dir' => $this->_cache_dir
+            'cache_dir' => $this->_cache_dir,
         ];
+
+        $logStream = fopen('php://temp/maxmemory:4194304', 'a+b');
+        $logger = new Zend_Log(new Zend_Log_Writer_Stream($logStream));
         $cache = new Zend_Cache_Backend_TwoLevels([
             'fast_backend' => $fastBackend,
             'slow_backend' => $slowBackend,
             'slow_backend_options' => $slowBackendOptions,
             'stats_update_factor' => 1
         ]);
+        $cache->setDirectives(['logging' => true, 'logger' => $logger]);
 
         $id = 'test' . uniqid();
-        $this->assertTrue($cache->save(10, $id)); //fast usage at 0%
-        
-        $this->assertTrue($cache->save(100, $id)); //fast usage at 90%
-        $this->assertEquals(100, $cache->load($id));
+
+        $saveResult = $cache->save(10, $id);
+        $failMessage = 'Failed to save when fast usage is 0. Two level logs: ' . "\n" .
+            stream_get_contents($logStream, -1, 0);
+        $this->assertTrue($saveResult, $failMessage); //fast usage at 0%
+
+        $logger->debug('Finished saving when usage is at 0');
+
+        $saveResult = $cache->save(100, $id);
+        $failMessage = 'Failed to save when fast usage is 90. Two level logs: ' . "\n" .
+            stream_get_contents($logStream, -1, 0);
+        $this->assertTrue($saveResult, $failMessage); //fast usage at 90%
+
+        $logger->debug('Finished saving when usage is at 90');
+
+        $loadResult = $cache->load($id);
+        $failMessage = 'Failed to load when fast usage is 90. Two level logs: ' . "\n" .
+            stream_get_contents($logStream, -1, 0);
+        $this->assertEquals(100, $loadResult, $failMessage);
     }
     
     /**

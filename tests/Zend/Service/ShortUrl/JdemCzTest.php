@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ class Zend_Service_ShortUrl_JdemCzTest extends TestCase
      *
      * @return void
      */
-    public function setUp(): void
+    public function set_up()
     {
         if (!defined('TESTS_ZEND_SERVICE_SHORTURL_JDEMCZ_ENABLED')
             || !constant('TESTS_ZEND_SERVICE_SHORTURL_JDEMCZ_ENABLED')

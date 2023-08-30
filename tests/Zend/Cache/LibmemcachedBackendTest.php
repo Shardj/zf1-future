@@ -48,7 +48,7 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         parent::__construct('Zend_Cache_Backend_Libmemcached', $data, $dataName);
     }
 
-    public function setUp($notag = true): void
+    public function set_up($notag = true)
     {
         if (!class_exists('Memcached')) {
             $this->markTestSkipped('Memcached is not installed, skipping test');
@@ -68,12 +68,12 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
             ],
         ];
         $this->_instance = new Zend_Cache_Backend_Libmemcached($options);
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         $this->_instance = null;
         // We have to wait after a memcached flush
         sleep(1);
@@ -165,9 +165,7 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
     public function testCleanModeNotMatchingTags3()
     {
     }
-    /**
-     * @doesNotPerformAssertions
-     */
+
     public function testSaveCorrectCall()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -175,9 +173,6 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithNullLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -185,9 +180,6 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithSpecificLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -195,26 +187,17 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetMetadatas($notag = false)
     {
         parent::testGetMetadatas(true);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetFillingPercentage()
     {
         $this->_instance->setDirectives(['logging' => false]);
         parent::testGetFillingPercentage();
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetFillingPercentageOnEmptyBackend()
     {
         $this->_instance->setDirectives(['logging' => false]);

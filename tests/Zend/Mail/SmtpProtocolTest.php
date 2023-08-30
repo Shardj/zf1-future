@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,7 +48,7 @@ class Zend_Mail_SmtpProtocolTest extends TestCase
      */
     protected $_protocol;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_protocol = new ProtocolMock();
     }

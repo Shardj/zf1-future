@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
         parent::__construct($name, $data, $dataName);
     }
 
-    public function setUp($notag = false): void
+    public function set_up($notag = false)
     {
         $this->mkdir();
         $this->_instance->setDirectives(['logging' => true]);
@@ -89,7 +89,7 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->_instance) {
             $this->_instance->clean();
@@ -255,10 +255,10 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
     public function testCleanModeAll()
     {
         if ($this instanceof Zend_Cache_MemcachedBackendTest
-            && getenv('TRAVIS')
+            && (getenv('TRAVIS') || getenv('CI'))
         ) {
             $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
+                'Test randomly fail on CI.'
             );
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,7 +39,7 @@ class Zend_Service_Amazon_SimpleDb_PageTest extends TestCase
      */
     protected $page;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->page = new Zend_Service_Amazon_SimpleDb_Page('foobar');
     }

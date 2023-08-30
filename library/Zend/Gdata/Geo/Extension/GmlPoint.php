@@ -124,7 +124,7 @@ class Zend_Gdata_Geo_Extension_GmlPoint extends Zend_Gdata_Extension
      * Set the value for this element's distance attribute.
      *
      * @param Zend_Gdata_Geo_Extension_GmlPos $value The desired value for this attribute
-     * @return Zend_Gdata_Geo_Extension_GmlPoint Provides a fluent interface
+     * @return $this
      */
     public function setPos($value)
     {

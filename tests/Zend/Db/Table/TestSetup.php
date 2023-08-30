@@ -48,9 +48,9 @@ abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
 
     protected $_runtimeIncludePath = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
         $this->_table['accounts'] = $this->_getTable('My_ZendDbTable_TableAccounts');
         $this->_table['bugs'] = $this->_getTable('My_ZendDbTable_TableBugs');
@@ -58,12 +58,12 @@ abstract class Zend_Db_Table_TestSetup extends Zend_Db_TestSetup
         $this->_table['products'] = $this->_getTable('My_ZendDbTable_TableProducts');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->_runtimeIncludePath) {
             $this->_restoreIncludePath();
         }
-        parent::tearDown();
+        parent::tear_down();
     }
 
     protected function _getTable($tableClass, $options = [])

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -49,10 +49,10 @@ class Zend_Stdlib_SplPriorityQueueTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->queue = new Zend_Stdlib_SplPriorityQueue();
         $this->queue->insert('foo', 3);
@@ -108,6 +108,6 @@ class Zend_Stdlib_SplPriorityQueueTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Stdlib_SplPriorityQueueTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Stdlib_SplPriorityQueueTest::main') {
     Zend_Stdlib_SplPriorityQueueTest::main();
 }

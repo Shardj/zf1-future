@@ -100,8 +100,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
      * calling {@link Zend_Navigation_Page::setParent()}.
      *
      * @param  Zend_Navigation_Page|array|Zend_Config $page  page to add
-     * @return Zend_Navigation_Container                     fluent interface,
-     *                                                       returns self
+     * @return $this
      * @throws Zend_Navigation_Exception                     if page is invalid
      */
     public function addPage($page)
@@ -144,7 +143,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
      * Adds several pages at once
      *
      * @param  Zend_Navigation_Page[]|Zend_Config|Zend_Navigation_Container  $pages  pages to add
-     * @return Zend_Navigation_Container                    fluent interface,
+     * @return $this
      *                                                      returns self
      * @throws Zend_Navigation_Exception                    if $pages is not
      *                                                      array, Zend_Config or
@@ -179,7 +178,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
      * Sets pages this container should have, removing existing pages
      *
      * @param  Zend_Navigation_Page[] $pages               pages to set
-     * @return Zend_Navigation_Container  fluent interface, returns self
+     * @return $this
      */
     public function setPages(array $pages)
     {
@@ -226,7 +225,6 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
         }
 
         if ($recursive) {
-            /** @var Zend_Navigation_Page $childPage */
             foreach ($this->_pages as $childPage) {
                 if ($childPage->hasPage($page, true)) {
                     $childPage->removePage($page, true);
@@ -241,7 +239,7 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
     /**
      * Removes all pages in container
      *
-     * @return Zend_Navigation_Container  fluent interface, returns self
+     * @return $this
      */
     public function removePages()
     {

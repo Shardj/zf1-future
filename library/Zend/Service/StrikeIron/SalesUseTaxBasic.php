@@ -34,7 +34,7 @@ class Zend_Service_StrikeIron_SalesUseTaxBasic extends Zend_Service_StrikeIron_B
 {
     /**
      * Configuration options
-     * @param array
+     * @var array
      */
     protected $_options = ['username' => null,
                                 'password' => null,

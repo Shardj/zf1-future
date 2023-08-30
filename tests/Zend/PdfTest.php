@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_PdfTest extends TestCase
      */
     private $_pdf;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_pdf = Zend_Pdf::load(dirname(__FILE__) . '/Pdf/_files/PdfWithFields.pdf');
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -60,7 +60,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends TestCase
         'adapter' => 'Zend_Http_Client_Adapter_Socket'
     ];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (defined('TESTS_Zend_Feed_Pubsubhubbub_BASEURI') &&
             Zend_Uri_Http::check(TESTS_Zend_Feed_Pubsubhubbub_BASEURI)) {

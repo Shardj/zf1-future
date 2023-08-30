@@ -127,7 +127,6 @@ class Zend_Http_Client_Adapter_Test implements Zend_Http_Client_Adapter_Interfac
      * @param string  $host
      * @param int     $port
      * @param boolean $secure
-     * @param int     $timeout
      * @throws Zend_Http_Client_Adapter_Exception
      */
     public function connect($host, $port = 80, $secure = false)
@@ -209,7 +208,7 @@ class Zend_Http_Client_Adapter_Test implements Zend_Http_Client_Adapter_Interfac
     /**
      * Add another response to the response buffer.
      *
-     * @param string Zend_Http_Response|$response
+     * @param string|Zend_Http_Response $response
      */
     public function addResponse($response)
     {

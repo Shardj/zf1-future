@@ -57,14 +57,14 @@ class Zend_Service_WindowsAzure_BlobSessionHandlerTest extends Zend_Service_Wind
     {
         if (TESTS_ZEND_SERVICE_WINDOWSAZURE_SESSIONHANDLER_RUNTESTS) {
             $suite = new TestSuite("Zend_Service_WindowsAzure_BlobSessionHandlerTest");
-            $result = (new TestRunner())->run($suite);
+            $result = (new resources_Runner())->run($suite);
         }
     }
     
     /**
      * Test teardown
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++) {
@@ -208,6 +208,6 @@ class Zend_Service_WindowsAzure_BlobSessionHandlerTest extends Zend_Service_Wind
 }
 
 // Call Zend_Service_WindowsAzure_BlobSessionHandlerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Service_WindowsAzure_BlobSessionHandlerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Service_WindowsAzure_BlobSessionHandlerTest::main") {
     Zend_Service_WindowsAzure_BlobSessionHandlerTest::main();
 }

@@ -42,7 +42,7 @@ class Zend_Mobile_Push_Response_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -57,6 +57,6 @@ class Zend_Mobile_Push_Response_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Mobile_Push_Response_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Mobile_Push_Response_AllTests::main') {
     Zend_Mobile_Push_Response_AllTests::main();
 }

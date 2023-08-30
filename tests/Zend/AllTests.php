@@ -127,7 +127,11 @@ class Zend_AllTests
             'configuration' => __DIR__ . '/../phpunit.xml',
             'extensions' => [],
             'unavailableExtensions' => [],
-            // 'printer' => \PHPUnit\Util\TestDox\CliTestDoxPrinter::class
+            'loadedExtensions' => [],
+            'notLoadedExtensions' => [],
+            'colors' => 'always',
+            'verbose' => true,
+            // 'printer' => \PHPUnit\Util\TestDox\CliTestDoxPrinter::class,
         ];
         // Run buffered tests as a separate suite first
         // ob_start();
@@ -136,7 +140,7 @@ class Zend_AllTests
         //     ob_end_flush();
         // }
 
-        (new TestRunner())->run(self::suite(), $arguments);
+        (new resources_Runner())->run(self::suite(), $arguments);
     }
 
     /**
@@ -259,6 +263,6 @@ class Zend_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_AllTests::main') {
     Zend_AllTests::main();
 }

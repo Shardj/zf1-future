@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -35,7 +35,10 @@ require_once 'Zend/Feed/Pubsubhubbub.php';
  */
 class Zend_Feed_Pubsubhubbub_PubsubhubbubTest extends TestCase
 {
-    protected function tearDown(): void
+    protected function set_up()
+    {    }
+
+    protected function tear_down()
     {
         Zend_Feed_Pubsubhubbub::clearHttpClient();
     }

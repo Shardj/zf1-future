@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ class Zend_Gdata_Photos_PhotosPhotoEntryTest extends TestCase
     /**
       * Called before each test to setup any fixtures.
       */
-    protected function setUp(): void
+    protected function set_up()
     {
         $photoEntryText = file_get_contents(
             '_files/TestPhotoEntry.xml',

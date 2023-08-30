@@ -68,7 +68,7 @@ abstract class Zend_Gdata_App_BaseMediaSource implements Zend_Gdata_App_MediaSou
      * Set the content type for the file attached (example image/png)
      *
      * @param string $value The content type
-     * @return Zend_Gdata_App_MediaFileSource Provides a fluent interface
+     * @return $this
      */
     public function setContentType($value)
     {
@@ -90,8 +90,8 @@ abstract class Zend_Gdata_App_BaseMediaSource implements Zend_Gdata_App_MediaSou
      * Sets the Slug header value.  Used by some services to determine the
      * title for the uploaded file.  A null value indicates no slug header.
      *
-     * @var string The slug value
-     * @return Zend_Gdata_App_MediaSource Provides a fluent interface
+     * @param string $value The slug value
+     * @return $this
      */
     public function setSlug($value){
         $this->_slug = $value;

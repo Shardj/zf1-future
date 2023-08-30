@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Crypt_Math_BigInteger_GmpTest extends TestCase
 {
     private $_math = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('gmp')) {
             $this->markTestSkipped('Skipped: Zend_Crypt_Math_BigInteger_GmpTest due to ext/gmp being unavailable');

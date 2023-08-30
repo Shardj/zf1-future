@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -37,7 +37,7 @@ class Zend_Feed_Pubsubhubbub_PublisherTest extends TestCase
 {
     protected $_publisher = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $client = new Zend_Http_Client();
         Zend_Feed_Pubsubhubbub::setHttpClient($client);

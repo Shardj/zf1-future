@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,7 +53,7 @@ class Zend_ProgressBar_Adapter_jsPushTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_ProgressBar_Adapter_jsPushTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testJson()
@@ -100,6 +100,6 @@ class Zend_ProgressBar_Adapter_jsPush_Stub extends Zend_ProgressBar_Adapter_jsPu
 }
 
 // Call Zend_ProgressBar_Adapter_jsPushTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_ProgressBar_Adapter_jsPushTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_ProgressBar_Adapter_jsPushTest::main") {
     Zend_ProgressBar_Adapter_jsPushTest::main();
 }

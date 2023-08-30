@@ -117,7 +117,7 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
      * Sets the locale option
      *
      * @param  string|Zend_Locale $locale
-     * @return Zend_Validate_Date provides a fluent interface
+     * @return $this
      */
     public function setLocale($locale = null)
     {
@@ -140,7 +140,7 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
      * Sets the format option
      *
      * @param  string $format
-     * @return Zend_Validate_Date provides a fluent interface
+     * @return $this
      */
     public function setFormat($format = null)
     {

@@ -153,7 +153,7 @@ class Zend_Gdata_Gapps_NicknameEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Gapps_Extension_Login $value The desired value for
      *          this instance's login property.
-     * @return Zend_Gdata_Gapps_NicknameEntry Provides a fluent interface.
+     * @return $this
      */
     public function setLogin($value)
     {
@@ -178,7 +178,7 @@ class Zend_Gdata_Gapps_NicknameEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Gapps_Extension_Nickname $value The desired value for
      *          this instance's nickname property.
-     * @return Zend_Gdata_Gapps_NicknameEntry Provides a fluent interface.
+     * @return $this
      */
     public function setNickname($value)
     {

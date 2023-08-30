@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -64,7 +64,7 @@ class Zend_View_Helper_FormSelectTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_FormSelectTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -73,7 +73,7 @@ class Zend_View_Helper_FormSelectTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_FormSelect();
@@ -86,7 +86,7 @@ class Zend_View_Helper_FormSelectTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper, $this->view);
     }
@@ -394,6 +394,6 @@ class Zend_View_Helper_FormSelectTest extends TestCase
 }
 
 // Call Zend_View_Helper_FormSelectTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormSelectTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_FormSelectTest::main") {
     Zend_View_Helper_FormSelectTest::main();
 }

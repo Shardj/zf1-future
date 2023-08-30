@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -60,7 +60,7 @@ class Zend_Gdata_MediaMimeStreamTest extends TestCase
      */
     protected $exceptedLenOfMimeMessage;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->locationOfFakeBinary =
             'Zend/Gdata/_files/MediaMimeStreamSample1.txt';

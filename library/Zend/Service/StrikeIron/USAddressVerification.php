@@ -34,7 +34,7 @@ class Zend_Service_StrikeIron_USAddressVerification extends Zend_Service_StrikeI
 {
     /**
      * Configuration options
-     * @param array
+     * @var array
      */
     protected $_options = ['username' => null,
                                 'password' => null,

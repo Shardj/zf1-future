@@ -40,16 +40,16 @@ require_once 'Zend/Ldap/Node.php';
  */
 class Zend_Ldap_Node_OnlineTest extends Zend_Ldap_OnlineTestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_prepareLdapServer();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_cleanupLdapServer();
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testLoadFromLdap()

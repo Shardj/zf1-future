@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -65,7 +65,7 @@ class Zend_Mail_MaildirMessageOldTest extends TestCase
     protected $_maildir;
     protected $_tmpdir;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_originalMaildir = dirname(__FILE__) . '/_files/test.maildir/';
         if (!is_dir($this->_originalMaildir . '/cur/')) {
@@ -115,7 +115,7 @@ class Zend_Mail_MaildirMessageOldTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         foreach (['cur', 'new'] as $dir) {
             $dh = opendir($this->_tmpdir . $dir);

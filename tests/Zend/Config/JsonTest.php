@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -61,7 +61,7 @@ class Zend_Config_JsonTest extends TestCase
     protected $_iniFileAllSectionsConfig;
     protected $_iniFileCircularConfig;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_iniFileConfig = dirname(__FILE__) . '/_files/config.json';
         $this->_iniFileAllSectionsConfig = dirname(__FILE__) . '/_files/allsections.json';

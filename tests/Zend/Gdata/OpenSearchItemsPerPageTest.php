@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_OpenSearchItemsPerPageTest extends TestCase
      */
     protected $openSearchItemsPerPage;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->openSearchItemsPerPageText = file_get_contents(
             'Zend/Gdata/_files/OpenSearchItemsPerPageElementSample1.xml',

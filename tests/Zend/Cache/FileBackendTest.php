@@ -56,7 +56,7 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest
         parent::__construct('Zend_Cache_Backend_File', $data, $dataName);
     }
 
-    public function setUp($notag = false): void
+    public function set_up($notag = false)
     {
         $this->mkdir();
         $this->_cache_dir = $this->getTmpDir() . DIRECTORY_SEPARATOR;
@@ -67,19 +67,21 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest
         $logger = new Zend_Log(new Zend_Log_Writer_Null());
         $this->_instance->setDirectives(['logger' => $logger]);
 
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
     }
 
     public function testSetDeprecatedHashedDirectoryUmask()
     {
-        $this->expectNotice();
-        $this->expectNoticeMessage("'hashed_directory_umask' is deprecated -> please use 'hashed_directory_perm' instead");
+        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
+        $this->expectExceptionMessage("'hashed_directory_umask' is deprecated -> please use 'hashed_directory_perm' instead");
+        //$this->expectException(\PHPUnit\Framework\Error\Notice::class);
+        //$this->expectExceptionMessage("'hashed_directory_umask' is deprecated -> please use 'hashed_directory_perm' instead");
         $cache = new Zend_Cache_Backend_File([
             'cache_dir' => $this->_cache_dir,
             'hashed_directory_umask' => 0700,
@@ -89,8 +91,8 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest
     public function testSetDeprecatedCacheFileUmask()
     {
         # https://phpunit.readthedocs.io/en/9.5/writing-tests-for-phpunit.html?highlight=Error#testing-php-errors-warnings-and-notices
-        $this->expectNotice();
-        $this->expectNoticeMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
+        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
+        $this->expectExceptionMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
         $cache = new Zend_Cache_Backend_File([
                 'cache_dir' => $this->_cache_dir,
                 'cache_file_umask' => 0700,

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -48,7 +48,7 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testDefaultOutput()
@@ -203,6 +203,6 @@ class Zend_Tag_Cloud_Decorator_HtmlTagTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Tag_Cloud_Decorator_HtmlTagTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Tag_Cloud_Decorator_HtmlTagTest::main') {
     Zend_Tag_Cloud_Decorator_HtmlTagTest::main();
 }

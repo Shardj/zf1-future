@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,7 +39,7 @@ require_once 'Zend/Debug.php';
  */
 class Zend_Tool_Project_Context_RepositoryTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Tool_Project_Context_Repository::resetInstance();
     }

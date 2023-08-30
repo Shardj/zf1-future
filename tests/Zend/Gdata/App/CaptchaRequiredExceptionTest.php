@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_Gdata_App_CaptchaRequiredExceptionTest extends TestCase
      */
     protected $exampleException;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->exampleException = new Zend_Gdata_App_CaptchaRequiredException('testtoken', 'Captcha?ctoken=testtoken');
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -107,7 +107,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Action_Helper_ContextSwitchTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -116,7 +116,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Controller_Action_Helper_ContextSwitchTest_LayoutOverride::resetMvcInstance();
         Zend_Controller_Action_HelperBroker::resetHelpers();
@@ -156,7 +156,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -1059,6 +1059,6 @@ class Zend_Controller_Action_Helper_ContextSwitchText_CustomView implements Zend
 }
 
 // Call Zend_Controller_Action_Helper_ContextSwitchTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_ContextSwitchTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_ContextSwitchTest::main") {
     Zend_Controller_Action_Helper_ContextSwitchTest::main();
 }

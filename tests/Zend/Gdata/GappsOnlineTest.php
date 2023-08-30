@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -62,7 +62,7 @@ class Zend_Gdata_GappsOnlineTest extends TestCase
     public const PASSWORD = '4ohtladfl;';
     public const PASSWORD_HASH = 'SHA-1';
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->id = uniqid('ZF-');
         $username = constant('TESTS_ZEND_GDATA_GAPPS_EMAIL');
@@ -79,7 +79,7 @@ class Zend_Gdata_GappsOnlineTest extends TestCase
         $this->autoDeletePool = [];
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // Delete all entries in $this->autoDeletePool.
         foreach ($this->autoDeletePool as $x) {

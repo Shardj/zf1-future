@@ -239,9 +239,9 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
                 $this->_width = 80;
 
                 // Try to determine the width through stty
-                if (preg_match('#\d+ (\d+)#', (string) @shell_exec('stty size'), $match) === 1) {
+                if (preg_match('#\d+ (\d+)#', (string) @shell_exec('stty size 2>/dev/null'), $match) === 1) {
                     $this->_width = (int) $match[1];
-                } else if (preg_match('#columns = (\d+);#', (string) @shell_exec('stty'), $match) === 1) {
+                } else if (preg_match('#columns = (\d+);#', (string) @shell_exec('stty 2>/dev/null'), $match) === 1) {
                     $this->_width = (int) $match[1];
                 }
             }

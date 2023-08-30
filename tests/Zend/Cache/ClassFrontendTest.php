@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -97,7 +97,7 @@ class Zend_Cache_ClassFrontendTest extends TestCase
     private $_instance1;
     private $_instance2;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!$this->_instance1) {
             $options1 = [
@@ -117,7 +117,7 @@ class Zend_Cache_ClassFrontendTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_instance1);
         unset($this->_instance2);

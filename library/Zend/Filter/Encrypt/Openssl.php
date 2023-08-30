@@ -128,7 +128,8 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         }
 
         foreach ($keys as $type => $key) {
-            if (ctype_print($key) && is_file(realpath($key)) && is_readable($key)) {
+            $key = (string)$key;
+            if (ctype_print($key) && is_file($key) && is_readable($key)) {
                 $file = fopen($key, 'r');
                 $cert = fread($file, 8192);
                 fclose($file);
@@ -354,7 +355,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
      */
     public function encrypt($value)
     {
-        $encrypted     = [];
+        $encrypted     = '';
         $encryptedkeys = [];
 
         if (count($this->_keys['public']) === 0) {
@@ -385,7 +386,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $value    = $compress->filter($value);
         }
 
-        $crypt  = openssl_seal($value, $encrypted, $encryptedkeys, $keys);
+        $crypt  = openssl_seal($value, $encrypted, $encryptedkeys, $keys, 'RC4');
         if (PHP_VERSION_ID < 80000) {
             foreach ($keys as $key) {
                 openssl_free_key($key);
@@ -465,7 +466,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             $value = substr($value, $length);
         }
 
-        $crypt  = openssl_open($value, $decrypted, $envelope, $keys);
+        $crypt  = openssl_open($value, $decrypted, $envelope, $keys, 'RC4');
         if (PHP_VERSION_ID < 80000) {
             openssl_free_key($keys);
         }

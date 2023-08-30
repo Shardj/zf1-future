@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -60,10 +60,10 @@ class Zend_Controller_Router_Route_ModuleTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Router_Route_ModuleTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $front = Zend_Controller_Front::getInstance();
         $front->resetInstance();
@@ -488,6 +488,6 @@ class Zend_Controller_Router_Route_ModuleTest extends TestCase
 }
 
 // Call Zend_Controller_Router_Route_ModuleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_Route_ModuleTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Router_Route_ModuleTest::main") {
     Zend_Controller_Router_Route_ModuleTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Http_Client_ClientTest extends TestCase
      * Set up the test case
      *
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->client = new Zend_Http_Client();
     }

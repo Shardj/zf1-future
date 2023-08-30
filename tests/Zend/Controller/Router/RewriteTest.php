@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -76,10 +76,10 @@ class Zend_Controller_Router_RewriteTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Router_RewriteTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_router = new Zend_Controller_Router_Rewrite();
         $front = Zend_Controller_Front::getInstance();
@@ -89,7 +89,7 @@ class Zend_Controller_Router_RewriteTest extends TestCase
         $this->_router->setFrontController($front);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_router);
     }
@@ -896,6 +896,6 @@ class Zend_Controller_Router_Route_Interface_Mockup implements Zend_Controller_R
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_RewriteTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Router_RewriteTest::main") {
     Zend_Controller_Router_RewriteTest::main();
 }

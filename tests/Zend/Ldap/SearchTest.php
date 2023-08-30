@@ -44,16 +44,16 @@ require_once 'Zend/Ldap/Filter.php';
  */
 class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_prepareLdapServer();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_cleanupLdapServer();
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testGetSingleEntry()
@@ -408,6 +408,11 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testReverseSortingWithSearchEntriesShortcutWithOptionsArray()
     {
+        if (PHP_VERSION_ID >= 70000) {
+            $this->markTestSkipped("Test skipped due to removal of ldap_sort from PHP: https://www.php.net/ldap_sort");
+            return;
+        }
+
         $lSorted = ['e', 'd', 'c', 'b', 'a'];
         $items = $this->_getLdap()->searchEntries([
             'filter' => '(l=*)',

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Gdata_Docs_DocumentListFeedTest extends TestCase
      */
     protected $docFeed;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->docFeed = new Zend_Gdata_Docs_DocumentListFeed(
             file_get_contents(dirname(__FILE__) . '/_files/TestDataDocumentListFeedSample.xml'),

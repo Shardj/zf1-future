@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -68,7 +68,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Test_PHPUnit_ControllerTestCaseTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -77,7 +77,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $_SESSION = [];
         $this->expectException(null);
@@ -92,7 +92,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $registry = Zend_Registry::getInstance();
         if (isset($registry['router'])) {
@@ -723,7 +723,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
                 ->setPost('foo', 'bar')
                 ->setCookie('bar', 'baz');
 
-        $this->testCase->setUp();
+        $this->testCase->set_up();
         $this->assertNull($request->getQuery('mr'), 'Retrieved mr get parameter: ' . var_export($request->getQuery(), 1));
         $this->assertNull($request->getPost('foo'), 'Retrieved foo post parameter: ' . var_export($request->getPost(), 1));
         $this->assertNull($request->getCookie('bar'), 'Retrieved bar cookie parameter: ' . var_export($request->getCookie(), 1));
@@ -888,6 +888,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete extends Zend_Test_PHPUni
 }
 
 // Call Zend_Test_PHPUnit_ControllerTestCaseTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Test_PHPUnit_ControllerTestCaseTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Test_PHPUnit_ControllerTestCaseTest::main") {
     Zend_Test_PHPUnit_ControllerTestCaseTest::main();
 }

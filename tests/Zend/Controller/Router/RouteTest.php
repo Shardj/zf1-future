@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -62,7 +62,7 @@ class Zend_Controller_Router_RouteTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         // Backup server array
         $this->_server = $_SERVER;
@@ -84,7 +84,7 @@ class Zend_Controller_Router_RouteTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // Restore server array
         $_SERVER = $this->_server;
@@ -805,6 +805,6 @@ class Zend_Controller_Router_RouteTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Controller_Router_RouteTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Controller_Router_RouteTests::main') {
     Zend_Controller_Router_RouteTests::main();
 }

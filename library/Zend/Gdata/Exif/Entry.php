@@ -134,7 +134,7 @@ class Zend_Gdata_Exif_Entry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Exif_Extension_Tags $value The desired value
      *              this element, or null to unset.
-     * @return Zend_Gdata_Exif_Entry Provides a fluent interface
+     * @return $this
      */
     public function setTags($value)
     {

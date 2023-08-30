@@ -105,7 +105,7 @@ class Zend_Gdata_Media_Extension_MediaDescription extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaDescription Provides a fluent interface
+     * @return $this
      */
     public function setType($value)
     {

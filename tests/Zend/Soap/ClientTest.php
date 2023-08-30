@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,10 +55,10 @@ class Zend_Soap_ClientTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('soap')) {
             $this->markTestSkipped('SOAP Extension is not loaded');
@@ -706,6 +706,6 @@ function Zend_Soap_Client_TestFunc6()
     return "string";
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Soap_ClientTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Soap_ClientTest::main') {
     Zend_Soap_ClientTest::main();
 }

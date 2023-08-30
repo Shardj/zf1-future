@@ -76,7 +76,7 @@ class My_ZendDbTable_TableBugsCustom extends My_ZendDbTable_TableBugs
      *
      * @return void
      */
-    public function setup()
+    public function set_up()
     {
         $this->_setup();
     }

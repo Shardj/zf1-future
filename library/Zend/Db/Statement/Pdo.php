@@ -111,7 +111,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
                     $type = PDO::PARAM_STR;
                 }
             }
-            return $this->_stmt->bindParam($parameter, $variable, $type, $length, $options);
+            return $this->_stmt->bindParam($parameter, $variable, $type, (int) $length, $options);
         } catch (PDOException $e) {
             require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);

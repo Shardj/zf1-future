@@ -103,7 +103,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
      * this adapter.
      *
      * @param  array $options The array of arrays of Zend_Ldap options
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
+     * @return $this
      */
     public function setOptions($options)
     {
@@ -126,7 +126,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
      * Sets the username for binding
      *
      * @param  string $username The username for binding
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
+     * @return $this
      */
     public function setUsername($username)
     {
@@ -149,7 +149,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
      * Sets the passwort for the account
      *
      * @param  string $password The password of the account being authenticated
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
+     * @return $this
      */
     public function setPassword($password)
     {
@@ -165,7 +165,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
      * Closes ZF-6813
      *
      * @param  string $identity
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
+     * @return $this
      */
     public function setIdentity($identity)
     {
@@ -180,7 +180,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
      * Closes ZF-6813
      *
      * @param  string $credential
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
+     * @return $this
      */
     public function setCredential($credential)
     {
@@ -209,7 +209,7 @@ class Zend_Auth_Adapter_Ldap implements Zend_Auth_Adapter_Interface
      * Set an Ldap connection
      *
      * @param Zend_Ldap $ldap An existing Ldap object
-     * @return Zend_Auth_Adapter_Ldap Provides a fluent interface
+     * @return $this
      */
     public function setLdap(Zend_Ldap $ldap)
     {

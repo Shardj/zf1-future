@@ -158,7 +158,7 @@ class Zend_Application_Bootstrap_Bootstrap
     /**
      * Set application namespace (for module autoloading)
      *
-     * @param  string
+     * @param  string $value
      * @return Zend_Application_Bootstrap_Bootstrap
      */
     public function setAppNamespace($value)

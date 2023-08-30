@@ -351,7 +351,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                 // add the old items again if there are any
                 if (!empty($oldItems)) {
                     foreach (array_reverse($oldItems) as $item) {
-                        /* @var $token Zend_Markup_Token */
+                        /* @var Zend_Markup_Token $token */
                         $this->_current->addChild($item);
                         $item->setParent($this->_current);
                         $this->_current = $item;

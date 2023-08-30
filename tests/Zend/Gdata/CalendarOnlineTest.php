@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_CalendarOnlineTest extends TestCase
     public const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
     public const ZEND_CONFERENCE_EVENT = 'bn2h4o4mc3a03ci4t48j3m56pg';
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $user = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_EMAIL');
         $pass = constant('TESTS_ZEND_GDATA_CLIENTLOGIN_PASSWORD');

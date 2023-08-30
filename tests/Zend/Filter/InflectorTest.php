@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -77,7 +77,7 @@ class Zend_Filter_InflectorTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_InflectorTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -86,7 +86,7 @@ class Zend_Filter_InflectorTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->inflector = new Zend_Filter_Inflector();
         $this->loader = $this->inflector->getPluginLoader();
@@ -98,7 +98,7 @@ class Zend_Filter_InflectorTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->loader->clearPaths();
     }
@@ -563,6 +563,6 @@ class Zend_Filter_InflectorTest extends TestCase
 }
 
 // Call Zend_Filter_InflectorTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_InflectorTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_InflectorTest::main') {
     Zend_Filter_InflectorTest::main();
 }

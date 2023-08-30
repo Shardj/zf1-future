@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberTest extends TestCase
 
     protected $_tableGateway = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $client = new Zend_Http_Client();
         Zend_Feed_Pubsubhubbub::setHttpClient($client);

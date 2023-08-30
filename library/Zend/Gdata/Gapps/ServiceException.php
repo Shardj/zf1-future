@@ -146,7 +146,7 @@ class Zend_Gdata_Gapps_ServiceException extends Zend_Exception
      * Import an AppsForYourDomain error from XML.
      *
      * @param string $string The XML data to be imported
-     * @return Zend_Gdata_Gapps_ServiceException Provides a fluent interface.
+     * @return $this
      * @throws Zend_Gdata_App_Exception
      */
     public function importFromString($string) {

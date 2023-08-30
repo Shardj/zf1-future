@@ -62,7 +62,7 @@ class Zend_Cache_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -104,9 +104,9 @@ class Zend_Cache_AllTests
             $skipTest = new Zend_Cache_ApcBackendTest_SkipTests();
             $skipTest->message = 'Tests are not enabled in TestConfiguration.php';
             $suite->addTest($skipTest);
-        } elseif (!extension_loaded('apc')) {
+        } elseif (!extension_loaded('apcu')) {
             $skipTest = new Zend_Cache_ApcBackendTest_SkipTests();
-            $skipTest->message = "Extension 'APC' is not loaded";
+            $skipTest->message = "Extension 'apcu' is not loaded";
             $suite->addTest($skipTest);
         } else {
             $suite->addTestSuite('Zend_Cache_ApcBackendTest');
@@ -218,9 +218,9 @@ class Zend_Cache_AllTests
             $skipTest = new Zend_Cache_TwoLevelsBackendTest_SkipTests();
             $skipTest->message = 'Tests are not enabled in TestConfiguration.php';
             $suite->addTest($skipTest);
-        } elseif (!extension_loaded('apc')) {
+        } elseif (!extension_loaded('apcu')) {
             $skipTest = new Zend_Cache_TwoLevelsBackendTest_SkipTests();
-            $skipTest->message = "Extension 'APC' is not loaded";
+            $skipTest->message = "Extension 'apcu' is not loaded";
             $suite->addTest($skipTest);
         } else {
             $suite->addTestSuite('Zend_Cache_TwoLevelsBackendTest');
@@ -263,6 +263,6 @@ class Zend_Cache_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cache_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cache_AllTests::main') {
     Zend_Cache_AllTests::main();
 }

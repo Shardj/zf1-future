@@ -152,7 +152,7 @@ class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_T
         $controllerParam = $this->_resource->getParentResource()->getForControllerName();
         //$moduleParam = null;//
 
-        /* @var $controllerDirectoryResource Zend_Tool_Project_Profile_Resource */
+        /* @var Zend_Tool_Project_Profile_Resource $controllerDirectoryResource */
         $controllerDirectoryResource = $this->_resource->getParentResource()->getParentResource();
         if ($controllerDirectoryResource->getParentResource()->getName() == 'TestApplicationModuleDirectory') {
             $moduleParam = $controllerDirectoryResource->getParentResource()->getForModuleName();

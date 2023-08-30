@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,7 +38,7 @@ require_once 'Zend/Console/Getopt.php';
  */
 class Zend_Console_GetoptTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (ini_get('register_argc_argv') == false) {
             $this->markTestSkipped("Cannot Test Zend_Console_Getopt without 'register_argc_argv' ini option true.");

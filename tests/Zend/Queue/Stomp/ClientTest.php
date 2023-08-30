@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -88,7 +88,7 @@ class Zend_Queue_Stomp_Connection_Mock extends Zend_Queue_Stomp_Client_Connectio
      *
      * @param Zend_Queue_Stom_Frame $frame
      * @return void
-     *@example $response = $client->write($frame)->read();
+     * @example $response = $client->write($frame)->read();
      *
      */
     public function write(Zend_Queue_Stomp_FrameInterface $frame)

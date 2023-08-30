@@ -217,7 +217,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
      *
      * @param  string $separator
      * @throws Zend_Validate_Exception When $separator is not valid
-     * @return Zend_Validate_Isbn Provides a fluent interface
+     * @return $this
      */
     public function setSeparator($separator)
     {
@@ -249,7 +249,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
      *
      * @param  string $type
      * @throws Zend_Validate_Exception When $type is not valid
-     * @return Zend_Validate_Isbn Provides a fluent interface
+     * @return $this
      */
     public function setType($type)
     {

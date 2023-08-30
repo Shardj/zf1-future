@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,7 +55,7 @@ class Zend_Service_StrikeIron_SalesUseTaxBasicTest extends TestCase
      */
     protected $service;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->soapClient = new stdclass();
         $this->service = new Zend_Service_StrikeIron_SalesUseTaxBasic(['client' => $this->soapClient]);

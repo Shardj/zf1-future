@@ -34,7 +34,7 @@ class Zend_Service_StrikeIron_ZipCodeInfo extends Zend_Service_StrikeIron_Base
 {
     /**
      * Configuration options
-     * @param array
+     * @var array
      */
     protected $_options = ['username' => null,
                                 'password' => null,

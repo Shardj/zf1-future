@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\Error;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -61,10 +61,10 @@ class Zend_Log_Writer_DbTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->tableName = 'db-table-name';
 
@@ -267,6 +267,6 @@ class Zend_Log_Writer_DbTest_MockDbAdapter
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Writer_DbTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Writer_DbTest::main') {
     Zend_Log_Writer_DbTest::main();
 }

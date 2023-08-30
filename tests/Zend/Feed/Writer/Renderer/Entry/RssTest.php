@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends TestCase
     protected $_validWriter = null;
     protected $_validEntry = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validWriter = new Zend_Feed_Writer_Feed();
 
@@ -58,7 +58,7 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends TestCase
         $this->_validWriter->addEntry($this->_validEntry);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_validWriter = null;
         $this->_validEntry = null;

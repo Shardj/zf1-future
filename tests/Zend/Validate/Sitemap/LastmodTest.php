@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Validate_Sitemap_LastmodTest extends TestCase
     /**
      * Prepares the environment before running a test
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validator = new Zend_Validate_Sitemap_Lastmod();
     }
@@ -55,7 +55,7 @@ class Zend_Validate_Sitemap_LastmodTest extends TestCase
     /**
      * Cleans up the environment after running a test
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_validator = null;
     }

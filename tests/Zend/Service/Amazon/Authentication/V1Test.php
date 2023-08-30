@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,9 +49,9 @@ class Zend_Service_Amazon_Authentication_V1Test extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
         $this->Zend_Service_Amazon_Authentication_V1 = new Zend_Service_Amazon_Authentication_V1('0PN5J17HBGZHT7JJ3X82', 'uV3F3YluFJax1cknvbcGwgjvx4QpvB+leU8dUj2o', '2007-12-01');
     }
@@ -59,11 +59,11 @@ class Zend_Service_Amazon_Authentication_V1Test extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->Zend_Service_Amazon_Authentication_V1 = null;
 
-        parent::tearDown();
+        parent::tear_down();
     }
 
     /**

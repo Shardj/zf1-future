@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ class Zend_Server_Reflection_MethodTest extends TestCase
     protected $_class;
     protected $_method;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_classRaw = new ReflectionClass('Zend_Server_Reflection');
         $this->_method = $this->_classRaw->getMethod('reflectClass');

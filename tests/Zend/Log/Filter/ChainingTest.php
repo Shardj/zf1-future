@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -58,17 +58,17 @@ class Zend_Log_Filter_ChainingTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->log = fopen('php://memory', 'w');
         $this->logger = new Zend_Log();
         $this->logger->addWriter(new Zend_Log_Writer_Stream($this->log));
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         fclose($this->log);
     }
@@ -111,6 +111,6 @@ class Zend_Log_Filter_ChainingTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Filter_ChainingTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Filter_ChainingTest::main') {
     Zend_Log_Filter_ChainingTest::main();
 }

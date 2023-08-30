@@ -103,7 +103,7 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
      * Set HTTP status code for {@link _redirect()} behaviour
      *
      * @param  int $code
-     * @return Zend_Controller_Action_Helper_Redirector Provides a fluent interface
+     * @return $this
      */
     public function setCode($code)
     {
@@ -126,7 +126,7 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
      * Set exit flag for {@link _redirect()} behaviour
      *
      * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_Redirector Provides a fluent interface
+     * @return $this
      */
     public function setExit($flag)
     {
@@ -149,7 +149,7 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
      * Set 'prepend base' flag for {@link _redirect()} behaviour
      *
      * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_Redirector Provides a fluent interface
+     * @return $this
      */
     public function setPrependBase($flag)
     {
@@ -172,7 +172,7 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
      * Set flag for whether or not {@link redirectAndExit()} shall close the session before exiting.
      *
      * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_Redirector Provides a fluent interface
+     * @return $this
      */
     public function setCloseSessionOnExit($flag)
     {
@@ -194,7 +194,7 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
      * Set use absolute URI flag
      *
      * @param  boolean $flag
-     * @return Zend_Controller_Action_Helper_Redirector Provides a fluent interface
+     * @return $this
      */
     public function setUseAbsoluteUri($flag = true)
     {

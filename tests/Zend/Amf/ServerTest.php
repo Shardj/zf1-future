@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -57,17 +57,17 @@ class Zend_Amf_ServerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_ServerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_server = new Zend_Amf_Server();
         $this->_server->setProduction(false);
         Zend_Amf_Parse_TypeLoader::resetMap();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_server);
         //Zend_Amf_Parse_TypeLoader::resetMap();
@@ -1165,7 +1165,7 @@ class Zend_Amf_ServerTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Amf_ServerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Amf_ServerTest::main") {
     Zend_Amf_ServerTest::main();
 }
 

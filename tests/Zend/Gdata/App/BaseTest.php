@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Gdata_App_BaseTest extends TestCase
      */
     private $base;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->fileName = 'Zend/Gdata/App/_files/FeedSample1.xml';
         $this->base = new Zend_Gdata_App_MockBase();

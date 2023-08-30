@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -72,17 +72,17 @@ class Zend_UriTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_UriTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->notices = [];
         $this->errorReporting = error_reporting();
         $this->displayErrors = ini_get('display_errors');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         error_reporting($this->errorReporting);
         ini_set('display_errors', $this->displayErrors);
@@ -268,6 +268,6 @@ class Fake_Zend_Uri
 }
 
 // Call Zend_UriTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_UriTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_UriTest::main") {
     Zend_UriTest::main();
 }

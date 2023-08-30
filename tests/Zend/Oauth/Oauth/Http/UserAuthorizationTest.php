@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,7 +38,7 @@ class Zend_Oauth_Http_UserAuthorizationTest extends TestCase
 {
     protected $stubConsumer = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->stubConsumer = new Test_Consumer_34879();
     }

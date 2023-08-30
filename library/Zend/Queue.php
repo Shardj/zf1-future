@@ -85,7 +85,7 @@ class Zend_Queue implements Countable
      * - or -
      * $queue = new Zend_Queue(null, $config); // Zend_Queue->createQueue();
      *
-     * @param  string|Zend_Queue_Adapter|array|Zend_Config|null String or adapter instance, or options array or Zend_Config instance
+     * @param  string|Zend_Queue_Adapter|array|Zend_Config|null $spec String or adapter instance, or options array or Zend_Config instance
      * @param  Zend_Config|array $options Zend_Config or a configuration array
      * @return void
      */
@@ -205,7 +205,7 @@ class Zend_Queue implements Countable
      * Set the adapter for this queue
      *
      * @param  string|Zend_Queue_Adapter_AdapterInterface $adapter
-     * @return Zend_Queue Provides a fluent interface
+     * @return $this
      */
     public function setAdapter($adapter)
     {
@@ -266,7 +266,7 @@ class Zend_Queue implements Countable
 
     /**
      * @param  string $className
-     * @return Zend_Queue Provides a fluent interface
+     * @return $this
      */
     public function setMessageClass($className)
     {
@@ -284,7 +284,7 @@ class Zend_Queue implements Countable
 
     /**
      * @param  string $className
-     * @return Zend_Queue Provides a fluent interface
+     * @return $this
      */
     public function setMessageSetClass($className)
     {
@@ -516,7 +516,7 @@ class Zend_Queue implements Countable
      * This is AN UNSUPPORTED FUNCTION
      *
      * @param  string           $name
-     * @return Zend_Queue|false Provides a fluent interface
+     * @return $this|false
      */
     protected function _setName($name)
     {

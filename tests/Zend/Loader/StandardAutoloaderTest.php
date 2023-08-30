@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Loader_StandardAutoloaderTest extends TestCase
      */
     protected $includePath;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -64,7 +64,7 @@ class Zend_Loader_StandardAutoloaderTest extends TestCase
         $this->includePath = get_include_path();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -235,6 +235,6 @@ class Zend_Loader_StandardAutoloaderTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_StandardAutoloaderTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Loader_StandardAutoloaderTest::main') {
     Zend_Loader_StandardAutoloaderTest::main();
 }

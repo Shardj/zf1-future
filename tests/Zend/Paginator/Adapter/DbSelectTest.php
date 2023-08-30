@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -74,13 +74,13 @@ class Zend_Paginator_Adapter_DbSelectTest extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('pdo_sqlite')) {
             $this->markTestSkipped('Pdo_Sqlite extension is not loaded');
         }
 
-        parent::setUp();
+        parent::set_up();
 
         $this->_db = new Zend_Db_Adapter_Pdo_Sqlite([
             'dbname' => dirname(__FILE__) . '/../_files/test.sqlite'
@@ -97,10 +97,10 @@ class Zend_Paginator_Adapter_DbSelectTest extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_adapter = null;
-        parent::tearDown();
+        parent::tear_down();
     }
 
     /**

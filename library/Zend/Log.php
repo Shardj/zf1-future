@@ -130,7 +130,7 @@ class Zend_Log
      * Factory to construct the logger and one or more writers
      * based on the configuration array
      *
-     * @param  array|Zend_Config Array or instance of Zend_Config
+     * @param  array|Zend_Config $config Array or instance of Zend_Config
      * @return Zend_Log
      * @throws Zend_Log_Exception
      */

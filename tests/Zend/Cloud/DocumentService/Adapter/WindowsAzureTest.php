@@ -75,7 +75,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest extends Zend_Cloud_Doc
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testQueryStructOrder()
@@ -160,6 +160,6 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzureTest extends Zend_Cloud_Doc
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_DocumentService_Adapter_WindowsAzureTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_DocumentService_Adapter_WindowsAzureTest::main') {
     Zend_Cloud_DocumentService_Adapter_WindowsAzureTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -36,7 +36,7 @@ require_once 'Zend/Gdata/Query.php';
  */
 class Zend_Gdata_QueryTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
     }
 

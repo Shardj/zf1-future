@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -32,7 +32,7 @@ class FilesystemTest extends TestCase
 {
     private $testFile;
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (is_file($this->testFile)) {
             unlink($this->testFile);

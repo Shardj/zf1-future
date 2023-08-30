@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -67,7 +67,7 @@ class Zend_Cloud_StorageService_FactoryTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testGetStorageAdapterKey()
@@ -131,6 +131,6 @@ class Zend_Cloud_StorageService_FactoryTest extends TestCase
 }
 
 // Call Zend_Cloud_StorageService_FactoryTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Cloud_StorageService_FactoryTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Cloud_StorageService_FactoryTest::main") {
     Zend_Cloud_StorageService_FactoryTest::main();
 }

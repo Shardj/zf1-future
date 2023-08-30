@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -51,7 +51,7 @@ class Zend_Mail_FileTransportTest extends TestCase
     protected $_transport;
     protected $_tmpdir;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->createdTmpDir = false;
 
@@ -74,7 +74,7 @@ class Zend_Mail_FileTransportTest extends TestCase
         $this->_cleanDir($this->_tmpdir);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_cleanDir($this->_tmpdir);
         if ($this->createdTmpDir) {

@@ -463,7 +463,7 @@ class Zend_Service_Amazon_SimpleDb extends Zend_Service_Amazon_Abstract
         $params = $this->_addRequiredParameters($params);
 
         try {
-            /* @var $request Zend_Http_Client */
+            /* @var Zend_Http_Client $request */
             $request = self::getHttpClient();
             $request->resetParameters();
 

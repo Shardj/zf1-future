@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -63,7 +63,7 @@ class Zend_View_Helper_HtmlFlashTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_HtmlFlashTest");
-        (new TestRunner())->run($suite);
+        (new resources_Runner())->run($suite);
     }
 
     /**
@@ -72,14 +72,14 @@ class Zend_View_Helper_HtmlFlashTest extends TestCase
      *
      * @access protected
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_HtmlFlash();
         $this->helper->setView($this->view);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -96,6 +96,6 @@ class Zend_View_Helper_HtmlFlashTest extends TestCase
 }
 
 // Call Zend_View_Helper_HtmlFlashTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HtmlFlashTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_HtmlFlashTest::main") {
     Zend_View_Helper_HtmlFlashTest::main();
 }

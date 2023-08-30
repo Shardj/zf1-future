@@ -206,7 +206,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     /**
      * Fix barcode length (numeric or string like 'even')
      *
-     * @var $_barcodeLength integer | string
+     * @var integer|string $_barcodeLength
      */
     protected $_barcodeLength = null;
 
@@ -214,7 +214,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
      * Activate automatic addition of leading zeros
      * if barcode length is fixed
      *
-     * @var $_addLeadingZeros boolean
+     * @var boolean $_addLeadingZeros
      */
     protected $_addLeadingZeros = true;
 
@@ -222,14 +222,14 @@ abstract class Zend_Barcode_Object_ObjectAbstract
      * Activation of mandatory checksum
      * to deactivate unauthorized modification
      *
-     * @var $_mandatoryChecksum boolean
+     * @var boolean $_mandatoryChecksum
      */
     protected $_mandatoryChecksum = false;
 
     /**
      * Character used to substitute checksum character for validation
      *
-     * @var $_substituteChecksumCharacter mixed
+     * @var mixed $_substituteChecksumCharacter
      */
     protected $_substituteChecksumCharacter = 0;
 

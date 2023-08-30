@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -56,7 +56,7 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends TestCase
     /**
      * Setup for each test
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter([
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Rackspace',
@@ -232,6 +232,6 @@ class Zend_Cloud_Infrastructure_Adapter_RackspaceTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_Infrastructure_Adapter_RackspaceTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_Infrastructure_Adapter_RackspaceTest::main') {
     Zend_Cloud_Infrastructure_Adapter_RackspaceTest::main();
 }

@@ -194,7 +194,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
     /**
      * Return the status of an instance
      *
-     * @param  string
+     * @param  string $id
      * @return string|boolean
      */
     public function statusInstance($id)

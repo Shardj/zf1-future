@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ require_once 'Zend/Pdf.php';
  */
 class Zend_Pdf_DestinationTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set('GMT');
     }

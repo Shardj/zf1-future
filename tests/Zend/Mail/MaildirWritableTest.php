@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ class Zend_Mail_MaildirWritableTest extends TestCase
     protected $_tmpdir;
     protected $_subdirs = ['.', '.subfolder', '.subfolder.test'];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_originalDir = dirname(__FILE__) . '/_files/test.maildir/';
 
@@ -101,7 +101,7 @@ class Zend_Mail_MaildirWritableTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         foreach (array_reverse($this->_subdirs) as $dir) {
             if (!file_exists($this->_tmpdir . $dir)) {
@@ -675,7 +675,7 @@ class Zend_Mail_MaildirWritableTest extends TestCase
 
     public function testInit()
     {
-        $this->tearDown();
+        $this->tear_down();
 
         // should fail now
         $e = null;
@@ -695,7 +695,7 @@ class Zend_Mail_MaildirWritableTest extends TestCase
 
     public function testCreate()
     {
-        $this->tearDown();
+        $this->tear_down();
 
         // should fail now
         $e = null;

@@ -43,12 +43,12 @@ class Zend_Queue_Adapter_ActivemqTest extends Zend_Queue_Adapter_AdapterTest
     /**
      * Test setup
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED) {
             $this->markTestSkipped('TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED is not enabled in TestConfiguration.php');
         }
-        parent::setUp();
+        parent::set_up();
     }
 
 

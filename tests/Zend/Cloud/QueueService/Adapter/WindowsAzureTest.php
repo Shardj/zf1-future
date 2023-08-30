@@ -65,7 +65,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -73,9 +73,9 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_wait();
     }
 
@@ -102,6 +102,6 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzureTest extends Zend_Cloud_QueueS
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_QueueService_Adapter_WindowsAzureTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_QueueService_Adapter_WindowsAzureTest::main') {
     Zend_Cloud_QueueService_Adapter_WindowsAzureTest::main();
 }

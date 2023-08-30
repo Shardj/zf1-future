@@ -94,8 +94,8 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      * Create a structure in the object $profile from the structure specficied
      * in the xml string provided
      *
-     * @param string xml data
-     * @param Zend_Tool_Project_Profile The profile to use as the top node
+     * @param string $data xml data
+     * @param Zend_Tool_Project_Profile $profile The profile to use as the top node
      * @return Zend_Tool_Project_Profile
      */
     public function unserialize($data, Zend_Tool_Project_Profile $profile)

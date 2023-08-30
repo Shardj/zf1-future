@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -125,7 +125,7 @@ class Zend_Mail_MailTest extends TestCase
 {
     protected $numAssertions;
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Mail::clearDefaultFrom();
         Zend_Mail::clearDefaultReplyTo();

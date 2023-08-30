@@ -64,7 +64,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * Constructor
      *
      * @param  array|Zend_Config $config An array having configuration data
-     * @param  Zend_Queue The Zend_Queue object that created this class
+     * @param  Zend_Queue $queue The Zend_Queue object that created this class
      * @return void
      */
     public function __construct($options, Zend_Queue $queue = null)

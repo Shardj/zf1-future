@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -79,9 +79,10 @@ class Zend_Auth_Adapter_OpenIdTest extends TestCase
     public const MAC_FUNC = "sha1";
     public const SECRET = "\x83\x82\xae\xa9\x22\x56\x0e\xce\x83\x3b\xa5\x5f\xa5\x3b\x7a\x97\x5f\x59\x73\x70";
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Session::$_unitTestEnabled = true;
+
     }
 
     public function testAuthenticateInvalid()

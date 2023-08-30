@@ -88,8 +88,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertNull($row3);
 
         // rewind to beginning
-        $result = $rows->rewind();
-        $this->assertEquals($result, $rows);
+        $rows->rewind();
         $this->assertEquals(0, $rows->key());
         $this->assertTrue($rows->valid());
 
@@ -134,7 +133,8 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertEquals(1, $row1->$bug_id);
 
         $rows->rewind();
-        $rowcopy = $rows->seek(1)->current();
+        $rows->seek(1);
+        $rowcopy = $rows->current();
         $rows->rewind();
         $row1 = $rows->getRow(1);
         $this->assertSame($rowcopy, $row1);

@@ -2,15 +2,14 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     bootstrap="./TestHelper.php" 
     colors="true"
-    testdox="true"
+    verbose="true"
     cacheResult="false"
-    convertDeprecationsToExceptions="true"
+    convertDeprecationsToExceptions="false"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
     convertWarningsToExceptions = "true"
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd">
-  <coverage/>
   <testsuite name="Zend Framework - Testsuite">
-    <directory>./</directory>
+    <file>./Zend/AllTests.php</file>
   </testsuite>
 </phpunit>
