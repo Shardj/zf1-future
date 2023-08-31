@@ -29,8 +29,6 @@ test:
     # prepare tests
     - composer install --no-interaction --prefer-source
     - cp ./tests/TestConfiguration.gitlab.php ./tests/TestConfiguration.php
-    - echo "waiting for database is up and running ..."
-    - until echo "SELECT 'OK';" | mysql -h mysql --user=root; do sleep 1; done;
   script:
     - composer test
 

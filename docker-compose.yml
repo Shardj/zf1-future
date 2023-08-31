@@ -19,7 +19,7 @@ services:
     #    stdin_open: true
     user: "${DOCKER_COMPOSE_RUN_AS_USER:?You must export DOCKER_COMPOSE_RUN_AS_USER for permissions handling, look at README.md}"
   mariadb:
-    image: mariadb:10.6
+    image: "mariadb:10.6"
     hostname: mysql
     environment:
       MYSQL_ROOT_PASSWORD: ''
