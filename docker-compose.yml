@@ -1,8 +1,7 @@
 version: '3.2'
 services:
   php:
-    build:
-      context: .
+    build: .
     depends_on:
       - mariadb
       - memcached
