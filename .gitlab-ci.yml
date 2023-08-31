@@ -12,7 +12,10 @@ build:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --cache=true
 
 test:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  image: $CONTAINER_REGISTRY/devops/php:$PHP_VERSION
+  parallel:
+    matrix:
+      - PHP_VERSION: ['8.0','8.1','8.2']
   stage: test
   needs:
     - build

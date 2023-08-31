@@ -2,7 +2,7 @@
     "name": "ext/zf1-future",
     "description": "Zend Framework 1. The aim is to keep ZF1 working with the latest PHP versions",
     "type": "library",
-    "version": "1.23.5",
+    "version": "1.21.7",
     "keywords": [
         "framework",
         "zf1"
@@ -10,7 +10,7 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.0 <8.3",
         "symfony/polyfill-php82": "1.28",
         "symfony/polyfill-ctype": "1.28",
         "symfony/polyfill-mbstring": "1.28"
