@@ -15,7 +15,7 @@ test:
   image: $CONTAINER_REGISTRY/devops/php:$PHP_VERSION
   parallel:
     matrix:
-      - PHP_VERSION: ['8.0','8.1','8.2']
+      - PHP_VERSION: ['8.1','8.2']
   stage: test
   needs:
     - build
