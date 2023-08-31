@@ -1,6 +1,6 @@
 FROM php:8.2-cli-buster
 
-ARG XDEBUG_VERSION=3.1.6
+ARG XDEBUG_VERSION=3.2.2
 
 RUN apt update &&\
     apt install --yes mariadb-client locales libpng-dev libjpeg62-turbo-dev libonig-dev libicu-dev git libxml2-dev libzip-dev libmemcached-dev &&\
