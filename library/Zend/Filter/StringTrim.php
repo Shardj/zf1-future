@@ -77,7 +77,7 @@ class Zend_Filter_StringTrim implements Zend_Filter_Interface
      * Sets the charList option
      *
      * @param  string|null $charList
-     * @return Zend_Filter_StringTrim Provides a fluent interface
+     * @return $this
      */
     public function setCharList($charList)
     {

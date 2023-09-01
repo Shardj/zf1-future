@@ -134,7 +134,7 @@ abstract class Zend_Service_Ebay_Finding_Response_Abstract extends Zend_Service_
 
     /**
      * @param  string $operation
-     * @return Zend_Service_Ebay_Finding_Response_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setOperation($operation)
     {
@@ -153,7 +153,7 @@ abstract class Zend_Service_Ebay_Finding_Response_Abstract extends Zend_Service_
     /**
      * @param  string|Zend_Config|array $name
      * @param  mixed                    $value
-     * @return Zend_Service_Ebay_Finding_Response_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setOption($name, $value = null)
     {

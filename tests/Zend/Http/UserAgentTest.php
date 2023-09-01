@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -56,7 +56,7 @@ class Zend_Http_UserAgentTest extends TestCase
      */
     protected $config;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Session::$_unitTestEnabled = true;
         $this->server = [];

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Runner\BaseTestRunner;
 
 /**
@@ -51,7 +51,7 @@ class Zend_Service_WindowsAzure_SessionHandlerTest extends TestCase
     /**
      * Test setup
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!TESTS_ZEND_SERVICE_WINDOWSAZURE_SESSIONHANDLER_RUNTESTS) {
             $this->markTestSkipped('This test case requires TESTS_ZEND_SERVICE_WINDOWSAZURE_SESSIONHANDLER_RUNTESTS to be enabled in TestConfiguration.php');
@@ -61,7 +61,7 @@ class Zend_Service_WindowsAzure_SessionHandlerTest extends TestCase
     /**
      * Test teardown
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->status == BaseTestRunner::STATUS_SKIPPED) {
             return;

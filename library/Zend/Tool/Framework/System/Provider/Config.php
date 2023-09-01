@@ -69,7 +69,7 @@ class Zend_Tool_Framework_System_Provider_Config extends Zend_Tool_Framework_Pro
      */
     public function create()
     {
-        /* @var $userConfig Zend_Tool_Framework_Client_Config */
+        /* @var Zend_Tool_Framework_Client_Config $userConfig */
         $userConfig = $this->_registry->getConfig();
 
         $resp = $this->_registry->getResponse();
@@ -310,7 +310,7 @@ class Zend_Tool_Framework_System_Provider_Config extends Zend_Tool_Framework_Pro
      */
     protected function _loadUserConfigIfExists()
     {
-        /* @var $userConfig Zend_Tool_Framework_Client_Config */
+        /* @var Zend_Tool_Framework_Client_Config $userConfig */
         $userConfig = $this->_registry->getConfig();
 
         $resp = $this->_registry->getResponse();

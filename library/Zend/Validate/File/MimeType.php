@@ -170,7 +170,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      *
      * @param  string $file
      * @throws Zend_Validate_Exception When finfo can not read the magicfile
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      */
     public function setMagicFile($file)
     {
@@ -209,7 +209,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * specified by Zend_Validate_File_MimeType::_magicFiles
      *
      * @param  boolean $flag
-     * @return Zend_Validate_File_MimeType Provides fluent interface
+     * @return $this
      * @see http://framework.zend.com/issues/browse/ZF-11784
      */
     public function setTryCommonMagicFilesFlag($flag = true)
@@ -245,7 +245,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Note that this is unsave and therefor the default value is false
      *
      * @param  boolean $headerCheck
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      */
     public function enableHeaderCheck($headerCheck = true)
     {
@@ -274,7 +274,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Sets the mimetypes
      *
      * @param string|array $mimetype The mimetypes to validate
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      * @throws Zend_Validate_Exception
      */
     public function setMimeType($mimetype)
@@ -288,7 +288,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
      * Adds the mimetypes
      *
      * @param  string|array $mimetype The mimetypes to add for validation
-     * @return Zend_Validate_File_MimeType Provides a fluent interface
+     * @return $this
      * @throws Zend_Validate_Exception
      */
     public function addMimeType($mimetype)

@@ -56,13 +56,13 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!constant('TESTS_ZEND_SERVICE_RACKSPACE_ONLINE_ENABLED')) {
             $this->markTestSkipped('Rackspace online tests are not enabled');
         }
 
-        parent::setUp();
+        parent::set_up();
         $this->_waitPeriod = 5;
         
         // Create the container here
@@ -80,7 +80,7 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (!$this->_config) {
             return;
@@ -106,7 +106,7 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
             $this->_config->get(Zend_Cloud_StorageService_Adapter_Rackspace::REMOTE_CONTAINER)
         );
         
-        parent::tearDown();
+        parent::tear_down();
     }
 
     protected function _getConfig()
@@ -130,6 +130,6 @@ class Zend_Cloud_StorageService_Adapter_RackspaceTest extends Zend_Cloud_Storage
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_StorageService_Adapter_RackspaceTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_StorageService_Adapter_RackspaceTest::main') {
     Zend_Cloud_StorageService_Adapter_RackspaceTest::main();
 }

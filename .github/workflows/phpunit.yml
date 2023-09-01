@@ -1,53 +1,194 @@
-name: PHPUnit-9
+name: PHPUnit
 
 on: [push, pull_request]
 
 jobs:
-  phpunit-php82:
-    runs-on: ubuntu-latest
+  phpunit:
+    name: Tests on PHP ${{ matrix.php-version }}
+
+    runs-on: ubuntu-22.04
+
+    env:
+      PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
+
+      TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME: github
+      TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD: github
+      TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE: zftest
+      TESTS_ZEND_DB_ADAPTER_MYSQL_HOSTNAME: 127.0.0.1
+
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME: github
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD: github
+      TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE: zftest
+
+      TESTS_ZEND_CACHE_SQLITE_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED: true
+
+      TESTS_ZEND_CACHE_MEMCACHED_ENABLED: true
+      TESTS_ZEND_CACHE_MEMCACHED_HOST: 127.0.0.1
+      TESTS_ZEND_CACHE_MEMCACHED_PORT: 11211
+
+      TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED: true
+      TESTS_ZEND_CACHE_LIBMEMCACHED_HOST: 127.0.0.1
+      TESTS_ZEND_CACHE_LIBMEMCACHED_PORT: 11211
+
+      TESTS_ZEND_CACHE_APC_ENABLED: true
+
+      # https://hub.docker.com/r/bitnami/openldap
+      LDAP_ROOT: "dc=example,dc=com"
+      LDAP_ALLOW_ANON_BINDING: false
+      LDAP_SKIP_DEFAULT_TREE: "yes"
+      LDAP_ADMIN_USERNAME: "admin"
+      LDAP_ADMIN_PASSWORD: "insecure"
+      LDAP_CONFIG_ADMIN_USERNAME: "admin"
+      LDAP_CONFIG_ADMIN_PASSWORD: "configpassword"
+      TESTS_ZEND_LDAP_ONLINE_ENABLED: true
+      TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED: true
+
+      LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
+      OPENSSL_CONF: "./tests/openssl.conf"
+    services:
+      memcache:
+        image: memcached:1.6.17-alpine
+        ports:
+          - 11211:11211
+
+      mysql:
+        image: bitnami/mysql:8.0.31
+        env:
+          MYSQL_ROOT_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME }}
+          MYSQL_ROOT_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE }}
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+      postgres:
+        image: postgres:15.1-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_USERNAME }}
+          POSTGRES_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD }}
+          POSTGRES_DB: ${{ env.TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      openldap:
+        image: bitnami/openldap:2.5
+        ports:
+          - 1389:1389
+        env:
+          LDAP_ROOT: ${{ env.LDAP_ROOT }}
+          LDAP_ALLOW_ANON_BINDING: ${{ env.LDAP_ALLOW_ANON_BINDING }}
+          LDAP_SKIP_DEFAULT_TREE: ${{ env.LDAP_SKIP_DEFAULT_TREE }}
+          LDAP_ADMIN_USERNAME: ${{ env.LDAP_ADMIN_USERNAME }}
+          LDAP_ADMIN_PASSWORD: ${{ env.LDAP_ADMIN_PASSWORD }}
+          LDAP_CONFIG_ADMIN_ENABLED: "yes"
+          LDAP_CONFIG_ADMIN_USERNAME: ${{ env.LDAP_CONFIG_ADMIN_USERNAME }}
+          LDAP_CONFIG_ADMIN_PASSWORD: ${{ env.LDAP_CONFIG_ADMIN_PASSWORD }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.1"
+          - "7.2"
+          - "7.3"
+          - "7.4"
+          - "8.0"
+          - "8.1"
+          - "8.2"
+        experimental:
+          - false
+        include:
+          #bare for PHP >=7.2
+          - php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
+          #full for PHP <= 8.0
+          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar"
+          - php-version: "7.1"
+            php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer"
+          - php-version: "8.1"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
+          - php-version: "8.2"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
+          - php-version: "8.3"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+            experimental: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Download phpunit
+
+      - name: Setup Locale
         run: |
-          wget -O phpunit https://phar.phpunit.de/phpunit-9.5.26.phar
-          chmod +x phpunit
-        shell: bash
-      - name: PHPUnit 9 on php 8.2
-        uses: docker://php:8.2-rc-cli-alpine
+          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
+          echo "All languages..."
+          locale -a
+      
+      - name: Provider config base on env for integrate test
+        run: cp tests/TestConfiguration.env.php tests/TestConfiguration.php
+
+      - name: Install PHP with minimal extensions
+        uses: shivammathur/setup-php@v2
         with:
-          args: -d memory_limit=-1 ./phpunit --bootstrap tests/TestHelper.php tests/Zend/AllTests.php
-  phpunit-php81:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Prevent entrypoint issue on load docker image jakzal/phpqa:php
-        run: mv composer.json composer.json.bk
-      - name: PHPUnit 9 on php 8.1
-        uses: docker://jakzal/phpqa:php8.1-alpine
+          php-version: ${{ matrix.php-version }}
+          tools: cs2pr
+          extensions: ${{ matrix.php-extensions-bare }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
+        env:
+          # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
+          fail-fast: true
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
         with:
-          args: /tools/phpunit --bootstrap tests/TestHelper.php tests/Zend/AllTests.php
-  phpunit-php80:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Prevent entrypoint issue on load docker image jakzal/phpqa:php
-        run: mv composer.json composer.json.bk
-      - name: PHPUnit 9 on php 8.0
-        uses: docker://jakzal/phpqa:php8.0-alpine
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.php-version }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Lint PHP source files
+        run: |
+          bin/parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php . --checkstyle | cs2pr
+
+      - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }}) with minimal extensions"
+        run: |
+          bin/phpunit -c tests/phpunit.xml
+        continue-on-error: ${{ matrix.experimental }}
+
+      - name: Setup LDAP
+        run: |
+          sudo apt-get install -y libnss-ldap libpam-ldap ldap-utils
+          tests/resources/openldap/docker-entrypoint-initdb.d/init.sh
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
         with:
-          args: /tools/phpunit --bootstrap tests/TestHelper.php tests/Zend/AllTests.php
-  phpunit-php74:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Prevent entrypoint issue on load docker image jakzal/phpqa:php
-        run: mv composer.json composer.json.bk
-      - name: PHPUnit 9 on php 7.4
-        uses: docker://jakzal/phpqa:php7.4-alpine
-        with:
-          args: /tools/phpunit --bootstrap tests/TestHelper.php tests/Zend/AllTests.php
-          
+          php-version: ${{ matrix.php-version }}
+          tools: cs2pr
+          extensions: ${{ matrix.php-extensions-full }}
+          ini-values: ${{ env.PHP_INI_VALUES }}, apc.enable_cli=1
+        env:
+          # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
+          fail-fast: true
+
+      - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }}) with extensions"
+        run: |
+          bin/phpunit -c tests/phpunit.xml
+        continue-on-error: ${{ matrix.experimental }}

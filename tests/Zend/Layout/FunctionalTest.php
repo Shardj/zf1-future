@@ -51,13 +51,13 @@ class Zend_Layout_FunctionalTest extends Zend_Test_PHPUnit_ControllerTestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->bootstrap = [$this, 'appBootstrap'];
-        parent::setUp();
+        parent::set_up();
     }
 
     public function appBootstrap()
@@ -90,6 +90,6 @@ class Zend_Layout_FunctionalTest extends Zend_Test_PHPUnit_ControllerTestCase
 }
 
 // Call Zend_Layout_FunctionalTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Layout_FunctionalTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Layout_FunctionalTest::main") {
     Zend_Layout_FunctionalTest::main();
 }

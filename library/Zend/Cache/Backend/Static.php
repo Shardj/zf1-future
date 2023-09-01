@@ -479,7 +479,7 @@ class Zend_Cache_Backend_Static
      * should be completely cleaned as the mapping of tags to caches will
      * have been irrevocably lost.
      *
-     * @param  Zend_Cache_Core
+     * @param  Zend_Cache_Core $cache
      * @return void
      */
     public function setInnerCache(Zend_Cache_Core $cache)

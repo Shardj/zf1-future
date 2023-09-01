@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -65,10 +65,10 @@ class Zend_Amf_AuthTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_AuthTest");
-        (new TestRunner())->run($suite);
+        (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_server = new Zend_Amf_Server();
         $this->_server->setProduction(false);
@@ -76,7 +76,7 @@ class Zend_Amf_AuthTest extends TestCase
         $this->_acl = new Zend_Acl();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_server);
     }
@@ -275,7 +275,7 @@ class Zend_Amf_AuthTest extends TestCase
         $this->assertStringContainsString("hello", $resp[1]->getData());
 
         // After logout same request should not be allowed
-        $this->setUp();
+        $this->set_up();
         $this->_server->setAuth(new RightPassword("testuser", "testrole"));
         $this->_server->setAcl($this->_acl);
         $request = new Zend_Amf_Request();
@@ -369,6 +369,6 @@ class Zend_Amf_Auth_testclass_NoAcl
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Amf_AuthTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Amf_AuthTest::main") {
     Zend_Amf_AuthTest::main();
 }

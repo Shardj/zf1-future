@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ class Zend_Navigation_PageTest extends TestCase
      * Prepares the environment before running a test.
      *
      */
-    protected function setUp(): void
+    protected function set_up()
     {
     }
 
@@ -51,7 +51,7 @@ class Zend_Navigation_PageTest extends TestCase
      * Tear down the environment after running a test
      *
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // setConfig, setOptions
     }

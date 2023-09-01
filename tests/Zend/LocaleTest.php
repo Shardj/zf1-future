@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -56,7 +56,7 @@ class Zend_LocaleTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_LocaleTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     private $_cache = null;
@@ -65,7 +65,7 @@ class Zend_LocaleTest extends TestCase
 
     private $_errorOccurred = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_locale = setlocale(LC_ALL, 0);
         setlocale(LC_ALL, 'de');
@@ -84,7 +84,7 @@ class Zend_LocaleTest extends TestCase
         putenv("HTTP_ACCEPT_LANGUAGE=,de,en-UK-US;q=0.5,fr_FR;q=0.2");
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->errorHandler) {
             restore_error_handler();
@@ -102,7 +102,7 @@ class Zend_LocaleTest extends TestCase
         setlocale(LC_ALL, $this->_locale);
     }
 
-    public static function tearDownAfterClass(): void
+    public static function tear_down_after_class()
     {
         /**
          * Fix issue side effect Zend_Locale::$_auto cached when run
@@ -997,6 +997,6 @@ class Zend_LocaleTest extends TestCase
 }
 
 // Call Zend_LocaleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_LocaleTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_LocaleTest::main") {
     Zend_LocaleTest::main();
 }

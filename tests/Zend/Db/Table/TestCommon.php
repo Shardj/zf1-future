@@ -56,6 +56,9 @@ require_once 'Zend/Cache/Backend/BlackHole.php';
  */
 abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 {
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testTableConstructor()
     {
         $bugs = $this->_table['bugs'];
@@ -227,7 +230,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         // TableSpecial.php contains class bugs_products too.
         $table = new zfbugs_products(['db' => $this->_db]);
         $info = $table->info();
-        $this->assertStringContainsString('name', array_keys($info));
+        $this->assertContains('name', array_keys($info));
         $this->assertEquals('zfbugs_products', $info['name']);
     }
 
@@ -239,7 +242,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
             ['name' => $tableName]
         );
         $info = $table->info();
-        $this->assertStringContainsString('name', array_keys($info));
+        $this->assertContains('name', array_keys($info));
         $this->assertEquals($tableName, $info['name']);
     }
 
@@ -252,7 +255,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
             ['name' => $tableName, 'schema' => $schemaName]
         );
         $info = $table->info();
-        $this->assertStringContainsString('schema', array_keys($info));
+        $this->assertContains('schema', array_keys($info));
         $this->assertEquals($schemaName, $info['schema']);
     }
 
@@ -1546,18 +1549,12 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
     public function testTableSetDefaultMetadataCacheWriteAccess()
     {
+        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
+        $this->expectExceptionMessage('Failed saving metadata to metadataCache');
         $cache = $this->_getCacheNowrite();
         Zend_Db_Table_Abstract::setDefaultMetadataCache($cache);
-
-        try {
-            $bugsTable = $this->_getTable('My_ZendDbTable_TableBugs');
-            $primary = $bugsTable->info(Zend_Db_Table_Abstract::PRIMARY);
-            $this->fail('Expected to catch PHPUnit_Framework_Error');
-        } catch (Error $e) {
-            $this->assertEquals(E_USER_NOTICE, $e->getCode(), 'Error type not E_USER_NOTICE');
-            $this->assertEquals('Failed saving metadata to metadataCache', $e->getMessage());
-        }
-
+        $bugsTable = $this->_getTable('My_ZendDbTable_TableBugs');
+        $primary = $bugsTable->info(Zend_Db_Table_Abstract::PRIMARY);
         Zend_Db_Table_Abstract::setDefaultMetadataCache(null);
     }
 
@@ -1582,13 +1579,13 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
         $this->assertFalse($tableBugsCustom1->isMetadataFromCache, 'Failed asserting metadata is not from cache');
 
-        $tableBugsCustom1->setup();
+        $tableBugsCustom1->set_up();
 
         $this->assertTrue($tableBugsCustom1->isMetadataFromCache, 'Failed asserting metadata is from cache');
 
         $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 
-        $tableBugsCustom1->setup();
+        $tableBugsCustom1->set_up();
 
         $this->assertFalse($tableBugsCustom1->isMetadataFromCache, 'Failed asserting metadata is not from cache after cleaning');
     }
@@ -1618,13 +1615,13 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
         $this->assertFalse($tableBugsCustom1->isMetadataFromCache, 'Failed asserting metadata is not from cache');
 
-        $tableBugsCustom1->setup();
+        $tableBugsCustom1->set_up();
 
         $this->assertTrue($tableBugsCustom1->isMetadataFromCache, 'Failed asserting metadata is from cache');
 
         $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 
-        $tableBugsCustom1->setup();
+        $tableBugsCustom1->set_up();
 
         $this->assertTrue($tableBugsCustom1->isMetadataFromCache, 'Failed asserting metadata is from cache after cleaning');
     }
@@ -1649,13 +1646,13 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
             $tableBugsCustom1->getMetadataCache() instanceof Zend_Cache_Core
         );
 
-        $tableBugsCustom1->setup();
+        $tableBugsCustom1->set_up();
 
         $this->assertTrue($tableBugsCustom1->isMetadataFromCache);
 
         $cache->clean(Zend_Cache::CLEANING_MODE_ALL);
 
-        $tableBugsCustom1->setup();
+        $tableBugsCustom1->set_up();
 
         $this->assertFalse($tableBugsCustom1->isMetadataFromCache);
     }
@@ -1961,6 +1958,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
     /**
      * @group ZF-7042
      * @group ZF-10778
+     * @doesNotPerformAssertions
      */
     public function testCacheIdGeneratedToMetadata()
     {

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,7 +39,7 @@ class Zend_Service_ReCaptcha_ResponseTest extends TestCase
 {
     protected $_response = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_response = new Zend_Service_ReCaptcha_Response();
     }

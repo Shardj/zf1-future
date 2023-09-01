@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Application_Resource_SessionTest extends TestCase
 {
     public $resource;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->resource = new Zend_Application_Resource_Session();
     }

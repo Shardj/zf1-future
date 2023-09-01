@@ -45,12 +45,20 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      */
     public $subject = null;
 
+
     /**
      * Config options for sendmail parameters
      *
      * @var string
      */
     public $parameters;
+
+    /**
+     * EOL character string
+     * @var string
+     * @access public
+     */
+    public $EOL = "\r\n";
 
     /**
      * error information
@@ -89,13 +97,25 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
      */
     public function _sendMail()
     {
+        $recipients = $this->recipients;
+        $subject = $this->_mail->getSubject();
+        $body = $this->body;
+        $header = $this->header;
+        $isWindowsOs = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN';
+        if (PHP_VERSION_ID < 80000 && !$isWindowsOs) {
+            $recipients = str_replace("\r\n", "\n", $recipients);
+            $subject = str_replace("\r\n", "\n", $subject);
+            $body = str_replace("\r\n", "\n", $body);
+            $header = str_replace("\r\n", "\n", $header);
+        }
+
         if ($this->parameters === null) {
             set_error_handler([$this, '_handleMailErrors']);
             $result = mail(
-                $this->recipients,
-                $this->_mail->getSubject(),
-                $this->body,
-                $this->header);
+                $recipients,
+                $subject,
+                $body,
+                $header);
             restore_error_handler();
         } else {
             if(!is_string($this->parameters)) {
@@ -111,14 +131,42 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
                 );
             }
 
-            set_error_handler([$this, '_handleMailErrors']);
-            $result = mail(
-                $this->recipients,
-                $this->_mail->getSubject(),
-                $this->body,
-                $this->header,
-                $this->parameters);
-            restore_error_handler();
+            $fromEmailHeader = str_replace(' ', '', $this->parameters);
+            if (PHP_VERSION_ID < 80000 && !$isWindowsOs) {
+                $fromEmailHeader = str_replace("\r\n", "\n", $fromEmailHeader);
+            }
+            // Sanitize the From header
+            // https://github.com/Shardj/zf1-future/issues/326
+            
+            if ( empty($fromEmailHeader) === TRUE ) { // nothing to worry about
+                goto processMail;
+            }
+            
+            // now we use 2 different approaches, based ond the usage context            
+            if( substr( $fromEmailHeader, 0, 2 ) === '-f' ) {
+                
+                if(substr_count($fromEmailHeader, '"') >2) { // we are considering just usage of double-quotes
+                    throw new Zend_Mail_Transport_Exception('Potential code injection in From header');
+                }
+  
+            } else { // full email validation
+                
+                if( Zend_Validate::is($fromEmailHeader, 'EmailAddress') === FALSE ) {
+                    throw new Zend_Mail_Transport_Exception('Potential code injection in From header');
+                }                
+            }            
+            
+            processMail:
+            
+                set_error_handler([$this, '_handleMailErrors']);
+                $result = mail(
+                    $recipients,
+                    $subject,
+                    $body,
+                    $header,
+                    $fromEmailHeader);
+                restore_error_handler();
+
         }
 
         if ($this->_errstr !== null || !$result) {

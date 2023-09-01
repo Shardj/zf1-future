@@ -137,7 +137,7 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends TestCase
      * it. When done, sets the test case request and response objects into the
      * front controller.
      */
-    final public function bootstrap()
+    final public function bootstrap(): void
     {
         $this->reset();
         if (null !== $this->bootstrap) {

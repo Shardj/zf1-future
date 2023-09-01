@@ -251,7 +251,7 @@ abstract class Zend_Server_Reflection_Function_Abstract
      *
      * Determines the method help/description text from the function DocBlock
      * comment. Determines method signatures using a combination of
-     * ReflectionFunction and parsing of DocBlock @param and @return values.
+     * ReflectionFunction and parsing of DocBlock param and return values.
      *
      * @param ReflectionFunction $function
      * @return void

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -52,7 +52,7 @@ class Zend_Ldap_OriginalOfflineTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_ldap = new Zend_Ldap();
     }
@@ -63,7 +63,7 @@ class Zend_Ldap_OriginalOfflineTest extends TestCase
     public function testFilterEscapeBasicOperation()
     {
         $input = 'a*b(b)d\e/f';
-        $expected = 'a\2ab\28b\29d\5ce\2ff';
+        $expected = 'a\2ab\28b\29d\5ce/f';
         $this->assertEquals($expected, Zend_Ldap::filterEscape($input));
     }
 

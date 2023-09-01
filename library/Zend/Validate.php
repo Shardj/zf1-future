@@ -69,7 +69,7 @@ class Zend_Validate implements Zend_Validate_Interface
      *
      * @param  Zend_Validate_Interface $validator
      * @param  boolean                 $breakChainOnFailure
-     * @return Zend_Validate Provides a fluent interface
+     * @return $this
      */
     public function addValidator(Zend_Validate_Interface $validator, $breakChainOnFailure = false)
     {

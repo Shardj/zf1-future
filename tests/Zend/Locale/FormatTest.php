@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\Error\Notice;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Locale_FormatTest extends TestCase
     /**
      * teardown / cleanup
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // if the setlocale option is enabled, then don't change the setlocale below
         if (defined('TESTS_ZEND_LOCALE_FORMAT_SETLOCALE') && TESTS_ZEND_LOCALE_FORMAT_SETLOCALE === false) {

@@ -38,7 +38,7 @@ require_once 'Zend/Json.php';
 class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
 {
     /**
-     * @param string Dijit type
+     * @var string Dijit type
      */
     protected $_dijit = 'dijit.Editor';
 

@@ -313,8 +313,8 @@ class Zend_Service_SqlAzure_Management_Client
     /**
      * Builds a query string from an array of elements
      *
-     * @param array     Array of elements
-     * @return string   Assembled query string
+     * @param array $queryString Array of elements
+     * @return string Assembled query string
      */
     public static function createQueryStringFromArray($queryString)
     {

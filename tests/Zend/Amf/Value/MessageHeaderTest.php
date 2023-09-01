@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -51,7 +51,7 @@ class Zend_Amf_Value_MessageHeaderTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_Value_MessageHeaderTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testConstructorShouldSetMessageHeaderName()
@@ -98,6 +98,6 @@ class Zend_Amf_Value_MessageHeaderTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Amf_Value_MessageHeaderTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Amf_Value_MessageHeaderTest::main') {
     Zend_Amf_Value_MessageHeaderTest::main();
 }

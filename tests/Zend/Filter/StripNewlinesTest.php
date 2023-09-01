@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Filter_StripNewlinesTest extends TestCase
      *
      * @return void
      */
-    public function setUp(): void
+    public function set_up()
     {
         $this->_filter = new Zend_Filter_StripNewlines();
     }

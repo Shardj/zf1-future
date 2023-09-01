@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -80,7 +80,7 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Session::$_unitTestEnabled = true;
         $this->_setupDb($this->_saveHandlerTableConfig['primary']);
@@ -91,7 +91,7 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->_db instanceof Zend_Db_Adapter_Abstract) {
             $this->_dropTable();

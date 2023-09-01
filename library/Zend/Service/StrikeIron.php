@@ -36,7 +36,7 @@ class Zend_Service_StrikeIron
 {
     /**
      * Options to pass to Zend_Service_StrikeIron_Base constructor
-     * @param array
+     * @var array
      */
     protected $_options;
 

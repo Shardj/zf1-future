@@ -40,7 +40,7 @@ abstract class Zend_CodeGenerator_Php_Member_Abstract extends Zend_CodeGenerator
 {
 
     /**#@+
-     * @param const string
+     * @var const string
      */
     const VISIBILITY_PUBLIC    = 'public';
     const VISIBILITY_PROTECTED = 'protected';

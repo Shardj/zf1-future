@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -62,10 +62,10 @@ class Zend_Filter_PregReplaceTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_PregReplaceTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->filter = new Zend_Filter_PregReplace();
     }
@@ -156,6 +156,6 @@ class XPregReplace extends Zend_Filter_PregReplace
 }
 
 // Call Zend_Filter_PregReplaceTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_PregReplaceTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_PregReplaceTest::main') {
     Zend_Filter_PregReplaceTest::main();
 }

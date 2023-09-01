@@ -484,10 +484,9 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
      *
      * This method is short syntax for Zend_Mail_Part::hasHeader($name);
      *
+     * @param  string $name
+     * @return bool
      * @see Zend_Mail_Part::hasHeader
-     *
-     * @param  string
-     * @return boolean
      */
     public function __isset($name)
     {

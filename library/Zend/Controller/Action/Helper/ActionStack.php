@@ -68,7 +68,7 @@ class Zend_Controller_Action_Helper_ActionStack extends Zend_Controller_Action_H
      * Push onto the stack
      *
      * @param  Zend_Controller_Request_Abstract $next
-     * @return Zend_Controller_Action_Helper_ActionStack Provides a fluent interface
+     * @return $this
      */
     public function pushStack(Zend_Controller_Request_Abstract $next)
     {

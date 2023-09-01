@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -57,14 +57,14 @@ abstract class Zend_Db_TestSetup extends TestCase
     abstract public function getDriver();
 
     /**
-     * Subclasses should call parent::setUp() before
+     * Subclasses should call parent::set_up() before
      * doing their own logic, e.g. creating metadata.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_setUpTestUtil();
         $this->_setUpAdapter();
-        $this->_util->setUp($this->_db);
+        $this->_util->set_up($this->_db);
     }
 
     /**
@@ -102,12 +102,12 @@ abstract class Zend_Db_TestSetup extends TestCase
     }
 
     /**
-     * Subclasses should call parent::tearDown() after
+     * Subclasses should call parent::tear_down() after
      * doing their own logic, e.g. deleting metadata.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        $this->_util->tearDown();
+        $this->_util->tear_down();
         $this->_db->closeConnection();
         $this->_db = null;
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -45,7 +45,7 @@ class Zend_Log_Writer_NullTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -69,6 +69,6 @@ class Zend_Log_Writer_NullTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Writer_NullTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Writer_NullTest::main') {
     Zend_Log_Writer_NullTest::main();
 }

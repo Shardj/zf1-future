@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Gdata_Spreadsheets_ListQueryTest extends TestCase
      */
     protected $docQuery;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->docQuery = new Zend_Gdata_Spreadsheets_ListQuery();
     }

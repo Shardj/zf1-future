@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Gapps_LoginTest extends TestCase
      */
     protected $login;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->loginText = file_get_contents(
             'Zend/Gdata/Gapps/_files/LoginElementSample1.xml',

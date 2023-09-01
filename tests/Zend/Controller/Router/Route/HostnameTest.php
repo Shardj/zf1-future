@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,7 +55,7 @@ class Zend_Controller_Router_Route_HostnameTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Router_Route_HostnameTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testCorrectStaticHostMatch()
@@ -276,6 +276,6 @@ class Zend_Controller_Router_RewriteTest_Request_Stub extends Zend_Controller_Re
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_Route_HostnameTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Router_Route_HostnameTest::main") {
     Zend_Controller_Router_Route_HostnameTest::main();
 }

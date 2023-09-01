@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -74,13 +74,13 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_setupDbAdapter();
         $this->_setupAuthAdapter();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_adapter = null;
         $this->_db->query('DROP TABLE [users]');
@@ -321,7 +321,7 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends TestCase
      */
     public function testDbTableAdapterUsesCaseFolding()
     {
-        $this->tearDown();
+        $this->tear_down();
         $this->_setupDbAdapter([Zend_Db::CASE_FOLDING => Zend_Db::CASE_UPPER]);
         $this->_setupAuthAdapter();
 
@@ -486,7 +486,7 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest extends TestCase
 
 class Zend_Auth_Adapter_DbTable_BasicSqliteTest_Skip extends Zend_Auth_Adapter_DbTable_BasicSqliteTest
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Auth_Adapter_DbTable Sqlite tests are not enabled in TestConfiguration.php');
     }

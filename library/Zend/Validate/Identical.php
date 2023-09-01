@@ -119,7 +119,7 @@ class Zend_Validate_Identical extends Zend_Validate_Abstract
     /**
      * Sets the strict parameter
      *
-     * @param Zend_Validate_Identical
+     * @param Zend_Validate_Identical $strict
      * @return $this
      */
     public function setStrict($strict)

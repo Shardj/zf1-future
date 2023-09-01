@@ -66,10 +66,13 @@ class Zend_Locale_Math_PhpMath extends Zend_Locale_Math
         if (empty($op1)) {
             $op1 = 0;
         }
+        if (empty($op2)) {
+            $op2 = 0;
+        }
         $op1 = self::normalize($op1);
         $op2 = self::normalize($op2);
         $result = $op1 + $op2;
-        if (is_infinite($result)  ||  (abs($result - $op2 - $op1) > $precision)) {
+        if (is_infinite($result) || (abs($result - $op2 - $op1) > $precision)) {
             require_once 'Zend/Locale/Math/Exception.php';
             throw new Zend_Locale_Math_Exception("addition overflow: $op1 + $op2 != $result", $op1, $op2, $result);
         }

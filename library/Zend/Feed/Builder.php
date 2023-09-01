@@ -52,21 +52,21 @@ class Zend_Feed_Builder implements Zend_Feed_Builder_Interface
     /**
      * The data of the feed
      *
-     * @var $_data array
+     * @var array $_data
      */
     private $_data;
 
     /**
      * Header of the feed
      *
-     * @var $_header Zend_Feed_Builder_Header
+     * @var Zend_Feed_Builder_Header $_header
      */
     private $_header;
 
     /**
      * List of the entries of the feed
      *
-     * @var $_entries array
+     * @var array $_entries
      */
     private $_entries = [];
 

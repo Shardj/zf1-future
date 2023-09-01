@@ -80,7 +80,7 @@ class Zend_Filter_StringToLower implements Zend_Filter_Interface
      * Set the input encoding for the given string
      *
      * @param  string $encoding
-     * @return Zend_Filter_StringToLower Provides a fluent interface
+     * @return $this
      * @throws Zend_Filter_Exception
      */
     public function setEncoding($encoding = null)

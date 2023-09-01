@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -56,7 +56,7 @@ class Zend_Navigation_Page_MvcTest extends TestCase
      */
     protected $_oldRouter;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_front = Zend_Controller_Front::getInstance();
         $this->_oldRequest = $this->_front->getRequest();
@@ -70,7 +70,7 @@ class Zend_Navigation_Page_MvcTest extends TestCase
         $this->_front->getRouter()->addDefaultRoutes();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($_SERVER['HTTP_HOST']);
         if (null !== $this->_oldRequest) {

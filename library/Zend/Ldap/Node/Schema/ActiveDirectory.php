@@ -63,7 +63,7 @@ class Zend_Ldap_Node_Schema_ActiveDirectory extends Zend_Ldap_Node_Schema
      *
      * @param  Zend_Ldap_Dn $dn
      * @param  Zend_Ldap    $ldap
-     * @return Zend_Ldap_Node_Schema Provides a fluent interface
+     * @return $this
      */
     protected function _parseSchema(Zend_Ldap_Dn $dn, Zend_Ldap $ldap)
     {

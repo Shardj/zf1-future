@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -58,7 +58,7 @@ class Zend_Tool_Framework_Provider_SignatureTest extends TestCase
      */
     protected $_targetSignature = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // setup the registry components required to test with
         $this->_registry = new Zend_Tool_Framework_Registry();
@@ -68,7 +68,7 @@ class Zend_Tool_Framework_Provider_SignatureTest extends TestCase
         $this->_targetSignature->process();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_registry->reset();
     }

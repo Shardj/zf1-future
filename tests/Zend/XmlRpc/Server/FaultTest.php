@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -56,7 +56,7 @@ class Zend_XmlRpc_Server_FaultTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_XmlRpc_Server_FaultTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -301,6 +301,6 @@ class zxrs_fault_observer
 }
 
 // Call Zend_XmlRpc_Server_FaultTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_XmlRpc_Server_FaultTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_XmlRpc_Server_FaultTest::main") {
     Zend_XmlRpc_Server_FaultTest::main();
 }

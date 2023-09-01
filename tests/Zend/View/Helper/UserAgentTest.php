@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -63,14 +63,14 @@ class Zend_View_Helper_UserAgentTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_UrlTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->helper = new Zend_View_Helper_UserAgent();
         $this->userAgent = new Zend_Http_UserAgent();
@@ -106,6 +106,6 @@ class Zend_View_Helper_UserAgentTest extends TestCase
 }
 
 // Call Zend_View_Helper_UrlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_UserAgentTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_UserAgentTest::main") {
     Zend_View_Helper_UserAgentTest::main();
 }

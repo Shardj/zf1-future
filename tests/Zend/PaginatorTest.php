@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -122,7 +122,7 @@ class Zend_PaginatorTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     protected $_dbConn;
@@ -146,7 +146,7 @@ class Zend_PaginatorTest extends TestCase
 
     protected $_adapter = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('pdo_sqlite')) {
             $this->markTestSkipped('Pdo_Sqlite extension is not loaded');
@@ -175,7 +175,7 @@ class Zend_PaginatorTest extends TestCase
         $this->_restorePaginatorDefaults();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_dbConn = null;
         $this->_testCollection = null;

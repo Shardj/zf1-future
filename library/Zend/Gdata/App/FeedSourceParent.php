@@ -90,7 +90,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             setService() instead.
      * @param  Zend_Http_Client $httpClient
-     * @return Zend_Gdata_App_FeedSourceParent Provides a fluent interface
+     * @return $this
      */
     public function setHttpClient(Zend_Http_Client $httpClient)
     {
@@ -107,7 +107,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
      * save() and delete().
      *
      * @param Zend_Gdata_App $instance The new service instance.
-     * @return Zend_Gdata_App_FeedEntryParent Provides a fluent interface.
+     * @return $this
      */
     public function setService($instance)
     {
@@ -202,7 +202,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
 
     /**
      * @param Zend_Gdata_App_Extension_Generator $value
-     * @return Zend_Gdata_App_FeedSourceParent Provides a fluent interface
+     * @return $this
      */
     public function setGenerator($value)
     {
@@ -220,7 +220,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
 
     /**
      * @param Zend_Gdata_App_Extension_Icon $value
-     * @return Zend_Gdata_App_FeedSourceParent Provides a fluent interface
+     * @return $this
      */
     public function setIcon($value)
     {
@@ -238,7 +238,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
 
     /**
      * @param Zend_Gdata_App_Extension_logo $value
-     * @return Zend_Gdata_App_FeedSourceParent Provides a fluent interface
+     * @return $this
      */
     public function setlogo($value)
     {
@@ -256,7 +256,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
 
     /**
      * @param Zend_Gdata_App_Extension_Subtitle $value
-     * @return Zend_Gdata_App_FeedSourceParent Provides a fluent interface
+     * @return $this
      */
     public function setSubtitle($value)
     {

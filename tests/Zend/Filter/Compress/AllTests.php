@@ -52,7 +52,7 @@ class Zend_Filter_Compress_AllTests
      */
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     /**
@@ -75,6 +75,6 @@ class Zend_Filter_Compress_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_Compress_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_Compress_AllTests::main') {
     Zend_Filter_Compress_AllTests::main();
 }

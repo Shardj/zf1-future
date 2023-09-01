@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -56,7 +56,7 @@ class Zend_Validate_HostnameTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_origEncoding = PHP_VERSION_ID < 50600
                     ? iconv_get_encoding('internal_encoding')
@@ -67,7 +67,7 @@ class Zend_Validate_HostnameTest extends TestCase
     /**
      * Reset iconv
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (PHP_VERSION_ID < 50600) {
             iconv_set_encoding('internal_encoding', $this->_origEncoding);

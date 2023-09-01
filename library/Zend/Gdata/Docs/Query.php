@@ -85,7 +85,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      * include 'full'.
      *
      * @param string $value
-     * @return Zend_Gdata_Docs_Query Provides a fluent interface
+     * @return $this
      */
     public function setProjection($value)
     {
@@ -97,7 +97,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      * Sets the visibility for this query. Common values for visibility
      * include 'private'.
      *
-     * @return Zend_Gdata_Docs_Query Provides a fluent interface
+     * @return $this
      */
     public function setVisibility($value)
     {
@@ -131,7 +131,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      * completely match the title.
      *
      * @param string $value
-     * @return Zend_Gdata_Docs_Query Provides a fluent interface
+     * @return $this
      */
     public function setTitle($value)
     {
@@ -164,7 +164,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      * title parameter will be returned.
      *
      * @param boolean $value Use either true or false
-     * @return Zend_Gdata_Docs_Query Provides a fluent interface
+     * @return $this
      */
     public function setTitleExact($value)
     {

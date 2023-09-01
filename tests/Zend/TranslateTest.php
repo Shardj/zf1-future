@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -62,10 +62,10 @@ class Zend_TranslateTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_TranslateTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (Zend_Translate::hasCache()) {
             Zend_Translate::removeCache();
@@ -954,6 +954,6 @@ class Zend_TranslateTest extends TestCase
 }
 
 // Call Zend_TranslateTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_TranslateTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_TranslateTest::main") {
     Zend_TranslateTest::main();
 }

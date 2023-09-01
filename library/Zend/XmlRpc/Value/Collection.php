@@ -65,7 +65,7 @@ abstract class Zend_XmlRpc_Value_Collection extends Zend_XmlRpc_Value
     {
         $values = (array)$this->_value;
         foreach ($values as $key => $value) {
-            /* @var $value Zend_XmlRpc_Value */
+            /* @var Zend_XmlRpc_Value $value */
             $values[$key] = $value->getValue();
         }
         return $values;

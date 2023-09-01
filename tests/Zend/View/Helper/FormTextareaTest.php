@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -69,7 +69,7 @@ class Zend_View_Helper_FormTextareaTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_FormTextareaTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -78,7 +78,7 @@ class Zend_View_Helper_FormTextareaTest extends TestCase
      *
      * @access protected
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->view = new Zend_View();
         $this->helper = new Zend_View_Helper_FormTextarea();
@@ -115,6 +115,6 @@ class Zend_View_Helper_FormTextareaTest extends TestCase
 }
 
 // Call Zend_View_Helper_FormTextareaTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormTextareaTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_FormTextareaTest::main") {
     Zend_View_Helper_FormTextareaTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -35,15 +35,19 @@ require_once 'Zend/Filter/Encrypt/Openssl.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Filter
- * ArgumentCountError: openssl_seal() expects at least 5 arguments, 4 given (on php >= 8) so need php anotation bellow
- * @requires PHP < 8.0
  */
 class Zend_Filter_Encrypt_OpensslTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the openssl extension');
+        }
+        if (!in_array('rc4', openssl_get_cipher_methods(), true)) {
+            $this->markTestSkipped('This filter needs a version of OpenSSL that supports the RC4 cipher');
+        }
+        if (empty(array_intersect(['md5', 'md5-rsa'], openssl_get_md_methods()))) {
+            $this->markTestSkipped('The keys used by this test need a version of OpenSSL that supports MD5 and MD5-RSA as message digest');
         }
     }
 
@@ -54,6 +58,10 @@ class Zend_Filter_Encrypt_OpensslTest extends TestCase
      */
     public function testBasicOpenssl()
     {
+        while (openssl_error_string()) {
+            // Clear any openssl errors
+        }
+
         $filter = new Zend_Filter_Encrypt_Openssl(dirname(__FILE__) . '/../_files/publickey.pem');
         $valuesExpected = [
             'STRING' => 'STRING',
@@ -64,7 +72,7 @@ class Zend_Filter_Encrypt_OpensslTest extends TestCase
         $key = $filter->getPublicKey();
         $this->assertEquals(
             [dirname(__FILE__) . '/../_files/publickey.pem' =>
-                  '-----BEGIN CERTIFICATE-----
+                '-----BEGIN CERTIFICATE-----
 MIIC3jCCAkegAwIBAgIBADANBgkqhkiG9w0BAQQFADCBtDELMAkGA1UEBhMCTkwx
 FjAUBgNVBAgTDU5vb3JkLUhvbGxhbmQxEDAOBgNVBAcTB1phYW5kYW0xFzAVBgNV
 BAoTDk1vYmlsZWZpc2guY29tMR8wHQYDVQQLExZDZXJ0aWZpY2F0aW9uIFNlcnZp

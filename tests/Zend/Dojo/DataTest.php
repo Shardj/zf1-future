@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -46,7 +46,7 @@ class Zend_Dojo_DataTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Dojo_DataTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -55,7 +55,7 @@ class Zend_Dojo_DataTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->dojoData = new Zend_Dojo_Data();
     }
@@ -584,6 +584,6 @@ class Zend_Dojo_DataTest_DataCollection implements Iterator
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Dojo_DataTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Dojo_DataTest::main') {
     Zend_Dojo_DataTest::main();
 }

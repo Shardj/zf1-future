@@ -104,7 +104,7 @@ class Zend_Gdata_Media_Extension_MediaHash extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaHash Provides a fluent interface
+     * @return $this
      */
     public function setAlgo($value)
     {

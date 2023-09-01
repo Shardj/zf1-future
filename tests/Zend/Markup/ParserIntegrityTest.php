@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -49,7 +49,7 @@ class Zend_Markup_ParserIntegrityTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Markup_MarkupTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testBbcodeParser()
@@ -85,6 +85,6 @@ class Zend_Markup_ParserIntegrityTest extends TestCase
 }
 
 // Call Zend_Markup_BbcodeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Markup_ParserIntegrityTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Markup_ParserIntegrityTest::main") {
     Zend_Markup_BbcodeTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ class Zend_Gdata_CalendarEventTest extends TestCase
     /**
       * Called before each test to setup any fixtures.
       */
-    protected function setUp(): void
+    protected function set_up()
     {
         $eventFeedText = file_get_contents(
             'Zend/Gdata/Calendar/_files/TestDataEventFeedSample1.xml',

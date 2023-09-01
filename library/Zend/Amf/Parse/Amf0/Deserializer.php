@@ -195,7 +195,7 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
      * Called when marker type is 8
      *
      * @return object
-     *@todo   As of Flash Player 9 there is not support for mixed typed arrays
+     * @todo   As of Flash Player 9 there is not support for mixed typed arrays
      *         so we handle this as an object. With the introduction of vectors
      *         in Flash Player 10 this may need to be reconsidered.
      */

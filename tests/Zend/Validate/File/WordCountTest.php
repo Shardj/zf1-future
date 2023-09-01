@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,7 +53,7 @@ class Zend_Validate_File_WordCountTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Validate_File_WordCountTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -162,6 +162,6 @@ class Zend_Validate_File_WordCountTest extends TestCase
 }
 
 // Call Zend_Validate_File_WordCountTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_WordCountTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Validate_File_WordCountTest::main") {
     Zend_Validate_File_WordCountTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_Test_DbAdapterTest extends TestCase
      */
     private $_adapter = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_adapter = new Zend_Test_DbAdapter();
     }

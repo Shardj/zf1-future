@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -72,10 +72,10 @@ class Zend_Application_Resource_FrontcontrollerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -94,7 +94,7 @@ class Zend_Application_Resource_FrontcontrollerTest extends TestCase
         $this->bootstrap = new ZfAppBootstrap($this->application);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -440,6 +440,6 @@ class ZF9724_Dispatcher extends Zend_Controller_Dispatcher_Standard
 {
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_FrontcontrollerTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Application_Resource_FrontcontrollerTest::main') {
     Zend_Application_Resource_FrontcontrollerTest::main();
 }

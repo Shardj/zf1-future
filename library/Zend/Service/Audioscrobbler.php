@@ -135,7 +135,7 @@ class Zend_Service_Audioscrobbler
      *
      * @param  string $field name of field to set
      * @param  string $value value to assign to the named field
-     * @return Zend_Service_Audioscrobbler Provides a fluent interface
+     * @return $this
      */
     public function set($field, $value)
     {

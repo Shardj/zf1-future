@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,7 +70,7 @@ class Zend_View_Helper_PartialLoopTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_PartialLoopTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -79,7 +79,7 @@ class Zend_View_Helper_PartialLoopTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->basePath = dirname(__FILE__) . '/_files/modules';
         $this->helper = new Zend_View_Helper_PartialLoop();
@@ -92,7 +92,7 @@ class Zend_View_Helper_PartialLoopTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -602,6 +602,6 @@ class Zend_View_Helper_PartialLoop_IteratorWithToArrayTestContainer
 }
 
 // Call Zend_View_Helper_PartialLoopTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_PartialLoopTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_PartialLoopTest::main") {
     Zend_View_Helper_PartialLoopTest::main();
 }

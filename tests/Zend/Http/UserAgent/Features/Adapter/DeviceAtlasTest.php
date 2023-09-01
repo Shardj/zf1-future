@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,7 +38,7 @@ class Zend_Http_UserAgent_Features_Adapter_DeviceAtlasTest extends TestCase
      */
     protected $config;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!constant('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_LIB_DIR')
             || !constant('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_DATA_FILE')

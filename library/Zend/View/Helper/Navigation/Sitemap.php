@@ -87,7 +87,7 @@ class Zend_View_Helper_Navigation_Sitemap
      *
      * @param  Zend_Navigation_Container $container  [optional] container to
      *                                               operate on
-     * @return Zend_View_Helper_Navigation_Sitemap   fluent interface, returns
+     * @return $this
      *                                               self
      */
     public function sitemap(Zend_Navigation_Container $container = null)
@@ -106,7 +106,7 @@ class Zend_View_Helper_Navigation_Sitemap
      *
      * @param  bool $useXmlDecl                     whether XML delcaration
      *                                              should be rendered
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
+     * @return $this
      *                                              self
      */
     public function setUseXmlDeclaration($useXmlDecl)
@@ -130,7 +130,7 @@ class Zend_View_Helper_Navigation_Sitemap
      *
      * @param  bool $useSitemapValidators           whether sitemap validators
      *                                              should be used
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
+     * @return $this
      *                                              self
      */
     public function setUseSitemapValidators($useSitemapValidators)
@@ -154,7 +154,7 @@ class Zend_View_Helper_Navigation_Sitemap
      *
      * @param  bool $schemaValidation               whether sitemap should
      *                                              validated using XSD Schema
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
+     * @return $this
      *                                              self
      */
     public function setUseSchemaValidation($schemaValidation)
@@ -181,7 +181,7 @@ class Zend_View_Helper_Navigation_Sitemap
      * @param  string $serverUrl                    server URL to set (only
      *                                              scheme and host)
      * @throws Zend_Uri_Exception                   if invalid server URL
-     * @return Zend_View_Helper_Navigation_Sitemap  fluent interface, returns
+     * @return $this
      *                                              self
      */
     public function setServerUrl($serverUrl)

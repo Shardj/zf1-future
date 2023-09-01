@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Cache_PageFrontendTest extends TestCase
 
     private $_instance;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!$this->_instance) {
             $this->_instance = new Zend_Cache_Frontend_Page([]);
@@ -56,7 +56,7 @@ class Zend_Cache_PageFrontendTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_instance);
     }

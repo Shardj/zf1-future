@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Mail_InterfaceTest extends TestCase
 {
     protected $_mboxFile;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_mboxFile = dirname(__FILE__) . '/_files/test.mbox/INBOX';
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,7 +55,7 @@ class Zend_Validate_File_MimeTypeTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Validate_File_MimeTypeTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -269,6 +269,10 @@ class Zend_Validate_File_MimeTypeTest extends TestCase
             $this->markTestSkipped('Behavior is only applicable and testable for PHP 5.3+');
         }
 
+        if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
+            $this->markTestSkipped('Behavior is only applicable and testable for PHP 5.3+');
+        }
+
         $filetest = dirname(__FILE__) . '/_files/picture.jpg';
         $files = [
             'name' => 'picture.jpg',
@@ -293,13 +297,13 @@ class Zend_Validate_File_MimeTypeTest extends TestCase
             // as well as Zend_Validate_File_IsCompressedTest::testBasic and Zend_Validate_File_IsImageTest::testBasic
             // will be failing as well.
             $validator = new Zend_Validate_File_MimeType(['image/jpeg', 'image/jpeg; charset=binary']);
-            $validator->setTryCommonMagicFilesFlag(false);
+            $validator->setMagicFile(false);
             $this->assertTrue($validator->isValid($filetest, $files));
         }
     }
 }
 
 // Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Validate_File_MimeTypeTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Validate_File_MimeTypeTest::main") {
     Zend_Validate_File_MimeTypeTest::main();
 }

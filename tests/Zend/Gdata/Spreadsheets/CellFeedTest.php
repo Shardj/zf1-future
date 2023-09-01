@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Gdata_Spreadsheets_CellFeedTest extends TestCase
      */
     protected $cellFeed;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->cellFeed = new Zend_Gdata_Spreadsheets_CellFeed(
             file_get_contents('Zend/Gdata/Spreadsheets/_files/TestDataCellFeedSample1.xml', true),

@@ -48,7 +48,7 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
         parent::__construct('Zend_Cache_Backend_Memcached', $data, $dataName);
     }
 
-    public function setUp($notag = true): void
+    public function set_up($notag = true)
     {
         if (!class_exists('Memcached')) {
             $this->markTestSkipped('Memcached is not installed, skipping test');
@@ -69,12 +69,12 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
             'servers' => [$serverValid, $serverFail]
         ];
         $this->_instance = new Zend_Cache_Backend_Memcached($options);
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
         // We have to wait after a memcache flush
         sleep(1);
@@ -166,9 +166,6 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
     public function testCleanModeNotMatchingTags3()
     {
     }
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveCorrectCall()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -176,9 +173,6 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithNullLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -186,9 +180,6 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithSpecificLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -196,26 +187,17 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetMetadatas($notag = false)
     {
         parent::testGetMetadatas(true);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetFillingPercentage()
     {
         $this->_instance->setDirectives(['logging' => false]);
         parent::testGetFillingPercentage();
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetFillingPercentageOnEmptyBackend()
     {
         $this->_instance->setDirectives(['logging' => false]);

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -62,10 +62,10 @@ class Zend_Form_Element_CaptchaTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Form_Element_CaptchaTest');
-        (new TestRunner())->run($suite);
+        (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->element = new Zend_Form_Element_Captcha(
             'foo',
@@ -253,7 +253,7 @@ class Zend_Form_Element_CaptchaTest extends TestCase
          */
         
         // Reset element
-        $this->setUp();
+        $this->set_up();
         
         $options = [
             'privKey' => 'privateKey',
@@ -510,6 +510,6 @@ class Zend_Form_Element_CaptchaTest_SessionContainer
 }
 
 // Call Zend_Form_Element_CaptchaTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Form_Element_CaptchaTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Form_Element_CaptchaTest::main") {
     Zend_Form_Element_CaptchaTest::main();
 }

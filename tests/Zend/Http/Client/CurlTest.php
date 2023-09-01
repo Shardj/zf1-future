@@ -67,15 +67,15 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('curl')) {
             $this->markTestSkipped('cURL is not installed, marking all Http Client Curl Adapter tests skipped.');
         }
-        parent::setUp();
+        parent::set_up();
     }
 
     /**
@@ -320,6 +320,6 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Http_Client_CurlTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Http_Client_CurlTest::main') {
     Zend_Http_Client_CurlTest::main();
 }

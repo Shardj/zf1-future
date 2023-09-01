@@ -701,7 +701,7 @@ class Zend_Controller_Front
      * only that parameter; if an array of parameter names is provided, clears
      * each.
      *
-     * @param null|string|array single key or array of keys for params to clear
+     * @param null|string|array $name single key or array of keys for params to clear
      * @return Zend_Controller_Front
      */
     public function clearParams($name = null)

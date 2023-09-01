@@ -3,7 +3,7 @@
 This is the new package we use for the fde project since php 8 update for zend framework.
 We have pulled a fork from the original repository: https://github.com/Shardj/zf1-future
 
-Our fork is located in Github: https://github.com/fgrp-fde/zf1-future
+Our fork is located in Github: https://github.com/sasu-fgrp/zf1-future
 
 We imported the forked repo into Gitlab: https://gitlab-next.fgrp.net/ext/zf1-future
 
@@ -11,12 +11,12 @@ By using repository mirroring, all changes in Gitlab are also transferred to the
 
 If there are changes in the original repo that we also want to have in our project, this is how it works:
 
-* Sync the changes within the Github project (https://github.com/fgrp-fde/zf1-future) from the original project
+* Sync the changes within the Github project (https://github.com/sasu-fgrp/zf1-future) from the original project
 
 * In the GITLAB project, run the following locally:
   * Set your upstream to the repository you forked from: 
    ```bash
-  git remote add upstream git@github.com:fgrp-fde/zf1-future.git
+  git remote add upstream git@github.com:sasu-fgrp/zf1-future.git
   ```
    * Then fetch all the branches including master from the original repository: 
   ```bash

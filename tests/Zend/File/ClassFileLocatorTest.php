@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -171,6 +171,6 @@ class Zend_File_ClassFileLocatorTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_File_ClassFileLocatorTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_File_ClassFileLocatorTest::main') {
     Zend_File_ClassFileLocatorTest::main();
 }

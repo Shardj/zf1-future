@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -72,7 +72,7 @@ class Zend_Queue_MessageTest extends TestCase
      */
     protected $queue;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Test Zend_Config
         $this->options = [
@@ -96,7 +96,7 @@ class Zend_Queue_MessageTest extends TestCase
         $this->message = new Zend_Queue_Message($this->options);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 

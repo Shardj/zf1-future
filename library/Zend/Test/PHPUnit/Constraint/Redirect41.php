@@ -98,7 +98,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends Constraint
      * Evaluate an object to see if it fits the constraints
      *
      * @param  string $other String to examine
-     * @param  null|string Assertion type
+     * @param  null|string $assertType Assertion type
      * @return bool
      * NOTE:
      * Drastic changes up to PHPUnit 3.5.15 this was:

@@ -1,7 +1,7 @@
 <?php
 
 use MyApp\Controller\Plugin\ThrowingPlugin;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 /**
  * Zend Framework
@@ -71,10 +71,10 @@ class Zend_Controller_FrontTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_FrontTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_controller = Zend_Controller_Front::getInstance();
         $this->_controller->resetInstance();
@@ -86,7 +86,7 @@ class Zend_Controller_FrontTest extends TestCase
         Zend_Controller_Action_HelperBroker::resetHelpers();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_controller);
     }
@@ -820,6 +820,6 @@ class Zend_Controller_FrontTest extends TestCase
 }
 
 // Call Zend_Controller_FrontTest::main() if this source file is executed directly.
-// if (PHPUnit_MAIN_METHOD == "Zend_Controller_FrontTest::main") {
+// if (PHPUnit_MAIN_METHOD === "Zend_Controller_FrontTest::main") {
 //     Zend_Controller_FrontTest::main();
 // }

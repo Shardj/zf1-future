@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -54,9 +54,9 @@ class Zend_Service_Amazon_Ec2_EbsTest extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->Zend_Service_Amazon_Ec2_Ebs = new Zend_Service_Amazon_Ec2_Ebs('access_key', 'secret_access_key');
 
         $adapter = new Zend_Http_Client_Adapter_Test();
@@ -70,12 +70,12 @@ class Zend_Service_Amazon_Ec2_EbsTest extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->adapter);
         $this->Zend_Service_Amazon_Ec2_Ebs = null;
 
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testAttachVolume()

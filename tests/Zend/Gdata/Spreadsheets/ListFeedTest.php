@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Gdata_Spreadsheets_ListFeedTest extends TestCase
      */
     protected $listFeed;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->listFeed = new Zend_Gdata_Spreadsheets_ListFeed(
             file_get_contents(dirname(__FILE__) . '/_files/TestDataListFeedSample1.xml'),

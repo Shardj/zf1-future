@@ -345,7 +345,7 @@ class Zend_Console_Getopt
      *
      * @param  array $argv
      * @throws Zend_Console_Getopt_Exception When not given an array as parameter
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function addArguments($argv)
     {
@@ -365,7 +365,7 @@ class Zend_Console_Getopt
      *
      * @param  array $argv
      * @throws Zend_Console_Getopt_Exception When not given an array as parameter
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function setArguments($argv)
     {
@@ -385,7 +385,7 @@ class Zend_Console_Getopt
      * the behavior of Zend_Console_Getopt.
      *
      * @param  array $getoptConfig
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function setOptions($getoptConfig)
     {
@@ -404,7 +404,7 @@ class Zend_Console_Getopt
      *
      * @param  string $configKey
      * @param  string $configValue
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function setOption($configKey, $configValue)
     {
@@ -419,7 +419,7 @@ class Zend_Console_Getopt
      * These are appended to the rules defined when the constructor was called.
      *
      * @param  array $rules
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function addRules($rules)
     {
@@ -644,7 +644,7 @@ class Zend_Console_Getopt
      *
      * @param  array $aliasMap
      * @throws Zend_Console_Getopt_Exception
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function setAliases($aliasMap)
     {
@@ -677,7 +677,7 @@ class Zend_Console_Getopt
      * mapping option name (short or long) to the help string.
      *
      * @param  array $helpMap
-     * @return Zend_Console_Getopt Provides a fluent interface
+     * @return $this
      */
     public function setHelp($helpMap)
     {
@@ -699,7 +699,7 @@ class Zend_Console_Getopt
      * Also find option parameters, and remaining arguments after
      * all options have been parsed.
      *
-     * @return Zend_Console_Getopt|null Provides a fluent interface
+     * @return $this
      */
     public function parse()
     {

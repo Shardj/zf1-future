@@ -322,7 +322,7 @@ class Zend_Pdf
      * @param integer $revision
      * @param bool    $load
      * @return void
-     *@throws Zend_Pdf_Exception
+     * @throws Zend_Pdf_Exception
      */
     public function __construct($source = null, $revision = null, $load = false)
     {
@@ -418,7 +418,7 @@ class Zend_Pdf
     }
 
     /**
-     * Retrive number of revisions.
+     * Retrieve number of revisions.
      *
      * @return integer
      */

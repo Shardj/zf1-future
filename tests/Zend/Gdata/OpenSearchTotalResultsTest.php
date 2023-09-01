@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_OpenSearchTotalResultsTest extends TestCase
      */
 
      protected $openSearchTotalResults;
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->openSearchTotalResultsText = file_get_contents(
             'Zend/Gdata/_files/OpenSearchTotalResultsElementSample1.xml',

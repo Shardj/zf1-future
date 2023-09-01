@@ -41,6 +41,7 @@ class Zend_Db_Statement_Pdo_MysqlTest extends Zend_Db_Statement_Pdo_TestCommon
         $stmt = $this->_db->prepare($select->__toString());
         try {
             $stmt->nextRowset();
+            $this->expectNotToPerformAssertions();
         } catch (Zend_Db_Statement_Exception $e) {
             $this->assertTrue(
                 $e instanceof Zend_Db_Statement_Exception,

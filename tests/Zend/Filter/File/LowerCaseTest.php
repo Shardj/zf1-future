@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -64,7 +64,7 @@ class Zend_Filter_File_LowerCaseTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_filesPath = dirname(__FILE__) . DIRECTORY_SEPARATOR
                           . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR;
@@ -81,7 +81,7 @@ class Zend_Filter_File_LowerCaseTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (file_exists($this->_newFile)) {
             unlink($this->_newFile);
@@ -115,6 +115,7 @@ class Zend_Filter_File_LowerCaseTest extends TestCase
 
     /**
      * @return void
+     * @requires extension mbstring
      */
     public function testCheckSettingOfEncodingInIstance()
     {
@@ -130,6 +131,7 @@ class Zend_Filter_File_LowerCaseTest extends TestCase
 
     /**
      * @return void
+     * @requires extension mbstring
      */
     public function testCheckSettingOfEncodingWithMethod()
     {

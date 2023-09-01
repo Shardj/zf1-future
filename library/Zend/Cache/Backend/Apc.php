@@ -74,7 +74,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
     {
         $tmp = apcu_fetch($id);
         if (is_array($tmp)) {
-            return $tmp[0];
+            return $tmp[0] ?? false;
         }
         return false;
     }
@@ -89,7 +89,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
     {
         $tmp = apcu_fetch($id);
         if (is_array($tmp)) {
-            return $tmp[1];
+            return $tmp[1] ?? false;
         }
         return false;
     }
@@ -108,7 +108,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
      */
     public function save($data, $id, $tags = [], $specificLifetime = false)
     {
-        $lifetime = $this->getLifetime($specificLifetime);
+        $lifetime = $this->getLifetime($specificLifetime) ?? 0;
         $result = apcu_store($id, [$data, time(), $lifetime], $lifetime);
         if (count($tags) > 0) {
             $this->_log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_APC_BACKEND);
@@ -146,8 +146,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
     {
         switch ($mode) {
             case Zend_Cache::CLEANING_MODE_ALL:
-                return apcu_clear_cache('user');
-                break;
+                return apcu_clear_cache();
             case Zend_Cache::CLEANING_MODE_OLD:
                 $this->_log("Zend_Cache_Backend_Apc::clean() : CLEANING_MODE_OLD is unsupported by the Apc backend");
                 break;
@@ -158,7 +157,6 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
                 break;
             default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                break;
         }
     }
 
@@ -259,7 +257,7 @@ class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Ba
     public function getIds()
     {
         $ids      = [];
-        $iterator = new APCIterator('user', null, APC_ITER_KEY);
+        $iterator = new APCUIterator(null, APC_ITER_KEY);
         foreach ($iterator as $item) {
             $ids[] = $item['key'];
         }

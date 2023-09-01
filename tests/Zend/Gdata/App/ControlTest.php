@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,7 +48,7 @@ class Zend_Gdata_App_ControlTest extends TestCase
      */
     protected $control;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->controlText = file_get_contents(
             'Zend/Gdata/App/_files/ControlElementSample1.xml',

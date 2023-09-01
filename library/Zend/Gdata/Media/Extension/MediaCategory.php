@@ -119,7 +119,7 @@ class Zend_Gdata_Media_Extension_MediaCategory extends Zend_Gdata_Extension
 
     /**
      * @param string $value     URI that identifies the categorization scheme
-     * @return Zend_Gdata_Media_Extension_MediaCategory Provides a fluent interface
+     * @return $this
      */
     public function setScheme($value)
     {
@@ -137,7 +137,7 @@ class Zend_Gdata_Media_Extension_MediaCategory extends Zend_Gdata_Extension
 
     /**
      * @param string $value     Human-readable label to be displayed in applications
-     * @return Zend_Gdata_Media_Extension_MediaCategory Provides a fluent interface
+     * @return $this
      */
     public function setLabel($value)
     {

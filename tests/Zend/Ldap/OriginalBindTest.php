@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ class Zend_Ldap_OriginalBindTest extends TestCase
     protected $_altUsername = TESTS_ZEND_LDAP_PRINCIPAL_NAME;
     protected $_bindRequiresDn = false;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
@@ -67,7 +67,9 @@ class Zend_Ldap_OriginalBindTest extends TestCase
         if (defined('TESTS_ZEND_LDAP_ALT_USERNAME')) {
             $this->_altUsername = TESTS_ZEND_LDAP_ALT_USERNAME;
         }
-
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT')) {
+            $this->_options['accountFilterFormat'] = TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT;
+        }
         if (isset($this->_options['bindRequiresDn'])) {
             $this->_bindRequiresDn = $this->_options['bindRequiresDn'];
         }
@@ -121,7 +123,7 @@ class Zend_Ldap_OriginalBindTest extends TestCase
             $ldap->bind('invalid', 'ignored');
             $this->fail('Expected exception for missing accountDomainName');
         } catch (Zend_Ldap_Exception $zle) {
-            $this->assertStringContainsString('Option required: accountDomainName', $zle->getMessage());
+            $this->assertStringContainsString('Invalid DN syntax; invalid DN', $zle->getMessage());
         }
     }
     public function testPlainBind()
@@ -186,7 +188,7 @@ class Zend_Ldap_OriginalBindTest extends TestCase
         } catch (Zend_Ldap_Exception $zle) {
             /* Note that if your server actually allows anonymous binds this test will fail.
              */
-            $this->assertStringContainsString('Failed to retrieve DN', $zle->getMessage());
+            $this->assertStringContainsString('No object found for', $zle->getMessage());
         }
     }
 }

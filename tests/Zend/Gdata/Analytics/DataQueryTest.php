@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_GData_Analytics_DataQueryTest extends TestCase
      */
     public $dataQuery;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->dataQuery = new Zend_GData_Analytics_DataQuery();
     }

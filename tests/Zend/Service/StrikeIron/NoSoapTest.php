@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Service_StrikeIron_NoSoapTest extends TestCase
      */
     protected $soapClient;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->soapClient = new Zend_Service_StrikeIron_BaseTest_MockSoapClient();
         if (extension_loaded('soap')) {

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -33,7 +33,7 @@ use PHPUnit\Framework\TestCase;
  */
 class Zend_Service_Delicious_SkipTests extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Service_Delicious tests not enabled in TestConfiguration.php');
     }

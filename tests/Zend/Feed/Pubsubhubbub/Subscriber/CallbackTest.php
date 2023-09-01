@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -68,7 +68,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends TestCase
      */
     protected $_rowset;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_callback = new Zend_Feed_Pubsubhubbub_Subscriber_Callback();
 
@@ -101,7 +101,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends TestCase
         $_SERVER['QUERY_STRING'] = 'xhub.subscription=verifytokenkey';
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $_SERVER = $this->_originalServer;
     }

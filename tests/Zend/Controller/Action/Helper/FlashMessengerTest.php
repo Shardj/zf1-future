@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -85,10 +85,10 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Action_Helper_FlashMessengerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $savePath = ini_get('session.save_path');
         if (strpos($savePath, ';')) {
@@ -244,6 +244,6 @@ class FlashMessengerControllerActionHelper extends Zend_Controller_Action_Helper
 }
 
 // Call Zend_Controller_Action_Helper_FlashMessengerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_FlashMessengerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_FlashMessengerTest::main") {
     Zend_Controller_Action_Helper_FlashMessengerTest::main();
 }

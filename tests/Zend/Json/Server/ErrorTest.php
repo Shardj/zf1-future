@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -59,7 +59,7 @@ class Zend_Json_Server_ErrorTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Json_Server_ErrorTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -68,7 +68,7 @@ class Zend_Json_Server_ErrorTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->error = new Zend_Json_Server_Error();
     }
@@ -79,7 +79,7 @@ class Zend_Json_Server_ErrorTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -190,6 +190,6 @@ class Zend_Json_Server_ErrorTest extends TestCase
 }
 
 // Call Zend_Json_Server_ErrorTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Json_Server_ErrorTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Json_Server_ErrorTest::main") {
     Zend_Json_Server_ErrorTest::main();
 }

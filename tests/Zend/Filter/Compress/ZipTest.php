@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,10 +52,10 @@ class Zend_Filter_Compress_ZipTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_Compress_ZipTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('zip')) {
             $this->markTestSkipped('This adapter needs the zip extension');
@@ -93,7 +93,7 @@ class Zend_Filter_Compress_ZipTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $files = [
             dirname(__FILE__) . '/../_files/compressed.zip',
@@ -352,6 +352,6 @@ class Zend_Filter_Compress_ZipTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_Compress_ZipTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_Compress_ZipTest::main') {
     Zend_Filter_Compress_ZipTest::main();
 }

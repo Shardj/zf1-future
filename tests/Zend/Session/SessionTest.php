@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\Error\Notice;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -75,7 +75,7 @@ class Zend_SessionTest extends TestCase
     /**
      * Set up tests environment
      */
-    public function setUp(): void
+    public function set_up()
     {
         // _unitTestEnabled is utilised by other tests to handle session data processing
         // Zend_Session tests should pass with _unitTestEnabled turned off
@@ -87,7 +87,7 @@ class Zend_SessionTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         ini_set('session.save_path', $this->_savePath);
 

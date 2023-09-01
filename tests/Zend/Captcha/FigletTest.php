@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -72,7 +72,7 @@ class Zend_Captcha_FigletTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Captcha_FigletTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -81,7 +81,7 @@ class Zend_Captcha_FigletTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (isset($this->word)) {
             unset($this->word);
@@ -105,7 +105,7 @@ class Zend_Captcha_FigletTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -300,7 +300,7 @@ class Zend_Captcha_FigletTest extends TestCase
         // Unset the generated word
         // we have to reset $this->captcha for that
         $this->captcha->getSession()->word = null;
-        $this->setUp();
+        $this->set_up();
         $this->captcha->setName('foo')
                       ->setWordLen(6)
                       ->setTimeout(300);
@@ -391,6 +391,6 @@ class Zend_Captcha_FigletTest_SessionContainer
 }
 
 // Call Zend_Captcha_FigletTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Captcha_FigletTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Captcha_FigletTest::main") {
     Zend_Captcha_FigletTest::main();
 }

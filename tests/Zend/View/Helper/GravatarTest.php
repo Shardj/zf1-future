@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -67,13 +67,13 @@ class Zend_View_Helper_GravatarTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_GravatarTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_object = new Zend_View_Helper_Gravatar();
         $this->_view = new Zend_View();
@@ -88,7 +88,7 @@ class Zend_View_Helper_GravatarTest extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_object, $this->_view);
     }
@@ -317,6 +317,6 @@ class Zend_View_Helper_GravatarTest extends TestCase
 }
 
 // Call Zend_View_Helper_BaseUrlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == 'Zend_View_Helper_BaseUrlTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_View_Helper_BaseUrlTest::main') {
     Zend_View_Helper_BaseUrlTest::main();
 }

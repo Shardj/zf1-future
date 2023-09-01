@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Soap_Wsdl_DefaultComplexTypeTest extends TestCase
      */
     private $strategy;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->strategy = new Zend_Soap_Wsdl_Strategy_DefaultComplexType();
         $this->wsdl = new Zend_Soap_Wsdl("TestService", "http://framework.zend.com/soap/unittests");

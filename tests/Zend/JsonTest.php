@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,12 +55,12 @@ class Zend_JsonTest extends TestCase
 {
     private $_originalUseBuiltinEncoderDecoderValue;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_originalUseBuiltinEncoderDecoderValue = Zend_Json::$useBuiltinEncoderDecoder;
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Json::$useBuiltinEncoderDecoder = $this->_originalUseBuiltinEncoderDecoderValue;
     }

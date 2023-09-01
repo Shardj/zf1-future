@@ -216,7 +216,7 @@ class Zend_Oauth_Http
      * Manages the switch from OAuth request scheme to another lower preference
      * scheme during a request cycle.
      *
-     * @param  Zend_Http_Response
+     * @param  Zend_Http_Response $response
      * @return void
      * @throws Zend_Oauth_Exception if unable to retrieve valid token response
      */

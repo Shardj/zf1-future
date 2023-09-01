@@ -57,7 +57,7 @@ class Zend_View_Helper_Navigation_SitemapTest extends Zend_View_Helper_Navigatio
      */
     protected $_helper;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set('Europe/Berlin');
 
@@ -85,12 +85,12 @@ class Zend_View_Helper_Navigation_SitemapTest extends Zend_View_Helper_Navigatio
         $this->_front->setRequest(new Zend_Controller_Request_Http());
         $this->_front->getRouter()->addDefaultRoutes();
 
-        parent::setUp();
+        parent::set_up();
 
         $this->_helper->setFormatOutput(true);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (null !== $this->_oldRequest) {
             $this->_front->setRequest($this->_oldRequest);

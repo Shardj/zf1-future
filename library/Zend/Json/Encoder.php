@@ -546,7 +546,7 @@ class Zend_Json_Encoder
     {
         // Check for mb extension otherwise do by hand.
         if( function_exists('mb_convert_encoding') ) {
-            return mb_convert_encoding($utf8, 'UTF-16', 'UTF-8');
+            return mb_convert_encoding($utf8, 'UTF-16BE', 'UTF-8');
         }
 
         switch (strlen($utf8)) {
@@ -575,4 +575,3 @@ class Zend_Json_Encoder
         return '';
     }
 }
-

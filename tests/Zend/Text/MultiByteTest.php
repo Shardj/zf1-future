@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,7 +53,7 @@ class Zend_Text_MultiByteTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Text_MultiByteTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -298,6 +298,6 @@ class Zend_Text_MultiByteTest extends TestCase
 }
 
 // Call Zend_Text_MultiByteTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Text_MultiByteTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Text_MultiByteTest::main") {
     Zend_Text_MultiByteTest::main();
 }

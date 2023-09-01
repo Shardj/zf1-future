@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,7 +48,7 @@ class Zend_Date_DateObjectTest extends TestCase
      */
     protected $_cache;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->originalTimezone = date_default_timezone_get();
         date_default_timezone_set('Europe/Paris');
@@ -62,7 +62,7 @@ class Zend_Date_DateObjectTest extends TestCase
         Zend_Date_DateObjectTestHelper::setOptions(['cache' => $this->_cache]);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         date_default_timezone_set($this->originalTimezone);
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);

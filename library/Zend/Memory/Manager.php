@@ -305,7 +305,7 @@ class Zend_Memory_Manager
      *
      * @param integer $id
      * @return void
-     *@internal
+     * @internal
      */
     public function unlink(Zend_Memory_Container_Movable $container, $id)
     {

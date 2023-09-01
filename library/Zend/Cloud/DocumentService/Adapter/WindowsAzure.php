@@ -344,7 +344,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      *
      * @param  string $collectionName
      * @param  mixed|Zend_Cloud_DocumentService_Document $documentId Document identifier or document contaiing updates
-     * @param  null|array|Zend_Cloud_DocumentService_Document Fields to update (or new fields))
+     * @param  null|array|Zend_Cloud_DocumentService_Document $fieldset Fields to update (or new fields))
      * @param  array $options
      * @return void
      */

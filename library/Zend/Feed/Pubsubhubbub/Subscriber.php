@@ -699,7 +699,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
      * @param  string $hubUrl
      * @param  string $mode
      * @return string
-     *@throws Zend_Feed_Pubsubhubbub_Exception
+     * @throws Zend_Feed_Pubsubhubbub_Exception
      */
     protected function _getRequestParameters($hubUrl, $mode)
     {

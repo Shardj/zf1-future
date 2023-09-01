@@ -195,23 +195,32 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
      */
     public function save($data, $id, $tags = [], $specificLifetime = false, $priority = 8)
     {
+        $this->_log('Calling two level save', Zend_Log::DEBUG);
         $usage = $this->_getFastFillingPercentage('saving');
+        $this->_log('Fast filling usage percentage on save: (' . gettype($usage) . ') ' . var_export($usage, true), Zend_Log::DEBUG);
         $boolFast = true;
         $lifetime = $this->getLifetime($specificLifetime);
         $preparedData = $this->_prepareData($data, $lifetime, $priority);
         if (($priority > 0) && (10 * $priority >= $usage)) {
+            $this->_log('Saving in fast and slow cache', Zend_Log::DEBUG);
             $fastLifetime = $this->_getFastLifetime($lifetime, $priority);
             $boolFast = $this->_fastBackend->save($preparedData, $id, [], $fastLifetime);
+            $this->_log($boolFast ? 'Saving in fast cache is OK' : 'Saving in fast cache is not OK', Zend_Log::DEBUG);
             $boolSlow = $this->_slowBackend->save($preparedData, $id, $tags, $lifetime);
+            $this->_log($boolSlow ? 'Saving in slow cache is OK' : 'Saving in slow cache is not OK', Zend_Log::DEBUG);
         } else {
+            $this->_log('Saving in slow cache only', Zend_Log::DEBUG);
             $boolSlow = $this->_slowBackend->save($preparedData, $id, $tags, $lifetime);
+            $this->_log($boolSlow ? 'Saving in slow cache is OK' : 'Saving in slow cache is not OK', Zend_Log::DEBUG);
             if ($boolSlow === true) {
+                $this->_log('Purging from fast cache on save', Zend_Log::DEBUG);
                 $boolFast = $this->_fastBackend->remove($id);
                 if (!$boolFast && !$this->_fastBackend->test($id)) {
                     // some backends return false on remove() even if the key never existed. (and it won't if fast is full)
                     // all we care about is that the key doesn't exist now
                     $boolFast = true;
                 }
+                $this->_log($boolFast ? 'Successfully purged from fast cache on save' : 'Failed to purge from fast cache on save', Zend_Log::DEBUG);
             }
         }
 
@@ -229,18 +238,36 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
      */
     public function load($id, $doNotTestCacheValidity = false)
     {
+        $this->_log('Calling two level load', Zend_Log::DEBUG);
         $resultFast = $this->_fastBackend->load($id, $doNotTestCacheValidity);
-        if ($resultFast === false) {
+        $array = null;
+        $isFastResult = is_string($resultFast);
+        if ($isFastResult) {
+            $array = unserialize($resultFast, ['allowed_classes' => false]);
+        }
+        if (!is_array($array)) {
+            if ($isFastResult) {
+                // If the fast result data is not an array, it means it got corrupted somehow at rest.
+                // Remove it before trying the slow one.
+                $this->_fastBackend->remove($id);
+            }
             $resultSlow = $this->_slowBackend->load($id, $doNotTestCacheValidity);
-            if ($resultSlow === false) {
+            if (!is_string($resultSlow)) {
                 // there is no cache at all for this id
                 return false;
             }
+            $array = unserialize($resultSlow, ['allowed_classes' => false]);
+            if (!is_array($array)) {
+                // If the slow result data is not an array, it means it got corrupted somehow at rest.
+                // Remove it and return false.
+                $this->_slowBackend->remove($id);
+                return false;
+            }
+            $isFastResult = false;
         }
-        $array = $resultFast !== false ? unserialize($resultFast) : unserialize($resultSlow);
 
-        //In case no cache entry was found in the FastCache and auto-filling is enabled, copy data to FastCache
-        if ($resultFast === false && $this->_options['auto_fill_fast_cache']) {
+        //In case no cache entry was found in the FastCache (or was corrupted) and auto-filling is enabled, copy data to FastCache
+        if (!$isFastResult && $this->_options['auto_fill_fast_cache']) {
             $preparedData = $this->_prepareData($array['data'], $array['lifetime'], $array['priority']);
             $this->_fastBackend->save($preparedData, $id, [], $array['lifetime']);
         }
@@ -461,7 +488,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
     }
 
     /**
-     * Prepare a serialized array to store datas and metadatas informations
+     * Prepare a serialized array to store data and metadata information
      *
      * @param string $data data to store
      * @param int $lifetime original lifetime
@@ -524,7 +551,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
     private function _getFastFillingPercentage($mode)
     {
 
-        if ($mode == 'saving') {
+        if ($mode === 'saving') {
             // mode saving
             if ($this->_fastBackendFillingPercentage === null) {
                 $this->_fastBackendFillingPercentage = $this->_fastBackend->getFillingPercentage();

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_CurrencyTest extends TestCase
      */
     protected $_cache;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory(
@@ -57,7 +57,7 @@ class Zend_CurrencyTest extends TestCase
         Zend_Currency::setCache($this->_cache);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
     }

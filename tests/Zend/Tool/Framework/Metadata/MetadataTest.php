@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,12 +46,12 @@ class Zend_Tool_Framework_Manifest_MetadataTest extends TestCase
      */
     protected $_metadata = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_metadata = new Zend_Tool_Framework_Manifest_Metadata();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_metadata = null;
     }

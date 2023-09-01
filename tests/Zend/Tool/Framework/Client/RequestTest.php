@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Tool_Framework_Client_RequestTest extends TestCase
      */
     protected $_request = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_request = new Zend_Tool_Framework_Client_Request();
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,7 +48,7 @@ class Zend_Mail_SmtpTest extends TestCase
     protected $_transport;
     protected $_connection;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_params = ['host' => TESTS_ZEND_MAIL_SMTP_HOST,
                                'port' => TESTS_ZEND_MAIL_SMTP_PORT,

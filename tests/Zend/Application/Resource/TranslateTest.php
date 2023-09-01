@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -78,10 +78,10 @@ class Zend_Application_Resource_TranslateTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -101,7 +101,7 @@ class Zend_Application_Resource_TranslateTest extends TestCase
         Zend_Registry::_unsetInstance();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         // Restore original autoloaders
         $loaders = spl_autoload_functions();
@@ -276,6 +276,6 @@ class Zend_Application_Resource_TranslateTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_TranslateTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Application_Resource_TranslateTest::main') {
     Zend_Application_Resource_TranslateTest::main();
 }

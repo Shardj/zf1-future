@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -77,17 +77,17 @@ class Zend_ViewTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_ViewTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->notices = [];
         $this->errorReporting = error_reporting();
         $this->displayErrors = ini_get('display_errors');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         error_reporting($this->errorReporting);
         ini_set('display_errors', $this->displayErrors);
@@ -1188,6 +1188,6 @@ class Zend_ViewTest_Extension extends Zend_View
 }
 
 // Call Zend_ViewTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_ViewTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_ViewTest::main") {
     Zend_ViewTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -36,6 +36,9 @@ require_once 'Zend/Feed/Writer/Deleted.php';
  */
 class Zend_Feed_Writer_DeletedTest extends TestCase
 {
+    protected function set_up()
+    {    }
+
     public function testSetsReference()
     {
         $entry = new Zend_Feed_Writer_Deleted();

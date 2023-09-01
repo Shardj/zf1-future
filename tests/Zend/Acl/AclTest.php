@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Acl_AclTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_acl = new Zend_Acl();
     }
@@ -1271,7 +1271,7 @@ class Zend_Acl_AclTest extends TestCase
      */
     public function testGetRegisteredRolesIsDeprecated()
     {
-        $this->expectNotice();
+        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
         $this->_acl->getRegisteredRoles();
     }
 

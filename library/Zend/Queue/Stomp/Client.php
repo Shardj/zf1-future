@@ -41,9 +41,9 @@ class Zend_Queue_Stomp_Client
     /**
      * Add a server to connections
      *
-     * @param string scheme
-     * @param string host
-     * @param integer port
+     * @param string $scheme scheme
+     * @param string $host host
+     * @param integer $port port
      */
     public function __construct(
         $scheme = null, $host = null, $port = null,
@@ -79,10 +79,10 @@ class Zend_Queue_Stomp_Client
      *
      * You cannot add more than 1 connection to the client at this time.
      *
-     * @param string  $scheme ['tcp', 'udp']
-     * @param string  host
-     * @param integer port
-     * @param string  class - create a connection with this class; class must support Zend_Queue_Stomp_Client_ConnectionInterface
+     * @param string $scheme ['tcp', 'udp']
+     * @param string $host host
+     * @param integer  $port port
+     * @param string $class class - create a connection with this class; class must support Zend_Queue_Stomp_Client_ConnectionInterface
      * @return boolean
      */
     public function addConnection($scheme, $host, $port, $class = 'Zend_Queue_Stomp_Client_Connection')

@@ -73,7 +73,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
     protected $_actionableMethods = [];
 
     /**
-     * @var unknown_type
+     * @var array
      */
     protected $_actions = [];
 

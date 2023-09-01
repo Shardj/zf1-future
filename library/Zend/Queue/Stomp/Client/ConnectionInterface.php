@@ -32,10 +32,9 @@
 interface Zend_Queue_Stomp_Client_ConnectionInterface
 {
     /**
-     * @param  string  $scheme ['tcp', 'udp']
-     * @param  string  host
-     * @param  integer port
-     * @param  string  class - create a connection with this class; class must support Zend_Queue_Stomp_Client_Connection_Interface
+     * @param  string $scheme ['tcp', 'udp']
+     * @param  string $host host
+     * @param  integer $port port
      * @return boolean
      */
     public function open($scheme, $host, $port);

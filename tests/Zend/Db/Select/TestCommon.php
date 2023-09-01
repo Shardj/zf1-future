@@ -319,24 +319,24 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
             ->columns('product_name');
         $stmt = $this->_db->query($select);
         $result = $stmt->fetchAll();
-        $this->assertStringContainsString('product_name', array_keys($result[0]));
-        $this->assertStringNotContainsString('product_id', array_keys($result[0]));
+        $this->assertContains('product_name', array_keys($result[0]));
+        $this->assertNotContains('product_id', array_keys($result[0]));
 
         $select = $this->_selectColumnsReset()
             ->reset(Zend_Db_Select::COLUMNS)
             ->columns('p.product_name');
         $stmt = $this->_db->query($select);
         $result = $stmt->fetchAll();
-        $this->assertStringContainsString('product_name', array_keys($result[0]));
-        $this->assertStringNotContainsString('product_id', array_keys($result[0]));
+        $this->assertContains('product_name', array_keys($result[0]));
+        $this->assertNotContains('product_id', array_keys($result[0]));
 
         $select = $this->_selectColumnsReset()
             ->reset(Zend_Db_Select::COLUMNS)
             ->columns('product_name', 'p');
         $stmt = $this->_db->query($select);
         $result = $stmt->fetchAll();
-        $this->assertStringContainsString('product_name', array_keys($result[0]));
-        $this->assertStringNotContainsString('product_id', array_keys($result[0]));
+        $this->assertContains('product_name', array_keys($result[0]));
+        $this->assertNotContains('product_id', array_keys($result[0]));
     }
 
     public function testSelectColumnsResetBeforeFrom()

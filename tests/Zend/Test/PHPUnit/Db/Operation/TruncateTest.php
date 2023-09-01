@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Extensions\Database\DataSet\FlatXmlDataSet;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends TestCase
 {
     private $operation = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->operation = new Zend_Test_PHPUnit_Db_Operation_Truncate();
     }

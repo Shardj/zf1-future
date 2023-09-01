@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -59,7 +59,7 @@ class Zend_View_Helper_Placeholder_RegistryTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_Placeholder_RegistryTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -68,7 +68,7 @@ class Zend_View_Helper_Placeholder_RegistryTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $registry = Zend_Registry::getInstance();
         if (isset($registry[Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY])) {
@@ -83,7 +83,7 @@ class Zend_View_Helper_Placeholder_RegistryTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->registry);
     }
@@ -242,6 +242,6 @@ class Zend_View_Helper_Placeholder_RegistryTest_BogusContainer
 }
 
 // Call Zend_View_Helper_Placeholder_RegistryTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_Placeholder_RegistryTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_Placeholder_RegistryTest::main") {
     Zend_View_Helper_Placeholder_RegistryTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -91,7 +91,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends TestCase
      * Set up the test case
      *
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (defined('TESTS_ZEND_HTTP_CLIENT_BASEURI') &&
             Zend_Uri_Http::check(TESTS_ZEND_HTTP_CLIENT_BASEURI)) {
@@ -120,7 +120,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends TestCase
      * Clean up the test environment
      *
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->client = null;
         $this->_adapter = null;

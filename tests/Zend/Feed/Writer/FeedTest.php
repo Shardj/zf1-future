@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,7 +38,7 @@ class Zend_Feed_Writer_FeedTest extends TestCase
 {
     protected $_feedSamplePath = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_feedSamplePath = dirname(__FILE__) . '/Writer/_files';
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Ldap_OriginalCanonTest extends TestCase
     protected $_principalName = TESTS_ZEND_LDAP_PRINCIPAL_NAME;
     protected $_names = [];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
@@ -101,7 +101,7 @@ class Zend_Ldap_OriginalCanonTest extends TestCase
             $ldap->bind('invalid', 'invalid');
         } catch (Zend_Ldap_Exception $zle) {
             $msg = $zle->getMessage();
-            $this->assertTrue(strstr($msg, 'Invalid credentials') || strstr($msg, 'No such object'));
+            $this->assertTrue(strstr($msg, 'Invalid credentials') || strstr($msg, 'No object found for'));
         }
     }
     public function testDnCanon()

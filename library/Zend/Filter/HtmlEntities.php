@@ -108,7 +108,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
      * Sets the quoteStyle option
      *
      * @param  integer $quoteStyle
-     * @return Zend_Filter_HtmlEntities Provides a fluent interface
+     * @return $this
      */
     public function setQuoteStyle($quoteStyle)
     {
@@ -157,7 +157,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
      * Proxies to {@link setEncoding()}
      *
      * @param  string $charSet
-     * @return Zend_Filter_HtmlEntities Provides a fluent interface
+     * @return $this
      */
     public function setCharSet($charSet)
     {
@@ -178,7 +178,7 @@ class Zend_Filter_HtmlEntities implements Zend_Filter_Interface
      * Sets the doubleQuote option
      *
      * @param boolean $doubleQuote
-     * @return Zend_Filter_HtmlEntities Provides a fluent interface
+     * @return $this
      */
     public function setDoubleQuote($doubleQuote)
     {

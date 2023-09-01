@@ -271,6 +271,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * @param string $key
      * @param mixed $default Default value to use if key not found
      * @return mixed Returns null if key does not exist
+     *
+     * @phpstan-return ($key is null ? array<string, mixed> : mixed)
      */
     public function getQuery($key = null, $default = null)
     {
@@ -313,6 +315,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * @param string $key
      * @param mixed $default Default value to use if key not found
      * @return mixed Returns null if key does not exist
+     *
+     * @phpstan-return ($key is null ? array<string, mixed> : mixed)
      */
     public function getPost($key = null, $default = null)
     {
@@ -332,6 +336,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * @param string $key
      * @param mixed $default Default value to use if key not found
      * @return mixed Returns null if key does not exist
+     *
+     * @phpstan-return ($key is null ? array<string, mixed> : mixed)
      */
     public function getCookie($key = null, $default = null)
     {
@@ -350,6 +356,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * @param string $key
      * @param mixed $default Default value to use if key not found
      * @return mixed Returns null if key does not exist
+     *
+     * @phpstan-return ($key is null ? array<string, mixed> : mixed)
      */
     public function getServer($key = null, $default = null)
     {
@@ -368,6 +376,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * @param string $key
      * @param mixed $default Default value to use if key not found
      * @return mixed Returns null if key does not exist
+     *
+     * @phpstan-return ($key is null ? array<string, mixed> : mixed)
      */
     public function getEnv($key = null, $default = null)
     {
@@ -390,13 +400,19 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
     public function setRequestUri($requestUri = null)
     {
         if ($requestUri === null) {
-            if (
+            if (isset($_SERVER['HTTP_X_ORIGINAL_URL'])) {
+                // IIS with Microsoft Rewrite Module
+                $requestUri = $_SERVER['HTTP_X_ORIGINAL_URL'];
+            } elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
+                // IIS with ISAPI_Rewrite
+                $requestUri = $_SERVER['HTTP_X_REWRITE_URL'];
+            } elseif (
                 // IIS7 with URL Rewrite: make sure we get the unencoded url (double slash problem)
                 isset($_SERVER['IIS_WasUrlRewritten'])
                 && $_SERVER['IIS_WasUrlRewritten'] == '1'
                 && isset($_SERVER['UNENCODED_URL'])
                 && $_SERVER['UNENCODED_URL'] != ''
-                ) {
+            ) {
                 $requestUri = $_SERVER['UNENCODED_URL'];
             } elseif (isset($_SERVER['REQUEST_URI'])) {
                 $requestUri = $_SERVER['REQUEST_URI'];

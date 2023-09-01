@@ -120,7 +120,7 @@ class Zend_Gdata_Media_Extension_MediaCredit extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaCredit Provides a fluent interface
+     * @return $this
      */
     public function setRole($value)
     {
@@ -138,7 +138,7 @@ class Zend_Gdata_Media_Extension_MediaCredit extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaCredit Provides a fluent interface
+     * @return $this
      */
     public function setScheme($value)
     {

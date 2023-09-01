@@ -146,7 +146,7 @@ class Zend_Gdata_Gapps_GroupEntry extends Zend_Gdata_Entry
      *
      * @param array $value A collection of
      *          Zend_Gdata_Gapps_Extension_Property objects.
-     * @return Zend_Gdata_Gapps_GroupEntry Provides a fluent interface.
+     * @return $this
      */
     public function setProperty($value)
     {

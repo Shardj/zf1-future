@@ -192,7 +192,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  array|Zend_Config $options Options and translations to be added
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     public function addTranslation($options = [])
     {
@@ -341,7 +341,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  array $options Adapter options
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     public function setOptions(array $options = [])
     {
@@ -418,7 +418,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  string|Zend_Locale $locale Locale to set
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     public function setLocale($locale)
     {
@@ -580,7 +580,7 @@ abstract class Zend_Translate_Adapter {
      * @see    Zend_Locale
      * @param  array|Zend_Config $content Translation data to add
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     private function _addTranslationData($options = [])
     {

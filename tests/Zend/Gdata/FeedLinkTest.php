@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Gdata_FeedLinkTest extends TestCase
      * @var \Zend_Gdata_Extension_FeedLink|mixed
      */
     protected $feedLink;
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->feedLinkText = file_get_contents(
             'Zend/Gdata/_files/FeedLinkElementSample1.xml',

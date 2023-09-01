@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,7 +49,7 @@ class Zend_Mail_MboxFolderTest extends TestCase
     protected $_tmpdir;
     protected $_subdirs = ['.', 'subfolder'];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_originalDir = dirname(__FILE__) . '/_files/test.mbox/';
 
@@ -94,7 +94,7 @@ class Zend_Mail_MboxFolderTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         foreach (array_reverse($this->_subdirs) as $dir) {
             $dh = opendir($this->_tmpdir . $dir);

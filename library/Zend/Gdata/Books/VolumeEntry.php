@@ -459,7 +459,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the Comments class
      *
      * @param Zend_Gdata_Extension_Comments|null $comments Comments class
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setComments($comments)
     {
@@ -471,7 +471,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the creators
      *
      * @param array $creators Creators|null
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setCreators($creators)
     {
@@ -483,7 +483,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the dates
      *
      * @param array $dates dates
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setDates($dates)
     {
@@ -495,7 +495,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the descriptions
      *
      * @param array $descriptions descriptions
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setDescriptions($descriptions)
     {
@@ -508,7 +508,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Books_Extension_Embeddability|null $embeddability
      *        embeddability
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setEmbeddability($embeddability)
     {
@@ -520,7 +520,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the formats
      *
      * @param array $formats formats
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setFormats($formats)
     {
@@ -532,7 +532,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the identifiers
      *
      * @param array $identifiers identifiers
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setIdentifiers($identifiers)
     {
@@ -544,7 +544,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the languages
      *
      * @param array $languages languages
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setLanguages($languages)
     {
@@ -556,7 +556,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the publishers
      *
      * @param array $publishers publishers
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setPublishers($publishers)
     {
@@ -568,7 +568,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the rating
      *
      * @param Zend_Gdata_Extension_Rating|null $rating rating
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setRating($rating)
     {
@@ -580,7 +580,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the review
      *
      * @param Zend_Gdata_Books_Extension_Review|null $review review
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setReview($review)
     {
@@ -592,7 +592,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the subjects
      *
      * @param array $subjects subjects
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setSubjects($subjects)
     {
@@ -604,7 +604,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      * Sets the titles
      *
      * @param array $titles titles
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setTitles($titles)
     {
@@ -617,7 +617,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
      *
      * @param Zend_Gdata_Books_Extension_Viewability|null $viewability
      *        viewability
-     * @return Zend_Gdata_Books_VolumeEntry Provides a fluent interface
+     * @return $this
      */
     public function setViewability($viewability)
     {

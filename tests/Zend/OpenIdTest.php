@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,12 +46,12 @@ class Zend_OpenIdTest extends TestCase
 {
     private $_serverVariables;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_serverVariables = $_SERVER;
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $_SERVER = $this->_serverVariables;
     }

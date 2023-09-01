@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ require_once dirname(__FILE__) . '/TestAsset/commontypes.php';
  */
 class Zend_Soap_ServerTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('soap')) {
             $this->markTestSkipped('SOAP Extension is not loaded');

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -87,7 +87,7 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Plugin_ErrorHandlerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -96,7 +96,7 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends TestCase
      *
      * @access protected
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Controller_Front::getInstance()->resetInstance();
         $this->request = new Zend_Controller_Request_Http();
@@ -113,7 +113,7 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends TestCase
      *
      * @access protected
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -282,6 +282,6 @@ class Zend_Controller_Plugin_ErrorHandlerTest extends TestCase
 }
 
 // Call Zend_Controller_Plugin_ErrorHandlerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_ErrorHandlerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Plugin_ErrorHandlerTest::main") {
     Zend_Controller_Plugin_ErrorHandlerTest::main();
 }

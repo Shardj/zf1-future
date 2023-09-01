@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ class Zend_Service_ReCaptcha_MailHideTest extends TestCase
     protected $_privateKey = TESTS_ZEND_SERVICE_RECAPTCHA_MAILHIDE_PRIVATE_KEY;
     protected $_mailHide = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_mailHide = new Zend_Service_ReCaptcha_MailHide();
     }

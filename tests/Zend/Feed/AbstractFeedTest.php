@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Feed_AbstractFeedTest extends TestCase
 
     public $remoteFeedNames = [];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!defined('TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI')
             || !constant('TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI')
@@ -58,10 +58,10 @@ class Zend_Feed_AbstractFeedTest extends TestCase
         Zend_Feed::setHttpClient(new Zend_Http_Client());
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (!$this->baseUri) {
-            parent::tearDown();
+            parent::tear_down();
             return;
         }
 

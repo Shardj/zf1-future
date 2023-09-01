@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Extensions\Database\DataSet\FlatXmlDataSet;
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework

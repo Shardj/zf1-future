@@ -63,6 +63,12 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         'FLOAT' => Zend_Db::FLOAT_TYPE
     ];
 
+    protected function tear_down() 
+    {
+        Zend_Db_Adapter_Pdo_Abstract::$isTransactionInBackwardCompatibleMode = true;
+        parent::tear_down();
+    }
+
     /**
      * Test AUTO_QUOTE_IDENTIFIERS option
      * Case: Zend_Db::AUTO_QUOTE_IDENTIFIERS = true
@@ -330,6 +336,129 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
     public function getDriver()
     {
         return 'Pdo_Mysql';
+    }
+
+    public function testGivenBeforePhp81WhenFetchDataOnDigitFieldThenPdoMysqlWillReturnStringDigit()
+    {
+        $params = $this->_util->getParams();
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $db->getConnection();
+
+        $select = $this->_db->select();
+        $select->from('zfproducts');
+        $stmt = $this->_db->query($select);
+        $products = $stmt->fetchAll();
+
+        $productId = $products[0]['product_id'] ?? '-1';
+        $this->assertSame(
+            '1',
+            $productId,
+            "BC with php < 8.1, fetch numeric field type will return 'digit' string instead of int or float type in php >= 8.1.\nSee: https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.pdo.mysql"
+        );
+    }
+
+    /**
+     * https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.pdo.mysql
+     * @inheritDoc
+     */
+    public function testAdapterZendConfigEmptyDriverOptions()
+    {
+        $params = $this->_util->getParams();
+        $params['driver_options'] = [];
+        $params = new Zend_Config($params);
+
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $db->getConnection();
+
+        $config = $db->getConfig();
+
+        if (PHP_VERSION_ID >= 80100) {
+            $this->assertEquals([PDO::ATTR_STRINGIFY_FETCHES => true], $config['driver_options']);
+        } else {
+            $this->assertSame([], $config['driver_options']);
+        }
+    }
+
+    /**
+     * @requires PHP >= 8
+     *
+     * https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.pdo-mysql
+     */
+    public function testSincePhp8WhenCallCommitAfterAnImplicitCommitWillRaisePdoException()
+    {
+        $this->expectException(PDOException::class);
+        $this->expectExceptionMessage('There is no active transaction');
+
+        $implicitCommitStatement = 'CREATE TABLE MYTABLE( myname TEXT)'; //https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html
+        $dbConnection = $this->_db;
+        $dbConnection->query('DROP TABLE IF EXISTS MYTABLE');
+        Zend_Db_Adapter_Pdo_Abstract::$isTransactionInBackwardCompatibleMode = false;
+        $dbConnection->beginTransaction();
+        $dbConnection->query($implicitCommitStatement);
+        $dbConnection->query('INSERT INTO MYTABLE(myname) VALUES ("1"),("2")');
+        $dbConnection->commit();
+    }
+
+    /**
+     * @requires PHP >= 8
+     *
+     * https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.pdo-mysql
+     */
+    public function testSincePhp8WhenCallCommitAfterAnImplicitCommitInBackwardCompatibleModeWillSilentErrorSamePhp7()
+    {
+        $implicitCommitStatement = 'CREATE TABLE MYTABLE( myname TEXT)'; //https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html
+        $dbConnection = $this->_db;
+        $dbConnection->query('DROP TABLE IF EXISTS MYTABLE');
+
+        $dbConnection->beginTransaction();
+        $dbConnection->query($implicitCommitStatement);
+        $dbConnection->query('INSERT INTO MYTABLE(myname) VALUES ("1"),("2")');
+        $dbConnection->commit();
+
+        $actual     = $dbConnection->fetchOne('SELECT COUNT(*) FROM MYTABLE');
+        $expected   = 2;
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @requires PHP >= 8
+     *
+     * https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.pdo-mysql
+     */
+    public function testSincePhp8WhenCallRollbackAfterAnImplicitCommitWillRaisePdoException()
+    {
+        $this->expectException(PDOException::class);
+        $this->expectExceptionMessage('There is no active transaction');
+
+        $implicitCommitStatement = 'CREATE TABLE MYTABLE( myname TEXT)'; //https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html
+        $dbConnection = $this->_db;
+        $dbConnection->query('DROP TABLE IF EXISTS MYTABLE');
+        Zend_Db_Adapter_Pdo_Abstract::$isTransactionInBackwardCompatibleMode = false;
+        $dbConnection->beginTransaction();
+        $dbConnection->query($implicitCommitStatement);
+        $dbConnection->query('INSERT INTO MYTABLE(myname) VALUES ("1"),("2")');
+        $dbConnection->rollBack();
+    }
+
+    /**
+     * @requires PHP >= 8
+     *
+     * https://www.php.net/manual/en/migration80.incompatible.php#migration80.incompatible.pdo-mysql
+     */
+    public function testSincePhp8WhenCallRollbackAfterAnImplicitCommitInBackwardCompatibleModeWillSilentErrorSamePhp7()
+    {
+        $implicitCommitStatement = 'CREATE TABLE MYTABLE( myname TEXT)'; //https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html
+        $dbConnection = $this->_db;
+        $dbConnection->query('DROP TABLE IF EXISTS MYTABLE');
+
+        $dbConnection->beginTransaction();
+        $dbConnection->query($implicitCommitStatement);
+        $dbConnection->query('INSERT INTO MYTABLE(myname) VALUES ("1"),("2")');
+        $dbConnection->rollBack();
+
+        $actual     = $dbConnection->fetchOne('SELECT COUNT(*) FROM MYTABLE');
+        $expected   = 2; //rollback does not effect.
+        $this->assertEquals($expected, $actual);
     }
 }
 

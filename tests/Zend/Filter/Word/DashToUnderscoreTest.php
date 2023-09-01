@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -54,7 +54,7 @@ class Zend_Filter_Word_DashToUnderscoreTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Filter_Word_DashToUnderscoreTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testFilterSeparatesCamelCasedWordsWithDashes()
@@ -69,6 +69,6 @@ class Zend_Filter_Word_DashToUnderscoreTest extends TestCase
 }
 
 // Call Zend_Filter_Word_DashToUnderscoreTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Filter_Word_DashToUnderscoreTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Filter_Word_DashToUnderscoreTest::main") {
     Zend_Filter_Word_DashToUnderscoreTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Gdata_Spreadsheets_ColCountTest extends TestCase
      */
     protected $colCount;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->colCount = new Zend_Gdata_Spreadsheets_Extension_ColCount();
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -102,10 +102,10 @@ class Zend_Rest_ControllerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Rest_ControllerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $request = new Zend_Controller_Request_HttpTestCase();
         $response = new Zend_Controller_Response_HttpTestCase();
@@ -130,6 +130,6 @@ class Zend_Rest_ControllerTest extends TestCase
 }
 
 // Call Zend_Rest_ControllerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Rest_ControllerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Rest_ControllerTest::main") {
     Zend_Rest_ControllerTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Calendar_AccessLevelTest extends TestCase
      */
     protected $accessLevel;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->accessLevelText = file_get_contents(
             'Zend/Gdata/Calendar/_files/AccessLevelElementSample1.xml',

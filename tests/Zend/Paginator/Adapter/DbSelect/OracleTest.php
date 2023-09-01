@@ -50,7 +50,7 @@ class Zend_Paginator_Adapter_DbSelect_OracleTest extends Zend_Paginator_Adapter_
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('oci8')) {
             $this->markTestSkipped('Oci8 extension is not loaded');
@@ -84,7 +84,7 @@ class Zend_Paginator_Adapter_DbSelect_OracleTest extends Zend_Paginator_Adapter_
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (!extension_loaded('oci8')) {
             $this->markTestSkipped('Oci8 extension is not loaded');

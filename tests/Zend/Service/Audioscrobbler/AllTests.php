@@ -49,7 +49,7 @@ class Zend_Service_Audioscrobbler_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()

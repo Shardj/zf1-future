@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_App_AuthorTest extends TestCase
      */
     protected $author;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->authorText = file_get_contents(
             'Zend/Gdata/App/_files/AuthorElementSample1.xml',

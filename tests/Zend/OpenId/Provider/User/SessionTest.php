@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -54,7 +54,7 @@ class Zend_OpenId_Provider_User_SessionTest extends TestCase
 
     private $_user;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_user1 = new Zend_OpenId_Provider_User_Session();
         $this->_user2 = new Zend_OpenId_Provider_User_Session(new Zend_Session_Namespace("openid2"));

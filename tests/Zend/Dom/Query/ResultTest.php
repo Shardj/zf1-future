@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,6 +55,6 @@ class Zend_Dom_Query_ResultTest extends TestCase
 }
 
 // Call Zend_Dom_Query_Css2XpathTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Dom_Query_Css2XpathTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Dom_Query_Css2XpathTest::main") {
     Zend_Dom_Query_Css2XpathTest::main();
 }

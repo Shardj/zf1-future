@@ -187,7 +187,7 @@ class Zend_Http_Header_SetCookie
      * @param string $maxAge
      * @param int $version
      * @return void
-     *@todo Add validation of each one of the parameters (legal domain, etc.)
+     * @todo Add validation of each one of the parameters (legal domain, etc.)
      *
      */
     public function __construct($name = null, $value = null, $expires = null, $path = null, $domain = null, $secure = false, $httponly = false, $maxAge = null, $version = null)
@@ -542,7 +542,7 @@ class Zend_Http_Header_SetCookie
     public function toStringMultipleHeaders(array $headers)
     {
         $headerLine = $this->toString();
-        /* @var $header SetCookie */
+        /* @var SetCookie $header */
         foreach ($headers as $header) {
             if (!$header instanceof Zend_Http_Header_SetCookie) {
                 throw new Zend_Http_Header_Exception_RuntimeException(

@@ -131,7 +131,7 @@ class Zend_Gdata_Media_Extension_MediaPlayer extends Zend_Gdata_Extension
 
     /**
      * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaPlayer Provides a fluent interface
+     * @return $this
      */
     public function setUrl($value)
     {
@@ -149,7 +149,7 @@ class Zend_Gdata_Media_Extension_MediaPlayer extends Zend_Gdata_Extension
 
     /**
      * @param int $value
-     * @return Zend_Gdata_Media_Extension_MediaPlayer Provides a fluent interface
+     * @return $this
      */
     public function setWidth($value)
     {
@@ -167,7 +167,7 @@ class Zend_Gdata_Media_Extension_MediaPlayer extends Zend_Gdata_Extension
 
     /**
      * @param int $value
-     * @return Zend_Gdata_Media_Extension_MediaPlayer Provides a fluent interface
+     * @return $this
      */
     public function setHeight($value)
     {

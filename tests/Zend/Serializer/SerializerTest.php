@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -37,12 +37,12 @@ require_once 'Zend/Serializer.php';
  */
 class Zend_Serializer_SerializerTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Serializer::resetAdapterLoader();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 

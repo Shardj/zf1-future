@@ -68,7 +68,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the spreadsheet key for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setSpreadsheetKey($value)
     {
@@ -90,7 +90,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the worksheet id for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setWorksheetId($value)
     {
@@ -112,7 +112,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the cell id for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setCellId($value)
     {
@@ -134,7 +134,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the projection for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setProjection($value)
     {
@@ -145,7 +145,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
     /**
      * Sets the visibility for this query.
      *
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setVisibility($value)
     {
@@ -177,7 +177,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the min-row attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setMinRow($value)
     {
@@ -207,7 +207,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the max-row attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setMaxRow($value)
     {
@@ -237,7 +237,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the min-col attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setMinCol($value)
     {
@@ -267,7 +267,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the max-col attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setMaxCol($value)
     {
@@ -297,7 +297,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the range attribute for this query.
      *
      * @param string $value
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setRange($value)
     {
@@ -327,7 +327,7 @@ class Zend_Gdata_Spreadsheets_CellQuery extends Zend_Gdata_Query
      * Sets the return-empty attribute for this query.
      *
      * @param mixed $value String or bool value for whether to return empty cells
-     * @return Zend_Gdata_Spreadsheets_CellQuery Provides a fluent interface
+     * @return $this
      */
     public function setReturnEmpty($value)
     {

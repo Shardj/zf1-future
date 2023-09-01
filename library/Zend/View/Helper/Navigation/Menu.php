@@ -120,8 +120,7 @@ class Zend_View_Helper_Navigation_Menu
      *
      * @param  Zend_Navigation_Container $container  [optional] container to
      *                                               operate on
-     * @return Zend_View_Helper_Navigation_Menu      fluent interface,
-     *                                               returns self
+     * @return $this
      */
     public function menu(Zend_Navigation_Container $container = null)
     {
@@ -138,7 +137,7 @@ class Zend_View_Helper_Navigation_Menu
      * Sets CSS class to use for the first 'ul' element when rendering
      *
      * @param  string $ulClass                   CSS class to set
-     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     * @return $this
      */
     public function setUlClass($ulClass)
     {
@@ -164,7 +163,7 @@ class Zend_View_Helper_Navigation_Menu
      * rendering
      *
      * @param  string|null  $ulId                Unique identifier (id) to set
-     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     * @return $this
      */
     public function setUlId($ulId)
     {
@@ -190,7 +189,7 @@ class Zend_View_Helper_Navigation_Menu
      * Sets CSS class to use for the active elements when rendering
      *
      * @param string $activeClass               CSS class to set
-     * @return Zend_View_Helper_Navigation_Menu fluent interface, returns self
+     * @return $this
      */
     public function setActiveClass($activeClass)
     {
@@ -215,7 +214,7 @@ class Zend_View_Helper_Navigation_Menu
      * Sets CSS class to use for the parent li elements when rendering
      *
      * @param  string $parentClass              CSS class to set to parents
-     * @return Zend_View_Helper_Navigation_Menu fluent interface, returns self
+     * @return $this
      */
     public function setParentClass($parentClass)
     {
@@ -241,7 +240,7 @@ class Zend_View_Helper_Navigation_Menu
      *
      * @param bool $flag                        [optional] render with parent
      *                                          class. Default is true.
-     * @return Zend_View_Helper_Navigation_Menu fluent interface, returns self
+     * @return $this
      */
     public function setRenderParentClass($flag = true)
     {
@@ -265,7 +264,7 @@ class Zend_View_Helper_Navigation_Menu
      *
      * @param  bool $flag                        [optional] render only active
      *                                           branch. Default is true.
-     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     * @return $this
      */
     public function setOnlyActiveBranch($flag = true)
     {
@@ -291,7 +290,7 @@ class Zend_View_Helper_Navigation_Menu
      *
      * @param  bool $flag                        [optional] expand all siblings of
      *                                           nodes in the active branch. Default is true.
-     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     * @return $this
      */
     public function setExpandSiblingNodesOfActiveBranch($flag = true)
     {
@@ -320,7 +319,7 @@ class Zend_View_Helper_Navigation_Menu
      * @param  bool $flag                        [optional] render parents when
      *                                           rendering active branch.
      *                                           Default is true.
-     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     * @return $this
      */
     public function setRenderParents($flag = true)
     {
@@ -350,7 +349,7 @@ class Zend_View_Helper_Navigation_Menu
      *                                           the partial view script to use,
      *                                           and the module where the script
      *                                           can be found.
-     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     * @return $this
      */
     public function setPartial($partial)
     {
@@ -391,7 +390,7 @@ class Zend_View_Helper_Navigation_Menu
      * @param bool $flag                        [optional] adds CSS class from
      *                                          page to li element
      *
-     * @return Zend_View_Helper_Navigation_Menu fluent interface, returns self
+     * @return $this
      */
     public function addPageClassToLi($flag = true)
     {
@@ -417,8 +416,7 @@ class Zend_View_Helper_Navigation_Menu
      *
      * @param  string|int $indent                          indentation string or
      *                                                     number of spaces
-     * @return Zend_View_Helper_Navigation_HelperAbstract  fluent interface,
-     *                                                     returns self
+     * @return $this
      */
     public function setInnerIndent($indent)
     {

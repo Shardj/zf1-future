@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -61,9 +61,9 @@ class Zend_Paginator_ScrollingStyle_JumpingTest extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_scrollingStyle = new Zend_Paginator_ScrollingStyle_Jumping();
         $this->_paginator = Zend_Paginator::factory(range(1, 101));
         $this->_paginator->setItemCountPerPage(10);
@@ -73,11 +73,11 @@ class Zend_Paginator_ScrollingStyle_JumpingTest extends TestCase
     /**
      * Cleans up the environment after running a test.
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_scrollingStyle = null;
         $this->_paginator = null;
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testGetsPagesInRangeForFirstPage()

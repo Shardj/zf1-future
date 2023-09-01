@@ -58,7 +58,7 @@ class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
      * Sets the minimum level of viewability of volumes to return in the search results
      *
      * @param string|null $value The minimum viewability - 'full' or 'partial'
-     * @return Zend_Gdata_Books_VolumeQuery Provides a fluent interface
+     * @return $this
      */
     public function setMinViewability($value = null)
     {

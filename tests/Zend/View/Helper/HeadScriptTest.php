@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,7 +70,7 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_HeadScriptTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -79,7 +79,7 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $regKey = Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY;
         if (Zend_Registry::isRegistered($regKey)) {
@@ -96,7 +96,7 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -301,16 +301,16 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
             $item = $items[$i];
             switch ($i) {
                 case 0:
-                    $this->assertObjectHasAttribute('source', $item);
+                    $this->assertObjectHasProperty('source', $item);
                     $this->assertEquals('bar', $item->source);
                     break;
                 case 1:
-                    $this->assertObjectHasAttribute('attributes', $item);
+                    $this->assertObjectHasProperty('attributes', $item);
                     $this->assertTrue(isset($item->attributes['src']));
                     $this->assertEquals('foo', $item->attributes['src']);
                     break;
                 case 2:
-                    $this->assertObjectHasAttribute('source', $item);
+                    $this->assertObjectHasProperty('source', $item);
                     $this->assertEquals('baz', $item->source);
                     break;
             }
@@ -567,6 +567,6 @@ document.write(bar.strlen());');
 }
 
 // Call Zend_View_Helper_HeadScriptTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadScriptTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_HeadScriptTest::main") {
     Zend_View_Helper_HeadScriptTest::main();
 }

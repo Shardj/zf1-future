@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -82,7 +82,7 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_HeadMetaTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -91,7 +91,7 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->error = false;
         foreach ([Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY, 'Zend_View_Helper_Doctype'] as $key) {
@@ -113,7 +113,7 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -186,10 +186,10 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
             $this->assertEquals($i + 1, count($values));
 
             $item = $values[$i];
-            $this->assertObjectHasAttribute('type', $item);
-            $this->assertObjectHasAttribute('modifiers', $item);
-            $this->assertObjectHasAttribute('content', $item);
-            $this->assertObjectHasAttribute($item->type, $item);
+            $this->assertObjectHasProperty('type', $item);
+            $this->assertObjectHasProperty('modifiers', $item);
+            $this->assertObjectHasProperty('content', $item);
+            $this->assertObjectHasProperty($item->type, $item);
             $this->assertEquals('keywords', $item->{$item->type});
             $this->assertEquals($string, $item->content);
         }
@@ -206,10 +206,10 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
             $this->assertEquals($i + 1, count($values));
             $item = array_shift($values);
 
-            $this->assertObjectHasAttribute('type', $item);
-            $this->assertObjectHasAttribute('modifiers', $item);
-            $this->assertObjectHasAttribute('content', $item);
-            $this->assertObjectHasAttribute($item->type, $item);
+            $this->assertObjectHasProperty('type', $item);
+            $this->assertObjectHasProperty('modifiers', $item);
+            $this->assertObjectHasProperty('content', $item);
+            $this->assertObjectHasProperty($item->type, $item);
             $this->assertEquals('keywords', $item->{$item->type});
             $this->assertEquals($string, $item->content);
         }
@@ -229,10 +229,10 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
         $this->assertEquals(1, count($values));
         $item = array_shift($values);
 
-        $this->assertObjectHasAttribute('type', $item);
-        $this->assertObjectHasAttribute('modifiers', $item);
-        $this->assertObjectHasAttribute('content', $item);
-        $this->assertObjectHasAttribute($item->type, $item);
+        $this->assertObjectHasProperty('type', $item);
+        $this->assertObjectHasProperty('modifiers', $item);
+        $this->assertObjectHasProperty('content', $item);
+        $this->assertObjectHasProperty($item->type, $item);
         $this->assertEquals('keywords', $item->{$item->type});
         $this->assertEquals($string, $item->content);
     }
@@ -296,7 +296,7 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
         $this->helper->setName('keywords', 'foo bar', ['lang' => 'us_en', 'scheme' => 'foo', 'bogus' => 'unused']);
         $value = $this->helper->getValue();
 
-        $this->assertObjectHasAttribute('modifiers', $value);
+        $this->assertObjectHasProperty('modifiers', $value);
         $modifiers = $value->modifiers;
         $this->assertTrue(array_key_exists('lang', $modifiers));
         $this->assertEquals('us_en', $modifiers['lang']);
@@ -595,6 +595,6 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
 }
 
 // Call Zend_View_Helper_HeadMetaTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadMetaTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_HeadMetaTest::main") {
     Zend_View_Helper_HeadMetaTest::main();
 }
