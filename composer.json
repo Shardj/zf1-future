@@ -48,7 +48,10 @@
     },
     "scripts": {
         "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",
-        "test": "phpunit -d memory_limit=-1 --bootstrap tests/TestHelper.php tests/Zend/AllTests.php"
+        "test": [
+            "@putenv XDEBUG_MODE=off",
+            "phpunit -d memory_limit=-1 --bootstrap tests/TestHelper.php tests/Zend/AllTests.php"
+        ]
     },
     "autoload-dev": {
         "psr-0": {

@@ -26,7 +26,6 @@ test:
       command: ["mysqld",  '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
     - name: memcached:1
   before_script:
-    # prepare tests
     - composer install --no-interaction --prefer-source
     - cp ./tests/TestConfiguration.gitlab.php ./tests/TestConfiguration.php
   script:
