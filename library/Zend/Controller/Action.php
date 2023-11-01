@@ -45,7 +45,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * @var array of existing class methods
      */
-    protected $_classMethods;
+    protected array $_classMethods;
 
     /**
      * Word delimiters (used for normalizing view script paths)
@@ -92,10 +92,10 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     public $view;
 
     /**
-     * compataibility for php 8.2 to stop error Deprecated: Creation of dynamic property 
-     * @var object 
+     * compataibility for php 8.2 to stop error Deprecated: Creation of dynamic property
+     * @var object
      */
-    public  $contexts = null; 
+    public  $contexts = null;
     
     /**
      * Helper Broker to assist in routing help requests to the proper object
@@ -215,7 +215,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     public function render($action = null, $name = null, $noController = false)
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
-            return $this->_helper->viewRenderer->render($action, $name, $noController);
+            $this->_helper->viewRenderer->render($action, $name, $noController);
         }
 
         $view   = $this->initView();
@@ -246,7 +246,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     public function renderScript($script, $name = null)
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
-            return $this->_helper->viewRenderer->renderScript($script, $name);
+            $this->_helper->viewRenderer->renderScript($script, $name);
         }
 
         $view = $this->initView();

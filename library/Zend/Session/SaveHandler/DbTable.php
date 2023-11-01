@@ -73,35 +73,35 @@ class Zend_Session_SaveHandler_DbTable
     /**
      * Session table primary key value assignment
      *
-     * @var array
+     * @var array|null
      */
     protected $_primaryAssignment = null;
 
     /**
      * Session table last modification time column
      *
-     * @var string
+     * @var string|null
      */
     protected $_modifiedColumn = null;
 
     /**
      * Session table lifetime column
      *
-     * @var string
+     * @var string|null
      */
     protected $_lifetimeColumn = null;
 
     /**
      * Session table data column
      *
-     * @var string
+     * @var string|null
      */
     protected $_dataColumn = null;
 
     /**
      * Session lifetime
      *
-     * @var int
+     * @var int|false
      */
     protected $_lifetime = false;
 
@@ -223,7 +223,7 @@ class Zend_Session_SaveHandler_DbTable
      * $lifetime === false resets lifetime to session.gc_maxlifetime
      *
      * @param int $lifetime
-     * @param boolean $overrideLifetime (optional)
+     * @param boolean|null $overrideLifetime (optional)
      * @return Zend_Session_SaveHandler_DbTable
      * @throws Zend_Session_SaveHandler_Exception
      */
@@ -253,7 +253,7 @@ class Zend_Session_SaveHandler_DbTable
     /**
      * Retrieve session lifetime
      *
-     * @return int
+     * @return bool|int
      */
     public function getLifetime()
     {
@@ -278,7 +278,7 @@ class Zend_Session_SaveHandler_DbTable
      *
      * @return boolean
      */
-    public function getOverrideLifetime()
+    public function getOverrideLifetime(): bool
     {
         return $this->_overrideLifetime;
     }
@@ -290,7 +290,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param string $name
      * @return boolean
      */
-    public function open($save_path, $name)
+    public function open($save_path, $name): bool
     {
         $this->_sessionSavePath = $save_path;
         $this->_sessionName     = $name;
@@ -303,7 +303,7 @@ class Zend_Session_SaveHandler_DbTable
      *
      * @return boolean
      */
-    public function close()
+    public function close(): bool
     {
         return true;
     }
@@ -314,7 +314,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param string $id
      * @return string
      */
-    public function read($id)
+    public function read($id): string
     {
         $return = '';
 
@@ -338,7 +338,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param string $data
      * @return boolean
      */
-    public function write($id, $data)
+    public function write($id, $data): bool
     {
         $data = [$this->_modifiedColumn => time(),
                       $this->_dataColumn     => (string) $data];
@@ -366,7 +366,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param string $id
      * @return boolean
      */
-    public function destroy($id)
+    public function destroy($id): bool
     {
         $this->delete($this->_getPrimary($id, self::PRIMARY_TYPE_WHERECLAUSE));
         return true; //always return true, since if nothing can be deleted, it is already deleted and thats OK.
@@ -378,7 +378,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param int $maxlifetime
      * @return true
      */
-    public function gc($maxlifetime)
+    public function gc($maxlifetime): bool
     {
         $this->delete($this->getAdapter()->quoteIdentifier($this->_modifiedColumn, true) . ' + '
                     . $this->getAdapter()->quoteIdentifier($this->_lifetimeColumn, true) . ' < '
@@ -392,7 +392,7 @@ class Zend_Session_SaveHandler_DbTable
      *
      * @return void
      */
-    protected function _setup()
+    protected function _setup(): void
     {
         parent::_setup();
 
@@ -408,7 +408,7 @@ class Zend_Session_SaveHandler_DbTable
      * @return void
      * @throws Zend_Session_SaveHandler_Exception
      */
-    protected function _setupTableName()
+    protected function _setupTableName(): void
     {
         if (empty($this->_name) && basename(($this->_name = session_save_path())) != $this->_name) {
             /**
@@ -430,7 +430,7 @@ class Zend_Session_SaveHandler_DbTable
      * @return void
      * @throws Zend_Session_SaveHandler_Exception
      */
-    protected function _setupPrimaryAssignment()
+    protected function _setupPrimaryAssignment(): void
     {
         if ($this->_primaryAssignment === null) {
             $this->_primaryAssignment = [1 => self::PRIMARY_ASSIGNMENT_SESSION_ID];
@@ -469,7 +469,7 @@ class Zend_Session_SaveHandler_DbTable
      * @return void
      * @throws Zend_Session_SaveHandler_Exception
      */
-    protected function _checkRequiredColumns()
+    protected function _checkRequiredColumns(): void
     {
         if ($this->_modifiedColumn === null) {
             /**
@@ -505,10 +505,11 @@ class Zend_Session_SaveHandler_DbTable
      * Retrieve session table primary key values
      *
      * @param string $id
-     * @param string $type (optional; default: self::PRIMARY_TYPE_NUM)
+     * @param string|null $type (optional; default: self::PRIMARY_TYPE_NUM)
      * @return array
+     * @throws Zend_Db_Table_Exception
      */
-    protected function _getPrimary($id, $type = null)
+    protected function _getPrimary(string $id, ?string $type = null): array
     {
         $this->_setupPrimaryKey();
 
@@ -561,7 +562,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param Zend_Db_Table_Row_Abstract $row
      * @return int
      */
-    protected function _getLifetime(Zend_Db_Table_Row_Abstract $row)
+    protected function _getLifetime(Zend_Db_Table_Row_Abstract $row): int
     {
         $return = $this->_lifetime;
 
@@ -578,8 +579,8 @@ class Zend_Session_SaveHandler_DbTable
      * @param Zend_Db_Table_Row_Abstract $row
      * @return int
      */
-    protected function _getExpirationTime(Zend_Db_Table_Row_Abstract $row)
+    protected function _getExpirationTime(Zend_Db_Table_Row_Abstract $row): int
     {
-        return (int) $row->{$this->_modifiedColumn} + $this->_getLifetime($row);
+        return (int) $row->{$this->_modifiedColumn} + (int) $this->_getLifetime($row);
     }
 }
