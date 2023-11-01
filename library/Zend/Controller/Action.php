@@ -45,13 +45,13 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * @var array of existing class methods
      */
-    protected array $_classMethods;
+    protected $_classMethods = [];
 
     /**
      * Word delimiters (used for normalizing view script paths)
      * @var array
      */
-    protected $_delimiters;
+    protected $_delimiters = [];
 
     /**
      * Array of arguments provided to the constructor, minus the
