@@ -43,9 +43,9 @@ require_once 'Zend/Controller/Front.php';
 abstract class Zend_Controller_Action implements Zend_Controller_Action_Interface
 {
     /**
-     * @var array of existing class methods
+     * @var array|null array of existing class methods
      */
-    protected $_classMethods = [];
+    protected $_classMethods = null;
 
     /**
      * Word delimiters (used for normalizing view script paths)
