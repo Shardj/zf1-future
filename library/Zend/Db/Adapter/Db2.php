@@ -680,25 +680,16 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             require_once 'Zend/Db/Adapter/Db2/Exception.php';
             throw new Zend_Db_Adapter_Db2_Exception("LIMIT argument offset=$offset is not valid");
         }
-
-        if ($offset === 0) {
-            return $sql . " FETCH FIRST $count ROWS ONLY";
+        
+        /**
+         * DB2Modern versions already have `LIMIT,OFFSET` available.
+         */
+        $sql .= " LIMIT $count";
+        if ($offset > 0) {
+            $sql .= " OFFSET $offset";
         }
 
-        /**
-         * DB2 does not implement the LIMIT clause as some RDBMS do.
-         * We have to simulate it with subqueries and ROWNUM.
-         * Unfortunately because we use the column wildcard "*",
-         * this puts an extra column into the query result set.
-         */
-        return "SELECT z2.*
-            FROM (
-                SELECT ROW_NUMBER() OVER() AS \"ZEND_DB_ROWNUM\", z1.*
-                FROM (
-                    " . $sql . "
-                ) z1
-            ) z2
-            WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+        return $sql;
     }
 
     /**
