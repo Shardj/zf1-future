@@ -1528,7 +1528,7 @@ class Zend_Locale
      * Returns a localized information string, supported are several types of informations.
      * For detailed information about the types look into the documentation
      *
-     * @param  string             $value  Name to get detailed information about
+     * @param  array|string       $value  Name to get detailed information about
      * @param  string             $path   (Optional) Type of information to return
      * @param  string|Zend_Locale $locale (Optional) Locale|Language for which this informations should be returned
      * @return string|false The wished information in the given language
