@@ -93,7 +93,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
 
     /**
      * compataibility for php 8.2 to stop error Deprecated: Creation of dynamic property
-     * @var object
+     * @var object|null
      */
     public  $contexts = null;
     
