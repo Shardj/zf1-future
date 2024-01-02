@@ -227,7 +227,7 @@ class Zend_Session_SaveHandler_DbTable
      * @return Zend_Session_SaveHandler_DbTable
      * @throws Zend_Session_SaveHandler_Exception
      */
-    public function setLifetime($lifetime, $overrideLifetime = null)
+    public function setLifetime(int $lifetime, ?bool $overrideLifetime = null): Zend_Session_SaveHandler_DbTable
     {
         if ($lifetime < 0) {
             /**
@@ -240,7 +240,7 @@ class Zend_Session_SaveHandler_DbTable
         if (empty($lifetime)) {
             $this->_lifetime = (int) ini_get('session.gc_maxlifetime');
         } else {
-            $this->_lifetime = (int) $lifetime;
+            $this->_lifetime = $lifetime;
         }
 
         if ($overrideLifetime != null) {
@@ -266,9 +266,9 @@ class Zend_Session_SaveHandler_DbTable
      * @param boolean $overrideLifetime
      * @return Zend_Session_SaveHandler_DbTable
      */
-    public function setOverrideLifetime($overrideLifetime)
+    public function setOverrideLifetime(bool $overrideLifetime): Zend_Session_SaveHandler_DbTable
     {
-        $this->_overrideLifetime = (boolean) $overrideLifetime;
+        $this->_overrideLifetime = $overrideLifetime;
 
         return $this;
     }
@@ -313,6 +313,7 @@ class Zend_Session_SaveHandler_DbTable
      *
      * @param string $id
      * @return string
+     * @throws Zend_Db_Table_Exception
      */
     public function read($id): string
     {
@@ -337,6 +338,7 @@ class Zend_Session_SaveHandler_DbTable
      * @param string $id
      * @param string $data
      * @return boolean
+     * @throws Zend_Db_Table_Exception
      */
     public function write($id, $data): bool
     {
@@ -365,6 +367,7 @@ class Zend_Session_SaveHandler_DbTable
      *
      * @param string $id
      * @return boolean
+     * @throws Zend_Db_Table_Exception
      */
     public function destroy($id): bool
     {
@@ -391,6 +394,7 @@ class Zend_Session_SaveHandler_DbTable
      * Calls other protected methods for individual setup tasks and requirement checks
      *
      * @return void
+     * @throws Zend_Session_SaveHandler_Exception
      */
     protected function _setup(): void
     {
@@ -420,7 +424,7 @@ class Zend_Session_SaveHandler_DbTable
         }
 
         if (strpos($this->_name, '.')) {
-            list($this->_schema, $this->_name) = explode('.', $this->_name);
+            [$this->_schema, $this->_name] = explode('.', $this->_name);
         }
     }
 
@@ -528,7 +532,7 @@ class Zend_Session_SaveHandler_DbTable
                     $value = $this->_sessionName;
                     break;
                 case self::PRIMARY_ASSIGNMENT_SESSION_ID:
-                    $value = (string) $id;
+                    $value = $id;
                     break;
                 default:
                     $value = (string) $this->_primaryAssignment[$index];
@@ -581,6 +585,6 @@ class Zend_Session_SaveHandler_DbTable
      */
     protected function _getExpirationTime(Zend_Db_Table_Row_Abstract $row): int
     {
-        return (int) $row->{$this->_modifiedColumn} + (int) $this->_getLifetime($row);
+        return (int) $row->{$this->_modifiedColumn} + $this->_getLifetime($row);
     }
 }
