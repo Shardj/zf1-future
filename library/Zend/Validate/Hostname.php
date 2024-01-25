@@ -2444,9 +2444,11 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                 $toAscii = idn_to_ascii($hostName);
             }
             $result = checkdnsrr($toAscii, 'A');
-        } else {
+        } elseif (class_exists('Net_IDNA2')) {
             $idn = new Net_IDNA2();
             $result = checkdnsrr($idn->encode($hostName), 'A');
+        } else {
+            $result = checkdnsrr($hostName, 'A');
         }
 
         return $result;
