@@ -92,7 +92,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     public $view;
 
     /**
-     * compatibility for php 8.2 to stop error Deprecated: Creation of dynamic property
+     * Compatibility for php 8.2 to stop error Deprecated: Creation of dynamic property
      * @var object|null
      */
     public  $contexts = null;
@@ -624,7 +624,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @param string $paramName
      * @param mixed $value
-     * @return Zend_Controller_Action
+     * @return $this
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             setParam() instead.
      */
@@ -638,7 +638,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @param string $paramName
      * @param mixed $value
-     * @return Zend_Controller_Action
+     * @return $this
      */
     public function setParam(string $paramName, $value): Zend_Controller_Action
     {

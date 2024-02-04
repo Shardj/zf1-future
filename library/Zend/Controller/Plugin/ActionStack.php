@@ -93,7 +93,7 @@ class Zend_Controller_Plugin_ActionStack extends Zend_Controller_Plugin_Abstract
      * Set registry object
      *
      * @param  Zend_Registry $registry
-     * @return Zend_Controller_Plugin_ActionStack
+     * @return $this
      */
     public function setRegistry(Zend_Registry $registry)
     {
@@ -125,7 +125,7 @@ class Zend_Controller_Plugin_ActionStack extends Zend_Controller_Plugin_Abstract
      * Set registry key
      *
      * @param  string $key
-     * @return Zend_Controller_Plugin_ActionStack
+     * @return $this
      */
     public function setRegistryKey($key)
     {
@@ -137,7 +137,7 @@ class Zend_Controller_Plugin_ActionStack extends Zend_Controller_Plugin_Abstract
      *  Set clearRequestParams flag
      *
      *  @param  bool $clearRequestParams
-     *  @return Zend_Controller_Plugin_ActionStack
+     *  @return $this
      */
     public function setClearRequestParams($clearRequestParams)
     {
@@ -171,7 +171,7 @@ class Zend_Controller_Plugin_ActionStack extends Zend_Controller_Plugin_Abstract
      * Save stack to registry
      *
      * @param  array $stack
-     * @return Zend_Controller_Plugin_ActionStack
+     * @return $this
      */
     protected function _saveStack(array $stack)
     {
@@ -184,7 +184,7 @@ class Zend_Controller_Plugin_ActionStack extends Zend_Controller_Plugin_Abstract
      * Push an item onto the stack
      *
      * @param  Zend_Controller_Request_Abstract $next
-     * @return Zend_Controller_Plugin_ActionStack
+     * @return $this
      */
     public function pushStack(Zend_Controller_Request_Abstract $next)
     {

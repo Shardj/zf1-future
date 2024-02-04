@@ -78,7 +78,7 @@ class Zend_Cache_Backend_Static
      *
      * @param  string $name
      * @param  mixed $value
-     * @return Zend_Cache_Backend_Static
+     * @return $this
      */
     public function setOption($name, $value)
     {

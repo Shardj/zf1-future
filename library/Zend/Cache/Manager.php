@@ -116,7 +116,7 @@ class Zend_Cache_Manager
      *
      * @param  string $name
      * @param  Zend_Cache_Core $cache
-     * @return Zend_Cache_Manager
+     * @return $this
      */
     public function setCache($name, Zend_Cache_Core $cache)
     {
@@ -198,7 +198,7 @@ class Zend_Cache_Manager
      *
      * @param  string $name
      * @param  array  $options
-     * @return Zend_Cache_Manager
+     * @return $this
      * @throws Zend_Cache_Exception
      */
     public function setCacheTemplate($name, $options)
@@ -248,7 +248,7 @@ class Zend_Cache_Manager
      *
      * @param  string $name
      * @param  array $options
-     * @return Zend_Cache_Manager
+     * @return $this
      * @throws Zend_Cache_Exception for invalid options format or if option templates do not have $name
      */
     public function setTemplateOptions($name, $options)

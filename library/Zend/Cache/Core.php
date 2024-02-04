@@ -153,7 +153,7 @@ class Zend_Cache_Core
      * Set options using an instance of type Zend_Config
      *
      * @param Zend_Config $config
-     * @return Zend_Cache_Core
+     * @return $this
      */
     public function setConfig(Zend_Config $config)
     {

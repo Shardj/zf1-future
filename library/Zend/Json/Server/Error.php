@@ -84,7 +84,7 @@ class Zend_Json_Server_Error
      * Set error code
      *
      * @param  int $code
-     * @return Zend_Json_Server_Error
+     * @return $this
      */
     public function setCode($code)
     {
@@ -116,7 +116,7 @@ class Zend_Json_Server_Error
      * Set error message
      *
      * @param  string $message
-     * @return Zend_Json_Server_Error
+     * @return $this
      */
     public function setMessage($message)
     {
@@ -142,7 +142,7 @@ class Zend_Json_Server_Error
      * Set error data
      *
      * @param  mixed $data
-     * @return Zend_Json_Server_Error
+     * @return $this
      */
     public function setData($data)
     {

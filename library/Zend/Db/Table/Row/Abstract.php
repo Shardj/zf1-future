@@ -204,7 +204,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      * Unset row field value
      *
      * @param  string $columnName The column key.
-     * @return Zend_Db_Table_Row_Abstract
+     * @return $this
      * @throws Zend_Db_Table_Row_Exception
      */
     public function __unset($columnName)

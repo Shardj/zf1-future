@@ -70,7 +70,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      *
      * @param string $name
      * @param mixed  $value
-     * @return Zend_Controller_Router_Abstract
+     * @return $this
      */
     public function setParam($name, $value)
     {
@@ -84,7 +84,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      * Set parameters to pass to action controller constructors
      *
      * @param array $params
-     * @return Zend_Controller_Router_Abstract
+     * @return $this
      */
     public function setParams(array $params)
     {
@@ -126,7 +126,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      * each.
      *
      * @param null|string|array $name single key or array of keys for params to clear
-     * @return Zend_Controller_Router_Abstract
+     * @return $this
      */
     public function clearParams($name = null)
     {
@@ -167,7 +167,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      * Set Front Controller
      *
      * @param Zend_Controller_Front $controller
-     * @return Zend_Controller_Router_Interface
+     * @return $this
      */
     public function setFrontController(Zend_Controller_Front $controller)
     {

@@ -106,7 +106,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      * setErrorHandler() - setup the error handling options
      *
      * @param  array $options
-     * @return Zend_Controller_Plugin_ErrorHandler
+     * @return $this
      */
     public function setErrorHandler(Array $options = [])
     {
@@ -126,7 +126,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      * Set the module name for the error handler
      *
      * @param  string $module
-     * @return Zend_Controller_Plugin_ErrorHandler
+     * @return $this
      */
     public function setErrorHandlerModule($module)
     {
@@ -151,7 +151,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      * Set the controller name for the error handler
      *
      * @param  string $controller
-     * @return Zend_Controller_Plugin_ErrorHandler
+     * @return $this
      */
     public function setErrorHandlerController($controller)
     {
@@ -173,7 +173,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      * Set the action name for the error handler
      *
      * @param  string $action
-     * @return Zend_Controller_Plugin_ErrorHandler
+     * @return $this
      */
     public function setErrorHandlerAction($action)
     {

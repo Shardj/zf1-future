@@ -274,7 +274,7 @@ abstract class Zend_Db_Table_Abstract
      * setOptions()
      *
      * @param array $options
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setOptions(Array $options)
     {
@@ -332,7 +332,7 @@ abstract class Zend_Db_Table_Abstract
      * setDefinition()
      *
      * @param Zend_Db_Table_Definition $definition
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefinition(Zend_Db_Table_Definition $definition)
     {
@@ -354,7 +354,7 @@ abstract class Zend_Db_Table_Abstract
      * setDefinitionConfigName()
      *
      * @param string $definition
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefinitionConfigName($definitionConfigName)
     {
@@ -419,7 +419,7 @@ abstract class Zend_Db_Table_Abstract
      * @param string|array $refColumns
      * @param string $onDelete
      * @param string $onUpdate
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function addReference($ruleKey, $columns, $refTableClass, $refColumns,
                                  $onDelete = null, $onUpdate = null)
@@ -508,7 +508,7 @@ abstract class Zend_Db_Table_Abstract
      * set the defaultSource property - this tells the table class where to find default values
      *
      * @param string $defaultSource
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefaultSource($defaultSource = self::DEFAULT_NONE)
     {
@@ -534,7 +534,7 @@ abstract class Zend_Db_Table_Abstract
      * set the default values for the table class
      *
      * @param array $defaultValues
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefaultValues(Array $defaultValues)
     {

@@ -59,7 +59,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
      * Activate/deactivate return of LOB as string
      *
      * @param string $lob_as_string
-     * @return Zend_Db_Statement_Oracle
+     * @return $this
      */
     public function setLobAsString($lob_as_string)
     {

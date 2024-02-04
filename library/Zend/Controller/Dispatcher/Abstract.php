@@ -173,7 +173,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * single string or an array of strings.
      *
      * @param string|array $spec
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setWordDelimiter($spec)
     {
@@ -201,7 +201,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * an array of strings.
      *
      * @param string $spec
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setPathDelimiter($spec)
     {
@@ -264,7 +264,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Set front controller instance
      *
      * @param Zend_Controller_Front $controller
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setFrontController(Zend_Controller_Front $controller)
     {
@@ -277,7 +277,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      *
      * @param string $name
      * @param mixed $value
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setParam($name, $value)
     {
@@ -290,7 +290,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Set parameters to pass to action controller constructors
      *
      * @param array $params
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setParams(array $params)
     {
@@ -331,7 +331,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * each.
      *
      * @param null|string|array $name single key or array of keys for params to clear
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function clearParams($name = null)
     {
@@ -354,7 +354,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Set response object to pass to action controllers
      *
      * @param Zend_Controller_Response_Abstract|null $response
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setResponse(Zend_Controller_Response_Abstract $response = null)
     {
@@ -376,7 +376,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Set the default controller (minus any formatting)
      *
      * @param string $controller
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setDefaultControllerName($controller)
     {
@@ -398,7 +398,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Set the default action (minus any formatting)
      *
      * @param string $action
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setDefaultAction($action)
     {
@@ -420,7 +420,7 @@ abstract class Zend_Controller_Dispatcher_Abstract implements Zend_Controller_Di
      * Set the default module
      *
      * @param string $module
-     * @return Zend_Controller_Dispatcher_Abstract
+     * @return $this
      */
     public function setDefaultModule($module)
     {
