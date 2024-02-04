@@ -49,9 +49,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
 
     /**
      * Word delimiters (used for normalizing view script paths)
-     * @var array
+     * @var array|null
      */
-    protected $_delimiters = [];
+    protected $_delimiters = null;
 
     /**
      * Array of arguments provided to the constructor, minus the
@@ -213,7 +213,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @throws Zend_Controller_Exception
      * @see Zend_Controller_Response_Abstract::appendBody()
      */
-    public function render(string $action = null, string $name = null, bool $noController = false)
+    public function render(?string $action = null, ?string $name = null, bool $noController = false)
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
             $this->_helper->viewRenderer->render($action, $name, $noController);
@@ -281,6 +281,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
         $request = $this->getRequest();
         if (null === $action) {
             $action = $request->getActionName();
+
         } elseif (!is_string($action)) {
             require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception('Invalid action specifier for view render');
