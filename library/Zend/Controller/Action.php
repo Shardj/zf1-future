@@ -456,7 +456,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return void
      */
-    public function preDispatch(): void
+    public function preDispatch()
     {
     }
 
@@ -473,7 +473,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return void
      */
-    public function postDispatch(): void
+    public function postDispatch()
     {
     }
 
@@ -488,7 +488,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return void
      * @throws Zend_Controller_Action_Exception
      */
-    public function __call(string $methodName, array $args): void
+    public function __call(string $methodName, array $args)
     {
         require_once 'Zend/Controller/Action/Exception.php';
         if ('Action' == substr($methodName, -6)) {
