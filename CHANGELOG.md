@@ -6,6 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.24.0] - 2024-02-05
+- introduced BREAKING CHANGES doc.
+
+### Added
+- support "samesite" cookie attribute in Zend_Http_Header_SetCookie in https://github.com/Shardj/zf1-future/issues/315
+- Support X-Forwarded-Proto header in https://github.com/Shardj/zf1-future/pull/386
+- added setting to disable automatic strigify of pdo mysql in https://github.com/Shardj/zf1-future/pull/378
+
+### Fixed
+- reverted Deprecated : Return type on Zend_Session_SaveHandler_DbTable in https://github.com/Shardj/zf1-future/issues/377
+- Zend_Db_Adapter_Db2 limit does not work in https://github.com/Shardj/zf1-future/issues/391
+- Zend_Http_Client-Adapter_Socket - check transfer-encoding header is a string (and not an array) in https://github.com/Shardj/zf1-future/pull/396
+- Fixes A non-numeric value encountered in PhpMath.php in https://github.com/Shardj/zf1-future/pull/402
+- Updated DocBlocks to return $this for fluent interface in https://github.com/Shardj/zf1-future/pull/390
+- add "array" as allowed type of $value in https://github.com/Shardj/zf1-future/pull/387
+- Avoid undefined array key access inside url assembly in https://github.com/Shardj/zf1-future/pull/383
+- Fixed #357 return type backward-compatible issue reported in https://github.com/Shardj/zf1-future/pull/379
+- Fixed missing property in https://github.com/Shardj/zf1-future/pull/376
+
+
 ## [1.23.5] - 2023-08-24
 ### Fixed
 - further Zend Mail sendmail transport validation tweak

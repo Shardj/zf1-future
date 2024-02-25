@@ -3,6 +3,7 @@
 # Zend Framework 1 now for PHP 8.1!
 ### Classic ZF1 Reborn
 Zend may have abandoned the original Zend Framework, but the global Zend Framework Community has not! Since Zend sentenced ZF1 to EOL, the Zend Framework community around the globe has continued to work and build on what we consider to be one of the best PHP frameworks of all time.
+Framework is tested by users up to PHP version 8.1. Note, that with 8.2+ you can experience some incompatibilities.
 
 # ZF1-Future Sponsors
 ### Products and Projects built with ZF1-Future:
