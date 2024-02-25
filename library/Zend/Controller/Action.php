@@ -146,7 +146,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return void
      */
-    public function init()
+    public function init(): void
     {
     }
 
@@ -166,7 +166,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return Zend_View_Interface
      * @throws Zend_Controller_Exception if base view directory does not exist
      */
-    public function initView()
+    public function initView(): Zend_View_Interface
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
             return $this->view;
@@ -213,10 +213,11 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @throws Zend_Controller_Exception
      * @see Zend_Controller_Response_Abstract::appendBody()
      */
-    public function render(?string $action = null, ?string $name = null, bool $noController = false)
+    public function render(?string $action = null, ?string $name = null, bool $noController = false): void
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
             $this->_helper->viewRenderer->render($action, $name, $noController);
+            return;
         }
 
         $view   = $this->initView();
@@ -245,7 +246,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return void
      * @throws Zend_Controller_Exception
      */
-    public function renderScript(string $script, string $name = null)
+    public function renderScript(string $script, string $name = null): void
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
             $this->_helper->viewRenderer->renderScript($script, $name);
@@ -309,7 +310,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * Return the Request object
      *
-     * @return Zend_Controller_Request_Abstract
+     * @return Zend_Controller_Request_Abstract|null
      */
     public function getRequest(): ?Zend_Controller_Request_Abstract
     {
@@ -320,7 +321,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * Set the Request object
      *
      * @param Zend_Controller_Request_Abstract $request
-     * @return Zend_Controller_Action
+     * @return $this
      */
     public function setRequest(Zend_Controller_Request_Abstract $request): Zend_Controller_Action
     {
@@ -331,7 +332,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * Return the Response object
      *
-     * @return Zend_Controller_Response_Abstract
+     * @return Zend_Controller_Response_Abstract|null
      */
     public function getResponse(): ?Zend_Controller_Response_Abstract
     {
@@ -342,7 +343,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * Set the Response object
      *
      * @param Zend_Controller_Response_Abstract $response
-     * @return Zend_Controller_Action
+     * @return $this
      */
     public function setResponse(Zend_Controller_Response_Abstract $response): Zend_Controller_Action
     {
@@ -354,7 +355,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * Set invocation arguments
      *
      * @param array $args
-     * @return Zend_Controller_Action
+     * @return $this
      */
     protected function _setInvokeArgs(array $args = []): Zend_Controller_Action
     {
@@ -413,7 +414,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * Set the front controller instance
      *
      * @param Zend_Controller_Front $front
-     * @return Zend_Controller_Action
+     * @return $this
      */
     public function setFrontController(Zend_Controller_Front $front): Zend_Controller_Action
     {
@@ -455,7 +456,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return void
      */
-    public function preDispatch()
+    public function preDispatch(): void
     {
     }
 
@@ -472,7 +473,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return void
      */
-    public function postDispatch()
+    public function postDispatch(): void
     {
     }
 
@@ -487,7 +488,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return void
      * @throws Zend_Controller_Action_Exception
      */
-    public function __call(string $methodName, array $args)
+    public function __call(string $methodName, array $args): void
     {
         require_once 'Zend/Controller/Action/Exception.php';
         if ('Action' == substr($methodName, -6)) {
@@ -505,7 +506,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return void
      * @throws Zend_Controller_Action_Exception
      */
-    public function dispatch($action)
+    public function dispatch($action): void
     {
         // Notify helpers of action preDispatch state
         $this->_helper->notifyPreDispatch();
@@ -558,7 +559,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return Zend_Controller_Response_Abstract
      * @throws Zend_Controller_Action_Exception
      */
-    public function run(Zend_Controller_Request_Abstract $request = null, Zend_Controller_Response_Abstract $response = null): ?Zend_Controller_Response_Abstract
+    public function run(Zend_Controller_Request_Abstract $request = null, Zend_Controller_Response_Abstract $response = null): Zend_Controller_Response_Abstract
     {
         if (null !== $request) {
             $this->setRequest($request);
