@@ -146,7 +146,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return void
      */
-    public function init(): void
+    public function init()
     {
     }
 
