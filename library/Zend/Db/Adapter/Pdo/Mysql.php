@@ -215,10 +215,10 @@ class Zend_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Abstract
                 // The optional argument of a MySQL int type is not precision
                 // or length; it is only a hint for display width.
             }
-            if (strtoupper($row[$key]) == 'PRI') {
+            if (strtoupper($row[$key]) === 'PRI') {
                 $primary = true;
                 $primaryPosition = $p;
-                if ($row[$extra] == 'auto_increment') {
+                if ($row[$extra] === 'auto_increment') {
                     $identity = true;
                 } else {
                     $identity = false;
@@ -232,7 +232,7 @@ class Zend_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Abstract
                 'COLUMN_POSITION'  => $i,
                 'DATA_TYPE'        => $row[$type],
                 'DEFAULT'          => $row[$default],
-                'NULLABLE'         => (bool) ($row[$null] == 'YES'),
+                'NULLABLE'         => (bool) ($row[$null] === 'YES'),
                 'LENGTH'           => $length,
                 'SCALE'            => $scale,
                 'PRECISION'        => $precision,

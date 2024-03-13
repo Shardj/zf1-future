@@ -237,7 +237,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'GData-Version: 2') {
+            if ($header === 'GData-Version: 2') {
                 $found = true;
             }
         }
@@ -270,7 +270,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'GData-Version: 2') {
+            if ($header === 'GData-Version: 2') {
                 $found = true;
             }
         }
@@ -301,7 +301,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etagOverride) {
+            if ($header === 'If-Match: ' . $etagOverride) {
                 $found = true;
             }
         }
@@ -332,7 +332,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-None-Match: ' . $etagOverride) {
+            if ($header === 'If-None-Match: ' . $etagOverride) {
                 $found = true;
             }
         }
@@ -383,7 +383,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-None-Match: ' . $etag) {
+            if ($header === 'If-None-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -413,7 +413,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-None-Match: ' . $etagOverride) {
+            if ($header === 'If-None-Match: ' . $etagOverride) {
                 $found = true;
             }
         }

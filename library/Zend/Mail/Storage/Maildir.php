@@ -175,7 +175,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
     public function getMessage($id)
     {
         // TODO that's ugly, would be better to let the message class decide
-        if (strtolower($this->_messageClass) == 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
+        if (strtolower($this->_messageClass) === 'zend_mail_message_file' || is_subclass_of($this->_messageClass, 'zend_mail_message_file')) {
             return new $this->_messageClass(['file'  => $this->_getFileData($id, 'filename'),
                                                   'flags' => $this->_getFileData($id, 'flags')]);
         }
@@ -352,14 +352,14 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
     protected function _getMaildirFiles($dh, $dirname, $default_flags = [])
     {
         while (($entry = readdir($dh)) !== false) {
-            if ($entry[0] == '.' || !is_file($dirname . $entry)) {
+            if ($entry[0] === '.' || !is_file($dirname . $entry)) {
                 continue;
             }
 
             @list($uniq, $info) = explode(':', $entry, 2);
             @list(,$size) = explode(',', $uniq, 2);
 
-            if ($size && $size[0] == 'S' && $size[1] == '=') {
+            if ($size && $size[0] === 'S' && $size[1] === '=') {
                 $size = substr($size, 2);
             }
 

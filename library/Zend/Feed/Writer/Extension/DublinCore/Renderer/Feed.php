@@ -50,7 +50,7 @@ class Zend_Feed_Writer_Extension_DublinCore_Renderer_Feed
      */
     public function render()
     {
-        if (strtolower($this->getType()) == 'atom') {
+        if (strtolower($this->getType()) === 'atom') {
             return;
         }
         $this->_setAuthors($this->_dom, $this->_base);

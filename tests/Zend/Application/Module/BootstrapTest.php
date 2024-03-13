@@ -210,7 +210,7 @@ class Zend_Application_Module_BootstrapTest extends TestCase
         $appBootstrap->bootstrap('Modules');
         $modules = $appBootstrap->getResource('Modules');
         foreach ($modules as $module => $bootstrap) {
-            if ($module == 'default') {
+            if ($module === 'default') {
                 // "default" module gets lumped in, and is not a Module_Bootstrap
                 continue;
             }

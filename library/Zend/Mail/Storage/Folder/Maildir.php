@@ -129,7 +129,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
         $dirs = [];
         while (($entry = readdir($dh)) !== false) {
             // maildir++ defines folders must start with .
-            if ($entry[0] != '.' || $entry == '.' || $entry == '..') {
+            if ($entry[0] !== '.' || $entry === '.' || $entry === '..') {
                 continue;
             }
             if ($this->_isMaildir($this->_rootdir . $entry)) {
@@ -186,7 +186,7 @@ class Zend_Mail_Storage_Folder_Maildir extends Zend_Mail_Storage_Maildir impleme
      */
     public function getFolders($rootFolder = null)
     {
-        if (!$rootFolder || $rootFolder == 'INBOX') {
+        if (!$rootFolder || $rootFolder === 'INBOX') {
             return $this->_rootFolder;
         }
 

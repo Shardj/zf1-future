@@ -109,7 +109,7 @@ class Zend_Crypt
             }
         }
         if (function_exists('openssl_digest')) {
-            if ($algorithm == 'ripemd160') {
+            if ($algorithm === 'ripemd160') {
                 $algorithm = 'rmd160';
             }
             self::$_type = self::TYPE_OPENSSL;
@@ -159,7 +159,7 @@ class Zend_Crypt
      */
     protected static function _digestOpenssl($algorithm, $data, $binaryOutput)
     {
-        if ($algorithm == 'ripemd160') {
+        if ($algorithm === 'ripemd160') {
             $algorithm = 'rmd160';
         }
         return openssl_digest($data, $algorithm, $binaryOutput);

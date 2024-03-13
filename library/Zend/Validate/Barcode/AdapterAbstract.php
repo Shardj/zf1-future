@@ -86,10 +86,10 @@ abstract class Zend_Validate_Barcode_AdapterAbstract
             $found = true;
         } elseif ($length == -1) {
             $found = true;
-        } elseif ($length == 'even') {
+        } elseif ($length === 'even') {
             $count = $fixum % 2;
             $found = $count == 0;
-        } elseif ($length == 'odd') {
+        } elseif ($length === 'odd') {
             $count = $fixum % 2;
             $found = $count == 1;
         }

@@ -149,8 +149,8 @@ class Zend_Controller_Action_Helper_AutoCompleteTest extends TestCase
         $headers = $this->response->getHeaders();
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
-                if ('application/json' == $header['value']) {
+            if ('Content-Type' === $header['name']) {
+                if ('application/json' === $header['value']) {
                     $found = true;
                 }
                 break;

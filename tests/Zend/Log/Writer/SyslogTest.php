@@ -88,7 +88,7 @@ class Zend_Log_Writer_SyslogTest extends TestCase
      */
     public function testThrowExceptionIfFacilityInvalidInWindows()
     {
-        if ('WIN' != strtoupper(substr(PHP_OS, 0, 3))) {
+        if ('WIN' !== strtoupper(substr(PHP_OS, 0, 3))) {
             $this->markTestSkipped('Run only in windows');
         }
         try {

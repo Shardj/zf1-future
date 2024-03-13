@@ -145,9 +145,9 @@ class Zend_Pdf_Resource_Image_Tiff extends Zend_Pdf_Resource_Image
         }
 
         $byteOrderIndicator = fread($imageFile, 2);
-        if($byteOrderIndicator == 'II') {
+        if($byteOrderIndicator === 'II') {
             $this->_endianType = Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_LITTLE;
-        } else if($byteOrderIndicator == 'MM') {
+        } else if($byteOrderIndicator === 'MM') {
             $this->_endianType = Zend_Pdf_Resource_Image_Tiff::TIFF_ENDIAN_BIG;
         } else {
             require_once 'Zend/Pdf/Exception.php';
@@ -411,7 +411,7 @@ class Zend_Pdf_Resource_Image_Tiff extends Zend_Pdf_Resource_Image
         $imageDictionary->Height           = new Zend_Pdf_Element_Numeric($this->_height);
         $imageDictionary->ColorSpace       = new Zend_Pdf_Element_Name($this->_colorSpace);
         $imageDictionary->BitsPerComponent = new Zend_Pdf_Element_Numeric($this->_bitsPerSample);
-        if(isset($this->_filter) && $this->_filter != 'None') {
+        if(isset($this->_filter) && $this->_filter !== 'None') {
             $imageDictionary->Filter = new Zend_Pdf_Element_Name($this->_filter);
         }
 

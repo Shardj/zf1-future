@@ -443,7 +443,7 @@ class Zend_Mime
             }
 
             // Check if there is a space at the end of the line and rewind
-            if ($ptr > 0 && $str[$ptr - 1] == ' ') {
+            if ($ptr > 0 && $str[$ptr - 1] === ' ') {
                 --$ptr;
             }
 
@@ -512,7 +512,7 @@ class Zend_Mime
             $str         = substr($str, strlen($token));
 
             $tmp .= $token;
-            if ($token == '=20') {
+            if ($token === '=20') {
                 // only if we have a single char token or space, we can append the
                 // tempstring it to the current line or start a new line if necessary.
                 if (strlen($lines[$currentLine] . $tmp) > $lineLength) {
@@ -547,7 +547,7 @@ class Zend_Mime
      */
     private static function getNextQuotedPrintableToken($str)
     {
-        if (substr($str, 0, 1) == "=") {
+        if (substr($str, 0, 1) === "=") {
             $token = substr($str, 0, 3);
         } else {
             $token = substr($str, 0, 1);

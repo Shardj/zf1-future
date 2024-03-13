@@ -132,7 +132,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest extends Zend_Cloud_Storag
             return unlink($path);
         } else {
             foreach (scandir($path) as $item) {
-                if (!($item == '.' || $item == '..')) {
+                if (!($item === '.' || $item === '..')) {
                     $this->_rmRecursive($item);
                 }
             }

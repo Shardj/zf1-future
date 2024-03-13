@@ -292,7 +292,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 			if ($signedIdentifiers == false)  {
 				// Only private/blob/container
 				$accessType = $response->getHeader(Zend_Service_WindowsAzure_Storage::PREFIX_STORAGE_HEADER . 'blob-public-access');
-				if (strtolower($accessType) == 'true') {
+				if (strtolower($accessType) === 'true') {
 					$accessType = self::ACL_PUBLIC_CONTAINER;
 				}
 				return $accessType;
@@ -2088,7 +2088,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 	 */
 	public static function isValidContainerName($containerName = '')
 	{
-		if ($containerName == '$root') {
+		if ($containerName === '$root') {
 			return true;
 		}
 
@@ -2108,7 +2108,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 			return false;
 		}
 
-		if (substr($containerName, -1) == '-') {
+		if (substr($containerName, -1) === '-') {
 			return false;
 		}
 

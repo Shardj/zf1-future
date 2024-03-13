@@ -135,7 +135,7 @@ class Zend_Mail_Storage_Folder_Mbox extends Zend_Mail_Storage_Mbox implements Ze
         }
         while (($entry = readdir($dh)) !== false) {
             // ignore hidden files for mbox
-            if ($entry[0] == '.') {
+            if ($entry[0] === '.') {
                 continue;
             }
             $absoluteEntry = $currentDir . $entry;
@@ -144,7 +144,7 @@ class Zend_Mail_Storage_Folder_Mbox extends Zend_Mail_Storage_Mbox implements Ze
                 $parentFolder->$entry = new Zend_Mail_Storage_Folder($entry, $globalName);
                 continue;
             }
-            if (!is_dir($absoluteEntry) /* || $entry == '.' || $entry == '..' */) {
+            if (!is_dir($absoluteEntry) /* || $entry === '.' || $entry === '..' */) {
                 continue;
             }
             $folder = new Zend_Mail_Storage_Folder($entry, $globalName, false);

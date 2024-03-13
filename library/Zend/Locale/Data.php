@@ -186,10 +186,10 @@ class Zend_Locale_Data
                     $newpath = $result[0]['path'];
 
                     // new path - path //ldml is to ignore
-                    if ($newpath != '//ldml') {
+                    if ($newpath !== '//ldml') {
                         // other path - parse to make real path
 
-                        while (substr($newpath,0,3) == '../') {
+                        while (substr($newpath,0,3) === '../') {
                             $newpath = substr($newpath, 3);
                             $search = substr($search, 0, strrpos($search, '/'));
                         }
@@ -202,7 +202,7 @@ class Zend_Locale_Data
                     }
 
                     // reroute to other locale
-                    if ($source != 'locale') {
+                    if ($source !== 'locale') {
                         $locale = $source;
                     }
 
@@ -240,7 +240,7 @@ class Zend_Locale_Data
         // 2. -> zh_Hans
         // 3. -> zh
         // 4. -> root
-        if (($locale != 'root') && ($result)) {
+        if (($locale !== 'root') && ($result)) {
             // Search for parent locale
             if (false !== strpos($locale, '_')) {
                 $parentLocale = self::getContent($locale, 'parentlocale');
@@ -353,13 +353,13 @@ class Zend_Locale_Data
                 $temp = self::_getFile($locale, '/ldml/localeDisplayNames/territories/territory', 'type');
                 if ($value === 1) {
                     foreach($temp as $key => $value) {
-                        if ((is_numeric($key) === false) && ($key != 'QO') && ($key != 'EU')) {
+                        if ((is_numeric($key) === false) && ($key !== 'QO') && ($key !== 'EU')) {
                             unset($temp[$key]);
                         }
                     }
                 } else if ($value === 2) {
                     foreach($temp as $key => $value) {
-                        if (is_numeric($key) || ($key == 'QO') || ($key == 'EU')) {
+                        if (is_numeric($key) || ($key === 'QO') || ($key === 'EU')) {
                             unset($temp[$key]);
                         }
                     }
@@ -378,9 +378,9 @@ class Zend_Locale_Data
                 if (empty($value)) {
                     $temp = self::_getFile($locale, '/ldml/localeDisplayNames/types/type', 'type');
                 } else {
-                    if (($value == 'calendar') ||
-                        ($value == 'collation') ||
-                        ($value == 'currency')) {
+                    if (($value === 'calendar') ||
+                        ($value === 'collation') ||
+                        ($value === 'currency')) {
                         $temp = self::_getFile($locale, '/ldml/localeDisplayNames/types/type[@key=\'' . $value . '\']', 'type');
                     } else {
                         $temp = self::_getFile($locale, '/ldml/localeDisplayNames/types/type[@type=\'' . $value . '\']', 'type');

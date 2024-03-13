@@ -161,7 +161,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
             $dijit = 'dijit.form.' . ucfirst($this->_sliderType) . 'Rule';
         } else {
             $dijit = $decInfo['dijit'];
-            if ('dijit.form.' != substr($dijit, 0, 10)) {
+            if ('dijit.form.' !== substr($dijit, 0, 10)) {
                 $dijit = 'dijit.form.' . $dijit;
             }
         }

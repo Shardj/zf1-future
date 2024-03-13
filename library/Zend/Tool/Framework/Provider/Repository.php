@@ -267,7 +267,7 @@ class Zend_Tool_Framework_Provider_Repository
         if (strpos($providerName, '_') !== false) {
             $providerName = substr($providerName, strrpos($providerName, '_')+1);
         }
-        if (substr($providerName, -8) == 'Provider') {
+        if (substr($providerName, -8) === 'Provider') {
             $providerName = substr($providerName, 0, strlen($providerName)-8);
         }
         return $providerName;

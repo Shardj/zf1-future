@@ -140,7 +140,7 @@ class Zend_Barcode_Object_Code39 extends Zend_Barcode_Object_ObjectAbstract
     public function getTextToDisplay()
     {
         $text = parent::getTextToDisplay();
-        if (substr($text, 0, 1) != '*' && substr($text, -1) != '*') {
+        if (substr($text, 0, 1) !== '*' && substr($text, -1) !== '*') {
             return '*' . $text . '*';
         } else {
             return $text;

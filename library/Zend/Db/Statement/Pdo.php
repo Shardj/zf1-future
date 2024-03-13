@@ -129,7 +129,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      */
     public function bindValue($parameter, $value, $type = null)
     {
-        if (is_string($parameter) && $parameter[0] != ':') {
+        if (is_string($parameter) && $parameter[0] !== ':') {
             $parameter = ":$parameter";
         }
 

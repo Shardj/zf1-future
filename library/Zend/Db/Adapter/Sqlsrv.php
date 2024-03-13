@@ -259,7 +259,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
     public function isConnected()
     {
         return (is_resource($this->_connection)
-                && (get_resource_type($this->_connection) == 'SQL Server Connection')
+                && (get_resource_type($this->_connection) === 'SQL Server Connection')
         );
     }
 
@@ -653,7 +653,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
      */
     public function supportsParameters($type)
     {
-        if ($type == 'positional') {
+        if ($type === 'positional') {
             return true;
         }
 

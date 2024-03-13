@@ -72,7 +72,7 @@ class Zend_Memory_MemoryTest extends TestCase
         }
 
         foreach (scandir($dir) as $item) {
-            if ($item == '.' || $item == '..') {
+            if ($item === '.' || $item === '..') {
                 continue;
             }
             $this->_removeCacheDir($dir . '/' . $item);

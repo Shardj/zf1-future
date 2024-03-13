@@ -465,7 +465,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                 $encoding = Zend_Amf_Constants::ET_PROPLIST;
 
                 foreach($object as $key => $value) {
-                    if( $key[0] != "_") {
+                    if( $key[0] !== "_") {
                         $propertyNames[] = $key;
                     }
                 }
@@ -507,7 +507,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
 
                     //Write remaining properties
                     foreach($object as $key => $value){
-                        if(!in_array($key,$propertyNames) && $key[0] != "_"){
+                        if(!in_array($key,$propertyNames) && $key[0] !== "_"){
                             $this->writeString($key);
                             $this->writeTypeMarker($value);
                         }

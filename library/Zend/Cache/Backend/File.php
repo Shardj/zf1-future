@@ -617,7 +617,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     protected function _isMetadatasFile($fileName)
     {
         $id = $this->_fileNameToId($fileName);
-        if (substr($id, 0, 21) == 'internal-metadatas---') {
+        if (substr($id, 0, 21) === 'internal-metadatas---') {
             return true;
         } else {
             return false;

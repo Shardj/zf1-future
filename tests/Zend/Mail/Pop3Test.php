@@ -77,7 +77,7 @@ class Zend_Mail_Pop3Test extends TestCase
     {
         $dh = opendir($dir);
         while (($entry = readdir($dh)) !== false) {
-            if ($entry == '.' || $entry == '..') {
+            if ($entry === '.' || $entry === '..') {
                 continue;
             }
             $fullname = $dir . DIRECTORY_SEPARATOR . $entry;
@@ -95,7 +95,7 @@ class Zend_Mail_Pop3Test extends TestCase
     {
         $dh = opendir($dir);
         while (($entry = readdir($dh)) !== false) {
-            if ($entry == '.' || $entry == '..' || $entry == '.svn') {
+            if ($entry === '.' || $entry === '..' || $entry === '.svn') {
                 continue;
             }
             $fullname = $dir . DIRECTORY_SEPARATOR . $entry;

@@ -373,7 +373,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
 
             $method = 'set' . $normalized;
             if (method_exists($this, $method)) {
-                if($normalized == 'View' && !($value instanceof Zend_View_Interface)) {
+                if($normalized === 'View' && !($value instanceof Zend_View_Interface)) {
                     continue;
                 }
                 $this->$method($value);
@@ -918,7 +918,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         }
 
         // Strip array notation
-        if ('[]' == substr($id, -2)) {
+        if ('[]' === substr($id, -2)) {
             $id = substr($id, 0, strlen($id) - 2);
         }
         $id = str_replace('][', '-', $id);
@@ -3242,7 +3242,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function __call($method, $args)
     {
-        if ('render' == substr($method, 0, 6)) {
+        if ('render' === substr($method, 0, 6)) {
             $decoratorName = substr($method, 6);
             if (false !== ($decorator = $this->getDecorator($decoratorName))) {
                 $decorator->setElement($this);

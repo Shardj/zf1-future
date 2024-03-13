@@ -227,7 +227,7 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
                     // "\\\n" or "\\\n\r"
                     case "\n":
                         // skip new line symbol
-                        if ($str[$offset + 1] == "\r") {
+                        if ($str[$offset + 1] === "\r") {
                             $offset++;
                         }
                         break;

@@ -270,7 +270,7 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
             'blog' => $blog
         ]);
 
-        return ('valid' == $response->getBody());
+        return ('valid' === $response->getBody());
     }
 
     /**
@@ -327,12 +327,12 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
 
         $return = trim($response->getBody());
 
-        if ('invalid' == $return) {
+        if ('invalid' === $return) {
             require_once 'Zend/Service/Exception.php';
             throw new Zend_Service_Exception('Invalid API key');
         }
 
-        if ('true' == $return) {
+        if ('true' === $return) {
             return true;
         }
 
@@ -356,7 +356,7 @@ class Zend_Service_Akismet extends Zend_Service_Abstract
     {
         $response = $this->_makeApiCall('/1.1/submit-spam', $params);
         $value    = trim($response->getBody());
-        if ('invalid' == $value) {
+        if ('invalid' === $value) {
             require_once 'Zend/Service/Exception.php';
             throw new Zend_Service_Exception('Invalid API key');
         }

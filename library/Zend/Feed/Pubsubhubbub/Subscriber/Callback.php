@@ -103,7 +103,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_Callback
          * to avoid holding up responses to the Hub.
          */
         $contentType = $this->_getHeader('Content-Type');
-        if (strtolower($_SERVER['REQUEST_METHOD']) == 'post'
+        if (strtolower($_SERVER['REQUEST_METHOD']) === 'post'
             && $this->_hasValidVerifyToken(null, false)
             && (stripos($contentType, 'application/atom+xml') === 0
                 || stripos($contentType, 'application/rss+xml') === 0
@@ -170,7 +170,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_Callback
         ) {
             return false;
         }
-        if ($httpGetData['hub_mode'] == 'subscribe'
+        if ($httpGetData['hub_mode'] === 'subscribe'
             && !array_key_exists('hub_lease_seconds', $httpGetData)
         ) {
             return false;

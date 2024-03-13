@@ -75,7 +75,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
      */
     public function removeValidator($name)
     {
-        if ($name == 'Upload') {
+        if ($name === 'Upload') {
             return $this;
         }
 
@@ -177,7 +177,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
                         $filename = $tmp;
                     }
 
-                    if (dirname($filename) == '.') {
+                    if (dirname($filename) === '.') {
                         $filename = $directory . $filename;
                     }
 

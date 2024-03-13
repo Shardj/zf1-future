@@ -171,14 +171,14 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
         // Loop accessors and retrieve values
         $returnValue = [];
         foreach ($accessors as $accessor) {
-            if ($accessor->EntityType == 'ReflectionProperty') {
+            if ($accessor->EntityType === 'ReflectionProperty') {
                 $property = $accessor->EntityAccessor;
                 $returnValue[] = (object)[
                     'Name'  => $accessor->AzurePropertyName,
                 	'Type'  => $accessor->AzurePropertyType,
                 	'Value' => $this->$property,
                 ];
-            } else if ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'get') {
+            } else if ($accessor->EntityType === 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) === 'get') {
                 $method = $accessor->EntityAccessor;
                 $returnValue[] = (object)[
                     'Name'  => $accessor->AzurePropertyName,
@@ -215,7 +215,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
         	            case 'edm.int64':
         	                $values[$accessor->AzurePropertyName] = (int)$values[$accessor->AzurePropertyName]; break;
         	            case 'edm.boolean':
-        	                if ($values[$accessor->AzurePropertyName] == 'true' || $values[$accessor->AzurePropertyName] == '1')
+        	                if ($values[$accessor->AzurePropertyName] === 'true' || $values[$accessor->AzurePropertyName] == '1')
         	                    $values[$accessor->AzurePropertyName] = true;
         	                else
         	                    $values[$accessor->AzurePropertyName] = false;
@@ -228,10 +228,10 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
                 }
 
                 // Assign value
-                if ($accessor->EntityType == 'ReflectionProperty') {
+                if ($accessor->EntityType === 'ReflectionProperty') {
                     $property = $accessor->EntityAccessor;
                     $this->$property = $values[$accessor->AzurePropertyName];
-                } else if ($accessor->EntityType == 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) == 'set') {
+                } else if ($accessor->EntityType === 'ReflectionMethod' && substr(strtolower($accessor->EntityAccessor), 0, 3) === 'set') {
                     $method = $accessor->EntityAccessor;
                     $this->$method($values[$accessor->AzurePropertyName]);
                 }
@@ -339,7 +339,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
 
     	if (@strtotime($value) !== false) {
 	    	try {
-	    		if (substr($value, -1) == 'Z') {
+	    		if (substr($value, -1) === 'Z') {
 	    			$value = substr($value, 0, strlen($value) - 1);
 	    		}
 	    		return new DateTime($value, new DateTimeZone('UTC'));

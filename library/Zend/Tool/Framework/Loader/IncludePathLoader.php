@@ -60,7 +60,7 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
             $filterDenyDirectoryPattern = '.*(/|\\\\).svn';
             $filterAcceptFilePattern    = '.*(?:Manifest|Provider)\.php$';
 
-            if (!file_exists($path) || $path[0] == '.') {
+            if (!file_exists($path) || $path[0] === '.') {
                 continue;
             }
 

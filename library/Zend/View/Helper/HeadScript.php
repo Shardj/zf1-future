@@ -223,7 +223,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             $type    = 'text/javascript';
             $attrs   = [];
 
-            if ('offsetSet' == $action) {
+            if ('offsetSet' === $action) {
                 $index = array_shift($args);
                 if (1 > count($args)) {
                     require_once 'Zend/View/Exception.php';
@@ -245,7 +245,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             switch ($mode) {
                 case 'script':
                     $item = $this->createData($type, $attrs, $content);
-                    if ('offsetSet' == $action) {
+                    if ('offsetSet' === $action) {
                         $this->offsetSet($index, $item);
                     } else {
                         $this->$action($item);
@@ -256,7 +256,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
                     if (!$this->_isDuplicate($content) || $action=='set') {
                         $attrs['src'] = $content;
                         $item = $this->createData($type, $attrs);
-                        if ('offsetSet' == $action) {
+                        if ('offsetSet' === $action) {
                             $this->offsetSet($index, $item);
                         } else {
                             $this->$action($item);

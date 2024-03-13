@@ -580,7 +580,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
 
         // See ZF-1052. This code was a bit too unforgiving of invalid
         // usernames. Now, if the username is bad, we re-challenge the client.
-        if ('::invalid::' == $data['username']) {
+        if ('::invalid::' === $data['username']) {
             return $this->_challengeClient();
         }
 
@@ -606,7 +606,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
         // If MD5-sess is used, a1 value is made of the user's password
         // hash with the server and client nonce appended, separated by
         // colons.
-        if ($this->_algo == 'MD5-sess') {
+        if ($this->_algo === 'MD5-sess') {
             $ha1 = hash('md5', $ha1 . ':' . $data['nonce'] . ':' . $data['cnonce']);
         }
 

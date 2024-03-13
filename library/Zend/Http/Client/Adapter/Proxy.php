@@ -144,7 +144,7 @@ class Zend_Http_Client_Adapter_Proxy extends Zend_Http_Client_Adapter_Socket
         $host = $this->config['proxy_host'];
         $port = $this->config['proxy_port'];
 
-        if ($this->connected_to[0] != "tcp://$host"
+        if ($this->connected_to[0] !== "tcp://$host"
             || $this->connected_to[1] != $port
         ) {
             require_once 'Zend/Http/Client/Adapter/Exception.php';
@@ -158,7 +158,7 @@ class Zend_Http_Client_Adapter_Proxy extends Zend_Http_Client_Adapter_Socket
             // Check to see if one already exists
             $hasProxyAuthHeader = false;
             foreach ($headers as $k => $v) {
-                if ((string) $k == 'proxy-authorization'
+                if ((string) $k === 'proxy-authorization'
                     || preg_match("/^proxy-authorization:/i", $v)
                 ) {
                     $hasProxyAuthHeader = true;
@@ -175,7 +175,7 @@ class Zend_Http_Client_Adapter_Proxy extends Zend_Http_Client_Adapter_Socket
         }
 
         // if we are proxying HTTPS, preform CONNECT handshake with the proxy
-        if ($uri->getScheme() == 'https' && (!$this->negotiated)) {
+        if ($uri->getScheme() === 'https' && (!$this->negotiated)) {
             $this->connectHandshake(
                 $uri->getHost(), $uri->getPort(), $http_ver, $headers
             );

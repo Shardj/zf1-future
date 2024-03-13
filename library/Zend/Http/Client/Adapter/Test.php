@@ -151,7 +151,7 @@ class Zend_Http_Client_Adapter_Test implements Zend_Http_Client_Adapter_Interfac
     public function write($method, $uri, $http_ver = '1.1', $headers = [], $body = '')
     {
         $host = $uri->getHost();
-            $host = (strtolower($uri->getScheme()) == 'https' ? 'sslv2://' . $host : $host);
+            $host = (strtolower($uri->getScheme()) === 'https' ? 'sslv2://' . $host : $host);
 
         // Build request headers
         $path = $uri->getPath();

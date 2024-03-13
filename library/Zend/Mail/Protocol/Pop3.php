@@ -90,12 +90,12 @@ class Zend_Mail_Protocol_Pop3
      */
     public function connect($host, $port = null, $ssl = false)
     {
-        if ($ssl == 'SSL') {
+        if ($ssl === 'SSL') {
             $host = 'ssl://' . $host;
         }
 
         if ($port === null) {
-            $port = $ssl == 'SSL' ? 995 : 110;
+            $port = $ssl === 'SSL' ? 995 : 110;
         }
 
         $errno  =  0;
@@ -182,7 +182,7 @@ class Zend_Mail_Protocol_Pop3
             $message = '';
         }
 
-        if ($status != '+OK') {
+        if ($status !== '+OK') {
             /**
              * @see Zend_Mail_Protocol_Exception
              */
@@ -193,8 +193,8 @@ class Zend_Mail_Protocol_Pop3
         if ($multiline) {
             $message = '';
             $line = fgets($this->_socket);
-            while ($line && rtrim($line, "\r\n") != '.') {
-                if ($line[0] == '.') {
+            while ($line && rtrim($line, "\r\n") !== '.') {
+                if ($line[0] === '.') {
                     $line = substr($line, 1);
                 }
                 $message .= $line;

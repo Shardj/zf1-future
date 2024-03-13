@@ -145,7 +145,7 @@ class Zend_Json_Server_Smd_Service
     {
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
-            if ('options' == strtolower($key)) {
+            if ('options' === strtolower($key)) {
                 continue;
             }
             $method = 'set' . ucfirst($key);
@@ -463,7 +463,7 @@ class Zend_Json_Server_Smd_Service
         }
 
         $paramType = $this->_paramMap[$type];
-        if (!$isReturn && ('null' == $paramType)) {
+        if (!$isReturn && ('null' === $paramType)) {
             require_once 'Zend/Json/Server/Exception.php';
             throw new Zend_Json_Server_Exception('Invalid param type provided ("' . $type . '")');
         }

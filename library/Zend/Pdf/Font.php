@@ -634,7 +634,7 @@ abstract class Zend_Pdf_Font
             // OpenType
 
             // TrueType
-            if (($font === null) && ($fileExtension != 'ttf')) {
+            if (($font === null) && ($fileExtension !== 'ttf')) {
                 $font = Zend_Pdf_Font::_extractTrueTypeFont($dataSource, $embeddingOptions);
             }
 

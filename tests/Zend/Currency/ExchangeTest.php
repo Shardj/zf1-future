@@ -44,9 +44,9 @@ class ExchangeTest implements Zend_Currency_CurrencyInterface
      */
     public function getRate($from, $to)
     {
-        if ($from == "RUB") {
+        if ($from === "RUB") {
             return 2;
-        } elseif ($from == "USD") {
+        } elseif ($from === "USD") {
             return 0.5;
         } else {
             return 1;

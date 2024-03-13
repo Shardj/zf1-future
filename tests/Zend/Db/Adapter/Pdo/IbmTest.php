@@ -53,7 +53,7 @@ class Zend_Db_Adapter_Pdo_IbmTest extends Zend_Db_Adapter_Db2Test
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $this->markTestIncomplete('IDS needs special consideration for transactions');
         } else {
             parent::testAdapterTransactionCommit();
@@ -64,7 +64,7 @@ class Zend_Db_Adapter_Pdo_IbmTest extends Zend_Db_Adapter_Db2Test
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $this->markTestIncomplete('IDS needs special consideration for transactions');
         } else {
             parent::testAdapterTransactionCommit();
@@ -101,7 +101,7 @@ class Zend_Db_Adapter_Pdo_IbmTest extends Zend_Db_Adapter_Db2Test
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'DB2') {
+        if ($server === 'DB2') {
             return 'CASE_FOLDED_IDENTIFIER';
         }
         return 'case_folded_identifier';

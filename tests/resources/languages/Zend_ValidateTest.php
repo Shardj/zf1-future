@@ -54,7 +54,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
         $langs = 'all';
         if (defined('TESTS_ZEND_RESOURCES_TRANSLATIONS')) {
             $langs = constant('TESTS_ZEND_RESOURCES_TRANSLATIONS');
-            if ($langs == 'en' || !Zend_Locale::isLocale($langs, true, false)) {
+            if ($langs === 'en' || !Zend_Locale::isLocale($langs, true, false)) {
                 $langs = 'all';
             }
         }
@@ -67,12 +67,12 @@ class resources_languages_Zend_ValidateTest extends TestCase
 
             // skip "." or ".." or ".svn"
             $fname = $entry->getFilename();
-            if ($fname[0] == '.') {
+            if ($fname[0] === '.') {
                 continue;
             }
 
             // add all languages for testIsLocale
-            if ($langs == 'all' || $langs == $fname || $fname == 'en') {
+            if ($langs === 'all' || $langs == $fname || $fname === 'en') {
                 $this->_languages[] = $fname;
             }
 
@@ -84,7 +84,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
                     $this->fail("Invalid or empty translation table found for language '{$fname}'");
                 }
 
-                if ($langs == 'all' || $langs == $fname || $fname == 'en') {
+                if ($langs === 'all' || $langs == $fname || $fname === 'en') {
                     $this->_translations[$fname] = $translation;
                 }
             }
@@ -133,7 +133,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
         $errors = [];
         $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
-            if ($lang == 'en') {
+            if ($lang === 'en') {
                 continue;
             }
 
@@ -159,7 +159,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
         $errors = [];
         $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
-            if ($lang == 'en') {
+            if ($lang === 'en') {
                 continue;
             }
 
@@ -185,7 +185,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
         $errors = [];
         $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
-            if ($lang == 'en') { // not needed to test - see testEnglishKeySameAsValue
+            if ($lang === 'en') { // not needed to test - see testEnglishKeySameAsValue
                 continue;
             }
 
@@ -215,7 +215,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
         $cnt = 0;
         foreach ($this->_translations as $lang => $translation) {
             foreach ($this->_translations['en'] as $key => $value) {
-                if ($lang == 'en') {
+                if ($lang === 'en') {
                     continue;
                 }
 

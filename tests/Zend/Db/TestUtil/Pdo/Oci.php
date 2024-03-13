@@ -61,13 +61,13 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         if (preg_match('/VARCHAR(.*)/', $type, $matches)) {
             return 'VARCHAR2' . $matches[1];
         }
-        if ($type == 'IDENTITY') {
+        if ($type === 'IDENTITY') {
             return 'NUMBER(11) PRIMARY KEY';
         }
-        if ($type == 'INTEGER') {
+        if ($type === 'INTEGER') {
             return 'NUMBER(11)';
         }
-        if ($type == 'DATETIME') {
+        if ($type === 'DATETIME') {
             return 'TIMESTAMP';
         }
         return $type;

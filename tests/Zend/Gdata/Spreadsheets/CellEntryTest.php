@@ -50,11 +50,11 @@ class Zend_Gdata_Spreadsheets_CellEntryTest extends TestCase
     public function testToAndFromString()
     {
         $this->cellEntry->setCell(new Zend_Gdata_Spreadsheets_Extension_Cell('my cell', '1', '2', 'input value', 'numeric value'));
-        $this->assertTrue($this->cellEntry->getCell()->getText() == 'my cell');
+        $this->assertTrue($this->cellEntry->getCell()->getText() === 'my cell');
         $this->assertTrue($this->cellEntry->getCell()->getRow() == '1');
         $this->assertTrue($this->cellEntry->getCell()->getColumn() == '2');
-        $this->assertTrue($this->cellEntry->getCell()->getInputValue() == 'input value');
-        $this->assertTrue($this->cellEntry->getCell()->getNumericValue() == 'numeric value');
+        $this->assertTrue($this->cellEntry->getCell()->getInputValue() === 'input value');
+        $this->assertTrue($this->cellEntry->getCell()->getNumericValue() === 'numeric value');
 
         $newCellEntry = new Zend_Gdata_Spreadsheets_CellEntry();
         $doc = new DOMDocument();

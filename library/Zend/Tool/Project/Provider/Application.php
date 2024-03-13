@@ -44,7 +44,7 @@ class Zend_Tool_Project_Provider_Application
 
         $originalClassNamePrefix = $classNamePrefix;
 
-        if (substr($classNamePrefix, -1) != '_') {
+        if (substr($classNamePrefix, -1) !== '_') {
             $classNamePrefix .= '_';
         }
 

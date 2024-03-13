@@ -185,9 +185,9 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
             if (!isset($result->CreateQueueResult->QueueUrl)
                 || empty($result->CreateQueueResult->QueueUrl)
             ) {
-                if ($result->Error->Code == 'AWS.SimpleQueueService.QueueNameExists') {
+                if ($result->Error->Code === 'AWS.SimpleQueueService.QueueNameExists') {
                     return false;
-                } elseif ($result->Error->Code == 'AWS.SimpleQueueService.QueueDeletedRecently') {
+                } elseif ($result->Error->Code === 'AWS.SimpleQueueService.QueueDeletedRecently') {
                     // Must sleep for 60 seconds, then try re-creating the queue
                     sleep(60);
                     $retry = true;

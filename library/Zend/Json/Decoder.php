@@ -362,7 +362,7 @@ class Zend_Json_Decoder
 
                     $chr = $str[$i];
 
-                    if ($chr == '\\') {
+                    if ($chr === '\\') {
                         $i++;
                         if ($i >= $str_length) {
                             break;
@@ -401,7 +401,7 @@ class Zend_Json_Decoder
                                 throw new Zend_Json_Exception("Illegal escape "
                                     .  "sequence '" . $chr . "'");
                         }
-                    } elseif($chr == '"') {
+                    } elseif($chr === '"') {
                         break;
                     } else {
                         $result .= $chr;
@@ -413,21 +413,21 @@ class Zend_Json_Decoder
                 $this->_tokenValue = $result;
                 break;
             case 't':
-                if (($i+ 3) < $str_length && substr($str, $start, 4) == "true") {
+                if (($i+ 3) < $str_length && substr($str, $start, 4) === "true") {
                     $this->_token = self::DATUM;
                 }
                 $this->_tokenValue = true;
                 $i += 3;
                 break;
             case 'f':
-                if (($i+ 4) < $str_length && substr($str, $start, 5) == "false") {
+                if (($i+ 4) < $str_length && substr($str, $start, 5) === "false") {
                     $this->_token = self::DATUM;
                 }
                 $this->_tokenValue = false;
                 $i += 4;
                 break;
             case 'n':
-                if (($i+ 3) < $str_length && substr($str, $start, 4) == "null") {
+                if (($i+ 3) < $str_length && substr($str, $start, 4) === "null") {
                     $this->_token = self::DATUM;
                 }
                 $this->_tokenValue = NULL;
@@ -441,7 +441,7 @@ class Zend_Json_Decoder
         }
 
         $chr = $str[$i];
-        if ($chr == '-' || $chr == '.' || ($chr >= '0' && $chr <= '9')) {
+        if ($chr === '-' || $chr === '.' || ($chr >= '0' && $chr <= '9')) {
             if (preg_match('/-?([0-9])*(\.[0-9]*)?((e|E)((-|\+)?)[0-9]+)?/s',
                 $str, $matches, PREG_OFFSET_CAPTURE, $start) && $matches[0][1] == $start) {
 

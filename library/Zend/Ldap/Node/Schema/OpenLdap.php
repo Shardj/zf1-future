@@ -451,13 +451,13 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
             } else {
                 $data[$token] = array_shift($tokens);
                 // this one follows a string or a list if it is multivalued
-                if ($data[$token] == '(') {
+                if ($data[$token] === '(') {
                     // this creates the list of values and cycles through the tokens
                     // until the end of the list is reached ')'
                     $data[$token] = [];
                     while ($tmp = array_shift($tokens)) {
-                        if ($tmp == ')') break;
-                        if ($tmp != '$') {
+                        if ($tmp === ')') break;
+                        if ($tmp !== '$') {
                             $data[$token][] = Zend_Ldap_Attribute::convertFromLdapValue($tmp);
                         }
                     }
@@ -495,8 +495,8 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
                 }
             }
         }
-        if ($tokens[0] == '(') array_shift($tokens);
-        if ($tokens[count($tokens) - 1] == ')') array_pop($tokens);
+        if ($tokens[0] === '(') array_shift($tokens);
+        if ($tokens[count($tokens) - 1] === ')') array_pop($tokens);
         return $tokens;
     }
 }

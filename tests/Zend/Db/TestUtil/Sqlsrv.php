@@ -53,7 +53,7 @@ class Zend_Db_TestUtil_Sqlsrv extends Zend_Db_TestUtil_Common
 
     public function getSqlType($type)
     {
-        if ($type == 'IDENTITY') {
+        if ($type === 'IDENTITY') {
             return 'INT NOT NULL IDENTITY PRIMARY KEY';
         }
         return $type;

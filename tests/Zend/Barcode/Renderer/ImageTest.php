@@ -126,9 +126,9 @@ class Zend_Barcode_Renderer_ImageTest extends Zend_Barcode_Renderer_TestCommon
         $this->_renderer->setBarcode($barcode);
         $resource = $this->_renderer->draw();
         if (PHP_VERSION_ID < 80000) {
-            $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
+            $this->assertTrue(gettype($resource) === 'resource', 'Image must be a resource');
             $this->assertTrue(
-                get_resource_type($resource) == 'gd',
+                get_resource_type($resource) === 'gd',
                 'Image must be a GD resource'
             );
         } else {
@@ -146,9 +146,9 @@ class Zend_Barcode_Renderer_ImageTest extends Zend_Barcode_Renderer_TestCommon
         $this->_renderer->setResource($imageResource);
         $resource = $this->_renderer->draw();
         if (PHP_VERSION_ID < 80000) {
-            $this->assertTrue(gettype($resource) == 'resource', 'Image must be a resource');
+            $this->assertTrue(gettype($resource) === 'resource', 'Image must be a resource');
             $this->assertTrue(
-                get_resource_type($resource) == 'gd',
+                get_resource_type($resource) === 'gd',
                 'Image must be a GD resource'
             );
         } else {

@@ -107,7 +107,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
         if (!$this->hasConstraint('strict')) {
             return false;
         }
-        return ('true' == $this->getConstraint('strict'));
+        return ('true' === $this->getConstraint('strict'));
     }
 
     /**

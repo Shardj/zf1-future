@@ -183,7 +183,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
      */
     public function __get($property)
     {
-        if ($property == 'value') {
+        if ($property === 'value') {
             return $this->_value;
         }
         if (array_key_exists($property, $this->_messageVariables)) {

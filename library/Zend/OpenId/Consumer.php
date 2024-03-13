@@ -245,8 +245,8 @@ class Zend_OpenId_Consumer
             $this->_setError("Missing openid.sig");
             return false;
         }
-        if ($params['openid_mode'] != 'id_res') {
-            $this->_setError("Wrong openid.mode '".$params['openid_mode']."' != 'id_res'");
+        if ($params['openid_mode'] !== 'id_res') {
+            $this->_setError("Wrong openid.mode '".$params['openid_mode']."' !== 'id_res'");
             return false;
         }
         if (empty($params['openid_assoc_handle'])) {
@@ -260,7 +260,7 @@ class Zend_OpenId_Consumer
                 substr($params['openid_return_to'], 0 , $pos) != Zend_OpenId::selfUrl()) {
 
                 $this->_setError("Wrong openid.return_to '".
-                    $params['openid_return_to']."' != '" . Zend_OpenId::selfUrl() ."'");
+                    $params['openid_return_to']."' !== '" . Zend_OpenId::selfUrl() ."'");
                 return false;
             }
         }
@@ -422,7 +422,7 @@ class Zend_OpenId_Consumer
                     $this->_storage->delAssociation($url);
                 }
             }
-            if (isset($ret['is_valid']) && $ret['is_valid'] == 'true') {
+            if (isset($ret['is_valid']) && $ret['is_valid'] === 'true') {
                 if (!Zend_OpenId_Extension::forAll($extensions, 'parseResponse', $params)) {
                     $this->_setError("Extension::parseResponse failure");
                     return false;
@@ -516,7 +516,7 @@ class Zend_OpenId_Consumer
         }
 
         $client->resetParameters();
-        if ($method == 'POST') {
+        if ($method === 'POST') {
             $client->setMethod(Zend_Http_Client::POST);
             $client->setParameterPost($params);
         } else {
@@ -627,11 +627,11 @@ class Zend_OpenId_Consumer
             $ret = $r;
 
             if (isset($ret['error_code']) &&
-                $ret['error_code'] == 'unsupported-type') {
-                if ($params['openid.session_type'] == 'DH-SHA256') {
+                $ret['error_code'] === 'unsupported-type') {
+                if ($params['openid.session_type'] === 'DH-SHA256') {
                     $params['openid.session_type'] = 'DH-SHA1';
                     $params['openid.assoc_type'] = 'HMAC-SHA1';
-                } else if ($params['openid.session_type'] == 'DH-SHA1') {
+                } else if ($params['openid.session_type'] === 'DH-SHA1') {
                     $params['openid.session_type'] = 'no-encryption';
                 } else {
                     $this->_setError("The OpenID service responded with: " . $ret['error_code']);
@@ -669,9 +669,9 @@ class Zend_OpenId_Consumer
         $handle     = $ret['assoc_handle'];
         $expiresIn = $ret['expires_in'];
 
-        if ($ret['assoc_type'] == 'HMAC-SHA1') {
+        if ($ret['assoc_type'] === 'HMAC-SHA1') {
             $macFunc = 'sha1';
-        } else if ($ret['assoc_type'] == 'HMAC-SHA256' &&
+        } else if ($ret['assoc_type'] === 'HMAC-SHA256' &&
             $version >= 2.0) {
             $macFunc = 'sha256';
         } else {
@@ -680,16 +680,16 @@ class Zend_OpenId_Consumer
         }
 
         if ((empty($ret['session_type']) ||
-             ($version >= 2.0 && $ret['session_type'] == 'no-encryption')) &&
+             ($version >= 2.0 && $ret['session_type'] === 'no-encryption')) &&
              isset($ret['mac_key'])) {
             $secret = base64_decode($ret['mac_key']);
         } else if (isset($ret['session_type']) &&
-            $ret['session_type'] == 'DH-SHA1' &&
+            $ret['session_type'] === 'DH-SHA1' &&
             !empty($ret['dh_server_public']) &&
             !empty($ret['enc_mac_key'])) {
             $dhFunc = 'sha1';
         } else if (isset($ret['session_type']) &&
-            $ret['session_type'] == 'DH-SHA256' &&
+            $ret['session_type'] === 'DH-SHA256' &&
             $version >= 2.0 &&
             !empty($ret['dh_server_public']) &&
             !empty($ret['enc_mac_key'])) {
@@ -712,12 +712,12 @@ class Zend_OpenId_Consumer
             }
             $secret = $sec ^ base64_decode($ret['enc_mac_key']);
         }
-        if ($macFunc == 'sha1') {
+        if ($macFunc === 'sha1') {
             if (Zend_OpenId::strlen($secret) != 20) {
                 $this->_setError("The length of the sha1 secret must be 20");
                 return false;
             }
-        } else if ($macFunc == 'sha256') {
+        } else if ($macFunc === 'sha256') {
             if (Zend_OpenId::strlen($secret) != 32) {
                 $this->_setError("The length of the sha256 secret must be 32");
                 return false;
@@ -926,7 +926,7 @@ class Zend_OpenId_Consumer
 
         if (empty($root)) {
             $root = Zend_OpenId::selfUrl();
-            if ($root[strlen($root)-1] != '/') {
+            if ($root[strlen($root)-1] !== '/') {
                 $root = dirname($root);
             }
         }

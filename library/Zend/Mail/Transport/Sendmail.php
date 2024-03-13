@@ -101,7 +101,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
         $subject = $this->_mail->getSubject();
         $body = $this->body;
         $header = $this->header;
-        $isWindowsOs = strtoupper(substr(PHP_OS, 0, 3)) == 'WIN';
+        $isWindowsOs = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
         if (PHP_VERSION_ID < 80000 && !$isWindowsOs) {
             $recipients = str_replace("\r\n", "\n", $recipients);
             $subject = str_replace("\r\n", "\n", $subject);

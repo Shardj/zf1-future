@@ -303,7 +303,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
              */
             if (!$method->getDeclaringClass()->isInstantiable()
                 || !$method->isPublic()
-                || $methodName[0] == '_'
+                || $methodName[0] === '_'
                 || $method->isStatic()
                 || in_array($methodName, ['getContextClasses', 'getName']) // other protected public methods will nee to go here
                 ) {
@@ -322,7 +322,7 @@ class Zend_Tool_Framework_Provider_Signature implements Zend_Tool_Framework_Regi
 
             $actionableName = ucfirst($methodName);
 
-            if (substr($actionableName, -6) == 'Action') {
+            if (substr($actionableName, -6) === 'Action') {
                 $actionableName = substr($actionableName, 0, -6);
             }
 

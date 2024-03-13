@@ -148,9 +148,9 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
                 return $_POST[$key];
             case isset($_COOKIE[$key]):
                 return $_COOKIE[$key];
-            case ($key == 'REQUEST_URI'):
+            case ($key === 'REQUEST_URI'):
                 return $this->getRequestUri();
-            case ($key == 'PATH_INFO'):
+            case ($key === 'PATH_INFO'):
                 return $this->getPathInfo();
             case isset($_SERVER[$key]):
                 return $_SERVER[$key];
@@ -850,7 +850,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isPost()
     {
-        if ('POST' == $this->getMethod()) {
+        if ('POST' === $this->getMethod()) {
             return true;
         }
 
@@ -864,7 +864,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isGet()
     {
-        if ('GET' == $this->getMethod()) {
+        if ('GET' === $this->getMethod()) {
             return true;
         }
 
@@ -878,7 +878,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isPut()
     {
-        if ('PUT' == $this->getMethod()) {
+        if ('PUT' === $this->getMethod()) {
             return true;
         }
 
@@ -892,7 +892,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isDelete()
     {
-        if ('DELETE' == $this->getMethod()) {
+        if ('DELETE' === $this->getMethod()) {
             return true;
         }
 
@@ -906,7 +906,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isHead()
     {
-        if ('HEAD' == $this->getMethod()) {
+        if ('HEAD' === $this->getMethod()) {
             return true;
         }
 
@@ -920,7 +920,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isOptions()
     {
-        if ('OPTIONS' == $this->getMethod()) {
+        if ('OPTIONS' === $this->getMethod()) {
             return true;
         }
 
@@ -934,7 +934,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isPatch()
     {
-        if ('PATCH' == $this->getMethod()) {
+        if ('PATCH' === $this->getMethod()) {
             return true;
         }
 
@@ -950,7 +950,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function isXmlHttpRequest()
     {
-        return ($this->getHeader('X_REQUESTED_WITH') == 'XMLHttpRequest');
+        return ($this->getHeader('X_REQUESTED_WITH') === 'XMLHttpRequest');
     }
 
     /**
@@ -1050,7 +1050,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function getScheme()
     {
-        return ($this->getServer('HTTPS') == 'on') ? self::SCHEME_HTTPS : self::SCHEME_HTTP;
+        return ($this->getServer('HTTPS') === 'on') ? self::SCHEME_HTTPS : self::SCHEME_HTTP;
     }
 
     /**

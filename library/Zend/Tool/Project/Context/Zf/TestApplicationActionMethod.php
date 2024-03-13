@@ -154,7 +154,7 @@ class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_T
 
         /* @var Zend_Tool_Project_Profile_Resource $controllerDirectoryResource */
         $controllerDirectoryResource = $this->_resource->getParentResource()->getParentResource();
-        if ($controllerDirectoryResource->getParentResource()->getName() == 'TestApplicationModuleDirectory') {
+        if ($controllerDirectoryResource->getParentResource()->getName() === 'TestApplicationModuleDirectory') {
             $moduleParam = $controllerDirectoryResource->getParentResource()->getForModuleName();
         } else {
             $moduleParam = 'default';
@@ -162,7 +162,7 @@ class Zend_Tool_Project_Context_Zf_TestApplicationActionMethod implements Zend_T
 
 
 
-        if ($actionParam == 'index' && $controllerParam == 'Index' && $moduleParam == 'default') {
+        if ($actionParam === 'index' && $controllerParam === 'Index' && $moduleParam === 'default') {
             $assert = '$this->assertQueryContentContains("div#welcome h3", "This is your project\'s main page");';
         } else {
             $assert = <<<EOS

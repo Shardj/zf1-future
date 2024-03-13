@@ -342,9 +342,9 @@ class Zend_Reflection_File implements Reflector
             } else {
                 // It's a symbol
                 // Maintain the count of open braces
-                if ($token == '{') {
+                if ($token === '{') {
                     $openBraces++;
-                } else if ($token == '}') {
+                } else if ($token === '}') {
                     if ( $embeddedVariableTrapped ) {
                         $embeddedVariableTrapped = false;
                     } else {

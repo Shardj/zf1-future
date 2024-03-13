@@ -321,7 +321,7 @@ class Zend_Json_Encoder
 
             $result .= '' . $method->getName(). ':function(';
 
-            if ('__construct' != $method->getName()) {
+            if ('__construct' !== $method->getName()) {
                 $parameters  = $method->getParameters();
                 $paramCount  = count($parameters);
                 $argsStarted = false;

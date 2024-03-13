@@ -227,7 +227,7 @@ class Zend_Form_Element_HashTest extends TestCase
      */
     protected function _checkZf2794()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
+        if (strtolower(substr(PHP_OS, 0, 3)) === 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
             $this->markTestIncomplete('Error occurs for PHP 5.1.4 on Windows');
         }
     }
@@ -243,7 +243,7 @@ class Zend_Form_Element_HashTest_SessionContainer
 
     public function __get($name)
     {
-        if ('hash' == $name) {
+        if ('hash' === $name) {
             return self::$_hash;
         }
 
@@ -252,7 +252,7 @@ class Zend_Form_Element_HashTest_SessionContainer
 
     public function __set($name, $value)
     {
-        if ('hash' == $name) {
+        if ('hash' === $name) {
             self::$_hash = $value;
         } else {
             $this->$name = $value;
@@ -261,7 +261,7 @@ class Zend_Form_Element_HashTest_SessionContainer
 
     public function __isset($name)
     {
-        if (('hash' == $name) && (null !== self::$_hash)) {
+        if (('hash' === $name) && (null !== self::$_hash)) {
             return true;
         }
 

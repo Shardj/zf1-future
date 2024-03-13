@@ -289,7 +289,7 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
         $helperPaths = $this->helper->view->getHelperPaths();
         $found = false;
         foreach ($helperPaths as $prefix => $paths) {
-            if ('Baz_Bat_Helper_' == $prefix) {
+            if ('Baz_Bat_Helper_' === $prefix) {
                 $found = true;
             }
         }
@@ -298,7 +298,7 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
         $filterPaths = $this->helper->view->getFilterPaths();
         $found = false;
         foreach ($filterPaths as $prefix => $paths) {
-            if ('Baz_Bat_Filter_' == $prefix) {
+            if ('Baz_Bat_Filter_' === $prefix) {
                 $found = true;
             }
         }

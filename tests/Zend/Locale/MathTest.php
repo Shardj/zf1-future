@@ -48,7 +48,7 @@ class Zend_Locale_MathTest extends TestCase
     protected function set_up()
     {
         self::$savedLocale = setlocale(LC_NUMERIC, '0');
-        if (self::$savedLocale != 'C') {
+        if (self::$savedLocale !== 'C') {
             setlocale(LC_NUMERIC, 'C');
         }
     }
@@ -58,7 +58,7 @@ class Zend_Locale_MathTest extends TestCase
      */
     protected function tear_down()
     {
-        if (self::$savedLocale != 'C') {
+        if (self::$savedLocale !== 'C') {
             setlocale(LC_NUMERIC, self::$savedLocale);
         }
     }

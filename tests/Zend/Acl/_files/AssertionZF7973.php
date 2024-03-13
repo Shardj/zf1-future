@@ -10,7 +10,7 @@ class Zend_Acl_AclTest_AssertionZF7973 implements Zend_Acl_Assert_Interface
         Zend_Acl_Resource_Interface $resource = null,
         $privilege = null
     ) {
-        if ($privilege != 'privilege') {
+        if ($privilege !== 'privilege') {
             return false;
         }
 

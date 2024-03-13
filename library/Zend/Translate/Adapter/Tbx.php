@@ -128,7 +128,7 @@ class Zend_Translate_Adapter_Tbx extends Zend_Translate_Adapter {
 
     private function _endElement($file, $name)
     {
-        if (($this->_term !== null) && ($name != "term")) {
+        if (($this->_term !== null) && ($name !== "term")) {
             $this->_content .= "</".$name.">";
         } else {
             switch (strtolower($name)) {

@@ -129,13 +129,13 @@ class Zend_Search_Lucene_Search_QueryToken
 
         switch ($tokenCategory) {
             case self::TC_WORD:
-                if (  strtolower($tokenText) == 'and') {
+                if (  strtolower($tokenText) === 'and') {
                     $this->type = self::TT_AND_LEXEME;
-                } else if (strtolower($tokenText) == 'or') {
+                } else if (strtolower($tokenText) === 'or') {
                     $this->type = self::TT_OR_LEXEME;
-                } else if (strtolower($tokenText) == 'not') {
+                } else if (strtolower($tokenText) === 'not') {
                     $this->type = self::TT_NOT_LEXEME;
-                } else if (strtolower($tokenText) == 'to') {
+                } else if (strtolower($tokenText) === 'to') {
                     $this->type = self::TT_TO_LEXEME;
                 } else {
                     $this->type = self::TT_WORD;

@@ -224,7 +224,7 @@ class Zend_Mobile_Push_Message_Apns extends Zend_Mobile_Push_Message_Abstract
         if (!is_string($key)) {
             throw new Zend_Mobile_Push_Message_Exception('$key is not a string');
         }
-        if ($key == 'aps') {
+        if ($key === 'aps') {
             throw new Zend_Mobile_Push_Message_Exception('$key must not be aps as it is reserved by apple');
         }
         $this->_custom[$key] = $value;

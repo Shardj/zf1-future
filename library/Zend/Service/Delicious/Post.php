@@ -285,7 +285,7 @@ class Zend_Service_Delicious_Post extends Zend_Service_Delicious_SimplePost
              * @todo replace strtotime() with Zend_Date equivalent
              */
             'date'   => new Zend_Date(strtotime($node->getAttribute('time'))),
-            'shared' => ($node->getAttribute('shared') == 'no' ? false : true),
+            'shared' => ($node->getAttribute('shared') === 'no' ? false : true),
             'hash'   => $node->getAttribute('hash')
         ];
     }

@@ -344,7 +344,7 @@ abstract class Zend_Pdf_Resource_Font_CidFont extends Zend_Pdf_Resource_Font
         /* Convert the string to UTF-16BE encoding so we can match the string's
          * character codes to those found in the cmap.
          */
-        if ($charEncoding != 'UTF-16BE') {
+        if ($charEncoding !== 'UTF-16BE') {
             $string = iconv($charEncoding, 'UTF-16BE', $string);
         }
 

@@ -279,7 +279,7 @@ class Zend_Service_Amazon_Ec2_Image extends Zend_Service_Amazon_Ec2_Abstract
         $return['imageId'] = $xpath->evaluate('string(//ec2:imageId/text())');
 
         // check for launchPermission
-        if($attribute == 'launchPermission') {
+        if($attribute === 'launchPermission') {
             $lPnodes = $xpath->query('//ec2:launchPermission/ec2:item');
 
             if($lPnodes->length > 0) {
@@ -291,7 +291,7 @@ class Zend_Service_Amazon_Ec2_Image extends Zend_Service_Amazon_Ec2_Abstract
         }
 
         // check for product codes
-        if($attribute == 'productCodes') {
+        if($attribute === 'productCodes') {
             $pCnodes = $xpath->query('//ec2:productCodes/ec2:item');
             if($pCnodes->length > 0) {
                 $return['productCodes'] = [];

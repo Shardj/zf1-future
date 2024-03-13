@@ -469,7 +469,7 @@ class Zend_ConfigTest extends TestCase
         $keyList = [];
         foreach ($config as $key => $value) {
             $keyList[] = $key;
-            if ($key == 'first') {
+            if ($key === 'first') {
                 unset($config->$key); // uses magic Zend_Config::__unset() method
             }
         }
@@ -494,7 +494,7 @@ class Zend_ConfigTest extends TestCase
         $keyList = [];
         foreach ($config as $key => $value) {
             $keyList[] = $key;
-            if ($key == 'second') {
+            if ($key === 'second') {
                 unset($config->$key); // uses magic Zend_Config::__unset() method
             }
         }
@@ -519,7 +519,7 @@ class Zend_ConfigTest extends TestCase
         $keyList = [];
         foreach ($config as $key => $value) {
             $keyList[] = $key;
-            if ($key == 'third') {
+            if ($key === 'third') {
                 unset($config->$key); // uses magic Zend_Config::__unset() method
             }
         }

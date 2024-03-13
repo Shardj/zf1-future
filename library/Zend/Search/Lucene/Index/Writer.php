@@ -169,8 +169,8 @@ class Zend_Search_Lucene_Index_Writer
         if ($generation == 0) {
             // Create index in pre-2.1 mode
             foreach ($directory->fileList() as $file) {
-                if ($file == 'deletable' ||
-                    $file == 'segments'  ||
+                if ($file === 'deletable' ||
+                    $file === 'segments'  ||
                     isset(self::$_indexExtensions[ substr($file, strlen($file)-4)]) ||
                     preg_match('/\.f\d+$/i', $file) /* matches <segment_name>.f<decimal_nmber> file names */) {
                         $directory->deleteFile($file);
@@ -627,12 +627,12 @@ class Zend_Search_Lucene_Index_Writer
             $delFiles = [];
 
             foreach ($this->_directory->fileList() as $file) {
-                if ($file == 'deletable') {
+                if ($file === 'deletable') {
                     // 'deletable' file
                     $filesToDelete[] = $file;
                     $filesTypes[]    = 0; // delete this file first, since it's not used starting from Lucene v2.1
                     $filesNumbers[]  = 0;
-                } else if ($file == 'segments') {
+                } else if ($file === 'segments') {
                     // 'segments' file
                     $filesToDelete[] = $file;
                     $filesTypes[]    = 1; // second file to be deleted "zero" version of segments file (Lucene pre-2.1)
@@ -710,7 +710,7 @@ class Zend_Search_Lucene_Index_Writer
                 try {
                     /** Skip shared docstore segments deleting */
                     /** @todo Process '.cfx' files to check if them are already unused */
-                    if (substr($file, strlen($file)-4) != '.cfx') {
+                    if (substr($file, strlen($file)-4) !== '.cfx') {
                         $this->_directory->deleteFile($file);
                     }
                 } catch (Zend_Search_Lucene_Exception $e) {

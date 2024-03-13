@@ -127,14 +127,14 @@ class Zend_Mail_Part_File extends Zend_Mail_Part
             $pos = ftell($this->_fh);
             $line = trim($line);
 
-            if ($line == '--' . $boundary) {
+            if ($line === '--' . $boundary) {
                 if ($part) {
                     // not first part
                     $part[1] = $lastPos;
                     $this->_partPos[] = $part;
                 }
                 $part = [$pos];
-            } else if ($line == '--' . $boundary . '--') {
+            } else if ($line === '--' . $boundary . '--') {
                 $part[1] = $lastPos;
                 $this->_partPos[] = $part;
                 break;

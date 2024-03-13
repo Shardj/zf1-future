@@ -59,7 +59,7 @@ class Zend_Pdf_Annotation_Link extends Zend_Pdf_Annotation
 
         if ($annotationDictionary->Subtype === null  ||
             $annotationDictionary->Subtype->getType() != Zend_Pdf_Element::TYPE_NAME  ||
-            $annotationDictionary->Subtype->value != 'Link') {
+            $annotationDictionary->Subtype->value !== 'Link') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Subtype => Link entry is requires');
         }

@@ -195,7 +195,7 @@ class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
         $desc = [];
         foreach ($result as $key => $row) {
             $defaultValue = $row[$default_value];
-            if ($row[$type] == 'varchar' || $row[$type] == 'bpchar' ) {
+            if ($row[$type] === 'varchar' || $row[$type] === 'bpchar' ) {
                 if (preg_match('/character(?: varying)?(?:\((\d+)\))?/', $row[$complete_type] ?? "", $matches)) {
                     if (isset($matches[1])) {
                         $row[$length] = $matches[1];
@@ -208,7 +208,7 @@ class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
                 }
             }
             list($primary, $primaryPosition, $identity) = [false, null, false];
-            if ($row[$contype] == 'p') {
+            if ($row[$contype] === 'p') {
                 $primary = true;
                 $primaryPosition = array_search($row[$attnum], explode(',', $row[$conkey])) + 1;
                 $identity = (bool) (preg_match('/^nextval/', $row[$default_value] ?? ""));
@@ -220,7 +220,7 @@ class Zend_Db_Adapter_Pdo_Pgsql extends Zend_Db_Adapter_Pdo_Abstract
                 'COLUMN_POSITION'  => $row[$attnum],
                 'DATA_TYPE'        => $row[$type],
                 'DEFAULT'          => $defaultValue,
-                'NULLABLE'         => (bool) ($row[$notnull] != 't'),
+                'NULLABLE'         => (bool) ($row[$notnull] !== 't'),
                 'LENGTH'           => $row[$length],
                 'SCALE'            => null, // @todo
                 'PRECISION'        => null, // @todo

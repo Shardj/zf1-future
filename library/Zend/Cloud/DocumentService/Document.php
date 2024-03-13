@@ -213,11 +213,11 @@ class Zend_Cloud_DocumentService_Document
     public function __call($name, $args)
     {
         $prefix = substr($name, 0, 3);
-        if ($prefix == 'get') {
+        if ($prefix === 'get') {
             // Get value
             $option = substr($name, 3);
             return $this->getField($option);
-        } elseif ($prefix == 'set') {
+        } elseif ($prefix === 'set') {
             // set value
             $option = substr($name, 3);
             return $this->setField($option, $args[0]);

@@ -96,7 +96,7 @@ abstract class Zend_Http_Client_CommonHttpTests extends TestCase
         if (defined('TESTS_ZEND_HTTP_CLIENT_BASEURI') &&
             Zend_Uri_Http::check(TESTS_ZEND_HTTP_CLIENT_BASEURI)) {
             $this->baseuri = TESTS_ZEND_HTTP_CLIENT_BASEURI;
-            if (substr($this->baseuri, -1) != '/') {
+            if (substr($this->baseuri, -1) !== '/') {
                 $this->baseuri .= '/';
             }
 

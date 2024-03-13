@@ -46,7 +46,7 @@ class Zend_Db_Table_Row_Pdo_IbmTest extends Zend_Db_Table_Row_TestCommon
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $this->markTestSkipped('IDS Serial columns cannot be updated');
         } else {
             parent::testTableRowSetPrimaryKey();

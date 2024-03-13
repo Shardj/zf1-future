@@ -643,7 +643,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
                     $text = str_repeat('0', $length - strlen($text)) . $text;
                 }
             } else {
-                if ($this->_barcodeLength == 'even') {
+                if ($this->_barcodeLength === 'even') {
                     $text = ((strlen((string) $text) - $omitChecksum) % 2 ? '0' . $text : $text);
                 }
             }

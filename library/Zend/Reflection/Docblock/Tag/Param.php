@@ -54,7 +54,7 @@ class Zend_Reflection_Docblock_Tag_Param extends Zend_Reflection_Docblock_Tag
             throw new Zend_Reflection_Exception('Provided docblock line is does not contain a valid tag');
         }
 
-        if ($matches[1] != 'param') {
+        if ($matches[1] !== 'param') {
             require_once 'Zend/Reflection/Exception.php';
             throw new Zend_Reflection_Exception('Provided docblock line is does not contain a valid @param tag');
         }

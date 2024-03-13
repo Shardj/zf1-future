@@ -50,7 +50,7 @@ class Zend_Feed_Writer_Extension_Content_Renderer_Entry
      */
     public function render()
     {
-        if (strtolower($this->getType()) == 'atom') {
+        if (strtolower($this->getType()) === 'atom') {
             return;
         }
         $this->_setContent($this->_dom, $this->_base);
