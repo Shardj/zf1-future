@@ -31,6 +31,9 @@ require_once 'Zend/Translate/Adapter.php';
 
 
 /**
+ * @method translate($messageid = null)
+ * @see Zend_View::translate()
+ *
  * @category   Zend
  * @package    Zend_Translate
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
