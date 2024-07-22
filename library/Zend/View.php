@@ -36,6 +36,8 @@ require_once 'Zend/View/Abstract.php';
  *
  * Convenience methods for build in helpers (@see __call):
  *
+ * @property Zend_Translate $translator
+ *
  * @method string baseUrl($file = null)
  * @method string currency($value = null, $currency = null)
  * @method Zend_View_Helper_Cycle cycle(array $data = array(), $name = Zend_View_Helper_Cycle::DEFAULT_NAME)
