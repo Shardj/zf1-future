@@ -43,15 +43,15 @@ require_once 'Zend/Controller/Front.php';
 abstract class Zend_Controller_Action implements Zend_Controller_Action_Interface
 {
     /**
-     * @var array of existing class methods
+     * @var array|null array of existing class methods
      */
-    protected $_classMethods;
+    protected $_classMethods = null;
 
     /**
      * Word delimiters (used for normalizing view script paths)
-     * @var array
+     * @var array|null
      */
-    protected $_delimiters;
+    protected $_delimiters = null;
 
     /**
      * Array of arguments provided to the constructor, minus the
@@ -93,9 +93,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
 
     /**
      * Compatibility for php 8.2 to stop error Deprecated: Creation of dynamic property
-     * @var object 
+     * @var object|null
      */
-    public  $contexts = null; 
+    public  $contexts = null;
     
     /**
      * Helper Broker to assist in routing help requests to the proper object
@@ -166,7 +166,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @return Zend_View_Interface
      * @throws Zend_Controller_Exception if base view directory does not exist
      */
-    public function initView()
+    public function initView(): Zend_View_Interface
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
             return $this->view;
@@ -206,16 +206,18 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * By default, the rendered contents are appended to the response. You may
      * specify the named body content segment to set by specifying a $name.
      *
-     * @see Zend_Controller_Response_Abstract::appendBody()
-     * @param  string|null $action Defaults to action registered in request object
-     * @param  string|null $name Response object named path segment to use; defaults to null
-     * @param  bool $noController  Defaults to false; i.e. use controller name as subdir in which to search for view script
+     * @param string|null $action Defaults to action registered in request object
+     * @param string|null $name Response object named path segment to use; defaults to null
+     * @param bool $noController Defaults to false; i.e. use controller name as subdir in which to search for view script
      * @return void
+     * @throws Zend_Controller_Exception
+     * @see Zend_Controller_Response_Abstract::appendBody()
      */
-    public function render($action = null, $name = null, $noController = false)
+    public function render(?string $action = null, ?string $name = null, bool $noController = false): void
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
-            return $this->_helper->viewRenderer->render($action, $name, $noController);
+            $this->_helper->viewRenderer->render($action, $name, $noController);
+            return;
         }
 
         $view   = $this->initView();
@@ -239,14 +241,15 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * By default, the rendered contents are appended to the response. You may
      * specify the named body content segment to set by specifying a $name.
      *
-     * @param  string $script
-     * @param  string $name
+     * @param string $script
+     * @param string|null $name
      * @return void
+     * @throws Zend_Controller_Exception
      */
-    public function renderScript($script, $name = null)
+    public function renderScript(string $script, string $name = null): void
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
-            return $this->_helper->viewRenderer->renderScript($script, $name);
+            $this->_helper->viewRenderer->renderScript($script, $name);
         }
 
         $view = $this->initView();
@@ -261,12 +264,12 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * Used by render() to determine the path to the view script.
      *
-     * @param  string $action Defaults to action registered in request object
-     * @param  bool $noController  Defaults to false; i.e. use controller name as subdir in which to search for view script
+     * @param string|null $action Defaults to action registered in request object
+     * @param bool|null $noController  Defaults to false; i.e. use controller name as subdir in which to search for view script
      * @return string
      * @throws Zend_Controller_Exception with bad $action
      */
-    public function getViewScript($action = null, $noController = null)
+    public function getViewScript(?string $action = null, ?bool $noController = null): string
     {
         if (!$this->getInvokeArg('noViewRenderer') && $this->_helper->hasHelper('viewRenderer')) {
             $viewRenderer = $this->_helper->getHelper('viewRenderer');
@@ -279,6 +282,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
         $request = $this->getRequest();
         if (null === $action) {
             $action = $request->getActionName();
+
         } elseif (!is_string($action)) {
             require_once 'Zend/Controller/Exception.php';
             throw new Zend_Controller_Exception('Invalid action specifier for view render');
@@ -306,9 +310,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * Return the Request object
      *
-     * @return Zend_Controller_Request_Abstract
+     * @return Zend_Controller_Request_Abstract|null
      */
-    public function getRequest()
+    public function getRequest(): ?Zend_Controller_Request_Abstract
     {
         return $this->_request;
     }
@@ -319,7 +323,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param Zend_Controller_Request_Abstract $request
      * @return $this
      */
-    public function setRequest(Zend_Controller_Request_Abstract $request)
+    public function setRequest(Zend_Controller_Request_Abstract $request): Zend_Controller_Action
     {
         $this->_request = $request;
         return $this;
@@ -328,9 +332,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * Return the Response object
      *
-     * @return Zend_Controller_Response_Abstract
+     * @return Zend_Controller_Response_Abstract|null
      */
-    public function getResponse()
+    public function getResponse(): ?Zend_Controller_Response_Abstract
     {
         return $this->_response;
     }
@@ -341,7 +345,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param Zend_Controller_Response_Abstract $response
      * @return $this
      */
-    public function setResponse(Zend_Controller_Response_Abstract $response)
+    public function setResponse(Zend_Controller_Response_Abstract $response): Zend_Controller_Action
     {
         $this->_response = $response;
         return $this;
@@ -353,7 +357,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param array $args
      * @return $this
      */
-    protected function _setInvokeArgs(array $args = [])
+    protected function _setInvokeArgs(array $args = []): Zend_Controller_Action
     {
         $this->_invokeArgs = $args;
         return $this;
@@ -364,7 +368,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return array
      */
-    public function getInvokeArgs()
+    public function getInvokeArgs(): array
     {
         return $this->_invokeArgs;
     }
@@ -375,7 +379,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param string $key
      * @return mixed
      */
-    public function getInvokeArg($key)
+    public function getInvokeArg(string $key)
     {
         if (isset($this->_invokeArgs[$key])) {
             return $this->_invokeArgs[$key];
@@ -387,10 +391,10 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * Get a helper by name
      *
-     * @param  string $helperName
+     * @param string $helperName
      * @return Zend_Controller_Action_Helper_Abstract
      */
-    public function getHelper($helperName)
+    public function getHelper(string $helperName): Zend_Controller_Action_Helper_Abstract
     {
         return $this->_helper->{$helperName};
     }
@@ -398,10 +402,10 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     /**
      * Get a clone of a helper by name
      *
-     * @param  string $helperName
+     * @param string $helperName
      * @return Zend_Controller_Action_Helper_Abstract
      */
-    public function getHelperCopy($helperName)
+    public function getHelperCopy(string $helperName): Zend_Controller_Action_Helper_Abstract
     {
         return clone $this->_helper->{$helperName};
     }
@@ -412,7 +416,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param Zend_Controller_Front $front
      * @return $this
      */
-    public function setFrontController(Zend_Controller_Front $front)
+    public function setFrontController(Zend_Controller_Front $front): Zend_Controller_Action
     {
         $this->_frontController = $front;
         return $this;
@@ -422,8 +426,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * Retrieve Front Controller
      *
      * @return Zend_Controller_Front
+     * @throws Zend_Controller_Exception
      */
-    public function getFrontController()
+    public function getFrontController(): Zend_Controller_Front
     {
         // Used cache version if found
         if (null !== $this->_frontController) {
@@ -478,12 +483,12 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * overridden to implement magic (dynamic) actions, or provide run-time
      * dispatching.
      *
-     * @param  string $methodName
-     * @param  array $args
+     * @param string $methodName
+     * @param array $args
      * @return void
      * @throws Zend_Controller_Action_Exception
      */
-    public function __call($methodName, $args)
+    public function __call(string $methodName, array $args)
     {
         require_once 'Zend/Controller/Action/Exception.php';
         if ('Action' == substr($methodName, -6)) {
@@ -499,8 +504,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @param string $action Method name of action
      * @return void
+     * @throws Zend_Controller_Action_Exception
      */
-    public function dispatch($action)
+    public function dispatch($action): void
     {
         // Notify helpers of action preDispatch state
         $this->_helper->notifyPreDispatch();
@@ -551,8 +557,9 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param null|Zend_Controller_Response_Abstract $response Optional response
      * object to use
      * @return Zend_Controller_Response_Abstract
+     * @throws Zend_Controller_Action_Exception
      */
-    public function run(Zend_Controller_Request_Abstract $request = null, Zend_Controller_Response_Abstract $response = null)
+    public function run(Zend_Controller_Request_Abstract $request = null, Zend_Controller_Response_Abstract $response = null): Zend_Controller_Response_Abstract
     {
         if (null !== $request) {
             $this->setRequest($request);
@@ -587,7 +594,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param mixed $default
      * @return mixed
      */
-    protected function _getParam($paramName, $default = null)
+    protected function _getParam(string $paramName, $default = null)
     {
         return $this->getParam($paramName, $default);
     }
@@ -603,7 +610,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param mixed $default
      * @return mixed
      */
-    public function getParam($paramName, $default = null)
+    public function getParam(string $paramName, $default = null)
     {
         $value = $this->getRequest()->getParam($paramName);
          if ((null === $value || '' === $value) && (null !== $default)) {
@@ -622,7 +629,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             setParam() instead.
      */
-    protected function _setParam($paramName, $value)
+    protected function _setParam(string $paramName, $value): Zend_Controller_Action
     {
         return $this->setParam($paramName, $value);
     }
@@ -634,7 +641,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param mixed $value
      * @return $this
      */
-    public function setParam($paramName, $value)
+    public function setParam(string $paramName, $value): Zend_Controller_Action
     {
         $this->getRequest()->setParam($paramName, $value);
 
@@ -650,7 +657,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             hasParam() instead.
      */
-    protected function _hasParam($paramName)
+    protected function _hasParam(string $paramName): bool
     {
         return $this->hasParam($paramName);
     }
@@ -662,7 +669,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param string $paramName
      * @return boolean
      */
-    public function hasParam($paramName)
+    public function hasParam(string $paramName): bool
     {
         return null !== $this->getRequest()->getParam($paramName);
     }
@@ -675,7 +682,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             getAllParams() instead.
      */
-    protected function _getAllParams()
+    protected function _getAllParams(): array
     {
         return $this->getAllParams();
     }
@@ -686,7 +693,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      *
      * @return array
      */
-    public function getAllParams()
+    public function getAllParams(): array
     {
         return $this->getRequest()->getParams();
     }
@@ -713,14 +720,14 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * simply pass null values for them before specifying the parameters.
      *
      * @param string $action
-     * @param string $controller
-     * @param string $module
-     * @param array $params
+     * @param string|null $controller
+     * @param string|null $module
+     * @param array|null $params
      * @return void
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             forward() instead.
      */
-    final protected function _forward($action, $controller = null, $module = null, array $params = null)
+    final protected function _forward(string $action, ?string $controller = null, ?string $module = null, array $params = null): void
     {
         $this->forward($action, $controller, $module, $params);
     }
@@ -746,12 +753,12 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * simply pass null values for them before specifying the parameters.
      *
      * @param string $action
-     * @param string $controller
-     * @param string $module
-     * @param array $params
+     * @param string|null $controller
+     * @param string|null $module
+     * @param array|null $params
      * @return void
      */
-    final public function forward($action, $controller = null, $module = null, array $params = null)
+    final public function forward(string $action, ?string $controller = null, ?string $module = null, array $params = null): void
     {
         $request = $this->getRequest();
 
@@ -783,7 +790,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @deprecated Deprecated as of Zend Framework 1.7. Use
      *             redirect() instead.
      */
-    protected function _redirect($url, array $options = [])
+    protected function _redirect(string $url, array $options = []): void
     {
         $this->redirect($url, $options);
     }
@@ -797,7 +804,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
      * @param array $options Options to be used when redirecting
      * @return void
      */
-    public function redirect($url, array $options = [])
+    public function redirect(string $url, array $options = []): void
     {
         $this->_helper->redirector->gotoUrl($url, $options);
     }
