@@ -509,6 +509,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
 
         // create a response object to place the output from the services.
         $response = $this->getResponse();
+        $responseType = Zend_Amf_Constants::UNKNOWN_CONTENT_LENGTH;
 
         // set response encoding
         $response->setObjectEncoding($objectEncoding);
