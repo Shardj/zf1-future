@@ -107,7 +107,7 @@ class Zend_Pdf_Action_URI extends Zend_Pdf_Action
      */
     public function setUri($uri)
     {
-        $this->_validateUri($uri);
+        static::_validateUri($uri);
 
         $this->_actionDictionary->touch();
         $this->_actionDictionary->URI = new Zend_Pdf_Element_String($uri);

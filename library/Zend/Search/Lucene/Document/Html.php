@@ -478,6 +478,6 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
             $outputFragments[] = $this->_doc->saveXML($bodyNodes->item($count));
         }
 
-        return implode($outputFragments);
+        return implode('', $outputFragments);
     }
 }

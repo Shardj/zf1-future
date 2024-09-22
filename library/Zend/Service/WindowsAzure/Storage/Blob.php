@@ -1127,7 +1127,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 		$size = strlen($contents);
 		if ($size >= self::MAX_BLOB_TRANSFER_SIZE) {
 			require_once 'Zend/Service/WindowsAzure/Exception.php';
-			throw new Zend_Service_WindowsAzure_Exception('Page blob size must not be larger than ' + self::MAX_BLOB_TRANSFER_SIZE . ' bytes.');
+			throw new Zend_Service_WindowsAzure_Exception('Page blob size must not be larger than ' . self::MAX_BLOB_TRANSFER_SIZE . ' bytes.');
 		}
 
 		// Create metadata headers

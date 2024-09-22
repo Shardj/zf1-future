@@ -126,7 +126,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
         }
 
         if (isset($options['encoding'])) {
-            $this->setEncoding($options['encoding']);
+            static::setEncoding($options['encoding']);
         }
         if (isset($options['parser'])) {
             $this->setParser($options['parser']);

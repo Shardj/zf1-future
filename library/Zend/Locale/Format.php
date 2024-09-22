@@ -807,7 +807,7 @@ class Zend_Locale_Format
             }
         }
 
-        return implode($converted);
+        return implode('', $converted);
     }
 
     /**

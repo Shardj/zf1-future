@@ -24,6 +24,7 @@ require_once 'Zend/Service/Rackspace/Files.php';
 
 class Zend_Service_Rackspace_Files_Container
 {
+    public $service;
     const ERROR_PARAM_FILE_CONSTRUCT = 'The Zend_Service_Rackspace_Files passed in construction is not valid';
 
     const ERROR_PARAM_ARRAY_CONSTRUCT = 'The array passed in construction is not valid';
