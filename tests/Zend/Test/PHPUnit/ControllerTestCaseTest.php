@@ -885,6 +885,11 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
 // Concrete test case class for testing purposes
 class Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete extends Zend_Test_PHPUnit_ControllerTestCase
 {
+    // Added to elevate the otherwise protected method to a public one
+    public function set_up()
+    {
+        parent::set_up();
+    }
 }
 
 // Call Zend_Test_PHPUnit_ControllerTestCaseTest::main() if this source file is executed directly.
