@@ -255,7 +255,7 @@ class Mock_Zend_Cache_Page_3 extends Zend_Cache_Core
 {
     public function clean($mode = 'all', $tags = [])
     {
-        if ($mode == 'matchingAnyTag' && $tags == ['tag1']) {
+        if ($mode === 'matchingAnyTag' && $tags == ['tag1']) {
             return 'verified';
         }
     }
@@ -267,7 +267,7 @@ class Mock_Zend_Cache_Page_4 extends Zend_Cache_Core
     public function start($id, array $tags = [])
     {
         $this->ranStart = 'verified';
-        if ($id == '/foo') {
+        if ($id === '/foo') {
             $this->res = 'verified';
         }
     }
@@ -279,7 +279,7 @@ class Mock_Zend_Cache_Page_6 extends Zend_Cache_Core
     public function start($id, array $tags = [])
     {
         $this->ranStart = 'verified';
-        if ($id == '/foo' && $tags == ['tag1', 'tag2']) {
+        if ($id === '/foo' && $tags == ['tag1', 'tag2']) {
             $this->res = 'verified';
         }
     }

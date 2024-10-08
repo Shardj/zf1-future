@@ -81,7 +81,7 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
         $input = $this->_readMOData(1);
         if (strtolower(substr(dechex($input[1]), -8)) == "950412de") {
             $this->_bigEndian = false;
-        } else if (strtolower(substr(dechex($input[1]), -8)) == "de120495") {
+        } else if (strtolower(substr(dechex($input[1]), -8)) === "de120495") {
             $this->_bigEndian = true;
         } else {
             @fclose($this->_file);

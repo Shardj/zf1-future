@@ -298,12 +298,12 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
             $split = preg_split('//', strrev($input), -1, PREG_SPLIT_NO_EMPTY);
 
             for ($x =0; $x < sizeof($split); $x++) {
-                if ($split[$x] == '/') {
+                if ($split[$x] === '/') {
                     continue;
                 }
 
                 $num = self::$_roman[$split[$x]];
-                if (($x > 0 && ($split[$x-1] != '/') && ($num < self::$_roman[$split[$x-1]]))) {
+                if (($x > 0 && ($split[$x-1] !== '/') && ($num < self::$_roman[$split[$x-1]]))) {
                     $num -= $num;
                 }
 

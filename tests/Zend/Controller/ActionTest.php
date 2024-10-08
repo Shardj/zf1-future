@@ -285,7 +285,7 @@ class Zend_Controller_ActionTest extends TestCase
         $found = 0;
         $url = '';
         foreach ($headers as $header) {
-            if ('Location' == $header['name']) {
+            if ('Location' === $header['name']) {
                 ++$found;
                 $url = $header['value'];
                 break;

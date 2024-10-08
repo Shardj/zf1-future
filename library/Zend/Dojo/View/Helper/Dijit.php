@@ -330,7 +330,7 @@ if (zend == undefined) {
     var zend = {};
 }
 zend.findParentForm = function(elementNode) {
-    while (elementNode.nodeName.toLowerCase() != 'form') {
+    while (elementNode.nodeName.toLowerCase() !== 'form') {
         elementNode = elementNode.parentNode;
     }
     return elementNode;

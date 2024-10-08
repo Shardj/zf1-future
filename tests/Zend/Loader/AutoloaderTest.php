@@ -133,7 +133,7 @@ class Zend_Loader_AutoloaderTest extends TestCase
         $found = false;
         foreach ($autoloaders as $loader) {
             if (is_array($loader)) {
-                if (('autoload' == $loader[1]) && ($loader[0] === get_class($this->autoloader))) {
+                if (('autoload' === $loader[1]) && ($loader[0] === get_class($this->autoloader))) {
                     $found = true;
                     break;
                 }

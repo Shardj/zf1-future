@@ -117,13 +117,13 @@ class Zend_Gdata_DocsOnlineTest extends TestCase
         $keyParts = explode('%3A', end($idParts));
         $documentFromGetDoc = $this->gdata->getDoc($keyParts[1], $keyParts[0]);
         $this->assertTrue($documentFromGetDoc->title->text === $documentTitle);
-        if ($keyParts[0] == 'document') {
+        if ($keyParts[0] === 'document') {
             $documentFromGetDocument = $this->gdata->getDocument($keyParts[1]);
             $this->assertTrue(
                 $documentFromGetDocument->title->text === $documentTitle
             );
         }
-        if ($keyParts[0] == 'spreadsheet') {
+        if ($keyParts[0] === 'spreadsheet') {
             $documentFromGetSpreadsheet = $this->gdata->getSpreadsheet(
                 $keyParts[1]
             );
@@ -131,7 +131,7 @@ class Zend_Gdata_DocsOnlineTest extends TestCase
                 $documentFromGetSpreadsheet->title->text === $documentTitle
             );
         }
-        if ($keyParts[0] == 'presentation') {
+        if ($keyParts[0] === 'presentation') {
             $documentFromGetPresentation = $this->gdata->getPresentation(
                 $keyParts[1]
             );

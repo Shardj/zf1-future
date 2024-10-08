@@ -136,7 +136,7 @@ class Zend_Pdf_Element_Name extends Zend_Pdf_Element
         $outStr = '';
 
         for ($count = 0; $count < strlen($inStr); $count++) {
-            if ($inStr[$count] != '#' )  {
+            if ($inStr[$count] !== '#' )  {
                 $outStr .= $inStr[$count];
             } else {
                 // Escape sequence

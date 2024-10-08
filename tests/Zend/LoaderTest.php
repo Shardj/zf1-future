@@ -324,7 +324,7 @@ class Zend_LoaderTest extends TestCase
         foreach ($autoloaders as $function) {
             if (is_array($function)) {
                 $class = $function[0];
-                if ($class == 'Zend_Loader_Autoloader') {
+                if ($class === 'Zend_Loader_Autoloader') {
                     $found = true;
                     spl_autoload_unregister($function);
                     break;
@@ -373,7 +373,7 @@ class Zend_LoaderTest extends TestCase
         foreach ($autoloaders as $function) {
             if (is_array($function)) {
                 $class = $function[0];
-                if ($class == 'Zend_Loader_Autoloader') {
+                if ($class === 'Zend_Loader_Autoloader') {
                     $found = true;
                     break;
                 }
@@ -457,7 +457,7 @@ class Zend_LoaderTest extends TestCase
         foreach (spl_autoload_functions() as $function) {
             if (is_array($function)) {
                 $class = $function[0];
-                if ($class == 'Zend_Loader_Autoloader') {
+                if ($class === 'Zend_Loader_Autoloader') {
                     spl_autoload_unregister($function);
                     break;
                 }
@@ -484,7 +484,7 @@ class Zend_LoaderTest extends TestCase
         foreach (spl_autoload_functions() as $function) {
             if (is_array($function)) {
                 $class = $function[0];
-                if ($class == 'Zend_Loader_Autoloader') {
+                if ($class === 'Zend_Loader_Autoloader') {
                     spl_autoload_unregister($function);
                     break;
                 }
@@ -546,7 +546,7 @@ class Zend_LoaderTest extends TestCase
      */
     public function testExplodeIncludePathProperlyIdentifiesStreamSchemes()
     {
-        if (PATH_SEPARATOR != ':') {
+        if (PATH_SEPARATOR !== ':') {
             $this->markTestSkipped();
         }
         $path = 'phar://zlt.phar:/var/www:.:filter://[a-z]:glob://*';
@@ -577,7 +577,7 @@ class Zend_LoaderTest extends TestCase
      */
     public function testIsReadableShouldFailEarlyWhenProvidedInvalidWindowsAbsolutePath()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) != 'WIN') {
+        if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN') {
             $this->markTestSkipped('Windows-only test');
         }
         $path = 'C:/this/file/should/not/exist.php';

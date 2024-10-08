@@ -251,7 +251,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                 $matchedPath .= $pathPart . $this->_urlDelimiter;
 
                 // If it's a wildcard, get the rest of URL as wildcard data and stop matching
-                if ($this->_parts[$pos] == '*') {
+                if ($this->_parts[$pos] === '*') {
                     $count = count($path);
                     for ($i = $pos; $i < $count; $i += 2) {
                         $var = urldecode($path[$i]);
@@ -391,7 +391,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                 } else {
                     $url[$key] = $value;
                 }
-            } elseif ($part != '*') {
+            } elseif ($part !== '*') {
                 if ($this->_isTranslated && substr($part, 0, 1) === '@') {
                     if (substr($part, 1, 1) !== '@') {
                         $url[$key] = $translator->translate(substr($part, 1), $locale);

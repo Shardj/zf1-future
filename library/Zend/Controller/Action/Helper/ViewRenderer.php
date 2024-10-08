@@ -359,7 +359,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
 
         $module = $this->getModule();
 
-        if ('default' == $module) {
+        if ('default' === $module) {
             return $default;
         }
 
@@ -848,7 +848,7 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         $filter     = new Zend_Filter_Word_CamelCaseToDash();
         $controller = $filter->filter($request->getControllerName());
         $controller = $dispatcher->formatControllerName($controller);
-        if ('Controller' == substr($controller, -10)) {
+        if ('Controller' === substr($controller, -10)) {
             $controller = substr($controller, 0, -10);
         }
 

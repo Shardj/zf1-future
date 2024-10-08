@@ -107,7 +107,7 @@ class Zend_Text_TableTest extends TestCase
 
     public function testColumnForcedEncoding()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             // AIX cannot handle these charsets
             $this->markTestSkipped('Test case cannot run on AIX');
         }
@@ -121,7 +121,7 @@ class Zend_Text_TableTest extends TestCase
 
     public function testColumnDefaultInputEncoding()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             // AIX cannot handle these charsets
             $this->markTestSkipped('Test case cannot run on AIX');
         }
@@ -136,7 +136,7 @@ class Zend_Text_TableTest extends TestCase
 
     public function testColumnDefaultOutputEncoding()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             // AIX cannot handle these charsets
             $this->markTestSkipped('Test case cannot run on AIX');
         }

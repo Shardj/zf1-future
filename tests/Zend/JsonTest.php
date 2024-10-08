@@ -746,7 +746,7 @@ EOB;
     public function testKommaDecimalIsConvertedToCorrectJsonWithDot()
     {
         $localeInfo = localeconv();
-        if ($localeInfo['decimal_point'] != ",") {
+        if ($localeInfo['decimal_point'] !== ",") {
             $this->markTestSkipped("This test only works for platforms where , is the decimal point separator.");
         }
 

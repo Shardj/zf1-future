@@ -213,7 +213,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends TestCase
         $headers = $this->response->getHeaders();
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
+            if ('Content-Type' === $header['name']) {
                 $found = true;
                 $value = $header['value'];
             }
@@ -265,7 +265,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends TestCase
             $helper->initContext();
             $this->assertTrue(true);
         } catch (Exception $e) {
-            if ($e->getMessage() == 'test testAjaxContextIsRequestDependent failed') {
+            if ($e->getMessage() === 'test testAjaxContextIsRequestDependent failed') {
                 $this->fail();
             } else {
                 throw $e;
@@ -278,7 +278,7 @@ class ZendTest_Controller_Request_SimpleMock_AjaxTest extends Zend_Controller_Re
 {
     public function __call($method, $args)
     {
-        if ($method == 'isXmlHttpRequest') {
+        if ($method === 'isXmlHttpRequest') {
             throw new exception('test testAjaxContextIsRequestDependent failed');
         }
 

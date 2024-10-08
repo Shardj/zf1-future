@@ -77,7 +77,7 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends TestCase
             foreach ($spreadsheet->getWorksheets() as $worksheet) {
                 $this->assertTrue($worksheet instanceof Zend_Gdata_Spreadsheets_WorksheetEntry, 'not instance of WorksheetEntry');
                 $worksheetCount++;
-                if ($spreadsheet->getTitle()->getText() == 'PHP Unit Test Sheet') {
+                if ($spreadsheet->getTitle()->getText() === 'PHP Unit Test Sheet') {
                     $testedContents = true;
                     $contentAsCells = $worksheet->getContentsAsCells();
                     $this->assertEquals('a1', $contentAsCells['A1']['value']);
@@ -238,7 +238,7 @@ class Zend_Gdata_SpreadsheetsOnlineTest extends TestCase
         $query->setCellId('R5C1');
         $entry = $this->gdata->getCellEntry($query);
         $this->assertTrue($entry instanceof Zend_Gdata_Spreadsheets_CellEntry);
-        $this->assertTrue($entry->cell->getText() == 'updated data');
+        $this->assertTrue($entry->cell->getText() === 'updated data');
 
         $this->gdata->updateCell(5, 1, '', $this->sprKey, $this->wksId);
     }

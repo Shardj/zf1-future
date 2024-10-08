@@ -566,7 +566,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         }
 
         // Strip array notation
-        if ('[]' == substr($id, -2)) {
+        if ('[]' === substr($id, -2)) {
             $id = substr($id, 0, strlen($id) - 2);
         }
         $id = str_replace('][', '-', $id);
@@ -1039,7 +1039,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      */
     public function __call($method, $args)
     {
-        if ('render' == substr($method, 0, 6)) {
+        if ('render' === substr($method, 0, 6)) {
             $this->_isPartialRendering = true;
             $this->render();
             $this->_isPartialRendering = false;

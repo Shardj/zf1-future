@@ -104,10 +104,10 @@ class Zend_Gdata_Extension_RecurrenceException extends Zend_Gdata_Extension
     {
         switch ($attribute->localName) {
         case 'specialized':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_specialized = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_specialized = false;
             }
             else {

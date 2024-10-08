@@ -592,7 +592,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
         $headers = $this->response->getHeaders();
 
         foreach ($headers as $header) {
-            if ('Location' == $header['name']) {
+            if ('Location' === $header['name']) {
                 return $header['value'];
             }
         }

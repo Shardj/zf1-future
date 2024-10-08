@@ -504,7 +504,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      */
     public function openCompoundFile($extension, $shareHandler = true)
     {
-        if (($extension == '.fdx'  || $extension == '.fdt')  &&  $this->_usesSharedDocStore) {
+        if (($extension === '.fdx'  || $extension === '.fdt')  &&  $this->_usesSharedDocStore) {
             $fdxFName = $this->_sharedDocStoreOptions['segment'] . '.fdx';
             $fdtFName = $this->_sharedDocStoreOptions['segment'] . '.fdt';
 
@@ -512,7 +512,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
                 $fdxFile = $this->_directory->getFileObject($fdxFName, $shareHandler);
                 $fdxFile->seek($this->_sharedDocStoreOptions['offset']*8, SEEK_CUR);
 
-                if ($extension == '.fdx') {
+                if ($extension === '.fdx') {
                     // '.fdx' file is requested
                     return $fdxFile;
                 } else {
@@ -544,7 +544,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             // Seek to the start of current segment documents section
             $cfxFile->seek($this->_sharedDocStoreOptions['offset']*8, SEEK_CUR);
 
-            if ($extension == '.fdx') {
+            if ($extension === '.fdx') {
                 // '.fdx' file is requested
                 return $cfxFile;
             } else {
@@ -585,7 +585,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      */
     public function compoundFileLength($extension)
     {
-        if (($extension == '.fdx'  || $extension == '.fdt')  &&  $this->_usesSharedDocStore) {
+        if (($extension === '.fdx'  || $extension === '.fdt')  &&  $this->_usesSharedDocStore) {
             $filename = $this->_sharedDocStoreOptions['segment'] . $extension;
 
             if (!$this->_sharedDocStoreOptions['isCompound']) {
@@ -1393,7 +1393,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             $header              = $normfFile->readBytes(3);
             $headerFormatVersion = $normfFile->readByte();
 
-            if ($header != 'NRM'  ||  $headerFormatVersion != (int)0xFF) {
+            if ($header !== 'NRM'  ||  $headerFormatVersion != (int)0xFF) {
                 require_once 'Zend/Search/Lucene/Exception.php';
                 throw new  Zend_Search_Lucene_Exception('Wrong norms file format.');
             }

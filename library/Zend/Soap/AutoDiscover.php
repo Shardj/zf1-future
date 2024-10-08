@@ -240,7 +240,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
     protected function getSchema()
     {
         $schema = "http";
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
             $schema = 'https';
         }
         return $schema;
@@ -407,7 +407,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
 
         // Add the input message (parameters)
         $args = [];
-        if ($this->_bindingStyle['style'] == 'document') {
+        if ($this->_bindingStyle['style'] === 'document') {
             // Document style: wrap all parameters in a sequence element
             $sequence = [];
             foreach ($prototype->getParameters() as $param) {
@@ -435,17 +435,17 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
         $wsdl->addMessage($function->getName() . 'In', $args);
 
         $isOneWayMessage = false;
-        if($prototype->getReturnType() == "void") {
+        if($prototype->getReturnType() === "void") {
             $isOneWayMessage = true;
         }
 
         if($isOneWayMessage == false) {
             // Add the output message (return value)
             $args = [];
-            if ($this->_bindingStyle['style'] == 'document') {
+            if ($this->_bindingStyle['style'] === 'document') {
                 // Document style: wrap the return value in a sequence element
                 $sequence = [];
-                if ($prototype->getReturnType() != "void") {
+                if ($prototype->getReturnType() !== "void") {
                     $sequence[] = [
                         'name' => $function->getName() . 'Result',
                         'type' => $wsdl->getType($prototype->getReturnType())
@@ -457,7 +457,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
                 ];
                 // Add the wrapper element part, which must be named 'parameters'
                 $args['parameters'] = ['element' => $wsdl->addElement($element)];
-            } else if ($prototype->getReturnType() != "void") {
+            } else if ($prototype->getReturnType() !== "void") {
                 // RPC style: add the return value as a typed part
                 $args['return'] = ['type' => $wsdl->getType($prototype->getReturnType())];
             }
@@ -476,7 +476,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
         }
 
         // When using the RPC style, make sure the operation style includes a 'namespace' attribute (WS-I Basic Profile 1.1 R2717)
-        if ($this->_bindingStyle['style'] == 'rpc' && !isset($this->_operationBodyStyle['namespace'])) {
+        if ($this->_bindingStyle['style'] === 'rpc' && !isset($this->_operationBodyStyle['namespace'])) {
             $this->_operationBodyStyle['namespace'] = ''.$uri;
         }
 

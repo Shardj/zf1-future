@@ -149,7 +149,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             $argc   = count($args);
             $index  = null;
 
-            if ('offsetSet' == $action) {
+            if ('offsetSet' === $action) {
                 if (0 < $argc) {
                     $index = array_shift($args);
                     --$argc;
@@ -169,7 +169,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
 
             $item  = $this->createData($type, $args[0], $args[1], $args[2]);
 
-            if ('offsetSet' == $action) {
+            if ('offsetSet' === $action) {
                 return $this->offsetSet($index, $item);
             }
 
@@ -357,7 +357,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
         $modifiersString = '';
         foreach ($item->modifiers as $key => $value) {
             if (!is_null($this->view) && $this->view->doctype()->isHtml5()
-            && $key == 'scheme') {
+            && $key === 'scheme') {
                 require_once 'Zend/View/Exception.php';
                 throw new Zend_View_Exception('Invalid modifier '
                 . '"scheme" provided; not supported by HTML5');
@@ -370,7 +370,7 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
 
         if ($this->view instanceof Zend_View_Abstract) {
             if ($this->view->doctype()->isHtml5()
-            && $type == 'charset') {
+            && $type === 'charset') {
                 $tpl = ($this->view->doctype()->isXhtml())
                     ? '<meta %s="%s"/>'
                     : '<meta %s="%s">';

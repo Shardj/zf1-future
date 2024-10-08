@@ -366,8 +366,8 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
         }
 
         // markup
-        if ($this->getFeature('device_os') == 'iPhone OS'
-            || $this->getFeature('device_os_token') == 'iPhone OS'
+        if ($this->getFeature('device_os') === 'iPhone OS'
+            || $this->getFeature('device_os_token') === 'iPhone OS'
         ) {
             $this->setFeature('markup', 'iphone');
         } else {
@@ -531,6 +531,6 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      */
     public function httpsSupport()
     {
-        return ($this->getFeature('https_support') == 'supported');
+        return ($this->getFeature('https_support') === 'supported');
     }
 }

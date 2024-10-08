@@ -299,7 +299,7 @@ class Zend_Controller_Front
             $module    = $file->getFilename();
 
             // Don't use SCCS directories as modules
-            if (preg_match('/^[^a-z]/i', $module) || ('CVS' == $module)) {
+            if (preg_match('/^[^a-z]/i', $module) || ('CVS' === $module)) {
                 continue;
             }
 

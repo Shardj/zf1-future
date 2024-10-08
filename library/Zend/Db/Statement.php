@@ -143,7 +143,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
         // map params
         $this->_sqlParam = [];
         foreach ($this->_sqlSplit as $key => $val) {
-            if ($val == '?') {
+            if ($val === '?') {
                 if ($this->_adapter->supportsParameters('positional') === false) {
                     /**
                      * @see Zend_Db_Statement_Exception
@@ -151,7 +151,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
                     require_once 'Zend/Db/Statement/Exception.php';
                     throw new Zend_Db_Statement_Exception("Invalid bind-variable position '$val'");
                 }
-            } else if ($val[0] == ':') {
+            } else if ($val[0] === ':') {
                 if ($this->_adapter->supportsParameters('named') === false) {
                     /**
                      * @see Zend_Db_Statement_Exception
@@ -254,7 +254,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
                 $position = $intval;
             }
         } else if ($this->_adapter->supportsParameters('named')) {
-            if ($parameter[0] != ':') {
+            if ($parameter[0] !== ':') {
                 $parameter = ':' . $parameter;
             }
             if (in_array($parameter, $this->_sqlParam) !== false) {

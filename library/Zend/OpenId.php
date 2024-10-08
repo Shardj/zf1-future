@@ -114,14 +114,14 @@ class Zend_OpenId
                 $port = ':' . $_SERVER['SERVER_PORT'];
             }
         }
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
             $url = 'https://' . $url;
-            if ($port == ':443') {
+            if ($port === ':443') {
                 $port = '';
             }
         } else {
             $url = 'http://' . $url;
-            if ($port == ':80') {
+            if ($port === ':80') {
                 $port = '';
             }
         }
@@ -173,7 +173,7 @@ class Zend_OpenId
                 $port = $reg[4];
                 $path = $reg[5];
                 $query = $reg[6];
-                if ($url[0] == '/') {
+                if ($url[0] === '/') {
                     return $scheme
                         . '://'
                         . $auth
@@ -231,7 +231,7 @@ class Zend_OpenId
         $n = strlen($id);
         $res = '';
         while ($i < $n) {
-            if ($id[$i] == '%') {
+            if ($id[$i] === '%') {
                 if ($i + 2 >= $n) {
                     return false;
                 }
@@ -259,10 +259,10 @@ class Zend_OpenId
                 $ch = chr($c);
                 if (($ch >= 'A' && $ch <= 'Z') ||
                     ($ch >= 'a' && $ch <= 'z') ||
-                    $ch == '-' ||
-                    $ch == '.' ||
-                    $ch == '_' ||
-                    $ch == '~') {
+                    $ch === '-' ||
+                    $ch === '.' ||
+                    $ch === '_' ||
+                    $ch === '~') {
                     $res .= $ch;
                 } else {
                     $res .= '%';
@@ -308,23 +308,23 @@ class Zend_OpenId
             $n = strlen($path);
             $res = "";
             while ($i < $n) {
-                if ($path[$i] == '/') {
+                if ($path[$i] === '/') {
                     ++$i;
-                    while ($i < $n && $path[$i] == '/') {
+                    while ($i < $n && $path[$i] === '/') {
                         ++$i;
                     }
-                    if ($i < $n && $path[$i] == '.') {
+                    if ($i < $n && $path[$i] === '.') {
                         ++$i;
-                        if ($i < $n && $path[$i] == '.') {
+                        if ($i < $n && $path[$i] === '.') {
                             ++$i;
-                            if ($i == $n || $path[$i] == '/') {
+                            if ($i == $n || $path[$i] === '/') {
                                 if (($pos = strrpos($res, '/')) !== false) {
                                     $res = substr($res, 0, $pos);
                                 }
                             } else {
                                     $res .= '/..';
                             }
-                        } else if ($i != $n && $path[$i] != '/') {
+                        } else if ($i != $n && $path[$i] !== '/') {
                             $res .= '/.';
                         }
                     } else {
@@ -400,11 +400,11 @@ class Zend_OpenId
         }
 
         // 7.2.2
-        if ($id[0] == '=' ||
-            $id[0] == '@' ||
-            $id[0] == '+' ||
-            $id[0] == '$' ||
-            $id[0] == '!') {
+        if ($id[0] === '=' ||
+            $id[0] === '@' ||
+            $id[0] === '+' ||
+            $id[0] === '$' ||
+            $id[0] === '!') {
             return true;
         }
 
@@ -437,7 +437,7 @@ class Zend_OpenId
             $response = new Zend_Controller_Response_Http();
         }
 
-        if ($method == 'POST') {
+        if ($method === 'POST') {
             $body = "<html><body onLoad=\"document.forms[0].submit();\">\n";
             $body .= "<form method=\"POST\" action=\"$url\">\n";
             if (is_array($params) && count($params) > 0) {

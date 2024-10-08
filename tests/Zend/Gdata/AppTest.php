@@ -227,7 +227,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'GData-Version: 2') {
+            if ($header === 'GData-Version: 2') {
                 $found = true;
             }
         }
@@ -245,7 +245,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'GData-Version: 2') {
+            if ($header === 'GData-Version: 2') {
                 $found = true;
             }
         }
@@ -291,7 +291,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -314,7 +314,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -338,7 +338,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -362,7 +362,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -381,7 +381,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -405,7 +405,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -429,7 +429,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }
@@ -453,7 +453,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etagOverride) {
+            if ($header === 'If-Match: ' . $etagOverride) {
                 $found = true;
             }
         }
@@ -477,7 +477,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-None-Match: ' . $etagOverride) {
+            if ($header === 'If-None-Match: ' . $etagOverride) {
                 $found = true;
             }
         }
@@ -501,7 +501,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etagOverride) {
+            if ($header === 'If-Match: ' . $etagOverride) {
                 $found = true;
             }
         }
@@ -525,7 +525,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-None-Match: ' . $etagOverride) {
+            if ($header === 'If-None-Match: ' . $etagOverride) {
                 $found = true;
             }
         }
@@ -557,7 +557,7 @@ class Zend_Gdata_AppTest extends TestCase
         $headers = $this->adapter->popRequest()->headers;
         $found = false;
         foreach ($headers as $header) {
-            if ($header == 'If-Match: ' . $etag) {
+            if ($header === 'If-Match: ' . $etag) {
                 $found = true;
             }
         }

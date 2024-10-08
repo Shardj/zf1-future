@@ -171,7 +171,7 @@ class Zend_Amf_Adobe_Introspector
         foreach ($refclass->getMethods() as $method) {
             if (!$method->isPublic()
                 || $method->isConstructor()
-                || ('__' == substr((string) $method->name, 0, 2))
+                || ('__' === substr((string) $method->name, 0, 2))
             ) {
                 continue;
             }
@@ -189,7 +189,7 @@ class Zend_Amf_Adobe_Introspector
 
                     $type = $param->getType();
                     if (PHP_VERSION_ID < 80000) {
-                        if ($type == 'mixed' && ($pclass = $param->getClass())) {
+                        if ($type === 'mixed' && ($pclass = $param->getClass())) {
                             $type = $pclass->getName();
                         }
                     }
@@ -291,7 +291,7 @@ class Zend_Amf_Adobe_Introspector
         }
 
         // Arrays
-        if ('array' == $typename) {
+        if ('array' === $typename) {
             return 'Unknown[]';
         }
 

@@ -50,7 +50,7 @@ class Zend_Feed_Writer_Extension_WellFormedWeb_Renderer_Entry
      */
     public function render()
     {
-        if (strtolower($this->getType()) == 'atom') {
+        if (strtolower($this->getType()) === 'atom') {
             return; // RSS 2.0 only
         }
         $this->_setCommentFeedLinks($this->_dom, $this->_base);
@@ -84,7 +84,7 @@ class Zend_Feed_Writer_Extension_WellFormedWeb_Renderer_Entry
             return;
         }
         foreach ($links as $link) {
-            if ($link['type'] == 'rss') {
+            if ($link['type'] === 'rss') {
                 $flink = $this->_dom->createElement('wfw:commentRss');
                 $text = $dom->createTextNode($link['uri']);
                 $flink->appendChild($text);

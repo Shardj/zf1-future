@@ -408,12 +408,12 @@ abstract class Zend_Pdf_FileParser
         }
         $bytes = $this->_dataSource->readBytes($byteCount);
         if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_BIG_ENDIAN) {
-            if ($characterSet == 'UTF-16BE') {
+            if ($characterSet === 'UTF-16BE') {
                 return $bytes;
             }
             return iconv('UTF-16BE', $characterSet, $bytes);
         } else if ($byteOrder == Zend_Pdf_FileParser::BYTE_ORDER_LITTLE_ENDIAN) {
-            if ($characterSet == 'UTF-16LE') {
+            if ($characterSet === 'UTF-16LE') {
                 return $bytes;
             }
             return iconv('UTF-16LE', $characterSet, $bytes);
@@ -446,7 +446,7 @@ abstract class Zend_Pdf_FileParser
             return '';
         }
         $bytes = $this->_dataSource->readBytes($byteCount);
-        if ($characterSet == 'MacRoman') {
+        if ($characterSet === 'MacRoman') {
             return $bytes;
         }
         return iconv('MacRoman', $characterSet, $bytes);
@@ -477,7 +477,7 @@ abstract class Zend_Pdf_FileParser
             return '';
         }
         $bytes = $this->_dataSource->readBytes($byteCount);
-        if ($characterSet == 'ASCII') {
+        if ($characterSet === 'ASCII') {
             return $bytes;
         }
         return iconv('ASCII', $characterSet, $bytes);

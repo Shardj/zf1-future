@@ -510,7 +510,7 @@ class Zend_Loader_Autoloader
     {
         $type = $this->_getVersionType($version);
 
-        if ($type == 'latest') {
+        if ($type === 'latest') {
             $version = 'latest';
         }
 
@@ -531,7 +531,7 @@ class Zend_Loader_Autoloader
      */
     protected function _getVersionType($version)
     {
-        if (strtolower($version) == 'latest') {
+        if (strtolower($version) === 'latest') {
             return 'latest';
         }
 
@@ -575,7 +575,7 @@ class Zend_Loader_Autoloader
 
             $matchedVersion = $matches[1];
 
-            if (('latest' == $version)
+            if (('latest' === $version)
                 || ((strlen($matchedVersion) >= $versionLen)
                     && (0 === strpos($matchedVersion, $version)))
             ) {

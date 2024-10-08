@@ -278,7 +278,7 @@ abstract class Zend_Service_Ebay_Abstract
         switch ($type) {
             // cast for: boolean
             case 'boolean':
-                $value = (string) $value == 'true';
+                $value = (string) $value === 'true';
                 break;
 
             // cast for: Amount, decimal, double, float, MeasureType

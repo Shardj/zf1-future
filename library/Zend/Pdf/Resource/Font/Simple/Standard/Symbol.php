@@ -388,7 +388,7 @@ class Zend_Pdf_Resource_Font_Simple_Standard_Symbol extends Zend_Pdf_Resource_Fo
          * live here until the remainder of the layout code is completed. This,
          * and the $charEncoding parameter, will go away soon...
          */
-        if ($charEncoding != 'UTF-16BE') {
+        if ($charEncoding !== 'UTF-16BE') {
             $string = iconv($charEncoding, 'UTF-16BE', $string);
         }
         /**
@@ -434,7 +434,7 @@ class Zend_Pdf_Resource_Font_Simple_Standard_Symbol extends Zend_Pdf_Resource_Fo
                  */
             }
         }
-        if ($charEncoding != 'UTF-16BE') {
+        if ($charEncoding !== 'UTF-16BE') {
             $decodedString = iconv('UTF-16BE', $charEncoding, $decodedString);
         }
         return $decodedString;
@@ -462,7 +462,7 @@ class Zend_Pdf_Resource_Font_Simple_Standard_Symbol extends Zend_Pdf_Resource_Fo
         /* When using these faked strings, the closest match to the font's
          * internal encoding is ISO-8859-1.
          */
-        if ($charEncoding != 'ISO-8859-1') {
+        if ($charEncoding !== 'ISO-8859-1') {
             $string = iconv($charEncoding, 'ISO-8859-1', $string);
         }
         return $this->decodeString($string, 'UTF-16BE');

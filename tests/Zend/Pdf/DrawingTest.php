@@ -283,7 +283,7 @@ class Zend_Pdf_DrawingTest extends TestCase
 
     public function testFontDrawing()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             $this->markTestSkipped('Not supported on AIX');
         }
 
@@ -481,7 +481,7 @@ class Zend_Pdf_DrawingTest extends TestCase
 
     public function testFontExtracting()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             $this->markTestSkipped('Not supported on AIX');
         }
 

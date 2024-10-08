@@ -181,7 +181,7 @@ class Zend_Barcode_Object_Ean13 extends Zend_Barcode_Object_ObjectAbstract
      */
     protected function _drawText()
     {
-        if (get_class($this) == 'Zend_Barcode_Object_Ean13') {
+        if (get_class($this) === 'Zend_Barcode_Object_Ean13') {
             $this->_drawEan13Text();
         } else {
             parent::_drawText();

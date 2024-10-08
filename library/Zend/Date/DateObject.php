@@ -1065,7 +1065,7 @@ abstract class Zend_Date_DateObject
         }
         date_default_timezone_set($oldzone);
 
-        if (($zone == 'UTC') || ($zone == 'GMT')) {
+        if (($zone === 'UTC') || ($zone === 'GMT')) {
             $this->_dst = false;
         } else {
             $this->_dst = true;

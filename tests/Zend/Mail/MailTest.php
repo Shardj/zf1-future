@@ -1101,7 +1101,7 @@ class Zend_Mail_MailTest extends TestCase
                         ));
                     }*/
                     // Check that the end-delmiter ?= is correctly placed
-                    if (substr(trim($parts[$i]), -2, 2) != "?=") {
+                    if (substr(trim($parts[$i]), -2, 2) !== "?=") {
                         $this->fail(sprintf(
                             "Lines with an encoded-word have to end in ?=, but line %d does not: %s",
                             $i + 1,

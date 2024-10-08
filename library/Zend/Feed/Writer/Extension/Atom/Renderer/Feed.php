@@ -54,7 +54,7 @@ class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
          * RSS 2.0 only. Used mainly to include Atom links and
          * Pubsubhubbub Hub endpoint URIs under the Atom namespace
          */
-        if (strtolower($this->getType()) == 'atom') {
+        if (strtolower($this->getType()) === 'atom') {
             return;
         }
         $this->_setFeedLinks($this->_dom, $this->_base);

@@ -92,7 +92,7 @@ class Zend_Search_Lucene_Document_Docx extends Zend_Search_Lucene_Document_OpenX
                     }
 
                     foreach ($runs as $run) {
-                     if ($run->getName() == 'br') {
+                     if ($run->getName() === 'br') {
                          // Break element
                          $documentBody[] = ' ';
                      } else {

@@ -111,7 +111,7 @@ class Zend_Config_Json extends Zend_Config
         }
 
         set_error_handler([$this, '_loadFileErrorHandler']); // Warnings and errors are suppressed
-        if ($json[0] != '{') {
+        if ($json[0] !== '{') {
             $json = file_get_contents($json);
         }
         restore_error_handler();

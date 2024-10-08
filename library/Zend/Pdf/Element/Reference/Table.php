@@ -92,7 +92,7 @@ class Zend_Pdf_Element_Reference_Table
     public function addReference($ref, $offset, $inuse = true)
     {
         $refElements = explode(' ', $ref);
-        if (!is_numeric($refElements[0]) || !is_numeric($refElements[1]) || $refElements[2] != 'R') {
+        if (!is_numeric($refElements[0]) || !is_numeric($refElements[1]) || $refElements[2] !== 'R') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception("Incorrect reference: '$ref'");
         }

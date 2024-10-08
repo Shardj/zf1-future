@@ -84,7 +84,7 @@ class Zend_Service_WindowsAzure_CommandLine_Package
 		$options = [];
 		foreach ($argv as $arg) {
 			list($key, $value) = explode(':', $arg, 2);
-			while (substr($key, 0, 1) == '-') {
+			while (substr($key, 0, 1) === '-') {
 				$key = substr($key, 1);
 			}
 			$options[$key] = $value;

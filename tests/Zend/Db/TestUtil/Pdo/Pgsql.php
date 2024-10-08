@@ -83,16 +83,16 @@ class Zend_Db_TestUtil_Pdo_Pgsql extends Zend_Db_TestUtil_Pdo_Common
 
     public function getSqlType($type)
     {
-        if ($type == 'IDENTITY') {
+        if ($type === 'IDENTITY') {
             return 'SERIAL PRIMARY KEY';
         }
-        if ($type == 'DATETIME') {
+        if ($type === 'DATETIME') {
             return 'TIMESTAMP';
         }
-        if ($type == 'CLOB') {
+        if ($type === 'CLOB') {
             return 'TEXT';
         }
-        if ($type == 'BLOB') {
+        if ($type === 'BLOB') {
             return 'TEXT';
         }
         return $type;

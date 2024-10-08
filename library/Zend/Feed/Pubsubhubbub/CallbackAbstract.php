@@ -261,15 +261,15 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
         }
         $scheme = 'http';
 
-        if ($_SERVER['HTTPS'] == 'on') {
+        if ($_SERVER['HTTPS'] === 'on') {
             $scheme = 'https';
         }
 
         $name = $_SERVER['SERVER_NAME'];
         $port = $_SERVER['SERVER_PORT'];
 
-        if (($scheme == 'http' && $port == 80)
-            || ($scheme == 'https' && $port == 443)
+        if (($scheme === 'http' && $port == 80)
+            || ($scheme === 'https' && $port == 443)
         ) {
             return $name;
         }

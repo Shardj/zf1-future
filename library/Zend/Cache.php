@@ -169,8 +169,8 @@ abstract class Zend_Cache
         }
         if (in_array($frontend, self::$standardFrontends)) {
             // we use a standard frontend
-            // For perfs reasons, with frontend == 'Core', we can interact with the Core itself
-            $frontendClass = 'Zend_Cache_' . ($frontend != 'Core' ? 'Frontend_' : '') . $frontend;
+            // For perfs reasons, with frontend === 'Core', we can interact with the Core itself
+            $frontendClass = 'Zend_Cache_' . ($frontend !== 'Core' ? 'Frontend_' : '') . $frontend;
             // security controls are explicit
             require_once str_replace('_', DIRECTORY_SEPARATOR, $frontendClass) . '.php';
         } else {

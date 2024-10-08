@@ -303,7 +303,7 @@ class Zend_Search_Lucene_AnalysisTest extends TestCase
 
     public function testEncoding()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             $this->markTestSkipped('Test not available on AIX');
         }
 

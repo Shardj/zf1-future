@@ -135,9 +135,9 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
 
         $nsSeparator = (false !== strpos($prefix, '\\'))?'\\':'_';
         $prefix = rtrim($prefix, $nsSeparator) . $nsSeparator;
-        //if $nsSeprator == "\" and the prefix ends in "_\" remove trailing \
+        //if $nsSeprator === "\" and the prefix ends in "_\" remove trailing \
         //https://github.com/zendframework/zf1/issues/152
-        if(($nsSeparator == "\\") && (substr($prefix,-2) == "_\\")) {
+        if(($nsSeparator === "\\") && (substr($prefix,-2) === "_\\")) {
             $prefix = substr($prefix, 0, -1);
         }
         return $prefix;

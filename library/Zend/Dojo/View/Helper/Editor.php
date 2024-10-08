@@ -163,7 +163,7 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
      */
     protected function _normalizeEditorName($name)
     {
-        if ('[]' == substr($name, -2)) {
+        if ('[]' === substr($name, -2)) {
             $name = substr($name, 0, strlen($name) - 2);
             $name .= '[Editor][]';
         } else {

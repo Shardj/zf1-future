@@ -149,7 +149,7 @@ class Zend_Cache_Frontend_Class extends Zend_Cache_Core
      */
     public function setOption($name, $value)
     {
-        if ($name == 'cached_entity') {
+        if ($name === 'cached_entity') {
             $this->setCachedEntity($value);
         } else {
             parent::setOption($name, $value);

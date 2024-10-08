@@ -420,7 +420,7 @@ class Zend_Markup_Renderer_Html extends Zend_Markup_Renderer_RendererAbstract
         if (isset($tokenAttributes['style'])) {
             $tokenAttributes['style'] = trim($tokenAttributes['style']);
 
-            if ($tokenAttributes['style'][strlen($tokenAttributes['style']) - 1] != ';') {
+            if ($tokenAttributes['style'][strlen($tokenAttributes['style']) - 1] !== ';') {
                 $tokenAttributes['style'] .= ';';
             }
         } else {

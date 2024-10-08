@@ -82,11 +82,11 @@ class Zend_Cache_Backend_Static
      */
     public function setOption($name, $value)
     {
-        if ($name == 'tag_cache') {
+        if ($name === 'tag_cache') {
             $this->setInnerCache($value);
         } else {
             // See #ZF-12047 and #GH-91
-            if ($name == 'cache_file_umask') {
+            if ($name === 'cache_file_umask') {
                 trigger_error(
                     "'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead",
                     E_USER_NOTICE
@@ -94,7 +94,7 @@ class Zend_Cache_Backend_Static
 
                 $name = 'cache_file_perm';
             }
-            if ($name == 'cache_directory_umask') {
+            if ($name === 'cache_directory_umask') {
                 trigger_error(
                     "'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead",
                     E_USER_NOTICE
@@ -119,7 +119,7 @@ class Zend_Cache_Backend_Static
     {
         $name = strtolower($name);
 
-        if ($name == 'tag_cache') {
+        if ($name === 'tag_cache') {
             return $this->getInnerCache();
         }
 
@@ -541,7 +541,7 @@ class Zend_Cache_Backend_Static
         }
 
         // Internal only checked in Frontend - not here!
-        if (substr($string, 0, 9) == 'internal-') {
+        if (substr($string, 0, 9) === 'internal-') {
             return;
         }
 

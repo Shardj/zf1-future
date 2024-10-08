@@ -106,7 +106,7 @@ class Zend_View_Helper_JsonTest extends TestCase
 
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
+            if ('Content-Type' === $header['name']) {
                 if ($found) {
                     $this->fail('Content-Type header has been set twice.');
                     return null;

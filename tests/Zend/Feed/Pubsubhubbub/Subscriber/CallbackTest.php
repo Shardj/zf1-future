@@ -367,7 +367,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends TestCase
             ->with($this->equalTo('id = ?'), $this->equalTo('verifytokenkey'))
             ->will($this->returnValue('id = \'verifytokenkey\''));
         $this->_callback->handle($this->_get);
-        $this->assertTrue($this->_callback->getHttpResponse()->getBody() == 'abc');
+        $this->assertTrue($this->_callback->getHttpResponse()->getBody() === 'abc');
     }
 
     public function testRespondsToValidFeedUpdateRequestWith200Response()
@@ -526,7 +526,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTestStorageHas implements Zend_F
 {
     public function setSubscription($key, array $data){}
     public function getSubscription($key){
-        if ($key == 'verifytokenkey') {
+        if ($key === 'verifytokenkey') {
             return array(
                 'id' => 'verifytokenkey',
                 'verify_token' => hash('sha256', 'cba')

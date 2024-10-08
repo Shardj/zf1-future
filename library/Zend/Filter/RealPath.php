@@ -102,7 +102,7 @@ class Zend_Filter_RealPath implements Zend_Filter_Interface
         }
 
         $drive = '';
-        if (substr(PHP_OS, 0, 3) == 'WIN') {
+        if (substr(PHP_OS, 0, 3) === 'WIN') {
             $path = preg_replace('/[\\\\\/]/', DIRECTORY_SEPARATOR, $path);
             if (preg_match('/([a-zA-Z]\:)(.*)/', $path, $matches)) {
                 list($fullMatch, $drive, $path) = $matches;
@@ -121,7 +121,7 @@ class Zend_Filter_RealPath implements Zend_Filter_Interface
         $parts = explode(DIRECTORY_SEPARATOR, $path);
         foreach ($parts as $dir) {
             if (strlen($dir) && $dir !== '.') {
-                if ($dir == '..') {
+                if ($dir === '..') {
                     array_pop($stack);
                 } else {
                     array_push($stack, $dir);

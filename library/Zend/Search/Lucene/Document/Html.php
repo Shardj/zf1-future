@@ -161,7 +161,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         $linkNodes = $this->_doc->getElementsByTagName('a');
         foreach ($linkNodes as $linkNode) {
             if (($href = $linkNode->getAttribute('href')) != '' &&
-                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) != 'nofollow' )
+                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) !== 'nofollow' )
                ) {
                 $this->_links[] = $href;
             }
@@ -169,7 +169,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         $linkNodes = $this->_doc->getElementsByTagName('area');
         foreach ($linkNodes as $linkNode) {
             if (($href = $linkNode->getAttribute('href')) != '' &&
-                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) != 'nofollow' )
+                (!self::$_excludeNoFollowLinks  ||  strtolower($linkNode->getAttribute('rel')) !== 'nofollow' )
                ) {
                 $this->_links[] = $href;
             }
@@ -220,7 +220,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
             if(!in_array($node->parentNode->tagName, $this->_inlineTags)) {
                 $text .= ' ';
             }
-        } else if ($node->nodeType == XML_ELEMENT_NODE  &&  $node->nodeName != 'script') {
+        } else if ($node->nodeType == XML_ELEMENT_NODE  &&  $node->nodeName !== 'script') {
             foreach ($node->childNodes as $childNode) {
                 $this->_retrieveNodeText($childNode, $text);
             }
@@ -364,7 +364,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
                 $textNodes[] = $childNode;
             } else {
                 // Process node if it's not a script node
-                if ($childNode->nodeName != 'script') {
+                if ($childNode->nodeName !== 'script') {
                     $this->_highlightNodeRecursive($childNode, $wordsToHighlight, $callback, $params);
                 }
             }

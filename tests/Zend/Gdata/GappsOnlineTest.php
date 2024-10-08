@@ -415,7 +415,7 @@ class Zend_Gdata_GappsOnlineTest extends TestCase
         $groupId = null;
         $properties = $group->getProperty();
         foreach ($properties as $property) {
-            if ($property->name == 'groupId') {
+            if ($property->name === 'groupId') {
                 $groupId = $property->value;
             }
         }
@@ -815,7 +815,7 @@ class Zend_Gdata_GappsOnlineTest extends TestCase
 
         $properties = $group->getProperty();
         foreach ($properties as $property) {
-            if ($property->name == 'description') {
+            if ($property->name === 'description') {
                 $description = $property->value;
             }
         }

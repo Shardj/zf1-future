@@ -112,12 +112,12 @@ class Zend_Pdf_Parser
         $this->_stringParser->setContext($context);
 
         $nextLexeme = $this->_stringParser->readLexeme();
-        if ($nextLexeme == 'xref') {
+        if ($nextLexeme === 'xref') {
             /**
              * Common cross-reference table
              */
             $this->_stringParser->skipWhiteSpace();
-            while ( ($nextLexeme = $this->_stringParser->readLexeme()) != 'trailer' ) {
+            while ( ($nextLexeme = $this->_stringParser->readLexeme()) !== 'trailer' ) {
                 if (!ctype_digit($nextLexeme)) {
                     require_once 'Zend/Pdf/Exception.php';
                     throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X. Cross-reference table subheader values must contain only digits.', $this->_stringParser->offset-strlen($nextLexeme)));
@@ -223,7 +223,7 @@ class Zend_Pdf_Parser
             }
 
             $trailerDict = $xrefStream->dictionary;
-            if ($trailerDict->Type->value != 'XRef') {
+            if ($trailerDict->Type->value !== 'XRef') {
                 require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception(sprintf('PDF file syntax error. Offset - 0x%X.  Cross-reference stream object must have /Type property assigned to /XRef.', $offset));
             }
@@ -398,7 +398,7 @@ class Zend_Pdf_Parser
         }
 
         $pdfVersionComment = $this->_stringParser->readComment();
-        if (substr($pdfVersionComment, 0, 5) != '%PDF-') {
+        if (substr($pdfVersionComment, 0, 5) !== '%PDF-') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('File is not a PDF.');
         }
@@ -453,7 +453,7 @@ class Zend_Pdf_Parser
         $this->_stringParser->offset -= 9;
 
         $nextLexeme = $this->_stringParser->readLexeme();
-        if ($nextLexeme != 'startxref') {
+        if ($nextLexeme !== 'startxref') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception(sprintf('Pdf file syntax error. \'startxref\' keyword expected. Offset - 0x%X.', $this->_stringParser->offset-strlen($nextLexeme)));
         }

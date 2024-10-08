@@ -248,7 +248,7 @@ class Zend_Form_Decorator_FormErrorsTest extends TestCase
         ];
         $this->decorator->setOptions($options);
         foreach ($options as $key => $value) {
-            if ($key == 'ignoreSubForms') {
+            if ($key === 'ignoreSubForms') {
                 $this->assertTrue($this->decorator->ignoreSubForms());
             } else {
                 $method = 'get' . ucfirst($key);
@@ -272,7 +272,7 @@ class Zend_Form_Decorator_FormErrorsTest extends TestCase
         $this->decorator->setOptions($options);
         $markup = $this->decorator->render('');
         foreach ($options as $key => $value) {
-            if ($key == 'ignoreSubForms') {
+            if ($key === 'ignoreSubForms') {
                 $this->assertStringNotContainsString('Sub ', $markup);
             } else {
                 $this->assertStringContainsString($value, $markup);
@@ -327,7 +327,7 @@ class Zend_Form_Decorator_FormErrorsTest extends TestCase
         $getter = 'get' . $property;
 
         $this->decorator->$setter('foo');
-        if ($property == 'IgnoreSubForms') {
+        if ($property === 'IgnoreSubForms') {
             $this->assertTrue($this->decorator->ignoreSubForms());
         } else {
             $this->assertEquals('foo', $this->decorator->$getter());

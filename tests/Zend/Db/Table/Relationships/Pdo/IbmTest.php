@@ -51,7 +51,7 @@ class Zend_Db_Table_Relationships_Pdo_IbmTest extends Zend_Db_Table_Relationship
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $this->markTestSkipped('IDS serial columns cannot be updated');
         } else {
             parent::testTableRelationshipCascadingUpdateUsageBasicString();

@@ -167,7 +167,7 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
 
     public function testSetHttpsStreamContextParam()
     {
-        if ($this->client->getUri()->getScheme() != 'https') {
+        if ($this->client->getUri()->getScheme() !== 'https') {
             $this->markTestSkipped();
         }
 

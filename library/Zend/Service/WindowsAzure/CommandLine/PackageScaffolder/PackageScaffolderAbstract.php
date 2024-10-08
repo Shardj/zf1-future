@@ -82,7 +82,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
         if (is_dir($rootPath)) {
             $d = dir($rootPath);
             while ( false !== ( $entry = $d->read() ) ) {
-                if ( $entry == '.' || $entry == '..' ) {
+                if ( $entry === '.' || $entry === '..' ) {
                     continue;
                 }
                 $entry = $rootPath . '/' . $entry;
@@ -164,7 +164,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
             }
             $d = dir($sourcePath);
             while ( false !== ( $entry = $d->read() ) ) {
-                if ( $entry == '.' || $entry == '..' ) {
+                if ( $entry === '.' || $entry === '..' ) {
                     continue;
                 }
                 $strSourceEntry = $sourcePath . '/' . $entry;
@@ -222,7 +222,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
         }
         @chmod($path, 0775);
         while ($file = readdir($handleDir)) {
-            if ($file == '.' || $file == '..') {
+            if ($file === '.' || $file === '..') {
                 continue;
             }
 

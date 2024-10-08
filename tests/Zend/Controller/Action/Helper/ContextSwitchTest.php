@@ -583,7 +583,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
 
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
+            if ('Content-Type' === $header['name']) {
                 $found = true;
                 $value = $header['value'];
             }
@@ -604,7 +604,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
 
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
+            if ('Content-Type' === $header['name']) {
                 $found = true;
                 $value = $header['value'];
             }
@@ -624,7 +624,7 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
 
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
+            if ('Content-Type' === $header['name']) {
                 $found = true;
                 $value = $header['value'];
             }
@@ -706,8 +706,8 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
         $headers = $this->response->getHeaders();
         $found = false;
         foreach ($headers as $header) {
-            if ($header['name'] == 'Content-Type') {
-                if ($header['value'] == 'application/json') {
+            if ($header['name'] === 'Content-Type') {
+                if ($header['value'] === 'application/json') {
                     $found = true;
                 }
                 break;
@@ -736,8 +736,8 @@ class Zend_Controller_Action_Helper_ContextSwitchTest extends TestCase
         $headers = $this->response->getHeaders();
         $found = false;
         foreach ($headers as $header) {
-            if ($header['name'] == 'Content-Type') {
-                if ($header['value'] == 'application/json') {
+            if ($header['name'] === 'Content-Type') {
+                if ($header['value'] === 'application/json') {
                     $found = true;
                 }
                 break;

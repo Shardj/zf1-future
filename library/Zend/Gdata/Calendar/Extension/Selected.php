@@ -83,10 +83,10 @@ class Zend_Gdata_Calendar_Extension_Selected extends Zend_Gdata_Extension
     {
         switch ($attribute->localName) {
         case 'value':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_value = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_value = false;
             }
             else {

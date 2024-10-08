@@ -127,7 +127,7 @@ class Zend_Text_FigletTest extends TestCase
 
     public function testCorrectEncodingISO885915()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             $this->markTestSkipped('Test case cannot run on AIX');
         }
 
@@ -143,7 +143,7 @@ class Zend_Text_FigletTest extends TestCase
         $this->markTestSkipped('Test case not reproducible on all setups');
         $figlet = new Zend_Text_Figlet();
 
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             $isoText = iconv('UTF-8', 'ISO-8859-15', 'Ömläüt');
         } else {
             $isoText = iconv('UTF-8', 'ISO-8859-15', 'Ömläüt');

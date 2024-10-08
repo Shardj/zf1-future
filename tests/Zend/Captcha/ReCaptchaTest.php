@@ -228,7 +228,7 @@ class Zend_Captcha_ReCaptchaTest_SessionContainer
 
     public function __get($name)
     {
-        if ('word' == $name) {
+        if ('word' === $name) {
             return self::$_word;
         }
 
@@ -237,7 +237,7 @@ class Zend_Captcha_ReCaptchaTest_SessionContainer
 
     public function __set($name, $value)
     {
-        if ('word' == $name) {
+        if ('word' === $name) {
             self::$_word = $value;
         } else {
             $this->$name = $value;
@@ -246,7 +246,7 @@ class Zend_Captcha_ReCaptchaTest_SessionContainer
 
     public function __isset($name)
     {
-        if (('word' == $name) && (null !== self::$_word)) {
+        if (('word' === $name) && (null !== self::$_word)) {
             return true;
         }
 

@@ -100,9 +100,9 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
         $defaultsArray = [];
         $restfulConfigArray = [];
         foreach ($config as $key => $values) {
-            if ($key == 'type') {
+            if ($key === 'type') {
                 // do nothing
-            } elseif ($key == 'defaults') {
+            } elseif ($key === 'defaults') {
                 $defaultsArray = $values->toArray();
             } else {
                 $restfulConfigArray[$key] = explode(',', $values);
@@ -179,7 +179,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
 
         if ($pathElementCount && array_search($path[0], ['index', 'new']) > -1) {
             $specialGetTarget = array_shift($path);
-        } elseif ($pathElementCount && $path[$pathElementCount-1] == 'edit') {
+        } elseif ($pathElementCount && $path[$pathElementCount-1] === 'edit') {
             $specialGetTarget = 'edit';
             $params['id'] = urldecode($path[$pathElementCount-2]);
         } elseif ($pathElementCount === 1) {
@@ -199,7 +199,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
 
         // Determine Action
         $requestMethod = strtolower($request->getMethod());
-        if ($requestMethod != 'get') {
+        if ($requestMethod !== 'get') {
             if ($request->getParam('_method')) {
                 $values[$this->_actionKey] = strtolower($request->getParam('_method'));
             } elseif ( $request->getHeader('X-HTTP-Method-Override') ) {

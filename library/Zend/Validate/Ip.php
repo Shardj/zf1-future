@@ -161,7 +161,7 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
      */
     protected function _validateIPv6($value) {
         if (strlen($value) < 3) {
-            return $value == '::';
+            return $value === '::';
         }
 
         if (strpos($value, '.')) {

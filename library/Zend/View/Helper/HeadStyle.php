@@ -142,7 +142,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
             $argc   = count($args);
             $action = $matches['action'];
 
-            if ('offsetSet' == $action) {
+            if ('offsetSet' === $action) {
                 if (0 < $argc) {
                     $index = array_shift($args);
                     --$argc;
@@ -164,7 +164,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
 
             $item = $this->createData($content, $attrs);
 
-            if ('offsetSet' == $action) {
+            if ('offsetSet' === $action) {
                 $this->offsetSet($index, $item);
             } else {
                 $this->$action($item);
@@ -338,7 +338,7 @@ class Zend_View_Helper_HeadStyle extends Zend_View_Helper_Placeholder_Container_
                 if (!in_array($key, $this->_optionalAttributes)) {
                     continue;
                 }
-                if ('media' == $key) {
+                if ('media' === $key) {
                     if(false === strpos($value, ',')) {
                         if (!in_array($value, $this->_mediaTypes)) {
                             continue;

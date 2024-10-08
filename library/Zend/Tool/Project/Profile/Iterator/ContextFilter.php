@@ -83,7 +83,7 @@ class Zend_Tool_Project_Profile_Iterator_ContextFilter extends RecursiveFilterIt
     public function setOptions(Array $options)
     {
         foreach ($options as $optionName => $optionValue) {
-            if (substr($optionName, -1, 1) != 's') {
+            if (substr($optionName, -1, 1) !== 's') {
                 $optionName .= 's';
             }
             if (method_exists($this, 'set' . $optionName)) {

@@ -80,9 +80,9 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
         foreach ($attribs as $key => $val) {
             $tmp    = false;
             $keyLen = strlen($key);
-            if ((6 < $keyLen) && (substr($key, 0, 6) == 'label_')) {
+            if ((6 < $keyLen) && (substr($key, 0, 6) === 'label_')) {
                 $tmp = substr($key, 6);
-            } elseif ((5 < $keyLen) && (substr($key, 0, 5) == 'label')) {
+            } elseif ((5 < $keyLen) && (substr($key, 0, 5) === 'label')) {
                 $tmp = substr($key, 5);
             }
 
@@ -116,7 +116,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
 
         // should the name affect an array collection?
         $name = $this->view->escape($name);
-        if ($this->_isArray && ('[]' != substr($name, -2))) {
+        if ($this->_isArray && ('[]' !== substr($name, -2))) {
             $name .= '[]';
         }
 
@@ -158,7 +158,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
             // Wrap the radios in labels
             $radio = '<label'
                     . $this->_htmlAttribs($label_attribs) . '>'
-                    . (('prepend' == $labelPlacement) ? $opt_label : '')
+                    . (('prepend' === $labelPlacement) ? $opt_label : '')
                     . '<input type="' . $this->_inputType . '"'
                     . ' name="' . $name . '"'
                     . ' id="' . $optId . '"'
@@ -167,7 +167,7 @@ class Zend_View_Helper_FormRadio extends Zend_View_Helper_FormElement
                     . $disabled
                     . $this->_htmlAttribs($attribs)
                     . $this->getClosingBracket()
-                    . (('append' == $labelPlacement) ? $opt_label : '')
+                    . (('append' === $labelPlacement) ? $opt_label : '')
                     . '</label>';
 
             // add to the array of radio buttons

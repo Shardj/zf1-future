@@ -98,7 +98,7 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
         $check    = 0;
         $multi    = 8;
         foreach($values as $token) {
-            if ($token == 'X') {
+            if ($token === 'X') {
                 $token = 10;
             }
 
@@ -113,7 +113,7 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
             return true;
         }
 
-        if (($check == 10) && ($checksum == 'X')) {
+        if (($check == 10) && ($checksum === 'X')) {
             return true;
         }
 

@@ -92,8 +92,8 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Test if a cache is available for the given id and (if yes) return it (false else)
      *
-     * For this test backend only, if $id == 'false', then the method will return false
-     * if $id == 'serialized', the method will return a serialized array
+     * For this test backend only, if $id === 'false', then the method will return false
+     * if $id === 'serialized', the method will return a serialized array
      * ('foo' else)
      *
      * @param  string  $id                     Cache id
@@ -104,9 +104,9 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     {
         $this->_addLog('get', [$id, $doNotTestCacheValidity]);
 
-        if ( $id == 'false'
-          || $id == 'd8523b3ee441006261eeffa5c3d3a0a7'
-          || $id == 'e83249ea22178277d5befc2c5e2e9ace'
+        if ( $id === 'false'
+          || $id === 'd8523b3ee441006261eeffa5c3d3a0a7'
+          || $id === 'e83249ea22178277d5befc2c5e2e9ace'
           || $id == '40f649b94977c0a6e76902e2a0b43587'
           || $id == '88161989b73a4cbfd0b701c446115a99'
           || $id == '205fc79cba24f0f0018eb92c7c8b3ba4'
@@ -125,7 +125,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
           || $id == '4a923ef02d7f997ca14d56dfeae25ea7') {
             return serialize(['foo', 'bar']);
         }
-        if ( $id == 'f53c7d912cc523d9a65834c8286eceb9') {
+        if ( $id === 'f53c7d912cc523d9a65834c8286eceb9') {
             return serialize(['foobar']);
         }
         return 'foo';
@@ -134,7 +134,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Test if a cache is available or not (for the given id)
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id === 'false', then the method will return false
      * (123456 else)
      *
      * @param  string $id Cache id
@@ -155,7 +155,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Save some string datas into a cache record
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id === 'false', then the method will return false
      * (true else)
      *
      * @param  string $data             Datas to cache
@@ -176,7 +176,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Remove a cache record
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id === 'false', then the method will return false
      * (true else)
      *
      * @param  string $id Cache id
@@ -194,7 +194,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Clean some cache records
      *
-     * For this test backend only, if $mode == 'false', then the method will return false
+     * For this test backend only, if $mode === 'false', then the method will return false
      * (true else)
      *
      * Available modes are :

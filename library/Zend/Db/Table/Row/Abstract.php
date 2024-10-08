@@ -888,7 +888,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
 
         if (!$dependentTable instanceof Zend_Db_Table_Abstract) {
             $type = gettype($dependentTable);
-            if ($type == 'object') {
+            if ($type === 'object') {
                 $type = get_class($dependentTable);
             }
             require_once 'Zend/Db/Table/Row/Exception.php';
@@ -944,7 +944,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
 
         if (!$parentTable instanceof Zend_Db_Table_Abstract) {
             $type = gettype($parentTable);
-            if ($type == 'object') {
+            if ($type === 'object') {
                 $type = get_class($parentTable);
             }
             require_once 'Zend/Db/Table/Row/Exception.php';
@@ -1012,7 +1012,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
 
         if (!$intersectionTable instanceof Zend_Db_Table_Abstract) {
             $type = gettype($intersectionTable);
-            if ($type == 'object') {
+            if ($type === 'object') {
                 $type = get_class($intersectionTable);
             }
             require_once 'Zend/Db/Table/Row/Exception.php';
@@ -1032,7 +1032,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
 
         if (! $matchTable instanceof Zend_Db_Table_Abstract) {
             $type = gettype($matchTable);
-            if ($type == 'object') {
+            if ($type === 'object') {
                 $type = get_class($matchTable);
             }
             require_once 'Zend/Db/Table/Row/Exception.php';
