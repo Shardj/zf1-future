@@ -47,6 +47,7 @@ class Zend_Db_Select
     const DISTINCT       = 'distinct';
     const COLUMNS        = 'columns';
     const FROM           = 'from';
+    const FORCE_INDEX    = 'forceindex';
     const UNION          = 'union';
     const WHERE          = 'where';
     const GROUP          = 'group';
@@ -73,6 +74,7 @@ class Zend_Db_Select
     const SQL_UNION      = 'UNION';
     const SQL_UNION_ALL  = 'UNION ALL';
     const SQL_FROM       = 'FROM';
+    const SQL_FORCE_INDEX = 'FORCE INDEX';
     const SQL_WHERE      = 'WHERE';
     const SQL_DISTINCT   = 'DISTINCT';
     const SQL_GROUP_BY   = 'GROUP BY';
@@ -465,6 +467,19 @@ class Zend_Db_Select
     public function joinNatural($name, $cols = self::SQL_WILDCARD, $schema = null)
     {
         return $this->_join(self::NATURAL_JOIN, $name, null, $cols, $schema);
+    }
+    
+    /**
+     * Adds an index hint for a given schema.index
+     * @param $tableIndex
+     * @throws Zend_Db_Select_Exception
+     */
+    public function forceIndex($tableIndex)
+    {
+        list($table,$index) = explode('.',$tableIndex);
+        if (empty($table) || empty($index)) {
+            throw new Zend_Db_Select_Exception("Format of forceIndex is table_name.index_name");
+        }
     }
 
     /**
@@ -1089,6 +1104,19 @@ class Zend_Db_Select
     {
         return $this->_adapter->quoteTableAs($tableName, $correlationName, true);
     }
+    
+    /**
+     * Returns force index statement for _renderFrom processing
+     * @param $tableName
+     * @return string
+     */
+    protected function _getForceIndexForTable($tableName)
+    {
+        if ($this->_parts[self::FORCE_INDEX][$tableName]) {
+            return ' ' . self::SQL_FORCE_INDEX . ' ('.$this->_parts[self::FORCE_INDEX][$tableName].')';
+        }
+        return '';
+    }
 
     /**
      * Render DISTINCT clause
@@ -1168,6 +1196,7 @@ class Zend_Db_Select
 
             $tmp .= $this->_getQuotedSchema($table['schema']);
             $tmp .= $this->_getQuotedTable($table['tableName'], $correlationName);
+            $tmp .= $this->_getForceIndexForTable($table['tableName']);
 
             // Add join conditions (if applicable)
             if (!empty($from) && ! empty($table['joinCondition'])) {
@@ -1183,6 +1212,19 @@ class Zend_Db_Select
             $sql .= ' ' . self::SQL_FROM . ' ' . implode("\n", $from);
         }
 
+        return $sql;
+    }
+    
+    /**
+     * Render FORCE INDEX option
+     *
+     * @param $sql
+     * @see Zend_Db_Select::_getForceIndexForTable
+     * @return string
+     */
+    protected function _renderForceIndex($sql)
+    {
+        // rendered in _renderFrom block via _getForceIndexForTable
         return $sql;
     }
 
