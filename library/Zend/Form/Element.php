@@ -200,6 +200,12 @@ class Zend_Form_Element implements Zend_Validate_Interface
     protected $_validators = [];
 
     /**
+     * Flags to break validation chain on failure.
+     * @var array
+     */
+    protected $_validatorBreakChainOnFailures = [];
+
+    /**
      * Array of un-initialized validators
      * @var array
      */
@@ -1225,8 +1231,8 @@ class Zend_Form_Element implements Zend_Validate_Interface
         if ($validator instanceof Zend_Validate_Interface) {
             $name = get_class($validator);
 
-            if (!isset($validator->zfBreakChainOnFailure)) {
-                $validator->zfBreakChainOnFailure = $breakChainOnFailure;
+            if (!isset($this->_validatorBreakChainOnFailures[$name])) {
+                $this->_validatorBreakChainOnFailures[$name] = $breakChainOnFailure;
             }
         } elseif (is_string($validator)) {
             $name      = $validator;
@@ -1235,6 +1241,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 'breakChainOnFailure' => $breakChainOnFailure,
                 'options'             => $options,
             ];
+            $this->_validatorBreakChainOnFailures[$name] = $breakChainOnFailure;
         } else {
             require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception('Invalid validator provided to addValidator; must be string or Zend_Validate_Interface');
@@ -1358,6 +1365,13 @@ class Zend_Form_Element implements Zend_Validate_Interface
         return $validators;
     }
 
+    function _removeBreakChainOnFailure(string $name)
+    {
+        if (isset($this->_validatorBreakChainOnFailures[$name])) {
+            unset($this->_validatorBreakChainOnFailures[$name]);
+        }
+    }
+
     /**
      * Remove a single validator by name
      *
@@ -1368,6 +1382,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     {
         if (isset($this->_validators[$name])) {
             unset($this->_validators[$name]);
+            $this->_removeBreakChainOnFailure($name);
         } else {
             $len = strlen($name);
             foreach (array_keys($this->_validators) as $validator) {
@@ -1376,6 +1391,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 }
                 if (0 === substr_compare($validator, $name, -$len, $len, true)) {
                     unset($this->_validators[$validator]);
+                    $this->_removeBreakChainOnFailure($validator);
                     break;
                 }
             }
@@ -1392,6 +1408,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function clearValidators()
     {
         $this->_validators = [];
+        $this->_validatorBreakChainOnFailures = [];
         return $this;
     }
 
@@ -1507,7 +1524,8 @@ class Zend_Form_Element implements Zend_Validate_Interface
             $this->_messages = array_merge($this->_messages, $messages);
             $this->_errors   = array_merge($this->_errors,   $errors);
 
-            if ($validator->zfBreakChainOnFailure) {
+            $breakChainFailure = $this->_validatorBreakChainOnFailures[$key] ?? false;
+            if ($breakChainFailure) {
                 break;
             }
         }
@@ -2096,6 +2114,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     public function clearDecorators()
     {
         $this->_decorators = [];
+        $this->_validatorBreakChainOnFailures = [];
         return $this;
     }
 
@@ -2244,7 +2263,6 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 $instance->setMessage($messages);
             }
         }
-        $instance->zfBreakChainOnFailure = $validator['breakChainOnFailure'];
 
         if ($origName != $name) {
             $validatorNames     = array_keys($this->_validators);
