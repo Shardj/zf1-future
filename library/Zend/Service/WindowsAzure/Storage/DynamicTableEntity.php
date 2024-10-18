@@ -70,11 +70,11 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
      */
     public function setAzureProperty($name, $value = '', $type = null)
     {
-        if (strtolower($name) == 'partitionkey') {
+        if (strtolower($name) === 'partitionkey') {
             $this->setPartitionKey($value);
-        } else if (strtolower($name) == 'rowkey') {
+        } else if (strtolower($name) === 'rowkey') {
             $this->setRowKey($value);
-        } else if (strtolower($name) == 'etag') {
+        } else if (strtolower($name) === 'etag') {
             $this->setEtag($value);
         } else {
             if (!array_key_exists(strtolower($name), $this->_dynamicProperties)) {
@@ -108,15 +108,15 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
             	$this->_dynamicProperties[strtolower($name)]->Type = $type;
 
             	// Try to convert the type
-            	if ($type == 'Edm.Int32' || $type == 'Edm.Int64') {
+            	if ($type === 'Edm.Int32' || $type === 'Edm.Int64') {
             		$value = (int)$value;
-            	} else if ($type == 'Edm.Double') {
+            	} else if ($type === 'Edm.Double') {
             		$value = (float)$value;
-            	} else if ($type == 'Edm.Boolean') {
+            	} else if ($type === 'Edm.Boolean') {
             		if (!is_bool($value)) {
-            			$value = strtolower($value) == 'true';
+            			$value = strtolower($value) === 'true';
             		}
-            	} else if ($type == 'Edm.DateTime') {
+            	} else if ($type === 'Edm.DateTime') {
             		if (!$value instanceof DateTime) {
                     	$value = $this->_convertToDateTime($value);
                     }
@@ -156,13 +156,13 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
      */
     public function getAzureProperty($name)
     {
-        if (strtolower($name) == 'partitionkey') {
+        if (strtolower($name) === 'partitionkey') {
             return $this->getPartitionKey();
         }
-        if (strtolower($name) == 'rowkey') {
+        if (strtolower($name) === 'rowkey') {
             return $this->getRowKey();
         }
-        if (strtolower($name) == 'etag') {
+        if (strtolower($name) === 'etag') {
             return $this->getEtag();
         }
 

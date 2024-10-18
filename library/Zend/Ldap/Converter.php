@@ -340,7 +340,7 @@ class Zend_Ldap_Converter
         $off         = [];
         if (preg_match($offsetRegEx, $date, $off)) {
             $offset = $off[1];
-            if ($offset == '+' || $offset == '-') {
+            if ($offset === '+' || $offset === '-') {
                 $time['offdir'] = $offset;
                 // we have an offset, so lets calculate it.
                 if (isset($off[2])) {
@@ -408,7 +408,7 @@ class Zend_Ldap_Converter
     public static function fromLdapUnserialize($value)
     {
         $v = @unserialize($value);
-        if (false===$v && $value != 'b:0;') {
+        if (false===$v && $value !== 'b:0;') {
             throw new UnexpectedValueException('The given value could not be unserialized');
         }
         return $v;

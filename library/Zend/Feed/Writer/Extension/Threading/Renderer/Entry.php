@@ -50,7 +50,7 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
      */
     public function render()
     {
-        if (strtolower($this->getType()) == 'rss') {
+        if (strtolower($this->getType()) === 'rss') {
             return; // Atom 1.0 only
         }
         $this->_setCommentLink($this->_dom, $this->_base);

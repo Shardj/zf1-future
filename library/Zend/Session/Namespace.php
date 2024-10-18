@@ -109,7 +109,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
             throw new Zend_Session_Exception('Session namespace must be a non-empty string.');
         }
 
-        if ($namespace[0] == "_") {
+        if ($namespace[0] === "_") {
             /**
              * @see Zend_Session_Exception
              */

@@ -96,9 +96,9 @@ abstract class Zend_Oauth_Signature_SignatureAbstract
     public function normaliseBaseSignatureUrl($url)
     {
         $uri = Zend_Uri_Http::fromString($url);
-        if ($uri->getScheme() == 'http' && $uri->getPort() == '80') {
+        if ($uri->getScheme() === 'http' && $uri->getPort() == '80') {
             $uri->setPort('');
-        } elseif ($uri->getScheme() == 'https' && $uri->getPort() == '443') {
+        } elseif ($uri->getScheme() === 'https' && $uri->getPort() == '443') {
             $uri->setPort('');
         }
         $uri->setQuery('');

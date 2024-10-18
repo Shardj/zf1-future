@@ -242,7 +242,7 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
         $desc = [];
         foreach ($result as $key => $row) {
             [$primary, $primaryPosition, $identity] = [false, null, false];
-            if ($row[$constraint_type] == 'P') {
+            if ($row[$constraint_type] === 'P') {
                 $primary = true;
                 $primaryPosition = $row[$position];
                 /**
@@ -257,7 +257,7 @@ class Zend_Db_Adapter_Pdo_Oci extends Zend_Db_Adapter_Pdo_Abstract
                 'COLUMN_POSITION'  => $row[$column_id],
                 'DATA_TYPE'        => $row[$data_type],
                 'DEFAULT'          => $row[$data_default],
-                'NULLABLE'         => (bool) ($row[$nullable] == 'Y'),
+                'NULLABLE'         => (bool) ($row[$nullable] === 'Y'),
                 'LENGTH'           => $row[$data_length],
                 'SCALE'            => $row[$data_scale],
                 'PRECISION'        => $row[$data_precision],

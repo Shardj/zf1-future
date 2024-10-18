@@ -274,7 +274,7 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
     {
         $rename = [];
         foreach ($this->_files as $value) {
-            if ($value['source'] == '*') {
+            if ($value['source'] === '*') {
                 if (!isset($rename['source'])) {
                     $rename           = $value;
                     $rename['source'] = $file;
@@ -290,14 +290,14 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
             return $file;
         }
 
-        if (!isset($rename['target']) || ($rename['target'] == '*')) {
+        if (!isset($rename['target']) || ($rename['target'] === '*')) {
             $rename['target'] = $rename['source'];
         }
 
         if (is_dir($rename['target'])) {
             $name = basename($rename['source']);
             $last = $rename['target'][strlen($rename['target']) - 1];
-            if (($last != '/') && ($last != '\\')) {
+            if (($last !== '/') && ($last !== '\\')) {
                 $rename['target'] .= DIRECTORY_SEPARATOR;
             }
 

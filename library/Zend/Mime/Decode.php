@@ -148,11 +148,11 @@ class Zend_Mime_Decode
             list($headers, $body) = explode($EOL . $EOL, $message, 2);
             // next is the standard new line
         } else {
-            if ($EOL != "\r\n" && strpos($message, "\r\n\r\n")) {
+            if ($EOL !== "\r\n" && strpos($message, "\r\n\r\n")) {
                 list($headers, $body) = explode("\r\n\r\n", $message, 2);
                 // next is the other "standard" new line
             } else {
-                if ($EOL != "\n" && strpos($message, "\n\n")) {
+                if ($EOL !== "\n" && strpos($message, "\n\n")) {
                     list($headers, $body) = explode("\n\n", $message, 2);
                     // at last resort find anything that looks like a new line
                 } else {
@@ -225,7 +225,7 @@ class Zend_Mime_Decode
         if ($firstName === $wantedPart) {
             $field = strtok($field, ';');
 
-            return $field[0] == '"' ? substr($field, 1, -1) : $field;
+            return $field[0] === '"' ? substr($field, 1, -1) : $field;
         }
 
         $field = $firstName . '=' . $field;
@@ -238,7 +238,7 @@ class Zend_Mime_Decode
                 if (strcasecmp($name, $wantedPart)) {
                     continue;
                 }
-                if ($matches[2][$key][0] != '"') {
+                if ($matches[2][$key][0] !== '"') {
                     return $matches[2][$key];
                 }
 
@@ -251,7 +251,7 @@ class Zend_Mime_Decode
         $split = [];
         foreach ($matches[1] as $key => $name) {
             $name = strtolower($name);
-            if ($matches[2][$key][0] == '"') {
+            if ($matches[2][$key][0] === '"') {
                 $split[$name] = substr($matches[2][$key], 1, -1);
             } else {
                 $split[$name] = $matches[2][$key];

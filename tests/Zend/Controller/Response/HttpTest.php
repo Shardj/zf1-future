@@ -86,8 +86,8 @@ class Zend_Controller_Response_HttpTest extends TestCase
         $this->_response->setHeader('Content-Type', 'text/plain', true);
         $count = 0;
         foreach ($this->_response->getHeaders() as $header) {
-            if ('Content-Type' == $header['name']) {
-                if ('text/plain' == $header['value']) {
+            if ('Content-Type' === $header['name']) {
+                if ('text/plain' === $header['value']) {
                     ++$count;
                 } else {
                     $this->fail('Found header, but incorrect value');
@@ -104,7 +104,7 @@ class Zend_Controller_Response_HttpTest extends TestCase
         $headers = $this->_response->getHeaders();
         $location = 0;
         foreach ($headers as $header) {
-            if ('Location' == $header['name']) {
+            if ('Location' === $header['name']) {
                 ++$location;
             }
         }
@@ -262,7 +262,7 @@ class Zend_Controller_Response_HttpTest extends TestCase
             $headers = headers_list();
             $found = false;
             foreach ($headers as $header) {
-                if ('Content-Type: text/plain' == $header) {
+                if ('Content-Type: text/plain' === $header) {
                     $found = true;
                 }
             }

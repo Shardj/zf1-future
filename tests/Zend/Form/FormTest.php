@@ -3229,7 +3229,7 @@ class Zend_Form_FormTest extends TestCase
         $this->assertNotNull($nodes);
         for ($i = 0; $i < $nodes->length; ++$i) {
             $node = $nodes->item($i);
-            if ('input' != $node->nodeName) {
+            if ('input' !== $node->nodeName) {
                 continue;
             }
             $this->assertTrue($node->hasAttribute('name'));
@@ -4564,7 +4564,7 @@ class Zend_Form_FormTest extends TestCase
      */
     protected function _checkZf2794()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
+        if (strtolower(substr(PHP_OS, 0, 3)) === 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
             $this->markTestIncomplete('Error occurs for PHP 5.1.4 on Windows');
         }
     }

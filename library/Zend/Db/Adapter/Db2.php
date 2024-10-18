@@ -205,7 +205,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
     public function isConnected()
     {
         return ((bool) (is_resource($this->_connection)
-                     && get_resource_type($this->_connection) == 'DB2 Connection'));
+                     && get_resource_type($this->_connection) === 'DB2 Connection'));
     }
 
     /**
@@ -455,7 +455,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
 
         foreach ($result as $key => $row) {
             list ($primary, $primaryPosition, $identity) = [false, null, false];
-            if ($row[$tabconstType] == 'P') {
+            if ($row[$tabconstType] === 'P') {
                 $primary = true;
                 $primaryPosition = $row[$colseq];
             }
@@ -463,7 +463,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
              * In IBM DB2, an column can be IDENTITY
              * even if it is not part of the PRIMARY KEY.
              */
-            if ($row[$identityCol] == 'Y') {
+            if ($row[$identityCol] === 'Y') {
                 $identity = true;
             }
 
@@ -475,10 +475,10 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                 'COLUMN_POSITION'  => (!$this->_isI5) ? $row[$colno]+1 : $row[$colno],
                 'DATA_TYPE'        => $row[$typename],
                 'DEFAULT'          => $row[$default],
-                'NULLABLE'         => (bool) ($row[$nulls] == 'Y'),
+                'NULLABLE'         => (bool) ($row[$nulls] === 'Y'),
                 'LENGTH'           => $row[$length],
                 'SCALE'            => $row[$scale],
-                'PRECISION'        => ($row[$typename] == 'DECIMAL' ? $row[$length] : 0),
+                'PRECISION'        => ($row[$typename] === 'DECIMAL' ? $row[$length] : 0),
                 'UNSIGNED'         => false,
                 'PRIMARY'          => $primary,
                 'PRIMARY_POSITION' => $primaryPosition,
@@ -718,7 +718,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
      */
     public function supportsParameters($type)
     {
-        if ($type == 'positional') {
+        if ($type === 'positional') {
             return true;
         }
 
@@ -769,7 +769,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
     protected function _determineI5()
     {
         // first us the compiled flag.
-        $this->_isI5 = (php_uname('s') == 'OS400') ? true : false;
+        $this->_isI5 = (php_uname('s') === 'OS400') ? true : false;
 
         // if this is set, then us it
         if (isset($this->_config['os'])){

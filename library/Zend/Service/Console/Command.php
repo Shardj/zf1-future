@@ -105,7 +105,7 @@ class Zend_Service_Console_Command
 	public static function bootstrap($argv)
 	{
 		// Abort bootstrapping depending on the MICROSOFT_CONSOLE_COMMAND_HOST constant.
-		if (defined('MICROSOFT_CONSOLE_COMMAND_HOST') && strtolower(MICROSOFT_CONSOLE_COMMAND_HOST) != 'console') {
+		if (defined('MICROSOFT_CONSOLE_COMMAND_HOST') && strtolower(MICROSOFT_CONSOLE_COMMAND_HOST) !== 'console') {
 			return;
 		}
 
@@ -239,7 +239,7 @@ class Zend_Service_Console_Command
 				$methods = $type->getMethods();
 			    foreach ($methods as $method) {
 			       	$commands = self::_findValueForDocComment('@command-name', $method->getDocComment());
-			    	if (substr($method->getName(), -7) == 'Command' && !in_array(substr($method->getName(), 0, -7), $commands)) {
+			    	if (substr($method->getName(), -7) === 'Command' && !in_array(substr($method->getName(), 0, -7), $commands)) {
 						// Fallback: if the method is named <commandname>Command,
 						// register it as a command.
 						$commands[] = substr($method->getName(), 0, -7);
@@ -274,14 +274,14 @@ class Zend_Service_Console_Command
 							$parameterForDefaultValue = null;
 
 							// Is it a "catch-all" parameter?
-							if ($parameter->getName() == 'argv') {
+							if ($parameter->getName() === 'argv') {
 								continue;
 							}
 
 							// Find the $parametersFor with the same name defined
 							foreach ($parametersFor as $possibleParameterFor) {
 								$possibleParameterFor = explode(' ', $possibleParameterFor, 4);
-								if ($possibleParameterFor[0] == '$' . $parameter->getName()) {
+								if ($possibleParameterFor[0] === '$' . $parameter->getName()) {
 									$parameterFor = $possibleParameterFor;
 									break;
 								}

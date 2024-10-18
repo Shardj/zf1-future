@@ -78,7 +78,7 @@ class Zend_Json_Server_Request
             $method = 'set' . ucfirst($key);
             if (in_array($method, $methods)) {
                 $this->$method($value);
-            } elseif ($key == 'jsonrpc') {
+            } elseif ($key === 'jsonrpc') {
                 $this->setVersion($value);
             }
         }

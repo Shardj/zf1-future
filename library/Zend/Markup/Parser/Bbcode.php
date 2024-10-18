@@ -244,7 +244,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                         break 2;
                     }
 
-                    if ($this->_value[$this->_pointer] == '=') {
+                    if ($this->_value[$this->_pointer] === '=') {
                         $this->_pointer++;
 
                         $this->_temp['tag'] .= '=';
@@ -368,7 +368,7 @@ class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
                             [],
                             $this->_current
                         ));
-                    } elseif (isset($token['name']) && ($token['name'][0] == '/')) {
+                    } elseif (isset($token['name']) && ($token['name'][0] === '/')) {
                         // this is a stopper, add it as a empty token
                         $this->_current->addChild(new Zend_Markup_Token(
                             $token['tag'],

@@ -328,7 +328,7 @@ abstract class Zend_Ldap_Node_Abstract implements ArrayAccess, Countable
      */
     public function getAttribute($name, $index = null)
     {
-        if ($name == 'dn') {
+        if ($name === 'dn') {
             return $this->getDnString();
         }
         else {

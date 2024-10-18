@@ -1411,7 +1411,7 @@ class Zend_Serializer_Adapter_PythonPickle extends Zend_Serializer_Adapter_Adapt
     {
         $quoteArr = array_flip(self::$_quoteString);
 
-        if ($str[0] == '"') {
+        if ($str[0] === '"') {
             $quoteArr['\\"'] = '"';
         } else {
             $quoteArr["\\'"] = "'";

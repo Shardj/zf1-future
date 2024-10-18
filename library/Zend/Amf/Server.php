@@ -356,7 +356,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
         } elseif ($info instanceof Zend_Server_Reflection_Method) {
             // Get class
             $class = $info->getDeclaringClass()->getName();
-            if ('static' == $info->isStatic()) {
+            if ('static' === $info->isStatic()) {
                 // for some reason, invokeArgs() does not work the same as
                 // invoke(), and expects the first argument to be an object.
                 // So, using a callback if the method is static.

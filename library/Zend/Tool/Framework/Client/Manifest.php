@@ -137,7 +137,7 @@ class Zend_Tool_Framework_Client_Manifest
             // create the metadatas for the per provider specialites in providerSpecaltyNames
             foreach ($providerSignature->getSpecialties() as $specialty) {
 
-                if ($specialty == '_Global') {
+                if ($specialty === '_Global') {
                     continue;
                 }
 

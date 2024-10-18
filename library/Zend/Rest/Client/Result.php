@@ -189,9 +189,9 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
 
         $status = strtolower($status[0]);
 
-        if (ctype_alpha($status) && $status == 'success') {
+        if (ctype_alpha($status) && $status === 'success') {
             return true;
-        } elseif (ctype_alpha($status) && $status != 'success') {
+        } elseif (ctype_alpha($status) && $status !== 'success') {
             return false;
         } else {
             return (bool) $status;

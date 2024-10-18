@@ -119,7 +119,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
         $whiteSpace = ["\x00", "\x09", "\x0A", "\x0C", "\x0D", "\x20"];
         $data = str_replace($whiteSpace, '', $data);
 
-        if (substr($data, -2) != '~>') {
+        if (substr($data, -2) !== '~>') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Invalid EOF marker');
             return '';
@@ -131,7 +131,7 @@ class Zend_Pdf_Filter_Ascii85 implements Zend_Pdf_Filter_Interface
         for ($i = 0; $i < $dataLength; $i += 5) {
             $b = 0;
 
-            if (substr($data, $i, 1) == "z") {
+            if (substr($data, $i, 1) === "z") {
                 $i -= 4;
                 $output .= pack("N", 0);
                 continue;

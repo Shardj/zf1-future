@@ -340,7 +340,7 @@ class Zend_Feed
                         // canonize the uri
                         $path = (string) $attributes['href'];
                         $query = $fragment = '';
-                        if (substr($path, 0, 1) != '/') {
+                        if (substr($path, 0, 1) !== '/') {
                             // add the current root path to this one
                             $path = rtrim($client->getUri()->getPath(), '/') . '/' . $path;
                         }

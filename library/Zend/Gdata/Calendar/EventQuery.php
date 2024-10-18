@@ -396,7 +396,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
         if ($value !== null) {
             if (is_bool($value)) {
                 $this->_params['singleevents'] = ($value?'true':'false');
-            } elseif ($value == 'true' | $value == 'false') {
+            } elseif ($value === 'true' | $value === 'false') {
                 $this->_params['singleevents'] = $value;
             } else {
                 require_once 'Zend/Gdata/App/Exception.php';
@@ -445,7 +445,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
         if ($value !== null) {
             if (is_bool($value)) {
                 $this->_params['futureevents'] = ($value?'true':'false');
-            } elseif ($value == 'true' | $value == 'false') {
+            } elseif ($value === 'true' | $value === 'false') {
                 $this->_params['futureevents'] = $value;
             } else {
                 require_once 'Zend/Gdata/App/Exception.php';

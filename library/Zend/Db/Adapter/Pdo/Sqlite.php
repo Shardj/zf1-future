@@ -247,7 +247,7 @@ class Zend_Db_Adapter_Pdo_Sqlite extends Zend_Db_Adapter_Pdo_Abstract
                 /**
                  * SQLite INTEGER primary key is always auto-increment.
                  */
-                $identity = (bool) ($row[$type] == 'INTEGER');
+                $identity = (bool) ($row[$type] === 'INTEGER');
                 ++$p;
             }
             $desc[$this->foldCase($row[$name])] = [

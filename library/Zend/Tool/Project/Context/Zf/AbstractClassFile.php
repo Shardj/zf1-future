@@ -52,7 +52,7 @@ abstract class Zend_Tool_Project_Context_Zf_AbstractClassFile extends Zend_Tool_
         $currentResource = $this->_resource;
         do {
             $resourceName = $currentResource->getName();
-            if ($resourceName == 'ApplicationDirectory' || $resourceName == 'ModuleDirectory') {
+            if ($resourceName === 'ApplicationDirectory' || $resourceName === 'ModuleDirectory') {
                 $containingResource = $currentResource;
                 break;
             }
@@ -63,10 +63,10 @@ abstract class Zend_Tool_Project_Context_Zf_AbstractClassFile extends Zend_Tool_
 
         // go find the proper prefix
         if (isset($containingResource)) {
-            if ($containingResource->getName() == 'ApplicationDirectory') {
+            if ($containingResource->getName() === 'ApplicationDirectory') {
                 $prefix = $containingResource->getAttribute('classNamePrefix');
                 $fullClassName = $prefix;
-            } elseif ($containingResource->getName() == 'ModuleDirectory') {
+            } elseif ($containingResource->getName() === 'ModuleDirectory') {
                 $filter = new Zend_Filter_Word_DashToCamelCase();
                 $prefix = $filter->filter(ucfirst($containingResource->getAttribute('moduleName'))) . '_';
                 $fullClassName = $prefix;

@@ -247,7 +247,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
             throw new Zend_Mail_Storage_Exception('delete children first');
         }
 
-        if ($name == 'INBOX' || $name == DIRECTORY_SEPARATOR || $name == '/') {
+        if ($name === 'INBOX' || $name == DIRECTORY_SEPARATOR || $name === '/') {
             /**
              * @see Zend_Mail_Storage_Exception
              */
@@ -277,7 +277,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
                 throw new Zend_Mail_Storage_Exception("error opening $subdir");
             }
             while (($entry = readdir($dh)) !== false) {
-                if ($entry == '.' || $entry == '..') {
+                if ($entry === '.' || $entry === '..') {
                     continue;
                 }
                 if (!unlink($dir . DIRECTORY_SEPARATOR . $entry)) {
@@ -354,7 +354,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         // check if folder exists and has no children
         $folder = $this->getFolders($oldName);
 
-        if ($oldName == 'INBOX' || $oldName == DIRECTORY_SEPARATOR || $oldName == '/') {
+        if ($oldName === 'INBOX' || $oldName == DIRECTORY_SEPARATOR || $oldName === '/') {
             /**
              * @see Zend_Mail_Storage_Exception
              */
@@ -434,7 +434,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
      */
     protected function _createTmpFile($folder = 'INBOX')
     {
-        if ($folder == 'INBOX') {
+        if ($folder === 'INBOX') {
             $tmpdir = $this->_rootdir . DIRECTORY_SEPARATOR . 'tmp' . DIRECTORY_SEPARATOR;
         } else {
             $tmpdir = $this->_rootdir . '.' . $folder . DIRECTORY_SEPARATOR . 'tmp' . DIRECTORY_SEPARATOR;
@@ -566,7 +566,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         $temp_file = $this->_createTmpFile($folder->getGlobalName());
 
         // TODO: handle class instances for $message
-        if (is_resource($message) && get_resource_type($message) == 'stream') {
+        if (is_resource($message) && get_resource_type($message) === 'stream') {
             stream_copy_to_stream($message, $temp_file['handle']);
         } else {
             fputs($temp_file['handle'], $message);
@@ -674,7 +674,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         }
 
         if ($folder->getGlobalName() == $this->_currentFolder
-            || ($this->_currentFolder == 'INBOX' && $folder->getGlobalName() == '/')) {
+            || ($this->_currentFolder === 'INBOX' && $folder->getGlobalName() === '/')) {
             $this->_files[] = ['uniq'     => $temp_file['uniq'],
                                     'flags'    => $flags,
                                     'filename' => $new_file];
@@ -699,7 +699,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         }
 
         if ($folder->getGlobalName() == $this->_currentFolder
-            || ($this->_currentFolder == 'INBOX' && $folder->getGlobalName() == '/')) {
+            || ($this->_currentFolder === 'INBOX' && $folder->getGlobalName() === '/')) {
             /**
              * @see Zend_Mail_Storage_Exception
              */
@@ -850,8 +850,8 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
             $quota = [];
             foreach ($definition as $member) {
                 $key = $member[strlen($member) - 1];
-                if ($key == 'S' || $key == 'C') {
-                    $key = $key == 'C' ? 'count' : 'size';
+                if ($key === 'S' || $key === 'C') {
+                    $key = $key === 'C' ? 'count' : 'size';
                 }
                 $quota[$key] = substr($member, 0, -1);
             }
@@ -882,12 +882,12 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         $folders = new RecursiveIteratorIterator($this->getFolders(), RecursiveIteratorIterator::SELF_FIRST);
         foreach ($folders as $folder) {
             $subdir = $folder->getGlobalName();
-            if ($subdir == 'INBOX') {
+            if ($subdir === 'INBOX') {
                 $subdir = '';
             } else {
                 $subdir = '.' . $subdir;
             }
-            if ($subdir == 'Trash') {
+            if ($subdir === 'Trash') {
                 continue;
             }
 
@@ -909,7 +909,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
 
 
                 while (($entry = readdir()) !== false) {
-                    if ($entry[0] == '.' || !is_file($dirname . $entry)) {
+                    if ($entry[0] === '.' || !is_file($dirname . $entry)) {
                         continue;
                     }
 
@@ -937,8 +937,8 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         $fh = $tmp['handle'];
         $definition = [];
         foreach ($quota as $type => $value) {
-            if ($type == 'size' || $type == 'count') {
-                $type = $type == 'count' ? 'C' : 'S';
+            if ($type === 'size' || $type === 'count') {
+                $type = $type === 'count' ? 'C' : 'S';
             }
             $definition[] = $value . $type;
         }
@@ -990,8 +990,8 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
                 $quota = [];
                 foreach ($definition as $member) {
                     $key = $member[strlen($member) - 1];
-                    if ($key == 'S' || $key == 'C') {
-                        $key = $key == 'C' ? 'count' : 'size';
+                    if ($key === 'S' || $key === 'C') {
+                        $key = $key === 'C' ? 'count' : 'size';
                     }
                     $quota[$key] = substr($member, 0, -1);
                 }

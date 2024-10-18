@@ -66,7 +66,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends TestCase
         $dir = opendir($dirName);
         while (($file = readdir($dir)) !== false) {
             if (is_dir($dirName . '/' . $file)) {
-                if ($file == '.' || $file == '..') {
+                if ($file === '.' || $file === '..') {
                     continue;
                 }
 

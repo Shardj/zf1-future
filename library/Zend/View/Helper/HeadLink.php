@@ -153,7 +153,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
             $type   = $matches['type'];
             $index  = null;
 
-            if ('offsetSet' == $action) {
+            if ('offsetSet' === $action) {
                 if (0 < $argc) {
                     $index = array_shift($args);
                     --$argc;
@@ -175,7 +175,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
             }
 
             if ($item) {
-                if ('offsetSet' == $action) {
+                if ('offsetSet' === $action) {
                     $this->offsetSet($index, $item);
                 } else {
                     $this->$action($item);
@@ -323,7 +323,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
             $link .= '/>';
         }
 
-        if (($link == '<link />') || ($link == '<link >')) {
+        if (($link === '<link />') || ($link === '<link >')) {
             return '';
         }
 
@@ -426,7 +426,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
     protected function _isDuplicateStylesheet($uri)
     {
         foreach ($this->getContainer() as $item) {
-            if (($item->rel == 'stylesheet') && ($item->href == $uri)) {
+            if (($item->rel === 'stylesheet') && ($item->href == $uri)) {
                 return true;
             }
         }

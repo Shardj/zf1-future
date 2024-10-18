@@ -125,7 +125,7 @@ class Zend_XmlRpc_Server_System
             } elseif (!is_array($method['params'])) {
                 $fault = $this->_server->fault('Params must be an array', 604);
             } else {
-                if ('system.multicall' == $method['methodName']) {
+                if ('system.multicall' === $method['methodName']) {
                     // don't allow recursive calls to multicall
                     $fault = $this->_server->fault('Recursive system.multicall forbidden', 605);
                 }

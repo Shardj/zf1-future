@@ -168,6 +168,6 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
         if (!$this->hasConstraint('strict')) {
             return false;
         }
-        return ('true' == $this->getConstraint('strict'));
+        return ('true' === $this->getConstraint('strict'));
     }
 }

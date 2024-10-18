@@ -388,7 +388,7 @@ class Zend_Controller_FrontTest extends TestCase
      */
     public function testDispatch7()
     {
-        if ('cli' == strtolower(php_sapi_name())) {
+        if ('cli' === strtolower(php_sapi_name())) {
             $this->markTestSkipped('Issues with $_GET in CLI interface prevents test from passing');
         }
         $request = new Zend_Controller_Request_Http('http://framework.zend.com/index.php?controller=foo&action=bar');

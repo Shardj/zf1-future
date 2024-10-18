@@ -51,8 +51,8 @@ class Zend_Gdata_Spreadsheets_DocumentQueryTest extends TestCase
     {
         $this->assertTrue($this->docQuery->getTitle() == null);
         $this->docQuery->setTitle('test title');
-        $this->assertTrue($this->docQuery->getTitle() == 'test title');
-        $this->assertTrue($this->docQuery->getQueryString() == '?title=test+title');
+        $this->assertTrue($this->docQuery->getTitle() === 'test title');
+        $this->assertTrue($this->docQuery->getQueryString() === '?title=test+title');
         $this->docQuery->setTitle(null);
         $this->assertTrue($this->docQuery->getTitle() == null);
     }
@@ -61,8 +61,8 @@ class Zend_Gdata_Spreadsheets_DocumentQueryTest extends TestCase
     {
         $this->assertTrue($this->docQuery->getTitleExact() == null);
         $this->docQuery->setTitleExact('test title');
-        $this->assertTrue($this->docQuery->getTitleExact() == 'test title');
-        $this->assertTrue($this->docQuery->getQueryString() == '?title-exact=test+title');
+        $this->assertTrue($this->docQuery->getTitleExact() === 'test title');
+        $this->assertTrue($this->docQuery->getQueryString() === '?title-exact=test+title');
         $this->docQuery->setTitleExact(null);
         $this->assertTrue($this->docQuery->getTitleExact() == null);
     }
@@ -78,20 +78,20 @@ class Zend_Gdata_Spreadsheets_DocumentQueryTest extends TestCase
     {
         $this->assertTrue($this->docQuery->getSpreadsheetKey() == null);
         $this->docQuery->setSpreadsheetKey('abc');
-        $this->assertTrue($this->docQuery->getSpreadsheetKey() == 'abc');
+        $this->assertTrue($this->docQuery->getSpreadsheetKey() === 'abc');
     }
 
     public function testProjection()
     {
-        $this->assertTrue($this->docQuery->getProjection() == 'full');
+        $this->assertTrue($this->docQuery->getProjection() === 'full');
         $this->docQuery->setProjection('abc');
-        $this->assertTrue($this->docQuery->getProjection() == 'abc');
+        $this->assertTrue($this->docQuery->getProjection() === 'abc');
     }
 
     public function testVisibility()
     {
-        $this->assertTrue($this->docQuery->getVisibility() == 'private');
+        $this->assertTrue($this->docQuery->getVisibility() === 'private');
         $this->docQuery->setVisibility('xyz');
-        $this->assertTrue($this->docQuery->getVisibility() == 'xyz');
+        $this->assertTrue($this->docQuery->getVisibility() === 'xyz');
     }
 }

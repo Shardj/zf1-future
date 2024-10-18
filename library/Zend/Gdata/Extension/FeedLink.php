@@ -107,10 +107,10 @@ class Zend_Gdata_Extension_FeedLink extends Zend_Gdata_Extension
             $this->_href = $attribute->nodeValue;
             break;
         case 'readOnly':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_readOnly = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_readOnly = false;
             }
             else {

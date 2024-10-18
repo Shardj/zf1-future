@@ -348,16 +348,16 @@ abstract class Zend_Translate_Adapter {
         $change = false;
         $locale = null;
         foreach ($options as $key => $option) {
-            if ($key == 'locale') {
+            if ($key === 'locale') {
                 $locale = $option;
             } else if ((isset($this->_options[$key]) && ($this->_options[$key] != $option)) ||
                     !isset($this->_options[$key])) {
-                if (($key == 'log') && !($option instanceof Zend_Log)) {
+                if (($key === 'log') && !($option instanceof Zend_Log)) {
                     require_once 'Zend/Translate/Exception.php';
                     throw new Zend_Translate_Exception('Instance of Zend_Log expected for option log');
                 }
 
-                if ($key == 'cache') {
+                if ($key === 'cache') {
                     self::setCache($option);
                     continue;
                 }

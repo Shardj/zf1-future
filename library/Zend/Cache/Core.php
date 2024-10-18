@@ -263,7 +263,7 @@ class Zend_Cache_Core
         if (!is_string($name) || !array_key_exists($name, $this->_options)) {
             Zend_Cache::throwException("Incorrect option name : $name");
         }
-        if ($name == 'lifetime' && empty($value)) {
+        if ($name === 'lifetime' && empty($value)) {
             $value = null;
         }
         $this->_options[$name] = $value;
@@ -673,7 +673,7 @@ class Zend_Cache_Core
         if (!is_string($string)) {
             Zend_Cache::throwException('Invalid id or tag : must be a string');
         }
-        if (substr($string, 0, 9) == 'internal-') {
+        if (substr($string, 0, 9) === 'internal-') {
             Zend_Cache::throwException('"internal-*" ids or tags are reserved');
         }
         if (!preg_match('~^[a-zA-Z0-9_]+$~D', $string)) {

@@ -104,7 +104,7 @@ class Zend_Gdata_AuthSubTest extends TestCase
             $authHeaderCheckPassed = false;
             $headers = $requestData['headers'];
             foreach ($headers as $headerName => $headerValue) {
-                if (strtolower($headerName) == 'authorization') {
+                if (strtolower($headerName) === 'authorization') {
                     preg_match('/data="([^"]*)"/', $headerValue, $matches);
                     $dataToSign = $matches[1];
                     preg_match('/sig="([^"]*)"/', $headerValue, $matches);

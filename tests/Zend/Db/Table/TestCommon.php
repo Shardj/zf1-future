@@ -1017,7 +1017,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
         $where = [
             "$bug_id IN (1, 3)",
-            "$bug_status != 'UNKNOWN'"
+            "$bug_status !== 'UNKNOWN'"
             ];
 
         $this->assertEquals(2, $this->_table['bugs']->update($data, $where));
@@ -1073,7 +1073,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
         $where = [
             "$bug_id IN (1, 3)",
-            "$bug_status != 'UNKNOWN'"
+            "$bug_status !== 'UNKNOWN'"
             ];
 
         $this->assertEquals(2, $this->_table['bugs']->delete($where));

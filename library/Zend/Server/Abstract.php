@@ -207,7 +207,7 @@ abstract class Zend_Server_Abstract implements Zend_Server_Interface
         $callback = $invocable->getCallback();
         $type     = $callback->getType();
 
-        if ('function' == $type) {
+        if ('function' === $type) {
             $function = $callback->getFunction();
             return call_user_func_array($function, $params);
         }
@@ -215,7 +215,7 @@ abstract class Zend_Server_Abstract implements Zend_Server_Interface
         $class  = $callback->getClass();
         $method = $callback->getMethod();
 
-        if ('static' == $type) {
+        if ('static' === $type) {
             return call_user_func_array([$class, $method], $params);
         }
 

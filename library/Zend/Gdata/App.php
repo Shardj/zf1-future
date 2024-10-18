@@ -520,7 +520,7 @@ class Zend_Gdata_App
             } else {
                 $finalContentType = 'application/atom+xml';
             }
-            if ($method == 'PUT' || $method == 'DELETE') {
+            if ($method === 'PUT' || $method === 'DELETE') {
                 $editLink = $data->getEditLink();
                 if ($editLink != null && $url == null) {
                     $url = $editLink->getHref();
@@ -529,7 +529,7 @@ class Zend_Gdata_App
         } elseif ($data instanceof Zend_Gdata_App_Entry) {
             $rawData = $data->saveXML();
             $finalContentType = 'application/atom+xml';
-            if ($method == 'PUT' || $method == 'DELETE') {
+            if ($method === 'PUT' || $method === 'DELETE') {
                 $editLink = $data->getEditLink();
                 if ($editLink != null) {
                     $url = $editLink->getHref();
@@ -543,7 +543,7 @@ class Zend_Gdata_App
             $finalContentType = $data->getContentType();
         }
 
-        if ($method == 'DELETE') {
+        if ($method === 'DELETE') {
             $rawData = null;
         }
 
@@ -552,18 +552,18 @@ class Zend_Gdata_App
         //   - If this isn't a GET, the Etag isn't weak
         //   - A similar header (If-Match/If-None-Match) hasn't already been
         //     set.
-        if ($method != 'DELETE' && (
+        if ($method !== 'DELETE' && (
                 !array_key_exists('If-Match', $headers) &&
                 !array_key_exists('If-None-Match', $headers)
                 ) ) {
-            $allowWeak = $method == 'GET';
+            $allowWeak = $method === 'GET';
             if ($ifMatchHeader = $this->generateIfMatchHeaderData(
                     $data, $allowWeak)) {
                 $headers['If-Match'] = $ifMatchHeader;
             }
         }
 
-        if ($method != 'POST' && $method != 'GET' && Zend_Gdata_App::getHttpMethodOverride()) {
+        if ($method !== 'POST' && $method !== 'GET' && Zend_Gdata_App::getHttpMethodOverride()) {
             $headers['x-http-method-override'] = $method;
             $method = 'POST';
         } else {
@@ -614,8 +614,8 @@ class Zend_Gdata_App
         }
 
         // check the overridden method
-        if (($method == 'POST' || $method == 'PUT') && $body === null &&
-            $headers['x-http-method-override'] != 'DELETE') {
+        if (($method === 'POST' || $method === 'PUT') && $body === null &&
+            $headers['x-http-method-override'] !== 'DELETE') {
                 require_once 'Zend/Gdata/App/InvalidArgumentException.php';
                 throw new Zend_Gdata_App_InvalidArgumentException(
                         'You must specify the data to post as either a ' .
@@ -1209,7 +1209,7 @@ class Zend_Gdata_App
                 $data instanceof Zend_Gdata_App_Entry) {
             $etag = $data->getEtag();
             if (($etag !== null) &&
-                    ($allowWeek || substr($etag, 0, 2) != 'W/')) {
+                    ($allowWeek || substr($etag, 0, 2) !== 'W/')) {
                 $result = $data->getEtag();
             }
         }

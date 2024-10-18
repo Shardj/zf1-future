@@ -50,9 +50,9 @@ class Zend_Gdata_Spreadsheets_CustomTest extends TestCase
     public function testToAndFromString()
     {
         $this->custom->setText('value');
-        $this->assertTrue($this->custom->getText() == 'value');
+        $this->assertTrue($this->custom->getText() === 'value');
         $this->custom->setColumnName('column_name');
-        $this->assertTrue($this->custom->getColumnName() == 'column_name');
+        $this->assertTrue($this->custom->getColumnName() === 'column_name');
         $newCustom = new Zend_Gdata_Spreadsheets_Extension_Custom();
         $doc = new DOMDocument();
         $doc->loadXML($this->custom->saveXML());

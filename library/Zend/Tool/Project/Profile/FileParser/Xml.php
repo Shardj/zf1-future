@@ -108,7 +108,7 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
 
         $xmlDataIterator = new SimpleXMLIterator($data);
 
-        if ($xmlDataIterator->getName() != 'projectProfile') {
+        if ($xmlDataIterator->getName() !== 'projectProfile') {
             throw new Exception('Profiles must start with a projectProfile node');
         }
 

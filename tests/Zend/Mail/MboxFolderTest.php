@@ -79,7 +79,7 @@ class Zend_Mail_MboxFolderTest extends TestCase
         $this->_params['folder'] = 'INBOX';
 
         foreach ($this->_subdirs as $dir) {
-            if ($dir != '.') {
+            if ($dir !== '.') {
                 mkdir($this->_tmpdir . $dir);
             }
             $dh = opendir($this->_originalDir . $dir);
@@ -106,7 +106,7 @@ class Zend_Mail_MboxFolderTest extends TestCase
                 unlink($entry);
             }
             closedir($dh);
-            if ($dir != '.') {
+            if ($dir !== '.') {
                 rmdir($this->_tmpdir . $dir);
             }
         }

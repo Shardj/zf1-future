@@ -131,7 +131,7 @@ class Zend_View_Helper_Doctype extends Zend_View_Helper_Abstract
                     $this->setDoctype($doctype);
                     break;
                 default:
-                    if (substr($doctype, 0, 9) != '<!DOCTYPE') {
+                    if (substr($doctype, 0, 9) !== '<!DOCTYPE') {
                         require_once 'Zend/View/Exception.php';
                         $e = new Zend_View_Exception('The specified doctype is malformed');
                         $e->setView($this->view);

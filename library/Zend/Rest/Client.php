@@ -115,7 +115,7 @@ class Zend_Rest_Client extends Zend_Service_Abstract
 
         $uri = $this->_uri->getUri();
 
-        if ($path[0] != '/' && $uri[strlen($uri)-1] != '/') {
+        if ($path[0] !== '/' && $uri[strlen($uri)-1] !== '/') {
             $path = '/' . $path;
         }
 

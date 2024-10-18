@@ -271,7 +271,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
         }
         $result = true;
         while (false !== ($file = $d->read())) {
-            if ($file == '.' || $file == '..') {
+            if ($file === '.' || $file === '..') {
                 continue;
             }
             $file = $d->path . $file;

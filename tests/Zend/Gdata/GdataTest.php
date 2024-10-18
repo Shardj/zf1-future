@@ -43,7 +43,7 @@ class Zend_Gdata_GdataTest extends TestCase
         $this->assertTrue(
             $client instanceof Zend_Http_Client,
             'Expecting object of type Zend_Http_Client, got '
-            . (gettype($client) == 'object' ? get_class($client) : gettype($client))
+            . (gettype($client) === 'object' ? get_class($client) : gettype($client))
         );
     }
 
@@ -55,7 +55,7 @@ class Zend_Gdata_GdataTest extends TestCase
         $this->assertTrue(
             $client2 instanceof Zend_Http_Client,
             'Expecting object of type Zend_Http_Client, got '
-            . (gettype($client) == 'object' ? get_class($client) : gettype($client))
+            . (gettype($client) === 'object' ? get_class($client) : gettype($client))
         );
         $this->assertSame($client, $client2);
     }

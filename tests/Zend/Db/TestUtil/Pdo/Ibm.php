@@ -48,7 +48,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
         $data = parent::_getDataProducts();
 
         $server = $this->getServer();
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             foreach ($data as &$row) {
                 $row['product_id'] = new Zend_Db_Expr($this->_db->quoteIdentifier('zfproducts_seq', true) . ".NEXTVAL");
             }
@@ -60,7 +60,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
     {
         $server = $this->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             return [
             [
                 'doc_id' => 1,
@@ -81,11 +81,11 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
     {
         $server = $this->getServer();
 
-        if ($server == 'IDS') {
-            if ($type == 'IDENTITY') {
+        if ($server === 'IDS') {
+            if ($type === 'IDENTITY') {
                 return 'SERIAL(1) PRIMARY KEY';
             }
-            if ($type == 'DATETIME') {
+            if ($type === 'DATETIME') {
                 return 'DATE';
             }
             return $type;
@@ -97,7 +97,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
     {
         $server = $this->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $tableList = $this->_db->fetchCol(
                 'SELECT T.TABNAME FROM SYSTABLES T '
             . $this->_db->quoteInto(' WHERE T.TABNAME = ?', $tableName)
@@ -115,7 +115,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
     {
         $server = $this->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $tableList = $this->_db->fetchCol(
                 'SELECT T.TABNAME FROM SYSTABLES T '
             . $this->_db->quoteInto(' WHERE T.TABNAME = ?', $tableName)
@@ -133,7 +133,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
     {
         $server = $this->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $seqList = $this->_db->fetchCol(
                 'SELECT S.TABNAME FROM SYSTABLES S '
             . $this->_db->quoteInto(' WHERE S.TABNAME = ?', $sequenceName)
@@ -153,7 +153,7 @@ class Zend_Db_TestUtil_Pdo_Ibm extends Zend_Db_TestUtil_Db2
     {
         $server = $this->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $seqList = $this->_db->fetchCol(
                 'SELECT S.TABNAME FROM SYSTABLES S '
             . $this->_db->quoteInto(' WHERE S.TABNAME = ?', $sequenceName)

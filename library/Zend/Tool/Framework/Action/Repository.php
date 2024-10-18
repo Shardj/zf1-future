@@ -65,7 +65,7 @@ class Zend_Tool_Framework_Action_Repository
     {
         $actionName = $action->getName();
 
-        if ($actionName == '' || $actionName == 'Base') {
+        if ($actionName == '' || $actionName === 'Base') {
             require_once 'Zend/Tool/Framework/Action/Exception.php';
             throw new Zend_Tool_Framework_Action_Exception('An action name for the provided action could not be determined.');
         }

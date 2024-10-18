@@ -240,10 +240,10 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
                  * or length; it is only a hint for display width.
                  */
             }
-            if (strtoupper($row['Key']) == 'PRI') {
+            if (strtoupper($row['Key']) === 'PRI') {
                 $row['Primary'] = true;
                 $row['PrimaryPosition'] = $p;
-                if ($row['Extra'] == 'auto_increment') {
+                if ($row['Extra'] === 'auto_increment') {
                     $row['Identity'] = true;
                 } else {
                     $row['Identity'] = false;
@@ -257,7 +257,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
                 'COLUMN_POSITION'  => $i,
                 'DATA_TYPE'        => $row['Type'],
                 'DEFAULT'          => $row['Default'],
-                'NULLABLE'         => (bool) ($row['Null'] == 'YES'),
+                'NULLABLE'         => (bool) ($row['Null'] === 'YES'),
                 'LENGTH'           => $row['Length'],
                 'SCALE'            => $row['Scale'],
                 'PRECISION'        => $row['Precision'],

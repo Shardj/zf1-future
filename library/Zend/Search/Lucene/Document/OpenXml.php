@@ -120,7 +120,7 @@ abstract class Zend_Search_Lucene_Document_OpenXml extends Zend_Search_Lucene_Do
         $absolutes = [];
         foreach ($parts as $part) {
             if ('.' == $part) continue;
-            if ('..' == $part) {
+            if ('..' === $part) {
                 array_pop($absolutes);
             } else {
                 $absolutes[] = $part;

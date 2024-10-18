@@ -116,7 +116,7 @@ class Zend_Controller_Action_Helper_JsonTest extends TestCase
 
         $found = false;
         foreach ($headers as $header) {
-            if ('Content-Type' == $header['name']) {
+            if ('Content-Type' === $header['name']) {
                 $found = true;
                 $value = $header['value'];
                 break;

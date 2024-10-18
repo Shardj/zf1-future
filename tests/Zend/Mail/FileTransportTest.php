@@ -86,7 +86,7 @@ class Zend_Mail_FileTransportTest extends TestCase
     {
         $entries = scandir($dir);
         foreach ($entries as $entry) {
-            if ($entry == '.' || $entry == '..') {
+            if ($entry === '.' || $entry === '..') {
                 continue;
             }
 
@@ -144,7 +144,7 @@ class Zend_Mail_FileTransportTest extends TestCase
         $entries = scandir($this->_tmpdir);
         $this->assertTrue(count($entries) == 3);
         foreach ($entries as $entry) {
-            if ($entry == '.' || $entry == '..') {
+            if ($entry === '.' || $entry === '..') {
                 continue;
             }
             $filename = $this->_tmpdir . DIRECTORY_SEPARATOR . $entry;
@@ -176,7 +176,7 @@ class Zend_Mail_FileTransportTest extends TestCase
         $entries = scandir($this->_tmpdir);
         $this->assertTrue(count($entries) == 3);
         foreach ($entries as $entry) {
-            if ($entry == '.' || $entry == '..') {
+            if ($entry === '.' || $entry === '..') {
                 continue;
             } else {
                 break;

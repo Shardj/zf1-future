@@ -106,7 +106,7 @@ class Zend_Form_Decorator_HtmlTagTest extends TestCase
                         ->setOptions($options);
         $html = $this->decorator->render('');
         foreach ($options as $key => $value) {
-            if ('tag' == $key) {
+            if ('tag' === $key) {
                 $this->assertStringContainsString('<' . $value, $html);
                 $this->assertStringContainsString('</' . $value . '>', $html);
             } else {
@@ -123,7 +123,7 @@ class Zend_Form_Decorator_HtmlTagTest extends TestCase
                         ->setOptions($options);
         $html = $this->decorator->render('');
         foreach ($options as $key => $value) {
-            if ('tag' == $key) {
+            if ('tag' === $key) {
                 $this->assertStringContainsString('<' . $value, $html);
                 $this->assertStringContainsString('</' . $value . '>', $html);
             } else {
@@ -140,10 +140,10 @@ class Zend_Form_Decorator_HtmlTagTest extends TestCase
                         ->setOptions($options);
         $html = $this->decorator->render('');
         foreach ($options as $key => $value) {
-            if ('tag' == $key) {
+            if ('tag' === $key) {
                 $this->assertStringContainsString('<' . $value, $html);
                 $this->assertStringNotContainsString('</' . $value . '>', $html);
-            } elseif ('openOnly' == $key) {
+            } elseif ('openOnly' === $key) {
                 $this->assertStringNotContainsString($key, $html);
             } else {
                 $this->assertStringContainsString($key . '="' . (string) $value . '"', $html);
@@ -159,7 +159,7 @@ class Zend_Form_Decorator_HtmlTagTest extends TestCase
                         ->setOptions($options);
         $html = $this->decorator->render('');
         foreach ($options as $key => $value) {
-            if ('tag' == $key) {
+            if ('tag' === $key) {
                 $this->assertStringNotContainsString('<' . $value, $html);
                 $this->assertStringContainsString('</' . $value . '>', $html);
             } else {

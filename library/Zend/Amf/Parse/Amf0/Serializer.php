@@ -229,7 +229,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
         // Loop each element and write the name of the property.
         foreach ($object as $key => &$value) {
             // skip variables starting with an _ private transient
-            if( $key[0] == "_") continue;
+            if( $key[0] === "_") continue;
             $this->_stream->writeUtf($key);
             $this->writeTypeMarker($value);
         }

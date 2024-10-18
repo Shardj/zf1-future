@@ -149,7 +149,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
      */
     public function setStreamContext($context)
     {
-        if (is_resource($context) && get_resource_type($context) == 'stream-context') {
+        if (is_resource($context) && get_resource_type($context) === 'stream-context') {
             $this->_context = $context;
 
         } elseif (is_array($context)) {
@@ -272,7 +272,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         }
 
         $host = $uri->getHost();
-        $host = (strtolower($uri->getScheme()) == 'https' ? $this->config['ssltransport'] : 'tcp') . '://' . $host;
+        $host = (strtolower($uri->getScheme()) === 'https' ? $this->config['ssltransport'] : 'tcp') . '://' . $host;
         if ($this->connected_to[0] != $host || $this->connected_to[1] != $uri->getPort()) {
             require_once 'Zend/Http/Client/Adapter/Exception.php';
             throw new Zend_Http_Client_Adapter_Exception('Trying to write but we are connected to the wrong host');
@@ -350,7 +350,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
             $this->method == Zend_Http_Client::HEAD) {
 
             // Close the connection if requested to do so by the server
-            if (isset($headers['connection']) && $headers['connection'] == 'close') {
+            if (isset($headers['connection']) && $headers['connection'] === 'close') {
                 $this->close();
             }
             return $response;
@@ -359,7 +359,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         // If we got a 'transfer-encoding: chunked' header
         if (isset($headers['transfer-encoding']) && is_string($headers['transfer-encoding'])) {
 
-            if (strtolower($headers['transfer-encoding']) == 'chunked') {
+            if (strtolower($headers['transfer-encoding']) === 'chunked') {
 
                 do {
                     $line  = @fgets($this->socket);
@@ -485,7 +485,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         }
 
         // Close the connection if requested to do so by the server
-        if (isset($headers['connection']) && $headers['connection'] == 'close') {
+        if (isset($headers['connection']) && $headers['connection'] === 'close') {
             $this->close();
         }
 

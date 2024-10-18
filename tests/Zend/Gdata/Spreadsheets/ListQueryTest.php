@@ -49,7 +49,7 @@ class Zend_Gdata_Spreadsheets_ListQueryTest extends TestCase
 
     public function testWorksheetId()
     {
-        $this->assertTrue($this->docQuery->getWorksheetId() == 'default');
+        $this->assertTrue($this->docQuery->getWorksheetId() === 'default');
         $this->docQuery->setWorksheetId('123');
         $this->assertTrue($this->docQuery->getWorksheetId() == '123');
     }
@@ -58,36 +58,36 @@ class Zend_Gdata_Spreadsheets_ListQueryTest extends TestCase
     {
         $this->assertTrue($this->docQuery->getSpreadsheetKey() == null);
         $this->docQuery->setSpreadsheetKey('abc');
-        $this->assertTrue($this->docQuery->getSpreadsheetKey() == 'abc');
+        $this->assertTrue($this->docQuery->getSpreadsheetKey() === 'abc');
     }
 
     public function testRowId()
     {
         $this->assertTrue($this->docQuery->getRowId() == null);
         $this->docQuery->setRowId('xyz');
-        $this->assertTrue($this->docQuery->getRowId() == 'xyz');
+        $this->assertTrue($this->docQuery->getRowId() === 'xyz');
     }
 
     public function testProjection()
     {
-        $this->assertTrue($this->docQuery->getProjection() == 'full');
+        $this->assertTrue($this->docQuery->getProjection() === 'full');
         $this->docQuery->setProjection('abc');
-        $this->assertTrue($this->docQuery->getProjection() == 'abc');
+        $this->assertTrue($this->docQuery->getProjection() === 'abc');
     }
 
     public function testVisibility()
     {
-        $this->assertTrue($this->docQuery->getVisibility() == 'private');
+        $this->assertTrue($this->docQuery->getVisibility() === 'private');
         $this->docQuery->setVisibility('xyz');
-        $this->assertTrue($this->docQuery->getVisibility() == 'xyz');
+        $this->assertTrue($this->docQuery->getVisibility() === 'xyz');
     }
 
     public function testSpreadsheetQuery()
     {
         $this->assertTrue($this->docQuery->getSpreadsheetQuery() == null);
         $this->docQuery->setSpreadsheetQuery('first=john&last=smith');
-        $this->assertTrue($this->docQuery->getSpreadsheetQuery() == 'first=john&last=smith');
-        $this->assertTrue($this->docQuery->getQueryString() == '?sq=first%3Djohn%26last%3Dsmith');
+        $this->assertTrue($this->docQuery->getSpreadsheetQuery() === 'first=john&last=smith');
+        $this->assertTrue($this->docQuery->getQueryString() === '?sq=first%3Djohn%26last%3Dsmith');
         $this->docQuery->setSpreadsheetQuery(null);
         $this->assertTrue($this->docQuery->getSpreadsheetQuery() == null);
     }
@@ -97,8 +97,8 @@ class Zend_Gdata_Spreadsheets_ListQueryTest extends TestCase
     {
         $this->assertTrue($this->docQuery->getOrderBy() == null);
         $this->docQuery->setOrderBy('column:first');
-        $this->assertTrue($this->docQuery->getOrderBy() == 'column:first');
-        $this->assertTrue($this->docQuery->getQueryString() == '?orderby=column%3Afirst');
+        $this->assertTrue($this->docQuery->getOrderBy() === 'column:first');
+        $this->assertTrue($this->docQuery->getQueryString() === '?orderby=column%3Afirst');
         $this->docQuery->setOrderBy(null);
         $this->assertTrue($this->docQuery->getOrderBy() == null);
     }
@@ -107,8 +107,8 @@ class Zend_Gdata_Spreadsheets_ListQueryTest extends TestCase
     {
         $this->assertTrue($this->docQuery->getReverse() == null);
         $this->docQuery->setReverse('true');
-        $this->assertTrue($this->docQuery->getReverse() == 'true');
-        $this->assertTrue($this->docQuery->getQueryString() == '?reverse=true');
+        $this->assertTrue($this->docQuery->getReverse() === 'true');
+        $this->assertTrue($this->docQuery->getQueryString() === '?reverse=true');
         $this->docQuery->setReverse(null);
         $this->assertTrue($this->docQuery->getReverse() == null);
     }

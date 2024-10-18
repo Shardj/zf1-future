@@ -313,7 +313,7 @@ class Zend_XmlRpc_Client
      */
     public function call($method, $params=[])
     {
-        if (!$this->skipSystemLookup() && ('system.' != substr($method, 0, 7))) {
+        if (!$this->skipSystemLookup() && ('system.' !== substr($method, 0, 7))) {
             // Ensure empty array/struct params are cast correctly
             // If system.* methods are not available, bypass. (ZF-2978)
             $success = true;

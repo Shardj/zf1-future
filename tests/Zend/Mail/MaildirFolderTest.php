@@ -88,7 +88,7 @@ class Zend_Mail_MaildirFolderTest extends TestCase
         $this->_params['dirname'] = $this->_tmpdir;
 
         foreach ($this->_subdirs as $dir) {
-            if ($dir != '.') {
+            if ($dir !== '.') {
                 mkdir($this->_tmpdir . $dir);
             }
             foreach (['cur', 'new'] as $subdir) {
@@ -127,7 +127,7 @@ class Zend_Mail_MaildirFolderTest extends TestCase
                 closedir($dh);
                 rmdir($this->_tmpdir . $dir . '/' . $subdir);
             }
-            if ($dir != '.') {
+            if ($dir !== '.') {
                 rmdir($this->_tmpdir . $dir);
             }
         }

@@ -81,7 +81,7 @@ class Zend_Mail_Protocol_Imap
      */
     public function connect($host, $port = null, $ssl = false)
     {
-        if ($ssl == 'SSL') {
+        if ($ssl === 'SSL') {
             $host = 'ssl://' . $host;
         }
 
@@ -204,19 +204,19 @@ class Zend_Mail_Protocol_Imap
         $line = rtrim($line) . ' ';
         while (($pos = strpos($line, ' ')) !== false) {
             $token = substr($line, 0, $pos);
-            while ($token[0] == '(') {
+            while ($token[0] === '(') {
                 array_push($stack, $tokens);
                 $tokens = [];
                 $token = substr($token, 1);
             }
-            if ($token[0] == '"') {
+            if ($token[0] === '"') {
                 if (preg_match('%^\(*"((.|\\\\|\\")*?)" *%', $line, $matches)) {
                     $tokens[] = $matches[1];
                     $line = substr($line, strlen($matches[0]));
                     continue;
                 }
             }
-            if ($token[0] == '{') {
+            if ($token[0] === '{') {
                 $endPos = strpos($token, '}');
                 $chars = substr($token, 1, $endPos - 1);
                 if (is_numeric($chars)) {
@@ -236,7 +236,7 @@ class Zend_Mail_Protocol_Imap
                     continue;
                 }
             }
-            if ($stack && $token[strlen($token) - 1] == ')') {
+            if ($stack && $token[strlen($token) - 1] === ')') {
                 // closing braces are not seperated by spaces, so we need to count them
                 $braces = strlen($token);
                 $token = rtrim($token, ')');
@@ -317,9 +317,9 @@ class Zend_Mail_Protocol_Imap
             $tokens = [substr($tokens, 0, 2)];
         }
         // last line has response code
-        if ($tokens[0] == 'OK') {
+        if ($tokens[0] === 'OK') {
             return $lines ? $lines : true;
-        } else if ($tokens[0] == 'NO'){
+        } else if ($tokens[0] === 'NO'){
             return false;
         }
         return null;
@@ -504,7 +504,7 @@ class Zend_Mail_Protocol_Imap
 
         $result = [];
         while (!$this->readLine($tokens, $tag)) {
-            if ($tokens[0] == 'FLAGS') {
+            if ($tokens[0] === 'FLAGS') {
                 array_shift($tokens);
                 $result['flags'] = $tokens;
                 continue;
@@ -522,7 +522,7 @@ class Zend_Mail_Protocol_Imap
             }
         }
 
-        if ($tokens[0] != 'OK') {
+        if ($tokens[0] !== 'OK') {
             return false;
         }
         return $result;
@@ -586,7 +586,7 @@ class Zend_Mail_Protocol_Imap
         $result = [];
         while (!$this->readLine($tokens, $tag)) {
             // ignore other responses
-            if ($tokens[1] != 'FETCH') {
+            if ($tokens[1] !== 'FETCH') {
                 continue;
             }
             // ignore other messages
@@ -655,7 +655,7 @@ class Zend_Mail_Protocol_Imap
         }
 
         foreach ($list as $item) {
-            if (count($item) !== 4 || $item[0] != 'LIST') {
+            if (count($item) !== 4 || $item[0] !== 'LIST') {
                 continue;
             }
             $result[$item[3]] = ['delim' => $item[2], 'flags' => $item[1]];
@@ -679,7 +679,7 @@ class Zend_Mail_Protocol_Imap
     public function store(array $flags, $from, $to = null, $mode = null, $silent = true)
     {
         $item = 'FLAGS';
-        if ($mode == '+' || $mode == '-') {
+        if ($mode === '+' || $mode === '-') {
             $item = $mode . $item;
         }
         if ($silent) {
@@ -701,7 +701,7 @@ class Zend_Mail_Protocol_Imap
         $tokens = $result;
         $result = [];
         foreach ($tokens as $token) {
-            if ($token[1] != 'FETCH' || $token[2][0] != 'FLAGS') {
+            if ($token[1] !== 'FETCH' || $token[2][0] !== 'FLAGS') {
                 continue;
             }
             $result[$token[0]] = $token[2][1];
@@ -827,7 +827,7 @@ class Zend_Mail_Protocol_Imap
         }
 
         foreach ($response as $ids) {
-            if ($ids[0] == 'SEARCH') {
+            if ($ids[0] === 'SEARCH') {
                 array_shift($ids);
                 return $ids;
             }

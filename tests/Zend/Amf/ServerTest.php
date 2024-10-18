@@ -586,8 +586,8 @@ class Zend_Amf_ServerTest extends TestCase
         $found = false;
         foreach ($bodies as $body) {
             $data = $body->getData();
-            if ('Zend_Amf_Value_Messaging_AcknowledgeMessage' == get_class($data)) {
-                if ('baz:foo:bar' == $data->body) {
+            if ('Zend_Amf_Value_Messaging_AcknowledgeMessage' === get_class($data)) {
+                if ('baz:foo:bar' === $data->body) {
                     $found = true;
                     break;
                 }
@@ -622,8 +622,8 @@ class Zend_Amf_ServerTest extends TestCase
         $found = false;
         foreach ($bodies as $body) {
             $data = $body->getData();
-            if ('Zend_Amf_Value_Messaging_AcknowledgeMessage' == get_class($data)) {
-                if ('testing' == $data->body) {
+            if ('Zend_Amf_Value_Messaging_AcknowledgeMessage' === get_class($data)) {
+                if ('testing' === $data->body) {
                     $found = true;
                     break;
                 }
@@ -659,8 +659,8 @@ class Zend_Amf_ServerTest extends TestCase
         $found = false;
         foreach ($bodies as $body) {
             $data = $body->getData();
-            if ('Zend_Amf_Value_Messaging_AcknowledgeMessage' == get_class($data)) {
-                if ('bar: foo' == $data->body) {
+            if ('Zend_Amf_Value_Messaging_AcknowledgeMessage' === get_class($data)) {
+                if ('bar: foo' === $data->body) {
                     $found = true;
                     break;
                 }
@@ -695,7 +695,7 @@ class Zend_Amf_ServerTest extends TestCase
         $found = false;
         foreach ($bodies as $body) {
             $data = $body->getData();
-            if ('Zend_Amf_Value_Messaging_ErrorMessage' == get_class($data)) {
+            if ('Zend_Amf_Value_Messaging_ErrorMessage' === get_class($data)) {
                 if (strstr($data->faultString, 'Error instantiating class')) {
                     $found = true;
                     break;
@@ -1290,7 +1290,7 @@ class Zend_Amf_testclass
      */
     public function testSingleArrayParamater($inputArray)
     {
-        if ($inputArray[0] == 'item1') {
+        if ($inputArray[0] === 'item1') {
             return true;
         }
         return false;

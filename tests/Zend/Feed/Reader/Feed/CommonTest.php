@@ -73,7 +73,7 @@ class Zend_Feed_Reader_Feed_CommonTest extends TestCase
         $feed = Zend_Feed_Reader::importString(
             file_get_contents($this->_feedSamplePath . '/atom.xml')
         );
-        $this->assertTrue($feed->getXpathPrefix() == '/atom:feed');
+        $this->assertTrue($feed->getXpathPrefix() === '/atom:feed');
     }
 
     public function testGetsDomElementObject()

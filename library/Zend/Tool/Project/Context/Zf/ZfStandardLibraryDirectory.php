@@ -89,7 +89,7 @@ class Zend_Tool_Project_Context_Zf_ZfStandardLibraryDirectory extends Zend_Tool_
     {
         require_once 'Zend/Loader.php';
         foreach (Zend_Loader::explodeIncludePath() as $includePath) {
-            if (!file_exists($includePath) || $includePath[0] == '.') {
+            if (!file_exists($includePath) || $includePath[0] === '.') {
                 continue;
             }
 

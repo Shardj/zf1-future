@@ -67,7 +67,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
         }
 
         // check to see if this file is
-        if ($this->getName() == 'file') {
+        if ($this->getName() === 'file') {
             $this->_initFileOnlyContext();
         }
 

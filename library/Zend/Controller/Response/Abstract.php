@@ -216,7 +216,7 @@ abstract class Zend_Controller_Response_Abstract
     public function setRawHeader($value)
     {
         $this->canSendHeaders(true);
-        if ('Location' == substr($value, 0, 8)) {
+        if ('Location' === substr($value, 0, 8)) {
             $this->_isRedirect = true;
         }
         $this->_headersRaw[] = (string) $value;

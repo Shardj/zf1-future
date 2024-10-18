@@ -61,7 +61,7 @@ class Zend_Tool_Project_Provider_DbAdapter
 
         $this->_config = new Zend_Config_Ini($this->_appConfigFilePath, null, ['skipExtends' => true, 'allowModifications' => true]);
 
-        if ($sectionName != 'production') {
+        if ($sectionName !== 'production') {
             $this->_sectionName = $sectionName;
         }
 

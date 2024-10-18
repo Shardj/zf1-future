@@ -95,7 +95,7 @@ class Zend_XmlRpc_Request_Http extends Zend_XmlRpc_Request
         if (null === $this->_headers) {
             $this->_headers = [];
             foreach ($_SERVER as $key => $value) {
-                if ('HTTP_' == substr($key, 0, 5)) {
+                if ('HTTP_' === substr($key, 0, 5)) {
                     $header = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($key, 5)))));
                     $this->_headers[$header] = $value;
                 }

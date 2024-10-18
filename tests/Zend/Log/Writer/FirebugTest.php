@@ -388,7 +388,7 @@ class Zend_Log_Writer_FirebugTest_Request extends Zend_Controller_Request_Http
 {
     public function getHeader($header)
     {
-        if ($header == 'User-Agent') {
+        if ($header === 'User-Agent') {
             return 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14 FirePHP/0.1.0';
         }
     }

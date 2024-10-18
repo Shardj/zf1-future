@@ -237,11 +237,11 @@ class Zend_Pdf_Resource_Font_Extracted extends Zend_Pdf_Resource_Font
      */
     public function encodeString($string, $charEncoding)
     {
-        if ($this->_encoding == 'Identity-H') {
+        if ($this->_encoding === 'Identity-H') {
             return iconv($charEncoding, 'UTF-16BE', $string);
         }
 
-        if ($this->_encoding == 'WinAnsiEncoding') {
+        if ($this->_encoding === 'WinAnsiEncoding') {
             return iconv($charEncoding, 'CP1252//IGNORE', $string);
         }
 
@@ -260,11 +260,11 @@ class Zend_Pdf_Resource_Font_Extracted extends Zend_Pdf_Resource_Font
      */
     public function decodeString($string, $charEncoding)
     {
-        if ($this->_encoding == 'Identity-H') {
+        if ($this->_encoding === 'Identity-H') {
             return iconv('UTF-16BE', $charEncoding, $string);
         }
 
-        if ($this->_encoding == 'WinAnsiEncoding') {
+        if ($this->_encoding === 'WinAnsiEncoding') {
             return iconv('CP1252', $charEncoding, $string);
         }
 

@@ -179,13 +179,13 @@ class Zend_Pdf_Element_Dictionary extends Zend_Pdf_Element
     public function makeClone(Zend_Pdf_ElementFactory $factory, array &$processed, $mode)
     {
         if (isset($this->_items['Type'])) {
-            if ($this->_items['Type']->value == 'Pages') {
+            if ($this->_items['Type']->value === 'Pages') {
                 // It's a page tree node
                 // skip it and its children
                 return new Zend_Pdf_Element_Null();
             }
 
-            if ($this->_items['Type']->value == 'Page'  &&
+            if ($this->_items['Type']->value === 'Page'  &&
                 $mode == Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES
             ) {
                 // It's a page node, skip it

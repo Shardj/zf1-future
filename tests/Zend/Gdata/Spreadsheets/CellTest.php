@@ -50,15 +50,15 @@ class Zend_Gdata_Spreadsheets_CellTest extends TestCase
     public function testToAndFromString()
     {
         $this->cell->setText('test cell');
-        $this->assertTrue($this->cell->getText() == 'test cell');
+        $this->assertTrue($this->cell->getText() === 'test cell');
         $this->cell->setRow('1');
         $this->assertTrue($this->cell->getRow() == '1');
         $this->cell->setColumn('2');
         $this->assertTrue($this->cell->getColumn() == '2');
         $this->cell->setInputValue('test input value');
-        $this->assertTrue($this->cell->getInputValue() == 'test input value');
+        $this->assertTrue($this->cell->getInputValue() === 'test input value');
         $this->cell->setNumericValue('test numeric value');
-        $this->assertTrue($this->cell->getNumericValue() == 'test numeric value');
+        $this->assertTrue($this->cell->getNumericValue() === 'test numeric value');
 
         $newCell = new Zend_Gdata_Spreadsheets_Extension_Cell();
         $doc = new DOMDocument();

@@ -57,7 +57,7 @@ class Zend_Pdf_Annotation_FileAttachment extends Zend_Pdf_Annotation
 
         if ($annotationDictionary->Subtype === null  ||
             $annotationDictionary->Subtype->getType() != Zend_Pdf_Element::TYPE_NAME  ||
-            $annotationDictionary->Subtype->value != 'FileAttachment') {
+            $annotationDictionary->Subtype->value !== 'FileAttachment') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Subtype => FileAttachment entry is requires');
         }

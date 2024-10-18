@@ -233,13 +233,13 @@ class Zend_Http_Cookie
         }
 
         // Make sure we have a valid Zend_Uri_Http object
-        if (! ($uri->valid() && ($uri->getScheme() == 'http' || $uri->getScheme() =='https'))) {
+        if (! ($uri->valid() && ($uri->getScheme() === 'http' || $uri->getScheme() =='https'))) {
             require_once 'Zend/Http/Exception.php';
             throw new Zend_Http_Exception('Passed URI is not a valid HTTP or HTTPS URI');
         }
 
         // Check that the cookie is secure (if required) and not expired
-        if ($this->secure && $uri->getScheme() != 'https') return false;
+        if ($this->secure && $uri->getScheme() !== 'https') return false;
         if ($this->isExpired($now)) return false;
         if ($this->isSessionCookie() && ! $matchSessionCookies) return false;
 
@@ -316,7 +316,7 @@ class Zend_Http_Cookie
         // Set other cookie parameters
         foreach ($parts as $part) {
             $part = trim($part);
-            if (strtolower($part) == 'secure') {
+            if (strtolower($part) === 'secure') {
                 $secure = true;
                 continue;
             }
@@ -390,7 +390,7 @@ class Zend_Http_Cookie
         $cookieDomain = strtolower($cookieDomain);
         $host = strtolower($host);
 
-        if ($cookieDomain[0] == '.') {
+        if ($cookieDomain[0] === '.') {
             $cookieDomain = substr($cookieDomain, 1);
         }
 

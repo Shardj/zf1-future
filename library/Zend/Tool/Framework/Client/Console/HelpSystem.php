@@ -276,7 +276,7 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
 
                     foreach ($providerSignature->getSpecialties() as $specialtyName) {
 
-                        if ($specialtyName == '_Global') {
+                        if ($specialtyName === '_Global') {
                             continue;
                         }
 
@@ -358,7 +358,7 @@ class Zend_Tool_Framework_Client_Console_HelpSystem
             ['color' => 'cyan', 'separator' => false]
             );
 
-        if ($specialtyMetadata->getSpecialtyName() != '_Global') {
+        if ($specialtyMetadata->getSpecialtyName() !== '_Global') {
             $this->_response->appendContent('.' . $specialtyMetadata->getValue(), ['color' => 'cyan', 'separator' => false]);
         }
 

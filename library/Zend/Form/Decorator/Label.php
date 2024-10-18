@@ -268,7 +268,7 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
         $tail = substr($method, -6);
         $head = substr($method, 0, 3);
         if (in_array($head, ['get', 'set'])
-            && (('Prefix' == $tail) || ('Suffix' == $tail))
+            && (('Prefix' === $tail) || ('Suffix' === $tail))
         ) {
             $position = substr($method, -6);
             $type     = strtolower(substr($method, 3, 3));

@@ -78,7 +78,7 @@ class Zend_Service_Amazon_Authentication_S3 extends Zend_Service_Amazon_Authenti
         $amz_headers = [];
         foreach ($headers as $key => $val) {
             $key = strtolower($key);
-            if (substr($key, 0, 6) == 'x-amz-') {
+            if (substr($key, 0, 6) === 'x-amz-') {
                 if (is_array($val)) {
                     $amz_headers[$key] = $val;
                 } else {

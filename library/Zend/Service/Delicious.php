@@ -151,7 +151,7 @@ class Zend_Service_Delicious
         $response = $this->makeRequest(self::PATH_UPDATE);
 
         $rootNode = $response->documentElement;
-        if ($rootNode && $rootNode->nodeName == 'update') {
+        if ($rootNode && $rootNode->nodeName === 'update') {
             /**
              * @todo replace strtotime() with Zend_Date equivalent
              */
@@ -570,7 +570,7 @@ class Zend_Service_Delicious
     {
         $rootNode = $response->documentElement;
 
-        if ($rootNode->nodeName == 'posts') {
+        if ($rootNode->nodeName === 'posts') {
             return new Zend_Service_Delicious_PostList($this, $rootNode->childNodes);
         } else {
             /**
@@ -592,7 +592,7 @@ class Zend_Service_Delicious
     {
         $rootNode = $response->documentElement;
 
-        if ($rootNode && $rootNode->nodeName == 'result') {
+        if ($rootNode && $rootNode->nodeName === 'result') {
 
             if ($rootNode->hasAttribute('code')) {
                 $strResponse = $rootNode->getAttribute('code');
@@ -600,7 +600,7 @@ class Zend_Service_Delicious
                 $strResponse = $rootNode->nodeValue;
             }
 
-            if ($strResponse != 'done' && $strResponse != 'ok') {
+            if ($strResponse !== 'done' && $strResponse !== 'ok') {
                 /**
                  * @see Zend_Service_Delicious_Exception
                  */

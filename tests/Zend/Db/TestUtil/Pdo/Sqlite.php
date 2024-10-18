@@ -57,7 +57,7 @@ class Zend_Db_TestUtil_Pdo_Sqlite extends Zend_Db_TestUtil_Pdo_Common
 
     public function getSqlType($type)
     {
-        if ($type == 'IDENTITY') {
+        if ($type === 'IDENTITY') {
             return 'INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT';
         }
         return $type;

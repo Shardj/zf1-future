@@ -332,7 +332,7 @@ class Zend_Feed_Reader
         $dom  = $feed->getDOM()->ownerDocument;
         $type = self::detectType($dom);
         self::_registerCoreExtensions();
-        if (substr($type, 0, 3) == 'rss') {
+        if (substr($type, 0, 3) === 'rss') {
             $reader = new Zend_Feed_Reader_Feed_Rss($dom, $type);
         } else {
             $reader = new Zend_Feed_Reader_Feed_Atom($dom, $type);
@@ -375,11 +375,11 @@ class Zend_Feed_Reader
 
         self::_registerCoreExtensions();
 
-        if (substr($type, 0, 3) == 'rss') {
+        if (substr($type, 0, 3) === 'rss') {
             $reader = new Zend_Feed_Reader_Feed_Rss($dom, $type);
-        } elseif (substr($type, 8, 5) == 'entry') {
+        } elseif (substr($type, 8, 5) === 'entry') {
             $reader = new Zend_Feed_Reader_Entry_Atom($dom->documentElement, 0, Zend_Feed_Reader::TYPE_ATOM_10);
-        } elseif (substr($type, 0, 4) == 'atom') {
+        } elseif (substr($type, 0, 4) === 'atom') {
             $reader = new Zend_Feed_Reader_Feed_Atom($dom, $type);
         } else {
             require_once 'Zend/Feed/Exception.php';

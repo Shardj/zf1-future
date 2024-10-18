@@ -291,16 +291,16 @@ class Zend_Service_StrikeIron_BaseTest_MockSoapClient
                                'options' => $options,
                                'headers' => $headers];
 
-        if ($method == 'ReturnTheObject') {
+        if ($method === 'ReturnTheObject') {
             // testMethodResultWrappingAnyObject
             return new stdclass();
-        } elseif ($method == 'WrapThis') {
+        } elseif ($method === 'WrapThis') {
             // testMethodResultWrappingAnObjectAndSelectingDefaultResultProperty
             return (object)['WrapThisResult' => 'unwraped'];
-        } elseif ($method == 'ThrowTheException') {
+        } elseif ($method === 'ThrowTheException') {
             // testMethodExceptionsAreWrapped
             throw new Exception('foo', 43);
-        } elseif ($method == 'ReturnNoOutputHeaders') {
+        } elseif ($method === 'ReturnNoOutputHeaders') {
             // testGettingSubscriptionInfoThrowsWhenHeaderNotFound
             $outputHeaders = [];
         } else {

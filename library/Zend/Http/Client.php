@@ -321,7 +321,7 @@ class Zend_Http_Client
 
         // We have no ports, set the defaults
         if (! $uri->getPort()) {
-            $uri->setPort(($uri->getScheme() == 'https' ? 443 : 80));
+            $uri->setPort(($uri->getScheme() === 'https' ? 443 : 80));
         }
 
         $this->uri = $uri;
@@ -1062,7 +1062,7 @@ class Zend_Http_Client
 
             // Open the connection, send the request and read the response
             $this->adapter->connect($uri->getHost(), $uri->getPort(),
-                ($uri->getScheme() == 'https' ? true : false));
+                ($uri->getScheme() === 'https' ? true : false));
 
             if($this->config['output_stream']) {
                 if($this->adapter instanceof Zend_Http_Client_Adapter_Stream) {
@@ -1129,7 +1129,7 @@ class Zend_Http_Client
                 }
 
                 // If we got a well formed absolute URI
-                if (($scheme = substr($location, 0, 6)) && ($scheme == 'http:/' || $scheme == 'https:')) {
+                if (($scheme = substr($location, 0, 6)) && ($scheme === 'http:/' || $scheme === 'https:')) {
                     $this->setHeaders('host', null);
                     $this->setUri($location);
 

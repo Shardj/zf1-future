@@ -323,7 +323,7 @@ class Zend_Log
         }
 
         // PHP >= 5.3.0 namespace given?
-        if (substr($namespace, -1) == '\\') {
+        if (substr($namespace, -1) === '\\') {
             return $namespace . $className;
         }
 

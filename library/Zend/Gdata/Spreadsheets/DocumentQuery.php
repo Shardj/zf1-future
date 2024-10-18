@@ -258,12 +258,12 @@ class Zend_Gdata_Spreadsheets_DocumentQuery extends Zend_Gdata_Query
             throw new Zend_Gdata_App_Exception('A document type must be provided for document queries.');
         }
 
-        if ($this->_documentType == 'spreadsheets') {
+        if ($this->_documentType === 'spreadsheets') {
             $uri .= $this->appendVisibilityProjection();
             if ($this->_spreadsheetKey != null) {
                 $uri .= '/'.$this->_spreadsheetKey;
             }
-        } else if ($this->_documentType == 'worksheets') {
+        } else if ($this->_documentType === 'worksheets') {
             if ($this->_spreadsheetKey != null) {
                 $uri .= '/'.$this->_spreadsheetKey;
             } else {

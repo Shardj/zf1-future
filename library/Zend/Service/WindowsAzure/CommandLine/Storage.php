@@ -164,7 +164,7 @@ class Zend_Service_WindowsAzure_CommandLine_Storage
 		$client = new Zend_Service_WindowsAzure_Management_Client($subscriptionId, $certificate, $certificatePassphrase);
 		$result = $client->getStorageAccountKeys($accountName);
 
-		if (strtolower($key) == 'secondary') {
+		if (strtolower($key) === 'secondary') {
 			printf("%s\r\n", $result[1]);
 		}
 		printf("%s\r\n", $result[0]);

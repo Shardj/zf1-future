@@ -156,7 +156,7 @@ class Zend_Pdf_FileParser_Image_Png extends Zend_Pdf_FileParser_Image
 
     protected function _parseSignature() {
          $this->moveToOffset(1); //Skip the first byte (%)
-         if('PNG' != $this->readBytes(3)) {
+         if('PNG' !== $this->readBytes(3)) {
                $this->_isPNG = false;
          } else {
                $this->_isPNG = true;
@@ -216,7 +216,7 @@ class Zend_Pdf_FileParser_Image_Png extends Zend_Pdf_FileParser_Image
 
     protected function _parseIHDRChunk() {
          $this->moveToOffset(12); //IHDR must always start at offset 12 and run for 17 bytes
-         if(!$this->readBytes(4) == 'IHDR') {
+         if(!$this->readBytes(4) === 'IHDR') {
               require_once 'Zend/Pdf/Exception.php';
               throw new Zend_Pdf_Exception( "This PNG is corrupt. The first chunk in a PNG file must be IHDR." );
          }

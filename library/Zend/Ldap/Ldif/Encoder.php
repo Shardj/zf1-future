@@ -220,7 +220,7 @@ class Zend_Ldap_Ldif_Encoder
             }
         }
         // Test for ending space
-        if (substr($string, -1) == ' ') {
+        if (substr($string, -1) === ' ') {
             $base64 = true;
         }
 

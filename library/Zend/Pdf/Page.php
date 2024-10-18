@@ -220,7 +220,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
             $this->_dictionary = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
 
             foreach ($param1->_dictionary->getKeys() as $key) {
-                if ($key == 'Contents') {
+                if ($key === 'Contents') {
                     // Clone Contents property
 
                     $this->_dictionary->Contents = new Zend_Pdf_Element_Array();
@@ -422,7 +422,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
         foreach ($resDictionary->getKeys() as $resType) {
             $resources[$resType] = [];
 
-            if ($resType == 'ProcSet') {
+            if ($resType === 'ProcSet') {
                 foreach ($resDictionary->ProcSet->items as $procSetEntry) {
                     $resources[$resType][] = $procSetEntry->value;
                 }
@@ -677,7 +677,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
 
                 $fonts[$resourceId] = $extractedFont;
             } catch (Zend_Pdf_Exception $e) {
-                if ($e->getMessage() != 'Unsupported font type.') {
+                if ($e->getMessage() !== 'Unsupported font type.') {
                     throw new Zend_Pdf_Exception($e->getMessage(), $e->getCode(), $e);
                 }
             }
@@ -732,7 +732,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
                 require_once 'Zend/Pdf/Resource/Font/Extracted.php';
                 return new Zend_Pdf_Resource_Font_Extracted($fontDictionary);
             } catch (Zend_Pdf_Exception $e) {
-                if ($e->getMessage() != 'Unsupported font type.') {
+                if ($e->getMessage() !== 'Unsupported font type.') {
                     throw new Zend_Pdf_Exception($e->getMessage(), $e->getCode(), $e);
                 }
 

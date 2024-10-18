@@ -260,7 +260,7 @@ class Zend_View_Helper_HeadLinkTest extends TestCase
         foreach ($links as $link) {
             $method = $where . 'Alternate';
             $this->helper->$method($link['href'], $link['type'], $link['title']);
-            $where = ('append' == $where) ? 'prepend' : 'append';
+            $where = ('append' === $where) ? 'prepend' : 'append';
         }
 
         $string = $this->helper->toString();

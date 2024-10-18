@@ -150,7 +150,7 @@ class Zend_Log_Formatter_Xml extends Zend_Log_Formatter_Abstract
                 || is_scalar($value)
                 || (is_object($value) && method_exists($value,'__toString'))
             ) {
-                if($key == "message") {
+                if($key === "message") {
                     $value = htmlspecialchars($value, ENT_COMPAT, $enc);
                 }
                 $elt->appendChild(new DOMElement($key, (string)$value));

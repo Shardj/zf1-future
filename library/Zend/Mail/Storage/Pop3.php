@@ -299,7 +299,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
             return $result;
         }
 
-        if (strtolower($var) == 'hastop') {
+        if (strtolower($var) === 'hastop') {
             if ($this->_protocol->hasTop === null) {
                 // need to make a real call, because not all server are honest in their capas
                 try {
@@ -312,7 +312,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
             return $this->_protocol->hasTop;
         }
 
-        if (strtolower($var) == 'hasuniqueid') {
+        if (strtolower($var) === 'hasuniqueid') {
             $id = null;
             try {
                 $id = $this->_protocol->uniqueid(1);

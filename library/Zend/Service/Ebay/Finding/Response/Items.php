@@ -164,7 +164,7 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
         // remove every pagination entry from current option list
         $options = $this->_options;
         foreach (array_keys($options) as $optionName) {
-            if (substr($optionName, 0, 15) == 'paginationInput') {
+            if (substr($optionName, 0, 15) === 'paginationInput') {
                 unset($options[$optionName]);
             }
         }

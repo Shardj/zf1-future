@@ -476,7 +476,7 @@ class Zend_Service_WindowsAzure_Storage
 		// Return metadata
 		$metadata = [];
 		foreach ($headers as $key => $value) {
-		    if (substr(strtolower($key), 0, 10) == "x-ms-meta-") {
+		    if (substr(strtolower($key), 0, 10) === "x-ms-meta-") {
 		        $metadata[str_replace("x-ms-meta-", '', strtolower($key))] = $value;
 		    }
 		}

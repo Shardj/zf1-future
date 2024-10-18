@@ -178,8 +178,8 @@ class Zend_Controller_Action_Helper_Cache
         $action = $this->getRequest()->getActionName();
         $stats = ob_get_status(true);
         foreach ($stats as $status) {
-            if ($status['name'] == 'Zend_Cache_Frontend_Page::_flush'
-            || $status['name'] == 'Zend_Cache_Frontend_Capture::_flush') {
+            if ($status['name'] === 'Zend_Cache_Frontend_Page::_flush'
+            || $status['name'] === 'Zend_Cache_Frontend_Capture::_flush') {
                 $obStarted = true;
             }
         }

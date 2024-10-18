@@ -416,7 +416,7 @@ abstract class Zend_XmlRpc_Value
                 // returns; need to look for the item specifically
                 $data = null;
                 foreach ($value->children() as $key => $value) {
-                    if ('data' == $key) {
+                    if ('data' === $key) {
                         $data = $value;
                         break;
                     }

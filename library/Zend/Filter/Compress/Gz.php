@@ -108,7 +108,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
      */
     public function setMode($mode)
     {
-        if (($mode != 'compress') && ($mode != 'deflate')) {
+        if (($mode !== 'compress') && ($mode !== 'deflate')) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('Given compression mode not supported');
         }
@@ -158,7 +158,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
             gzwrite($file, $content);
             gzclose($file);
             $compressed = true;
-        } else if ($this->_options['mode'] == 'deflate') {
+        } else if ($this->_options['mode'] === 'deflate') {
             $compressed = gzdeflate($content, $this->getLevel());
         } else {
             $compressed = gzcompress($content, $this->getLevel());
@@ -203,7 +203,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
             $file       = gzopen($archive, 'r');
             $compressed = gzread($file, $size);
             gzclose($file);
-        } else if ($mode == 'deflate') {
+        } else if ($mode === 'deflate') {
             $compressed = gzinflate($content);
         } else {
             $compressed = gzuncompress($content);

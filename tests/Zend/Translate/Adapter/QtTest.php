@@ -229,7 +229,7 @@ class Zend_Translate_Adapter_QtTest extends TestCase
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 1 (en)', $adapter->_('Message 1'));
 
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             return;
             // 'Charsets below are not supported on AIX';
         }

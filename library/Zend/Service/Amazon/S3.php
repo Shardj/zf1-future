@@ -628,7 +628,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
 
         $headers['Date'] = gmdate(DATE_RFC1123, time());
 
-        if(is_resource($data) && $method != 'PUT') {
+        if(is_resource($data) && $method !== 'PUT') {
             /**
              * @see Zend_Service_Amazon_S3_Exception
              */
@@ -682,7 +682,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
             }
          }
 
-         if (($method == 'PUT') && ($data !== null)) {
+         if (($method === 'PUT') && ($data !== null)) {
              if (!isset($headers['Content-type'])) {
                  $headers['Content-type'] = self::getMimeType($path);
              }
@@ -752,7 +752,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
         $amz_headers = [];
         foreach ($headers as $key=>$val) {
             $key = strtolower($key);
-            if (substr($key, 0, 6) == 'x-amz-') {
+            if (substr($key, 0, 6) === 'x-amz-') {
                 if (is_array($val)) {
                     $amz_headers[$key] = $val;
                 }

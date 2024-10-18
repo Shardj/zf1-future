@@ -159,9 +159,9 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
             $this->helper->$action($string);
             $values = $this->helper->getArrayCopy();
             $this->assertEquals($i + 1, count($values));
-            if ('file' == $type) {
+            if ('file' === $type) {
                 $this->assertEquals($string, $values[$i]->attributes['src']);
-            } elseif ('script' == $type) {
+            } elseif ('script' === $type) {
                 $this->assertEquals($string, $values[$i]->source);
             }
             $this->assertEquals('text/javascript', $values[$i]->type);
@@ -178,9 +178,9 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
             $values = $this->helper->getArrayCopy();
             $this->assertEquals($i + 1, count($values));
             $first = array_shift($values);
-            if ('file' == $type) {
+            if ('file' === $type) {
                 $this->assertEquals($string, $first->attributes['src']);
-            } elseif ('script' == $type) {
+            } elseif ('script' === $type) {
                 $this->assertEquals($string, $first->source);
             }
             $this->assertEquals('text/javascript', $first->type);
@@ -198,9 +198,9 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
         $this->helper->$action($string);
         $values = $this->helper->getArrayCopy();
         $this->assertEquals(1, count($values));
-        if ('file' == $type) {
+        if ('file' === $type) {
             $this->assertEquals($string, $values[0]->attributes['src']);
-        } elseif ('script' == $type) {
+        } elseif ('script' === $type) {
             $this->assertEquals($string, $values[0]->source);
         }
         $this->assertEquals('text/javascript', $values[0]->type);
@@ -213,9 +213,9 @@ class Zend_View_Helper_HeadScriptTest extends TestCase
         $this->helper->$action(5, $string);
         $values = $this->helper->getArrayCopy();
         $this->assertEquals(1, count($values));
-        if ('file' == $type) {
+        if ('file' === $type) {
             $this->assertEquals($string, $values[5]->attributes['src']);
-        } elseif ('script' == $type) {
+        } elseif ('script' === $type) {
             $this->assertEquals($string, $values[5]->source);
         }
         $this->assertEquals('text/javascript', $values[5]->type);

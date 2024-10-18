@@ -807,7 +807,7 @@ class Python_SimpleXMLRPCServerWithUnsupportedIntrospection extends Zend_XmlRpc_
 {
     public function __call($method, $args)
     {
-        if ($method == 'methodSignature') {
+        if ($method === 'methodSignature') {
             return 'signatures not supported';
         }
         return parent::__call($method, $args);

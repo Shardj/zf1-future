@@ -196,7 +196,7 @@ class Zend_Http_CookieTest extends TestCase
     public function testGetPathInRefUrl(Zend_Uri $uri)
     {
         $path = $uri->getPath();
-        if (substr($path, -1, 1) == '/') {
+        if (substr($path, -1, 1) === '/') {
             $path .= 'x';
         }
         $path = dirname($path);

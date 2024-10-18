@@ -194,7 +194,7 @@ class Zend_Server_Method_Callback
         $array = [
             'type' => $type,
         ];
-        if ('function' == $type) {
+        if ('function' === $type) {
             $array['function'] = $this->getFunction();
         } else {
             $array['class']  = $this->getClass();

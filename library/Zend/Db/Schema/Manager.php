@@ -132,7 +132,7 @@ class Zend_Db_Schema_Manager
         // figure out what the real version we're going to is if going down
         // TODO: make this more efficient by caching file information instead
         // of fetching it again.
-        if ($direction == 'down') {
+        if ($direction === 'down') {
         	$files = $this->_getMigrationFiles($version, 0);
         	if (empty($files)) {
         		$realVersion = 0;
@@ -266,7 +266,7 @@ class Zend_Db_Schema_Manager
                         'version'=>$versionNumber,
                         'classname'=>$className];
                 }
-            } elseif ($entry != '.' && $entry != '..') {
+            } elseif ($entry !== '.' && $entry !== '..') {
                 $subdir = $dir . '/' . $entry;
                 if (is_dir($subdir) && is_readable($subdir)) {
                     $files = array_merge(
@@ -280,7 +280,7 @@ class Zend_Db_Schema_Manager
         }
         $d->close();
 
-        if($direction == 'up') {
+        if($direction === 'up') {
             ksort($files);
         } else {
             krsort($files);
@@ -330,7 +330,7 @@ class Zend_Db_Schema_Manager
         $class = new $classname($this->_db, $this->_tablePrefix);
         $class->$direction();
 
-        if($direction == 'down') {
+        if($direction === 'down') {
             // current version is actually one lower than this version now
             $version--;
         }

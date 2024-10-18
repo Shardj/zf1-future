@@ -532,7 +532,7 @@ class Zend_Service_WindowsAzure_Storage_Table
     	    if (count($query) > 0)  {
     	        $queryString = '?' . implode('&', $query);
     	    }
-		} else if (get_class($tableName) == 'Zend_Service_WindowsAzure_Storage_TableEntityQuery') {
+		} else if (get_class($tableName) === 'Zend_Service_WindowsAzure_Storage_TableEntityQuery') {
 		    // Option 2: $tableName is a Zend_Service_WindowsAzure_Storage_TableEntityQuery instance
 
 		    // Build queryString
@@ -836,9 +836,9 @@ class Zend_Service_WindowsAzure_Storage_Table
 		    $value[] = '>';
 
 		    if (!is_null($azureValue->Value)) {
-		        if (strtolower($azureValue->Type) == 'edm.boolean') {
+		        if (strtolower($azureValue->Type) === 'edm.boolean') {
 		            $value[] = ($azureValue->Value == true ? '1' : '0');
-		        } else if (strtolower($azureValue->Type) == 'edm.datetime') {
+		        } else if (strtolower($azureValue->Type) === 'edm.datetime') {
 		        	$value[] = $this->_convertToEdmDateTime($azureValue->Value);
 		        } else {
 		            $value[] = htmlspecialchars($azureValue->Value);
@@ -905,7 +905,7 @@ class Zend_Service_WindowsAzure_Storage_Table
     	}
 
     	try {
-    		if (substr($value, -1) == 'Z') {
+    		if (substr($value, -1) === 'Z') {
     			$value = substr($value, 0, strlen($value) - 1);
     		}
     		return new DateTime($value, new DateTimeZone('UTC'));

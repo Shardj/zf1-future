@@ -87,7 +87,7 @@ class Zend_Pdf_Resource_Image_Png extends Zend_Pdf_Resource_Image
 
         //Check if the file is a PNG
         fseek($imageFile, 1, SEEK_CUR); //First signature byte (%)
-        if ('PNG' != fread($imageFile, 3)) {
+        if ('PNG' !== fread($imageFile, 3)) {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Image is not a PNG');
         }

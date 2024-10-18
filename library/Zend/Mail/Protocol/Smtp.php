@@ -191,7 +191,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
         $this->_ehlo($host);
 
         // If a TLS session is required, commence negotiation
-        if ($this->_secure == 'tls') {
+        if ($this->_secure === 'tls') {
             $this->_send('STARTTLS');
             $this->_expect(220, 180);
             if (!stream_socket_enable_crypto(

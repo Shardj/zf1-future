@@ -164,7 +164,7 @@ class Zend_Tool_Project_Provider_Module
             $appConfigFile->removeStringItem('resources.frontController.moduleDirectory', 'production');
             $appConfigFile->addStringItem('resources.frontController.moduleDirectory', 'APPLICATION_PATH "/modules"', 'production', false);
 
-            if (strtolower($name) == 'default') {
+            if (strtolower($name) === 'default') {
                 $response->appendContent('Added a key for the default module to the application.ini file');
                 $appConfigFile->addStringItem('resources.frontController.params.prefixDefaultModule', '1', 'production');
             }

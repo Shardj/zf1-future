@@ -78,7 +78,7 @@ class Zend_Log_Writer_Firebug extends Zend_Log_Writer_Abstract
      */
     public function __construct()
     {
-        if (php_sapi_name() == 'cli') {
+        if (php_sapi_name() === 'cli') {
             $this->setEnabled(false);
         }
 

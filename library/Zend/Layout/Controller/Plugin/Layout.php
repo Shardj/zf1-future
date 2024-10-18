@@ -131,7 +131,7 @@ class Zend_Layout_Controller_Plugin_Layout extends Zend_Controller_Plugin_Abstra
         if (isset($content['default'])) {
             $content[$contentKey] = $content['default'];
         }
-        if ('default' != $contentKey) {
+        if ('default' !== $contentKey) {
             unset($content['default']);
         }
 

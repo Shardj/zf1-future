@@ -749,7 +749,7 @@ class Zend_Text_Figlet
                         $leftChar = $this->_currentChar[$row][$charbd];
                     }
 
-                    if ($charbd > 0 && ($leftChar === null || $leftChar == ' ')) {
+                    if ($charbd > 0 && ($leftChar === null || $leftChar === ' ')) {
                         $charbd--;
                     } else {
                         break;
@@ -781,7 +781,7 @@ class Zend_Text_Figlet
                         $leftChar = $this->_outputLine[$row][$linebd];
                     }
 
-                    if ($linebd > 0 && ($leftChar === null || $leftChar == ' ')) {
+                    if ($linebd > 0 && ($leftChar === null || $leftChar === ' ')) {
                         $linebd--;
                     } else {
                         break;

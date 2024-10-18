@@ -69,7 +69,7 @@ class Zend_Loader
                 $dirs = explode(PATH_SEPARATOR, $dirs);
             }
             foreach ($dirs as $key => $dir) {
-                if ($dir == '.') {
+                if ($dir === '.') {
                     $dirs[$key] = $dirPath;
                 } else {
                     $dir = rtrim($dir, '\\/');
@@ -177,7 +177,7 @@ class Zend_Loader
             return true;
         }
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'
             && preg_match('/^[a-z]:/i', $filename)
         ) {
             // If on windows, and path provided is clearly an absolute path,
@@ -186,7 +186,7 @@ class Zend_Loader
         }
 
         foreach (self::explodeIncludePath() as $path) {
-            if ($path == '.') {
+            if ($path === '.') {
                 if (is_readable($filename)) {
                     return true;
                 }
@@ -215,7 +215,7 @@ class Zend_Loader
             $path = get_include_path();
         }
 
-        if (PATH_SEPARATOR == ':') {
+        if (PATH_SEPARATOR === ':') {
             // On *nix systems, include_paths which include paths with a stream
             // schema cannot be safely explode'd, so we have to be a bit more
             // intelligent in the approach.
@@ -266,7 +266,7 @@ class Zend_Loader
         $autoloader = Zend_Loader_Autoloader::getInstance();
         $autoloader->setFallbackAutoloader(true);
 
-        if ('Zend_Loader' != $class) {
+        if ('Zend_Loader' !== $class) {
             self::loadClass($class);
             $methods = get_class_methods($class);
             if (!in_array('autoload', (array) $methods)) {

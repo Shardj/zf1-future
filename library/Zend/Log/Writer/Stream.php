@@ -59,12 +59,12 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
         }
 
         if (is_resource($streamOrUrl)) {
-            if (get_resource_type($streamOrUrl) != 'stream') {
+            if (get_resource_type($streamOrUrl) !== 'stream') {
                 require_once 'Zend/Log/Exception.php';
                 throw new Zend_Log_Exception('Resource is not a stream');
             }
 
-            if ($mode != 'a') {
+            if ($mode !== 'a') {
                 require_once 'Zend/Log/Exception.php';
                 throw new Zend_Log_Exception('Mode cannot be changed on existing streams');
             }

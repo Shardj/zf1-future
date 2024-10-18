@@ -64,7 +64,7 @@ class Zend_CodeGenerator_Php_Docblock_Tag extends Zend_CodeGenerator_Php_Abstrac
         // transport any properties via accessors and mutators from reflection to codegen object
         $reflectionClass = new ReflectionClass($reflectionTag);
         foreach ($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-            if (substr($method->getName(), 0, 3) == 'get') {
+            if (substr($method->getName(), 0, 3) === 'get') {
                 $propertyName = substr($method->getName(), 3);
                 if (method_exists($codeGenDocblockTag, 'set' . $propertyName)) {
                     $codeGenDocblockTag->{'set' . $propertyName}($reflectionTag->{'get' . $propertyName}());

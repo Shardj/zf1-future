@@ -336,7 +336,7 @@ class Zend_Search_Lucene_Search_QueryLexer extends Zend_Search_Lucene_FSM
         $this->_lexemes     = [];
         $this->_queryString = [];
 
-        if (PHP_OS == 'AIX' && $encoding == '') {
+        if (PHP_OS === 'AIX' && $encoding == '') {
             $encoding = 'ISO8859-1';
         }
         $strLength = iconv_strlen($inputString, $encoding);

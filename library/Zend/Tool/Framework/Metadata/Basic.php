@@ -193,7 +193,7 @@ class Zend_Tool_Framework_Metadata_Basic
         $metadataPairValues = [];
 
         foreach (get_object_vars($this) as $varName => $varValue) {
-            if ($type == self::ATTRIBUTES_NO_PARENT && ($thisReflection->getProperty($varName)->getDeclaringClass()->getName() == 'Zend_Tool_Framework_Metadata_Basic')) {
+            if ($type == self::ATTRIBUTES_NO_PARENT && ($thisReflection->getProperty($varName)->getDeclaringClass()->getName() === 'Zend_Tool_Framework_Metadata_Basic')) {
                 continue;
             }
 

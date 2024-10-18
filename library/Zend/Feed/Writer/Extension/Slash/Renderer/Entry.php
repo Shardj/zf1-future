@@ -50,7 +50,7 @@ class Zend_Feed_Writer_Extension_Slash_Renderer_Entry
      */
     public function render()
     {
-        if (strtolower($this->getType()) == 'atom') {
+        if (strtolower($this->getType()) === 'atom') {
             return; // RSS 2.0 only
         }
         $this->_setCommentCount($this->_dom, $this->_base);

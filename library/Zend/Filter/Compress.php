@@ -72,7 +72,7 @@ class Zend_Filter_Compress implements Zend_Filter_Interface
     public function setOptions(array $options)
     {
         foreach ($options as $key => $value) {
-            if ($key == 'options') {
+            if ($key === 'options') {
                 $key = 'adapterOptions';
             }
             $method = 'set' . ucfirst($key);

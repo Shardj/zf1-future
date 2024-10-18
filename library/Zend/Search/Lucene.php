@@ -1011,7 +1011,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
                     throw new Zend_Search_Lucene_Exception('Field name must be a string.');
                 }
 
-                if (strtolower($fieldName) == 'score') {
+                if (strtolower($fieldName) === 'score') {
                     $sortArgs[] = &$scores;
                 } else {
                     if (!in_array($fieldName, $fieldNames)) {

@@ -45,7 +45,7 @@ class Zend_Translate_Plural
      */
     public static function getPlural($number, $locale)
     {
-        if ($locale == "pt_BR") {
+        if ($locale === "pt_BR") {
             // temporary set a locale for brasilian
             $locale = "xbr";
         }
@@ -205,7 +205,7 @@ class Zend_Translate_Plural
      */
     public static function setPlural($rule, $locale)
     {
-        if ($locale == "pt_BR") {
+        if ($locale === "pt_BR") {
             // temporary set a locale for brasilian
             $locale = "xbr";
         }

@@ -196,7 +196,7 @@ abstract class Zend_Pdf_Annotation
         $this->_annotationDictionary = $annotationDictionary;
 
         if ($this->_annotationDictionary->Type !== null  &&
-            $this->_annotationDictionary->Type->value != 'Annot') {
+            $this->_annotationDictionary->Type->value !== 'Annot') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Wrong resource type. \'Annot\' expected.');
         }

@@ -159,7 +159,7 @@ class Zend_Service_Rackspace_Files_OfflineTest extends TestCase
         $this->assertTrue($containers !== false);
         $found = false;
         foreach ($containers as $container) {
-            if ($container->getName() == 'zf-unit-test') {
+            if ($container->getName() === 'zf-unit-test') {
                 $found = true;
                 break;
             }
@@ -294,7 +294,7 @@ class Zend_Service_Rackspace_Files_OfflineTest extends TestCase
         $this->assertTrue($containers !== false);
         $found = false;
         foreach ($containers as $container) {
-            if ($container->getName() == 'zf-unit-test') {
+            if ($container->getName() === 'zf-unit-test') {
                 $found = true;
                 break;
             }

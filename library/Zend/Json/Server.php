@@ -322,7 +322,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     {
         if (preg_match('/^(set|get)/', $method, $matches)) {
             if (in_array($method, $this->_getSmdMethods())) {
-                if ('set' == $matches[1]) {
+                if ('set' === $matches[1]) {
                     $value = array_shift($args);
                     $this->getServiceMap()->$method($value);
                     return $this;
@@ -539,7 +539,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
         if ( is_string( key( $params ) ) ) {
 
             $callback = $invocable->getCallback();
-            if ('function' == $callback->getType()) {
+            if ('function' === $callback->getType()) {
                 $reflection = new ReflectionFunction( $callback->getFunction() );
                 $refParams  = $reflection->getParameters();
             } else {

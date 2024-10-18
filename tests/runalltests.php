@@ -59,7 +59,7 @@ $result = 0;
 
 // run through phpunit
 foreach ($files as $file) {
-    if ($_SERVER['TRAVIS_PHP_VERSION'] == 'hhvm' && $file == 'Zend/CodeGenerator/AllTests.php') {
+    if ($_SERVER['TRAVIS_PHP_VERSION'] === 'hhvm' && $file === 'Zend/CodeGenerator/AllTests.php') {
         echo "Skipping $file on HHVM" . PHP_EOL; //gets stuck on the HHVM
         continue;
     }

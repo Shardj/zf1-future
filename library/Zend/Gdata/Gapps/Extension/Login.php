@@ -202,10 +202,10 @@ class Zend_Gdata_Gapps_Extension_Login extends Zend_Gdata_Extension
             $this->_hashFunctionName = $attribute->nodeValue;
             break;
         case 'admin':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_admin = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_admin = false;
             }
             else {
@@ -214,10 +214,10 @@ class Zend_Gdata_Gapps_Extension_Login extends Zend_Gdata_Extension
             }
             break;
         case 'agreedToTerms':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_agreedToTerms = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_agreedToTerms = false;
             }
             else {
@@ -226,10 +226,10 @@ class Zend_Gdata_Gapps_Extension_Login extends Zend_Gdata_Extension
             }
             break;
         case 'suspended':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_suspended = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_suspended = false;
             }
             else {
@@ -238,10 +238,10 @@ class Zend_Gdata_Gapps_Extension_Login extends Zend_Gdata_Extension
             }
             break;
         case 'changePasswordAtNextLogin':
-            if ($attribute->nodeValue == "true") {
+            if ($attribute->nodeValue === "true") {
                 $this->_changePasswordAtNextLogin = true;
             }
-            else if ($attribute->nodeValue == "false") {
+            else if ($attribute->nodeValue === "false") {
                 $this->_changePasswordAtNextLogin = false;
             }
             else {

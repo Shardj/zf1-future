@@ -251,11 +251,11 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         $getoptParser->parse();
 
         foreach ($getoptParser->getOptions() as $option) {
-            if ($option == 'pretend') {
+            if ($option === 'pretend') {
                 $this->_request->setPretend(true);
-            } elseif ($option == 'debug') {
+            } elseif ($option === 'debug') {
                 $this->_request->setDebug(true);
-            } elseif ($option == 'verbose') {
+            } elseif ($option === 'verbose') {
                 $this->_request->setVerbose(true);
             } else {
                 $property = '_'.$option;
@@ -278,7 +278,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         // the next "word" should be the action name
         $consoleActionName = array_shift($this->_argumentsWorking);
 
-        if ($consoleActionName == '?') {
+        if ($consoleActionName === '?') {
             $this->_help = true;
             return;
         }
@@ -331,7 +331,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             $consoleProviderName = $consoleProviderFull;
         }
 
-        if ($consoleProviderName == '?') {
+        if ($consoleProviderName === '?') {
             $this->_help = true;
             return;
         }
@@ -364,7 +364,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         $this->_helpKnownProvider = true;
         $this->_request->setProviderName($providerMetadata->getProviderName());
 
-        if ($consoleSpecialtyName == '?') {
+        if ($consoleSpecialtyName === '?') {
             $this->_help = true;
             return;
         }
@@ -405,7 +405,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
      */
     protected function _parseProviderOptionsPart()
     {
-        if (current($this->_argumentsWorking) == '?') {
+        if (current($this->_argumentsWorking) === '?') {
             $this->_help = true;
             return;
         }
@@ -439,7 +439,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
             $parameterInfo = $actionableMethodLongParamsMetadataReference['parameterInfo'][$parameterNameLong];
 
             // process ParameterInfo into array for command line option matching
-            if ($parameterInfo['type'] == 'string' || $parameterInfo['type'] == 'bool') {
+            if ($parameterInfo['type'] === 'string' || $parameterInfo['type'] === 'bool') {
                 $optionConfig .= $paramNameShortValues[$parameterNameLong]
                                . (($parameterInfo['optional']) ? '-' : '=') . 's';
             } elseif (in_array($parameterInfo['type'], ['int', 'integer', 'float'])) {
@@ -470,7 +470,7 @@ class Zend_Tool_Framework_Client_Console_ArgumentParser implements Zend_Tool_Fra
         // if non-option arguments exist, attempt to process them before processing options
         $wordStack = [];
         while (($wordOnTop = array_shift($this->_argumentsWorking))) {
-            if (substr($wordOnTop, 0, 1) != '-') {
+            if (substr($wordOnTop, 0, 1) !== '-') {
                 array_push($wordStack, $wordOnTop);
             } else {
                 // put word back on stack and move on

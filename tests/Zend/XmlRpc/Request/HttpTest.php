@@ -112,7 +112,7 @@ EOX;
 
         $this->server = $_SERVER;
         foreach ($_SERVER as $key => $value) {
-            if ('HTTP_' == substr($key, 0, 5)) {
+            if ('HTTP_' === substr($key, 0, 5)) {
                 unset($_SERVER[$key]);
             }
         }

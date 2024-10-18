@@ -209,7 +209,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
 
                     $anonymousArgs = [];
                     foreach ($request as $key => $value) {
-                        if (substr($key, 0, 3) == 'arg') {
+                        if (substr($key, 0, 3) === 'arg') {
                             $key = str_replace('arg', '', $key);
                             $anonymousArgs[$key] = $value;
                             if (($index = array_search($key, $missingArgs)) !== false) {
@@ -521,7 +521,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
             );
             $xmlResponse->appendChild($element);
             $code = $exception->getCode();
-        } elseif (($exception !== null) || 'rest' == $function) {
+        } elseif (($exception !== null) || 'rest' === $function) {
             $xmlResponse->appendChild(
                 $dom->createElement(
                     'message', 'An unknown error occured. Please try again.'

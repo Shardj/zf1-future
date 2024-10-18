@@ -217,11 +217,11 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignature
 	    foreach ($permissionParts as $part) {
 	        list($property, $value) = explode('=', $part, 2);
 
-	        if ($property == 'sr') {
+	        if ($property === 'sr') {
 	            $matches = $matches && (strpbrk($value, $requiredResourceType) !== false);
 	        }
 
-	    	if ($property == 'sp') {
+	    	if ($property === 'sp') {
 	            $matches = $matches && (strpbrk($value, $requiredPermission) !== false);
 	        }
 	    }

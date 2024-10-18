@@ -107,7 +107,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $response = $this->_client->send($connect)->receive();
 
         if ((false !== $response)
-            && ($response->getCommand() != 'CONNECTED')
+            && ($response->getCommand() !== 'CONNECTED')
         ) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Unable to authenticate to '".$options['scheme'].'://'.$options['host'].':'.$options['port']."'");

@@ -65,7 +65,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends TestCase
         if (defined('TESTS_Zend_Feed_Pubsubhubbub_BASEURI') &&
             Zend_Uri_Http::check(TESTS_Zend_Feed_Pubsubhubbub_BASEURI)) {
             $this->_baseuri = TESTS_Zend_Feed_Pubsubhubbub_BASEURI;
-            if (substr($this->_baseuri, -1) != '/') {
+            if (substr($this->_baseuri, -1) !== '/') {
                 $this->_baseuri .= '/';
             }
             $name = $this->getName();

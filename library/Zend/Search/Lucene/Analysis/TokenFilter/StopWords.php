@@ -88,7 +88,7 @@ class Zend_Search_Lucene_Analysis_TokenFilter_StopWords extends Zend_Search_Luce
         }
         while (!feof ($fd)) {
             $buffer = trim(fgets($fd));
-            if (strlen($buffer) > 0 && $buffer[0] != '#') {
+            if (strlen($buffer) > 0 && $buffer[0] !== '#') {
                 $this->_stopSet[$buffer] = 1;
             }
         }

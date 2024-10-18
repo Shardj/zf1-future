@@ -483,9 +483,9 @@ class Zend_Pdf
 
 
         foreach ($pages->Kids->items as $child) {
-            if ($child->Type->value == 'Pages') {
+            if ($child->Type->value === 'Pages') {
                 $this->_loadPages($child, $attributes);
-            } else if ($child->Type->value == 'Page') {
+            } else if ($child->Type->value === 'Page') {
                 foreach (self::$_inheritableAttributes as $property) {
                     if ($child->$property === null && array_key_exists($property, $attributes)) {
                         /**
@@ -567,7 +567,7 @@ class Zend_Pdf
             throw new Zend_Pdf_Exception('Document catalog Outlines entry must be a dictionary.');
         }
 
-        if ($root->Outlines->Type !== null  &&  $root->Outlines->Type->value != 'Outlines') {
+        if ($root->Outlines->Type !== null  &&  $root->Outlines->Type->value !== 'Outlines') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Outlines Type entry must be an \'Outlines\' string.');
         }
@@ -633,7 +633,7 @@ class Zend_Pdf
 
         foreach ($root->AcroForm->Fields->items as $field) {
             /* We only support fields that are textfields and have a name */
-            if ($field->FT && $field->FT->value == 'Tx' && $field->T
+            if ($field->FT && $field->FT->value === 'Tx' && $field->T
                 && $field->T !== null
             ) {
                 $this->_formFields[$field->T->value] = $field;
@@ -1259,7 +1259,7 @@ class Zend_Pdf
 
                 $fonts[$resourceId] = $extractedFont;
             } catch (Zend_Pdf_Exception $e) {
-                if ($e->getMessage() != 'Unsupported font type.') {
+                if ($e->getMessage() !== 'Unsupported font type.') {
                     throw $e;
                 }
             }
@@ -1317,7 +1317,7 @@ class Zend_Pdf
                     require_once 'Zend/Pdf/Resource/Font/Extracted.php';
                     return new Zend_Pdf_Resource_Font_Extracted($fontDictionary);
                 } catch (Zend_Pdf_Exception $e) {
-                    if ($e->getMessage() != 'Unsupported font type.') {
+                    if ($e->getMessage() !== 'Unsupported font type.') {
                         throw $e;
                     }
                     // Continue searhing

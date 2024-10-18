@@ -307,7 +307,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
     {
         $keys = array_keys($rules);
         foreach ($keys as $spec) {
-            if ($spec[0] == ':') {
+            if ($spec[0] === ':') {
                 $this->addFilterRule($spec, $rules[$spec]);
             } else {
                 $this->setStaticRule($spec, $rules[$spec]);

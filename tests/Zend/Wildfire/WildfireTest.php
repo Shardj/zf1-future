@@ -892,8 +892,8 @@ class Zend_Wildfire_WildfireTest extends TestCase
         $messages = $this->_response->getHeadersForTesting();
 
         $this->assertTrue(substr($messages[3]['value'], 0, 10) == '6308|[{"Ty'
-                          && substr($messages[3]['value'], -8, 8) == ',"Test|\\'
-                          && substr($messages[4]['value'], 0, 10) == '| Data 318'
+                          && substr($messages[3]['value'], -8, 8) === ',"Test|\\'
+                          && substr($messages[4]['value'], 0, 10) === '| Data 318'
                           && substr($messages[4]['value'], -7, 7) == '399"]]|');
     }
 
@@ -1172,13 +1172,13 @@ class Zend_Wildfire_WildfireTest_Request extends Zend_Controller_Request_HttpTes
 
     public function getHeader($header, $default = null)
     {
-        if ($header == 'User-Agent' && $this->_enabled_headerName == 'User-Agent') {
+        if ($header === 'User-Agent' && $this->_enabled_headerName === 'User-Agent') {
             if ($this->_enabled) {
                 return 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14 FirePHP/0.1.0';
             } else {
                 return 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14';
             }
-        } elseif ($header == 'X-FirePHP-Version' && $this->_enabled_headerName == 'X-FirePHP-Version') {
+        } elseif ($header === 'X-FirePHP-Version' && $this->_enabled_headerName === 'X-FirePHP-Version') {
             if ($this->_enabled) {
                 return '0.1.0';
             }

@@ -227,7 +227,7 @@ class Zend_Translate_Adapter_TbxTest extends TestCase
         $adapter = new Zend_Translate_Adapter_Tbx(dirname(__FILE__) . '/_files/translation_en3.tbx', 'fr');
         $this->assertEquals('Message 1 (fr)', $adapter->translate('Message 1'));
 
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             return;
             // 'Charsets below are not supported on AIX';
         }

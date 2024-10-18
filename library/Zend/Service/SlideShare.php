@@ -387,7 +387,7 @@ class Zend_Service_SlideShare
 
         $sxe = Zend_Xml_Security::scan($response->getBody());
 
-        if ($sxe->getName() == "SlideShareServiceError") {
+        if ($sxe->getName() === "SlideShareServiceError") {
             $message = (string)$sxe->Message[0];
             list($code, $errorStr) = explode(':', $message);
             require_once 'Zend/Service/SlideShare/Exception.php';
@@ -397,7 +397,7 @@ class Zend_Service_SlideShare
             );
         }
 
-        if (!$sxe->getName() == "SlideShowUploaded") {
+        if (!$sxe->getName() === "SlideShowUploaded") {
             require_once 'Zend/Service/SlideShare/Exception.php';
             throw new Zend_Service_SlideShare_Exception(
                 'Unknown XML Respons Received'
@@ -448,7 +448,7 @@ class Zend_Service_SlideShare
 
             $sxe = Zend_Xml_Security::scan($response->getBody());
 
-            if ($sxe->getName() == "SlideShareServiceError") {
+            if ($sxe->getName() === "SlideShareServiceError") {
                 $message = (string)$sxe->Message[0];
                 list($code, $errorStr) = explode(':', $message);
                 require_once 'Zend/Service/SlideShare/Exception.php';
@@ -458,7 +458,7 @@ class Zend_Service_SlideShare
                 );
             }
 
-            if (!($sxe->getName() == 'Slideshow')) {
+            if (!($sxe->getName() === 'Slideshow')) {
                 require_once 'Zend/Service/SlideShare/Exception.php';
                 throw new Zend_Service_SlideShare_Exception(
                     'Unknown XML Repsonse Received'
@@ -600,7 +600,7 @@ class Zend_Service_SlideShare
 
             $sxe = Zend_Xml_Security::scan($response->getBody());
 
-            if ($sxe->getName() == "SlideShareServiceError") {
+            if ($sxe->getName() === "SlideShareServiceError") {
                 $message = (string)$sxe->Message[0];
                 list($code, $errorStr) = explode(':', $message);
                 require_once 'Zend/Service/SlideShare/Exception.php';
@@ -619,7 +619,7 @@ class Zend_Service_SlideShare
             $retval = [];
 
             foreach ($sxe->children() as $node) {
-                if ($node->getName() == 'Slideshow') {
+                if ($node->getName() === 'Slideshow') {
                     $retval[] = $this->_slideShowNodeToObject($node);
                 }
             }
@@ -643,7 +643,7 @@ class Zend_Service_SlideShare
     protected function _slideShowNodeToObject(SimpleXMLElement $node)
     {
 
-        if ($node->getName() == 'Slideshow') {
+        if ($node->getName() === 'Slideshow') {
             $ss = new Zend_Service_SlideShare_SlideShow();
 
             $ss->setId((string)$node->ID);

@@ -381,7 +381,7 @@ class Zend_Feed_ReaderTest extends TestCase
         foreach ([$_ENV, $_SERVER] as $tab) {
             foreach (['TMPDIR', 'TEMP', 'TMP', 'windir', 'SystemRoot'] as $key) {
                 if (isset($tab[$key])) {
-                    if (($key == 'windir') || ($key == 'SystemRoot')) {
+                    if (($key === 'windir') || ($key === 'SystemRoot')) {
                         $dir = realpath($tab[$key] . '\\temp');
                     } else {
                         $dir = realpath($tab[$key]);

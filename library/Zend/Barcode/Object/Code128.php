@@ -283,8 +283,8 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
             $char = $string[$pos];
             $code = null;
 
-            if (self::_isDigit($string, $pos, 4) && $currentCharset != 'C'
-             || self::_isDigit($string, $pos, 2) && $currentCharset == 'C') {
+            if (self::_isDigit($string, $pos, 4) && $currentCharset !== 'C'
+             || self::_isDigit($string, $pos, 2) && $currentCharset === 'C') {
                 /**
                  * Switch to C if the next 4 chars are numeric or stay C if the next 2
                  * chars are numeric
@@ -324,7 +324,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
                 $currentCharset = 'A';
             }
 
-            if ($currentCharset == 'C') {
+            if ($currentCharset === 'C') {
                 $code = array_search(substr($string, $pos, 2), $this->_charSets['C']);
                 $pos++; //Two chars from input
             } else {

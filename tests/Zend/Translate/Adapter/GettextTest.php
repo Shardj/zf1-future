@@ -234,7 +234,7 @@ class Zend_Translate_Adapter_GettextTest extends TestCase
 
     public function testOtherEncoding()
     {
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             $this->markTestSkipped('These charsets are not supported on AIX');
         }
 

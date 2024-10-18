@@ -53,10 +53,10 @@ class Zend_Db_TestUtil_Mysqli extends Zend_Db_TestUtil_Common
 
     public function getSqlType($type)
     {
-        if ($type == 'IDENTITY') {
+        if ($type === 'IDENTITY') {
             return 'INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT';
         }
-        if ($type == 'CLOB') {
+        if ($type === 'CLOB') {
             return 'TEXT';
         }
         return $type;

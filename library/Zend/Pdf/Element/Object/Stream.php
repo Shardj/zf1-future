@@ -296,7 +296,7 @@ class Zend_Pdf_Element_Object_Stream extends Zend_Pdf_Element_Object
      */
     public function __get($property)
     {
-        if ($property == 'dictionary') {
+        if ($property === 'dictionary') {
             /**
              * If stream is not decoded yet, then store original decoding options (do it only once).
              */
@@ -307,7 +307,7 @@ class Zend_Pdf_Element_Object_Stream extends Zend_Pdf_Element_Object
             return $this->_dictionary;
         }
 
-        if ($property == 'value') {
+        if ($property === 'value') {
             if (!$this->_streamDecoded) {
                 $this->_decodeStream();
             }
@@ -328,7 +328,7 @@ class Zend_Pdf_Element_Object_Stream extends Zend_Pdf_Element_Object
      */
     public function __set($property, $value)
     {
-        if ($property == 'value') {
+        if ($property === 'value') {
             $valueRef = &$this->_value->value->getRef();
             $valueRef = $value;
             $this->_value->value->touch();

@@ -165,7 +165,7 @@ class Zend_Gdata_ClientLogin
         } elseif ($response->getStatus() == 403) {
             // Check if the server asked for a CAPTCHA
             if (array_key_exists('Error', $goog_resp) &&
-                $goog_resp['Error'] == 'CaptchaRequired') {
+                $goog_resp['Error'] === 'CaptchaRequired') {
                 require_once 'Zend/Gdata/App/CaptchaRequiredException.php';
                 throw new Zend_Gdata_App_CaptchaRequiredException(
                     $goog_resp['CaptchaToken'], $goog_resp['CaptchaUrl']);

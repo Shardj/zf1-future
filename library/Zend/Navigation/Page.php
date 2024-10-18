@@ -954,7 +954,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
      */
     public function setVisible($visible = true)
     {
-        if (is_string($visible) && 'false' == strtolower($visible)) {
+        if (is_string($visible) && 'false' === strtolower($visible)) {
             $visible = false;
         }
         $this->_visible = (bool) $visible;
@@ -1064,7 +1064,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
 
         $method = 'set' . self::_normalizePropertyName($property);
 
-        if ($method != 'setOptions' && $method != 'setConfig' &&
+        if ($method !== 'setOptions' && $method !== 'setConfig' &&
             method_exists($this, $method)) {
             $this->$method($value);
         } else {

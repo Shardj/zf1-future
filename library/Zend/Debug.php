@@ -84,7 +84,7 @@ class Zend_Debug
 
         // neaten the newlines and indents
         $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-        if (self::getSapi() == 'cli') {
+        if (self::getSapi() === 'cli') {
             $output = PHP_EOL . $label
                     . PHP_EOL . $output
                     . PHP_EOL;

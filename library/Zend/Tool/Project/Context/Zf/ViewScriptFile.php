@@ -136,13 +136,13 @@ class Zend_Tool_Project_Context_Zf_ViewScriptFile extends Zend_Tool_Project_Cont
             ->getParentResource() // view script
             ->getParentResource() // view controller dir
             ->getParentResource(); // views dir
-        if ($viewsDirectoryResource->getParentResource()->getName() == 'ModuleDirectory') {
+        if ($viewsDirectoryResource->getParentResource()->getName() === 'ModuleDirectory') {
             $moduleName = $viewsDirectoryResource->getParentResource()->getModuleName();
         } else {
             $moduleName = 'default';
         }
 
-        if ($this->_filesystemName == 'error.phtml') {  // should also check that the above directory is forController=error
+        if ($this->_filesystemName === 'error.phtml') {  // should also check that the above directory is forController=error
             $contents .= <<<EOS
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -175,7 +175,7 @@ class Zend_Tool_Project_Context_Zf_ViewScriptFile extends Zend_Tool_Project_Cont
 </html>
 
 EOS;
-        } elseif ($this->_forActionName == 'index' && $controllerName == 'Index' && $moduleName == 'default') {
+        } elseif ($this->_forActionName === 'index' && $controllerName === 'Index' && $moduleName === 'default') {
 
             $contents =<<<EOS
 <style>

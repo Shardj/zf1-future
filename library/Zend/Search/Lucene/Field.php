@@ -219,7 +219,7 @@ class Zend_Search_Lucene_Field
                 return $this->value;
         }
 
-        return PHP_OS != 'AIX'
+        return PHP_OS !== 'AIX'
             ? iconv($this->encoding, 'UTF-8', $this->value)
             : iconv('ISO8859-1', 'UTF-8', $this->value);
     }

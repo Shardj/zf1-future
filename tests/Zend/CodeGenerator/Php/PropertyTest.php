@@ -220,7 +220,7 @@ EOS;
      */
     public function testSetBogusTypeSetValueGenerateUseAutoDetection($type, $value, $code)
     {
-        if ($type == 'constant') {
+        if ($type === 'constant') {
             $this->expectNotToPerformAssertions();
             return; // constant can only be detected explicitly
         }

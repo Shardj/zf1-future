@@ -115,6 +115,6 @@ class Zend_Dojo_Form_Element_CurrencyTextBox extends Zend_Dojo_Form_Element_Numb
      */
     public function getFractional()
     {
-        return ('true' == $this->getConstraint('fractional'));
+        return ('true' === $this->getConstraint('fractional'));
     }
 }

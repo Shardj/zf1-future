@@ -187,7 +187,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     {
         $found = null;
         foreach ($this->_specificOptions['memorize_headers'] as $key => $value) {
-            if (strtolower($value) == 'content-type') {
+            if (strtolower($value) === 'content-type') {
                 $found = $key;
             }
         }

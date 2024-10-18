@@ -867,7 +867,7 @@ class Zend_Form_ElementTest extends TestCase
         $messages = $this->element->getMessages();
         $found = false;
         foreach ($messages as $key => $message) {
-            if ($key == 'digitsStringEmpty') {
+            if ($key === 'digitsStringEmpty') {
                 $found = true;
                 break;
             }
@@ -879,7 +879,7 @@ class Zend_Form_ElementTest extends TestCase
         $messages = $this->element->getMessages();
         $found = false;
         foreach ($messages as $key => $message) {
-            if ($key == 'notDigits') {
+            if ($key === 'notDigits') {
                 $found = true;
                 break;
             }
@@ -1036,7 +1036,7 @@ class Zend_Form_ElementTest extends TestCase
         $messages = $this->element->getMessages();
         $found = false;
         foreach ($messages as $key => $message) {
-            if ($key == 'notDigits') {
+            if ($key === 'notDigits') {
                 $found = true;
                 break;
             }
@@ -2069,7 +2069,7 @@ class Zend_Form_ElementTest extends TestCase
      */
     protected function _checkZf2794()
     {
-        if (strtolower(substr(PHP_OS, 0, 3)) == 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
+        if (strtolower(substr(PHP_OS, 0, 3)) === 'win' && version_compare(PHP_VERSION, '5.1.4', '=')) {
             $this->markTestIncomplete('Error occurs for PHP 5.1.4 on Windows');
         }
     }

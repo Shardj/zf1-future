@@ -486,7 +486,7 @@ abstract class Zend_Controller_Action implements Zend_Controller_Action_Interfac
     public function __call($methodName, $args)
     {
         require_once 'Zend/Controller/Action/Exception.php';
-        if ('Action' == substr($methodName, -6)) {
+        if ('Action' === substr($methodName, -6)) {
             $action = substr($methodName, 0, strlen($methodName) - 6);
             throw new Zend_Controller_Action_Exception(sprintf('Action "%s" does not exist and was not trapped in __call()', $action), 404);
         }

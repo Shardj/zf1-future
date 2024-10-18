@@ -67,11 +67,11 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
                 || !$link->getAttribute('type') || !$link->getAttribute('href')) {
                 continue;
             }
-            if (!isset($this->rss) && $link->getAttribute('type') == 'application/rss+xml') {
+            if (!isset($this->rss) && $link->getAttribute('type') === 'application/rss+xml') {
                 $this->rss = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
-            } elseif(!isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
+            } elseif(!isset($this->atom) && $link->getAttribute('type') === 'application/atom+xml') {
                 $this->atom = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
-            } elseif(!isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
+            } elseif(!isset($this->rdf) && $link->getAttribute('type') === 'application/rdf+xml') {
                 $this->rdf = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
             }
             $this[] = new self([
@@ -115,7 +115,7 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
             if ('.' == $part) {
                 continue;
             }
-            if ('..' == $part) {
+            if ('..' === $part) {
                 array_pop($absolutes);
             } else {
                 $absolutes[] = $part;
@@ -135,7 +135,7 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        if ($offset == 'feed' && !$this->offsetExists('feed')) {
+        if ($offset === 'feed' && !$this->offsetExists('feed')) {
             if (!$this->offsetExists('href')) {
                 return null;
             }

@@ -150,7 +150,7 @@ abstract class Zend_Application_Bootstrap_BootstrapAbstract
 
             if (in_array($method, $methods)) {
                 $this->$method($value);
-            } elseif ('resources' == $key) {
+            } elseif ('resources' === $key) {
                 foreach ($value as $resource => $resourceOptions) {
                     $this->registerPluginResource($resource, $resourceOptions);
                 }

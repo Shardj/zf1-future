@@ -156,7 +156,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
     {
         if (array_key_exists('directOnly', $this->_params)) {
 
-            if($this->_params['directOnly'] == 'true') {
+            if($this->_params['directOnly'] === 'true') {
                 return true;
             } else {
                 return false;

@@ -608,7 +608,7 @@ class Zend_Console_Getopt
                 }
             }
             $linepart['name'] = implode('|', $flags);
-            if (isset($rule['param']) && $rule['param'] != 'none') {
+            if (isset($rule['param']) && $rule['param'] !== 'none') {
                 $linepart['name'] .= ' ';
                 switch ($rule['param']) {
                     case 'optional':
@@ -710,16 +710,16 @@ class Zend_Console_Getopt
         $this->_options = [];
         $this->_remainingArgs = [];
         while (count($argv) > 0) {
-            if ($argv[0] == '--') {
+            if ($argv[0] === '--') {
                 array_shift($argv);
                 if ($this->_getoptConfig[self::CONFIG_DASHDASH]) {
                     $this->_remainingArgs = array_merge($this->_remainingArgs, $argv);
                     break;
                 }
             }
-            if (substr($argv[0], 0, 2) == '--') {
+            if (substr($argv[0], 0, 2) === '--') {
                 $this->_parseLongOption($argv);
-            } else if (substr($argv[0], 0, 1) == '-' && ('-' != $argv[0] || count($argv) >1))  {
+            } else if (substr($argv[0], 0, 1) === '-' && ('-' != $argv[0] || count($argv) >1))  {
                 $this->_parseShortOptionCluster($argv);
             } else if($this->_getoptConfig[self::CONFIG_PARSEALL]) {
                 $this->_remainingArgs[] = array_shift($argv);
@@ -817,7 +817,7 @@ class Zend_Console_Getopt
         $realFlag = $this->_ruleMap[$flag];
         switch ($this->_rules[$realFlag]['param']) {
             case 'required':
-                if (count($argv) > 0 && substr($argv[0], 0, 1) != '-') {
+                if (count($argv) > 0 && substr($argv[0], 0, 1) !== '-') {
                     $param = array_shift($argv);
                     $this->_checkParameterType($realFlag, $param);
                 } else {
@@ -828,7 +828,7 @@ class Zend_Console_Getopt
                 }
                 break;
             case 'optional':
-                if (count($argv) > 0 && substr($argv[0], 0, 1) != '-') {
+                if (count($argv) > 0 && substr($argv[0], 0, 1) !== '-') {
                     $param = array_shift($argv);
                     $this->_checkParameterType($realFlag, $param);
                 } else {
@@ -907,7 +907,7 @@ class Zend_Console_Getopt
                 $flag = strtolower($flag);
             }
             $r['alias'][] = $flag;
-            if (substr($rule, 1, 1) == ':') {
+            if (substr($rule, 1, 1) === ':') {
                 $r['param'] = 'required';
                 $r['paramType'] = 'string';
             } else {

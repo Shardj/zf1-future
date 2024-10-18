@@ -152,10 +152,10 @@ class Zend_Barcode_Renderer_Svg extends Zend_Barcode_Renderer_RendererAbstract
 
         $width = $barcodeWidth;
         $height = $barcodeHeight;
-        if ($this->_userWidth && $this->_barcode->getType() != 'error') {
+        if ($this->_userWidth && $this->_barcode->getType() !== 'error') {
             $width = $this->_userWidth;
         }
-        if ($this->_userHeight && $this->_barcode->getType() != 'error') {
+        if ($this->_userHeight && $this->_barcode->getType() !== 'error') {
             $height = $this->_userHeight;
         }
         if ($this->_resource === null) {

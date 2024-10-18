@@ -119,7 +119,7 @@ class Zend_Loader_Autoloader_Resource implements Zend_Loader_Autoloader_Interfac
      */
     public function __call($method, $args)
     {
-        if ('get' == substr($method, 0, 3)) {
+        if ('get' === substr($method, 0, 3)) {
             $type  = strtolower(substr($method, 3));
             if (!$this->hasResourceType($type)) {
                 require_once 'Zend/Loader/Exception.php';

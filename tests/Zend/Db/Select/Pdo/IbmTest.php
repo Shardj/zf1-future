@@ -50,7 +50,7 @@ class Zend_Db_Select_Pdo_IbmTest extends Zend_Db_Select_TestCommon
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $this->markTestIncomplete('IDS does not support this SQL syntax');
         } else {
             parent::testSelectGroupByExpr();
@@ -61,7 +61,7 @@ class Zend_Db_Select_Pdo_IbmTest extends Zend_Db_Select_TestCommon
     {
         $server = $this->_util->getServer();
 
-        if ($server == 'IDS') {
+        if ($server === 'IDS') {
             $this->markTestIncomplete('IDS does not support this SQL syntax');
         } else {
             parent::testSelectGroupByAutoExpr();

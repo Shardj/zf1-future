@@ -160,7 +160,7 @@ class Zend_Application_Resource_ViewTest extends TestCase
         $actual = null;
         $container = $headMetaHelper->getContainer();
         foreach ($container as $item) {
-            if ('Content-Type' == $item->{$item->type}) {
+            if ('Content-Type' === $item->{$item->type}) {
                 $actual = $item->content;
                 break;
             }
@@ -189,7 +189,7 @@ class Zend_Application_Resource_ViewTest extends TestCase
         $actual = null;
         $container = $headMetaHelper->getContainer();
         foreach ($container as $item) {
-            if ('charset' == $item->type) {
+            if ('charset' === $item->type) {
                 $actual = $item->charset;
                 break;
             }
@@ -220,7 +220,7 @@ class Zend_Application_Resource_ViewTest extends TestCase
         $actual = null;
         $container = $headMetaHelper->getContainer();
         foreach ($container as $item) {
-            if ('charset' == $item->type) {
+            if ('charset' === $item->type) {
                 $actual = $item->charset;
                 break;
             }

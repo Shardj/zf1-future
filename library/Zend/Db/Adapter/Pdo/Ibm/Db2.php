@@ -121,7 +121,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
 
         foreach ($result as $key => $row) {
             [$primary, $primaryPosition, $identity] = [false, null, false];
-            if ($row[$tabconstype] == 'P') {
+            if ($row[$tabconstype] === 'P') {
                 $primary = true;
                 $primaryPosition = $row[$colseq];
             }
@@ -129,7 +129,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
              * In IBM DB2, an column can be IDENTITY
              * even if it is not part of the PRIMARY KEY.
              */
-            if ($row[$identityCol] == 'Y') {
+            if ($row[$identityCol] === 'Y') {
                 $identity = true;
             }
 
@@ -140,10 +140,10 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
             'COLUMN_POSITION'  => $row[$colno]+1,
             'DATA_TYPE'        => $row[$typename],
             'DEFAULT'          => $row[$default],
-            'NULLABLE'         => (bool) ($row[$nulls] == 'Y'),
+            'NULLABLE'         => (bool) ($row[$nulls] === 'Y'),
             'LENGTH'           => $row[$length],
             'SCALE'            => $row[$scale],
-            'PRECISION'        => ($row[$typename] == 'DECIMAL' ? $row[$length] : 0),
+            'PRECISION'        => ($row[$typename] === 'DECIMAL' ? $row[$length] : 0),
             'UNSIGNED'         => false,
             'PRIMARY'          => $primary,
             'PRIMARY_POSITION' => $primaryPosition,

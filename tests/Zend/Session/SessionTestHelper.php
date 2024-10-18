@@ -75,7 +75,7 @@ class Zend_Session_TestHelper
         } else {
             $s = new Zend_Session_Namespace();
         }
-        if (isset($args[2]) && ($args[2] == 'ZF-7196')) {
+        if (isset($args[2]) && ($args[2] === 'ZF-7196')) {
             unset($s->foo);
         }
         $result = '';

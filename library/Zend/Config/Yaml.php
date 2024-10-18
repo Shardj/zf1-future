@@ -330,7 +330,7 @@ class Zend_Config_Yaml extends Zend_Config
                     }
                 }
                 $config[$m[1]] = $value;
-            } elseif ($lines[$pointer][0] == "-") {
+            } elseif ($lines[$pointer][0] === "-") {
                 // item in the list:
                 // - FOO
                 if (strlen($lines[$pointer]) > 2) {

@@ -175,7 +175,7 @@ class Zend_Cache_Backend
         foreach ([$_ENV, $_SERVER] as $tab) {
             foreach (['TMPDIR', 'TEMP', 'TMP', 'windir', 'SystemRoot'] as $key) {
                 if (isset($tab[$key]) && is_string($tab[$key])) {
-                    if (($key == 'windir') || ($key == 'SystemRoot')) {
+                    if (($key === 'windir') || ($key === 'SystemRoot')) {
                         $dir = realpath($tab[$key] . '\\temp');
                     } else {
                         $dir = realpath($tab[$key]);

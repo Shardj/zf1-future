@@ -128,7 +128,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
         try {
             $this->_context->getRefTable()->getNextFree('0 65535 R');
         } catch (Zend_Pdf_Exception $e) {
-            if ($e->getMessage() == 'Object not found.') {
+            if ($e->getMessage() === 'Object not found.') {
                 /**
                  * Here is work around for some wrong generated PDFs.
                  * We have not found reference to the header of free object list,

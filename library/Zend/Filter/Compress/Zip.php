@@ -144,7 +144,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
 
                     $dir = dir($current);
                     while (false !== ($node = $dir->read())) {
-                        if (($node == '.') || ($node == '..')) {
+                        if (($node === '.') || ($node === '..')) {
                             continue;
                         }
 

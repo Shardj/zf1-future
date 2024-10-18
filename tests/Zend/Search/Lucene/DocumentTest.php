@@ -111,7 +111,7 @@ class Zend_Search_Lucene_DocumentTest extends TestCase
         $this->assertEquals($document->getFieldValue('body'), 'Document body, document body, document body...');
 
 
-        if (PHP_OS == 'AIX') {
+        if (PHP_OS === 'AIX') {
             return; // tests below here not valid on AIX
         }
 

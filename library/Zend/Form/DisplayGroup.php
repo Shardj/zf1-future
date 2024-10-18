@@ -387,7 +387,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
         }
 
         // Strip array notation
-        if ('[]' == substr($id, -2)) {
+        if ('[]' === substr($id, -2)) {
             $id = substr($id, 0, strlen($id) - 2);
         }
         $id = str_replace('][', '-', $id);
@@ -1025,7 +1025,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      */
     public function __call($method, $args)
     {
-        if ('render' == substr($method, 0, 6)) {
+        if ('render' === substr($method, 0, 6)) {
             $decoratorName = substr($method, 6);
             if (false !== ($decorator = $this->getDecorator($decoratorName))) {
                 $decorator->setElement($this);

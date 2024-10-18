@@ -54,7 +54,7 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 		foreach ($argv as $parameterInput) {
 			$parameterInput = explode('=', $parameterInput, 2);
 
-			if (strtolower($parameterInput[0]) == '--configfile' || strtolower($parameterInput[0]) == '-f') {
+			if (strtolower($parameterInput[0]) === '--configfile' || strtolower($parameterInput[0]) === '-f') {
 				if (!isset($parameterInput[1])) {
 					require_once 'Zend/Service/Console/Exception.php';
 					throw new Zend_Service_Console_Exception("No path to a configuration file is given. Specify the path using the --ConfigFile or -F switch.");
@@ -92,9 +92,9 @@ class Zend_Service_Console_Command_ParameterSource_ConfigFile
 			}
 		}
 
-		if (strtolower($parameterValue) == 'true') {
+		if (strtolower($parameterValue) === 'true') {
 			$parameterValue = true;
-		} else if (strtolower($parameterValue) == 'false') {
+		} else if (strtolower($parameterValue) === 'false') {
 			$parameterValue = false;
 		}
 
