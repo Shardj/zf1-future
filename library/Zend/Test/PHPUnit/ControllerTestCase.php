@@ -34,6 +34,14 @@ require_once 'Zend/Session.php';
 /** @see Zend_Registry */
 require_once 'Zend/Registry.php';
 
+if (!class_exists('PHPUnit_Framework_TestCase')) {
+    if (class_exists('Yoast\PHPUnitPolyfills\TestCases\TestCase')) {
+        class_alias('Yoast\PHPUnitPolyfills\TestCases\TestCase', 'PHPUnit_Framework_TestCase');
+    } elseif (class_exists('PHPUnit\Framework\TestCase')) {
+        class_alias('PHPUnit\Framework\TestCase', 'PHPUnit_Framework_TestCase');
+    }
+}
+
 /**
  * Functional testing scaffold for MVC applications
  *
@@ -43,6 +51,10 @@ require_once 'Zend/Registry.php';
  * @subpackage PHPUnit
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @property-read Zend_Controller_Request_HttpTestCase $request
+ * @property-read Zend_Controller_Response_HttpTestCase $response
+ * @property-read Zend_Controller_Front $frontController
  */
 abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_TestCase
 {
@@ -121,6 +133,18 @@ abstract class Zend_Test_PHPUnit_ControllerTestCase extends PHPUnit_Framework_Te
      * Calls {@link bootstrap()} by default
      */
     protected function setUp(): void
+    {
+        $this->bootstrap();
+    }
+
+    /**
+     * Set up MVC app
+     *
+     * Calls {@link bootstrap()} by default
+     *
+     * Version intended for use when extending from Yoast\PHPUnitPolyfills\TestCases\TestCase
+     */
+    protected function set_up()
     {
         $this->bootstrap();
     }
