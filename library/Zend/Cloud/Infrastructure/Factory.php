@@ -20,7 +20,7 @@ require_once 'Zend/Cloud/AbstractFactory.php';
  */
 class Zend_Cloud_Infrastructure_Factory extends Zend_Cloud_AbstractFactory
 {
-    const INFRASTRUCTURE_ADAPTER_KEY = 'infrastructure_adapter';
+    public const INFRASTRUCTURE_ADAPTER_KEY = 'infrastructure_adapter';
 
     /**
      * @var string Interface which adapter must implement to be considered valid

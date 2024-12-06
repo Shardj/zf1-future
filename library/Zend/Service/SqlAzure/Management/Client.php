@@ -55,14 +55,14 @@ class Zend_Service_SqlAzure_Management_Client
 	/**
 	 * Management service URL
 	 */
-	const URL_MANAGEMENT        = "https://management.database.windows.net:8443";
+	public const URL_MANAGEMENT        = "https://management.database.windows.net:8443";
 
 	/**
 	 * Operations
 	 */
-	const OP_OPERATIONS                = "operations";
-	const OP_SERVERS                   = "servers";
-	const OP_FIREWALLRULES             = "firewallrules";
+	public const OP_OPERATIONS                = "operations";
+	public const OP_SERVERS                   = "servers";
+	public const OP_FIREWALLRULES             = "firewallrules";
 
 	/**
 	 * Current API version
@@ -125,7 +125,7 @@ class Zend_Service_SqlAzure_Management_Client
 		$subscriptionId,
 		$certificatePath,
 		$certificatePassphrase,
-		Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null
+		?Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null
 	) {
 		$this->_subscriptionId = $subscriptionId;
 		$this->_certificatePath = $certificatePath;
@@ -275,7 +275,7 @@ class Zend_Service_SqlAzure_Management_Client
 	 * @return object
 	 * @throws Zend_Service_WindowsAzure_Exception
 	 */
-	protected function _parseResponse(Zend_Http_Response $response = null)
+	protected function _parseResponse(?Zend_Http_Response $response = null)
 	{
 		if (is_null($response)) {
 			require_once 'Zend/Service/SqlAzure/Exception.php';

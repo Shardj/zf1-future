@@ -27,12 +27,12 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
     /**
      * RACKSPACE constants
      */
-    const RACKSPACE_USER      = 'rackspace_user';
-    const RACKSPACE_KEY       = 'rackspace_key';
-    const RACKSPACE_REGION    = 'rackspace_region';
-    const RACKSPACE_ZONE_USA  = 'USA';
-    const RACKSPACE_ZONE_UK   = 'UK';
-    const MONITOR_CPU_SAMPLES = 3;
+    public const RACKSPACE_USER      = 'rackspace_user';
+    public const RACKSPACE_KEY       = 'rackspace_key';
+    public const RACKSPACE_REGION    = 'rackspace_region';
+    public const RACKSPACE_ZONE_USA  = 'USA';
+    public const RACKSPACE_ZONE_UK   = 'UK';
+    public const MONITOR_CPU_SAMPLES = 3;
     /**
      * Rackspace Servers Instance
      *

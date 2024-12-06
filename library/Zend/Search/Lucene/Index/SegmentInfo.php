@@ -51,7 +51,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      * If filter selectivity is less than this value, then full scan is performed
      * (since term entries fetching has some additional overhead).
      */
-    const FULL_SCAN_VS_FETCH_BOUNDARY = 5;
+    public const FULL_SCAN_VS_FETCH_BOUNDARY = 5;
 
     /**
      * Number of docs in a segment
@@ -1765,9 +1765,9 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     private $_termsScanMode;
 
     /** Scan modes */
-    const SM_TERMS_ONLY = 0;    // terms are scanned, no additional info is retrieved
-    const SM_FULL_INFO  = 1;    // terms are scanned, frequency and position info is retrieved
-    const SM_MERGE_INFO = 2;    // terms are scanned, frequency and position info is retrieved
+    public const SM_TERMS_ONLY = 0;    // terms are scanned, no additional info is retrieved
+    public const SM_FULL_INFO  = 1;    // terms are scanned, frequency and position info is retrieved
+    public const SM_MERGE_INFO = 2;    // terms are scanned, frequency and position info is retrieved
                                 // document numbers are compacted (shifted if segment contains deleted documents)
 
     /**

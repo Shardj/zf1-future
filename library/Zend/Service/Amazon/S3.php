@@ -56,16 +56,16 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
      */
     protected $_endpoint;
 
-    const S3_ENDPOINT = 's3.amazonaws.com';
+    public const S3_ENDPOINT = 's3.amazonaws.com';
 
-    const S3_ACL_PRIVATE = 'private';
-    const S3_ACL_PUBLIC_READ = 'public-read';
-    const S3_ACL_PUBLIC_WRITE = 'public-read-write';
-    const S3_ACL_AUTH_READ = 'authenticated-read';
+    public const S3_ACL_PRIVATE = 'private';
+    public const S3_ACL_PUBLIC_READ = 'public-read';
+    public const S3_ACL_PUBLIC_WRITE = 'public-read-write';
+    public const S3_ACL_AUTH_READ = 'authenticated-read';
 
-    const S3_REQUESTPAY_HEADER = 'x-amz-request-payer';
-    const S3_ACL_HEADER = 'x-amz-acl';
-    const S3_CONTENT_TYPE_HEADER = 'Content-Type';
+    public const S3_REQUESTPAY_HEADER = 'x-amz-request-payer';
+    public const S3_ACL_HEADER = 'x-amz-acl';
+    public const S3_CONTENT_TYPE_HEADER = 'Content-Type';
 
     /**
      * Set S3 endpoint to use

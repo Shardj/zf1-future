@@ -69,13 +69,13 @@ abstract class Zend_Translate_Adapter {
      * Scans for the locale within the name of the directory
      * @constant integer
      */
-    const LOCALE_DIRECTORY = 'directory';
+    public const LOCALE_DIRECTORY = 'directory';
 
     /**
      * Scans for the locale within the name of the file
      * @constant integer
      */
-    const LOCALE_FILENAME  = 'filename';
+    public const LOCALE_FILENAME  = 'filename';
 
     /**
      * Array with all options, each adapter can have own additional options

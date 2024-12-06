@@ -45,7 +45,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
     /**
      * Default timeout for createQueue() function
      */
-    const CREATE_TIMEOUT_DEFAULT = 30;
+    public const CREATE_TIMEOUT_DEFAULT = 30;
 
     /**
      * HTTP end point for the Amazon SQS service

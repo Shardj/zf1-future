@@ -54,6 +54,8 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
      * @see https://github.com/php/php-src/commit/990bb34891c83d12c5129fd781893704f948f2f4
      */
     public static $isTransactionInBackwardCompatibleMode = true;
+    public static $isPdoStringifyFetchesBackwardCompatiblePhp8 = true;
+
 
     /**
      * PDO type.

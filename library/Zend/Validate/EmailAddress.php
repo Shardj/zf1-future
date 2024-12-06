@@ -37,15 +37,15 @@ require_once 'Zend/Validate/Hostname.php';
  */
 class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
 {
-    const INVALID            = 'emailAddressInvalid';
-    const INVALID_FORMAT     = 'emailAddressInvalidFormat';
-    const INVALID_HOSTNAME   = 'emailAddressInvalidHostname';
-    const INVALID_MX_RECORD  = 'emailAddressInvalidMxRecord';
-    const INVALID_SEGMENT    = 'emailAddressInvalidSegment';
-    const DOT_ATOM           = 'emailAddressDotAtom';
-    const QUOTED_STRING      = 'emailAddressQuotedString';
-    const INVALID_LOCAL_PART = 'emailAddressInvalidLocalPart';
-    const LENGTH_EXCEEDED    = 'emailAddressLengthExceeded';
+    public const INVALID            = 'emailAddressInvalid';
+    public const INVALID_FORMAT     = 'emailAddressInvalidFormat';
+    public const INVALID_HOSTNAME   = 'emailAddressInvalidHostname';
+    public const INVALID_MX_RECORD  = 'emailAddressInvalidMxRecord';
+    public const INVALID_SEGMENT    = 'emailAddressInvalidSegment';
+    public const DOT_ATOM           = 'emailAddressDotAtom';
+    public const QUOTED_STRING      = 'emailAddressQuotedString';
+    public const INVALID_LOCAL_PART = 'emailAddressInvalidLocalPart';
+    public const LENGTH_EXCEEDED    = 'emailAddressLengthExceeded';
 
     /**
      * @var array
@@ -243,7 +243,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      * @param int                    $allow             OPTIONAL
      * @return $this
      */
-    public function setHostnameValidator(Zend_Validate_Hostname $hostnameValidator = null, $allow = Zend_Validate_Hostname::ALLOW_DNS)
+    public function setHostnameValidator(?Zend_Validate_Hostname $hostnameValidator = null, $allow = Zend_Validate_Hostname::ALLOW_DNS)
     {
         if (!$hostnameValidator) {
             $hostnameValidator = new Zend_Validate_Hostname($allow);

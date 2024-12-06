@@ -44,56 +44,56 @@ require_once 'Zend/Db/Expr.php';
 class Zend_Db_Select
 {
 
-    const DISTINCT       = 'distinct';
-    const COLUMNS        = 'columns';
-    const FROM           = 'from';
-    const UNION          = 'union';
-    const WHERE          = 'where';
-    const GROUP          = 'group';
-    const HAVING         = 'having';
-    const ORDER          = 'order';
-    const LIMIT_COUNT    = 'limitcount';
-    const LIMIT_OFFSET   = 'limitoffset';
-    const FOR_UPDATE     = 'forupdate';
-    const FOR_UPDATE_MODE = 'forupdatemode';
+    public const DISTINCT       = 'distinct';
+    public const COLUMNS        = 'columns';
+    public const FROM           = 'from';
+    public const UNION          = 'union';
+    public const WHERE          = 'where';
+    public const GROUP          = 'group';
+    public const HAVING         = 'having';
+    public const ORDER          = 'order';
+    public const LIMIT_COUNT    = 'limitcount';
+    public const LIMIT_OFFSET   = 'limitoffset';
+    public const FOR_UPDATE     = 'forupdate';
+    public const FOR_UPDATE_MODE = 'forupdatemode';
 
     // FOR_UPDATE MODES
-    CONST FU_MODE_NOWAIT = 'nowait';
-    CONST FU_MODE_SKIP   = 'skiplocked';
+    public CONST FU_MODE_NOWAIT = 'nowait';
+    public CONST FU_MODE_SKIP   = 'skiplocked';
 
-    const INNER_JOIN     = 'inner join';
-    const LEFT_JOIN      = 'left join';
-    const RIGHT_JOIN     = 'right join';
-    const FULL_JOIN      = 'full join';
-    const CROSS_JOIN     = 'cross join';
-    const NATURAL_JOIN   = 'natural join';
+    public const INNER_JOIN     = 'inner join';
+    public const LEFT_JOIN      = 'left join';
+    public const RIGHT_JOIN     = 'right join';
+    public const FULL_JOIN      = 'full join';
+    public const CROSS_JOIN     = 'cross join';
+    public const NATURAL_JOIN   = 'natural join';
 
-    const SQL_WILDCARD   = '*';
-    const SQL_SELECT     = 'SELECT';
-    const SQL_UNION      = 'UNION';
-    const SQL_UNION_ALL  = 'UNION ALL';
-    const SQL_FROM       = 'FROM';
-    const SQL_WHERE      = 'WHERE';
-    const SQL_DISTINCT   = 'DISTINCT';
-    const SQL_GROUP_BY   = 'GROUP BY';
-    const SQL_ORDER_BY   = 'ORDER BY';
-    const SQL_HAVING     = 'HAVING';
-    const SQL_FOR_UPDATE = 'FOR UPDATE';
-    const SQL_FU_NOWAIT  = 'NOWAIT';
-    const SQL_FU_SKIP    = 'SKIP LOCKED';
-    const SQL_AND        = 'AND';
-    const SQL_AS         = 'AS';
-    const SQL_OR         = 'OR';
-    const SQL_ON         = 'ON';
-    const SQL_ASC        = 'ASC';
-    const SQL_DESC       = 'DESC';
+    public const SQL_WILDCARD   = '*';
+    public const SQL_SELECT     = 'SELECT';
+    public const SQL_UNION      = 'UNION';
+    public const SQL_UNION_ALL  = 'UNION ALL';
+    public const SQL_FROM       = 'FROM';
+    public const SQL_WHERE      = 'WHERE';
+    public const SQL_DISTINCT   = 'DISTINCT';
+    public const SQL_GROUP_BY   = 'GROUP BY';
+    public const SQL_ORDER_BY   = 'ORDER BY';
+    public const SQL_HAVING     = 'HAVING';
+    public const SQL_FOR_UPDATE = 'FOR UPDATE';
+    public const SQL_FU_NOWAIT  = 'NOWAIT';
+    public const SQL_FU_SKIP    = 'SKIP LOCKED';
+    public const SQL_AND        = 'AND';
+    public const SQL_AS         = 'AS';
+    public const SQL_OR         = 'OR';
+    public const SQL_ON         = 'ON';
+    public const SQL_ASC        = 'ASC';
+    public const SQL_DESC       = 'DESC';
 
-    const REGEX_COLUMN_EXPR       = '/^([\w]*\s*\(([^\(\)]|(?1))*\))$/';
-    const REGEX_COLUMN_EXPR_ORDER = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
-    const REGEX_COLUMN_EXPR_GROUP = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
+    public const REGEX_COLUMN_EXPR       = '/^([\w]*\s*\(([^\(\)]|(?1))*\))$/';
+    public const REGEX_COLUMN_EXPR_ORDER = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
+    public const REGEX_COLUMN_EXPR_GROUP = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
 
     // @see http://stackoverflow.com/a/13823184/2028814
-    const REGEX_SQL_COMMENTS      = '@
+    public const REGEX_SQL_COMMENTS      = '@
     (([\'"]).*?[^\\\]\2) # $1 : Skip single & double quoted expressions
     |(                   # $3 : Match comments
         (?:\#|--).*?$    # - Single line comments

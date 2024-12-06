@@ -81,7 +81,7 @@ class Zend_Pdf_Element_String_Binary extends Zend_Pdf_Element_String
             $chunks[] = '0';
         }
 
-        return pack('H*' , implode($chunks));
+        return pack('H*' , implode('', $chunks));
     }
 
 

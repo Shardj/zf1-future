@@ -37,9 +37,9 @@ class Zend_Validate_File_IsImage extends Zend_Validate_File_MimeType
     /**
      * @const string Error constants
      */
-    const FALSE_TYPE   = 'fileIsImageFalseType';
-    const NOT_DETECTED = 'fileIsImageNotDetected';
-    const NOT_READABLE = 'fileIsImageNotReadable';
+    public const FALSE_TYPE   = 'fileIsImageFalseType';
+    public const NOT_DETECTED = 'fileIsImageNotDetected';
+    public const NOT_READABLE = 'fileIsImageNotReadable';
 
     /**
      * @var array Error message templates

@@ -82,33 +82,33 @@ require_once 'Zend/Gdata/Gapps/EmailListRecipientFeed.php';
 class Zend_Gdata_Gapps extends Zend_Gdata
 {
 
-    const APPS_BASE_FEED_URI = 'https://apps-apis.google.com/a/feeds';
-    const AUTH_SERVICE_NAME = 'apps';
+    public const APPS_BASE_FEED_URI = 'https://apps-apis.google.com/a/feeds';
+    public const AUTH_SERVICE_NAME = 'apps';
 
     /**
      * Path to user feeds on the Google Apps server.
      */
-    const APPS_USER_PATH = '/user/2.0';
+    public const APPS_USER_PATH = '/user/2.0';
 
     /**
      * Path to nickname feeds on the Google Apps server.
      */
-    const APPS_NICKNAME_PATH = '/nickname/2.0';
+    public const APPS_NICKNAME_PATH = '/nickname/2.0';
 
     /**
      * Path to group feeds on the Google Apps server.
      */
-    const APPS_GROUP_PATH = '/group/2.0';
+    public const APPS_GROUP_PATH = '/group/2.0';
 
     /**
      * Path to email list feeds on the Google Apps server.
      */
-    const APPS_EMAIL_LIST_PATH = '/emailList/2.0';
+    public const APPS_EMAIL_LIST_PATH = '/emailList/2.0';
 
     /**
      * Path to email list recipient feeds on the Google Apps server.
      */
-    const APPS_EMAIL_LIST_RECIPIENT_POSTFIX = '/recipient';
+    public const APPS_EMAIL_LIST_RECIPIENT_POSTFIX = '/recipient';
 
     /**
      * The domain which is being administered via the Provisioning API.

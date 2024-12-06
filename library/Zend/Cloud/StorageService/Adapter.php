@@ -29,7 +29,7 @@
 interface Zend_Cloud_StorageService_Adapter
 {
     // HTTP adapter to use for connections
-    const HTTP_ADAPTER = 'http_adapter';
+    public const HTTP_ADAPTER = 'http_adapter';
 
     /**
      * Get an item from the storage service.

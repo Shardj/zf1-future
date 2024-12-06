@@ -38,20 +38,20 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Number extends Zend_Measure_Abstract
 {
-    const STANDARD = 'DECIMAL';
+    public const STANDARD = 'DECIMAL';
 
-    const BINARY      = 'BINARY';
-    const TERNARY     = 'TERNARY';
-    const QUATERNARY  = 'QUATERNARY';
-    const QUINARY     = 'QUINARY';
-    const SENARY      = 'SENARY';
-    const SEPTENARY   = 'SEPTENARY';
-    const OCTAL       = 'OCTAL';
-    const NONARY      = 'NONARY';
-    const DECIMAL     = 'DECIMAL';
-    const DUODECIMAL  = 'DUODECIMAL';
-    const HEXADECIMAL = 'HEXADECIMAL';
-    const ROMAN       = 'ROMAN';
+    public const BINARY      = 'BINARY';
+    public const TERNARY     = 'TERNARY';
+    public const QUATERNARY  = 'QUATERNARY';
+    public const QUINARY     = 'QUINARY';
+    public const SENARY      = 'SENARY';
+    public const SEPTENARY   = 'SEPTENARY';
+    public const OCTAL       = 'OCTAL';
+    public const NONARY      = 'NONARY';
+    public const DECIMAL     = 'DECIMAL';
+    public const DUODECIMAL  = 'DUODECIMAL';
+    public const HEXADECIMAL = 'HEXADECIMAL';
+    public const ROMAN       = 'ROMAN';
 
     /**
      * Calculations for all number units

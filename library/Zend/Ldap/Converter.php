@@ -29,9 +29,9 @@
  */
 class Zend_Ldap_Converter
 {
-    const STANDARD         = 0;
-    const BOOLEAN          = 1;
-    const GENERALIZED_TIME = 2;
+    public const STANDARD         = 0;
+    public const BOOLEAN          = 1;
+    public const GENERALIZED_TIME = 2;
 
     /**
      * Converts all ASCII chars < 32 to "\HEX"

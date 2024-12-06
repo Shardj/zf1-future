@@ -28,14 +28,14 @@
  */
 class Zend_Ldap
 {
-    const SEARCH_SCOPE_SUB  = 1;
-    const SEARCH_SCOPE_ONE  = 2;
-    const SEARCH_SCOPE_BASE = 3;
+    public const SEARCH_SCOPE_SUB  = 1;
+    public const SEARCH_SCOPE_ONE  = 2;
+    public const SEARCH_SCOPE_BASE = 3;
 
-    const ACCTNAME_FORM_DN        = 1;
-    const ACCTNAME_FORM_USERNAME  = 2;
-    const ACCTNAME_FORM_BACKSLASH = 3;
-    const ACCTNAME_FORM_PRINCIPAL = 4;
+    public const ACCTNAME_FORM_DN        = 1;
+    public const ACCTNAME_FORM_USERNAME  = 2;
+    public const ACCTNAME_FORM_BACKSLASH = 3;
+    public const ACCTNAME_FORM_PRINCIPAL = 4;
 
     /**
      * String used with ldap_connect for error handling purposes.
@@ -103,7 +103,7 @@ class Zend_Ldap
      * @return boolean True if the DN was successfully parsed or false if the string is
      * not a valid DN.
      */
-    public static function explodeDn($dn, array &$keys = null, array &$vals = null)
+    public static function explodeDn($dn, ?array &$keys = null, ?array &$vals = null)
     {
         /**
          * @see Zend_Ldap_Dn
@@ -188,7 +188,7 @@ class Zend_Ldap
      * @param  array $errorMessages
      * @return string
      */
-    public function getLastError(&$errorCode = null, array &$errorMessages = null)
+    public function getLastError(&$errorCode = null, ?array &$errorMessages = null)
     {
         $errorCode = $this->getLastErrorCode();
         $errorMessages = [];
@@ -649,7 +649,7 @@ class Zend_Ldap
      * @return array An array of the attributes representing the account
      * @throws Zend_Ldap_Exception
      */
-    protected function _getAccount($acctname, array $attrs = null)
+    protected function _getAccount($acctname, ?array $attrs = null)
     {
         $baseDn = $this->getBaseDn();
         if (!$baseDn) {

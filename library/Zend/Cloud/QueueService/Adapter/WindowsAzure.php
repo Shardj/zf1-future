@@ -36,21 +36,21 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
     /**
      * Option array keys for the Windows Azure adapter.
      */
-    const ACCOUNT_NAME      = 'storage_accountname';
-    const ACCOUNT_KEY       = 'storage_accountkey';
-    const HOST              = "storage_host";
-    const PROXY_HOST        = "storage_proxy_host";
-    const PROXY_PORT        = "storage_proxy_port";
-    const PROXY_CREDENTIALS = "storage_proxy_credentials";
+    public const ACCOUNT_NAME      = 'storage_accountname';
+    public const ACCOUNT_KEY       = 'storage_accountkey';
+    public const HOST              = "storage_host";
+    public const PROXY_HOST        = "storage_proxy_host";
+    public const PROXY_PORT        = "storage_proxy_port";
+    public const PROXY_CREDENTIALS = "storage_proxy_credentials";
 
     /** list options */
-    const LIST_PREFIX      = 'prefix';
-    const LIST_MAX_RESULTS = 'max_results';
+    public const LIST_PREFIX      = 'prefix';
+    public const LIST_MAX_RESULTS = 'max_results';
 
     /** message options */
-    const MESSAGE_TTL = 'ttl';
+    public const MESSAGE_TTL = 'ttl';
 
-    const DEFAULT_HOST = Zend_Service_WindowsAzure_Storage::URL_CLOUD_QUEUE;
+    public const DEFAULT_HOST = Zend_Service_WindowsAzure_Storage::URL_CLOUD_QUEUE;
 
     /**
      * Storage client

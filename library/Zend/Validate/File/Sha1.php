@@ -37,9 +37,9 @@ class Zend_Validate_File_Sha1 extends Zend_Validate_File_Hash
     /**
      * @const string Error constants
      */
-    const DOES_NOT_MATCH = 'fileSha1DoesNotMatch';
-    const NOT_DETECTED   = 'fileSha1NotDetected';
-    const NOT_FOUND      = 'fileSha1NotFound';
+    public const DOES_NOT_MATCH = 'fileSha1DoesNotMatch';
+    public const NOT_DETECTED   = 'fileSha1NotDetected';
+    public const NOT_FOUND      = 'fileSha1NotFound';
 
     /**
      * @var array Error message templates

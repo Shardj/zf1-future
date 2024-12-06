@@ -36,32 +36,32 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Capacitance extends Zend_Measure_Abstract
 {
-    const STANDARD = 'FARAD';
+    public const STANDARD = 'FARAD';
 
-    const ABFARAD                = 'ABFARAD';
-    const AMPERE_PER_SECOND_VOLT = 'AMPERE_PER_SECOND_VOLT';
-    const CENTIFARAD             = 'CENTIFARAD';
-    const COULOMB_PER_VOLT       = 'COULOMB_PER_VOLT';
-    const DECIFARAD              = 'DECIFARAD';
-    const DEKAFARAD              = 'DEKAFARAD';
-    const ELECTROMAGNETIC_UNIT   = 'ELECTROMAGNETIC_UNIT';
-    const ELECTROSTATIC_UNIT     = 'ELECTROSTATIC_UNIT';
-    const FARAD                  = 'FARAD';
-    const FARAD_INTERNATIONAL    = 'FARAD_INTERNATIONAL';
-    const GAUSSIAN               = 'GAUSSIAN';
-    const GIGAFARAD              = 'GIGAFARAD';
-    const HECTOFARAD             = 'HECTOFARAD';
-    const JAR                    = 'JAR';
-    const KILOFARAD              = 'KILOFARAD';
-    const MEGAFARAD              = 'MEGAFARAD';
-    const MICROFARAD             = 'MICROFARAD';
-    const MILLIFARAD             = 'MILLIFARAD';
-    const NANOFARAD              = 'NANOFARAD';
-    const PICOFARAD              = 'PICOFARAD';
-    const PUFF                   = 'PUFF';
-    const SECOND_PER_OHM         = 'SECOND_PER_OHM';
-    const STATFARAD              = 'STATFARAD';
-    const TERAFARAD              = 'TERAFARAD';
+    public const ABFARAD                = 'ABFARAD';
+    public const AMPERE_PER_SECOND_VOLT = 'AMPERE_PER_SECOND_VOLT';
+    public const CENTIFARAD             = 'CENTIFARAD';
+    public const COULOMB_PER_VOLT       = 'COULOMB_PER_VOLT';
+    public const DECIFARAD              = 'DECIFARAD';
+    public const DEKAFARAD              = 'DEKAFARAD';
+    public const ELECTROMAGNETIC_UNIT   = 'ELECTROMAGNETIC_UNIT';
+    public const ELECTROSTATIC_UNIT     = 'ELECTROSTATIC_UNIT';
+    public const FARAD                  = 'FARAD';
+    public const FARAD_INTERNATIONAL    = 'FARAD_INTERNATIONAL';
+    public const GAUSSIAN               = 'GAUSSIAN';
+    public const GIGAFARAD              = 'GIGAFARAD';
+    public const HECTOFARAD             = 'HECTOFARAD';
+    public const JAR                    = 'JAR';
+    public const KILOFARAD              = 'KILOFARAD';
+    public const MEGAFARAD              = 'MEGAFARAD';
+    public const MICROFARAD             = 'MICROFARAD';
+    public const MILLIFARAD             = 'MILLIFARAD';
+    public const NANOFARAD              = 'NANOFARAD';
+    public const PICOFARAD              = 'PICOFARAD';
+    public const PUFF                   = 'PUFF';
+    public const SECOND_PER_OHM         = 'SECOND_PER_OHM';
+    public const STATFARAD              = 'STATFARAD';
+    public const TERAFARAD              = 'TERAFARAD';
 
     /**
      * Calculations for all capacitance units

@@ -1,0 +1,577 @@
+'Environment':
+  - changed-files:
+    - any-glob-to-any-file: [
+      .github/*,
+      .github/**/*,
+      .gitattributes,
+      .gitignore
+    ]
+
+'htaccess':
+  - changed-files:
+    - any-glob-to-any-file: [
+      .htaccess
+    ]
+
+'composer':
+  - changed-files:
+    - any-glob-to-any-file: [
+      composer.json
+    ]
+
+'Zend_Acl':
+  - changed-files:
+    - any-glob-to-any-file: [
+      library/Zend/Acl/*,
+      library/Zend/Acl/**/*,
+      library/Zend/Acl.php
+    ]
+
+'Zend_Amf':
+  - changed-files:
+    - any-glob-to-any-file: [
+      library/Zend/Amf/*,
+      library/Zend/Amf/**/*
+    ]
+
+'Zend_Application':
+  - changed-files:
+    - any-glob-to-any-file: [
+      library/Zend/Application/*,
+      library/Zend/Application/**/*,
+      library/Zend/Application.php
+    ]
+
+'Zend_Auth':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Auth/*,
+        library/Zend/Auth/**/*,
+        library/Zend/Auth.php
+      ]
+
+'Zend_Barcode':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Barcode/*,
+        library/Zend/Barcode/**/*,
+        library/Zend/Barcode.php
+      ]
+
+'Zend_Cache':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Cache/*,
+        library/Zend/Cache/**/*,
+        library/Zend/Cache.php
+      ]
+
+'Zend_Captcha':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Captcha/*,
+        library/Zend/Captcha/**/*
+      ]
+
+'Zend_Cloud':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Cloud/*,
+        library/Zend/Cloud/**/*
+      ]
+
+'Zend_CodeGenerator':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/CodeGenerator/*,
+        library/Zend/CodeGenerator/**/*
+      ]
+
+'Zend_Config':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Config/*,
+        library/Zend/Config/**/*,
+        library/Zend/Config.php
+      ]
+
+'Zend_Console':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Console/*,
+        library/Zend/Console/**/*
+      ]
+
+'Zend_Controller':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Controller/*,
+        library/Zend/Controller/**/*
+      ]
+
+'Zend_Crypt':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Crypt/*,
+        library/Zend/Crypt/**/*,
+        library/Zend/Crypt.php
+      ]
+
+'Zend_Currency':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Currency/*,
+        library/Zend/Currency/**/*,
+        library/Zend/Currency.php
+      ]
+
+'Zend_Date':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Date/*,
+        library/Zend/Date/**/*,
+        library/Zend/Date.php
+      ]
+
+'Zend_Db':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Db/*,
+        library/Zend/Db/**/*,
+        library/Zend/Db.php
+      ]
+
+'Zend_Debug':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Debug.php
+      ]
+
+'Zend_Dojo':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Dojo/*,
+        library/Zend/Dojo/**/*,
+        library/Zend/Dojo.php
+      ]
+
+'Zend_Dom':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Dom/*,
+        library/Zend/Dom/**/*
+      ]
+
+'Zend_EventManager':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/EventManager/*,
+        library/Zend/EventManager/**/*
+      ]
+
+'Zend_Exception':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Exception.php
+      ]
+
+'Zend_Feed':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Feed/*,
+        library/Zend/Feed/**/*,
+        library/Zend/Feed.php
+      ]
+
+'Zend_File':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/File/*,
+        library/Zend/File/**/*
+      ]
+
+'Zend_Filter':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Filter/*,
+        library/Zend/Filter/**/*,
+        library/Zend/Filter.php
+      ]
+
+'Zend_Form':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Form/*,
+        library/Zend/Form/**/*,
+        library/Zend/Form.php
+      ]
+
+'Zend_Gdata':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Gdata/*,
+        library/Zend/Gdata/**/*,
+        library/Zend/Gdata.php
+      ]
+
+'Zend_Http':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Http/*,
+        library/Zend/Http/**/*
+      ]
+
+'Zend_Json':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Json/*,
+        library/Zend/Json/**/*,
+        library/Zend/Json.php
+      ]
+
+'Zend_Layout':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Layout/*,
+        library/Zend/Layout/**/*,
+        library/Zend/Layout.php
+      ]
+
+'Zend_Ldap':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Ldap/*,
+        library/Zend/Ldap/**/*,
+        library/Zend/Ldap.php
+      ]
+
+'Zend_Loader':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Loader/*,
+        library/Zend/Loader/**/*,
+        library/Zend/Loader.php
+      ]
+
+'Zend_Locale':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Locale/*,
+        library/Zend/Locale/**/*,
+        library/Zend/Locale.php
+      ]
+
+'Zend_Log':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Log/*,
+        library/Zend/Log/**/*,
+        library/Zend/Log.php
+      ]
+
+'Zend_Mail':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Mail/*,
+        library/Zend/Mail/**/*,
+        library/Zend/Mail.php
+      ]
+
+'Zend_Markup':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Markup/*,
+        library/Zend/Markup/**/*,
+        library/Zend/Markup.php
+      ]
+
+'Zend_Memory':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Memory/*,
+        library/Zend/Memory/**/*,
+        library/Zend/Memory.php
+      ]
+
+'Zend_Mime':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Mime/*,
+        library/Zend/Mime/**/*,
+        library/Zend/Mime.php
+      ]
+
+'Zend_Mobile':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Mobile/*,
+        library/Zend/Mobile/**/*
+      ]
+
+'Zend_Navigation':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Navigation/*,
+        library/Zend/Navigation/**/*,
+        library/Zend/Navigation.php
+      ]
+
+'Zend_Oauth':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Oauth/*,
+        library/Zend/Oauth/**/*,
+        library/Zend/Oauth.php
+      ]
+
+'Zend_OpenId':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/OpenId/*,
+        library/Zend/OpenId/**/*,
+        library/Zend/OpenId.php
+      ]
+
+'Zend_Paginator':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Paginator/*,
+        library/Zend/Paginator/**/*,
+        library/Zend/Paginator.php
+      ]
+
+'Zend_Pdf':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Pdf/*,
+        library/Zend/Pdf/**/*,
+        library/Zend/Pdf.php
+      ]
+
+'Zend_ProgressBar':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/ProgressBar/*,
+        library/Zend/ProgressBar/**/*,
+        library/Zend/ProgressBar.php
+      ]
+
+'Zend_Queue':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Queue/*,
+        library/Zend/Queue/**/*,
+        library/Zend/Queue.php
+      ]
+
+'Zend_Registry':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Registry.php
+      ]
+
+'Zend_Reflection':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Reflection/*,
+        library/Zend/Reflection/**/*
+      ]
+
+'Zend_Rest':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Rest/*,
+        library/Zend/Rest/**/*
+      ]
+
+'Zend_Search':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Search/*,
+        library/Zend/Search/**/*
+      ]
+
+'Zend_Serializer':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Serializer/*,
+        library/Zend/Serializer/**/*
+      ]
+
+'Zend_Server':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Server/*,
+        library/Zend/Server/**/*
+      ]
+
+'Zend_Service':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Service/*,
+        library/Zend/Service/**/*
+      ]
+
+'Zend_Session':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Session/*,
+        library/Zend/Session/**/*,
+        library/Zend/Session.php
+      ]
+
+'Zend_Soap':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Soap/*,
+        library/Zend/Soap/**/*
+      ]
+
+'Zend_Stdlib':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Stdlib/*,
+        library/Zend/Stdlib/**/*
+      ]
+
+'Zend_Tag':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Tag/*,
+        library/Zend/Tag/**/*
+      ]
+
+'Zend_Test':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Test/*,
+        library/Zend/Test/**/*
+      ]
+
+'Zend_Text':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Text/*,
+        library/Zend/Text/**/*
+      ]
+
+'Zend_TimeSync':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/TimeSync/*,
+        library/Zend/TimeSync/**/*,
+        library/Zend/TimeSync.php
+      ]
+
+'Zend_Tool':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Tool/*,
+        library/Zend/Tool/**/*
+      ]
+
+'Zend_Translate':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Translate/*,
+        library/Zend/Translate/**/*,
+        library/Zend/Translate.php
+      ]
+
+'Zend_Uri':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Uri/*,
+        library/Zend/Uri/**/*,
+        library/Zend/Uri.php
+      ]
+
+'Zend_Validate':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Validate/*,
+        library/Zend/Validate/**/*,
+        library/Zend/Validate.php
+      ]
+
+'Zend_Version':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Version.php
+      ]
+
+'Zend_View':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/View/*,
+        library/Zend/View/**/*,
+        library/Zend/View.php
+      ]
+
+'Zend_Wildfire':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Wildfire/*,
+        library/Zend/Wildfire/**/*
+      ]
+
+'Zend_Xml':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/Xml.php
+      ]
+
+'Zend_XmlRpc':
+  - changed-files:
+      - any-glob-to-any-file: [
+        library/Zend/XmlRpc.php
+      ]
+
+'Demos':
+  - changed-files:
+    - any-glob-to-any-file: [
+      demos/*,
+      demos/**/*
+    ]
+
+'Documentation':
+  - changed-files:
+    - any-glob-to-any-file: [
+      documentation/*,
+      documentation/**/*,
+      '*.md'
+    ]
+
+'Resources':
+  - changed-files:
+    - any-glob-to-any-file: [
+      resources/*,
+      resources/**/*
+    ]
+
+'php-cs-fixer':
+  - changed-files:
+    - any-glob-to-any-file: [
+      .php-cs-fixer*,
+      .github/workflows/php-cs-fixer.yml
+    ]
+
+'phpunit':
+  - changed-files:
+    - any-glob-to-any-file: [
+      tests/*,
+      tests/**/*,
+      .github/workflows/phpunit.yml
+    ]
+
+'rector':
+  - changed-files:
+      - any-glob-to-any-file: [
+        rector.php
+      ]
+
+'travis':
+  - changed-files:
+      - any-glob-to-any-file: [
+        .travis.yml
+      ]

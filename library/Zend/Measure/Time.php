@@ -36,41 +36,41 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Time extends Zend_Measure_Abstract
 {
-    const STANDARD = 'SECOND';
+    public const STANDARD = 'SECOND';
 
-    const ANOMALISTIC_YEAR  = 'ANOMALISTIC_YEAR';
-    const ATTOSECOND        = 'ATTOSECOND';
-    const CENTURY           = 'CENTURY';
-    const DAY               = 'DAY';
-    const DECADE            = 'DECADE';
-    const DRACONIC_YEAR     = 'DRACONTIC_YEAR';
-    const EXASECOND         = 'EXASECOND';
-    const FEMTOSECOND       = 'FEMTOSECOND';
-    const FORTNIGHT         = 'FORTNIGHT';
-    const GAUSSIAN_YEAR     = 'GAUSSIAN_YEAR';
-    const GIGASECOND        = 'GIGASECOND';
-    const GREGORIAN_YEAR    = 'GREGORIAN_YEAR';
-    const HOUR              = 'HOUR';
-    const JULIAN_YEAR       = 'JULIAN_YEAR';
-    const KILOSECOND        = 'KILOSECOND';
-    const LEAPYEAR          = 'LEAPYEAR';
-    const MEGASECOND        = 'MEGASECOND';
-    const MICROSECOND       = 'MICROSECOND';
-    const MILLENIUM         = 'MILLENIUM';
-    const MILLISECOND       = 'MILLISECOND';
-    const MINUTE            = 'MINUTE';
-    const MONTH             = 'MONTH';
-    const NANOSECOND        = 'NANOSECOND';
-    const PETASECOND        = 'PETASECOND';
-    const PICOSECOND        = 'PICOSECOND';
-    const QUARTER           = 'QUARTER';
-    const SECOND            = 'SECOND';
-    const SHAKE             = 'SHAKE';
-    const SIDEREAL_YEAR     = 'SYNODIC_MONTH';
-    const TERASECOND        = 'TERASECOND';
-    const TROPICAL_YEAR     = 'TROPIC_YEAR';
-    const WEEK              = 'WEEK';
-    const YEAR              = 'YEAR';
+    public const ANOMALISTIC_YEAR  = 'ANOMALISTIC_YEAR';
+    public const ATTOSECOND        = 'ATTOSECOND';
+    public const CENTURY           = 'CENTURY';
+    public const DAY               = 'DAY';
+    public const DECADE            = 'DECADE';
+    public const DRACONIC_YEAR     = 'DRACONTIC_YEAR';
+    public const EXASECOND         = 'EXASECOND';
+    public const FEMTOSECOND       = 'FEMTOSECOND';
+    public const FORTNIGHT         = 'FORTNIGHT';
+    public const GAUSSIAN_YEAR     = 'GAUSSIAN_YEAR';
+    public const GIGASECOND        = 'GIGASECOND';
+    public const GREGORIAN_YEAR    = 'GREGORIAN_YEAR';
+    public const HOUR              = 'HOUR';
+    public const JULIAN_YEAR       = 'JULIAN_YEAR';
+    public const KILOSECOND        = 'KILOSECOND';
+    public const LEAPYEAR          = 'LEAPYEAR';
+    public const MEGASECOND        = 'MEGASECOND';
+    public const MICROSECOND       = 'MICROSECOND';
+    public const MILLENIUM         = 'MILLENIUM';
+    public const MILLISECOND       = 'MILLISECOND';
+    public const MINUTE            = 'MINUTE';
+    public const MONTH             = 'MONTH';
+    public const NANOSECOND        = 'NANOSECOND';
+    public const PETASECOND        = 'PETASECOND';
+    public const PICOSECOND        = 'PICOSECOND';
+    public const QUARTER           = 'QUARTER';
+    public const SECOND            = 'SECOND';
+    public const SHAKE             = 'SHAKE';
+    public const SIDEREAL_YEAR     = 'SYNODIC_MONTH';
+    public const TERASECOND        = 'TERASECOND';
+    public const TROPICAL_YEAR     = 'TROPIC_YEAR';
+    public const WEEK              = 'WEEK';
+    public const YEAR              = 'YEAR';
 
     /**
      * Calculations for all time units

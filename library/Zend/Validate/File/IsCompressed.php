@@ -37,9 +37,9 @@ class Zend_Validate_File_IsCompressed extends Zend_Validate_File_MimeType
     /**
      * @const string Error constants
      */
-    const FALSE_TYPE   = 'fileIsCompressedFalseType';
-    const NOT_DETECTED = 'fileIsCompressedNotDetected';
-    const NOT_READABLE = 'fileIsCompressedNotReadable';
+    public const FALSE_TYPE   = 'fileIsCompressedFalseType';
+    public const NOT_DETECTED = 'fileIsCompressedNotDetected';
+    public const NOT_READABLE = 'fileIsCompressedNotReadable';
 
     /**
      * @var array Error message templates

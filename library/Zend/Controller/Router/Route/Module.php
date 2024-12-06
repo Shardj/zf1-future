@@ -117,8 +117,8 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
      */
     public function __construct(
         array $defaults = [],
-        Zend_Controller_Dispatcher_Interface $dispatcher = null,
-        Zend_Controller_Request_Abstract $request = null
+        ?Zend_Controller_Dispatcher_Interface $dispatcher = null,
+        ?Zend_Controller_Request_Abstract $request = null
     )
     {
         $this->_defaults = $defaults;
@@ -251,10 +251,10 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
         }
         unset($params[$this->_moduleKey]);
 
-        $controller = $params[$this->_controllerKey];
+        $controller = $params[$this->_controllerKey] ?? null;
         unset($params[$this->_controllerKey]);
 
-        $action = $params[$this->_actionKey];
+        $action = $params[$this->_actionKey] ?? null;
         unset($params[$this->_actionKey]);
 
         foreach ($params as $key => $value) {

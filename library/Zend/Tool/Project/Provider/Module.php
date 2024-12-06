@@ -51,7 +51,7 @@ class Zend_Tool_Project_Provider_Module
     implements Zend_Tool_Framework_Provider_Pretendable
 {
 
-    public static function createResources(Zend_Tool_Project_Profile $profile, $moduleName, Zend_Tool_Project_Profile_Resource $targetModuleResource = null)
+    public static function createResources(Zend_Tool_Project_Profile $profile, $moduleName, ?Zend_Tool_Project_Profile_Resource $targetModuleResource = null)
     {
 
         // find the appliction directory, it will serve as our module skeleton

@@ -34,10 +34,10 @@ require_once 'Zend/Service/Rackspace/Exception.php';
 class Zend_Cloud_StorageService_Adapter_Rackspace
     implements Zend_Cloud_StorageService_Adapter
 {
-    const USER                = 'user';
-    const API_KEY             = 'key';
-    const REMOTE_CONTAINER    = 'container';
-    const DELETE_METADATA_KEY = 'ZF_metadata_deleted';
+    public const USER                = 'user';
+    public const API_KEY             = 'key';
+    public const REMOTE_CONTAINER    = 'container';
+    public const DELETE_METADATA_KEY = 'ZF_metadata_deleted';
 
     /**
      * The Rackspace adapter

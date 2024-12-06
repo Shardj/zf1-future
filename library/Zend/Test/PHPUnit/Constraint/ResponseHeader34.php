@@ -38,10 +38,10 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader34 extends Constraint
     /**#@+
      * Assertion type constants
      */
-    const ASSERT_RESPONSE_CODE   = 'assertResponseCode';
-    const ASSERT_HEADER          = 'assertHeader';
-    const ASSERT_HEADER_CONTAINS = 'assertHeaderContains';
-    const ASSERT_HEADER_REGEX    = 'assertHeaderRegex';
+    public const ASSERT_RESPONSE_CODE   = 'assertResponseCode';
+    public const ASSERT_HEADER          = 'assertHeader';
+    public const ASSERT_HEADER_CONTAINS = 'assertHeaderContains';
+    public const ASSERT_HEADER_REGEX    = 'assertHeaderRegex';
     /**#@-*/
 
     /**

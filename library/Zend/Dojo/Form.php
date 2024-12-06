@@ -77,7 +77,7 @@ class Zend_Dojo_Form extends Zend_Form
      * @param  Zend_View_Interface $view
      * @return Zend_Dojo_Form
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView(?Zend_View_Interface $view = null)
     {
         if (null !== $view) {
             if (false === $view->getPluginLoader('helper')->getPaths('Zend_Dojo_View_Helper')) {

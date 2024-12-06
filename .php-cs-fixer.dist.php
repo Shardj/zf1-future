@@ -12,6 +12,7 @@ return (new Config())
     ->setFinder($finder)
     ->setRules([
         'array_syntax' => ['syntax' => 'short'],
-        'modernize_types_casting' => true,
         'logical_operators' => true,
+        'modernize_types_casting' => true,
+        'nullable_type_declaration_for_default_null_value' => true,
     ]);

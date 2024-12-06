@@ -40,18 +40,18 @@ class Zend_Translate {
     /**
      * Adapter names constants
      */
-    const AN_ARRAY   = 'Array';
-    const AN_CSV     = 'Csv';
-    const AN_GETTEXT = 'Gettext';
-    const AN_INI     = 'Ini';
-    const AN_QT      = 'Qt';
-    const AN_TBX     = 'Tbx';
-    const AN_TMX     = 'Tmx';
-    const AN_XLIFF   = 'Xliff';
-    const AN_XMLTM   = 'XmlTm';
+    public const AN_ARRAY   = 'Array';
+    public const AN_CSV     = 'Csv';
+    public const AN_GETTEXT = 'Gettext';
+    public const AN_INI     = 'Ini';
+    public const AN_QT      = 'Qt';
+    public const AN_TBX     = 'Tbx';
+    public const AN_TMX     = 'Tmx';
+    public const AN_XLIFF   = 'Xliff';
+    public const AN_XMLTM   = 'XmlTm';
 
-    const LOCALE_DIRECTORY = 'directory';
-    const LOCALE_FILENAME  = 'filename';
+    public const LOCALE_DIRECTORY = 'directory';
+    public const LOCALE_FILENAME  = 'filename';
 
     /**
      * Adapter

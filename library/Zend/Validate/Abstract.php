@@ -233,7 +233,7 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
         } elseif (is_array($value)) {
             $value = $this->_implodeRecursive($value);
         } else {
-            $value = implode((array) $value);
+            $value = implode('', (array) $value);
         }
 
         if ($this->getObscureValue()) {

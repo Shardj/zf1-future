@@ -35,12 +35,12 @@ class Zend_Validate_Callback extends Zend_Validate_Abstract
     /**
      * Invalid callback
      */
-    const INVALID_CALLBACK = 'callbackInvalid';
+    public const INVALID_CALLBACK = 'callbackInvalid';
 
     /**
      * Invalid value
      */
-    const INVALID_VALUE = 'callbackValue';
+    public const INVALID_VALUE = 'callbackValue';
 
     /**
      * Validation failure message template definitions

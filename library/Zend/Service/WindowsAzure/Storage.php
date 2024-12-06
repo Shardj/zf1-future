@@ -50,33 +50,33 @@ class Zend_Service_WindowsAzure_Storage
 	/**
 	 * Development storage URLS
 	 */
-	const URL_DEV_BLOB      = "127.0.0.1:10000";
-	const URL_DEV_QUEUE     = "127.0.0.1:10001";
-	const URL_DEV_TABLE     = "127.0.0.1:10002";
+	public const URL_DEV_BLOB      = "127.0.0.1:10000";
+	public const URL_DEV_QUEUE     = "127.0.0.1:10001";
+	public const URL_DEV_TABLE     = "127.0.0.1:10002";
 
 	/**
 	 * Live storage URLS
 	 */
-	const URL_CLOUD_BLOB    = "blob.core.windows.net";
-	const URL_CLOUD_QUEUE   = "queue.core.windows.net";
-	const URL_CLOUD_TABLE   = "table.core.windows.net";
+	public const URL_CLOUD_BLOB    = "blob.core.windows.net";
+	public const URL_CLOUD_QUEUE   = "queue.core.windows.net";
+	public const URL_CLOUD_TABLE   = "table.core.windows.net";
 
 	/**
 	 * Resource types
 	 */
-	const RESOURCE_UNKNOWN     = "unknown";
-	const RESOURCE_CONTAINER   = "c";
-	const RESOURCE_BLOB        = "b";
-	const RESOURCE_TABLE       = "t";
-	const RESOURCE_ENTITY      = "e";
-	const RESOURCE_QUEUE       = "q";
+	public const RESOURCE_UNKNOWN     = "unknown";
+	public const RESOURCE_CONTAINER   = "c";
+	public const RESOURCE_BLOB        = "b";
+	public const RESOURCE_TABLE       = "t";
+	public const RESOURCE_ENTITY      = "e";
+	public const RESOURCE_QUEUE       = "q";
 
 	/**
 	 * HTTP header prefixes
 	 */
-	const PREFIX_PROPERTIES      = "x-ms-prop-";
-	const PREFIX_METADATA        = "x-ms-meta-";
-	const PREFIX_STORAGE_HEADER  = "x-ms-";
+	public const PREFIX_PROPERTIES      = "x-ms-prop-";
+	public const PREFIX_METADATA        = "x-ms-meta-";
+	public const PREFIX_STORAGE_HEADER  = "x-ms-";
 
 	/**
 	 * Current API version
@@ -176,7 +176,7 @@ class Zend_Service_WindowsAzure_Storage
 		$accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT,
 		$accountKey = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY,
 		$usePathStyleUri = false,
-		Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null
+		?Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null
 	) {
 		$this->_host = $host;
 		$this->_accountName = $accountName;
@@ -242,7 +242,7 @@ class Zend_Service_WindowsAzure_Storage
 	 *
 	 * @param Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy Retry policy to use when making requests
 	 */
-	public function setRetryPolicy(Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
+	public function setRetryPolicy(?Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
 	{
 		$this->_retryPolicy = $retryPolicy;
 		if (is_null($this->_retryPolicy)) {
@@ -405,7 +405,7 @@ class Zend_Service_WindowsAzure_Storage
 	 * @return object
 	 * @throws Zend_Service_WindowsAzure_Exception
 	 */
-	protected function _parseResponse(Zend_Http_Response $response = null)
+	protected function _parseResponse(?Zend_Http_Response $response = null)
 	{
 		if (is_null($response)) {
 			require_once 'Zend/Service/WindowsAzure/Exception.php';

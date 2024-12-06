@@ -36,19 +36,19 @@ class Zend_CodeGenerator_Php_Property_DefaultValue extends Zend_CodeGenerator_Ph
     /**#@+
      * Constant values
      */
-    const TYPE_AUTO     = 'auto';
-    const TYPE_BOOLEAN  = 'boolean';
-    const TYPE_BOOL     = 'bool';
-    const TYPE_NUMBER   = 'number';
-    const TYPE_INTEGER  = 'integer';
-    const TYPE_INT      = 'int';
-    const TYPE_FLOAT    = 'float';
-    const TYPE_DOUBLE   = 'double';
-    const TYPE_STRING   = 'string';
-    const TYPE_ARRAY    = 'array';
-    const TYPE_CONSTANT = 'constant';
-    const TYPE_NULL     = 'null';
-    const TYPE_OTHER    = 'other';
+    public const TYPE_AUTO     = 'auto';
+    public const TYPE_BOOLEAN  = 'boolean';
+    public const TYPE_BOOL     = 'bool';
+    public const TYPE_NUMBER   = 'number';
+    public const TYPE_INTEGER  = 'integer';
+    public const TYPE_INT      = 'int';
+    public const TYPE_FLOAT    = 'float';
+    public const TYPE_DOUBLE   = 'double';
+    public const TYPE_STRING   = 'string';
+    public const TYPE_ARRAY    = 'array';
+    public const TYPE_CONSTANT = 'constant';
+    public const TYPE_NULL     = 'null';
+    public const TYPE_OTHER    = 'other';
     /**#@-*/
 
     /**

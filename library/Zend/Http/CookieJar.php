@@ -63,26 +63,26 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
      * Return cookie(s) as a Zend_Http_Cookie object
      *
      */
-    const COOKIE_OBJECT = 0;
+    public const COOKIE_OBJECT = 0;
 
     /**
      * Return cookie(s) as a string (suitable for sending in an HTTP request)
      *
      */
-    const COOKIE_STRING_ARRAY = 1;
+    public const COOKIE_STRING_ARRAY = 1;
 
     /**
      * Return all cookies as one long string (suitable for sending in an HTTP request)
      *
      */
-    const COOKIE_STRING_CONCAT = 2;
+    public const COOKIE_STRING_CONCAT = 2;
 
     /**
      * Return all cookies as one long string (strict mode)
      *  - Single space after the semi-colon separating each cookie
      *  - Remove trailing semi-colon, if any
      */
-    const COOKIE_STRING_CONCAT_STRICT = 3;
+    public const COOKIE_STRING_CONCAT_STRICT = 3;
 
     /**
      * Array storing cookies

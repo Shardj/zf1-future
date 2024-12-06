@@ -32,22 +32,22 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_NotEmpty extends Zend_Validate_Abstract
 {
-    const BOOLEAN       = 1;
-    const INTEGER       = 2;
-    const FLOAT         = 4;
-    const STRING        = 8;
-    const ZERO          = 16;
-    const EMPTY_ARRAY   = 32;
-    const NULL          = 64;
-    const PHP           = 127;
-    const SPACE         = 128;
-    const OBJECT        = 256;
-    const OBJECT_STRING = 512;
-    const OBJECT_COUNT  = 1024;
-    const ALL           = 2047;
+    public const BOOLEAN       = 1;
+    public const INTEGER       = 2;
+    public const FLOAT         = 4;
+    public const STRING        = 8;
+    public const ZERO          = 16;
+    public const EMPTY_ARRAY   = 32;
+    public const NULL          = 64;
+    public const PHP           = 127;
+    public const SPACE         = 128;
+    public const OBJECT        = 256;
+    public const OBJECT_STRING = 512;
+    public const OBJECT_COUNT  = 1024;
+    public const ALL           = 2047;
 
-    const INVALID  = 'notEmptyInvalid';
-    const IS_EMPTY = 'isEmpty';
+    public const INVALID  = 'notEmptyInvalid';
+    public const IS_EMPTY = 'isEmpty';
 
     protected $_constants = [
         self::BOOLEAN       => 'boolean',

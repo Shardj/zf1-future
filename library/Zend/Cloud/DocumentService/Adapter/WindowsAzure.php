@@ -38,21 +38,21 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
     /*
      * Options array keys for the Azure adapter.
      */
-    const ACCOUNT_NAME          = 'storage_accountname';
-    const ACCOUNT_KEY           = 'storage_accountkey';
-    const HOST                  = "storage_host";
-    const PROXY_HOST            = "storage_proxy_host";
-    const PROXY_PORT            = "storage_proxy_port";
-    const PROXY_CREDENTIALS     = "storage_proxy_credentials";
-    const DEFAULT_PARTITION_KEY = "default_partition_key";
+    public const ACCOUNT_NAME          = 'storage_accountname';
+    public const ACCOUNT_KEY           = 'storage_accountkey';
+    public const HOST                  = "storage_host";
+    public const PROXY_HOST            = "storage_proxy_host";
+    public const PROXY_PORT            = "storage_proxy_port";
+    public const PROXY_CREDENTIALS     = "storage_proxy_credentials";
+    public const DEFAULT_PARTITION_KEY = "default_partition_key";
 
-    const PARTITION_KEY         = 'PartitionKey';
-    const ROW_KEY               = 'RowKey';
-    const VERIFY_ETAG           = "verify_etag";
-    const TIMESTAMP_KEY         = "Timestamp";
+    public const PARTITION_KEY         = 'PartitionKey';
+    public const ROW_KEY               = 'RowKey';
+    public const VERIFY_ETAG           = "verify_etag";
+    public const TIMESTAMP_KEY         = "Timestamp";
 
-    const DEFAULT_HOST          = Zend_Service_WindowsAzure_Storage::URL_CLOUD_TABLE;
-    const DEFAULT_QUERY_CLASS   = 'Zend_Cloud_DocumentService_Adapter_WindowsAzure_Query';
+    public const DEFAULT_HOST          = Zend_Service_WindowsAzure_Storage::URL_CLOUD_TABLE;
+    public const DEFAULT_QUERY_CLASS   = 'Zend_Cloud_DocumentService_Adapter_WindowsAzure_Query';
 
     /**
      * Azure  service instance.
@@ -265,7 +265,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * @param  null|array $options
      * @return array
      */
-    public function listDocuments($collectionName, array $options = null)
+    public function listDocuments($collectionName, ?array $options = null)
     {
         $select = $this->select()->from($collectionName);
         return $this->query($collectionName, $select);

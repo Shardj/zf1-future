@@ -55,15 +55,15 @@ class Zend_Feed_Pubsubhubbub
     /**
      * Verification Modes
      */
-    const VERIFICATION_MODE_SYNC  = 'sync';
-    const VERIFICATION_MODE_ASYNC = 'async';
+    public const VERIFICATION_MODE_SYNC  = 'sync';
+    public const VERIFICATION_MODE_ASYNC = 'async';
 
     /**
      * Subscription States
      */
-    const SUBSCRIPTION_VERIFIED    = 'verified';
-    const SUBSCRIPTION_NOTVERIFIED = 'not_verified';
-    const SUBSCRIPTION_TODELETE    = 'to_delete';
+    public const SUBSCRIPTION_VERIFIED    = 'verified';
+    public const SUBSCRIPTION_NOTVERIFIED = 'not_verified';
+    public const SUBSCRIPTION_TODELETE    = 'to_delete';
 
     /**
      * Singleton instance if required of the HTTP client

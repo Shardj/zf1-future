@@ -37,8 +37,8 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
     /**#@+
      * @const string Error constants
      */
-    const TOO_MANY = 'fileCountTooMany';
-    const TOO_FEW  = 'fileCountTooFew';
+    public const TOO_MANY = 'fileCountTooMany';
+    public const TOO_FEW  = 'fileCountTooFew';
     /**#@-*/
 
     /**

@@ -46,76 +46,77 @@ require_once 'Zend/Wildfire/Plugin/Interface.php';
  */
 class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 {
+    public $objectFilters;
     /**
      * Plain log style.
      */
-    const LOG = 'LOG';
+    public const LOG = 'LOG';
 
     /**
      * Information style.
      */
-    const INFO = 'INFO';
+    public const INFO = 'INFO';
 
     /**
      * Warning style.
      */
-    const WARN = 'WARN';
+    public const WARN = 'WARN';
 
     /**
      * Error style that increments Firebug's error counter.
      */
-    const ERROR = 'ERROR';
+    public const ERROR = 'ERROR';
 
     /**
      * Trace style showing message and expandable full stack trace.
      */
-    const TRACE = 'TRACE';
+    public const TRACE = 'TRACE';
 
     /**
      * Exception style showing message and expandable full stack trace.
      * Also increments Firebug's error counter.
      */
-    const EXCEPTION = 'EXCEPTION';
+    public const EXCEPTION = 'EXCEPTION';
 
     /**
      * Table style showing summary line and expandable table
      */
-    const TABLE = 'TABLE';
+    public const TABLE = 'TABLE';
 
     /**
      * Dump variable to Server panel in Firebug Request Inspector
      */
-    const DUMP = 'DUMP';
+    public const DUMP = 'DUMP';
 
     /**
      * Start a group in the Firebug Console
      */
-    const GROUP_START = 'GROUP_START';
+    public const GROUP_START = 'GROUP_START';
 
     /**
      * End a group in the Firebug Console
      */
-    const GROUP_END = 'GROUP_END';
+    public const GROUP_END = 'GROUP_END';
 
     /**
      * The plugin URI for this plugin
      */
-    const PLUGIN_URI = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
+    public const PLUGIN_URI = 'http://meta.firephp.org/Wildfire/Plugin/ZendFramework/FirePHP/1.6.2';
 
     /**
      * The protocol URI for this plugin
      */
-    const PROTOCOL_URI = Zend_Wildfire_Protocol_JsonStream::PROTOCOL_URI;
+    public const PROTOCOL_URI = Zend_Wildfire_Protocol_JsonStream::PROTOCOL_URI;
 
     /**
      * The structure URI for the Dump structure
      */
-    const STRUCTURE_URI_DUMP = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/Dump/0.1';
+    public const STRUCTURE_URI_DUMP = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/Dump/0.1';
 
     /**
      * The structure URI for the Firebug Console structure
      */
-    const STRUCTURE_URI_FIREBUGCONSOLE = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
+    public const STRUCTURE_URI_FIREBUGCONSOLE = 'http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1';
 
     /**
      * Singleton instance
@@ -816,10 +817,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 
         foreach( $this->_messages as $message ) {
             if (!$message->getDestroy()) {
-                $this->send($message->getMessage(),
-                            $message->getLabel(),
-                            $message->getStyle(),
-                            $message->getOptions());
+                static::send($message->getMessage(), $message->getLabel(), $message->getStyle(), $message->getOptions());
             }
         }
 

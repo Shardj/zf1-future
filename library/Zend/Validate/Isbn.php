@@ -32,11 +32,11 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_Isbn extends Zend_Validate_Abstract
 {
-    const AUTO    = 'auto';
-    const ISBN10  = '10';
-    const ISBN13  = '13';
-    const INVALID = 'isbnInvalid';
-    const NO_ISBN = 'isbnNoIsbn';
+    public const AUTO    = 'auto';
+    public const ISBN10  = '10';
+    public const ISBN13  = '13';
+    public const INVALID = 'isbnInvalid';
+    public const NO_ISBN = 'isbnNoIsbn';
 
     /**
      * Validation failure message template definitions.

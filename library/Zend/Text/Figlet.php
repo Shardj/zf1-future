@@ -32,39 +32,39 @@ class Zend_Text_Figlet
     /**
      * Smush2 layout modes
      */
-    const SM_EQUAL     = 0x01;
-    const SM_LOWLINE   = 0x02;
-    const SM_HIERARCHY = 0x04;
-    const SM_PAIR      = 0x08;
-    const SM_BIGX      = 0x10;
-    const SM_HARDBLANK = 0x20;
-    const SM_KERN      = 0x40;
-    const SM_SMUSH     = 0x80;
+    public const SM_EQUAL     = 0x01;
+    public const SM_LOWLINE   = 0x02;
+    public const SM_HIERARCHY = 0x04;
+    public const SM_PAIR      = 0x08;
+    public const SM_BIGX      = 0x10;
+    public const SM_HARDBLANK = 0x20;
+    public const SM_KERN      = 0x40;
+    public const SM_SMUSH     = 0x80;
 
     /**
      * Smush mode override modes
      */
-    const SMO_NO    = 0;
-    const SMO_YES   = 1;
-    const SMO_FORCE = 2;
+    public const SMO_NO    = 0;
+    public const SMO_YES   = 1;
+    public const SMO_FORCE = 2;
 
     /**
      * Justifications
      */
-    const JUSTIFICATION_LEFT   = 0;
-    const JUSTIFICATION_CENTER = 1;
-    const JUSTIFICATION_RIGHT  = 2;
+    public const JUSTIFICATION_LEFT   = 0;
+    public const JUSTIFICATION_CENTER = 1;
+    public const JUSTIFICATION_RIGHT  = 2;
 
     /**
      * Write directions
      */
-    const DIRECTION_LEFT_TO_RIGHT = 0;
-    const DIRECTION_RIGHT_TO_LEFT = 1;
+    public const DIRECTION_LEFT_TO_RIGHT = 0;
+    public const DIRECTION_RIGHT_TO_LEFT = 1;
 
     /**
      * Magic fontfile number
      */
-    const FONTFILE_MAGIC_NUMBER = 'flf2';
+    public const FONTFILE_MAGIC_NUMBER = 'flf2';
 
     /**
      * Array containing all characters of the current font

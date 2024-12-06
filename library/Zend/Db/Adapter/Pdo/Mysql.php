@@ -110,7 +110,7 @@ class Zend_Db_Adapter_Pdo_Mysql extends Zend_Db_Adapter_Pdo_Abstract
             $this->_config['driver_options'][1002] = $initCommand; // 1002 = PDO::MYSQL_ATTR_INIT_COMMAND
         }
 
-        if (PHP_VERSION_ID >= 80100) {
+        if (PHP_VERSION_ID >= 80100 && Zend_Db_Adapter_Pdo_Abstract::$isPdoStringifyFetchesBackwardCompatiblePhp8) {
             // ensure $config['driver_options'] is an array
             $this->_config['driver_options'] = $this->_config['driver_options'] ?? [];
             if (!isset($this->_config['driver_options'][PDO::ATTR_STRINGIFY_FETCHES])) {

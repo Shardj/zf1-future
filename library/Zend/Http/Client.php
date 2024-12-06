@@ -79,46 +79,46 @@ class Zend_Http_Client
     /**
      * HTTP request methods
      */
-    const GET     = 'GET';
-    const POST    = 'POST';
-    const PUT     = 'PUT';
-    const HEAD    = 'HEAD';
-    const DELETE  = 'DELETE';
-    const TRACE   = 'TRACE';
-    const OPTIONS = 'OPTIONS';
-    const CONNECT = 'CONNECT';
-    const MERGE   = 'MERGE';
-    const PATCH   = 'PATCH';
+    public const GET     = 'GET';
+    public const POST    = 'POST';
+    public const PUT     = 'PUT';
+    public const HEAD    = 'HEAD';
+    public const DELETE  = 'DELETE';
+    public const TRACE   = 'TRACE';
+    public const OPTIONS = 'OPTIONS';
+    public const CONNECT = 'CONNECT';
+    public const MERGE   = 'MERGE';
+    public const PATCH   = 'PATCH';
 
     /**
      * Supported HTTP Authentication methods
      */
-    const AUTH_BASIC = 'basic';
+    public const AUTH_BASIC = 'basic';
     //const AUTH_DIGEST = 'digest'; <-- not implemented yet
 
     /**
      * HTTP protocol versions
      */
-    const HTTP_1 = '1.1';
-    const HTTP_0 = '1.0';
+    public const HTTP_1 = '1.1';
+    public const HTTP_0 = '1.0';
 
     /**
      * Content attributes
      */
-    const CONTENT_TYPE   = 'Content-Type';
-    const CONTENT_LENGTH = 'Content-Length';
+    public const CONTENT_TYPE   = 'Content-Type';
+    public const CONTENT_LENGTH = 'Content-Length';
 
     /**
      * POST data encoding methods
      */
-    const ENC_URLENCODED = 'application/x-www-form-urlencoded';
-    const ENC_FORMDATA   = 'multipart/form-data';
+    public const ENC_URLENCODED = 'application/x-www-form-urlencoded';
+    public const ENC_FORMDATA   = 'multipart/form-data';
 
     /**
      * Value types for Body key/value pairs
      */
-    const VTYPE_SCALAR  = 'SCALAR';
-    const VTYPE_FILE    = 'FILE';
+    public const VTYPE_SCALAR  = 'SCALAR';
+    public const VTYPE_FILE    = 'FILE';
 
     /**
      * Configuration array, set using the constructor or using ::setConfig()

@@ -40,7 +40,7 @@ abstract class Zend_Controller_Router_Route_Abstract implements Zend_Controller_
     /**
      * URI delimiter
      */
-    const URI_DELIMITER = '/';
+    public const URI_DELIMITER = '/';
 
     /**
      * Wether this route is abstract or not

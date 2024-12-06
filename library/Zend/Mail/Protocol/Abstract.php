@@ -52,13 +52,13 @@ abstract class Zend_Mail_Protocol_Abstract
     /**
      * Mail default EOL string
      */
-    const EOL = "\r\n";
+    public const EOL = "\r\n";
 
 
     /**
      * Default timeout in seconds for initiating session
      */
-    const TIMEOUT_CONNECTION = 30;
+    public const TIMEOUT_CONNECTION = 30;
 
     /**
      * Maximum of the transaction log

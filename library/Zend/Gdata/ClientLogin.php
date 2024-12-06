@@ -49,13 +49,13 @@ class Zend_Gdata_ClientLogin
      * The Google client login URI
      *
      */
-    const CLIENTLOGIN_URI = 'https://www.google.com/accounts/ClientLogin';
+    public const CLIENTLOGIN_URI = 'https://www.google.com/accounts/ClientLogin';
 
     /**
      * The default 'source' parameter to send to Google
      *
      */
-    const DEFAULT_SOURCE = 'Zend-ZendFramework';
+    public const DEFAULT_SOURCE = 'Zend-ZendFramework';
 
     /**
      * Set Google authentication credentials.

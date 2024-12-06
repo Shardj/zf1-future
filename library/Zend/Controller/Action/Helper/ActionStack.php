@@ -84,7 +84,7 @@ class Zend_Controller_Action_Helper_ActionStack extends Zend_Controller_Action_H
      * @param  string $module
      * @param  array  $params
      * @throws Zend_Controller_Action_Exception
-     * @return Zend_Controller_Action_Helper_ActionStack
+     * @return $this
      */
     public function actionToStack($action, $controller = null, $module = null, array $params = [])
     {
@@ -129,7 +129,7 @@ class Zend_Controller_Action_Helper_ActionStack extends Zend_Controller_Action_H
      * @param  string $controller
      * @param  string $module
      * @param  array $params
-     * @return Zend_Controller_Action_Helper_ActionStack
+     * @return $this
      */
     public function direct($action, $controller = null, $module = null, array $params = [])
     {

@@ -6,6 +6,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.24.2] - 2024-10-25
+
+### Fixed
+ Revert undefined property declarations #453 
+
+## [1.24.1] - 2024-10-15
+
+### Added
+
+* Added TLS v1.3 protocol by @ADDISON74 in https://github.com/Shardj/zf1-future/pull/447
+* Updated github workflow by @sreichel in https://github.com/Shardj/zf1-future/pull/445
+
+### Fixed
+
+* Fix for very slow chunk processing for larger content in the http res… by @aleksandar-mitrev in https://github.com/Shardj/zf1-future/pull/354
+* Add check in DbTable Authentication Adapter for empty results when AmbiguityIdentity is TRUE by @rruchte in https://github.com/Shardj/zf1-future/pull/419
+* Fix deprecation message in php8 with null param with realpath() by @tsmgeek in https://github.com/Shardj/zf1-future/pull/413
+* Fix deprecated usage of string functions in `BaseUrl` helper. by @muli in https://github.com/Shardj/zf1-future/pull/410
+* Support for PHP 8.2 by @Fredthelead in https://github.com/Shardj/zf1-future/pull/438
+* PHP8.4: Implicitly nullable by @sreichel in https://github.com/Shardj/zf1-future/pull/442
+* Skip broken PhpUnit tests by @sreichel in https://github.com/Shardj/zf1-future/pull/443
+* Update composer.json homepage property by @B3none in https://github.com/Shardj/zf1-future/pull/432
+* PHPStan fixes by @thomaslauria in https://github.com/Shardj/zf1-future/pull/434
+* Fix "Undefined variable $c" in Zend_XmlRpc_Server::setResponseClass() by @lapiudevgit in https://github.com/Shardj/zf1-future/pull/451
+* Fix PHP Deprecated: Creation of dynamic property $zfBreakChainOnFailure from Zend_Form_Element by @hung202028 in https://github.com/Shardj/zf1-future/pull/440
+
+## [1.24.0] - 2024-02-05
+- introduced BREAKING CHANGES doc.
+
+### Added
+- support "samesite" cookie attribute in Zend_Http_Header_SetCookie in https://github.com/Shardj/zf1-future/issues/315
+- Support X-Forwarded-Proto header in https://github.com/Shardj/zf1-future/pull/386
+- added setting to disable automatic strigify of pdo mysql in https://github.com/Shardj/zf1-future/pull/378
+
+### Fixed
+- reverted Deprecated : Return type on Zend_Session_SaveHandler_DbTable in https://github.com/Shardj/zf1-future/issues/377
+- Zend_Db_Adapter_Db2 limit does not work in https://github.com/Shardj/zf1-future/issues/391
+- Zend_Http_Client-Adapter_Socket - check transfer-encoding header is a string (and not an array) in https://github.com/Shardj/zf1-future/pull/396
+- Fixes A non-numeric value encountered in PhpMath.php in https://github.com/Shardj/zf1-future/pull/402
+- Updated DocBlocks to return $this for fluent interface in https://github.com/Shardj/zf1-future/pull/390
+- add "array" as allowed type of $value in https://github.com/Shardj/zf1-future/pull/387
+- Avoid undefined array key access inside url assembly in https://github.com/Shardj/zf1-future/pull/383
+- Fixed #357 return type backward-compatible issue reported in https://github.com/Shardj/zf1-future/pull/379
+- Fixed missing property in https://github.com/Shardj/zf1-future/pull/376
+
+
 ## [1.23.5] - 2023-08-24
 ### Fixed
 - further Zend Mail sendmail transport validation tweak

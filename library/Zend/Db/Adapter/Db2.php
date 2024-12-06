@@ -691,14 +691,23 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
          * Unfortunately because we use the column wildcard "*",
          * this puts an extra column into the query result set.
          */
-        return "SELECT z2.*
-            FROM (
-                SELECT ROW_NUMBER() OVER() AS \"ZEND_DB_ROWNUM\", z1.*
-                FROM (
-                    " . $sql . "
-                ) z1
-            ) z2
-            WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+        // Add this piece and place $order in OVER() clause
+        $pieces = preg_split("/order by/i", $sql);
+        $order = "";
+        if(array_key_exists(1, $pieces)) {
+            $order = "ORDER BY " . $pieces[1];
+        }
+
+        $limit_sql = "SELECT z2.*
+              FROM (
+                 SELECT ROW_NUMBER() OVER($order) AS \"ZEND_DB_ROWNUM\", z1.*
+                    FROM (
+                       " . $sql . "
+                    ) z1
+               ) z2
+               WHERE z2.zend_db_rownum BETWEEN " . ($offset+1) . " AND " . ($offset+$count);
+
+        return $limit_sql;
     }
 
     /**

@@ -71,7 +71,7 @@ class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Ab
      *
      * @param  Zend_Controller_Router_Route_Abstract $route
      * @param  string                                $separator
-     * @return Zend_Controller_Router_Route_Chain
+     * @return $this
      */
     public function chain(Zend_Controller_Router_Route_Abstract $route, $separator = self::URI_DELIMITER)
     {
@@ -183,7 +183,7 @@ class Zend_Controller_Router_Route_Chain extends Zend_Controller_Router_Route_Ab
      * @param  Zend_Controller_Request_Abstract|null $request
      * @return void
      */
-    public function setRequest(Zend_Controller_Request_Abstract $request = null)
+    public function setRequest(?Zend_Controller_Request_Abstract $request = null)
     {
         $this->_request = $request;
 

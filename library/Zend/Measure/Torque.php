@@ -36,24 +36,24 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Torque extends Zend_Measure_Abstract
 {
-    const STANDARD = 'NEWTON_METER';
+    public const STANDARD = 'NEWTON_METER';
 
-    const DYNE_CENTIMETER     = 'DYNE_CENTIMETER';
-    const GRAM_CENTIMETER     = 'GRAM_CENTIMETER';
-    const KILOGRAM_CENTIMETER = 'KILOGRAM_CENTIMETER';
-    const KILOGRAM_METER      = 'KILOGRAM_METER';
-    const KILONEWTON_METER    = 'KILONEWTON_METER';
-    const KILOPOND_METER      = 'KILOPOND_METER';
-    const MEGANEWTON_METER    = 'MEGANEWTON_METER';
-    const MICRONEWTON_METER   = 'MICRONEWTON_METER';
-    const MILLINEWTON_METER   = 'MILLINEWTON_METER';
-    const NEWTON_CENTIMETER   = 'NEWTON_CENTIMETER';
-    const NEWTON_METER        = 'NEWTON_METER';
-    const OUNCE_FOOT          = 'OUNCE_FOOT';
-    const OUNCE_INCH          = 'OUNCE_INCH';
-    const POUND_FOOT          = 'POUND_FOOT';
-    const POUNDAL_FOOT        = 'POUNDAL_FOOT';
-    const POUND_INCH          = 'POUND_INCH';
+    public const DYNE_CENTIMETER     = 'DYNE_CENTIMETER';
+    public const GRAM_CENTIMETER     = 'GRAM_CENTIMETER';
+    public const KILOGRAM_CENTIMETER = 'KILOGRAM_CENTIMETER';
+    public const KILOGRAM_METER      = 'KILOGRAM_METER';
+    public const KILONEWTON_METER    = 'KILONEWTON_METER';
+    public const KILOPOND_METER      = 'KILOPOND_METER';
+    public const MEGANEWTON_METER    = 'MEGANEWTON_METER';
+    public const MICRONEWTON_METER   = 'MICRONEWTON_METER';
+    public const MILLINEWTON_METER   = 'MILLINEWTON_METER';
+    public const NEWTON_CENTIMETER   = 'NEWTON_CENTIMETER';
+    public const NEWTON_METER        = 'NEWTON_METER';
+    public const OUNCE_FOOT          = 'OUNCE_FOOT';
+    public const OUNCE_INCH          = 'OUNCE_INCH';
+    public const POUND_FOOT          = 'POUND_FOOT';
+    public const POUNDAL_FOOT        = 'POUNDAL_FOOT';
+    public const POUND_INCH          = 'POUND_INCH';
 
     /**
      * Calculations for all torque units

@@ -1004,7 +1004,7 @@ abstract class Zend_Navigation_Page extends Zend_Navigation_Container
      *                                            no parent.
      * @return $this
      */
-    public function setParent(Zend_Navigation_Container $parent = null)
+    public function setParent(?Zend_Navigation_Container $parent = null)
     {
         if ($parent === $this) {
             require_once 'Zend/Navigation/Exception.php';

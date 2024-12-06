@@ -132,18 +132,18 @@ class Zend_Console_Getopt
      * modeGnu is for traditional 'ab:c:' style getopt format.
      * modeZend is for a more structured format.
      */
-    const MODE_ZEND                         = 'zend';
-    const MODE_GNU                          = 'gnu';
+    public const MODE_ZEND                         = 'zend';
+    public const MODE_GNU                          = 'gnu';
 
     /**
      * Constant tokens for various symbols used in the mode_zend
      * rule format.
      */
-    const PARAM_REQUIRED                    = '=';
-    const PARAM_OPTIONAL                    = '-';
-    const TYPE_STRING                       = 's';
-    const TYPE_WORD                         = 'w';
-    const TYPE_INTEGER                      = 'i';
+    public const PARAM_REQUIRED                    = '=';
+    public const PARAM_OPTIONAL                    = '-';
+    public const TYPE_STRING                       = 's';
+    public const TYPE_WORD                         = 'w';
+    public const TYPE_INTEGER                      = 'i';
 
     /**
      * These are constants for optional behavior of this class.
@@ -153,10 +153,10 @@ class Zend_Console_Getopt
      * parseAll is true if all options on the command line should be parsed, regardless of
      * whether an argument appears before them.
      */
-    const CONFIG_RULEMODE                   = 'ruleMode';
-    const CONFIG_DASHDASH                   = 'dashDash';
-    const CONFIG_IGNORECASE                 = 'ignoreCase';
-    const CONFIG_PARSEALL                   = 'parseAll';
+    public const CONFIG_RULEMODE                   = 'ruleMode';
+    public const CONFIG_DASHDASH                   = 'dashDash';
+    public const CONFIG_IGNORECASE                 = 'ignoreCase';
+    public const CONFIG_PARSEALL                   = 'parseAll';
 
     /**
      * Defaults for getopt configuration are:

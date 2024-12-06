@@ -57,7 +57,6 @@ class Zend_Layout_FunctionalTest extends Zend_Test_PHPUnit_ControllerTestCase
     protected function set_up()
     {
         $this->bootstrap = [$this, 'appBootstrap'];
-        parent::set_up();
     }
 
     public function appBootstrap()

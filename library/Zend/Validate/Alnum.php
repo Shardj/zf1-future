@@ -32,9 +32,9 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_Alnum extends Zend_Validate_Abstract
 {
-    const INVALID      = 'alnumInvalid';
-    const NOT_ALNUM    = 'notAlnum';
-    const STRING_EMPTY = 'alnumStringEmpty';
+    public const INVALID      = 'alnumInvalid';
+    public const NOT_ALNUM    = 'notAlnum';
+    public const STRING_EMPTY = 'alnumStringEmpty';
 
     /**
      * Whether to allow white space characters; off by default

@@ -59,7 +59,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
      * Activate/deactivate return of LOB as string
      *
      * @param string $lob_as_string
-     * @return Zend_Db_Statement_Oracle
+     * @return $this
      */
     public function setLobAsString($lob_as_string)
     {
@@ -226,7 +226,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function _execute(array $params = null)
+    public function _execute(?array $params = null)
     {
         $connection = $this->_adapter->getConnection();
 

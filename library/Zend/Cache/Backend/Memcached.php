@@ -43,20 +43,20 @@ class Zend_Cache_Backend_Memcached extends Zend_Cache_Backend implements Zend_Ca
     /**
      * Default Values
      */
-    const DEFAULT_HOST = '127.0.0.1';
-    const DEFAULT_PORT =  11211;
-    const DEFAULT_PERSISTENT = true;
-    const DEFAULT_WEIGHT  = 1;
-    const DEFAULT_TIMEOUT = 1;
-    const DEFAULT_RETRY_INTERVAL = 15;
-    const DEFAULT_STATUS = true;
-    const DEFAULT_FAILURE_CALLBACK = null;
+    public const DEFAULT_HOST = '127.0.0.1';
+    public const DEFAULT_PORT =  11211;
+    public const DEFAULT_PERSISTENT = true;
+    public const DEFAULT_WEIGHT  = 1;
+    public const DEFAULT_TIMEOUT = 1;
+    public const DEFAULT_RETRY_INTERVAL = 15;
+    public const DEFAULT_STATUS = true;
+    public const DEFAULT_FAILURE_CALLBACK = null;
 
     /**
      * Log message
      */
-    const TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND = 'Zend_Cache_Backend_Memcached::clean() : tags are unsupported by the Memcached backend';
-    const TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND =  'Zend_Cache_Backend_Memcached::save() : tags are unsupported by the Memcached backend';
+    public const TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND = 'Zend_Cache_Backend_Memcached::clean() : tags are unsupported by the Memcached backend';
+    public const TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND =  'Zend_Cache_Backend_Memcached::save() : tags are unsupported by the Memcached backend';
 
     /**
      * Available options

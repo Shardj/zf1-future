@@ -30,25 +30,25 @@ require_once 'Zend/Validate/Ip.php';
 
 class Zend_Service_Rackspace_Servers extends Zend_Service_Rackspace_Abstract
 {
-    const LIMIT_FILE_SIZE           = 10240;
-    const LIMIT_NUM_FILE            = 5;
-    const ERROR_SERVICE_UNAVAILABLE = 'The service is unavailable';
-    const ERROR_UNAUTHORIZED        = 'Unauthorized';
-    const ERROR_OVERLIMIT           = 'You reached the limit of requests, please wait some time before retry';
-    const ERROR_PARAM_NO_ID         = 'You must specify the item\'s id';
-    const ERROR_PARAM_NO_NAME       = 'You must specify the name';
-    const ERROR_PARAM_NO_SERVERID   = 'You must specify the server Id';
-    const ERROR_PARAM_NO_IMAGEID    = 'You must specify the server\'s image ID';
-    const ERROR_PARAM_NO_FLAVORID   = 'You must specify the server\'s flavor ID';
-    const ERROR_PARAM_NO_ARRAY      = 'You must specify an array of parameters';
-    const ERROR_PARAM_NO_WEEKLY     = 'You must specify a weekly backup schedule';
-    const ERROR_PARAM_NO_DAILY      = 'You must specify a daily backup schedule';
-    const ERROR_ITEM_NOT_FOUND      = 'The item specified doesn\'t exist.';
-    const ERROR_NO_FILE_EXISTS      = 'The file specified doesn\'t exist';
-    const ERROR_LIMIT_FILE_SIZE     = 'You reached the size length of a file';
-    const ERROR_IN_PROGRESS         = 'The item specified is still in progress';
-    const ERROR_BUILD_IN_PROGRESS   = 'The build is still in progress';
-    const ERROR_RESIZE_NOT_ALLOWED  = 'The resize is not allowed';
+    public const LIMIT_FILE_SIZE           = 10240;
+    public const LIMIT_NUM_FILE            = 5;
+    public const ERROR_SERVICE_UNAVAILABLE = 'The service is unavailable';
+    public const ERROR_UNAUTHORIZED        = 'Unauthorized';
+    public const ERROR_OVERLIMIT           = 'You reached the limit of requests, please wait some time before retry';
+    public const ERROR_PARAM_NO_ID         = 'You must specify the item\'s id';
+    public const ERROR_PARAM_NO_NAME       = 'You must specify the name';
+    public const ERROR_PARAM_NO_SERVERID   = 'You must specify the server Id';
+    public const ERROR_PARAM_NO_IMAGEID    = 'You must specify the server\'s image ID';
+    public const ERROR_PARAM_NO_FLAVORID   = 'You must specify the server\'s flavor ID';
+    public const ERROR_PARAM_NO_ARRAY      = 'You must specify an array of parameters';
+    public const ERROR_PARAM_NO_WEEKLY     = 'You must specify a weekly backup schedule';
+    public const ERROR_PARAM_NO_DAILY      = 'You must specify a daily backup schedule';
+    public const ERROR_ITEM_NOT_FOUND      = 'The item specified doesn\'t exist.';
+    public const ERROR_NO_FILE_EXISTS      = 'The file specified doesn\'t exist';
+    public const ERROR_LIMIT_FILE_SIZE     = 'You reached the size length of a file';
+    public const ERROR_IN_PROGRESS         = 'The item specified is still in progress';
+    public const ERROR_BUILD_IN_PROGRESS   = 'The build is still in progress';
+    public const ERROR_RESIZE_NOT_ALLOWED  = 'The resize is not allowed';
     /**
      * Get the list of the servers
      * If $details is true returns detail info

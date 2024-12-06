@@ -32,7 +32,7 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_InArray extends Zend_Validate_Abstract
 {
-    const NOT_IN_ARRAY = 'notInArray';
+    public const NOT_IN_ARRAY = 'notInArray';
 
     /**
      * @var array

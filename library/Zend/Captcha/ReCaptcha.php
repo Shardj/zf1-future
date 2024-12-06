@@ -73,9 +73,9 @@ class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
     /**#@+
      * Error codes
      */
-    const MISSING_VALUE = 'missingValue';
-    const ERR_CAPTCHA   = 'errCaptcha';
-    const BAD_CAPTCHA   = 'badCaptcha';
+    public const MISSING_VALUE = 'missingValue';
+    public const ERR_CAPTCHA   = 'errCaptcha';
+    public const BAD_CAPTCHA   = 'badCaptcha';
     /**#@-*/
 
     /**
@@ -259,7 +259,7 @@ class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
      * @param  mixed $element
      * @return string
      */
-    public function render(Zend_View_Interface $view = null, $element = null)
+    public function render(?Zend_View_Interface $view = null, $element = null)
     {
         $name = null;
         if ($element instanceof Zend_Form_Element) {

@@ -51,7 +51,7 @@ class Zend_Ldap_SortTest extends Zend_Ldap_OnlineTestCase
             $this->_getLdap()->getResource(),
             TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             '(l=*)',
-            array('l')
+            ['l']
         );
 
         $iterator     = new Zend_Ldap_Collection_Iterator_Default($this->_getLdap(), $search);
@@ -70,13 +70,13 @@ class Zend_Ldap_SortTest extends Zend_Ldap_OnlineTestCase
      */
     public function testSorting()
     {
-        $lSorted = array('a', 'b', 'c', 'd', 'e');
+        $lSorted = ['a', 'b', 'c', 'd', 'e'];
 
         $search = ldap_search(
             $this->_getLdap()->getResource(),
             TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             '(l=*)',
-            array('l')
+            ['l']
         );
 
         $iterator = new Zend_Ldap_Collection_Iterator_Default($this->_getLdap(), $search);
@@ -102,13 +102,13 @@ class Zend_Ldap_SortTest extends Zend_Ldap_OnlineTestCase
      */
     public function testCustomSorting()
     {
-        $lSorted = array('d', 'e', 'a', 'b', 'c');
+        $lSorted = ['d', 'e', 'a', 'b', 'c'];
 
         $search = ldap_search(
             $this->_getLdap()->getResource(),
             TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,
             '(l=*)',
-            array('l')
+            ['l']
         );
 
         $iterator     = new Zend_Ldap_Collection_Iterator_Default($this->_getLdap(), $search);

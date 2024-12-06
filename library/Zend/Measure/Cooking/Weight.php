@@ -36,18 +36,18 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Cooking_Weight extends Zend_Measure_Abstract
 {
-    const STANDARD = 'GRAM';
+    public const STANDARD = 'GRAM';
 
-    const HALF_STICK    = 'HALF_STICK';
-    const STICK         = 'STICK';
-    const CUP           = 'CUP';
-    const GRAM          = 'GRAM';
-    const OUNCE         = 'OUNCE';
-    const POUND         = 'POUND';
-    const TEASPOON      = 'TEASPOON';
-    const TEASPOON_US   = 'TEASPOON_US';
-    const TABLESPOON    = 'TABLESPOON';
-    const TABLESPOON_US = 'TABLESPOON_US';
+    public const HALF_STICK    = 'HALF_STICK';
+    public const STICK         = 'STICK';
+    public const CUP           = 'CUP';
+    public const GRAM          = 'GRAM';
+    public const OUNCE         = 'OUNCE';
+    public const POUND         = 'POUND';
+    public const TEASPOON      = 'TEASPOON';
+    public const TEASPOON_US   = 'TEASPOON_US';
+    public const TABLESPOON    = 'TABLESPOON';
+    public const TABLESPOON_US = 'TABLESPOON_US';
 
     /**
      * Calculations for all cooking weight units

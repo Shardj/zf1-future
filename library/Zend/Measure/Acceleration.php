@@ -37,28 +37,28 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Acceleration extends Zend_Measure_Abstract
 {
-    const STANDARD = 'METER_PER_SQUARE_SECOND';
+    public const STANDARD = 'METER_PER_SQUARE_SECOND';
 
-    const CENTIGAL                     = 'CENTIGAL';
-    const CENTIMETER_PER_SQUARE_SECOND = 'CENTIMETER_PER_SQUARE_SECOND';
-    const DECIGAL                      = 'DECIGAL';
-    const DECIMETER_PER_SQUARE_SECOND  = 'DECIMETER_PER_SQUARE_SECOND';
-    const DEKAMETER_PER_SQUARE_SECOND  = 'DEKAMETER_PER_SQUARE_SECOND';
-    const FOOT_PER_SQUARE_SECOND       = 'FOOT_PER_SQUARE_SECOND';
-    const G                            = 'G';
-    const GAL                          = 'GAL';
-    const GALILEO                      = 'GALILEO';
-    const GRAV                         = 'GRAV';
-    const HECTOMETER_PER_SQUARE_SECOND = 'HECTOMETER_PER_SQUARE_SECOND';
-    const INCH_PER_SQUARE_SECOND       = 'INCH_PER_SQUARE_SECOND';
-    const KILOMETER_PER_HOUR_SECOND    = 'KILOMETER_PER_HOUR_SECOND';
-    const KILOMETER_PER_SQUARE_SECOND  = 'KILOMETER_PER_SQUARE_SECOND';
-    const METER_PER_SQUARE_SECOND      = 'METER_PER_SQUARE_SECOND';
-    const MILE_PER_HOUR_MINUTE         = 'MILE_PER_HOUR_MINUTE';
-    const MILE_PER_HOUR_SECOND         = 'MILE_PER_HOUR_SECOND';
-    const MILE_PER_SQUARE_SECOND       = 'MILE_PER_SQUARE_SECOND';
-    const MILLIGAL                     = 'MILLIGAL';
-    const MILLIMETER_PER_SQUARE_SECOND = 'MILLIMETER_PER_SQUARE_SECOND';
+    public const CENTIGAL                     = 'CENTIGAL';
+    public const CENTIMETER_PER_SQUARE_SECOND = 'CENTIMETER_PER_SQUARE_SECOND';
+    public const DECIGAL                      = 'DECIGAL';
+    public const DECIMETER_PER_SQUARE_SECOND  = 'DECIMETER_PER_SQUARE_SECOND';
+    public const DEKAMETER_PER_SQUARE_SECOND  = 'DEKAMETER_PER_SQUARE_SECOND';
+    public const FOOT_PER_SQUARE_SECOND       = 'FOOT_PER_SQUARE_SECOND';
+    public const G                            = 'G';
+    public const GAL                          = 'GAL';
+    public const GALILEO                      = 'GALILEO';
+    public const GRAV                         = 'GRAV';
+    public const HECTOMETER_PER_SQUARE_SECOND = 'HECTOMETER_PER_SQUARE_SECOND';
+    public const INCH_PER_SQUARE_SECOND       = 'INCH_PER_SQUARE_SECOND';
+    public const KILOMETER_PER_HOUR_SECOND    = 'KILOMETER_PER_HOUR_SECOND';
+    public const KILOMETER_PER_SQUARE_SECOND  = 'KILOMETER_PER_SQUARE_SECOND';
+    public const METER_PER_SQUARE_SECOND      = 'METER_PER_SQUARE_SECOND';
+    public const MILE_PER_HOUR_MINUTE         = 'MILE_PER_HOUR_MINUTE';
+    public const MILE_PER_HOUR_SECOND         = 'MILE_PER_HOUR_SECOND';
+    public const MILE_PER_SQUARE_SECOND       = 'MILE_PER_SQUARE_SECOND';
+    public const MILLIGAL                     = 'MILLIGAL';
+    public const MILLIMETER_PER_SQUARE_SECOND = 'MILLIMETER_PER_SQUARE_SECOND';
 
     /**
      * Calculations for all acceleration units

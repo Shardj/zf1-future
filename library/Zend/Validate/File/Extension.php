@@ -37,8 +37,8 @@ class Zend_Validate_File_Extension extends Zend_Validate_Abstract
     /**
      * @const string Error constants
      */
-    const FALSE_EXTENSION = 'fileExtensionFalse';
-    const NOT_FOUND       = 'fileExtensionNotFound';
+    public const FALSE_EXTENSION = 'fileExtensionFalse';
+    public const NOT_FOUND       = 'fileExtensionNotFound';
 
     /**
      * @var array Error message templates

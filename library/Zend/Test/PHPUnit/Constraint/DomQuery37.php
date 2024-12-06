@@ -41,12 +41,12 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends Constraint
     /**#@+
      * Assertion type constants
      */
-    const ASSERT_QUERY            = 'assertQuery';
-    const ASSERT_CONTENT_CONTAINS = 'assertQueryContentContains';
-    const ASSERT_CONTENT_REGEX    = 'assertQueryContentRegex';
-    const ASSERT_CONTENT_COUNT    = 'assertQueryCount';
-    const ASSERT_CONTENT_COUNT_MIN= 'assertQueryCountMin';
-    const ASSERT_CONTENT_COUNT_MAX= 'assertQueryCountMax';
+    public const ASSERT_QUERY            = 'assertQuery';
+    public const ASSERT_CONTENT_CONTAINS = 'assertQueryContentContains';
+    public const ASSERT_CONTENT_REGEX    = 'assertQueryContentRegex';
+    public const ASSERT_CONTENT_COUNT    = 'assertQueryCount';
+    public const ASSERT_CONTENT_COUNT_MIN= 'assertQueryCountMin';
+    public const ASSERT_CONTENT_COUNT_MAX= 'assertQueryCountMax';
     /**#@-*/
 
     /**
@@ -225,7 +225,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery37 extends Constraint
      *     protected function fail($other, $description, PHPUnit_Framework_ComparisonFailure $comparisonFailure = NULL)
      * We use the new interface for PHP-strict checking
      */
-    public function fail($other, $description, ComparisonFailure $cannot_be_used = NULL): void
+    public function fail($other, $description, ?ComparisonFailure $cannot_be_used = NULL): void
     {
         require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {

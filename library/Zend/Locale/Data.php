@@ -959,9 +959,9 @@ class Zend_Locale_Data
     /**
      * Read the LDML file, get a single path defined value
      *
-     * @param  string      $locale
-     * @param  string      $path
-     * @param  bool|string $value
+     * @param  string            $locale
+     * @param  string            $path
+     * @param  array|bool|string $value
      * @return string
      * @throws Zend_Locale_Exception
      */

@@ -32,17 +32,17 @@ require_once 'Zend/Filter/Interface.php';
  */
 class Zend_Filter_Boolean implements Zend_Filter_Interface
 {
-    const BOOLEAN      = 1;
-    const INTEGER      = 2;
-    const FLOAT        = 4;
-    const STRING       = 8;
-    const ZERO         = 16;
-    const EMPTY_ARRAY  = 32;
-    const NULL         = 64;
-    const PHP          = 127;
-    const FALSE_STRING = 128;
-    const YES          = 256;
-    const ALL          = 511;
+    public const BOOLEAN      = 1;
+    public const INTEGER      = 2;
+    public const FLOAT        = 4;
+    public const STRING       = 8;
+    public const ZERO         = 16;
+    public const EMPTY_ARRAY  = 32;
+    public const NULL         = 64;
+    public const PHP          = 127;
+    public const FALSE_STRING = 128;
+    public const YES          = 256;
+    public const ALL          = 511;
 
     protected $_constants = [
         self::BOOLEAN      => 'boolean',

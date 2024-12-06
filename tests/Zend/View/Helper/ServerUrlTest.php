@@ -53,6 +53,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $this->_serverBackup = $_SERVER;
         unset($_SERVER['HTTPS']);
+        unset($_SERVER['HTTP_X_FORWARDED_PROTO']);
     }
 
     /**
@@ -83,6 +84,15 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
         $_SERVER['HTTPS'] = 'on';
+
+        $url = new Zend_View_Helper_ServerUrl();
+        $this->assertEquals('https://example.com', $url->serverUrl());
+    }
+
+    public function testConstructorWithHostAndXForwardedProtoHttps()
+    {
+        $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());

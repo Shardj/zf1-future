@@ -43,11 +43,11 @@ class Zend_Uri_Http extends Zend_Uri
     /**
      * Character classes for validation regular expressions
      */
-    const CHAR_ALNUM    = 'A-Za-z0-9';
-    const CHAR_MARK     = '-_.!~*\'()\[\]';
-    const CHAR_RESERVED = ';\/?:@&=+$,';
-    const CHAR_SEGMENT  = ':@&=+$,;';
-    const CHAR_UNWISE   = '{}|\\\\^`';
+    public const CHAR_ALNUM    = 'A-Za-z0-9';
+    public const CHAR_MARK     = '-_.!~*\'()\[\]';
+    public const CHAR_RESERVED = ';\/?:@&=+$,';
+    public const CHAR_SEGMENT  = ':@&=+$,;';
+    public const CHAR_UNWISE   = '{}|\\\\^`';
 
     /**
      * HTTP username

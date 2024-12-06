@@ -36,7 +36,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     /**
      * Plugin loader type
      */
-    const TRANSFER_ADAPTER = 'TRANSFER_ADAPTER';
+    public const TRANSFER_ADAPTER = 'TRANSFER_ADAPTER';
 
     /**
      * @var string Default view helper
@@ -864,7 +864,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      * @return string
      * @throws Zend_Form_Element_Exception
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render(?Zend_View_Interface $view = null)
     {
         $marker = false;
         foreach ($this->getDecorators() as $decorator) {

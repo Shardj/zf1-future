@@ -46,8 +46,8 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
      * Script type contants
      * @const string
      */
-    const FILE   = 'FILE';
-    const SCRIPT = 'SCRIPT';
+    public const FILE   = 'FILE';
+    public const SCRIPT = 'SCRIPT';
     /**#@-*/
 
     /**

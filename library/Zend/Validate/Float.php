@@ -37,8 +37,8 @@ require_once 'Zend/Locale/Format.php';
  */
 class Zend_Validate_Float extends Zend_Validate_Abstract
 {
-    const INVALID   = 'floatInvalid';
-    const NOT_FLOAT = 'notFloat';
+    public const INVALID   = 'floatInvalid';
+    public const NOT_FLOAT = 'notFloat';
 
     /**
      * @var array

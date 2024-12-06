@@ -57,12 +57,12 @@ class Zend_Service_Twitter
     /**
      * Base URI for all API calls
      */
-    const API_BASE_URI = 'https://api.twitter.com/1.1/';
+    public const API_BASE_URI = 'https://api.twitter.com/1.1/';
 
     /**
      * OAuth Endpoint
      */
-    const OAUTH_BASE_URI = 'https://api.twitter.com/oauth';
+    public const OAUTH_BASE_URI = 'https://api.twitter.com/oauth';
 
     /**
      * 246 is the current limit for a status message, 140 characters are displayed
@@ -72,7 +72,7 @@ class Zend_Service_Twitter
      *
      * This should be reviewed in the future...
      */
-    const STATUS_MAX_CHARACTERS = 246;
+    public const STATUS_MAX_CHARACTERS = 246;
 
     /**
      * @var array
@@ -143,7 +143,7 @@ class Zend_Service_Twitter
      * @param  null|Zend_Oauth_Consumer $consumer
      * @param  null|Zend_Http_Client $httpClient
      */
-    public function __construct($options = null, Zend_Oauth_Consumer $consumer = null, Zend_Http_Client $httpClient = null)
+    public function __construct($options = null, ?Zend_Oauth_Consumer $consumer = null, ?Zend_Http_Client $httpClient = null)
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();

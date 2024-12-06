@@ -41,7 +41,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
      * @since LiveDocx 1.0
      */
     //const WSDL = 'https://api.livedocx.com/1.2/mailmerge.asmx?WSDL';
-    const WSDL = 'https://api.livedocx.com/2.0/mailmerge.asmx?WSDL';
+    public const WSDL = 'https://api.livedocx.com/2.0/mailmerge.asmx?WSDL';
 
     /**
      * Field values

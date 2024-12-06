@@ -116,6 +116,12 @@ class Zend_Http_Header_SetCookie
      * @var true
      */
     protected $httponly = null;
+    
+    /**
+     * 
+     * @var string
+     */
+    protected $sameSite = null;
 
     /**
      * Generate a new Cookie object from a cookie string
@@ -165,6 +171,7 @@ class Zend_Http_Header_SetCookie
                     case 'httponly': $header->setHttponly(true); break;
                     case 'version' : $header->setVersion((int) $headerValue); break;
                     case 'maxage'  : $header->setMaxAge((int) $headerValue); break;
+                    case 'samesite'  : $header->setSameSite($headerValue); break;
                     default:
                         // Intentionally omitted
                 }
@@ -186,11 +193,12 @@ class Zend_Http_Header_SetCookie
      * @param bool $httponly
      * @param string $maxAge
      * @param int $version
+     * @param string $sameSite
      * @return void
      * @todo Add validation of each one of the parameters (legal domain, etc.)
      *
      */
-    public function __construct($name = null, $value = null, $expires = null, $path = null, $domain = null, $secure = false, $httponly = false, $maxAge = null, $version = null)
+    public function __construct($name = null, $value = null, $expires = null, $path = null, $domain = null, $secure = false, $httponly = false, $maxAge = null, $version = null, $sameSite = null)
     {
         $this->type = 'Cookie';
 
@@ -229,6 +237,11 @@ class Zend_Http_Header_SetCookie
         if ($httponly) {
             $this->setHttponly($httponly);
         }
+        
+        if( !empty($sameSite) ) {
+            $this->setSameSite($sameSite);
+        }
+        
     }
 
     /**
@@ -288,6 +301,10 @@ class Zend_Http_Header_SetCookie
 
         if ($this->isHttponly()) {
             $fieldValue .= '; HttpOnly';
+        }
+        
+        if ($this->hasSameSiteValue()) {
+            $fieldValue .= '; SameSite=' . $this->getSameSite();
         }
 
         return $fieldValue;
@@ -445,7 +462,40 @@ class Zend_Http_Header_SetCookie
     {
         return $this->path;
     }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getSameSite() {
+        return $this->sameSite;
+    }
 
+    /**
+     * 
+     * @param string $sameSite
+     * @return void
+     */
+    public function setSameSite($sameSite) {
+        
+        $validOptions = ['Strict', 'Lax', 'None'];
+        
+        if( !in_array($sameSite, $validOptions)) {
+            throw new Zend_Http_Header_Exception_InvalidArgumentException('Invalid SameSite value, use one of: ' . implode(', ', $validOptions) );
+        }
+        
+        $this->sameSite = $sameSite;
+    }
+    
+    /**
+     * 
+     * @return bool
+     */
+    public function hasSameSiteValue(): bool {
+        return empty($this->getSameSite()) === FALSE;
+    }
+
+    
     /**
      * @param boolean $secure
      */

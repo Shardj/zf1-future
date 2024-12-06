@@ -45,7 +45,7 @@ class Zend_Gdata_App_CaptchaRequiredException extends Zend_Gdata_App_AuthExcepti
     /**
      * The Google Accounts URL prefix.
      */
-    const ACCOUNTS_URL = 'https://www.google.com/accounts/';
+    public const ACCOUNTS_URL = 'https://www.google.com/accounts/';
 
     /**
      * The token identifier from the server.

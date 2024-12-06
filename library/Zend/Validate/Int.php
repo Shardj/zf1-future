@@ -37,8 +37,8 @@ require_once 'Zend/Locale/Format.php';
  */
 class Zend_Validate_Int extends Zend_Validate_Abstract
 {
-    const INVALID = 'intInvalid';
-    const NOT_INT = 'notInt';
+    public const INVALID = 'intInvalid';
+    public const NOT_INT = 'notInt';
 
     /**
      * @var array
