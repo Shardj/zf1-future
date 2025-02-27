@@ -6163,12 +6163,6 @@ parameters:
 			path: library/Zend/Feed/Pubsubhubbub/HttpResponse.php
 
 		-
-			message: '#^Parameter \#2 \$value of method Zend_Feed_Pubsubhubbub_HttpResponse\:\:setHeader\(\) expects string, int\<0, max\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: library/Zend/Feed/Pubsubhubbub/HttpResponse.php
-
-		-
 			message: '#^Property Zend_Feed_Pubsubhubbub_Model_ModelAbstract\:\:\$_db \(Zend_Db_Table\) does not accept Zend_Db_Table_Abstract\.$#'
 			identifier: assign.propertyType
 			count: 1
@@ -6220,12 +6214,6 @@ parameters:
 			message: '#^Parameter \#1 \$haystack of function stripos expects string, bool given\.$#'
 			identifier: argument.type
 			count: 5
-			path: library/Zend/Feed/Pubsubhubbub/Subscriber/Callback.php
-
-		-
-			message: '#^Parameter \#2 \$value of method Zend_Feed_Pubsubhubbub_HttpResponse\:\:setHeader\(\) expects string, int given\.$#'
-			identifier: argument.type
-			count: 1
 			path: library/Zend/Feed/Pubsubhubbub/Subscriber/Callback.php
 
 		-
@@ -11715,18 +11703,6 @@ parameters:
 		-
 			message: '#^If condition is always false\.$#'
 			identifier: if.alwaysFalse
-			count: 1
-			path: library/Zend/Loader.php
-
-		-
-			message: '#^Negated boolean expression is always true\.$#'
-			identifier: booleanNot.alwaysTrue
-			count: 2
-			path: library/Zend/Loader.php
-
-		-
-			message: '#^Result of && is always true\.$#'
-			identifier: booleanAnd.alwaysTrue
 			count: 1
 			path: library/Zend/Loader.php
 
