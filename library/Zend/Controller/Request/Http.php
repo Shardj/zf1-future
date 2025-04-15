@@ -50,9 +50,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Allowed parameter sources
-     * @var array
      */
-    protected $_paramSources = ['_GET', '_POST'];
+    protected array $_paramSources = ['_GET', '_POST'];
 
     /**
      * REQUEST_URI
@@ -74,9 +73,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * PATH_INFO
-     * @var string
      */
-    protected $_pathInfo = '';
+    protected string $_pathInfo = '';
 
     /**
      * Instance parameters
@@ -92,9 +90,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Alias keys for request parameters
-     * @var array
      */
-    protected $_aliases = [];
+    protected array $_aliases = [];
 
     /**
      * Constructor
@@ -691,10 +688,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Get list of allowed parameter sources
-     *
-     * @return array
      */
-    public function getParamSources()
+    public function getParamSources() : array
     {
         return $this->_paramSources;
     }
@@ -751,10 +746,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * Retrieves a merged array of parameters, with precedence of userland
      * params (see {@link setParam()}), $_GET, $_POST (i.e., values in the
      * userland params will take precedence over all others).
-     *
-     * @return array
      */
-    public function getParams()
+    public function getParams() : array
     {
         $return       = $this->_params;
         $paramSources = $this->getParamSources();
@@ -859,10 +852,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Was the request made by GET?
-     *
-     * @return boolean
      */
-    public function isGet()
+    public function isGet() : bool
     {
         if ('GET' == $this->getMethod()) {
             return true;
@@ -873,10 +864,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Was the request made by PUT?
-     *
-     * @return boolean
      */
-    public function isPut()
+    public function isPut() : bool
     {
         if ('PUT' == $this->getMethod()) {
             return true;
@@ -887,10 +876,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Was the request made by DELETE?
-     *
-     * @return boolean
      */
-    public function isDelete()
+    public function isDelete() : bool
     {
         if ('DELETE' == $this->getMethod()) {
             return true;
@@ -901,10 +888,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Was the request made by HEAD?
-     *
-     * @return boolean
      */
-    public function isHead()
+    public function isHead() : bool
     {
         if ('HEAD' == $this->getMethod()) {
             return true;
@@ -915,10 +900,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Was the request made by OPTIONS?
-     *
-     * @return boolean
      */
-    public function isOptions()
+    public function isOptions() : bool
     {
         if ('OPTIONS' == $this->getMethod()) {
             return true;
@@ -929,10 +912,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Was the request made by PATCH?
-     *
-     * @return boolean
      */
-    public function isPatch()
+    public function isPatch() : bool
     {
         if ('PATCH' == $this->getMethod()) {
             return true;
@@ -955,10 +936,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Is this a Flash request?
-     *
-     * @return boolean
      */
-    public function isFlashRequest()
+    public function isFlashRequest() : bool
     {
         $header = strtolower($this->getHeader('USER_AGENT'));
         return (strstr($header, ' flash')) ? true : false;
@@ -966,10 +945,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Is https secure request
-     *
-     * @return boolean
      */
-    public function isSecure()
+    public function isSecure() : bool
     {
         return ($this->getScheme() === self::SCHEME_HTTPS);
     }
