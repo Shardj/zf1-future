@@ -29,9 +29,8 @@ abstract class Zend_Controller_Request_Abstract
 {
     /**
      * Has the action been dispatched?
-     * @var boolean
      */
-    protected $_dispatched = false;
+    protected bool $_dispatched = false;
 
     /**
      * Module
@@ -53,9 +52,8 @@ abstract class Zend_Controller_Request_Abstract
 
     /**
      * Controller key for retrieving controller from params
-     * @var string
      */
-    protected $_controllerKey = 'controller';
+    protected string $_controllerKey = 'controller';
 
     /**
      * Action
@@ -65,15 +63,13 @@ abstract class Zend_Controller_Request_Abstract
 
     /**
      * Action key for retrieving action from params
-     * @var string
      */
-    protected $_actionKey = 'action';
+    protected string $_actionKey = 'action';
 
     /**
      * Request parameters
-     * @var array
      */
-    protected $_params = [];
+    protected array $_params = [];
 
     /**
      * Retrieve the module name
@@ -208,7 +204,7 @@ abstract class Zend_Controller_Request_Abstract
      *
      * @return string
      */
-    public function getActionKey()
+    public function getActionKey() : string
     {
         return $this->_actionKey;
     }
@@ -292,10 +288,8 @@ abstract class Zend_Controller_Request_Abstract
 
     /**
      * Get all action parameters
-     *
-     * @return array
      */
-     public function getParams()
+     public function getParams() : array
      {
          return $this->_params;
      }
@@ -335,10 +329,9 @@ abstract class Zend_Controller_Request_Abstract
     /**
      * Set flag indicating whether or not request has been dispatched
      *
-     * @param boolean $flag
      * @return $this
      */
-    public function setDispatched($flag = true)
+    public function setDispatched(bool $flag = true)
     {
         $this->_dispatched = $flag ? true : false;
         return $this;
@@ -346,10 +339,8 @@ abstract class Zend_Controller_Request_Abstract
 
     /**
      * Determine if the request has been dispatched
-     *
-     * @return boolean
      */
-    public function isDispatched()
+    public function isDispatched() : bool
     {
         return $this->_dispatched;
     }
