@@ -78,9 +78,8 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * Instance parameters
-     * @var array
      */
-    protected $_params = [];
+    protected array $_params = [];
 
     /**
      * Raw request body
