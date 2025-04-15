@@ -24,6 +24,10 @@ return RectorConfig::configure()
         CodeQuality\Class_\CompleteDynamicPropertiesRector::class
     ])
     ->withSkip([
+        # see https://github.com/Shardj/zf1-future/pull/453
+        CodeQuality\Class_\CompleteDynamicPropertiesRector::class => [
+            __DIR__ . '/library/Zend/Pdf/Element.php',
+        ],
         Php53\FuncCall\DirNameFileConstantToDirConstantRector::class,
         Php53\Ternary\TernaryToElvisRector::class,
         Php54\Array_\LongArrayToShortArrayRector::class,
