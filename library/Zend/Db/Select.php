@@ -67,6 +67,7 @@ class Zend_Db_Select
     public const FULL_JOIN      = 'full join';
     public const CROSS_JOIN     = 'cross join';
     public const NATURAL_JOIN   = 'natural join';
+    public const STRAIGHT_JOIN  = 'straight_join';
 
     public const SQL_WILDCARD   = '*';
     public const SQL_SELECT     = 'SELECT';
@@ -157,6 +158,7 @@ class Zend_Db_Select
         self::FULL_JOIN,
         self::CROSS_JOIN,
         self::NATURAL_JOIN,
+        self::STRAIGHT_JOIN,
     ];
 
     /**
@@ -465,6 +467,30 @@ class Zend_Db_Select
     public function joinNatural($name, $cols = self::SQL_WILDCARD, $schema = null)
     {
         return $this->_join(self::NATURAL_JOIN, $name, null, $cols, $schema);
+    }
+
+    /**
+     * Add a STRAIGHT_JOIN table and columns to the query
+     * In MySQL an STRAIGHT_JOIN scans and combines matching rows
+     * (if specified any condition) which are stored in associated tables
+     * otherwise it behaves like an INNER JOIN or JOIN of without any condition.
+     * STRAIGHT_JOIN is similar to JOIN,
+     * except that the left table is always read before the right table.
+     * This can be used for those (few) cases for which the join optimizer
+     * puts the tables in the wrong order.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinStraight($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::STRAIGHT_JOIN, $name, $cond, $cols, $schema);
     }
 
     /**
