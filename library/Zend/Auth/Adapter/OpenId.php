@@ -115,11 +115,11 @@ class Zend_Auth_Adapter_OpenId implements Zend_Auth_Adapter_Interface
      *        object to perform HTTP or HTML form redirection
      */
     public function __construct($id = null,
-                                Zend_OpenId_Consumer_Storage $storage = null,
+                                ?Zend_OpenId_Consumer_Storage $storage = null,
                                 $returnTo = null,
                                 $root = null,
                                 $extensions = null,
-                                Zend_Controller_Response_Abstract $response = null) {
+                                ?Zend_Controller_Response_Abstract $response = null) {
         $this->_id         = $id;
         $this->_storage    = $storage;
         $this->_returnTo   = $returnTo;
@@ -227,7 +227,7 @@ class Zend_Auth_Adapter_OpenId implements Zend_Auth_Adapter_Interface
      * Defined by Zend_Auth_Adapter_Interface.
      *
      * @throws Zend_Auth_Adapter_Exception If answering the authentication query is impossible
-     * @return Zend_Auth_Result
+     * @return Zend_Auth_Result|void
      */
     public function authenticate() {
         $id = $this->_id;
@@ -279,5 +279,4 @@ class Zend_Auth_Adapter_OpenId implements Zend_Auth_Adapter_Interface
             }
         }
     }
-
 }

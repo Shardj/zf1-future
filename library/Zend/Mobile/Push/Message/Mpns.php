@@ -41,9 +41,9 @@ abstract class Zend_Mobile_Push_Message_Mpns extends Zend_Mobile_Push_Message_Ab
      *
      * @var string
      */
-    const TYPE_RAW = 'raw';
-    const TYPE_TILE = 'token';
-    const TYPE_TOAST = 'toast';
+    public const TYPE_RAW = 'raw';
+    public const TYPE_TILE = 'token';
+    public const TYPE_TOAST = 'toast';
 
     /**
      * Delay

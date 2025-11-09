@@ -6,6 +6,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.24.4] - 2025-06-26
+
+### Added
+
+* feat: Support for OS/2 table v4 by @wex in https://github.com/Shardj/zf1-future/pull/493
+* Adds Straight Join to Zend_Db_Select by @kazsaj in https://github.com/Shardj/zf1-future/pull/497
+
+### Fixed
+
+* Declare dynamic property to avoid error in PHP8.4 when Session is started by @vuvanly in https://github.com/Shardj/zf1-future/pull/496
+* Fix Zend_Pdf_Element regression by added $value prop by @onlime in https://github.com/Shardj/zf1-future/pull/490
+* Update fgetcsv call to specify $escape parameter due to deprecation by @DrRago in https://github.com/Shardj/zf1-future/pull/498
+
+## [1.24.3] - 2025-04-11
+
+### Added
+
+* Quality: add phpstan to checks by @sreichel in https://github.com/Shardj/zf1-future/pull/431
+* Made all E_STRICT uses conditional. by @boenrobot in https://github.com/Shardj/zf1-future/pull/485
+
+### Fixed
+
+* Fix placement of distinct in sqlsrv limit by @muuvmuuv in https://github.com/Shardj/zf1-future/pull/458
+* Fixed null deprecation in Zend/Pdf/Resource/Font/Simple by @kiatng in https://github.com/Shardj/zf1-future/pull/459
+* Fix str_replace null in Zend_Form_Element::_getErrorMessages() by @t-gebauer in https://github.com/Shardj/zf1-future/pull/460
+* Update HeaderValue.php by @icyz in https://github.com/Shardj/zf1-future/pull/463
+* fix Dojo ComboBox autocomplete param in declarative mode by @timum-viw in https://github.com/Shardj/zf1-future/pull/464
+* Updated Seiden PHP+ branding by @alanseiden in https://github.com/Shardj/zf1-future/pull/466
+* PHP-8.3.: fix decrement on bool by @sreichel in https://github.com/Shardj/zf1-future/pull/465
+
+* Fix deprecation notice when using AjaxContext by @robskr in https://github.com/Shardj/zf1-future/pull/469
+* Fixed bug #467: Added trait check in Zend_Loader to prevent Zend_Exce… by @sanhe in https://github.com/Shardj/zf1-future/pull/471
+* Update INSTALL.md fix requirements url by @gnovaro in https://github.com/Shardj/zf1-future/pull/472
+* Handle edge case for failed splitText in lucene Html.php by @GuillaumeCible in https://github.com/Shardj/zf1-future/pull/473
+* Fix phpstan errors by @sreichel in https://github.com/Shardj/zf1-future/pull/475
+* Fix #437 empty null parameter in Statement.php by @gnovaro in https://github.com/Shardj/zf1-future/pull/482
+* Fix Passing null to parameter 4 ($exptime) of type int is deprecated by @simonschaufi in https://github.com/Shardj/zf1-future/pull/476
+* Workaround for return type deprecation notice at PHP 8.4 by @alexgit2k in https://github.com/Shardj/zf1-future/pull/487
+* Fix: Passing null is deprecated in `Zend_Mail::_filterEmail()` by @sreichel in https://github.com/Shardj/zf1-future/pull/488
+
+
+## [1.24.2] - 2024-10-25
+
+### Fixed
+ Revert undefined property declarations #453 
+
+## [1.24.1] - 2024-10-15
+
+### Added
+
+* Added TLS v1.3 protocol by @ADDISON74 in https://github.com/Shardj/zf1-future/pull/447
+* Updated github workflow by @sreichel in https://github.com/Shardj/zf1-future/pull/445
+
+### Fixed
+
+* Fix for very slow chunk processing for larger content in the http res… by @aleksandar-mitrev in https://github.com/Shardj/zf1-future/pull/354
+* Add check in DbTable Authentication Adapter for empty results when AmbiguityIdentity is TRUE by @rruchte in https://github.com/Shardj/zf1-future/pull/419
+* Fix deprecation message in php8 with null param with realpath() by @tsmgeek in https://github.com/Shardj/zf1-future/pull/413
+* Fix deprecated usage of string functions in `BaseUrl` helper. by @muli in https://github.com/Shardj/zf1-future/pull/410
+* Support for PHP 8.2 by @Fredthelead in https://github.com/Shardj/zf1-future/pull/438
+* PHP8.4: Implicitly nullable by @sreichel in https://github.com/Shardj/zf1-future/pull/442
+* Skip broken PhpUnit tests by @sreichel in https://github.com/Shardj/zf1-future/pull/443
+* Update composer.json homepage property by @B3none in https://github.com/Shardj/zf1-future/pull/432
+* PHPStan fixes by @thomaslauria in https://github.com/Shardj/zf1-future/pull/434
+* Fix "Undefined variable $c" in Zend_XmlRpc_Server::setResponseClass() by @lapiudevgit in https://github.com/Shardj/zf1-future/pull/451
+* Fix PHP Deprecated: Creation of dynamic property $zfBreakChainOnFailure from Zend_Form_Element by @hung202028 in https://github.com/Shardj/zf1-future/pull/440
+
 ## [1.24.0] - 2024-02-05
 - introduced BREAKING CHANGES doc.
 

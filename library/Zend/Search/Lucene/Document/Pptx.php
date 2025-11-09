@@ -42,28 +42,28 @@ class Zend_Search_Lucene_Document_Pptx extends Zend_Search_Lucene_Document_OpenX
      *
      * @var string
      */
-    const SCHEMA_PRESENTATIONML = 'http://schemas.openxmlformats.org/presentationml/2006/main';
+    public const SCHEMA_PRESENTATIONML = 'http://schemas.openxmlformats.org/presentationml/2006/main';
 
     /**
      * Xml Schema - DrawingML
      *
      * @var string
      */
-    const SCHEMA_DRAWINGML = 'http://schemas.openxmlformats.org/drawingml/2006/main';
+    public const SCHEMA_DRAWINGML = 'http://schemas.openxmlformats.org/drawingml/2006/main';
 
     /**
      * Xml Schema - Slide relation
      *
      * @var string
      */
-    const SCHEMA_SLIDERELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide';
+    public const SCHEMA_SLIDERELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide';
 
     /**
      * Xml Schema - Slide notes relation
      *
      * @var string
      */
-    const SCHEMA_SLIDENOTESRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide';
+    public const SCHEMA_SLIDENOTESRELATION = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide';
 
     /**
      * Object constructor

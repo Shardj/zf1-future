@@ -43,28 +43,28 @@ require_once 'Zend/Validate.php';
 class Zend_Filter_Input
 {
 
-    const ALLOW_EMPTY           = 'allowEmpty';
-    const BREAK_CHAIN           = 'breakChainOnFailure';
-    const DEFAULT_VALUE         = 'default';
-    const MESSAGES              = 'messages';
-    const ESCAPE_FILTER         = 'escapeFilter';
-    const FIELDS                = 'fields';
-    const FILTER                = 'filter';
-    const FILTER_CHAIN          = 'filterChain';
-    const MISSING_MESSAGE       = 'missingMessage';
-    const INPUT_NAMESPACE       = 'inputNamespace';
-    const VALIDATOR_NAMESPACE   = 'validatorNamespace';
-    const FILTER_NAMESPACE      = 'filterNamespace';
-    const NOT_EMPTY_MESSAGE     = 'notEmptyMessage';
-    const PRESENCE              = 'presence';
-    const PRESENCE_OPTIONAL     = 'optional';
-    const PRESENCE_REQUIRED     = 'required';
-    const RULE                  = 'rule';
-    const RULE_WILDCARD         = '*';
-    const VALIDATE              = 'validate';
-    const VALIDATOR             = 'validator';
-    const VALIDATOR_CHAIN       = 'validatorChain';
-    const VALIDATOR_CHAIN_COUNT = 'validatorChainCount';
+    public const ALLOW_EMPTY           = 'allowEmpty';
+    public const BREAK_CHAIN           = 'breakChainOnFailure';
+    public const DEFAULT_VALUE         = 'default';
+    public const MESSAGES              = 'messages';
+    public const ESCAPE_FILTER         = 'escapeFilter';
+    public const FIELDS                = 'fields';
+    public const FILTER                = 'filter';
+    public const FILTER_CHAIN          = 'filterChain';
+    public const MISSING_MESSAGE       = 'missingMessage';
+    public const INPUT_NAMESPACE       = 'inputNamespace';
+    public const VALIDATOR_NAMESPACE   = 'validatorNamespace';
+    public const FILTER_NAMESPACE      = 'filterNamespace';
+    public const NOT_EMPTY_MESSAGE     = 'notEmptyMessage';
+    public const PRESENCE              = 'presence';
+    public const PRESENCE_OPTIONAL     = 'optional';
+    public const PRESENCE_REQUIRED     = 'required';
+    public const RULE                  = 'rule';
+    public const RULE_WILDCARD         = '*';
+    public const VALIDATE              = 'validate';
+    public const VALIDATOR             = 'validator';
+    public const VALIDATOR_CHAIN       = 'validatorChain';
+    public const VALIDATOR_CHAIN_COUNT = 'validatorChainCount';
 
     /**
      * @var array Input data, before processing.
@@ -162,7 +162,7 @@ class Zend_Filter_Input
      * @param array $data       OPTIONAL
      * @param array $options    OPTIONAL
      */
-    public function __construct($filterRules, $validatorRules, array $data = null, array $options = null)
+    public function __construct($filterRules, $validatorRules, ?array $data = null, ?array $options = null)
     {
         if ($options) {
             $this->setOptions($options);

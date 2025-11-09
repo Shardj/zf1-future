@@ -30,8 +30,8 @@ class Zend_Cache_Core
     /**
      * Messages
      */
-    const BACKEND_NOT_SUPPORTS_TAG = 'tags are not supported by the current backend';
-    const BACKEND_NOT_IMPLEMENTS_EXTENDED_IF = 'Current backend doesn\'t implement the Zend_Cache_Backend_ExtendedInterface, so this method is not available';
+    public const BACKEND_NOT_SUPPORTS_TAG = 'tags are not supported by the current backend';
+    public const BACKEND_NOT_IMPLEMENTS_EXTENDED_IF = 'Current backend doesn\'t implement the Zend_Cache_Backend_ExtendedInterface, so this method is not available';
 
     /**
      * Backend Object

@@ -36,19 +36,19 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Illumination extends Zend_Measure_Abstract
 {
-    const STANDARD = 'LUX';
+    public const STANDARD = 'LUX';
 
-    const FOOTCANDLE                  = 'FOOTCANDLE';
-    const KILOLUX                     = 'KILOLUX';
-    const LUMEN_PER_SQUARE_CENTIMETER = 'LUMEN_PER_SQUARE_CENTIMETER';
-    const LUMEN_PER_SQUARE_FOOT       = 'LUMEN_PER_SQUARE_FOOT';
-    const LUMEN_PER_SQUARE_INCH       = 'LUMEN_PER_SQUARE_INCH';
-    const LUMEN_PER_SQUARE_METER      = 'LUMEN_PER_SQUARE_METER';
-    const LUX                         = 'LUX';
-    const METERCANDLE                 = 'METERCANDLE';
-    const MILLIPHOT                   = 'MILLIPHOT';
-    const NOX                         = 'NOX';
-    const PHOT                        = 'PHOT';
+    public const FOOTCANDLE                  = 'FOOTCANDLE';
+    public const KILOLUX                     = 'KILOLUX';
+    public const LUMEN_PER_SQUARE_CENTIMETER = 'LUMEN_PER_SQUARE_CENTIMETER';
+    public const LUMEN_PER_SQUARE_FOOT       = 'LUMEN_PER_SQUARE_FOOT';
+    public const LUMEN_PER_SQUARE_INCH       = 'LUMEN_PER_SQUARE_INCH';
+    public const LUMEN_PER_SQUARE_METER      = 'LUMEN_PER_SQUARE_METER';
+    public const LUX                         = 'LUX';
+    public const METERCANDLE                 = 'METERCANDLE';
+    public const MILLIPHOT                   = 'MILLIPHOT';
+    public const NOX                         = 'NOX';
+    public const PHOT                        = 'PHOT';
 
     /**
      * Calculations for all illumination units

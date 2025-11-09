@@ -14,7 +14,7 @@ Creators of the [Tiger Development Platform](https://webtigers.com) featuring ZF
 
 <a href="https://seidengroup.com"><img src="https://www.seidengroup.com/wp-content/uploads/2017/03/SeidenLogo-180.png" alt="Seiden Group: IBM i modernization, PHP, Python, Node.js, and modern RPG" /></a>
 
-Creators of [CommunityPlus+ PHP for IBM i](https://www.seidengroup.com/communityplus-php-for-ibm-i/) featuring ZF1-Future
+Creators of [Seiden PHP+ for IBM i](https://www.seidengroup.com/seiden-php-for-ibm-i/) featuring ZF1-Future
 
 # ZF1 is Now Version 1.21!
 ### Over 200 updates and bug fixes since 1.12!

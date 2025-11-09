@@ -36,10 +36,10 @@ require_once 'Zend/Ldap/Node/Abstract.php';
  */
 class Zend_Ldap_Node_Schema extends Zend_Ldap_Node_Abstract
 {
-    const OBJECTCLASS_TYPE_UNKNOWN    = 0;
-    const OBJECTCLASS_TYPE_STRUCTURAL = 1;
-    const OBJECTCLASS_TYPE_ABSTRACT   = 3;
-    const OBJECTCLASS_TYPE_AUXILIARY  = 4;
+    public const OBJECTCLASS_TYPE_UNKNOWN    = 0;
+    public const OBJECTCLASS_TYPE_STRUCTURAL = 1;
+    public const OBJECTCLASS_TYPE_ABSTRACT   = 3;
+    public const OBJECTCLASS_TYPE_AUXILIARY  = 4;
 
     /**
      * Factory method to create the Schema node.

@@ -35,11 +35,11 @@ class Zend_Service_WindowsAzure_SessionHandler
 	 * @var int
 	 * @see http://msdn.microsoft.com/en-us/library/dd179338.aspx
 	 */
-	const MAX_TS_PROPERTY_SIZE = 65536;
+	public const MAX_TS_PROPERTY_SIZE = 65536;
 
 	/** Storage backend type */
-	const STORAGE_TYPE_TABLE = 'table';
-	const STORAGE_TYPE_BLOB = 'blob';
+	public const STORAGE_TYPE_TABLE = 'table';
+	public const STORAGE_TYPE_BLOB = 'blob';
 
     /**
      * Storage back-end

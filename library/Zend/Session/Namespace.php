@@ -47,7 +47,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
     /**
      * used as option to constructor to prevent additional instances to the same namespace
      */
-    const SINGLE_INSTANCE = true;
+    public const SINGLE_INSTANCE = true;
 
     /**
      * Namespace - which namespace this instance of zend-session is saving-to/getting-from

@@ -14,7 +14,7 @@ SYSTEM REQUIREMENTS
 Zend Framework requires PHP 5.2.11 or later. Please see the system requirements
 appendix for more detailed information:
 
-- http://framework.zend.com/manual/en/requirements.html
+- [https://framework.zend.com/manual/1.12/en/requirements.html](https://framework.zend.com/manual/1.12/en/requirements.html)
 
 DEVELOPMENT VERSIONS
 --------------------

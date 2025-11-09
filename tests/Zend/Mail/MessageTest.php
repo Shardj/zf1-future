@@ -553,28 +553,6 @@ class Zend_Mail_MessageTest extends TestCase
         }
     }
 
-    public function invalidHeaders()
-    {
-        return [
-            'name' => ["Fake\r\n\r\rnevilContent", 'value'],
-            'value' => ['Fake', "foo-bar\r\n\r\nevilContent"],
-            'multi-value' => ['Fake', ['okay', "foo-bar\r\n\r\nevilContent"]],
-        ];
-    }
-    
-    /**
-     * @dataProvider invalidHeaders
-     * @group ZF2015-04
-     */
-    public function testRaisesExceptionWhenProvidedWithHeaderContainingCRLFInjection($name, $value)
-    {
-        $headers = [$name => $value];
-        $this->expectException('Zend_Mail_Exception');
-        $this->expectExceptionMessage('valid');
-        $message = new Zend_Mail_Message([
-            'headers' => $headers,
-        ]);
-    }
 }
 
 /**

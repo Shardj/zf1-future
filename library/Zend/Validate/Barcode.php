@@ -37,10 +37,10 @@ require_once 'Zend/Loader.php';
  */
 class Zend_Validate_Barcode extends Zend_Validate_Abstract
 {
-    const INVALID        = 'barcodeInvalid';
-    const FAILED         = 'barcodeFailed';
-    const INVALID_CHARS  = 'barcodeInvalidChars';
-    const INVALID_LENGTH = 'barcodeInvalidLength';
+    public const INVALID        = 'barcodeInvalid';
+    public const FAILED         = 'barcodeFailed';
+    public const INVALID_CHARS  = 'barcodeInvalidChars';
+    public const INVALID_LENGTH = 'barcodeInvalidLength';
 
     protected $_messageTemplates = [
         self::FAILED         => "'%value%' failed checksum validation",

@@ -44,7 +44,7 @@ class Zend_Gdata_HttpAdapterStreamingSocket extends Zend_Http_Client_Adapter_Soc
      *
      * @var integer
      */
-    const CHUNK_SIZE = 1024;
+    public const CHUNK_SIZE = 1024;
 
     /**
      * Send request to the remote server with streaming support.

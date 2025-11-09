@@ -37,7 +37,7 @@
 interface Zend_Cloud_DocumentService_Adapter
 {
     // HTTP adapter to use for connections
-    const HTTP_ADAPTER = 'http_adapter';
+    public const HTTP_ADAPTER = 'http_adapter';
 
     /**
      * Create collection.
@@ -72,7 +72,7 @@ interface Zend_Cloud_DocumentService_Adapter
      * @param  null|array $options
      * @return Zend_Cloud_DocumentService_DocumentSet
      */
-    public function listDocuments($collectionName, array $options = null);
+    public function listDocuments($collectionName, ?array $options = null);
 
     /**
      * Insert document

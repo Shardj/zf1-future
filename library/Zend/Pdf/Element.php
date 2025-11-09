@@ -26,17 +26,19 @@
  * @package    Zend_Pdf
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @property mixed $value see https://github.com/Shardj/zf1-future/pull/453
  */
 abstract class Zend_Pdf_Element
 {
-    const TYPE_BOOL        = 1;
-    const TYPE_NUMERIC     = 2;
-    const TYPE_STRING      = 3;
-    const TYPE_NAME        = 4;
-    const TYPE_ARRAY       = 5;
-    const TYPE_DICTIONARY  = 6;
-    const TYPE_STREAM      = 7;
-    const TYPE_NULL        = 11;
+    public const TYPE_BOOL        = 1;
+    public const TYPE_NUMERIC     = 2;
+    public const TYPE_STRING      = 3;
+    public const TYPE_NAME        = 4;
+    public const TYPE_ARRAY       = 5;
+    public const TYPE_DICTIONARY  = 6;
+    public const TYPE_STREAM      = 7;
+    public const TYPE_NULL        = 11;
 
     /**
      * Reference to the top level indirect object, which contains this element.
@@ -64,8 +66,8 @@ abstract class Zend_Pdf_Element
      */
     abstract public function toString($factory = null);
 
-    const CLONE_MODE_SKIP_PAGES    = 1; // Do not follow pages during deep copy process
-    const CLONE_MODE_FORCE_CLONING = 2; // Force top level object cloning even it's already processed
+    public const CLONE_MODE_SKIP_PAGES    = 1; // Do not follow pages during deep copy process
+    public const CLONE_MODE_FORCE_CLONING = 2; // Force top level object cloning even it's already processed
 
     /**
      * Detach PDF object from the factory (if applicable), clone it and attach to new factory.

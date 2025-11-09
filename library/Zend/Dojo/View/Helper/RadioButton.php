@@ -62,7 +62,7 @@ class Zend_Dojo_View_Helper_RadioButton extends Zend_Dojo_View_Helper_Dijit
         $value = null,
         array $params = [],
         array $attribs = [],
-        array $options = null,
+        ?array $options = null,
         $listsep = "<br />\n"
     ) {
         $attribs['name'] = $id;

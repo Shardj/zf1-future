@@ -44,56 +44,57 @@ require_once 'Zend/Db/Expr.php';
 class Zend_Db_Select
 {
 
-    const DISTINCT       = 'distinct';
-    const COLUMNS        = 'columns';
-    const FROM           = 'from';
-    const UNION          = 'union';
-    const WHERE          = 'where';
-    const GROUP          = 'group';
-    const HAVING         = 'having';
-    const ORDER          = 'order';
-    const LIMIT_COUNT    = 'limitcount';
-    const LIMIT_OFFSET   = 'limitoffset';
-    const FOR_UPDATE     = 'forupdate';
-    const FOR_UPDATE_MODE = 'forupdatemode';
+    public const DISTINCT       = 'distinct';
+    public const COLUMNS        = 'columns';
+    public const FROM           = 'from';
+    public const UNION          = 'union';
+    public const WHERE          = 'where';
+    public const GROUP          = 'group';
+    public const HAVING         = 'having';
+    public const ORDER          = 'order';
+    public const LIMIT_COUNT    = 'limitcount';
+    public const LIMIT_OFFSET   = 'limitoffset';
+    public const FOR_UPDATE     = 'forupdate';
+    public const FOR_UPDATE_MODE = 'forupdatemode';
 
     // FOR_UPDATE MODES
-    CONST FU_MODE_NOWAIT = 'nowait';
-    CONST FU_MODE_SKIP   = 'skiplocked';
+    public CONST FU_MODE_NOWAIT = 'nowait';
+    public CONST FU_MODE_SKIP   = 'skiplocked';
 
-    const INNER_JOIN     = 'inner join';
-    const LEFT_JOIN      = 'left join';
-    const RIGHT_JOIN     = 'right join';
-    const FULL_JOIN      = 'full join';
-    const CROSS_JOIN     = 'cross join';
-    const NATURAL_JOIN   = 'natural join';
+    public const INNER_JOIN     = 'inner join';
+    public const LEFT_JOIN      = 'left join';
+    public const RIGHT_JOIN     = 'right join';
+    public const FULL_JOIN      = 'full join';
+    public const CROSS_JOIN     = 'cross join';
+    public const NATURAL_JOIN   = 'natural join';
+    public const STRAIGHT_JOIN  = 'straight_join';
 
-    const SQL_WILDCARD   = '*';
-    const SQL_SELECT     = 'SELECT';
-    const SQL_UNION      = 'UNION';
-    const SQL_UNION_ALL  = 'UNION ALL';
-    const SQL_FROM       = 'FROM';
-    const SQL_WHERE      = 'WHERE';
-    const SQL_DISTINCT   = 'DISTINCT';
-    const SQL_GROUP_BY   = 'GROUP BY';
-    const SQL_ORDER_BY   = 'ORDER BY';
-    const SQL_HAVING     = 'HAVING';
-    const SQL_FOR_UPDATE = 'FOR UPDATE';
-    const SQL_FU_NOWAIT  = 'NOWAIT';
-    const SQL_FU_SKIP    = 'SKIP LOCKED';
-    const SQL_AND        = 'AND';
-    const SQL_AS         = 'AS';
-    const SQL_OR         = 'OR';
-    const SQL_ON         = 'ON';
-    const SQL_ASC        = 'ASC';
-    const SQL_DESC       = 'DESC';
+    public const SQL_WILDCARD   = '*';
+    public const SQL_SELECT     = 'SELECT';
+    public const SQL_UNION      = 'UNION';
+    public const SQL_UNION_ALL  = 'UNION ALL';
+    public const SQL_FROM       = 'FROM';
+    public const SQL_WHERE      = 'WHERE';
+    public const SQL_DISTINCT   = 'DISTINCT';
+    public const SQL_GROUP_BY   = 'GROUP BY';
+    public const SQL_ORDER_BY   = 'ORDER BY';
+    public const SQL_HAVING     = 'HAVING';
+    public const SQL_FOR_UPDATE = 'FOR UPDATE';
+    public const SQL_FU_NOWAIT  = 'NOWAIT';
+    public const SQL_FU_SKIP    = 'SKIP LOCKED';
+    public const SQL_AND        = 'AND';
+    public const SQL_AS         = 'AS';
+    public const SQL_OR         = 'OR';
+    public const SQL_ON         = 'ON';
+    public const SQL_ASC        = 'ASC';
+    public const SQL_DESC       = 'DESC';
 
-    const REGEX_COLUMN_EXPR       = '/^([\w]*\s*\(([^\(\)]|(?1))*\))$/';
-    const REGEX_COLUMN_EXPR_ORDER = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
-    const REGEX_COLUMN_EXPR_GROUP = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
+    public const REGEX_COLUMN_EXPR       = '/^([\w]*\s*\(([^\(\)]|(?1))*\))$/';
+    public const REGEX_COLUMN_EXPR_ORDER = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
+    public const REGEX_COLUMN_EXPR_GROUP = '/^([\w]+\s*\(([^\(\)]|(?1))*\))$/';
 
     // @see http://stackoverflow.com/a/13823184/2028814
-    const REGEX_SQL_COMMENTS      = '@
+    public const REGEX_SQL_COMMENTS      = '@
     (([\'"]).*?[^\\\]\2) # $1 : Skip single & double quoted expressions
     |(                   # $3 : Match comments
         (?:\#|--).*?$    # - Single line comments
@@ -157,6 +158,7 @@ class Zend_Db_Select
         self::FULL_JOIN,
         self::CROSS_JOIN,
         self::NATURAL_JOIN,
+        self::STRAIGHT_JOIN,
     ];
 
     /**
@@ -465,6 +467,30 @@ class Zend_Db_Select
     public function joinNatural($name, $cols = self::SQL_WILDCARD, $schema = null)
     {
         return $this->_join(self::NATURAL_JOIN, $name, null, $cols, $schema);
+    }
+
+    /**
+     * Add a STRAIGHT_JOIN table and columns to the query
+     * In MySQL an STRAIGHT_JOIN scans and combines matching rows
+     * (if specified any condition) which are stored in associated tables
+     * otherwise it behaves like an INNER JOIN or JOIN of without any condition.
+     * STRAIGHT_JOIN is similar to JOIN,
+     * except that the left table is always read before the right table.
+     * This can be used for those (few) cases for which the join optimizer
+     * puts the tables in the wrong order.
+     *
+     * The $name and $cols parameters follow the same logic
+     * as described in the from() method.
+     *
+     * @param  array|string|Zend_Db_Expr $name The table name.
+     * @param  string $cond Join on this condition.
+     * @param  array|string $cols The columns to select from the joined table.
+     * @param  string $schema The database name to specify, if any.
+     * @return Zend_Db_Select This Zend_Db_Select object.
+     */
+    public function joinStraight($name, $cond, $cols = self::SQL_WILDCARD, $schema = null)
+    {
+        return $this->_join(self::STRAIGHT_JOIN, $name, $cond, $cols, $schema);
     }
 
     /**

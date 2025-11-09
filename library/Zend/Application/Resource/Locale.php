@@ -39,7 +39,7 @@ require_once 'Zend/Application/Resource/ResourceAbstract.php';
 class Zend_Application_Resource_Locale
     extends Zend_Application_Resource_ResourceAbstract
 {
-    const DEFAULT_REGISTRY_KEY = 'Zend_Locale';
+    public const DEFAULT_REGISTRY_KEY = 'Zend_Locale';
 
     /**
      * @var Zend_Locale

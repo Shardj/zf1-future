@@ -24,10 +24,10 @@ require_once 'Zend/Service/Rackspace/Servers.php';
 
 class Zend_Service_Rackspace_Servers_SharedIpGroup
 {
-    const ERROR_PARAM_CONSTRUCT  = 'You must pass a Zend_Service_Rackspace_Servers object and an array';
-    const ERROR_PARAM_NO_NAME    = 'You must pass the image\'s name in the array (name)';
-    const ERROR_PARAM_NO_ID      = 'You must pass the image\'s id in the array (id)';
-    const ERROR_PARAM_NO_SERVERS = 'The servers parameter must be an array of Ids';
+    public const ERROR_PARAM_CONSTRUCT  = 'You must pass a Zend_Service_Rackspace_Servers object and an array';
+    public const ERROR_PARAM_NO_NAME    = 'You must pass the image\'s name in the array (name)';
+    public const ERROR_PARAM_NO_ID      = 'You must pass the image\'s id in the array (id)';
+    public const ERROR_PARAM_NO_SERVERS = 'The servers parameter must be an array of Ids';
     /**
      * Name of the shared IP group
      *
@@ -146,7 +146,7 @@ class Zend_Service_Rackspace_Servers_SharedIpGroup
      */
     public function createServer(array $data, $metadata=[],$files=[])
     {
-        $data['sharedIpGroupId']= (integer) $this->id;
+        $data['sharedIpGroupId']= (int) $this->id;
         return $this->service->createServer($data,$metadata,$files);
     }
     /**

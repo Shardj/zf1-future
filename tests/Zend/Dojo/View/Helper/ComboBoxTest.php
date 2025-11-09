@@ -153,6 +153,88 @@ class Zend_Dojo_View_Helper_ComboBoxTest extends TestCase
         $this->assertMatchesRegularExpression('/<select[^>]*(dojoType="dijit.form.ComboBox")/', $html, $html);
     }
 
+    public function testShouldAllowDeclarativeDijitCreationAsSelectWithoutAutocomplete()
+    {
+        $html = $this->helper->comboBox(
+            'elementId',
+            'someCombo',
+            [
+                'autocomplete' => false,
+            ],
+            [],
+            [
+                'red' => 'Rouge',
+                'blue' => 'Bleu',
+                'white' => 'Blanc',
+                'orange' => 'Orange',
+                'black' => 'Noir',
+                'green' => 'Vert',
+            ]
+        );
+        $this->assertStringContainsString('autocomplete="false"', $html);
+    }
+
+    public function testShouldAllowProgrammaticDijitCreationAsSelectWithoutAutocomplete()
+    {
+        Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
+        $html = $this->helper->comboBox(
+            'elementId',
+            'someCombo',
+            [
+                'autocomplete' => false,
+            ],
+            [],
+            [
+                'red' => 'Rouge',
+                'blue' => 'Bleu',
+                'white' => 'Blanc',
+                'orange' => 'Orange',
+                'black' => 'Noir',
+                'green' => 'Vert',
+            ]
+        );
+        $dijit = $this->view->dojo()->getDijit('elementId');
+        $this->assertNotNull($dijit);
+        $this->assertArrayHasKey('autocomplete', $dijit);
+        $this->assertEquals('false', $dijit['autocomplete']);
+    }
+
+    public function testShouldAllowDeclarativeDijitCreationAsRemoterWithoutAutocomplete()
+    {
+        $html = $this->helper->comboBox(
+            'elementId',
+            'someCombo',
+            [
+                'store' => 'stateStore',
+                'storeType' => 'dojo.data.ItemFileReadStore',
+                'storeParams' => ['url' => 'states.txt'],
+                'searchAttr' => 'name',
+                'autocomplete' => false,
+            ]
+        );
+        $this->assertStringContainsString('autocomplete="false"', $html);
+    }
+
+    public function testShouldAllowProgrammaticDijitCreationAsRemoterWithoutAutocomplete()
+    {
+        Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();
+        $html = $this->helper->comboBox(
+            'elementId',
+            'someCombo',
+            [
+                'store' => 'stateStore',
+                'storeType' => 'dojo.data.ItemFileReadStore',
+                'storeParams' => ['url' => 'states.txt'],
+                'searchAttr' => 'name',
+                'autocomplete' => false,
+            ]
+        );
+        $dijit = $this->view->dojo()->getDijit('elementId');
+        $this->assertNotNull($dijit);
+        $this->assertArrayHasKey('autocomplete', $dijit);
+        $this->assertEquals('false', $dijit['autocomplete']);
+    }
+
     public function testShouldAllowProgrammaticDijitCreationAsSelect()
     {
         Zend_Dojo_View_Helper_Dojo::setUseProgrammatic();

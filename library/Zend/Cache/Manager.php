@@ -36,12 +36,12 @@ class Zend_Cache_Manager
     /**
      * Constant holding reserved name for default Page Cache
      */
-    const PAGECACHE = 'page';
+    public const PAGECACHE = 'page';
 
     /**
      * Constant holding reserved name for default Page Tag Cache
      */
-    const PAGETAGCACHE = 'pagetag';
+    public const PAGETAGCACHE = 'pagetag';
 
     /**
      * Array of caches stored by the Cache Manager instance

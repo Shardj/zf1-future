@@ -36,23 +36,23 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Lightness extends Zend_Measure_Abstract
 {
-    const STANDARD = 'CANDELA_PER_SQUARE_METER';
+    public const STANDARD = 'CANDELA_PER_SQUARE_METER';
 
-    const APOSTILB                          = 'APOSTILB';
-    const BLONDEL                           = 'BLONDEL';
-    const CANDELA_PER_SQUARE_CENTIMETER     = 'CANDELA_PER_SQUARE_CENTIMETER';
-    const CANDELA_PER_SQUARE_FOOT           = 'CANDELA_PER_SQUARE_FOOT';
-    const CANDELA_PER_SQUARE_INCH           = 'CANDELA_PER_SQUARE_INCH';
-    const CANDELA_PER_SQUARE_METER          = 'CANDELA_PER_SQUARE_METER';
-    const FOOTLAMBERT                       = 'FOOTLAMBERT';
-    const KILOCANDELA_PER_SQUARE_CENTIMETER = 'KILOCANDELA_PER_SQUARE_CENTIMETER';
-    const KILOCANDELA_PER_SQUARE_FOOT       = 'KILOCANDELA_PER_SQUARE_FOOT';
-    const KILOCANDELA_PER_SQUARE_INCH       = 'KILOCANDELA_PER_SQUARE_INCH';
-    const KILOCANDELA_PER_SQUARE_METER      = 'KILOCANDELA_PER_SQUARE_METER';
-    const LAMBERT                           = 'LAMBERT';
-    const MILLILAMBERT                      = 'MILLILAMBERT';
-    const NIT                               = 'NIT';
-    const STILB                             = 'STILB';
+    public const APOSTILB                          = 'APOSTILB';
+    public const BLONDEL                           = 'BLONDEL';
+    public const CANDELA_PER_SQUARE_CENTIMETER     = 'CANDELA_PER_SQUARE_CENTIMETER';
+    public const CANDELA_PER_SQUARE_FOOT           = 'CANDELA_PER_SQUARE_FOOT';
+    public const CANDELA_PER_SQUARE_INCH           = 'CANDELA_PER_SQUARE_INCH';
+    public const CANDELA_PER_SQUARE_METER          = 'CANDELA_PER_SQUARE_METER';
+    public const FOOTLAMBERT                       = 'FOOTLAMBERT';
+    public const KILOCANDELA_PER_SQUARE_CENTIMETER = 'KILOCANDELA_PER_SQUARE_CENTIMETER';
+    public const KILOCANDELA_PER_SQUARE_FOOT       = 'KILOCANDELA_PER_SQUARE_FOOT';
+    public const KILOCANDELA_PER_SQUARE_INCH       = 'KILOCANDELA_PER_SQUARE_INCH';
+    public const KILOCANDELA_PER_SQUARE_METER      = 'KILOCANDELA_PER_SQUARE_METER';
+    public const LAMBERT                           = 'LAMBERT';
+    public const MILLILAMBERT                      = 'MILLILAMBERT';
+    public const NIT                               = 'NIT';
+    public const STILB                             = 'STILB';
 
     /**
      * Calculations for all lightness units

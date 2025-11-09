@@ -55,35 +55,35 @@ class Zend_Service_SlideShare
     /**
      * Web service result code mapping
      */
-    const SERVICE_ERROR_BAD_APIKEY       = 1;
-    const SERVICE_ERROR_BAD_AUTH         = 2;
-    const SERVICE_ERROR_MISSING_TITLE    = 3;
-    const SERVICE_ERROR_MISSING_FILE     = 4;
-    const SERVICE_ERROR_EMPTY_TITLE      = 5;
-    const SERVICE_ERROR_NOT_SOURCEOBJ    = 6;
-    const SERVICE_ERROR_INVALID_EXT      = 7;
-    const SERVICE_ERROR_FILE_TOO_BIG     = 8;
-    const SERVICE_ERROR_SHOW_NOT_FOUND   = 9;
-    const SERVICE_ERROR_USER_NOT_FOUND   = 10;
-    const SERVICE_ERROR_GROUP_NOT_FOUND  = 11;
-    const SERVICE_ERROR_MISSING_TAG      = 12;
-    const SERVICE_ERROR_DAILY_LIMIT      = 99;
-    const SERVICE_ERROR_ACCOUNT_BLOCKED  = 100;
+    public const SERVICE_ERROR_BAD_APIKEY       = 1;
+    public const SERVICE_ERROR_BAD_AUTH         = 2;
+    public const SERVICE_ERROR_MISSING_TITLE    = 3;
+    public const SERVICE_ERROR_MISSING_FILE     = 4;
+    public const SERVICE_ERROR_EMPTY_TITLE      = 5;
+    public const SERVICE_ERROR_NOT_SOURCEOBJ    = 6;
+    public const SERVICE_ERROR_INVALID_EXT      = 7;
+    public const SERVICE_ERROR_FILE_TOO_BIG     = 8;
+    public const SERVICE_ERROR_SHOW_NOT_FOUND   = 9;
+    public const SERVICE_ERROR_USER_NOT_FOUND   = 10;
+    public const SERVICE_ERROR_GROUP_NOT_FOUND  = 11;
+    public const SERVICE_ERROR_MISSING_TAG      = 12;
+    public const SERVICE_ERROR_DAILY_LIMIT      = 99;
+    public const SERVICE_ERROR_ACCOUNT_BLOCKED  = 100;
 
     /**
      * Slide share Web service communication URIs
      */
-    const SERVICE_UPLOAD_URI            = 'https://www.slideshare.net/api/2/upload_slideshow';
-    const SERVICE_GET_SHOW_URI          = 'https://www.slideshare.net/api/2/get_slideshow';
-    const SERVICE_GET_SHOW_BY_USER_URI  = 'https://www.slideshare.net/api/2/get_slideshows_by_user';
-    const SERVICE_GET_SHOW_BY_TAG_URI   = 'https://www.slideshare.net/api/2/get_slideshows_by_tag';
-    const SERVICE_GET_SHOW_BY_GROUP_URI = 'https://www.slideshare.net/api/2/get_slideshows_by_group';
+    public const SERVICE_UPLOAD_URI            = 'https://www.slideshare.net/api/2/upload_slideshow';
+    public const SERVICE_GET_SHOW_URI          = 'https://www.slideshare.net/api/2/get_slideshow';
+    public const SERVICE_GET_SHOW_BY_USER_URI  = 'https://www.slideshare.net/api/2/get_slideshows_by_user';
+    public const SERVICE_GET_SHOW_BY_TAG_URI   = 'https://www.slideshare.net/api/2/get_slideshows_by_tag';
+    public const SERVICE_GET_SHOW_BY_GROUP_URI = 'https://www.slideshare.net/api/2/get_slideshows_by_group';
 
     /**
      * The MIME type of Slideshow files
      *
      */
-    const POWERPOINT_MIME_TYPE = "application/vnd.ms-powerpoint";
+    public const POWERPOINT_MIME_TYPE = "application/vnd.ms-powerpoint";
 
     /**
      * The API key to use in requests

@@ -51,22 +51,22 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
     /**
      * Size representing an A4 page in portrait (tall) orientation.
      */
-    const SIZE_A4                = '595:842:';
+    public const SIZE_A4                = '595:842:';
 
     /**
      * Size representing an A4 page in landscape (wide) orientation.
      */
-    const SIZE_A4_LANDSCAPE      = '842:595:';
+    public const SIZE_A4_LANDSCAPE      = '842:595:';
 
     /**
      * Size representing a US Letter page in portrait (tall) orientation.
      */
-    const SIZE_LETTER            = '612:792:';
+    public const SIZE_LETTER            = '612:792:';
 
     /**
      * Size representing a US Letter page in landscape (wide) orientation.
      */
-    const SIZE_LETTER_LANDSCAPE  = '792:612:';
+    public const SIZE_LETTER_LANDSCAPE  = '792:612:';
 
 
   /* Shape Drawing */
@@ -74,17 +74,17 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
     /**
      * Stroke the path only. Do not fill.
      */
-    const SHAPE_DRAW_STROKE      = 0;
+    public const SHAPE_DRAW_STROKE      = 0;
 
     /**
      * Fill the path only. Do not stroke.
      */
-    const SHAPE_DRAW_FILL        = 1;
+    public const SHAPE_DRAW_FILL        = 1;
 
     /**
      * Fill and stroke the path.
      */
-    const SHAPE_DRAW_FILL_AND_STROKE = 2;
+    public const SHAPE_DRAW_FILL_AND_STROKE = 2;
 
 
   /* Shape Filling Methods */
@@ -92,12 +92,12 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
     /**
      * Fill the path using the non-zero winding rule.
      */
-    const FILL_METHOD_NON_ZERO_WINDING = 0;
+    public const FILL_METHOD_NON_ZERO_WINDING = 0;
 
     /**
      * Fill the path using the even-odd rule.
      */
-    const FILL_METHOD_EVEN_ODD        = 1;
+    public const FILL_METHOD_EVEN_ODD        = 1;
 
 
   /* Line Dash Types */
@@ -105,7 +105,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
     /**
      * Solid line dash.
      */
-    const LINE_DASHING_SOLID = 0;
+    public const LINE_DASHING_SOLID = 0;
 
 
 

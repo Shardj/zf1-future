@@ -69,13 +69,13 @@ abstract class Zend_Translate_Adapter {
      * Scans for the locale within the name of the directory
      * @constant integer
      */
-    const LOCALE_DIRECTORY = 'directory';
+    public const LOCALE_DIRECTORY = 'directory';
 
     /**
      * Scans for the locale within the name of the file
      * @constant integer
      */
-    const LOCALE_FILENAME  = 'filename';
+    public const LOCALE_FILENAME  = 'filename';
 
     /**
      * Array with all options, each adapter can have own additional options
@@ -350,11 +350,18 @@ abstract class Zend_Translate_Adapter {
         foreach ($options as $key => $option) {
             if ($key == 'locale') {
                 $locale = $option;
-            } else if ((isset($this->_options[$key]) && ($this->_options[$key] != $option)) ||
+            } else if ((isset($this->_options[$key]) && ($this->_options[$key] !== $option)) ||
                     !isset($this->_options[$key])) {
                 if (($key == 'log') && !($option instanceof Zend_Log)) {
                     require_once 'Zend/Translate/Exception.php';
                     throw new Zend_Translate_Exception('Instance of Zend_Log expected for option log');
+                }
+
+                if (isset($this->_options[$key])
+                    && (is_object($this->_options[$key]) && is_object($option))
+                    && (sha1(serialize($this->_options[$key])) == sha1(serialize($option)))
+                ) {
+                    continue;
                 }
 
                 if ($key == 'cache') {

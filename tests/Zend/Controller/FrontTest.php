@@ -749,7 +749,7 @@ class Zend_Controller_FrontTest extends TestCase
         } else {
             $this->assertEquals("EXCEPTION_OTHER\nIndexController::produceTypeError(): Return value must be of type IndexController, stdClass returned", $body);
         }
-        
+
         $this->assertSame(500, $this->_controller->getResponse()->getHttpResponseCode());
     }
 

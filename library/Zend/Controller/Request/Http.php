@@ -40,13 +40,13 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      * Scheme for http
      *
      */
-    const SCHEME_HTTP  = 'http';
+    public const SCHEME_HTTP  = 'http';
 
     /**
      * Scheme for https
      *
      */
-    const SCHEME_HTTPS = 'https';
+    public const SCHEME_HTTPS = 'https';
 
     /**
      * Allowed parameter sources

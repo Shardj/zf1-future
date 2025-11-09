@@ -591,26 +591,30 @@ class Zend_Http_Response
     public static function decodeChunkedBody($body)
     {
         $decBody = '';
+        $offset = 0;
 
         // If mbstring overloads substr and strlen functions, we have to
         // override it's internal encoding
         if (function_exists('mb_internal_encoding') &&
            ((int) ini_get('mbstring.func_overload')) & 2) {
-
             $mbIntEnc = mb_internal_encoding();
             mb_internal_encoding('ASCII');
         }
 
-        while (trim($body)) {
-            if (! preg_match("/^([\da-fA-F]+)[^\r\n]*\r\n/sm", $body, $m)) {
-                require_once 'Zend/Http/Exception.php';
-                throw new Zend_Http_Exception("Error parsing body - doesn't seem to be a chunked message");
+        while (true) {
+            if (! preg_match("/^([\da-fA-F]+)[^\r\n]*\r\n/sm", $body, $m, 0, $offset)) {
+                if (trim(substr($body, $offset))) {
+                    require_once 'Zend/Http/Exception.php';
+                    throw new Zend_Http_Exception("Error parsing body - doesn't seem to be a chunked message");
+                }
+                // Message was consumed completely
+                break;
             }
 
-            $length = hexdec(trim($m[1]));
-            $cut = strlen($m[0]);
-            $decBody .= substr($body, $cut, $length);
-            $body = substr($body, $cut + $length + 2);
+            $length   = hexdec(trim($m[1]));
+            $cut      = strlen($m[0]);
+            $decBody .= substr($body, $offset + $cut, $length);
+            $offset += $cut + $length + 2;
         }
 
         if (isset($mbIntEnc)) {

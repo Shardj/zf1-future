@@ -40,8 +40,8 @@ require_once 'Zend/Ldap/Filter/String.php';
  */
 abstract class Zend_Ldap_Filter_Logical extends Zend_Ldap_Filter_Abstract
 {
-    const TYPE_AND = '&';
-    const TYPE_OR  = '|';
+    public const TYPE_AND = '&';
+    public const TYPE_OR  = '|';
 
     /**
      * All the sub-filters for this grouping filter.

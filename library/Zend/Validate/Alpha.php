@@ -32,9 +32,9 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_Alpha extends Zend_Validate_Abstract
 {
-    const INVALID      = 'alphaInvalid';
-    const NOT_ALPHA    = 'notAlpha';
-    const STRING_EMPTY = 'alphaStringEmpty';
+    public const INVALID      = 'alphaInvalid';
+    public const NOT_ALPHA    = 'notAlpha';
+    public const STRING_EMPTY = 'alphaStringEmpty';
 
     /**
      * Whether to allow white space characters; off by default
@@ -81,7 +81,7 @@ class Zend_Validate_Alpha extends Zend_Validate_Abstract
             }
         }
 
-        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        $this->allowWhiteSpace = (bool) $allowWhiteSpace;
     }
 
     /**
@@ -102,7 +102,7 @@ class Zend_Validate_Alpha extends Zend_Validate_Abstract
      */
     public function setAllowWhiteSpace($allowWhiteSpace)
     {
-        $this->allowWhiteSpace = (boolean) $allowWhiteSpace;
+        $this->allowWhiteSpace = (bool) $allowWhiteSpace;
         return $this;
     }
 

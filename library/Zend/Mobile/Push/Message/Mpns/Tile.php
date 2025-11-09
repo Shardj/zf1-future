@@ -38,9 +38,9 @@ class Zend_Mobile_Push_Message_Mpns_Tile extends Zend_Mobile_Push_Message_Mpns
      *
      * @var int
      */
-    const DELAY_IMMEDIATE = 1;
-    const DELAY_450S = 11;
-    const DELAY_900S = 21;
+    public const DELAY_IMMEDIATE = 1;
+    public const DELAY_450S = 11;
+    public const DELAY_900S = 21;
 
     /**
      * Background Image

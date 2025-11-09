@@ -58,9 +58,9 @@ class Zend_Memory_Container_Movable extends Zend_Memory_Container {
     private $_value;
 
     /** Value states */
-    const LOADED   = 1;
-    const SWAPPED  = 2;
-    const LOCKED   = 4;
+    public const LOADED   = 1;
+    public const SWAPPED  = 2;
+    public const LOCKED   = 4;
 
     /**
      * Value state (LOADED/SWAPPED/LOCKED)

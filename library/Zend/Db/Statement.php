@@ -209,7 +209,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
         $de = substr($de, 1, 2);
         $de = preg_quote($de);
         // Note: $de and $d where never used..., now they are:
-        $sql = preg_replace("/$d($de|\\\\{2}|[^$d])*$d/Us", '', $sql);
+        $sql = preg_replace("/$d($de|\\\\{2}|[^$d])*$d/Us", '', (string) $sql);
         return $sql;
     }
 
@@ -294,7 +294,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
      * @param array $params OPTIONAL Values to bind to parameter placeholders.
      * @return bool
      */
-    public function execute(array $params = null)
+    public function execute(?array $params = null)
     {
         /*
          * Simple case - no query profiler to manage.

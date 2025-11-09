@@ -38,20 +38,20 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Number extends Zend_Measure_Abstract
 {
-    const STANDARD = 'DECIMAL';
+    public const STANDARD = 'DECIMAL';
 
-    const BINARY      = 'BINARY';
-    const TERNARY     = 'TERNARY';
-    const QUATERNARY  = 'QUATERNARY';
-    const QUINARY     = 'QUINARY';
-    const SENARY      = 'SENARY';
-    const SEPTENARY   = 'SEPTENARY';
-    const OCTAL       = 'OCTAL';
-    const NONARY      = 'NONARY';
-    const DECIMAL     = 'DECIMAL';
-    const DUODECIMAL  = 'DUODECIMAL';
-    const HEXADECIMAL = 'HEXADECIMAL';
-    const ROMAN       = 'ROMAN';
+    public const BINARY      = 'BINARY';
+    public const TERNARY     = 'TERNARY';
+    public const QUATERNARY  = 'QUATERNARY';
+    public const QUINARY     = 'QUINARY';
+    public const SENARY      = 'SENARY';
+    public const SEPTENARY   = 'SEPTENARY';
+    public const OCTAL       = 'OCTAL';
+    public const NONARY      = 'NONARY';
+    public const DECIMAL     = 'DECIMAL';
+    public const DUODECIMAL  = 'DUODECIMAL';
+    public const HEXADECIMAL = 'HEXADECIMAL';
+    public const ROMAN       = 'ROMAN';
 
     /**
      * Calculations for all number units
@@ -266,6 +266,8 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
 
         $this->_value = $value;
         $this->_type  = $type;
+
+        return $this;
     }
 
     /**
@@ -326,6 +328,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
      */
     private function _fromDecimal($value, $type)
     {
+        $newvalue = '';
         $tempvalue = $value;
         if ($this->_units[$type][0] <= 16) {
             $newvalue = '';
@@ -399,7 +402,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
             throw new Zend_Measure_Exception('Unknown type of number:' . $type);
         }
 
-        $value = $this->_toDecimal($this->getValue(-1), $this->getType(-1));
+        $value = $this->_toDecimal($this->getValue(-1), $this->getType());
         $value = $this->_fromDecimal($value, $type);
 
         $this->_value = $value;

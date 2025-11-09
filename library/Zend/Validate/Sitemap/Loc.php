@@ -47,8 +47,8 @@ class Zend_Validate_Sitemap_Loc extends Zend_Validate_Abstract
      * Validation key for not valid
      *
      */
-    const NOT_VALID = 'sitemapLocNotValid';
-    const INVALID   = 'sitemapLocInvalid';
+    public const NOT_VALID = 'sitemapLocNotValid';
+    public const INVALID   = 'sitemapLocInvalid';
 
     /**
      * Validation failure message template definitions

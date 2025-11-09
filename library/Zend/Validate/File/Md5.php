@@ -37,9 +37,9 @@ class Zend_Validate_File_Md5 extends Zend_Validate_File_Hash
     /**
      * @const string Error constants
      */
-    const DOES_NOT_MATCH = 'fileMd5DoesNotMatch';
-    const NOT_DETECTED   = 'fileMd5NotDetected';
-    const NOT_FOUND      = 'fileMd5NotFound';
+    public const DOES_NOT_MATCH = 'fileMd5DoesNotMatch';
+    public const NOT_DETECTED   = 'fileMd5NotDetected';
+    public const NOT_FOUND      = 'fileMd5NotFound';
 
     /**
      * @var array Error message templates

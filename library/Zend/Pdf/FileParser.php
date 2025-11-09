@@ -43,12 +43,12 @@ abstract class Zend_Pdf_FileParser
     /**
      * Little-endian byte order (0x04 0x03 0x02 0x01).
      */
-    const BYTE_ORDER_LITTLE_ENDIAN = 0;
+    public const BYTE_ORDER_LITTLE_ENDIAN = 0;
 
     /**
      * Big-endian byte order (0x01 0x02 0x03 0x04).
      */
-    const BYTE_ORDER_BIG_ENDIAN    = 1;
+    public const BYTE_ORDER_BIG_ENDIAN    = 1;
 
 
 

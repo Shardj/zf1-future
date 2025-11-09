@@ -1,0 +1,20 @@
+includes:
+    - .phpstan.dist.baseline.neon
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+parameters:
+    phpVersion:
+        min: 70100
+        max: 80399
+    paths:
+        - library
+    excludePaths:
+        - library/Zend/Db/Statement.php
+        - library/Zend/Service/WindowsAzure/Log/Writer/WindowsAzure.php
+        - library/Zend/Soap/Client/Common.php
+        - library/Zend/Stdlib/SplPriorityQueue.php
+        - library/Zend/Test/
+    level: 5
+    tmpDir: .phpstan.cache
+    checkFunctionNameCase: true
+    checkInternalClassCaseSensitivity: true
+    treatPhpDocTypesAsCertain: false

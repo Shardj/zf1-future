@@ -38,7 +38,7 @@ class Zend_View_Helper_HtmlFlash extends Zend_View_Helper_HtmlObject
      * Default file type for a flash applet
      *
      */
-    const TYPE = 'application/x-shockwave-flash';
+    public const TYPE = 'application/x-shockwave-flash';
 
     /**
      * Output a flash movie object tag

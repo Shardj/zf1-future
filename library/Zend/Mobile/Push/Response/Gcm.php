@@ -33,9 +33,9 @@
 class Zend_Mobile_Push_Response_Gcm
 {
 
-    const RESULT_MESSAGE_ID = 'message_id';
-    const RESULT_ERROR = 'error';
-    const RESULT_CANONICAL = 'registration_id';
+    public const RESULT_MESSAGE_ID = 'message_id';
+    public const RESULT_ERROR = 'error';
+    public const RESULT_CANONICAL = 'registration_id';
 
     /**
      * Multicast ID
@@ -87,7 +87,7 @@ class Zend_Mobile_Push_Response_Gcm
      * @return void
      * @throws Zend_Mobile_Push_Exception_ServerUnavailable
      */
-    public function __construct($responseString = null, Zend_Mobile_Push_Message_Gcm $message = null)
+    public function __construct($responseString = null, ?Zend_Mobile_Push_Message_Gcm $message = null)
     {
         if ($responseString) {
             if (!$response = json_decode($responseString, true)) {

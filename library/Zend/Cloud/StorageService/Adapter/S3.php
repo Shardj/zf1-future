@@ -36,16 +36,16 @@ class Zend_Cloud_StorageService_Adapter_S3
     /*
      * Options array keys for the S3 adapter.
      */
-    const BUCKET_NAME      = 'bucket_name';
-    const BUCKET_AS_DOMAIN = 'bucket_as_domain?';
-    const FETCH_STREAM     = 'fetch_stream';
-    const METADATA         = 'metadata';
+    public const BUCKET_NAME      = 'bucket_name';
+    public const BUCKET_AS_DOMAIN = 'bucket_as_domain?';
+    public const FETCH_STREAM     = 'fetch_stream';
+    public const METADATA         = 'metadata';
 
     /**
      * AWS constants
      */
-    const AWS_ACCESS_KEY   = 'aws_accesskey';
-    const AWS_SECRET_KEY   = 'aws_secretkey';
+    public const AWS_ACCESS_KEY   = 'aws_accesskey';
+    public const AWS_SECRET_KEY   = 'aws_secretkey';
 
     /**
      * S3 service instance.

@@ -36,8 +36,8 @@ abstract class Zend_Form_Decorator_Abstract implements Zend_Form_Decorator_Inter
     /**
      * Placement constants
      */
-    const APPEND  = 'APPEND';
-    const PREPEND = 'PREPEND';
+    public const APPEND  = 'APPEND';
+    public const PREPEND = 'PREPEND';
 
     /**
      * Default placement: append

@@ -17,16 +17,16 @@
  */
 class Zend_Cloud_Infrastructure_Image
 {
-    const IMAGE_ID           = 'imageId';
-    const IMAGE_OWNERID      = 'ownerId';
-    const IMAGE_NAME         = 'name';
-    const IMAGE_DESCRIPTION  = 'description';
-    const IMAGE_PLATFORM     = 'platform';
-    const IMAGE_ARCHITECTURE = 'architecture';
-    const ARCH_32BIT         = 'i386';
-    const ARCH_64BIT         = 'x86_64';
-    const IMAGE_WINDOWS      = 'windows';
-    const IMAGE_LINUX        = 'linux';
+    public const IMAGE_ID           = 'imageId';
+    public const IMAGE_OWNERID      = 'ownerId';
+    public const IMAGE_NAME         = 'name';
+    public const IMAGE_DESCRIPTION  = 'description';
+    public const IMAGE_PLATFORM     = 'platform';
+    public const IMAGE_ARCHITECTURE = 'architecture';
+    public const ARCH_32BIT         = 'i386';
+    public const ARCH_64BIT         = 'x86_64';
+    public const IMAGE_WINDOWS      = 'windows';
+    public const IMAGE_LINUX        = 'linux';
 
     /**
      * Image's attributes

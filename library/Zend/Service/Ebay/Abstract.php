@@ -29,8 +29,8 @@
  */
 abstract class Zend_Service_Ebay_Abstract
 {
-    const OPTION_APP_ID    = 'app_id';
-    const OPTION_GLOBAL_ID = 'global_id';
+    public const OPTION_APP_ID    = 'app_id';
+    public const OPTION_GLOBAL_ID = 'global_id';
 
     /**
      * @var array

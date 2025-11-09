@@ -62,12 +62,18 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
      * @param  array|null $options Select options
      * @return string
      */
-    public function comboBox($id, $value = null, array $params = [], array $attribs = [], array $options = null)
+    public function comboBox($id, $value = null, array $params = [], array $attribs = [], ?array $options = null)
     {
         $html = '';
         if (!array_key_exists('id', $attribs)) {
             $attribs['id'] = $id;
         }
+
+        // required for correct type casting in declarative mode
+        if (isset($params['autocomplete'])) {
+            $params['autocomplete'] = ($params['autocomplete']) ? 'true' : 'false';
+        }
+
         if (array_key_exists('store', $params) && is_array($params['store'])) {
             // using dojo.data datastore
             if (false !== ($store = $this->_renderStore($params['store'], $id))) {
@@ -100,10 +106,6 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
             return $html;
         }
 
-        // required for correct type casting in declerative mode
-        if (isset($params['autocomplete'])) {
-            $params['autocomplete'] = ($params['autocomplete']) ? 'true' : 'false';
-        }
         // do as normal select
         $attribs = $this->_prepareDijit($attribs, $params, 'element');
         return $this->view->formSelect($id, $value, $attribs, $options);

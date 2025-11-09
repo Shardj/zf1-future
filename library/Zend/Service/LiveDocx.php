@@ -34,7 +34,7 @@ class Zend_Service_LiveDocx
      * LiveDocx service version
      * @since LiveDocx 1.0
      */
-    const VERSION = '2.0';
+    public const VERSION = '2.0';
 
     /**
      * SOAP client used to connect to LiveDocx service

@@ -59,9 +59,9 @@ require_once 'Zend/Gdata/Calendar/ListEntry.php';
 class Zend_Gdata_Calendar extends Zend_Gdata
 {
 
-    const CALENDAR_FEED_URI = 'https://www.google.com/calendar/feeds';
-    const CALENDAR_EVENT_FEED_URI = 'https://www.google.com/calendar/feeds/default/private/full';
-    const AUTH_SERVICE_NAME = 'cl';
+    public const CALENDAR_FEED_URI = 'https://www.google.com/calendar/feeds';
+    public const CALENDAR_EVENT_FEED_URI = 'https://www.google.com/calendar/feeds/default/private/full';
+    public const AUTH_SERVICE_NAME = 'cl';
 
     protected $_defaultPostUri = self::CALENDAR_EVENT_FEED_URI;
 

@@ -31,23 +31,23 @@ abstract class Zend_Service_WindowsAzure_Credentials_CredentialsAbstract
 	/**
 	 * Development storage account and key
 	 */
-	const DEVSTORE_ACCOUNT       = "devstoreaccount1";
-	const DEVSTORE_KEY           = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==";
+	public const DEVSTORE_ACCOUNT       = "devstoreaccount1";
+	public const DEVSTORE_KEY           = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==";
 
 	/**
 	 * HTTP header prefixes
 	 */
-	const PREFIX_PROPERTIES      = "x-ms-prop-";
-	const PREFIX_METADATA        = "x-ms-meta-";
-	const PREFIX_STORAGE_HEADER  = "x-ms-";
+	public const PREFIX_PROPERTIES      = "x-ms-prop-";
+	public const PREFIX_METADATA        = "x-ms-meta-";
+	public const PREFIX_STORAGE_HEADER  = "x-ms-";
 
 	/**
 	 * Permissions
 	 */
-	const PERMISSION_READ        = "r";
-	const PERMISSION_WRITE       = "w";
-	const PERMISSION_DELETE      = "d";
-	const PERMISSION_LIST        = "l";
+	public const PERMISSION_READ        = "r";
+	public const PERMISSION_WRITE       = "w";
+	public const PERMISSION_DELETE      = "d";
+	public const PERMISSION_LIST        = "l";
 
 	/**
 	 * Account name for Windows Azure

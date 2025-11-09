@@ -36,13 +36,13 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Temperature extends Zend_Measure_Abstract
 {
-    const STANDARD = 'KELVIN';
+    public const STANDARD = 'KELVIN';
 
-    const CELSIUS    = 'CELSIUS';
-    const FAHRENHEIT = 'FAHRENHEIT';
-    const RANKINE    = 'RANKINE';
-    const REAUMUR    = 'REAUMUR';
-    const KELVIN     = 'KELVIN';
+    public const CELSIUS    = 'CELSIUS';
+    public const FAHRENHEIT = 'FAHRENHEIT';
+    public const RANKINE    = 'RANKINE';
+    public const REAUMUR    = 'REAUMUR';
+    public const KELVIN     = 'KELVIN';
 
     /**
      * Calculations for all temperature units

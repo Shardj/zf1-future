@@ -35,12 +35,12 @@ class Zend_Validate_Ccnum extends Zend_Validate_Abstract
     /**
      * Validation failure message key for when the value is not of valid length
      */
-    const LENGTH   = 'ccnumLength';
+    public const LENGTH   = 'ccnumLength';
 
     /**
      * Validation failure message key for when the value fails the mod-10 checksum
      */
-    const CHECKSUM = 'ccnumChecksum';
+    public const CHECKSUM = 'ccnumChecksum';
 
     /**
      * Digits filter for input

@@ -35,9 +35,9 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
     /**#@+
      * Assertion type constants
      */
-    const ASSERT_REDIRECT       = 'assertRedirect';
-    const ASSERT_REDIRECT_TO    = 'assertRedirectTo';
-    const ASSERT_REDIRECT_REGEX = 'assertRedirectRegex';
+    public const ASSERT_REDIRECT       = 'assertRedirect';
+    public const ASSERT_REDIRECT_TO    = 'assertRedirectTo';
+    public const ASSERT_REDIRECT_REGEX = 'assertRedirectRegex';
     /**#@-*/
 
     /**
@@ -178,7 +178,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit_Framework_Constrai
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, ?\SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
     {
         require_once 'Zend/Test/PHPUnit/Constraint/Exception.php';
         switch ($this->_assertType) {
