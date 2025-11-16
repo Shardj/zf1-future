@@ -562,12 +562,12 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      */
     public function setMultiFile($count)
     {
-        if ((integer) $count < 2) {
+        if ((int) $count < 2) {
             $this->setIsArray(false);
             $this->_counter = 1;
         } else {
             $this->setIsArray(true);
-            $this->_counter = (integer) $count;
+            $this->_counter = (int) $count;
         }
 
         return $this;
@@ -663,7 +663,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
             }
         }
 
-        return (integer) $setting;
+        return (int) $setting;
     }
 
     /**

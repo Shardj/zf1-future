@@ -14,6 +14,7 @@
         "symfony/polyfill-ctype": "^1.31",
         "symfony/polyfill-mbstring": "^1.31",
         "symfony/polyfill-php81": "^1.31",
+        "symfony/polyfill-php82": "^1.31",
         "symfony/polyfill-php83": "^1.31"
     },
     "require-dev": {

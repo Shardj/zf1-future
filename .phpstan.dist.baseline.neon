@@ -1027,22 +1027,10 @@ parameters:
 			path: library/Zend/Cache/Backend/Libmemcached.php
 
 		-
-			message: '#^Parameter \#1 \$specificLifetime of method Zend_Cache_Backend\:\:getLifetime\(\) expects int, false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: library/Zend/Cache/Backend/Libmemcached.php
-
-		-
 			message: '#^Unreachable statement \- code above always terminates\.$#'
 			identifier: deadCode.unreachable
 			count: 1
 			path: library/Zend/Cache/Backend/Libmemcached.php
-
-		-
-			message: '#^Default value of the parameter \#4 \$specificLifetime \(false\) of method Zend_Cache_Backend_Memcached\:\:save\(\) is incompatible with type int\.$#'
-			identifier: parameter.defaultValue
-			count: 1
-			path: library/Zend/Cache/Backend/Memcached.php
 
 		-
 			message: '#^Method Zend_Cache_Backend_Memcached\:\:clean\(\) should return bool but return statement is missing\.$#'
@@ -1054,12 +1042,6 @@ parameters:
 			message: '#^Method Zend_Cache_Backend_Memcached\:\:getMetadatas\(\) should return array but returns false\.$#'
 			identifier: return.type
 			count: 2
-			path: library/Zend/Cache/Backend/Memcached.php
-
-		-
-			message: '#^Parameter \#1 \$specificLifetime of method Zend_Cache_Backend\:\:getLifetime\(\) expects int, false given\.$#'
-			identifier: argument.type
-			count: 1
 			path: library/Zend/Cache/Backend/Memcached.php
 
 		-
@@ -7459,12 +7441,6 @@ parameters:
 			path: library/Zend/File/Transfer/Adapter/Abstract.php
 
 		-
-			message: '#^Parameter \#1 \$validator of method Zend_File_Transfer_Adapter_Abstract\:\:addValidator\(\) expects array\|string, Zend_Validate_Interface given\.$#'
-			identifier: argument.type
-			count: 1
-			path: library/Zend/File/Transfer/Adapter/Abstract.php
-
-		-
 			message: '#^Parameter \#2 \$breakChainOnFailure of method Zend_File_Transfer_Adapter_Abstract\:\:addValidator\(\) expects bool, null given\.$#'
 			identifier: argument.type
 			count: 3
@@ -13073,12 +13049,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: library/Zend/Markup/Token.php
-
-		-
-			message: '#^Parameter \#1 \$locale of static method Zend_Locale\:\:isLocale\(\) expects string\|Zend_Locale, int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: library/Zend/Measure/Abstract.php
 
 		-
 			message: '#^Parameter \#2 \$strict of static method Zend_Locale\:\:isLocale\(\) expects bool, null given\.$#'
@@ -23077,7 +23047,7 @@ parameters:
 			path: library/Zend/Translate.php
 
 		-
-			message: '#^PHPDoc tag @param has invalid value \(string\|Zend_Locale \[\$locale\]\)\: Unexpected token "\[", expected variable at offset 248 on line 6$#'
+			message: '#^PHPDoc tag @param has invalid value \(string\|Zend_Locale \[\$locale\]\)\: Unexpected token "\[", expected variable at offset 255 on line 6$#'
 			identifier: phpDoc.parseError
 			count: 1
 			path: library/Zend/Translate.php
@@ -23089,7 +23059,7 @@ parameters:
 			path: library/Zend/Translate.php
 
 		-
-			message: '#^PHPDoc tag @param has invalid value \(string\|array \[\$content\] Path to content, or content itself\)\: Unexpected token "\[", expected variable at offset 168 on line 5$#'
+			message: '#^PHPDoc tag @param has invalid value \(string\|array \[\$content\] Path to content, or content itself\)\: Unexpected token "\[", expected variable at offset 175 on line 5$#'
 			identifier: phpDoc.parseError
 			count: 1
 			path: library/Zend/Translate.php

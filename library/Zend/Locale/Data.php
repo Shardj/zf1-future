@@ -1576,7 +1576,7 @@ class Zend_Locale_Data
      */
     public static function disableCache($flag)
     {
-        self::$_cacheDisabled = (boolean) $flag;
+        self::$_cacheDisabled = (bool) $flag;
     }
 
     /**
