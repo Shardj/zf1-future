@@ -359,9 +359,9 @@ class Zend_Soap_ServerTest extends TestCase
         $server = new Zend_Soap_Server();
 
         // SOAP_FUNCTIONS_ALL as a value should pass
-        $server->addFunction(SOAP_FUNCTIONS_ALL);
+        $server->addFunction(@SOAP_FUNCTIONS_ALL);
         $server->addFunction('substr');
-        $this->assertEquals([SOAP_FUNCTIONS_ALL], $server->getFunctions());
+        $this->assertEquals([@SOAP_FUNCTIONS_ALL], $server->getFunctions());
     }
 
     public function testSetClass()
