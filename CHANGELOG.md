@@ -6,6 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.24.5] - 2025-06-26
+
+### Added
+
+* Customizable regex in Zend_Db_Select by @mauriziosmt in https://github.com/Shardj/zf1-future/pull/513
+* Add missing polyfill for 8.2 by @gnovaro in https://github.com/Shardj/zf1-future/pull/500
+* feat: add extra TLD support to hostname validator by @lukebsh in https://github.com/Shardj/zf1-future/pull/522
+
+### Fixed
+
+* Zend_File_Transfer_Adapter_Abstract::addValidator(): fix $validator parameter type in PHPDoc by @holtkamp in https://github.com/Shardj/zf1-future/pull/503
+* Fix object caching in Zend_Translate_Adapter by @BorislavSabev in https://github.com/Shardj/zf1-future/pull/504
+* PHP8.5: Fixes non-canonical cast by @sreichel in https://github.com/Shardj/zf1-future/pull/509
+* Fixes some DocsBlocks by @sreichel in https://github.com/Shardj/zf1-future/pull/514
+* PHP8.4: Fixes missing escape parameter by @sreichel in https://github.com/Shardj/zf1-future/pull/510
+* Update Imap.php by @kamildabrowski in https://github.com/Shardj/zf1-future/pull/499
+* Fix broken PhpUnit tests by @sreichel in https://github.com/Shardj/zf1-future/pull/515
+* PHP8.5: Fix missing non-canonical cast by @sukhwinder33445 in https://github.com/Shardj/zf1-future/pull/517
+* Silence deprecation warning for SOAP_FUNCTIONS_ALL on 8.4+ by @NattyNarwhal in https://github.com/Shardj/zf1-future/pull/519
+
+
 ## [1.24.4] - 2025-06-26
 
 ### Added
