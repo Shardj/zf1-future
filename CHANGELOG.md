@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.24.5] - 2025-06-26
+## [1.25.0] - 2026-02-24
+
+* dropped PHP 7.1-7.3 support, added 8.2 support (without explicitly aiming to remove all deprecation notices)
+
+
+## [1.24.5] - 2026-02-24
 
 ### Added
 
