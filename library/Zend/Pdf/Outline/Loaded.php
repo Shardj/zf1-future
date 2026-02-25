@@ -98,7 +98,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
 
         if ($this->_outlineDictionary->Count === null) {
             // Do Nothing.
-            return this;
+            return $this;
         }
 
         $childrenCount = $this->_outlineDictionary->Count->value;
