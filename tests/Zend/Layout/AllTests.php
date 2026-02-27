@@ -55,7 +55,7 @@ class Zend_Layout_AllTests
         $suite->addTestSuite('Zend_Layout_LayoutTest');
         $suite->addTestSuite('Zend_Layout_HelperTest');
         $suite->addTestSuite('Zend_Layout_PluginTest');
-        // $suite->addTestSuite('Zend_Layout_FunctionalTest');
+        $suite->addTestSuite('Zend_Layout_FunctionalTest');
 
         return $suite;
     }
