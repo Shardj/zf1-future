@@ -2,7 +2,7 @@
     "name": "shardj/zf1-future",
     "description": "Zend Framework 1. The aim is to keep ZF1 working with the latest PHP versions",
     "type": "library",
-    "version": "1.24.4",
+    "version": "1.25.0",
     "keywords": [
         "framework",
         "zf1"
@@ -11,11 +11,11 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=7.4",
-        "symfony/polyfill-ctype": "^1.31",
-        "symfony/polyfill-mbstring": "^1.31",
-        "symfony/polyfill-php81": "^1.31",
-        "symfony/polyfill-php82": "^1.31",
-        "symfony/polyfill-php83": "^1.31"
+        "symfony/polyfill-ctype": "^1.30",
+        "symfony/polyfill-mbstring": "^1.30",
+        "symfony/polyfill-php81": "^1.30",
+        "symfony/polyfill-php82": "^1.30",
+        "symfony/polyfill-php83": "^1.30"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
@@ -66,7 +66,7 @@
         "php-cs-fixer:fix": "bin/php-cs-fixer fix",
         "phpcs": "bin/phpcs -s -p --standard=.phpcs.dist.xml --cache=.phpcs.result.cache --report=full,summary",
         "phpstan": "XDEBUG_MODE=off php bin/phpstan analyze --configuration .phpstan.dist.neon",
-        "phpstan:baseline": "XDEBUG_MODE=off php bin/phpstan analyze --configuration .phpstan.dist.neon -b .phpstan.dist.baseline.neon",
+        "phpstan:baseline": "XDEBUG_MODE=off php bin/phpstan analyze --configuration .phpstan.dist.neon -b .phpstan.dist.baseline.php",
         "rector:test": "bin/rector process --config .rector.php --dry-run",
         "rector:fix": "bin/rector process --config .rector.php",
         "test": [

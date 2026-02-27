@@ -643,7 +643,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
     {
         if (!is_numeric($setting)) {
             $type = strtoupper(substr($setting, -1));
-            $setting = (integer) substr($setting, 0, -1);
+            $setting = (int) substr($setting, 0, -1);
 
             switch ($type) {
                 case 'K' :
