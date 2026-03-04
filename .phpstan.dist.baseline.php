@@ -11930,12 +11930,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Locale/Data.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Locale/Format.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Locale_Format::convertPhpToIsoFormat() should return string but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -19594,12 +19588,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Sqs.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Audioscrobbler.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Service_Audioscrobbler), \'_errorHandler\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -24244,12 +24232,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/WordCount.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Validate/Hostname.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Validate_Hostname::decodePunycode() should return string but returns false.',
 	'identifier' => 'return.type',
 	'count' => 2,
@@ -24302,12 +24284,6 @@ $ignoreErrors[] = [
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/Sitemap/Changefreq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Validate/StringLength.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param has invalid value (string The view script to execute.): Unexpected token "The", expected variable at offset 109 on line 4',
@@ -25694,12 +25670,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_XmlRpc_Client::getIntrospector() should return Zend_XmlRpc_Client_ServerIntrospection but returns Zend_Http_Client_Introspector.',
