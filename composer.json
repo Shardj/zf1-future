@@ -2,7 +2,7 @@
     "name": "pcr/zf1-future",
     "description": "Zend Framework 1. The aim is to keep ZF1 working with the latest PHP versions",
     "type": "library",
-    "version": "24.2.3",
+    "version": "26.1.0",
     "keywords": [
         "framework",
         "zf1"
