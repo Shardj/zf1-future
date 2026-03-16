@@ -10,7 +10,7 @@
     "homepage": "https://github.com/Shardj/zf1-future/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=7.1",
+        "php": "^8.3",
         "symfony/polyfill-ctype": "^1.30",
         "symfony/polyfill-mbstring": "^1.30",
         "symfony/polyfill-php81": "^1.30",
