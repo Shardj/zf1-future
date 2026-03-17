@@ -14,6 +14,8 @@ jobs:
           php-version: 8.3
 
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Get composer cache directory
         id: composer-cache
@@ -37,8 +39,20 @@ jobs:
           restore-keys: |
             phpstan-result-cache-
 
-      - name: Regenerate PHPStan Baseline
-        run: XDEBUG_MODE=off php bin/phpstan.phar analyze --configuration .phpstan.dist.neon -b .phpstan.dist.baseline.neon || true
+      - name: Generate baseline from upstream Shardj
+        run: |
+          # Fetch upstream and generate baseline from their code
+          # This means only errors WE introduced will fail — upstream errors are baselined
+          git remote add shardj https://github.com/Shardj/zf1-future.git 2>/dev/null || true
+          git fetch shardj master --depth=1
+
+          # Save our branch, checkout upstream, generate baseline
+          CURRENT_BRANCH=$(git rev-parse HEAD)
+          git checkout shardj/master -- library/ 2>/dev/null || true
+          XDEBUG_MODE=off php bin/phpstan.phar analyze --configuration .phpstan.dist.neon -b .phpstan.dist.baseline.neon || true
+
+          # Restore our code
+          git checkout "$CURRENT_BRANCH" -- library/ 2>/dev/null || git checkout -- library/
 
       - name: PHPStan Static Analysis
         run: XDEBUG_MODE=off php bin/phpstan.phar analyze --configuration .phpstan.dist.neon

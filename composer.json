@@ -42,7 +42,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-bugfix/PCR360-11526": "24.2.x-dev"
+            "dev-main": "26.1.x-dev"
         }
     },
     "archive": {
@@ -50,7 +50,7 @@
     },
     "replace": {
         "zendframework/zendframework1": ">=1.12.20",
-        "shardj/zf1-future": "1.24.0"
+        "shardj/zf1-future": "1.24.4"
     },
     "scripts": {
         "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",

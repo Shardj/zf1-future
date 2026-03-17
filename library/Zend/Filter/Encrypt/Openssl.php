@@ -341,7 +341,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
      */
     public function setPackage($package)
     {
-        $this->_package = (boolean) $package;
+        $this->_package = (bool) $package;
         return $this;
     }
 
@@ -375,7 +375,8 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                 }
 
                 ++$count;
-                $fingerprints[$count] = hash('sha256', $details['key']);
+                // @see PCR360-11006 md5() is required — pack format (H32) depends on 32-char hash. Unused by PCR-360.
+                $fingerprints[$count] = md5($details['key']);
             }
         }
 
@@ -444,9 +445,11 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         if ($this->_package) {
             $details = openssl_pkey_get_details($keys);
             if ($details !== false) {
-                $fingerprint = hash('sha256', $details['key']);
+                // @see PCR360-11006 md5() is required — pack format (H32) depends on 32-char hash. Unused by PCR-360.
+                $fingerprint = md5($details['key']);
             } else {
-                $fingerprint = hash('sha256', 'ZendFramework');
+                // @see PCR360-11006 md5() is required — see above. Unused by PCR-360.
+                $fingerprint = md5('ZendFramework');
             }
 
             $count = unpack('ncount', $value);
