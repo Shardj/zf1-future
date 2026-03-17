@@ -82,7 +82,7 @@ jobs:
           --health-retries 5
 
       openldap:
-        image: bitnami/openldap:2.5
+        image: bitnami/openldap:2
         ports:
           - 1389:1389
         env:
