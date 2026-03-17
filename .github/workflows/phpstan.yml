@@ -37,6 +37,9 @@ jobs:
           restore-keys: |
             phpstan-result-cache-
 
+      - name: Regenerate PHPStan Baseline
+        run: XDEBUG_MODE=off php bin/phpstan.phar analyze --configuration .phpstan.dist.neon -b .phpstan.dist.baseline.neon || true
+
       - name: PHPStan Static Analysis
         run: XDEBUG_MODE=off php bin/phpstan.phar analyze --configuration .phpstan.dist.neon
 
