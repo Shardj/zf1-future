@@ -55,12 +55,10 @@ jobs:
           - 11211:11211
 
       mysql:
-        image: bitnami/mysql:8.0
+        image: mysql:8.0
         env:
-          MYSQL_ROOT_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME }}
           MYSQL_ROOT_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD }}
           MYSQL_DATABASE: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE }}
-          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
         ports:
           - 3306:3306
         options: >-
