@@ -106,7 +106,7 @@ abstract class Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
          * md5() usage is safe -- only used to create unique identifier.
          */
 	    $batchBoundary = 'batch_' . md5(time() . microtime());
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
 	    $changesetBoundary = 'changeset_' . md5(time() . microtime());
 
 	    // Set headers

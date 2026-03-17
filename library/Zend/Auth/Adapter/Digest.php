@@ -215,6 +215,7 @@ class Zend_Auth_Adapter_Digest implements Zend_Auth_Adapter_Interface
         while ($line = trim(fgets($fileHandle))) {
             if (substr($line, 0, $idLength) === $id) {
                 /*
+                 * @see PCR360-11006
                  * Code analysis may flag this as "Use of Password Hash With Insufficient Computational Effort"
                  * PCR-360 does not use digest authentication so this is unused.
                  * Furthermore, md5 is the specification for digest authentication.

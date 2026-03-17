@@ -607,7 +607,7 @@ class Zend_Mime
     {
         // This string needs to be somewhat unique
         if ($boundary === null) {
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             $this->_boundary = '=_' . md5(microtime(1) . self::$makeUnique++);
         } else {
             $this->_boundary = $boundary;

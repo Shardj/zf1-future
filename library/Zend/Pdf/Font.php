@@ -657,7 +657,7 @@ abstract class Zend_Pdf_Font
              */
             $fontName = $font->getFontName(Zend_Pdf_Font::NAME_POSTSCRIPT, '', '');
             Zend_Pdf_Font::$_fontNames[$fontName] = $font;
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             $filePathKey = md5($filePath);
             Zend_Pdf_Font::$_fontFilePaths[$filePathKey] = $font;
             return $font;

@@ -234,6 +234,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
         }
 
         /*
+         * @see PCR360-11006
          * Code analysis may flag this as "Arbitrary File Write via Archive Extraction (Zip Slip)"
          * This is a false positive. The $target is not unsanitized/from user input.
          */

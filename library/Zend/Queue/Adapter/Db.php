@@ -343,7 +343,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
         $msg->queue_id = $this->getQueueId($queue->getName());
         $msg->created  = time();
         $msg->body     = $message;
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $msg->md5      = md5($message);
         // $msg->timeout = ??? @TODO
 

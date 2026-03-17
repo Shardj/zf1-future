@@ -58,8 +58,8 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             if (empty($tmp)) {
                 $tmp = getenv('TEMP');
                 if (empty($tmp)) {
-                    // Only use /tmp if APP_TEMP_DIR is undefined
-                    $tmp = defined('APP_TEMP_DIR') ? APP_TEMP_DIR : '/tmp';
+                    // @see PCR360-11526 Only use /tmp if APP_TEMP_DIR is undefined
+                    $tmp = defined('APP_TEMP_DIR') ? APP_TEMP_DIR : '/tmp'; // @see PCR360-11526
                 }
             }
             $user = get_current_user();
@@ -101,7 +101,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function addAssociation($handle, $macFunc, $secret, $expires)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/assoc_' . md5($handle);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
@@ -141,7 +141,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function getAssociation($handle, &$macFunc, &$secret, &$expires)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/assoc_' . md5($handle);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
@@ -161,6 +161,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             $data = stream_get_contents($f);
             if (!empty($data)) {
                 /*
+                 * @see PCR360-11006
                  * Code analysis may flag this as "Deserialization of Untrusted Data"
                  * Entire class is unused by PCR-360.
                  */
@@ -191,7 +192,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function delAssociation($handle)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/assoc_' . md5($handle);
         $lock = @fopen($this->_dir . '/assoc.lock', 'w+');
         if ($lock === false) {
@@ -222,7 +223,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function addUser($id, $password)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/user_' . md5($id);
         $lock = @fopen($this->_dir . '/user.lock', 'w+');
         if ($lock === false) {
@@ -257,7 +258,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function hasUser($id)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/user_' . md5($id);
         $lock = @fopen($this->_dir . '/user.lock', 'w+');
         if ($lock === false) {
@@ -277,6 +278,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             $data = stream_get_contents($f);
             if (!empty($data)) {
                 /*
+                 * @see PCR360-11006
                  * Code analysis may flag this as "Deserialization of Untrusted Data"
                  * Entire class is unused by PCR-360.
                  */
@@ -303,7 +305,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function checkUser($id, $password)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/user_' . md5($id);
         $lock = @fopen($this->_dir . '/user.lock', 'w+');
         if ($lock === false) {
@@ -323,6 +325,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             $data = stream_get_contents($f);
             if (!empty($data)) {
                 /*
+                 * @see PCR360-11006
                  * Code analysis may flag this as "Deserialization of Untrusted Data"
                  * Entire class is unused by PCR-360.
                  */
@@ -348,7 +351,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function delUser($id)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/user_' . md5($id);
         $lock = @fopen($this->_dir . '/user.lock', 'w+');
         if ($lock === false) {
@@ -377,7 +380,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function getTrustedSites($id)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/user_' . md5($id);
         $lock = @fopen($this->_dir . '/user.lock', 'w+');
         if ($lock === false) {
@@ -397,6 +400,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             $data = stream_get_contents($f);
             if (!empty($data)) {
                 /*
+                 * @see PCR360-11006
                  * Code analysis may flag this as "Deserialization of Untrusted Data"
                  * Entire class is unused by PCR-360.
                  */
@@ -424,7 +428,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      */
     public function addSite($id, $site, $trusted)
     {
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $name = $this->_dir . '/user_' . md5($id);
         $lock = @fopen($this->_dir . '/user.lock', 'w+');
         if ($lock === false) {
@@ -444,6 +448,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
             $data = stream_get_contents($f);
             if (!empty($data)) {
                 /*
+                 * @see PCR360-11006
                  * Code analysis may flag this as "Deserialization of Untrusted Data"
                  * Entire class is unused by PCR-360.
                  */

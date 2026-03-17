@@ -1065,7 +1065,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
     public function getHttpHost()
     {
         $scheme = $this->getScheme();
-        $name   = $this->getServer('SERVER_NAME');
+        $name   = $this->getServer('SERVER_NAME'); // @see PCR360-11708
         $port   = $this->getServer('SERVER_PORT');
 
         if(null === $name) {

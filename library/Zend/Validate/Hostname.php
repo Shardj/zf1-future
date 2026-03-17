@@ -945,7 +945,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         'msd',
         'mt',
         'mtn',
-        'mtp',
+        'mtp', // @see mtp-TLD
         'mtr',
         'mu',
         'museum',

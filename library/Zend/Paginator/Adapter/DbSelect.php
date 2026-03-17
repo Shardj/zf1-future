@@ -86,7 +86,7 @@ class Zend_Paginator_Adapter_DbSelect implements Zend_Paginator_Adapter_Interfac
     public function __construct(Zend_Db_Select $select)
     {
         $this->_select = $select;
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $this->_cacheIdentifier = md5((string) $select->assemble());
     }
 

@@ -62,8 +62,8 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
         if (isset($options[self::LOCAL_DIRECTORY])) {
             $this->_directory = $options[self::LOCAL_DIRECTORY];
         } else {
-            // Only use sys_get_temp_dir() if APP_TEMP_DIR is undefined
-            $this->_directory = realpath(defined('APP_TEMP_DIR') ? APP_TEMP_DIR : sys_get_temp_dir());
+            // @see PCR360-11526 Only use sys_get_temp_dir() if APP_TEMP_DIR is undefined
+            $this->_directory = realpath(defined('APP_TEMP_DIR') ? APP_TEMP_DIR : sys_get_temp_dir()); // @see PCR360-11526
         }
     }
 

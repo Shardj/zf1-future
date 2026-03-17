@@ -98,7 +98,7 @@ class Zend_OpenId
         }
         $url = '';
         $port = '';
-        if (isset($_SERVER['SERVER_NAME'])) {
+        if (isset($_SERVER['SERVER_NAME'])) { // @see PCR360-11708
             $url = $_SERVER['SERVER_NAME'];
             if (isset($_SERVER['SERVER_PORT'])) {
                 $port = ':' . $_SERVER['SERVER_PORT'];
@@ -490,7 +490,7 @@ class Zend_OpenId
         } else if (function_exists('hash')) {
             return hash($func, $data, true);
         } else if ($func === 'sha1') {
-            // sha1() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 sha1() usage is safe -- only used to create unique identifier.
             return sha1($data, true);
         } else if ($func === 'sha256') {
             if (function_exists('mhash')) {

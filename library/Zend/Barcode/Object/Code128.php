@@ -270,7 +270,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
             return [];
         }
 
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         if (isset($this->_convertedText[md5($string)])) {
             // md5() usage is safe -- only used to create unique identifier.
             return $this->_convertedText[md5($string)];
@@ -335,7 +335,7 @@ class Zend_Barcode_Object_Code128 extends Zend_Barcode_Object_ObjectAbstract
             $result[] = $code;
         }
 
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $this->_convertedText[md5($string)] = $result;
         return $result;
     }

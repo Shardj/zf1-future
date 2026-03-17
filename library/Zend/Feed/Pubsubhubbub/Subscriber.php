@@ -810,7 +810,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
     {
         $keyBase = $params['hub.topic'] . $hubUrl;
 
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         return md5($keyBase);
     }
 

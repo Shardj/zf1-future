@@ -64,7 +64,7 @@ class Zend_View_Helper_ServerUrl
         }
         $this->setScheme($scheme);
 
-        if (isset($_SERVER['SERVER_NAME'], $_SERVER['SERVER_PORT'])) {
+        if (isset($_SERVER['SERVER_NAME'], $_SERVER['SERVER_PORT'])) { // @see PCR360-11708
             $name = $_SERVER['SERVER_NAME'];
             $port = $_SERVER['SERVER_PORT'];
 

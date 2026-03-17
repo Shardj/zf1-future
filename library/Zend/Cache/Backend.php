@@ -194,7 +194,7 @@ class Zend_Cache_Backend
         }
 
         // If APP_TMP_DIR is defined, use that and avoid permissions issues.
-        if (defined('APP_TEMP_DIR')) {
+        if (defined('APP_TEMP_DIR')) { // @see PCR360-11526
             $dir = APP_TEMP_DIR;
             if ($this->_isGoodTmpDir($dir)) {
                 return $dir;

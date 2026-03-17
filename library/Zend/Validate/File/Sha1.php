@@ -166,7 +166,7 @@ class Zend_Validate_File_Sha1 extends Zend_Validate_File_Hash
         }
 
         $hashes = array_unique(array_keys($this->_hash));
-        // sha1 usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 sha1 usage is safe -- only used to create unique identifier.
         $filehash = hash_file('sha1', $value);
         if ($filehash === false) {
             return $this->_throw($file, self::NOT_DETECTED);

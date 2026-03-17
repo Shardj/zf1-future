@@ -328,6 +328,7 @@ class Zend_Filter_Encrypt_Mcrypt implements Zend_Filter_Encrypt_Interface
         if (empty($keysizes) || ($this->_encryption['salt'] == true)) {
             $keysize = mcrypt_enc_get_key_size($cipher);
             /*
+             * @see PCR360-11006
              * Code analysis will flag this as "Use of Password Hash With Insufficient Computational Effort"
              * Mcrypt is a legacy extension. Most of the mcrypt commands have been removed as of PHP 7.2.
              * This code is never executed.

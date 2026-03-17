@@ -281,7 +281,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
         $params = [];
         $params['MessageBody'] = urlencode($message);
 
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $checksum = md5($params['MessageBody']);
 
         $result = $this->_makeRequest($queue_url, 'SendMessage', $params);

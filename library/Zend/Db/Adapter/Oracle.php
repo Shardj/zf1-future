@@ -93,6 +93,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
     /**
      * Check if LOB field are returned as string
      * instead of OCILob object
+     * @see PCR360-11597
      *
      * @var boolean
      */

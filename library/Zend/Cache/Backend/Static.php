@@ -162,6 +162,7 @@ class Zend_Cache_Backend_Static
 
         if (file_exists($file)) {
             /*
+             * @see PCR360-11006
              * Code analysis may flag this as "Directory Traversal" due to unsanitized input from HTTP headers.
              * This is a false positive as the directory comes from the options array.
              */

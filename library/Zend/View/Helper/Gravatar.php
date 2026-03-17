@@ -310,7 +310,7 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
     {
         return $this->_getGravatarUrl()
              . '/'
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
              . md5(strtolower(trim($this->getEmail() ?: '')))
              . '?s='
              . $this->getImgSize()

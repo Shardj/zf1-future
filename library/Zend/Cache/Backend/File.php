@@ -576,6 +576,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         }
 
         /**
+         * @see PCR360-11006
          * Code analysis may flag this as "Deserialization of Untrusted Data"
          * This is false.
          * It's unserializing data that was previously serialized by this adapter.
@@ -644,6 +645,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
             return false;
         }
         /**
+         * @see PCR360-11006
          * Code analysis may flag this as "Path Traversal"
          * This is false.
          * It's deleting a file that was previously written by this adapter.
@@ -884,14 +886,14 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     {
         switch ($controlType) {
         case 'md5':
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             return md5($data);
         case 'crc32':
             return crc32($data);
         case 'strlen':
             return strlen($data);
         case 'adler32':
-            // adler32 usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 adler32 usage is safe -- only used to create unique identifier.
             return hash('adler32', $data);
         default:
             Zend_Cache::throwException("Incorrect hash function : $controlType");
@@ -937,7 +939,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
         $root = $this->_options['cache_dir'];
         $prefix = $this->_options['file_name_prefix'];
         if ($this->_options['hashed_directory_level']>0) {
-            // adler32 usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 adler32 usage is safe -- only used to create unique identifier.
             $hash = hash('adler32', $id);
             for ($i=0 ; $i < $this->_options['hashed_directory_level'] ; $i++) {
                 $root = $root . $prefix . '--' . substr($hash, 0, $i + 1) . DIRECTORY_SEPARATOR;
@@ -1004,6 +1006,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
             return false;
         }
         /**
+         * @see PCR360-11006
          * Code analysis may flag this as "Path Traversal"
          * This is false.
          * It's reading a file that was previously saved by this adapter.
@@ -1029,6 +1032,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
     {
         $result = false;
         /**
+         * @see PCR360-11006
          * Code analysis may flag this as "Path Traversal"
          * This is false.
          * The file is based on adapter options, not user input. Usage is safe.
@@ -1051,6 +1055,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
             $this->_log("Zend_Cache_Backend_File::_filePutContents() : we can't obtain handle");
         }
         /**
+         * @see PCR360-11006
          * Code analysis may flag this as "Path Traversal"
          * This is false.
          * The file is based on adapter options, not user input. Usage is safe.

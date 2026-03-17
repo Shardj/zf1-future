@@ -237,7 +237,7 @@ class Zend_Feed_Reader
         $client->setHeaders('If-None-Match', null);
         $client->setHeaders('If-Modified-Since', null);
         $client->setUri($uri);
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $cacheId = 'Zend_Feed_Reader_' . md5($uri);
 
         if (self::$_httpConditionalGet && $cache) {

@@ -262,7 +262,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
             $scheme = 'https';
         }
 
-        $name = $_SERVER['SERVER_NAME'];
+        $name = $_SERVER['SERVER_NAME']; // @see PCR360-11708
         $port = $_SERVER['SERVER_PORT'];
 
         if (($scheme == 'http' && $port == 80)

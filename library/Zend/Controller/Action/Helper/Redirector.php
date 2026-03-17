@@ -210,7 +210,7 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
     protected function _redirect($url)
     {
         if ($this->getUseAbsoluteUri() && !preg_match('#^(https?|ftp)://#', $url)) {
-            $host  = (isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'');
+            $host  = (isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:''); // @see PCR360-11708
             $proto = (isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=="off") ? 'https' : 'http';
             $port  = (isset($_SERVER['SERVER_PORT'])?$_SERVER['SERVER_PORT']:80);
             $uri   = $proto . '://' . $host;

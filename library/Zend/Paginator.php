@@ -531,7 +531,7 @@ class Zend_Paginator implements Countable, IteratorAggregate
         if (!$this->_cacheEnabled()) {
             return count($this->getAdapter());
         } else {
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             $cacheId   = md5($this->_getCacheInternalId(). '_itemCount');
             $itemCount = self::$_cache->load($cacheId);
 
@@ -1060,12 +1060,12 @@ class Zend_Paginator implements Countable, IteratorAggregate
         $adapter = $this->getAdapter();
 
         if (method_exists($adapter, 'getCacheIdentifier')) {
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             return md5(serialize([
                 $adapter->getCacheIdentifier(), $this->getItemCountPerPage()
             ]));
         } else {
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             return md5(serialize([
                 $adapter,
                 $this->getItemCountPerPage()

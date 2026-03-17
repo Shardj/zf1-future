@@ -196,8 +196,8 @@ class Zend_Service_SlideShare
                     'lifetime'                => 43200,
                     'automatic_serialization' => true
                 ],
-                // Only use /tmp if APP_TEMP_DIR is undefined
-                ['cache_dir' => defined('APP_TEMP_DIR') ? APP_TEMP_DIR : '/tmp']
+                // @see PCR360-11526 Only use /tmp if APP_TEMP_DIR is undefined
+                ['cache_dir' => defined('APP_TEMP_DIR') ? APP_TEMP_DIR : '/tmp'] // @see PCR360-11526
             );
 
             $this->setCacheObject($cache);
@@ -338,6 +338,7 @@ class Zend_Service_SlideShare
             'api_key'         => $this->getApiKey(),
             'ts'              => $timestamp,
             /*
+             * @see PCR360-11006
              * Code analysis may flag this as "Use of Password Hash With Insufficient Computational Effort"
              * This is dictated by the slideshare.net API and unused by PCR-360.
              */
@@ -429,6 +430,7 @@ class Zend_Service_SlideShare
             'api_key'      => $this->getApiKey(),
             'ts'           => $timestamp,
             /*
+             * @see PCR360-11006
              * Code analysis may flag this as "Use of Password Hash With Insufficient Computational Effort"
              * This is dictated by the slideshare.net API and unused by PCR-360.
              */
@@ -437,7 +439,7 @@ class Zend_Service_SlideShare
         ];
 
         $cache    = $this->getCacheObject();
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $cacheKey = md5("__zendslideshare_cache_$ssId");
 
         if (!$retval = $cache->load($cacheKey)) {
@@ -578,6 +580,7 @@ class Zend_Service_SlideShare
             'api_key' => $this->getApiKey(),
             'ts'      => $timestamp,
             /*
+             * @see PCR360-11006
              * Code analysis may flag this as "Use of Password Hash With Insufficient Computational Effort"
              * This is dictated by the slideshare.net API and unused by PCR-360.
              */
@@ -594,7 +597,7 @@ class Zend_Service_SlideShare
         }
 
         $cache    = $this->getCacheObject();
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $cacheKey = md5($key . $value . $offset . $limit);
 
         if (!$retval = $cache->load($cacheKey)) {

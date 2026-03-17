@@ -179,7 +179,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
 
         // create the message
         $data = [
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             'message_id' => md5(uniqid(rand(), true)),
             'body'       => $message,
             // md5() usage is safe -- only used to create unique identifier.
@@ -241,7 +241,7 @@ class Zend_Queue_Adapter_Array extends Zend_Queue_Adapter_AdapterAbstract
                 if (($msg['handle'] === null)
                     || ($msg['timeout'] + $timeout < $start_time)
                 ) {
-                    // md5() usage is safe -- only used to create unique identifier.
+                    // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
                     $msg['handle']  = md5(uniqid(rand(), true));
                     $msg['timeout'] = microtime(true);
                     $data[] = $msg;

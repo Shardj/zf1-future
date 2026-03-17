@@ -253,7 +253,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
      */
     protected function getHostName()
     {
-        $host  = $_SERVER['SERVER_NAME'] ?? '';
+        $host  = $_SERVER['SERVER_NAME'] ?? ''; // @see PCR360-11708
         $proto = empty($_SERVER['HTTPS']) ? 'http' : 'https';
         $port  = $_SERVER['SERVER_PORT'] ?? 80;
         if ((('http' === $proto) && (80 !== $port)) || (('https' === $proto) && (443 !== $port))) {

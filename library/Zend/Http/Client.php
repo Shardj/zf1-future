@@ -989,8 +989,8 @@ class Zend_Http_Client
             // If name is not given, create temp name
             $this->_stream_name = tempnam(
                 $this->config['stream_tmp_dir'] ?? (
-                    // Only use sys_get_temp_dir() if APP_TEMP_DIR is undefined
-                    defined('APP_TEMP_DIR') ? APP_TEMP_DIR : sys_get_temp_dir()
+                    // @see PCR360-11526 Only use sys_get_temp_dir() if APP_TEMP_DIR is undefined
+                    defined('APP_TEMP_DIR') ? APP_TEMP_DIR : sys_get_temp_dir() // @see PCR360-11526
                 ),
                 'Zend_Http_Client'
             );

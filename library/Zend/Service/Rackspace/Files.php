@@ -386,7 +386,7 @@ class Zend_Service_Rackspace_Files extends Zend_Service_Rackspace_Abstract
                 $headers[self::METADATA_OBJECT_HEADER.$key]= $value;
             }
         }
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $headers[self::HEADER_HASH]= md5($content);
         $headers[self::HEADER_CONTENT_LENGTH]= strlen($content);
         $result= $this->httpCall($this->getStorageUrl().'/'.rawurlencode($container).'/'.rawurlencode($object),'PUT',$headers,null,$content);

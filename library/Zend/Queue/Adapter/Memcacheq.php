@@ -263,11 +263,11 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
 
         $message = (string) $message;
         $data    = [
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             'message_id' => md5(uniqid(rand(), true)),
             'handle'     => null,
             'body'       => $message,
-            // md5() usage is safe -- only used to create unique identifier.
+            // usage is safe -- only used to create unique identifier.
             'md5'        => md5($message),
         ];
 
@@ -316,7 +316,7 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
         if ($maxMessages > 0 ) {
             for ($i = 0; $i < $maxMessages; $i++) {
                 $data = [
-                    // md5() usage is safe -- only used to create unique identifier.
+                    // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
                     'handle' => md5(uniqid(rand(), true)),
                     'body'   => $this->_cache->get($queue->getName()),
                 ];

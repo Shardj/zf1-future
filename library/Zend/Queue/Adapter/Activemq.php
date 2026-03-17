@@ -261,7 +261,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
                                 'message_id' => $response->getHeader('message-id'),
                                 'handle'     => $response->getHeader('message-id'),
                                 'body'       => $response->getBody(),
-                                // md5() usage is safe -- only used to create unique identifier.
+                                // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
                                 'md5'        => md5($response->getBody())
                             ];
                             $data[] = $datum;
@@ -319,7 +319,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
         $data = [
             'message_id' => null,
             'body'       => $message,
-            // md5() usage is safe -- only used to create unique identifier.
+            // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
             'md5'        => md5($message),
             'handle'     => null
         ];

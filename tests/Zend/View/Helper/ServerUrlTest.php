@@ -127,7 +127,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithHttpHostAndServerNameAndPortSet()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
-        $_SERVER['SERVER_NAME'] = 'example.org';
+        $_SERVER['SERVER_NAME'] = 'example.org'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = 8080;
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -138,7 +138,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithNoHttpHostButServerNameAndPortSet()
     {
         unset($_SERVER['HTTP_HOST']);
-        $_SERVER['SERVER_NAME'] = 'example.org';
+        $_SERVER['SERVER_NAME'] = 'example.org'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = 8080;
 
         $url = new Zend_View_Helper_ServerUrl();

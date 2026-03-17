@@ -69,8 +69,8 @@ class Zend_Mail_Transport_File extends Zend_Mail_Transport_Abstract
 
         // Making sure we have some defaults to work with
         if (!isset($options['path'])) {
-            // Only use sys_get_temp_dir() if APP_TEMP_DIR is undefined
-            $options['path'] = defined('APP_TEMP_DIR') ? APP_TEMP_DIR : sys_get_temp_dir();
+            // @see PCR360-11526 Only use sys_get_temp_dir() if APP_TEMP_DIR is undefined
+            $options['path'] = defined('APP_TEMP_DIR') ? APP_TEMP_DIR : sys_get_temp_dir(); // @see PCR360-11526
         }
         if (!isset($options['callback'])) {
             $options['callback'] = [$this, 'defaultCallback'];

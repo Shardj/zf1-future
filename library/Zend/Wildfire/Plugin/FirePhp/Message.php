@@ -89,7 +89,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
     {
         $this->_style = $style;
         $this->_message = $message;
-        // md5() usage is safe -- only used to create unique identifier.
+        // @see PCR360-11006 md5() usage is safe -- only used to create unique identifier.
         $this->_ruid = md5(microtime().mt_rand());
     }
 
