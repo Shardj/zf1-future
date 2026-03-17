@@ -18,3 +18,15 @@ parameters:
     checkFunctionNameCase: true
     checkInternalClassCaseSensitivity: true
     treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # @see PCR360-11597 OCILob class renamed from OCI-Lob in PHP8. CI has no Oracle extension.
+        -
+            message: '#Class OCILob not found#'
+            path: library/Zend/Db/Statement/Oracle.php
+        -
+            message: '#Instanceof between string and OCILob will always evaluate to false#'
+            path: library/Zend/Db/Statement/Oracle.php
+        # @see PCR360-2874 We fixed the by-ref issue — upstream baseline expects the old error
+        -
+            message: '#Ignored error.*array_splice.*passed by reference#'
+            reportUnmatched: false
