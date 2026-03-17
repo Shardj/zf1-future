@@ -438,6 +438,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
     public function testUseAbsoluteUriSetsFullUriInResponse()
     {
         $_SERVER['HTTP_HOST'] = 'foobar.example.com';
+        $_SERVER['SERVER_NAME'] = 'foobar.example.com'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = '4443';
         $_SERVER['HTTPS'] = 1;
         $this->redirector->setUseAbsoluteUri(true);
@@ -457,6 +458,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
     public function testUseAbsoluteUriStripsPortFromServerHttpHost()
     {
         $_SERVER['HTTP_HOST'] = 'foobar.example.com:8080';
+        $_SERVER['SERVER_NAME'] = 'foobar.example.com'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = '8080';
         $this->redirector->setUseAbsoluteUri(true);
         $this->redirector->gotoUrl('/bar/baz');
@@ -518,6 +520,7 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
         // Set Preconditions from Issue:
         $_SERVER['HTTPS'] = "off";
         $_SERVER['HTTP_HOST'] = 'localhost';
+        $_SERVER['SERVER_NAME'] = 'localhost'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = 80;
         $this->redirector->setUseAbsoluteUri(true);
 

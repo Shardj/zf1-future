@@ -752,12 +752,14 @@ class Zend_Controller_Request_HttpTest extends TestCase
     {
         $_SERVER['REQUEST_URI'] = 'http://foo.example.com/foo/bar?r=http://foo.example.com/bar/baz';
         $_SERVER['HTTP_HOST'] = 'foo.example.com';
+        $_SERVER['SERVER_NAME'] = 'foo.example.com'; // @see PCR360-11708 // @see PCR360-11708
         $request = new Zend_Controller_Request_Http();
         $test = $request->getRequestUri();
         $this->assertEquals('/foo/bar?r=http://foo.example.com/bar/baz', $test);
 
         $_SERVER['REQUEST_URI'] = '/foo/bar?r=http://foo.example.com/bar/baz';
         $_SERVER['HTTP_HOST'] = 'foo.example.com';
+        $_SERVER['SERVER_NAME'] = 'foo.example.com'; // @see PCR360-11708 // @see PCR360-11708
         $request = new Zend_Controller_Request_Http();
         $test = $request->getRequestUri();
         $this->assertEquals('/foo/bar?r=http://foo.example.com/bar/baz', $test);
@@ -772,6 +774,7 @@ class Zend_Controller_Request_HttpTest extends TestCase
     {
         $_SERVER['REQUEST_URI'] = 'https://foo.example.com/foo/bar?r=https://foo.example.com/bar/baz';
         $_SERVER['HTTP_HOST'] = 'foo.example.com';
+        $_SERVER['SERVER_NAME'] = 'foo.example.com'; // @see PCR360-11708
         $_SERVER['HTTPS'] = 'on';
         $request = new Zend_Controller_Request_Http();
         $test = $request->getRequestUri();
@@ -779,6 +782,7 @@ class Zend_Controller_Request_HttpTest extends TestCase
 
         $_SERVER['REQUEST_URI'] = '/foo/bar?r=https://foo.example.com/bar/baz';
         $_SERVER['HTTP_HOST'] = 'foo.example.com';
+        $_SERVER['SERVER_NAME'] = 'foo.example.com'; // @see PCR360-11708
         $_SERVER['HTTPS'] = 'on';
         $request = new Zend_Controller_Request_Http();
         $test = $request->getRequestUri();
@@ -794,7 +798,7 @@ class Zend_Controller_Request_HttpTest extends TestCase
     {
         $_SERVER['REQUEST_URI'] = 'http://foo.example.com:8888/foo/bar?r=http://foo.example.com:8888/bar/baz';
         $_SERVER['HTTP_HOST'] = '';
-        $_SERVER['SERVER_NAME'] = 'foo.example.com';
+        $_SERVER['SERVER_NAME'] = 'foo.example.com'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = '8888';
         $request = new Zend_Controller_Request_Http();
         $test = $request->getRequestUri();
@@ -802,7 +806,7 @@ class Zend_Controller_Request_HttpTest extends TestCase
 
         $_SERVER['REQUEST_URI'] = '/foo/bar?r=https://foo.example.com:8888/bar/baz';
         $_SERVER['HTTP_HOST'] = '';
-        $_SERVER['SERVER_NAME'] = 'foo.example.com';
+        $_SERVER['SERVER_NAME'] = 'foo.example.com'; // @see PCR360-11708
         $_SERVER['SERVER_PORT'] = '8888';
         $request = new Zend_Controller_Request_Http();
         $test = $request->getRequestUri();

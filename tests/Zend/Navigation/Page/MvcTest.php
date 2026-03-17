@@ -65,6 +65,7 @@ class Zend_Navigation_Page_MvcTest extends TestCase
         $this->_front->resetInstance();
 
         $_SERVER['HTTP_HOST'] = 'foobar.example.com';
+        $_SERVER['SERVER_NAME'] = 'foobar.example.com'; // @see PCR360-11708
 
         $this->_front->setRequest(new Zend_Controller_Request_Http());
         $this->_front->getRouter()->addDefaultRoutes();

@@ -67,6 +67,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithOnlyHost()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
 
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('http://example.com', $url->serverUrl());
@@ -75,6 +76,8 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithOnlyHostIncludingPort()
     {
         $_SERVER['HTTP_HOST'] = 'example.com:8000';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
+        $_SERVER['SERVER_PORT'] = 8000;
 
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('http://example.com:8000', $url->serverUrl());
@@ -83,6 +86,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithHostAndHttpsOn()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $_SERVER['HTTPS'] = 'on';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -92,6 +96,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithHostAndXForwardedProtoHttps()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -101,6 +106,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithHostAndHttpsTrue()
     {
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $_SERVER['HTTPS'] = true;
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -110,6 +116,8 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     public function testConstructorWithHostIncludingPortAndHttpsTrue()
     {
         $_SERVER['HTTP_HOST'] = 'example.com:8181';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
+        $_SERVER['SERVER_PORT'] = 8181;
         $_SERVER['HTTPS'] = true;
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -123,7 +131,8 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
         $_SERVER['SERVER_PORT'] = 8080;
 
         $url = new Zend_View_Helper_ServerUrl();
-        $this->assertEquals('http://example.com', $url->serverUrl());
+        // @see PCR360-11708 SERVER_NAME takes priority over HTTP_HOST
+        $this->assertEquals('http://example.org:8080', $url->serverUrl());
     }
 
     public function testConstructorWithNoHttpHostButServerNameAndPortSet()
@@ -140,6 +149,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $_SERVER['HTTPS'] = 'off';
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $_SERVER['REQUEST_URI'] = '/foo.html';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -150,6 +160,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $_SERVER['HTTPS'] = 'off';
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $_SERVER['REQUEST_URI'] = '/foo.html';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -160,6 +171,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $_SERVER['HTTPS'] = 'off';
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $_SERVER['REQUEST_URI'] = '/foo.html';
 
         $url = new Zend_View_Helper_ServerUrl();
@@ -173,6 +185,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $_SERVER['HTTP_SCHEME'] = 'https';
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());
     }
@@ -184,6 +197,7 @@ class Zend_View_Helper_ServerUrlTest extends TestCase
     {
         $_SERVER['SERVER_PORT'] = 443;
         $_SERVER['HTTP_HOST'] = 'example.com';
+        $_SERVER['SERVER_NAME'] = 'example.com'; // @see PCR360-11708
         $url = new Zend_View_Helper_ServerUrl();
         $this->assertEquals('https://example.com', $url->serverUrl());
     }
