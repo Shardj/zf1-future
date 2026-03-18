@@ -451,7 +451,13 @@ abstract class Zend_Mail_Protocol_Abstract
         }
 
         do {
-            $this->_response[] = $result = $this->_receive($timeout) ?? '';
+            $this->_response[] = $result = $this->_receive($timeout);
+
+            if($result === false) {
+                // _receive() returned EOF, return empty msg string
+            	return $msg;
+            }
+
             list($cmd, $more, $msg) = preg_split('/([\s-]+)/', $result, 2, PREG_SPLIT_DELIM_CAPTURE);
 
             if ($errMsg !== '') {
