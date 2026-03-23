@@ -45,6 +45,9 @@ return RectorConfig::configure()
         __DIR__ . '/tests/Zend/Session/SessionTest.php',
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
+        new MethodCallRename('SplObjectStorage', 'attach', 'offsetSet'),
+        new MethodCallRename('SplObjectStorage', 'contains', 'offsetExists'),
+        new MethodCallRename('SplObjectStorage', 'detach', 'offsetUnset'),
         new MethodCallRename('Zend_Acl', 'add', 'addResource'),
     ])
     ->withSets([
