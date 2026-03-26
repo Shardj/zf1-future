@@ -107,6 +107,7 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+          - "8.5"
         experimental:
           - false
         include:
@@ -120,14 +121,12 @@ jobs:
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
           - php-version: "8.3"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
-            experimental: true
           - php-version: "8.4"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
             experimental: true
           - php-version: "8.5"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
             experimental: true
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
