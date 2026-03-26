@@ -4,7 +4,7 @@ includes:
 parameters:
     phpVersion:
         min: 70400
-        max: 80399
+        max: 80599
     paths:
         - library
     excludePaths:
