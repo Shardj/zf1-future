@@ -20,20 +20,16 @@
  * @version    $Id$
  */
 
-if (class_exists('PHPUnit\Runner\Version')) {
-	$id = PHPUnit\Runner\Version::id();
-} elseif (class_exists('PHPUnit_Runner_Version')) {
-	$id = PHPUnit_Runner_Version::id();
-} else {
-	$id = '0.0.0';
-}
-
-if (version_compare($id, '8.0', '>=')) {
-	include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ControllerTestCase80.php');
-	class Zend_Test_PHPUnit_ControllerTestCase extends Zend_Test_PHPUnit_ControllerTestCase80
-	{}
-} else {
-	include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ControllerTestCase34.php');
-	class Zend_Test_PHPUnit_ControllerTestCase extends Zend_Test_PHPUnit_ControllerTestCase34
-	{}
+/**
+ * Zend_Test_PHPUnit_Constraint_Exception
+ *
+ * @uses       PHPUnit_Framework_ExpectationFailedException
+ * @category   Zend
+ * @package    Zend_Test
+ * @subpackage PHPUnit
+ * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Test_PHPUnit_Constraint_Exception80 extends PHPUnit\Framework\AssertionFailedError
+{
 }
