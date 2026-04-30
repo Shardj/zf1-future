@@ -278,14 +278,8 @@ class Zend_Session extends Zend_Session_Abstract
             return;
         }
 
-        $result = session_set_save_handler(
-            [&$saveHandler, 'open'],
-            [&$saveHandler, 'close'],
-            [&$saveHandler, 'read'],
-            [&$saveHandler, 'write'],
-            [&$saveHandler, 'destroy'],
-            [&$saveHandler, 'gc']
-            );
+        $adapter = new Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter($saveHandler);
+        $result = session_set_save_handler($adapter, false);
         register_shutdown_function('session_write_close');
 
         if (!$result) {
