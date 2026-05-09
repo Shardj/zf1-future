@@ -148,6 +148,18 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
     }
 
 
+    /**         
+     * Class destructor to cleanup open resources
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        $this->quit();
+        parent::__destruct();
+    }
+
+
     /**
      * Connect to the server with the parameters given in the constructor.
      *
