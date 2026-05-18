@@ -10,7 +10,7 @@
  * http://framework.zend.com/license/new-bsd
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately
+ * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
  * @package    Zend_Session
@@ -47,12 +47,12 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements Session
     }
 
     /**
-     * @param string $path
-     * @param string $name
+     * @param mixed $path
+     * @param mixed $name
      * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function open(string $path, string $name): bool
+    public function open($path, $name): bool
     {
         return (bool) $this->saveHandler->open($path, $name);
     }
@@ -67,43 +67,43 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements Session
     }
 
     /**
-     * @param string $id
+     * @param mixed $id
      * @return string|false
      */
     #[\ReturnTypeWillChange]
-    public function read(string $id): string|false
+    public function read($id)
     {
         $data = $this->saveHandler->read($id);
         return $data ?? false;
     }
 
     /**
-     * @param string $id
-     * @param string $data
+     * @param mixed $id
+     * @param mixed $data
      * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function write(string $id, string $data): bool
+    public function write($id, $data): bool
     {
         return (bool) $this->saveHandler->write($id, $data);
     }
 
     /**
-     * @param string $id
+     * @param mixed $id
      * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function destroy(string $id): bool
+    public function destroy($id): bool
     {
         return (bool) $this->saveHandler->destroy($id);
     }
 
     /**
-     * @param int $max_lifetime
+     * @param mixed $max_lifetime
      * @return int|false
      */
     #[\ReturnTypeWillChange]
-    public function gc(int $max_lifetime): int|false
+    public function gc($max_lifetime)
     {
         $result = $this->saveHandler->gc($max_lifetime);
         return $result === false ? false : (int) $result;

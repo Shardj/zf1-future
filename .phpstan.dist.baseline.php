@@ -20926,33 +20926,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $read of function session_set_save_handler expects callable(string): string, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'read\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $rowKey of method Zend_Service_WindowsAzure_Storage_Table::retrieveEntityById() expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #4 $write of function session_set_save_handler expects callable(string, string): bool, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'write\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #5 $destroy of function session_set_save_handler expects callable(string): bool, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'destroy\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #6 $gc of function session_set_save_handler expects callable(string): bool, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'gc\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
 ];
 $ignoreErrors[] = [
@@ -21269,12 +21245,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of function setcookie expects string, false given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #6 $gc of function session_set_save_handler expects callable(string): bool, array{Zend_Session_SaveHandler_Interface, \'gc\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Session.php',
