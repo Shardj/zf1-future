@@ -21274,12 +21274,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Session.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #6 $gc of function session_set_save_handler expects callable(string): bool, array{Zend_Session_SaveHandler_Interface, \'gc\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Session::$_throwStartupExceptions has unknown class bitset as its type.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
