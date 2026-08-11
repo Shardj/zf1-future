@@ -37,6 +37,10 @@ require_once 'Zend/Session/Namespace.php';
  */
 require_once 'Zend/Session/SaveHandler/Interface.php';
 
+/**
+ * @see Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter
+ */
+require_once 'Zend/Session/SaveHandler/SaveHandlerInterfaceAdapter.php';
 
 /**
  * Zend_Session
