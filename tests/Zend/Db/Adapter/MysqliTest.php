@@ -288,6 +288,49 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
         $this->assertEquals(0, $row['autocommit']);
     }
 
+    public function testAdapterConnectFailureThrowsAdapterException()
+    {
+        $params = $this->_util->getParams();
+        $params['password'] = 'xxxxxxxx-bogus-password';
+        $db = Zend_Db::factory($this->getDriver(), $params);
+
+        try {
+            $db->getConnection();
+            $this->fail('Expected to catch Zend_Db_Adapter_Mysqli_Exception');
+        } catch (Zend_Exception $e) {
+            $this->assertInstanceOf('Zend_Db_Adapter_Mysqli_Exception', $e);
+        }
+        $this->assertFalse($db->isConnected());
+    }
+
+    public function testAdapterInvalidCharsetThrowsAdapterException()
+    {
+        $params = $this->_util->getParams();
+        $params['charset'] = 'bogus_charset';
+        $db = Zend_Db::factory($this->getDriver(), $params);
+
+        try {
+            $db->getConnection();
+            if (!(new mysqli_driver())->report_mode) {
+                $this->markTestSkipped('mysqli_set_charset() only throws when mysqli error reporting is enabled');
+            }
+            $this->fail('Expected to catch Zend_Db_Adapter_Mysqli_Exception');
+        } catch (Zend_Exception $e) {
+            $this->assertInstanceOf('Zend_Db_Adapter_Mysqli_Exception', $e);
+        }
+        $this->assertFalse($db->isConnected());
+    }
+
+    public function testAdapterDescribeBogusTableThrowsAdapterException()
+    {
+        try {
+            $this->_db->describeTable('BogusTable');
+            $this->fail('Expected to catch Zend_Db_Adapter_Mysqli_Exception');
+        } catch (Zend_Exception $e) {
+            $this->assertInstanceOf('Zend_Db_Adapter_Mysqli_Exception', $e);
+        }
+    }
+
     public function getDriver()
     {
         return 'Mysqli';
