@@ -92,9 +92,9 @@ class Zend_SessionTest extends TestCase
         ini_set('session.save_path', $this->_savePath);
 
         $this->assertSame(
-            E_ALL | E_STRICT,
-            error_reporting(E_ALL | E_STRICT),
-            'A test altered error_reporting to something other than E_ALL | E_STRICT'
+            E_ALL,
+            error_reporting(E_ALL),
+            'A test altered error_reporting to something other than E_ALL'
         );
 
         Zend_Session_Namespace::unlockAll();
