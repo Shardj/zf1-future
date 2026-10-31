@@ -340,7 +340,7 @@ class Zend_Log_LogTest extends TestCase
         $oldErrorLevel = error_reporting();
 
         $this->expectingLogging = true;
-        error_reporting(E_ALL | E_STRICT);
+        error_reporting(E_ALL);
 
         $oldHandler = set_error_handler([$this, 'verifyHandlerData']);
         $logger->registerErrorHandler();
