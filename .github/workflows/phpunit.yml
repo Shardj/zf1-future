@@ -132,9 +132,10 @@ jobs:
           # Experimental versions are not listed in php-version above. They are separate
           # combinations, so the generic entries above are not applied to them and both
           # extension lists have to be set here.
+          # lzf does not build on PHP 8.6 yet
           - php-version: "8.6"
             php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, memcached, memcache, ldap, sqlite"
             experimental: true
     steps:
       - name: Checkout
