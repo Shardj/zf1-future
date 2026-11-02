@@ -329,7 +329,7 @@ abstract class Zend_Translate_Adapter {
             $this->_addTranslationData($options);
         }
 
-        if ((isset($this->_translate[$originate]) === true) && (count($this->_translate[$originate]) > 0)) {
+        if (($originate !== null) && (isset($this->_translate[$originate]) === true) && (count($this->_translate[$originate]) > 0)) {
             $this->setLocale($originate);
         }
 

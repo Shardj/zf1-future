@@ -103,7 +103,9 @@ class Zend_Service_Amazon_Sqs_OfflineTest extends TestCase
         $this->_httpClientAdapterTest->addResponse("HTTP/1.1 200 OK\r\n\r\n<ListQueuesResponse></ListQueuesResponse>");
 
         $reflection = new ReflectionMethod(Zend_Service_Amazon_Sqs::class, '_makeRequest');
-        $reflection->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $reflection->setAccessible(true);
+        }
 
         $deprecations = [];
         set_error_handler(

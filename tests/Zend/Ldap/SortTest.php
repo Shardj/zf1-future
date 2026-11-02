@@ -59,7 +59,9 @@ class Zend_Ldap_SortTest extends Zend_Ldap_OnlineTestCase
 
         $reflectionObject   = new ReflectionObject($iterator);
         $reflectionProperty = $reflectionObject->getProperty('_sortFunction');
-        $reflectionProperty->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $reflectionProperty->setAccessible(true);
+        }
         $this->assertEquals('strnatcasecmp', $reflectionProperty->getValue($iterator));
         $iterator->setSortFunction($sortFunction);
         $this->assertEquals($sortFunction, $reflectionProperty->getValue($iterator));
@@ -83,11 +85,15 @@ class Zend_Ldap_SortTest extends Zend_Ldap_OnlineTestCase
 
         $reflectionObject   = new ReflectionObject($iterator);
         $reflectionProperty = $reflectionObject->getProperty('_sortFunction');
-        $reflectionProperty->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $reflectionProperty->setAccessible(true);
+        }
         $this->assertEquals('strnatcasecmp', $reflectionProperty->getValue($iterator));
 
         $reflectionProperty = $reflectionObject->getProperty('_entries');
-        $reflectionProperty->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $reflectionProperty->setAccessible(true);
+        }
 
         $iterator->sort('l');
 
@@ -128,11 +134,15 @@ class Zend_Ldap_SortTest extends Zend_Ldap_OnlineTestCase
 
         $reflectionObject   = new ReflectionObject($iterator);
         $reflectionProperty = $reflectionObject->getProperty('_sortFunction');
-        $reflectionProperty->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $reflectionProperty->setAccessible(true);
+        }
         $this->assertEquals($sortFunction, $reflectionProperty->getValue($iterator));
 
         $reflectionProperty = $reflectionObject->getProperty('_entries');
-        $reflectionProperty->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $reflectionProperty->setAccessible(true);
+        }
 
         $iterator->sort('l');
 

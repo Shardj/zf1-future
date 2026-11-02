@@ -56,10 +56,28 @@ class Zend_Db_TestUtil_Pdo_Mysql extends Zend_Db_TestUtil_Mysqli
             $constants['driver_options'] = [];
         }
 
-        if (!isset($constants['driver_options'][PDO::MYSQL_ATTR_USE_BUFFERED_QUERY])) {
-            $constants['driver_options'][PDO::MYSQL_ATTR_USE_BUFFERED_QUERY] = true;
+        $bufferedQuery = self::getBufferedQueryAttribute();
+        if (!isset($constants['driver_options'][$bufferedQuery])) {
+            $constants['driver_options'][$bufferedQuery] = true;
         }
 
         return $constants;
+    }
+
+    /**
+     * Returns the PDO attribute for buffered MySQL queries.
+     *
+     * PDO::MYSQL_ATTR_USE_BUFFERED_QUERY is deprecated since PHP 8.5 in favour of
+     * Pdo\Mysql::ATTR_USE_BUFFERED_QUERY, which exists since PHP 8.4.
+     *
+     * @return int
+     */
+    public static function getBufferedQueryAttribute()
+    {
+        if (defined('Pdo\Mysql::ATTR_USE_BUFFERED_QUERY')) {
+            return constant('Pdo\Mysql::ATTR_USE_BUFFERED_QUERY');
+        }
+
+        return PDO::MYSQL_ATTR_USE_BUFFERED_QUERY;
     }
 }

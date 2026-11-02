@@ -90,7 +90,9 @@ class Zend_Form_ElementTest extends TestCase
     {
         $reflection = new ReflectionClass($element);
         $property = $reflection->getProperty('_validatorBreakChainOnFailures');
-        $property->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $property->setAccessible(true);
+        }
         $breakChainOnFailures = $property->getValue($element);
 
         return isset($breakChainOnFailures[$validator]) ? $breakChainOnFailures[$validator] : false;

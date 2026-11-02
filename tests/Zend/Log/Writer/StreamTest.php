@@ -63,7 +63,9 @@ class Zend_Log_Writer_StreamTest extends TestCase
         } catch (TypeError $e) {
             $this->assertMatchesRegularExpression('/must be of t/i', $e->getMessage());
         }
-        xml_parser_free($resource);
+        if (PHP_VERSION_ID < 80000) {
+            xml_parser_free($resource);
+        }
     }
 
     /**

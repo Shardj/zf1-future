@@ -478,7 +478,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
      */
     public function fault($exception = null, $code = null)
     {
-        if (isset($this->_functions[$this->_method])) {
+        if ($this->_method !== null && isset($this->_functions[$this->_method])) {
             $function = $this->_functions[$this->_method];
         } elseif (isset($this->_method)) {
             $function = $this->_method;
