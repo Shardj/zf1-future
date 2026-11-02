@@ -185,9 +185,9 @@ class Zend_Validate_FloatTest extends TestCase
      */
     public function testPhpLocaleDeStringType()
     {
-        setlocale(LC_ALL, 'de_AT');
-        setlocale(LC_NUMERIC, 'de_AT');
-        $valid = new Zend_Validate_Float('de_AT');
+        setlocale(LC_ALL, 'de_DE');
+        setlocale(LC_NUMERIC, 'de_DE');
+        $valid = new Zend_Validate_Float('de_DE');
         $this->assertTrue($valid->isValid('1,3'));
         $this->assertTrue($valid->isValid('1000,3'));
         $this->assertTrue($valid->isValid('1.000,3'));
