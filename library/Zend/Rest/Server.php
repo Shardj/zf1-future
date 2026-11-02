@@ -84,7 +84,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
     ];
 
     /**
-     * @var string Current Method
+     * @var string|null Current Method
      */
     protected $_method;
 
