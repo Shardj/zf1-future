@@ -51,7 +51,7 @@ class Zend_Test_DbStatementTest extends TestCase
 
     public function testCreateSelectStatementWithRows()
     {
-        $rows = ["foo", "bar"];
+        $rows = [['foo'], ['bar']];
 
         $stmt = Zend_Test_DbStatement::createSelectStatement($rows);
 

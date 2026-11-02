@@ -80,7 +80,6 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
     protected function set_up()
     {
         $_SESSION = [];
-        $this->expectException(null);
         $this->testCase = new Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete();
         $this->testCase->reset();
         $this->testCase->bootstrap = [$this, 'bootstrap'];
