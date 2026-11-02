@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
+  BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
+
 * Zend_Db mysqli adapter and statement now convert mysqli_sql_exception (thrown by default since PHP 8.1) into Zend_Db_Adapter_Mysqli_Exception / Zend_Db_Statement_Mysqli_Exception, so catching Zend_Db_Exception works again (#561).
   BC note: code that catches mysqli_sql_exception directly must catch the Zend_Db exception instead; the original exception is available via getPrevious().
 
