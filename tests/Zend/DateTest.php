@@ -5853,6 +5853,30 @@ class Zend_DateTest extends TestCase
         $this->assertEquals('2014.12', $date->get('Y.M'));
         $this->assertEquals('201412', $date->get('YM'));
     }
+
+    /**
+     * @group GH-512
+     * @dataProvider providerSetAndCompareWithDayAndMonthFormat
+     */
+    public function testSetAndCompareWithDayAndMonthFormat($input, $format, $expected)
+    {
+        $date = new Zend_Date(0, null, 'de_DE');
+        $date->set($input, $format, 'de_DE');
+
+        $this->assertSame($expected, $date->toString('yyyy-MM-dd'));
+        $this->assertSame(0, $date->compare($input, $format, 'de_DE'));
+    }
+
+    public static function providerSetAndCompareWithDayAndMonthFormat()
+    {
+        return [
+            'leading zeros'       => ['05.03.2009', 'dd.MM.yyyy', '2009-03-05'],
+            'without zeros'       => ['5.3.2009', 'd.M.yyyy', '2009-03-05'],
+            'first day and month' => ['01.01.2012', 'dd.MM.yyyy', '2012-01-01'],
+            'two-digit values'    => ['31.12.2010', 'dd.MM.yyyy', '2010-12-31'],
+            'ten'                 => ['10.10.2010', 'dd.MM.yyyy', '2010-10-10'],
+        ];
+    }
 }
 
 class Zend_Date_TestHelper extends Zend_Date
