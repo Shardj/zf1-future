@@ -430,7 +430,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
             $qtext      = '\x20-\x21\x23-\x5b\x5d-\x7e'; // %d32-33 / %d35-91 / %d93-126
             $quotedPair = '\x20-\x7e'; // %d92 %d32-126
             if ((0 === (strcmp($this->localPart, strip_tags($this->localPart))))
-                && (0 === (strcmp($this->localPart, htmlspecialchars_decode($this->localPart))))
+                && (0 === (strcmp($this->localPart, htmlspecialchars_decode($this->localPart, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401))))
                 && (preg_match('/^"(['. $qtext .']|\x5c[' . $quotedPair . '])*"$/', $this->localPart))) {
                 $result = true;
             } else {

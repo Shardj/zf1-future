@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+* Zend_Db mysqli adapter and statement now convert mysqli_sql_exception (thrown by default since PHP 8.1) into Zend_Db_Adapter_Mysqli_Exception / Zend_Db_Statement_Mysqli_Exception, so catching Zend_Db_Exception works again (#561).
+  BC note: code that catches mysqli_sql_exception directly must catch the Zend_Db exception instead; the original exception is available via getPrevious().
+
 ## [1.25.2] - 2026-08-21
 
 ### Fixed
