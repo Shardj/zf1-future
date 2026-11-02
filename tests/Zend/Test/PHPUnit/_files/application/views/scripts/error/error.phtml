@@ -1,3 +1,4 @@
+<?php if ($this->info instanceof Exception): ?>
 Error occurred while performing action: <?php echo $this->info->getMessage() ?>
 
 Original request parameters:
@@ -5,3 +6,4 @@ Original request parameters:
 
 BackTrace:
 <?php echo $this->info->getTraceAsString() ?>
+<?php endif ?>
