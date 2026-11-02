@@ -4,9 +4,12 @@ on: [push, pull_request]
 
 jobs:
   phpunit:
-    name: Tests on PHP ${{ matrix.php-version }}
+    name: Tests on PHP ${{ matrix.php-version }}${{ matrix.experimental && ' (experimental)' || '' }}
 
     runs-on: ubuntu-22.04
+
+    # A failing experimental job (including PHP or extension setup) does not fail the workflow
+    continue-on-error: ${{ matrix.experimental }}
 
     env:
       PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
@@ -124,9 +127,15 @@ jobs:
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
           - php-version: "8.4"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
-            experimental: true
           - php-version: "8.5"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+          # Experimental versions are not listed in php-version above. They are separate
+          # combinations, so the generic entries above are not applied to them and both
+          # extension lists have to be set here.
+          # lzf does not build on PHP 8.6 yet
+          - php-version: "8.6"
+            php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, memcached, memcache, ldap, sqlite"
             experimental: true
     steps:
       - name: Checkout
