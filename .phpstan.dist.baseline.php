@@ -746,6 +746,12 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Image.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Function imagepolygon invoked with 3 parameters, 4 required.',
+	'identifier' => 'arguments.count',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Image.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between class-string and \'GdImage\' will always evaluate to false.',
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
