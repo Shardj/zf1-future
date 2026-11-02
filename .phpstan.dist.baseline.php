@@ -17996,12 +17996,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Rest_Server::$_method (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene::norm() should return float but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
