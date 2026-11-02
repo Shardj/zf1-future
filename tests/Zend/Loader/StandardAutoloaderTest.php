@@ -218,7 +218,9 @@ class Zend_Loader_StandardAutoloaderTest extends TestCase
         $loader = new Zend_Loader_StandardAutoloader();
         $reflection = new ReflectionClass($loader);
         $prefixes = $reflection->getProperty('prefixes');
-        $prefixes->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $prefixes->setAccessible(true);
+        }
         $expected = [];
         $this->assertEquals($expected, $prefixes->getValue($loader));
     }
@@ -230,7 +232,9 @@ class Zend_Loader_StandardAutoloaderTest extends TestCase
         $file = $r->getFileName();
         $expected = ['Zend_' => dirname(dirname($file)) . DIRECTORY_SEPARATOR];
         $prefixes = $r->getProperty('prefixes');
-        $prefixes->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $prefixes->setAccessible(true);
+        }
         $this->assertEquals($expected, $prefixes->getValue($loader));
     }
 }
