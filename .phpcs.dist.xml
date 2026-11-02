@@ -41,4 +41,12 @@
         <exclude-pattern>*/Zend/Filter/Encrypt/Mcrypt.php</exclude-pattern>
         <exclude-pattern>*/Zend/Service/ReCaptcha/MailHide.php</exclude-pattern>
     </rule>
+
+    <!-- Constraint classes for newer PHPUnit versions, selected at runtime by the PHPUnit version -->
+    <rule ref="PHPCompatibility.FunctionDeclarations.NewParamTypeDeclarations">
+        <exclude-pattern>*/Zend/Test/PHPUnit/Constraint/*80.php</exclude-pattern>
+    </rule>
+    <rule ref="PHPCompatibility.FunctionDeclarations.NewReturnTypeDeclarations">
+        <exclude-pattern>*/Zend/Test/PHPUnit/Constraint/*80.php</exclude-pattern>
+    </rule>
 </ruleset>
