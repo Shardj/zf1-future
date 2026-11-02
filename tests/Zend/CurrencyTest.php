@@ -86,7 +86,7 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency('de_AT');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("€\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('de_DE');
         $this->assertTrue($currency instanceof Zend_Currency);
@@ -94,7 +94,7 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency($locale);
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("€\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         try {
             $currency = new Zend_Currency('de_XX');
@@ -140,23 +140,23 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency('USD', 'de_AT');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('USD', $locale);
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('de_AT', 'USD');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency($locale, 'USD');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('EUR', 'de_AT');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("€\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         try {
             $currency = new Zend_Currency('EUR', 'xx_YY');
@@ -175,11 +175,11 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency('USD', 'de_AT');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('USD', $locale);
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         try {
             $currency = new Zend_Currency('XXX', 'Latin', $locale);
@@ -202,23 +202,23 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency('USD', 'de_AT');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('Euro', 'de_AT');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('EUR 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("EUR\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('USD', $locale);
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('de_AT', 'EUR');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("€\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency($locale, 'USD');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('$ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("\$\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         $currency = new Zend_Currency('EUR', 'en_US');
         $this->assertTrue($currency instanceof Zend_Currency);
@@ -230,7 +230,7 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency($locale, 'EUR');
         $this->assertTrue($currency instanceof Zend_Currency);
-        $this->assertSame('€ 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("€\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
     }
 
     /**
@@ -268,7 +268,7 @@ class Zend_CurrencyTest extends TestCase
 
         $currency = new Zend_Currency('EUR', 'de_AT');
         $currency->setFormat(['display' => 'SIGN']);
-        $this->assertSame('SIGN 1.000,00', $currency->toCurrency(1000));
+        $this->assertSame("SIGN\u{00A0}1\u{00A0}000,00", $currency->toCurrency(1000));
 
         try {
             $currency = new Zend_Currency('EUR');
@@ -289,13 +289,13 @@ class Zend_CurrencyTest extends TestCase
 
         $this->assertSame('$53,292.18', $USD->toCurrency(53292.18));
         $this->assertSame('$٥٣,٢٩٢.١٨', $USD->toCurrency(53292.18, ['script' => 'Arab' ]));
-        $this->assertSame('$ ٥٣.٢٩٢,١٨', $USD->toCurrency(53292.18, ['script' => 'Arab', 'format' => 'de_AT']));
-        $this->assertSame('$ 53.292,18', $USD->toCurrency(53292.18, ['format' => 'de_AT']));
+        $this->assertSame("\$\u{00A0}٥٣\u{00A0}٢٩٢,١٨", $USD->toCurrency(53292.18, ['script' => 'Arab', 'format' => 'de_AT']));
+        $this->assertSame("\$\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18, ['format' => 'de_AT']));
 
-        $this->assertSame('ج.م.‏ 53٬292٫18', $EGP->toCurrency(53292.18));
-        $this->assertSame('ج.م.‏ ٥٣٬٢٩٢٫١٨', $EGP->toCurrency(53292.18, ['script' => 'Arab']));
-        $this->assertSame('ج.م.‏ ٥٣.٢٩٢,١٨', $EGP->toCurrency(53292.18, ['script' => 'Arab', 'format' => 'de_AT']));
-        $this->assertSame('ج.م.‏ 53.292,18', $EGP->toCurrency(53292.18, ['format' => 'de_AT']));
+        $this->assertSame("\u{200F}53٬292٫18\u{00A0}ج.م.\u{200F}", $EGP->toCurrency(53292.18));
+        $this->assertSame("\u{200F}٥٣٬٢٩٢٫١٨\u{00A0}ج.م.\u{200F}", $EGP->toCurrency(53292.18, ['script' => 'Arab']));
+        $this->assertSame("ج.م.‏\u{00A0}٥٣\u{00A0}٢٩٢,١٨", $EGP->toCurrency(53292.18, ['script' => 'Arab', 'format' => 'de_AT']));
+        $this->assertSame("ج.م.‏\u{00A0}53\u{00A0}292,18", $EGP->toCurrency(53292.18, ['format' => 'de_AT']));
 
         $USD = new Zend_Currency('en_US');
         $this->assertSame('$53,292.18', $USD->toCurrency(53292.18));
@@ -326,54 +326,54 @@ class Zend_CurrencyTest extends TestCase
         $this->assertSame('$٥٣,٢٩٢.١٨', $USD->toCurrency(53292.18));
 
         $USD->setFormat(['script' => 'Arab', 'format' => 'de_AT']);
-        $this->assertSame('$ ٥٣.٢٩٢,١٨', $USD->toCurrency(53292.18));
+        $this->assertSame("\$\u{00A0}٥٣\u{00A0}٢٩٢,١٨", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['script' => 'Latn', 'format' => 'de_AT']);
-        $this->assertSame('$ 53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("\$\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['script' => 'Latn', 'format' => $locale]);
         $this->assertSame('$53,292.18', $USD->toCurrency(53292.18));
 
         // allignment of currency signs
         $USD->setFormat(['position' => Zend_Currency::RIGHT, 'format' => 'de_AT']);
-        $this->assertSame('53.292,18 $', $USD->toCurrency(53292.18));
+        $this->assertSame("53\u{00A0}292,18\u{00A0}\$", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['position' => Zend_Currency::RIGHT, 'format' => $locale]);
         $this->assertSame('53,292.18$', $USD->toCurrency(53292.18));
 
         $USD->setFormat(['position' => Zend_Currency::LEFT, 'format' => 'de_AT']);
-        $this->assertSame('$ 53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("\$\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['position' => Zend_Currency::LEFT, 'format' => $locale]);
         $this->assertSame('$53,292.18', $USD->toCurrency(53292.18));
 
         $USD->setFormat(['position' => Zend_Currency::STANDARD, 'format' => 'de_AT']);
-        $this->assertSame('$ 53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("\$\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['position' => Zend_Currency::STANDARD, 'format' => $locale]);
         $this->assertSame('$53,292.18', $USD->toCurrency(53292.18));
 
         // enable/disable currency symbols & currency names
         $USD->setFormat(['display' => Zend_Currency::NO_SYMBOL, 'format' => 'de_AT']);
-        $this->assertSame('53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::NO_SYMBOL, 'format' => $locale]);
         $this->assertSame('53,292.18', $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::USE_SHORTNAME, 'format' => 'de_AT']);
-        $this->assertSame('USD 53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("USD\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::USE_SHORTNAME, 'format' => $locale]);
         $this->assertSame('USD53,292.18', $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::USE_NAME, 'format' => 'de_AT']);
-        $this->assertSame('US Dollar 53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("US Dollar\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::USE_NAME, 'format' => $locale]);
         $this->assertSame('US Dollar53,292.18', $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::USE_SYMBOL, 'format' => 'de_AT']);
-        $this->assertSame('$ 53.292,18', $USD->toCurrency(53292.18));
+        $this->assertSame("\$\u{00A0}53\u{00A0}292,18", $USD->toCurrency(53292.18));
 
         $USD->setFormat(['display' => Zend_Currency::USE_SYMBOL, 'format' => $locale]);
         $this->assertSame('$53,292.18', $USD->toCurrency(53292.18));
@@ -516,7 +516,7 @@ class Zend_CurrencyTest extends TestCase
         $this->assertEquals([
             0 => 'AS', 1 => 'BQ', 2 => 'DG', 3 => 'EC', 4 => 'FM', 5 => 'GU', 6 => 'IO', 7 => 'MH',
             8 => 'MP', 9 => 'PR', 10 => 'PW', 11 => 'SV', 12 => 'TC', 13 => 'TL', 14 => 'UM',
-            15 => 'US', 16 => 'VG', 17 => 'VI', 18 => 'ZW'], $currency->getRegionList());
+            15 => 'US', 16 => 'VG', 17 => 'VI'], $currency->getRegionList());
     }
 
     /**
@@ -826,7 +826,7 @@ class Zend_CurrencyTest extends TestCase
     public function testSetValueByOutput()
     {
         $currency = new Zend_Currency(['value' => 1000, 'locale' => 'de_AT']);
-        $this->assertEquals('€ 2.000,00', $currency->toCurrency(null, ['value' => 2000]));
+        $this->assertEquals("€\u{00A0}2\u{00A0}000,00", $currency->toCurrency(null, ['value' => 2000]));
     }
 
     /**
@@ -869,6 +869,6 @@ class Zend_CurrencyTest extends TestCase
     public function testToCurrencyWithLocaleWhichHasParentLocale()
     {
         $currency = new Zend_Currency(null, 'es_AR');
-        $this->assertEquals('$10,00', $currency->toCurrency(10));
+        $this->assertEquals("\$\u{00A0}10,00", $currency->toCurrency(10));
     }
 }

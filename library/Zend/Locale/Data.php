@@ -316,9 +316,10 @@ class Zend_Locale_Data
     }
 
     /**
-     * Returns the territories where each language is spoken, as a space separated list
+     * Returns the territories of each language, as a space separated list
      *
-     * Read from the language population of each territory in the supplemental data.
+     * Read from the language population of each territory in the supplemental data: the territories
+     * where the language is official, or all territories where it is spoken when it is not official anywhere.
      *
      * @return array
      */
@@ -327,13 +328,19 @@ class Zend_Locale_Data
         // loads the supplemental data
         self::_getFile('supplementalData', '/supplementalData/territoryInfo/territory', 'type');
 
+        $official  = [];
         $languages = [];
         foreach (self::$_ldml['supplementalData']->xpath('/supplementalData/territoryInfo/territory') as $territory) {
             foreach ($territory->languagePopulation as $population) {
-                $languages[(string) $population['type']][] = (string) $territory['type'];
+                $language = (string) $population['type'];
+                $languages[$language][] = (string) $territory['type'];
+                if (in_array((string) $population['officialStatus'], ['official', 'de_facto_official'], true)) {
+                    $official[$language][] = (string) $territory['type'];
+                }
             }
         }
 
+        $languages = $official + $languages;
         ksort($languages);
         foreach ($languages as $language => $territories) {
             $territories = array_unique($territories);
