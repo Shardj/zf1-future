@@ -463,7 +463,7 @@ class Zend_Locale_Data
         $val = urlencode((string) $val);
         $id  = self::_filterCacheId('Zend_LocaleL_' . $locale . '_' . $path . '_' . $val);
         if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
-            return unserialize($result);
+            return unserialize($result, ['allowed_classes' => false]);
         }
 
         $temp = [];
@@ -1091,7 +1091,7 @@ class Zend_Locale_Data
         $val = urlencode((string) $val);
         $id  = self::_filterCacheId('Zend_LocaleC_' . $locale . '_' . $path . '_' . $val);
         if (!self::$_cacheDisabled && ($result = self::$_cache->load($id))) {
-            return unserialize($result);
+            return unserialize($result, ['allowed_classes' => false]);
         }
 
         switch(strtolower((string) $path)) {

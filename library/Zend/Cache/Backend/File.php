@@ -575,7 +575,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
             return false;
         }
 
-        return @unserialize($result);
+        return @unserialize($result, ['allowed_classes' => false]);
     }
 
     /**
