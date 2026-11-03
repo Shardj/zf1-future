@@ -17,6 +17,7 @@ As pressure to implement some PHP 8.2+ related changes are raising, we are goig 
   * territories of a language (`territorytolanguage`, `languagetoterritory`) are taken from the official languages in `territoryInfo`
 * don't compare localized strings against hardcoded values in your application, they change with the CLDR data
 * input parsing accepts a plain space for space-like group separators (no-break and narrow no-break space)
+* Zend_Validate_Hostname (and so Zend_Validate_EmailAddress) accepts more internationalized hostnames when the intl extension is loaded: under an internationalized TLD that has no character table in the validator, a non-ASCII label is checked against IDNA 2008 (UTS #46) with `idn_to_ascii()` and accepted when it is valid there, e.g. `نمونه.ایران` or `пример.укр`. TLDs with a table (`.de`, `.se`, `.com`, …) and ASCII TLDs without one (`.uk`) keep their rules, so nothing that was valid before becomes invalid. Without intl the behaviour is unchanged (#477).
 * `Zend_Db_Table_Row_Abstract::offsetUnset()` returns nothing, as `ArrayAccess::offsetUnset()` is declared `void` since PHP 8.1. It returned `$this` (the result of `__unset()`) before, so chained calls on its return value have to be split (#360):
   ```php
   $row->offsetUnset($x)->offsetUnset($y);   // before
