@@ -13,7 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.25.3] - 2026-11-03
 
+### Added
+
+* Zend_Session: `use_strict_mode` session option, so `session.use_strict_mode` can be set through Zend_Session::setOptions() (#553).
+
 ### Changed
+
+* Zend_Date and Zend_Debug no longer depend on the str_decrement() / str_contains() polyfills, so the library works without Composer, e.g. from a release archive (#564, #512).
+* README: supported PHP versions and installation without Composer (#564).
 
 * Zend_Validate_Hostname: the list of known TLDs is updated to the IANA root zone of 2026-11-02; a TLD missing from the list is looked up in DNS (NS record of the TLD), which the new `tldDns` option (`setValidateTldDns(false)`) turns off (#314).
   BC note: TLDs retired by IANA are no longer accepted, see BREAKING-CHANGES.md.
@@ -26,6 +33,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Validate_StringLength: a string with an invalid byte sequence fails with the `stringLengthInvalid` error instead of passing the maximum length check, because iconv_strlen() returned false (#548).
+* Zend_Service_Amazon_S3::removeObject() throws an exception for an object name without a key instead of sending a DeleteBucket request for the bucket (#547).
+* Zend_Form_Element::clearDecorators() no longer resets the break-chain-on-failure flags of the validators (#550).
+* Zend_Form_Element: fluent methods are documented with `@return $this`, so chained calls keep the subclass type in IDEs and static analysis (#552).
+* Zend_Soap_Client: the default transport calls the parent __doRequest() directly instead of through a callable of the form `[$client, 'SoapClient::__doRequest']`, which PHP 8.2 deprecates (#556).
+* Zend_Cache_Frontend_Page: repeated headers (`Link`, `Vary`, `Set-Cookie`, …) are all sent when a page is served from the cache; only the last one survived before (#557).
+* PHP 8.5 deprecations: no null array keys in Zend_Translate_Adapter, Zend_Validate_File_Upload and Zend_Rest_Server, no xml_parser_free() in the Zend_Translate XML adapters on PHP 8.0 and newer (#565).
 * Zend_Test_PHPUnit constraint classes (DomQuery, Redirect, ResponseHeader) work with PHPUnit 6 to 9, so assertQuery(), assertRedirect() and the response header assertions of Zend_Test_PHPUnit_ControllerTestCase can be used again (#569).
 * Zend_Mail_Protocol_Smtp ends an open session with QUIT in its destructor and ignores protocol errors there, so a connection closed by the server cannot end in a fatal error during shutdown (#530).
 * Zend_Cache_Backend_File writes cache files atomically (temporary file and rename), so concurrent writers can no longer produce a file with the content twice (`unserialize(): Extra data`) and readers never see a truncated file (#420).
