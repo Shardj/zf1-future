@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Navigation_Page_Mvc::isActive() accepts array values in the request params without an "Array to string conversion" warning (#474).
 * Zend_File_ClassFileLocator (and so the classmap generator) finds enums (#551).
 * Zend_Session_SaveHandler_DbTable::read() returns a string for a NULL data column, Zend_Db_Adapter_Oracle passes no null encoding to oci_connect() (#563).
 
