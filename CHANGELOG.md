@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Mail_Protocol_Smtp: the host part of an internationalized address (`hällo@händler.com`) is sent as punycode in `MAIL FROM` and `RCPT TO` when the intl extension is loaded, instead of in UTF-8, which servers without SMTPUTF8 reject with "5.1.8 UTF-8 addresses not supported" (#507).
 * Zend_Validate_Hostname: with the intl extension, a non-ASCII label under an internationalized TLD that has no character table of its own (131 of the 151 IDN TLDs, e.g. `.ایران`, `.موقع`, `.укр`) is accepted when it is a valid IDNA 2008 (UTS #46) label; before, only ASCII labels passed under these TLDs. Invisible characters such as bidi marks remain invalid. The per-label length limit of the IDN tables is applied again (#477).
   BC note: hostnames and e-mail addresses that were rejected before can be valid now, see BREAKING-CHANGES.md.
 * `@return` annotations on the ArrayAccess, Iterator, IteratorAggregate and Countable implementations that still rely on `#[\ReturnTypeWillChange]`, so Symfony's DebugClassLoader no longer reports "might add … as a native return type declaration" on PHP 7.4 (#360).
