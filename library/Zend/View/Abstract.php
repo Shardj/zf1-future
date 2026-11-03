@@ -269,7 +269,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      * If {@link strictVars()} is on, raises a notice.
      *
      * @param  string $key
-     * @return null
+     * @return mixed
      */
     public function &__get($key)
     {
