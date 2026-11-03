@@ -509,19 +509,19 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Application_Bootstrap_Bootstrapper::getResource().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/UserAgent.php',
+	'path' => __DIR__ . '/library/Zend/Application/Resource/Useragent.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Application_Bootstrap_Bootstrapper::hasPluginResource().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/UserAgent.php',
+	'path' => __DIR__ . '/library/Zend/Application/Resource/Useragent.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Application_Bootstrap_Bootstrapper::hasResource().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/UserAgent.php',
+	'path' => __DIR__ . '/library/Zend/Application/Resource/Useragent.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setView().',

@@ -26,7 +26,7 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Application_Resource_UserAgent extends Zend_Application_Resource_ResourceAbstract
+class Zend_Application_Resource_Useragent extends Zend_Application_Resource_ResourceAbstract
 {
     /**
      * @var Zend_Http_UserAgent
