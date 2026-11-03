@@ -1701,6 +1701,9 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $this->assertStringNotContainsString('COUNT(*) "', $sql);
     }
 
+    /**
+     * @group ZF-4772
+     */
     public function testSelectUnionNoArrayThrowsException()
     {
         $this->expectException(Zend_Db_Select_Exception::class);
