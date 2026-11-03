@@ -607,6 +607,18 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
     /**
      * Test the Adapter's fetchPairs() method.
      */
+    /**
+     * @group GH-408
+     */
+    public function testAdapterFetchPairsWithSingleColumn()
+    {
+        $products = $this->_db->quoteIdentifier('zfproducts');
+        $product_id = $this->_db->quoteIdentifier('product_id');
+
+        $result = $this->_db->fetchPairs("SELECT $product_id FROM $products WHERE $product_id > ? ORDER BY $product_id ASC", 1);
+        $this->assertEquals([2 => null, 3 => null], $result);
+    }
+
     public function testAdapterFetchPairsAfterSetFetchMode()
     {
         $products = $this->_db->quoteIdentifier('zfproducts');

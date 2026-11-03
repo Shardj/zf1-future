@@ -280,12 +280,6 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends TestCase
 
     public function testRespondsToValidConfirmationWith200Response()
     {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
-            );
-        }
-
         $this->_get['hub_mode'] = 'unsubscribe';
         $this->_tableGateway->expects($this->any())
             ->method('find')
@@ -310,10 +304,26 @@ class Zend_Feed_Pubsubhubbub_Subscriber_CallbackTest extends TestCase
             ->method('count')
             ->will($this->returnValue(1));
 
+        $expected = [
+            'id' => 'verifytokenkey',
+            'verify_token' => hash('sha256', 'cba'),
+            'created_time' => $t->get(Zend_Date::TIMESTAMP),
+            'lease_seconds' => 1234567,
+            'subscription_state' => 'verified',
+        ];
+        $expectedExpiration = $t->getTimestamp() + 1234567;
         $this->_tableGateway->expects($this->once())
             ->method('update')
             ->with(
-                $this->equalTo(['id' => 'verifytokenkey', 'verify_token' => hash('sha256', 'cba'), 'created_time' => $t->get(Zend_Date::TIMESTAMP), 'lease_seconds' => 1234567, 'subscription_state' => 'verified', 'expiration_time' => $t->add(1234567, Zend_Date::SECOND)->get('yyyy-MM-dd HH:mm:ss')]),
+                $this->callback(function ($data) use ($expected, $expectedExpiration) {
+                    // the model takes its own "now", so the expiration may be a second later than the test's
+                    $expiration = strtotime($data['expiration_time']);
+                    unset($data['expiration_time']);
+                    $this->assertEquals($expected, $data);
+                    $this->assertGreaterThanOrEqual($expectedExpiration, $expiration);
+                    $this->assertLessThanOrEqual($expectedExpiration + 5, $expiration);
+                    return true;
+                }),
                 $this->equalTo('id = \'verifytokenkey\'')
             );
         $this->_adapter->expects($this->once())
