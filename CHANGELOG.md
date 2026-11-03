@@ -6,17 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-
-* Zend_Db_Adapter_Abstract::fetchPairs() gives null values for a single column result instead of an undefined key warning (#408); fetchAll() is documented as returning array (#384).
-* Zend_Filter::filterStatic() passes an array with string keys as the options array instead of named constructor arguments (#394).
-* Zend_File_Transfer_Adapter_Abstract uses a unique probe file in _isPathWriteable(), so parallel transfers no longer report a writable destination as not writable (#399).
-* Zend_Db_Select: whitespace before AS in a column no longer turns an expression into a quoted identifier (#400).
-* Zend_Cache_Backend_TwoLevels gives the fast backend a finite lifetime on save(); the fast entries never expired before (#423).
-* Zend_View: a view variable assigned with null is no longer reported as missing when strictVars is on (#426).
-* Zend_Navigation_Page_Mvc::isActive() accepts array values in the request params without an "Array to string conversion" warning (#474).
-* Zend_File_ClassFileLocator (and so the classmap generator) finds enums (#551).
-* Zend_Session_SaveHandler_DbTable::read() returns a string for a NULL data column, Zend_Db_Adapter_Oracle passes no null encoding to oci_connect() (#563).
+## [1.25.3] - 2026-11-03
 
 ### Changed
 
@@ -26,11 +16,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Db DB2 adapters (ibm_db2 and PDO_IBM) use `OFFSET … ROWS FETCH FIRST … ROWS ONLY` for limit() with an offset instead of the `ROW_NUMBER()` subquery (#393).
   BC note: requires Db2 for i 7.1 TR11 / 7.2 TR3 or Db2 LUW 11.1 and newer.
 
-* Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
-  BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
-
 * Zend_Db mysqli adapter and statement now convert mysqli_sql_exception (thrown by default since PHP 8.1) into Zend_Db_Adapter_Mysqli_Exception / Zend_Db_Statement_Mysqli_Exception, so catching Zend_Db_Exception works again (#561).
   BC note: code that catches mysqli_sql_exception directly must catch the Zend_Db exception instead; the original exception is available via getPrevious().
+
+### Fixed
+
+* Zend_Test_PHPUnit constraint classes (DomQuery, Redirect, ResponseHeader) work with PHPUnit 6 to 9, so assertQuery(), assertRedirect() and the response header assertions of Zend_Test_PHPUnit_ControllerTestCase can be used again (#569).
+* Zend_Mail_Protocol_Smtp ends an open session with QUIT in its destructor and ignores protocol errors there, so a connection closed by the server cannot end in a fatal error during shutdown (#530).
+* Zend_Cache_Backend_File writes cache files atomically (temporary file and rename), so concurrent writers can no longer produce a file with the content twice (`unserialize(): Extra data`) and readers never see a truncated file (#420).
+* Zend_Db_Adapter_Abstract::fetchPairs() gives null values for a single column result instead of an undefined key warning (#408); fetchAll() is documented as returning array (#384).
+* Zend_Filter::filterStatic() passes an array with string keys as the options array instead of named constructor arguments (#394).
+* Zend_File_Transfer_Adapter_Abstract uses a unique probe file in _isPathWriteable(), so parallel transfers no longer report a writable destination as not writable (#399).
+* Zend_Db_Select: whitespace before AS in a column no longer turns an expression into a quoted identifier (#400).
+* Zend_Cache_Backend_TwoLevels gives the fast backend a finite lifetime on save(); the fast entries never expired before (#423).
+* Zend_View: a view variable assigned with null is no longer reported as missing when strictVars is on (#426).
+* Zend_Navigation_Page_Mvc::isActive() accepts array values in the request params without an "Array to string conversion" warning (#474).
+* Zend_File_ClassFileLocator (and so the classmap generator) finds enums (#551).
+* Zend_Session_SaveHandler_DbTable::read() returns a string for a NULL data column, Zend_Db_Adapter_Oracle passes no null encoding to oci_connect() (#563).
 
 ## [1.25.2] - 2026-08-21
 
