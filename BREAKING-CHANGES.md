@@ -17,6 +17,7 @@ As pressure to implement some PHP 8.2+ related changes are raising, we are goig 
   * territories of a language (`territorytolanguage`, `languagetoterritory`) are taken from the official languages in `territoryInfo`
 * don't compare localized strings against hardcoded values in your application, they change with the CLDR data
 * input parsing accepts a plain space for space-like group separators (no-break and narrow no-break space)
+* Zend_Validate_Hostname (and so Zend_Validate_EmailAddress) accepts more internationalized hostnames when the intl extension is loaded: under an internationalized TLD that has no character table in the validator, a non-ASCII label is checked against IDNA 2008 (UTS #46) with `idn_to_ascii()` and accepted when it is valid there, e.g. `نمونه.ایران` or `пример.укр`. TLDs with a table (`.de`, `.se`, `.com`, …) and ASCII TLDs without one (`.uk`) keep their rules, so nothing that was valid before becomes invalid. Without intl the behaviour is unchanged (#477).
 * Zend_Application_Resource_Useragent lives in `Zend/Application/Resource/Useragent.php` (the class is `Zend_Application_Resource_Useragent`), so the `useragent` bootstrap resource (`resources.useragent.*`) is resolved by the plugin loader on case-sensitive file systems, as in ZF 1.12. Code that includes the file by its previous path `Zend/Application/Resource/UserAgent.php` has to use the new name; class names are case-insensitive in PHP, so `Zend_Application_Resource_UserAgent` in `extends` or `instanceof` keeps working (#407).
 
 ### 1.25.3

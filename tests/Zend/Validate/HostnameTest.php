@@ -646,20 +646,26 @@ class Zend_Validate_HostnameTest extends TestCase
     }
 
     /**
-     * Labels the regex table does not cover are accepted when they are valid
-     * IDNA labels: a TLD without an IDN regex, a hyphen in an Arabic label,
-     * and the zero width non-joiner, which is valid in Persian words.
+     * Under an internationalized TLD without a character table, a non-ASCII
+     * label is accepted when it is a valid IDNA label, including the zero
+     * width non-joiner, which is valid in Persian words. TLDs with a table
+     * and ASCII TLDs keep their rules.
      *
      * @requires extension intl
      * @group GH-477
      */
-    public function testIdnaLabelNotCoveredByRegexTable()
+    public function testIdnaLabelUnderIdnTldWithoutCharacterTable()
     {
         $validator = new Zend_Validate_Hostname();
         $this->assertTrue($validator->isValid('نمونه.ایران'), implode(', ', $validator->getMessages()));
-        $this->assertTrue($validator->isValid('وزارة-الأتصالات.مصر'), implode(', ', $validator->getMessages()));
-        $this->assertTrue($validator->isValid("می\u{200C}خواهم.ir"), implode(', ', $validator->getMessages()));
-        $this->assertTrue($validator->isValid("می\u{200C}خواهم.com"), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid('مثال.موقع'), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid("می\u{200C}خواهم.ایران"), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid('пример.укр'), implode(', ', $validator->getMessages()));
+
+        // .se has a table and does not allow ã, .uk has no table and no IDN
+        $this->assertFalse($validator->isValid('hãllo.se'));
+        $this->assertFalse($validator->isValid('hãllo.uk'));
+        $this->assertFalse($validator->isValid("می\u{200C}خواهم.ir"));
     }
 
     /**
@@ -672,7 +678,8 @@ class Zend_Validate_HostnameTest extends TestCase
     {
         $validator = new Zend_Validate_Hostname();
         foreach (["example.com\u{200F}", "\u{200F}example.com", "exam\u{200E}ple.com", "example\u{200F}.com",
-                  "exa\u{200D}mple.com", "exam\u{FEFF}ple.com", "\u{202B}example.com\u{202C}"] as $hostname) {
+                  "exa\u{200D}mple.com", "exam\u{FEFF}ple.com", "\u{202B}example.com\u{202C}",
+                  "نمونه\u{200F}.ایران", "نمو\u{FEFF}نه.ایران", "نمو\u{00AD}نه.ایران"] as $hostname) {
             $this->assertFalse($validator->isValid($hostname), json_encode($hostname));
         }
     }
@@ -688,7 +695,7 @@ class Zend_Validate_HostnameTest extends TestCase
         $validator = new Zend_Validate_Hostname();
         $validator->setValidateIdn(false);
         $this->assertFalse($validator->isValid('نمونه.ایران'));
-        $this->assertFalse($validator->isValid("می\u{200C}خواهم.ir"));
+        $this->assertFalse($validator->isValid("می\u{200C}خواهم.ایران"));
     }
 }
 

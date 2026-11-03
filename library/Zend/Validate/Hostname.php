@@ -2220,8 +2220,11 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                      * Note: Keep label regex short to avoid issues with long patterns when matching IDN hostnames
                      * @see Zend_Validate_Hostname_Interface
                      */
-                    $regexChars = [0 => '/^[a-z0-9\x2d]{1,63}$/i'];
-                    if ($this->_options['idn'] &&  isset($this->_validIdns[strtoupper($this->_tld)])) {
+                    $regexChars  = [0 => '/^[a-z0-9\x2d]{1,63}$/i'];
+                    $hasIdnTable = isset($this->_validIdns[strtoupper($this->_tld)]);
+                    // An internationalized TLD without a character table of its own is validated with IDNA
+                    $useIdna = $this->_options['idn'] && !$hasIdnTable && preg_match('/[\x80-\xff]/', $this->_tld);
+                    if ($this->_options['idn'] && $hasIdnTable) {
                         if (is_string($this->_validIdns[strtoupper($this->_tld)])) {
                             $regexChars += include($this->_validIdns[strtoupper($this->_tld)]);
                         } else {
@@ -2283,8 +2286,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                             }
                         }
 
-                        // A label the regex table does not cover is accepted when it is a valid IDNA label
-                        if (!$checked && $this->_options['idn'] && $this->_isIdnaLabel($domainPart)) {
+                        if (!$checked && $useIdna && $this->_isIdnaLabel($domainPart)) {
                             $checked = true;
                             $status  = true;
                         }
@@ -2485,7 +2487,10 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      *
      * The label is converted with idn_to_ascii(); it is valid when the
      * conversion reports no error and the ASCII form fits into 63 octets.
-     * Without intl, or for an ASCII label, nothing is accepted here.
+     * Invisible characters (Unicode category C) are not accepted even where
+     * UTS #46 would just drop them, except the zero width (non-)joiner, which
+     * is part of words in some scripts. Without intl, or for an ASCII label,
+     * nothing is accepted here.
      *
      * @param string $label
      * @return boolean
@@ -2493,6 +2498,10 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
     protected function _isIdnaLabel($label)
     {
         if (!function_exists('idn_to_ascii') || !preg_match('/[\x80-\xff]/', $label)) {
+            return false;
+        }
+
+        if (preg_match('/(?![\x{200C}\x{200D}])\p{C}/u', $label)) {
             return false;
         }
 
