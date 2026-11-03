@@ -117,17 +117,17 @@ class Zend_Locale_Data
 
                         if (empty($attribute)) {
                             // Case 1
-                            $temp[] = (string) $found;
+                            $temp[] = self::_normalizePattern($path, (string) $found);
                         } else if (empty($temp[(string) $found[$attribute]])){
                             // Case 2
-                            $temp[(string) $found[$attribute]] = (string) $found;
+                            $temp[(string) $found[$attribute]] = self::_normalizePattern($path, (string) $found);
                         }
 
                     } else if (empty ($temp[$value])) {
 
                         if (empty($attribute)) {
                             // Case 3
-                            $temp[$value] = (string) $found;
+                            $temp[$value] = self::_normalizePattern($path, (string) $found);
                         } else {
                             // Case 4
                             $temp[$value] = (string) $found[$attribute];
@@ -138,6 +138,41 @@ class Zend_Locale_Data
             }
         }
         return $temp;
+    }
+
+    /**
+     * Maps CLDR date/time pattern characters that Zend_Date does not know to
+     * the closest supported ones
+     *
+     * The flexible day period 'B' (上午, 下午, ...) is replaced with the
+     * AM/PM marker 'a', which the day period names of Zend_Date cover; 'B'
+     * is the Swatch beat in Zend_Date formats. Quoted literals are kept.
+     *
+     * @param  string $path XPath the value was read from
+     * @param  string $pattern
+     * @return string
+     */
+    protected static function _normalizePattern($path, $pattern)
+    {
+        if (strpos($pattern, 'B') === false
+            || (strpos($path, 'Formats/') === false && strpos($path, 'FormatItem') === false)) {
+            return $pattern;
+        }
+
+        $result = '';
+        $quoted = false;
+        $length = strlen($pattern);
+        for ($i = 0; $i < $length; $i++) {
+            $char = $pattern[$i];
+            if ($char === "'") {
+                $quoted = !$quoted;
+            } else if ($char === 'B' && !$quoted) {
+                $char = 'a';
+            }
+            $result .= $char;
+        }
+
+        return $result;
     }
 
     /**

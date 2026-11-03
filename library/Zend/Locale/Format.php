@@ -1143,9 +1143,16 @@ class Zend_Locale_Format
         // Otherwise, translate locale aware month names in $number to their numeric equivalents.
         $position = false;
         if ($monthlist && $monthlist[1] != 1) {
+            // longest names first, so that e.g. '11月' is not matched by '1月'
+            uasort($monthlist, function ($a, $b) {
+                return iconv_strlen($b, 'UTF-8') - iconv_strlen($a, 'UTF-8');
+            });
+
             foreach($monthlist as $key => $name) {
                 if (($position = iconv_strpos($number, $name, 0, 'UTF-8')) !== false) {
-                    $number   = str_ireplace($name, $key, $number);
+                    // the space keeps the month number apart from a following
+                    // number when the name ends without a separator (e.g. '1月13日')
+                    $number   = str_ireplace($name, $key . ' ', $number);
                     return $position;
                 }
             }

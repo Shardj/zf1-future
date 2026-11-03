@@ -3199,4 +3199,24 @@ class Zend_Locale_DataTest extends TestCase
         $result = Zend_Locale_Data::getContent('en_HK', 'nametocurrency', 'XAF');
         $this->assertEquals('Central African CFA Franc', $result);
     }
+
+    /**
+     * The flexible day period 'B' of CLDR time patterns is mapped to the
+     * AM/PM marker 'a', which Zend_Date knows ('B' is the Swatch beat there).
+     *
+     * @group GH-441
+     */
+    public function testFlexibleDayPeriodIsReadAsAmPmMarker()
+    {
+        $this->assertEquals('ah:mm:ss', Zend_Locale_Data::getContent('zh_TW', 'time'));
+        $this->assertEquals('ah:mm', Zend_Locale_Data::getContent('zh_TW', 'time', 'short'));
+        $this->assertEquals('y年M月d日 ah:mm:ss', Zend_Locale_Data::getContent('zh_TW', 'datetime'));
+        $this->assertEquals(['full' => 'ah:mm:ss [zzzz]', 'long' => 'ah:mm:ss [z]', 'medium' => 'ah:mm:ss', 'short' => 'ah:mm'],
+            Zend_Locale_Data::getList('zh_TW', 'time'));
+        $this->assertEquals('ah:mm', Zend_Locale_Data::getContent('zh_TW', 'dateitem', 'Bhm'));
+
+        // names and other content are not touched
+        $this->assertEquals('上午', Zend_Locale_Data::getContent('zh_TW', 'am'));
+        $this->assertEquals('HH:mm:ss', Zend_Locale_Data::getContent('de', 'time'));
+    }
 }

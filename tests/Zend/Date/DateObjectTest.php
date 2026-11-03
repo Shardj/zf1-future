@@ -708,6 +708,25 @@ class Zend_Date_DateObjectTest extends TestCase
 
         $this->assertInstanceOf('Zend_Date', $date);
     }
+
+    /**
+     * @group GH-441
+     */
+    public function testNewDateWithZhTwLocale()
+    {
+        $date = new Zend_Date('2020-01-13 10:00:03', 'yyyy-MM-dd HH:mm:ss', null);
+        $this->assertSame('2020-01-13T10:00:03+01:00', $date->get(Zend_Date::ISO_8601));
+
+        $date2 = new Zend_Date($date, null, 'zh_TW');
+        $this->assertSame('2020-01-13T10:00:03+01:00', $date2->get(Zend_Date::ISO_8601));
+        $this->assertSame('2020年1月13日 上午10:00:03', $date2->toString(null, null, 'zh_TW'));
+
+        $date3 = new Zend_Date('2020年1月13日 上午1:00:03', 'y年M月d日 ah:mm:ss', 'zh_TW');
+        $this->assertSame('2020-01-13T01:00:03+01:00', $date3->get(Zend_Date::ISO_8601));
+
+        $date4 = new Zend_Date('2020年1月13日 下午1:00:03', 'y年M月d日 ah:mm:ss', 'zh_TW');
+        $this->assertSame('2020-01-13T13:00:03+01:00', $date4->get(Zend_Date::ISO_8601));
+    }
 }
 
 class Zend_Date_DateObjectTestHelper extends Zend_Date
