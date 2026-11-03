@@ -39,9 +39,9 @@ require_once 'Zend/Stdlib/SplPriorityQueue.php';
  */
 class Zend_Stdlib_PriorityQueue implements Countable, IteratorAggregate, Serializable
 {
-    const EXTR_DATA     = 0x00000001;
-    const EXTR_PRIORITY = 0x00000002;
-    const EXTR_BOTH     = 0x00000003;
+    public const EXTR_DATA     = 0x00000001;
+    public const EXTR_PRIORITY = 0x00000002;
+    public const EXTR_BOTH     = 0x00000003;
 
     /**
      * Inner queue class to use for iteration

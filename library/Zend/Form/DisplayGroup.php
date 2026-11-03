@@ -888,7 +888,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      * @param  Zend_View_Interface $view
      * @return Zend_Form_DisplayGroup
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView(?Zend_View_Interface $view = null)
     {
         $this->_view = $view;
         return $this;
@@ -915,7 +915,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      *
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render(?Zend_View_Interface $view = null)
     {
         if (null !== $view) {
             $this->setView($view);

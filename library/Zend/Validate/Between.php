@@ -35,12 +35,12 @@ class Zend_Validate_Between extends Zend_Validate_Abstract
     /**
      * Validation failure message key for when the value is not between the min and max, inclusively
      */
-    const NOT_BETWEEN        = 'notBetween';
+    public const NOT_BETWEEN        = 'notBetween';
 
     /**
      * Validation failure message key for when the value is not strictly between the min and max
      */
-    const NOT_BETWEEN_STRICT = 'notBetweenStrict';
+    public const NOT_BETWEEN_STRICT = 'notBetweenStrict';
 
     /**
      * Validation failure message template definitions

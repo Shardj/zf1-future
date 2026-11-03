@@ -34,9 +34,9 @@ require_once 'Zend/Validate/File/MimeType.php';
  */
 class Zend_Validate_File_ExcludeMimeType extends Zend_Validate_File_MimeType
 {
-    const FALSE_TYPE   = 'fileExcludeMimeTypeFalse';
-    const NOT_DETECTED = 'fileExcludeMimeTypeNotDetected';
-    const NOT_READABLE = 'fileExcludeMimeTypeNotReadable';
+    public const FALSE_TYPE   = 'fileExcludeMimeTypeFalse';
+    public const NOT_DETECTED = 'fileExcludeMimeTypeNotDetected';
+    public const NOT_READABLE = 'fileExcludeMimeTypeNotReadable';
 
     /**
      * @var array Error message templates

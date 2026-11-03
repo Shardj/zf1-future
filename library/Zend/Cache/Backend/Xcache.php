@@ -44,8 +44,8 @@ class Zend_Cache_Backend_Xcache extends Zend_Cache_Backend implements Zend_Cache
     /**
      * Log message
      */
-    const TAGS_UNSUPPORTED_BY_CLEAN_OF_XCACHE_BACKEND = 'Zend_Cache_Backend_Xcache::clean() : tags are unsupported by the Xcache backend';
-    const TAGS_UNSUPPORTED_BY_SAVE_OF_XCACHE_BACKEND =  'Zend_Cache_Backend_Xcache::save() : tags are unsupported by the Xcache backend';
+    public const TAGS_UNSUPPORTED_BY_CLEAN_OF_XCACHE_BACKEND = 'Zend_Cache_Backend_Xcache::clean() : tags are unsupported by the Xcache backend';
+    public const TAGS_UNSUPPORTED_BY_SAVE_OF_XCACHE_BACKEND =  'Zend_Cache_Backend_Xcache::save() : tags are unsupported by the Xcache backend';
 
     /**
      * Available options

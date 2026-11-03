@@ -37,13 +37,13 @@
 interface Zend_Cloud_QueueService_Adapter
 {
     /** Ctor HTTP adapter option */
-    const HTTP_ADAPTER = 'http_adapter';
+    public const HTTP_ADAPTER = 'http_adapter';
 
     /** Message visibility timeout option */
-    const VISIBILITY_TIMEOUT = 'visibility_timeout';
+    public const VISIBILITY_TIMEOUT = 'visibility_timeout';
 
     /** Default visibility timeout */
-    const DEFAULT_TIMEOUT = 30;
+    public const DEFAULT_TIMEOUT = 30;
 
     /**
      * Create a queue. Returns the ID of the created queue (typically the URL).

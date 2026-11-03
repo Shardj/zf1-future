@@ -32,7 +32,7 @@ require_once 'Zend/Gdata/Query.php';
  */
 class Zend_Gdata_Analytics_AccountQuery extends Zend_Gdata_Query
 {
-    const ANALYTICS_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/management/accounts';
+    public const ANALYTICS_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/management/accounts';
 
     /**
      * The default URI used for feeds.

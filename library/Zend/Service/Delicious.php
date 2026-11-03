@@ -61,27 +61,27 @@ require_once 'Zend/Xml/Security.php';
  */
 class Zend_Service_Delicious
 {
-    const API_URI = 'https://api.del.icio.us';
+    public const API_URI = 'https://api.del.icio.us';
 
-    const PATH_UPDATE        = '/v1/posts/update';
-    const PATH_TAGS          = '/v1/tags/get';
-    const PATH_TAG_RENAME    = '/v1/tags/rename';
-    const PATH_BUNDLES       = '/v1/tags/bundles/all';
-    const PATH_BUNDLE_DELETE = '/v1/tags/bundles/delete';
-    const PATH_BUNDLE_ADD    = '/v1/tags/bundles/set';
-    const PATH_DATES         = '/v1/posts/dates';
-    const PATH_POST_DELETE   = '/v1/posts/delete';
-    const PATH_POSTS_GET     = '/v1/posts/get';
-    const PATH_POSTS_ALL     = '/v1/posts/all';
-    const PATH_POSTS_ADD     = '/v1/posts/add';
-    const PATH_POSTS_RECENT  = '/v1/posts/recent';
+    public const PATH_UPDATE        = '/v1/posts/update';
+    public const PATH_TAGS          = '/v1/tags/get';
+    public const PATH_TAG_RENAME    = '/v1/tags/rename';
+    public const PATH_BUNDLES       = '/v1/tags/bundles/all';
+    public const PATH_BUNDLE_DELETE = '/v1/tags/bundles/delete';
+    public const PATH_BUNDLE_ADD    = '/v1/tags/bundles/set';
+    public const PATH_DATES         = '/v1/posts/dates';
+    public const PATH_POST_DELETE   = '/v1/posts/delete';
+    public const PATH_POSTS_GET     = '/v1/posts/get';
+    public const PATH_POSTS_ALL     = '/v1/posts/all';
+    public const PATH_POSTS_ADD     = '/v1/posts/add';
+    public const PATH_POSTS_RECENT  = '/v1/posts/recent';
 
-    const JSON_URI     = 'http://del.icio.us';
-    const JSON_POSTS   = '/feeds/json/%s/%s';
-    const JSON_TAGS    = '/feeds/json/tags/%s';
-    const JSON_NETWORK = '/feeds/json/network/%s';
-    const JSON_FANS    = '/feeds/json/fans/%s';
-    const JSON_URL     = '/feeds/json/url/data';
+    public const JSON_URI     = 'http://del.icio.us';
+    public const JSON_POSTS   = '/feeds/json/%s/%s';
+    public const JSON_TAGS    = '/feeds/json/tags/%s';
+    public const JSON_NETWORK = '/feeds/json/network/%s';
+    public const JSON_FANS    = '/feeds/json/fans/%s';
+    public const JSON_URL     = '/feeds/json/url/data';
 
     /**
      * Zend_Service_Rest instance
@@ -287,7 +287,7 @@ class Zend_Service_Delicious
      * @throws Zend_Service_Delicious_Exception
      * @return Zend_Service_Delicious_PostList
      */
-    public function getPosts($tag = null, Zend_Date $dt = null, $url = null)
+    public function getPosts($tag = null, ?Zend_Date $dt = null, $url = null)
     {
         $parms = [];
         if ($tag) {

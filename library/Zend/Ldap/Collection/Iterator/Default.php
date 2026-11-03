@@ -30,9 +30,9 @@
  */
 class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
 {
-    const ATTRIBUTE_TO_LOWER  = 1;
-    const ATTRIBUTE_TO_UPPER  = 2;
-    const ATTRIBUTE_NATIVE    = 3;
+    public const ATTRIBUTE_TO_LOWER  = 1;
+    public const ATTRIBUTE_TO_UPPER  = 2;
+    public const ATTRIBUTE_NATIVE    = 3;
 
     /**
      * LDAP Connection
@@ -81,7 +81,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
      *
      * @var array
      */
-    protected $_entries = array();
+    protected $_entries = [];
 
     /**
      * The function to sort the entries by
@@ -117,10 +117,10 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
         );
 
         while (false !== $identifier) {
-            $this->_entries[] = array(
+            $this->_entries[] = [
                 'resource' => $identifier,
                 'sortValue' => '',
-            );
+            ];
 
             $identifier = ldap_next_entry(
                 $ldap->getResource(),

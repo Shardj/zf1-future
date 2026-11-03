@@ -32,9 +32,9 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_Digits extends Zend_Validate_Abstract
 {
-    const NOT_DIGITS   = 'notDigits';
-    const STRING_EMPTY = 'digitsStringEmpty';
-    const INVALID      = 'digitsInvalid';
+    public const NOT_DIGITS   = 'notDigits';
+    public const STRING_EMPTY = 'digitsStringEmpty';
+    public const INVALID      = 'digitsInvalid';
 
     /**
      * Digits filter used for validation

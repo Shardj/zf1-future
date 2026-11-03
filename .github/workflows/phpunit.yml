@@ -55,7 +55,7 @@ jobs:
           - 11211:11211
 
       mysql:
-        image: bitnami/mysql:8.0.31
+        image: bitnamilegacy/mysql:8.0.31
         env:
           MYSQL_ROOT_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME }}
           MYSQL_ROOT_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD }}
@@ -84,7 +84,7 @@ jobs:
           --health-retries 5
 
       openldap:
-        image: bitnami/openldap:2.5
+        image: bitnamilegacy/openldap:2.5
         ports:
           - 1389:1389
         env:
@@ -101,13 +101,13 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "7.1"
-          - "7.2"
-          - "7.3"
           - "7.4"
           - "8.0"
           - "8.1"
           - "8.2"
+          - "8.3"
+          - "8.4"
+          - "8.5"
         experimental:
           - false
         include:
@@ -115,16 +115,18 @@ jobs:
           - php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
           #full for PHP <= 8.0
           - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar"
-          - php-version: "7.1"
-            php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer"
           - php-version: "8.1"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
           - php-version: "8.2"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
           - php-version: "8.3"
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+          - php-version: "8.4"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
             experimental: true
-
+          - php-version: "8.5"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+            experimental: true
     steps:
       - name: Checkout
         uses: actions/checkout@v3

@@ -43,8 +43,8 @@ class Zend_Tool_Framework_Metadata_Basic
     /**#@+
      * Search constants
      */
-    const ATTRIBUTES_ALL        = 'attributesAll';
-    const ATTRIBUTES_NO_PARENT  = 'attributesParent';
+    public const ATTRIBUTES_ALL        = 'attributesAll';
+    public const ATTRIBUTES_NO_PARENT  = 'attributesParent';
     /**#@-*/
 
     /**#@+

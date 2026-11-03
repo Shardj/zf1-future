@@ -42,37 +42,37 @@ class Zend_ProgressBar_Adapter_Console extends Zend_ProgressBar_Adapter
     /**
      * Percentage value of the progress
      */
-    const ELEMENT_PERCENT = 'ELEMENT_PERCENT';
+    public const ELEMENT_PERCENT = 'ELEMENT_PERCENT';
 
     /**
      * Visual value of the progress
      */
-    const ELEMENT_BAR = 'ELEMENT_BAR';
+    public const ELEMENT_BAR = 'ELEMENT_BAR';
 
     /**
      * ETA of the progress
      */
-    const ELEMENT_ETA = 'ELEMENT_ETA';
+    public const ELEMENT_ETA = 'ELEMENT_ETA';
 
     /**
      * Text part of the progress
      */
-    const ELEMENT_TEXT = 'ELEMENT_TEXT';
+    public const ELEMENT_TEXT = 'ELEMENT_TEXT';
 
     /**
      * Finish action: End of Line
      */
-    const FINISH_ACTION_EOL = 'FINISH_ACTION_EOL';
+    public const FINISH_ACTION_EOL = 'FINISH_ACTION_EOL';
 
     /**
      * Finish action: Clear Line
      */
-    const FINISH_ACTION_CLEAR_LINE = 'FINISH_ACTION_CLEAR_LINE';
+    public const FINISH_ACTION_CLEAR_LINE = 'FINISH_ACTION_CLEAR_LINE';
 
     /**
      * Finish action: None
      */
-    const FINISH_ACTION_NONE = 'FINISH_ACTION_NONE';
+    public const FINISH_ACTION_NONE = 'FINISH_ACTION_NONE';
 
     /**
      * Width of the progressbar

@@ -38,9 +38,9 @@ class Zend_Mobile_Push_Message_Mpns_Toast extends Zend_Mobile_Push_Message_Mpns
      *
      * @var int
      */
-    const DELAY_IMMEDIATE = 2;
-    const DELAY_450S = 12;
-    const DELAY_900S = 22;
+    public const DELAY_IMMEDIATE = 2;
+    public const DELAY_450S = 12;
+    public const DELAY_900S = 22;
 
     /**
      * Title

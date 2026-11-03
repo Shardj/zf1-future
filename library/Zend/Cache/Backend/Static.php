@@ -40,7 +40,7 @@ class Zend_Cache_Backend_Static
     extends Zend_Cache_Backend
     implements Zend_Cache_Backend_Interface
 {
-    const INNER_CACHE_NAME = 'zend_cache_backend_static_tagcache';
+    public const INNER_CACHE_NAME = 'zend_cache_backend_static_tagcache';
 
     /**
      * Static backend options

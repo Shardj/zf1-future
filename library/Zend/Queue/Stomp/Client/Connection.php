@@ -37,8 +37,8 @@ require_once 'Zend/Queue/Stomp/Client/ConnectionInterface.php';
 class Zend_Queue_Stomp_Client_Connection
     implements Zend_Queue_Stomp_Client_ConnectionInterface
 {
-    const READ_TIMEOUT_DEFAULT_USEC = 0; // 0 microseconds
-    const READ_TIMEOUT_DEFAULT_SEC = 5; // 5 seconds
+    public const READ_TIMEOUT_DEFAULT_USEC = 0; // 0 microseconds
+    public const READ_TIMEOUT_DEFAULT_SEC = 5; // 5 seconds
 
     /**
      * Connection options

@@ -45,7 +45,7 @@ class Zend_EventManager_GlobalEventManager
      * @param  null|Zend_EventManager_EventCollection $events
      * @return void
      */
-    public static function setEventCollection(Zend_EventManager_EventCollection $events = null)
+    public static function setEventCollection(?Zend_EventManager_EventCollection $events = null)
     {
         self::$events = $events;
     }
@@ -83,7 +83,7 @@ class Zend_EventManager_GlobalEventManager
      * @param  string $event
      * @param  string|object $context
      * @param  array|object $argv
-     * @param  callback $callback
+     * @param  callable $callback
      * @return Zend_EventManager_ResponseCollection
      */
     public static function triggerUntil($event, $context, $argv, $callback)
@@ -95,7 +95,7 @@ class Zend_EventManager_GlobalEventManager
      * Attach a listener to an event
      *
      * @param  string $event
-     * @param  callback $callback
+     * @param  callable $callback
      * @param  int $priority
      * @return Zend_Stdlib_CallbackHandler
      */

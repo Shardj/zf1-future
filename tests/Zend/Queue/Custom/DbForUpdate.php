@@ -50,7 +50,7 @@ class Custom_DbForUpdate extends Zend_Queue_Adapter_Db
      * @param  Zend_Queue $queue
      * @return Zend_Queue_Message_Iterator
      */
-    public function receive($maxMessages = null, $timeout = null, Zend_Queue $queue = null)
+    public function receive($maxMessages = null, $timeout = null, ?Zend_Queue $queue = null)
     {
         if ($maxMessages === null) {
             $maxMessages = 1;

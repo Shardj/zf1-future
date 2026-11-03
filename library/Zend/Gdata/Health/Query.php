@@ -47,19 +47,19 @@ class Zend_Gdata_Health_Query extends Zend_Gdata_Query
     /**
      * URI of a user's profile feed.
      */
-    const HEALTH_PROFILE_FEED_URI =
+    public const HEALTH_PROFILE_FEED_URI =
         'https://www.google.com/health/feeds/profile/default';
 
     /**
      * URI of register (notices) feed.
      */
-    const HEALTH_REGISTER_FEED_URI =
+    public const HEALTH_REGISTER_FEED_URI =
         'https://www.google.com/health/feeds/register/default';
 
     /**
      * Namespace for an item category
      */
-    const ITEM_CATEGORY_NS = 'http://schemas.google.com/health/item';
+    public const ITEM_CATEGORY_NS = 'http://schemas.google.com/health/item';
 
     /**
      * Create Gdata_Query object

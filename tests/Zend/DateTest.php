@@ -107,6 +107,9 @@ class Zend_DateTest extends TestCase
 
         $date = new Zend_Date(0);
         $this->assertTrue($date instanceof Zend_Date);
+
+        $date = new Zend_Date('0000-00-00 00:00:00');
+        $this->assertTrue($date instanceof Zend_Date);
     }
 
     /**

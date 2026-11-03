@@ -37,16 +37,16 @@ class Zend_Validate_File_Upload extends Zend_Validate_Abstract
     /**@#+
      * @const string Error constants
      */
-    const INI_SIZE       = 'fileUploadErrorIniSize';
-    const FORM_SIZE      = 'fileUploadErrorFormSize';
-    const PARTIAL        = 'fileUploadErrorPartial';
-    const NO_FILE        = 'fileUploadErrorNoFile';
-    const NO_TMP_DIR     = 'fileUploadErrorNoTmpDir';
-    const CANT_WRITE     = 'fileUploadErrorCantWrite';
-    const EXTENSION      = 'fileUploadErrorExtension';
-    const ATTACK         = 'fileUploadErrorAttack';
-    const FILE_NOT_FOUND = 'fileUploadErrorFileNotFound';
-    const UNKNOWN        = 'fileUploadErrorUnknown';
+    public const INI_SIZE       = 'fileUploadErrorIniSize';
+    public const FORM_SIZE      = 'fileUploadErrorFormSize';
+    public const PARTIAL        = 'fileUploadErrorPartial';
+    public const NO_FILE        = 'fileUploadErrorNoFile';
+    public const NO_TMP_DIR     = 'fileUploadErrorNoTmpDir';
+    public const CANT_WRITE     = 'fileUploadErrorCantWrite';
+    public const EXTENSION      = 'fileUploadErrorExtension';
+    public const ATTACK         = 'fileUploadErrorAttack';
+    public const FILE_NOT_FOUND = 'fileUploadErrorFileNotFound';
+    public const UNKNOWN        = 'fileUploadErrorUnknown';
     /**@#-*/
 
     /**

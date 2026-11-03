@@ -42,7 +42,7 @@ class Zend_Config_Json extends Zend_Config
     /**
      * Name of object key indicating section current section extends
      */
-    const EXTENDS_NAME = "_extends";
+    public const EXTENDS_NAME = "_extends";
 
     /**
      * Whether or not to ignore constants in the JSON string

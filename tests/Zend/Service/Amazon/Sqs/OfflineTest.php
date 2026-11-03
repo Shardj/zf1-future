@@ -96,4 +96,35 @@ class Zend_Service_Amazon_Sqs_OfflineTest extends TestCase
                                      'ap-northeast-1' => 'sqs.ap-northeast-1.amazonaws.com'];
         $this->assertEquals($this->_amazon->getEndpoints(), $endPoints);
     }
+
+    public function testRetryAfter5xxResponseDoesNotTriggerImplicitFloatToIntDeprecation()
+    {
+        $this->_httpClientAdapterTest->setResponse("HTTP/1.1 500 Internal Server Error\r\n\r\n");
+        $this->_httpClientAdapterTest->addResponse("HTTP/1.1 200 OK\r\n\r\n<ListQueuesResponse></ListQueuesResponse>");
+
+        $reflection = new ReflectionMethod(Zend_Service_Amazon_Sqs::class, '_makeRequest');
+        $reflection->setAccessible(true);
+
+        $deprecations = [];
+        set_error_handler(
+            static function ($errno, $errstr) use (&$deprecations) {
+                $deprecations[] = $errstr;
+                return true;
+            },
+            E_DEPRECATED
+        );
+
+        try {
+            // First response is 500 (triggers one retry -> sleep(1/4*1)), second is 200.
+            $reflection->invoke($this->_amazon, null, 'ListQueues');
+        } finally {
+            restore_error_handler();
+        }
+
+        $this->assertSame(
+            [],
+            $deprecations,
+            'Retrying an SQS request after a 5xx response must not trigger an E_DEPRECATED notice'
+        );
+    }
 }

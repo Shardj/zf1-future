@@ -17,17 +17,17 @@
  */
 interface Zend_Cloud_Infrastructure_Adapter
 {
-    const HTTP_ADAPTER = 'http_adapter';
+    public const HTTP_ADAPTER = 'http_adapter';
 
     /**
      * The max. amount of time, in seconds, to wait for a status change
      */
-    const TIMEOUT_STATUS_CHANGE = 30;
+    public const TIMEOUT_STATUS_CHANGE = 30;
 
     /**
      * The time step, in seconds, for the status change
      */
-    const TIME_STEP_STATUS_CHANGE = 5;
+    public const TIME_STEP_STATUS_CHANGE = 5;
 
     /**
      * Return a list of the available instances

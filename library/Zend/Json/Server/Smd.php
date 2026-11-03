@@ -29,9 +29,9 @@
  */
 class Zend_Json_Server_Smd
 {
-    const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
-    const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
-    const SMD_VERSION   = '2.0';
+    public const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
+    public const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
+    public const SMD_VERSION   = '2.0';
 
     /**
      * Content type

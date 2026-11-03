@@ -42,10 +42,10 @@ class Zend_Mobile_Push_Apns extends Zend_Mobile_Push_Abstract
     /**
      * @const int apple server uri constants
      */
-    const SERVER_SANDBOX_URI = 0;
-    const SERVER_PRODUCTION_URI = 1;
-    const SERVER_FEEDBACK_SANDBOX_URI = 2;
-    const SERVER_FEEDBACK_PRODUCTION_URI = 3;
+    public const SERVER_SANDBOX_URI = 0;
+    public const SERVER_PRODUCTION_URI = 1;
+    public const SERVER_FEEDBACK_SANDBOX_URI = 2;
+    public const SERVER_FEEDBACK_PRODUCTION_URI = 3;
 
     /**
      * Apple Server URI's

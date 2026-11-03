@@ -86,6 +86,16 @@ class Zend_Form_ElementTest extends TestCase
     {
     }
 
+    protected function isBreakChainOnFailure(Zend_Form_Element $element, string $validator)
+    {
+        $reflection = new ReflectionClass($element);
+        $property = $reflection->getProperty('_validatorBreakChainOnFailures');
+        $property->setAccessible(true);
+        $breakChainOnFailures = $property->getValue($element);
+
+        return isset($breakChainOnFailures[$validator]) ? $breakChainOnFailures[$validator] : false;
+    }
+
     public function getView()
     {
         $view = new Zend_View();
@@ -325,7 +335,7 @@ class Zend_Form_ElementTest extends TestCase
         $this->assertFalse($this->element->isValid(''));
         $validator = $this->element->getValidator('NotEmpty');
         $this->assertTrue($validator instanceof Zend_Validate_NotEmpty);
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($this->element, get_class($validator)));
     }
 
     /**
@@ -344,9 +354,9 @@ class Zend_Form_ElementTest extends TestCase
         $form->isValid(['username' => '#']);
 
         $validator = $username->getValidator('stringLength');
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($username, get_class($validator)));
         $validator = $username->getValidator('regex');
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($username, get_class($validator)));
     }
 
     public function testAutoInsertNotEmptyValidatorFlagTrueByDefault()
@@ -702,7 +712,7 @@ class Zend_Form_ElementTest extends TestCase
         $this->element->addValidator('digits');
         $validator = $this->element->getValidator('digits');
         $this->assertTrue($validator instanceof Zend_Validate_Digits, var_export($validator, 1));
-        $this->assertFalse($validator->zfBreakChainOnFailure);
+        $this->assertFalse($this->isBreakChainOnFailure($this->element, get_class($validator)));
     }
 
     public function testCanNotRetrieveSingleValidatorRegisteredAsStringUsingClassName()
@@ -722,7 +732,8 @@ class Zend_Form_ElementTest extends TestCase
         $this->element->addValidator($validator);
         $test = $this->element->getValidator('Zend_Validate_Digits');
         $this->assertSame($validator, $test);
-        $this->assertFalse($validator->zfBreakChainOnFailure);
+        $this->assertFalse($this->isBreakChainOnFailure($this->element, get_class($validator)));
+        $this->assertFalse($this->isBreakChainOnFailure($this->element, get_class($test)));
     }
 
     public function testOptionsAreCastToArrayWhenAddingValidator()
@@ -750,7 +761,8 @@ class Zend_Form_ElementTest extends TestCase
         $this->element->addValidator($validator);
         $test = $this->element->getValidator('digits');
         $this->assertSame($validator, $test);
-        $this->assertFalse($validator->zfBreakChainOnFailure);
+        $this->assertFalse($this->isBreakChainOnFailure($this->element, get_class($validator)));
+        $this->assertFalse($this->isBreakChainOnFailure($this->element, get_class($test)));
     }
 
     public function testRetrievingNamedValidatorShouldNotReorderValidators()
@@ -1736,10 +1748,10 @@ class Zend_Form_ElementTest extends TestCase
         $this->element->setOptions($options);
         $validator = $this->element->getValidator('notEmpty');
         $this->assertTrue($validator instanceof Zend_Validate_NotEmpty);
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($this->element, get_class($validator)));
         $validator = $this->element->getValidator('digits');
         $this->assertTrue($validator instanceof Zend_Validate_Digits);
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($this->element, get_class($validator)));
     }
 
     public function testSetOptionsSetsArrayOfAssociativeArrayValidators()
@@ -1762,10 +1774,10 @@ class Zend_Form_ElementTest extends TestCase
         $this->element->setOptions($options);
         $validator = $this->element->getValidator('notEmpty');
         $this->assertTrue($validator instanceof Zend_Validate_NotEmpty);
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($this->element, get_class($validator)));
         $validator = $this->element->getValidator('digits');
         $this->assertTrue($validator instanceof Zend_Validate_Digits);
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($this->element, get_class($validator)));
     }
 
     public function testSetOptionsSetsArrayOfStringFilters()
@@ -2225,9 +2237,9 @@ class Zend_Form_ElementTest extends TestCase
         $form->isValid(['username' => '#']);
 
         $validator = $username->getValidator('stringLength');
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($username, get_class($validator)));
         $validator = $username->getValidator('regex');
-        $this->assertTrue($validator->zfBreakChainOnFailure);
+        $this->assertTrue($this->isBreakChainOnFailure($username, get_class($validator)));
     }
     
     /**

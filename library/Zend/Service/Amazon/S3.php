@@ -56,16 +56,16 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
      */
     protected $_endpoint;
 
-    const S3_ENDPOINT = 's3.amazonaws.com';
+    public const S3_ENDPOINT = 's3.amazonaws.com';
 
-    const S3_ACL_PRIVATE = 'private';
-    const S3_ACL_PUBLIC_READ = 'public-read';
-    const S3_ACL_PUBLIC_WRITE = 'public-read-write';
-    const S3_ACL_AUTH_READ = 'authenticated-read';
+    public const S3_ACL_PRIVATE = 'private';
+    public const S3_ACL_PUBLIC_READ = 'public-read';
+    public const S3_ACL_PUBLIC_WRITE = 'public-read-write';
+    public const S3_ACL_AUTH_READ = 'authenticated-read';
 
-    const S3_REQUESTPAY_HEADER = 'x-amz-request-payer';
-    const S3_ACL_HEADER = 'x-amz-acl';
-    const S3_CONTENT_TYPE_HEADER = 'Content-Type';
+    public const S3_REQUESTPAY_HEADER = 'x-amz-request-payer';
+    public const S3_ACL_HEADER = 'x-amz-acl';
+    public const S3_CONTENT_TYPE_HEADER = 'Content-Type';
 
     /**
      * Set S3 endpoint to use
@@ -698,7 +698,7 @@ class Zend_Service_Amazon_S3 extends Zend_Service_Amazon_Abstract
             if ($response_code >= 500 && $response_code < 600 && $retry_count <= 5) {
                 $retry = true;
                 $retry_count++;
-                sleep($retry_count / 4 * $retry_count);
+                sleep((int) ($retry_count / 4 * $retry_count));
             }
             else if ($response_code == 307) {
                 // Need to redirect, new S3 endpoint given

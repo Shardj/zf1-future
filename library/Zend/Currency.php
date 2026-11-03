@@ -37,15 +37,15 @@ require_once 'Zend/Locale/Format.php';
 class Zend_Currency
 {
     // Constants for defining what currency symbol should be displayed
-    const NO_SYMBOL     = 1;
-    const USE_SYMBOL    = 2;
-    const USE_SHORTNAME = 3;
-    const USE_NAME      = 4;
+    public const NO_SYMBOL     = 1;
+    public const USE_SYMBOL    = 2;
+    public const USE_SHORTNAME = 3;
+    public const USE_NAME      = 4;
 
     // Constants for defining the position of the currencysign
-    const STANDARD = 8;
-    const RIGHT    = 16;
-    const LEFT     = 32;
+    public const STANDARD = 8;
+    public const RIGHT    = 16;
+    public const LEFT     = 32;
 
     /**
      * Options array
@@ -138,8 +138,8 @@ class Zend_Currency
     /**
      * Returns a localized currency string
      *
-     * @param  integer|float $value   OPTIONAL Currency value
-     * @param  array         $options OPTIONAL options to set temporary
+     * @param  array|int|float|string $value   OPTIONAL Currency value
+     * @param  array                  $options OPTIONAL options to set temporary
      * @throws Zend_Currency_Exception When the value is not a number
      * @return string
      */

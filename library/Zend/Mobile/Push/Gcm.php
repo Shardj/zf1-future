@@ -48,7 +48,7 @@ class Zend_Mobile_Push_Gcm extends Zend_Mobile_Push_Abstract
     /**
      * @const string Server URI
      */
-    const SERVER_URI = 'https://android.googleapis.com/gcm/send';
+    public const SERVER_URI = 'https://android.googleapis.com/gcm/send';
 
     /**
      * Http Client
