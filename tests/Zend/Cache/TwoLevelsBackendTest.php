@@ -96,6 +96,35 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         ]);
     }
 
+    /**
+     * @group GH-423
+     */
+    public function testSaveGivesTheFastBackendAFiniteLifetime()
+    {
+        $fastBackend = $this->createPartialMock('Zend_Cache_Backend_File', ['save', 'getFillingPercentage']);
+        $fastBackend->method('getFillingPercentage')->willReturn(0);
+        $fastLifetimes = [];
+        $fastBackend->method('save')->willReturnCallback(
+            function ($data, $id, $tags, $specificLifetime) use (&$fastLifetimes) {
+                $fastLifetimes[] = $specificLifetime;
+                return true;
+            }
+        );
+
+        $cache = new Zend_Cache_Backend_TwoLevels([
+            'fast_backend' => $fastBackend,
+            'slow_backend' => 'File',
+            'slow_backend_options' => ['cache_dir' => $this->_cache_dir],
+        ]);
+        $cache->setDirectives(['lifetime' => 3600]);
+
+        $this->assertTrue($cache->save('data', 'test' . uniqid(), [], false, 8));
+        $this->assertTrue($cache->save('data', 'test' . uniqid(), [], 0, 8));
+
+        // ceil(3600 / (11 - 8)) and the arbitrary lifetime for an infinite one
+        $this->assertSame([1200, 864000], $fastLifetimes);
+    }
+
     public function testSaveOverwritesIfFastIsFull()
     {
         $slowBackend = 'File';

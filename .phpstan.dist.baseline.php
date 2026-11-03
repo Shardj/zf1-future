@@ -24154,12 +24154,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Abstract::__get() should return null but returns mixed.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_View_Abstract::_run() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,

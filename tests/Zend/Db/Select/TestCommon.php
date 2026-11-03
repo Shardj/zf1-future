@@ -1662,6 +1662,24 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     /**
      * @group ZF-4772
      */
+    /**
+     * @group GH-400
+     */
+    protected function _selectColumnExprWithTrailingSpace()
+    {
+        $expr = new Zend_Db_Expr('COUNT(*) ');
+        return $this->_db->select()
+            ->from(['p' => 'zfproducts'], [$expr . ' as cnt', 'product_id  AS  id']);
+    }
+
+    public function testSelectColumnExprWithTrailingSpace()
+    {
+        $select = $this->_selectColumnExprWithTrailingSpace();
+        $sql = preg_replace('/\\s+/', ' ', $select->__toString());
+        $this->assertStringContainsString('COUNT(*) AS', $sql);
+        $this->assertStringNotContainsString('COUNT(*) "', $sql);
+    }
+
     public function testSelectUnionNoArrayThrowsException()
     {
         $this->expectException(Zend_Db_Select_Exception::class);
