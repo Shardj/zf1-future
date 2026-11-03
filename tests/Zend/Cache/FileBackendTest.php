@@ -185,6 +185,29 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest
     }
 
     /**
+     * @group GH-420
+     */
+    public function testSaveLeavesNoTemporaryFilesAndWritesEachFileOnce()
+    {
+        $id = 'test' . uniqid();
+        $this->assertTrue($this->_instance->save('first', $id));
+        $this->assertTrue($this->_instance->save('second', $id));
+
+        $this->assertSame([], glob($this->_cache_dir . '*.tmp'));
+
+        $metadataFiles = glob($this->_cache_dir . 'zend_cache---internal-metadatas---*');
+        $this->assertNotEmpty($metadataFiles);
+        foreach ($metadataFiles as $file) {
+            $content = file_get_contents($file);
+            $metadata = @unserialize($content);
+            $this->assertIsArray($metadata);
+            $this->assertSame(strlen(serialize($metadata)), strlen($content), 'metadata file has trailing data');
+        }
+
+        $this->assertSame('second', $this->_instance->load($id));
+    }
+
+    /**
      * The CLEANING_MODE_ALL should delete also old orphaned metadatafiles
      */
     public function testShouldDeleteOldMetadataFiles()
