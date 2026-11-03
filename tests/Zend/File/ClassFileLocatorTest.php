@@ -97,6 +97,30 @@ class Zend_File_ClassFileLocatorTest extends TestCase
         $this->assertTrue($found, "Locator skipped an interface?");
     }
 
+    public function testIterationShouldReturnEnums()
+    {
+        if (version_compare(PHP_VERSION, '8.1', 'lt')) {
+            $this->markTestSkipped('Enums need PHP 8.1 or later');
+        }
+
+        // the enum file is written at runtime, so the test suite stays parseable on older PHP versions
+        $dir = sys_get_temp_dir() . '/zf1-class-file-locator-' . uniqid();
+        mkdir($dir);
+        file_put_contents($dir . '/Suit.php', "<?php\nnamespace ZendTest\\Enum;\n\nenum Suit: string\n{\n    case Hearts = 'H';\n}\n");
+
+        try {
+            $classes = [];
+            foreach (new Zend_File_ClassFileLocator($dir) as $file) {
+                $classes = array_merge($classes, $file->getClasses());
+            }
+        } finally {
+            unlink($dir . '/Suit.php');
+            rmdir($dir);
+        }
+
+        $this->assertSame(['ZendTest\\Enum\\Suit'], $classes);
+    }
+
     public function testIterationShouldInjectNamespaceInFoundItems()
     {
         if (version_compare(PHP_VERSION, '5.3', 'lt')) {

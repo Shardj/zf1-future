@@ -130,6 +130,15 @@ class Zend_FilterTest extends TestCase
      * Ensures that a validator with constructor arguments can be called
      * with the static method get().
      */
+    /**
+     * @group GH-394
+     */
+    public function testStaticFactoryWithOptionsArray()
+    {
+        $filteredValue = Zend_Filter::filterStatic('ab-c_1!', 'PregReplace', ['match' => '/[^A-Za-z0-9_]/', 'replace' => '']);
+        $this->assertEquals('abc_1', $filteredValue);
+    }
+
     public function testStaticFactoryWithConstructorArguments()
     {
         // Test HtmlEntities with one ctor argument.
