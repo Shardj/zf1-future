@@ -2261,6 +2261,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
                         // Check each domain part
                         $checked = false;
+                        $tooLong = false;
                         $isSubDomain = $domainPart != $lastDomainPart;
                         $partRegexChars = $isSubDomain ? ['/^[a-z0-9_\x2d]{1,63}$/i'] + $regexChars : $regexChars;
                         foreach ($partRegexChars as $regexKey => $regexChar) {
@@ -2269,11 +2270,11 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                                 $length = 63;
                                 if (array_key_exists(strtoupper($this->_tld), $this->_idnLength)
                                     && (array_key_exists($regexKey, $this->_idnLength[strtoupper($this->_tld)]))) {
-                                    $length = $this->_idnLength[strtoupper($this->_tld)];
+                                    $length = $this->_idnLength[strtoupper($this->_tld)][$regexKey];
                                 }
 
                                 if (iconv_strlen($domainPart, 'UTF-8') > $length) {
-                                    $this->_error(self::INVALID_HOSTNAME);
+                                    $tooLong = true;
                                     $status = false;
                                 } else {
                                     $checked = true;
@@ -2282,8 +2283,16 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                             }
                         }
 
+                        // A label the regex table does not cover is accepted when it is a valid IDNA label
+                        if (!$checked && $this->_options['idn'] && $this->_isIdnaLabel($domainPart)) {
+                            $checked = true;
+                            $status  = true;
+                        }
+
                         if ($checked) {
                             ++$check;
+                        } elseif ($tooLong) {
+                            $this->_error(self::INVALID_HOSTNAME);
                         }
                     }
 
@@ -2469,6 +2478,33 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
         // the trailing dot keeps the resolver from appending a search domain
         return self::$_tldDnsCache[$tld] = $this->_checkDnsRecords($ascii . '.', 'NS');
+    }
+
+    /**
+     * Checks a non-ASCII label against IDNA 2008 (UTS #46) with the intl extension
+     *
+     * The label is converted with idn_to_ascii(); it is valid when the
+     * conversion reports no error and the ASCII form fits into 63 octets.
+     * Without intl, or for an ASCII label, nothing is accepted here.
+     *
+     * @param string $label
+     * @return boolean
+     */
+    protected function _isIdnaLabel($label)
+    {
+        if (!function_exists('idn_to_ascii') || !preg_match('/[\x80-\xff]/', $label)) {
+            return false;
+        }
+
+        $info  = [];
+        $ascii = idn_to_ascii(
+            $label,
+            IDNA_NONTRANSITIONAL_TO_ASCII | IDNA_CHECK_BIDI | IDNA_CHECK_CONTEXTJ | IDNA_USE_STD3_RULES,
+            INTL_IDNA_VARIANT_UTS46,
+            $info
+        );
+
+        return $ascii !== false && empty($info['errors']) && strlen($ascii) <= 63;
     }
 
     /**

@@ -644,6 +644,52 @@ class Zend_Validate_HostnameTest extends TestCase
         $this->assertTrue($validator->isValid('1.pool.ntp.org'));
         $this->assertTrue($validator->isValid('0.pool.ntp.org'));
     }
+
+    /**
+     * Labels the regex table does not cover are accepted when they are valid
+     * IDNA labels: a TLD without an IDN regex, a hyphen in an Arabic label,
+     * and the zero width non-joiner, which is valid in Persian words.
+     *
+     * @requires extension intl
+     * @group GH-477
+     */
+    public function testIdnaLabelNotCoveredByRegexTable()
+    {
+        $validator = new Zend_Validate_Hostname();
+        $this->assertTrue($validator->isValid('نمونه.ایران'), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid('وزارة-الأتصالات.مصر'), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid("می\u{200C}خواهم.ir"), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid("می\u{200C}خواهم.com"), implode(', ', $validator->getMessages()));
+    }
+
+    /**
+     * Invisible bidi and zero width characters that IDNA disallows stay invalid.
+     *
+     * @requires extension intl
+     * @group GH-477
+     */
+    public function testIdnaDisallowedInvisibleCharacters()
+    {
+        $validator = new Zend_Validate_Hostname();
+        foreach (["example.com\u{200F}", "\u{200F}example.com", "exam\u{200E}ple.com", "example\u{200F}.com",
+                  "exa\u{200D}mple.com", "exam\u{FEFF}ple.com", "\u{202B}example.com\u{202C}"] as $hostname) {
+            $this->assertFalse($validator->isValid($hostname), json_encode($hostname));
+        }
+    }
+
+    /**
+     * The IDNA check belongs to the idn option.
+     *
+     * @requires extension intl
+     * @group GH-477
+     */
+    public function testIdnaLabelNotAcceptedWithIdnDisabled()
+    {
+        $validator = new Zend_Validate_Hostname();
+        $validator->setValidateIdn(false);
+        $this->assertFalse($validator->isValid('نمونه.ایران'));
+        $this->assertFalse($validator->isValid("می\u{200C}خواهم.ir"));
+    }
 }
 
 /**
