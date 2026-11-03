@@ -604,6 +604,10 @@ class Zend_Validate_HostnameTest extends TestCase
 
     public function testDnsLookupOfIdnTldUsesPunycode()
     {
+        if (!function_exists('idn_to_ascii')) {
+            $this->markTestSkipped('idn_to_ascii() needs the intl extension');
+        }
+
         $validator = new Zend_Validate_HostnameTest_DnsStub();
         $validator->delegated = ['xn--80akhbyknj4f'];
 
