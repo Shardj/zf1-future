@@ -16,10 +16,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+* Zend_Pdf_Font: `EMBED_AS_SIMPLE_FONT` embedding option, which embeds a TrueType font as a simple single-byte (WinAnsiEncoding) `/TrueType` font instead of a composite Type 0 font; meant for Latin fonts, gives smaller files (#494).
 * Zend_Validate_EmailAddress: `utf8` option (`setUtf8()`), off by default, which accepts a non-ASCII local part (SMTPUTF8, RFC 6531); invisible characters (bidi marks, zero width joiners, BOM) stay rejected (#477).
 
 ### Fixed
 
+* Zend_Pdf_FileParser_Font_OpenType: a font is recognized as a Latin (Nonsymbolic) font when its OS/2 Unicode ranges cover only Latin blocks, punctuation and symbols, instead of only when it covers nothing but Basic Latin; a Latin TrueType font is described as Nonsymbolic in the font descriptor now. TrueType fonts are always embedded as Type 0 fonts unless `EMBED_AS_SIMPLE_FONT` is given; the automatic choice of the simple font for Basic-Latin-only fonts is gone (#494).
+* Zend_Pdf_Resource_Font_Simple_Parsed: the `/Widths` array of a simple TrueType font is indexed by WinAnsi character code, as the PDF specification requires; it held the glyph widths in glyph order, so text drawn with such a font had wrong character spacing (#494).
+* Zend_Pdf_Font::fontWithPath() caches font objects per file *and* embedding options; the options of the first call were silently used for all later calls with the same file (#494).
 * Zend_Mail_Protocol_Smtp: the host part of an internationalized address (`hällo@händler.com`) is sent as punycode in `MAIL FROM` and `RCPT TO` when the intl extension is loaded, instead of in UTF-8, which servers without SMTPUTF8 reject with "5.1.8 UTF-8 addresses not supported" (#507).
 * Zend_Validate_Hostname: with the intl extension, a non-ASCII label under an internationalized TLD that has no character table of its own (131 of the 151 IDN TLDs, e.g. `.ایران`, `.موقع`, `.укр`) is accepted when it is a valid IDNA 2008 (UTS #46) label; before, only ASCII labels passed under these TLDs. Invisible characters such as bidi marks remain invalid. The per-label length limit of the IDN tables is applied again (#477).
   BC note: hostnames and e-mail addresses that were rejected before can be valid now, see BREAKING-CHANGES.md.

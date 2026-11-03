@@ -15632,12 +15632,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Filter/RunLength.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType_TrueType::$isAdobeLatinSubset.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Font.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between null and null will always evaluate to true.',
 	'identifier' => 'identical.alwaysTrue',
 	'count' => 1,
