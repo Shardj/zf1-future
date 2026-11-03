@@ -94,7 +94,7 @@ class Zend_File_ClassFileLocator extends FilterIterator
         $tokens   = token_get_all($contents);
         $count    = count($tokens);
         $t_trait  = defined('T_TRAIT') ? T_TRAIT : -1; // For preserve PHP 5.3 compatibility
-        $t_enum   = defined('T_ENUM') ? T_ENUM : -1; // enums exist since PHP 8.1
+        $t_enum   = defined('T_ENUM') ? T_ENUM : -1; // phpcs:ignore PHPCompatibility.Constants.NewConstants.t_enumFound -- enums exist since PHP 8.1, guarded by defined()
         for ($i = 0; $i < $count; $i++) {
             $token = $tokens[$i];
             if (!is_array($token)) {
