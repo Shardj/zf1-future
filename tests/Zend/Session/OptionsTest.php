@@ -126,14 +126,6 @@ class Zend_Session_OptionsTest extends TestCase
     }
 
     /**
-     * The session must start normally with strict mode enabled, and the
-     * setting must survive session start.
-     *
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     * @return void
-     */
-    /**
      * Once the session is started, start() must not validate the session id
      * again: an id that was accepted by PHP but does not match the current
      * session.sid_bits_per_character (e.g. a cookie issued before the setting
@@ -187,6 +179,14 @@ class Zend_Session_OptionsTest extends TestCase
         $this->assertTrue(Zend_Session::isRegenerated());
     }
 
+    /**
+     * The session must start normally with strict mode enabled, and the
+     * setting must survive session start.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @return void
+     */
     public function testSessionStartsWithUseStrictModeEnabled()
     {
         Zend_Session::setOptions(['use_strict_mode' => 1]);
