@@ -1393,7 +1393,7 @@ class Zend_Db_Select
          * Add limits clause
          */
         if ($count > 0) {
-            $sql = trim($this->_adapter->limit($sql, $count, $offset));
+            $sql = trim((string) $this->_adapter->limit($sql, $count, $offset));
         }
 
         return $sql;

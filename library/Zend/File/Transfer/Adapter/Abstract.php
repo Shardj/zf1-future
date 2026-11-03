@@ -1240,7 +1240,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     {
         if (file_exists($value['name'])) {
             $result = sprintf("%u", @filesize($value['name']));
-        } else if (file_exists($value['tmp_name'])) {
+        } else if (file_exists((string) $value['tmp_name'])) {
             $result = sprintf("%u", @filesize($value['tmp_name']));
         } else {
             return null;
@@ -1289,7 +1289,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     {
         if (file_exists($value['name'])) {
             $file = $value['name'];
-        } else if (file_exists($value['tmp_name'])) {
+        } else if (file_exists((string) $value['tmp_name'])) {
             $file = $value['tmp_name'];
         } else {
             return null;
