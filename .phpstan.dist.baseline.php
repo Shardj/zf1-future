@@ -4934,12 +4934,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Table_Row_Abstract::offsetUnset() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Table_Row_Abstract::refresh() with return type void returns null but should not return anything.',
 	'identifier' => 'return.void',
 	'count' => 1,
@@ -14312,18 +14306,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Action::next() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Action::rewind() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $dictionary of class Zend_Pdf_Action_GoTo constructor expects Zend_Pdf_Element_Dictionary, Zend_Pdf_Element given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -15686,24 +15668,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/NameTree.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_NameTree::next() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/NameTree.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Outline::next() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Outline::rewind() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Unreachable statement - code above always terminates.',
 	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
@@ -16098,18 +16062,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_RecursivelyIteratableObjectsContainer::next() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/RecursivelyIteratableObjectsContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_RecursivelyIteratableObjectsContainer::rewind() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/RecursivelyIteratableObjectsContainer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Pdf_Page::clonePage().',
