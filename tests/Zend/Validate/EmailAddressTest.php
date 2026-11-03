@@ -35,6 +35,11 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once 'Zend/Validate/EmailAddress.php';
 
 /**
+ * @see Zend_Config
+ */
+require_once 'Zend/Config.php';
+
+/**
  * @category   Zend
  * @package    Zend_Validate
  * @subpackage UnitTests
@@ -646,6 +651,67 @@ class Zend_Validate_EmailAddressTest extends TestCase
         $validator = new Zend_Validate_EmailAddress();
         $validator->setValidateMx(true);
         $this->assertTrue($validator->isValid('testmail@faß.de'));
+    }
+
+    /**
+     * The local part is ASCII only by default.
+     *
+     * @group GH-477
+     */
+    public function testUtf8LocalPartRejectedByDefault()
+    {
+        $this->assertFalse($this->_validator->getUtf8());
+        $this->assertFalse($this->_validator->isValid('hällo@händler.com'));
+        $this->assertFalse($this->_validator->isValid('مستخدم@example.com'));
+        $this->assertArrayHasKey(Zend_Validate_EmailAddress::INVALID_LOCAL_PART, $this->_validator->getMessages());
+    }
+
+    /**
+     * @group GH-477
+     */
+    public function testUtf8Option()
+    {
+        $validator = new Zend_Validate_EmailAddress(['utf8' => true]);
+        $this->assertTrue($validator->getUtf8());
+
+        $validator = new Zend_Validate_EmailAddress(new Zend_Config(['utf8' => 1]));
+        $this->assertTrue($validator->getUtf8());
+
+        $this->assertSame($this->_validator, $this->_validator->setUtf8());
+        $this->assertTrue($this->_validator->getUtf8());
+        $this->_validator->setUtf8(false);
+        $this->assertFalse($this->_validator->getUtf8());
+    }
+
+    /**
+     * With the utf8 option a non-ASCII local part (SMTPUTF8, RFC 6531) is accepted.
+     *
+     * @group GH-477
+     */
+    public function testUtf8LocalPartAccepted()
+    {
+        $validator = new Zend_Validate_EmailAddress(['utf8' => true]);
+        foreach (['hällo@händler.com', 'hä.llo@example.com', 'مستخدم@example.com', 'пользователь@example.com',
+                  '用户@example.com', 'user@example.com', '"john doe"@example.com'] as $email) {
+            $this->assertTrue($validator->isValid($email), $email . ': ' . implode(', ', $validator->getMessages()));
+        }
+    }
+
+    /**
+     * Invisible characters (bidi marks, zero width joiners, BOM) and invalid
+     * UTF-8 are not accepted in the local part even with the utf8 option.
+     *
+     * @group GH-477
+     */
+    public function testUtf8LocalPartRejectsInvisibleCharacters()
+    {
+        $validator = new Zend_Validate_EmailAddress(['utf8' => true]);
+        foreach (["us\u{200F}er@example.com", "us\u{200E}er@example.com", "us\u{200C}er@example.com",
+                  "\u{202B}user@example.com", "user\u{FEFF}@example.com", "h\xE4llo@example.com",
+                  'hällo.@example.com', '.hällo@example.com'] as $email) {
+            $this->assertFalse($validator->isValid($email), json_encode($email));
+            $this->assertArrayHasKey(Zend_Validate_EmailAddress::INVALID_LOCAL_PART, $validator->getMessages());
+        }
     }
 
     /**

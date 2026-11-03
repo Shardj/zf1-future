@@ -644,6 +644,59 @@ class Zend_Validate_HostnameTest extends TestCase
         $this->assertTrue($validator->isValid('1.pool.ntp.org'));
         $this->assertTrue($validator->isValid('0.pool.ntp.org'));
     }
+
+    /**
+     * Under an internationalized TLD without a character table, a non-ASCII
+     * label is accepted when it is a valid IDNA label, including the zero
+     * width non-joiner, which is valid in Persian words. TLDs with a table
+     * and ASCII TLDs keep their rules.
+     *
+     * @requires extension intl
+     * @group GH-477
+     */
+    public function testIdnaLabelUnderIdnTldWithoutCharacterTable()
+    {
+        $validator = new Zend_Validate_Hostname();
+        $this->assertTrue($validator->isValid('نمونه.ایران'), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid('مثال.موقع'), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid("می\u{200C}خواهم.ایران"), implode(', ', $validator->getMessages()));
+        $this->assertTrue($validator->isValid('пример.укр'), implode(', ', $validator->getMessages()));
+
+        // .se has a table and does not allow ã, .uk has no table and no IDN
+        $this->assertFalse($validator->isValid('hãllo.se'));
+        $this->assertFalse($validator->isValid('hãllo.uk'));
+        $this->assertFalse($validator->isValid("می\u{200C}خواهم.ir"));
+    }
+
+    /**
+     * Invisible bidi and zero width characters that IDNA disallows stay invalid.
+     *
+     * @requires extension intl
+     * @group GH-477
+     */
+    public function testIdnaDisallowedInvisibleCharacters()
+    {
+        $validator = new Zend_Validate_Hostname();
+        foreach (["example.com\u{200F}", "\u{200F}example.com", "exam\u{200E}ple.com", "example\u{200F}.com",
+                  "exa\u{200D}mple.com", "exam\u{FEFF}ple.com", "\u{202B}example.com\u{202C}",
+                  "نمونه\u{200F}.ایران", "نمو\u{FEFF}نه.ایران", "نمو\u{00AD}نه.ایران"] as $hostname) {
+            $this->assertFalse($validator->isValid($hostname), json_encode($hostname));
+        }
+    }
+
+    /**
+     * The IDNA check belongs to the idn option.
+     *
+     * @requires extension intl
+     * @group GH-477
+     */
+    public function testIdnaLabelNotAcceptedWithIdnDisabled()
+    {
+        $validator = new Zend_Validate_Hostname();
+        $validator->setValidateIdn(false);
+        $this->assertFalse($validator->isValid('نمونه.ایران'));
+        $this->assertFalse($validator->isValid("می\u{200C}خواهم.ایران"));
+    }
 }
 
 /**

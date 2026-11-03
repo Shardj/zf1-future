@@ -14,8 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
   BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
 
+### Added
+
+* Zend_Validate_EmailAddress: `utf8` option (`setUtf8()`), off by default, which accepts a non-ASCII local part (SMTPUTF8, RFC 6531); invisible characters (bidi marks, zero width joiners, BOM) stay rejected (#477).
+
 ### Fixed
 
+* Zend_Validate_Hostname: with the intl extension, a non-ASCII label under an internationalized TLD that has no character table of its own (131 of the 151 IDN TLDs, e.g. `.ایران`, `.موقع`, `.укр`) is accepted when it is a valid IDNA 2008 (UTS #46) label; before, only ASCII labels passed under these TLDs. Invisible characters such as bidi marks remain invalid. The per-label length limit of the IDN tables is applied again (#477).
+  BC note: hostnames and e-mail addresses that were rejected before can be valid now, see BREAKING-CHANGES.md.
 * `@return` annotations on the ArrayAccess, Iterator, IteratorAggregate and Countable implementations that still rely on `#[\ReturnTypeWillChange]`, so Symfony's DebugClassLoader no longer reports "might add … as a native return type declaration" on PHP 7.4 (#360).
   BC note: Zend_Db_Table_Row_Abstract::offsetUnset() and the next() / rewind() of the Zend_Pdf iterators return nothing, see BREAKING-CHANGES.md.
 * Zend_Session::start() validates the session id against `session.sid_bits_per_character` only before the session is started; a second call (e.g. from `new Zend_Session_Namespace()`) with a cookie id issued under a different setting no longer throws "The session has already been started" (#429).

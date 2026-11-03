@@ -2220,8 +2220,11 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                      * Note: Keep label regex short to avoid issues with long patterns when matching IDN hostnames
                      * @see Zend_Validate_Hostname_Interface
                      */
-                    $regexChars = [0 => '/^[a-z0-9\x2d]{1,63}$/i'];
-                    if ($this->_options['idn'] &&  isset($this->_validIdns[strtoupper($this->_tld)])) {
+                    $regexChars  = [0 => '/^[a-z0-9\x2d]{1,63}$/i'];
+                    $hasIdnTable = isset($this->_validIdns[strtoupper($this->_tld)]);
+                    // An internationalized TLD without a character table of its own is validated with IDNA
+                    $useIdna = $this->_options['idn'] && !$hasIdnTable && preg_match('/[\x80-\xff]/', $this->_tld);
+                    if ($this->_options['idn'] && $hasIdnTable) {
                         if (is_string($this->_validIdns[strtoupper($this->_tld)])) {
                             $regexChars += include($this->_validIdns[strtoupper($this->_tld)]);
                         } else {
@@ -2261,6 +2264,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
                         // Check each domain part
                         $checked = false;
+                        $tooLong = false;
                         $isSubDomain = $domainPart != $lastDomainPart;
                         $partRegexChars = $isSubDomain ? ['/^[a-z0-9_\x2d]{1,63}$/i'] + $regexChars : $regexChars;
                         foreach ($partRegexChars as $regexKey => $regexChar) {
@@ -2269,11 +2273,11 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                                 $length = 63;
                                 if (array_key_exists(strtoupper($this->_tld), $this->_idnLength)
                                     && (array_key_exists($regexKey, $this->_idnLength[strtoupper($this->_tld)]))) {
-                                    $length = $this->_idnLength[strtoupper($this->_tld)];
+                                    $length = $this->_idnLength[strtoupper($this->_tld)][$regexKey];
                                 }
 
                                 if (iconv_strlen($domainPart, 'UTF-8') > $length) {
-                                    $this->_error(self::INVALID_HOSTNAME);
+                                    $tooLong = true;
                                     $status = false;
                                 } else {
                                     $checked = true;
@@ -2282,8 +2286,15 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                             }
                         }
 
+                        if (!$checked && $useIdna && $this->_isIdnaLabel($domainPart)) {
+                            $checked = true;
+                            $status  = true;
+                        }
+
                         if ($checked) {
                             ++$check;
+                        } elseif ($tooLong) {
+                            $this->_error(self::INVALID_HOSTNAME);
                         }
                     }
 
@@ -2469,6 +2480,40 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
 
         // the trailing dot keeps the resolver from appending a search domain
         return self::$_tldDnsCache[$tld] = $this->_checkDnsRecords($ascii . '.', 'NS');
+    }
+
+    /**
+     * Checks a non-ASCII label against IDNA 2008 (UTS #46) with the intl extension
+     *
+     * The label is converted with idn_to_ascii(); it is valid when the
+     * conversion reports no error and the ASCII form fits into 63 octets.
+     * Invisible characters (Unicode category C) are not accepted even where
+     * UTS #46 would just drop them, except the zero width (non-)joiner, which
+     * is part of words in some scripts. Without intl, or for an ASCII label,
+     * nothing is accepted here.
+     *
+     * @param string $label
+     * @return boolean
+     */
+    protected function _isIdnaLabel($label)
+    {
+        if (!function_exists('idn_to_ascii') || !preg_match('/[\x80-\xff]/', $label)) {
+            return false;
+        }
+
+        if (preg_match('/(?![\x{200C}\x{200D}])\p{C}/u', $label)) {
+            return false;
+        }
+
+        $info  = [];
+        $ascii = idn_to_ascii(
+            $label,
+            IDNA_NONTRANSITIONAL_TO_ASCII | IDNA_CHECK_BIDI | IDNA_CHECK_CONTEXTJ | IDNA_USE_STD3_RULES,
+            INTL_IDNA_VARIANT_UTS46,
+            $info
+        );
+
+        return $ascii !== false && empty($info['errors']) && strlen($ascii) <= 63;
     }
 
     /**
