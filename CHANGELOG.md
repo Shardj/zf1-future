@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Db_Adapter_Abstract::fetchPairs() gives null values for a single column result instead of an undefined key warning (#408); fetchAll() is documented as returning array (#384).
 * Zend_Filter::filterStatic() passes an array with string keys as the options array instead of named constructor arguments (#394).
 * Zend_File_Transfer_Adapter_Abstract uses a unique probe file in _isPathWriteable(), so parallel transfers no longer report a writable destination as not writable (#399).
 * Zend_Db_Select: whitespace before AS in a column no longer turns an expression into a quoted identifier (#400).
