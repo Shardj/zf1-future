@@ -1058,7 +1058,8 @@ class Zend_Db_Select
                 // Check for a column matching "<column> AS <alias>" and extract the alias name
                 $col = trim(str_replace("\n", ' ', $col));
                 if (preg_match('/^(.+)\s+' . self::SQL_AS . '\s+(.+)$/i', $col, $m)) {
-                    $col = $m[1];
+                    // whitespace before AS would keep an expression from being recognized as one
+                    $col = rtrim($m[1]);
                     $alias = $m[2];
                 }
                 // Check for columns that look like functions and convert to Zend_Db_Expr
