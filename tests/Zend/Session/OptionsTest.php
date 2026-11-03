@@ -29,6 +29,11 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 require_once 'Zend/Session.php';
 
 /**
+ * @see Zend_Session_Namespace
+ */
+require_once 'Zend/Session/Namespace.php';
+
+/**
  * Tests for the php.ini based options accepted by Zend_Session::setOptions().
  *
  * Every test runs in its own process: Zend_Session keeps static state and
@@ -118,6 +123,60 @@ class Zend_Session_OptionsTest extends TestCase
         $this->expectExceptionMessageMatches('/unknown.option/i');
 
         Zend_Session::setOptions(['use_strict_modee' => 1]);
+    }
+
+    /**
+     * Once the session is started, start() must not validate the session id
+     * again: an id that was accepted by PHP but does not match the current
+     * session.sid_bits_per_character (e.g. a cookie issued before the setting
+     * was changed) made the second start() call, such as the implicit one from
+     * a new Zend_Session_Namespace, replace the id and throw
+     * "The session has already been started".
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @group GH-429
+     * @return void
+     */
+    public function testStartDoesNotValidateTheSessionIdOnceStarted()
+    {
+        Zend_Session::$_unitTestEnabled = true;
+        ini_set('session.sid_bits_per_character', 4);
+
+        Zend_Session::start();
+        $this->assertTrue(Zend_Session::isStarted());
+
+        // Id as PHP would have loaded it from the cookie, not valid with 4 bits per character
+        $id = 'gggggggggggggggggggggggggg';
+        session_id($id);
+
+        Zend_Session::start();
+        new Zend_Session_Namespace('GH429');
+
+        $this->assertSame($id, Zend_Session::getId());
+        $this->assertFalse(Zend_Session::isRegenerated());
+    }
+
+    /**
+     * An invalid id set before the session is started is still replaced.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     * @group GH-429
+     * @return void
+     */
+    public function testInvalidSessionIdIsReplacedBeforeStart()
+    {
+        Zend_Session::$_unitTestEnabled = true;
+        ini_set('session.sid_bits_per_character', 4);
+
+        $id = 'gggggggggggggggggggggggggg';
+        session_id($id);
+
+        Zend_Session::start();
+
+        $this->assertSame(md5($id), Zend_Session::getId());
+        $this->assertTrue(Zend_Session::isRegenerated());
     }
 
     /**
