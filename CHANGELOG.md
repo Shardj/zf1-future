@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* Zend_Session_SaveHandler_DbTable::read() returns a string for a NULL data column, Zend_Db_Adapter_Oracle passes no null encoding to oci_connect() (#563).
+
 ### Changed
 
 * Zend_Validate_Hostname: the list of known TLDs is updated to the IANA root zone of 2026-11-02; a TLD missing from the list is looked up in DNS (NS record of the TLD), which the new `tldDns` option (`setValidateTldDns(false)`) turns off (#314).
