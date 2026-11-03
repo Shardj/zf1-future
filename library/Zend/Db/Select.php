@@ -1280,7 +1280,14 @@ class Zend_Db_Select
             foreach ($this->_parts[self::UNION] as $cnt => $union) {
                 list($target, $type) = $union;
                 if ($target instanceof Zend_Db_Select) {
+                    $wrap = $target->getPart(self::ORDER)
+                        || $target->getPart(self::LIMIT_COUNT) !== null
+                        || $target->getPart(self::LIMIT_OFFSET) !== null;
                     $target = $target->assemble();
+                    if ($wrap) {
+                        // ORDER BY and LIMIT of a part apply to the whole union unless the part is parenthesized
+                        $target = '(' . $target . ')';
+                    }
                 }
                 $sql .= $target;
                 if ($cnt < $parts - 1) {

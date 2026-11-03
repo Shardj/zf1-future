@@ -36,6 +36,13 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
     protected $_className;
     protected $_root;
 
+    /**
+     * Suffix of the temporary directory of the running test
+     *
+     * @var string|null
+     */
+    protected $_tmpDirSuffix = null;
+
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         $this->_className = $name;
@@ -61,6 +68,7 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
 
     public function mkdir()
     {
+        $this->_tmpDirSuffix = null;
         @mkdir($this->getTmpDir());
     }
 
@@ -68,6 +76,10 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
     {
         $tmpDir = $this->getTmpDir(false);
         foreach (glob("$tmpDir*") as $dirname) {
+            // files a failed test left behind would keep the directory
+            foreach (glob($dirname . DIRECTORY_SEPARATOR . 'zend_cache*') as $file) {
+                @unlink($file);
+            }
             @rmdir($dirname);
         }
     }
@@ -76,7 +88,11 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
     {
         $suffix = '';
         if ($date) {
-            $suffix = date('mdyHis');
+            // one name per test, so mkdir() and the later calls agree even across a second boundary
+            if ($this->_tmpDirSuffix === null) {
+                $this->_tmpDirSuffix = date('mdyHis') . '_' . substr(uniqid(), -5);
+            }
+            $suffix = $this->_tmpDirSuffix;
         }
         if (is_writeable($this->_root)) {
             return $this->_root . DIRECTORY_SEPARATOR . 'zend_cache_tmp_dir_' . $suffix;

@@ -5,6 +5,7 @@
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
 ### Unreleased
+* Zend_Db_Select: a union part (`Zend_Db_Select` instance) with its own `ORDER BY` or `LIMIT` is rendered in parentheses, `… UNION (SELECT … ORDER BY … LIMIT …)`. Before, the clauses were rendered unparenthesized and applied to the whole union on MySQL and PostgreSQL (and were a syntax error on SQLite). To sort or limit the whole union, call `order()` / `limit()` on the select that holds the union (#505).
 * locale data was updated from CLDR 25 (2014) to CLDR 48.2 (#554). Localized output of Zend_Locale, Zend_Date, Zend_Currency, Zend_Locale_Format and the localized filters/validators follows the current data, for example:
   * no-break spaces (U+00A0) and narrow no-break spaces (U+202F) are used where a plain space was used before, e.g. before AM/PM in English times and in the de_AT and fr number formats
   * the de_AT group separator is a space (`1 234,56`), de/de_DE still uses a dot
