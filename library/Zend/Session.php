@@ -425,14 +425,6 @@ class Zend_Session extends Zend_Session_Abstract
      */
     public static function start($options = false)
     {
-        // Check to see if we've been passed an invalid session ID
-        if ( self::getId() && !self::_checkId(self::getId()) ) {
-            // Generate a valid, temporary replacement
-            self::setId(md5(self::getId()));
-            // Force a regenerate after session is started
-            self::$_regenerateIdState = -1;
-        }
-
         if (self::$_sessionStarted && self::$_destroyed) {
             require_once 'Zend/Session/Exception.php';
             throw new Zend_Session_Exception('The session was explicitly destroyed during this request, attempting to re-start is not allowed.');
@@ -440,6 +432,14 @@ class Zend_Session extends Zend_Session_Abstract
 
         if (self::$_sessionStarted) {
             return; // already started
+        }
+
+        // Check to see if we've been passed an invalid session ID
+        if ( self::getId() && !self::_checkId(self::getId()) ) {
+            // Generate a valid, temporary replacement
+            self::setId(md5(self::getId()));
+            // Force a regenerate after session is started
+            self::$_regenerateIdState = -1;
         }
 
         // make sure our default options (at the least) have been set
@@ -542,13 +542,15 @@ class Zend_Session extends Zend_Session_Abstract
         if (!$hashBitsPerChar) {
             $hashBitsPerChar = 5; // the default value
         }
-        $pattern = '';
-        switch($hashBitsPerChar) {
+        switch ($hashBitsPerChar) {
             case 4: $pattern = '^[0-9a-f]*$'; break;
             case 5: $pattern = '^[0-9a-v]*$'; break;
             case 6: $pattern = '^[0-9a-zA-Z-,]*$'; break;
+            default:
+                // Unknown setting, PHP decides what a valid id is
+                return true;
         }
-        return preg_match('#'.$pattern.'#', $id);
+        return (bool) preg_match('#'.$pattern.'#', $id);
     }
 
 
