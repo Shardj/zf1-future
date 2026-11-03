@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Db_Select: whitespace before AS in a column no longer turns an expression into a quoted identifier (#400).
 * Zend_Cache_Backend_TwoLevels gives the fast backend a finite lifetime on save(); the fast entries never expired before (#423).
 * Zend_View: a view variable assigned with null is no longer reported as missing when strictVars is on (#426).
 * Zend_Navigation_Page_Mvc::isActive() accepts array values in the request params without an "Array to string conversion" warning (#474).
