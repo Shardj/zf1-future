@@ -247,6 +247,8 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
         if (array_key_exists($key, $this->_entry)) {
             return $this->_entry[$key];
         }
+
+        return null;
     }
 
     /**

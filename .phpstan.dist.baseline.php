@@ -4946,12 +4946,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Db_Table_Row_Abstract::__unset() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_Db_Table_Row_Abstract::_refresh() (void) is used.',
 	'identifier' => 'method.void',
 	'count' => 1,
@@ -8590,7 +8584,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
 	'identifier' => 'parameter.notFound',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/App/Feed.php',
 ];
 $ignoreErrors[] = [
