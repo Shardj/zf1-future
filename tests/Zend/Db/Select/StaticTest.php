@@ -759,6 +759,13 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $this->assertEquals('SELECT "bug_id" AS "id", "bug_status" AS "name" FROM "zfbugs" UNION SELECT "product_id" AS "id", "product_name" AS "name" FROM "zfproducts" ORDER BY "id" ASC', $sql);
     }
 
+    public function testSelectUnionWithOrderedPart()
+    {
+        $select = $this->_selectUnionWithOrderedPart();
+        $sql = preg_replace('/\\s+/', ' ', $select->__toString());
+        $this->assertEquals('SELECT "zfbugs"."bug_id" FROM "zfbugs" UNION (SELECT "zfproducts"."product_id" FROM "zfproducts" ORDER BY "product_id" DESC LIMIT 4)', $sql);
+    }
+
     public function testSelectOrderByPosition()
     {
         $select = $this->_selectOrderByPosition();

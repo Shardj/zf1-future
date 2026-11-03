@@ -1662,6 +1662,30 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     /**
      * @group ZF-4772
      */
+    /**
+     * A union part with its own ORDER BY or LIMIT is parenthesized
+     */
+    protected function _selectUnionWithOrderedPart()
+    {
+        $select1 = $this->_db->select()
+            ->from('zfbugs', ['bug_id']);
+        $select2 = $this->_db->select()
+            ->from('zfproducts', ['product_id'])
+            ->order('product_id DESC')
+            ->limit(4);
+
+        return $this->_db->select()
+            ->union([$select1, $select2]);
+    }
+
+    public function testSelectUnionWithOrderedPart()
+    {
+        $select = $this->_selectUnionWithOrderedPart();
+        $sql = preg_replace('/\\s+/', ' ', $select->__toString());
+        $this->assertStringStartsWith('SELECT ', $sql);
+        $this->assertMatchesRegularExpression('/ UNION \\(SELECT .* ORDER BY .* DESC.*\\)$/', $sql);
+    }
+
     public function testSelectUnionNoArrayThrowsException()
     {
         $this->expectException(Zend_Db_Select_Exception::class);
