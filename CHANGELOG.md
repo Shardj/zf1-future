@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Zend_Db DB2 adapters (ibm_db2 and PDO_IBM) use `OFFSET … ROWS FETCH FIRST … ROWS ONLY` for limit() with an offset instead of the `ROW_NUMBER()` subquery (#393).
+  BC note: requires Db2 for i 7.1 TR11 / 7.2 TR3 or Db2 LUW 11.1 and newer.
+
 * Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
   BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
 
