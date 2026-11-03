@@ -5,6 +5,7 @@
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
 ### Unreleased
+* Zend_Validate_Hostname rejects TLDs that IANA has retired since 2020 (mostly brand TLDs such as `.intel`, `.symantec` or `.volkswagen`, and the IANA test TLDs). An unknown TLD is now looked up in DNS by default, which makes a network request; `setValidateTldDns(false)` or the `tldDns` option disables the lookup (#314).
 * Zend_Db_Adapter_Db2 and Zend_Db_Adapter_Pdo_Ibm (DB2) generate `OFFSET n ROWS FETCH FIRST m ROWS ONLY` for limit() with an offset (#393). It requires Db2 for i 7.1 TR11 / 7.2 TR3 or Db2 LUW 11.1 and newer. The result set no longer contains the `ZEND_DB_ROWNUM` column.
 * locale data was updated from CLDR 25 (2014) to CLDR 48.2 (#554). Localized output of Zend_Locale, Zend_Date, Zend_Currency, Zend_Locale_Format and the localized filters/validators follows the current data, for example:
   * no-break spaces (U+00A0) and narrow no-break spaces (U+202F) are used where a plain space was used before, e.g. before AM/PM in English times and in the de_AT and fr number formats
