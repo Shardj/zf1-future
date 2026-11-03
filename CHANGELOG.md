@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Mail_Protocol_Smtp: the host part of an internationalized address (`hällo@händler.com`) is sent as punycode in `MAIL FROM` and `RCPT TO` when the intl extension is loaded, instead of in UTF-8, which servers without SMTPUTF8 reject with "5.1.8 UTF-8 addresses not supported" (#507).
 * `@return` annotations on the ArrayAccess, Iterator, IteratorAggregate and Countable implementations that still rely on `#[\ReturnTypeWillChange]`, so Symfony's DebugClassLoader no longer reports "might add … as a native return type declaration" on PHP 7.4 (#360).
   BC note: Zend_Db_Table_Row_Abstract::offsetUnset() and the next() / rewind() of the Zend_Pdf iterators return nothing, see BREAKING-CHANGES.md.
 * Zend_Session::start() validates the session id against `session.sid_bits_per_character` only before the session is started; a second call (e.g. from `new Zend_Session_Namespace()`) with a cookie id issued under a different setting no longer throws "The session has already been started" (#429).

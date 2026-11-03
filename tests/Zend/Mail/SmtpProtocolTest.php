@@ -321,6 +321,59 @@ class Zend_Mail_SmtpProtocolTest extends TestCase
     }
 
     /**
+     * The host part of an internationalized address is sent as punycode,
+     * the local part is left as it is.
+     *
+     * @requires extension intl
+     * @group GH-507
+     */
+    public function testIdnHostnameIsSentAsPunycode()
+    {
+        $p = $this->_protocol;
+        $expectedDialog = $this->_connectAndEhlo();
+
+        $expectedDialog[] = 'MAIL FROM:<from@xn--hndler-bua.com>';
+        $expectedDialog[] = $p->responseBuffer[] = '250 Sender accepted';
+        $this->_protocol->mail('from@händler.com');
+
+        $expectedDialog[] = 'RCPT TO:<hällo@xn--hndler-bua.com>';
+        $expectedDialog[] = $p->responseBuffer[] = '250 Recipient OK';
+        $this->_protocol->rcpt('hällo@händler.com');
+
+        $expectedDialog[] = 'RCPT TO:<to@xn--mgbh0fb.xn--wgbh1c>';
+        $expectedDialog[] = $p->responseBuffer[] = '250 Recipient OK';
+        $this->_protocol->rcpt('to@مثال.مصر');
+
+        $this->assertEquals($expectedDialog, $this->_protocol->dialog);
+    }
+
+    /**
+     * ASCII addresses and a host part intl cannot convert are sent unchanged.
+     *
+     * @requires extension intl
+     * @group GH-507
+     */
+    public function testHostnameIsSentUnchangedWhenNotConvertible()
+    {
+        $p = $this->_protocol;
+        $expectedDialog = $this->_connectAndEhlo();
+
+        $expectedDialog[] = 'MAIL FROM:<from@xn--hndler-bua.com>';
+        $expectedDialog[] = $p->responseBuffer[] = '250 Sender accepted';
+        $this->_protocol->mail('from@xn--hndler-bua.com');
+
+        $expectedDialog[] = "RCPT TO:<to@example.com\u{200F}>";
+        $expectedDialog[] = $p->responseBuffer[] = '250 Recipient OK';
+        $this->_protocol->rcpt("to@example.com\u{200F}");
+
+        $expectedDialog[] = 'RCPT TO:<postmaster>';
+        $expectedDialog[] = $p->responseBuffer[] = '250 Recipient OK';
+        $this->_protocol->rcpt('postmaster');
+
+        $this->assertEquals($expectedDialog, $this->_protocol->dialog);
+    }
+
+    /**
      * Performs the initial EHLO dialog
      */
     public function testDestructorEndsOpenSession()
