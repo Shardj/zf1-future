@@ -122,7 +122,7 @@ class Zend_File_ClassFileLocator extends FilterIterator
                         switch ($type) {
                             case T_STRING:
                             case T_NS_SEPARATOR:
-                            case T_NAME_QUALIFIED:
+                            case T_NAME_QUALIFIED: // phpcs:ignore PHPCompatibility.Constants.NewConstants.t_name_qualifiedFound -- defined above when missing
                                 $namespace .= $content;
                                 break;
                         }

@@ -62,7 +62,7 @@ class Zend_Test_PHPUnit_Constraint_DomQueryTest extends TestCase
     </body>
 </html>';
         $assertion = new Zend_Test_PHPUnit_Constraint_DomQuery('input#input-0 @value');
-        $result = $assertion->evaluate(
+        $result = $assertion->evaluate_compat(
             $html,
             Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_CONTAINS,
             'value1'
@@ -93,7 +93,7 @@ class Zend_Test_PHPUnit_Constraint_DomQueryTest extends TestCase
     </body>
 </html>';
         $assertion = new Zend_Test_PHPUnit_Constraint_DomQuery('input#input-3 @value');
-        $result = $assertion->evaluate(
+        $result = $assertion->evaluate_compat(
             $html,
             Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_COUNT,
             0

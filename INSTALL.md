@@ -11,7 +11,7 @@ If you would like to use `Zend_Tool`, simply add `bin/zf.bat` (for Windows) or
 SYSTEM REQUIREMENTS
 -------------------
 
-Zend Framework requires PHP 7.3 or later. Please see the system requirements
+Zend Framework requires PHP 7.4 or later. Please see the system requirements
 appendix for more detailed information:
 
 - [https://framework.zend.com/manual/1.12/en/requirements.html](https://framework.zend.com/manual/1.12/en/requirements.html)

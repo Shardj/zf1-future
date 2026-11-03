@@ -746,6 +746,12 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Image.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Function imagepolygon invoked with 3 parameters, 4 required.',
+	'identifier' => 'arguments.count',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Image.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between class-string and \'GdImage\' will always evaluate to false.',
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
@@ -2316,18 +2322,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method RecursiveIterator::getArrayCopy().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property/DefaultValue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method RecursiveIterator::offsetSet().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property/DefaultValue.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Config_Writer_Ini::_prepareValue() should return string but returns float|int.',
@@ -3986,19 +3980,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method autocommit() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method close() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method commit() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
@@ -4006,17 +3988,11 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method query() on object|resource.',
 	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method real_escape_string() on object|resource.',
-	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method rollback() on object|resource.',
+	'rawMessage' => 'Cannot call method real_escape_string() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
@@ -5180,18 +5156,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Dijit.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_Form_Element_Dijit::setView() should return Zend_Dojo_Form_Element_Dijit but returns Zend_Form_Element.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Dijit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Dojo_Form_Element_Dijit::loadDefaultDecorators() should be compatible with return type (Zend_Form_Element) of method Zend_Form_Element::loadDefaultDecorators()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Dijit.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_Form_Element_Editor::addStyleSheet() should return Zend_Dojo_Form_Element_Editor but returns Zend_Dojo_Form_Element_Dijit.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -5840,7 +5804,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property DOMElement::$actualEncoding.',
+	'rawMessage' => 'Access to an undefined property DOMElement::$encoding.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
@@ -8390,18 +8354,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Element/File.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Element_File::addPrefixPath() should return Zend_Form_Element_File but returns Zend_Form_Element.',
-	'identifier' => 'return.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/Element/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Element_File::setPluginLoader() should return Zend_Form_Element_File but returns Zend_Form_Element.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $value of method Zend_Form_Element_File::isValid() expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -8416,12 +8368,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$hash.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element/Hash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Element::initCsrfValidator().',
-	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/Element/Hash.php',
 ];
@@ -11928,12 +11874,6 @@ $ignoreErrors[] = [
 	'identifier' => 'deadCode.unreachable',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Locale/Data.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Locale/Format.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Locale_Format::convertPhpToIsoFormat() should return string but returns null.',
@@ -18062,12 +18002,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Rest_Server::$_method (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene::norm() should return float but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -19592,12 +19526,6 @@ $ignoreErrors[] = [
 	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Sqs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Audioscrobbler.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Service_Audioscrobbler), \'_errorHandler\'} given.',
@@ -21281,12 +21209,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of function setcookie expects string, false given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #6 $gc of function session_set_save_handler expects callable(string): bool, array{Zend_Session_SaveHandler_Interface, \'gc\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Session.php',
@@ -23380,24 +23302,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Ini.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Qt::_contentElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Qt::_endElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Qt::_startElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -23426,24 +23330,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Tbx::_contentElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Tbx::_endElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Tbx::_startElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
@@ -23482,24 +23368,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tmx.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Xliff::_contentElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Xliff::_endElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_Xliff::_startElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -23516,24 +23384,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_XmlTm::_contentElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_XmlTm::_endElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Adapter_XmlTm::_startElement() is unused.',
-	'identifier' => 'method.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
@@ -24244,12 +24094,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/WordCount.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Validate/Hostname.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Validate_Hostname::decodePunycode() should return string but returns false.',
 	'identifier' => 'return.type',
 	'count' => 2,
@@ -24302,12 +24146,6 @@ $ignoreErrors[] = [
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/Sitemap/Changefreq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Validate/StringLength.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param has invalid value (string The view script to execute.): Unexpected token "The", expected variable at offset 109 on line 4',
@@ -25694,12 +25532,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<70400, 80399> and 50600 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_XmlRpc_Client::getIntrospector() should return Zend_XmlRpc_Client_ServerIntrospection but returns Zend_Http_Client_Introspector.',

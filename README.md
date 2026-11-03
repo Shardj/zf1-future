@@ -3,7 +3,7 @@
 # Zend Framework 1 now for PHP 8.2!
 ### Classic ZF1 Reborn
 Zend may have abandoned the original Zend Framework, but the global Zend Framework Community has not! Since Zend sentenced ZF1 to EOL, the Zend Framework community around the globe has continued to work and build on what we consider to be one of the best PHP frameworks of all time.
-Framework is tested by users up to PHP version 8.2. Note, that with 8.3+ you can experience some incompatibilities.
+Framework is tested on PHP 7.4 up to 8.3. PHP 8.4 and 8.5 are tested as experimental, so you can still experience some incompatibilities there.
 
 # ZF1-Future Sponsors
 ### Products and Projects built with ZF1-Future:
@@ -31,8 +31,10 @@ The original docs can be found here: https://framework.zend.com/manual/1.12/en/m
 Installable through git clone or through  
 `composer require shardj/zf1-future` https://packagist.org/packages/shardj/zf1-future  
 
+Composer is the recommended way. If you install from git or from a release archive without Composer, add the `library` directory to your `include_path` and make sure the `ctype` and `mbstring` extensions are enabled. The Symfony polyfills from `composer.json` are not loaded in that case.
+
 # System Requirements
-ZF1 Future runs on any version of PHP between 7.4 and 8.2! (see composer.json)
+ZF1 Future runs on any version of PHP between 7.4 and 8.3, with experimental support for 8.4 and 8.5 (see composer.json).
 
 # License
 The files in this archive are released under the Zend Framework license. You can find a copy of this license in [LICENSE.txt](LICENSE.txt).
