@@ -29,6 +29,18 @@ require_once 'Zend/Pdf/Element/Object.php';
 /** Zend_Pdf_Element_Numeric */
 require_once 'Zend/Pdf/Element/Numeric.php';
 
+/** Zend_Pdf_Element_Reference */
+require_once 'Zend/Pdf/Element/Reference.php';
+
+/** Zend_Pdf_Element_Reference_Context */
+require_once 'Zend/Pdf/Element/Reference/Context.php';
+
+/** Zend_Pdf_Element_Reference_Table */
+require_once 'Zend/Pdf/Element/Reference/Table.php';
+
+/** Zend_Pdf_StringParser */
+require_once 'Zend/Pdf/StringParser.php';
+
 /**
  * @category   Zend
  * @package    Zend_Pdf
@@ -145,5 +157,49 @@ class Zend_Pdf_Element_ObjectTest extends TestCase
         $obj = new Zend_Pdf_Element_Object($intObj, 55, 3, $factory);
 
         $this->assertEquals($obj->dump($factory), "55 3 obj \n100\nendobj\n");
+    }
+
+    /**
+     * $value of the wrapped element is reached through __get() / __set(),
+     * which only works while Zend_Pdf_Element does not declare the property.
+     *
+     * @group GH-453
+     * @group GH-490
+     */
+    public function testValueIsProxiedToTheWrappedElement()
+    {
+        $intObj = new Zend_Pdf_Element_Numeric(100);
+        $obj = new Zend_Pdf_Element_Object($intObj, 1, 0, new Zend_Pdf_ElementFactory(1));
+
+        $this->assertSame(100, $obj->value);
+        $this->assertSame(100, $obj->toPhp());
+
+        $obj->value = 200;
+        $this->assertSame(200, $intObj->value);
+        $this->assertSame(200, $obj->value);
+        $this->assertEquals('200', $intObj->toString());
+    }
+
+    /**
+     * @group GH-453
+     * @group GH-490
+     */
+    public function testValueIsProxiedThroughAReference()
+    {
+        $factory = new Zend_Pdf_ElementFactory(1);
+        $intObj  = new Zend_Pdf_Element_Numeric(100);
+        $obj     = $factory->newObject($intObj);
+
+        $context = new Zend_Pdf_Element_Reference_Context(
+            new Zend_Pdf_StringParser('', $factory),
+            new Zend_Pdf_Element_Reference_Table()
+        );
+        $ref = new Zend_Pdf_Element_Reference($obj->getObjNum(), $obj->getGenNum(), $context, $factory);
+
+        $this->assertSame(100, $ref->value);
+        $this->assertSame(100, $ref->toPhp());
+
+        $ref->value = 300;
+        $this->assertSame(300, $intObj->value);
     }
 }
