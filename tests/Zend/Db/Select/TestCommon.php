@@ -1660,9 +1660,6 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     }
 
     /**
-     * @group ZF-4772
-     */
-    /**
      * A union part with its own ORDER BY or LIMIT is parenthesized
      */
     protected function _selectUnionWithOrderedPart()
@@ -1684,6 +1681,9 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
         $this->assertStringStartsWith('SELECT ', $sql);
         $this->assertMatchesRegularExpression('/ UNION \\(SELECT .* ORDER BY .* DESC.*\\)$/', $sql);
+    }
+
+    /**
      * @group GH-400
      */
     protected function _selectColumnExprWithTrailingSpace()

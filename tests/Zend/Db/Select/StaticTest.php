@@ -764,6 +764,8 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $select = $this->_selectUnionWithOrderedPart();
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
         $this->assertEquals('SELECT "zfbugs"."bug_id" FROM "zfbugs" UNION (SELECT "zfproducts"."product_id" FROM "zfproducts" ORDER BY "product_id" DESC LIMIT 4 OFFSET 0)', $sql);
+    }
+
     public function testSelectColumnExprWithTrailingSpace()
     {
         $select = $this->_selectColumnExprWithTrailingSpace();
