@@ -1157,4 +1157,37 @@ class Zend_Locale_FormatTest extends TestCase
             Zend_Locale_Format::isInteger('1', ['locale' => 'zh_HK'])
         );
     }
+
+    /**
+     * Month names that contain the month number and end without a separator
+     * ('1月13日') must not run into the following number when they are
+     * replaced; '11月' must not be matched by '1月'.
+     *
+     * @group GH-441
+     */
+    public function testGetDateWithChineseMonthNames()
+    {
+        $date = Zend_Locale_Format::getDate('2020年1月13日 上午1:00:03', ['date_format' => 'y年M月d日 ah:mm:ss', 'locale' => 'zh_TW']);
+        $this->assertEquals(['year' => 2020, 'month' => 1, 'day' => 13, 'hour' => 1, 'minute' => 0, 'second' => 3],
+            array_intersect_key($date, array_flip(['year', 'month', 'day', 'hour', 'minute', 'second'])));
+
+        $date = Zend_Locale_Format::getDate('2020年11月13日 下午1:00:03', ['date_format' => 'y年M月d日 ah:mm:ss', 'locale' => 'zh_TW']);
+        $this->assertEquals(['year' => 2020, 'month' => 11, 'day' => 13, 'hour' => 13],
+            array_intersect_key($date, array_flip(['year', 'month', 'day', 'hour'])));
+
+        $date = Zend_Locale_Format::getDate('2020年12月3日', ['date_format' => 'y年M月d日', 'locale' => 'zh_TW']);
+        $this->assertEquals(['year' => 2020, 'month' => 12, 'day' => 3],
+            array_intersect_key($date, array_flip(['year', 'month', 'day'])));
+    }
+
+    /**
+     * The flexible day period 'B' of CLDR patterns is read as the AM/PM marker.
+     *
+     * @group GH-441
+     */
+    public function testZhTwTimeFormatsUseAmPmMarker()
+    {
+        $this->assertEquals('ah:mm:ss', Zend_Locale_Format::getTimeFormat('zh_TW'));
+        $this->assertEquals('y年M月d日 ah:mm:ss', Zend_Locale_Format::getDateTimeFormat('zh_TW'));
+    }
 }

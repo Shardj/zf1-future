@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Locale_Format::getDate() / Zend_Date: dates with month names that contain the month number and end without a separator, as in Chinese (`2020年1月13日`), are parsed; the month name was replaced in a way that merged the month and day numbers, and `11月` was matched by `1月` (#441).
+* Zend_Locale_Data: the flexible day period `B` of CLDR time patterns (zh_TW: `Bh:mm:ss`) is read as the AM/PM marker `a`, so Zend_Date renders and parses 上午/下午 instead of treating `B` as the Swatch beat (#441).
 * Zend_Pdf_FileParser_Font_OpenType: a font is recognized as a Latin (Nonsymbolic) font when its OS/2 Unicode ranges cover only Latin blocks, punctuation and symbols, instead of only when it covers nothing but Basic Latin; a Latin TrueType font is described as Nonsymbolic in the font descriptor now. TrueType fonts are always embedded as Type 0 fonts unless `EMBED_AS_SIMPLE_FONT` is given; the automatic choice of the simple font for Basic-Latin-only fonts is gone (#494).
 * Zend_Pdf_Resource_Font_Simple_Parsed: the `/Widths` array of a simple TrueType font is indexed by WinAnsi character code, as the PDF specification requires; it held the glyph widths in glyph order, so text drawn with such a font had wrong character spacing (#494).
 * Zend_Pdf_Font::fontWithPath() caches font objects per file *and* embedding options; the options of the first call were silently used for all later calls with the same file (#494).
