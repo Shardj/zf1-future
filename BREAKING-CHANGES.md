@@ -17,6 +17,7 @@ As pressure to implement some PHP 8.2+ related changes are raising, we are goig 
   * territories of a language (`territorytolanguage`, `languagetoterritory`) are taken from the official languages in `territoryInfo`
 * don't compare localized strings against hardcoded values in your application, they change with the CLDR data
 * input parsing accepts a plain space for space-like group separators (no-break and narrow no-break space)
+* Zend_Application_Resource_Useragent lives in `Zend/Application/Resource/Useragent.php` (the class is `Zend_Application_Resource_Useragent`), so the `useragent` bootstrap resource (`resources.useragent.*`) is resolved by the plugin loader on case-sensitive file systems, as in ZF 1.12. Code that includes the file by its previous path `Zend/Application/Resource/UserAgent.php` has to use the new name; class names are case-insensitive in PHP, so `Zend_Application_Resource_UserAgent` in `extends` or `instanceof` keeps working (#407).
 
 ### 1.25.3
 These are bug fixes that restore the behaviour ZF1 documents; they are listed here because the output can differ from 1.25.2 in edge cases.

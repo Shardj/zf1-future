@@ -33,7 +33,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  */
 require_once 'Zend/Loader/Autoloader.php';
 require_once 'Zend/Application/Resource/ResourceAbstract.php';
-require_once 'Zend/Application/Resource/UserAgent.php';
+require_once 'Zend/Application/Resource/Useragent.php';
 
 /**
  * @category   Zend
@@ -106,6 +106,20 @@ class Zend_Application_Resource_UseragentTest extends TestCase
 
         // Reset autoloader instance so it doesn't affect other tests
         Zend_Loader_Autoloader::resetInstance();
+    }
+
+    /**
+     * @group GH-407
+     */
+    public function testResourceIsResolvedByTheBootstrapPluginLoader()
+    {
+        $this->bootstrap->registerPluginResource('useragent', [
+            'storage' => ['adapter' => 'NonPersistent'],
+        ]);
+        $this->bootstrap->bootstrap('useragent');
+
+        $this->assertTrue($this->bootstrap->getResource('useragent') instanceof Zend_Http_UserAgent);
+        $this->assertTrue($this->bootstrap->getPluginResource('useragent') instanceof Zend_Application_Resource_Useragent);
     }
 
     public function testInitializationInitializesUserAgentObject()

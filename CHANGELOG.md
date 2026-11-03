@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
   BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
 
+### Fixed
+
+* Zend_Application_Resource_Useragent: the `useragent` bootstrap resource is found by the resource plugin loader again on case-sensitive file systems; the file is `Zend/Application/Resource/Useragent.php` like the other resources (#407).
+  BC note: code that requires `Zend/Application/Resource/UserAgent.php` by path has to use the new file name, see BREAKING-CHANGES.md.
+
 ## [1.25.3] - 2026-11-03
 
 ### Added
