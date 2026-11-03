@@ -337,7 +337,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      */
     public function __unset($key)
     {
-        if ('_' != substr($key, 0, 1) && isset($this->_data[$key])) {
+        if ('_' != substr($key, 0, 1) && array_key_exists($key, $this->_data)) {
             unset($this->_data[$key]);
         }
     }

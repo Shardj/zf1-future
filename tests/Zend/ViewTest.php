@@ -848,6 +848,9 @@ class Zend_ViewTest extends TestCase
         $view->render('testStrictVars.phtml');
         restore_error_handler();
         $this->assertSame([], $this->notices);
+
+        unset($view->foo);
+        $this->assertArrayNotHasKey('foo', $view->getVars());
     }
 
     public function testStrictVars()
