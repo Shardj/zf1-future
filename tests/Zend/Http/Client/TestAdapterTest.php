@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Http_Client_TestAdapterTest extends TestCase
      * Set up the test adapter before running the test
      *
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->adapter = new Zend_Http_Client_Adapter_Test();
     }
@@ -59,7 +59,7 @@ class Zend_Http_Client_TestAdapterTest extends TestCase
      * Tear down the test adapter after running the test
      *
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->adapter = null;
     }

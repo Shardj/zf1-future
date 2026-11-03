@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,7 +55,7 @@ class Zend_Amf_Response_HttpTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_Response_HttpTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
     
     /**
@@ -83,6 +83,6 @@ class ZF11783_ExposeIsIeOverSsl extends Zend_Amf_Response_Http
 }
 
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Amf_Response_HttpTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Amf_Response_HttpTest::main') {
     Zend_Amf_Response_HttpTest::main();
 }

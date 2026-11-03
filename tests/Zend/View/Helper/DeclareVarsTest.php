@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -58,10 +58,10 @@ class Zend_View_Helper_DeclareVarsTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_DeclareVarsTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $view = new Zend_View();
         $base = str_replace('/', DIRECTORY_SEPARATOR, '/../_templates');
@@ -70,7 +70,7 @@ class Zend_View_Helper_DeclareVarsTest extends TestCase
         $this->view = $view;
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->view);
     }
@@ -121,6 +121,6 @@ class Zend_View_Helper_DeclareVarsTest extends TestCase
 }
 
 // Call Zend_View_Helper_DeclareVarsTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_DeclareVarsTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_DeclareVarsTest::main") {
     Zend_View_Helper_DeclareVarsTest::main();
 }

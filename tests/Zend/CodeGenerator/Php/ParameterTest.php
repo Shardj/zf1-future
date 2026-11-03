@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,12 +46,12 @@ class Zend_CodeGenerator_Php_ParameterTest extends TestCase
      */
     protected $_parameter = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_parameter = new Zend_CodeGenerator_Php_Parameter();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_parameter = null;
     }

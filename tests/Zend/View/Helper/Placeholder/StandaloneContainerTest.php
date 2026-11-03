@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -73,7 +73,7 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_Placeholder_StandaloneContainerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -82,7 +82,7 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $regKey = Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY;
         if (Zend_Registry::isRegistered($regKey)) {
@@ -99,7 +99,7 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -133,6 +133,6 @@ class Zend_View_Helper_Placeholder_StandaloneContainerTest_Foo extends Zend_View
 }
 
 // Call Zend_View_Helper_Placeholder_StandaloneContainerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_Placeholder_StandaloneContainerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_Placeholder_StandaloneContainerTest::main") {
     Zend_View_Helper_Placeholder_StandaloneContainerTest::main();
 }

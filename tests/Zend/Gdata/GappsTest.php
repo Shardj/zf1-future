@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Gdata_GappsTest extends TestCase
 
     public const TEST_DOMAIN = 'nowhere.invalid';
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // These tests shouldn't be doing anything online, so we can use
         // bogous auth credentials.

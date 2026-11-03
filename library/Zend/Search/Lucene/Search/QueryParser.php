@@ -138,8 +138,8 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
     /**
      * Boolean operators constants
      */
-    const B_OR  = 0;
-    const B_AND = 1;
+    public const B_OR  = 0;
+    public const B_AND = 1;
 
     /**
      * Default boolean queries operator
@@ -149,17 +149,17 @@ class Zend_Search_Lucene_Search_QueryParser extends Zend_Search_Lucene_FSM
     private $_defaultOperator = self::B_OR;
 
     /** Query parser State Machine states */
-    const ST_COMMON_QUERY_ELEMENT       = 0;   // Terms, phrases, operators
-    const ST_CLOSEDINT_RQ_START         = 1;   // Range query start (closed interval) - '['
-    const ST_CLOSEDINT_RQ_FIRST_TERM    = 2;   // First term in '[term1 to term2]' construction
-    const ST_CLOSEDINT_RQ_TO_TERM       = 3;   // 'TO' lexeme in '[term1 to term2]' construction
-    const ST_CLOSEDINT_RQ_LAST_TERM     = 4;   // Second term in '[term1 to term2]' construction
-    const ST_CLOSEDINT_RQ_END           = 5;   // Range query end (closed interval) - ']'
-    const ST_OPENEDINT_RQ_START         = 6;   // Range query start (opened interval) - '{'
-    const ST_OPENEDINT_RQ_FIRST_TERM    = 7;   // First term in '{term1 to term2}' construction
-    const ST_OPENEDINT_RQ_TO_TERM       = 8;   // 'TO' lexeme in '{term1 to term2}' construction
-    const ST_OPENEDINT_RQ_LAST_TERM     = 9;   // Second term in '{term1 to term2}' construction
-    const ST_OPENEDINT_RQ_END           = 10;  // Range query end (opened interval) - '}'
+    public const ST_COMMON_QUERY_ELEMENT       = 0;   // Terms, phrases, operators
+    public const ST_CLOSEDINT_RQ_START         = 1;   // Range query start (closed interval) - '['
+    public const ST_CLOSEDINT_RQ_FIRST_TERM    = 2;   // First term in '[term1 to term2]' construction
+    public const ST_CLOSEDINT_RQ_TO_TERM       = 3;   // 'TO' lexeme in '[term1 to term2]' construction
+    public const ST_CLOSEDINT_RQ_LAST_TERM     = 4;   // Second term in '[term1 to term2]' construction
+    public const ST_CLOSEDINT_RQ_END           = 5;   // Range query end (closed interval) - ']'
+    public const ST_OPENEDINT_RQ_START         = 6;   // Range query start (opened interval) - '{'
+    public const ST_OPENEDINT_RQ_FIRST_TERM    = 7;   // First term in '{term1 to term2}' construction
+    public const ST_OPENEDINT_RQ_TO_TERM       = 8;   // 'TO' lexeme in '{term1 to term2}' construction
+    public const ST_OPENEDINT_RQ_LAST_TERM     = 9;   // Second term in '{term1 to term2}' construction
+    public const ST_OPENEDINT_RQ_END           = 10;  // Range query end (opened interval) - '}'
 
     /**
      * Parser constructor

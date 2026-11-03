@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -82,7 +82,7 @@ class Zend_Gdata_FeedTest extends TestCase
      */
     protected $openSearchNamespacev2;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->etagLocalName = 'etag';
         $this->expectedEtag = 'W/"CE4BRXw4cCp7ImA9WxRVFEs."';

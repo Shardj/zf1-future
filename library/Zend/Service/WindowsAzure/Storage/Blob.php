@@ -66,54 +66,54 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 	/**
 	 * ACL - Private access
 	 */
-	const ACL_PRIVATE = null;
+	public const ACL_PRIVATE = null;
 
 	/**
 	 * ACL - Public access (read all blobs)
 	 *
 	 * @deprecated Use ACL_PUBLIC_CONTAINER or ACL_PUBLIC_BLOB instead.
 	 */
-	const ACL_PUBLIC = 'container';
+	public const ACL_PUBLIC = 'container';
 
 	/**
 	 * ACL - Blob Public access (read all blobs)
 	 */
-	const ACL_PUBLIC_BLOB = 'blob';
+	public const ACL_PUBLIC_BLOB = 'blob';
 
 	/**
 	 * ACL - Container Public access (enumerate and read all blobs)
 	 */
-	const ACL_PUBLIC_CONTAINER = 'container';
+	public const ACL_PUBLIC_CONTAINER = 'container';
 
 	/**
 	 * Blob lease constants
 	 */
-	const LEASE_ACQUIRE = 'acquire';
-	const LEASE_RENEW   = 'renew';
-	const LEASE_RELEASE = 'release';
-	const LEASE_BREAK   = 'break';
+	public const LEASE_ACQUIRE = 'acquire';
+	public const LEASE_RENEW   = 'renew';
+	public const LEASE_RELEASE = 'release';
+	public const LEASE_BREAK   = 'break';
 
 	/**
 	 * Maximal blob size (in bytes)
 	 */
-	const MAX_BLOB_SIZE = 67108864;
+	public const MAX_BLOB_SIZE = 67108864;
 
 	/**
 	 * Maximal blob transfer size (in bytes)
 	 */
-	const MAX_BLOB_TRANSFER_SIZE = 4194304;
+	public const MAX_BLOB_TRANSFER_SIZE = 4194304;
 
 	/**
 	 * Blob types
 	 */
-	const BLOBTYPE_BLOCK = 'BlockBlob';
-	const BLOBTYPE_PAGE  = 'PageBlob';
+	public const BLOBTYPE_BLOCK = 'BlockBlob';
+	public const BLOBTYPE_PAGE  = 'PageBlob';
 
 	/**
 	 * Put page write options
 	 */
-	const PAGE_WRITE_UPDATE = 'update';
-	const PAGE_WRITE_CLEAR  = 'clear';
+	public const PAGE_WRITE_UPDATE = 'update';
+	public const PAGE_WRITE_CLEAR  = 'clear';
 
 	/**
 	 * Stream wrapper clients
@@ -138,7 +138,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 	 * @param boolean $usePathStyleUri Use path-style URI's
 	 * @param Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy Retry policy to use when making requests
 	 */
-	public function __construct($host = Zend_Service_WindowsAzure_Storage::URL_DEV_BLOB, $accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT, $accountKey = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY, $usePathStyleUri = false, Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
+	public function __construct($host = Zend_Service_WindowsAzure_Storage::URL_DEV_BLOB, $accountName = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_ACCOUNT, $accountKey = Zend_Service_WindowsAzure_Credentials_CredentialsAbstract::DEVSTORE_KEY, $usePathStyleUri = false, ?Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract $retryPolicy = null)
 	{
 		parent::__construct($host, $accountName, $accountKey, $usePathStyleUri, $retryPolicy);
 
@@ -1127,7 +1127,7 @@ class Zend_Service_WindowsAzure_Storage_Blob extends Zend_Service_WindowsAzure_S
 		$size = strlen($contents);
 		if ($size >= self::MAX_BLOB_TRANSFER_SIZE) {
 			require_once 'Zend/Service/WindowsAzure/Exception.php';
-			throw new Zend_Service_WindowsAzure_Exception('Page blob size must not be larger than ' + self::MAX_BLOB_TRANSFER_SIZE . ' bytes.');
+			throw new Zend_Service_WindowsAzure_Exception('Page blob size must not be larger than ' . self::MAX_BLOB_TRANSFER_SIZE . ' bytes.');
 		}
 
 		// Create metadata headers

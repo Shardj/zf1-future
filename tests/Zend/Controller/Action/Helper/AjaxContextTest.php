@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -106,7 +106,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Action_Helper_AjaxContextTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -115,7 +115,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
             unset($_SERVER['HTTP_X_REQUESTED_WITH']);
@@ -155,7 +155,7 @@ class Zend_Controller_Action_Helper_AjaxContextTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
             unset($_SERVER['HTTP_X_REQUESTED_WITH']);
@@ -305,6 +305,6 @@ class Zend_Controller_Action_Helper_AjaxContextTest_LayoutOverride extends Zend_
 }
 
 // Call Zend_Controller_Action_Helper_AjaxContextTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_AjaxContextTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_AjaxContextTest::main") {
     Zend_Controller_Action_Helper_AjaxContextTest::main();
 }

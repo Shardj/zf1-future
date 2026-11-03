@@ -39,14 +39,14 @@
  */
 class Zend_Log
 {
-    const EMERG   = 0;  // Emergency: system is unusable
-    const ALERT   = 1;  // Alert: action must be taken immediately
-    const CRIT    = 2;  // Critical: critical conditions
-    const ERR     = 3;  // Error: error conditions
-    const WARN    = 4;  // Warning: warning conditions
-    const NOTICE  = 5;  // Notice: normal but significant condition
-    const INFO    = 6;  // Informational: informational messages
-    const DEBUG   = 7;  // Debug: debug messages
+    public const EMERG   = 0;  // Emergency: system is unusable
+    public const ALERT   = 1;  // Alert: action must be taken immediately
+    public const CRIT    = 2;  // Critical: critical conditions
+    public const ERR     = 3;  // Error: error conditions
+    public const WARN    = 4;  // Warning: warning conditions
+    public const NOTICE  = 5;  // Notice: normal but significant condition
+    public const INFO    = 6;  // Informational: informational messages
+    public const DEBUG   = 7;  // Debug: debug messages
 
     /**
      * @var array of priorities where the keys are the
@@ -89,7 +89,7 @@ class Zend_Log
 
     /**
      *
-     * @var callback
+     * @var callable|null
      */
     protected $_origErrorHandler       = null;
 
@@ -116,7 +116,7 @@ class Zend_Log
      *
      * @param Zend_Log_Writer_Abstract|null  $writer  default writer
      */
-    public function __construct(Zend_Log_Writer_Abstract $writer = null)
+    public function __construct(?Zend_Log_Writer_Abstract $writer = null)
     {
         $r = new ReflectionClass($this);
         $this->_priorities = array_flip($r->getConstants());
@@ -594,14 +594,17 @@ class Zend_Log
             E_USER_ERROR        => Zend_Log::ERR,
             E_CORE_ERROR        => Zend_Log::ERR,
             E_RECOVERABLE_ERROR => Zend_Log::ERR,
-            E_STRICT            => Zend_Log::DEBUG,
         ];
         // PHP 5.3.0+
         if (defined('E_DEPRECATED')) {
-            $this->_errorHandlerMap['E_DEPRECATED'] = Zend_Log::DEBUG;
+            $this->_errorHandlerMap[E_DEPRECATED] = Zend_Log::DEBUG;
         }
         if (defined('E_USER_DEPRECATED')) {
-            $this->_errorHandlerMap['E_USER_DEPRECATED'] = Zend_Log::DEBUG;
+            $this->_errorHandlerMap[E_USER_DEPRECATED] = Zend_Log::DEBUG;
+        }
+        // Deprecated in PHP 8.4
+        if (defined('E_STRICT') && version_compare(PHP_VERSION, '8.4.0', '<')) {
+            $this->_errorHandlerMap[E_STRICT] = Zend_Log::DEBUG;
         }
 
         $this->_registeredErrorHandler = true;

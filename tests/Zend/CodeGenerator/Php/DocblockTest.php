@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,12 +45,12 @@ class Zend_CodeGenerator_Php_DocblockTest extends TestCase
      */
     protected $_docblock = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_docblock = new Zend_CodeGenerator_Php_Docblock();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_docblock = null;
     }

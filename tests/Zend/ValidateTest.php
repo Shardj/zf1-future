@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -70,7 +70,7 @@ class Zend_ValidateTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validator = new Zend_Validate();
     }
@@ -80,7 +80,7 @@ class Zend_ValidateTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Validate::setDefaultNamespaces([]);
     }

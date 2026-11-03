@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -63,7 +63,7 @@ class Zend_Gdata_App_EntryTest extends TestCase
      */
     protected $service;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->enryText = $this->loadResponse(
             dirname(__FILE__) . '/../App/_files/EntrySample1.xml'

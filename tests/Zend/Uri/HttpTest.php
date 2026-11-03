@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ require_once 'Zend/Uri/Http.php';
  */
 class Zend_Uri_HttpTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Uri::setConfig(['allow_unwise' => false]);
     }

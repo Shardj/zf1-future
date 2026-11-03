@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -63,7 +63,7 @@ class Zend_Service_Yahoo_OnlineTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_yahoo = new Zend_Service_Yahoo(constant('TESTS_ZEND_SERVICE_YAHOO_ONLINE_APPID'));
 
@@ -376,7 +376,7 @@ class Zend_Service_Yahoo_OnlineTest extends TestCase
  */
 class Zend_Service_Yahoo_OnlineTest_Skip extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Service_Yahoo online tests not enabled with an APPID in TestConfiguration.php');
     }

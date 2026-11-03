@@ -36,34 +36,34 @@ require_once 'Zend/Search/Lucene/Search/QueryToken.php';
 class Zend_Search_Lucene_Search_QueryLexer extends Zend_Search_Lucene_FSM
 {
     /** State Machine states */
-    const ST_WHITE_SPACE     = 0;
-    const ST_SYNT_LEXEME     = 1;
-    const ST_LEXEME          = 2;
-    const ST_QUOTED_LEXEME   = 3;
-    const ST_ESCAPED_CHAR    = 4;
-    const ST_ESCAPED_QCHAR   = 5;
-    const ST_LEXEME_MODIFIER = 6;
-    const ST_NUMBER          = 7;
-    const ST_MANTISSA        = 8;
-    const ST_ERROR           = 9;
+    public const ST_WHITE_SPACE     = 0;
+    public const ST_SYNT_LEXEME     = 1;
+    public const ST_LEXEME          = 2;
+    public const ST_QUOTED_LEXEME   = 3;
+    public const ST_ESCAPED_CHAR    = 4;
+    public const ST_ESCAPED_QCHAR   = 5;
+    public const ST_LEXEME_MODIFIER = 6;
+    public const ST_NUMBER          = 7;
+    public const ST_MANTISSA        = 8;
+    public const ST_ERROR           = 9;
 
     /** Input symbols */
-    const IN_WHITE_SPACE     = 0;
-    const IN_SYNT_CHAR       = 1;
-    const IN_LEXEME_MODIFIER = 2;
-    const IN_ESCAPE_CHAR     = 3;
-    const IN_QUOTE           = 4;
-    const IN_DECIMAL_POINT   = 5;
-    const IN_ASCII_DIGIT     = 6;
-    const IN_CHAR            = 7;
-    const IN_MUTABLE_CHAR    = 8;
+    public const IN_WHITE_SPACE     = 0;
+    public const IN_SYNT_CHAR       = 1;
+    public const IN_LEXEME_MODIFIER = 2;
+    public const IN_ESCAPE_CHAR     = 3;
+    public const IN_QUOTE           = 4;
+    public const IN_DECIMAL_POINT   = 5;
+    public const IN_ASCII_DIGIT     = 6;
+    public const IN_CHAR            = 7;
+    public const IN_MUTABLE_CHAR    = 8;
 
-    const QUERY_WHITE_SPACE_CHARS      = " \n\r\t";
-    const QUERY_SYNT_CHARS             = ':()[]{}!|&';
-    const QUERY_MUTABLE_CHARS          = '+-';
-    const QUERY_DOUBLECHARLEXEME_CHARS = '|&';
-    const QUERY_LEXEMEMODIFIER_CHARS   = '~^';
-    const QUERY_ASCIIDIGITS_CHARS      = '0123456789';
+    public const QUERY_WHITE_SPACE_CHARS      = " \n\r\t";
+    public const QUERY_SYNT_CHARS             = ':()[]{}!|&';
+    public const QUERY_MUTABLE_CHARS          = '+-';
+    public const QUERY_DOUBLECHARLEXEME_CHARS = '|&';
+    public const QUERY_LEXEMEMODIFIER_CHARS   = '~^';
+    public const QUERY_ASCIIDIGITS_CHARS      = '0123456789';
 
     /**
      * List of recognized lexemes

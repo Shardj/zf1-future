@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -49,6 +49,8 @@ require_once 'Zend/Db/Table.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Application
+ * @requires extension pdo
+ * @requires extension pdo_mysql
  */
 class Zend_Application_Resource_MultidbTest extends TestCase
 {
@@ -78,10 +80,10 @@ class Zend_Application_Resource_MultidbTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Store original autoloaders
         $this->loaders = spl_autoload_functions();
@@ -99,7 +101,7 @@ class Zend_Application_Resource_MultidbTest extends TestCase
         Zend_Controller_Front::getInstance()->resetInstance();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Db_Table::setDefaultAdapter(null);
         Zend_Db_Table::setDefaultMetadataCache();
@@ -268,6 +270,6 @@ class Zend_Application_Resource_MultidbTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_Resource_MultidbTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Application_Resource_MultidbTest::main') {
     Zend_Application_Resource_MultidbTest::main();
 }

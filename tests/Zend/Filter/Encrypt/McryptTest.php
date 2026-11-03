@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,7 +38,7 @@ require_once 'Zend/Filter/Encrypt/Mcrypt.php';
  */
 class Zend_Filter_Encrypt_McryptTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('mcrypt')) {
             $this->markTestSkipped('This adapter needs the mcrypt extension');

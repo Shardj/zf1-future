@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -75,7 +75,7 @@ abstract class Zend_Cloud_QueueService_TestCase extends TestCase
      */
     protected $_waitPeriod = 1;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_config = $this->_getConfig();
         $this->_commonQueue = Zend_Cloud_QueueService_Factory::getAdapter($this->_config);

@@ -42,7 +42,7 @@ class resources_languages_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     /**
@@ -62,6 +62,6 @@ class resources_languages_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'resources_languages_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'resources_languages_AllTests::main') {
     resources_languages_AllTests::main();
 }

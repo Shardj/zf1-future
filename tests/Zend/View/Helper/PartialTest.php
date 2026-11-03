@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,7 +70,7 @@ class Zend_View_Helper_PartialTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_PartialTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -79,7 +79,7 @@ class Zend_View_Helper_PartialTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->basePath = dirname(__FILE__) . '/_files/modules';
         $this->helper = new Zend_View_Helper_Partial();
@@ -92,7 +92,7 @@ class Zend_View_Helper_PartialTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -281,6 +281,19 @@ class Zend_View_Helper_PartialTest extends TestCase
         $test = $this->helper->setObjectKey('foo');
         $this->assertSame($this->helper, $test);
     }
+
+    public function testWhenSecondParamsIsViewModelThenPartialUseGetVarsToSetsViewVariables()
+    {
+        $view = new Zend_View([
+            'scriptPath' => $this->basePath . '/default/views/scripts'
+        ]);
+        $this->helper->setView($view);
+        $view->foo = 'partial script can access first';
+        $view->bar = 'partial script can access second';
+        $return = $this->helper->partial('partialVars.phtml', $view);
+        $this->assertStringContainsString(sprintf('%s: %s', 'foo', 'partial script can access first'), $return);
+        $this->assertStringContainsString(sprintf('%s: %s', 'bar', 'partial script can access second'), $return);
+    }
 }
 
 class Zend_View_Helper_PartialTest_Aggregate
@@ -297,6 +310,6 @@ class Zend_View_Helper_PartialTest_Aggregate
 }
 
 // Call Zend_View_Helper_PartialTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_PartialTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_PartialTest::main") {
     Zend_View_Helper_PartialTest::main();
 }

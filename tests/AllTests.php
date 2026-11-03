@@ -69,7 +69,7 @@ class AllTests
         //     ob_end_flush();
         // }
 
-        (new TestRunner())->run(self::suite(), $parameters);
+        (new resources_Runner())->run(self::suite(), $parameters);
     }
 
     /**
@@ -107,6 +107,6 @@ class AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'AllTests::main') {
     AllTests::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -59,7 +59,7 @@ class Zend_Validate_PostCodeTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Validate_PostCodeTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -67,7 +67,7 @@ class Zend_Validate_PostCodeTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validator = new Zend_Validate_PostCode('de_AT');
     }
@@ -189,6 +189,6 @@ class Zend_Validate_PostCodeTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_PostCodeTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Validate_PostCodeTest::main') {
     Zend_Validate_PostCodeTest::main();
 }

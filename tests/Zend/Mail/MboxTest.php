@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,7 +48,7 @@ class Zend_Mail_MboxTest extends TestCase
     protected $_mboxFile;
     protected $_tmpdir;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if ($this->_tmpdir == null) {
             if (TESTS_ZEND_MAIL_TEMPDIR != null) {
@@ -77,7 +77,7 @@ class Zend_Mail_MboxTest extends TestCase
         copy($this->_mboxOriginalFile, $this->_mboxFile);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unlink((string) $this->_mboxFile);
     }

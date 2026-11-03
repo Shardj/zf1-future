@@ -37,38 +37,38 @@ require_once 'Zend/Pdf/Resource/Image.php';
  */
 class Zend_Pdf_Resource_Image_Tiff extends Zend_Pdf_Resource_Image
 {
-    const TIFF_FIELD_TYPE_BYTE=1;
-    const TIFF_FIELD_TYPE_ASCII=2;
-    const TIFF_FIELD_TYPE_SHORT=3;
-    const TIFF_FIELD_TYPE_LONG=4;
-    const TIFF_FIELD_TYPE_RATIONAL=5;
+    public const TIFF_FIELD_TYPE_BYTE=1;
+    public const TIFF_FIELD_TYPE_ASCII=2;
+    public const TIFF_FIELD_TYPE_SHORT=3;
+    public const TIFF_FIELD_TYPE_LONG=4;
+    public const TIFF_FIELD_TYPE_RATIONAL=5;
 
-    const TIFF_TAG_IMAGE_WIDTH=256;
-    const TIFF_TAG_IMAGE_LENGTH=257; //Height
-    const TIFF_TAG_BITS_PER_SAMPLE=258;
-    const TIFF_TAG_COMPRESSION=259;
-    const TIFF_TAG_PHOTOMETRIC_INTERPRETATION=262;
-    const TIFF_TAG_STRIP_OFFSETS=273;
-    const TIFF_TAG_SAMPLES_PER_PIXEL=277;
-    const TIFF_TAG_STRIP_BYTE_COUNTS=279;
+    public const TIFF_TAG_IMAGE_WIDTH=256;
+    public const TIFF_TAG_IMAGE_LENGTH=257; //Height
+    public const TIFF_TAG_BITS_PER_SAMPLE=258;
+    public const TIFF_TAG_COMPRESSION=259;
+    public const TIFF_TAG_PHOTOMETRIC_INTERPRETATION=262;
+    public const TIFF_TAG_STRIP_OFFSETS=273;
+    public const TIFF_TAG_SAMPLES_PER_PIXEL=277;
+    public const TIFF_TAG_STRIP_BYTE_COUNTS=279;
 
-    const TIFF_COMPRESSION_UNCOMPRESSED = 1;
-    const TIFF_COMPRESSION_CCITT1D = 2;
-    const TIFF_COMPRESSION_GROUP_3_FAX = 3;
-    const TIFF_COMPRESSION_GROUP_4_FAX  = 4;
-    const TIFF_COMPRESSION_LZW = 5;
-    const TIFF_COMPRESSION_JPEG = 6;
-    const TIFF_COMPRESSION_FLATE = 8;
-    const TIFF_COMPRESSION_FLATE_OBSOLETE_CODE = 32946;
-    const TIFF_COMPRESSION_PACKBITS = 32773;
+    public const TIFF_COMPRESSION_UNCOMPRESSED = 1;
+    public const TIFF_COMPRESSION_CCITT1D = 2;
+    public const TIFF_COMPRESSION_GROUP_3_FAX = 3;
+    public const TIFF_COMPRESSION_GROUP_4_FAX  = 4;
+    public const TIFF_COMPRESSION_LZW = 5;
+    public const TIFF_COMPRESSION_JPEG = 6;
+    public const TIFF_COMPRESSION_FLATE = 8;
+    public const TIFF_COMPRESSION_FLATE_OBSOLETE_CODE = 32946;
+    public const TIFF_COMPRESSION_PACKBITS = 32773;
 
-    const TIFF_PHOTOMETRIC_INTERPRETATION_WHITE_IS_ZERO=0;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_BLACK_IS_ZERO=1;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_RGB=2;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_RGB_INDEXED=3;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_CMYK=5;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_YCBCR=6;
-    const TIFF_PHOTOMETRIC_INTERPRETATION_CIELAB=8;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_WHITE_IS_ZERO=0;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_BLACK_IS_ZERO=1;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_RGB=2;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_RGB_INDEXED=3;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_CMYK=5;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_YCBCR=6;
+    public const TIFF_PHOTOMETRIC_INTERPRETATION_CIELAB=8;
 
     protected $_width;
     protected $_height;
@@ -85,13 +85,13 @@ class Zend_Pdf_Resource_Image_Tiff extends Zend_Pdf_Resource_Image
     protected $_imageDataOffset;
     protected $_imageDataLength;
 
-    const TIFF_ENDIAN_BIG=0;
-    const TIFF_ENDIAN_LITTLE=1;
+    public const TIFF_ENDIAN_BIG=0;
+    public const TIFF_ENDIAN_LITTLE=1;
 
-    const UNPACK_TYPE_BYTE=0;
-    const UNPACK_TYPE_SHORT=1;
-    const UNPACK_TYPE_LONG=2;
-    const UNPACK_TYPE_RATIONAL=3;
+    public const UNPACK_TYPE_BYTE=0;
+    public const UNPACK_TYPE_SHORT=1;
+    public const UNPACK_TYPE_LONG=2;
+    public const UNPACK_TYPE_RATIONAL=3;
 
     /**
      * Byte unpacking function

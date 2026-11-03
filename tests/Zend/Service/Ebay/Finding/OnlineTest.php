@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,14 +44,14 @@ class Zend_Service_Ebay_Finding_OnlineTest extends TestCase
 
     protected $_httpClientOriginal;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_finding = new Zend_Service_Ebay_Finding(constant('TESTS_ZEND_SERVICE_EBAY_ONLINE_APPID'));
         $this->_httpClientOriginal = Zend_Rest_Client::getHttpClient();
         Zend_Rest_Client::setHttpClient(new Zend_Http_Client());
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Rest_Client::setHttpClient($this->_httpClientOriginal);
     }
@@ -185,7 +185,7 @@ class Zend_Service_Ebay_Finding_OnlineTest extends TestCase
  */
 class Zend_Service_Ebay_Finding_OnlineSkipTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Service_Ebay online tests not enabled with an APPID in TestConfiguration.php');
     }

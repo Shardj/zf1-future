@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -84,7 +84,7 @@ class Zend_Validate_Db_RecordExistsTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_adapterHasResult = new Db_MockHasResult();
         $this->_adapterNoResult = new Db_MockNoResult();

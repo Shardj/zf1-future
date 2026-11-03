@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,7 +55,7 @@ class Zend_Validate_FloatTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_locale = setlocale(LC_ALL, 0); //backup locale
 
@@ -67,7 +67,7 @@ class Zend_Validate_FloatTest extends TestCase
         $this->_validator = new Zend_Validate_Float();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         //restore locale
         if (is_string($this->_locale) && strpos($this->_locale, ';')) {
@@ -185,9 +185,9 @@ class Zend_Validate_FloatTest extends TestCase
      */
     public function testPhpLocaleDeStringType()
     {
-        setlocale(LC_ALL, 'de_AT');
-        setlocale(LC_NUMERIC, 'de_AT');
-        $valid = new Zend_Validate_Float('de_AT');
+        setlocale(LC_ALL, 'de_DE');
+        setlocale(LC_NUMERIC, 'de_DE');
+        $valid = new Zend_Validate_Float('de_DE');
         $this->assertTrue($valid->isValid('1,3'));
         $this->assertTrue($valid->isValid('1000,3'));
         $this->assertTrue($valid->isValid('1.000,3'));

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -50,10 +50,10 @@ class Zend_Log_Writer_AbstractTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_writer = new Zend_Log_Writer_AbstractTest_Concrete();
     }
@@ -106,6 +106,6 @@ class Zend_Log_Writer_AbstractTest_Concrete extends Zend_Log_Writer_Abstract
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Writer_AbstractTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Writer_AbstractTest::main') {
     Zend_Log_Writer_AbstractTest::main();
 }

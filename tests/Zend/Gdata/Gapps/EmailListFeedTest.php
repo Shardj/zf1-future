@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Gapps_EmailListFeedTest extends TestCase
     /**
       * Called before each test to setup any fixtures.
       */
-    protected function setUp(): void
+    protected function set_up()
     {
         $emailListFeedText = file_get_contents(
             'Zend/Gdata/Gapps/_files/EmailListFeedDataSample1.xml',

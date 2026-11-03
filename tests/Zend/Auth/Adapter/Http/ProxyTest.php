@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -104,7 +104,7 @@ class Zend_Auth_Adapter_Http_ProxyTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_filesPath = dirname(__FILE__) . '/_files';
         $this->_basicResolver = new Zend_Auth_Adapter_Http_Resolver_File("{$this->_filesPath}/htbasic.1");

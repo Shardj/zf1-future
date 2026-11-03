@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -52,6 +52,6 @@ class Zend_Markup_FactoryTest extends TestCase
 }
 
 // Call Zend_Markup_BbcodeTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Markup_FactoryTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Markup_FactoryTest::main") {
     Zend_Markup_BbcodeTest::main();
 }

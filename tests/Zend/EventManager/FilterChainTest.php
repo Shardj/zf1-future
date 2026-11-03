@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,10 +55,10 @@ class Zend_EventManager_FilterChainTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (isset($this->message)) {
             unset($this->message);
@@ -178,6 +178,6 @@ class Zend_EventManager_FilterChainTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_EventManager_FilterChainTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_EventManager_FilterChainTest::main') {
     Zend_EventManager_FilterChainTest::main();
 }

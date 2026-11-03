@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -51,7 +51,7 @@ class Zend_Gdata_DocsTest extends TestCase
      */
     protected $gdata;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->adapter = new Test_Zend_Gdata_MockHttpClient();
         $this->client = new Zend_Gdata_HttpClient();

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -54,10 +54,10 @@ class Zend_Text_TableTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Text_TableTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Text_Table::setInputCharset('utf-8');
         Zend_Text_Table::setOutputCharset('utf-8');
@@ -503,6 +503,6 @@ class Zend_Text_TableTest extends TestCase
 }
 
 // Call Zend_Text_TableTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Text_TableTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Text_TableTest::main") {
     Zend_Text_TableTest::main();
 }

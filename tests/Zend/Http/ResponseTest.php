@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 /**
  * Zend Framework
  *
@@ -47,11 +47,11 @@ class Zend_Http_ResponseTest extends TestCase
     /** @var null|string */
     private $tempFile;
 
-    protected function setUp(): void
+    protected function set_up()
     {
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->tempFile !== null && file_exists($this->tempFile)) {
             unlink($this->tempFile);

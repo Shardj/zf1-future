@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -59,10 +59,10 @@ class Zend_Service_LiveDocx_MailMergeTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!constant('TESTS_ZEND_SERVICE_LIVEDOCX_USERNAME')
             || !constant('TESTS_ZEND_SERVICE_LIVEDOCX_PASSWORD')
@@ -82,7 +82,7 @@ class Zend_Service_LiveDocx_MailMergeTest extends TestCase
         $this->path = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'MailMerge');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (isset($this->phpLiveDocx)) {
             foreach ($this->phpLiveDocx->listTemplates() as $template) {
@@ -705,6 +705,6 @@ class Zend_Service_LiveDocx_MailMergeTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Service_LiveDocx_MailMergeTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Service_LiveDocx_MailMergeTest::main') {
     Zend_Service_LiveDocx_MailMergeTest::main();
 }

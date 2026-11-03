@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Cache_ManagerTest extends TestCase
      */
     protected $_cache;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_cache_dir = $this->mkdir();
         $this->_cache = Zend_Cache::factory(
@@ -53,7 +53,7 @@ class Zend_Cache_ManagerTest extends TestCase
         );
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->rmdir();
         $this->_cache = null;

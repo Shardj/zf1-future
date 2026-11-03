@@ -34,7 +34,7 @@ require_once 'Zend/Cloud/AbstractFactory.php';
  */
 class Zend_Cloud_DocumentService_Factory extends Zend_Cloud_AbstractFactory
 {
-    const DOCUMENT_ADAPTER_KEY = 'document_adapter';
+    public const DOCUMENT_ADAPTER_KEY = 'document_adapter';
 
     /**
      * @var string Interface which adapter must implement to be considered valid

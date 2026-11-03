@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class Zend_Http_UserAgent_Features_Adapter_TeraWurflTest extends TestCase
      */
     protected $config;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!constant('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR')) {
             $this->markTestSkipped('Requires TERAWURFL library');

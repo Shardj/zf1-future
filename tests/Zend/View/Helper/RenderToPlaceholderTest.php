@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_View_Helper_RenderToPlaceholderTest extends TestCase
 {
     protected $_view = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_view = new Zend_View(['scriptPath' => dirname(__FILE__) . '/_files/scripts/']);
     }

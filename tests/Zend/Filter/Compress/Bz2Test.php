@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,17 +52,17 @@ class Zend_Filter_Compress_Bz2Test extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_Compress_Bz2Test');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('bz2')) {
             $this->markTestSkipped('This adapter needs the bz2 extension');
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (file_exists(dirname(__FILE__) . '/../_files/compressed.bz2')) {
             unlink(dirname(__FILE__) . '/../_files/compressed.bz2');
@@ -209,6 +209,6 @@ class Zend_Filter_Compress_Bz2Test extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_Compress_Bz2Test::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_Compress_Bz2Test::main') {
     Zend_Filter_Compress_Bz2Test::main();
 }

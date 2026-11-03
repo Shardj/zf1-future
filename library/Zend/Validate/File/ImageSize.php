@@ -37,12 +37,12 @@ class Zend_Validate_File_ImageSize extends Zend_Validate_Abstract
     /**
      * @const string Error constants
      */
-    const WIDTH_TOO_BIG    = 'fileImageSizeWidthTooBig';
-    const WIDTH_TOO_SMALL  = 'fileImageSizeWidthTooSmall';
-    const HEIGHT_TOO_BIG   = 'fileImageSizeHeightTooBig';
-    const HEIGHT_TOO_SMALL = 'fileImageSizeHeightTooSmall';
-    const NOT_DETECTED     = 'fileImageSizeNotDetected';
-    const NOT_READABLE     = 'fileImageSizeNotReadable';
+    public const WIDTH_TOO_BIG    = 'fileImageSizeWidthTooBig';
+    public const WIDTH_TOO_SMALL  = 'fileImageSizeWidthTooSmall';
+    public const HEIGHT_TOO_BIG   = 'fileImageSizeHeightTooBig';
+    public const HEIGHT_TOO_SMALL = 'fileImageSizeHeightTooSmall';
+    public const NOT_DETECTED     = 'fileImageSizeNotDetected';
+    public const NOT_READABLE     = 'fileImageSizeNotReadable';
 
     /**
      * @var array Error message template

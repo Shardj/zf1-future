@@ -77,5 +77,4 @@ interface Zend_Session_SaveHandler_Interface
      * @param int $maxlifetime
      */
     public function gc($maxlifetime);
-
 }

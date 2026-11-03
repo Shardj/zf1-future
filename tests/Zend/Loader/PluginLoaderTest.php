@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -64,7 +64,7 @@ class Zend_Loader_PluginLoaderTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Loader_PluginLoaderTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -73,7 +73,7 @@ class Zend_Loader_PluginLoaderTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (file_exists((string) $this->_includeCache)) {
             unlink($this->_includeCache);
@@ -90,7 +90,7 @@ class Zend_Loader_PluginLoaderTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->clearStaticPaths();
         Zend_Loader_PluginLoader::setIncludeFileCache(null);

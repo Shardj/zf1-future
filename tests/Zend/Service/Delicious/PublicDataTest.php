@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -53,7 +53,7 @@ class Zend_Service_Delicious_PublicDataTest extends TestCase
     /**
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $httpClient = new Zend_Http_Client();
         $httpClient->setConfig([

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Gdata_Calendar_EventQueryExceptionTest extends TestCase
 
     public const GOOGLE_DEVELOPER_CALENDAR = 'developer-calendar@google.com';
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->query = new Zend_Gdata_Calendar_EventQuery();
     }

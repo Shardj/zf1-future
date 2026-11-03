@@ -53,9 +53,9 @@ class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_
     private $_doctypeHelper;
     private $_oldDoctype;
 
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
         // doctype fix (someone forgot to clean up after their unit tests)
         $this->_doctypeHelper = $this->_helper->view->doctype();
@@ -70,7 +70,7 @@ class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_doctypeHelper->setDoctype($this->_oldDoctype);
     }
@@ -424,7 +424,7 @@ class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_
         $acl = new Zend_Acl();
         $acl->addRole(new Zend_Acl_Role('member'));
         $acl->addRole(new Zend_Acl_Role('admin'));
-        $acl->add(new Zend_Acl_Resource('protected'));
+        $acl->addResource(new Zend_Acl_Resource('protected'));
         $acl->allow('admin', 'protected');
         $this->_helper->setAcl($acl);
         $this->_helper->setRole($acl->getRole('member'));
@@ -476,7 +476,7 @@ class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_
         $acl = new Zend_Acl();
         $acl->addRole(new Zend_Acl_Role('member'));
         $acl->addRole(new Zend_Acl_Role('admin'));
-        $acl->add(new Zend_Acl_Resource('protected'));
+        $acl->addResource(new Zend_Acl_Resource('protected'));
         $acl->allow('admin', 'protected');
         $this->_helper->setAcl($acl);
         $this->_helper->setRole($acl->getRole('member'));

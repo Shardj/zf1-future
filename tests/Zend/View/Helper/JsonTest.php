@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -67,7 +67,7 @@ class Zend_View_Helper_JsonTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_JsonTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -76,7 +76,7 @@ class Zend_View_Helper_JsonTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_View_Helper_JsonTest_Layout::resetMvcInstance();
 
@@ -96,7 +96,7 @@ class Zend_View_Helper_JsonTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -209,6 +209,6 @@ class Zend_View_Helper_JsonTest_Layout extends Zend_Layout
 }
 
 // Call Zend_View_Helper_JsonTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_JsonTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_JsonTest::main") {
     Zend_View_Helper_JsonTest::main();
 }

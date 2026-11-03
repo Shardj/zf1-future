@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,12 +45,12 @@ class Zend_Feed_AtomPublishingTest extends TestCase
 {
     protected $_uri;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_uri = 'http://fubar.com/myFeed';
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Feed::setHttpClient(new Zend_Http_Client());
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -48,7 +48,7 @@ class Zend_Mobile_Push_ApnsTest extends TestCase
      */
     protected $message;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->apns = new Zend_Mobile_Push_Test_ApnsProxy();
         $this->message = new Zend_Mobile_Push_Message_Apns();

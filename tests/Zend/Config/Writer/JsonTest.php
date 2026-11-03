@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,12 +49,12 @@ class Zend_Config_Writer_JsonTest extends TestCase
 {
     protected $_tempName;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_tempName = tempnam(dirname(__FILE__) . '/temp', 'tmp');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         @unlink($this->_tempName);
     }

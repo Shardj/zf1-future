@@ -70,7 +70,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
      *
      * @param string $path
      * @param string $module
-     * @return Zend_Controller_Dispatcher_Standard
+     * @return $this
      */
     public function addControllerDirectory($path, $module = null)
     {
@@ -89,7 +89,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
      * Set controller directory
      *
      * @param array|string $directory
-     * @return Zend_Controller_Dispatcher_Standard
+     * @return $this
      */
     public function setControllerDirectory($directory, $module = null)
     {

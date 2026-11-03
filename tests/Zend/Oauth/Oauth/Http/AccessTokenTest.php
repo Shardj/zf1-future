@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,14 +43,14 @@ class Zend_Oauth_Http_AccessTokenTest extends TestCase
 
     protected $stubConsumer = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->stubConsumer = new Test_Consumer_39745();
         $this->stubHttpUtility = new Test_Http_Utility_39745();
         Zend_Oauth::setHttpClient(new Test_Client_39745());
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Oauth::clearHttpClient();
     }

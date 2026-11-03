@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -56,10 +56,10 @@ class Zend_EventManager_StaticIntegrationTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_EventManager_StaticEventManager::resetInstance();
     }
@@ -183,6 +183,6 @@ class Zend_EventManager_StaticIntegrationTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_EventManager_StaticIntegrationTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_EventManager_StaticIntegrationTest::main') {
     Zend_EventManager_StaticIntegrationTest::main();
 }

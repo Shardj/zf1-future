@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -68,13 +68,13 @@ class Zend_XmlRpc_Request_HttpTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_XmlRpc_Request_HttpTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
      * Setup environment
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->xml = <<<EOX
 <?xml version="1.0" encoding="UTF-8"?>
@@ -126,7 +126,7 @@ EOX;
     /**
      * Teardown environment
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $_SERVER = $this->server;
         unset($this->request);
@@ -220,6 +220,6 @@ class Zend_XmlRpc_Request_HttpTest_Extension extends Zend_XmlRpc_Request_Http
 }
 
 // Call Zend_XmlRpc_Request_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_XmlRpc_Request_HttpTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_XmlRpc_Request_HttpTest::main") {
     Zend_XmlRpc_Request_HttpTest::main();
 }

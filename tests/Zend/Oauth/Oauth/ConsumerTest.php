@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -35,7 +35,7 @@ require_once 'Zend/Oauth/Consumer.php';
  */
 class Zend_Oauth_ConsumerTest extends TestCase
 {
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Oauth::clearHttpClient();
     }
@@ -243,7 +243,7 @@ class Test_Http_RequestToken_48231 extends Zend_Oauth_Http_RequestToken
     public function __construct()
     {
     }
-    public function execute(array $params = null)
+    public function execute(?array $params = null)
     {
         $return = new Zend_Oauth_Token_Request();
         return $return;
@@ -258,7 +258,7 @@ class Test_Http_AccessToken_48231 extends Zend_Oauth_Http_AccessToken
     public function __construct()
     {
     }
-    public function execute(array $params = null)
+    public function execute(?array $params = null)
     {
         $return = new Zend_Oauth_Token_Access();
         return $return;

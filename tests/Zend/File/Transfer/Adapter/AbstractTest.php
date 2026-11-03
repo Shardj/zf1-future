@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -63,7 +63,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_File_Transfer_Adapter_AbstractTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -72,7 +72,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->adapter = new Zend_File_Transfer_Adapter_AbstractTest_MockAdapter();
     }
@@ -83,7 +83,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -1013,6 +1013,6 @@ class Zend_File_Transfer_Adapter_AbstractTest_MockAdapter extends Zend_File_Tran
 }
 
 // Call Zend_File_Transfer_Adapter_AbstractTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_File_Transfer_Adapter_AbstractTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_File_Transfer_Adapter_AbstractTest::main") {
     Zend_File_Transfer_Adapter_AbstractTest::main();
 }

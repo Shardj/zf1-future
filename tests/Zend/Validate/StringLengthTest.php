@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Validate_StringLengthTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_validator = new Zend_Validate_StringLength();
     }
@@ -196,5 +196,19 @@ class Zend_Validate_StringLengthTest extends TestCase
     public function testNonStringValidation()
     {
         $this->assertFalse($this->_validator->isValid([1 => 1]));
+    }
+
+    /**
+     * Ensures that isValid() returns FALSE for strings that get
+     * rejected by iconv_strlen() for encoding errors
+     *
+     * @return void
+     */
+    public function testRejectMalformedString()
+    {
+        $badbytes = "abc\xe9def"; // bad UTF-8 sequence
+
+        $this->_validator->setMax(10);
+        $this->assertFalse(@$this->_validator->isValid($badbytes));
     }
 }

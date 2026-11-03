@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -115,12 +115,12 @@ class Zend_Search_Lucene_FieldTest extends TestCase
 
     public function testEncoding()
     {
-        $field = Zend_Search_Lucene_Field::Text('field', 'Words with umlauts: åãü...', 'ISO-8859-1');
+        $field = Zend_Search_Lucene_Field::Text('field', 'Words with umlauts: ï¿½ï¿½ï¿½...', 'ISO-8859-1');
 
         $this->assertEquals($field->encoding, 'ISO-8859-1');
 
         $this->assertEquals($field->name, 'field');
-        $this->assertEquals($field->value, 'Words with umlauts: åãü...');
+        $this->assertEquals($field->value, 'Words with umlauts: ï¿½ï¿½ï¿½...');
         $this->assertEquals($field->getUtf8Value(), 'Words with umlauts: Ã¥Ã£Ã¼...');
     }
 }

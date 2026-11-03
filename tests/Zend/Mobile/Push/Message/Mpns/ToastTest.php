@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,7 +39,7 @@ class Zend_Mobile_Push_Message_Mpns_ToastTest extends TestCase
 {
     private $_msg;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_msg = new Zend_Mobile_Push_Message_Mpns_Toast();
     }

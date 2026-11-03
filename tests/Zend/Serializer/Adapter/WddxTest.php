@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,12 +39,12 @@ class Zend_Serializer_Adapter_WddxTest extends TestCase
 {
     private $_adapter;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_adapter = new Zend_Serializer_Adapter_Wddx();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_adapter = null;
     }
@@ -260,7 +260,7 @@ class Zend_Serializer_Adapter_WddxSkipTest extends TestCase
 {
     public $message = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $message = 'Skipped Zend_Serializer_Adapter_WddxTest';
         if ($this->message) {

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -73,7 +73,7 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Dojo_View_Helper_CurrencyTextBoxTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -82,7 +82,7 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Registry::_unsetInstance();
         Zend_Dojo_View_Helper_Dojo::setUseDeclarative();
@@ -98,7 +98,7 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -146,6 +146,6 @@ class Zend_Dojo_View_Helper_CurrencyTextBoxTest extends TestCase
 }
 
 // Call Zend_Dojo_View_Helper_CurrencyTextBoxTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Dojo_View_Helper_CurrencyTextBoxTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Dojo_View_Helper_CurrencyTextBoxTest::main") {
     Zend_Dojo_View_Helper_CurrencyTextBoxTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,12 +39,12 @@ class Zend_Serializer_Adapter_PhpSerializeTest extends TestCase
 {
     private $_adapter;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_adapter = new Zend_Serializer_Adapter_PhpSerialize();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_adapter = null;
     }

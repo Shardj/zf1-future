@@ -246,13 +246,13 @@ class Zend_Pdf_Outline_Created extends Zend_Pdf_Outline
     public function dumpOutline(Zend_Pdf_ElementFactory_Interface $factory,
                                                                   $updateNavigation,
                                                  Zend_Pdf_Element $parent,
-                                                 Zend_Pdf_Element $prev = null,
-                                                 SplObjectStorage $processedOutlines = null)
+                                                 ?Zend_Pdf_Element $prev = null,
+                                                 ?SplObjectStorage $processedOutlines = null)
     {
         if ($processedOutlines === null) {
             $processedOutlines = new SplObjectStorage();
         }
-        $processedOutlines->attach($this);
+        $processedOutlines->offsetSet($this);
 
         $outlineDictionary = $factory->newObject(new Zend_Pdf_Element_Dictionary());
 
@@ -290,7 +290,7 @@ class Zend_Pdf_Outline_Created extends Zend_Pdf_Outline
 
         $lastChild = null;
         foreach ($this->childOutlines as $childOutline) {
-            if ($processedOutlines->contains($childOutline)) {
+            if ($processedOutlines->offsetExists($childOutline)) {
                 require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception('Outlines cyclyc reference is detected.');
             }

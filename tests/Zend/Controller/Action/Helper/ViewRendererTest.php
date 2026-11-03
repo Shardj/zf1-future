@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -93,7 +93,7 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Action_Helper_ViewRendererTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -102,7 +102,7 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
      *
      * @access protected
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->basePath = realpath(dirname(__FILE__) . str_repeat(DIRECTORY_SEPARATOR . '..', 2));
         $this->request = new Zend_Controller_Request_Http();
@@ -123,7 +123,7 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
      *
      * @access protected
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Controller_Action_HelperBroker::resetHelpers();
     }
@@ -989,6 +989,6 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
 }
 
 // Call Zend_Controller_Action_Helper_ViewRendererTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Action_Helper_ViewRendererTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_ViewRendererTest::main") {
     Zend_Controller_Action_Helper_ViewRendererTest::main();
 }

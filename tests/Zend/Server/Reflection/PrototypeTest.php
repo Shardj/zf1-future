@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -62,7 +62,7 @@ class Zend_Server_Reflection_PrototypeTest extends TestCase
     /**
      * Setup environment
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $class = new ReflectionClass('Zend_Server_Reflection');
         $method = $class->getMethod('reflectClass');
@@ -81,7 +81,7 @@ class Zend_Server_Reflection_PrototypeTest extends TestCase
     /**
      * Teardown environment
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_r);
         unset($this->_parameters);

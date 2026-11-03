@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -58,7 +58,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2Test extends TestCase
     /**
      * Setup for each test
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->infrastructure = Zend_Cloud_Infrastructure_Factory::getAdapter([
             Zend_Cloud_Infrastructure_Factory::INFRASTRUCTURE_ADAPTER_KEY => 'Zend_Cloud_Infrastructure_Adapter_Ec2',

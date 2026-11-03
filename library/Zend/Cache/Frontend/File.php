@@ -39,8 +39,8 @@ class Zend_Cache_Frontend_File extends Zend_Cache_Core
     /**
      * Consts for master_files_mode
      */
-    const MODE_AND = 'AND';
-    const MODE_OR  = 'OR';
+    public const MODE_AND = 'AND';
+    public const MODE_OR  = 'OR';
 
     /**
      * Available options

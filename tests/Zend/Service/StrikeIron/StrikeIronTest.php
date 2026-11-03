@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -54,7 +54,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends TestCase
      */
     protected $strikeIron;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // stub out SOAPClient instance
         $this->soapClient = new stdclass();

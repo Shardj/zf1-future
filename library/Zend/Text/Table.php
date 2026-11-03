@@ -32,10 +32,10 @@ class Zend_Text_Table
     /**
      * Auto seperator settings
      */
-    const AUTO_SEPARATE_NONE   = 0x0;
-    const AUTO_SEPARATE_HEADER = 0x1;
-    const AUTO_SEPARATE_FOOTER = 0x2;
-    const AUTO_SEPARATE_ALL    = 0x4;
+    public const AUTO_SEPARATE_NONE   = 0x0;
+    public const AUTO_SEPARATE_HEADER = 0x1;
+    public const AUTO_SEPARATE_FOOTER = 0x2;
+    public const AUTO_SEPARATE_ALL    = 0x4;
 
     /**
      * Decorator used for the table borders

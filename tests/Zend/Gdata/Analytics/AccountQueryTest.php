@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_GData_Analytics_AccountQueryTest extends TestCase
      */
     public $accountQuery;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->accountQuery = new Zend_GData_Analytics_AccountQuery();
         $this->queryBase = Zend_GData_Analytics_AccountQuery::ANALYTICS_FEED_URI;

@@ -357,7 +357,7 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
         }
 
         // If we got a 'transfer-encoding: chunked' header
-        if (isset($headers['transfer-encoding'])) {
+        if (isset($headers['transfer-encoding']) && is_string($headers['transfer-encoding'])) {
 
             if (strtolower($headers['transfer-encoding']) == 'chunked') {
 
@@ -411,8 +411,12 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
             } else {
                 $this->close();
         require_once 'Zend/Http/Client/Adapter/Exception.php';
+                $encoding = $headers['transfer-encoding'];
+                if (is_array($encoding)) {
+                    $encoding = json_encode($encoding);
+                }
                 throw new Zend_Http_Client_Adapter_Exception('Cannot handle "' .
-                    $headers['transfer-encoding'] . '" transfer encoding');
+                    $encoding . '" transfer encoding');
             }
 
             // We automatically decode chunked-messages when writing to a stream

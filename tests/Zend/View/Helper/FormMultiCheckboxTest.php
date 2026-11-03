@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -65,7 +65,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_FormMultiCheckboxTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -74,7 +74,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (Zend_Registry::isRegistered('Zend_View_Helper_Doctype')) {
             $registry = Zend_Registry::getInstance();
@@ -92,7 +92,7 @@ class Zend_View_Helper_FormMultiCheckboxTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         ob_end_clean();
     }
@@ -166,6 +166,6 @@ class Zend_View_Helper_FormMultiCheckboxTest extends TestCase
 }
 
 // Call Zend_View_Helper_FormMultiCheckboxTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormMultiCheckboxTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_FormMultiCheckboxTest::main") {
     Zend_View_Helper_FormMultiCheckboxTest::main();
 }

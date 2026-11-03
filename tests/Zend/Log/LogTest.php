@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -74,10 +74,10 @@ class Zend_Log_LogTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->log = fopen('php://memory', 'w+');
         $this->writer = new Zend_Log_Writer_Stream($this->log);
@@ -340,7 +340,7 @@ class Zend_Log_LogTest extends TestCase
         $oldErrorLevel = error_reporting();
 
         $this->expectingLogging = true;
-        error_reporting(E_ALL | E_STRICT);
+        error_reporting(E_ALL);
 
         $oldHandler = set_error_handler([$this, 'verifyHandlerData']);
         $logger->registerErrorHandler();
@@ -643,6 +643,6 @@ class ZLTest_My_LogNotExtending
 {
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_LogTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_LogTest::main') {
     Zend_Log_LogTest::main();
 }

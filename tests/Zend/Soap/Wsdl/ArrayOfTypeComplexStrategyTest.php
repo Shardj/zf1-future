@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest extends TestCase
     private $wsdl;
     private $strategy;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->strategy = new Zend_Soap_Wsdl_Strategy_ArrayOfTypeComplex();
         $this->wsdl = new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php', $this->strategy);

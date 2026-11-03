@@ -47,7 +47,7 @@ class Zend_Json_Server_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -65,6 +65,6 @@ class Zend_Json_Server_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Json_Server_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Json_Server_AllTests::main') {
     Zend_Json_Server_AllTests::main();
 }

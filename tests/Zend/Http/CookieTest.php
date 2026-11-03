@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,6 +38,9 @@ require_once 'Zend/Http/Cookie.php';
  */
 class Zend_Http_CookieTest extends TestCase
 {
+    protected function set_up()
+    {    }
+
     /**
      * Cookie creation and data accessors tests
      */

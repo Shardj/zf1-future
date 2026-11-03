@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -75,10 +75,10 @@ class Zend_Log_Writer_FirebugTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set('America/Los_Angeles');
 
@@ -104,7 +104,7 @@ class Zend_Log_Writer_FirebugTest extends TestCase
         Zend_Wildfire_Plugin_FirePhp::getInstance()->setOption('includeLineNumbers', false);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Wildfire_Channel_HttpHeaders::destroyInstance();
         Zend_Wildfire_Plugin_FirePhp::destroyInstance();
@@ -443,6 +443,6 @@ class Zend_Log_Writer_FirebugTest_Response extends Zend_Controller_Response_Http
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Writer_FirebugTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Writer_FirebugTest::main') {
     Zend_Log_Writer_FirebugTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -45,7 +45,7 @@ class Zend_Log_Formatter_XmlTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testDefaultFormat()
@@ -194,6 +194,6 @@ class Zend_Log_Formatter_XmlTest_SerializableObject
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Formatter_XmlTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Formatter_XmlTest::main') {
     Zend_Log_Formatter_XmlTest::main();
 }

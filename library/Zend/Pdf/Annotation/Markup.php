@@ -45,10 +45,10 @@ class Zend_Pdf_Annotation_Markup extends Zend_Pdf_Annotation
     /**
      * Annotation subtypes
      */
-    const SUBTYPE_HIGHLIGHT = 'Highlight';
-    const SUBTYPE_UNDERLINE = 'Underline';
-    const SUBTYPE_SQUIGGLY  = 'Squiggly';
-    const SUBTYPE_STRIKEOUT = 'StrikeOut';
+    public const SUBTYPE_HIGHLIGHT = 'Highlight';
+    public const SUBTYPE_UNDERLINE = 'Underline';
+    public const SUBTYPE_SQUIGGLY  = 'Squiggly';
+    public const SUBTYPE_STRIKEOUT = 'StrikeOut';
 
     /**
      * Annotation object constructor

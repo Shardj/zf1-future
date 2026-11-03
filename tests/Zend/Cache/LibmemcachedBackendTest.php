@@ -48,7 +48,7 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         parent::__construct('Zend_Cache_Backend_Libmemcached', $data, $dataName);
     }
 
-    public function setUp($notag = true): void
+    public function set_up($notag = true)
     {
         if (!class_exists('Memcached')) {
             $this->markTestSkipped('Memcached is not installed, skipping test');
@@ -68,12 +68,12 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
             ],
         ];
         $this->_instance = new Zend_Cache_Backend_Libmemcached($options);
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         $this->_instance = null;
         // We have to wait after a memcached flush
         sleep(1);

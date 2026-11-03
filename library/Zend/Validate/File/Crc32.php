@@ -37,9 +37,9 @@ class Zend_Validate_File_Crc32 extends Zend_Validate_File_Hash
     /**
      * @const string Error constants
      */
-    const DOES_NOT_MATCH = 'fileCrc32DoesNotMatch';
-    const NOT_DETECTED   = 'fileCrc32NotDetected';
-    const NOT_FOUND      = 'fileCrc32NotFound';
+    public const DOES_NOT_MATCH = 'fileCrc32DoesNotMatch';
+    public const NOT_DETECTED   = 'fileCrc32NotDetected';
+    public const NOT_FOUND      = 'fileCrc32NotFound';
 
     /**
      * @var array Error message templates

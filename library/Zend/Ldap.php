@@ -28,14 +28,14 @@
  */
 class Zend_Ldap
 {
-    const SEARCH_SCOPE_SUB  = 1;
-    const SEARCH_SCOPE_ONE  = 2;
-    const SEARCH_SCOPE_BASE = 3;
+    public const SEARCH_SCOPE_SUB  = 1;
+    public const SEARCH_SCOPE_ONE  = 2;
+    public const SEARCH_SCOPE_BASE = 3;
 
-    const ACCTNAME_FORM_DN        = 1;
-    const ACCTNAME_FORM_USERNAME  = 2;
-    const ACCTNAME_FORM_BACKSLASH = 3;
-    const ACCTNAME_FORM_PRINCIPAL = 4;
+    public const ACCTNAME_FORM_DN        = 1;
+    public const ACCTNAME_FORM_USERNAME  = 2;
+    public const ACCTNAME_FORM_BACKSLASH = 3;
+    public const ACCTNAME_FORM_PRINCIPAL = 4;
 
     /**
      * String used with ldap_connect for error handling purposes.
@@ -103,7 +103,7 @@ class Zend_Ldap
      * @return boolean True if the DN was successfully parsed or false if the string is
      * not a valid DN.
      */
-    public static function explodeDn($dn, array &$keys = null, array &$vals = null)
+    public static function explodeDn($dn, ?array &$keys = null, ?array &$vals = null)
     {
         /**
          * @see Zend_Ldap_Dn
@@ -147,7 +147,7 @@ class Zend_Ldap
      */
     public function getResource()
     {
-        if (!is_resource($this->_resource) || $this->_boundUser === false) {
+        if (!$this->isConnection($this->_resource) || $this->_boundUser === false) {
             $this->bind();
         }
         return $this->_resource;
@@ -160,6 +160,10 @@ class Zend_Ldap
      */
     public function getLastErrorCode()
     {
+        if(!$this->isConnection($this->_resource)) {
+            return 0;
+        }
+
         $ret = @ldap_get_option($this->_resource, LDAP_OPT_ERROR_NUMBER, $err);
         if ($ret === true) {
             if ($err <= -1 && $err >= -17) {
@@ -184,7 +188,7 @@ class Zend_Ldap
      * @param  array $errorMessages
      * @return string
      */
-    public function getLastError(&$errorCode = null, array &$errorMessages = null)
+    public function getLastError(&$errorCode = null, ?array &$errorMessages = null)
     {
         $errorCode = $this->getLastErrorCode();
         $errorMessages = [];
@@ -557,11 +561,11 @@ class Zend_Ldap
             return true;
         }
 
-        if (strcasecmp($dname, $accountDomainName) === 0) {
+        if (strcasecmp($dname, (string)$accountDomainName) === 0) {
             return true;
         }
 
-        if (strcasecmp($dname, $accountDomainNameShort) === 0) {
+        if (strcasecmp($dname, (string)$accountDomainNameShort) === 0) {
             return true;
         }
 
@@ -645,7 +649,7 @@ class Zend_Ldap
      * @return array An array of the attributes representing the account
      * @throws Zend_Ldap_Exception
      */
-    protected function _getAccount($acctname, array $attrs = null)
+    protected function _getAccount($acctname, ?array $attrs = null)
     {
         $baseDn = $this->getBaseDn();
         if (!$baseDn) {
@@ -665,7 +669,7 @@ class Zend_Ldap
             throw new Zend_Ldap_Exception(null, 'Invalid account filter');
         }
 
-        if (!is_resource($this->getResource())) {
+        if (!$this->isConnection($this->getResource())) {
             $this->bind();
         }
 
@@ -707,12 +711,26 @@ class Zend_Ldap
      */
     public function disconnect()
     {
-        if (is_resource($this->_resource)) {
+        if ($this->isConnection($this->_resource)) {
             @ldap_unbind($this->_resource);
         }
         $this->_resource = null;
         $this->_boundUser = false;
         return $this;
+    }
+
+    /**
+     * @param $resource
+     *
+     * @return bool
+     */
+    public function isConnection($resource)
+    {
+        if (PHP_VERSION_ID < 80100) {
+            return is_resource($resource);
+        }
+
+        return $resource instanceof \LDAP\Connection;
     }
 
     /**
@@ -782,12 +800,16 @@ class Zend_Ldap
 
         $this->disconnect();
 
+        if (!$port) {
+            $port = ($useSsl) ? 636 : 389;
+        }
+
         /* Only OpenLDAP 2.2 + supports URLs so if SSL is not requested, just
          * use the old form.
          */
         $resource = ($useUri) ? @ldap_connect($this->_connectString) : @ldap_connect($host, $port);
 
-        if (is_resource($resource) === true) {
+        if ($this->isConnection($resource) === true) {
             $this->_resource = $resource;
             $this->_boundUser = false;
 
@@ -826,7 +848,7 @@ class Zend_Ldap
 
         // Security check: remove null bytes in password
         // @see https://net.educause.edu/ir/library/pdf/csd4875.pdf
-        $password = str_replace("\0", '', $password);
+        $password = str_replace("\0", '', (string)$password);
 
         if ($username === null) {
             $username = $this->_getUsername();
@@ -880,7 +902,7 @@ class Zend_Ldap
             }
         }
 
-        if (!is_resource($this->_resource)) {
+        if (!$this->isConnection($this->_resource)) {
             $this->connect();
         }
 
@@ -1000,22 +1022,17 @@ class Zend_Ldap
             require_once 'Zend/Ldap/Exception.php';
             throw new Zend_Ldap_Exception($this, 'searching: ' . $filter);
         }
-        if ($sort !== null && is_string($sort)) {
-            $isSorted = @ldap_sort($this->getResource(), $search, $sort);
-            if($isSorted === false) {
-                /**
-                 * @see Zend_Ldap_Exception
-                 */
-                require_once 'Zend/Ldap/Exception.php';
-                throw new Zend_Ldap_Exception($this, 'sorting: ' . $sort);
-            }
-        }
 
         /**
          * Zend_Ldap_Collection_Iterator_Default
          */
         require_once 'Zend/Ldap/Collection/Iterator/Default.php';
         $iterator = new Zend_Ldap_Collection_Iterator_Default($this, $search);
+
+        if ($sort !== null && is_string($sort)) {
+            $iterator->sort($sort);
+        }
+
         return $this->_createCollection($iterator, $collectionClass);
     }
 

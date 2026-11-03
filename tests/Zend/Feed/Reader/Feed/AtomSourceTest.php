@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -44,7 +44,7 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends TestCase
     
     protected $_expectedCatsDc = [];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Feed_Reader::reset();
         if (Zend_Registry::isRegistered('Zend_Locale')) {
@@ -90,7 +90,7 @@ class Zend_Feed_Reader_Feed_AtomSourceTest extends TestCase
         ];
     }
     
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Date::setOptions($this->_options);
     }

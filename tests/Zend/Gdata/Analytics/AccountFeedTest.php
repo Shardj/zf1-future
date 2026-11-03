@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Gdata_Analytics_AccountFeedTest extends TestCase
     /** @var AccountFeed */
     public $accountFeed;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->accountFeed = new Zend_Gdata_Analytics_AccountFeed(
             file_get_contents(dirname(__FILE__) . '/_files/TestAccountFeed.xml')

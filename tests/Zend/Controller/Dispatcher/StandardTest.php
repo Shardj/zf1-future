@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -61,10 +61,10 @@ class Zend_Controller_Dispatcher_StandardTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Dispatcher_StandardTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (isset($this->error)) {
             unset($this->error);
@@ -79,7 +79,7 @@ class Zend_Controller_Dispatcher_StandardTest extends TestCase
         ]);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_dispatcher);
     }
@@ -718,6 +718,6 @@ class Zend_Controller_Dispatcher_StandardTest extends TestCase
 }
 
 // Call Zend_Controller_Dispatcher_StandardTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Dispatcher_StandardTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Dispatcher_StandardTest::main") {
     Zend_Controller_Dispatcher_StandardTest::main();
 }

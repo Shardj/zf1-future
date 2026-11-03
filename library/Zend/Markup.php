@@ -32,8 +32,8 @@ require_once 'Zend/Loader/PluginLoader.php';
  */
 class Zend_Markup
 {
-    const CALLBACK = 'callback';
-    const REPLACE  = 'replace';
+    public const CALLBACK = 'callback';
+    public const REPLACE  = 'replace';
 
 
     /**

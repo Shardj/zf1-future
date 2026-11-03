@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,13 +42,13 @@ abstract class Zend_Barcode_Renderer_TestCommon extends TestCase
 
     abstract protected function _getRendererObject($options = null);
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
         $this->_renderer = $this->_getRendererObject();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Barcode::setBarcodeFont('');
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,7 +49,7 @@ class Zend_Controller_Action_HelperBroker_PriorityStackTest extends TestCase
      */
     public $stack = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->stack = new Zend_Controller_Action_HelperBroker_PriorityStack();
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -48,7 +48,7 @@ class Zend_Log_Filter_PriorityTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testComparisonDefaultsToLessThanOrEqual()
@@ -109,6 +109,6 @@ class Zend_Log_Filter_PriorityTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Filter_PriorityTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Filter_PriorityTest::main') {
     Zend_Log_Filter_PriorityTest::main();
 }

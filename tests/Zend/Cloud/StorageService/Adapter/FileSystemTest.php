@@ -56,7 +56,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest extends Zend_Cloud_Storag
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -64,9 +64,9 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest extends Zend_Cloud_Storag
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         // No need to wait
         $this->_waitPeriod = 0;
         $path = $this->_config->local_directory;
@@ -109,7 +109,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest extends Zend_Cloud_Storag
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $path = $this->_config->local_directory;
 
@@ -118,7 +118,7 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest extends Zend_Cloud_Storag
             $this->_rmRecursive($path);
         }
 
-        parent::tearDown();
+        parent::tear_down();
     }
 
     protected function _rmRecursive($path)
@@ -151,6 +151,6 @@ class Zend_Cloud_StorageService_Adapter_FileSystemTest extends Zend_Cloud_Storag
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_StorageService_Adapter_FileSystemTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_StorageService_Adapter_FileSystemTest::main') {
     Zend_Cloud_StorageService_Adapter_FileSystemTest::main();
 }

@@ -42,8 +42,8 @@ class Zend_Validate_Sitemap_Priority extends Zend_Validate_Abstract
      * Validation key for not valid
      *
      */
-    const NOT_VALID = 'sitemapPriorityNotValid';
-    const INVALID   = 'sitemapPriorityInvalid';
+    public const NOT_VALID = 'sitemapPriorityNotValid';
+    public const INVALID   = 'sitemapPriorityInvalid';
 
     /**
      * Validation failure message template definitions

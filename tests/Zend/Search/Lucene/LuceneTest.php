@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -47,7 +47,7 @@ class Zend_Search_Lucene_LuceneTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     private function _clearDirectory($dirName)
@@ -66,7 +66,7 @@ class Zend_Search_Lucene_LuceneTest extends TestCase
         closedir($dir);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_clearDirectory(dirname(__FILE__) . '/_index/_files');
     }
@@ -581,6 +581,6 @@ class Zend_Search_Lucene_LuceneTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Search_Lucene_LuceneTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Search_Lucene_LuceneTest::main') {
     Zend_Search_Lucene_LuceneTest::main();
 }

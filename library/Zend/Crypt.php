@@ -28,9 +28,9 @@
 class Zend_Crypt
 {
 
-    const TYPE_OPENSSL = 'openssl';
-    const TYPE_HASH = 'hash';
-    const TYPE_MHASH = 'mhash';
+    public const TYPE_OPENSSL = 'openssl';
+    public const TYPE_HASH = 'hash';
+    public const TYPE_MHASH = 'mhash';
 
     protected static $_type = null;
 

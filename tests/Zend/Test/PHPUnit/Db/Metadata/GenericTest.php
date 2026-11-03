@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ class Zend_Test_PHPUnit_Db_Metadata_GenericTest extends TestCase
 
     private $metadata = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->adapterMock = $this->createMock('Zend_Test_DbAdapter');
         $this->metadata = new Zend_Test_PHPUnit_Db_Metadata_Generic($this->adapterMock, "schema");

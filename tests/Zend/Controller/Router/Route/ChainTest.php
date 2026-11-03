@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -85,7 +85,7 @@ class Zend_Controller_Router_Route_ChainTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Router_Route_ChainTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testChaining()
@@ -1121,6 +1121,6 @@ class Zend_Controller_Router_ChainTest_Dispatcher extends Zend_Controller_Dispat
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Router_Route_ChainTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Router_Route_ChainTest::main") {
     Zend_Controller_Router_Route_ChainTest::main();
 }

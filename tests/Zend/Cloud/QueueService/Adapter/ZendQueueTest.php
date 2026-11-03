@@ -65,7 +65,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueueTest extends Zend_Cloud_QueueServ
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testPeekMessages()
@@ -84,6 +84,6 @@ class Zend_Cloud_QueueService_Adapter_ZendQueueTest extends Zend_Cloud_QueueServ
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_QueueService_Adapter_ZendQueueTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_QueueService_Adapter_ZendQueueTest::main') {
     Zend_Cloud_QueueService_Adapter_ZendQueueTest::main();
 }

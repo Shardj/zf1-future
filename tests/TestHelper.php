@@ -30,7 +30,7 @@ if (version_compare(Version::id(), '4.0.0', '<')) {
     require_once 'PHPUnit/Runner/Version.php';
 
     $phpunitVersion = Version::id();
-    if ($phpunitVersion == '@package_version@' || version_compare($phpunitVersion, '3.5.5', '>=')) {
+    if ($phpunitVersion === '@package_version@' || version_compare($phpunitVersion, '3.5.5', '>=')) {
         require_once 'PHPUnit/Autoload.php'; // >= PHPUnit 3.5.5
     } else {
         require_once 'PHPUnit/Framework.php'; // < PHPUnit 3.5.5
@@ -39,8 +39,9 @@ if (version_compare(Version::id(), '4.0.0', '<')) {
 
 /*
  * Set error reporting to the level to which Zend Framework code must comply.
+ * E_ALL includes E_STRICT since PHP 5.4, and the E_STRICT constant is deprecated as of PHP 8.4.
  */
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 
 /*
  * Determine the root, library, and tests directories of the framework

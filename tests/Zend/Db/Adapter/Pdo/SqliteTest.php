@@ -116,7 +116,7 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
     protected function _testAdapterOptionCaseFoldingSetup(Zend_Db_Adapter_Abstract $db)
     {
         $db->getConnection();
-        $this->_util->setUp($db);
+        $this->_util->set_up($db);
     }
 
     /**
@@ -260,5 +260,27 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
         $string = "1\0";
         $value = $this->_db->quote($string);
         $this->assertEquals("'1\\000'", $value);
+    }
+
+    /**
+     * https://www.php.net/manual/en/migration81.incompatible.php#migration81.incompatible.pdo.sqlite
+     * @inheritDoc
+     */
+    public function testAdapterZendConfigEmptyDriverOptions()
+    {
+        $params = $this->_util->getParams();
+        $params['driver_options'] = [];
+        $params = new Zend_Config($params);
+
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $db->getConnection();
+
+        $config = $db->getConfig();
+
+        if (PHP_VERSION_ID >= 80100) {
+            $this->assertEquals([PDO::ATTR_STRINGIFY_FETCHES => true], $config['driver_options']);
+        } else {
+            $this->assertEquals([], $config['driver_options']);
+        }
     }
 }

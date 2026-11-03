@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -96,7 +96,7 @@ abstract class Zend_View_Helper_Navigation_TestAbstract extends TestCase
      * Prepares the environment before running a test
      *
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $cwd = dirname(__FILE__);
 
@@ -130,7 +130,7 @@ abstract class Zend_View_Helper_Navigation_TestAbstract extends TestCase
      * Cleans up the environment after running a test
      *
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $front = Zend_Controller_Front::getInstance();
 
@@ -165,10 +165,10 @@ abstract class Zend_View_Helper_Navigation_TestAbstract extends TestCase
         $acl->addRole(new Zend_Acl_Role('admin'), 'member');
         $acl->addRole(new Zend_Acl_Role('special'), 'member');
 
-        $acl->add(new Zend_Acl_Resource('guest_foo'));
-        $acl->add(new Zend_Acl_Resource('member_foo'), 'guest_foo');
-        $acl->add(new Zend_Acl_Resource('admin_foo', 'member_foo'));
-        $acl->add(new Zend_Acl_Resource('special_foo'), 'member_foo');
+        $acl->addResource(new Zend_Acl_Resource('guest_foo'));
+        $acl->addResource(new Zend_Acl_Resource('member_foo'), 'guest_foo');
+        $acl->addResource(new Zend_Acl_Resource('admin_foo', 'member_foo'));
+        $acl->addResource(new Zend_Acl_Resource('special_foo'), 'member_foo');
 
         $acl->allow('guest', 'guest_foo');
         $acl->allow('member', 'member_foo');

@@ -110,6 +110,8 @@ class Zend_View_Helper_Partial extends Zend_View_Helper_Abstract
                     $view->assign($objectKey, $model);
                 } elseif (method_exists($model, 'toArray')) {
                     $view->assign($model->toArray());
+                } elseif (method_exists($model, 'getVars')) {
+                    $view->assign($model->getVars());
                 } else {
                     $view->assign(get_object_vars($model));
                 }

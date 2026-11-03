@@ -36,22 +36,22 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Angle extends Zend_Measure_Abstract
 {
-    const STANDARD = 'RADIAN';
+    public const STANDARD = 'RADIAN';
 
-    const RADIAN      = 'RADIAN';
-    const MIL         = 'MIL';
-    const GRAD        = 'GRAD';
-    const DEGREE      = 'DEGREE';
-    const MINUTE      = 'MINUTE';
-    const SECOND      = 'SECOND';
-    const POINT       = 'POINT';
-    const CIRCLE_16   = 'CIRCLE_16';
-    const CIRCLE_10   = 'CIRCLE_10';
-    const CIRCLE_8    = 'CIRCLE_8';
-    const CIRCLE_6    = 'CIRCLE_6';
-    const CIRCLE_4    = 'CIRCLE_4';
-    const CIRCLE_2    = 'CIRCLE_2';
-    const FULL_CIRCLE = 'FULL_CIRCLE';
+    public const RADIAN      = 'RADIAN';
+    public const MIL         = 'MIL';
+    public const GRAD        = 'GRAD';
+    public const DEGREE      = 'DEGREE';
+    public const MINUTE      = 'MINUTE';
+    public const SECOND      = 'SECOND';
+    public const POINT       = 'POINT';
+    public const CIRCLE_16   = 'CIRCLE_16';
+    public const CIRCLE_10   = 'CIRCLE_10';
+    public const CIRCLE_8    = 'CIRCLE_8';
+    public const CIRCLE_6    = 'CIRCLE_6';
+    public const CIRCLE_4    = 'CIRCLE_4';
+    public const CIRCLE_2    = 'CIRCLE_2';
+    public const FULL_CIRCLE = 'FULL_CIRCLE';
 
     /**
      * Calculations for all angle units

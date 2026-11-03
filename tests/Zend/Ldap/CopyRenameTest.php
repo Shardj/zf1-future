@@ -66,9 +66,9 @@ class Zend_Ldap_CopyRenameTest extends Zend_Ldap_OnlineTestCase
      */
     private $_nodes;
 
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_prepareLdapServer();
 
         $this->_orgDn = $this->_createDn('ou=OrgTest,');
@@ -101,7 +101,7 @@ class Zend_Ldap_CopyRenameTest extends Zend_Ldap_OnlineTestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->_getLdap()->exists($this->_newDn)) {
             $this->_getLdap()->delete($this->_newDn, false);
@@ -121,7 +121,7 @@ class Zend_Ldap_CopyRenameTest extends Zend_Ldap_OnlineTestCase
 
 
         $this->_cleanupLdapServer();
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testSimpleLeafRename()

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,10 +53,10 @@ class Zend_Amf_Adobe_IntrospectorTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        (new TestRunner())->run($suite);
+        (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->introspector = new Zend_Amf_Adobe_Introspector();
     }
@@ -235,6 +235,6 @@ class com_zend_framework_IntrospectorTestExplicitType
 
 
 // Call Zend_Amf_Adobe_IntrospectorTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Amf_Adobe_IntrospectorTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Amf_Adobe_IntrospectorTest::main") {
     Zend_Amf_Adobe_IntrospectorTest::main();
 }

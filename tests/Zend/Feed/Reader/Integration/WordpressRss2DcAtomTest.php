@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,7 +38,7 @@ class Zend_Feed_Reader_Integration_WordpressRss2DcAtomTest extends TestCase
 {
     protected $_feedSamplePath = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Feed_Reader::reset();
         $this->_feedSamplePath = dirname(__FILE__) . '/_files/wordpress-rss2-dc-atom.xml';

@@ -60,48 +60,48 @@ abstract class Zend_Pdf_Cmap
     /**
      * Byte Encoding character map table type.
      */
-    const TYPE_BYTE_ENCODING = 0x00;
+    public const TYPE_BYTE_ENCODING = 0x00;
 
     /**
      * High Byte Mapping character map table type.
      */
-    const TYPE_HIGH_BYTE_MAPPING = 0x02;
+    public const TYPE_HIGH_BYTE_MAPPING = 0x02;
 
     /**
      * Segment Value to Delta Mapping character map table type.
      */
-    const TYPE_SEGMENT_TO_DELTA = 0x04;
+    public const TYPE_SEGMENT_TO_DELTA = 0x04;
 
     /**
      * Trimmed Table character map table type.
      */
-    const TYPE_TRIMMED_TABLE = 0x06;
+    public const TYPE_TRIMMED_TABLE = 0x06;
 
     /**
      * Mixed Coverage character map table type.
      */
-    const TYPE_MIXED_COVERAGE = 0x08;
+    public const TYPE_MIXED_COVERAGE = 0x08;
 
     /**
      * Trimmed Array character map table type.
      */
-    const TYPE_TRIMMED_ARRAY = 0x0a;
+    public const TYPE_TRIMMED_ARRAY = 0x0a;
 
     /**
      * Segmented Coverage character map table type.
      */
-    const TYPE_SEGMENTED_COVERAGE = 0x0c;
+    public const TYPE_SEGMENTED_COVERAGE = 0x0c;
 
     /**
      * Static Byte Encoding character map table type. Variant of
      * {@link TYPE_BYTEENCODING}.
      */
-    const TYPE_BYTE_ENCODING_STATIC = 0xf1;
+    public const TYPE_BYTE_ENCODING_STATIC = 0xf1;
 
     /**
      * Unknown character map table type.
      */
-    const TYPE_UNKNOWN = 0xff;
+    public const TYPE_UNKNOWN = 0xff;
 
 
   /* Special Glyph Names */
@@ -109,7 +109,7 @@ abstract class Zend_Pdf_Cmap
     /**
      * Glyph representing missing characters.
      */
-    const MISSING_CHARACTER_GLYPH = 0x00;
+    public const MISSING_CHARACTER_GLYPH = 0x00;
 
 
 

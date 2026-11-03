@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -71,10 +71,10 @@ class Zend_Form_DisplayGroupTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Form_DisplayGroupTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Registry::_unsetInstance();
         Zend_Form::setDefaultTranslator(null);
@@ -93,7 +93,7 @@ class Zend_Form_DisplayGroupTest extends TestCase
         );
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -865,6 +865,6 @@ class Zend_Form_DisplayGroupTest_DisplayGroup extends Zend_Form_DisplayGroup
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Form_DisplayGroupTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Form_DisplayGroupTest::main') {
     Zend_Form_DisplayGroupTest::main();
 }

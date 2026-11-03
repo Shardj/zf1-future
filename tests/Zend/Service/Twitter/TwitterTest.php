@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -63,7 +63,7 @@ class Zend_Service_Twitter_TwitterTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -84,7 +84,7 @@ class Zend_Service_Twitter_TwitterTest extends TestCase
      * @param array $params Expected GET/POST parameters for the request
      * @return Zend_Http_Client
      */
-    protected function stubTwitter($path, $method, $responseFile = null, array $params = null)
+    protected function stubTwitter($path, $method, $responseFile = null, ?array $params = null)
     {
         $client = $this->createMock('Zend_Oauth_Client');
         $client->expects($this->any())->method('resetParameters')
@@ -633,6 +633,6 @@ class Zend_Service_Twitter_TwitterTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Service_TwitterTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Service_TwitterTest::main') {
     Zend_Service_TwitterTest::main();
 }

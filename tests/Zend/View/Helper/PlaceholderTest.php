@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -65,7 +65,7 @@ class Zend_View_Helper_PlaceholderTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_PlaceholderTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -74,7 +74,7 @@ class Zend_View_Helper_PlaceholderTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->placeholder = new Zend_View_Helper_Placeholder();
     }
@@ -85,7 +85,7 @@ class Zend_View_Helper_PlaceholderTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->placeholder);
         Zend_Registry::getInstance()->offsetUnset(Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY);
@@ -143,6 +143,6 @@ class Zend_View_Helper_PlaceholderTest extends TestCase
 }
 
 // Call Zend_View_Helper_PlaceholderTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_PlaceholderTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_PlaceholderTest::main") {
     Zend_View_Helper_PlaceholderTest::main();
 }

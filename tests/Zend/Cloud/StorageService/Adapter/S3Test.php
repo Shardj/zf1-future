@@ -57,7 +57,7 @@ class Zend_Cloud_StorageService_Adapter_S3Test extends Zend_Cloud_StorageService
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -65,9 +65,9 @@ class Zend_Cloud_StorageService_Adapter_S3Test extends Zend_Cloud_StorageService
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
         // Create the bucket here
         $s3 = new Zend_Service_Amazon_S3(
@@ -102,7 +102,7 @@ class Zend_Cloud_StorageService_Adapter_S3Test extends Zend_Cloud_StorageService
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (!$this->_config) {
             return;
@@ -116,7 +116,7 @@ class Zend_Cloud_StorageService_Adapter_S3Test extends Zend_Cloud_StorageService
         $s3->removeBucket(
             $this->_config->get(Zend_Cloud_StorageService_Adapter_S3::BUCKET_NAME)
         );
-        parent::tearDown();
+        parent::tear_down();
     }
 
     protected function _getConfig()
@@ -141,6 +141,6 @@ class Zend_Cloud_StorageService_Adapter_S3Test extends Zend_Cloud_StorageService
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Cloud_StorageService_Adapter_S3Test::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Cloud_StorageService_Adapter_S3Test::main') {
     Zend_Cloud_StorageService_Adapter_S3Test::main();
 }

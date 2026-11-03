@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -56,10 +56,10 @@ class Zend_Amf_Value_MessageBodyTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_Value_MessageBodyTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->body = new Zend_Amf_Value_MessageBody('/foo', '/bar', 'data');
     }
@@ -105,6 +105,6 @@ class Zend_Amf_Value_MessageBodyTest_SerializableData
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Amf_Value_MessageBodyTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Amf_Value_MessageBodyTest::main') {
     Zend_Amf_Value_MessageBodyTest::main();
 }

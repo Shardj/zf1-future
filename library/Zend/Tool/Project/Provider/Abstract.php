@@ -57,8 +57,8 @@ abstract class Zend_Tool_Project_Provider_Abstract
     extends Zend_Tool_Framework_Provider_Abstract
     implements Zend_Tool_Framework_Provider_Initializable
 {
-    const NO_PROFILE_THROW_EXCEPTION = true;
-    const NO_PROFILE_RETURN_FALSE    = false;
+    public const NO_PROFILE_THROW_EXCEPTION = true;
+    public const NO_PROFILE_RETURN_FALSE    = false;
 
     /**
      * @var bool

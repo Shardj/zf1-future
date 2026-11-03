@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -69,7 +69,7 @@ class Zend_Controller_Plugin_PutHandlerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Plugin_PutHandlerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -78,7 +78,7 @@ class Zend_Controller_Plugin_PutHandlerTest extends TestCase
      *
      * @access protected
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Controller_Front::getInstance()->resetInstance();
         $this->request = new Zend_Controller_Request_HttpTestCase();
@@ -99,6 +99,6 @@ class Zend_Controller_Plugin_PutHandlerTest extends TestCase
 }
 
 // Call Zend_Controller_Plugin_PutHandlerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Plugin_PutHandlerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Plugin_PutHandlerTest::main") {
     Zend_Controller_Plugin_PutHandlerTest::main();
 }

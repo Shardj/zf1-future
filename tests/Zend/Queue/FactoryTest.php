@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ require_once 'Zend/Queue/Adapter/ActivemqTest.php';
  */
 class Zend_Queue_FactoryTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set('GMT');
     }

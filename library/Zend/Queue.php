@@ -32,17 +32,17 @@ class Zend_Queue implements Countable
     /**
      * Use the TIMEOUT constant in the config of a Zend_Queue
      */
-    const TIMEOUT = 'timeout';
+    public const TIMEOUT = 'timeout';
 
     /**
      * Default visibility passed to count
      */
-    const VISIBILITY_TIMEOUT = 30;
+    public const VISIBILITY_TIMEOUT = 30;
 
     /**
      * Use the NAME constant in the config of Zend_Queue
      */
-    const NAME = 'name';
+    public const NAME = 'name';
 
     /**
      * @var Zend_Queue_Adapter_AdapterInterface

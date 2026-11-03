@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -77,10 +77,10 @@ class Zend_Log_Writer_MailTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_transport = $this->getMockForAbstractClass(
             Zend_Mail_Transport_Abstract::class,
@@ -89,7 +89,7 @@ class Zend_Log_Writer_MailTest extends TestCase
         Zend_Mail::setDefaultTransport($this->_transport);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Mail::clearDefaultTransport();
     }
@@ -252,8 +252,8 @@ class Zend_Log_Writer_MailTest extends TestCase
      */
     public function testDestructorMailError()
     {
-        $this->expectError();
-        $this->expectErrorMessage('unable to send log entries via email;');
+        $this->expectException(version_compare(phpversion(), '7.1', '>') ? \PHPUnit\Framework\Error\Error::class : \Error::class);
+        $this->expectExceptionMessage('unable to send log entries via email;');
         list($mail, $writer, $log) = $this->_getSimpleLogger(false);
 
         // Force the send() method to throw the same exception that would be
@@ -277,8 +277,8 @@ class Zend_Log_Writer_MailTest extends TestCase
      */
     public function testDestructorLayoutError()
     {
-        $this->expectError();
-        $this->expectErrorMessage('exception occurred when rendering layout; unable to set html body for message; message = bogus message');
+        $this->expectException(version_compare(phpversion(), '7.1', '>') ? \PHPUnit\Framework\Error\Error::class : \Error::class);
+        $this->expectExceptionMessage('exception occurred when rendering layout; unable to set html body for message; message = bogus message');
 
         list($mail, $writer, $log, $layout) = $this->_getSimpleLogger(true);
 
@@ -518,6 +518,6 @@ class Zend_Log_Writer_MailTest extends TestCase
 }
 
 // Call Zend_Log_Writer_MailTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Log_Writer_MailTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Log_Writer_MailTest::main") {
     Zend_Log_Writer_MailTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,7 +39,7 @@ require_once 'Zend/Filter/Encrypt.php';
  */
 class Zend_Filter_DecryptTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('mcrypt') && !extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the mcrypt or openssl extension');

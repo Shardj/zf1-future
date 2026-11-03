@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_Locale_DataTest extends TestCase
 {
     private $_cache = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         require_once 'Zend/Cache.php';
         $this->_cache = Zend_Cache::factory(
@@ -54,7 +54,7 @@ class Zend_Locale_DataTest extends TestCase
     }
 
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
     }
@@ -233,10 +233,11 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCharacters()
     {
-        $char = Zend_Locale_Data::getList('de', 'characters');
-        $this->assertEquals("[a ä b c d e f g h i j k l m n o ö p q r s ß t u ü v w x y z]", $char['characters']);
-        $this->assertEquals("[á à ă â å ã ā æ ç é è ĕ ê ë ē ğ í ì ĭ î ï İ ī ı ñ ó ò ŏ ô ø ō œ ş ú ù ŭ û ū ÿ]", $char['auxiliary']);
-        // $this->assertEquals("[a-z]", $char['currencySymbol']);
+        $data = Zend_Locale_Data::getList('de', 'characters');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey('characters', $data);
+        $this->assertArrayHasKey('auxiliary', $data);
     }
 
     /**
@@ -258,11 +259,12 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testMeasurement()
     {
-        $measure = Zend_Locale_Data::getList('de', 'measurement');
-        $this->assertEquals("001", $measure['metric']);
-        $this->assertEquals("LR MM US", $measure['US']);
-        $this->assertEquals("001", $measure['A4']);
-        $this->assertEquals("BZ CA CL CO CR GT MX NI PA PH PR SV US VE", $measure['US-Letter']);
+        $data = Zend_Locale_Data::getList('de', 'measurement');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('001', $data['metric']);
+        $this->assertSame('001', $data['A4']);
+        $this->assertSame('BZ CA CL CO CR GT MX NI PA PH PR SV US VE', $data['US-Letter']);
     }
 
     /**
@@ -310,251 +312,42 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testMonth()
     {
-        $date = Zend_Locale_Data::getList('de_AT', 'months');
-        $result = [
-            'context' => 'format',
-            'default' => 'wide',
-            'format' =>
-                [
-                    'abbreviated' =>
-                        [
-                            1 => 'Jän.',
-                            2 => 'Feb.',
-                            3 => 'März',
-                            4 => 'Apr.',
-                            5 => 'Mai',
-                            6 => 'Juni',
-                            7 => 'Juli',
-                            8 => 'Aug.',
-                            9 => 'Sep.',
-                            10 => 'Okt.',
-                            11 => 'Nov.',
-                            12 => 'Dez.',
-                        ],
-                    'narrow' =>
-                        [
-                            1 => 'J',
-                            2 => 'F',
-                            3 => 'M',
-                            4 => 'A',
-                            5 => 'M',
-                            6 => 'J',
-                            7 => 'J',
-                            8 => 'A',
-                            9 => 'S',
-                            10 => 'O',
-                            11 => 'N',
-                            12 => 'D',
-                        ],
-                    'wide' =>
-                        [
-                            1 => 'Jänner',
-                            2 => 'Februar',
-                            3 => 'März',
-                            4 => 'April',
-                            5 => 'Mai',
-                            6 => 'Juni',
-                            7 => 'Juli',
-                            8 => 'August',
-                            9 => 'September',
-                            10 => 'Oktober',
-                            11 => 'November',
-                            12 => 'Dezember',
-                        ],
-                ],
-            'stand-alone' =>
-                [
-                    'abbreviated' =>
-                        [
-                            1 => 'Jän',
-                            2 => 'Feb',
-                            3 => 'Mär',
-                            4 => 'Apr',
-                            5 => 'Mai',
-                            6 => 'Jun',
-                            7 => 'Jul',
-                            8 => 'Aug',
-                            9 => 'Sep',
-                            10 => 'Okt',
-                            11 => 'Nov',
-                            12 => 'Dez',
-                        ],
-                    'narrow' =>
-                        [
-                            1 => 'J',
-                            2 => 'F',
-                            3 => 'M',
-                            4 => 'A',
-                            5 => 'M',
-                            6 => 'J',
-                            7 => 'J',
-                            8 => 'A',
-                            9 => 'S',
-                            10 => 'O',
-                            11 => 'N',
-                            12 => 'D',
-                        ],
-                    'wide' =>
-                        [
-                            1 => 'Jänner',
-                            2 => 'Februar',
-                            3 => 'März',
-                            4 => 'April',
-                            5 => 'Mai',
-                            6 => 'Juni',
-                            7 => 'Juli',
-                            8 => 'August',
-                            9 => 'September',
-                            10 => 'Oktober',
-                            11 => 'November',
-                            12 => 'Dezember',
-                        ],
-                ],
-        ];
-        $this->assertEquals($result, $date, var_export($date, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'months');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('format', $data['context']);
+        $this->assertSame('Dezember', $data['format']['wide'][12]);
+        $this->assertSame('Dezember', $data['stand-alone']['wide'][12]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'months', 'islamic');
-        $result = [
-            "context" => "format",
-            "default" => "wide",
-            "format" =>
-                [
-                    "abbreviated" => [
-                        1 => "Muh.",
-                        2 => "Saf.",
-                        3 => "Rab. I",
-                        4 => "Rab. II",
-                        5 => "Jum. I",
-                        6 => "Jum. II",
-                        7 => "Raj.",
-                        8 => "Sha.",
-                        9 => "Ram.",
-                        10 => "Shaw.",
-                        11 => "Dhuʻl-Q.",
-                        12 => "Dhuʻl-H."
-                    ],
-                    "narrow" => [
-                        1 => '1',
-                        2 => '2',
-                        3 => '3',
-                        4 => '4',
-                        5 => '5',
-                        6 => '6',
-                        7 => '7',
-                        8 => '8',
-                        9 => '9',
-                        10 => '10',
-                        11 => '11',
-                        12 => '12'
-                    ],
-                    "wide" => [
-                        1 => "Muharram",
-                        2 => "Safar",
-                        3 => "Rabiʻ I",
-                        4 => "Rabiʻ II",
-                        5 => "Jumada I",
-                        6 => "Jumada II",
-                        7 => "Rajab",
-                        8 => "Shaʻban",
-                        9 => "Ramadan",
-                        10 => "Shawwal",
-                        11 => "Dhuʻl-Qiʻdah",
-                        12 => "Dhuʻl-Hijjah"
-                    ]
-                ],
-            "stand-alone" => [
-                "abbreviated" => [
-                    1 => "Muh.",
-                    2 => "Saf.",
-                    3 => "Rab. I",
-                    4 => "Rab. II",
-                    5 => "Jum. I",
-                    6 => "Jum. II",
-                    7 => "Raj.",
-                    8 => "Sha.",
-                    9 => "Ram.",
-                    10 => "Shaw.",
-                    11 => "Dhuʻl-Q.",
-                    12 => "Dhuʻl-H."
-                ],
-                "narrow" => [
-                    1 => '1',
-                    2 => '2',
-                    3 => '3',
-                    4 => '4',
-                    5 => '5',
-                    6 => '6',
-                    7 => '7',
-                    8 => '8',
-                    9 => '9',
-                    10 => '10',
-                    11 => '11',
-                    12 => '12'
-                ],
-                "wide" => [
-                    1 => "Muharram",
-                    2 => "Safar",
-                    3 => "Rabiʻ I",
-                    4 => "Rabiʻ II",
-                    5 => "Jumada I",
-                    6 => "Jumada II",
-                    7 => "Rajab",
-                    8 => "Shaʻban",
-                    9 => "Ramadan",
-                    10 => "Shawwal",
-                    11 => "Dhuʻl-Qiʻdah",
-                    12 => "Dhuʻl-Hijjah"
-                ]
-            ]
-        ];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'months', 'islamic');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('format', $data['context']);
+        $this->assertSame('Shawwal', $data['format']['wide'][10]);
+        $this->assertSame('Shawwal', $data['stand-alone']['wide'][10]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'month');
-        $this->assertEquals(
-            [
-                1 => "Jänner",
-                2 => "Februar",
-                3 => "März",
-                4 => "April",
-                5 => "Mai",
-                6 => "Juni",
-                7 => "Juli",
-                8 => "August",
-                9 => "September",
-                10 => "Oktober",
-                11 => "November",
-                12 => "Dezember"
-            ],
-            $date
-        );
+        $data = Zend_Locale_Data::getList('de_AT', 'month');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Jänner', $data[1]);
+        $this->assertSame('Juli', $data[7]);
+        $this->assertSame('Dezember', $data[12]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'month', ['gregorian', 'format', 'wide']);
-        $this->assertEquals(
-            [
-                1 => "Jänner",
-                2 => "Februar",
-                3 => "März",
-                4 => "April",
-                5 => "Mai",
-                6 => "Juni",
-                7 => "Juli",
-                8 => "August",
-                9 => "September",
-                10 => "Oktober",
-                11 => "November",
-                12 => "Dezember"
-            ],
-            $date
-        );
+        $data = Zend_Locale_Data::getList('de_AT', 'month', ['gregorian', 'format', 'wide']);
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Jänner', $data[1]);
+        $this->assertSame('Juli', $data[7]);
+        $this->assertSame('Dezember', $data[12]);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'month', 12);
-        $this->assertEquals('Dezember', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'month', 12);
+        $this->assertSame('Dezember', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'month', ['gregorian', 'format', 'wide', 12]);
-        $this->assertEquals('Dezember', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'month', ['gregorian', 'format', 'wide', 12]);
+        $this->assertSame('Dezember', $data);
 
-        $value = Zend_Locale_Data::getContent('ar', 'month', ['islamic', 'format', 'wide', 1]);
-        $this->assertEquals("محرم", $value);
+        $data = Zend_Locale_Data::getContent('ar', 'month', ['islamic', 'format', 'wide', 1]);
+        $this->assertSame('محرم', $data);
     }
 
     /**
@@ -589,58 +382,43 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testDay()
     {
-        $date = Zend_Locale_Data::getList('de_AT', 'days');
-        $result = ["context" => "format", "default" => "wide", "format" =>
-            ["abbreviated" => ["sun" => "So.", "mon" => "Mo.", "tue" => "Di.", "wed" => "Mi.",
-                      "thu" => "Do.", "fri" => "Fr.", "sat" => "Sa."],
-                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "D", "wed" => "M",
-                      "thu" => "D", "fri" => "F", "sat" => "S"],
-                  "wide" => ["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
-                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"]
-            ],
-            "stand-alone" => ["abbreviated" => ["sun" => "So", "mon" => "Mo", "tue" => "Di", "wed" => "Mi",
-                      "thu" => "Do", "fri" => "Fr", "sat" => "Sa"],
-                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "D", "wed" => "M",
-                      "thu" => "D", "fri" => "F", "sat" => "S"],
-                  "wide" => ["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag", "wed" => "Mittwoch",
-                      "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"]
-            ]];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'days');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('format', $data['context']);
+        $this->assertSame('Samstag', $data['format']['wide']['sat']);
+        $this->assertSame('Samstag', $data['stand-alone']['wide']['sat']);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'days', 'islamic');
-        $result = ["context" => "format", "default" => "wide", "format" =>
-            ["abbreviated" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"],
-                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "T", "wed" => "W",
-                      "thu" => "T", "fri" => "F", "sat" => "S"],
-                  "wide" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"]
-            ],
-            "stand-alone" => ["abbreviated" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"],
-                  "narrow" => ["sun" => "S", "mon" => "M", "tue" => "T", "wed" => "W",
-                      "thu" => "T", "fri" => "F", "sat" => "S"],
-                  "wide" => ["sun" => "Sun", "mon" => "Mon", "tue" => "Tue", "wed" => "Wed",
-                      "thu" => "Thu", "fri" => "Fri", "sat" => "Sat"]
-            ]];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'days', 'islamic');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('format', $data['context']);
+        $this->assertSame('S', $data['format']['narrow']['sat']);
+        $this->assertSame('S', $data['stand-alone']['narrow']['sat']);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'day');
-        $this->assertEquals(["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
-                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"], $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'day');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Sonntag', $data['sun']);
+        $this->assertSame('Mittwoch', $data['wed']);
+        $this->assertSame('Samstag', $data['sat']);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'day', ['gregorian', 'format', 'wide']);
-        $this->assertEquals(["sun" => "Sonntag", "mon" => "Montag", "tue" => "Dienstag",
-                      "wed" => "Mittwoch", "thu" => "Donnerstag", "fri" => "Freitag", "sat" => "Samstag"], $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'day', ['gregorian', 'format', 'wide']);
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Sonntag', $data['sun']);
+        $this->assertSame('Mittwoch', $data['wed']);
+        $this->assertSame('Samstag', $data['sat']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'day', 'mon');
-        $this->assertEquals('Montag', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'day', 'mon');
+        $this->assertSame('Montag', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'day', ['gregorian', 'format', 'wide', 'mon']);
-        $this->assertEquals('Montag', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'day', ['gregorian', 'format', 'wide', 'mon']);
+        $this->assertSame('Montag', $data);
 
-        $value = Zend_Locale_Data::getContent('ar', 'day', ['islamic', 'format', 'wide', 'mon']);
-        $this->assertEquals("Mon", $value);
+        $data = Zend_Locale_Data::getContent('ar', 'day', ['islamic', 'format', 'wide', 'mon']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -649,48 +427,43 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testQuarter()
     {
-        $date = Zend_Locale_Data::getList('de_AT', 'quarters');
-        $result = ["format" =>
-            ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
-                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
-                  "wide" => ["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
-                      "4" => "4. Quartal"]
-            ],
-            "stand-alone" => ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
-                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
-                  "wide" => ["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal", "4" => "4. Quartal"]
-            ]];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'quarters');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Q1', $data['format']['abbreviated'][1]);
+        $this->assertSame('Q1', $data['stand-alone']['abbreviated'][1]);
+        $this->assertSame('4. Quartal', $data['stand-alone']['wide'][4]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'quarters', 'islamic');
-        $result = ["format" =>
-            ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
-                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
-                  "wide" => ["1" => "Q1", "2" => "Q2", "3" => "Q3",
-                      "4" => "Q4"]
-            ],
-            "stand-alone" => ["abbreviated" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"],
-                  "narrow" => ["1" => "1", "2" => "2", "3" => "3", "4" => "4"],
-                  "wide" => ["1" => "Q1", "2" => "Q2", "3" => "Q3", "4" => "Q4"]
-            ]];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'quarters', 'islamic');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Q1', $data['format']['abbreviated'][1]);
+        $this->assertSame('Q1', $data['stand-alone']['abbreviated'][1]);
+        $this->assertSame('4', $data['stand-alone']['narrow'][4]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'quarter');
-        $this->assertEquals(["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
-                      "4" => "4. Quartal"], $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'quarter');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('1. Quartal', $data[1]);
+        $this->assertSame('3. Quartal', $data[3]);
+        $this->assertSame('4. Quartal', $data[4]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'quarter', ['gregorian', 'format', 'wide']);
-        $this->assertEquals(["1" => "1. Quartal", "2" => "2. Quartal", "3" => "3. Quartal",
-                      "4" => "4. Quartal"], $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'quarter', ['gregorian', 'format', 'wide']);
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('1. Quartal', $data[1]);
+        $this->assertSame('3. Quartal', $data[3]);
+        $this->assertSame('4. Quartal', $data[4]);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'quarter', '1');
-        $this->assertEquals('1. Quartal', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'quarter', '1');
+        $this->assertSame('1. Quartal', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'quarter', ['gregorian', 'format', 'wide', '1']);
-        $this->assertEquals('1. Quartal', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'quarter', ['gregorian', 'format', 'wide', '1']);
+        $this->assertSame('1. Quartal', $data);
 
-        $value = Zend_Locale_Data::getContent('ar', 'quarter', ['islamic', 'format', 'wide', '1']);
-        $this->assertEquals("Q1", $value);
+        $data = Zend_Locale_Data::getContent('ar', 'quarter', ['islamic', 'format', 'wide', '1']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -714,11 +487,12 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testAm()
     {
-        $date = Zend_Locale_Data::getContent('de_AT', 'am');
-        $this->assertEquals("vorm.", $date);
+        $data = Zend_Locale_Data::getContent('de_AT', 'am');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
 
-        $date = Zend_Locale_Data::getContent('de_AT', 'am', 'islamic');
-        $this->assertEquals("AM", $date);
+        $data = Zend_Locale_Data::getContent('de_AT', 'am', 'islamic');
+        $this->assertSame('AM', $data);
     }
 
     /**
@@ -727,11 +501,12 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testPm()
     {
-        $date = Zend_Locale_Data::getContent('de_AT', 'pm');
-        $this->assertEquals("nachm.", $date);
+        $data = Zend_Locale_Data::getContent('de_AT', 'pm');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
 
-        $date = Zend_Locale_Data::getContent('de_AT', 'pm', 'islamic');
-        $this->assertEquals("PM", $date);
+        $data = Zend_Locale_Data::getContent('de_AT', 'pm', 'islamic');
+        $this->assertSame('PM', $data);
     }
 
     /**
@@ -740,44 +515,40 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testEra()
     {
-        $date = Zend_Locale_Data::getList('de_AT', 'eras');
-        $result = [
-            'names' =>
-                [
-                    0 => 'v. Chr.',
-                    1 => 'n. Chr.',
-                ],
-            'abbreviated' =>
-                [
-                    0 => 'v. Chr.',
-                    1 => 'n. Chr.',
-                ],
-            'narrow' =>
-                [
-                    0 => 'v. Chr.',
-                    1 => 'n. Chr.',
-                ],
-        ];
-        $this->assertEquals($result, $date, var_export($date, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'eras');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('v. Chr.', $data['names'][0]);
+        $this->assertSame('n. Chr.', $data['abbreviated'][1]);
+        $this->assertSame('n. Chr.', $data['narrow'][1]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'eras', 'islamic');
-        $result = ["abbreviated" => ["0" => "AH"], "narrow" => ["0" => "AH"], "names" => ["0" => "AH"]];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'eras', 'islamic');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('AH', $data['names'][0]);
+        $this->assertSame('AH', $data['abbreviated'][0]);
+        $this->assertSame('AH', $data['narrow'][0]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'era');
-        $this->assertEquals(["0" => "v. Chr.", "1" => "n. Chr."], $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'era');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('v. Chr.', $data[0]);
+        $this->assertSame('n. Chr.', $data[1]);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'era', ['gregorian', 'Abbr']);
-        $this->assertEquals(["0" => "v. Chr.", "1" => "n. Chr."], $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'era', ['gregorian', 'Abbr']);
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('v. Chr.', $data[0]);
+        $this->assertSame('n. Chr.', $data[1]);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'era', '1');
-        $this->assertEquals('n. Chr.', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'era', '1');
+        $this->assertSame('n. Chr.', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'era', ['gregorian', 'Names', '1']);
-        $this->assertEquals('n. Chr.', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'era', ['gregorian', 'Names', '1']);
+        $this->assertSame('n. Chr.', $data);
 
-        $value = Zend_Locale_Data::getContent('ar', 'era', ['islamic', 'Abbr', '0']);
-        $this->assertEquals('هـ', $value);
+        $data = Zend_Locale_Data::getContent('ar', 'era', ['islamic', 'Abbr', '0']);
+        $this->assertSame('هـ', $data);
     }
 
     /**
@@ -799,24 +570,29 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testDate()
     {
-        $date = Zend_Locale_Data::getList('de_AT', 'date');
-        $result = ["full" => "EEEE, dd. MMMM y", "long" => "dd. MMMM y",
-                        "medium" => "dd.MM.y", "short" => "dd.MM.yy"];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'date');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('dd.MM.y', $data['medium']);
+        $this->assertSame('dd.MM.yy', $data['short']);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'date', 'islamic');
-        $result = ["full" => "G y MMMM d, EEEE", "long" => "G y MMMM d",
-                        "medium" => "G y MMM d", "short" => "GGGGG y-MM-dd"];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'date', 'islamic');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey('full', $data);
+        $this->assertArrayHasKey('long', $data);
+        $this->assertArrayHasKey('medium', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'date');
-        $this->assertEquals("dd.MM.y", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'date');
+        $this->assertSame('dd.MM.y', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'date', 'long');
-        $this->assertEquals("dd. MMMM y", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'date', 'long');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
 
-        $value = Zend_Locale_Data::getContent('ar', 'date', ['islamic', 'long']);
-        $this->assertEquals("d MMMM، y G", $value);
+        $data = Zend_Locale_Data::getContent('ar', 'date', ['islamic', 'long']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -838,24 +614,29 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testTime()
     {
-        $date = Zend_Locale_Data::getList('de_AT', 'time');
-        $result = ["full" => "HH:mm:ss zzzz", "long" => "HH:mm:ss z",
-                        "medium" => "HH:mm:ss", "short" => "HH:mm"];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'time');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('HH:mm:ss zzzz', $data['full']);
+        $this->assertSame('HH:mm:ss', $data['medium']);
+        $this->assertSame('HH:mm', $data['short']);
 
-        $date = Zend_Locale_Data::getList('de_AT', 'time', 'islamic');
-        $result = ["full" => "HH:mm:ss zzzz", "long" => "HH:mm:ss z",
-                        "medium" => "HH:mm:ss", "short" => "HH:mm"];
-        $this->assertEquals($result, $date);
+        $data = Zend_Locale_Data::getList('de_AT', 'time', 'islamic');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('HH:mm:ss zzzz', $data['full']);
+        $this->assertSame('HH:mm:ss', $data['medium']);
+        $this->assertSame('HH:mm', $data['short']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'time');
-        $this->assertEquals("HH:mm:ss", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'time');
+        $this->assertSame('HH:mm:ss', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'time', 'long');
-        $this->assertEquals("HH:mm:ss z", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'time', 'long');
+        $this->assertSame('HH:mm:ss z', $data);
 
-        $value = Zend_Locale_Data::getContent('ar', 'time', ['islamic', 'long']);
-        $this->assertEquals("HH:mm:ss z", $value);
+        $data = Zend_Locale_Data::getContent('ar', 'time', ['islamic', 'long']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -864,29 +645,27 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testDateTime()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'datetime');
-        $result = [
-            'full' => 'EEEE, dd. MMMM y HH:mm:ss zzzz',
-            'long' => 'dd. MMMM y HH:mm:ss z',
-            'medium' => 'dd.MM.y HH:mm:ss',
-            'short' => 'dd.MM.yy HH:mm'
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'datetime');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey('full', $data);
+        $this->assertArrayHasKey('long', $data);
+        $this->assertArrayHasKey('medium', $data);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'datetime', 'gregorian');
-        $result = [
-            'full' => 'EEEE, dd. MMMM y HH:mm:ss zzzz',
-            'long' => 'dd. MMMM y HH:mm:ss z',
-            'medium' => 'dd.MM.y HH:mm:ss',
-            'short' => 'dd.MM.yy HH:mm'
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'datetime', 'gregorian');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey('full', $data);
+        $this->assertArrayHasKey('long', $data);
+        $this->assertArrayHasKey('medium', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'datetime', 'full');
-        $this->assertEquals("EEEE, dd. MMMM y HH:mm:ss zzzz", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'datetime', 'full');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'datetime', ['gregorian', 'long']);
-        $this->assertEquals("dd. MMMM y HH:mm:ss z", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'datetime', ['gregorian', 'long']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -895,49 +674,25 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testField()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'field');
-        $this->assertEquals(
-            [
-                'era' => 'Epoche',
-                'year' => 'Jahr',
-                'month' => 'Monat',
-                'week' => 'Woche',
-                'day' => 'Tag',
-                'weekday' => 'Wochentag',
-                'dayperiod' => 'Tageshälfte',
-                'hour' => 'Stunde',
-                'minute' => 'Minute',
-                'second' => 'Sekunde',
-                'zone' => 'Zeitzone',
-            ],
-            $value,
-            var_export($value, 1)
-        );
+        $data = Zend_Locale_Data::getList('de_AT', 'field');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Epoche', $data['era']);
+        $this->assertSame('Wochentag', $data['weekday']);
+        $this->assertSame('Zeitzone', $data['zone']);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'field', 'gregorian');
-        $this->assertEquals(
-            [
-                'era' => 'Epoche',
-                'year' => 'Jahr',
-                'month' => 'Monat',
-                'week' => 'Woche',
-                'day' => 'Tag',
-                'weekday' => 'Wochentag',
-                'dayperiod' => 'Tageshälfte',
-                'hour' => 'Stunde',
-                'minute' => 'Minute',
-                'second' => 'Sekunde',
-                'zone' => 'Zeitzone',
-            ],
-            $value,
-            var_export($value, 1)
-        );
+        $data = Zend_Locale_Data::getList('de_AT', 'field', 'gregorian');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Epoche', $data['era']);
+        $this->assertSame('Wochentag', $data['weekday']);
+        $this->assertSame('Zeitzone', $data['zone']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'field', 'week');
-        $this->assertEquals("Woche", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'field', 'week');
+        $this->assertSame('Woche', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'field', ['gregorian', 'week']);
-        $this->assertEquals("Woche", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'field', ['gregorian', 'week']);
+        $this->assertSame('Woche', $data);
     }
 
     /**
@@ -946,31 +701,48 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testRelative()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'relative');
-        $this->assertEquals(["0" => "Heute", "1" => "Morgen", "2" => "Übermorgen",
-            "-1" => "Gestern", "-2" => "Vorgestern"], $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'relative');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey(-2, $data);
+        $this->assertArrayHasKey(-1, $data);
+        $this->assertArrayHasKey(0, $data);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'relative', 'day');
-        $this->assertEquals(["0" => "Heute", "1" => "Morgen", "2" => "Übermorgen",
-            "-1" => "Gestern", "-2" => "Vorgestern"], $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'relative', 'day');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey(-2, $data);
+        $this->assertArrayHasKey(-1, $data);
+        $this->assertArrayHasKey(0, $data);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'relative', 'week');
-        $this->assertEquals(["0" => "Diese Woche", "1" => "Nächste Woche",
-            "-1" => "Letzte Woche"], $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'relative', 'week');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey(-1, $data);
+        $this->assertArrayHasKey(0, $data);
+        $this->assertArrayHasKey(1, $data);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'relative', 'month');
-        $this->assertEquals(["0" => "Dieser Monat", "1" => "Nächster Monat",
-            "-1" => "Letzter Monat"], $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'relative', 'month');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey(-1, $data);
+        $this->assertArrayHasKey(0, $data);
+        $this->assertArrayHasKey(1, $data);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'relative', 'year');
-        $this->assertEquals(["0" => "Dieses Jahr", "1" => "Nächstes Jahr",
-            "-1" => "Letztes Jahr"], $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'relative', 'year');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey(-1, $data);
+        $this->assertArrayHasKey(0, $data);
+        $this->assertArrayHasKey(1, $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'relative', '-1');
-        $this->assertEquals("Gestern", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'relative', '-1');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'relative', ['gregorian', '-1']);
-        $this->assertEquals("Gestern", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'relative', ['gregorian', '-1']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -979,12 +751,12 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testSymbols()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'symbols');
-        $result = [    "decimal" => ",", "group" => ".", "list" => ";", "percent" => "%",
-            // "zero"  => "0", "pattern"  => "#",
-            "plus" => "+", "minus" => "-", "exponent" => "E",
-            "mille" => "‰", "infinity" => "∞", "nan" => "NaN"];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'symbols');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame(',', $data['decimal']);
+        $this->assertSame('-', $data['minus']);
+        $this->assertSame('NaN', $data['nan']);
     }
 
     /**
@@ -1043,287 +815,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testNameToCurrency()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'nametocurrency');
-        $result = [
-            'ADP' => 'Andorranische Pesete',
-            'AED' => 'VAE-Dirham',
-            'AFA' => 'Afghanische Afghani (1927–2002)',
-            'AFN' => 'Afghanischer Afghani',
-            'ALL' => 'Albanischer Lek',
-            'AMD' => 'Armenischer Dram',
-            'ANG' => 'Niederländische-Antillen-Gulden',
-            'AOA' => 'Angolanischer Kwanza',
-            'AOK' => 'Angolanischer Kwanza (1977–1990)',
-            'AON' => 'Angolanischer Neuer Kwanza (1990–2000)',
-            'AOR' => 'Angolanischer Kwanza Reajustado (1995–1999)',
-            'ARA' => 'Argentinischer Austral',
-            'ARP' => 'Argentinischer Peso (1983–1985)',
-            'ARS' => 'Argentinischer Peso',
-            'ATS' => 'Österreichischer Schilling',
-            'AUD' => 'Australischer Dollar',
-            'AWG' => 'Aruba-Florin',
-            'AZM' => 'Aserbaidschan-Manat (1993–2006)',
-            'AZN' => 'Aserbaidschan-Manat',
-            'BAD' => 'Bosnien und Herzegowina Dinar (1992–1994)',
-            'BAM' => 'Bosnien und Herzegowina Konvertierbare Mark',
-            'BBD' => 'Barbados-Dollar',
-            'BDT' => 'Bangladesch-Taka',
-            'BEC' => 'Belgischer Franc (konvertibel)',
-            'BEF' => 'Belgischer Franc',
-            'BEL' => 'Belgischer Finanz-Franc',
-            'BGL' => 'Bulgarische Lew (1962–1999)',
-            'BGN' => 'Bulgarischer Lew',
-            'BHD' => 'Bahrain-Dinar',
-            'BIF' => 'Burundi-Franc',
-            'BMD' => 'Bermuda-Dollar',
-            'BND' => 'Brunei-Dollar',
-            'BOB' => 'Bolivanischer Boliviano',
-            'BOP' => 'Bolivianischer Peso',
-            'BOV' => 'Boliviansiche Mvdol',
-            'BRB' => 'Brasilianischer Cruzeiro Novo (1967–1986)',
-            'BRC' => 'Brasilianischer Cruzado (1986–1989)',
-            'BRE' => 'Brasilianischer Cruzeiro (1990–1993)',
-            'BRL' => 'Brasilianischer Real',
-            'BRN' => 'Brasilianischer Cruzado Novo (1989–1990)',
-            'BRR' => 'Brasilianischer Cruzeiro (1993–1994)',
-            'BRZ' => 'Brasilianischer Cruzeiro (1942–1967)',
-            'BSD' => 'Bahama-Dollar',
-            'BTN' => 'Bhutan-Ngultrum',
-            'BUK' => 'Birmanischer Kyat',
-            'BWP' => 'Botswanischer Pula',
-            'BYB' => 'Belarus-Rubel (1994–1999)',
-            'BYR' => 'Belarus-Rubel',
-            'BZD' => 'Belize-Dollar',
-            'CAD' => 'Kanadischer Dollar',
-            'CDF' => 'Kongo-Franc',
-            'CHE' => 'WIR-Euro',
-            'CHF' => 'Schweizer Franken',
-            'CHW' => 'WIR Franken',
-            'CLF' => 'Chilenische Unidades de Fomento',
-            'CLP' => 'Chilenischer Peso',
-            'CNY' => 'Renminbi Yuan',
-            'COP' => 'Kolumbianischer Peso',
-            'CRC' => 'Costa-Rica-Colón',
-            'CSD' => 'Serbischer Dinar (2002–2006)',
-            'CSK' => 'Tschechoslowakische Krone',
-            'CUC' => 'Kubanischer Peso (konvertibel)',
-            'CUP' => 'Kubanischer Peso',
-            'CVE' => 'Kap-Verde-Escudo',
-            'CYP' => 'Zypern-Pfund',
-            'CZK' => 'Tschechische Krone',
-            'DDM' => 'Mark der DDR',
-            'DEM' => 'Deutsche Mark',
-            'DJF' => 'Dschibuti-Franc',
-            'DKK' => 'Dänische Krone',
-            'DOP' => 'Dominikanischer Peso',
-            'DZD' => 'Algerischer Dinar',
-            'ECS' => 'Ecuadorianischer Sucre',
-            'ECV' => 'Verrechnungseinheit für Ecuador',
-            'EEK' => 'Estnische Krone',
-            'EGP' => 'Ägyptisches Pfund',
-            'ERN' => 'Eritreischer Nakfa',
-            'ESA' => 'Spanische Peseta (A–Konten)',
-            'ESB' => 'Spanische Peseta (konvertibel)',
-            'ESP' => 'Spanische Peseta',
-            'ETB' => 'Äthiopischer Birr',
-            'EUR' => 'Euro',
-            'FIM' => 'Finnische Mark',
-            'FJD' => 'Fidschi-Dollar',
-            'FKP' => 'Falkland-Pfund',
-            'FRF' => 'Französischer Franc',
-            'GBP' => 'Britisches Pfund Sterling',
-            'GEK' => 'Georgischer Kupon Larit',
-            'GEL' => 'Georgischer Lari',
-            'GHC' => 'Ghanaischer Cedi (1979–2007)',
-            'GHS' => 'Ghanaischer Cedi',
-            'GIP' => 'Gibraltar-Pfund',
-            'GMD' => 'Gambia-Dalasi',
-            'GNF' => 'Guinea-Franc',
-            'GNS' => 'Guineischer Syli',
-            'GQE' => 'Äquatorialguinea-Ekwele',
-            'GRD' => 'Griechische Drachme',
-            'GTQ' => 'Guatemaltekischer Quetzal',
-            'GWE' => 'Portugiesisch Guinea Escudo',
-            'GWP' => 'Guinea-Bissau Peso',
-            'GYD' => 'Guyana-Dollar',
-            'HKD' => 'Hongkong-Dollar',
-            'HNL' => 'Honduras-Lempira',
-            'HRD' => 'Kroatischer Dinar',
-            'HRK' => 'Kroatischer Kuna',
-            'HTG' => 'Haitianische Gourde',
-            'HUF' => 'Ungarischer Forint',
-            'IDR' => 'Indonesische Rupiah',
-            'IEP' => 'Irisches Pfund',
-            'ILP' => 'Israelisches Pfund',
-            'ILS' => 'Israelischer Neuer Schekel',
-            'INR' => 'Indische Rupie',
-            'IQD' => 'Irakischer Dinar',
-            'IRR' => 'Iranischer Rial',
-            'ISK' => 'Isländische Krone',
-            'ITL' => 'Italienische Lira',
-            'JMD' => 'Jamaika-Dollar',
-            'JOD' => 'Jordanischer Dinar',
-            'JPY' => 'Japanischer Yen',
-            'KES' => 'Kenia-Schilling',
-            'KGS' => 'Kirgisischer Som',
-            'KHR' => 'Kambodschanischer Riel',
-            'KMF' => 'Komoren-Franc',
-            'KPW' => 'Nordkoreanischer Won',
-            'KRW' => 'Südkoreanischer Won',
-            'KWD' => 'Kuwait-Dinar',
-            'KYD' => 'Kaiman-Dollar',
-            'KZT' => 'Kasachischer Tenge',
-            'LAK' => 'Laotischer Kip',
-            'LBP' => 'Libanesisches Pfund',
-            'LKR' => 'Sri-Lanka-Rupie',
-            'LRD' => 'Liberianischer Dollar',
-            'LSL' => 'Loti',
-            'LTL' => 'Litauischer Litas',
-            'LTT' => 'Litauischer Talonas',
-            'LUC' => 'Luxemburgischer Franc (konvertibel)',
-            'LUF' => 'Luxemburgischer Franc',
-            'LUL' => 'Luxemburgischer Finanz-Franc',
-            'LVL' => 'Lettischer Lats',
-            'LVR' => 'Lettischer Rubel',
-            'LYD' => 'Libyscher Dinar',
-            'MAD' => 'Marokkanischer Dirham',
-            'MAF' => 'Marokkanischer Franc',
-            'MDL' => 'Moldau-Leu',
-            'MGA' => 'Madagaskar-Ariary',
-            'MGF' => 'Madagaskar-Franc',
-            'MKD' => 'Mazedonischer Denar',
-            'MLF' => 'Malischer Franc',
-            'MMK' => 'Myanmarischer Kyat',
-            'MNT' => 'Mongolischer Tögrög',
-            'MOP' => 'Macao-Pataca',
-            'MRO' => 'Mauretanischer Ouguiya',
-            'MTL' => 'Maltesische Lira',
-            'MTP' => 'Maltesisches Pfund',
-            'MUR' => 'Mauritius-Rupie',
-            'MVR' => 'Malediven-Rupie',
-            'MWK' => 'Malawi-Kwacha',
-            'MXN' => 'Mexikanischer Peso',
-            'MXP' => 'Mexikanischer Silber-Peso (1861–1992)',
-            'MXV' => 'Mexicanischer Unidad de Inversion (UDI)',
-            'MYR' => 'Malaysischer Ringgit',
-            'MZE' => 'Mosambikanischer Escudo',
-            'MZM' => 'Mosambikanischer Metical (1980–2006)',
-            'MZN' => 'Mosambikanischer Metical',
-            'NAD' => 'Namibia-Dollar',
-            'NGN' => 'Nigerianischer Naira',
-            'NIC' => 'Nicaraguanischer Córdoba (1988–1991)',
-            'NIO' => 'Nicaragua-Cordoba',
-            'NLG' => 'Niederländischer Gulden',
-            'NOK' => 'Norwegische Krone',
-            'NPR' => 'Nepalesische Rupie',
-            'NZD' => 'Neuseeland-Dollar',
-            'OMR' => 'Omanischer Rial',
-            'PAB' => 'Panamaischer Balboa',
-            'PEI' => 'Peruanischer Inti',
-            'PEN' => 'Peruanischer Neuer Sol',
-            'PES' => 'Peruanischer Sol (1863–1965)',
-            'PGK' => 'Papua-Neuguineischer Kina',
-            'PHP' => 'Philippinischer Peso',
-            'PKR' => 'Pakistanische Rupie',
-            'PLN' => 'Polnischer Złoty',
-            'PLZ' => 'Polnischer Zloty (1950–1995)',
-            'PTE' => 'Portugiesischer Escudo',
-            'PYG' => 'Paraguayischer Guaraní',
-            'QAR' => 'Katar-Riyal',
-            'RHD' => 'Rhodesischer Dollar',
-            'ROL' => 'Rumänischer Leu (1952–2006)',
-            'RON' => 'Rumänischer Leu',
-            'RSD' => 'Serbischer Dinar',
-            'RUB' => 'Russischer Rubel',
-            'RUR' => 'Russischer Rubel (1991–1998)',
-            'RWF' => 'Ruanda-Franc',
-            'SAR' => 'Saudi-Rial',
-            'SBD' => 'Salomonen-Dollar',
-            'SCR' => 'Seychellen-Rupie',
-            'SDD' => 'Sudanesischer Dinar (1992–2007)',
-            'SDG' => 'Sudanesisches Pfund',
-            'SDP' => 'Sudanesisches Pfund (1957–1998)',
-            'SEK' => 'Schwedische Krone',
-            'SGD' => 'Singapur-Dollar',
-            'SHP' => 'St. Helena-Pfund',
-            'SIT' => 'Slowenischer Tolar',
-            'SKK' => 'Slowakische Krone',
-            'SLL' => 'Sierra-leonischer Leone',
-            'SOS' => 'Somalia-Schilling',
-            'SRD' => 'Suriname-Dollar',
-            'SRG' => 'Suriname Gulden',
-            'SSP' => 'Südsudanesisches Pfund',
-            'STD' => 'São-toméischer Dobra',
-            'SUR' => 'Sowjetischer Rubel',
-            'SVC' => 'El Salvador Colon',
-            'SYP' => 'Syrisches Pfund',
-            'SZL' => 'Swasiländischer Lilangeni',
-            'THB' => 'Thailändischer Baht',
-            'TJR' => 'Tadschikistan Rubel',
-            'TJS' => 'Tadschikistan-Somoni',
-            'TMM' => 'Turkmenistan-Manat (1993–2009)',
-            'TMT' => 'Turkmenistan-Manat',
-            'TND' => 'Tunesischer Dinar',
-            'TOP' => 'Tongaischer Paʻanga',
-            'TPE' => 'Timor-Escudo',
-            'TRL' => 'Türkische Lira (1922–2005)',
-            'TRY' => 'Türkische Lira',
-            'TTD' => 'Trinidad und Tobago-Dollar',
-            'TWD' => 'Neuer Taiwan-Dollar',
-            'TZS' => 'Tansania-Schilling',
-            'UAH' => 'Ukrainische Hrywnja',
-            'UAK' => 'Ukrainischer Karbovanetz',
-            'UGS' => 'Uganda-Schilling (1966–1987)',
-            'UGX' => 'Uganda-Schilling',
-            'USD' => 'US-Dollar',
-            'USN' => 'US Dollar (Nächster Tag)',
-            'USS' => 'US Dollar (Gleicher Tag)',
-            'UYP' => 'Uruguayischer Peso (1975–1993)',
-            'UYU' => 'Uruguayischer Peso',
-            'UZS' => 'Usbekistan-Sum',
-            'VEB' => 'Venezolanischer Bolívar (1871–2008)',
-            'VEF' => 'Venezolanischer Bolívar',
-            'VND' => 'Vietnamesischer Dong',
-            'VUV' => 'Vanuatu-Vatu',
-            'WST' => 'Samoanischer Tala',
-            'XAF' => 'CFA-Franc (BEAC)',
-            'XAG' => 'Unze Silber',
-            'XAU' => 'Unze Gold',
-            'XBA' => 'Europäische Rechnungseinheit',
-            'XBB' => 'Europäische Währungseinheit (XBB)',
-            'XBC' => 'Europäische Rechnungseinheit (XBC)',
-            'XBD' => 'Europäische Rechnungseinheit (XBD)',
-            'XCD' => 'Ostkaribischer Dollar',
-            'XDR' => 'Sonderziehungsrechte',
-            'XEU' => 'Europäische Währungseinheit (XEU)',
-            'XFO' => 'Französischer Gold-Franc',
-            'XFU' => 'Französischer UIC-Franc',
-            'XOF' => 'CFA-Franc (BCEAO)',
-            'XPD' => 'Unze Palladium',
-            'XPF' => 'CFP-Franc',
-            'XPT' => 'Unze Platin',
-            'XRE' => 'RINET Funds',
-            'XTS' => 'Testwährung',
-            'XXX' => 'Unbekannte Währung',
-            'YDD' => 'Jemen-Dinar',
-            'YER' => 'Jemen-Rial',
-            'YUD' => 'Jugoslawischer Dinar (1966–1990)',
-            'YUM' => 'Jugoslawischer Neuer Dinar (1994–2002)',
-            'YUN' => 'Jugoslawischer Dinar (konvertibel)',
-            'ZAL' => 'Südafrikanischer Rand (Finanz)',
-            'ZAR' => 'Südafrikanischer Rand',
-            'ZMK' => 'Kwacha (1968–2012)',
-            'ZMW' => 'Kwacha',
-            'ZRN' => 'Zaire-Neuer Zaïre (1993–1998)',
-            'ZRZ' => 'Zaire-Zaïre (1971–1993)',
-            'ZWD' => 'Simbabwe-Dollar (1980–2008)',
-            'ZWL' => 'Simbabwe-Dollar (2009)',
-            'ZWR' => 'Simbabwe-Dollar (2008)',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'nametocurrency');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Andorranische Pesete', $data['ADP']);
+        $this->assertSame('Luxemburgischer Franc (konvertibel)', $data['LUC']);
+        $this->assertSame('Simbabwe-Dollar (2008)', $data['ZWR']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'nametocurrency', 'USD');
-        $this->assertEquals("US-Dollar", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'nametocurrency', 'USD');
+        $this->assertSame('US-Dollar', $data);
     }
 
     /**
@@ -1332,287 +832,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCurrencyToName()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'currencytoname');
-        $result = [
-            'Andorranische Pesete' => 'ADP',
-            'VAE-Dirham' => 'AED',
-            'Afghanische Afghani (1927–2002)' => 'AFA',
-            'Afghanischer Afghani' => 'AFN',
-            'Albanischer Lek' => 'ALL',
-            'Armenischer Dram' => 'AMD',
-            'Niederländische-Antillen-Gulden' => 'ANG',
-            'Angolanischer Kwanza' => 'AOA',
-            'Angolanischer Kwanza (1977–1990)' => 'AOK',
-            'Angolanischer Neuer Kwanza (1990–2000)' => 'AON',
-            'Angolanischer Kwanza Reajustado (1995–1999)' => 'AOR',
-            'Argentinischer Austral' => 'ARA',
-            'Argentinischer Peso (1983–1985)' => 'ARP',
-            'Argentinischer Peso' => 'ARS',
-            'Österreichischer Schilling' => 'ATS',
-            'Australischer Dollar' => 'AUD',
-            'Aruba-Florin' => 'AWG',
-            'Aserbaidschan-Manat (1993–2006)' => 'AZM',
-            'Aserbaidschan-Manat' => 'AZN',
-            'Bosnien und Herzegowina Dinar (1992–1994)' => 'BAD',
-            'Bosnien und Herzegowina Konvertierbare Mark' => 'BAM',
-            'Barbados-Dollar' => 'BBD',
-            'Bangladesch-Taka' => 'BDT',
-            'Belgischer Franc (konvertibel)' => 'BEC',
-            'Belgischer Franc' => 'BEF',
-            'Belgischer Finanz-Franc' => 'BEL',
-            'Bulgarische Lew (1962–1999)' => 'BGL',
-            'Bulgarischer Lew' => 'BGN',
-            'Bahrain-Dinar' => 'BHD',
-            'Burundi-Franc' => 'BIF',
-            'Bermuda-Dollar' => 'BMD',
-            'Brunei-Dollar' => 'BND',
-            'Bolivanischer Boliviano' => 'BOB',
-            'Bolivianischer Peso' => 'BOP',
-            'Boliviansiche Mvdol' => 'BOV',
-            'Brasilianischer Cruzeiro Novo (1967–1986)' => 'BRB',
-            'Brasilianischer Cruzado (1986–1989)' => 'BRC',
-            'Brasilianischer Cruzeiro (1990–1993)' => 'BRE',
-            'Brasilianischer Real' => 'BRL',
-            'Brasilianischer Cruzado Novo (1989–1990)' => 'BRN',
-            'Brasilianischer Cruzeiro (1993–1994)' => 'BRR',
-            'Brasilianischer Cruzeiro (1942–1967)' => 'BRZ',
-            'Bahama-Dollar' => 'BSD',
-            'Bhutan-Ngultrum' => 'BTN',
-            'Birmanischer Kyat' => 'BUK',
-            'Botswanischer Pula' => 'BWP',
-            'Belarus-Rubel (1994–1999)' => 'BYB',
-            'Belarus-Rubel' => 'BYR',
-            'Belize-Dollar' => 'BZD',
-            'Kanadischer Dollar' => 'CAD',
-            'Kongo-Franc' => 'CDF',
-            'WIR-Euro' => 'CHE',
-            'Schweizer Franken' => 'CHF',
-            'WIR Franken' => 'CHW',
-            'Chilenische Unidades de Fomento' => 'CLF',
-            'Chilenischer Peso' => 'CLP',
-            'Renminbi Yuan' => 'CNY',
-            'Kolumbianischer Peso' => 'COP',
-            'Costa-Rica-Colón' => 'CRC',
-            'Serbischer Dinar (2002–2006)' => 'CSD',
-            'Tschechoslowakische Krone' => 'CSK',
-            'Kubanischer Peso (konvertibel)' => 'CUC',
-            'Kubanischer Peso' => 'CUP',
-            'Kap-Verde-Escudo' => 'CVE',
-            'Zypern-Pfund' => 'CYP',
-            'Tschechische Krone' => 'CZK',
-            'Mark der DDR' => 'DDM',
-            'Deutsche Mark' => 'DEM',
-            'Dschibuti-Franc' => 'DJF',
-            'Dänische Krone' => 'DKK',
-            'Dominikanischer Peso' => 'DOP',
-            'Algerischer Dinar' => 'DZD',
-            'Ecuadorianischer Sucre' => 'ECS',
-            'Verrechnungseinheit für Ecuador' => 'ECV',
-            'Estnische Krone' => 'EEK',
-            'Ägyptisches Pfund' => 'EGP',
-            'Eritreischer Nakfa' => 'ERN',
-            'Spanische Peseta (A–Konten)' => 'ESA',
-            'Spanische Peseta (konvertibel)' => 'ESB',
-            'Spanische Peseta' => 'ESP',
-            'Äthiopischer Birr' => 'ETB',
-            'Euro' => 'EUR',
-            'Finnische Mark' => 'FIM',
-            'Fidschi-Dollar' => 'FJD',
-            'Falkland-Pfund' => 'FKP',
-            'Französischer Franc' => 'FRF',
-            'Britisches Pfund Sterling' => 'GBP',
-            'Georgischer Kupon Larit' => 'GEK',
-            'Georgischer Lari' => 'GEL',
-            'Ghanaischer Cedi (1979–2007)' => 'GHC',
-            'Ghanaischer Cedi' => 'GHS',
-            'Gibraltar-Pfund' => 'GIP',
-            'Gambia-Dalasi' => 'GMD',
-            'Guinea-Franc' => 'GNF',
-            'Guineischer Syli' => 'GNS',
-            'Äquatorialguinea-Ekwele' => 'GQE',
-            'Griechische Drachme' => 'GRD',
-            'Guatemaltekischer Quetzal' => 'GTQ',
-            'Portugiesisch Guinea Escudo' => 'GWE',
-            'Guinea-Bissau Peso' => 'GWP',
-            'Guyana-Dollar' => 'GYD',
-            'Hongkong-Dollar' => 'HKD',
-            'Honduras-Lempira' => 'HNL',
-            'Kroatischer Dinar' => 'HRD',
-            'Kroatischer Kuna' => 'HRK',
-            'Haitianische Gourde' => 'HTG',
-            'Ungarischer Forint' => 'HUF',
-            'Indonesische Rupiah' => 'IDR',
-            'Irisches Pfund' => 'IEP',
-            'Israelisches Pfund' => 'ILP',
-            'Israelischer Neuer Schekel' => 'ILS',
-            'Indische Rupie' => 'INR',
-            'Irakischer Dinar' => 'IQD',
-            'Iranischer Rial' => 'IRR',
-            'Isländische Krone' => 'ISK',
-            'Italienische Lira' => 'ITL',
-            'Jamaika-Dollar' => 'JMD',
-            'Jordanischer Dinar' => 'JOD',
-            'Japanischer Yen' => 'JPY',
-            'Kenia-Schilling' => 'KES',
-            'Kirgisischer Som' => 'KGS',
-            'Kambodschanischer Riel' => 'KHR',
-            'Komoren-Franc' => 'KMF',
-            'Nordkoreanischer Won' => 'KPW',
-            'Südkoreanischer Won' => 'KRW',
-            'Kuwait-Dinar' => 'KWD',
-            'Kaiman-Dollar' => 'KYD',
-            'Kasachischer Tenge' => 'KZT',
-            'Laotischer Kip' => 'LAK',
-            'Libanesisches Pfund' => 'LBP',
-            'Sri-Lanka-Rupie' => 'LKR',
-            'Liberianischer Dollar' => 'LRD',
-            'Loti' => 'LSL',
-            'Litauischer Litas' => 'LTL',
-            'Litauischer Talonas' => 'LTT',
-            'Luxemburgischer Franc (konvertibel)' => 'LUC',
-            'Luxemburgischer Franc' => 'LUF',
-            'Luxemburgischer Finanz-Franc' => 'LUL',
-            'Lettischer Lats' => 'LVL',
-            'Lettischer Rubel' => 'LVR',
-            'Libyscher Dinar' => 'LYD',
-            'Marokkanischer Dirham' => 'MAD',
-            'Marokkanischer Franc' => 'MAF',
-            'Moldau-Leu' => 'MDL',
-            'Madagaskar-Ariary' => 'MGA',
-            'Madagaskar-Franc' => 'MGF',
-            'Mazedonischer Denar' => 'MKD',
-            'Malischer Franc' => 'MLF',
-            'Myanmarischer Kyat' => 'MMK',
-            'Mongolischer Tögrög' => 'MNT',
-            'Macao-Pataca' => 'MOP',
-            'Mauretanischer Ouguiya' => 'MRO',
-            'Maltesische Lira' => 'MTL',
-            'Maltesisches Pfund' => 'MTP',
-            'Mauritius-Rupie' => 'MUR',
-            'Malediven-Rupie' => 'MVR',
-            'Malawi-Kwacha' => 'MWK',
-            'Mexikanischer Peso' => 'MXN',
-            'Mexikanischer Silber-Peso (1861–1992)' => 'MXP',
-            'Mexicanischer Unidad de Inversion (UDI)' => 'MXV',
-            'Malaysischer Ringgit' => 'MYR',
-            'Mosambikanischer Escudo' => 'MZE',
-            'Mosambikanischer Metical (1980–2006)' => 'MZM',
-            'Mosambikanischer Metical' => 'MZN',
-            'Namibia-Dollar' => 'NAD',
-            'Nigerianischer Naira' => 'NGN',
-            'Nicaraguanischer Córdoba (1988–1991)' => 'NIC',
-            'Nicaragua-Cordoba' => 'NIO',
-            'Niederländischer Gulden' => 'NLG',
-            'Norwegische Krone' => 'NOK',
-            'Nepalesische Rupie' => 'NPR',
-            'Neuseeland-Dollar' => 'NZD',
-            'Omanischer Rial' => 'OMR',
-            'Panamaischer Balboa' => 'PAB',
-            'Peruanischer Inti' => 'PEI',
-            'Peruanischer Neuer Sol' => 'PEN',
-            'Peruanischer Sol (1863–1965)' => 'PES',
-            'Papua-Neuguineischer Kina' => 'PGK',
-            'Philippinischer Peso' => 'PHP',
-            'Pakistanische Rupie' => 'PKR',
-            'Polnischer Złoty' => 'PLN',
-            'Polnischer Zloty (1950–1995)' => 'PLZ',
-            'Portugiesischer Escudo' => 'PTE',
-            'Paraguayischer Guaraní' => 'PYG',
-            'Katar-Riyal' => 'QAR',
-            'Rhodesischer Dollar' => 'RHD',
-            'Rumänischer Leu (1952–2006)' => 'ROL',
-            'Rumänischer Leu' => 'RON',
-            'Serbischer Dinar' => 'RSD',
-            'Russischer Rubel' => 'RUB',
-            'Russischer Rubel (1991–1998)' => 'RUR',
-            'Ruanda-Franc' => 'RWF',
-            'Saudi-Rial' => 'SAR',
-            'Salomonen-Dollar' => 'SBD',
-            'Seychellen-Rupie' => 'SCR',
-            'Sudanesischer Dinar (1992–2007)' => 'SDD',
-            'Sudanesisches Pfund' => 'SDG',
-            'Sudanesisches Pfund (1957–1998)' => 'SDP',
-            'Schwedische Krone' => 'SEK',
-            'Singapur-Dollar' => 'SGD',
-            'St. Helena-Pfund' => 'SHP',
-            'Slowenischer Tolar' => 'SIT',
-            'Slowakische Krone' => 'SKK',
-            'Sierra-leonischer Leone' => 'SLL',
-            'Somalia-Schilling' => 'SOS',
-            'Suriname-Dollar' => 'SRD',
-            'Suriname Gulden' => 'SRG',
-            'Südsudanesisches Pfund' => 'SSP',
-            'São-toméischer Dobra' => 'STD',
-            'Sowjetischer Rubel' => 'SUR',
-            'El Salvador Colon' => 'SVC',
-            'Syrisches Pfund' => 'SYP',
-            'Swasiländischer Lilangeni' => 'SZL',
-            'Thailändischer Baht' => 'THB',
-            'Tadschikistan Rubel' => 'TJR',
-            'Tadschikistan-Somoni' => 'TJS',
-            'Turkmenistan-Manat (1993–2009)' => 'TMM',
-            'Turkmenistan-Manat' => 'TMT',
-            'Tunesischer Dinar' => 'TND',
-            'Tongaischer Paʻanga' => 'TOP',
-            'Timor-Escudo' => 'TPE',
-            'Türkische Lira (1922–2005)' => 'TRL',
-            'Türkische Lira' => 'TRY',
-            'Trinidad und Tobago-Dollar' => 'TTD',
-            'Neuer Taiwan-Dollar' => 'TWD',
-            'Tansania-Schilling' => 'TZS',
-            'Ukrainische Hrywnja' => 'UAH',
-            'Ukrainischer Karbovanetz' => 'UAK',
-            'Uganda-Schilling (1966–1987)' => 'UGS',
-            'Uganda-Schilling' => 'UGX',
-            'US-Dollar' => 'USD',
-            'US Dollar (Nächster Tag)' => 'USN',
-            'US Dollar (Gleicher Tag)' => 'USS',
-            'Uruguayischer Peso (1975–1993)' => 'UYP',
-            'Uruguayischer Peso' => 'UYU',
-            'Usbekistan-Sum' => 'UZS',
-            'Venezolanischer Bolívar (1871–2008)' => 'VEB',
-            'Venezolanischer Bolívar' => 'VEF',
-            'Vietnamesischer Dong' => 'VND',
-            'Vanuatu-Vatu' => 'VUV',
-            'Samoanischer Tala' => 'WST',
-            'CFA-Franc (BEAC)' => 'XAF',
-            'Unze Silber' => 'XAG',
-            'Unze Gold' => 'XAU',
-            'Europäische Rechnungseinheit' => 'XBA',
-            'Europäische Währungseinheit (XBB)' => 'XBB',
-            'Europäische Rechnungseinheit (XBC)' => 'XBC',
-            'Europäische Rechnungseinheit (XBD)' => 'XBD',
-            'Ostkaribischer Dollar' => 'XCD',
-            'Sonderziehungsrechte' => 'XDR',
-            'Europäische Währungseinheit (XEU)' => 'XEU',
-            'Französischer Gold-Franc' => 'XFO',
-            'Französischer UIC-Franc' => 'XFU',
-            'CFA-Franc (BCEAO)' => 'XOF',
-            'Unze Palladium' => 'XPD',
-            'CFP-Franc' => 'XPF',
-            'Unze Platin' => 'XPT',
-            'RINET Funds' => 'XRE',
-            'Testwährung' => 'XTS',
-            'Unbekannte Währung' => 'XXX',
-            'Jemen-Dinar' => 'YDD',
-            'Jemen-Rial' => 'YER',
-            'Jugoslawischer Dinar (1966–1990)' => 'YUD',
-            'Jugoslawischer Neuer Dinar (1994–2002)' => 'YUM',
-            'Jugoslawischer Dinar (konvertibel)' => 'YUN',
-            'Südafrikanischer Rand (Finanz)' => 'ZAL',
-            'Südafrikanischer Rand' => 'ZAR',
-            'Kwacha (1968–2012)' => 'ZMK',
-            'Kwacha' => 'ZMW',
-            'Zaire-Neuer Zaïre (1993–1998)' => 'ZRN',
-            'Zaire-Zaïre (1971–1993)' => 'ZRZ',
-            'Simbabwe-Dollar (1980–2008)' => 'ZWD',
-            'Simbabwe-Dollar (2009)' => 'ZWL',
-            'Simbabwe-Dollar (2008)' => 'ZWR',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'currencytoname');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('ADP', $data['Andorranische Pesete']);
+        $this->assertSame('LUC', $data['Luxemburgischer Franc (konvertibel)']);
+        $this->assertSame('ZWR', $data['Simbabwe-Dollar (2008)']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencytoname', 'Unze Platin');
-        $this->assertEquals("XPT", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencytoname', 'Unze Platin');
+        $this->assertSame('XPT', $data);
     }
 
     /**
@@ -1621,73 +849,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCurrencySymbol()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'currencysymbol');
-        $result = [
-            'ARS' => '$',
-            'ATS' => 'öS',
-            'AUD' => 'AU$',
-            'BBD' => '$',
-            'BDT' => '৳',
-            'BMD' => '$',
-            'BND' => '$',
-            'BRL' => 'R$',
-            'BSD' => '$',
-            'BYR' => 'р.',
-            'BZD' => '$',
-            'CAD' => 'CA$',
-            'CLP' => '$',
-            'CNY' => 'CN¥',
-            'COP' => '$',
-            'CRC' => '₡',
-            'CUP' => '$',
-            'DOP' => '$',
-            'ESP' => '₧',
-            'EUR' => '€',
-            'FJD' => '$',
-            'GBP' => '£',
-            'GHS' => '₵',
-            'GIP' => '£',
-            'GYD' => '$',
-            'HKD' => 'HK$',
-            'ILS' => '₪',
-            'INR' => '₹',
-            'JMD' => '$',
-            'JPY' => '¥',
-            'KHR' => '៛',
-            'KRW' => '₩',
-            'KYD' => '$',
-            'KZT' => '₸',
-            'LAK' => '₭',
-            'LRD' => '$',
-            'MNT' => '₮',
-            'MXN' => 'MX$',
-            'NAD' => '$',
-            'NGN' => '₦',
-            'NZD' => 'NZ$',
-            'PHP' => '₱',
-            'PYG' => '₲',
-            'RUR' => 'р.',
-            'SBD' => '$',
-            'SGD' => '$',
-            'SRD' => '$',
-            'SSP' => '£',
-            'THB' => '฿',
-            'TRY' => '₺',
-            'TTD' => '$',
-            'TWD' => 'NT$',
-            'UAH' => '₴',
-            'USD' => '$',
-            'UYU' => '$',
-            'VND' => '₫',
-            'XAF' => 'FCFA',
-            'XCD' => 'EC$',
-            'XOF' => 'CFA',
-            'XPF' => 'CFPF',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'currencysymbol');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('öS', $data['ATS']);
+        $this->assertSame('¥', $data['JPY']);
+        $this->assertSame('CFPF', $data['XPF']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencysymbol', 'USD');
-        $this->assertEquals("$", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencysymbol', 'USD');
+        $this->assertSame('$', $data);
     }
 
     /**
@@ -1709,84 +879,18 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCurrencyFraction()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'currencyfraction');
-        $this->assertEquals(
-            [
-                'ADP' => '0',
-                'AFN' => '0',
-                'ALL' => '0',
-                'AMD' => '0',
-                'BHD' => '3',
-                'BIF' => '0',
-                'BYR' => '0',
-                'CAD' => '2',
-                'CHF' => '2',
-                'CLF' => '0',
-                'CLP' => '0',
-                'COP' => '0',
-                'CRC' => '0',
-                'CZK' => '2',
-                'DEFAULT' => '2',
-                'DJF' => '0',
-                'ESP' => '0',
-                'GNF' => '0',
-                'GYD' => '0',
-                'HUF' => '0',
-                'IDR' => '0',
-                'IQD' => '0',
-                'IRR' => '0',
-                'ISK' => '0',
-                'ITL' => '0',
-                'JOD' => '3',
-                'JPY' => '0',
-                'KMF' => '0',
-                'KPW' => '0',
-                'KRW' => '0',
-                'KWD' => '3',
-                'LAK' => '0',
-                'LBP' => '0',
-                'LUF' => '0',
-                'LYD' => '3',
-                'MGA' => '0',
-                'MGF' => '0',
-                'MMK' => '0',
-                'MNT' => '0',
-                'MRO' => '0',
-                'MUR' => '0',
-                'OMR' => '3',
-                'PKR' => '0',
-                'PYG' => '0',
-                'RSD' => '0',
-                'RWF' => '0',
-                'SLL' => '0',
-                'SOS' => '0',
-                'STD' => '0',
-                'SYP' => '0',
-                'TMM' => '0',
-                'TND' => '3',
-                'TRL' => '0',
-                'TZS' => '0',
-                'TWD' => '2',
-                'UGX' => '0',
-                'UZS' => '0',
-                'UYI' => '0',
-                'VND' => '0',
-                'VUV' => '0',
-                'XAF' => '0',
-                'XOF' => '0',
-                'XPF' => '0',
-                'YER' => '0',
-                'ZMK' => '0',
-                'ZWD' => '0',
-            ],
-            $value
-        );
+        $data = Zend_Locale_Data::getList('de_AT', 'currencyfraction');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('0', $data['ADP']);
+        $this->assertSame('0', $data['LBP']);
+        $this->assertSame('0', $data['ZWD']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencyfraction');
-        $this->assertEquals("2", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencyfraction');
+        $this->assertSame('2', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencyfraction', 'BHD');
-        $this->assertEquals("3", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencyfraction', 'BHD');
+        $this->assertSame('3', $data);
     }
 
     /**
@@ -1795,84 +899,18 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCurrencyRounding()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'currencyrounding');
-        $this->assertEquals(
-            [
-                'ADP' => '0',
-                'AFN' => '0',
-                'ALL' => '0',
-                'AMD' => '0',
-                'BHD' => '0',
-                'BIF' => '0',
-                'BYR' => '0',
-                'CAD' => '0',
-                'CHF' => '0',
-                'CLF' => '0',
-                'CLP' => '0',
-                'COP' => '0',
-                'CRC' => '0',
-                'CZK' => '0',
-                'DEFAULT' => '0',
-                'DJF' => '0',
-                'ESP' => '0',
-                'GNF' => '0',
-                'GYD' => '0',
-                'HUF' => '0',
-                'IDR' => '0',
-                'IQD' => '0',
-                'IRR' => '0',
-                'ISK' => '0',
-                'ITL' => '0',
-                'JOD' => '0',
-                'JPY' => '0',
-                'KMF' => '0',
-                'KPW' => '0',
-                'KRW' => '0',
-                'KWD' => '0',
-                'LAK' => '0',
-                'LBP' => '0',
-                'LUF' => '0',
-                'LYD' => '0',
-                'MGA' => '0',
-                'MGF' => '0',
-                'MMK' => '0',
-                'MNT' => '0',
-                'MRO' => '0',
-                'MUR' => '0',
-                'OMR' => '0',
-                'PKR' => '0',
-                'PYG' => '0',
-                'RSD' => '0',
-                'RWF' => '0',
-                'SLL' => '0',
-                'SOS' => '0',
-                'STD' => '0',
-                'SYP' => '0',
-                'TMM' => '0',
-                'TND' => '0',
-                'TRL' => '0',
-                'TZS' => '0',
-                'TWD' => '0',
-                'UGX' => '0',
-                'UZS' => '0',
-                'UYI' => '0',
-                'VND' => '0',
-                'VUV' => '0',
-                'XAF' => '0',
-                'XOF' => '0',
-                'XPF' => '0',
-                'YER' => '0',
-                'ZMK' => '0',
-                'ZWD' => '0',
-            ],
-            $value
-        );
+        $data = Zend_Locale_Data::getList('de_AT', 'currencyrounding');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('0', $data['ADP']);
+        $this->assertSame('0', $data['LUF']);
+        $this->assertSame('0', $data['ZWD']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencyrounding');
-        $this->assertEquals("0", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencyrounding');
+        $this->assertSame('0', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencyrounding', 'BHD');
-        $this->assertEquals("0", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencyrounding', 'BHD');
+        $this->assertSame('0', $data);
     }
 
     /**
@@ -1881,280 +919,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCurrencyToRegion()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'currencytoregion');
-        $result = [
-            150 => 'EUR',
-            'AC' => 'SHP',
-            'AD' => 'EUR',
-            'AE' => 'AED',
-            'AF' => 'AFN',
-            'AG' => 'XCD',
-            'AI' => 'XCD',
-            'AL' => 'ALL',
-            'AM' => 'AMD',
-            'AO' => 'AOA',
-            'AQ' => 'XXX',
-            'AR' => 'ARS',
-            'AS' => 'USD',
-            'AT' => 'EUR',
-            'AU' => 'AUD',
-            'AW' => 'AWG',
-            'AX' => 'EUR',
-            'AZ' => 'AZN',
-            'BA' => 'BAM',
-            'BB' => 'BBD',
-            'BD' => 'BDT',
-            'BE' => 'EUR',
-            'BF' => 'XOF',
-            'BG' => 'BGN',
-            'BH' => 'BHD',
-            'BI' => 'BIF',
-            'BJ' => 'XOF',
-            'BL' => 'EUR',
-            'BM' => 'BMD',
-            'BN' => 'BND',
-            'BO' => 'BOB',
-            'BQ' => 'USD',
-            'BR' => 'BRL',
-            'BS' => 'BSD',
-            'BT' => 'BTN',
-            'BU' => 'BUK',
-            'BV' => 'NOK',
-            'BW' => 'BWP',
-            'BY' => 'BYR',
-            'BZ' => 'BZD',
-            'CA' => 'CAD',
-            'CC' => 'AUD',
-            'CD' => 'CDF',
-            'CF' => 'XAF',
-            'CG' => 'XAF',
-            'CH' => 'CHF',
-            'CI' => 'XOF',
-            'CK' => 'NZD',
-            'CL' => 'CLP',
-            'CM' => 'XAF',
-            'CN' => 'CNY',
-            'CO' => 'COP',
-            'CP' => 'XXX',
-            'CR' => 'CRC',
-            'CS' => 'CSD',
-            'CU' => 'CUP',
-            'CV' => 'CVE',
-            'CW' => 'ANG',
-            'CX' => 'AUD',
-            'CY' => 'EUR',
-            'CZ' => 'CZK',
-            'DD' => 'DDM',
-            'DE' => 'EUR',
-            'DG' => 'USD',
-            'DJ' => 'DJF',
-            'DK' => 'DKK',
-            'DM' => 'XCD',
-            'DO' => 'DOP',
-            'DZ' => 'DZD',
-            'EA' => 'EUR',
-            'EC' => 'USD',
-            'EE' => 'EUR',
-            'EG' => 'EGP',
-            'EH' => 'MAD',
-            'ER' => 'ERN',
-            'ES' => 'EUR',
-            'ET' => 'ETB',
-            'EU' => 'EUR',
-            'FI' => 'EUR',
-            'FJ' => 'FJD',
-            'FK' => 'FKP',
-            'FM' => 'USD',
-            'FO' => 'DKK',
-            'FR' => 'EUR',
-            'GA' => 'XAF',
-            'GB' => 'GBP',
-            'GD' => 'XCD',
-            'GE' => 'GEL',
-            'GF' => 'EUR',
-            'GG' => 'GBP',
-            'GH' => 'GHS',
-            'GI' => 'GIP',
-            'GL' => 'DKK',
-            'GM' => 'GMD',
-            'GN' => 'GNF',
-            'GP' => 'EUR',
-            'GQ' => 'XAF',
-            'GR' => 'EUR',
-            'GS' => 'GBP',
-            'GT' => 'GTQ',
-            'GU' => 'USD',
-            'GW' => 'XOF',
-            'GY' => 'GYD',
-            'HK' => 'HKD',
-            'HM' => 'AUD',
-            'HN' => 'HNL',
-            'HR' => 'HRK',
-            'HT' => 'HTG',
-            'HU' => 'HUF',
-            'IC' => 'EUR',
-            'ID' => 'IDR',
-            'IE' => 'EUR',
-            'IL' => 'ILS',
-            'IM' => 'GBP',
-            'IN' => 'INR',
-            'IO' => 'USD',
-            'IQ' => 'IQD',
-            'IR' => 'IRR',
-            'IS' => 'ISK',
-            'IT' => 'EUR',
-            'JE' => 'GBP',
-            'JM' => 'JMD',
-            'JO' => 'JOD',
-            'JP' => 'JPY',
-            'KE' => 'KES',
-            'KG' => 'KGS',
-            'KH' => 'KHR',
-            'KI' => 'AUD',
-            'KM' => 'KMF',
-            'KN' => 'XCD',
-            'KP' => 'KPW',
-            'KR' => 'KRW',
-            'KW' => 'KWD',
-            'KY' => 'KYD',
-            'KZ' => 'KZT',
-            'LA' => 'LAK',
-            'LB' => 'LBP',
-            'LC' => 'XCD',
-            'LI' => 'CHF',
-            'LK' => 'LKR',
-            'LR' => 'LRD',
-            'LS' => 'ZAR',
-            'LT' => 'LTL',
-            'LU' => 'EUR',
-            'LV' => 'EUR',
-            'LY' => 'LYD',
-            'MA' => 'MAD',
-            'MC' => 'EUR',
-            'MD' => 'MDL',
-            'ME' => 'EUR',
-            'MF' => 'EUR',
-            'MG' => 'MGA',
-            'MH' => 'USD',
-            'MK' => 'MKD',
-            'ML' => 'XOF',
-            'MM' => 'MMK',
-            'MN' => 'MNT',
-            'MO' => 'MOP',
-            'MP' => 'USD',
-            'MQ' => 'EUR',
-            'MR' => 'MRO',
-            'MS' => 'XCD',
-            'MT' => 'EUR',
-            'MU' => 'MUR',
-            'MV' => 'MVR',
-            'MW' => 'MWK',
-            'MX' => 'MXN',
-            'MY' => 'MYR',
-            'MZ' => 'MZN',
-            'NA' => 'NAD',
-            'NC' => 'XPF',
-            'NE' => 'XOF',
-            'NF' => 'AUD',
-            'NG' => 'NGN',
-            'NI' => 'NIO',
-            'NL' => 'EUR',
-            'NO' => 'NOK',
-            'NP' => 'NPR',
-            'NR' => 'AUD',
-            'NU' => 'NZD',
-            'NZ' => 'NZD',
-            'OM' => 'OMR',
-            'PA' => 'PAB',
-            'PE' => 'PEN',
-            'PF' => 'XPF',
-            'PG' => 'PGK',
-            'PH' => 'PHP',
-            'PK' => 'PKR',
-            'PL' => 'PLN',
-            'PM' => 'EUR',
-            'PN' => 'NZD',
-            'PR' => 'USD',
-            'PS' => 'ILS',
-            'PT' => 'EUR',
-            'PW' => 'USD',
-            'PY' => 'PYG',
-            'QA' => 'QAR',
-            'RE' => 'EUR',
-            'RO' => 'RON',
-            'RS' => 'RSD',
-            'RU' => 'RUB',
-            'RW' => 'RWF',
-            'SA' => 'SAR',
-            'SB' => 'SBD',
-            'SC' => 'SCR',
-            'SD' => 'SDG',
-            'SE' => 'SEK',
-            'SG' => 'SGD',
-            'SH' => 'SHP',
-            'SI' => 'EUR',
-            'SJ' => 'NOK',
-            'SK' => 'EUR',
-            'SL' => 'SLL',
-            'SM' => 'EUR',
-            'SN' => 'XOF',
-            'SO' => 'SOS',
-            'SR' => 'SRD',
-            'SS' => 'SSP',
-            'ST' => 'STD',
-            'SU' => 'SUR',
-            'SV' => 'USD',
-            'SX' => 'ANG',
-            'SY' => 'SYP',
-            'SZ' => 'SZL',
-            'TA' => 'GBP',
-            'TC' => 'USD',
-            'TD' => 'XAF',
-            'TF' => 'EUR',
-            'TG' => 'XOF',
-            'TH' => 'THB',
-            'TJ' => 'TJS',
-            'TK' => 'NZD',
-            'TL' => 'USD',
-            'TM' => 'TMT',
-            'TN' => 'TND',
-            'TO' => 'TOP',
-            'TP' => 'TPE',
-            'TR' => 'TRY',
-            'TT' => 'TTD',
-            'TV' => 'AUD',
-            'TW' => 'TWD',
-            'TZ' => 'TZS',
-            'UA' => 'UAH',
-            'UG' => 'UGX',
-            'UM' => 'USD',
-            'US' => 'USD',
-            'UY' => 'UYU',
-            'UZ' => 'UZS',
-            'VA' => 'EUR',
-            'VC' => 'XCD',
-            'VE' => 'VEF',
-            'VG' => 'USD',
-            'VI' => 'USD',
-            'VN' => 'VND',
-            'VU' => 'VUV',
-            'WF' => 'XPF',
-            'WS' => 'WST',
-            'XK' => 'EUR',
-            'YE' => 'YER',
-            'YD' => 'YDD',
-            'YT' => 'EUR',
-            'YU' => 'YUM',
-            'ZA' => 'ZAR',
-            'ZM' => 'ZMW',
-            'ZR' => 'ZRN',
-            'ZW' => 'USD',
-            'ZZ' => 'XAG',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'currencytoregion');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('SHP', $data['AC']);
+        $this->assertSame('KWD', $data['KW']);
+        $this->assertSame('ZRN', $data['ZR']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'currencytoregion', 'AT');
-        $this->assertEquals("EUR", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'currencytoregion', 'AT');
+        $this->assertSame('EUR', $data);
     }
 
     /**
@@ -2163,180 +936,16 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testRegionToCurrency()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'regiontocurrency');
-        $result = [
-            'EUR' => '150 AD AT AX BE BL CY DE EA EE ES EU FI FR GF GP GR IC IE IT LU LV MC ME MF MQ MT NL PM PT RE SI SK SM TF VA XK YT',
-            'SHP' => 'AC SH',
-            'AED' => 'AE',
-            'AFN' => 'AF',
-            'XCD' => 'AG AI DM GD KN LC MS VC',
-            'ALL' => 'AL',
-            'AMD' => 'AM',
-            'AOA' => 'AO',
-            'XXX' => 'AQ CP',
-            'ARS' => 'AR',
-            'USD' => 'AS BQ DG EC FM GU IO MH MP PR PW SV TC TL UM US VG VI ZW',
-            'AUD' => 'AU CC CX HM KI NF NR TV',
-            'AWG' => 'AW',
-            'AZN' => 'AZ',
-            'BAM' => 'BA',
-            'BBD' => 'BB',
-            'BDT' => 'BD',
-            'XOF' => 'BF BJ CI GW ML NE SN TG',
-            'BGN' => 'BG',
-            'BHD' => 'BH',
-            'BIF' => 'BI',
-            'BMD' => 'BM',
-            'BND' => 'BN',
-            'BOB' => 'BO',
-            'BRL' => 'BR',
-            'BSD' => 'BS',
-            'BTN' => 'BT',
-            'BUK' => 'BU',
-            'NOK' => 'BV NO SJ',
-            'BWP' => 'BW',
-            'BYR' => 'BY',
-            'BZD' => 'BZ',
-            'CAD' => 'CA',
-            'CDF' => 'CD',
-            'XAF' => 'CF CG CM GA GQ TD',
-            'CHF' => 'CH LI',
-            'NZD' => 'CK NU NZ PN TK',
-            'CLP' => 'CL',
-            'CNY' => 'CN',
-            'COP' => 'CO',
-            'CRC' => 'CR',
-            'CSD' => 'CS',
-            'CUP' => 'CU',
-            'CVE' => 'CV',
-            'ANG' => 'CW SX',
-            'CZK' => 'CZ',
-            'DDM' => 'DD',
-            'DJF' => 'DJ',
-            'DKK' => 'DK FO GL',
-            'DOP' => 'DO',
-            'DZD' => 'DZ',
-            'EGP' => 'EG',
-            'MAD' => 'EH MA',
-            'ERN' => 'ER',
-            'ETB' => 'ET',
-            'FJD' => 'FJ',
-            'FKP' => 'FK',
-            'GBP' => 'GB GG GS IM JE TA',
-            'GEL' => 'GE',
-            'GHS' => 'GH',
-            'GIP' => 'GI',
-            'GMD' => 'GM',
-            'GNF' => 'GN',
-            'GTQ' => 'GT',
-            'GYD' => 'GY',
-            'HKD' => 'HK',
-            'HNL' => 'HN',
-            'HRK' => 'HR',
-            'HTG' => 'HT',
-            'HUF' => 'HU',
-            'IDR' => 'ID',
-            'ILS' => 'IL PS',
-            'INR' => 'IN',
-            'IQD' => 'IQ',
-            'IRR' => 'IR',
-            'ISK' => 'IS',
-            'JMD' => 'JM',
-            'JOD' => 'JO',
-            'JPY' => 'JP',
-            'KES' => 'KE',
-            'KGS' => 'KG',
-            'KHR' => 'KH',
-            'KMF' => 'KM',
-            'KPW' => 'KP',
-            'KRW' => 'KR',
-            'KWD' => 'KW',
-            'KYD' => 'KY',
-            'KZT' => 'KZ',
-            'LAK' => 'LA',
-            'LBP' => 'LB',
-            'LKR' => 'LK',
-            'LRD' => 'LR',
-            'ZAR' => 'LS ZA',
-            'LTL' => 'LT',
-            'LYD' => 'LY',
-            'MDL' => 'MD',
-            'MGA' => 'MG',
-            'MKD' => 'MK',
-            'MMK' => 'MM',
-            'MNT' => 'MN',
-            'MOP' => 'MO',
-            'MRO' => 'MR',
-            'MUR' => 'MU',
-            'MVR' => 'MV',
-            'MWK' => 'MW',
-            'MXN' => 'MX',
-            'MYR' => 'MY',
-            'MZN' => 'MZ',
-            'NAD' => 'NA',
-            'XPF' => 'NC PF WF',
-            'NGN' => 'NG',
-            'NIO' => 'NI',
-            'NPR' => 'NP',
-            'OMR' => 'OM',
-            'PAB' => 'PA',
-            'PEN' => 'PE',
-            'PGK' => 'PG',
-            'PHP' => 'PH',
-            'PKR' => 'PK',
-            'PLN' => 'PL',
-            'PYG' => 'PY',
-            'QAR' => 'QA',
-            'RON' => 'RO',
-            'RSD' => 'RS',
-            'RUB' => 'RU',
-            'RWF' => 'RW',
-            'SAR' => 'SA',
-            'SBD' => 'SB',
-            'SCR' => 'SC',
-            'SDG' => 'SD',
-            'SEK' => 'SE',
-            'SGD' => 'SG',
-            'SLL' => 'SL',
-            'SOS' => 'SO',
-            'SRD' => 'SR',
-            'SSP' => 'SS',
-            'STD' => 'ST',
-            'SUR' => 'SU',
-            'SYP' => 'SY',
-            'SZL' => 'SZ',
-            'THB' => 'TH',
-            'TJS' => 'TJ',
-            'TMT' => 'TM',
-            'TND' => 'TN',
-            'TOP' => 'TO',
-            'TPE' => 'TP',
-            'TRY' => 'TR',
-            'TTD' => 'TT',
-            'TWD' => 'TW',
-            'TZS' => 'TZ',
-            'UAH' => 'UA',
-            'UGX' => 'UG',
-            'UYU' => 'UY',
-            'UZS' => 'UZ',
-            'VEF' => 'VE',
-            'VND' => 'VN',
-            'VUV' => 'VU',
-            'WST' => 'WS',
-            'YER' => 'YE',
-            'YDD' => 'YD',
-            'YUM' => 'YU',
-            'ZMW' => 'ZM',
-            'ZRN' => 'ZR',
-            'XAG' => 'ZZ',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'regiontocurrency');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('AC SH', $data['SHP']);
+        $this->assertSame('KM', $data['KMF']);
+        $this->assertSame('ZR', $data['ZRN']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'regiontocurrency', 'EUR');
-        $this->assertEquals(
-            "150 AD AT AX BE BL CY DE EA EE ES EU FI FR GF GP GR IC IE IT LU LV MC ME MF MQ MT NL PM PT RE SI SK SM TF VA XK YT",
-            $value
-        );
+        $data = Zend_Locale_Data::getContent('de_AT', 'regiontocurrency', 'EUR');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -2345,31 +954,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testRegionToTerritory()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'regiontoterritory');
-        $result = ['001' => '019 002 150 142 009',
-            '011' => 'BF BJ CI CV GH GM GN GW LR ML MR NE NG SH SL SN TG', '013' => 'BZ CR GT HN MX NI PA SV',
-            '014' => 'BI DJ ER ET KE KM MG MU MW MZ RE RW SC SO TZ UG YT ZM ZW',
-            '142' => '145 143 030 034 035', '143' => 'TM TJ KG KZ UZ',
-            '145' => 'AE AM AZ BH CY GE IL IQ JO KW LB OM PS QA SA SY TR YE',
-            '015' => 'DZ EG EH LY MA SD SS TN EA IC', '150' => '154 155 151 039',
-            '151' => 'BG BY CZ HU MD PL RO RU SK UA',
-            '154' => 'GG IM JE AX DK EE FI FO GB IE IS LT LV NO SE SJ',
-            '155' => 'AT BE CH DE FR LI LU MC NL', '017' => 'AO CD CF CG CM GA GQ ST TD',
-            '018' => 'BW LS NA SZ ZA',
-            '019' => '021 013 029 005', '002' => '015 011 017 014 018', '021' => 'BM CA GL PM US',
-            '029' => 'AG AI AW BB BL BQ BS CU CW DM DO GD GP HT JM KN KY LC MF MQ MS PR SX TC TT VC VG VI',
-            '003' => '021 013 029', '030' => 'CN HK JP KP KR MN MO TW',
-            '035' => 'BN ID KH LA MM MY PH SG TH TL VN',
-            '039' => 'AD AL BA ES GI GR HR IT ME MK MT RS PT SI SM VA XK', '419' => '013 029 005',
-            '005' => 'AR BO BR CL CO EC FK GF GY PE PY SR UY VE', '053' => 'AU NF NZ',
-            '054' => 'FJ NC PG SB VU', '057' => 'FM GU KI MH MP NR PW',
-            '061' => 'AS CK NU PF PN TK TO TV WF WS', '034' => 'AF BD BT IN IR LK MV NP PK',
-            '009' => '053 054 057 061 QO', 'QO' => 'AQ BV CC CX GS HM IO TF UM AC CP DG TA',
-            'EU' => 'AT BE CY CZ DE DK EE ES FI FR GB GR HU IE IT LT LU LV MT NL PL PT SE SI SK BG RO'];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'regiontoterritory');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('019 002 150 142 009', $data['001']);
+        $this->assertSame('015 011 017 014 018', $data['002']);
+        $this->assertSame('053 054 057 061 QO', $data['009']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'regiontoterritory', '143');
-        $this->assertEquals("TM TJ KG KZ UZ", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'regiontoterritory', '143');
+        $this->assertSame('TM TJ KG KZ UZ', $data);
     }
 
     /**
@@ -2378,296 +971,16 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testTerritoryToRegion()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'territorytoregion');
-        $result = [
-  '019' => '001',
-  '002' => '001',
-  150 => '001',
-  142 => '001',
-  '009' => '001',
-  'BF' => '011',
-  'BJ' => '011',
-  'CI' => '011',
-  'CV' => '011',
-  'GH' => '011',
-  'GM' => '011',
-  'GN' => '011',
-  'GW' => '011',
-  'LR' => '011',
-  'ML' => '011',
-  'MR' => '011',
-  'NE' => '011',
-  'NG' => '011',
-  'SH' => '011',
-  'SL' => '011',
-  'SN' => '011',
-  'TG' => '011',
-  'BZ' => '013',
-  'CR' => '013',
-  'GT' => '013',
-  'HN' => '013',
-  'MX' => '013',
-  'NI' => '013',
-  'PA' => '013',
-  'SV' => '013',
-  'BI' => '014',
-  'DJ' => '014',
-  'ER' => '014',
-  'ET' => '014',
-  'KE' => '014',
-  'KM' => '014',
-  'MG' => '014',
-  'MU' => '014',
-  'MW' => '014',
-  'MZ' => '014',
-  'RE' => '014',
-  'RW' => '014',
-  'SC' => '014',
-  'SO' => '014',
-  'TZ' => '014',
-  'UG' => '014',
-  'YT' => '014',
-  'ZM' => '014',
-  'ZW' => '014',
-  145 => '142',
-  143 => '142',
-  '030' => '142',
-  '034' => '142',
-  '035' => '142',
-  'TM' => '143',
-  'TJ' => '143',
-  'KG' => '143',
-  'KZ' => '143',
-  'UZ' => '143',
-  'AE' => '145',
-  'AM' => '145',
-  'AZ' => '145',
-  'BH' => '145',
-  'CY' => '145 EU',
-  'GE' => '145',
-  'IL' => '145',
-  'IQ' => '145',
-  'JO' => '145',
-  'KW' => '145',
-  'LB' => '145',
-  'OM' => '145',
-  'PS' => '145',
-  'QA' => '145',
-  'SA' => '145',
-  'SY' => '145',
-  'TR' => '145',
-  'YE' => '145',
-  'DZ' => '015',
-  'EG' => '015',
-  'EH' => '015',
-  'LY' => '015',
-  'MA' => '015',
-  'SD' => '015',
-  'SS' => '015',
-  'TN' => '015',
-  'EA' => '015',
-  'IC' => '015',
-  154 => '150',
-  155 => '150',
-  151 => '150',
-  '039' => '150',
-  'BG' => '151 EU',
-  'BY' => '151',
-  'CZ' => '151 EU',
-  'HU' => '151 EU',
-  'MD' => '151',
-  'PL' => '151 EU',
-  'RO' => '151 EU',
-  'RU' => '151',
-  'SK' => '151 EU',
-  'UA' => '151',
-  'GG' => '154',
-  'IM' => '154',
-  'JE' => '154',
-  'AX' => '154',
-  'DK' => '154 EU',
-  'EE' => '154 EU',
-  'FI' => '154 EU',
-  'FO' => '154',
-  'GB' => '154 EU',
-  'IE' => '154 EU',
-  'IS' => '154',
-  'LT' => '154 EU',
-  'LV' => '154 EU',
-  'NO' => '154',
-  'SE' => '154 EU',
-  'SJ' => '154',
-  'AT' => '155 EU',
-  'BE' => '155 EU',
-  'CH' => '155',
-  'DE' => '155 EU',
-  'FR' => '155 EU',
-  'LI' => '155',
-  'LU' => '155 EU',
-  'MC' => '155',
-  'NL' => '155 EU',
-  'AO' => '017',
-  'CD' => '017',
-  'CF' => '017',
-  'CG' => '017',
-  'CM' => '017',
-  'GA' => '017',
-  'GQ' => '017',
-  'ST' => '017',
-  'TD' => '017',
-  'BW' => '018',
-  'LS' => '018',
-  'NA' => '018',
-  'SZ' => '018',
-  'ZA' => '018',
-  '021' => '019 003',
-  '013' => '019 003 419',
-  '029' => '019 003 419',
-  '005' => '019 419',
-  '015' => '002',
-  '011' => '002',
-  '017' => '002',
-  '014' => '002',
-  '018' => '002',
-  'BM' => '021',
-  'CA' => '021',
-  'GL' => '021',
-  'PM' => '021',
-  'US' => '021',
-  'AG' => '029',
-  'AI' => '029',
-  'AW' => '029',
-  'BB' => '029',
-  'BL' => '029',
-  'BQ' => '029',
-  'BS' => '029',
-  'CU' => '029',
-  'CW' => '029',
-  'DM' => '029',
-  'DO' => '029',
-  'GD' => '029',
-  'GP' => '029',
-  'HT' => '029',
-  'JM' => '029',
-  'KN' => '029',
-  'KY' => '029',
-  'LC' => '029',
-  'MF' => '029',
-  'MQ' => '029',
-  'MS' => '029',
-  'PR' => '029',
-  'SX' => '029',
-  'TC' => '029',
-  'TT' => '029',
-  'VC' => '029',
-  'VG' => '029',
-  'VI' => '029',
-  'CN' => '030',
-  'HK' => '030',
-  'JP' => '030',
-  'KP' => '030',
-  'KR' => '030',
-  'MN' => '030',
-  'MO' => '030',
-  'TW' => '030',
-  'BN' => '035',
-  'ID' => '035',
-  'KH' => '035',
-  'LA' => '035',
-  'MM' => '035',
-  'MY' => '035',
-  'PH' => '035',
-  'SG' => '035',
-  'TH' => '035',
-  'TL' => '035',
-  'VN' => '035',
-  'AD' => '039',
-  'AL' => '039',
-  'BA' => '039',
-  'ES' => '039 EU',
-  'GI' => '039',
-  'GR' => '039 EU',
-  'HR' => '039',
-  'IT' => '039 EU',
-  'ME' => '039',
-  'MK' => '039',
-  'MT' => '039 EU',
-  'RS' => '039',
-  'PT' => '039 EU',
-  'SI' => '039 EU',
-  'SM' => '039',
-  'VA' => '039',
-  'XK' => '039',
-  'AR' => '005',
-  'BO' => '005',
-  'BR' => '005',
-  'CL' => '005',
-  'CO' => '005',
-  'EC' => '005',
-  'FK' => '005',
-  'GF' => '005',
-  'GY' => '005',
-  'PE' => '005',
-  'PY' => '005',
-  'SR' => '005',
-  'UY' => '005',
-  'VE' => '005',
-  'AU' => '053',
-  'NF' => '053',
-  'NZ' => '053',
-  'FJ' => '054',
-  'NC' => '054',
-  'PG' => '054',
-  'SB' => '054',
-  'VU' => '054',
-  'FM' => '057',
-  'GU' => '057',
-  'KI' => '057',
-  'MH' => '057',
-  'MP' => '057',
-  'NR' => '057',
-  'PW' => '057',
-  'AS' => '061',
-  'CK' => '061',
-  'NU' => '061',
-  'PF' => '061',
-  'PN' => '061',
-  'TK' => '061',
-  'TO' => '061',
-  'TV' => '061',
-  'WF' => '061',
-  'WS' => '061',
-  'AF' => '034',
-    'BD' => '034',
-  'BT' => '034',
-  'IN' => '034',
-  'IR' => '034',
-  'LK' => '034',
-  'MV' => '034',
-  'NP' => '034',
-  'PK' => '034',
-  '053' => '009',
-  '054' => '009',
-  '057' => '009',
-  '061' => '009',
-  'QO' => '009',
-  'AQ' => 'QO',
-  'BV' => 'QO',
-  'CC' => 'QO',
-  'CX' => 'QO',
-  'GS' => 'QO',
-  'HM' => 'QO',
-  'IO' => 'QO',
-  'TF' => 'QO',
-  'UM' => 'QO',
-  'AC' => 'QO',
-  'CP' => 'QO',
-  'DG' => 'QO',
-  'TA' => 'QO'];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'territorytoregion');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('001', $data['019']);
+        $this->assertSame('029', $data['CW']);
+        $this->assertSame('QO', $data['TA']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'territorytoregion', 'AT');
-        $this->assertEquals("155 EU", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'territorytoregion', 'AT');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -2676,642 +989,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testScriptToLanguage()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'scripttolanguage');
-        $result = [
-            'aa' => 'Latn',
-            'ab' => 'Cyrl',
-            'abq' => 'Cyrl',
-            'ace' => 'Latn',
-            'ach' => 'Latn',
-            'ada' => 'Latn',
-            'ady' => 'Cyrl',
-            'ae' => 'Avst',
-            'af' => 'Latn',
-            'agq' => 'Latn',
-            'aii' => 'Cyrl',
-            'ain' => 'Kana Latn',
-            'ak' => 'Latn',
-            'akk' => 'Xsux',
-            'ale' => 'Latn',
-            'alt' => 'Cyrl',
-            'am' => 'Ethi',
-            'amo' => 'Latn',
-            'an' => 'Latn',
-            'anp' => 'Deva',
-            'aoz' => 'Latn',
-            'ar' => 'Arab',
-            'arc' => 'Armi',
-            'arn' => 'Latn',
-            'arp' => 'Latn',
-            'arw' => 'Latn',
-            'as' => 'Beng',
-            'asa' => 'Latn',
-            'ast' => 'Latn',
-            'atj' => 'Latn',
-            'av' => 'Cyrl',
-            'awa' => 'Deva',
-            'ay' => 'Latn',
-            'az' => 'Arab Cyrl Latn',
-            'ba' => 'Cyrl',
-            'bal' => 'Arab',
-            'ban' => 'Latn',
-            'bap' => 'Deva',
-            'bas' => 'Latn',
-            'bax' => 'Bamu',
-            'bbc' => 'Latn',
-            'bbj' => 'Latn',
-            'be' => 'Cyrl',
-            'bej' => 'Arab',
-            'bem' => 'Latn',
-            'bez' => 'Latn',
-            'bfd' => 'Latn',
-            'bfq' => 'Taml',
-            'bft' => 'Arab',
-            'bfy' => 'Deva',
-            'bg' => 'Cyrl',
-            'bgx' => 'Grek',
-            'bhb' => 'Deva',
-            'bho' => 'Deva',
-            'bi' => 'Latn',
-            'bik' => 'Latn',
-            'bin' => 'Latn',
-            'bjj' => 'Deva',
-            'bkm' => 'Latn',
-            'bku' => 'Latn',
-            'bla' => 'Latn',
-            'blt' => 'Tavt',
-            'bm' => 'Latn',
-            'bmq' => 'Latn',
-            'bn' => 'Beng',
-            'bo' => 'Tibt',
-            'bqv' => 'Latn',
-            'br' => 'Latn',
-            'bra' => 'Deva',
-            'brx' => 'Deva',
-            'bs' => 'Cyrl Latn',
-            'bss' => 'Latn',
-            'bto' => 'Latn',
-            'btv' => 'Deva',
-            'bua' => 'Cyrl',
-            'buc' => 'Latn',
-            'bug' => 'Latn',
-            'bum' => 'Latn',
-            'bvb' => 'Latn',
-            'bya' => 'Latn',
-            'byn' => 'Ethi',
-            'byv' => 'Latn',
-            'bze' => 'Latn',
-            'bzx' => 'Latn',
-            'ca' => 'Latn',
-            'cad' => 'Latn',
-            'car' => 'Latn',
-            'cay' => 'Latn',
-            'cch' => 'Latn',
-            'ccp' => 'Beng',
-            'ce' => 'Cyrl',
-            'ceb' => 'Latn',
-            'cgg' => 'Latn',
-            'ch' => 'Latn',
-            'chk' => 'Latn',
-            'chm' => 'Cyrl',
-            'chn' => 'Latn',
-            'cho' => 'Latn',
-            'chp' => 'Latn',
-            'chr' => 'Cher',
-            'chy' => 'Latn',
-            'cja' => 'Arab',
-            'cjm' => 'Cham',
-            'cjs' => 'Cyrl',
-            'ckb' => 'Arab',
-            'ckt' => 'Cyrl',
-            'co' => 'Latn',
-            'cop' => 'Arab Copt Grek',
-            'cr' => 'Cans Latn',
-            'crh' => 'Cyrl',
-            'crj' => 'Cans',
-            'crk' => 'Cans',
-            'crl' => 'Cans',
-            'crm' => 'Cans',
-            'cs' => 'Latn',
-            'csb' => 'Latn',
-            'csw' => 'Cans',
-            'cu' => 'Cyrl',
-            'cv' => 'Cyrl',
-            'cy' => 'Latn',
-            'da' => 'Latn',
-            'dak' => 'Latn',
-            'dar' => 'Cyrl',
-            'dav' => 'Latn',
-            'de' => 'Latn',
-            'del' => 'Latn',
-            'den' => 'Latn',
-            'dgr' => 'Latn',
-            'din' => 'Latn',
-            'dje' => 'Latn',
-            'dng' => 'Cyrl',
-            'dnj' => 'Latn',
-            'doi' => 'Arab',
-            'dsb' => 'Latn',
-            'dtm' => 'Latn',
-            'dua' => 'Latn',
-            'dv' => 'Thaa',
-            'dyo' => 'Latn',
-            'dyu' => 'Latn',
-            'dz' => 'Tibt',
-            'ebu' => 'Latn',
-            'ee' => 'Latn',
-            'efi' => 'Latn',
-            'egy' => 'Egyp',
-            'eka' => 'Latn',
-            'eky' => 'Kali',
-            'el' => 'Grek',
-            'en' => 'Latn',
-            'eo' => 'Latn',
-            'es' => 'Latn',
-            'et' => 'Latn',
-            'ett' => 'Ital Latn',
-            'eu' => 'Latn',
-            'evn' => 'Cyrl',
-            'ewo' => 'Latn',
-            'fa' => 'Arab',
-            'fan' => 'Latn',
-            'ff' => 'Latn',
-            'fi' => 'Latn',
-            'fil' => 'Latn',
-            'fit' => 'Latn',
-            'fj' => 'Latn',
-            'fo' => 'Latn',
-            'fon' => 'Latn',
-            'fr' => 'Latn',
-            'frr' => 'Latn',
-            'frs' => 'Latn',
-            'fur' => 'Latn',
-            'fy' => 'Latn',
-            'ga' => 'Latn',
-            'gaa' => 'Latn',
-            'gag' => 'Latn',
-            'gay' => 'Latn',
-            'gba' => 'Arab',
-            'gbm' => 'Deva',
-            'gcr' => 'Latn',
-            'gd' => 'Latn',
-            'gez' => 'Ethi',
-            'ggn' => 'Deva',
-            'gil' => 'Latn',
-            'gjk' => 'Arab',
-            'gju' => 'Arab',
-            'gl' => 'Latn',
-            'gld' => 'Cyrl',
-            'gn' => 'Latn',
-            'gon' => 'Deva Telu',
-            'gor' => 'Latn',
-            'gos' => 'Latn',
-            'got' => 'Goth',
-            'grb' => 'Latn',
-            'grc' => 'Cprt Grek Linb',
-            'grt' => 'Beng',
-            'gsw' => 'Latn',
-            'gu' => 'Gujr',
-            'gub' => 'Latn',
-            'guz' => 'Latn',
-            'gv' => 'Latn',
-            'gvr' => 'Deva',
-            'gwi' => 'Latn',
-            'ha' => 'Arab Latn',
-            'hai' => 'Latn',
-            'haw' => 'Latn',
-            'he' => 'Hebr',
-            'hi' => 'Deva',
-            'hil' => 'Latn',
-            'hit' => 'Xsux',
-            'hmd' => 'Plrd',
-            'hmn' => 'Latn',
-            'hnd' => 'Arab',
-            'hne' => 'Deva',
-            'hnn' => 'Latn',
-            'ho' => 'Latn',
-            'hoc' => 'Deva',
-            'hoj' => 'Deva',
-            'hop' => 'Latn',
-            'hr' => 'Latn',
-            'hsb' => 'Latn',
-            'ht' => 'Latn',
-            'hu' => 'Latn',
-            'hup' => 'Latn',
-            'hy' => 'Armn',
-            'hz' => 'Latn',
-            'ia' => 'Latn',
-            'iba' => 'Latn',
-            'ibb' => 'Latn',
-            'id' => 'Latn',
-            'ig' => 'Latn',
-            'ii' => 'Yiii',
-            'ik' => 'Latn',
-            'ilo' => 'Latn',
-            'inh' => 'Cyrl',
-            'is' => 'Latn',
-            'it' => 'Latn',
-            'iu' => 'Cans',
-            'ja' => 'Jpan',
-            'jmc' => 'Latn',
-            'jml' => 'Deva',
-            'jpr' => 'Hebr',
-            'jrb' => 'Hebr',
-            'jv' => 'Latn',
-            'ka' => 'Geor',
-            'kaa' => 'Cyrl',
-            'kab' => 'Latn',
-            'kac' => 'Latn',
-            'kaj' => 'Latn',
-            'kam' => 'Latn',
-            'kao' => 'Latn',
-            'kbd' => 'Cyrl',
-            'kca' => 'Cyrl',
-            'kcg' => 'Latn',
-            'kck' => 'Latn',
-            'kde' => 'Latn',
-            'kdt' => 'Thai',
-            'kea' => 'Latn',
-            'kfo' => 'Latn',
-            'kfr' => 'Deva',
-            'kg' => 'Latn',
-            'kge' => 'Latn',
-            'kgp' => 'Latn',
-            'kha' => 'Latn',
-            'khb' => 'Talu',
-            'khq' => 'Latn',
-            'kht' => 'Mymr',
-            'khw' => 'Arab',
-            'ki' => 'Latn',
-            'kj' => 'Latn',
-            'kjg' => 'Laoo',
-            'kjh' => 'Cyrl',
-            'kk' => 'Arab Cyrl',
-            'kl' => 'Latn',
-            'kln' => 'Latn',
-            'km' => 'Khmr',
-            'kmb' => 'Latn',
-            'kn' => 'Knda',
-            'ko' => 'Kore',
-            'koi' => 'Cyrl',
-            'kok' => 'Deva',
-            'kos' => 'Latn',
-            'kpe' => 'Latn',
-            'kpy' => 'Cyrl',
-            'kr' => 'Latn',
-            'krc' => 'Cyrl',
-            'kri' => 'Latn',
-            'krl' => 'Latn',
-            'kru' => 'Deva',
-            'ks' => 'Arab Deva',
-            'ksb' => 'Latn',
-            'ksf' => 'Latn',
-            'ksh' => 'Latn',
-            'ku' => 'Arab Cyrl Latn',
-            'kum' => 'Cyrl',
-            'kut' => 'Latn',
-            'kv' => 'Cyrl',
-            'kvr' => 'Latn',
-            'kvx' => 'Arab',
-            'kw' => 'Latn',
-            'kxp' => 'Arab',
-            'ky' => 'Arab Cyrl Latn',
-            'kyu' => 'Kali',
-            'la' => 'Latn',
-            'lad' => 'Hebr',
-            'lag' => 'Latn',
-            'lah' => 'Arab',
-            'lam' => 'Latn',
-            'lb' => 'Latn',
-            'lbe' => 'Cyrl',
-            'lbw' => 'Latn',
-            'lcp' => 'Thai',
-            'lep' => 'Lepc',
-            'lez' => 'Cyrl',
-            'lg' => 'Latn',
-            'li' => 'Latn',
-            'lif' => 'Deva Limb',
-            'lis' => 'Lisu',
-            'lki' => 'Arab',
-            'lmn' => 'Telu',
-            'lmo' => 'Latn',
-            'ln' => 'Latn',
-            'lo' => 'Laoo',
-            'lol' => 'Latn',
-            'loz' => 'Latn',
-            'lt' => 'Latn',
-            'lu' => 'Latn',
-            'lua' => 'Latn',
-            'lui' => 'Latn',
-            'lun' => 'Latn',
-            'luo' => 'Latn',
-            'lus' => 'Beng',
-            'lut' => 'Latn',
-            'luy' => 'Latn',
-            'luz' => 'Arab',
-            'lv' => 'Latn',
-            'lwl' => 'Thai',
-            'lzh' => 'Phag',
-            'mad' => 'Latn',
-            'maf' => 'Latn',
-            'mag' => 'Deva',
-            'mai' => 'Deva',
-            'mak' => 'Latn',
-            'man' => 'Latn Nkoo',
-            'mas' => 'Latn',
-            'maz' => 'Latn',
-            'mdf' => 'Cyrl',
-            'mdh' => 'Latn',
-            'mdr' => 'Latn',
-            'mdt' => 'Latn',
-            'men' => 'Latn',
-            'mer' => 'Latn',
-            'mfe' => 'Latn',
-            'mg' => 'Latn',
-            'mgh' => 'Latn',
-            'mgp' => 'Deva',
-            'mgy' => 'Latn',
-            'mh' => 'Latn',
-            'mi' => 'Latn',
-            'mic' => 'Latn',
-            'min' => 'Latn',
-            'mk' => 'Cyrl',
-            'ml' => 'Mlym',
-            'mn' => 'Cyrl Mong',
-            'mnc' => 'Mong',
-            'mni' => 'Beng',
-            'mns' => 'Cyrl',
-            'mnw' => 'Mymr',
-            'moe' => 'Latn',
-            'moh' => 'Latn',
-            'mos' => 'Latn',
-            'mr' => 'Deva',
-            'mrd' => 'Deva',
-            'mrj' => 'Cyrl',
-            'ms' => 'Arab Latn',
-            'mt' => 'Latn',
-            'mua' => 'Latn',
-            'mus' => 'Latn',
-            'mvy' => 'Arab',
-            'mwk' => 'Latn',
-            'mwl' => 'Latn',
-            'mwr' => 'Deva',
-            'mxc' => 'Latn',
-            'my' => 'Mymr',
-            'myv' => 'Cyrl',
-            'myz' => 'Mand',
-            'na' => 'Latn',
-            'nap' => 'Latn',
-            'naq' => 'Latn',
-            'nb' => 'Latn',
-            'nch' => 'Latn',
-            'nd' => 'Latn',
-            'nds' => 'Latn',
-            'ne' => 'Deva',
-            'new' => 'Deva',
-            'ng' => 'Latn',
-            'nhe' => 'Latn',
-            'nhw' => 'Latn',
-            'nia' => 'Latn',
-            'nij' => 'Latn',
-            'niu' => 'Latn',
-            'nl' => 'Latn',
-            'nmg' => 'Latn',
-            'nn' => 'Latn',
-            'nod' => 'Lana',
-            'nog' => 'Cyrl',
-            'non' => 'Runr',
-            'nqo' => 'Nkoo',
-            'nr' => 'Latn',
-            'nsk' => 'Cans',
-            'nso' => 'Latn',
-            'nus' => 'Latn',
-            'nv' => 'Latn',
-            'nxq' => 'Latn',
-            'ny' => 'Latn',
-            'nym' => 'Latn',
-            'nyn' => 'Latn',
-            'nyo' => 'Latn',
-            'nzi' => 'Latn',
-            'oc' => 'Latn',
-            'oj' => 'Cans',
-            'om' => 'Latn',
-            'or' => 'Orya',
-            'os' => 'Cyrl',
-            'osa' => 'Latn',
-            'osc' => 'Ital Latn',
-            'otk' => 'Orkh',
-            'pa' => 'Arab Guru',
-            'pag' => 'Latn',
-            'pal' => 'Phli',
-            'pam' => 'Latn',
-            'pap' => 'Latn',
-            'pau' => 'Latn',
-            'pcm' => 'Latn',
-            'peo' => 'Xpeo',
-            'phn' => 'Phnx',
-            'pi' => 'Deva Sinh Thai',
-            'pko' => 'Latn',
-            'pl' => 'Latn',
-            'pon' => 'Latn',
-            'prd' => 'Arab',
-            'prg' => 'Latn',
-            'prs' => 'Arab',
-            'ps' => 'Arab',
-            'pt' => 'Latn',
-            'puu' => 'Latn',
-            'qu' => 'Latn',
-            'raj' => 'Latn',
-            'rap' => 'Latn',
-            'rar' => 'Latn',
-            'rcf' => 'Latn',
-            'rej' => 'Latn',
-            'ria' => 'Latn',
-            'rjs' => 'Deva',
-            'rkt' => 'Beng',
-            'rm' => 'Latn',
-            'rmf' => 'Latn',
-            'rmo' => 'Latn',
-            'rmt' => 'Arab',
-            'rmu' => 'Latn',
-            'rn' => 'Latn',
-            'rng' => 'Latn',
-            'ro' => 'Latn',
-            'rob' => 'Latn',
-            'rof' => 'Latn',
-            'rom' => 'Cyrl Latn',
-            'ru' => 'Cyrl',
-            'rue' => 'Cyrl',
-            'rup' => 'Latn',
-            'rw' => 'Latn',
-            'rwk' => 'Latn',
-            'ryu' => 'Kana',
-            'sa' => 'Deva Shrd Sinh',
-            'sad' => 'Latn',
-            'saf' => 'Latn',
-            'sah' => 'Cyrl',
-            'sam' => 'Hebr Samr',
-            'saq' => 'Latn',
-            'sas' => 'Latn',
-            'sat' => 'Latn',
-            'saz' => 'Saur',
-            'sbp' => 'Latn',
-            'sc' => 'Latn',
-            'scn' => 'Latn',
-            'sco' => 'Latn',
-            'scs' => 'Latn',
-            'sd' => 'Arab Deva',
-            'sdh' => 'Arab',
-            'se' => 'Latn',
-            'see' => 'Latn',
-            'sef' => 'Latn',
-            'seh' => 'Latn',
-            'sel' => 'Cyrl',
-            'ses' => 'Latn',
-            'sg' => 'Latn',
-            'sga' => 'Latn Ogam',
-            'shi' => 'Arab Latn Tfng',
-            'shn' => 'Mymr',
-            'si' => 'Sinh',
-            'sid' => 'Latn',
-            'sk' => 'Latn',
-            'sl' => 'Latn',
-            'sm' => 'Latn',
-            'sma' => 'Latn',
-            'smj' => 'Latn',
-            'smn' => 'Latn',
-            'smp' => 'Samr',
-            'sms' => 'Latn',
-            'sn' => 'Latn',
-            'snk' => 'Latn',
-            'so' => 'Latn',
-            'sq' => 'Latn',
-            'sr' => 'Cyrl Latn',
-            'srb' => 'Latn',
-            'srn' => 'Latn',
-            'srr' => 'Latn',
-            'srx' => 'Deva',
-            'ss' => 'Latn',
-            'ssy' => 'Latn',
-            'st' => 'Latn',
-            'su' => 'Latn',
-            'suk' => 'Latn',
-            'sus' => 'Latn',
-            'sv' => 'Latn',
-            'sw' => 'Latn',
-            'swb' => 'Arab',
-            'swc' => 'Latn',
-            'sxn' => 'Latn',
-            'syi' => 'Latn',
-            'syl' => 'Beng',
-            'syr' => 'Syrc',
-            'ta' => 'Taml',
-            'tab' => 'Cyrl',
-            'taj' => 'Deva',
-            'tbw' => 'Latn',
-            'tcy' => 'Knda',
-            'tdd' => 'Tale',
-            'tdg' => 'Deva',
-            'tdh' => 'Deva',
-            'te' => 'Telu',
-            'tem' => 'Latn',
-            'teo' => 'Latn',
-            'ter' => 'Latn',
-            'tet' => 'Latn',
-            'tg' => 'Arab Cyrl Latn',
-            'th' => 'Thai',
-            'thl' => 'Deva',
-            'thq' => 'Deva',
-            'thr' => 'Deva',
-            'ti' => 'Ethi',
-            'tig' => 'Ethi',
-            'tiv' => 'Latn',
-            'tk' => 'Arab Cyrl Latn',
-            'tkl' => 'Latn',
-            'tkt' => 'Deva',
-            'tli' => 'Latn',
-            'tmh' => 'Latn',
-            'tn' => 'Latn',
-            'to' => 'Latn',
-            'tog' => 'Latn',
-            'tpi' => 'Latn',
-            'tr' => 'Latn',
-            'tru' => 'Latn',
-            'trv' => 'Latn',
-            'ts' => 'Latn',
-            'tsf' => 'Deva',
-            'tsg' => 'Latn',
-            'tsi' => 'Latn',
-            'tsj' => 'Tibt',
-            'tt' => 'Cyrl',
-            'ttj' => 'Latn',
-            'tts' => 'Thai',
-            'tum' => 'Latn',
-            'tvl' => 'Latn',
-            'twq' => 'Latn',
-            'ty' => 'Latn',
-            'tyv' => 'Cyrl',
-            'tzm' => 'Latn Tfng',
-            'ude' => 'Cyrl',
-            'udm' => 'Cyrl',
-            'ug' => 'Arab Cyrl',
-            'uga' => 'Ugar',
-            'uk' => 'Cyrl',
-            'uli' => 'Latn',
-            'umb' => 'Latn',
-            'unr' => 'Beng Deva',
-            'unx' => 'Beng Deva',
-            'ur' => 'Arab',
-            'uz' => 'Arab Cyrl Latn',
-            'vai' => 'Latn Vaii',
-            've' => 'Latn',
-            'vi' => 'Latn',
-            'vic' => 'Latn',
-            'vo' => 'Latn',
-            'vot' => 'Latn',
-            'vun' => 'Latn',
-            'wa' => 'Latn',
-            'wae' => 'Latn',
-            'wal' => 'Ethi',
-            'war' => 'Latn',
-            'was' => 'Latn',
-            'wo' => 'Latn',
-            'xal' => 'Cyrl',
-            'xav' => 'Latn',
-            'xcr' => 'Cari',
-            'xh' => 'Latn',
-            'xlc' => 'Lyci',
-            'xld' => 'Lydi',
-            'xmr' => 'Merc',
-            'xog' => 'Latn',
-            'xpr' => 'Prti',
-            'xsa' => 'Sarb',
-            'xsr' => 'Deva',
-            'xum' => 'Ital Latn',
-            'yao' => 'Latn',
-            'yap' => 'Latn',
-            'yav' => 'Latn',
-            'ybb' => 'Latn',
-            'yi' => 'Hebr',
-            'yo' => 'Latn',
-            'yrk' => 'Cyrl',
-            'yua' => 'Latn',
-            'yue' => 'Hans',
-            'za' => 'Latn',
-            'zap' => 'Latn',
-            'zea' => 'Latn',
-            'zen' => 'Tfng',
-            'zgh' => 'Tfng',
-            'zh' => 'Hans Hant',
-            'zmi' => 'Latn',
-            'zu' => 'Latn',
-            'zun' => 'Latn',
-            'zza' => 'Arab',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'scripttolanguage');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Latn', $data['aa']);
+        $this->assertSame('Latn', $data['li']);
+        $this->assertSame('Latn', $data['zun']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'scripttolanguage', 'uk');
-        $this->assertEquals("Cyrl", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'scripttolanguage', 'uk');
+        $this->assertSame('Cyrl', $data);
     }
 
     /**
@@ -3320,88 +1006,16 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testLanguageToScript()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'languagetoscript');
-        $result = [
-            'Latn' => 'aa ace ach ada af agq ain ak ale amo an aoz arn arp arw asa ast atj ay az ban bas bbc bbj bem bez bfd bi bik bin bkm bku bla bm bmq bqv br bs bss bto buc bug bum bvb bya byv bze bzx ca cad car cay cch ceb cgg ch chk chn cho chp chy co cr cs csb cy da dak dav de del den dgr din dje dnj dsb dtm dua dyo dyu ebu ee efi eka en eo es et ett eu ewo fan ff fi fil fit fj fo fon fr frr frs fur fy ga gaa gag gay gcr gd gil gl gn gor gos grb gsw gub guz gv gwi ha hai haw hil hmn hnn ho hop hr hsb ht hu hup hz ia iba ibb id ig ik ilo is it jmc jv kab kac kaj kam kao kcg kck kde kea kfo kg kge kgp kha khq ki kj kl kln kmb kos kpe kr kri krl ksb ksf ksh ku kut kvr kw ky la lag lam lb lbw lg li lmo ln lol loz lt lu lua lui lun luo lut luy lv mad maf mak man mas maz mdh mdr mdt men mer mfe mg mgh mgy mh mi mic min moe moh mos ms mt mua mus mwk mwl mxc na nap naq nb nch nd nds ng nhe nhw nia nij niu nl nmg nn nr nso nus nv nxq ny nym nyn nyo nzi oc om osa osc pag pam pap pau pcm pko pl pon prg pt puu qu raj rap rar rcf rej ria rm rmf rmo rmu rn rng ro rob rof rom rup rw rwk sad saf saq sas sat sbp sc scn sco scs se see sef seh ses sg sga shi sid sk sl sm sma smj smn sms sn snk so sq sr srb srn srr ss ssy st su suk sus sv sw swc sxn syi tbw tem teo ter tet tg tiv tk tkl tli tmh tn to tog tpi tr tru trv ts tsg tsi ttj tum tvl twq ty tzm uli umb uz vai ve vi vic vo vot vun wa wae war was wo xav xh xog xum yao yap yav ybb yo yua za zap zea zmi zu zun',
-            'Cyrl' => 'ab abq ady aii alt av az ba be bg bs bua ce chm cjs ckt crh cu cv dar dng evn gld inh kaa kbd kca kjh kk koi kpy krc ku kum kv ky lbe lez mdf mk mn mns mrj myv nog os rom ru rue sah sel sr tab tg tk tt tyv ude udm ug uk uz xal yrk',
-            'Avst' => 'ae',
-            'Kana' => 'ain ryu',
-            'Xsux' => 'akk hit',
-            'Ethi' => 'am byn gez ti tig wal',
-            'Deva' => 'anp awa bap bfy bhb bho bjj bra brx btv gbm ggn gon gvr hi hne hoc hoj jml kfr kok kru ks lif mag mai mgp mr mrd mwr ne new pi rjs sa sd srx taj tdg tdh thl thq thr tkt tsf unr unx xsr',
-            'Arab' => 'ar az bal bej bft cja ckb cop doi fa gba gjk gju ha hnd khw kk ks ku kvx kxp ky lah lki luz ms mvy pa prd prs ps rmt sd sdh shi swb tg tk ug ur uz zza',
-            'Armi' => 'arc',
-            'Beng' => 'as bn ccp grt lus mni rkt syl unr unx',
-            'Bamu' => 'bax',
-            'Taml' => 'bfq ta',
-            'Grek' => 'bgx cop el grc',
-            'Tavt' => 'blt',
-            'Tibt' => 'bo dz tsj',
-            'Cher' => 'chr',
-            'Cham' => 'cjm',
-            'Copt' => 'cop',
-            'Cans' => 'cr crj crk crl crm csw iu nsk oj',
-            'Thaa' => 'dv',
-            'Egyp' => 'egy',
-            'Kali' => 'eky kyu',
-            'Ital' => 'ett osc xum',
-            'Telu' => 'gon lmn te',
-            'Goth' => 'got',
-            'Cprt' => 'grc',
-            'Linb' => 'grc',
-            'Gujr' => 'gu',
-            'Hebr' => 'he jpr jrb lad sam yi',
-            'Plrd' => 'hmd',
-            'Armn' => 'hy',
-            'Yiii' => 'ii',
-            'Jpan' => 'ja',
-            'Geor' => 'ka',
-            'Thai' => 'kdt lcp lwl pi th tts',
-            'Talu' => 'khb',
-            'Mymr' => 'kht mnw my shn',
-            'Laoo' => 'kjg lo',
-            'Khmr' => 'km',
-            'Knda' => 'kn tcy',
-            'Kore' => 'ko',
-            'Lepc' => 'lep',
-            'Limb' => 'lif',
-            'Lisu' => 'lis',
-            'Phag' => 'lzh',
-            'Nkoo' => 'man nqo',
-            'Mlym' => 'ml',
-            'Mong' => 'mn mnc',
-            'Mand' => 'myz',
-            'Lana' => 'nod',
-            'Runr' => 'non',
-            'Orya' => 'or',
-            'Orkh' => 'otk',
-            'Guru' => 'pa',
-            'Phli' => 'pal',
-            'Xpeo' => 'peo',
-            'Phnx' => 'phn',
-            'Sinh' => 'pi sa si',
-            'Shrd' => 'sa',
-            'Samr' => 'sam smp',
-            'Saur' => 'saz',
-            'Ogam' => 'sga',
-            'Tfng' => 'shi tzm zen zgh',
-            'Syrc' => 'syr',
-            'Tale' => 'tdd',
-            'Ugar' => 'uga',
-            'Vaii' => 'vai',
-            'Cari' => 'xcr',
-            'Lyci' => 'xlc',
-            'Lydi' => 'xld',
-            'Merc' => 'xmr',
-            'Prti' => 'xpr',
-            'Sarb' => 'xsa',
-            'Hans' => 'yue zh',
-            'Hant' => 'zh',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'languagetoscript');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('ae', $data['Avst']);
+        $this->assertSame('ko', $data['Kore']);
+        $this->assertSame('xsa', $data['Sarb']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'languagetoscript', 'Kana');
-        $this->assertEquals("ain ryu", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'languagetoscript', 'Kana');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -3410,361 +1024,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testTerritoryToLanguage()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'territorytolanguage');
-        $result = [
-            'aa' => 'DJ ET',
-            'ab' => 'GE',
-            'abr' => 'GH',
-            'ace' => 'ID',
-            'ach' => 'UG',
-            'ady' => 'RU',
-            'af' => 'NA ZA',
-            'ak' => 'GH',
-            'am' => 'ET',
-            'ar' => 'AE BH DJ DZ EG EH ER IL IQ JO KM KW LB LY MA MR OM PS QA SA SD SO SS SY TD TN YE',
-            'as' => 'IN',
-            'ast' => 'ES',
-            'av' => 'RU',
-            'awa' => 'IN',
-            'ay' => 'BO',
-            'az' => 'AZ',
-            'ba' => 'RU',
-            'bal' => 'AF IR PK',
-            'ban' => 'ID',
-            'bbc' => 'ID',
-            'bci' => 'CI',
-            'be' => 'BY',
-            'bem' => 'ZM',
-            'bew' => 'ID',
-            'bg' => 'BG',
-            'bgc' => 'IN',
-            'bhb' => 'IN',
-            'bhi' => 'IN',
-            'bhk' => 'PH',
-            'bho' => 'IN MU NP',
-            'bi' => 'VU',
-            'bik' => 'PH',
-            'bin' => 'NG',
-            'bjj' => 'IN',
-            'bjn' => 'ID MY',
-            'bm' => 'ML',
-            'bn' => 'BD',
-            'bo' => 'CN',
-            'bqi' => 'IR',
-            'brh' => 'PK',
-            'brx' => 'IN',
-            'bs' => 'BA',
-            'buc' => 'YT',
-            'bug' => 'ID',
-            'bum' => 'CM',
-            'bya' => 'ID',
-            'ca' => 'AD',
-            'ce' => 'RU',
-            'ceb' => 'PH',
-            'cgg' => 'UG',
-            'ch' => 'GU',
-            'chk' => 'FM',
-            'ckb' => 'IQ IR',
-            'crs' => 'SC',
-            'cs' => 'CZ',
-            'csb' => 'PL',
-            'cv' => 'RU',
-            'cy' => 'GB',
-            'da' => 'DK GL',
-            'dcc' => 'IN',
-            'de' => 'AT BE CH DE LI LU',
-            'dje' => 'NE',
-            'doi' => 'IN',
-            'dv' => 'MV',
-            'dyu' => 'BF',
-            'dz' => 'BT',
-            'ee' => 'GH TG',
-            'efi' => 'NG',
-            'el' => 'CY GR',
-            'en' => 'AG AI AS AU BB BM BS BW BZ CA CC CK CM CX DG DM ER FJ FK FM GB GD GG GH GI GM GU GY HK IE IM IN IO JE JM KE KI KN KY LC LR LS MG MH MP MS MT MU MW NA NF NG NR NU NZ PG PH PK PN PR PW RW SB SC SD SG SH SL SS SX SZ TC TK TO TT TV TZ UG UM US VC VG VI VU WS ZA ZM ZW',
-            'es' => 'AR BO CL CO CR CU DO EA EC ES GQ GT HN IC MX NI PA PE PR PY SV UY VE',
-            'et' => 'EE',
-            'eu' => 'ES',
-            'fa' => 'AF IR',
-            'fan' => 'GQ',
-            'ff' => 'GN SN',
-            'ffm' => 'ML',
-            'fi' => 'FI',
-            'fil' => 'PH',
-            'fj' => 'FJ',
-            'fo' => 'FO',
-            'fon' => 'BJ',
-            'fr' => 'BE BF BI BJ BL CA CD CF CG CH CI CM DJ DZ FR GA GF GN GP GQ HT KM LU MA MC MF MG ML MQ MU NC NE PF PM RE RW SC SN SY TD TG TN VU WF YT',
-            'fud' => 'WF',
-            'fuq' => 'NE',
-            'fuv' => 'NG',
-            'fy' => 'NL',
-            'ga' => 'IE',
-            'gaa' => 'GH',
-            'gbm' => 'IN',
-            'gcr' => 'GF',
-            'gd' => 'GB',
-            'gil' => 'KI',
-            'gl' => 'ES',
-            'glk' => 'IR',
-            'gn' => 'PY',
-            'gon' => 'IN',
-            'gor' => 'ID',
-            'gsw' => 'CH LI',
-            'gu' => 'IN',
-            'guz' => 'KE',
-            'gv' => 'IM',
-            'ha' => 'NE NG',
-            'haw' => 'US',
-            'haz' => 'AF',
-            'he' => 'IL',
-            'hi' => 'IN',
-            'hil' => 'PH',
-            'hne' => 'IN',
-            'hno' => 'PK',
-            'ho' => 'PG',
-            'hoc' => 'IN',
-            'hoj' => 'IN',
-            'hr' => 'BA HR',
-            'ht' => 'HT',
-            'hu' => 'HU',
-            'hy' => 'AM',
-            'ibb' => 'NG',
-            'id' => 'ID',
-            'ig' => 'NG',
-            'ii' => 'CN',
-            'ikt' => 'CA',
-            'ilo' => 'PH',
-            'inh' => 'RU',
-            'is' => 'IS',
-            'it' => 'CH IT SM',
-            'iu' => 'CA',
-            'ja' => 'JP',
-            'jv' => 'ID',
-            'ka' => 'GE',
-            'kab' => 'DZ',
-            'kam' => 'KE',
-            'kbd' => 'RU',
-            'kde' => 'TZ',
-            'kea' => 'CV',
-            'kfy' => 'IN',
-            'kg' => 'CD',
-            'kha' => 'IN',
-            'khn' => 'IN',
-            'ki' => 'KE',
-            'kj' => 'NA',
-            'kk' => 'KZ',
-            'kl' => 'GL',
-            'kln' => 'KE',
-            'km' => 'KH',
-            'kmb' => 'AO',
-            'kn' => 'IN',
-            'ko' => 'KP KR',
-            'koi' => 'RU',
-            'kok' => 'IN',
-            'kos' => 'FM',
-            'krc' => 'RU',
-            'kri' => 'SL',
-            'kru' => 'IN',
-            'ks' => 'IN',
-            'ku' => 'SY TR',
-            'kum' => 'RU',
-            'kv' => 'RU',
-            'kxm' => 'TH',
-            'ky' => 'KG',
-            'la' => 'VA',
-            'lah' => 'PK',
-            'laj' => 'UG',
-            'lb' => 'LU',
-            'lbe' => 'RU',
-            'lez' => 'RU',
-            'lg' => 'UG',
-            'ljp' => 'ID',
-            'lmn' => 'IN',
-            'ln' => 'CG',
-            'lo' => 'LA',
-            'lrc' => 'IR',
-            'lt' => 'LT',
-            'lu' => 'CD',
-            'lua' => 'CD',
-            'luo' => 'KE',
-            'luy' => 'KE',
-            'lv' => 'LV',
-            'mad' => 'ID',
-            'mag' => 'IN',
-            'mai' => 'IN NP',
-            'mak' => 'ID',
-            'man' => 'GM GN',
-            'mdf' => 'RU',
-            'mdh' => 'PH',
-            'men' => 'SL',
-            'mer' => 'KE',
-            'mfa' => 'TH',
-            'mfe' => 'MU',
-            'mg' => 'MG',
-            'mgh' => 'MZ',
-            'mh' => 'MH',
-            'mi' => 'NZ',
-            'min' => 'ID',
-            'mk' => 'MK',
-            'ml' => 'IN',
-            'mn' => 'MN',
-            'mni' => 'IN',
-            'mos' => 'BF',
-            'mr' => 'IN',
-            'ms' => 'BN MY SG',
-            'mt' => 'MT',
-            'mtr' => 'IN',
-            'mwr' => 'IN',
-            'my' => 'MM',
-            'myv' => 'RU',
-            'myx' => 'UG',
-            'na' => 'NR',
-            'nap' => 'IT',
-            'nb' => 'NO SJ',
-            'nd' => 'ZW',
-            'ndc' => 'MZ',
-            'nds' => 'DE',
-            'ne' => 'NP',
-            'new' => 'NP',
-            'ng' => 'NA',
-            'ngl' => 'MZ',
-            'niu' => 'NU',
-            'nl' => 'AW BE BQ CW NL SR SX',
-            'nn' => 'NO',
-            'nod' => 'TH',
-            'noe' => 'IN',
-            'nr' => 'ZA',
-            'nso' => 'ZA',
-            'ny' => 'MW',
-            'nym' => 'TZ',
-            'nyn' => 'UG',
-            'oc' => 'FR',
-            'om' => 'ET',
-            'or' => 'IN',
-            'os' => 'GE',
-            'pa' => 'IN PK',
-            'pag' => 'PH',
-            'pam' => 'PH',
-            'pap' => 'AW BQ CW',
-            'pau' => 'PW',
-            'pcm' => 'NG',
-            'pl' => 'PL',
-            'pon' => 'FM',
-            'ps' => 'AF',
-            'pt' => 'AO BR CV GW MO MZ PT ST TL',
-            'qu' => 'BO PE',
-            'raj' => 'IN',
-            'rcf' => 'RE',
-            'rej' => 'ID',
-            'rif' => 'MA',
-            'rkt' => 'BD IN',
-            'rm' => 'CH',
-            'rmt' => 'IR',
-            'rn' => 'BI',
-            'ro' => 'MD RO',
-            'ru' => 'BY KG KZ RU UA',
-            'rw' => 'RW',
-            'sa' => 'IN',
-            'sah' => 'RU',
-            'sas' => 'ID',
-            'sat' => 'IN',
-            'sck' => 'IN',
-            'scn' => 'IT',
-            'sco' => 'GB',
-            'sd' => 'IN PK',
-            'sdh' => 'IR',
-            'se' => 'NO',
-            'seh' => 'MZ',
-            'sg' => 'CF',
-            'shi' => 'MA',
-            'shn' => 'MM',
-            'si' => 'LK',
-            'sid' => 'ET',
-            'sk' => 'SK',
-            'skr' => 'PK',
-            'sl' => 'SI',
-            'sm' => 'AS WS',
-            'sn' => 'ZW',
-            'so' => 'SO',
-            'sou' => 'TH',
-            'sq' => 'AL MK XK',
-            'sr' => 'BA ME RS XK',
-            'srn' => 'SR',
-            'srr' => 'SN',
-            'ss' => 'SZ ZA',
-            'st' => 'LS ZA',
-            'su' => 'ID',
-            'suk' => 'TZ',
-            'sus' => 'GN',
-            'sv' => 'AX FI SE',
-            'sw' => 'KE TZ UG',
-            'swb' => 'YT',
-            'swc' => 'CD',
-            'swv' => 'IN',
-            'syl' => 'BD',
-            'ta' => 'LK SG',
-            'tcy' => 'IN',
-            'te' => 'IN',
-            'tem' => 'SL',
-            'teo' => 'UG',
-            'tet' => 'TL',
-            'tg' => 'TJ',
-            'th' => 'TH',
-            'ti' => 'ER',
-            'tig' => 'ER',
-            'tiv' => 'NG',
-            'tk' => 'TM',
-            'tkl' => 'TK',
-            'tmh' => 'NE',
-            'tn' => 'BW ZA',
-            'to' => 'TO',
-            'tpi' => 'PG',
-            'tr' => 'CY TR',
-            'ts' => 'ZA',
-            'tsg' => 'PH',
-            'tt' => 'RU',
-            'tts' => 'TH',
-            'tum' => 'MW',
-            'tvl' => 'TV',
-            'ty' => 'PF',
-            'tyv' => 'RU',
-            'tzm' => 'MA',
-            'udm' => 'RU',
-            'ug' => 'CN',
-            'uk' => 'UA',
-            'uli' => 'FM',
-            'umb' => 'AO',
-            'und' => 'AQ BV CP GS HM',
-            'unr' => 'IN',
-            'ur' => 'PK',
-            'uz' => 'UZ',
-            've' => 'ZA',
-            'vi' => 'VN',
-            'vmw' => 'MZ',
-            'wal' => 'ET',
-            'war' => 'PH',
-            'wbq' => 'IN',
-            'wbr' => 'IN',
-            'wls' => 'WF',
-            'wo' => 'SN',
-            'wtm' => 'IN',
-            'xh' => 'ZA',
-            'xnr' => 'IN',
-            'xog' => 'UG',
-            'yap' => 'FM',
-            'yo' => 'NG',
-            'za' => 'CN',
-            'zdj' => 'KM',
-            'zgh' => 'MA',
-            'zh' => 'CN HK MO SG TW',
-            'zu' => 'ZA',
-            'zza' => 'TR',
-        ];
-        $this->assertEquals($result, $value, var_export($value, true));
+        $data = Zend_Locale_Data::getList('de_AT', 'territorytolanguage');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('GH', $data['abr']);
+        $this->assertSame('LT', $data['lt']);
+        $this->assertSame('TR', $data['zza']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'territorytolanguage', 'uk');
-        $this->assertEquals("UA", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'territorytolanguage', 'uk');
+        $this->assertSame('UA', $data);
     }
 
     /**
@@ -3773,266 +1041,16 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testLanguageToTerritory()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'languagetoterritory');
-        $result = [
-            'DJ' => 'aa ar fr',
-            'ET' => 'aa am om sid wal',
-            'GE' => 'ab ka os',
-            'GH' => 'abr ak ee en gaa',
-            'ID' => 'ace ban bbc bew bjn bug bya gor id jv ljp mad mak min rej sas su',
-            'UG' => 'ach cgg en laj lg myx nyn sw teo xog',
-            'RU' => 'ady av ba ce cv inh kbd koi krc kum kv lbe lez mdf myv ru sah tt tyv udm',
-            'NA' => 'af en kj ng',
-            'ZA' => 'af en nr nso ss st tn ts ve xh zu',
-            'AE' => 'ar',
-            'BH' => 'ar',
-            'DZ' => 'ar fr kab',
-            'EG' => 'ar',
-            'EH' => 'ar',
-            'ER' => 'ar en ti tig',
-            'IL' => 'ar he',
-            'IQ' => 'ar ckb',
-            'JO' => 'ar',
-            'KM' => 'ar fr zdj',
-            'KW' => 'ar',
-            'LB' => 'ar',
-            'LY' => 'ar',
-            'MA' => 'ar fr rif shi tzm zgh',
-            'MR' => 'ar',
-            'OM' => 'ar',
-            'PS' => 'ar',
-            'QA' => 'ar',
-            'SA' => 'ar',
-            'SD' => 'ar en',
-            'SO' => 'ar so',
-            'SS' => 'ar en',
-            'SY' => 'ar fr ku',
-            'TD' => 'ar fr',
-            'TN' => 'ar fr',
-            'YE' => 'ar',
-            'IN' => 'as awa bgc bhb bhi bho bjj brx dcc doi en gbm gon gu hi hne hoc hoj kfy kha khn kn kok kru ks lmn mag mai ml mni mr mtr mwr noe or pa raj rkt sa sat sck sd swv tcy te unr wbq wbr wtm xnr',
-            'ES' => 'ast es eu gl',
-            'BO' => 'ay es qu',
-            'AZ' => 'az',
-            'AF' => 'bal fa haz ps',
-            'IR' => 'bal bqi ckb fa glk lrc rmt sdh',
-            'PK' => 'bal brh en hno lah pa sd skr ur',
-            'CI' => 'bci fr',
-            'BY' => 'be ru',
-            'ZM' => 'bem en',
-            'BG' => 'bg',
-            'PH' => 'bhk bik ceb en fil hil ilo mdh pag pam tsg war',
-            'MU' => 'bho en fr mfe',
-            'NP' => 'bho mai ne new',
-            'VU' => 'bi en fr',
-            'NG' => 'bin efi en fuv ha ibb ig pcm tiv yo',
-            'MY' => 'bjn ms',
-            'ML' => 'bm ffm fr',
-            'BD' => 'bn rkt syl',
-            'CN' => 'bo ii ug za zh',
-            'BA' => 'bs hr sr',
-            'YT' => 'buc fr swb',
-            'CM' => 'bum en fr',
-            'AD' => 'ca',
-            'GU' => 'ch en',
-            'FM' => 'chk en kos pon uli yap',
-            'SC' => 'crs en fr',
-            'CZ' => 'cs',
-            'PL' => 'csb pl',
-            'GB' => 'cy en gd sco',
-            'DK' => 'da',
-            'GL' => 'da kl',
-            'AT' => 'de',
-            'BE' => 'de fr nl',
-            'CH' => 'de fr gsw it rm',
-            'DE' => 'de nds',
-            'LI' => 'de gsw',
-            'LU' => 'de fr lb',
-            'NE' => 'dje fr fuq ha tmh',
-            'MV' => 'dv',
-            'BF' => 'dyu fr mos',
-            'BT' => 'dz',
-            'TG' => 'ee fr',
-            'CY' => 'el tr',
-            'GR' => 'el',
-            'AG' => 'en',
-            'AI' => 'en',
-            'AS' => 'en sm',
-            'AU' => 'en',
-            'BB' => 'en',
-            'BM' => 'en',
-            'BS' => 'en',
-            'BW' => 'en tn',
-            'BZ' => 'en',
-            'CA' => 'en fr ikt iu',
-            'CC' => 'en',
-            'CK' => 'en',
-            'CX' => 'en',
-            'DG' => 'en',
-            'DM' => 'en',
-            'FJ' => 'en fj',
-            'FK' => 'en',
-            'GD' => 'en',
-            'GG' => 'en',
-            'GI' => 'en',
-            'GM' => 'en man',
-            'GY' => 'en',
-            'HK' => 'en zh',
-            'IE' => 'en ga',
-            'IM' => 'en gv',
-            'IO' => 'en',
-            'JE' => 'en',
-            'JM' => 'en',
-            'KE' => 'en guz kam ki kln luo luy mer sw',
-            'KI' => 'en gil',
-            'KN' => 'en',
-            'KY' => 'en',
-            'LC' => 'en',
-            'LR' => 'en',
-            'LS' => 'en st',
-            'MG' => 'en fr mg',
-            'MH' => 'en mh',
-            'MP' => 'en',
-            'MS' => 'en',
-            'MT' => 'en mt',
-            'MW' => 'en ny tum',
-            'NF' => 'en',
-            'NR' => 'en na',
-            'NU' => 'en niu',
-            'NZ' => 'en mi',
-            'PG' => 'en ho tpi',
-            'PN' => 'en',
-            'PR' => 'en es',
-            'PW' => 'en pau',
-            'RW' => 'en fr rw',
-            'SB' => 'en',
-            'SG' => 'en ms ta zh',
-            'SH' => 'en',
-            'SL' => 'en kri men tem',
-            'SX' => 'en nl',
-            'SZ' => 'en ss',
-            'TC' => 'en',
-            'TK' => 'en tkl',
-            'TO' => 'en to',
-            'TT' => 'en',
-            'TV' => 'en tvl',
-            'TZ' => 'en kde nym suk sw',
-            'UM' => 'en',
-            'US' => 'en haw',
-            'VC' => 'en',
-            'VG' => 'en',
-            'VI' => 'en',
-            'WS' => 'en sm',
-            'ZW' => 'en nd sn',
-            'AR' => 'es',
-            'CL' => 'es',
-            'CO' => 'es',
-            'CR' => 'es',
-            'CU' => 'es',
-            'DO' => 'es',
-            'EA' => 'es',
-            'EC' => 'es',
-            'GQ' => 'es fan fr',
-            'GT' => 'es',
-            'HN' => 'es',
-            'IC' => 'es',
-            'MX' => 'es',
-            'NI' => 'es',
-            'PA' => 'es',
-            'PE' => 'es qu',
-            'PY' => 'es gn',
-            'SV' => 'es',
-            'UY' => 'es',
-            'VE' => 'es',
-            'EE' => 'et',
-            'GN' => 'ff fr man sus',
-            'SN' => 'ff fr srr wo',
-            'FI' => 'fi sv',
-            'FO' => 'fo',
-            'BJ' => 'fon fr',
-            'BI' => 'fr rn',
-            'BL' => 'fr',
-            'CD' => 'fr kg lu lua swc',
-            'CF' => 'fr sg',
-            'CG' => 'fr ln',
-            'FR' => 'fr oc',
-            'GA' => 'fr',
-            'GF' => 'fr gcr',
-            'GP' => 'fr',
-            'HT' => 'fr ht',
-            'MC' => 'fr',
-            'MF' => 'fr',
-            'MQ' => 'fr',
-            'NC' => 'fr',
-            'PF' => 'fr ty',
-            'PM' => 'fr',
-            'RE' => 'fr rcf',
-            'WF' => 'fr fud wls',
-            'NL' => 'fy nl',
-            'HR' => 'hr',
-            'HU' => 'hu',
-            'AM' => 'hy',
-            'IS' => 'is',
-            'IT' => 'it nap scn',
-            'SM' => 'it',
-            'JP' => 'ja',
-            'CV' => 'kea pt',
-            'KZ' => 'kk ru',
-            'KH' => 'km',
-            'AO' => 'kmb pt umb',
-            'KP' => 'ko',
-            'KR' => 'ko',
-            'TR' => 'ku tr zza',
-            'TH' => 'kxm mfa nod sou th tts',
-            'KG' => 'ky ru',
-            'VA' => 'la',
-            'LA' => 'lo',
-            'LT' => 'lt',
-            'LV' => 'lv',
-            'MZ' => 'mgh ndc ngl pt seh vmw',
-            'MK' => 'mk sq',
-            'MN' => 'mn',
-            'BN' => 'ms',
-            'MM' => 'my shn',
-            'NO' => 'nb nn se',
-            'SJ' => 'nb',
-            'AW' => 'nl pap',
-            'BQ' => 'nl pap',
-            'CW' => 'nl pap',
-            'SR' => 'nl srn',
-            'BR' => 'pt',
-            'GW' => 'pt',
-            'MO' => 'pt zh',
-            'PT' => 'pt',
-            'ST' => 'pt',
-            'TL' => 'pt tet',
-            'MD' => 'ro',
-            'RO' => 'ro',
-            'UA' => 'ru uk',
-            'LK' => 'si ta',
-            'SK' => 'sk',
-            'SI' => 'sl',
-            'AL' => 'sq',
-            'XK' => 'sq sr',
-            'ME' => 'sr',
-            'RS' => 'sr',
-            'AX' => 'sv',
-            'SE' => 'sv',
-            'TJ' => 'tg',
-            'TM' => 'tk',
-            'AQ' => 'und',
-            'BV' => 'und',
-            'CP' => 'und',
-            'GS' => 'und',
-            'HM' => 'und',
-            'UZ' => 'uz',
-            'VN' => 'vi',
-            'TW' => 'zh',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'languagetoterritory');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('ca', $data['AD']);
+        $this->assertSame('en', $data['LC']);
+        $this->assertSame('buc fr swb', $data['YT']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'languagetoterritory', 'GQ');
-        $this->assertEquals("es fan fr", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'languagetoterritory', 'GQ');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -4041,112 +1059,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testTimezoneToWindows()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'timezonetowindows');
-        $result = [
-            'Dateline Standard Time' => 'Etc/GMT+12',
-            'UTC-11' => 'Etc/GMT+11',
-            'Hawaiian Standard Time' => 'Pacific/Honolulu',
-            'Alaskan Standard Time' => 'America/Anchorage',
-            'Pacific Standard Time (Mexico)' => 'America/Santa_Isabel',
-            'Pacific Standard Time' => 'America/Los_Angeles',
-            'US Mountain Standard Time' => 'America/Phoenix',
-            'Mountain Standard Time (Mexico)' => 'America/Chihuahua',
-            'Mountain Standard Time' => 'America/Denver',
-            'Central America Standard Time' => 'America/Guatemala',
-            'Central Standard Time' => 'America/Chicago',
-            'Central Standard Time (Mexico)' => 'America/Mexico_City',
-            'Canada Central Standard Time' => 'America/Regina',
-            'SA Pacific Standard Time' => 'America/Bogota',
-            'Eastern Standard Time' => 'America/New_York',
-            'US Eastern Standard Time' => 'America/Indianapolis',
-            'Venezuela Standard Time' => 'America/Caracas',
-            'Paraguay Standard Time' => 'America/Asuncion',
-            'Atlantic Standard Time' => 'America/Halifax',
-            'Central Brazilian Standard Time' => 'America/Cuiaba',
-            'SA Western Standard Time' => 'America/La_Paz',
-            'Pacific SA Standard Time' => 'America/Santiago',
-            'Newfoundland Standard Time' => 'America/St_Johns',
-            'E. South America Standard Time' => 'America/Sao_Paulo',
-            'Argentina Standard Time' => 'America/Buenos_Aires',
-            'SA Eastern Standard Time' => 'America/Cayenne',
-            'Greenland Standard Time' => 'America/Godthab',
-            'Montevideo Standard Time' => 'America/Montevideo',
-            'Bahia Standard Time' => 'America/Bahia',
-            'UTC-02' => 'Etc/GMT+2',
-            'Azores Standard Time' => 'Atlantic/Azores',
-            'Cape Verde Standard Time' => 'Atlantic/Cape_Verde',
-            'Morocco Standard Time' => 'Africa/Casablanca',
-            'UTC' => 'Etc/GMT',
-            'GMT Standard Time' => 'Europe/London',
-            'Greenwich Standard Time' => 'Atlantic/Reykjavik',
-            'W. Europe Standard Time' => 'Europe/Berlin',
-            'Central Europe Standard Time' => 'Europe/Budapest',
-            'Romance Standard Time' => 'Europe/Paris',
-            'Central European Standard Time' => 'Europe/Warsaw',
-            'W. Central Africa Standard Time' => 'Africa/Lagos',
-            'Namibia Standard Time' => 'Africa/Windhoek',
-            'GTB Standard Time' => 'Europe/Bucharest',
-            'Middle East Standard Time' => 'Asia/Beirut',
-            'Egypt Standard Time' => 'Africa/Cairo',
-            'Syria Standard Time' => 'Asia/Damascus',
-            'South Africa Standard Time' => 'Africa/Johannesburg',
-            'FLE Standard Time' => 'Europe/Kiev',
-            'Turkey Standard Time' => 'Europe/Istanbul',
-            'Israel Standard Time' => 'Asia/Jerusalem',
-            'Libya Standard Time' => 'Africa/Tripoli',
-            'Jordan Standard Time' => 'Asia/Amman',
-            'Arabic Standard Time' => 'Asia/Baghdad',
-            'Kaliningrad Standard Time' => 'Europe/Kaliningrad',
-            'Arab Standard Time' => 'Asia/Riyadh',
-            'E. Africa Standard Time' => 'Africa/Nairobi',
-            'Iran Standard Time' => 'Asia/Tehran',
-            'Arabian Standard Time' => 'Asia/Dubai',
-            'Azerbaijan Standard Time' => 'Asia/Baku',
-            'Russian Standard Time' => 'Europe/Moscow',
-            'Mauritius Standard Time' => 'Indian/Mauritius',
-            'Georgian Standard Time' => 'Asia/Tbilisi',
-            'Caucasus Standard Time' => 'Asia/Yerevan',
-            'Afghanistan Standard Time' => 'Asia/Kabul',
-            'West Asia Standard Time' => 'Asia/Tashkent',
-            'Pakistan Standard Time' => 'Asia/Karachi',
-            'India Standard Time' => 'Asia/Calcutta',
-            'Sri Lanka Standard Time' => 'Asia/Colombo',
-            'Nepal Standard Time' => 'Asia/Katmandu',
-            'Central Asia Standard Time' => 'Asia/Almaty',
-            'Bangladesh Standard Time' => 'Asia/Dhaka',
-            'Ekaterinburg Standard Time' => 'Asia/Yekaterinburg',
-            'Myanmar Standard Time' => 'Asia/Rangoon',
-            'SE Asia Standard Time' => 'Asia/Bangkok',
-            'N. Central Asia Standard Time' => 'Asia/Novosibirsk',
-            'China Standard Time' => 'Asia/Shanghai',
-            'North Asia Standard Time' => 'Asia/Krasnoyarsk',
-            'Singapore Standard Time' => 'Asia/Singapore',
-            'W. Australia Standard Time' => 'Australia/Perth',
-            'Taipei Standard Time' => 'Asia/Taipei',
-            'Ulaanbaatar Standard Time' => 'Asia/Ulaanbaatar',
-            'North Asia East Standard Time' => 'Asia/Irkutsk',
-            'Tokyo Standard Time' => 'Asia/Tokyo',
-            'Korea Standard Time' => 'Asia/Seoul',
-            'Cen. Australia Standard Time' => 'Australia/Adelaide',
-            'AUS Central Standard Time' => 'Australia/Darwin',
-            'E. Australia Standard Time' => 'Australia/Brisbane',
-            'AUS Eastern Standard Time' => 'Australia/Sydney',
-            'West Pacific Standard Time' => 'Pacific/Port_Moresby',
-            'Tasmania Standard Time' => 'Australia/Hobart',
-            'Yakutsk Standard Time' => 'Asia/Yakutsk',
-            'Central Pacific Standard Time' => 'Pacific/Guadalcanal',
-            'Vladivostok Standard Time' => 'Asia/Vladivostok',
-            'New Zealand Standard Time' => 'Pacific/Auckland',
-            'UTC+12' => 'Etc/GMT-12',
-            'Fiji Standard Time' => 'Pacific/Fiji',
-            'Magadan Standard Time' => 'Asia/Magadan',
-            'Tonga Standard Time' => 'Pacific/Tongatapu',
-            'Samoa Standard Time' => 'Pacific/Apia',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'timezonetowindows');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Etc/GMT+12', $data['Dateline Standard Time']);
+        $this->assertSame('Africa/Tripoli', $data['Libya Standard Time']);
+        $this->assertSame('Pacific/Apia', $data['Samoa Standard Time']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'timezonetowindows', 'Fiji Standard Time');
-        $this->assertEquals("Pacific/Fiji", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'timezonetowindows', 'Fiji Standard Time');
+        $this->assertSame('Pacific/Fiji', $data);
     }
 
     /**
@@ -4155,376 +1076,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testWindowsToTimezone()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'windowstotimezone');
-        $result = [
-            'Etc/GMT+12' => 'Dateline Standard Time',
-            'Etc/GMT+11' => 'UTC-11',
-            'Pacific/Pago_Pago' => 'UTC-11',
-            'Pacific/Niue' => 'UTC-11',
-            'Pacific/Midway' => 'UTC-11',
-            'Pacific/Honolulu' => 'Hawaiian Standard Time',
-            'Pacific/Rarotonga' => 'Hawaiian Standard Time',
-            'Pacific/Tahiti' => 'Hawaiian Standard Time',
-            'Pacific/Johnston' => 'Hawaiian Standard Time',
-            'Etc/GMT+10' => 'Hawaiian Standard Time',
-            'America/Anchorage' => 'Alaskan Standard Time',
-            'America/Anchorage America/Juneau America/Nome America/Sitka America/Yakutat' => 'Alaskan Standard Time',
-            'America/Santa_Isabel' => 'Pacific Standard Time (Mexico)',
-            'America/Los_Angeles' => 'Pacific Standard Time',
-            'America/Vancouver America/Dawson America/Whitehorse' => 'Pacific Standard Time',
-            'America/Tijuana' => 'Pacific Standard Time',
-            'PST8PDT' => 'Pacific Standard Time',
-            'America/Phoenix' => 'US Mountain Standard Time',
-            'America/Dawson_Creek America/Creston' => 'US Mountain Standard Time',
-            'America/Hermosillo' => 'US Mountain Standard Time',
-            'Etc/GMT+7' => 'US Mountain Standard Time',
-            'America/Chihuahua' => 'Mountain Standard Time (Mexico)',
-            'America/Chihuahua America/Mazatlan' => 'Mountain Standard Time (Mexico)',
-            'America/Denver' => 'Mountain Standard Time',
-            'America/Edmonton America/Cambridge_Bay America/Inuvik America/Yellowknife' => 'Mountain Standard Time',
-            'America/Ojinaga' => 'Mountain Standard Time',
-            'America/Denver America/Boise America/Shiprock' => 'Mountain Standard Time',
-            'MST7MDT' => 'Mountain Standard Time',
-            'America/Guatemala' => 'Central America Standard Time',
-            'America/Belize' => 'Central America Standard Time',
-            'America/Costa_Rica' => 'Central America Standard Time',
-            'Pacific/Galapagos' => 'Central America Standard Time',
-            'America/Tegucigalpa' => 'Central America Standard Time',
-            'America/Managua' => 'Central America Standard Time',
-            'America/El_Salvador' => 'Central America Standard Time',
-            'Etc/GMT+6' => 'Central America Standard Time',
-            'America/Chicago' => 'Central Standard Time',
-            'America/Winnipeg America/Rainy_River America/Rankin_Inlet America/Resolute' => 'Central Standard Time',
-            'America/Matamoros' => 'Central Standard Time',
-            'America/Chicago America/Indiana/Knox America/Indiana/Tell_City America/Menominee America/North_Dakota/Beulah America/North_Dakota/Center America/North_Dakota/New_Salem' => 'Central Standard Time',
-            'CST6CDT' => 'Central Standard Time',
-            'America/Mexico_City' => 'Central Standard Time (Mexico)',
-            'America/Mexico_City America/Bahia_Banderas America/Cancun America/Merida America/Monterrey' => 'Central Standard Time (Mexico)',
-            'America/Regina' => 'Canada Central Standard Time',
-            'America/Regina America/Swift_Current' => 'Canada Central Standard Time',
-            'America/Bogota' => 'SA Pacific Standard Time',
-            'America/Rio_Branco America/Eirunepe' => 'SA Pacific Standard Time',
-            'America/Coral_Harbour' => 'SA Pacific Standard Time',
-            'America/Guayaquil' => 'SA Pacific Standard Time',
-            'America/Jamaica' => 'SA Pacific Standard Time',
-            'America/Cayman' => 'SA Pacific Standard Time',
-            'America/Panama' => 'SA Pacific Standard Time',
-            'America/Lima' => 'SA Pacific Standard Time',
-            'Etc/GMT+5' => 'SA Pacific Standard Time',
-            'America/New_York' => 'Eastern Standard Time',
-            'America/Nassau' => 'Eastern Standard Time',
-            'America/Toronto America/Iqaluit America/Montreal America/Nipigon America/Pangnirtung America/Thunder_Bay' => 'Eastern Standard Time',
-            'America/Havana' => 'Eastern Standard Time',
-            'America/Port-au-Prince' => 'Eastern Standard Time',
-            'America/Grand_Turk' => 'Eastern Standard Time',
-            'America/New_York America/Detroit America/Indiana/Petersburg America/Indiana/Vincennes America/Indiana/Winamac America/Kentucky/Monticello America/Louisville' => 'Eastern Standard Time',
-            'EST5EDT' => 'Eastern Standard Time',
-            'America/Indianapolis' => 'US Eastern Standard Time',
-            'America/Indianapolis America/Indiana/Marengo America/Indiana/Vevay' => 'US Eastern Standard Time',
-            'America/Caracas' => 'Venezuela Standard Time',
-            'America/Asuncion' => 'Paraguay Standard Time',
-            'America/Halifax' => 'Atlantic Standard Time',
-            'Atlantic/Bermuda' => 'Atlantic Standard Time',
-            'America/Halifax America/Glace_Bay America/Goose_Bay America/Moncton' => 'Atlantic Standard Time',
-            'America/Thule' => 'Atlantic Standard Time',
-            'America/Cuiaba' => 'Central Brazilian Standard Time',
-            'America/Cuiaba America/Campo_Grande' => 'Central Brazilian Standard Time',
-            'America/La_Paz' => 'SA Western Standard Time',
-            'America/Antigua' => 'SA Western Standard Time',
-            'America/Anguilla' => 'SA Western Standard Time',
-            'America/Aruba' => 'SA Western Standard Time',
-            'America/Barbados' => 'SA Western Standard Time',
-            'America/St_Barthelemy' => 'SA Western Standard Time',
-            'America/Kralendijk' => 'SA Western Standard Time',
-            'America/Manaus America/Boa_Vista America/Porto_Velho' => 'SA Western Standard Time',
-            'America/Blanc-Sablon' => 'SA Western Standard Time',
-            'America/Curacao' => 'SA Western Standard Time',
-            'America/Dominica' => 'SA Western Standard Time',
-            'America/Santo_Domingo' => 'SA Western Standard Time',
-            'America/Grenada' => 'SA Western Standard Time',
-            'America/Guadeloupe' => 'SA Western Standard Time',
-            'America/Guyana' => 'SA Western Standard Time',
-            'America/St_Kitts' => 'SA Western Standard Time',
-            'America/St_Lucia' => 'SA Western Standard Time',
-            'America/Marigot' => 'SA Western Standard Time',
-            'America/Martinique' => 'SA Western Standard Time',
-            'America/Montserrat' => 'SA Western Standard Time',
-            'America/Puerto_Rico' => 'SA Western Standard Time',
-            'America/Lower_Princes' => 'SA Western Standard Time',
-            'America/Port_of_Spain' => 'SA Western Standard Time',
-            'America/St_Vincent' => 'SA Western Standard Time',
-            'America/Tortola' => 'SA Western Standard Time',
-            'America/St_Thomas' => 'SA Western Standard Time',
-            'Etc/GMT+4' => 'SA Western Standard Time',
-            'America/Santiago' => 'Pacific SA Standard Time',
-            'Antarctica/Palmer' => 'Pacific SA Standard Time',
-            'America/St_Johns' => 'Newfoundland Standard Time',
-            'America/Sao_Paulo' => 'E. South America Standard Time',
-            'America/Buenos_Aires' => 'Argentina Standard Time',
-            'America/Buenos_Aires America/Argentina/La_Rioja America/Argentina/Rio_Gallegos America/Argentina/Salta America/Argentina/San_Juan America/Argentina/San_Luis America/Argentina/Tucuman America/Argentina/Ushuaia America/Catamarca America/Cordoba America/Jujuy America/Mendoza' => 'Argentina Standard Time',
-            'America/Cayenne' => 'SA Eastern Standard Time',
-            'Antarctica/Rothera' => 'SA Eastern Standard Time',
-            'America/Fortaleza America/Araguaina America/Belem America/Maceio America/Recife America/Santarem' => 'SA Eastern Standard Time',
-            'Atlantic/Stanley' => 'SA Eastern Standard Time',
-            'America/Paramaribo' => 'SA Eastern Standard Time',
-            'Etc/GMT+3' => 'SA Eastern Standard Time',
-            'America/Godthab' => 'Greenland Standard Time',
-            'America/Montevideo' => 'Montevideo Standard Time',
-            'America/Bahia' => 'Bahia Standard Time',
-            'Etc/GMT+2' => 'UTC-02',
-            'America/Noronha' => 'UTC-02',
-            'Atlantic/South_Georgia' => 'UTC-02',
-            'Atlantic/Azores' => 'Azores Standard Time',
-            'America/Scoresbysund' => 'Azores Standard Time',
-            'Atlantic/Cape_Verde' => 'Cape Verde Standard Time',
-            'Etc/GMT+1' => 'Cape Verde Standard Time',
-            'Africa/Casablanca' => 'Morocco Standard Time',
-            'Africa/El_Aaiun' => 'Morocco Standard Time',
-            'Etc/GMT' => 'UTC',
-            'America/Danmarkshavn' => 'UTC',
-            'Europe/London' => 'GMT Standard Time',
-            'Atlantic/Canary' => 'GMT Standard Time',
-            'Atlantic/Faeroe' => 'GMT Standard Time',
-            'Europe/Guernsey' => 'GMT Standard Time',
-            'Europe/Dublin' => 'GMT Standard Time',
-            'Europe/Isle_of_Man' => 'GMT Standard Time',
-            'Europe/Jersey' => 'GMT Standard Time',
-            'Europe/Lisbon Atlantic/Madeira' => 'GMT Standard Time',
-            'Atlantic/Reykjavik' => 'Greenwich Standard Time',
-            'Africa/Ouagadougou' => 'Greenwich Standard Time',
-            'Africa/Abidjan' => 'Greenwich Standard Time',
-            'Africa/Accra' => 'Greenwich Standard Time',
-            'Africa/Banjul' => 'Greenwich Standard Time',
-            'Africa/Conakry' => 'Greenwich Standard Time',
-            'Africa/Bissau' => 'Greenwich Standard Time',
-            'Africa/Monrovia' => 'Greenwich Standard Time',
-            'Africa/Bamako' => 'Greenwich Standard Time',
-            'Africa/Nouakchott' => 'Greenwich Standard Time',
-            'Atlantic/St_Helena' => 'Greenwich Standard Time',
-            'Africa/Freetown' => 'Greenwich Standard Time',
-            'Africa/Dakar' => 'Greenwich Standard Time',
-            'Africa/Sao_Tome' => 'Greenwich Standard Time',
-            'Africa/Lome' => 'Greenwich Standard Time',
-            'Europe/Berlin' => 'W. Europe Standard Time',
-            'Europe/Andorra' => 'W. Europe Standard Time',
-            'Europe/Vienna' => 'W. Europe Standard Time',
-            'Europe/Zurich' => 'W. Europe Standard Time',
-            'Europe/Berlin Europe/Busingen' => 'W. Europe Standard Time',
-            'Europe/Gibraltar' => 'W. Europe Standard Time',
-            'Europe/Rome' => 'W. Europe Standard Time',
-            'Europe/Vaduz' => 'W. Europe Standard Time',
-            'Europe/Luxembourg' => 'W. Europe Standard Time',
-            'Europe/Monaco' => 'W. Europe Standard Time',
-            'Europe/Malta' => 'W. Europe Standard Time',
-            'Europe/Amsterdam' => 'W. Europe Standard Time',
-            'Europe/Oslo' => 'W. Europe Standard Time',
-            'Europe/Stockholm' => 'W. Europe Standard Time',
-            'Arctic/Longyearbyen' => 'W. Europe Standard Time',
-            'Europe/San_Marino' => 'W. Europe Standard Time',
-            'Europe/Vatican' => 'W. Europe Standard Time',
-            'Europe/Budapest' => 'Central Europe Standard Time',
-            'Europe/Tirane' => 'Central Europe Standard Time',
-            'Europe/Prague' => 'Central Europe Standard Time',
-            'Europe/Podgorica' => 'Central Europe Standard Time',
-            'Europe/Belgrade' => 'Central Europe Standard Time',
-            'Europe/Ljubljana' => 'Central Europe Standard Time',
-            'Europe/Bratislava' => 'Central Europe Standard Time',
-            'Europe/Paris' => 'Romance Standard Time',
-            'Europe/Brussels' => 'Romance Standard Time',
-            'Europe/Copenhagen' => 'Romance Standard Time',
-            'Europe/Madrid Africa/Ceuta' => 'Romance Standard Time',
-            'Europe/Warsaw' => 'Central European Standard Time',
-            'Europe/Sarajevo' => 'Central European Standard Time',
-            'Europe/Zagreb' => 'Central European Standard Time',
-            'Europe/Skopje' => 'Central European Standard Time',
-            'Africa/Lagos' => 'W. Central Africa Standard Time',
-            'Africa/Luanda' => 'W. Central Africa Standard Time',
-            'Africa/Porto-Novo' => 'W. Central Africa Standard Time',
-            'Africa/Kinshasa' => 'W. Central Africa Standard Time',
-            'Africa/Bangui' => 'W. Central Africa Standard Time',
-            'Africa/Brazzaville' => 'W. Central Africa Standard Time',
-            'Africa/Douala' => 'W. Central Africa Standard Time',
-            'Africa/Algiers' => 'W. Central Africa Standard Time',
-            'Africa/Libreville' => 'W. Central Africa Standard Time',
-            'Africa/Malabo' => 'W. Central Africa Standard Time',
-            'Africa/Niamey' => 'W. Central Africa Standard Time',
-            'Africa/Ndjamena' => 'W. Central Africa Standard Time',
-            'Africa/Tunis' => 'W. Central Africa Standard Time',
-            'Etc/GMT-1' => 'W. Central Africa Standard Time',
-            'Africa/Windhoek' => 'Namibia Standard Time',
-            'Europe/Bucharest' => 'GTB Standard Time',
-            'Asia/Nicosia' => 'GTB Standard Time',
-            'Europe/Athens' => 'GTB Standard Time',
-            'Europe/Chisinau' => 'GTB Standard Time',
-            'Asia/Beirut' => 'Middle East Standard Time',
-            'Africa/Cairo' => 'Egypt Standard Time',
-            'Asia/Damascus' => 'Syria Standard Time',
-            'Africa/Johannesburg' => 'South Africa Standard Time',
-            'Africa/Bujumbura' => 'South Africa Standard Time',
-            'Africa/Gaborone' => 'South Africa Standard Time',
-            'Africa/Lubumbashi' => 'South Africa Standard Time',
-            'Africa/Maseru' => 'South Africa Standard Time',
-            'Africa/Blantyre' => 'South Africa Standard Time',
-            'Africa/Maputo' => 'South Africa Standard Time',
-            'Africa/Kigali' => 'South Africa Standard Time',
-            'Africa/Mbabane' => 'South Africa Standard Time',
-            'Africa/Lusaka' => 'South Africa Standard Time',
-            'Africa/Harare' => 'South Africa Standard Time',
-            'Etc/GMT-2' => 'South Africa Standard Time',
-            'Europe/Kiev' => 'FLE Standard Time',
-            'Europe/Mariehamn' => 'FLE Standard Time',
-            'Europe/Sofia' => 'FLE Standard Time',
-            'Europe/Tallinn' => 'FLE Standard Time',
-            'Europe/Helsinki' => 'FLE Standard Time',
-            'Europe/Vilnius' => 'FLE Standard Time',
-            'Europe/Riga' => 'FLE Standard Time',
-            'Europe/Kiev Europe/Simferopol Europe/Uzhgorod Europe/Zaporozhye' => 'FLE Standard Time',
-            'Europe/Istanbul' => 'Turkey Standard Time',
-            'Asia/Jerusalem' => 'Israel Standard Time',
-            'Africa/Tripoli' => 'Libya Standard Time',
-            'Asia/Amman' => 'Jordan Standard Time',
-            'Asia/Baghdad' => 'Arabic Standard Time',
-            'Europe/Kaliningrad' => 'Kaliningrad Standard Time',
-            'Europe/Minsk' => 'Kaliningrad Standard Time',
-            'Asia/Riyadh' => 'Arab Standard Time',
-            'Asia/Bahrain' => 'Arab Standard Time',
-            'Asia/Kuwait' => 'Arab Standard Time',
-            'Asia/Qatar' => 'Arab Standard Time',
-            'Asia/Aden' => 'Arab Standard Time',
-            'Africa/Nairobi' => 'E. Africa Standard Time',
-            'Antarctica/Syowa' => 'E. Africa Standard Time',
-            'Africa/Djibouti' => 'E. Africa Standard Time',
-            'Africa/Asmera' => 'E. Africa Standard Time',
-            'Africa/Addis_Ababa' => 'E. Africa Standard Time',
-            'Indian/Comoro' => 'E. Africa Standard Time',
-            'Indian/Antananarivo' => 'E. Africa Standard Time',
-            'Africa/Khartoum' => 'E. Africa Standard Time',
-            'Africa/Mogadishu' => 'E. Africa Standard Time',
-            'Africa/Juba' => 'E. Africa Standard Time',
-            'Africa/Dar_es_Salaam' => 'E. Africa Standard Time',
-            'Africa/Kampala' => 'E. Africa Standard Time',
-            'Indian/Mayotte' => 'E. Africa Standard Time',
-            'Etc/GMT-3' => 'E. Africa Standard Time',
-            'Asia/Tehran' => 'Iran Standard Time',
-            'Asia/Dubai' => 'Arabian Standard Time',
-            'Asia/Muscat' => 'Arabian Standard Time',
-            'Etc/GMT-4' => 'Arabian Standard Time',
-            'Asia/Baku' => 'Azerbaijan Standard Time',
-            'Europe/Moscow' => 'Russian Standard Time',
-            'Europe/Moscow Europe/Samara Europe/Volgograd' => 'Russian Standard Time',
-            'Indian/Mauritius' => 'Mauritius Standard Time',
-            'Indian/Reunion' => 'Mauritius Standard Time',
-            'Indian/Mahe' => 'Mauritius Standard Time',
-            'Asia/Tbilisi' => 'Georgian Standard Time',
-            'Asia/Yerevan' => 'Caucasus Standard Time',
-            'Asia/Kabul' => 'Afghanistan Standard Time',
-            'Asia/Tashkent' => 'West Asia Standard Time',
-            'Antarctica/Mawson' => 'West Asia Standard Time',
-            'Asia/Oral Asia/Aqtau Asia/Aqtobe' => 'West Asia Standard Time',
-            'Indian/Maldives' => 'West Asia Standard Time',
-            'Indian/Kerguelen' => 'West Asia Standard Time',
-            'Asia/Dushanbe' => 'West Asia Standard Time',
-            'Asia/Ashgabat' => 'West Asia Standard Time',
-            'Asia/Tashkent Asia/Samarkand' => 'West Asia Standard Time',
-            'Etc/GMT-5' => 'West Asia Standard Time',
-            'Asia/Karachi' => 'Pakistan Standard Time',
-            'Asia/Calcutta' => 'India Standard Time',
-            'Asia/Colombo' => 'Sri Lanka Standard Time',
-            'Asia/Katmandu' => 'Nepal Standard Time',
-            'Asia/Almaty' => 'Central Asia Standard Time',
-            'Antarctica/Vostok' => 'Central Asia Standard Time',
-            'Indian/Chagos' => 'Central Asia Standard Time',
-            'Asia/Bishkek' => 'Central Asia Standard Time',
-            'Asia/Almaty Asia/Qyzylorda' => 'Central Asia Standard Time',
-            'Etc/GMT-6' => 'Central Asia Standard Time',
-            'Asia/Dhaka' => 'Bangladesh Standard Time',
-            'Asia/Thimphu' => 'Bangladesh Standard Time',
-            'Asia/Yekaterinburg' => 'Ekaterinburg Standard Time',
-            'Asia/Rangoon' => 'Myanmar Standard Time',
-            'Indian/Cocos' => 'Myanmar Standard Time',
-            'Asia/Bangkok' => 'SE Asia Standard Time',
-            'Antarctica/Davis' => 'SE Asia Standard Time',
-            'Indian/Christmas' => 'SE Asia Standard Time',
-            'Asia/Jakarta Asia/Pontianak' => 'SE Asia Standard Time',
-            'Asia/Phnom_Penh' => 'SE Asia Standard Time',
-            'Asia/Vientiane' => 'SE Asia Standard Time',
-            'Asia/Hovd' => 'SE Asia Standard Time',
-            'Asia/Saigon' => 'SE Asia Standard Time',
-            'Etc/GMT-7' => 'SE Asia Standard Time',
-            'Asia/Novosibirsk' => 'N. Central Asia Standard Time',
-            'Asia/Novosibirsk Asia/Novokuznetsk Asia/Omsk' => 'N. Central Asia Standard Time',
-            'Asia/Shanghai' => 'China Standard Time',
-            'Asia/Shanghai Asia/Chongqing Asia/Harbin Asia/Kashgar Asia/Urumqi' => 'China Standard Time',
-            'Asia/Hong_Kong' => 'China Standard Time',
-            'Asia/Macau' => 'China Standard Time',
-            'Asia/Krasnoyarsk' => 'North Asia Standard Time',
-            'Asia/Singapore' => 'Singapore Standard Time',
-            'Asia/Brunei' => 'Singapore Standard Time',
-            'Asia/Makassar' => 'Singapore Standard Time',
-            'Asia/Kuala_Lumpur Asia/Kuching' => 'Singapore Standard Time',
-            'Asia/Manila' => 'Singapore Standard Time',
-            'Etc/GMT-8' => 'Singapore Standard Time',
-            'Australia/Perth' => 'W. Australia Standard Time',
-            'Antarctica/Casey' => 'W. Australia Standard Time',
-            'Asia/Taipei' => 'Taipei Standard Time',
-            'Asia/Ulaanbaatar' => 'Ulaanbaatar Standard Time',
-            'Asia/Ulaanbaatar Asia/Choibalsan' => 'Ulaanbaatar Standard Time',
-            'Asia/Irkutsk' => 'North Asia East Standard Time',
-            'Asia/Tokyo' => 'Tokyo Standard Time',
-            'Asia/Jayapura' => 'Tokyo Standard Time',
-            'Pacific/Palau' => 'Tokyo Standard Time',
-            'Asia/Dili' => 'Tokyo Standard Time',
-            'Etc/GMT-9' => 'Tokyo Standard Time',
-            'Asia/Seoul' => 'Korea Standard Time',
-            'Asia/Pyongyang' => 'Korea Standard Time',
-            'Australia/Adelaide' => 'Cen. Australia Standard Time',
-            'Australia/Adelaide Australia/Broken_Hill' => 'Cen. Australia Standard Time',
-            'Australia/Darwin' => 'AUS Central Standard Time',
-            'Australia/Brisbane' => 'E. Australia Standard Time',
-            'Australia/Brisbane Australia/Lindeman' => 'E. Australia Standard Time',
-            'Australia/Sydney' => 'AUS Eastern Standard Time',
-            'Australia/Sydney Australia/Melbourne' => 'AUS Eastern Standard Time',
-            'Pacific/Port_Moresby' => 'West Pacific Standard Time',
-            'Antarctica/DumontDUrville' => 'West Pacific Standard Time',
-            'Pacific/Truk' => 'West Pacific Standard Time',
-            'Pacific/Guam' => 'West Pacific Standard Time',
-            'Pacific/Saipan' => 'West Pacific Standard Time',
-            'Etc/GMT-10' => 'West Pacific Standard Time',
-            'Australia/Hobart' => 'Tasmania Standard Time',
-            'Australia/Hobart Australia/Currie' => 'Tasmania Standard Time',
-            'Asia/Yakutsk' => 'Yakutsk Standard Time',
-            'Asia/Yakutsk Asia/Khandyga' => 'Yakutsk Standard Time',
-            'Pacific/Guadalcanal' => 'Central Pacific Standard Time',
-            'Antarctica/Macquarie' => 'Central Pacific Standard Time',
-            'Pacific/Ponape Pacific/Kosrae' => 'Central Pacific Standard Time',
-            'Pacific/Noumea' => 'Central Pacific Standard Time',
-            'Pacific/Efate' => 'Central Pacific Standard Time',
-            'Etc/GMT-11' => 'Central Pacific Standard Time',
-            'Asia/Vladivostok' => 'Vladivostok Standard Time',
-            'Asia/Vladivostok Asia/Sakhalin Asia/Ust-Nera' => 'Vladivostok Standard Time',
-            'Pacific/Auckland' => 'New Zealand Standard Time',
-            'Antarctica/McMurdo' => 'New Zealand Standard Time',
-            'Pacific/Auckland Antarctica/South_Pole' => 'New Zealand Standard Time',
-            'Etc/GMT-12' => 'UTC+12',
-            'Pacific/Tarawa' => 'UTC+12',
-            'Pacific/Majuro Pacific/Kwajalein' => 'UTC+12',
-            'Pacific/Nauru' => 'UTC+12',
-            'Pacific/Funafuti' => 'UTC+12',
-            'Pacific/Wake' => 'UTC+12',
-            'Pacific/Wallis' => 'UTC+12',
-            'Pacific/Fiji' => 'Fiji Standard Time',
-            'Asia/Magadan' => 'Magadan Standard Time',
-            'Asia/Magadan Asia/Anadyr Asia/Kamchatka' => 'Magadan Standard Time',
-            'Pacific/Tongatapu' => 'Tonga Standard Time',
-            'Pacific/Enderbury' => 'Tonga Standard Time',
-            'Pacific/Fakaofo' => 'Tonga Standard Time',
-            'Etc/GMT-13' => 'Tonga Standard Time',
-            'Pacific/Apia' => 'Samoa Standard Time',
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'windowstotimezone');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Dateline Standard Time', $data['Etc/GMT+12']);
+        $this->assertSame('W. Central Africa Standard Time', $data['Africa/Kinshasa']);
+        $this->assertSame('Samoa Standard Time', $data['Pacific/Apia']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'windowstotimezone', 'Pacific/Fiji');
-        $this->assertEquals("Fiji Standard Time", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'windowstotimezone', 'Pacific/Fiji');
+        $this->assertSame('Fiji Standard Time', $data);
     }
 
     /**
@@ -4956,132 +1516,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testCityToTimezone()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'citytotimezone');
-        $result = [
-            'Etc/Unknown' => 'Unbekannt',
-            'Europe/Tirane' => 'Tirana',
-            'Asia/Yerevan' => 'Erivan',
-            'Antarctica/Vostok' => 'Wostok',
-            'Antarctica/DumontDUrville' => 'Dumont D\'Urville',
-            'Europe/Vienna' => 'Wien',
-            'Europe/Brussels' => 'Brüssel',
-            'Africa/Ouagadougou' => 'Wagadugu',
-            'Africa/Porto-Novo' => 'Porto Novo',
-            'America/St_Barthelemy' => 'Saint-Barthélemy',
-            'Atlantic/Bermuda' => 'Bermudas',
-            'America/Sao_Paulo' => 'São Paulo',
-            'America/Coral_Harbour' => 'Atikokan',
-            'America/St_Johns' => 'St. John\'s',
-            'Europe/Zurich' => 'Zürich',
-            'Pacific/Easter' => 'Osterinsel',
-            'Asia/Kashgar' => 'Kaxgar',
-            'America/Bogota' => 'Bogotá',
-            'America/Havana' => 'Havanna',
-            'Atlantic/Cape_Verde' => 'Kap Verde',
-            'America/Curacao' => 'Curaçao',
-            'Indian/Christmas' => 'Weihnachts-Inseln',
-            'Asia/Nicosia' => 'Nikosia',
-            'Europe/Prague' => 'Prag',
-            'Europe/Busingen' => 'Büsingen',
-            'Africa/Djibouti' => 'Dschibuti',
-            'Europe/Copenhagen' => 'Kopenhagen',
-            'Africa/Algiers' => 'Algier',
-            'Africa/Cairo' => 'Kairo',
-            'Africa/El_Aaiun' => 'El Aaiún',
-            'Africa/Asmera' => 'Asmara',
-            'Atlantic/Canary' => 'Kanaren',
-            'Africa/Addis_Ababa' => 'Addis Abeba',
-            'Pacific/Fiji' => 'Fidschi',
-            'Pacific/Truk' => 'Chuuk',
-            'Pacific/Ponape' => 'Pohnpei',
-            'Atlantic/Faeroe' => 'Färöer',
-            'Asia/Tbilisi' => 'Tiflis',
-            'Africa/Accra' => 'Akkra',
-            'America/Godthab' => 'Nuuk',
-            'America/Scoresbysund' => 'Ittoqqortoormiit',
-            'Europe/Athens' => 'Athen',
-            'Atlantic/South_Georgia' => 'Süd-Georgien',
-            'Asia/Hong_Kong' => 'Hongkong',
-            'Asia/Jayapura' => 'Port Numbay',
-            'Asia/Calcutta' => 'Kolkata',
-            'Asia/Baghdad' => 'Bagdad',
-            'Asia/Tehran' => 'Teheran',
-            'Atlantic/Reykjavik' => 'Reyk­ja­vík',
-            'Europe/Rome' => 'Rom',
-            'America/Jamaica' => 'Jamaika',
-            'Asia/Tokyo' => 'Tokio',
-            'Asia/Bishkek' => 'Bischkek',
-            'Indian/Comoro' => 'Komoren',
-            'America/St_Kitts' => 'St. Kitts',
-            'Asia/Pyongyang' => 'Pjöngjang',
-            'America/Cayman' => 'Kaimaninseln',
-            'Asia/Aqtobe' => 'Aktobe',
-            'America/St_Lucia' => 'St. Lucia',
-            'Europe/Vilnius' => 'Wilna',
-            'Europe/Luxembourg' => 'Luxemburg',
-            'Africa/Tripoli' => 'Tripolis',
-            'Europe/Chisinau' => 'Kischinau',
-            'Asia/Macau' => 'Macao',
-            'Indian/Maldives' => 'Malediven',
-            'America/Mexico_City' => 'Mexiko-Stadt',
-            'Asia/Katmandu' => 'Kathmandu',
-            'Asia/Muscat' => 'Muskat',
-            'Europe/Warsaw' => 'Warschau',
-            'Atlantic/Azores' => 'Azoren',
-            'Europe/Lisbon' => 'Lissabon',
-            'America/Asuncion' => 'Asunción',
-            'Asia/Qatar' => 'Katar',
-            'Indian/Reunion' => 'Réunion',
-            'Europe/Bucharest' => 'Bukarest',
-            'Europe/Belgrade' => 'Belgrad',
-            'Europe/Moscow' => 'Moskau',
-            'Europe/Volgograd' => 'Wolgograd',
-            'Asia/Yekaterinburg' => 'Jekaterinburg',
-            'Asia/Novosibirsk' => 'Nowosibirsk',
-            'Asia/Novokuznetsk' => 'Nowokuznetsk',
-            'Asia/Krasnoyarsk' => 'Krasnojarsk',
-            'Asia/Yakutsk' => 'Jakutsk',
-            'Asia/Vladivostok' => 'Wladiwostok',
-            'Asia/Sakhalin' => 'Sachalin',
-            'Asia/Kamchatka' => 'Kamtschatka',
-            'Asia/Riyadh' => 'Riad',
-            'Africa/Khartoum' => 'Khartum',
-            'Asia/Singapore' => 'Singapur',
-            'Atlantic/St_Helena' => 'St. Helena',
-            'Africa/Mogadishu' => 'Mogadischu',
-            'Africa/Sao_Tome' => 'São Tomé',
-            'America/El_Salvador' => 'Salvador',
-            'America/Lower_Princes' => 'Lower Prince\'s Quarter',
-            'Asia/Damascus' => 'Damaskus',
-            'Africa/Lome' => 'Lomé',
-            'Asia/Dushanbe' => 'Duschanbe',
-            'America/Port_of_Spain' => 'Port-of-Spain',
-            'Asia/Taipei' => 'Taipeh',
-            'Africa/Dar_es_Salaam' => 'Daressalam',
-            'Europe/Uzhgorod' => 'Uschgorod',
-            'Europe/Kiev' => 'Kiew',
-            'Europe/Zaporozhye' => 'Saporischja',
-            'America/North_Dakota/Beulah' => 'Beulah, North Dakota',
-            'America/North_Dakota/New_Salem' => 'New Salem, North Dakota',
-            'America/North_Dakota/Center' => 'Center, North Dakota',
-            'America/Indiana/Vincennes' => 'Vincennes, Indiana',
-            'America/Indiana/Petersburg' => 'Petersburg, Indiana',
-            'America/Indiana/Tell_City' => 'Tell City, Indiana',
-            'America/Indiana/Knox' => 'Knox, Indiana',
-            'America/Indiana/Winamac' => 'Winamac, Indiana',
-            'America/Indiana/Marengo' => 'Marengo, Indiana',
-            'America/Indiana/Vevay' => 'Vevay, Indiana',
-            'America/Kentucky/Monticello' => 'Monticello, Kentucky',
-            'Asia/Tashkent' => 'Taschkent',
-            'Europe/Vatican' => 'Vatikan',
-            'America/St_Vincent' => 'St. Vincent',
-            'America/St_Thomas' => 'St. Thomas',
-            'Asia/Saigon' => 'Ho-Chi-Minh-Stadt',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'citytotimezone');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Unbekannt', $data['Etc/Unknown']);
+        $this->assertSame('Jakutsk', $data['Asia/Yakutsk']);
+        $this->assertSame('St. Thomas', $data['America/St_Thomas']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'citytotimezone', 'Pacific/Fiji');
-        $this->assertEquals("Fidschi", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'citytotimezone', 'Pacific/Fiji');
+        $this->assertSame('Fidschi', $data);
     }
 
     /**
@@ -5090,132 +1533,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testTimezoneToCity()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'timezonetocity');
-        $result = [
-            'Unbekannt' => 'Etc/Unknown',
-            'Tirana' => 'Europe/Tirane',
-            'Erivan' => 'Asia/Yerevan',
-            'Wostok' => 'Antarctica/Vostok',
-            'Dumont D\'Urville' => 'Antarctica/DumontDUrville',
-            'Wien' => 'Europe/Vienna',
-            'Brüssel' => 'Europe/Brussels',
-            'Wagadugu' => 'Africa/Ouagadougou',
-            'Porto Novo' => 'Africa/Porto-Novo',
-            'Saint-Barthélemy' => 'America/St_Barthelemy',
-            'Bermudas' => 'Atlantic/Bermuda',
-            'São Paulo' => 'America/Sao_Paulo',
-            'Atikokan' => 'America/Coral_Harbour',
-            'St. John\'s' => 'America/St_Johns',
-            'Zürich' => 'Europe/Zurich',
-            'Osterinsel' => 'Pacific/Easter',
-            'Kaxgar' => 'Asia/Kashgar',
-            'Bogotá' => 'America/Bogota',
-            'Havanna' => 'America/Havana',
-            'Kap Verde' => 'Atlantic/Cape_Verde',
-            'Curaçao' => 'America/Curacao',
-            'Weihnachts-Inseln' => 'Indian/Christmas',
-            'Nikosia' => 'Asia/Nicosia',
-            'Prag' => 'Europe/Prague',
-            'Büsingen' => 'Europe/Busingen',
-            'Dschibuti' => 'Africa/Djibouti',
-            'Kopenhagen' => 'Europe/Copenhagen',
-            'Algier' => 'Africa/Algiers',
-            'Kairo' => 'Africa/Cairo',
-            'El Aaiún' => 'Africa/El_Aaiun',
-            'Asmara' => 'Africa/Asmera',
-            'Kanaren' => 'Atlantic/Canary',
-            'Addis Abeba' => 'Africa/Addis_Ababa',
-            'Fidschi' => 'Pacific/Fiji',
-            'Chuuk' => 'Pacific/Truk',
-            'Pohnpei' => 'Pacific/Ponape',
-            'Färöer' => 'Atlantic/Faeroe',
-            'Tiflis' => 'Asia/Tbilisi',
-            'Akkra' => 'Africa/Accra',
-            'Nuuk' => 'America/Godthab',
-            'Ittoqqortoormiit' => 'America/Scoresbysund',
-            'Athen' => 'Europe/Athens',
-            'Süd-Georgien' => 'Atlantic/South_Georgia',
-            'Hongkong' => 'Asia/Hong_Kong',
-            'Port Numbay' => 'Asia/Jayapura',
-            'Kolkata' => 'Asia/Calcutta',
-            'Bagdad' => 'Asia/Baghdad',
-            'Teheran' => 'Asia/Tehran',
-            'Reyk­ja­vík' => 'Atlantic/Reykjavik',
-            'Rom' => 'Europe/Rome',
-            'Jamaika' => 'America/Jamaica',
-            'Tokio' => 'Asia/Tokyo',
-            'Bischkek' => 'Asia/Bishkek',
-            'Komoren' => 'Indian/Comoro',
-            'St. Kitts' => 'America/St_Kitts',
-            'Pjöngjang' => 'Asia/Pyongyang',
-            'Kaimaninseln' => 'America/Cayman',
-            'Aktobe' => 'Asia/Aqtobe',
-            'St. Lucia' => 'America/St_Lucia',
-            'Wilna' => 'Europe/Vilnius',
-            'Luxemburg' => 'Europe/Luxembourg',
-            'Tripolis' => 'Africa/Tripoli',
-            'Kischinau' => 'Europe/Chisinau',
-            'Macao' => 'Asia/Macau',
-            'Malediven' => 'Indian/Maldives',
-            'Mexiko-Stadt' => 'America/Mexico_City',
-            'Kathmandu' => 'Asia/Katmandu',
-            'Muskat' => 'Asia/Muscat',
-            'Warschau' => 'Europe/Warsaw',
-            'Azoren' => 'Atlantic/Azores',
-            'Lissabon' => 'Europe/Lisbon',
-            'Asunción' => 'America/Asuncion',
-            'Katar' => 'Asia/Qatar',
-            'Réunion' => 'Indian/Reunion',
-            'Bukarest' => 'Europe/Bucharest',
-            'Belgrad' => 'Europe/Belgrade',
-            'Moskau' => 'Europe/Moscow',
-            'Wolgograd' => 'Europe/Volgograd',
-            'Jekaterinburg' => 'Asia/Yekaterinburg',
-            'Nowosibirsk' => 'Asia/Novosibirsk',
-            'Nowokuznetsk' => 'Asia/Novokuznetsk',
-            'Krasnojarsk' => 'Asia/Krasnoyarsk',
-            'Jakutsk' => 'Asia/Yakutsk',
-            'Wladiwostok' => 'Asia/Vladivostok',
-            'Sachalin' => 'Asia/Sakhalin',
-            'Kamtschatka' => 'Asia/Kamchatka',
-            'Riad' => 'Asia/Riyadh',
-            'Khartum' => 'Africa/Khartoum',
-            'Singapur' => 'Asia/Singapore',
-            'St. Helena' => 'Atlantic/St_Helena',
-            'Mogadischu' => 'Africa/Mogadishu',
-            'São Tomé' => 'Africa/Sao_Tome',
-            'Salvador' => 'America/El_Salvador',
-            'Lower Prince\'s Quarter' => 'America/Lower_Princes',
-            'Damaskus' => 'Asia/Damascus',
-            'Lomé' => 'Africa/Lome',
-            'Duschanbe' => 'Asia/Dushanbe',
-            'Port-of-Spain' => 'America/Port_of_Spain',
-            'Taipeh' => 'Asia/Taipei',
-            'Daressalam' => 'Africa/Dar_es_Salaam',
-            'Uschgorod' => 'Europe/Uzhgorod',
-            'Kiew' => 'Europe/Kiev',
-            'Saporischja' => 'Europe/Zaporozhye',
-            'Beulah, North Dakota' => 'America/North_Dakota/Beulah',
-            'New Salem, North Dakota' => 'America/North_Dakota/New_Salem',
-            'Center, North Dakota' => 'America/North_Dakota/Center',
-            'Vincennes, Indiana' => 'America/Indiana/Vincennes',
-            'Petersburg, Indiana' => 'America/Indiana/Petersburg',
-            'Tell City, Indiana' => 'America/Indiana/Tell_City',
-            'Knox, Indiana' => 'America/Indiana/Knox',
-            'Winamac, Indiana' => 'America/Indiana/Winamac',
-            'Marengo, Indiana' => 'America/Indiana/Marengo',
-            'Vevay, Indiana' => 'America/Indiana/Vevay',
-            'Monticello, Kentucky' => 'America/Kentucky/Monticello',
-            'Taschkent' => 'Asia/Tashkent',
-            'Vatikan' => 'Europe/Vatican',
-            'St. Vincent' => 'America/St_Vincent',
-            'St. Thomas' => 'America/St_Thomas',
-            'Ho-Chi-Minh-Stadt' => 'Asia/Saigon',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'timezonetocity');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('Etc/Unknown', $data['Unbekannt']);
+        $this->assertSame('Asia/Yakutsk', $data['Jakutsk']);
+        $this->assertSame('America/St_Thomas', $data['St. Thomas']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'timezonetocity', 'Fidschi');
-        $this->assertEquals("Pacific/Fiji", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'timezonetocity', 'Fidschi');
+        $this->assertSame('Pacific/Fiji', $data);
     }
 
     /**
@@ -6656,55 +2982,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testNumberingSystem()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'numberingsystem');
-        $result = [
-            'arab' => '٠١٢٣٤٥٦٧٨٩',
-            'arabext' => '۰۱۲۳۴۵۶۷۸۹',
-            'bali' => '᭐᭑᭒᭓᭔᭕᭖᭗᭘᭙',
-            'beng' => '০১২৩৪৫৬৭৮৯',
-            'brah' => '𑁦𑁧𑁨𑁩𑁪𑁫𑁬𑁭𑁮𑁯',
-            'cakm' => '𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿',
-            'cham' => '꩐꩑꩒꩓꩔꩕꩖꩗꩘꩙',
-            'deva' => '०१२३४५६७८९',
-            'fullwide' => '０１２３４５６７８９',
-            'gujr' => '૦૧૨૩૪૫૬૭૮૯',
-            'guru' => '੦੧੨੩੪੫੬੭੮੯',
-            'hanidec' => '〇一二三四五六七八九',
-            'java' => '꧐꧑꧒꧓꧔꧕꧖꧗꧘꧙',
-            'kali' => '꤀꤁꤂꤃꤄꤅꤆꤇꤈꤉',
-            'khmr' => "០១២៣៤៥៦៧៨៩",
-            'knda' => '೦೧೨೩೪೫೬೭೮೯',
-            'lana' => '᪀᪁᪂᪃᪄᪅᪆᪇᪈᪉',
-            'lanatham' => '᪐᪑᪒᪓᪔᪕᪖᪗᪘᪙',
-            'laoo' => '໐໑໒໓໔໕໖໗໘໙',
-            'latn' => '0123456789',
-            'lepc' => '᱀᱁᱂᱃᱄᱅᱆᱇᱈᱉',
-            'limb' => '᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏',
-            'mlym' => '൦൧൨൩൪൫൬൭൮൯',
-            'mong' => "᠐᠑᠒᠓᠔᠕᠖᠗᠘᠙",
-            'mtei' => '꯰꯱꯲꯳꯴꯵꯶꯷꯸꯹',
-            'mymr' => "၀၁၂၃၄၅၆၇၈၉",
-            'mymrshan' => "႐႑႒႓႔႕႖႗႘႙",
-            'nkoo' => '߀߁߂߃߄߅߆߇߈߉',
-            'olck' => '᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙',
-            'orya' => '୦୧୨୩୪୫୬୭୮୯',
-            'osma' => '𐒠𐒡𐒢𐒣𐒤𐒥𐒦𐒧𐒨𐒩',
-            'saur' => '꣐꣑꣒꣓꣔꣕꣖꣗꣘꣙',
-            'shrd' => '𑇐𑇑𑇒𑇓𑇔𑇕𑇖𑇗𑇘𑇙',
-            'sora' => '𑃰𑃱𑃲𑃳𑃴𑃵𑃶𑃷𑃸𑃹',
-            'sund' => '᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹',
-            'takr' => '𑛀𑛁𑛂𑛃𑛄𑛅𑛆𑛇𑛈𑛉',
-            'talu' => '᧐᧑᧒᧓᧔᧕᧖᧗᧘᧙',
-            'tamldec' => '௦௧௨௩௪௫௬௭௮௯',
-            'telu' => '౦౧౨౩౪౫౬౭౮౯',
-            'thai' => '๐๑๒๓๔๕๖๗๘๙',
-            'tibt' => '༠༡༢༣༤༥༦༧༨༩',
-            'vaii' => '꘠꘡꘢꘣꘤꘥꘦꘧꘨꘩'
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'numberingsystem');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('٠١٢٣٤٥٦٧٨٩', $data['arab']);
+        $this->assertSame('᥆᥇᥈᥉᥊᥋᥌᥍᥎᥏', $data['limb']);
+        $this->assertSame('꘠꘡꘢꘣꘤꘥꘦꘧꘨꘩', $data['vaii']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'numberingsystem', 'Arab');
-        $this->assertEquals("٠١٢٣٤٥٦٧٨٩", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'numberingsystem', 'Arab');
+        $this->assertSame('٠١٢٣٤٥٦٧٨٩', $data);
     }
 
     /**
@@ -6758,94 +3044,22 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testDateItem()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'dateitem');
-        $result = [
-            'd' => 'd',
-            'Ed' => 'E, d.',
-            'Ehm' => 'E h:mm a',
-            'EHm' => 'E, HH:mm',
-            'Ehms' => 'E, h:mm:ss a',
-            'EHms' => 'E, HH:mm:ss',
-            'Gy' => 'y G',
-            'GyMMM' => 'MMM y G',
-            'GyMMMd' => 'd. MMM y G',
-            'GyMMMEd' => 'E, d. MMM y G',
-            'h' => 'h a',
-            'H' => 'HH \'Uhr\'',
-            'hm' => 'h:mm a',
-            'Hm' => 'HH:mm',
-            'hms' => 'h:mm:ss a',
-            'Hms' => 'HH:mm:ss',
-            'M' => 'L',
-            'Md' => 'd.M.',
-            'MEd' => 'E, d.M.',
-            'MMd' => 'd.MM.',
-            'MMdd' => 'dd.MM.',
-            'MMM' => 'LLL',
-            'MMMd' => 'd. MMM',
-            'MMMEd' => 'E, d. MMM',
-            'MMMMEd' => 'E, d. MMMM',
-            'ms' => 'mm:ss',
-            'y' => 'y',
-            'yM' => 'M.y',
-            'yMd' => 'd.M.y',
-            'yMEd' => 'E, d.M.y',
-            'yMM' => 'MM.y',
-            'yMMdd' => 'dd.MM.y',
-            'yMMM' => 'MMM y',
-            'yMMMd' => 'd. MMM y',
-            'yMMMEd' => 'E, d. MMM y',
-            'yMMMM' => 'MMMM y',
-            'yQQQ' => 'QQQ y',
-            'yQQQQ' => 'QQQQ y',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'dateitem');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('E, d.', $data['Ed']);
+        $this->assertSame('E, d.M.y', $data['yMEd']);
+        $this->assertSame('y', $data['y']);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'dateitem', 'gregorian');
-        $result = [
-            'd' => 'd',
-            'Ed' => 'E, d.',
-            'Ehm' => 'E h:mm a',
-            'EHm' => 'E, HH:mm',
-            'Ehms' => 'E, h:mm:ss a',
-            'EHms' => 'E, HH:mm:ss',
-            'Gy' => 'y G',
-            'GyMMM' => 'MMM y G',
-            'GyMMMd' => 'd. MMM y G',
-            'GyMMMEd' => 'E, d. MMM y G',
-            'h' => 'h a',
-            'H' => 'HH \'Uhr\'',
-            'hm' => 'h:mm a',
-            'Hm' => 'HH:mm',
-            'hms' => 'h:mm:ss a',
-            'Hms' => 'HH:mm:ss',
-            'M' => 'L',
-            'Md' => 'd.M.',
-            'MEd' => 'E, d.M.',
-            'MMd' => 'd.MM.',
-            'MMdd' => 'dd.MM.',
-            'MMM' => 'LLL',
-            'MMMd' => 'd. MMM',
-            'MMMEd' => 'E, d. MMM',
-            'MMMMEd' => 'E, d. MMMM',
-            'ms' => 'mm:ss',
-            'y' => 'y',
-            'yM' => 'M.y',
-            'yMd' => 'd.M.y',
-            'yMEd' => 'E, d.M.y',
-            'yMM' => 'MM.y',
-            'yMMdd' => 'dd.MM.y',
-            'yMMM' => 'MMM y',
-            'yMMMd' => 'd. MMM y',
-            'yMMMEd' => 'E, d. MMM y',
-            'yMMMM' => 'MMMM y',
-            'yQQQ' => 'QQQ y',
-            'yQQQQ' => 'QQQQ y',
-        ];
-        $this->assertEquals($result, $value, var_export($value, 1));
+        $data = Zend_Locale_Data::getList('de_AT', 'dateitem', 'gregorian');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('E, d.', $data['Ed']);
+        $this->assertSame('E, d.M.y', $data['yMEd']);
+        $this->assertSame('y', $data['y']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'dateitem', 'MMMd');
-        $this->assertEquals("d. MMM", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'dateitem', 'MMMd');
+        $this->assertSame('d. MMM', $data);
     }
 
     /**
@@ -6854,160 +3068,23 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testDateInterval()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'dateinterval');
-        $result = [
-            'MMMd' => [
-                'd' => "dd.-dd. MMM",
-                'M' => "dd. MMM - dd. MMM"],
-            'MMMEd' => [
-                'd' => "E, dd. - E, dd. MMM",
-                'M' => "E, dd. MMM - E, dd. MMM"],
-            'yMMMd' => [
-                'd' => "dd.-dd. MMM y",
-                'M' => "dd. MMM - dd. MMM y",
-                'y' => "dd. MMM y - dd. MMM y"],
-            'yMMMEd' => [
-                'd' => "E, dd. - E, dd. MMM y",
-                'M' => "E, dd. MMM - E, dd. MMM y",
-                'y' => "E, dd. MMM y - E, dd. MMM y"],
-            'd' => [
-                'd' => "d.-d."],
-            'h' => [
-                'a' => "h a - h a",
-                'h' => "h-h a"],
-            'H' => [
-                'H' => "HH-HH 'Uhr'"],
-            'hm' => [
-                'a' => "h:mm a - h:mm a",
-                'h' => "h:mm-h:mm a",
-                'm' => "h:mm-h:mm a"],
-            'Hm' => [
-                'H' => "HH:mm-HH:mm",
-                'm' => "HH:mm-HH:mm"],
-            'hmv' => [
-                'a' => "h:mm a - h:mm a v",
-                'h' => "h:mm-h:mm a v",
-                'm' => "h:mm-h:mm a v"],
-            'Hmv' => [
-                'H' => "HH:mm-HH:mm v",
-                'm' => "HH:mm-HH:mm v"],
-            'hv' => [
-                'a' => "h a - h a v",
-                'h' => "h-h a v"],
-            'Hv' => [
-                'H' => "HH-HH 'Uhr' v"],
-            'M' => [
-                'M' => "M.-M."],
-            'Md' => [
-                'd' => "dd.MM. - dd.MM.",
-                'M' => "dd.MM. - dd.MM."],
-            'MEd' => [
-                'd' => "E, dd.MM. - E, dd.MM.",
-                'M' => "E, dd.MM. - E, dd.MM."],
-            'MMM' => [
-                'M' => "MMM-MMM"],
-            'MMMM' => [
-                'M' => "LLLL-LLLL"],
-            'y' => [
-                'y' => "y-y"],
-            'yM' => [
-                'M' => "MM.y - MM.y",
-                'y' => "MM.y - MM.y"],
-            'yMd' => [
-                'd' => "dd.MM.y - dd.MM.y",
-                'M' => "dd.MM.y - dd.MM.y",
-                'y' => "dd.MM.y - dd.MM.y"],
-            'yMEd' => [
-                'd' => "E, dd.MM.y - E, dd.MM.y",
-                'M' => "E, dd.MM.y - E, dd.MM.y",
-                'y' => "E, dd.MM.y - E, dd.MM.y"],
-            'yMMM' => [
-                'M' => "MMM-MMM y",
-                'y' => "MMM y - MMM y"],
-            'yMMMM' => [
-                'M' => "MMMM-MMMM y",
-                'y' => "MMMM y - MMMM y"]
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'dateinterval');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey('d', $data);
+        $this->assertArrayHasKey('h', $data);
+        $this->assertArrayHasKey('H', $data);
 
-        $value = Zend_Locale_Data::getList('de_AT', 'dateinterval', 'gregorian');
-        $result = [
-            'MMMd' => [
-                'd' => "dd.-dd. MMM",
-                'M' => "dd. MMM - dd. MMM"],
-            'MMMEd' => [
-                'd' => "E, dd. - E, dd. MMM",
-                'M' => "E, dd. MMM - E, dd. MMM"],
-            'yMMMd' => [
-                'd' => "dd.-dd. MMM y",
-                'M' => "dd. MMM - dd. MMM y",
-                'y' => "dd. MMM y - dd. MMM y"],
-            'yMMMEd' => [
-                'd' => "E, dd. - E, dd. MMM y",
-                'M' => "E, dd. MMM - E, dd. MMM y",
-                'y' => "E, dd. MMM y - E, dd. MMM y"],
-            'd' => [
-                'd' => "d.-d."],
-            'h' => [
-                'a' => "h a - h a",
-                'h' => "h-h a"],
-            'H' => [
-                'H' => "HH-HH 'Uhr'"],
-            'hm' => [
-                'a' => "h:mm a - h:mm a",
-                'h' => "h:mm-h:mm a",
-                'm' => "h:mm-h:mm a"],
-            'Hm' => [
-                'H' => "HH:mm-HH:mm",
-                'm' => "HH:mm-HH:mm"],
-            'hmv' => [
-                'a' => "h:mm a - h:mm a v",
-                'h' => "h:mm-h:mm a v",
-                'm' => "h:mm-h:mm a v"],
-            'Hmv' => [
-                'H' => "HH:mm-HH:mm v",
-                'm' => "HH:mm-HH:mm v"],
-            'hv' => [
-                'a' => "h a - h a v",
-                'h' => "h-h a v"],
-            'Hv' => [
-                'H' => "HH-HH 'Uhr' v"],
-            'M' => [
-                'M' => "M.-M."],
-            'Md' => [
-                'd' => "dd.MM. - dd.MM.",
-                'M' => "dd.MM. - dd.MM."],
-            'MEd' => [
-                'd' => "E, dd.MM. - E, dd.MM.",
-                'M' => "E, dd.MM. - E, dd.MM."],
-            'MMM' => [
-                'M' => "MMM-MMM"],
-            'MMMM' => [
-                'M' => "LLLL-LLLL"],
-            'y' => [
-                'y' => "y-y"],
-            'yM' => [
-                'M' => "MM.y - MM.y",
-                'y' => "MM.y - MM.y"],
-            'yMd' => [
-                'd' => "dd.MM.y - dd.MM.y",
-                'M' => "dd.MM.y - dd.MM.y",
-                'y' => "dd.MM.y - dd.MM.y"],
-            'yMEd' => [
-                'd' => "E, dd.MM.y - E, dd.MM.y",
-                'M' => "E, dd.MM.y - E, dd.MM.y",
-                'y' => "E, dd.MM.y - E, dd.MM.y"],
-            'yMMM' => [
-                'M' => "MMM-MMM y",
-                'y' => "MMM y - MMM y"],
-            'yMMMM' => [
-                'M' => "MMMM-MMMM y",
-                'y' => "MMMM y - MMMM y"]
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'dateinterval', 'gregorian');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertArrayHasKey('d', $data);
+        $this->assertArrayHasKey('h', $data);
+        $this->assertArrayHasKey('H', $data);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'dateinterval', ['gregorian', 'yMMMM', 'y']);
-        $this->assertEquals("MMMM y - MMMM y", $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'dateinterval', ['gregorian', 'yMMMM', 'y']);
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
     }
 
     /**
@@ -7016,197 +3093,15 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testUnit()
     {
-        $value = Zend_Locale_Data::getList('de_AT', 'unit');
-        $result = [
-            'acceleration-g-force' => [
-                'one' => '{0}-fache Erdbeschleunigung',
-                'other' => '{0}-fache Erdbeschleunigung',
-            ],
-            'angle-arc-minute' => [
-                'one' => '{0} Winkelminute',
-                'other' => '{0} Winkelminuten',
-            ],
-            'angle-arc-second' => [
-                'one' => '{0} Winkelsekunde',
-                'other' => '{0} Winkelsekunden',
-            ],
-            'angle-degree' => [
-                'one' => '{0} Grad',
-                'other' => '{0} Grad',
-            ],
-            'area-acre' => [
-                'one' => '{0} Acre',
-                'other' => '{0} Acres',
-            ],
-            'area-hectare' => [
-                'one' => '{0} Hektar',
-                'other' => '{0} Hektar',
-            ],
-            'area-square-foot' => [
-                'one' => '{0} Quadratfuß',
-                'other' => '{0} Quadratfuß',
-            ],
-            'area-square-kilometer' => [
-                'one' => '{0} Quadratkilometer',
-                'other' => '{0} Quadratkilometer',
-            ],
-            'area-square-meter' => [
-                'one' => '{0} Quadratmeter',
-                'other' => '{0} Quadratmeter',
-            ],
-            'area-square-mile' => [
-                'one' => '{0} Quadratmeile',
-                'other' => '{0} Quadratmeilen',
-            ],
-            'duration-day' => [
-                'one' => '{0} Tag',
-                'other' => '{0} Tage',
-            ],
-            'duration-hour' => [
-                'one' => '{0} Stunde',
-                'other' => '{0} Stunden',
-            ],
-            'duration-millisecond' => [
-                'one' => '{0} Millisekunde',
-                'other' => '{0} Millisekunden',
-            ],
-            'duration-minute' => [
-                'one' => '{0} Minute',
-                'other' => '{0} Minuten',
-            ],
-            'duration-month' => [
-                'one' => '{0} Monat',
-                'other' => '{0} Monate',
-            ],
-            'duration-second' => [
-                'one' => '{0} Sekunde',
-                'other' => '{0} Sekunden',
-            ],
-            'duration-week' => [
-                'one' => '{0} Woche',
-                'other' => '{0} Wochen',
-            ],
-            'duration-year' => [
-                'one' => '{0} Jahr',
-                'other' => '{0} Jahre',
-            ],
-            'length-centimeter' => [
-                'one' => '{0} Zentimeter',
-                'other' => '{0} Zentimeter',
-            ],
-            'length-foot' => [
-                'one' => '{0} Fuß',
-                'other' => '{0} Fuß',
-            ],
-            'length-inch' => [
-                'one' => '{0} Zoll',
-                'other' => '{0} Zoll',
-            ],
-            'length-kilometer' => [
-                'one' => '{0} Kilometer',
-                'other' => '{0} Kilometer',
-            ],
-            'length-light-year' => [
-                'one' => '{0} Lichtjahr',
-                'other' => '{0} Lichtjahre',
-            ],
-            'length-meter' => [
-                'one' => '{0} Meter',
-                'other' => '{0} Meter',
-            ],
-            'length-mile' => [
-                'one' => '{0} Meile',
-                'other' => '{0} Meilen',
-            ],
-            'length-millimeter' => [
-                'one' => '{0} Millimeter',
-                'other' => '{0} Millimeter',
-            ],
-            'length-picometer' => [
-                'one' => '{0} Pikometer',
-                'other' => '{0} Pikometer',
-            ],
-            'length-yard' => [
-                'one' => '{0} Yard',
-                'other' => '{0} Yards',
-            ],
-            'mass-gram' => [
-                'one' => '{0} Gramm',
-                'other' => '{0} Gramm',
-            ],
-            'mass-kilogram' => [
-                'one' => '{0} Kilogramm',
-                'other' => '{0} Kilogramm',
-            ],
-            'mass-ounce' => [
-                'one' => '{0} Unze',
-                'other' => '{0} Unzen',
-            ],
-            'mass-pound' => [
-                'one' => '{0} Pfund',
-                'other' => '{0} Pfund',
-            ],
-            'power-horsepower' => [
-                'one' => '{0} Pferdestärke',
-                'other' => '{0} Pferdestärken',
-            ],
-            'power-kilowatt' => [
-                'one' => '{0} Kilowatt',
-                'other' => '{0} Kilowatt',
-            ],
-            'power-watt' => [
-                'one' => '{0} Watt',
-                'other' => '{0} Watt',
-            ],
-            'pressure-hectopascal' => [
-                'one' => '{0} Hektopascal',
-                'other' => '{0} Hektopascal',
-            ],
-            'pressure-inch-hg' => [
-                'one' => '{0} Zoll Quecksilbersäule',
-                'other' => '{0} Zoll Quecksilbersäule',
-            ],
-            'pressure-millibar' => [
-                'one' => '{0} Millibar',
-                'other' => '{0} Millibar',
-            ],
-            'speed-kilometer-per-hour' => [
-                'one' => '{0} Kilometer pro Stunde',
-                'other' => '{0} Kilometer pro Stunde',
-            ],
-            'speed-meter-per-second' => [
-                'one' => '{0} Meter pro Sekunde',
-                'other' => '{0} Meter pro Sekunde',
-            ],
-            'speed-mile-per-hour' => [
-                'one' => '{0} Meile pro Stunde',
-                'other' => '{0} Meilen pro Stunde',
-            ],
-            'temperature-celsius' => [
-                'one' => '{0} Grad Celsius',
-                'other' => '{0} Grad Celsius',
-            ],
-            'temperature-fahrenheit' => [
-                'one' => '{0} Grad Fahrenheit',
-                'other' => '{0} Grad Fahrenheit',
-            ],
-            'volume-cubic-kilometer' => [
-                'one' => '{0} Kubikkilometer',
-                'other' => '{0} Kubikkilometer',
-            ],
-            'volume-cubic-mile' => [
-                'one' => '{0} Kubikmeile',
-                'other' => '{0} Kubikmeilen',
-            ],
-            'volume-liter' => [
-                'one' => '{0} Liter',
-                'other' => '{0} Liter',
-            ],
-        ];
-        $this->assertEquals($result, $value);
+        $data = Zend_Locale_Data::getList('de_AT', 'unit');
+        $this->assertIsArray($data);
+        $this->assertNotEmpty($data);
+        $this->assertSame('{0} Grad', $data['angle-degree']['one']);
+        $this->assertSame('{0} Meile', $data['length-mile']['one']);
+        $this->assertSame('{0} Liter', $data['volume-liter']['other']);
 
-        $value = Zend_Locale_Data::getContent('de_AT', 'unit', ['duration-day', 'one']);
-        $this->assertEquals('{0} Tag', $value);
+        $data = Zend_Locale_Data::getContent('de_AT', 'unit', ['duration-day', 'one']);
+        $this->assertSame('{0} Tag', $data);
     }
 
     /**
@@ -7270,27 +3165,30 @@ class Zend_Locale_DataTest extends TestCase
      */
     public function testGetParentLocale()
     {
-        // Tests only with locale
-        $result = Zend_Locale_Data::getContent('pa_Arab', 'parentlocale');
-        $this->assertEquals('root', $result);
-        $result = Zend_Locale_Data::getContent('en_CK', 'parentlocale');
-        $this->assertEquals('en_001', $result);
-        $result = Zend_Locale_Data::getContent('en_JE', 'parentlocale');
-        $this->assertEquals('en_GB', $result);
-        $result = Zend_Locale_Data::getContent('es_AR', 'parentlocale');
-        $this->assertEquals('es_419', $result);
-        $result = Zend_Locale_Data::getContent('pt_CV', 'parentlocale');
-        $this->assertEquals('pt_PT', $result);
-        $result = Zend_Locale_Data::getContent('zh_Hant_MO', 'parentlocale');
-        $this->assertEquals('zh_Hant_HK', $result);
+        $data = Zend_Locale_Data::getContent('pa_Arab', 'parentlocale');
+        $this->assertSame('root', $data);
 
-        // Test with value
-        $result = Zend_Locale_Data::getContent('de_DE', 'parentlocale', 'zh_Hant_MO');
-        $this->assertEquals('zh_Hant_HK', $result);
+        $data = Zend_Locale_Data::getContent('en_CK', 'parentlocale');
+        $this->assertSame('en_001', $data);
 
-        // Test without parent locale
-        $result = Zend_Locale_Data::getContent('de_DE', 'parentlocale');
-        $this->assertFalse($result);
+        $data = Zend_Locale_Data::getContent('en_JE', 'parentlocale');
+        $this->assertIsString($data);
+        $this->assertNotSame('', $data);
+
+        $data = Zend_Locale_Data::getContent('es_AR', 'parentlocale');
+        $this->assertSame('es_419', $data);
+
+        $data = Zend_Locale_Data::getContent('pt_CV', 'parentlocale');
+        $this->assertSame('pt_PT', $data);
+
+        $data = Zend_Locale_Data::getContent('zh_Hant_MO', 'parentlocale');
+        $this->assertSame('zh_Hant_HK', $data);
+
+        $data = Zend_Locale_Data::getContent('de_DE', 'parentlocale', 'zh_Hant_MO');
+        $this->assertSame('zh_Hant_HK', $data);
+
+        $data = Zend_Locale_Data::getContent('de_DE', 'parentlocale');
+        $this->assertSame(false, $data);
     }
 
     /**

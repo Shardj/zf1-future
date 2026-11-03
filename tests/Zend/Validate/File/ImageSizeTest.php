@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,7 +53,7 @@ class Zend_Validate_File_ImageSizeTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Validate_File_ImageSizeTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**

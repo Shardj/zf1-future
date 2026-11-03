@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Oauth_ClientTest extends TestCase
      */
     protected $client;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->client = new Zend_Oauth_Client([]);
     }

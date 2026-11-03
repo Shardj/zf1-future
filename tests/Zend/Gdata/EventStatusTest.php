@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Gdata_EventStatusTest extends TestCase
      */
     protected $eventStatus;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->eventStatusText = file_get_contents(
             'Zend/Gdata/_files/EventStatusElementSample1.xml',

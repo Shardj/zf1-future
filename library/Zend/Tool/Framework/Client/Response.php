@@ -29,7 +29,7 @@
 class Zend_Tool_Framework_Client_Response
 {
     /**
-     * @var callback|null
+     * @var callable|null
      */
     protected $_callback = null;
 

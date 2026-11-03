@@ -1,10 +1,10 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 class Zend_Pdf_Filter_Compression_FlateTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('zlib')) {
             self::markTestSkipped('This test requires zlib');

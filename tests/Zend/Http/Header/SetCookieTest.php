@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -63,7 +63,8 @@ class Zend_Http_Header_SetCookieTest extends TestCase
             true,
             true,
             99,
-            9
+            9,
+            'Strict'
         );
         $this->assertEquals('myname', $setCookieHeader->getName());
         $this->assertEquals('myvalue', $setCookieHeader->getValue());
@@ -74,6 +75,7 @@ class Zend_Http_Header_SetCookieTest extends TestCase
         $this->assertTrue($setCookieHeader->isHttpOnly());
         $this->assertEquals(99, $setCookieHeader->getMaxAge());
         $this->assertEquals(9, $setCookieHeader->getVersion());
+        $this->assertEquals('Strict', $setCookieHeader->getSameSite());
     }
 
     public function testSetCookieFromStringCreatesValidSetCookieHeader()
@@ -91,7 +93,7 @@ class Zend_Http_Header_SetCookieTest extends TestCase
 
         $setCookieHeader = Zend_Http_Header_SetCookie::fromString(
             'set-cookie: myname=myvalue; Domain=docs.foo.com; Path=/accounts;'
-            . 'Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly'
+            . 'Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly; SameSite=Strict'
         );
         $this->assertTrue($setCookieHeader instanceof Zend_Http_Header_SetCookie);
         $this->assertEquals('myname', $setCookieHeader->getName());
@@ -101,6 +103,7 @@ class Zend_Http_Header_SetCookieTest extends TestCase
         $this->assertEquals('Wed, 13-Jan-2021 22:23:01 GMT', $setCookieHeader->getExpires());
         $this->assertTrue($setCookieHeader->isSecure());
         $this->assertTrue($setCookieHeader->isHttponly());
+        $this->assertEquals('Strict', $setCookieHeader->getSameSite());
     }
 
     public function testSetCookieFromStringCanCreateMultipleHeaders()
@@ -108,7 +111,7 @@ class Zend_Http_Header_SetCookieTest extends TestCase
         $setCookieHeaders = Zend_Http_Header_SetCookie::fromString(
             'Set-Cookie: myname=myvalue, '
             . 'someothername=someothervalue; Domain=docs.foo.com; Path=/accounts;'
-            . 'Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly'
+            . 'Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly; SameSite=Strict'
         );
         $this->assertTrue(is_array($setCookieHeaders));
 
@@ -126,6 +129,7 @@ class Zend_Http_Header_SetCookieTest extends TestCase
         $this->assertEquals('/accounts', $setCookieHeader->getPath());
         $this->assertTrue($setCookieHeader->isSecure());
         $this->assertTrue($setCookieHeader->isHttponly());
+        $this->assertEquals('Strict', $setCookieHeader->getSameSite());
     }
 
     public function testSetCookieGetFieldNameReturnsHeaderName()
@@ -144,10 +148,11 @@ class Zend_Http_Header_SetCookieTest extends TestCase
         $setCookieHeader->setPath('/accounts');
         $setCookieHeader->setSecure(true);
         $setCookieHeader->setHttponly(true);
+        $setCookieHeader->setSameSite('Strict');
 
         $target = 'myname=myvalue; Expires=Wed, 13-Jan-2021 22:23:01 GMT;'
             . ' Domain=docs.foo.com; Path=/accounts;'
-            . ' Secure; HttpOnly';
+            . ' Secure; HttpOnly; SameSite=Strict';
 
         $this->assertEquals($target, $setCookieHeader->getFieldValue());
     }
@@ -162,10 +167,11 @@ class Zend_Http_Header_SetCookieTest extends TestCase
         $setCookieHeader->setPath('/accounts');
         $setCookieHeader->setSecure(true);
         $setCookieHeader->setHttponly(true);
+        $setCookieHeader->setSameSite('Strict');
 
         $target = 'Set-Cookie: myname=myvalue; Expires=Wed, 13-Jan-2021 22:23:01 GMT;'
             . ' Domain=docs.foo.com; Path=/accounts;'
-            . ' Secure; HttpOnly';
+            . ' Secure; HttpOnly; SameSite=Strict';
 
         $this->assertEquals($target, $setCookieHeader->toString());
     }
@@ -377,6 +383,20 @@ class Zend_Http_Header_SetCookieTest extends TestCase
                 ],
                 'myname=myvalue; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Domain=docs.foo.com; Path=/accounts; Secure; HttpOnly'
             ],
+            [
+                'Set-Cookie: myname=myvalue; Domain=docs.foo.com; Path=/accounts; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly; SameSite=Strict',
+                [
+                    'name' => 'myname',
+                    'value' => 'myvalue',
+                    'domain' => 'docs.foo.com',
+                    'path' => '/accounts',
+                    'expires' => 'Wed, 13-Jan-2021 22:23:01 GMT',
+                    'secure' => true,
+                    'httponly' => true,
+                    'samesite' => 'Strict',
+                ],
+                'myname=myvalue; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Domain=docs.foo.com; Path=/accounts; Secure; HttpOnly; SameSite=Strict'
+            ],
         ];
     }
 
@@ -387,6 +407,7 @@ class Zend_Http_Header_SetCookieTest extends TestCase
             'setValue' => ['setValue', "This\r\nis\nan\revil\r\n\r\nvalue"],
             'setDomain' => ['setDomain', "This\r\nis\nan\revil\r\n\r\nvalue"],
             'setPath' => ['setPath', "This\r\nis\nan\revil\r\n\r\nvalue"],
+            'setSameSite' => ['setSameSite', "This\r\nis\nan\revil\r\n\r\nvalue"],
         ];
     }
 

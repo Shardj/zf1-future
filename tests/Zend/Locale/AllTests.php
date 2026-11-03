@@ -53,7 +53,7 @@ class Zend_Locale_AllTests
             setlocale(LC_ALL, TESTS_ZEND_LOCALE_FORMAT_SETLOCALE);
         }
 
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -68,6 +68,6 @@ class Zend_Locale_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Locale_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Locale_AllTests::main') {
     Zend_Locale_AllTests::main();
 }

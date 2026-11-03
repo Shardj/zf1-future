@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -34,7 +34,7 @@ class Zend_Auth_Adapter_DbTable_BasicSqliteTest_SkipTests extends TestCase
 {
     public $message = 'Skipped for unspecified reason';
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped($this->message);
     }

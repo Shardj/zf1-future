@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -41,7 +41,7 @@ class Zend_Reflection_FunctionTest extends TestCase
 {
     protected static $_sampleClassFileRequired = false;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (self::$_sampleClassFileRequired === false) {
             $fileToRequire = dirname(__FILE__) . '/_files/TestSampleClass.php';

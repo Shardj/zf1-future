@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -80,7 +80,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_amazon = new Zend_Service_Amazon_S3(
             constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
@@ -539,7 +539,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends TestCase
         $this->assertEquals($response['objects'][0], 'test-folder/test1');
         $this->assertEquals($response['prefixes'][0], 'test-folder/test2-folder/');
     }
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_amazon->debug);
         $this->_amazon->cleanBucket($this->_bucket);
@@ -561,7 +561,7 @@ class Zend_Service_Amazon_S3_OnlineTest extends TestCase
  */
 class Zend_Service_Amazon_S3_OnlineTest_Skip extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Service_Amazon_S3 online tests not enabled with an access key ID in '
                              . 'TestConfiguration.php');

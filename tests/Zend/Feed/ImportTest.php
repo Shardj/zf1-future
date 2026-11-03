@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -63,7 +63,7 @@ class Zend_Feed_ImportTest extends TestCase
      */
     protected $_adapter;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_adapter = new Zend_Http_Client_Adapter_Test();
         Zend_Feed::setHttpClient(new Zend_Http_Client(null, ['adapter' => $this->_adapter]));

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,7 +70,7 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_HeadStyleTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -79,7 +79,7 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $regKey = Zend_View_Helper_Placeholder_Registry::REGISTRY_KEY;
         if (Zend_Registry::isRegistered($regKey)) {
@@ -96,7 +96,7 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
     }
@@ -156,8 +156,8 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
             $item = $values[$i];
 
             $this->assertTrue($item instanceof stdClass);
-            $this->assertObjectHasAttribute('content', $item);
-            $this->assertObjectHasAttribute('attributes', $item);
+            $this->assertObjectHasProperty('content', $item);
+            $this->assertObjectHasProperty('attributes', $item);
             $this->assertEquals($string, $item->content);
         }
     }
@@ -173,8 +173,8 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
             $item = array_shift($values);
 
             $this->assertTrue($item instanceof stdClass);
-            $this->assertObjectHasAttribute('content', $item);
-            $this->assertObjectHasAttribute('attributes', $item);
+            $this->assertObjectHasProperty('content', $item);
+            $this->assertObjectHasProperty('attributes', $item);
             $this->assertEquals($string, $item->content);
         }
     }
@@ -192,8 +192,8 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
         $item = array_shift($values);
 
         $this->assertTrue($item instanceof stdClass);
-        $this->assertObjectHasAttribute('content', $item);
-        $this->assertObjectHasAttribute('attributes', $item);
+        $this->assertObjectHasProperty('content', $item);
+        $this->assertObjectHasProperty('attributes', $item);
         $this->assertEquals($string, $item->content);
     }
 
@@ -208,7 +208,7 @@ class Zend_View_Helper_HeadStyleTest extends TestCase
         ]);
         $value = $this->helper->getValue();
 
-        $this->assertObjectHasAttribute('attributes', $value);
+        $this->assertObjectHasProperty('attributes', $value);
         $attributes = $value->attributes;
 
         $this->assertTrue(isset($attributes['lang']));
@@ -506,6 +506,6 @@ a {
 }
 
 // Call Zend_View_Helper_HeadStyleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_HeadStyleTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_HeadStyleTest::main") {
     Zend_View_Helper_HeadStyleTest::main();
 }

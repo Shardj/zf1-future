@@ -37,11 +37,11 @@ require_once 'Zend/Db/TestUtil/Pdo/Common.php';
  */
 class Zend_Db_TestUtil_Pdo_Pgsql extends Zend_Db_TestUtil_Pdo_Common
 {
-    public function setUp(Zend_Db_Adapter_Abstract $db)
+    public function set_up(Zend_Db_Adapter_Abstract $db)
     {
         $this->_db = $db;
         $this->createSequence('zfproducts_seq');
-        parent::setUp($db);
+        parent::set_up($db);
     }
 
     public function getParams(array $constants = [])

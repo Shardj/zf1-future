@@ -69,7 +69,7 @@ class Zend_Json_Server_Request
      * Set request state
      *
      * @param  array $options
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function setOptions(array $options)
     {
@@ -90,7 +90,7 @@ class Zend_Json_Server_Request
      *
      * @param  mixed $value
      * @param  string $key
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function addParam($value, $key = null)
     {
@@ -108,7 +108,7 @@ class Zend_Json_Server_Request
      * Add many params
      *
      * @param  array $params
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function addParams(array $params)
     {
@@ -122,7 +122,7 @@ class Zend_Json_Server_Request
      * Overwrite params
      *
      * @param  array $params
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function setParams(array $params)
     {
@@ -159,7 +159,7 @@ class Zend_Json_Server_Request
      * Set request method
      *
      * @param  string $name
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function setMethod($name)
     {
@@ -195,7 +195,7 @@ class Zend_Json_Server_Request
      * Set request identifier
      *
      * @param  mixed $name
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function setId($name)
     {
@@ -217,7 +217,7 @@ class Zend_Json_Server_Request
      * Set JSON-RPC version
      *
      * @param  string $version
-     * @return Zend_Json_Server_Request
+     * @return $this
      */
     public function setVersion($version)
     {

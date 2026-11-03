@@ -42,7 +42,7 @@ require_once dirname(__FILE__) . '/AdapterTest.php';
  */
 class Zend_Queue_Adapter_PlatformJobQueueTest extends Zend_Queue_Adapter_AdapterTest
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!defined('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST')
             || !constant('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST')

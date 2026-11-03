@@ -72,7 +72,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
     /**
      * Main method : call the specified function or get the result from cache
      *
-     * @param  callback $callback         A valid callback
+     * @param  callable $callback         A valid callback
      * @param  array    $parameters       Function parameters
      * @param  array    $tags             Cache tags
      * @param  int      $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
@@ -126,7 +126,7 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
     /**
      * Make a cache id from the function name and parameters
      *
-     * @param  callback $callback A valid callback
+     * @param  callable $callback A valid callback
      * @param  array    $args     Function parameters
      * @throws Zend_Cache_Exception
      * @return string Cache id

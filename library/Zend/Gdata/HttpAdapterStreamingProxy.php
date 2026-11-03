@@ -43,7 +43,7 @@ class Zend_Gdata_HttpAdapterStreamingProxy extends Zend_Http_Client_Adapter_Prox
      *
      * @var integer
      */
-    const CHUNK_SIZE = 1024;
+    public const CHUNK_SIZE = 1024;
 
     /**
      * Send request to the proxy server with streaming support

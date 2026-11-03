@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,10 +53,10 @@ class Zend_Log_Filter_SuppressTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->filter = new Zend_Log_Filter_Suppress();
     }
@@ -102,6 +102,6 @@ class Zend_Log_Filter_SuppressTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Filter_SuppressTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Filter_SuppressTest::main') {
     Zend_Log_Filter_SuppressTest::main();
 }

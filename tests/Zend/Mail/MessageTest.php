@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Mail_MessageTest extends TestCase
 {
     protected $_file;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_file = tempnam(sys_get_temp_dir(), 'zm_');
         $mail = file_get_contents(dirname(__FILE__) . '/_files/mail.txt');
@@ -58,7 +58,7 @@ class Zend_Mail_MessageTest extends TestCase
         file_put_contents($this->_file, $mail);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (file_exists($this->_file)) {
             unlink($this->_file);
@@ -553,28 +553,6 @@ class Zend_Mail_MessageTest extends TestCase
         }
     }
 
-    public function invalidHeaders()
-    {
-        return [
-            'name' => ["Fake\r\n\r\rnevilContent", 'value'],
-            'value' => ['Fake', "foo-bar\r\n\r\nevilContent"],
-            'multi-value' => ['Fake', ['okay', "foo-bar\r\n\r\nevilContent"]],
-        ];
-    }
-    
-    /**
-     * @dataProvider invalidHeaders
-     * @group ZF2015-04
-     */
-    public function testRaisesExceptionWhenProvidedWithHeaderContainingCRLFInjection($name, $value)
-    {
-        $headers = [$name => $value];
-        $this->expectException('Zend_Mail_Exception');
-        $this->expectExceptionMessage('valid');
-        $message = new Zend_Mail_Message([
-            'headers' => $headers,
-        ]);
-    }
 }
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -51,7 +51,7 @@ class Zend_Mail_ImapTest extends TestCase
 {
     protected $_params;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_params = ['host' => TESTS_ZEND_MAIL_IMAP_HOST,
                                'user' => TESTS_ZEND_MAIL_IMAP_USER,

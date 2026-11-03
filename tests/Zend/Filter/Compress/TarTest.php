@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,10 +52,10 @@ class Zend_Filter_Compress_TarTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_Compress_TarTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!class_exists('Archive_Tar')) {
             require_once 'Zend/Loader.php';
@@ -97,7 +97,7 @@ class Zend_Filter_Compress_TarTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $files = [
             dirname(__FILE__) . '/../_files/zipextracted.txt',
@@ -270,6 +270,6 @@ class Zend_Filter_Compress_TarTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_Compress_TarTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_Compress_TarTest::main') {
     Zend_Filter_Compress_TarTest::main();
 }

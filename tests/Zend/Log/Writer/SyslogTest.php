@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -45,7 +45,7 @@ class Zend_Log_Writer_SyslogTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -149,6 +149,6 @@ class WriterSyslogCustom extends Zend_Log_Writer_Syslog
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Writer_SyslogTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Writer_SyslogTest::main') {
     Zend_Log_Writer_SyslogTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -65,7 +65,7 @@ require_once 'Zend/Http/Client/Adapter/Test.php';
       *
       * @return void
       */
-     protected function setUp(): void
+     protected function set_up()
      {
          $this->_files = new Zend_Service_Rackspace_Files('foo', 'bar');
          $this->_filesPath = dirname(__FILE__) . '/_files';

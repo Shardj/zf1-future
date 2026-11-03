@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -75,7 +75,7 @@ class Zend_Service_SlideShareTest extends TestCase
         return $ss;
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!defined("TESTS_ZEND_SERVICE_SLIDESHARE_APIKEY")
             || !defined("TESTS_ZEND_SERVICE_SLIDESHARE_SHAREDSECRET")

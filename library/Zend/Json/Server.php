@@ -35,8 +35,8 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**#@+
      * Version Constants
      */
-    const VERSION_1 = '1.0';
-    const VERSION_2 = '2.0';
+    public const VERSION_1 = '1.0';
+    public const VERSION_2 = '2.0';
     /**#@-*/
 
     /**
@@ -75,7 +75,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     protected $_smdMethods;
 
     /**
-     * @var Zend_Server_Description
+     * @var Zend_Server_Definition
      */
     protected $_table;
 
@@ -84,7 +84,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      *
      * @param string|array $function Valid PHP callback
      * @param string $namespace Ignored
-     * @return Zend_Json_Server
+     * @return $this
      * @throws Zend_Json_Server_Exception
      * @throws Zend_Server_Exception
      * @throws Zend_Server_Reflection_Exception
@@ -140,7 +140,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      * @param string $class
      * @param string $namespace Ignored
      * @param mixed $argv Ignored
-     * @return Zend_Json_Server
+     * @return $this
      * @throws Zend_Server_Exception
      * @throws Zend_Server_Reflection_Exception
      */
@@ -240,7 +240,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      * Set request object
      *
      * @param  Zend_Json_Server_Request $request
-     * @return Zend_Json_Server
+     * @return $this
      */
     public function setRequest(Zend_Json_Server_Request $request)
     {
@@ -266,7 +266,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      * Set response object
      *
      * @param  Zend_Json_Server_Response $response
-     * @return Zend_Json_Server
+     * @return $this
      */
     public function setResponse(Zend_Json_Server_Response $response)
     {
@@ -292,7 +292,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      * Set flag indicating whether or not to auto-emit response
      *
      * @param  bool $flag
-     * @return Zend_Json_Server
+     * @return $this
      */
     public function setAutoEmitResponse($flag)
     {
@@ -351,7 +351,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Add service method to service map
      *
-     * @param Zend_Server_Reflection_Function $method
+     * @param Zend_Server_Method_Definition $method
      * @return void
      * @throws Zend_Json_Server_Exception
      */

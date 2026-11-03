@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,7 +55,7 @@ class Zend_Controller_Request_SimpleTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Controller_Request_SimpleTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testSimpleRequestIsOfAbstractRequestType()
@@ -88,6 +88,6 @@ class Zend_Controller_Request_SimpleTest extends TestCase
 }
 
 // Call Zend_Controller_Request_SimpleTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Controller_Request_SimpleTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Controller_Request_SimpleTest::main") {
     Zend_Controller_Request_SimpleTest::main();
 }

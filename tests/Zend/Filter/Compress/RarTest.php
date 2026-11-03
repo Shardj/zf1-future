@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,10 +52,10 @@ class Zend_Filter_Compress_RarTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_Compress_RarTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('rar')) {
             $this->markTestSkipped('This adapter needs the rar extension');
@@ -91,7 +91,7 @@ class Zend_Filter_Compress_RarTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $files = [
             dirname(__FILE__) . '/../_files/zipextracted.txt',
@@ -341,6 +341,6 @@ class Zend_Filter_Compress_RarTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_Compress_RarTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_Compress_RarTest::main') {
     Zend_Filter_Compress_RarTest::main();
 }

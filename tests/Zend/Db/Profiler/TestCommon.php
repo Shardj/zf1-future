@@ -41,18 +41,18 @@ require_once 'Zend/Db/TestSetup.php';
  */
 abstract class Zend_Db_Profiler_TestCommon extends Zend_Db_TestSetup
 {
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_db->getProfiler()->setEnabled(true);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if ($this->_db instanceof Zend_Db_Adapter_Abstract) {
             $this->_db->getProfiler()->setEnabled(false);
         }
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testProfilerPreparedStatement()

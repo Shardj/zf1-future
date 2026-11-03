@@ -29,7 +29,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Test/PHPUnit/ControllerTestCaseTest.php';
-require_once 'Zend/Test/PHPUnit/Db/AllTests.php';
 require_once 'Zend/Test/PHPUnit/Constraint/AllTests.php';
 
 /**
@@ -45,7 +44,7 @@ class Zend_Test_PHPUnit_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -53,13 +52,13 @@ class Zend_Test_PHPUnit_AllTests
         $suite = new TestSuite('Zend Framework - Zend_Test_PHPUnit');
 
         $suite->addTestSuite('Zend_Test_PHPUnit_ControllerTestCaseTest');
-        $suite->addTest(Zend_Test_PHPUnit_Db_AllTests::suite());
+        // Zend_Test_PHPUnit_Db requires the DbUnit extension (PHPUnit_Extensions_Database), which does not exist since PHPUnit 6
         $suite->addTest(Zend_Test_PHPUnit_Constraint_AllTests::suite());
 
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Test_PHPUnit_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Test_PHPUnit_AllTests::main') {
     Zend_Test_PHPUnit_AllTests::main();
 }

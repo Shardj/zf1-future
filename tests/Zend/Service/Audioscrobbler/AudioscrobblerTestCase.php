@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,7 +55,7 @@ class Zend_Service_Audioscrobbler_AudioscrobblerTestCase extends TestCase
      */
     private $_asService = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_httpTestAdapter = new Zend_Http_Client_Adapter_Test();
         $this->_httpClient = new Zend_Http_Client();

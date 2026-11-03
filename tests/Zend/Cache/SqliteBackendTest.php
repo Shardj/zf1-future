@@ -49,19 +49,19 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest
         parent::__construct('Zend_Cache_Backend_Sqlite', $data, $dataName);
     }
 
-    public function setUp($notag = false): void
+    public function set_up($notag = false)
     {
         @mkdir($this->getTmpDir());
         $this->_cache_dir = $this->getTmpDir() . DIRECTORY_SEPARATOR;
         $this->_instance = new Zend_Cache_Backend_Sqlite([
             'cache_db_complete_path' => $this->_cache_dir . 'cache.db'
         ]);
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
         @unlink($this->_cache_dir . 'cache.db');
         $this->rmdir();
@@ -94,7 +94,7 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest
             'cache_db_complete_path' => $this->_cache_dir . 'cache.db',
             'automatic_vacuum_factor' => 1
         ]);
-        parent::setUp();
+        parent::set_up();
         $this->assertTrue($this->_instance->clean('all'));
         $this->assertFalse($this->_instance->test('bar'));
         $this->assertFalse($this->_instance->test('bar2'));
@@ -106,7 +106,7 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest
             'cache_db_complete_path' => $this->_cache_dir . 'cache.db',
             'automatic_vacuum_factor' => 1
         ]);
-        parent::setUp();
+        parent::set_up();
 
         $this->assertTrue($this->_instance->remove('bar'));
         $this->assertFalse($this->_instance->test('bar'));
@@ -123,7 +123,7 @@ class Zend_Cache_sqliteBackendTest extends Zend_Cache_CommonExtendedBackendTest
             'cache_db_complete_path' => ':memory:',
             'automatic_vacuum_factor' => 1
         ]);
-        parent::setUp();
+        parent::set_up();
 
         $this->assertGreaterThan(0, $this->_instance->test('bar2'));
 

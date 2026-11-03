@@ -47,7 +47,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      *
      * @var array
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (defined('TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY') &&
               TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY) {
@@ -87,7 +87,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
                 'proxy_pass' => $pass,
             ];
 
-            parent::setUp();
+            parent::set_up();
         } else {
             $this->markTestSkipped("Zend_Http_Client proxy server tests are not enabled in TestConfiguration.php");
         }
@@ -132,7 +132,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         $this->config['useragent'] = 'ZendTest';
-        parent::setUp();
+        parent::set_up();
         
         $base = preg_replace("/^http:/", "https:", $this->baseuri);
         $this->client->setUri($base . 'testSimpleRequests.php');
@@ -156,7 +156,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
     {
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
-        parent::setUp();
+        parent::set_up();
         
         $base = preg_replace("/^http:/", "https:", $this->baseuri);
         $this->client->setUri($base . 'testSimpleRequests.php');
@@ -181,7 +181,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
     {
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
-        parent::setUp();
+        parent::set_up();
         
         $base = preg_replace("/^http:/", "https:", $this->baseuri);
         $this->client->setUri($base . 'testSimpleRequests.php');

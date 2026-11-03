@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_App_CategoryTest extends TestCase
      */
     protected $category;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->categoryText = file_get_contents(
             'Zend/Gdata/App/_files/CategoryElementSample1.xml',

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,9 +55,9 @@ class Zend_Service_Amazon_Ec2_ImageTest extends TestCase
     /**
      * Prepares the environment before running a test.
      */
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
         $this->Zend_Service_Amazon_Ec2_Image = new Zend_Service_Amazon_Ec2_Image('access_key', 'secret_access_key');
 
@@ -69,11 +69,11 @@ class Zend_Service_Amazon_Ec2_ImageTest extends TestCase
         Zend_Service_Amazon_Ec2_Image::setHttpClient($client);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->Zend_Service_Amazon_Ec2_Image = null;
 
-        parent::tearDown();
+        parent::tear_down();
     }
 
     public function testDeregister()

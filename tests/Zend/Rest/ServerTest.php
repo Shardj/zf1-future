@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -61,10 +61,10 @@ class Zend_Rest_ServerTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Rest_ServerTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (isset($this->request)) {
             $_REQUEST = $this->request;
@@ -912,6 +912,6 @@ class Zend_Rest_TestException extends Exception
 }
 
 // Call Zend_Rest_ServerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Rest_ServerTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Rest_ServerTest::main") {
     Zend_Rest_ServerTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,7 +53,7 @@ class Zend_XmlRpc_Server_CacheTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_XmlRpc_Server_CacheTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -71,7 +71,7 @@ class Zend_XmlRpc_Server_CacheTest extends TestCase
     /**
      * Setup environment
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_file = realpath(dirname(__FILE__)) . '/xmlrpc.cache';
         $this->_server = new Zend_XmlRpc_Server();
@@ -81,7 +81,7 @@ class Zend_XmlRpc_Server_CacheTest extends TestCase
     /**
      * Teardown environment
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (file_exists($this->_file)) {
             unlink($this->_file);
@@ -133,6 +133,6 @@ class Zend_XmlRpc_Server_CacheTest extends TestCase
 }
 
 // Call Zend_XmlRpc_Server_CacheTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_XmlRpc_Server_CacheTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_XmlRpc_Server_CacheTest::main") {
     Zend_XmlRpc_Server_CacheTest::main();
 }

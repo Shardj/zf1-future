@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -61,13 +61,13 @@ class Zend_Amf_RequestTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_RequestTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
      * Setup environment
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set("America/Chicago");
         Zend_Locale::setDefault('en');
@@ -78,7 +78,7 @@ class Zend_Amf_RequestTest extends TestCase
     /**
      * Teardown environment
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_request);
     }
@@ -667,6 +667,6 @@ class Zend_Amf_RequestTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Amf_RequestTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Amf_RequestTest::main') {
     Zend_Amf_RequestTest::main();
 }

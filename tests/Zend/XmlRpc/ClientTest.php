@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -72,7 +72,7 @@ class Zend_XmlRpc_ClientTest extends TestCase
      */
     protected $xmlrpcClient;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->httpAdapter = new Zend_Http_Client_Adapter_Test();
         $this->httpClient = new Zend_Http_Client(
@@ -828,6 +828,6 @@ class Test_XmlRpc_Client extends Zend_XmlRpc_Client
 }
 
 // Call Zend_XmlRpc_ClientTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_XmlRpc_ClientTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_XmlRpc_ClientTest::main") {
     Zend_XmlRpc_ClientTest::main();
 }

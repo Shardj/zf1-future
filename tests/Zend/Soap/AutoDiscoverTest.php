@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ require_once "_files/commontypes.php";
  */
 class Zend_Soap_AutoDiscoverTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         // This has to be done because some CLI setups don't have $_SERVER variables
         // to simuulate that we have an actual webserver.

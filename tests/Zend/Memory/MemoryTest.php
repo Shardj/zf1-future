@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -50,10 +50,10 @@ class Zend_Memory_MemoryTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $tmpDir = sys_get_temp_dir() . '/zend_memory';
         $this->_removeCacheDir($tmpDir);
@@ -133,6 +133,6 @@ class Zend_Memory_MemoryTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Memory_MemoryTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Memory_MemoryTest::main') {
     Zend_Memory_MemoryTest::main();
 }

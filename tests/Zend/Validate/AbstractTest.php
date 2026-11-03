@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -66,7 +66,7 @@ class Zend_Validate_AbstractTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Validate_AbstractTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function clearRegistry()
@@ -82,14 +82,14 @@ class Zend_Validate_AbstractTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->clearRegistry();
         Zend_Validate_Abstract::setDefaultTranslator(null);
         $this->validator = new Zend_Validate_AbstractTest_Concrete();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->clearRegistry();
         Zend_Validate_Abstract::setDefaultTranslator(null);
@@ -327,6 +327,6 @@ class Zend_Validate_AbstractTest_Concrete extends Zend_Validate_Abstract
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_AbstractTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Validate_AbstractTest::main') {
     Zend_Validate_AbstractTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,11 +46,11 @@ class Zend_Tool_Framework_Loader_IncludePathLoaderTest extends TestCase
      */
     protected $_registry = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Tool_Framework_Registry::resetInstance();
     }

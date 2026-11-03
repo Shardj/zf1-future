@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -44,7 +44,7 @@ class Zend_Amf_TypeloaderTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_ResponseTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -95,6 +95,6 @@ class Zend_Amf_TypeloaderTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Amf_TypeloaderTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Amf_TypeloaderTest::main') {
     Zend_Amf_ResponseTest::main();
 }

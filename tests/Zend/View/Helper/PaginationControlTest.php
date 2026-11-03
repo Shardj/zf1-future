@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -61,7 +61,7 @@ class Zend_View_Helper_PaginationControlTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_PaginationControlTest");
-        (new TestRunner())->run($suite);
+        (new resources_Runner())->run($suite);
     }
 
     /**
@@ -70,7 +70,7 @@ class Zend_View_Helper_PaginationControlTest extends TestCase
      *
      * @access protected
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $view = new Zend_View();
         $view->addBasePath(dirname(__FILE__) . '/_files');
@@ -81,7 +81,7 @@ class Zend_View_Helper_PaginationControlTest extends TestCase
         $this->_paginator = Zend_Paginator::factory(range(1, 101));
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_viewHelper);
         unset($this->_paginator);
@@ -219,6 +219,6 @@ class Zend_View_Helper_PaginationControlTest extends TestCase
 }
 
 // Call Zend_View_Helper_PaginationControlTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_PaginationControlTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_PaginationControlTest::main") {
     Zend_View_Helper_PaginationControlTest::main();
 }

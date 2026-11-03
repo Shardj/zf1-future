@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ class resources_languages_Zend_ValidateTest extends TestCase
     protected $_languages = [];
     protected $_translations = [];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_langDir = dirname(dirname(dirname(dirname(__FILE__))))
                         . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'languages';

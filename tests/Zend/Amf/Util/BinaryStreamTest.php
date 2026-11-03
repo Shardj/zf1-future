@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -51,7 +51,7 @@ class Zend_Amf_Util_BinaryStreamTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_Util_BinaryStreamTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testConstructorShouldThrowExceptionForInvalidStream()
@@ -89,6 +89,6 @@ class Zend_Amf_Util_BinaryStreamTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Amf_Util_BinaryStreamTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Amf_Util_BinaryStreamTest::main') {
     Zend_Amf_Util_BinaryStreamTest::main();
 }

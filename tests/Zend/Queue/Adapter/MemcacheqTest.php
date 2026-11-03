@@ -53,7 +53,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
     /**
      * Test setup
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED) {
             $this->markTestSkipped('TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED is not enabled in TestConfiguration.php');
@@ -62,7 +62,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
             $this->markTestSkipped('memcache extension not loaded');
         }
         date_default_timezone_set('GMT');
-        parent::setUp();
+        parent::set_up();
     }
     
     /**

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Locale_MathTest extends TestCase
     /**
      * setup for tests (BCMath is not designed to normalize localized numbers)
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         self::$savedLocale = setlocale(LC_NUMERIC, '0');
         if (self::$savedLocale != 'C') {
@@ -56,7 +56,7 @@ class Zend_Locale_MathTest extends TestCase
     /**
      * teardown for tests (restore whatever setlocale was previously in place)
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (self::$savedLocale != 'C') {
             setlocale(LC_NUMERIC, self::$savedLocale);

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -57,7 +57,7 @@ class Zend_Rest_ClientTest extends TestCase
      */
     protected $rest;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->path = dirname(__FILE__) . '/responses/';
 

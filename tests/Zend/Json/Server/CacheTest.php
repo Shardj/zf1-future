@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -64,7 +64,7 @@ class Zend_Json_Server_CacheTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Json_Server_CacheTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -73,7 +73,7 @@ class Zend_Json_Server_CacheTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->server = new Zend_Json_Server();
         $this->server->setClass('Zend_Json_Server_CacheTest_Foo', 'foo');
@@ -95,7 +95,7 @@ class Zend_Json_Server_CacheTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (file_exists($this->cacheFile)) {
             unlink($this->cacheFile);
@@ -163,6 +163,6 @@ class Zend_Json_Server_CacheTest_Foo
 
 
 // Call Zend_Json_Server_CacheTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Json_Server_CacheTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Json_Server_CacheTest::main") {
     Zend_Json_Server_CacheTest::main();
 }

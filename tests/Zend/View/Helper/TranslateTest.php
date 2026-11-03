@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -71,7 +71,7 @@ class Zend_View_Helper_TranslateTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_TranslateTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function clearRegistry()
@@ -89,7 +89,7 @@ class Zend_View_Helper_TranslateTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->clearRegistry();
         $this->helper = new Zend_View_Helper_Translate();
@@ -101,7 +101,7 @@ class Zend_View_Helper_TranslateTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->helper);
         $this->clearRegistry();
@@ -268,6 +268,6 @@ class Zend_View_Helper_TranslateTest extends TestCase
 }
 
 // Call Zend_View_Helper_TranslateTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_TranslateTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_TranslateTest::main") {
     Zend_View_Helper_TranslateTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -37,7 +37,7 @@ abstract class Zend_Db_Adapter_Skip_CommonTest extends TestCase
 {
     abstract public function getDriver();
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $driver = $this->getDriver();
         $this->markTestSkipped("Testing Zend_Db_Adapter_$driver is not enabled in TestConfiguration.php");

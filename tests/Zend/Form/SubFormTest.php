@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,17 +53,17 @@ class Zend_Form_SubFormTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Form_SubFormTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Form::setDefaultTranslator(null);
 
         $this->form = new Zend_Form_SubForm();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -177,6 +177,6 @@ class Zend_Form_SubFormTest_SubForm extends Zend_Form_SubForm
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Form_SubFormTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Form_SubFormTest::main') {
     Zend_Form_SubFormTest::main();
 }

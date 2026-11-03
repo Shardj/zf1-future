@@ -159,7 +159,7 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
 
         }
         foreach ($this->_attributeTypes as $val) {
-            if (count($val->sup) > 0) {
+            if ($val->sup !== null && count($val->sup) > 0) {
                 $this->_resolveInheritance($val, $this->_attributeTypes);
             }
             foreach ($val->aliases as $alias) {
@@ -201,7 +201,7 @@ class Zend_Ldap_Node_Schema_OpenLdap extends Zend_Ldap_Node_Schema
 
         if (array_key_exists('syntax', $attributeType)) {
             // get max length from syntax
-            if (preg_match('/^(.+){(\d+)}$/', $attributeType['syntax'], $matches)) {
+            if (preg_match('/^(.+){(\d+)}$/', (string)$attributeType['syntax'], $matches)) {
                 $attributeType['syntax'] = $matches[1];
                 $attributeType['max-length'] = $matches[2];
             }

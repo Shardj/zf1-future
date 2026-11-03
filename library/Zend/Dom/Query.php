@@ -48,10 +48,10 @@ class Zend_Dom_Query
     /**#@+
      * Document types
      */
-    const DOC_DOM   = 'docDom';
-    const DOC_XML   = 'docXml';
-    const DOC_HTML  = 'docHtml';
-    const DOC_XHTML = 'docXhtml';
+    public const DOC_DOM   = 'docDom';
+    public const DOC_XML   = 'docXml';
+    public const DOC_HTML  = 'docHtml';
+    public const DOC_XHTML = 'docXhtml';
     /**#@-*/
 
     /**

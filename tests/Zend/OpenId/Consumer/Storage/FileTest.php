@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -80,7 +80,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends TestCase
         @rmdir($dirName);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_tmpDir = dirname(__FILE__) . "/_files";
 
@@ -89,7 +89,7 @@ class Zend_OpenId_Consumer_Storage_FileTest extends TestCase
         mkdir($this->_tmpDir);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         self::_rmDir($this->_tmpDir);
     }

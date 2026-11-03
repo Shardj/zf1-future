@@ -42,9 +42,9 @@ class Zend_Cache_CommonExtendedBackendTest extends Zend_Cache_CommonBackendTest
         parent::__construct($name);
     }
 
-    public function setUp($notag = false): void
+    public function set_up($notag = false)
     {
-        parent::setUp($notag);
+        parent::set_up($notag);
         $this->_capabilities = $this->_instance->getCapabilities();
     }
 

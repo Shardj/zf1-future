@@ -400,21 +400,23 @@ defined('TESTS_ZEND_LDAP_ONLINE_ENABLED') || define('TESTS_ZEND_LDAP_ONLINE_ENAB
  *                    ALT_DN: CN=Alice Baker,OU=Sales,DC=foo,DC=net
  *              ALT_PASSWORD: apass
  */
-defined('TESTS_ZEND_LDAP_HOST') || define('TESTS_ZEND_LDAP_HOST', getenv('TESTS_ZEND_LDAP_HOST') ?: 'localhost');
-//defined('TESTS_ZEND_LDAP_PORT') || define('TESTS_ZEND_LDAP_PORT', getenv('TESTS_ZEND_LDAP_PORT') ?: 389);
-defined('TESTS_ZEND_LDAP_USE_START_TLS') || define('TESTS_ZEND_LDAP_USE_START_TLS', getenv('TESTS_ZEND_LDAP_USE_START_TLS') ?: true);
-//defined('TESTS_ZEND_LDAP_USE_SSL') || define('TESTS_ZEND_LDAP_USE_SSL', getenv('TESTS_ZEND_LDAP_USE_SSL') ?: false);
-defined('TESTS_ZEND_LDAP_USERNAME') || define('TESTS_ZEND_LDAP_USERNAME', getenv('TESTS_ZEND_LDAP_USERNAME') ?: 'CN=someUser,DC=example,DC=com');
-defined('TESTS_ZEND_LDAP_PRINCIPAL_NAME') || define('TESTS_ZEND_LDAP_PRINCIPAL_NAME', getenv('TESTS_ZEND_LDAP_PRINCIPAL_NAME') ?: 'someUser@example.com');
-defined('TESTS_ZEND_LDAP_PASSWORD') || define('TESTS_ZEND_LDAP_PASSWORD', getenv('TESTS_ZEND_LDAP_PASSWORD') ?: null);
-defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN') || define('TESTS_ZEND_LDAP_BIND_REQUIRES_DN', getenv('TESTS_ZEND_LDAP_BIND_REQUIRES_DN') ?: true);
-defined('TESTS_ZEND_LDAP_BASE_DN') || define('TESTS_ZEND_LDAP_BASE_DN', getenv('TESTS_ZEND_LDAP_BASE_DN') ?: 'OU=Sales,DC=example,DC=com');
-//defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT') || define('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT', getenv('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT') ?: '(&(objectClass=posixAccount)(uid=%s))');
+defined('TESTS_ZEND_LDAP_HOST') || define('TESTS_ZEND_LDAP_HOST', getenv('TESTS_GENERATE_REPORT') ?: 'localhost');
+defined('TESTS_ZEND_LDAP_PORT') || define('TESTS_ZEND_LDAP_PORT', getenv('TESTS_ZEND_LDAP_PORT') ?: 1389);
+defined('TESTS_ZEND_LDAP_USE_START_TLS') || define('TESTS_ZEND_LDAP_USE_START_TLS', getenv('TESTS_ZEND_LDAP_USE_START_TLS') ?: false);
+defined('TESTS_ZEND_LDAP_USE_SSL') || define('TESTS_ZEND_LDAP_USE_SSL', getenv('TESTS_ZEND_LDAP_USE_SSL') ?: false);
+defined('TESTS_ZEND_LDAP_USERNAME') || define('TESTS_ZEND_LDAP_USERNAME', getenv('TESTS_ZEND_LDAP_USERNAME') ?: 'cn=admin,dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_PRINCIPAL_NAME') || define('TESTS_ZEND_LDAP_PRINCIPAL_NAME', getenv('TESTS_ZEND_LDAP_PRINCIPAL_NAME') ?: 'admin@example.com');
+defined('TESTS_ZEND_LDAP_PASSWORD') || define('TESTS_ZEND_LDAP_PASSWORD', getenv('TESTS_ZEND_LDAP_PASSWORD') ?: 'insecure');
+defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN') || define('TESTS_ZEND_LDAP_BIND_REQUIRES_DN', getenv('TESTS_ZEND_LDAP_BIND_REQUIRES_DN') ?: 'true');
+defined('TESTS_ZEND_LDAP_BASE_DN') || define('TESTS_ZEND_LDAP_BASE_DN', getenv('TESTS_ZEND_LDAP_BASE_DN') ?: 'dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT') || define('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT', getenv('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT') ?: '(&(objectClass=account)(uid=%s))');
 defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME') || define('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME', getenv('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME') ?: 'example.com');
 defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT') || define('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT', getenv('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT') ?: 'EXAMPLE');
-defined('TESTS_ZEND_LDAP_ALT_USERNAME') || define('TESTS_ZEND_LDAP_ALT_USERNAME', getenv('TESTS_ZEND_LDAP_ALT_USERNAME') ?: 'anotherUser');
-defined('TESTS_ZEND_LDAP_ALT_DN') || define('TESTS_ZEND_LDAP_ALT_DN', getenv('TESTS_ZEND_LDAP_ALT_DN') ?: 'CN=Another User,OU=Sales,DC=example,DC=com');
-defined('TESTS_ZEND_LDAP_ALT_PASSWORD') || define('TESTS_ZEND_LDAP_ALT_PASSWORD', getenv('TESTS_ZEND_LDAP_ALT_PASSWORD') ?: null);
+defined('TESTS_ZEND_LDAP_ALT_USERNAME') || define('TESTS_ZEND_LDAP_ALT_USERNAME', getenv('TESTS_ZEND_LDAP_ALT_USERNAME') ?: 'user1');
+defined('TESTS_ZEND_LDAP_ALT_PRINCIPAL_NAME') || define('TESTS_ZEND_LDAP_ALT_PRINCIPAL_NAME', getenv('TESTS_ZEND_LDAP_ALT_PRINCIPAL_NAME') ?: 'user1@example.com');
+defined('TESTS_ZEND_LDAP_ALT_DN') || define('TESTS_ZEND_LDAP_ALT_DN', getenv('TESTS_ZEND_LDAP_ALT_DN') ?: 'uid=user1,dc=example,dc=com');
+defined('TESTS_ZEND_LDAP_ALT_PASSWORD') || define('TESTS_ZEND_LDAP_ALT_PASSWORD', getenv('TESTS_ZEND_LDAP_ALT_PASSWORD') ?: 'user1');
+defined('TESTS_ZEND_LDAP_WRITEABLE_SUBTREE') || define('TESTS_ZEND_LDAP_WRITEABLE_SUBTREE', getenv('TESTS_ZEND_LDAP_WRITEABLE_SUBTREE') ?: 'ou=test,dc=example,dc=com');
 
 /**
  * Zend_Locale tests

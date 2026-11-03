@@ -48,15 +48,15 @@ class Zend_Cache_ZendServerShMemTest extends Zend_Cache_CommonBackendTest
         parent::__construct('Zend_Cache_Backend_ZendServer_Disk', $data, $dataName);
     }
 
-    public function setUp($notag = true): void
+    public function set_up($notag = true)
     {
         $this->_instance = new Zend_Cache_Backend_ZendServer_ShMem();
-        parent::setUp(true);
+        parent::set_up(true);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
     }
 
@@ -126,9 +126,7 @@ class Zend_Cache_ZendServerShMemTest extends Zend_Cache_CommonBackendTest
     public function testCleanModeNotMatchingTags3()
     {
     }
-    /**
-     * @doesNotPerformAssertions
-     */
+
     public function testSaveCorrectCall()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -136,9 +134,6 @@ class Zend_Cache_ZendServerShMemTest extends Zend_Cache_CommonBackendTest
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithNullLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -146,9 +141,6 @@ class Zend_Cache_ZendServerShMemTest extends Zend_Cache_CommonBackendTest
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithSpecificLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);

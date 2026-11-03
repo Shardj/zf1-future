@@ -257,7 +257,7 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
             }
         }
 
-        return implode($outEntries);
+        return implode('', $outEntries);
     }
 
 }

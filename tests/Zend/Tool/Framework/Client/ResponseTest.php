@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -50,7 +50,7 @@ class Zend_Tool_Framework_Client_ResponseTest extends TestCase
 
     protected $_responseBuffer = [];
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_response = new Zend_Tool_Framework_Client_Response();
     }

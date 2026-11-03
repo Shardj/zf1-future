@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -355,11 +355,11 @@ abstract class Zend_Cloud_DocumentService_TestCase extends TestCase
         $this->_commonDocument->deleteCollection($name);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_config = $this->_getConfig();
         $this->_commonDocument = Zend_Cloud_DocumentService_Factory::getAdapter($this->_config);
-        parent::setUp();
+        parent::set_up();
     }
 
     abstract protected function _getConfig();

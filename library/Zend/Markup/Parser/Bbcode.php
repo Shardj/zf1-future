@@ -39,17 +39,17 @@ require_once 'Zend/Markup/Parser/ParserInterface.php';
  */
 class Zend_Markup_Parser_Bbcode implements Zend_Markup_Parser_ParserInterface
 {
-    const NEWLINE   = "[newline\0]";
+    public const NEWLINE   = "[newline\0]";
 
     // there is a parsing difference between the default tags and single tags
-    const TYPE_DEFAULT = 'default';
-    const TYPE_SINGLE  = 'single';
+    public const TYPE_DEFAULT = 'default';
+    public const TYPE_SINGLE  = 'single';
 
-    const NAME_CHARSET = '^\[\]=\s';
+    public const NAME_CHARSET = '^\[\]=\s';
 
-    const STATE_SCAN       = 0;
-    const STATE_SCANATTRS  = 1;
-    const STATE_PARSEVALUE = 2;
+    public const STATE_SCAN       = 0;
+    public const STATE_SCANATTRS  = 1;
+    public const STATE_PARSEVALUE = 2;
 
     /**
      * Token tree

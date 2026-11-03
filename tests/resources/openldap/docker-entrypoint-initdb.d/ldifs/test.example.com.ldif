@@ -1,0 +1,3 @@
+dn: ou=test,dc=example,dc=com
+objectClass: organizationalUnit
+ou: test

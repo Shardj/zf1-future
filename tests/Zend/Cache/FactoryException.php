@@ -34,7 +34,7 @@ require_once 'Zend/Cache.php';
  */
 class Zend_Cache_FactoryException extends ExceptionTestCase
 {
-    public function setUp()
+    public function set_up()
     {
         $this->setExpectedException('Zend_Cache_Exception');
     }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -70,7 +70,7 @@ class Zend_Mobile_Push_gcmTest extends TestCase
         ]);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->adapter = new Zend_Http_Client_Adapter_Test();
         $this->client = new Zend_Http_Client();

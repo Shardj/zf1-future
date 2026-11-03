@@ -41,7 +41,7 @@ require_once 'Zend/Queue/QueueBaseTest.php';
  */
 class Zend_Queue_Queue1Test extends Zend_Queue_QueueBaseTest
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set('GMT');
 

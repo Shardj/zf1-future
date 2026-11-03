@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,7 +45,7 @@ class Zend_Gdata_EntryLinkTest extends TestCase
      */
     protected $entryLink;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->entryLinkText = file_get_contents(
             'Zend/Gdata/_files/EntryLinkElementSample1.xml',

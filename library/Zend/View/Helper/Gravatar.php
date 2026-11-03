@@ -38,28 +38,28 @@ class Zend_View_Helper_Gravatar extends Zend_View_Helper_HtmlElement
     /**
      * URL to gravatar service
      */
-    const GRAVATAR_URL = 'http://www.gravatar.com/avatar';
+    public const GRAVATAR_URL = 'http://www.gravatar.com/avatar';
     /**
      * Secure URL to gravatar service
      */
-    const GRAVATAR_URL_SECURE = 'https://secure.gravatar.com/avatar';
+    public const GRAVATAR_URL_SECURE = 'https://secure.gravatar.com/avatar';
 
     /**
      * Gravatar rating
      */
-    const RATING_G  = 'g';
-    const RATING_PG = 'pg';
-    const RATING_R  = 'r';
-    const RATING_X  = 'x';
+    public const RATING_G  = 'g';
+    public const RATING_PG = 'pg';
+    public const RATING_R  = 'r';
+    public const RATING_X  = 'x';
 
     /**
      * Default gravatar image value constants
      */
-    const DEFAULT_404       = '404';
-    const DEFAULT_MM        = 'mm';
-    const DEFAULT_IDENTICON = 'identicon';
-    const DEFAULT_MONSTERID = 'monsterid';
-    const DEFAULT_WAVATAR   = 'wavatar';
+    public const DEFAULT_404       = '404';
+    public const DEFAULT_MM        = 'mm';
+    public const DEFAULT_IDENTICON = 'identicon';
+    public const DEFAULT_MONSTERID = 'monsterid';
+    public const DEFAULT_WAVATAR   = 'wavatar';
 
     /**
      * Options

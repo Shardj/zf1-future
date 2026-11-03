@@ -48,15 +48,15 @@ class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTes
         parent::__construct('Zend_Cache_Backend_WinCache', $data, $dataName);
     }
 
-    public function setUp($notag = true): void
+    public function set_up($notag = true)
     {
         $this->_instance = new Zend_Cache_Backend_WinCache([]);
-        parent::setUp($notag);
+        parent::set_up($notag);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
     }
 
@@ -198,9 +198,6 @@ class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTes
         $this->markTestSkipped('This test skipped due to limitations in this adapter.');
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveCorrectCall()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -208,9 +205,6 @@ class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTes
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithNullLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -218,9 +212,6 @@ class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTes
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testSaveWithSpecificLifeTime()
     {
         $this->_instance->setDirectives(['logging' => false]);
@@ -228,9 +219,6 @@ class Zend_Cache_WinCacheBackendTest extends Zend_Cache_CommonExtendedBackendTes
         $this->_instance->setDirectives(['logging' => true]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGetMetadatas($notag = true)
     {
         parent::testGetMetadatas($notag);

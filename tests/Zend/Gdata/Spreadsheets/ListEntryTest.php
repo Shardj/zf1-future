@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Spreadsheets_ListEntryTest extends TestCase
      */
     protected $rowData;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->listEntry = new Zend_Gdata_Spreadsheets_ListEntry();
         $this->rowData = [];

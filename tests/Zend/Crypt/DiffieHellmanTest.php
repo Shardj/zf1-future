@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -36,7 +36,7 @@ require_once 'Zend/Crypt/Math/BigInteger.php';
  */
 class Zend_Crypt_DiffieHellmanTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         try {
             $math = new Zend_Crypt_Math_BigInteger();

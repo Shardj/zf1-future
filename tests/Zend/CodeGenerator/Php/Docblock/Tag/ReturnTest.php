@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -45,12 +45,12 @@ class Zend_CodeGenerator_Php_Docblock_Tag_ReturnTest extends TestCase
      */
     protected $_tag = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_tag = new Zend_CodeGenerator_Php_Docblock_Tag_Return();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_tag = null;
     }

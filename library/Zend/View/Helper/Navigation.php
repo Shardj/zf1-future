@@ -33,10 +33,10 @@ require_once 'Zend/View/Helper/Navigation/HelperAbstract.php';
  * @subpackage Helper
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @method Zend_View_Helper_Navigation_Breadcrumbs breadcrumbs
- * @method Zend_View_Helper_Navigation_Links links
- * @method Zend_View_Helper_Navigation_Menu menu
- * @method Zend_View_Helper_Navigation_Sitemap sitemap
+ * @method Zend_View_Helper_Navigation_Breadcrumbs breadcrumbs()
+ * @method Zend_View_Helper_Navigation_Links links()
+ * @method Zend_View_Helper_Navigation_Menu menu()
+ * @method Zend_View_Helper_Navigation_Sitemap sitemap()
  */
 class Zend_View_Helper_Navigation
     extends Zend_View_Helper_Navigation_HelperAbstract
@@ -46,7 +46,7 @@ class Zend_View_Helper_Navigation
      *
      * @var string
      */
-    const NS = 'Zend_View_Helper_Navigation';
+    public const NS = 'Zend_View_Helper_Navigation';
 
     /**
      * Default proxy to use in {@link render()}
@@ -91,7 +91,7 @@ class Zend_View_Helper_Navigation
      * @return $this
      *                                               self
      */
-    public function navigation(Zend_Navigation_Container $container = null)
+    public function navigation(?Zend_Navigation_Container $container = null)
     {
         if (null !== $container) {
             $this->setContainer($container);
@@ -342,7 +342,7 @@ class Zend_View_Helper_Navigation
      *                                               the interface specified in
      *                                               {@link findHelper()}
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render(?Zend_Navigation_Container $container = null)
     {
         $helper = $this->findHelper($this->getDefaultProxy());
         return $helper->render($container);

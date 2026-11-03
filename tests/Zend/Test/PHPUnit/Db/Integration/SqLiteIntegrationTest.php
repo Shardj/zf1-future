@@ -32,7 +32,7 @@ require_once "AbstractTestCase.php";
  */
 class Zend_Test_PHPUnit_Db_Integration_SqLiteIntegrationTest extends Zend_Test_PHPUnit_Db_Integration_AbstractTestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('pdo')) {
             $this->markTestSkipped('PDO is required for this test.');

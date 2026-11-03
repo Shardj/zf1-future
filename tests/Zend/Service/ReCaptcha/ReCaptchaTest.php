@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Service_ReCaptcha_ReCaptchaTest extends TestCase
     protected $_privateKey = TESTS_ZEND_SERVICE_RECAPTCHA_PRIVATE_KEY;
     protected $_reCaptcha = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_reCaptcha = new Zend_Service_ReCaptcha();
     }

@@ -44,7 +44,7 @@ interface Zend_EventManager_EventCollection
      * @param  string $event
      * @param  object|string $target
      * @param  array|object $argv
-     * @param  null|callback $callback
+     * @param  null|callable $callback
      * @return Zend_EventManager_ResponseCollection
      */
     public function trigger($event, $target = null, $argv = [], $callback = null);
@@ -61,7 +61,7 @@ interface Zend_EventManager_EventCollection
      * @param  string $event
      * @param  object|string $target
      * @param  array|object $argv
-     * @param  callback $callback
+     * @param  callable $callback
      * @return Zend_EventManager_ResponseCollection
      */
     public function triggerUntil($event, $target, $argv = null, $callback = null);
@@ -70,7 +70,7 @@ interface Zend_EventManager_EventCollection
      * Attach a listener to an event
      *
      * @param  string $event
-     * @param  callback $callback
+     * @param  callable $callback
      * @param  int $priority Priority at which to register listener
      * @return Zend_Stdlib_CallbackHandler
      */

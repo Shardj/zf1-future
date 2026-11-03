@@ -38,7 +38,7 @@ abstract class Zend_CodeGenerator_Php_Abstract extends Zend_CodeGenerator_Abstra
      * Line feed to use in place of EOL
      *
      */
-    const LINE_FEED = "\n";
+    public const LINE_FEED = "\n";
 
     /**
      * @var bool

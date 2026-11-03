@@ -91,7 +91,7 @@ class Zend_Ldap_Node_RootDseTest extends Zend_Ldap_OnlineTestCase
         $root = $this->_getLdap()->getRootDse();
 
         $this->assertTrue(is_array($root->getNamingContexts()));
-        $this->assertTrue(is_array($root->getSubschemaSubentry()));
+        $this->assertTrue(is_string($root->getSubschemaSubentry()));
 
         switch ($root->getServerType()) {
             case Zend_Ldap_Node_RootDse::SERVER_TYPE_ACTIVEDIRECTORY:

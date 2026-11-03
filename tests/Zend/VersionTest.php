@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -47,7 +47,7 @@ class Zend_VersionTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -59,7 +59,7 @@ class Zend_VersionTest extends TestCase
         $expect = -1;
         // unit test breaks if ZF version > 1.x
         for ($i = 0; $i <= 1; $i++) {
-            for ($j = 0; $j <= 22; $j++) {
+            for ($j = 0; $j <= 99; $j++) {
                 for ($k = 0; $k <= 99; $k++) {
                     foreach (['dev', 'pr', 'PR', 'alpha', 'a1', 'a2', 'beta', 'b1', 'b2', 'RC', 'RC1', 'RC2', 'RC3', '', 'pl1', 'PL1'] as $rel) {
                         $ver = "$i.$j.$k$rel";
@@ -111,6 +111,6 @@ class Zend_VersionTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_VersionTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_VersionTest::main") {
     Zend_VersionTest::main();
 }

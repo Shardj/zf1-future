@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -42,7 +42,7 @@ abstract class Zend_Cache_BackendTest_SkipTests extends TestCase
 {
     public $message = 'Skipped for unspecified reason';
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped($this->message);
     }

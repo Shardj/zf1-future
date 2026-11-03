@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -94,7 +94,7 @@ class Zend_Filter_File_RenameTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Filter_File_RenameTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -102,7 +102,7 @@ class Zend_Filter_File_RenameTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_filesPath = dirname(__FILE__) . DIRECTORY_SEPARATOR
                           . '..' . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR;
@@ -132,7 +132,7 @@ class Zend_Filter_File_RenameTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (!file_exists($this->_oldFile)) {
             copy($this->_origFile, $this->_oldFile);
@@ -467,6 +467,6 @@ class Zend_Filter_File_RenameTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Filter_File_RenameTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Filter_File_RenameTest::main") {
     Zend_Filter_File_RenameTest::main();
 }

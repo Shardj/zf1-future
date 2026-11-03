@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Gdata_RecurrenceTest extends TestCase
      */
     protected $recurrence;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->recurrenceText = file_get_contents(
             'Zend/Gdata/_files/RecurrenceElementSample1.xml',

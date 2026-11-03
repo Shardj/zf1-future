@@ -9,8 +9,7 @@
     convertNoticesToExceptions="true"
     convertWarningsToExceptions = "true"
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd">
-  <coverage/>
   <testsuite name="Zend Framework - Testsuite">
-    <directory>./Zend/AllTests.php</directory>
+    <file>./Zend/AllTests.php</file>
   </testsuite>
 </phpunit>

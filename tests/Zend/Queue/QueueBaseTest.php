@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -63,7 +63,7 @@ abstract class Zend_Queue_QueueBaseTest extends TestCase
      */
     protected $queue;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Test Zend_Config
         $this->config = [
@@ -73,7 +73,7 @@ abstract class Zend_Queue_QueueBaseTest extends TestCase
         $this->queue = new Zend_Queue('Null', $this->config);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 

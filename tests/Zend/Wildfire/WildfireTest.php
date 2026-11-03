@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -82,17 +82,17 @@ class Zend_Wildfire_WildfireTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Wildfire_WildfireTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         date_default_timezone_set('America/Los_Angeles');
         Zend_Wildfire_Channel_HttpHeaders::destroyInstance();
         Zend_Wildfire_Plugin_FirePhp::destroyInstance();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Controller_Front::getInstance()->resetInstance();
         Zend_Wildfire_Channel_HttpHeaders::destroyInstance();
@@ -1236,6 +1236,6 @@ class Zend_Wildfire_WildfireTest_Response extends Zend_Controller_Response_HttpT
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Wildfire_WildfireTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Wildfire_WildfireTest::main') {
     Zend_Wildfire_WildfireTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Ldap_ConnectTest extends TestCase
 {
     protected $_options = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_options = ['host' => TESTS_ZEND_LDAP_HOST];
         if (defined('TESTS_ZEND_LDAP_PORT') && TESTS_ZEND_LDAP_PORT != 389) {

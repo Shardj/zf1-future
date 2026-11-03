@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -53,11 +53,11 @@ class Zend_Translate_Adapter_GettextTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Translate_Adapter_GettextTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
         Zend_Translate_Adapter_Gettext::removeCache();
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (Zend_Translate_Adapter_Gettext::hasCache()) {
             Zend_Translate_Adapter_Gettext::removeCache();
@@ -329,6 +329,6 @@ class Zend_Translate_Adapter_GettextTest extends TestCase
 }
 
 // Call Zend_Translate_Adapter_GettextTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Translate_Adapter_GettextTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Translate_Adapter_GettextTest::main") {
     Zend_Translate_GettextTest::main();
 }

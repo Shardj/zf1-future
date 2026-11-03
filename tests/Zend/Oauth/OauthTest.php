@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -39,7 +39,7 @@ class Test_Http_Client_19485876 extends Zend_Http_Client
  */
 class Zend_OauthTest extends TestCase
 {
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Oauth::clearHttpClient();
     }

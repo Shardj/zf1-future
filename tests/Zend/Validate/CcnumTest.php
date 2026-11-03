@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -56,13 +56,13 @@ class Zend_Validate_CcnumTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         set_error_handler([$this, 'errorHandlerIgnore']);
         $this->_validator = new Zend_Validate_Ccnum();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         restore_error_handler();
     }

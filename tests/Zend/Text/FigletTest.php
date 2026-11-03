@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -59,7 +59,7 @@ class Zend_Text_FigletTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Text_FigletTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testStandardAlignLeft()
@@ -295,6 +295,6 @@ class Zend_Text_FigletTest extends TestCase
 }
 
 // Call Zend_Text_FigletTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Text_FigletTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Text_FigletTest::main") {
     Zend_Text_FigletTest::main();
 }

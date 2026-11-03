@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -50,10 +50,10 @@ class Zend_Service_LiveDocX_LiveDocxTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!constant('TESTS_ZEND_SERVICE_LIVEDOCX_USERNAME')
             || !constant('TESTS_ZEND_SERVICE_LIVEDOCX_PASSWORD')
@@ -71,7 +71,7 @@ class Zend_Service_LiveDocX_LiveDocxTest extends TestCase
         }
     }
 
-    public function tearDown(): void
+    public function tear_down()
     {
         if (isset($this->phpLiveDocx)) {
             foreach ($this->phpLiveDocx->listTemplates() as $template) {
@@ -97,6 +97,6 @@ class Zend_Service_LiveDocX_LiveDocxTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Service_LiveDocx_LiveDocxTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Service_LiveDocx_LiveDocxTest::main') {
     Zend_Service_LiveDocx_LiveDocxTest::main();
 }

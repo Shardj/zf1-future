@@ -34,7 +34,7 @@ require_once 'Zend/Locale/Data.php';
  */
 class Zend_Locale_Format
 {
-    const STANDARD   = 'auto';
+    public const STANDARD   = 'auto';
 
     private static $_options = ['date_format'   => null,
                                      'number_format' => null,
@@ -259,6 +259,7 @@ class Zend_Locale_Format
 
         // Get correct signs for this locale
         $symbols = Zend_Locale_Data::getList($options['locale'],'symbols');
+        $input = self::_normalizeGroupSeparator($input, $symbols['group']);
         // Change locale input to be default number
         if (($input[0] == $symbols['minus']) && ('-' != $input[0])) {
             $input = '-' . substr($input, 1);
@@ -516,15 +517,23 @@ class Zend_Locale_Format
         if (!self::_getUniCodeSupport()) {
             trigger_error("Sorry, your PCRE extension does not support UTF8 which is needed for the I18N core", E_USER_NOTICE);
         }
+        
+        if($input === null ) {
+            return FALSE;
+        }
 
         $options = self::_checkOptions($options) + self::$_options;
 
         // Get correct signs for this locale
         $symbols = Zend_Locale_Data::getList($options['locale'],'symbols');
+        $input = self::_normalizeGroupSeparator((string) $input, $symbols['group']);
 
         $regexs = Zend_Locale_Format::_getRegexForType('decimalnumber', $options);
         $regexs = array_merge($regexs, Zend_Locale_Format::_getRegexForType('scientificnumber', $options));
-        if (!empty($input) && ($input[0] == $symbols['decimal'])) {
+        
+        $firstChar = substr($input,0,1);
+        
+        if (!empty($input) && ($firstChar == $symbols['decimal'])) {
             $input = 0 . $input;
         }
         foreach ($regexs as $regex) {
@@ -535,6 +544,25 @@ class Zend_Locale_Format
         }
 
         return false;
+    }
+
+    /**
+     * Space, no-break space and narrow no-break space are interchangeable as group separator
+     *
+     * Locale data defines one of them, but input usually contains a plain space.
+     *
+     * @param  string $input
+     * @param  string $group Group separator of the locale
+     * @return string
+     */
+    protected static function _normalizeGroupSeparator($input, $group)
+    {
+        $spaces = [' ', "\xC2\xA0", "\xE2\x80\xAF"];
+        if (!in_array($group, $spaces, true)) {
+            return $input;
+        }
+
+        return str_replace($spaces, $group, $input);
     }
 
     /**
@@ -800,7 +828,7 @@ class Zend_Locale_Format
             }
         }
 
-        return implode($converted);
+        return implode('', $converted);
     }
 
     /**
@@ -1323,9 +1351,7 @@ class Zend_Locale_Format
      */
     protected static function _getEncoding()
     {
-        return PHP_VERSION_ID < 50600
-            ? iconv_get_encoding('internal_encoding')
-            : ini_get('default_charset');
+        return ini_get('default_charset');
     }
 
     /**
@@ -1337,10 +1363,6 @@ class Zend_Locale_Format
      */
     protected static function _setEncoding($encoding)
     {
-        if (PHP_VERSION_ID < 50600) {
-            iconv_set_encoding('internal_encoding', $encoding);
-        } else {
-            ini_set('default_charset', $encoding);
-        }
+        ini_set('default_charset', $encoding);
     }
 }

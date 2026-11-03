@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -49,16 +49,16 @@ class Zend_NavigationTest extends TestCase
      */
     private $_navigation;
 
-    protected function setUp(): void
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $this->_navigation = new Zend_Navigation();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_navigation = null;
-        parent::tearDown();
+        parent::tear_down();
     }
     /**
      * Runs the test methods of this class.
@@ -68,7 +68,7 @@ class Zend_NavigationTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_NavigationTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**

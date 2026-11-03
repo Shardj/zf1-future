@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -59,7 +59,7 @@ class Zend_Service_AkismetTest extends TestCase
      */
     protected $comment;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->akismet = new Zend_Service_Akismet('somebogusapikey', 'http://framework.zend.com/wiki/');
         $adapter = new Zend_Http_Client_Adapter_Test();

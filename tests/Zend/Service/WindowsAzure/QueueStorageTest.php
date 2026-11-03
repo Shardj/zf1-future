@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,21 +52,21 @@ class Zend_Service_WindowsAzure_QueueStorageTest extends TestCase
     {
         if (TESTS_ZEND_SERVICE_WINDOWSAZURE_QUEUE_RUNTESTS) {
             $suite = new TestSuite("Zend_Service_WindowsAzure_QueueStorageTest");
-            $result = (new TestRunner())->run($suite);
+            $result = (new resources_Runner())->run($suite);
         }
     }
    
     /**
      * Test setup
      */
-    protected function setUp(): void
+    protected function set_up()
     {
     }
     
     /**
      * Test teardown
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++) {
@@ -394,6 +394,6 @@ class Zend_Service_WindowsAzure_QueueStorageTest extends TestCase
 }
 
 // Call Zend_Service_WindowsAzure_QueueStorageTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Service_WindowsAzure_QueueStorageTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Service_WindowsAzure_QueueStorageTest::main") {
     Zend_Service_WindowsAzure_QueueStorageTest::main();
 }

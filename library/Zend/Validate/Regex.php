@@ -32,9 +32,9 @@ require_once 'Zend/Validate/Abstract.php';
  */
 class Zend_Validate_Regex extends Zend_Validate_Abstract
 {
-    const INVALID   = 'regexInvalid';
-    const NOT_MATCH = 'regexNotMatch';
-    const ERROROUS  = 'regexErrorous';
+    public const INVALID   = 'regexInvalid';
+    public const NOT_MATCH = 'regexNotMatch';
+    public const ERROROUS  = 'regexErrorous';
 
     /**
      * @var array
@@ -62,7 +62,7 @@ class Zend_Validate_Regex extends Zend_Validate_Abstract
     /**
      * Sets validator options
      *
-     * @param  string|Zend_Config $pattern
+     * @param  string|array|Zend_Config $pattern
      * @throws Zend_Validate_Exception On missing 'pattern' parameter
      */
     public function __construct($pattern)

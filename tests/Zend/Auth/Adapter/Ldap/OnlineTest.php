@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,8 +55,11 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends TestCase
      */
     protected $_names = [];
 
-    protected function setUp(): void
+    protected function set_up()
     {
+        if (!extension_loaded('ldap')) {
+            $this->markTestSkipped('Extension "ldap" is required for this test to work');
+        }
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,

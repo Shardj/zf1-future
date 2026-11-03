@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,10 +55,10 @@ class Zend_Soap_ClientTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('soap')) {
             $this->markTestSkipped('SOAP Extension is not loaded');
@@ -558,6 +558,67 @@ class Zend_Soap_ClientTest extends TestCase
 
         $this->assertSame($clientMock, $soap->getSoapClient());
     }
+
+    /**
+     * @dataProvider doRequestProvider
+     */
+    public function testDoRequestDelegatesToNativeTransport($one_way)
+    {
+        $clientMock = $this->getMockBuilder('Zend_Soap_Client_Common')
+                           ->disableOriginalConstructor()
+                           ->onlyMethods(['doRequest'])
+                           ->getMock();
+        $arguments = ['request', 'http://localhost/', 'urn:test#test', SOAP_1_1];
+        if ($one_way != null) {
+            $arguments[] = $one_way;
+        }
+        $clientMock->expects($this->once())
+                   ->method('doRequest')
+                   ->with(...$arguments)
+                   ->willReturn('response');
+
+        $soap = new Zend_Soap_Client();
+        $this->assertSame('response', $soap->_doRequest(
+            $clientMock, 'request', 'http://localhost/', 'urn:test#test', SOAP_1_1, $one_way
+        ));
+    }
+
+    /**
+     * @dataProvider doRequestProvider
+     */
+    public function testNativeTransportDoesNotReinvokeCallbackOrEmitDeprecation($one_way)
+    {
+        $soap = new Zend_Soap_Client();
+        $callbackCount = 0;
+        $client = new Zend_Soap_Client_Common(
+            function ($client, $request, $location, $action, $version, $oneWay = null) use ($soap, &$callbackCount) {
+                ++$callbackCount;
+                $this->assertSame(1, $callbackCount);
+                return $soap->_doRequest($client, $request, $location, $action, $version, $oneWay);
+            },
+            null,
+            ['uri' => 'urn:test', 'location' => '']
+        );
+
+        set_error_handler(function ($severity, $message, $file, $line) {
+            throw new ErrorException($message, 0, $severity, $file, $line);
+        }, E_DEPRECATED);
+        try {
+            $this->assertNull($client->__doRequest('request', '', 'urn:test#test', SOAP_1_1, $one_way));
+        } finally {
+            restore_error_handler();
+        }
+        $this->assertSame(1, $callbackCount);
+    }
+
+    public static function doRequestProvider()
+    {
+        return [
+            'default' => [null],
+            'two-way' => [0],
+            'one-way' => [1],
+        ];
+    }
 }
 
 
@@ -706,6 +767,6 @@ function Zend_Soap_Client_TestFunc6()
     return "string";
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Soap_ClientTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Soap_ClientTest::main') {
     Zend_Soap_ClientTest::main();
 }

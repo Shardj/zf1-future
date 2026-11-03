@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -40,7 +40,7 @@ abstract class Zend_Test_PHPUnit_Db_DataSet_DataSetTestCase extends TestCase
      */
     protected $connectionMock = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->connectionMock = $this->createMock('Zend_Test_PHPUnit_Db_Connection');
     }

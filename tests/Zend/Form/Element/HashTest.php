@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -62,7 +62,7 @@ class Zend_Form_Element_HashTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Form_Element_HashTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -71,7 +71,7 @@ class Zend_Form_Element_HashTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         if (isset($this->hash)) {
             unset($this->hash);
@@ -91,7 +91,7 @@ class Zend_Form_Element_HashTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -281,6 +281,6 @@ class Zend_Form_Element_HashTest_SessionContainer
 }
 
 // Call Zend_Form_Element_HashTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Form_Element_HashTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Form_Element_HashTest::main") {
     Zend_Form_Element_HashTest::main();
 }

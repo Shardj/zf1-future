@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -48,7 +48,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     public function testConstructorThrowsWhenResourceIsNotStream()
@@ -63,7 +63,9 @@ class Zend_Log_Writer_StreamTest extends TestCase
         } catch (TypeError $e) {
             $this->assertMatchesRegularExpression('/must be of t/i', $e->getMessage());
         }
-        xml_parser_free($resource);
+        if (PHP_VERSION_ID < 80000) {
+            xml_parser_free($resource);
+        }
     }
 
     /**
@@ -105,7 +107,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
             $this->assertMatchesRegularExpression('/cannot be opened/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof ValueError);
-            $this->assertMatchesRegularExpression('/cannot be empty/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/(cannot|must not) be empty/i', $e->getMessage());
         }
     }
 
@@ -138,7 +140,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
             $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertMatchesRegularExpression('/resource is not a valid/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/(resource is not a valid|must be an open stream resource)/i', $e->getMessage());
         }
     }
 
@@ -157,7 +159,7 @@ class Zend_Log_Writer_StreamTest extends TestCase
             $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         } catch (Error $e) {
             $this->assertTrue($e instanceof TypeError);
-            $this->assertMatchesRegularExpression('/resource is not a valid/i', $e->getMessage());
+            $this->assertMatchesRegularExpression('/(resource is not a valid|must be an open stream resource)/i', $e->getMessage());
         }
     }
 
@@ -207,6 +209,6 @@ class Zend_Log_Writer_StreamTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Log_Writer_StreamTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Log_Writer_StreamTest::main') {
     Zend_Log_Writer_StreamTest::main();
 }

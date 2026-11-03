@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,10 +70,10 @@ class Zend_Db_Profiler_FirebugTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Db_Profiler_FirebugTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('pdo_sqlite')) {
             $this->markTestSkipped('Requires PDO_Sqlite extension');
@@ -100,7 +100,7 @@ class Zend_Db_Profiler_FirebugTest extends TestCase
                                             )');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (extension_loaded('pdo_sqlite')) {
             $this->_db->getConnection()->exec('DROP TABLE foo');

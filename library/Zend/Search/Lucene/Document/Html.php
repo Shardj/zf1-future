@@ -312,6 +312,10 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
             // Cut matched node
             $matchedWordNode = $node->splitText($token->getStartOffset());
 
+            if (!($matchedWordNode instanceof DOMText)) {
+                continue; // Skip this token if splitting failed
+            }
+
             // Retrieve HTML string representation for highlihted word
             $fullCallbackparamsList = $params;
             array_unshift($fullCallbackparamsList, $matchedWordNode->nodeValue);
@@ -478,6 +482,6 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
             $outputFragments[] = $this->_doc->saveXML($bodyNodes->item($count));
         }
 
-        return implode($outputFragments);
+        return implode('', $outputFragments);
     }
 }

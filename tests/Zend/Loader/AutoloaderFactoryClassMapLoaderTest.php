@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,10 +52,10 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         // Store original autoloaders
         $this->_loaders = spl_autoload_functions();
@@ -75,7 +75,7 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends TestCase
         $this->_includePath = get_include_path();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Loader_AutoloaderFactory::unregisterAutoloaders();
         // Restore original autoloaders
@@ -112,6 +112,6 @@ class Zend_Loader_AutoloaderFactoryClassMapLoaderTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main') {
     Zend_Loader_AutoloaderFactoryClassMapLoaderTest::main();
 }

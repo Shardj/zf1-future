@@ -35,24 +35,24 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     /**#@+
      * Plugin loader type constants
      */
-    const DECORATOR = 'DECORATOR';
-    const ELEMENT = 'ELEMENT';
+    public const DECORATOR = 'DECORATOR';
+    public const ELEMENT = 'ELEMENT';
     /**#@-*/
 
     /**#@+
      * Method type constants
      */
-    const METHOD_DELETE = 'delete';
-    const METHOD_GET    = 'get';
-    const METHOD_POST   = 'post';
-    const METHOD_PUT    = 'put';
+    public const METHOD_DELETE = 'delete';
+    public const METHOD_GET    = 'get';
+    public const METHOD_POST   = 'post';
+    public const METHOD_PUT    = 'put';
     /**#@-*/
 
     /**#@+
      * Encoding type constants
      */
-    const ENCTYPE_URLENCODED = 'application/x-www-form-urlencoded';
-    const ENCTYPE_MULTIPART  = 'multipart/form-data';
+    public const ENCTYPE_URLENCODED = 'application/x-www-form-urlencoded';
+    public const ENCTYPE_MULTIPART  = 'multipart/form-data';
     /**#@-*/
 
     /**
@@ -2123,6 +2123,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     protected function _dissolveArrayValue($value, $arrayPath)
     {
+        $arrayPath = $arrayPath ?? '';
         // As long as we have more levels
         while ($arrayPos = strpos((string) $arrayPath, '[')) {
             // Get the next key in the path
@@ -2181,6 +2182,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     protected function _attachToArray($value, $arrayPath)
     {
+        $arrayPath = $arrayPath ?? '';
         // As long as we have more levels
         while ($arrayPos = strrpos($arrayPath, '[')) {
             // Get the next key in the path
@@ -2674,7 +2676,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      * @param  Zend_View_Interface $view
      * @return $this
      */
-    public function setView(Zend_View_Interface $view = null)
+    public function setView(?Zend_View_Interface $view = null)
     {
         $this->_view = $view;
         return $this;
@@ -2912,7 +2914,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      * @param  bool $include Whether $elements is an inclusion or exclusion list
      * @return $this
      */
-    public function setElementDecorators(array $decorators, array $elements = null, $include = true)
+    public function setElementDecorators(array $decorators, ?array $elements = null, $include = true)
     {
         if (is_array($elements)) {
             if ($include) {
@@ -2982,7 +2984,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      * @param  Zend_View_Interface $view
      * @return string
      */
-    public function render(Zend_View_Interface $view = null)
+    public function render(?Zend_View_Interface $view = null)
     {
         if (null !== $view) {
             $this->setView($view);

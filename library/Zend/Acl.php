@@ -61,22 +61,22 @@ class Zend_Acl
     /**
      * Rule type: allow
      */
-    const TYPE_ALLOW = 'TYPE_ALLOW';
+    public const TYPE_ALLOW = 'TYPE_ALLOW';
 
     /**
      * Rule type: deny
      */
-    const TYPE_DENY  = 'TYPE_DENY';
+    public const TYPE_DENY  = 'TYPE_DENY';
 
     /**
      * Rule operation: add
      */
-    const OP_ADD = 'OP_ADD';
+    public const OP_ADD = 'OP_ADD';
 
     /**
      * Rule operation: remove
      */
-    const OP_REMOVE = 'OP_REMOVE';
+    public const OP_REMOVE = 'OP_REMOVE';
 
     /**
      * Role registry
@@ -499,7 +499,7 @@ class Zend_Acl
      * @uses   Zend_Acl::setRule()
      * @return $this
      */
-    public function allow($roles = null, $resources = null, $privileges = null, Zend_Acl_Assert_Interface $assert = null)
+    public function allow($roles = null, $resources = null, $privileges = null, ?Zend_Acl_Assert_Interface $assert = null)
     {
         return $this->setRule(self::OP_ADD, self::TYPE_ALLOW, $roles, $resources, $privileges, $assert);
     }
@@ -514,7 +514,7 @@ class Zend_Acl
      * @uses   Zend_Acl::setRule()
      * @return $this
      */
-    public function deny($roles = null, $resources = null, $privileges = null, Zend_Acl_Assert_Interface $assert = null)
+    public function deny($roles = null, $resources = null, $privileges = null, ?Zend_Acl_Assert_Interface $assert = null)
     {
         return $this->setRule(self::OP_ADD, self::TYPE_DENY, $roles, $resources, $privileges, $assert);
     }
@@ -600,7 +600,7 @@ class Zend_Acl
      * @return $this
      */
     public function setRule($operation, $type, $roles = null, $resources = null, $privileges = null,
-                            Zend_Acl_Assert_Interface $assert = null)
+                            ?Zend_Acl_Assert_Interface $assert = null)
     {
         // ensure that the rule type is valid; normalize input to uppercase
         $type = strtoupper($type);
@@ -919,7 +919,7 @@ class Zend_Acl
      * @param  Zend_Acl_Resource_Interface $resource
      * @return boolean|null
      */
-    protected function _roleDFSAllPrivileges(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null)
+    protected function _roleDFSAllPrivileges(Zend_Acl_Role_Interface $role, ?Zend_Acl_Resource_Interface $resource = null)
     {
         $dfs = [
             'visited' => [],
@@ -955,7 +955,7 @@ class Zend_Acl
      * @return boolean|null
      * @throws Zend_Acl_Exception
      */
-    protected function _roleDFSVisitAllPrivileges(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,
+    protected function _roleDFSVisitAllPrivileges(Zend_Acl_Role_Interface $role, ?Zend_Acl_Resource_Interface $resource = null,
                                                  &$dfs = null)
     {
         if (null === $dfs) {
@@ -998,7 +998,7 @@ class Zend_Acl
      * @return boolean|null
      * @throws Zend_Acl_Exception
      */
-    protected function _roleDFSOnePrivilege(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,
+    protected function _roleDFSOnePrivilege(Zend_Acl_Role_Interface $role, ?Zend_Acl_Resource_Interface $resource = null,
                                             $privilege = null)
     {
         if (null === $privilege) {
@@ -1044,7 +1044,7 @@ class Zend_Acl
      * @return boolean|null
      * @throws Zend_Acl_Exception
      */
-    protected function _roleDFSVisitOnePrivilege(Zend_Acl_Role_Interface $role, Zend_Acl_Resource_Interface $resource = null,
+    protected function _roleDFSVisitOnePrivilege(Zend_Acl_Role_Interface $role, ?Zend_Acl_Resource_Interface $resource = null,
                                                 $privilege = null, &$dfs = null)
     {
         if (null === $privilege) {
@@ -1098,7 +1098,7 @@ class Zend_Acl
      * @param  string                      $privilege
      * @return string|null
      */
-    protected function _getRuleType(Zend_Acl_Resource_Interface $resource = null, Zend_Acl_Role_Interface $role = null,
+    protected function _getRuleType(?Zend_Acl_Resource_Interface $resource = null, ?Zend_Acl_Role_Interface $role = null,
                                     $privilege = null)
     {
         // get the rules for the $resource and $role
@@ -1154,7 +1154,7 @@ class Zend_Acl
      * @param  boolean                     $create
      * @return array|null
      */
-    protected function &_getRules(Zend_Acl_Resource_Interface $resource = null, Zend_Acl_Role_Interface $role = null,
+    protected function &_getRules(?Zend_Acl_Resource_Interface $resource = null, ?Zend_Acl_Role_Interface $role = null,
                                   $create = false)
     {
         // create a reference to null

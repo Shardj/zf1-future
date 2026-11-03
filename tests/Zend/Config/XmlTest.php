@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -73,7 +73,7 @@ class Zend_Config_XmlTest extends TestCase
     protected $_xmlFileCircularConfig;
     protected $_xmlFileInvalid;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_xmlFileConfig = dirname(__FILE__) . '/_files/config.xml';
         $this->_xmlFileAllSectionsConfig = dirname(__FILE__) . '/_files/allsections.xml';

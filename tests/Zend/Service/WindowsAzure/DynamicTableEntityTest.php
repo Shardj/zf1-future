@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -54,13 +54,13 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Service_WindowsAzure_DynamicTableEntityTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
     
     /**
      * Test teardown
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $storageClient = $this->createStorageInstance();
         for ($i = 1; $i <= self::$uniqId; $i++) {
@@ -190,6 +190,6 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends TestCase
 }
 
 // Call Zend_Service_WindowsAzure_DynamicTableEntityTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Service_WindowsAzure_DynamicTableEntityTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Service_WindowsAzure_DynamicTableEntityTest::main") {
     Zend_Service_WindowsAzure_DynamicTableEntityTest::main();
 }

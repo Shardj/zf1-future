@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -57,10 +57,10 @@ class Zend_Measure_TemperatureTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite(__CLASS__);
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (Zend_Registry::isRegistered('Zend_Locale')) {
             $registry = Zend_Registry::getInstance();
@@ -72,7 +72,7 @@ class Zend_Measure_TemperatureTest extends TestCase
         setlocale(LC_ALL, 'de');
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (is_string($this->_locale) && strpos($this->_locale, ';')) {
             $locales = [];
@@ -459,6 +459,6 @@ class Zend_Measure_TemperatureTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Measure_TemperatureTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Measure_TemperatureTest::main') {
     Zend_Measure_TemperatureTest::main();
 }

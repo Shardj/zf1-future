@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -55,17 +55,17 @@ class Zend_Amf_ResourceTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Amf_ResourceTest");
-        (new TestRunner())->run($suite);
+        (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_server = new Zend_Amf_Server();
         $this->_server->setProduction(false);
         Zend_Amf_Parse_TypeLoader::resetMap();
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_server);
     }
@@ -205,6 +205,6 @@ class Zend_Amf_TestResourceLoader implements Zend_Loader_PluginLoader_Interface
     }
 }
 
-if (PHPUnit_MAIN_METHOD == "Zend_Amf_ResourceTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Amf_ResourceTest::main") {
     Zend_Amf_ResourceTest::main();
 }

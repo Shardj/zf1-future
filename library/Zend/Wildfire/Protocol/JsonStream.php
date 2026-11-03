@@ -43,7 +43,7 @@ class Zend_Wildfire_Protocol_JsonStream
     /**
      * The protocol URI for this protocol
      */
-    const PROTOCOL_URI = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
+    public const PROTOCOL_URI = 'http://meta.wildfirehq.org/Protocol/JsonStream/0.2';
 
     /**
      * All messages to be sent.

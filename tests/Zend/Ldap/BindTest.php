@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -49,7 +49,7 @@ class Zend_Ldap_BindTest extends TestCase
     protected $_altUsername = TESTS_ZEND_LDAP_ALT_USERNAME;
     protected $_bindRequiresDn = false;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
@@ -193,7 +193,7 @@ class Zend_Ldap_BindTest extends TestCase
         } catch (Zend_Ldap_Exception $zle) {
             /* Note that if your server actually allows anonymous binds this test will fail.
              */
-            $this->assertStringContainsString('Failed to retrieve DN', $zle->getMessage());
+            $this->assertStringContainsString('No object found for', $zle->getMessage());
         }
     }
 
@@ -273,7 +273,7 @@ class Zend_Ldap_BindTest extends TestCase
     {
         $ldap = new Zend_Ldap($this->_options);
         $this->assertNotNull($ldap->getResource());
-        $this->assertTrue(is_resource($ldap->getResource()));
+        $this->assertTrue($ldap->isConnection($ldap->getResource()));
         $this->assertEquals(TESTS_ZEND_LDAP_USERNAME, $ldap->getBoundUser());
     }
 

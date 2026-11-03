@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -52,7 +52,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends TestCase
      */
     protected $_defaultPrefixLength;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         require_once 'Zend/Search/Lucene/Search/Query/Wildcard.php';
         $this->_wildcardMinPrefix = Zend_Search_Lucene_Search_Query_Wildcard::getMinPrefixLength();
@@ -63,7 +63,7 @@ class Zend_Search_Lucene_SearchHighlightTest extends TestCase
         Zend_Search_Lucene_Search_Query_Fuzzy::setDefaultPrefixLength(0);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Search_Lucene_Search_Query_Wildcard::setMinPrefixLength($this->_wildcardMinPrefix);
         Zend_Search_Lucene_Search_Query_Fuzzy::setDefaultPrefixLength($this->_defaultPrefixLength);

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -38,6 +38,7 @@ require_once 'Zend/Validate/CreditCard.php';
  */
 class Zend_Validate_CreditCardTest extends TestCase
 {
+
     /**
      * Ensures that the validator follows expected behavior
      *

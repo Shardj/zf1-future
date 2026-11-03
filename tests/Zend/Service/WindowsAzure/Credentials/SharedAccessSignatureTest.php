@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -51,7 +51,7 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends Te
     public static function main()
     {
         $suite = new TestSuite("Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
     
     /**
@@ -142,6 +142,6 @@ class Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest extends Te
 }
 
 // Call Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest::main") {
     Zend_Service_WindowsAzure_Credentials_SharedAccessSignatureTest::main();
 }

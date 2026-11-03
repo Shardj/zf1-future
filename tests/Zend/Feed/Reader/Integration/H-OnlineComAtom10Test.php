@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -43,7 +43,7 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends TestCase
 
     protected $_feedSamplePath = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         Zend_Feed_Reader::reset();
         $this->_feedSamplePath = dirname(__FILE__) . '/_files/h-online.com-atom10.xml';
@@ -56,7 +56,7 @@ class Zend_Feed_Reader_Integration_HOnlineComAtom10Test extends TestCase
         Zend_Date::setOptions(['format_type' => 'iso']);
     }
     
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Date::setOptions($this->_options);
     }

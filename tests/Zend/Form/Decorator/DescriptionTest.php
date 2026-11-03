@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -70,7 +70,7 @@ class Zend_Form_Decorator_DescriptionTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_Form_Decorator_DescriptionTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -79,7 +79,7 @@ class Zend_Form_Decorator_DescriptionTest extends TestCase
      *
      * @return void
      */
-    public function setUp(): void
+    public function set_up()
     {
         if (isset($this->html)) {
             unset($this->html);
@@ -98,7 +98,7 @@ class Zend_Form_Decorator_DescriptionTest extends TestCase
      *
      * @return void
      */
-    public function tearDown(): void
+    public function tear_down()
     {
     }
 
@@ -237,6 +237,6 @@ class Zend_Form_Decorator_DescriptionTest extends TestCase
 }
 
 // Call Zend_Form_Decorator_DescriptionTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_Form_Decorator_DescriptionTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_Form_Decorator_DescriptionTest::main") {
     Zend_Form_Decorator_DescriptionTest::main();
 }

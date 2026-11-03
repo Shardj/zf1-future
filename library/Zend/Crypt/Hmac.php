@@ -73,8 +73,8 @@ class Zend_Crypt_Hmac extends Zend_Crypt
     /**
      * Constants representing the output mode of the hash algorithm
      */
-    const STRING = 'string';
-    const BINARY = 'binary';
+    public const STRING = 'string';
+    public const BINARY = 'binary';
 
     /**
      * Performs a HMAC computation given relevant details such as Key, Hashing

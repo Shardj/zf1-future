@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -63,7 +63,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_File_Transfer_Adapter_HttpTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
     /**
@@ -72,7 +72,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $_FILES = [
             'txt' => [
@@ -90,7 +90,7 @@ class Zend_File_Transfer_Adapter_HttpTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
     }
 
@@ -364,6 +364,6 @@ class Zend_File_Transfer_Adapter_HttpTest_MockAdapter extends Zend_File_Transfer
 }
 
 // Call Zend_File_Transfer_Adapter_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_File_Transfer_Adapter_HttpTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_File_Transfer_Adapter_HttpTest::main") {
     Zend_File_Transfer_Adapter_HttpTest::main();
 }

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -63,7 +63,7 @@ abstract class Zend_Queue_Adapter_AdapterTest extends TestCase
      */
     protected $error;
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->error = false;
     }

@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  openldap:
+    image: docker.io/bitnami/openldap:2.5
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    environment:
+      # https:#github.com/bitnami/bitnami-docker-openldap
+      LDAP_ROOT: "dc=example,dc=com"
+      LDAP_PORT_NUMBER: 1389
+      LDAP_ADMIN_USERNAME: "admin"
+      LDAP_ADMIN_PASSWORD: "insecure"
+      LDAP_CONFIG_ADMIN_ENABLED: "yes"
+      LDAP_CONFIG_ADMIN_USERNAME: "admin"
+      LDAP_CONFIG_ADMIN_PASSWORD: "configpassword"
+      LDAP_ALLOW_ANON_BINDING: "yes"
+      LDAP_LOGLEVEL: 0
+      BITNAMI_DEBUG: "true"
+      LDAP_SKIP_DEFAULT_TREE: "yes"
+    volumes:
+      #- './openldap:/bitnami/openldap'
+      - './docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'

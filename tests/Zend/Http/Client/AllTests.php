@@ -51,7 +51,7 @@ class Zend_Http_Client_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -79,6 +79,6 @@ class Zend_Http_Client_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Http_Client_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Http_Client_AllTests::main') {
     Zend_Http_Client_AllTests::main();
 }

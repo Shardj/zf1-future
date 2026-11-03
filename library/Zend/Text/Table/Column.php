@@ -42,9 +42,9 @@ class Zend_Text_Table_Column
     /**
      * Aligns for columns
      */
-    const ALIGN_LEFT   = 'left';
-    const ALIGN_CENTER = 'center';
-    const ALIGN_RIGHT  = 'right';
+    public const ALIGN_LEFT   = 'left';
+    public const ALIGN_CENTER = 'center';
+    public const ALIGN_RIGHT  = 'right';
 
     /**
      * Content of the column

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -61,7 +61,7 @@ class Zend_FilterTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->error = null;
         $this->_filter = new Zend_Filter();
@@ -72,7 +72,7 @@ class Zend_FilterTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         Zend_Filter::setDefaultNamespaces([]);
     }

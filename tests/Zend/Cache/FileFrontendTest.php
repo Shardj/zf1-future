@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -54,7 +54,7 @@ class Zend_Cache_FileFrontendTest extends TestCase
     private $_masterFile2;
 
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             $this->_masterFile = $this->_getTmpDirWindows() . DIRECTORY_SEPARATOR . 'zend_cache_master';
@@ -101,7 +101,7 @@ class Zend_Cache_FileFrontendTest extends TestCase
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         unset($this->_instance1);
         unlink($this->_masterFile);

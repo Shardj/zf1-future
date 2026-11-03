@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -52,17 +52,17 @@ class Zend_Filter_Compress_GzTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite('Zend_Filter_Compress_GzTest');
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('zlib')) {
             $this->markTestSkipped('This adapter needs the zlib extension');
         }
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
         if (file_exists(dirname(__FILE__) . '/../_files/compressed.gz')) {
             unlink(dirname(__FILE__) . '/../_files/compressed.gz');
@@ -228,6 +228,6 @@ class Zend_Filter_Compress_GzTest extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Filter_Compress_GzTest::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Filter_Compress_GzTest::main') {
     Zend_Filter_Compress_GzTest::main();
 }

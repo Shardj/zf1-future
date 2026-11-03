@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -60,7 +60,7 @@ class Zend_Ldap_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -102,7 +102,7 @@ class Zend_Ldap_AllTests
  */
 class Zend_Ldap_SkipOnlineTests extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Ldap online tests not enabled in TestConfiguration.php');
     }
@@ -115,6 +115,6 @@ class Zend_Ldap_SkipOnlineTests extends TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Ldap_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Ldap_AllTests::main') {
     Zend_Ldap_AllTests::main();
 }

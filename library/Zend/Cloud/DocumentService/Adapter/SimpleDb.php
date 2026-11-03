@@ -38,15 +38,15 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
     /*
      * Options array keys for the SimpleDB adapter.
      */
-    const AWS_ACCESS_KEY   = 'aws_accesskey';
-    const AWS_SECRET_KEY   = 'aws_secretkey';
+    public const AWS_ACCESS_KEY   = 'aws_accesskey';
+    public const AWS_SECRET_KEY   = 'aws_secretkey';
 
-    const ITEM_NAME        = 'ItemName';
+    public const ITEM_NAME        = 'ItemName';
 
-    const MERGE_OPTION     = "merge";
-    const RETURN_DOCUMENTS = "return_documents";
+    public const MERGE_OPTION     = "merge";
+    public const RETURN_DOCUMENTS = "return_documents";
 
-    const DEFAULT_QUERY_CLASS = 'Zend_Cloud_DocumentService_Adapter_SimpleDb_Query';
+    public const DEFAULT_QUERY_CLASS = 'Zend_Cloud_DocumentService_Adapter_SimpleDb_Query';
 
 
     /**
@@ -157,7 +157,7 @@ class Zend_Cloud_DocumentService_Adapter_SimpleDb
      * @param  array|null $options
      * @return Zend_Cloud_DocumentService_DocumentSet
      */
-    public function listDocuments($collectionName, array $options = null)
+    public function listDocuments($collectionName, ?array $options = null)
     {
         $query = $this->select('*')->from($collectionName);
 

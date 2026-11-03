@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -54,7 +54,7 @@ class Zend_Http_Client_StaticTest extends TestCase
      * Set up the test suite before each test
      *
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_client = new Zend_Http_Client_StaticTest_Mock('http://www.example.com');
     }
@@ -63,7 +63,7 @@ class Zend_Http_Client_StaticTest extends TestCase
      * Clean up after running a test
      *
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_client = null;
     }

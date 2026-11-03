@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -92,7 +92,7 @@ class Zend_Service_Rackspace_Servers_OfflineTest extends TestCase
     /**
      * SetUpBerofeClass
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->rackspace = new Zend_Service_Rackspace_Servers('foo', 'bar');
         

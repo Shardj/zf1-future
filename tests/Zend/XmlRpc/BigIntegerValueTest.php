@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -52,7 +52,7 @@ require_once 'Zend/Date.php';
  */
 class Zend_XmlRpc_BigIntegerValueTest extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         try {
             $XmlRpcBigInteger = new Zend_XmlRpc_Value_BigInteger(0);
@@ -182,6 +182,6 @@ class Zend_XmlRpc_BigIntegerValueTest extends TestCase
 }
 
 // Call Zend_XmlRpc_ValueTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_XmlRpc_BigIntegerValueTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_XmlRpc_BigIntegerValueTest::main") {
     Zend_XmlRpc_ValueTest::main();
 }

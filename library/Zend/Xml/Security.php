@@ -28,7 +28,7 @@
  */
 class Zend_Xml_Security
 {
-    const ENTITY_DETECT = 'Detected use of ENTITY in XML, disabled to prevent XXE/XEE attacks';
+    public const ENTITY_DETECT = 'Detected use of ENTITY in XML, disabled to prevent XXE/XEE attacks';
 
     /**
      * Heuristic scan to detect entity in XML
@@ -68,7 +68,7 @@ class Zend_Xml_Security
      * @throws  Zend_Xml_Exception
      * @return  SimpleXMLElement|DomDocument|boolean
      */
-    public static function scan($xml, DOMDocument $dom = null)
+    public static function scan($xml, ?DOMDocument $dom = null)
     {
         // If running with PHP-FPM we perform an heuristic scan
         // We cannot use libxml_disable_entity_loader because of this bug
@@ -145,7 +145,7 @@ class Zend_Xml_Security
      * @throws Zend_Xml_Exception
      * @return SimpleXMLElement|DomDocument
      */
-    public static function scanFile($file, DOMDocument $dom = null)
+    public static function scanFile($file, ?DOMDocument $dom = null)
     {
         if (!file_exists($file)) {
             require_once 'Exception.php';

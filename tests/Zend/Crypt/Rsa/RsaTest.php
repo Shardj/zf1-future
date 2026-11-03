@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -55,7 +55,7 @@ class Zend_Crypt_RsaTest extends TestCase
 
     protected $_testPemPath = null;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         if (!extension_loaded('openssl')) {
             $this->markTestSkipped('Zend_Crypt_Rsa requires openssl extension to be loaded.');

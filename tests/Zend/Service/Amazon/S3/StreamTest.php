@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -80,7 +80,7 @@ class Zend_Service_Amazon_S3_StreamTest extends TestCase
      *
      * @return void
      */
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->_amazon = new Zend_Service_Amazon_S3(
             constant('TESTS_ZEND_SERVICE_AMAZON_ONLINE_ACCESSKEYID'),
@@ -107,7 +107,7 @@ class Zend_Service_Amazon_S3_StreamTest extends TestCase
      *
      * @return void
      */
-    protected function tearDown(): void
+    protected function tear_down()
     {
         $this->_amazon->unregisterStreamWrapper();
         $buckets = $this->_amazon->getBuckets();
@@ -299,7 +299,7 @@ class Zend_Service_Amazon_S3_StreamTest extends TestCase
  */
 class Zend_Service_Amazon_S3_StreamTest_Skip extends TestCase
 {
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->markTestSkipped('Zend_Service_Amazon_S3 online tests not enabled with an access key ID and '
                              . ' secret key ID in TestConfiguration.php');

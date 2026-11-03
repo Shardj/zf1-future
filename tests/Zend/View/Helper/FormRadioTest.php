@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;
 
@@ -67,10 +67,10 @@ class Zend_View_Helper_FormRadioTest extends TestCase
     public static function main()
     {
         $suite = new TestSuite("Zend_View_Helper_FormRadioTest");
-        $result = (new TestRunner())->run($suite);
+        $result = (new resources_Runner())->run($suite);
     }
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->view = new Zend_View();
         $this->view->doctype('HTML4_LOOSE'); // Set default doctype
@@ -530,6 +530,6 @@ class Zend_View_Helper_FormRadioTest extends TestCase
 }
 
 // Call Zend_View_Helper_FormRadioTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD == "Zend_View_Helper_FormRadioTest::main") {
+if (PHPUnit_MAIN_METHOD === "Zend_View_Helper_FormRadioTest::main") {
     Zend_View_Helper_FormRadioTest::main();
 }

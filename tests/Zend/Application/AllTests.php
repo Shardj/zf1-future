@@ -46,7 +46,7 @@ class Zend_Application_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -63,6 +63,6 @@ class Zend_Application_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Application_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Application_AllTests::main') {
     Zend_Application_AllTests::main();
 }

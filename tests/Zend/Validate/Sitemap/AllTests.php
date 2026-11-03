@@ -46,7 +46,7 @@ class Zend_Validate_Sitemap_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -62,6 +62,6 @@ class Zend_Validate_Sitemap_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Validate_Sitemap_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Validate_Sitemap_AllTests::main') {
     Zend_Validate_Sitemap_AllTests::main();
 }

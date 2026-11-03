@@ -38,7 +38,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
         parent::__construct('Zend_Cache_Backend_Static', $data, $dataName);
     }
 
-    public function setUp($notag = false): void
+    public function set_up($notag = false)
     {
         $this->mkdir();
         $this->_cache_dir = $this->mkdir();
@@ -69,9 +69,9 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
         $this->_instance->save('bar3 : data to cache', bin2hex('/bar3'), ['tag2', 'tag3']);
     }
 
-    protected function tearDown(): void
+    protected function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
         unset($this->_instance);
         $_SERVER['REQUEST_URI'] = $this->_requestUriOld;
         $this->rmdir();
@@ -164,8 +164,8 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
      */
     public function testDirectoryUmaskTriggersError()
     {
-        $this->expectNotice();
-        $this->expectNoticeMessage("'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead");
+        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
+        $this->expectExceptionMessage("'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead");
         $this->_instance->setOption('cache_directory_umask', '777');
     }
 
@@ -174,8 +174,8 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
      */
     public function testFileUmaskTriggersError()
     {
-        $this->expectNotice();
-        $this->expectNoticeMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
+        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
+        $this->expectExceptionMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
         $this->_instance->setOption('cache_file_umask', '777');
     }
 

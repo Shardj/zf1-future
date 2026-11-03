@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -47,7 +47,7 @@ class Zend_Gdata_Books_VolumeFeedTest extends TestCase
      */
     protected $feed;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->feedText = file_get_contents(
             'Zend/Gdata/Books/_files/VolumeFeedDataSample1.xml',

@@ -1,6 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
  * Zend Framework
@@ -46,7 +46,7 @@ class Zend_Gdata_RecurrenceExceptionTest extends TestCase
      */
     protected $recurrenceException;
 
-    protected function setUp(): void
+    protected function set_up()
     {
         $this->recurrenceExceptionText = file_get_contents(
             'Zend/Gdata/_files/RecurrenceExceptionElementSample1.xml',

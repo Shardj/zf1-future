@@ -49,7 +49,7 @@ class Zend_Service_Ebay_Finding_AllTests
 {
     public static function main()
     {
-        (new TestRunner())->run(self::suite());
+        (new resources_Runner())->run(self::suite());
     }
 
     public static function suite()
@@ -65,6 +65,6 @@ class Zend_Service_Ebay_Finding_AllTests
         return $suite;
     }
 }
-if (PHPUnit_MAIN_METHOD == 'Zend_Service_Ebay_Finding_AllTests::main') {
+if (PHPUnit_MAIN_METHOD === 'Zend_Service_Ebay_Finding_AllTests::main') {
     Zend_Service_AllTests::main();
 }

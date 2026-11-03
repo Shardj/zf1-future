@@ -33,7 +33,7 @@ require_once 'Zend/Validate/Abstract.php';
 class Zend_Validate_Ldap_Dn extends Zend_Validate_Abstract
 {
 
-    const MALFORMED = 'malformed';
+    public const MALFORMED = 'malformed';
 
     /**
      * Validation failure message template definitions.
