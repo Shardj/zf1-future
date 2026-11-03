@@ -17,6 +17,14 @@ As pressure to implement some PHP 8.2+ related changes are raising, we are goig 
   * territories of a language (`territorytolanguage`, `languagetoterritory`) are taken from the official languages in `territoryInfo`
 * don't compare localized strings against hardcoded values in your application, they change with the CLDR data
 * input parsing accepts a plain space for space-like group separators (no-break and narrow no-break space)
+* `Zend_Db_Table_Row_Abstract::offsetUnset()` returns nothing, as `ArrayAccess::offsetUnset()` is declared `void` since PHP 8.1. It returned `$this` (the result of `__unset()`) before, so chained calls on its return value have to be split (#360):
+  ```php
+  $row->offsetUnset($x)->offsetUnset($y);   // before
+  $row->offsetUnset($x);                     // now, or
+  unset($row[$x], $row[$y]);
+  ```
+  `__unset()` itself still returns `$this`. The method keeps `#[\ReturnTypeWillChange]` and no native return type, so row subclasses that override it without a return type keep working.
+* `next()` and `rewind()` of the Zend_Pdf iterators (`Zend_Pdf_Action`, `Zend_Pdf_Outline`, `Zend_Pdf_NameTree`, `Zend_Pdf_RecursivelyIteratableObjectsContainer`) return nothing instead of the result of PHP's `next()` / `reset()` (#360).
 * Zend_Application_Resource_Useragent lives in `Zend/Application/Resource/Useragent.php` (the class is `Zend_Application_Resource_Useragent`), so the `useragent` bootstrap resource (`resources.useragent.*`) is resolved by the plugin loader on case-sensitive file systems, as in ZF 1.12. Code that includes the file by its previous path `Zend/Application/Resource/UserAgent.php` has to use the new name; class names are case-insensitive in PHP, so `Zend_Application_Resource_UserAgent` in `extends` or `instanceof` keeps working (#407).
 
 ### 1.25.3
