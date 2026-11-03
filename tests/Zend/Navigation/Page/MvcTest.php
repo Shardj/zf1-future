@@ -211,6 +211,38 @@ class Zend_Navigation_Page_MvcTest extends TestCase
         $this->assertEquals(true, $page->isActive());
     }
 
+    /**
+     * @group GH-474
+     */
+    public function testIsActiveWithArrayParams()
+    {
+        $page = new Zend_Navigation_Page_Mvc([
+            'label' => 'foo',
+            'action' => 'view',
+            'controller' => 'post',
+            'module' => 'blog',
+            'params' => [
+                'filter' => ['status' => 'open', 'tags' => ['a', 'b']]
+            ]
+        ]);
+
+        $this->_front->getRequest()->setParams([
+            'module' => 'blog',
+            'controller' => 'post',
+            'action' => 'view',
+            'filter' => ['status' => 'open', 'tags' => ['a', 'b']],
+            'other' => ['nested' => ['value']]
+        ]);
+
+        $this->assertTrue($page->isActive());
+
+        $this->_front->getRequest()->setParam('filter', ['status' => 'closed']);
+        $options = $page->toArray();
+        unset($options['active']);
+        $other = new Zend_Navigation_Page_Mvc($options);
+        $this->assertFalse($other->isActive());
+    }
+
     public function testIsActiveReturnsTrueWhenRequestHasMoreParams()
     {
         $page = new Zend_Navigation_Page_Mvc([
