@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+* Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
+  BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
+
 ## [1.25.3] - 2026-11-03
 
 ### Changed
