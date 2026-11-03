@@ -212,8 +212,6 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
      */
     public function testInvalidDecryption()
     {
-        $this->markTestSkipped("CHECK FAILURE");
-
         $filter = new Zend_Filter_Encrypt_Openssl();
         try {
             $filter->decrypt('unknown');
@@ -230,13 +228,10 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->assertStringContainsString('Please give a envelope key', $e->getMessage());
         }
 
+        // A wrong envelope key cannot be detected with RC4 (stream cipher, no padding or MAC):
+        // openssl_open() succeeds and the result is just not the original content
         $filter->setEnvelopeKey('unknown');
-        try {
-            $filter->decrypt('unknown');
-            $this->fail();
-        } catch (Zend_Filter_Exception $e) {
-            $this->assertStringContainsString('was not able to decrypt', $e->getMessage());
-        }
+        $this->assertNotSame('unknown', $filter->decrypt('unknown'));
     }
 
     /**
