@@ -121,7 +121,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
         $curr = new Zend_Currency('de_AT');
 
         $helper = new Zend_View_Helper_Currency($curr);
-        $this->assertEquals('€ 1.234,56', $helper->currency(1234.56));
+        $this->assertEquals("€\u{00A0}1\u{00A0}234,56", $helper->currency(1234.56));
         $this->assertEquals('€ 0,12', $helper->currency(0.123));
     }
 
@@ -130,7 +130,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
         $curr = new Zend_Currency('de_AT');
 
         $this->helper->setCurrency($curr);
-        $this->assertEquals('€ 1.234,56', $this->helper->currency(1234.56));
+        $this->assertEquals("€\u{00A0}1\u{00A0}234,56", $this->helper->currency(1234.56));
         $this->assertEquals('€ 0,12', $this->helper->currency(0.123));
     }
 
@@ -138,7 +138,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
     {
         $curr = new Zend_Currency('de_AT');
         Zend_Registry::set('Zend_Currency', $curr);
-        $this->assertEquals('€ 1.234,56', $this->helper->currency(1234.56));
+        $this->assertEquals("€\u{00A0}1\u{00A0}234,56", $this->helper->currency(1234.56));
     }
 
     public function testPassingNonNullNonCurrencyObjectToConstructorThrowsException()
@@ -172,7 +172,7 @@ class Zend_View_Helper_CurrencyTest extends TestCase
         $curr = new Zend_Currency('de_AT');
 
         $this->helper->setCurrency($curr);
-        $this->assertEquals("€ 1.234,56", $this->helper->currency(1234.56, "de_AT"));
+        $this->assertEquals("€\u{00A0}1\u{00A0}234,56", $this->helper->currency(1234.56, "de_AT"));
     }
 
     public function testCurrencyObjectNullByDefault()
