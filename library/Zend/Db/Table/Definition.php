@@ -55,7 +55,7 @@ class Zend_Db_Table_Definition
      * setConfig()
      *
      * @param Zend_Config $config
-     * @return Zend_Db_Table_Definition
+     * @return $this
      */
     public function setConfig(Zend_Config $config)
     {
@@ -67,7 +67,7 @@ class Zend_Db_Table_Definition
      * setOptions()
      *
      * @param array $options
-     * @return Zend_Db_Table_Definition
+     * @return $this
      */
     public function setOptions(Array $options)
     {
@@ -80,7 +80,7 @@ class Zend_Db_Table_Definition
     /**
      * @param string $tableName
      * @param array  $tableConfig
-     * @return Zend_Db_Table_Definition
+     * @return $this
      */
     public function setTableConfig($tableName, array $tableConfig)
     {

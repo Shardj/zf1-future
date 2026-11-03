@@ -46,39 +46,39 @@ abstract class Zend_Pdf_Font
     /**
      * Unknown font type.
      */
-    const TYPE_UNKNOWN = 0;
+    public const TYPE_UNKNOWN = 0;
 
     /**
      * One of the standard 14 PDF fonts.
      */
-    const TYPE_STANDARD = 1;
+    public const TYPE_STANDARD = 1;
 
     /**
      * A PostScript Type 1 font.
      */
-    const TYPE_TYPE_1 = 2;
+    public const TYPE_TYPE_1 = 2;
 
     /**
      * A TrueType font or an OpenType font containing TrueType outlines.
      */
-    const TYPE_TRUETYPE = 3;
+    public const TYPE_TRUETYPE = 3;
 
     /**
      * Type 0 composite font.
      */
-    const TYPE_TYPE_0 = 4;
+    public const TYPE_TYPE_0 = 4;
 
     /**
      * CID font containing a PostScript Type 1 font.
      * These fonts are used only to construct Type 0 composite fonts and can't be used directly
      */
-    const TYPE_CIDFONT_TYPE_0 = 5;
+    public const TYPE_CIDFONT_TYPE_0 = 5;
 
     /**
      * CID font containing a TrueType font or an OpenType font containing TrueType outlines.
      * These fonts are used only to construct Type 0 composite fonts and can't be used directly
      */
-    const TYPE_CIDFONT_TYPE_2 = 6;
+    public const TYPE_CIDFONT_TYPE_2 = 6;
 
 
   /* Names of the Standard 14 PDF Fonts */
@@ -86,102 +86,102 @@ abstract class Zend_Pdf_Font
     /**
      * Name of the standard PDF font Courier.
      */
-    const FONT_COURIER = 'Courier';
+    public const FONT_COURIER = 'Courier';
 
     /**
      * Name of the bold style of the standard PDF font Courier.
      */
-    const FONT_COURIER_BOLD = 'Courier-Bold';
+    public const FONT_COURIER_BOLD = 'Courier-Bold';
 
     /**
      * Name of the italic style of the standard PDF font Courier.
      */
-    const FONT_COURIER_OBLIQUE = 'Courier-Oblique';
+    public const FONT_COURIER_OBLIQUE = 'Courier-Oblique';
 
     /**
      * Convenience constant for a common misspelling of
      * {@link FONT_COURIER_OBLIQUE}.
      */
-    const FONT_COURIER_ITALIC = 'Courier-Oblique';
+    public const FONT_COURIER_ITALIC = 'Courier-Oblique';
 
     /**
      * Name of the bold and italic style of the standard PDF font Courier.
      */
-    const FONT_COURIER_BOLD_OBLIQUE = 'Courier-BoldOblique';
+    public const FONT_COURIER_BOLD_OBLIQUE = 'Courier-BoldOblique';
 
     /**
      * Convenience constant for a common misspelling of
      * {@link FONT_COURIER_BOLD_OBLIQUE}.
      */
-    const FONT_COURIER_BOLD_ITALIC = 'Courier-BoldOblique';
+    public const FONT_COURIER_BOLD_ITALIC = 'Courier-BoldOblique';
 
     /**
      * Name of the standard PDF font Helvetica.
      */
-    const FONT_HELVETICA = 'Helvetica';
+    public const FONT_HELVETICA = 'Helvetica';
 
     /**
      * Name of the bold style of the standard PDF font Helvetica.
      */
-    const FONT_HELVETICA_BOLD = 'Helvetica-Bold';
+    public const FONT_HELVETICA_BOLD = 'Helvetica-Bold';
 
     /**
      * Name of the italic style of the standard PDF font Helvetica.
      */
-    const FONT_HELVETICA_OBLIQUE = 'Helvetica-Oblique';
+    public const FONT_HELVETICA_OBLIQUE = 'Helvetica-Oblique';
 
     /**
      * Convenience constant for a common misspelling of
      * {@link FONT_HELVETICA_OBLIQUE}.
      */
-    const FONT_HELVETICA_ITALIC = 'Helvetica-Oblique';
+    public const FONT_HELVETICA_ITALIC = 'Helvetica-Oblique';
 
     /**
      * Name of the bold and italic style of the standard PDF font Helvetica.
      */
-    const FONT_HELVETICA_BOLD_OBLIQUE = 'Helvetica-BoldOblique';
+    public const FONT_HELVETICA_BOLD_OBLIQUE = 'Helvetica-BoldOblique';
 
     /**
      * Convenience constant for a common misspelling of
      * {@link FONT_HELVETICA_BOLD_OBLIQUE}.
      */
-    const FONT_HELVETICA_BOLD_ITALIC = 'Helvetica-BoldOblique';
+    public const FONT_HELVETICA_BOLD_ITALIC = 'Helvetica-BoldOblique';
 
     /**
      * Name of the standard PDF font Symbol.
      */
-    const FONT_SYMBOL = 'Symbol';
+    public const FONT_SYMBOL = 'Symbol';
 
     /**
      * Name of the standard PDF font Times.
      */
-    const FONT_TIMES_ROMAN = 'Times-Roman';
+    public const FONT_TIMES_ROMAN = 'Times-Roman';
 
     /**
      * Convenience constant for a common misspelling of
      * {@link FONT_TIMES_ROMAN}.
      */
-    const FONT_TIMES = 'Times-Roman';
+    public const FONT_TIMES = 'Times-Roman';
 
     /**
      * Name of the bold style of the standard PDF font Times.
      */
-    const FONT_TIMES_BOLD = 'Times-Bold';
+    public const FONT_TIMES_BOLD = 'Times-Bold';
 
     /**
      * Name of the italic style of the standard PDF font Times.
      */
-    const FONT_TIMES_ITALIC = 'Times-Italic';
+    public const FONT_TIMES_ITALIC = 'Times-Italic';
 
     /**
      * Name of the bold and italic style of the standard PDF font Times.
      */
-    const FONT_TIMES_BOLD_ITALIC = 'Times-BoldItalic';
+    public const FONT_TIMES_BOLD_ITALIC = 'Times-BoldItalic';
 
     /**
      * Name of the standard PDF font Zapf Dingbats.
      */
-    const FONT_ZAPFDINGBATS = 'ZapfDingbats';
+    public const FONT_ZAPFDINGBATS = 'ZapfDingbats';
 
 
   /* Font Name String Types */
@@ -189,103 +189,103 @@ abstract class Zend_Pdf_Font
     /**
      * Full copyright notice for the font.
      */
-    const NAME_COPYRIGHT =  0;
+    public const NAME_COPYRIGHT =  0;
 
     /**
      * Font family name. Used to group similar styles of fonts together.
      */
-    const NAME_FAMILY =  1;
+    public const NAME_FAMILY =  1;
 
     /**
      * Font style within the font family. Examples: Regular, Italic, Bold, etc.
      */
-    const NAME_STYLE =  2;
+    public const NAME_STYLE =  2;
 
     /**
      * Unique font identifier.
      */
-    const NAME_ID =  3;
+    public const NAME_ID =  3;
 
     /**
      * Full font name. Usually a combination of the {@link NAME_FAMILY} and
      * {@link NAME_STYLE} strings.
      */
-    const NAME_FULL =  4;
+    public const NAME_FULL =  4;
 
     /**
      * Version number of the font.
      */
-    const NAME_VERSION =  5;
+    public const NAME_VERSION =  5;
 
     /**
      * PostScript name for the font. This is the name used to identify fonts
      * internally and within the PDF file.
      */
-    const NAME_POSTSCRIPT =  6;
+    public const NAME_POSTSCRIPT =  6;
 
     /**
      * Font trademark notice. This is distinct from the {@link NAME_COPYRIGHT}.
      */
-    const NAME_TRADEMARK =  7;
+    public const NAME_TRADEMARK =  7;
 
     /**
      * Name of the font manufacturer.
      */
-    const NAME_MANUFACTURER =  8;
+    public const NAME_MANUFACTURER =  8;
 
     /**
      * Name of the designer of the font.
      */
-    const NAME_DESIGNER =  9;
+    public const NAME_DESIGNER =  9;
 
     /**
      * Description of the font. May contain revision information, usage
      * recommendations, features, etc.
      */
-    const NAME_DESCRIPTION = 10;
+    public const NAME_DESCRIPTION = 10;
 
     /**
      * URL of the font vendor. Some fonts may contain a unique serial number
      * embedded in this URL, which is used for licensing.
      */
-    const NAME_VENDOR_URL = 11;
+    public const NAME_VENDOR_URL = 11;
 
     /**
      * URL of the font designer ({@link NAME_DESIGNER}).
      */
-    const NAME_DESIGNER_URL = 12;
+    public const NAME_DESIGNER_URL = 12;
 
     /**
      * Plain language licensing terms for the font.
      */
-    const NAME_LICENSE = 13;
+    public const NAME_LICENSE = 13;
 
     /**
      * URL of more detailed licensing information for the font.
      */
-    const NAME_LICENSE_URL = 14;
+    public const NAME_LICENSE_URL = 14;
 
     /**
      * Preferred font family. Used by some fonts to work around a Microsoft
      * Windows limitation where only four fonts styles can share the same
      * {@link NAME_FAMILY} value.
      */
-    const NAME_PREFERRED_FAMILY = 16;
+    public const NAME_PREFERRED_FAMILY = 16;
 
     /**
      * Preferred font style. A more descriptive string than {@link NAME_STYLE}.
      */
-    const NAME_PREFERRED_STYLE = 17;
+    public const NAME_PREFERRED_STYLE = 17;
 
     /**
      * Suggested text to use as a representative sample of the font.
      */
-    const NAME_SAMPLE_TEXT = 19;
+    public const NAME_SAMPLE_TEXT = 19;
 
     /**
      * PostScript CID findfont name.
      */
-    const NAME_CID_NAME = 20;
+    public const NAME_CID_NAME = 20;
 
 
   /* Font Weights */
@@ -293,47 +293,47 @@ abstract class Zend_Pdf_Font
     /**
      * Thin font weight.
      */
-    const WEIGHT_THIN = 100;
+    public const WEIGHT_THIN = 100;
 
     /**
      * Extra-light (Ultra-light) font weight.
      */
-    const WEIGHT_EXTRA_LIGHT = 200;
+    public const WEIGHT_EXTRA_LIGHT = 200;
 
     /**
      * Light font weight.
      */
-    const WEIGHT_LIGHT = 300;
+    public const WEIGHT_LIGHT = 300;
 
     /**
      * Normal (Regular) font weight.
      */
-    const WEIGHT_NORMAL = 400;
+    public const WEIGHT_NORMAL = 400;
 
     /**
      * Medium font weight.
      */
-    const WEIGHT_MEDIUM = 500;
+    public const WEIGHT_MEDIUM = 500;
 
     /**
      * Semi-bold (Demi-bold) font weight.
      */
-    const WEIGHT_SEMI_BOLD = 600;
+    public const WEIGHT_SEMI_BOLD = 600;
 
     /**
      * Bold font weight.
      */
-    const WEIGHT_BOLD = 700;
+    public const WEIGHT_BOLD = 700;
 
     /**
      * Extra-bold (Ultra-bold) font weight.
      */
-    const WEIGHT_EXTRA_BOLD = 800;
+    public const WEIGHT_EXTRA_BOLD = 800;
 
     /**
      * Black (Heavy) font weight.
      */
-    const WEIGHT_BLACK = 900;
+    public const WEIGHT_BLACK = 900;
 
 
   /* Font Widths */
@@ -341,47 +341,47 @@ abstract class Zend_Pdf_Font
     /**
      * Ultra-condensed font width. Typically 50% of normal.
      */
-    const WIDTH_ULTRA_CONDENSED = 1;
+    public const WIDTH_ULTRA_CONDENSED = 1;
 
     /**
      * Extra-condensed font width. Typically 62.5% of normal.
      */
-    const WIDTH_EXTRA_CONDENSED = 2;
+    public const WIDTH_EXTRA_CONDENSED = 2;
 
     /**
      * Condensed font width. Typically 75% of normal.
      */
-    const WIDTH_CONDENSED = 3;
+    public const WIDTH_CONDENSED = 3;
 
     /**
      * Semi-condensed font width. Typically 87.5% of normal.
      */
-    const WIDTH_SEMI_CONDENSED = 4;
+    public const WIDTH_SEMI_CONDENSED = 4;
 
     /**
      * Normal (Medium) font width.
      */
-    const WIDTH_NORMAL = 5;
+    public const WIDTH_NORMAL = 5;
 
     /**
      * Semi-expanded font width. Typically 112.5% of normal.
      */
-    const WIDTH_SEMI_EXPANDED = 6;
+    public const WIDTH_SEMI_EXPANDED = 6;
 
     /**
      * Expanded font width. Typically 125% of normal.
      */
-    const WIDTH_EXPANDED = 7;
+    public const WIDTH_EXPANDED = 7;
 
     /**
      * Extra-expanded font width. Typically 150% of normal.
      */
-    const WIDTH_EXTRA_EXPANDED = 8;
+    public const WIDTH_EXTRA_EXPANDED = 8;
 
     /**
      * Ultra-expanded font width. Typically 200% of normal.
      */
-    const WIDTH_ULTRA_EXPANDED = 9;
+    public const WIDTH_ULTRA_EXPANDED = 9;
 
 
   /* Font Embedding Options */
@@ -389,23 +389,23 @@ abstract class Zend_Pdf_Font
     /**
      * Do not embed the font in the PDF document.
      */
-    const EMBED_DONT_EMBED = 0x01;
+    public const EMBED_DONT_EMBED = 0x01;
 
     /**
      * Embed, but do not subset the font in the PDF document.
      */
-    const EMBED_DONT_SUBSET = 0x02;
+    public const EMBED_DONT_SUBSET = 0x02;
 
     /**
      * Embed, but do not compress the font in the PDF document.
      */
-    const EMBED_DONT_COMPRESS = 0x04;
+    public const EMBED_DONT_COMPRESS = 0x04;
 
     /**
      * Suppress the exception normally thrown if the font cannot be embedded
      * due to its copyright bits being set.
      */
-    const EMBED_SUPPRESS_EMBED_EXCEPTION = 0x08;
+    public const EMBED_SUPPRESS_EMBED_EXCEPTION = 0x08;
 
 
 

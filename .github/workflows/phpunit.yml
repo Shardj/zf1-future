@@ -4,14 +4,18 @@ on: [push, pull_request]
 
 jobs:
   phpunit:
-    name: Tests on PHP ${{ matrix.php-version }}
+    name: Tests on PHP ${{ matrix.php-version }}${{ matrix.experimental && ' (experimental)' || '' }}
 
     runs-on: ubuntu-22.04
+
+    # A failing experimental job (including PHP or extension setup) does not fail the workflow
+    continue-on-error: ${{ matrix.experimental }}
 
     env:
       PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
 
       TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED: true
+      TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED: true
       TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME: github
       TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD: github
       TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE: zftest
@@ -55,7 +59,7 @@ jobs:
           - 11211:11211
 
       mysql:
-        image: bitnami/mysql:8.0.31
+        image: bitnamilegacy/mysql:8.0.31
         env:
           MYSQL_ROOT_USER: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME }}
           MYSQL_ROOT_PASSWORD: ${{ env.TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD }}
@@ -84,7 +88,7 @@ jobs:
           --health-retries 5
 
       openldap:
-        image: bitnami/openldap:2.5
+        image: bitnamilegacy/openldap:2.5
         ports:
           - 1389:1389
         env:
@@ -101,30 +105,38 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "7.1"
-          - "7.2"
-          - "7.3"
           - "7.4"
           - "8.0"
           - "8.1"
           - "8.2"
+          - "8.3"
+          - "8.4"
+          - "8.5"
         experimental:
           - false
         include:
           #bare for PHP >=7.2
           - php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
           #full for PHP <= 8.0
-          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar"
-          - php-version: "7.1"
-            php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer"
+          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar"
           - php-version: "8.1"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
           - php-version: "8.2"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt"
           - php-version: "8.3"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+          - php-version: "8.4"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+          - php-version: "8.5"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite"
+          # Experimental versions are not listed in php-version above. They are separate
+          # combinations, so the generic entries above are not applied to them and both
+          # extension lists have to be set here.
+          # lzf does not build on PHP 8.6 yet
+          - php-version: "8.6"
+            php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, memcached, memcache, ldap, sqlite"
             experimental: true
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3

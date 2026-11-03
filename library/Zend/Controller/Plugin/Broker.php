@@ -44,7 +44,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      *
      * @param Zend_Controller_Plugin_Abstract $plugin
      * @param int $stackIndex
-     * @return Zend_Controller_Plugin_Broker
+     * @return $this
      * @throws Zend_Controller_Exception
      */
     public function registerPlugin(Zend_Controller_Plugin_Abstract $plugin, $stackIndex = null)
@@ -88,7 +88,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      * Unregister a plugin.
      *
      * @param string|Zend_Controller_Plugin_Abstract $plugin Plugin object or class name
-     * @return Zend_Controller_Plugin_Broker
+     * @return $this
      * @throws Zend_Controller_Exception
      */
     public function unregisterPlugin($plugin)
@@ -171,7 +171,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      * Set request object, and register with each plugin
      *
      * @param Zend_Controller_Request_Abstract $request
-     * @return Zend_Controller_Plugin_Broker
+     * @return $this
      */
     public function setRequest(Zend_Controller_Request_Abstract $request)
     {
@@ -198,7 +198,7 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
      * Set response object
      *
      * @param Zend_Controller_Response_Abstract $response
-     * @return Zend_Controller_Plugin_Broker
+     * @return $this
      */
     public function setResponse(Zend_Controller_Response_Abstract $response)
     {

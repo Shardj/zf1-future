@@ -305,7 +305,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
      * Strategy pattern: proxy to addMessage()
      *
      * @param  string|string[] $message
-     * @return Zend_Controller_Action_Helper_FlashMessenger
+     * @return $this
      */
     public function direct($message, $namespace=NULL)
     {

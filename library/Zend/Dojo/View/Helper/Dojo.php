@@ -39,8 +39,8 @@ class Zend_Dojo_View_Helper_Dojo
     /**#@+
      * Programmatic dijit creation style constants
      */
-    const PROGRAMMATIC_SCRIPT = 1;
-    const PROGRAMMATIC_NOSCRIPT = -1;
+    public const PROGRAMMATIC_SCRIPT = 1;
+    public const PROGRAMMATIC_NOSCRIPT = -1;
     /**#@-*/
 
     /**

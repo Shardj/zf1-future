@@ -30,7 +30,7 @@ require_once 'Zend/Cloud/AbstractFactory.php';
  */
 class Zend_Cloud_QueueService_Factory extends Zend_Cloud_AbstractFactory
 {
-    const QUEUE_ADAPTER_KEY = 'queue_adapter';
+    public const QUEUE_ADAPTER_KEY = 'queue_adapter';
 
     /**
      * @var string Interface which adapter must implement to be considered valid

@@ -49,7 +49,7 @@ class Zend_Gdata extends Zend_Gdata_App
      *
      * @var string
      */
-    const AUTH_SERVICE_NAME = 'xapi';
+    public const AUTH_SERVICE_NAME = 'xapi';
 
     /**
      * Default URI to which to POST.

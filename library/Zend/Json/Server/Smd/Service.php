@@ -139,7 +139,7 @@ class Zend_Json_Server_Smd_Service
      * Set object state
      *
      * @param  array $options
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function setOptions(array $options)
     {
@@ -160,7 +160,7 @@ class Zend_Json_Server_Smd_Service
      * Set service name
      *
      * @param  string $name
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      * @throws Zend_Json_Server_Exception
      */
     public function setName($name)
@@ -190,7 +190,7 @@ class Zend_Json_Server_Smd_Service
      * Currently limited to POST
      *
      * @param  string $transport
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function setTransport($transport)
     {
@@ -217,7 +217,7 @@ class Zend_Json_Server_Smd_Service
      * Set service target
      *
      * @param  string $target
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function setTarget($target)
     {
@@ -239,7 +239,7 @@ class Zend_Json_Server_Smd_Service
      * Set envelope type
      *
      * @param  string $envelopeType
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function setEnvelope($envelopeType)
     {
@@ -268,7 +268,7 @@ class Zend_Json_Server_Smd_Service
      * @param  string|array $type
      * @param  array $options
      * @param  int|null $order
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function addParam($type, array $options = [], $order = null)
     {
@@ -311,7 +311,7 @@ class Zend_Json_Server_Smd_Service
      * Each param should be an array, and should include the key 'type'.
      *
      * @param  array $params
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function addParams(array $params)
     {
@@ -334,7 +334,7 @@ class Zend_Json_Server_Smd_Service
      * Overwrite all parameters
      *
      * @param  array $params
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function setParams(array $params)
     {
@@ -372,7 +372,7 @@ class Zend_Json_Server_Smd_Service
      * Set return type
      *
      * @param  string|array $type
-     * @return Zend_Json_Server_Smd_Service
+     * @return $this
      */
     public function setReturn($type)
     {

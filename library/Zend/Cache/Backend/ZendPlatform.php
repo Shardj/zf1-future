@@ -44,7 +44,7 @@ class Zend_Cache_Backend_ZendPlatform extends Zend_Cache_Backend implements Zend
     /**
      * internal ZP prefix
      */
-    const TAGS_PREFIX = "internal_ZPtag:";
+    public const TAGS_PREFIX = "internal_ZPtag:";
 
     /**
      * Constructor

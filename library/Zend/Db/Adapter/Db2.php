@@ -680,16 +680,12 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             require_once 'Zend/Db/Adapter/Db2/Exception.php';
             throw new Zend_Db_Adapter_Db2_Exception("LIMIT argument offset=$offset is not valid");
         }
-        
-        /**
-         * DB2Modern versions already have `LIMIT,OFFSET` available.
-         */
-        $sql .= " LIMIT $count";
-        if ($offset > 0) {
-            $sql .= " OFFSET $offset";
+
+        if ($offset === 0) {
+            return $sql . " FETCH FIRST $count ROWS ONLY";
         }
 
-        return $sql;
+        return $sql . " OFFSET $offset ROWS FETCH FIRST $count ROWS ONLY";
     }
 
     /**

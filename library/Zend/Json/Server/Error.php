@@ -27,12 +27,12 @@
  */
 class Zend_Json_Server_Error
 {
-    const ERROR_PARSE           = -32768;
-    const ERROR_INVALID_REQUEST = -32600;
-    const ERROR_INVALID_METHOD  = -32601;
-    const ERROR_INVALID_PARAMS  = -32602;
-    const ERROR_INTERNAL        = -32603;
-    const ERROR_OTHER           = -32000;
+    public const ERROR_PARSE           = -32768;
+    public const ERROR_INVALID_REQUEST = -32600;
+    public const ERROR_INVALID_METHOD  = -32601;
+    public const ERROR_INVALID_PARAMS  = -32602;
+    public const ERROR_INTERNAL        = -32603;
+    public const ERROR_OTHER           = -32000;
 
     /**
      * Allowed error codes
@@ -84,7 +84,7 @@ class Zend_Json_Server_Error
      * Set error code
      *
      * @param  int $code
-     * @return Zend_Json_Server_Error
+     * @return $this
      */
     public function setCode($code)
     {
@@ -116,7 +116,7 @@ class Zend_Json_Server_Error
      * Set error message
      *
      * @param  string $message
-     * @return Zend_Json_Server_Error
+     * @return $this
      */
     public function setMessage($message)
     {
@@ -142,7 +142,7 @@ class Zend_Json_Server_Error
      * Set error data
      *
      * @param  mixed $data
-     * @return Zend_Json_Server_Error
+     * @return $this
      */
     public function setData($data)
     {

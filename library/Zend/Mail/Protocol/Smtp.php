@@ -149,6 +149,23 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
 
 
     /**
+     * Ends an open SMTP session before the connection is closed
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        try {
+            $this->quit();
+        } catch (Zend_Mail_Protocol_Exception $e) {
+            // the server closed the connection or did not answer, it is closed below anyway
+        }
+
+        parent::__destruct();
+    }
+
+
+    /**
      * Connect to the server with the parameters given in the constructor.
      *
      * @return boolean
@@ -197,7 +214,7 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
             if (!stream_socket_enable_crypto(
                 $this->_socket,
                 true,
-                STREAM_CRYPTO_METHOD_TLS_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT
+                STREAM_CRYPTO_METHOD_TLS_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT|STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT
             )) {
                 /**
                  * @see Zend_Mail_Protocol_Exception

@@ -38,10 +38,10 @@ class Zend_Search_Lucene_LockManager
     /**
      * consts for name of file to show lock status
      */
-    const WRITE_LOCK_FILE                = 'write.lock.file';
-    const READ_LOCK_FILE                 = 'read.lock.file';
-    const READ_LOCK_PROCESSING_LOCK_FILE = 'read-lock-processing.lock.file';
-    const OPTIMIZATION_LOCK_FILE         = 'optimization.lock.file';
+    public const WRITE_LOCK_FILE                = 'write.lock.file';
+    public const READ_LOCK_FILE                 = 'read.lock.file';
+    public const READ_LOCK_PROCESSING_LOCK_FILE = 'read-lock-processing.lock.file';
+    public const OPTIMIZATION_LOCK_FILE         = 'optimization.lock.file';
 
     /**
      * Obtain exclusive write lock on the index

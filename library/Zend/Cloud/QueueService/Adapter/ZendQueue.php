@@ -36,7 +36,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
     /**
      * Options array keys for the Zend_Queue adapter.
      */
-    const ADAPTER = 'adapter';
+    public const ADAPTER = 'adapter';
 
     /**
      * Storage client

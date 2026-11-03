@@ -29,9 +29,9 @@
  */
 class Zend_Json_Server_Smd
 {
-    const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
-    const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
-    const SMD_VERSION   = '2.0';
+    public const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
+    public const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
+    public const SMD_VERSION   = '2.0';
 
     /**
      * Content type
@@ -106,7 +106,7 @@ class Zend_Json_Server_Smd
      * Set object state via options
      *
      * @param  array $options
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setOptions(array $options)
     {
@@ -124,7 +124,7 @@ class Zend_Json_Server_Smd
      * Set transport
      *
      * @param  string $transport
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setTransport($transport)
     {
@@ -150,7 +150,7 @@ class Zend_Json_Server_Smd
      * Set envelope
      *
      * @param  string $envelopeType
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setEnvelope($envelopeType)
     {
@@ -177,7 +177,7 @@ class Zend_Json_Server_Smd
      * Set content type
      *
      * @param  string $type
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setContentType($type)
     {
@@ -203,7 +203,7 @@ class Zend_Json_Server_Smd
      * Set service target
      *
      * @param  string $target
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setTarget($target)
     {
@@ -269,7 +269,7 @@ class Zend_Json_Server_Smd
      * Indicate whether or not to generate Dojo-compatible SMD
      *
      * @param  bool $flag
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setDojoCompatible($flag)
     {
@@ -291,7 +291,7 @@ class Zend_Json_Server_Smd
      * Add Service
      *
      * @param Zend_Json_Server_Smd_Service|array $service
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function addService($service)
     {
@@ -319,7 +319,7 @@ class Zend_Json_Server_Smd
      * Add many services
      *
      * @param  array $services
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function addServices(array $services)
     {
@@ -333,7 +333,7 @@ class Zend_Json_Server_Smd
      * Overwrite existing services with new ones
      *
      * @param  array $services
-     * @return Zend_Json_Server_Smd
+     * @return $this
      */
     public function setServices(array $services)
     {

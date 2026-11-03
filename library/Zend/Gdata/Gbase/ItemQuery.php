@@ -48,5 +48,5 @@ class Zend_Gdata_Gbase_ItemQuery extends Zend_Gdata_Gbase_Query
     /**
      * Path to the customer items feeds on the Google Base server.
      */
-    const GBASE_ITEM_FEED_URI = 'https://www.google.com/base/feeds/items';
+    public const GBASE_ITEM_FEED_URI = 'https://www.google.com/base/feeds/items';
 }

@@ -63,9 +63,9 @@ require_once 'Zend/Gdata/Analytics/AccountQuery.php';
 class Zend_Gdata_Analytics extends Zend_Gdata
 {
 
-    const AUTH_SERVICE_NAME = 'analytics';
-    const ANALYTICS_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/data';
-    const ANALYTICS_ACCOUNT_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/management/accounts';
+    public const AUTH_SERVICE_NAME = 'analytics';
+    public const ANALYTICS_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/data';
+    public const ANALYTICS_ACCOUNT_FEED_URI = 'https://www.googleapis.com/analytics/v2.4/management/accounts';
 
     public static $namespaces = [
         ['analytics', 'http://schemas.google.com/analytics/2009', 1, 0],

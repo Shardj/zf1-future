@@ -37,15 +37,20 @@ require_once 'Zend/Locale/Format.php';
 class Zend_Currency
 {
     // Constants for defining what currency symbol should be displayed
-    const NO_SYMBOL     = 1;
-    const USE_SYMBOL    = 2;
-    const USE_SHORTNAME = 3;
-    const USE_NAME      = 4;
+    public const NO_SYMBOL     = 1;
+    public const USE_SYMBOL    = 2;
+    public const USE_SHORTNAME = 3;
+    public const USE_NAME      = 4;
 
     // Constants for defining the position of the currencysign
-    const STANDARD = 8;
-    const RIGHT    = 16;
-    const LEFT     = 32;
+    public const STANDARD = 8;
+    public const RIGHT    = 16;
+    public const LEFT     = 32;
+
+    /**
+     * Currency sign with the space next to it
+     */
+    protected const SIGN_SPACE_PATTERN = '/[ \x{00A0}\x{202F}]?¤[ \x{00A0}\x{202F}]?/u';
 
     /**
      * Options array
@@ -138,8 +143,8 @@ class Zend_Currency
     /**
      * Returns a localized currency string
      *
-     * @param  integer|float $value   OPTIONAL Currency value
-     * @param  array         $options OPTIONAL options to set temporary
+     * @param  array|int|float|string $value   OPTIONAL Currency value
+     * @param  array                  $options OPTIONAL options to set temporary
      * @throws Zend_Currency_Exception When the value is not a number
      * @return string
      */
@@ -194,12 +199,12 @@ class Zend_Currency
                                                                'precision'     => $options['precision']]);
 
         if ($options['position'] !== self::STANDARD) {
-            $value = str_replace('¤', '', $value);
+            // keeps the space between the currency sign and the number, the group separator can be a space too
             $space = '';
-            if (iconv_strpos($value, ' ') !== false) {
-                $value = str_replace(' ', '', $value);
-                $space = ' ';
+            if (preg_match(self::SIGN_SPACE_PATTERN, $value, $match)) {
+                $space = str_replace('¤', '', $match[0]);
             }
+            $value = preg_replace(self::SIGN_SPACE_PATTERN, '', $value);
 
             if ($options['position'] == self::LEFT) {
                 $value = '¤' . $space . $value;
@@ -232,7 +237,7 @@ class Zend_Currency
 
                 default:
                     $sign = '';
-                    $value = str_replace(' ', '', $value);
+                    $value = preg_replace(self::SIGN_SPACE_PATTERN, '¤', $value);
                     break;
             }
         }

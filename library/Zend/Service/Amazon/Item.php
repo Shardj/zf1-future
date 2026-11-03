@@ -32,6 +32,31 @@
 #[AllowDynamicProperties]
 class Zend_Service_Amazon_Item
 {
+   /**
+    * @var string
+    */
+    public $CurrencyCode;
+
+    /**
+     * @var int
+     */
+    public $Amount;
+
+    /**
+     * @var string
+     */
+    public $FormattedPrice;
+
+    /**
+     * @var string
+     */
+    public $tagName;
+
+    /**
+     * @var \Zend_Service_Amazon_EditorialReview[]
+     */
+    public $EditorialReviews;
+
     /**
      * @var string
      */

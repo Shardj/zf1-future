@@ -34,27 +34,27 @@ require_once 'Zend/Cloud/StorageService/Exception.php';
 class Zend_Cloud_StorageService_Adapter_WindowsAzure
     implements Zend_Cloud_StorageService_Adapter
 {
-    const ACCOUNT_NAME      = 'storage_accountname';
-    const ACCOUNT_KEY       = 'storage_accountkey';
-    const HOST              = "storage_host";
-    const PROXY_HOST        = "storage_proxy_host";
-    const PROXY_PORT        = "storage_proxy_port";
-    const PROXY_CREDENTIALS = "storage_proxy_credentials";
-    const CONTAINER         = "storage_container";
-    const RETURN_TYPE       = 'return_type';
-    const RETURN_PATHNAME   = 'return_path';
-    const RETURN_OPENMODE   = 'return_openmode';
+    public const ACCOUNT_NAME      = 'storage_accountname';
+    public const ACCOUNT_KEY       = 'storage_accountkey';
+    public const HOST              = "storage_host";
+    public const PROXY_HOST        = "storage_proxy_host";
+    public const PROXY_PORT        = "storage_proxy_port";
+    public const PROXY_CREDENTIALS = "storage_proxy_credentials";
+    public const CONTAINER         = "storage_container";
+    public const RETURN_TYPE       = 'return_type';
+    public const RETURN_PATHNAME   = 'return_path';
+    public const RETURN_OPENMODE   = 'return_openmode';
 
     /** return types  for fetch */
-    const RETURN_PATH   = 1;   // return filename
-    const RETURN_STRING = 2; // return data as string
-    const RETURN_STREAM = 3; // return PHP stream
+    public const RETURN_PATH   = 1;   // return filename
+    public const RETURN_STRING = 2; // return data as string
+    public const RETURN_STREAM = 3; // return PHP stream
 
     /** return types  for list */
-    const RETURN_LIST  = 1;   // return native list
-    const RETURN_NAMES = 2;  // return only names
+    public const RETURN_LIST  = 1;   // return native list
+    public const RETURN_NAMES = 2;  // return only names
 
-    const DEFAULT_HOST = Zend_Service_WindowsAzure_Storage::URL_CLOUD_BLOB;
+    public const DEFAULT_HOST = Zend_Service_WindowsAzure_Storage::URL_CLOUD_BLOB;
 
     /**
      * Storage container to operate on

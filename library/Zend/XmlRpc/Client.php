@@ -127,7 +127,7 @@ class Zend_XmlRpc_Client
      * @param  Zend_Http_Client $httpClient HTTP Client to use for requests
      * @return void
      */
-    public function __construct($server, Zend_Http_Client $httpClient = null)
+    public function __construct($server, ?Zend_Http_Client $httpClient = null)
     {
         if ($httpClient === null) {
             $this->_httpClient = new Zend_Http_Client();
@@ -257,15 +257,9 @@ class Zend_XmlRpc_Client
     {
         $this->_lastRequest = $request;
 
-        if (PHP_VERSION_ID < 50600) {
-            iconv_set_encoding('input_encoding', 'UTF-8');
-            iconv_set_encoding('output_encoding', 'UTF-8');
-            iconv_set_encoding('internal_encoding', 'UTF-8');
-        } else {
-            ini_set('input_encoding', 'UTF-8');
-            ini_set('output_encoding', 'UTF-8');
-            ini_set('default_charset', 'UTF-8');
-        }
+        ini_set('input_encoding', 'UTF-8');
+        ini_set('output_encoding', 'UTF-8');
+        ini_set('default_charset', 'UTF-8');
 
         $http = $this->getHttpClient();
         if($http->getUri() === null) {

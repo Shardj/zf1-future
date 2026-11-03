@@ -37,12 +37,12 @@ class Zend_Cloud_DocumentService_Query
     /**
      * Known query types
      */
-    const QUERY_SELECT  = 'select';
-    const QUERY_FROM    = 'from';
-    const QUERY_WHERE   = 'where';
-    const QUERY_WHEREID = 'whereid'; // request element by ID
-    const QUERY_LIMIT   = 'limit';
-    const QUERY_ORDER   = 'order';
+    public const QUERY_SELECT  = 'select';
+    public const QUERY_FROM    = 'from';
+    public const QUERY_WHERE   = 'where';
+    public const QUERY_WHEREID = 'whereid'; // request element by ID
+    public const QUERY_LIMIT   = 'limit';
+    public const QUERY_ORDER   = 'order';
 
     /**
      * Clause list

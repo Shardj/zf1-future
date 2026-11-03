@@ -487,7 +487,7 @@ abstract class Zend_Db_Adapter_Abstract
     /**
      * Leave autocommit mode and begin a transaction.
      *
-     * @return Zend_Db_Adapter_Abstract
+     * @return $this
      */
     public function beginTransaction()
     {
@@ -501,7 +501,7 @@ abstract class Zend_Db_Adapter_Abstract
     /**
      * Commit a transaction and return to autocommit mode.
      *
-     * @return Zend_Db_Adapter_Abstract
+     * @return $this
      */
     public function commit()
     {
@@ -515,7 +515,7 @@ abstract class Zend_Db_Adapter_Abstract
     /**
      * Roll back a transaction and return to autocommit mode.
      *
-     * @return Zend_Db_Adapter_Abstract
+     * @return $this
      */
     public function rollBack()
     {

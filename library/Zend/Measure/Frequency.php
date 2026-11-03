@@ -36,26 +36,26 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Frequency extends Zend_Measure_Abstract
 {
-    const STANDARD = 'HERTZ';
+    public const STANDARD = 'HERTZ';
 
-    const ONE_PER_SECOND        = 'ONE_PER_SECOND';
-    const CYCLE_PER_SECOND      = 'CYCLE_PER_SECOND';
-    const DEGREE_PER_HOUR       = 'DEGREE_PER_HOUR';
-    const DEGREE_PER_MINUTE     = 'DEGREE_PER_MINUTE';
-    const DEGREE_PER_SECOND     = 'DEGREE_PER_SECOND';
-    const GIGAHERTZ             = 'GIGAHERTZ';
-    const HERTZ                 = 'HERTZ';
-    const KILOHERTZ             = 'KILOHERTZ';
-    const MEGAHERTZ             = 'MEGAHERTZ';
-    const MILLIHERTZ            = 'MILLIHERTZ';
-    const RADIAN_PER_HOUR       = 'RADIAN_PER_HOUR';
-    const RADIAN_PER_MINUTE     = 'RADIAN_PER_MINUTE';
-    const RADIAN_PER_SECOND     = 'RADIAN_PER_SECOND';
-    const REVOLUTION_PER_HOUR   = 'REVOLUTION_PER_HOUR';
-    const REVOLUTION_PER_MINUTE = 'REVOLUTION_PER_MINUTE';
-    const REVOLUTION_PER_SECOND = 'REVOLUTION_PER_SECOND';
-    const RPM                   = 'RPM';
-    const TERRAHERTZ            = 'TERRAHERTZ';
+    public const ONE_PER_SECOND        = 'ONE_PER_SECOND';
+    public const CYCLE_PER_SECOND      = 'CYCLE_PER_SECOND';
+    public const DEGREE_PER_HOUR       = 'DEGREE_PER_HOUR';
+    public const DEGREE_PER_MINUTE     = 'DEGREE_PER_MINUTE';
+    public const DEGREE_PER_SECOND     = 'DEGREE_PER_SECOND';
+    public const GIGAHERTZ             = 'GIGAHERTZ';
+    public const HERTZ                 = 'HERTZ';
+    public const KILOHERTZ             = 'KILOHERTZ';
+    public const MEGAHERTZ             = 'MEGAHERTZ';
+    public const MILLIHERTZ            = 'MILLIHERTZ';
+    public const RADIAN_PER_HOUR       = 'RADIAN_PER_HOUR';
+    public const RADIAN_PER_MINUTE     = 'RADIAN_PER_MINUTE';
+    public const RADIAN_PER_SECOND     = 'RADIAN_PER_SECOND';
+    public const REVOLUTION_PER_HOUR   = 'REVOLUTION_PER_HOUR';
+    public const REVOLUTION_PER_MINUTE = 'REVOLUTION_PER_MINUTE';
+    public const REVOLUTION_PER_SECOND = 'REVOLUTION_PER_SECOND';
+    public const RPM                   = 'RPM';
+    public const TERRAHERTZ            = 'TERRAHERTZ';
 
     /**
      * Calculations for all frequency units

@@ -37,7 +37,7 @@ class Zend_TimeSync implements IteratorAggregate
      * Set the default timeserver protocol to "Ntp". This will be called
      * when no protocol is specified
      */
-    const DEFAULT_PROTOCOL = 'Ntp';
+    public const DEFAULT_PROTOCOL = 'Ntp';
 
     /**
      * Contains array of timeserver objects
@@ -300,6 +300,6 @@ class Zend_TimeSync implements IteratorAggregate
         }
         $timeServerObj = new $className($adress, $port);
 
-        $this->_timeservers[$alias] = $timeServerObj;
+        $this->_timeservers[$alias ?? ''] = $timeServerObj;
     }
 }

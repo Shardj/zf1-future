@@ -33,6 +33,11 @@
 class Zend_Service_Flickr_Result
 {
     /**
+     * @var string
+     */
+    public $name;
+
+    /**
      * The photo's Flickr ID.
      *
      * @var string

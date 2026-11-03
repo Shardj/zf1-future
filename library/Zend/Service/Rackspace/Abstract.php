@@ -23,20 +23,20 @@ require_once 'Zend/Http/Client.php';
 
 abstract class Zend_Service_Rackspace_Abstract
 {
-    const VERSION                = 'v1.0';
-    const US_AUTH_URL            = 'https://auth.api.rackspacecloud.com';
-    const UK_AUTH_URL            = 'https://lon.auth.api.rackspacecloud.com';
-    const API_FORMAT             = 'json';
-    const USER_AGENT             = 'Zend_Service_Rackspace';
-    const STORAGE_URL            = "X-Storage-Url";
-    const AUTHTOKEN              = "X-Auth-Token";
-    const AUTHUSER_HEADER        = "X-Auth-User";
-    const AUTHKEY_HEADER         = "X-Auth-Key";
-    const AUTHUSER_HEADER_LEGACY = "X-Storage-User";
-    const AUTHKEY_HEADER_LEGACY  = "X-Storage-Pass";
-    const AUTHTOKEN_LEGACY       = "X-Storage-Token";
-    const CDNM_URL               = "X-CDN-Management-Url";
-    const MANAGEMENT_URL         = "X-Server-Management-Url";
+    public const VERSION                = 'v1.0';
+    public const US_AUTH_URL            = 'https://auth.api.rackspacecloud.com';
+    public const UK_AUTH_URL            = 'https://lon.auth.api.rackspacecloud.com';
+    public const API_FORMAT             = 'json';
+    public const USER_AGENT             = 'Zend_Service_Rackspace';
+    public const STORAGE_URL            = "X-Storage-Url";
+    public const AUTHTOKEN              = "X-Auth-Token";
+    public const AUTHUSER_HEADER        = "X-Auth-User";
+    public const AUTHKEY_HEADER         = "X-Auth-Key";
+    public const AUTHUSER_HEADER_LEGACY = "X-Storage-User";
+    public const AUTHKEY_HEADER_LEGACY  = "X-Storage-Pass";
+    public const AUTHTOKEN_LEGACY       = "X-Storage-Token";
+    public const CDNM_URL               = "X-CDN-Management-Url";
+    public const MANAGEMENT_URL         = "X-Server-Management-Url";
     /**
      * Rackspace Key
      *

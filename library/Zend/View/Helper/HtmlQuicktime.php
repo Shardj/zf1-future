@@ -38,19 +38,19 @@ class Zend_View_Helper_HtmlQuicktime extends Zend_View_Helper_HtmlObject
      * Default file type for a movie applet
      *
      */
-    const TYPE = 'video/quicktime';
+    public const TYPE = 'video/quicktime';
 
     /**
      * Object classid
      *
      */
-    const ATTRIB_CLASSID  = 'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
+    public const ATTRIB_CLASSID  = 'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
 
     /**
      * Object Codebase
      *
      */
-    const ATTRIB_CODEBASE = 'http://www.apple.com/qtactivex/qtplugin.cab';
+    public const ATTRIB_CODEBASE = 'http://www.apple.com/qtactivex/qtplugin.cab';
 
     /**
      * Default attributes

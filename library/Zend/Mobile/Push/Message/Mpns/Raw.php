@@ -41,9 +41,9 @@ class Zend_Mobile_Push_Message_Mpns_Raw extends Zend_Mobile_Push_Message_Mpns
      *
      * @var int
      */
-    const DELAY_IMMEDIATE = 3;
-    const DELAY_450S = 13;
-    const DELAY_900S = 23;
+    public const DELAY_IMMEDIATE = 3;
+    public const DELAY_450S = 13;
+    public const DELAY_900S = 23;
 
     /**
      * Message

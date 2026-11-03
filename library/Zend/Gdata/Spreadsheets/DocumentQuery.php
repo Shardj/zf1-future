@@ -45,7 +45,7 @@ require_once('Zend/Gdata/Query.php');
 class Zend_Gdata_Spreadsheets_DocumentQuery extends Zend_Gdata_Query
 {
 
-    const SPREADSHEETS_FEED_URI = 'https://spreadsheets.google.com/feeds';
+    public const SPREADSHEETS_FEED_URI = 'https://spreadsheets.google.com/feeds';
 
     protected $_defaultFeedUri = self::SPREADSHEETS_FEED_URI;
     protected $_documentType;

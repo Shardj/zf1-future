@@ -38,15 +38,15 @@ require_once 'Zend/Xml/Security.php';
  */
 class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
 {
-    const SERVICE_NAME         = 'FindingService';
-    const SERVICE_VERSION      = '1.0.0';
-    const RESPONSE_DATA_FORMAT = 'XML';
+    public const SERVICE_NAME         = 'FindingService';
+    public const SERVICE_VERSION      = '1.0.0';
+    public const RESPONSE_DATA_FORMAT = 'XML';
 
-    const ENDPOINT_URI  = 'http://svcs.ebay.com';
-    const ENDPOINT_PATH = 'services/search/FindingService/v1';
+    public const ENDPOINT_URI  = 'http://svcs.ebay.com';
+    public const ENDPOINT_PATH = 'services/search/FindingService/v1';
 
-    const XMLNS_FINDING = 'e';
-    const XMLNS_MS      = 'ms';
+    public const XMLNS_FINDING = 'e';
+    public const XMLNS_MS      = 'ms';
 
     /**
      * @var array
@@ -327,7 +327,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
      * @link   http://developer.ebay.com/DevZone/finding/Concepts/MakingACall.html#StandardURLParameters
      * @return DOMDocument
      */
-    protected function _request($operation, array $options = null)
+    protected function _request($operation, ?array $options = null)
     {
         // generate default options
         // constructor load global-id and application-id values

@@ -675,7 +675,7 @@ class Zend_ViewTest extends TestCase
 
     public function testZf995UndefinedPropertiesReturnNull()
     {
-        error_reporting(E_ALL | E_STRICT);
+        error_reporting(E_ALL);
         ini_set('display_errors', true);
         $view = new Zend_View();
         $view->setScriptPath(dirname(__FILE__) . '/View/_templates');

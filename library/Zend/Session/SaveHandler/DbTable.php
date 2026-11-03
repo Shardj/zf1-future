@@ -53,22 +53,22 @@ class Zend_Session_SaveHandler_DbTable
     extends Zend_Db_Table_Abstract
     implements Zend_Session_SaveHandler_Interface
 {
-    const PRIMARY_ASSIGNMENT                   = 'primaryAssignment';
-    const PRIMARY_ASSIGNMENT_SESSION_SAVE_PATH = 'sessionSavePath';
-    const PRIMARY_ASSIGNMENT_SESSION_NAME      = 'sessionName';
-    const PRIMARY_ASSIGNMENT_SESSION_ID        = 'sessionId';
+    public const PRIMARY_ASSIGNMENT                   = 'primaryAssignment';
+    public const PRIMARY_ASSIGNMENT_SESSION_SAVE_PATH = 'sessionSavePath';
+    public const PRIMARY_ASSIGNMENT_SESSION_NAME      = 'sessionName';
+    public const PRIMARY_ASSIGNMENT_SESSION_ID        = 'sessionId';
 
-    const MODIFIED_COLUMN   = 'modifiedColumn';
-    const LIFETIME_COLUMN   = 'lifetimeColumn';
-    const DATA_COLUMN       = 'dataColumn';
+    public const MODIFIED_COLUMN   = 'modifiedColumn';
+    public const LIFETIME_COLUMN   = 'lifetimeColumn';
+    public const DATA_COLUMN       = 'dataColumn';
 
-    const LIFETIME          = 'lifetime';
-    const OVERRIDE_LIFETIME = 'overrideLifetime';
+    public const LIFETIME          = 'lifetime';
+    public const OVERRIDE_LIFETIME = 'overrideLifetime';
 
-    const PRIMARY_TYPE_NUM         = 'PRIMARY_TYPE_NUM';
-    const PRIMARY_TYPE_PRIMARYNUM  = 'PRIMARY_TYPE_PRIMARYNUM';
-    const PRIMARY_TYPE_ASSOC       = 'PRIMARY_TYPE_ASSOC';
-    const PRIMARY_TYPE_WHERECLAUSE = 'PRIMARY_TYPE_WHERECLAUSE';
+    public const PRIMARY_TYPE_NUM         = 'PRIMARY_TYPE_NUM';
+    public const PRIMARY_TYPE_PRIMARYNUM  = 'PRIMARY_TYPE_PRIMARYNUM';
+    public const PRIMARY_TYPE_ASSOC       = 'PRIMARY_TYPE_ASSOC';
+    public const PRIMARY_TYPE_WHERECLAUSE = 'PRIMARY_TYPE_WHERECLAUSE';
 
     /**
      * Session table primary key value assignment
@@ -224,7 +224,7 @@ class Zend_Session_SaveHandler_DbTable
      *
      * @param int $lifetime
      * @param boolean $overrideLifetime (optional)
-     * @return Zend_Session_SaveHandler_DbTable
+     * @return $this
      * @throws Zend_Session_SaveHandler_Exception
      */
     public function setLifetime($lifetime, $overrideLifetime = null)
@@ -264,11 +264,11 @@ class Zend_Session_SaveHandler_DbTable
      * Set whether or not the lifetime of an existing session should be overridden
      *
      * @param boolean $overrideLifetime
-     * @return Zend_Session_SaveHandler_DbTable
+     * @return $this
      */
     public function setOverrideLifetime($overrideLifetime)
     {
-        $this->_overrideLifetime = (boolean) $overrideLifetime;
+        $this->_overrideLifetime = (bool) $overrideLifetime;
 
         return $this;
     }

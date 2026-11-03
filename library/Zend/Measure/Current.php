@@ -36,34 +36,34 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Current extends Zend_Measure_Abstract
 {
-    const STANDARD = 'AMPERE';
+    public const STANDARD = 'AMPERE';
 
-    const ABAMPERE             = 'ABAMPERE';
-    const AMPERE               = 'AMPERE';
-    const BIOT                 = 'BIOT';
-    const CENTIAMPERE          = 'CENTIAMPERE';
-    const COULOMB_PER_SECOND   = 'COULOMB_PER_SECOND';
-    const DECIAMPERE           = 'DECIAMPERE';
-    const DEKAAMPERE           = 'DEKAAMPERE';
-    const ELECTROMAGNETIC_UNIT = 'ELECTROMAGNATIC_UNIT';
-    const ELECTROSTATIC_UNIT   = 'ELECTROSTATIC_UNIT';
-    const FRANCLIN_PER_SECOND  = 'FRANCLIN_PER_SECOND';
-    const GAUSSIAN             = 'GAUSSIAN';
-    const GIGAAMPERE           = 'GIGAAMPERE';
-    const GILBERT              = 'GILBERT';
-    const HECTOAMPERE          = 'HECTOAMPERE';
-    const KILOAMPERE           = 'KILOAMPERE';
-    const MEGAAMPERE           = 'MEGAAMPERE';
-    const MICROAMPERE          = 'MICROAMPERE';
-    const MILLIAMPERE          = 'MILLIAMPERE';
-    const NANOAMPERE           = 'NANOAMPERE';
-    const PICOAMPERE           = 'PICOAMPERE';
-    const SIEMENS_VOLT         = 'SIEMENS_VOLT';
-    const STATAMPERE           = 'STATAMPERE';
-    const TERAAMPERE           = 'TERAAMPERE';
-    const VOLT_PER_OHM         = 'VOLT_PER_OHM';
-    const WATT_PER_VOLT        = 'WATT_PER_VOLT';
-    const WEBER_PER_HENRY      = 'WEBER_PER_HENRY';
+    public const ABAMPERE             = 'ABAMPERE';
+    public const AMPERE               = 'AMPERE';
+    public const BIOT                 = 'BIOT';
+    public const CENTIAMPERE          = 'CENTIAMPERE';
+    public const COULOMB_PER_SECOND   = 'COULOMB_PER_SECOND';
+    public const DECIAMPERE           = 'DECIAMPERE';
+    public const DEKAAMPERE           = 'DEKAAMPERE';
+    public const ELECTROMAGNETIC_UNIT = 'ELECTROMAGNATIC_UNIT';
+    public const ELECTROSTATIC_UNIT   = 'ELECTROSTATIC_UNIT';
+    public const FRANCLIN_PER_SECOND  = 'FRANCLIN_PER_SECOND';
+    public const GAUSSIAN             = 'GAUSSIAN';
+    public const GIGAAMPERE           = 'GIGAAMPERE';
+    public const GILBERT              = 'GILBERT';
+    public const HECTOAMPERE          = 'HECTOAMPERE';
+    public const KILOAMPERE           = 'KILOAMPERE';
+    public const MEGAAMPERE           = 'MEGAAMPERE';
+    public const MICROAMPERE          = 'MICROAMPERE';
+    public const MILLIAMPERE          = 'MILLIAMPERE';
+    public const NANOAMPERE           = 'NANOAMPERE';
+    public const PICOAMPERE           = 'PICOAMPERE';
+    public const SIEMENS_VOLT         = 'SIEMENS_VOLT';
+    public const STATAMPERE           = 'STATAMPERE';
+    public const TERAAMPERE           = 'TERAAMPERE';
+    public const VOLT_PER_OHM         = 'VOLT_PER_OHM';
+    public const WATT_PER_VOLT        = 'WATT_PER_VOLT';
+    public const WEBER_PER_HENRY      = 'WEBER_PER_HENRY';
 
     /**
      * Calculations for all current units

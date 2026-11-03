@@ -165,10 +165,10 @@ abstract class Zend_View_Helper_Navigation_TestAbstract extends TestCase
         $acl->addRole(new Zend_Acl_Role('admin'), 'member');
         $acl->addRole(new Zend_Acl_Role('special'), 'member');
 
-        $acl->add(new Zend_Acl_Resource('guest_foo'));
-        $acl->add(new Zend_Acl_Resource('member_foo'), 'guest_foo');
-        $acl->add(new Zend_Acl_Resource('admin_foo', 'member_foo'));
-        $acl->add(new Zend_Acl_Resource('special_foo'), 'member_foo');
+        $acl->addResource(new Zend_Acl_Resource('guest_foo'));
+        $acl->addResource(new Zend_Acl_Resource('member_foo'), 'guest_foo');
+        $acl->addResource(new Zend_Acl_Resource('admin_foo', 'member_foo'));
+        $acl->addResource(new Zend_Acl_Resource('special_foo'), 'member_foo');
 
         $acl->allow('guest', 'guest_foo');
         $acl->allow('member', 'member_foo');

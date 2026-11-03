@@ -29,6 +29,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'SessionTest.php';
+require_once 'OptionsTest.php';
 require_once 'Zend/Session/SaveHandler/AllTests.php';
 
 /**
@@ -61,6 +62,7 @@ class Zend_Session_AllTests
         $suite = new TestSuite('Zend Framework - Zend_Session');
 
         $suite->addTestSuite('Zend_SessionTest');
+        $suite->addTestSuite('Zend_Session_OptionsTest');
         $suite->addTest(Zend_Session_SaveHandler_AllTests::suite());
 
         return $suite;
