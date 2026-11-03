@@ -703,6 +703,7 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
         $path = "/NoPath/To/File";
         $this->assertFalse($this->adapter->isPathWriteable($path));
         $this->assertTrue($this->adapter->isPathWriteable($this->adapter->_tmpDir));
+        $this->assertSame([], glob($this->adapter->_tmpDir . '/test.*'), 'the probe file is removed');
     }
 
     public function testFileSizeButNoFileFound()
