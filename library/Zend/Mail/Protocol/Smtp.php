@@ -148,14 +148,19 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
     }
 
 
-    /**         
-     * Class destructor to cleanup open resources
+    /**
+     * Ends an open SMTP session before the connection is closed
      *
      * @return void
      */
     public function __destruct()
     {
-        $this->quit();
+        try {
+            $this->quit();
+        } catch (Zend_Mail_Protocol_Exception $e) {
+            // the server closed the connection or did not answer, it is closed below anyway
+        }
+
         parent::__destruct();
     }
 
