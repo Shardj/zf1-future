@@ -89,9 +89,9 @@ class Zend_Crypt_DiffieHellman
     /**
      * Constants
      */
-    const BINARY = 'binary';
-    const NUMBER = 'number';
-    const BTWOC  = 'btwoc';
+    public const BINARY = 'binary';
+    public const NUMBER = 'number';
+    public const BTWOC  = 'btwoc';
 
     /**
      * Constructor; if set construct the object using the parameter array to

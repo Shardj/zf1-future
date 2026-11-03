@@ -90,7 +90,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
      *
      * @return Zend_View_Helper_HeadLink
      */
-    public function headLink(array $attributes = null, $placement = Zend_View_Helper_Placeholder_Container_Abstract::APPEND)
+    public function headLink(?array $attributes = null, $placement = Zend_View_Helper_Placeholder_Container_Abstract::APPEND)
     {
         if (null !== $attributes) {
             $item = $this->createData($attributes);
@@ -213,7 +213,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
     /**
      * append()
      *
-     * @param  array $value
+     * @param  array|stdClass $value
      * @return void
      */
     public function append($value)
@@ -232,7 +232,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
      * offsetSet()
      *
      * @param  string|int $index
-     * @param  array $value
+     * @param  array|stdClass $value
      * @return void
      */
     #[\ReturnTypeWillChange]
@@ -251,7 +251,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
     /**
      * prepend()
      *
-     * @param  array $value
+     * @param  array|stdClass $value
      * @return void
      */
     public function prepend($value)
@@ -269,7 +269,7 @@ class Zend_View_Helper_HeadLink extends Zend_View_Helper_Placeholder_Container_S
     /**
      * set()
      *
-     * @param  array $value
+     * @param  array|stdClass $value
      * @return void
      */
     public function set($value)

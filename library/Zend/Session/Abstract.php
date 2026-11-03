@@ -59,14 +59,14 @@ abstract class Zend_Session_Abstract
      * Error message thrown when an action requires modification,
      * but current Zend_Session has been marked as read-only.
      */
-    const _THROW_NOT_WRITABLE_MSG = 'Zend_Session is currently marked as read-only.';
+    public const _THROW_NOT_WRITABLE_MSG = 'Zend_Session is currently marked as read-only.';
 
 
     /**
      * Error message thrown when an action requires reading session data,
      * but current Zend_Session is not marked as readable.
      */
-    const _THROW_NOT_READABLE_MSG = 'Zend_Session is not marked as readable.';
+    public const _THROW_NOT_READABLE_MSG = 'Zend_Session is not marked as readable.';
 
 
     /**

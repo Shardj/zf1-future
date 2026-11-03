@@ -47,39 +47,39 @@ require_once 'Zend/Db.php';
 abstract class Zend_Db_Table_Abstract
 {
 
-    const ADAPTER          = 'db';
-    const DEFINITION        = 'definition';
-    const DEFINITION_CONFIG_NAME = 'definitionConfigName';
-    const SCHEMA           = 'schema';
-    const NAME             = 'name';
-    const PRIMARY          = 'primary';
-    const COLS             = 'cols';
-    const METADATA         = 'metadata';
-    const METADATA_CACHE   = 'metadataCache';
-    const METADATA_CACHE_IN_CLASS = 'metadataCacheInClass';
-    const ROW_CLASS        = 'rowClass';
-    const ROWSET_CLASS     = 'rowsetClass';
-    const REFERENCE_MAP    = 'referenceMap';
-    const DEPENDENT_TABLES = 'dependentTables';
-    const SEQUENCE         = 'sequence';
+    public const ADAPTER          = 'db';
+    public const DEFINITION        = 'definition';
+    public const DEFINITION_CONFIG_NAME = 'definitionConfigName';
+    public const SCHEMA           = 'schema';
+    public const NAME             = 'name';
+    public const PRIMARY          = 'primary';
+    public const COLS             = 'cols';
+    public const METADATA         = 'metadata';
+    public const METADATA_CACHE   = 'metadataCache';
+    public const METADATA_CACHE_IN_CLASS = 'metadataCacheInClass';
+    public const ROW_CLASS        = 'rowClass';
+    public const ROWSET_CLASS     = 'rowsetClass';
+    public const REFERENCE_MAP    = 'referenceMap';
+    public const DEPENDENT_TABLES = 'dependentTables';
+    public const SEQUENCE         = 'sequence';
 
-    const COLUMNS          = 'columns';
-    const REF_TABLE_CLASS  = 'refTableClass';
-    const REF_COLUMNS      = 'refColumns';
-    const ON_DELETE        = 'onDelete';
-    const ON_UPDATE        = 'onUpdate';
+    public const COLUMNS          = 'columns';
+    public const REF_TABLE_CLASS  = 'refTableClass';
+    public const REF_COLUMNS      = 'refColumns';
+    public const ON_DELETE        = 'onDelete';
+    public const ON_UPDATE        = 'onUpdate';
 
-    const CASCADE          = 'cascade';
-    const CASCADE_RECURSE  = 'cascadeRecurse';
-    const RESTRICT         = 'restrict';
-    const SET_NULL         = 'setNull';
+    public const CASCADE          = 'cascade';
+    public const CASCADE_RECURSE  = 'cascadeRecurse';
+    public const RESTRICT         = 'restrict';
+    public const SET_NULL         = 'setNull';
 
-    const DEFAULT_NONE     = 'defaultNone';
-    const DEFAULT_CLASS    = 'defaultClass';
-    const DEFAULT_DB       = 'defaultDb';
+    public const DEFAULT_NONE     = 'defaultNone';
+    public const DEFAULT_CLASS    = 'defaultClass';
+    public const DEFAULT_DB       = 'defaultDb';
 
-    const SELECT_WITH_FROM_PART    = true;
-    const SELECT_WITHOUT_FROM_PART = false;
+    public const SELECT_WITH_FROM_PART    = true;
+    public const SELECT_WITHOUT_FROM_PART = false;
 
     /**
      * Default Zend_Db_Adapter_Abstract object.
@@ -1600,7 +1600,7 @@ abstract class Zend_Db_Table_Abstract
      * @throws Zend_Db_Table_Row_Exception
      * @return Zend_Db_Table_Abstract
      */
-    public static function getTableFromString($tableName, Zend_Db_Table_Abstract $referenceTable = null)
+    public static function getTableFromString($tableName, ?Zend_Db_Table_Abstract $referenceTable = null)
     {
         if ($referenceTable instanceof Zend_Db_Table_Abstract) {
             $tableDefinition = $referenceTable->getDefinition();

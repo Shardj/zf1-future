@@ -93,19 +93,19 @@ class Zend_Pdf
     /**
      * Version number of generated PDF documents.
      */
-    const PDF_VERSION = '1.4';
+    public const PDF_VERSION = '1.4';
 
     /**
      * PDF file header.
      */
-    const PDF_HEADER  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
+    public const PDF_HEADER  = "%PDF-1.4\n%\xE2\xE3\xCF\xD3\n";
 
     /**
      * Form field options
      */
-    const PDF_FORM_FIELD_READONLY = 1;
-    const PDF_FORM_FIELD_REQUIRED = 2;
-    const PDF_FORM_FIELD_NOEXPORT = 4;
+    public const PDF_FORM_FIELD_READONLY = 1;
+    public const PDF_FORM_FIELD_REQUIRED = 2;
+    public const PDF_FORM_FIELD_NOEXPORT = 4;
 
     /**
      * Pages collection
@@ -578,8 +578,8 @@ class Zend_Pdf
 
         $outlineDictionary = $root->Outlines->First;
         $processedDictionaries = new SplObjectStorage();
-        while ($outlineDictionary !== null  &&  !$processedDictionaries->contains($outlineDictionary)) {
-            $processedDictionaries->attach($outlineDictionary);
+        while ($outlineDictionary !== null  &&  !$processedDictionaries->offsetExists($outlineDictionary)) {
+            $processedDictionaries->offsetSet($outlineDictionary);
 
             require_once 'Zend/Pdf/Outline/Loaded.php';
             $this->outlines[] = new Zend_Pdf_Outline_Loaded($outlineDictionary);
@@ -1011,7 +1011,7 @@ class Zend_Pdf
      * @param Zend_Pdf_Target $openAction
      * @returns Zend_Pdf
      */
-    public function setOpenAction(Zend_Pdf_Target $openAction = null)
+    public function setOpenAction(?Zend_Pdf_Target $openAction = null)
     {
         $root = $this->_trailer->Root;
         $root->touch();

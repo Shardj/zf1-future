@@ -92,6 +92,8 @@ if (isset($opts->l)) {
         exit(2);
     }
     $libraryPath = $opts->l;
+} else {
+    $libraryPath = '.';
 }
 $libraryPath = str_replace(DIRECTORY_SEPARATOR, '/', realpath($libraryPath));
 

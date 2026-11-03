@@ -38,7 +38,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * URI delimiter
      */
-    const URI_DELIMITER = '/';
+    public const URI_DELIMITER = '/';
 
     /**
      * Front controller instance

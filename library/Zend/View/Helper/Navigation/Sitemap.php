@@ -44,14 +44,14 @@ class Zend_View_Helper_Navigation_Sitemap
      *
      * @var string
      */
-    const SITEMAP_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
+    public const SITEMAP_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
     /**
      * Schema URL
      *
      * @var string
      */
-    const SITEMAP_XSD = 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd';
+    public const SITEMAP_XSD = 'http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd';
 
     /**
      * Whether the XML declaration should be included in XML output
@@ -90,7 +90,7 @@ class Zend_View_Helper_Navigation_Sitemap
      * @return $this
      *                                               self
      */
-    public function sitemap(Zend_Navigation_Container $container = null)
+    public function sitemap(?Zend_Navigation_Container $container = null)
     {
         if (null !== $container) {
             $this->setContainer($container);
@@ -288,7 +288,7 @@ class Zend_View_Helper_Navigation_Sitemap
      *                                               validators are used and the
      *                                               loc element fails validation
      */
-    public function getDomSitemap(Zend_Navigation_Container $container = null)
+    public function getDomSitemap(?Zend_Navigation_Container $container = null)
     {
         if (null === $container) {
             $container = $this->getContainer();
@@ -431,7 +431,7 @@ class Zend_View_Helper_Navigation_Sitemap
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render(?Zend_Navigation_Container $container = null)
     {
         $dom = $this->getDomSitemap($container);
 

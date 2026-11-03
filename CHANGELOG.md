@@ -6,6 +6,157 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+* Zend_Db DB2 adapters (ibm_db2 and PDO_IBM) use `OFFSET … ROWS FETCH FIRST … ROWS ONLY` for limit() with an offset instead of the `ROW_NUMBER()` subquery (#393).
+  BC note: requires Db2 for i 7.1 TR11 / 7.2 TR3 or Db2 LUW 11.1 and newer.
+
+* Locale data updated from CLDR 25 (2014) to CLDR 48.2, Zend_Locale_Data reads the current LDML structure (inherited aliases, alternative variants, numbering systems, default number formats) (#554).
+  BC note: localized output follows current CLDR data and can differ from previous versions, see BREAKING-CHANGES.md.
+
+* Zend_Db mysqli adapter and statement now convert mysqli_sql_exception (thrown by default since PHP 8.1) into Zend_Db_Adapter_Mysqli_Exception / Zend_Db_Statement_Mysqli_Exception, so catching Zend_Db_Exception works again (#561).
+  BC note: code that catches mysqli_sql_exception directly must catch the Zend_Db exception instead; the original exception is available via getPrevious().
+
+## [1.25.2] - 2026-08-21
+
+### Fixed
+
+* Fix misnamed file which was not being autoloaded and was breaking custom session handlers by @JonathanFinch-awin in https://github.com/Shardj/zf1-future/pull/545
+
+## [1.25.1] - 2026-08-14
+
+### Added
+
+* Test php8.5 by @sreichel in https://github.com/Shardj/zf1-future/pull/486
+
+### Fixed
+
+* Update MultiSearcher.php and loaded.php by @Stevehans in https://github.com/Shardj/zf1-future/pull/526
+* Updated dependencies and added composer.lock by @sreichel in https://github.com/Shardj/zf1-future/pull/528
+* Code tidy - cosmetic - use braces on interpolated variables by @Stevehans in https://github.com/Shardj/zf1-future/pull/527
+* Fix: str_decrement on 0 by @sreichel in https://github.com/Shardj/zf1-future/pull/529
+* PHP8.4: Replace xml_set_object() with callable arrays in Translate ad… by @geoalexidis in https://github.com/Shardj/zf1-future/pull/534
+* Fix Zend_Debug::dump() xdebug quirk. by @GNfsys in https://github.com/Shardj/zf1-future/pull/536
+* PHPUnit Compatibility by @arnoschaefer in https://github.com/Shardj/zf1-future/pull/537
+* php 8.5: Replace deprecated methods for `SplObjectStorage()` by @sreichel in https://github.com/Shardj/zf1-future/pull/533
+* Fix Zend_Session::start() false-positive on PHP 8.x (SID constant persists after session_write_close) by @kevoriordan in https://github.com/Shardj/zf1-future/pull/538
+* Fix/session set save handler deprecation by @sanosuke-s74 in https://github.com/Shardj/zf1-future/pull/539
+* PHP 8.5 compatibility fixes by @oakimov in https://github.com/Shardj/zf1-future/pull/540
+* Fix implicit float to int deprecation in S3/Sqs retry backoff by @thenguyenit in https://github.com/Shardj/zf1-future/pull/541
+
+## [1.25.0] - 2026-02-24
+
+* dropped PHP 7.1-7.3 support, added 8.2 support (without explicitly aiming to remove all deprecation notices)
+
+
+## [1.24.5] - 2026-02-24
+
+### Added
+
+* Customizable regex in Zend_Db_Select by @mauriziosmt in https://github.com/Shardj/zf1-future/pull/513
+* Add missing polyfill for 8.2 by @gnovaro in https://github.com/Shardj/zf1-future/pull/500
+* feat: add extra TLD support to hostname validator by @lukebsh in https://github.com/Shardj/zf1-future/pull/522
+
+### Fixed
+
+* Zend_File_Transfer_Adapter_Abstract::addValidator(): fix $validator parameter type in PHPDoc by @holtkamp in https://github.com/Shardj/zf1-future/pull/503
+* Fix object caching in Zend_Translate_Adapter by @BorislavSabev in https://github.com/Shardj/zf1-future/pull/504
+* PHP8.5: Fixes non-canonical cast by @sreichel in https://github.com/Shardj/zf1-future/pull/509
+* Fixes some DocsBlocks by @sreichel in https://github.com/Shardj/zf1-future/pull/514
+* PHP8.4: Fixes missing escape parameter by @sreichel in https://github.com/Shardj/zf1-future/pull/510
+* Update Imap.php by @kamildabrowski in https://github.com/Shardj/zf1-future/pull/499
+* Fix broken PhpUnit tests by @sreichel in https://github.com/Shardj/zf1-future/pull/515
+* PHP8.5: Fix missing non-canonical cast by @sukhwinder33445 in https://github.com/Shardj/zf1-future/pull/517
+* Silence deprecation warning for SOAP_FUNCTIONS_ALL on 8.4+ by @NattyNarwhal in https://github.com/Shardj/zf1-future/pull/519
+
+
+## [1.24.4] - 2025-06-26
+
+### Added
+
+* feat: Support for OS/2 table v4 by @wex in https://github.com/Shardj/zf1-future/pull/493
+* Adds Straight Join to Zend_Db_Select by @kazsaj in https://github.com/Shardj/zf1-future/pull/497
+
+### Fixed
+
+* Declare dynamic property to avoid error in PHP8.4 when Session is started by @vuvanly in https://github.com/Shardj/zf1-future/pull/496
+* Fix Zend_Pdf_Element regression by added $value prop by @onlime in https://github.com/Shardj/zf1-future/pull/490
+* Update fgetcsv call to specify $escape parameter due to deprecation by @DrRago in https://github.com/Shardj/zf1-future/pull/498
+
+## [1.24.3] - 2025-04-11
+
+### Added
+
+* Quality: add phpstan to checks by @sreichel in https://github.com/Shardj/zf1-future/pull/431
+* Made all E_STRICT uses conditional. by @boenrobot in https://github.com/Shardj/zf1-future/pull/485
+
+### Fixed
+
+* Fix placement of distinct in sqlsrv limit by @muuvmuuv in https://github.com/Shardj/zf1-future/pull/458
+* Fixed null deprecation in Zend/Pdf/Resource/Font/Simple by @kiatng in https://github.com/Shardj/zf1-future/pull/459
+* Fix str_replace null in Zend_Form_Element::_getErrorMessages() by @t-gebauer in https://github.com/Shardj/zf1-future/pull/460
+* Update HeaderValue.php by @icyz in https://github.com/Shardj/zf1-future/pull/463
+* fix Dojo ComboBox autocomplete param in declarative mode by @timum-viw in https://github.com/Shardj/zf1-future/pull/464
+* Updated Seiden PHP+ branding by @alanseiden in https://github.com/Shardj/zf1-future/pull/466
+* PHP-8.3.: fix decrement on bool by @sreichel in https://github.com/Shardj/zf1-future/pull/465
+
+* Fix deprecation notice when using AjaxContext by @robskr in https://github.com/Shardj/zf1-future/pull/469
+* Fixed bug #467: Added trait check in Zend_Loader to prevent Zend_Exce… by @sanhe in https://github.com/Shardj/zf1-future/pull/471
+* Update INSTALL.md fix requirements url by @gnovaro in https://github.com/Shardj/zf1-future/pull/472
+* Handle edge case for failed splitText in lucene Html.php by @GuillaumeCible in https://github.com/Shardj/zf1-future/pull/473
+* Fix phpstan errors by @sreichel in https://github.com/Shardj/zf1-future/pull/475
+* Fix #437 empty null parameter in Statement.php by @gnovaro in https://github.com/Shardj/zf1-future/pull/482
+* Fix Passing null to parameter 4 ($exptime) of type int is deprecated by @simonschaufi in https://github.com/Shardj/zf1-future/pull/476
+* Workaround for return type deprecation notice at PHP 8.4 by @alexgit2k in https://github.com/Shardj/zf1-future/pull/487
+* Fix: Passing null is deprecated in `Zend_Mail::_filterEmail()` by @sreichel in https://github.com/Shardj/zf1-future/pull/488
+
+
+## [1.24.2] - 2024-10-25
+
+### Fixed
+ Revert undefined property declarations #453 
+
+## [1.24.1] - 2024-10-15
+
+### Added
+
+* Added TLS v1.3 protocol by @ADDISON74 in https://github.com/Shardj/zf1-future/pull/447
+* Updated github workflow by @sreichel in https://github.com/Shardj/zf1-future/pull/445
+
+### Fixed
+
+* Fix for very slow chunk processing for larger content in the http res… by @aleksandar-mitrev in https://github.com/Shardj/zf1-future/pull/354
+* Add check in DbTable Authentication Adapter for empty results when AmbiguityIdentity is TRUE by @rruchte in https://github.com/Shardj/zf1-future/pull/419
+* Fix deprecation message in php8 with null param with realpath() by @tsmgeek in https://github.com/Shardj/zf1-future/pull/413
+* Fix deprecated usage of string functions in `BaseUrl` helper. by @muli in https://github.com/Shardj/zf1-future/pull/410
+* Support for PHP 8.2 by @Fredthelead in https://github.com/Shardj/zf1-future/pull/438
+* PHP8.4: Implicitly nullable by @sreichel in https://github.com/Shardj/zf1-future/pull/442
+* Skip broken PhpUnit tests by @sreichel in https://github.com/Shardj/zf1-future/pull/443
+* Update composer.json homepage property by @B3none in https://github.com/Shardj/zf1-future/pull/432
+* PHPStan fixes by @thomaslauria in https://github.com/Shardj/zf1-future/pull/434
+* Fix "Undefined variable $c" in Zend_XmlRpc_Server::setResponseClass() by @lapiudevgit in https://github.com/Shardj/zf1-future/pull/451
+* Fix PHP Deprecated: Creation of dynamic property $zfBreakChainOnFailure from Zend_Form_Element by @hung202028 in https://github.com/Shardj/zf1-future/pull/440
+
+## [1.24.0] - 2024-02-05
+- introduced BREAKING CHANGES doc.
+
+### Added
+- support "samesite" cookie attribute in Zend_Http_Header_SetCookie in https://github.com/Shardj/zf1-future/issues/315
+- Support X-Forwarded-Proto header in https://github.com/Shardj/zf1-future/pull/386
+- added setting to disable automatic strigify of pdo mysql in https://github.com/Shardj/zf1-future/pull/378
+
+### Fixed
+- reverted Deprecated : Return type on Zend_Session_SaveHandler_DbTable in https://github.com/Shardj/zf1-future/issues/377
+- Zend_Db_Adapter_Db2 limit does not work in https://github.com/Shardj/zf1-future/issues/391
+- Zend_Http_Client-Adapter_Socket - check transfer-encoding header is a string (and not an array) in https://github.com/Shardj/zf1-future/pull/396
+- Fixes A non-numeric value encountered in PhpMath.php in https://github.com/Shardj/zf1-future/pull/402
+- Updated DocBlocks to return $this for fluent interface in https://github.com/Shardj/zf1-future/pull/390
+- add "array" as allowed type of $value in https://github.com/Shardj/zf1-future/pull/387
+- Avoid undefined array key access inside url assembly in https://github.com/Shardj/zf1-future/pull/383
+- Fixed #357 return type backward-compatible issue reported in https://github.com/Shardj/zf1-future/pull/379
+- Fixed missing property in https://github.com/Shardj/zf1-future/pull/376
+
+
 ## [1.23.5] - 2023-08-24
 ### Fixed
 - further Zend Mail sendmail transport validation tweak

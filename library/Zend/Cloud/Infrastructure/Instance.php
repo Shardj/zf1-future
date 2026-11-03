@@ -17,37 +17,37 @@
  */
 class Zend_Cloud_Infrastructure_Instance
 {
-    const STATUS_RUNNING       = 'running';
-    const STATUS_STOPPED       = 'stopped';
-    const STATUS_SHUTTING_DOWN = 'shutting-down';
-    const STATUS_REBOOTING     = 'rebooting';
-    const STATUS_TERMINATED    = 'terminated';
-    const STATUS_PENDING       = 'pending';
-    const STATUS_REBUILD       = 'rebuild';
-    const INSTANCE_ID          = 'id';
-    const INSTANCE_IMAGEID     = 'imageId';
-    const INSTANCE_NAME        = 'name';
-    const INSTANCE_STATUS      = 'status';
-    const INSTANCE_PUBLICDNS   = 'publicDns';
-    const INSTANCE_CPU         = 'cpu';
-    const INSTANCE_RAM         = 'ram';
-    const INSTANCE_STORAGE     = 'storageSize';
-    const INSTANCE_ZONE        = 'zone';
-    const INSTANCE_LAUNCHTIME  = 'launchTime';
-    const MONITOR_CPU          = 'CpuUsage';
-    const MONITOR_RAM          = 'RamUsage';
-    const MONITOR_NETWORK_IN   = 'NetworkIn';
-    const MONITOR_NETWORK_OUT  = 'NetworkOut';
-    const MONITOR_DISK         = 'DiskUsage';
-    const MONITOR_DISK_WRITE   = 'DiskWrite';
-    const MONITOR_DISK_READ    = 'DiskRead';
-    const MONITOR_START_TIME   = 'StartTime';
-    const MONITOR_END_TIME     = 'EndTime';
-    const SSH_USERNAME         = 'username';
-    const SSH_PASSWORD         = 'password';
-    const SSH_PRIVATE_KEY      = 'privateKey';
-    const SSH_PUBLIC_KEY       = 'publicKey';
-    const SSH_PASSPHRASE       = 'passphrase';
+    public const STATUS_RUNNING       = 'running';
+    public const STATUS_STOPPED       = 'stopped';
+    public const STATUS_SHUTTING_DOWN = 'shutting-down';
+    public const STATUS_REBOOTING     = 'rebooting';
+    public const STATUS_TERMINATED    = 'terminated';
+    public const STATUS_PENDING       = 'pending';
+    public const STATUS_REBUILD       = 'rebuild';
+    public const INSTANCE_ID          = 'id';
+    public const INSTANCE_IMAGEID     = 'imageId';
+    public const INSTANCE_NAME        = 'name';
+    public const INSTANCE_STATUS      = 'status';
+    public const INSTANCE_PUBLICDNS   = 'publicDns';
+    public const INSTANCE_CPU         = 'cpu';
+    public const INSTANCE_RAM         = 'ram';
+    public const INSTANCE_STORAGE     = 'storageSize';
+    public const INSTANCE_ZONE        = 'zone';
+    public const INSTANCE_LAUNCHTIME  = 'launchTime';
+    public const MONITOR_CPU          = 'CpuUsage';
+    public const MONITOR_RAM          = 'RamUsage';
+    public const MONITOR_NETWORK_IN   = 'NetworkIn';
+    public const MONITOR_NETWORK_OUT  = 'NetworkOut';
+    public const MONITOR_DISK         = 'DiskUsage';
+    public const MONITOR_DISK_WRITE   = 'DiskWrite';
+    public const MONITOR_DISK_READ    = 'DiskRead';
+    public const MONITOR_START_TIME   = 'StartTime';
+    public const MONITOR_END_TIME     = 'EndTime';
+    public const SSH_USERNAME         = 'username';
+    public const SSH_PASSWORD         = 'password';
+    public const SSH_PRIVATE_KEY      = 'privateKey';
+    public const SSH_PUBLIC_KEY       = 'publicKey';
+    public const SSH_PASSPHRASE       = 'passphrase';
 
     /**
      * @var Zend_Cloud_Infrastructure_Adapter

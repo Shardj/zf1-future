@@ -38,13 +38,13 @@ class Zend_View_Helper_HtmlPage extends Zend_View_Helper_HtmlObject
      * Default file type for html
      *
      */
-    const TYPE = 'text/html';
+    public const TYPE = 'text/html';
 
     /**
      * Object classid
      *
      */
-    const ATTRIB_CLASSID  = 'clsid:25336920-03F9-11CF-8FD0-00AA00686F13';
+    public const ATTRIB_CLASSID  = 'clsid:25336920-03F9-11CF-8FD0-00AA00686F13';
 
     /**
      * Default attributes

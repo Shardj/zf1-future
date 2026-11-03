@@ -36,28 +36,28 @@ require_once 'Zend/Locale.php';
  */
 class Zend_Measure_Flow_Mole extends Zend_Measure_Abstract
 {
-    const STANDARD = 'MOLE_PER_SECOND';
+    public const STANDARD = 'MOLE_PER_SECOND';
 
-    const CENTIMOLE_PER_DAY    = 'CENTIMOLE_PER_DAY';
-    const CENTIMOLE_PER_HOUR   = 'CENTIMOLE_PER_HOUR';
-    const CENTIMOLE_PER_MINUTE = 'CENTIMOLE_PER_MINUTE';
-    const CENTIMOLE_PER_SECOND = 'CENTIMOLE_PER_SECOND';
-    const MEGAMOLE_PER_DAY     = 'MEGAMOLE_PER_DAY';
-    const MEGAMOLE_PER_HOUR    = 'MEGAMOLE_PER_HOUR';
-    const MEGAMOLE_PER_MINUTE  = 'MEGAMOLE_PER_MINUTE';
-    const MEGAMOLE_PER_SECOND  = 'MEGAMOLE_PER_SECOND';
-    const MICROMOLE_PER_DAY    = 'MICROMOLE_PER_DAY';
-    const MICROMOLE_PER_HOUR   = 'MICROMOLE_PER_HOUR';
-    const MICROMOLE_PER_MINUTE = 'MICROMOLE_PER_MINUTE';
-    const MICROMOLE_PER_SECOND = 'MICROMOLE_PER_SECOND';
-    const MILLIMOLE_PER_DAY    = 'MILLIMOLE_PER_DAY';
-    const MILLIMOLE_PER_HOUR   = 'MILLIMOLE_PER_HOUR';
-    const MILLIMOLE_PER_MINUTE = 'MILLIMOLE_PER_MINUTE';
-    const MILLIMOLE_PER_SECOND = 'MILLIMOLE_PER_SECOND';
-    const MOLE_PER_DAY         = 'MOLE_PER_DAY';
-    const MOLE_PER_HOUR        = 'MOLE_PER_HOUR';
-    const MOLE_PER_MINUTE      = 'MOLE_PER_MINUTE';
-    const MOLE_PER_SECOND      = 'MOLE_PER_SECOND';
+    public const CENTIMOLE_PER_DAY    = 'CENTIMOLE_PER_DAY';
+    public const CENTIMOLE_PER_HOUR   = 'CENTIMOLE_PER_HOUR';
+    public const CENTIMOLE_PER_MINUTE = 'CENTIMOLE_PER_MINUTE';
+    public const CENTIMOLE_PER_SECOND = 'CENTIMOLE_PER_SECOND';
+    public const MEGAMOLE_PER_DAY     = 'MEGAMOLE_PER_DAY';
+    public const MEGAMOLE_PER_HOUR    = 'MEGAMOLE_PER_HOUR';
+    public const MEGAMOLE_PER_MINUTE  = 'MEGAMOLE_PER_MINUTE';
+    public const MEGAMOLE_PER_SECOND  = 'MEGAMOLE_PER_SECOND';
+    public const MICROMOLE_PER_DAY    = 'MICROMOLE_PER_DAY';
+    public const MICROMOLE_PER_HOUR   = 'MICROMOLE_PER_HOUR';
+    public const MICROMOLE_PER_MINUTE = 'MICROMOLE_PER_MINUTE';
+    public const MICROMOLE_PER_SECOND = 'MICROMOLE_PER_SECOND';
+    public const MILLIMOLE_PER_DAY    = 'MILLIMOLE_PER_DAY';
+    public const MILLIMOLE_PER_HOUR   = 'MILLIMOLE_PER_HOUR';
+    public const MILLIMOLE_PER_MINUTE = 'MILLIMOLE_PER_MINUTE';
+    public const MILLIMOLE_PER_SECOND = 'MILLIMOLE_PER_SECOND';
+    public const MOLE_PER_DAY         = 'MOLE_PER_DAY';
+    public const MOLE_PER_HOUR        = 'MOLE_PER_HOUR';
+    public const MOLE_PER_MINUTE      = 'MOLE_PER_MINUTE';
+    public const MOLE_PER_SECOND      = 'MOLE_PER_SECOND';
 
     /**
      * Calculations for all flow mole units

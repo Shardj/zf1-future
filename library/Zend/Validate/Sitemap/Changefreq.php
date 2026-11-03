@@ -42,8 +42,8 @@ class Zend_Validate_Sitemap_Changefreq extends Zend_Validate_Abstract
      * Validation key for not valid
      *
      */
-    const NOT_VALID = 'sitemapChangefreqNotValid';
-    const INVALID   = 'sitemapChangefreqInvalid';
+    public const NOT_VALID = 'sitemapChangefreqNotValid';
+    public const INVALID   = 'sitemapChangefreqInvalid';
 
     /**
      * Validation failure message template definitions

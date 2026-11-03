@@ -32,12 +32,12 @@ require_once 'Zend/Filter/Interface.php';
  */
 class Zend_Filter_Null implements Zend_Filter_Interface
 {
-    const BOOLEAN      = 1;
-    const INTEGER      = 2;
-    const EMPTY_ARRAY  = 4;
-    const STRING       = 8;
-    const ZERO         = 16;
-    const ALL          = 31;
+    public const BOOLEAN      = 1;
+    public const INTEGER      = 2;
+    public const EMPTY_ARRAY  = 4;
+    public const STRING       = 8;
+    public const ZERO         = 16;
+    public const ALL          = 31;
 
     protected $_constants = [
         self::BOOLEAN     => 'boolean',

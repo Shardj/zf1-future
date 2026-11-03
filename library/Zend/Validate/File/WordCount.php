@@ -37,9 +37,9 @@ class Zend_Validate_File_WordCount extends Zend_Validate_File_Count
     /**#@+
      * @const string Error constants
      */
-    const TOO_MUCH  = 'fileWordCountTooMuch';
-    const TOO_LESS  = 'fileWordCountTooLess';
-    const NOT_FOUND = 'fileWordCountNotFound';
+    public const TOO_MUCH  = 'fileWordCountTooMuch';
+    public const TOO_LESS  = 'fileWordCountTooLess';
+    public const NOT_FOUND = 'fileWordCountNotFound';
     /**#@-*/
 
     /**

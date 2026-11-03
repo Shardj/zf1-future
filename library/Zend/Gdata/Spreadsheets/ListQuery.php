@@ -45,7 +45,7 @@ require_once('Zend/Gdata/Query.php');
 class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
 {
 
-    const SPREADSHEETS_LIST_FEED_URI = 'https://spreadsheets.google.com/feeds/list';
+    public const SPREADSHEETS_LIST_FEED_URI = 'https://spreadsheets.google.com/feeds/list';
 
     protected $_defaultFeedUri = self::SPREADSHEETS_LIST_FEED_URI;
     protected $_visibility = 'private';

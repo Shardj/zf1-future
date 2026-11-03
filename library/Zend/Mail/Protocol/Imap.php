@@ -33,7 +33,7 @@ class Zend_Mail_Protocol_Imap
     /**
      * Default timeout in seconds for initiating session
      */
-    const TIMEOUT_CONNECTION = 30;
+    public const TIMEOUT_CONNECTION = 30;
 
     /**
      * socket to imap server
@@ -167,9 +167,13 @@ class Zend_Mail_Protocol_Imap
     protected function _nextTaggedLine(&$tag)
     {
         $line = $this->_nextLine();
+        $parts = explode(' ', $line, 2);
 
+        if (count($parts) < 2) {
+            throw new Zend_Mail_Protocol_Exception("Malformed response: expected tag and line, got: '$line'");
+        }
         // seperate tag from line
-        [$tag, $line] = explode(' ', $line, 2);
+        [$tag, $line] = $parts;
 
         return $line;
     }

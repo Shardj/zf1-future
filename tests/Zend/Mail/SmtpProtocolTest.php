@@ -323,6 +323,33 @@ class Zend_Mail_SmtpProtocolTest extends TestCase
     /**
      * Performs the initial EHLO dialog
      */
+    public function testDestructorEndsOpenSession()
+    {
+        $this->_connectAndEhlo();
+        $this->_protocol->responseBuffer = ['221 example.com closing connection'];
+
+        $this->_protocol->__destruct();
+
+        $this->assertContains('QUIT', $this->_protocol->dialog);
+        $this->assertSame([], $this->_protocol->responseBuffer);
+    }
+
+    public function testDestructorIgnoresConnectionClosedByServer()
+    {
+        $this->_connectAndEhlo();
+
+        $this->_protocol->__destruct();
+
+        $this->assertContains('QUIT', $this->_protocol->dialog);
+    }
+
+    public function testDestructorWithoutSessionSendsNothing()
+    {
+        $this->_protocol->__destruct();
+
+        $this->assertSame([], $this->_protocol->dialog);
+    }
+
     protected function _connectAndEhlo()
     {
         $this->_protocol->responseBuffer = [
@@ -359,6 +386,12 @@ class ProtocolMock extends Zend_Mail_Protocol_Smtp
 
     protected function _receive($timeout = null)
     {
+        if (empty($this->responseBuffer)) {
+            // behaves like a connection closed by the server
+            require_once 'Zend/Mail/Protocol/Exception.php';
+            throw new Zend_Mail_Protocol_Exception('Could not read from ' . $this->_host);
+        }
+
         $line = array_shift($this->responseBuffer);
         $this->dialog[] = $line;
         return $line;

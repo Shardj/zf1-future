@@ -36,10 +36,10 @@ require_once 'Zend/Ldap/Node/Abstract.php';
  */
 class Zend_Ldap_Node_RootDse extends Zend_Ldap_Node_Abstract
 {
-    const SERVER_TYPE_GENERIC         = 1;
-    const SERVER_TYPE_OPENLDAP        = 2;
-    const SERVER_TYPE_ACTIVEDIRECTORY = 3;
-    const SERVER_TYPE_EDIRECTORY      = 4;
+    public const SERVER_TYPE_GENERIC         = 1;
+    public const SERVER_TYPE_OPENLDAP        = 2;
+    public const SERVER_TYPE_ACTIVEDIRECTORY = 3;
+    public const SERVER_TYPE_EDIRECTORY      = 4;
 
     /**
      * Factory method to create the RootDSE.

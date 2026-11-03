@@ -36,6 +36,7 @@ require_once 'Zend/Loader/Autoloader/ResourceTest.php';
 require_once 'Zend/Loader/ClassMapAutoloaderTest.php';
 require_once 'Zend/Loader/PluginLoaderTest.php';
 require_once 'Zend/Loader/StandardAutoloaderTest.php';
+require_once 'Zend/Loader/LoaderTest.php';
 
 /**
  * @category   Zend
@@ -64,6 +65,7 @@ class Zend_Loader_AllTests
         $suite->addTestSuite('Zend_Loader_ClassMapAutoloaderTest');
         $suite->addTestSuite('Zend_Loader_PluginLoaderTest');
         $suite->addTestSuite('Zend_Loader_StandardAutoloaderTest');
+        $suite->addTestSuite('Zend_Loader_LoaderTest');
 
         return $suite;
     }

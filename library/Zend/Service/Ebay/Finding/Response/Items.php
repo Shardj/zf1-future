@@ -38,8 +38,8 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
     /**
      * @link http://developer.ebay.com/DevZone/finding/CallRef/types/PaginationInput.html
      */
-    const PAGE_MAX_DEFAULT  = 100;
-    const PAGE_MAX_INFINITY = 0;
+    public const PAGE_MAX_DEFAULT  = 100;
+    public const PAGE_MAX_INFINITY = 0;
 
     /**
      * Indicates the pagination of the result set.

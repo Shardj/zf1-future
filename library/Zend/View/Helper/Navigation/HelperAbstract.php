@@ -165,7 +165,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      * @return $this
      *                                                     returns self
      */
-    public function setContainer(Zend_Navigation_Container $container = null)
+    public function setContainer(?Zend_Navigation_Container $container = null)
     {
         $this->_container = $container;
         return $this;
@@ -442,7 +442,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      *                                                     Default is null.
      * @return $this
      */
-    public function setAcl(Zend_Acl $acl = null)
+    public function setAcl(?Zend_Acl $acl = null)
     {
         $this->_acl = $acl;
         return $this;
@@ -938,7 +938,7 @@ abstract class Zend_View_Helper_Navigation_HelperAbstract
      *                        sets no ACL object.
      * @return void
      */
-    public static function setDefaultAcl(Zend_Acl $acl = null)
+    public static function setDefaultAcl(?Zend_Acl $acl = null)
     {
         self::$_defaultAcl = $acl;
     }

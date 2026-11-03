@@ -39,20 +39,20 @@ class Zend_View_Helper_Doctype extends Zend_View_Helper_Abstract
     /**#@+
      * DocType constants
      */
-    const XHTML11             = 'XHTML11';
-    const XHTML1_STRICT       = 'XHTML1_STRICT';
-    const XHTML1_TRANSITIONAL = 'XHTML1_TRANSITIONAL';
-    const XHTML1_FRAMESET     = 'XHTML1_FRAMESET';
-    const XHTML1_RDFA         = 'XHTML1_RDFA';
-    const XHTML1_RDFA11       = 'XHTML1_RDFA11';
-    const XHTML_BASIC1        = 'XHTML_BASIC1';
-    const XHTML5              = 'XHTML5';
-    const HTML4_STRICT        = 'HTML4_STRICT';
-    const HTML4_LOOSE         = 'HTML4_LOOSE';
-    const HTML4_FRAMESET      = 'HTML4_FRAMESET';
-    const HTML5               = 'HTML5';
-    const CUSTOM_XHTML        = 'CUSTOM_XHTML';
-    const CUSTOM              = 'CUSTOM';
+    public const XHTML11             = 'XHTML11';
+    public const XHTML1_STRICT       = 'XHTML1_STRICT';
+    public const XHTML1_TRANSITIONAL = 'XHTML1_TRANSITIONAL';
+    public const XHTML1_FRAMESET     = 'XHTML1_FRAMESET';
+    public const XHTML1_RDFA         = 'XHTML1_RDFA';
+    public const XHTML1_RDFA11       = 'XHTML1_RDFA11';
+    public const XHTML_BASIC1        = 'XHTML_BASIC1';
+    public const XHTML5              = 'XHTML5';
+    public const HTML4_STRICT        = 'HTML4_STRICT';
+    public const HTML4_LOOSE         = 'HTML4_LOOSE';
+    public const HTML4_FRAMESET      = 'HTML4_FRAMESET';
+    public const HTML5               = 'HTML5';
+    public const CUSTOM_XHTML        = 'CUSTOM_XHTML';
+    public const CUSTOM              = 'CUSTOM';
     /**#@-*/
 
     /**

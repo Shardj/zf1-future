@@ -43,7 +43,7 @@ class Zend_Config_Xml extends Zend_Config
     /**
      * XML namespace for ZF-related tags and attributes
      */
-    const XML_NAMESPACE = 'http://framework.zend.com/xml/zend-config-xml/1.0/';
+    public const XML_NAMESPACE = 'http://framework.zend.com/xml/zend-config-xml/1.0/';
 
     /**
      * Whether to skip extends or not

@@ -35,9 +35,9 @@ class Zend_Test_PHPUnit_Constraint_Redirect34 extends PHPUnit_Framework_Constrai
     /**#@+
      * Assertion type constants
      */
-    const ASSERT_REDIRECT       = 'assertRedirect';
-    const ASSERT_REDIRECT_TO    = 'assertRedirectTo';
-    const ASSERT_REDIRECT_REGEX = 'assertRedirectRegex';
+    public const ASSERT_REDIRECT       = 'assertRedirect';
+    public const ASSERT_REDIRECT_TO    = 'assertRedirectTo';
+    public const ASSERT_REDIRECT_REGEX = 'assertRedirectRegex';
     /**#@-*/
 
     /**

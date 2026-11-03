@@ -42,23 +42,23 @@ class Zend_View_Helper_Navigation_Links
      *
      * @var int
      */
-    const RENDER_ALTERNATE  = 0x0001;
-    const RENDER_STYLESHEET = 0x0002;
-    const RENDER_START      = 0x0004;
-    const RENDER_NEXT       = 0x0008;
-    const RENDER_PREV       = 0x0010;
-    const RENDER_CONTENTS   = 0x0020;
-    const RENDER_INDEX      = 0x0040;
-    const RENDER_GLOSSARY   = 0x0080;
-    const RENDER_COPYRIGHT  = 0x0100;
-    const RENDER_CHAPTER    = 0x0200;
-    const RENDER_SECTION    = 0x0400;
-    const RENDER_SUBSECTION = 0x0800;
-    const RENDER_APPENDIX   = 0x1000;
-    const RENDER_HELP       = 0x2000;
-    const RENDER_BOOKMARK   = 0x4000;
-    const RENDER_CUSTOM     = 0x8000;
-    const RENDER_ALL        = 0xffff;
+    public const RENDER_ALTERNATE  = 0x0001;
+    public const RENDER_STYLESHEET = 0x0002;
+    public const RENDER_START      = 0x0004;
+    public const RENDER_NEXT       = 0x0008;
+    public const RENDER_PREV       = 0x0010;
+    public const RENDER_CONTENTS   = 0x0020;
+    public const RENDER_INDEX      = 0x0040;
+    public const RENDER_GLOSSARY   = 0x0080;
+    public const RENDER_COPYRIGHT  = 0x0100;
+    public const RENDER_CHAPTER    = 0x0200;
+    public const RENDER_SECTION    = 0x0400;
+    public const RENDER_SUBSECTION = 0x0800;
+    public const RENDER_APPENDIX   = 0x1000;
+    public const RENDER_HELP       = 0x2000;
+    public const RENDER_BOOKMARK   = 0x4000;
+    public const RENDER_CUSTOM     = 0x8000;
+    public const RENDER_ALL        = 0xffff;
     /**#@+**/
 
     /**
@@ -114,7 +114,7 @@ class Zend_View_Helper_Navigation_Links
      * @return $this
      *                                               self
      */
-    public function links(Zend_Navigation_Container $container = null)
+    public function links(?Zend_Navigation_Container $container = null)
     {
         if (null !== $container) {
             $this->setContainer($container);
@@ -747,7 +747,7 @@ class Zend_View_Helper_Navigation_Links
      *                                               registered in the helper.
      * @return string                                helper output
      */
-    public function render(Zend_Navigation_Container $container = null)
+    public function render(?Zend_Navigation_Container $container = null)
     {
         if (null === $container) {
             $container = $this->getContainer();

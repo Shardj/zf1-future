@@ -42,6 +42,7 @@ if (extension_loaded('soap')) {
  */
 class Zend_Soap_Client_Local extends Zend_Soap_Client
 {
+    public $server;
     /**
      * Server object
      *

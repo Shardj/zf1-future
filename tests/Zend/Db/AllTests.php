@@ -31,6 +31,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once 'Zend/Loader.php';
 require_once 'Zend/Db/SkipTests.php';
 require_once 'Zend/Db/Profiler/AllTests.php';
+require_once 'Zend/Db/Adapter/Db2LimitTest.php';
 
 /**
  * @category   Zend
@@ -62,6 +63,7 @@ class Zend_Db_AllTests
         }
 
         self::_addDbTestSuites($suite, 'Static');
+        $suite->addTestSuite('Zend_Db_Adapter_Db2LimitTest');
         self::_addDbTestSuites($suite, 'Db2');
         self::_addDbTestSuites($suite, 'Mysqli');
         self::_addDbTestSuites($suite, 'Oracle');

@@ -42,7 +42,7 @@ interface Zend_EventManager_Filter
     /**
      * Attach an intercepting filter
      *
-     * @param  callback $callback
+     * @param  callable $callback
      * @return Zend_Stdlib_CallbackHandler
      */
     public function attach($callback);

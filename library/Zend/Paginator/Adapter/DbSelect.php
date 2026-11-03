@@ -47,7 +47,7 @@ class Zend_Paginator_Adapter_DbSelect implements Zend_Paginator_Adapter_Interfac
      *
      * @var string
      */
-    const ROW_COUNT_COLUMN = 'zend_paginator_row_count';
+    public const ROW_COUNT_COLUMN = 'zend_paginator_row_count';
 
     /**
      * The COUNT query
