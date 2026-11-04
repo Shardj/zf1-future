@@ -53,7 +53,6 @@ require_once dirname(dirname(dirname(__FILE__))) . '/_files/HelperFlashMessenger
  * has printed its progress by then, so every test runs in a separate process.
  *
  * @runInSeparateProcess
- * @preserveGlobalState disabled
  */
 class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
 {
