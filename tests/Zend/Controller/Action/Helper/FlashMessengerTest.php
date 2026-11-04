@@ -1,8 +1,6 @@
 <?php
 
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
-use PHPUnit\Framework\TestSuite;
-use PHPUnit\TextUI\TestRunner;
 
 /**
  * Zend Framework
@@ -24,11 +22,6 @@ use PHPUnit\TextUI\TestRunner;
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
-// Call Zend_Controller_Action_Helper_FlashMessengerTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Controller_Action_Helper_FlashMessengerTest::main");
-}
 
 require_once 'Zend/Controller/Front.php';
 require_once 'Zend/Controller/Request/Http.php';
@@ -80,18 +73,6 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
      * @var Zend_Controller_Response_Cli
      */
     public $response;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-        $suite = new TestSuite("Zend_Controller_Action_Helper_FlashMessengerTest");
-        $result = (new resources_Runner())->run($suite);
-    }
 
     protected function set_up()
     {
@@ -245,7 +226,3 @@ class FlashMessengerControllerActionHelper extends Zend_Controller_Action_Helper
     }
 }
 
-// Call Zend_Controller_Action_Helper_FlashMessengerTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === "Zend_Controller_Action_Helper_FlashMessengerTest::main") {
-    Zend_Controller_Action_Helper_FlashMessengerTest::main();
-}
