@@ -71,6 +71,12 @@
 
         <listitem>
             <para>
+                <link linkend="zend.service.siteverify">SiteVerify</link>
+            </para>
+        </listitem>
+
+        <listitem>
+            <para>
                 <link linkend="zend.service.short-url">ShortUrl</link>
             </para>
         </listitem>

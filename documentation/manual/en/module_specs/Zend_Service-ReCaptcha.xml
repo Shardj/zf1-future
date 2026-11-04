@@ -3,6 +3,17 @@
 <sect1 id="zend.service.recaptcha">
     <title>Zend_Service_ReCaptcha</title>
 
+    <note>
+        <title>Deprecated</title>
+
+        <para>
+            This component targets the reCAPTCHA v1 <acronym>API</acronym>, which Google shut
+            down in 2018. Use <link linkend="zend.service.siteverify">Zend_Service_SiteVerify</link>
+            and <link linkend="zend.captcha.adapters.siteverify">Zend_Captcha_SiteVerify</link>
+            instead.
+        </para>
+    </note>
+
     <sect2 id="zend.service.recaptcha.introduction">
         <title>Introduction</title>
 

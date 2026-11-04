@@ -1977,6 +1977,11 @@
                     <xi:include href="../en/module_specs/Zend_Service-ReCaptcha.xml" />
                 </xi:fallback>
             </xi:include>
+            <xi:include href="module_specs/Zend_Service-SiteVerify.xml">
+                <xi:fallback>
+                    <xi:include href="../en/module_specs/Zend_Service-SiteVerify.xml" />
+                </xi:fallback>
+            </xi:include>
             <xi:include href="module_specs/Zend_Service_ShortUrl.xml">
                 <xi:fallback>
                     <xi:include href="../en/module_specs/Zend_Service_ShortUrl.xml" />
