@@ -65,7 +65,16 @@ class Zend_Mail_SmtpOfflineTest extends TestCase
      */
     public function testReturnPathIsUsedAsMailFrom()
     {
-        $connectionMock = $this->createMock('Zend_Mail_Protocol_Smtp');
+        // the destructor stays real: a mocked one returns a value, which PHP 8.6 deprecates
+        $methods = array_filter(array_map(function (ReflectionMethod $method) {
+            return $method->getName();
+        }, (new ReflectionClass('Zend_Mail_Protocol_Smtp'))->getMethods(ReflectionMethod::IS_PUBLIC)), function ($name) {
+            return $name !== '__construct' && $name !== '__destruct';
+        });
+        $connectionMock = $this->getMockBuilder('Zend_Mail_Protocol_Smtp')
+            ->disableOriginalConstructor()
+            ->onlyMethods(array_values($methods))
+            ->getMock();
         $connectionMock->expects($this->once())
                        ->method('mail')
                        ->with('return@example.com');

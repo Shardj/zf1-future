@@ -83,8 +83,8 @@ class Zend_View_Helper_UserAgentTest extends TestCase
         );
         $this->helper->userAgent($this->userAgent);
         $this->assertEquals(
-            spl_object_hash($this->userAgent),
-            spl_object_hash($this->helper->getUserAgent())
+            spl_object_id($this->userAgent),
+            spl_object_id($this->helper->getUserAgent())
         );
     }
 
@@ -99,8 +99,8 @@ class Zend_View_Helper_UserAgentTest extends TestCase
     {
         $this->helper->setUserAgent($this->userAgent);
         $this->assertEquals(
-            spl_object_hash($this->userAgent),
-            spl_object_hash($this->helper->getUserAgent())
+            spl_object_id($this->userAgent),
+            spl_object_id($this->helper->getUserAgent())
         );
     }
 }

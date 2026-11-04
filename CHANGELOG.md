@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * PHP 8.6: Zend_Filter_Compress adapters (Bz2, Gz, Rar, Tar, Zip) no longer pass binary content to file_exists(), which throws a ValueError for a null byte since PHP 8.6; the previous null-byte check in Bz2 and Gz looked for the literal text `/\0/` and never matched.
 
+* PHP 8.6 deprecations removed: `is_integer()` → `is_int()`, `spl_object_hash()` → `spl_object_id()` for internal object maps (Zend_Pdf, Zend_Amf), `SORT_LOCALE_STRING` → `SORT_STRING` for LDAP attribute names, `Zend_Service_LiveDocx::__destruct()` no longer returns a value. `Zend_Navigation_Page::hashCode()` still returns a string (now the object id); the value is only unique while the object exists, as before.
+
 ## [1.26.0] - 2026-11-04
 
 PHP 8.3 is officially supported with this release (PHP 7.4 – 8.3). PHP 8.4 and 8.5 are part of the regular test matrix but may still show deprecation notices; PHP 8.6 is tested as experimental.

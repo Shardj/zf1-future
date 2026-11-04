@@ -19846,12 +19846,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/LiveDocx.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Service_LiveDocx::__destruct() with return type void returns bool but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::CreateDocument().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
