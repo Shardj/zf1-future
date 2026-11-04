@@ -1,6 +1,5 @@
 <?php
 
-use PHPUnit\Framework\Error;
 
 /**
  * Zend Framework

@@ -80,7 +80,7 @@ abstract class Zend_Queue_QueueBaseTest extends TestCase
     public function testConst()
     {
         $this->assertTrue(is_string(Zend_Queue::TIMEOUT));
-        $this->assertTrue(is_integer(Zend_Queue::VISIBILITY_TIMEOUT));
+        $this->assertTrue(is_int(Zend_Queue::VISIBILITY_TIMEOUT));
         $this->assertTrue(is_string(Zend_Queue::NAME));
     }
 

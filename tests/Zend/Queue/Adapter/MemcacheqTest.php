@@ -112,7 +112,7 @@ class Zend_Queue_Adapter_MemcacheqTest extends Zend_Queue_Adapter_AdapterTest
          */
         require_once 'Zend/Queue/Adapter/Memcacheq.php';
         $this->assertTrue(is_string(Zend_Queue_Adapter_Memcacheq::DEFAULT_HOST));
-        $this->assertTrue(is_integer(Zend_Queue_Adapter_Memcacheq::DEFAULT_PORT));
+        $this->assertTrue(is_int(Zend_Queue_Adapter_Memcacheq::DEFAULT_PORT));
         $this->assertTrue(is_string(Zend_Queue_Adapter_Memcacheq::EOL));
     }
     

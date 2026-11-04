@@ -857,17 +857,16 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
      */
     public function testSetDestinationWithNonExistingPathShouldThrowException()
     {
-        if (getenv('CI')) {
-            $this->markTestIncomplete("Don't know why on gitlab action docker runner fail this test case");
+        if (function_exists('posix_geteuid') && posix_geteuid() === 0) {
+            $this->markTestSkipped('Permission bits are not enforced for root, every directory is writable');
         }
-        // Create temporary directory
+        // Create a temporary directory without the execute bit, so no file can be created in it
         $directory = dirname(__FILE__) . '/_files/destination';
         if (!is_dir($directory)) {
             @mkdir($directory);
         }
         chmod($directory, 0655);
 
-        // Test
         try {
             $this->adapter->setDestination($directory);
             $this->fail('Destination is writable');
@@ -876,10 +875,10 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
                 'The given destination is not writable',
                 $e->getMessage()
             );
+        } finally {
+            chmod($directory, 0755);
+            @rmdir($directory);
         }
-
-        // Remove temporary directory
-        @rmdir($directory);
     }
 }
 

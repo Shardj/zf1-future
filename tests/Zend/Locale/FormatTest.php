@@ -1,6 +1,5 @@
 <?php
 
-use PHPUnit\Framework\Error\Notice;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
@@ -28,6 +27,9 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_Locale_Format
  */
 require_once 'Zend/Locale/Format.php';
+
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -1117,14 +1119,14 @@ class Zend_Locale_FormatTest extends TestCase
      */
     public function testCheckDateFormatDoesNotEmitNoticeWhenNoOptionsAreNotProvided()
     {
-        try {
-            setlocale(LC_ALL, 'en_US'); // test setup
-            Zend_Locale_Format::setOptions(['date_format' => 'yyyy-MM-dd']);
+        setlocale(LC_ALL, 'en_US'); // test setup
+        Zend_Locale_Format::setOptions(['date_format' => 'yyyy-MM-dd']);
 
-            $this->assertTrue(Zend_Locale_Format::checkDateFormat('2011-10-21', []));
-        } catch (Notice $ex) {
-            $this->fail('Zend_Locale_Format::checkDateFormat emitted unexpected E_NOTICE');
-        }
+        $result = null;
+        resources_ErrorCapture::assertTriggersNothing(function () use (&$result) {
+            $result = Zend_Locale_Format::checkDateFormat('2011-10-21', []);
+        }, E_NOTICE | E_USER_NOTICE | E_WARNING | E_USER_WARNING);
+        $this->assertTrue($result);
     }
 
     /**

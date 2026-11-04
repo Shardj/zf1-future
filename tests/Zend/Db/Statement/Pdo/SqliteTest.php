@@ -34,16 +34,6 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
  */
 class Zend_Db_Statement_Pdo_SqliteTest extends Zend_Db_Statement_Pdo_TestCommon
 {
-    public function testStatementBindParamByName()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding parameters');
-    }
-
-    public function testStatementBindParamByPosition()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding parameters');
-    }
-
     protected $_getColumnMetaKeys = [
         'native_type', 'sqlite:decl_type', 'flags', 'name', 'len', 'precision', 'pdo_type'
     ];

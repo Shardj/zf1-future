@@ -281,12 +281,25 @@ class Zend_Feed_Writer_Renderer_Entry_RssTest extends TestCase
         $this->assertEquals('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6', $entry->getId());
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testEntryIdHasBeenSetWithPermaLinkAsFalseWhenNotUri()
     {
-        $this->markTestIncomplete('Untest due to ZFR potential bug');
+        $this->_validEntry->setId('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6');
+        $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
+        // checked on the rendered document, Zend_Feed_Reader does not expose the isPermaLink attribute
+        $guids = $renderer->render()->getDomDocument()->getElementsByTagName('guid');
+        $this->assertSame(1, $guids->length);
+        $this->assertSame('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6', $guids->item(0)->textContent);
+        $this->assertSame('false', $guids->item(0)->getAttribute('isPermaLink'));
+    }
+
+    public function testEntryIdThatIsAUriIsRenderedAsPermaLink()
+    {
+        $this->_validEntry->setId('http://www.example.com/id/1');
+        $renderer = new Zend_Feed_Writer_Renderer_Feed_Rss($this->_validWriter);
+        $guids = $renderer->render()->getDomDocument()->getElementsByTagName('guid');
+        $this->assertSame(1, $guids->length);
+        $this->assertSame('http://www.example.com/id/1', $guids->item(0)->textContent);
+        $this->assertFalse($guids->item(0)->hasAttribute('isPermaLink'));
     }
 
     public function testEntryIdDefaultIsUsedIfNotSetByHand()
