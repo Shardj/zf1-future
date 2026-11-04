@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Reviewed: no -->
+<sect1 id="zend.service.siteverify">
+    <title>Zend_Service_SiteVerify</title>
+
+    <sect2 id="zend.service.siteverify.introduction">
+        <title>Introduction</title>
+
+        <para>
+            <classname>Zend_Service_SiteVerify</classname> is a client for the
+            <code>siteverify</code> <acronym>API</acronym> shared by Google reCAPTCHA (v2 and
+            v3), Cloudflare Turnstile and hCaptcha. The widget of the service puts a token into
+            the submitted form; the client posts the token together with the secret key to the
+            verification endpoint of the service and returns the decoded answer as a
+            <classname>Zend_Service_SiteVerify_Response</classname>.
+        </para>
+
+        <para>
+            The <link linkend="zend.captcha.adapters.siteverify">Zend_Captcha_SiteVerify</link>
+            adapter uses this class; use it directly when the token is verified outside of
+            <classname>Zend_Form</classname>, for example in an <acronym>API</acronym>
+            endpoint.
+        </para>
+    </sect2>
+
+    <sect2 id="zend.service.siteverify.usage">
+        <title>Usage</title>
+
+        <para>
+            The constructor takes the secret key, the provider name (one of the constants
+            <constant>PROVIDER_RECAPTCHA</constant>, <constant>PROVIDER_TURNSTILE</constant>,
+            <constant>PROVIDER_HCAPTCHA</constant>, or the verification
+            <acronym>URL</acronym> of a compatible service) and optionally a
+            <classname>Zend_Http_Client</classname>.
+        </para>
+
+        <example id="zend.service.siteverify.usage.example">
+            <title>Verifying a token</title>
+
+            <programlisting language="php"><![CDATA[
+$service  = new Zend_Service_SiteVerify($secretKey, Zend_Service_SiteVerify::PROVIDER_RECAPTCHA);
+$response = $service->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+
+if ($response->isSuccess() && $response->getScore() >= 0.5) {
+    // reCAPTCHA v3: the token is valid and the score is acceptable
+}
+
+$response->getHostname();    // site the challenge was solved on
+$response->getAction();      // action name (reCAPTCHA v3, Turnstile)
+$response->getErrorCodes();  // e.g. array('timeout-or-duplicate')
+$response->toArray();        // the decoded answer of the service
+]]></programlisting>
+        </example>
+
+        <para>
+            <methodname>verify()</methodname> throws a
+            <classname>Zend_Service_SiteVerify_Exception</classname> when the secret key is
+            missing, the service cannot be reached, answers with an error status or without a
+            <acronym>JSON</acronym> object. A token the service rejects is not an exception:
+            <methodname>isSuccess()</methodname> returns <constant>FALSE</constant> and
+            <methodname>getErrorCodes()</methodname> tells why.
+        </para>
+
+        <para>
+            <methodname>Zend_Service_SiteVerify::getProvider($name)</methodname> returns the
+            settings of a known provider (<code>verifyUrl</code>, <code>responseField</code>,
+            <code>scriptUrl</code>, <code>widgetClass</code>), which is what the captcha
+            adapter renders the widget with.
+        </para>
+    </sect2>
+</sect1>
+<!--
+vim:se ts=4 sw=4 et:
+-->

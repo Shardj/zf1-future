@@ -264,8 +264,131 @@
         </para>
     </sect2>
 
+    <sect2 id="zend.captcha.adapters.siteverify">
+        <title>Zend_Captcha_SiteVerify</title>
+
+        <para>
+            The <classname>Zend_Captcha_SiteVerify</classname> adapter works with Google
+            reCAPTCHA (v2 checkbox, v2 invisible and v3), Cloudflare Turnstile and hCaptcha.
+            These services share one model: a script renders a widget into a placeholder
+            element, the widget puts a token into the submitted form, and the server verifies
+            the token with a <acronym>POST</acronym> request to the service's
+            <code>siteverify</code> endpoint. The request is made by <link
+                linkend="zend.service.siteverify">Zend_Service_SiteVerify</link>.
+        </para>
+
+        <para>
+            The adapter accepts the following options, through the constructor,
+            <methodname>setOptions()</methodname> or the matching setters:
+        </para>
+
+        <itemizedlist>
+            <listitem>
+                <para>
+                    <property>provider</property>: <code>recaptcha</code> (default),
+                    <code>turnstile</code> or <code>hcaptcha</code>. Selects the verification
+                    endpoint, the name of the form field the widget fills in, the script
+                    <acronym>URL</acronym> and the <acronym>CSS</acronym> class of the widget.
+                    Each of these can be overridden for a compatible self-hosted service with
+                    <property>verifyUrl</property>, <property>responseField</property>,
+                    <property>scriptUrl</property> and <property>widgetClass</property>.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    <property>siteKey</property> and <property>secretKey</property>: the
+                    public key rendered into the widget and the private key sent with the
+                    verification request.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    <property>attribs</property>: extra <code>data-*</code> attributes of the
+                    widget without the <code>data-</code> prefix, for example
+                    <code>array('theme' => 'dark', 'size' => 'compact')</code>.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    <property>includeScript</property>: whether <methodname>render()</methodname>
+                    also emits the <code>&lt;script&gt;</code> tag of the service (default
+                    <constant>TRUE</constant>). Set it to <constant>FALSE</constant> when the
+                    script is already part of the layout or the page has more than one widget.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    <property>scoreThreshold</property>: for reCAPTCHA v3, the minimum score
+                    (0.0 - 1.0) a response must reach; <property>action</property>: the action
+                    name the response must carry (reCAPTCHA v3 and Turnstile, also rendered as
+                    <code>data-action</code>); <property>hostname</property>: the hostname the
+                    challenge must have been solved on. Each check is skipped when the option
+                    is <constant>NULL</constant>.
+                </para>
+            </listitem>
+
+            <listitem>
+                <para>
+                    <property>remoteIp</property>: the client address sent along with the
+                    verification; taken from <varname>$_SERVER['REMOTE_ADDR']</varname> when not
+                    set.
+                </para>
+            </listitem>
+        </itemizedlist>
+
+        <para>
+            <methodname>isValid($value, $context)</methodname> reads the token from the
+            submitted form data (<varname>$context</varname>), under the name of the
+            response field of the provider (<code>g-recaptcha-response</code>,
+            <code>cf-turnstile-response</code> or <code>h-captcha-response</code>), and
+            reports one of the errors <constant>missingValue</constant>,
+            <constant>errCaptcha</constant> (the service could not be reached),
+            <constant>badCaptcha</constant> (the service rejected the token; the message
+            carries its error codes), <constant>lowScore</constant>,
+            <constant>badAction</constant> or <constant>badHostname</constant>.
+            <methodname>getLastResponse()</methodname> returns the
+            <classname>Zend_Service_SiteVerify_Response</classname> of the last verification.
+        </para>
+
+        <example id="zend.captcha.adapters.siteverify.example">
+            <title>Using Zend_Captcha_SiteVerify in a form</title>
+
+            <programlisting language="php"><![CDATA[
+$form->addElement(new Zend_Form_Element_Captcha('captcha', array(
+    'label'   => 'Are you human?',
+    'captcha' => array(
+        'captcha'   => 'SiteVerify',
+        'provider'  => 'turnstile',
+        'siteKey'   => $config->captcha->siteKey,
+        'secretKey' => $config->captcha->secretKey,
+        'attribs'   => array('theme' => 'dark'),
+    ),
+)));
+
+if ($form->isValid($this->getRequest()->getPost())) {
+    // the token was verified by the service
+}
+]]></programlisting>
+        </example>
+    </sect2>
+
     <sect2 id="zend.captcha.adapters.recaptcha">
         <title>Zend_Captcha_ReCaptcha</title>
+
+        <note>
+            <title>Deprecated</title>
+
+            <para>
+                This adapter and <classname>Zend_Service_ReCaptcha</classname> use the
+                reCAPTCHA v1 <acronym>API</acronym>, which Google shut down in 2018. Use
+                <link linkend="zend.captcha.adapters.siteverify">Zend_Captcha_SiteVerify</link>
+                instead.
+            </para>
+        </note>
 
         <para>
             The <classname>Zend_Captcha_ReCaptcha</classname> adapter uses <link

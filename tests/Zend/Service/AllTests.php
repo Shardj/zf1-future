@@ -37,6 +37,7 @@ require_once 'Zend/Service/Flickr/AllTests.php';
 require_once 'Zend/Service/LiveDocx/AllTests.php';
 require_once 'Zend/Service/ReCaptcha/AllTests.php';
 require_once 'Zend/Service/ShortUrl/AllTests.php';
+require_once 'Zend/Service/SiteVerifyTest.php';
 require_once 'Zend/Service/SlideShareTest.php';
 require_once 'Zend/Service/StrikeIron/AllTests.php';
 require_once 'Zend/Service/Twitter/AllTests.php';
@@ -81,6 +82,7 @@ class Zend_Service_AllTests
         $suite->addTest(Zend_Service_LiveDocx_AllTests::suite());
         $suite->addTest(Zend_Service_ReCaptcha_AllTests::suite());
         $suite->addTest(Zend_Service_ShortUrl_AllTests::suite());
+        $suite->addTestSuite('Zend_Service_SiteVerifyTest');
         $suite->addTestSuite('Zend_Service_SlideShareTest');
         $suite->addTest(Zend_Service_StrikeIron_AllTests::suite());
         $suite->addTest(Zend_Service_Twitter_AllTests::suite());
