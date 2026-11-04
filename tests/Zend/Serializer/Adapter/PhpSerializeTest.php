@@ -26,6 +26,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 /**
  * @see Zend_Serializer_Adapter_PhpSerialize
  */
+require_once 'Zend/Serializer.php';
 require_once 'Zend/Serializer/Adapter/PhpSerialize.php';
 
 /**
@@ -144,5 +145,64 @@ class Zend_Serializer_Adapter_PhpSerializeTest extends TestCase
         $value = 'not a serialized string';
         $this->expectException('Zend_Serializer_Exception');
         $this->_adapter->unserialize($value);
+    }
+
+    /**
+     * Without the unserialize_class_whitelist option every class is unserialized, as before.
+     *
+     * @group GH-341
+     */
+    public function testUnserializeClassWhitelistIsOffByDefault()
+    {
+        $this->assertFalse($this->_adapter->getOption('unserialize_class_whitelist'));
+
+        $data = $this->_adapter->unserialize('O:8:"stdClass":1:{s:1:"a";i:1;}');
+        $this->assertInstanceOf('stdClass', $data);
+        $this->assertSame(1, $data->a);
+    }
+
+    /**
+     * @group GH-341
+     */
+    public function testUnserializeClassWhitelistAsArray()
+    {
+        $adapter = new Zend_Serializer_Adapter_PhpSerialize(['unserialize_class_whitelist' => ['stdClass']]);
+
+        $data = $adapter->unserialize('O:8:"stdClass":1:{s:1:"a";i:1;}');
+        $this->assertInstanceOf('stdClass', $data);
+
+        $data = $adapter->unserialize('O:11:"ArrayObject":4:{i:0;i:0;i:1;a:0:{}i:2;a:0:{}i:3;N;}');
+        $this->assertInstanceOf('__PHP_Incomplete_Class', $data);
+
+        // scalars and arrays are not affected
+        $this->assertSame(['a' => 1, 'b' => 'x'], $adapter->unserialize('a:2:{s:1:"a";i:1;s:1:"b";s:1:"x";}'));
+        $this->assertSame(42, $adapter->unserialize('i:42;'));
+    }
+
+    /**
+     * An empty array or true allows no class at all; the option can also be given per call.
+     *
+     * @group GH-341
+     */
+    public function testUnserializeClassWhitelistNoClasses()
+    {
+        $adapter = new Zend_Serializer_Adapter_PhpSerialize(['unserialize_class_whitelist' => []]);
+        $this->assertInstanceOf('__PHP_Incomplete_Class', $adapter->unserialize('O:8:"stdClass":0:{}'));
+
+        $adapter = new Zend_Serializer_Adapter_PhpSerialize(['unserialize_class_whitelist' => true]);
+        $this->assertInstanceOf('__PHP_Incomplete_Class', $adapter->unserialize('O:8:"stdClass":0:{}'));
+
+        $this->assertInstanceOf('__PHP_Incomplete_Class',
+            $this->_adapter->unserialize('O:8:"stdClass":0:{}', ['unserialize_class_whitelist' => []]));
+        $this->assertInstanceOf('stdClass', $this->_adapter->unserialize('O:8:"stdClass":0:{}'));
+    }
+
+    /**
+     * @group GH-341
+     */
+    public function testUnserializeClassWhitelistThroughZendSerializer()
+    {
+        $data = Zend_Serializer::unserialize('O:8:"stdClass":0:{}', ['adapter' => 'PhpSerialize', 'unserialize_class_whitelist' => []]);
+        $this->assertInstanceOf('__PHP_Incomplete_Class', $data);
     }
 }

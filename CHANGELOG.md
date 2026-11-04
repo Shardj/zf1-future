@@ -17,11 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Zend_Captcha_SiteVerify and Zend_Service_SiteVerify: captcha adapter and verification client for Google reCAPTCHA v2/v3, Cloudflare Turnstile and hCaptcha (the "siteverify" API), with provider presets, optional score / action / hostname checks and overridable endpoints for compatible services. Zend_Captcha_ReCaptcha and Zend_Service_ReCaptcha (reCAPTCHA v1, shut down in 2018) are deprecated (#343).
+* Zend_Serializer_Adapter_PhpSerialize: `unserialize_class_whitelist` option (`false` = no restriction, the default; an array of class names, or `[]` / `true` for no classes at all), passed to `unserialize()` as `allowed_classes`; can also be given per call and through `Zend_Serializer::unserialize()` (#341).
 * Zend_Pdf_Font: `EMBED_AS_SIMPLE_FONT` embedding option, which embeds a TrueType font as a simple single-byte (WinAnsiEncoding) `/TrueType` font instead of a composite Type 0 font; meant for Latin fonts, gives smaller files (#494).
 * Zend_Validate_EmailAddress: `utf8` option (`setUtf8()`), off by default, which accepts a non-ASCII local part (SMTPUTF8, RFC 6531); invisible characters (bidi marks, zero width joiners, BOM) stay rejected (#477).
 
 ### Fixed
 
+* `unserialize()` of data the library wrote itself is restricted to scalars and arrays with `allowed_classes => false` where no object is ever stored: Zend_Cache_Backend_File and Zend_Cache_Backend_Static metadata, the Zend_Locale_Data and Zend_Date caches, the OpenID file storages; the Zend_Search_Lucene `.sti` index files allow only `Zend_Search_Lucene_Index_Term` / `Zend_Search_Lucene_Index_TermInfo`. Cache content, Zend_Serializer, sessions and the priority queues are unchanged (#341).
 * Zend_Locale_Format::getDate() / Zend_Date: dates with month names that contain the month number and end without a separator, as in Chinese (`2020年1月13日`), are parsed; the month name was replaced in a way that merged the month and day numbers, and `11月` was matched by `1月` (#441).
 * Zend_Locale_Data: the flexible day period `B` of CLDR time patterns (zh_TW: `Bh:mm:ss`) is read as the AM/PM marker `a`, so Zend_Date renders and parses 上午/下午 instead of treating `B` as the Swatch beat (#441).
 * Zend_Pdf_FileParser_Font_OpenType: a font is recognized as a Latin (Nonsymbolic) font when its OS/2 Unicode ranges cover only Latin blocks, punctuation and symbols, instead of only when it covers nothing but Basic Latin; a Latin TrueType font is described as Nonsymbolic in the font descriptor now. TrueType fonts are always embedded as Type 0 fonts unless `EMBED_AS_SIMPLE_FONT` is given; the automatic choice of the simple font for Basic-Latin-only fonts is gone (#494).
