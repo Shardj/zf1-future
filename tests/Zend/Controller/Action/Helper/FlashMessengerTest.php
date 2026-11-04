@@ -45,7 +45,7 @@ require_once dirname(dirname(dirname(__FILE__))) . '/_files/HelperFlashMessenger
  * The session is started in set_up(), which needs a process without output: PHPUnit
  * has printed its progress by then, so every test runs in a separate process.
  *
- * @runInSeparateProcess
+ * @runTestsInSeparateProcesses
  * @preserveGlobalState disabled
  */
 class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
@@ -104,27 +104,36 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
 
     public function testLoadFlashMessenger()
     {
+        // the test controller has no view scripts; the router decides from the path, not from the preset controller name
+        $this->front->setParam('noViewRenderer', true)->throwExceptions(true);
+        $this->request->setPathInfo('/helper-flash-messenger');
         $response = $this->front->dispatch($this->request);
         $this->assertEquals('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
     }
 
-    public function testClearMessages()
+    /**
+     * Messages added in this request are "current" ones; getMessages() and
+     * count() see the messages of the previous request only.
+     */
+    public function testClearCurrentMessages()
     {
         $this->helper->addMessage('foo');
         $this->helper->addMessage('bar');
-        $this->assertTrue($this->helper->hasMessages());
-        $this->assertEquals(2, count($this->helper));
-
-        $this->helper->clearMessages();
+        $this->assertTrue($this->helper->hasCurrentMessages());
+        $this->assertEquals(['foo', 'bar'], $this->helper->getCurrentMessages());
         $this->assertFalse($this->helper->hasMessages());
         $this->assertEquals(0, count($this->helper));
+
+        $this->helper->clearCurrentMessages();
+        $this->assertFalse($this->helper->hasCurrentMessages());
+        $this->assertEquals([], $this->helper->getCurrentMessages());
     }
 
     public function testDirectProxiesToAddMessage()
     {
         $this->helper->direct('foo');
-        $this->assertTrue($this->helper->hasMessages());
-        $this->assertEquals(1, count($this->helper));
+        $this->assertTrue($this->helper->hasCurrentMessages());
+        $this->assertEquals(['foo'], $this->helper->getCurrentMessages());
     }
 
     /**
