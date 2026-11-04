@@ -266,6 +266,8 @@ class Zend_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD === 'Zend_AllTests::main') {
+// A test run in a separate process (@runInSeparateProcess) includes this file
+// again in the child process; the suite must not start over there.
+if (PHPUnit_MAIN_METHOD === 'Zend_AllTests::main' && !function_exists('__phpunit_run_isolated_test')) {
     Zend_AllTests::main();
 }

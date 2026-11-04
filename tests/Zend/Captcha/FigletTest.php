@@ -313,6 +313,7 @@ class Zend_Captcha_FigletTest extends TestCase
     /**
      * @group ZF-5728
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testSetSessionWorks()
     {

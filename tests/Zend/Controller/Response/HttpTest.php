@@ -217,6 +217,7 @@ class Zend_Controller_Response_HttpTest extends TestCase
      * header() calls in the CLI.
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function test__toString()
     {
