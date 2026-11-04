@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+* Zend_Mail: XOAUTH2 (OAuth 2.0 access token) authentication for Gmail and Microsoft 365 – `Zend_Mail_Protocol_Smtp_Auth_Xoauth2` (`'auth' => 'xoauth2'` with `username` and `accessToken` in Zend_Mail_Transport_Smtp), `Zend_Mail_Protocol_Imap::authenticateXoauth2()`, `Zend_Mail_Protocol_Pop3::authenticateXoauth2()` and the `accessToken` parameter of Zend_Mail_Storage_Imap / Zend_Mail_Storage_Pop3 (#234).
 * Zend_Captcha_SiteVerify and Zend_Service_SiteVerify: captcha adapter and verification client for Google reCAPTCHA v2/v3, Cloudflare Turnstile and hCaptcha (the "siteverify" API), with provider presets, optional score / action / hostname checks and overridable endpoints for compatible services. Zend_Captcha_ReCaptcha and Zend_Service_ReCaptcha (reCAPTCHA v1, shut down in 2018) are deprecated (#343).
 * Zend_Serializer_Adapter_PhpSerialize: `unserialize_class_whitelist` option (`false` = no restriction, the default; an array of class names, or `[]` / `true` for no classes at all), passed to `unserialize()` as `allowed_classes`; can also be given per call and through `Zend_Serializer::unserialize()` (#341).
 * Zend_Pdf_Font: `EMBED_AS_SIMPLE_FONT` embedding option, which embeds a TrueType font as a simple single-byte (WinAnsiEncoding) `/TrueType` font instead of a composite Type 0 font; meant for Latin fonts, gives smaller files (#494).

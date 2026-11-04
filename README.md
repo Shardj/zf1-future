@@ -44,6 +44,10 @@ The files in this archive are released under the Zend Framework license. You can
 *  [ZF1 Extras Future](https://github.com/Shardj/zf1-extras-future)
 * [ZF1s](https://github.com/zf1s) - Another community supported continuation of ZF1, with a focus on splitting the frameworks original components into individual packages
 
+# Mail: OAuth 2.0 (XOAUTH2) for Gmail and Microsoft 365
+
+Since 1.26.0 `Zend_Mail` authenticates with an OAuth 2.0 access token where a password is no longer accepted: `'auth' => 'xoauth2'` with `username` and `accessToken` in `Zend_Mail_Transport_Smtp`, and `accessToken` instead of `password` in `Zend_Mail_Storage_Imap` / `Zend_Mail_Storage_Pop3`. Obtaining and refreshing the token is up to the application (e.g. with league/oauth2-google or thenetworg/oauth2-azure).
+
 # Security
 
 * **`unserialize()` and CVE-2020-29312.** The CVE describes no specific flaw in this library (it names a non-existent version 3.1.3, gives no affected class and no reference, and is marked as disputed by NVD); it restates that `unserialize()` of untrusted data is unsafe in PHP, whatever classes are loaded. ZF1-Future itself never unserializes request data. Where it unserializes data it wrote itself (cache metadata, locale and date caches, OpenID storage, Lucene index files) it passes `allowed_classes` to `unserialize()` since 1.26.0, so no object can be instantiated from such a file. Cache content stored with `automatic_serialization`, `Zend_Serializer`, sessions and the priority queues keep unserializing objects, because that is what they are for. In your application: never call `unserialize()` (or `Zend_Serializer::unserialize()`) on data a user can influence; use JSON for data exchange; for your own serialized data use the `unserialize_class_whitelist` option of `Zend_Serializer_Adapter_PhpSerialize` and/or an HMAC. See https://github.com/Shardj/zf1-future/issues/341

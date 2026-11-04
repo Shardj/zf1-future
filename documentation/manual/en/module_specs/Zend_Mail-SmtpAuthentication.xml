@@ -39,6 +39,42 @@ $mail->send($transport);
             <classname>Zend_Mail_Transport_Smtp</classname> constructor.
         </para>
     </note>
+
+    <sect2 id="zend.mail.smtp-authentication.xoauth2">
+        <title>OAuth 2.0 (XOAUTH2)</title>
+
+        <para>
+            Gmail and Microsoft 365 no longer accept a password for SMTP; they expect an OAuth
+            2.0 access token, sent with the XOAUTH2 mechanism. Pass 'auth' => 'xoauth2' together
+            with the mailbox in 'username' and the token in 'accessToken'. Obtaining the token
+            (the OAuth 2.0 authorization flow with the provider) and refreshing it before it
+            expires is the job of the application; the transport only uses the token it is
+            given, so a new transport (or a new token) is needed after a refresh.
+        </para>
+
+        <example id="zend.mail.smtp-authentication.xoauth2.example">
+            <title>Sending through Gmail with an access token</title>
+
+            <programlisting language="php"><![CDATA[
+$config = array('ssl'         => 'tls',
+                'port'        => 587,
+                'auth'        => 'xoauth2',
+                'username'    => 'alice@gmail.com',
+                'accessToken' => $accessToken);
+
+$transport = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $config);
+$mail->send($transport);
+]]></programlisting>
+        </example>
+
+        <para>
+            When the server rejects the token, the
+            <classname>Zend_Mail_Protocol_Exception</classname> carries the final reply of the
+            server (e.g. "535 5.7.8 Username and Password not accepted") and, in parentheses,
+            the reason the server sent in its challenge (a <acronym>JSON</acronym> object with
+            the status and the required scope).
+        </para>
+    </sect2>
 </sect1>
 <!--
 vim:se ts=4 sw=4 et:
