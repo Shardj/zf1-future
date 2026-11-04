@@ -202,7 +202,7 @@ class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (file_exists($content)) {
+        if ($this->_isExistingFile($content)) {
             $archive = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, realpath($content));
         } elseif (empty($archive) || !file_exists($archive)) {
             require_once 'Zend/Filter/Exception.php';

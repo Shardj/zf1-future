@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * PHP 8.6: the constructors of Zend_Db_Adapter_Pdo_Sqlite and Zend_Server_Reflection_Node no longer return a value ("Returning a value from a constructor is deprecated"); the deprecation printed at load time made the experimental PHP 8.6 test job abort.
 
+* PHP 8.6: Zend_Filter_Compress adapters (Bz2, Gz, Rar, Tar, Zip) no longer pass binary content to file_exists(), which throws a ValueError for a null byte since PHP 8.6; the previous null-byte check in Bz2 and Gz looked for the literal text `/\0/` and never matched.
+
 ## [1.26.0] - 2026-11-04
 
 PHP 8.3 is officially supported with this release (PHP 7.4 – 8.3). PHP 8.4 and 8.5 are part of the regular test matrix but may still show deprecation notices; PHP 8.6 is tested as experimental.
