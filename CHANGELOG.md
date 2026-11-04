@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.26.0] - 2026-11-04
+
+PHP 8.3 is officially supported with this release (PHP 7.4 – 8.3). PHP 8.4 and 8.5 are part of the regular test matrix but may still show deprecation notices; PHP 8.6 is tested as experimental.
+
 ### Changed
+
+* Supported PHP versions: 7.4 – 8.3 (PHP 8.3 officially supported, the `str_decrement()` polyfill of #512 is gone since 1.25.3); PHP 8.4 and 8.5 tested in CI, PHP 8.6 experimental (#450).
 
 * Zend_Db_Select renders a union part that has its own ORDER BY or LIMIT in parentheses, so the clauses apply to that part and not to the whole union (#505).
   BC note: code that relied on the ORDER BY or LIMIT of the last part sorting or limiting the whole union has to call order() / limit() on the union select itself.

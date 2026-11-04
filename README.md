@@ -1,9 +1,9 @@
 ![zf1-future logo](https://imgur.com/S0i6qOh.png)
 <sub><sup>Thanks to [WebTigers](https://github.com/WebTigers) for the logo</sup></sub>
-# Zend Framework 1 now for PHP 8.2!
+# Zend Framework 1 now for PHP 8.3!
 ### Classic ZF1 Reborn
 Zend may have abandoned the original Zend Framework, but the global Zend Framework Community has not! Since Zend sentenced ZF1 to EOL, the Zend Framework community around the globe has continued to work and build on what we consider to be one of the best PHP frameworks of all time.
-Framework is tested on PHP 7.4 up to 8.3. PHP 8.4 and 8.5 are tested as experimental, so you can still experience some incompatibilities there.
+Framework is supported and tested on PHP 7.4 up to 8.3. PHP 8.4 and 8.5 are part of the regular test suite as well, but may still show deprecation notices; PHP 8.6 is tested as experimental.
 
 # ZF1-Future Sponsors
 ### Products and Projects built with ZF1-Future:
@@ -16,9 +16,9 @@ Creators of the [Tiger Development Platform](https://webtigers.com) featuring ZF
 
 Creators of [Seiden PHP+ for IBM i](https://www.seidengroup.com/seiden-php-for-ibm-i/) featuring ZF1-Future
 
-# ZF1 is Now Version 1.25!
+# ZF1 is Now Version 1.26!
 ### Over 250 updates and bug fixes since 1.12!
-The ZF1 community has been hard at work updating Zend Framework with all of the latest features of 8.2.
+The ZF1 community has been hard at work updating Zend Framework with all of the latest features of 8.3.
 
 # Documentation
 New ZF1-Future Manual: [ZF1-Future Docs](https://zf1future.com/manual)
@@ -34,7 +34,7 @@ Installable through git clone or through
 Composer is the recommended way. If you install from git or from a release archive without Composer, add the `library` directory to your `include_path` and make sure the `ctype` and `mbstring` extensions are enabled. The Symfony polyfills from `composer.json` are not loaded in that case.
 
 # System Requirements
-ZF1 Future runs on any version of PHP between 7.4 and 8.3, with experimental support for 8.4 and 8.5 (see composer.json).
+ZF1 Future runs on any version of PHP between 7.4 and 8.3. PHP 8.4 and 8.5 are tested as well and work in practice, but are not officially supported yet; PHP 8.6 is experimental (see the test matrix in `.github/workflows/phpunit.yml`).
 
 # License
 The files in this archive are released under the Zend Framework license. You can find a copy of this license in [LICENSE.txt](LICENSE.txt).
