@@ -108,7 +108,7 @@ class Zend_Mail_Protocol_Smtp_Auth_Xoauth2 extends Zend_Mail_Protocol_Smtp
             $reason = base64_decode(trim($message), true);
             try {
                 $this->_send('');
-                $this->_expect(235);
+                $this->_expect([235]);
             } catch (Zend_Mail_Protocol_Exception $e) {
                 require_once 'Zend/Mail/Protocol/Exception.php';
                 throw new Zend_Mail_Protocol_Exception(
