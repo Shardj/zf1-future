@@ -1400,12 +1400,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Captcha/Base.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (null) of method Zend_Captcha_Base::getDecorator() should be compatible with return type (string|Zend_Form_Decorator_Interface) of method Zend_Captcha_Adapter::getDecorator()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/Base.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -1425,12 +1419,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Captcha_ReCaptcha) of method Zend_Captcha_ReCaptcha::setOption() should be compatible with return type (Zend_Form_Element) of method Zend_Captcha_Base::setOption()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/ReCaptcha.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Captcha_ReCaptcha::getDecorator() should be compatible with return type (null) of method Zend_Captcha_Base::getDecorator()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Captcha/ReCaptcha.php',
@@ -1456,12 +1444,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Captcha_Word::$_session (Zend_Session_Namespace) in isset() is not nullable.',
 	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/Word.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Captcha_Word::getDecorator() should be compatible with return type (null) of method Zend_Captcha_Base::getDecorator()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Captcha/Word.php',
 ];

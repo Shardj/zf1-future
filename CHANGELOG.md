@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+* Zend_Captcha_SiteVerify and Zend_Service_SiteVerify: captcha adapter and verification client for Google reCAPTCHA v2/v3, Cloudflare Turnstile and hCaptcha (the "siteverify" API), with provider presets, optional score / action / hostname checks and overridable endpoints for compatible services. Zend_Captcha_ReCaptcha and Zend_Service_ReCaptcha (reCAPTCHA v1, shut down in 2018) are deprecated (#343).
 * Zend_Pdf_Font: `EMBED_AS_SIMPLE_FONT` embedding option, which embeds a TrueType font as a simple single-byte (WinAnsiEncoding) `/TrueType` font instead of a composite Type 0 font; meant for Latin fonts, gives smaller files (#494).
 * Zend_Validate_EmailAddress: `utf8` option (`setUtf8()`), off by default, which accepts a non-ASCII local part (SMTPUTF8, RFC 6531); invisible characters (bidi marks, zero width joiners, BOM) stay rejected (#477).
 
