@@ -246,20 +246,6 @@ class Zend_Config_IniTest extends TestCase
         }
     }
 
-    public function testZF739()
-    {
-        if (version_compare('5.3.0', PHP_VERSION) < 1) {
-            $this->markTestSkipped('PHP >= 5.3.0 does not allow : as a nest separator');
-            return;
-        }
-
-        $config = new Zend_Config_Ini($this->_iniFileSeparatorConfig, 'all', ['nestSeparator' => ':']);
-
-        $this->assertEquals('all', $config->hostname);
-        $this->assertEquals('live', $config->db->name);
-        $this->assertEquals('multi', $config->one->two->three);
-    }
-
     public function testZF2508NoSections()
     {
         $config = new Zend_Config_Ini($this->_iniFileNoSectionsConfig);

@@ -48,6 +48,12 @@ require_once dirname(dirname(dirname(__FILE__))) . '/_files/HelperFlashMessenger
  * @group      Zend_Controller
  * @group      Zend_Controller_Action
  * @group      Zend_Controller_Action_Helper
+ *
+ * The session is started in set_up(), which needs a process without output: PHPUnit
+ * has printed its progress by then, so every test runs in a separate process.
+ *
+ * @runInSeparateProcess
+ * @preserveGlobalState disabled
  */
 class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
 {
@@ -117,14 +123,12 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
 
     public function testLoadFlashMessenger()
     {
-        $this->markTestSkipped();
         $response = $this->front->dispatch($this->request);
         $this->assertEquals('Zend_Controller_Action_Helper_FlashMessenger123456', $response->getBody());
     }
 
     public function testClearMessages()
     {
-        $this->markTestSkipped();
         $this->helper->addMessage('foo');
         $this->helper->addMessage('bar');
         $this->assertTrue($this->helper->hasMessages());
@@ -137,7 +141,6 @@ class Zend_Controller_Action_Helper_FlashMessengerTest extends TestCase
 
     public function testDirectProxiesToAddMessage()
     {
-        $this->markTestSkipped();
         $this->helper->direct('foo');
         $this->assertTrue($this->helper->hasMessages());
         $this->assertEquals(1, count($this->helper));

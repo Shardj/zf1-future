@@ -330,12 +330,11 @@ class Zend_Captcha_FigletTest extends TestCase
 
     /**
      * @group ZF-5728
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testSetSessionWorks()
     {
-        if (headers_sent($file, $line)) {
-            $this->markTestSkipped("Cannot use sessions because headers already sent");
-        }
         require_once 'Zend/Session/Namespace.php';
         $session = new Zend_Session_Namespace('captcha');
         $this->captcha->setSession($session);
