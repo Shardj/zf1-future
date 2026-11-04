@@ -1,6 +1,5 @@
 <?php
 
-use PHPUnit\Framework\Error;
 
 /**
  * Zend Framework
@@ -28,6 +27,9 @@ use PHPUnit\Framework\Error;
  * @see Zend_Db_Table_TestSetup
  */
 require_once 'Zend/Db/Table/TestSetup.php';
+
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @see Zend_Registry
@@ -1549,13 +1551,16 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
     public function testTableSetDefaultMetadataCacheWriteAccess()
     {
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        $this->expectExceptionMessage('Failed saving metadata to metadataCache');
         $cache = $this->_getCacheNowrite();
         Zend_Db_Table_Abstract::setDefaultMetadataCache($cache);
-        $bugsTable = $this->_getTable('My_ZendDbTable_TableBugs');
-        $primary = $bugsTable->info(Zend_Db_Table_Abstract::PRIMARY);
-        Zend_Db_Table_Abstract::setDefaultMetadataCache(null);
+        try {
+            $bugsTable = $this->_getTable('My_ZendDbTable_TableBugs');
+            resources_ErrorCapture::assertTriggers(function () use ($bugsTable) {
+                $bugsTable->info(Zend_Db_Table_Abstract::PRIMARY);
+            }, E_USER_NOTICE, 'Failed saving metadata to metadataCache');
+        } finally {
+            Zend_Db_Table_Abstract::setDefaultMetadataCache(null);
+        }
     }
 
     /**

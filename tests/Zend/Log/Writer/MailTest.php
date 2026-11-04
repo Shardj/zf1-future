@@ -33,6 +33,9 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 /** Zend_Layout */
 require_once 'Zend/Layout.php';
 
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
+
 /** Zend_Log */
 require_once 'Zend/Log.php';
 
@@ -252,8 +255,6 @@ class Zend_Log_Writer_MailTest extends TestCase
      */
     public function testDestructorMailError()
     {
-        $this->expectException(version_compare(phpversion(), '7.1', '>') ? \PHPUnit\Framework\Error\Error::class : \Error::class);
-        $this->expectExceptionMessage('unable to send log entries via email;');
         list($mail, $writer, $log) = $this->_getSimpleLogger(false);
 
         // Force the send() method to throw the same exception that would be
@@ -265,7 +266,10 @@ class Zend_Log_Writer_MailTest extends TestCase
         // Log an error message so that there's something to send via email.
         $log->err('a bogus error message to force mail sending');
 
-        unset($log);
+        // releasing the last reference runs the destructor, which sends the mail
+        resources_ErrorCapture::assertTriggers(function () use (&$log) {
+            $log = null;
+        }, E_USER_WARNING, 'unable to send log entries via email;');
     }
 
     /**
@@ -277,9 +281,6 @@ class Zend_Log_Writer_MailTest extends TestCase
      */
     public function testDestructorLayoutError()
     {
-        $this->expectException(version_compare(phpversion(), '7.1', '>') ? \PHPUnit\Framework\Error\Error::class : \Error::class);
-        $this->expectExceptionMessage('exception occurred when rendering layout; unable to set html body for message; message = bogus message');
-
         list($mail, $writer, $log, $layout) = $this->_getSimpleLogger(true);
 
         // Force the render() method to throw the same exception that would
@@ -291,7 +292,10 @@ class Zend_Log_Writer_MailTest extends TestCase
         // Log an error message so that there's something to send via email.
         $log->err('a bogus error message to force mail sending');
 
-        unset($log);
+        // releasing the last reference runs the destructor, which renders the layout
+        resources_ErrorCapture::assertTriggers(function () use (&$log) {
+            $log = null;
+        }, E_USER_NOTICE, 'exception occurred when rendering layout; unable to set html body for message; message = bogus message');
     }
 
     /**

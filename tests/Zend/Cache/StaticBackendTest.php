@@ -10,6 +10,9 @@
 require_once 'Zend/Cache.php';
 require_once 'Zend/Cache/Backend/Static.php';
 
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
+
 /**
  * Zend_Log
  */
@@ -164,9 +167,10 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
      */
     public function testDirectoryUmaskTriggersError()
     {
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        $this->expectExceptionMessage("'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead");
-        $this->_instance->setOption('cache_directory_umask', '777');
+        $instance = $this->_instance;
+        resources_ErrorCapture::assertTriggers(function () use ($instance) {
+            $instance->setOption('cache_directory_umask', '777');
+        }, E_USER_NOTICE, "'cache_directory_umask' is deprecated -> please use 'cache_directory_perm' instead");
     }
 
     /**
@@ -174,9 +178,10 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
      */
     public function testFileUmaskTriggersError()
     {
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        $this->expectExceptionMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
-        $this->_instance->setOption('cache_file_umask', '777');
+        $instance = $this->_instance;
+        resources_ErrorCapture::assertTriggers(function () use ($instance) {
+            $instance->setOption('cache_file_umask', '777');
+        }, E_USER_NOTICE, "'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
     }
 
     public function testSaveWithSpecificExtensionWithTag()

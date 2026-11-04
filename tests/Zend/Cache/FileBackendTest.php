@@ -26,6 +26,9 @@
 require_once 'Zend/Cache.php';
 require_once 'Zend/Cache/Backend/File.php';
 
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
+
 /**
  * Zend_Log
  */
@@ -78,25 +81,24 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTest
 
     public function testSetDeprecatedHashedDirectoryUmask()
     {
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        $this->expectExceptionMessage("'hashed_directory_umask' is deprecated -> please use 'hashed_directory_perm' instead");
-        //$this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        //$this->expectExceptionMessage("'hashed_directory_umask' is deprecated -> please use 'hashed_directory_perm' instead");
-        $cache = new Zend_Cache_Backend_File([
-            'cache_dir' => $this->_cache_dir,
-            'hashed_directory_umask' => 0700,
-        ]);
+        $cacheDir = $this->_cache_dir;
+        resources_ErrorCapture::assertTriggers(function () use ($cacheDir) {
+            new Zend_Cache_Backend_File([
+                'cache_dir' => $cacheDir,
+                'hashed_directory_umask' => 0700,
+            ]);
+        }, E_USER_NOTICE, "'hashed_directory_umask' is deprecated -> please use 'hashed_directory_perm' instead");
     }
 
     public function testSetDeprecatedCacheFileUmask()
     {
-        # https://phpunit.readthedocs.io/en/9.5/writing-tests-for-phpunit.html?highlight=Error#testing-php-errors-warnings-and-notices
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        $this->expectExceptionMessage("'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
-        $cache = new Zend_Cache_Backend_File([
-                'cache_dir' => $this->_cache_dir,
+        $cacheDir = $this->_cache_dir;
+        resources_ErrorCapture::assertTriggers(function () use ($cacheDir) {
+            new Zend_Cache_Backend_File([
+                'cache_dir' => $cacheDir,
                 'cache_file_umask' => 0700,
-        ]);
+            ]);
+        }, E_USER_NOTICE, "'cache_file_umask' is deprecated -> please use 'cache_file_perm' instead");
     }
 
     /**

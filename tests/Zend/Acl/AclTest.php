@@ -2,6 +2,9 @@
 
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
+
 /**
  * Zend Framework
  *
@@ -1271,8 +1274,10 @@ class Zend_Acl_AclTest extends TestCase
      */
     public function testGetRegisteredRolesIsDeprecated()
     {
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        $this->_acl->getRegisteredRoles();
+        $acl = $this->_acl;
+        resources_ErrorCapture::assertTriggers(function () use ($acl) {
+            $acl->getRegisteredRoles();
+        }, E_USER_NOTICE, 'getRegisteredRoles() was deprecated');
     }
 
     /**

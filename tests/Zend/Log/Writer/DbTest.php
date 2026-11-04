@@ -1,6 +1,5 @@
 <?php
 
-use PHPUnit\Framework\Error;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\TextUI\TestRunner;

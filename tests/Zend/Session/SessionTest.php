@@ -1,6 +1,5 @@
 <?php
 
-use PHPUnit\Framework\Error\Notice;
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 /**
@@ -28,6 +27,9 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * @see Zend_Session
  */
 require_once 'Zend/Session.php';
+
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
 
 
 /**
@@ -1104,13 +1106,11 @@ class Zend_SessionTest extends TestCase
      */
     public function testNoNoticesIfNoValidatorDataInSession()
     {
-        try {
+        require_once dirname(__FILE__) . '/Validator/NoticeValidator.php';
+        resources_ErrorCapture::assertTriggersNothing(function () {
             Zend_Session::start();
-            require_once dirname(__FILE__) . '/Validator/NoticeValidator.php';
             Zend_Session::registerValidator(new Zend_Session_Validator_NoticeValidator());
-        } catch (Notice $exception) {
-            $this->fail($exception->getMessage());
-        }
+        }, E_NOTICE | E_USER_NOTICE | E_WARNING | E_USER_WARNING);
     }
 
     /**
