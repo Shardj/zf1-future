@@ -25653,11 +25653,5 @@ $ignoreErrors[] = [
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Value/BigInteger.php',
 ];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between DateTime and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Value/DateTime.php',
-];
 
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];

@@ -661,14 +661,15 @@ class Zend_XmlRpc_ValueTest extends TestCase
 
     public function testMarshalDateTimeFromInvalidString()
     {
-        $phpunitVersion = Version::id();
-        if (version_compare($phpunitVersion, '3.7.0', '<=')) {
-            $this->markTestSkipped('Cannot expect generic exceptions prior to PHPUnit 3.7.');
+        try {
+            Zend_XmlRpc_Value::getXmlRpcValue('foobarbaz', Zend_XmlRpc_Value::XMLRPC_TYPE_DATETIME);
+            $this->fail('expected a Zend_XmlRpc_Value_Exception');
+        } catch (Zend_XmlRpc_Value_Exception $e) {
+            $this->assertSame("Cannot convert given value 'foobarbaz' to a timestamp", $e->getMessage());
+            // the DateTime exception (DateMalformedStringException on PHP 8.3+) is kept as the cause
+            $this->assertInstanceOf('Exception', $e->getPrevious());
+            $this->assertStringContainsString('foobarbaz', $e->getPrevious()->getMessage());
         }
-
-        $this->expectException('Exception');
-        $this->expectExceptionMessage("foobarbaz");
-        Zend_XmlRpc_Value::getXmlRpcValue('foobarbaz', Zend_XmlRpc_Value::XMLRPC_TYPE_DATETIME);
     }
 
     public function testMarshalDateTimeFromNativeInteger()
