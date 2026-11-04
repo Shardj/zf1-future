@@ -41,11 +41,6 @@ require_once 'Zend/Db/Profiler/TestCommon.php';
  */
 class Zend_Db_Profiler_Pdo_SqliteTest extends Zend_Db_Profiler_TestCommon
 {
-    public function testProfilerPreparedStatementWithBoundParams()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding params');
-    }
-
     public function getDriver()
     {
         return 'Pdo_Sqlite';
