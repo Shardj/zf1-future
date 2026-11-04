@@ -4262,12 +4262,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlite.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Db_Adapter_Abstract::__construct() (void) is used.',
-	'identifier' => 'staticMethod.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlite.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method exec() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
