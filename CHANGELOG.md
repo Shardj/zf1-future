@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Zend_XmlRpc_Value_DateTime throws Zend_XmlRpc_Value_Exception ("Cannot convert given value … to a timestamp") for a string DateTime cannot parse, with the DateTime exception as previous; the plain DateTime exception (DateMalformedStringException on PHP 8.3+) escaped before, because the `=== false` check dates from PHP 5.2.
 
+* PHP 8.6: the constructors of Zend_Db_Adapter_Pdo_Sqlite and Zend_Server_Reflection_Node no longer return a value ("Returning a value from a constructor is deprecated"); the deprecation printed at load time made the experimental PHP 8.6 test job abort.
+
 ## [1.26.0] - 2026-11-04
 
 PHP 8.3 is officially supported with this release (PHP 7.4 – 8.3). PHP 8.4 and 8.5 are part of the regular test matrix but may still show deprecation notices; PHP 8.6 is tested as experimental.

@@ -311,22 +311,6 @@ class Zend_Feed_Writer_Renderer_Feed_AtomTest extends TestCase
             'uri' => 'http://www.example.com/joe'], $feed->getAuthor());
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testFeedAuthorIfNotSetThrowsExceptionIfAnyEntriesAlsoAreMissingAuthors()
-    {
-        $this->markTestIncomplete('Not yet implemented...');
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testFeedAuthorIfNotSetThrowsNoExceptionIfAllEntriesIncludeAtLeastOneAuthor()
-    {
-        $this->markTestIncomplete('Not yet implemented...');
-    }
-
     public function testFeedIdHasBeenSet()
     {
         $this->_validWriter->setId('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6');

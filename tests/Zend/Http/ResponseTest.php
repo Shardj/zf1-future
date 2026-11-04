@@ -217,12 +217,17 @@ class Zend_Http_ResponseTest extends TestCase
         $this->assertFalse($response->isRedirect(), 'Response is OK, but isRedirect() returned true');
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function test100Continue()
     {
-        $this->markTestIncomplete();
+        $response = Zend_Http_Response::fromString("HTTP/1.1 100 Continue\r\n\r\n");
+
+        $this->assertEquals(100, $response->getStatus());
+        $this->assertEquals('Continue', $response->getMessage());
+        $this->assertEquals('', $response->getBody());
+        // 1xx responses count as successful, like 2xx
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isError());
+        $this->assertFalse($response->isRedirect());
     }
 
     public function testAutoMessageSet()

@@ -115,10 +115,11 @@ class Zend_UriTest extends TestCase
         $this->_testValidUri('https');
     }
 
-    public function testSchemeMailto()
+    public function testSchemeMailtoIsNotSupported()
     {
-        $this->markTestIncomplete('Zend_Uri_Mailto is not implemented yet');
-        $this->_testValidUri('mailto');
+        $this->expectException(Zend_Uri_Exception::class);
+        $this->expectExceptionMessage('Scheme "mailto" is not supported');
+        Zend_Uri::factory('mailto:nobody@example.com');
     }
 
     /**

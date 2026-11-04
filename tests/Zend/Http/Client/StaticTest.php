@@ -117,21 +117,12 @@ class Zend_Http_Client_StaticTest extends TestCase
 
     /**
      * Test that passing an invalid URI object throws an exception
-     *
-     * @doesNotPerformAssertions
      */
     public function testInvalidUriObjectException()
     {
-        try {
-            $uri = Zend_Uri::factory('mailto:nobody@example.com');
-            $this->_client->setUri($uri);
-            $this->fail('Excepted invalid URI object exception was not thrown');
-        } catch (Zend_Http_Client_Exception $e) {
-            // We're good
-        } catch (Zend_Uri_Exception $e) {
-            // URI is currently unimplemented
-            $this->markTestIncomplete('Zend_Uri_Mailto is not implemented yet');
-        }
+        $this->expectException(Zend_Http_Client_Exception::class);
+        $this->expectExceptionMessage('not a valid HTTP URI');
+        $this->_client->setUri(new Zend_Http_Client_StaticTest_MailtoUri());
     }
 
     /**
@@ -811,4 +802,25 @@ class Zend_Http_Client_StaticTest_Mock extends Zend_Http_Client
 class Zend_Http_Client_StaticTest_TestAdapter_Mock extends Zend_Http_Client_Adapter_Test
 {
     public $config = [];
+}
+
+/**
+ * A Zend_Uri of a scheme Zend_Http_Client cannot work with
+ */
+class Zend_Http_Client_StaticTest_MailtoUri extends Zend_Uri
+{
+    public function __construct($scheme = 'mailto', $schemeSpecific = 'nobody@example.com')
+    {
+        $this->_scheme = $scheme;
+    }
+
+    public function getUri()
+    {
+        return 'mailto:nobody@example.com';
+    }
+
+    public function valid()
+    {
+        return true;
+    }
 }

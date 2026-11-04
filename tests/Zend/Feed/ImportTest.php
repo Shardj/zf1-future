@@ -319,7 +319,7 @@ class Zend_Feed_ImportTest extends TestCase
     public function testImportInvalidIsXdebugAware()
     {
         if (!function_exists('xdebug_is_enabled')) {
-            $this->markTestIncomplete('XDebug not installed');
+            $this->markTestSkipped('XDebug not installed');
         }
 
         $response = new Zend_Http_Response(200, [], '');

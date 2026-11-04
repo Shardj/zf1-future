@@ -2530,14 +2530,6 @@ class Zend_Form_FormTest extends TestCase
         $this->assertEquals(array_keys($data), array_keys($return), var_export($return, 1));
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testPersistDataStoresDataInSession()
-    {
-        $this->markTestIncomplete('Zend_Form does not implement session storage at this time');
-    }
-
     public function testCanCheckIfErrorsAreRegistered()
     {
         $this->assertFalse($this->form->hasErrors());
@@ -3349,30 +3341,6 @@ class Zend_Form_FormTest extends TestCase
         $this->assertTrue(empty($text));
         $this->assertTrue(isset($this->error));
         $this->assertStringContainsString('Raising exception in decorator callback', $this->error);
-    }
-
-    /**
-     * ZF-2718
-     */
-    public function testHiddenElementsGroupedWhenRendered()
-    {
-        $this->markTestIncomplete('Scheduling for future release');
-        $this->form->addElements([
-            ['type' => 'hidden', 'name' => 'first', 'options' => ['value' => 'first value']],
-            ['type' => 'text', 'name' => 'testone'],
-            ['type' => 'hidden', 'name' => 'second', 'options' => ['value' => 'second value']],
-            ['type' => 'text', 'name' => 'testtwo'],
-            ['type' => 'hidden', 'name' => 'third', 'options' => ['value' => 'third value']],
-            ['type' => 'text', 'name' => 'testthree'],
-        ]);
-        $html = $this->form->render($this->getView());
-        if (!preg_match('#(<input type="hidden" name="[^>].*>\s*){3}#', $html, $matches)) {
-            $this->fail('Hidden elements should be grouped');
-        }
-        foreach (['first', 'second', 'third'] as $which) {
-            $this->assertMatchesRegularExpression('#<input[^]*name="' . $which . '"#', $matches[0]);
-            $this->assertMatchesRegularExpression('#<input[^]*value="' . $which . ' value"#', $matches[0]);
-        }
     }
 
     // Localization

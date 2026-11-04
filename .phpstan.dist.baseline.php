@@ -4262,12 +4262,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlite.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Adapter_Pdo_Sqlite::__construct() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlite.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_Db_Adapter_Abstract::__construct() (void) is used.',
 	'identifier' => 'staticMethod.void',
 	'count' => 1,
@@ -19028,12 +19022,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Server/Reflection/Method.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Server_Reflection_Node::__construct() with return type void returns $this(Zend_Server_Reflection_Node) but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Node.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using !== between null and mixed will always evaluate to true.',

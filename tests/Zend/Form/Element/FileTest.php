@@ -207,11 +207,24 @@ class Zend_Form_Element_FileTest extends TestCase
 
     public function testValidationShouldProxyToAdapter()
     {
-        $this->markTestIncomplete('Unsure how to accurately test');
+        // the mock adapter reports the file "foo" with the temporary name /tmp/489127ba5c89c
+        $adapter = new Zend_Form_Element_FileTest_MockAdapter();
+        $this->element->setTransferAdapter($adapter);
+        $this->element->addValidator('Regex', false, '/([a-z0-9]{13})$/i');
 
-        $this->element->setTransferAdapter(new Zend_Form_Element_FileTest_MockAdapter());
-        $this->element->addValidator('Regex', '/([a-z0-9]{13})$/i');
+        $this->assertInstanceOf('Zend_Validate_Regex', $adapter->getValidator('Regex'));
         $this->assertTrue($this->element->isValid('foo.jpg'));
+        $this->assertSame([], $this->element->getMessages());
+    }
+
+    public function testValidationFailureOfTheAdapterIsReportedByTheElement()
+    {
+        $adapter = new Zend_Form_Element_FileTest_MockAdapter();
+        $this->element->setTransferAdapter($adapter);
+        $this->element->addValidator('Regex', false, '/^nomatch$/');
+
+        $this->assertFalse($this->element->isValid('foo.jpg'));
+        $this->assertArrayHasKey('regexNotMatch', $this->element->getMessages());
     }
 
     public function testDestinationMutatorsShouldProxyToTransferAdapter()
