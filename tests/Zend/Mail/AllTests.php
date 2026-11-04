@@ -43,6 +43,7 @@ require_once 'Zend/Mail/InterfaceTest.php';
 require_once 'Zend/Mail/MessageTest.php';
 require_once 'Zend/Mail/SmtpOfflineTest.php';
 require_once 'Zend/Mail/SmtpProtocolTest.php';
+require_once 'Zend/Mail/Xoauth2Test.php';
 require_once 'Zend/Mail/SmtpTest.php';
 require_once 'Zend/Mail/FileTransportTest.php';
 
@@ -86,6 +87,7 @@ class Zend_Mail_AllTests
         }
         $suite->addTestSuite('Zend_Mail_SmtpOfflineTest');
         $suite->addTestSuite('Zend_Mail_SmtpProtocolTest');
+        $suite->addTestSuite('Zend_Mail_Xoauth2Test');
         if (defined('TESTS_ZEND_MAIL_SMTP_ENABLED') && constant('TESTS_ZEND_MAIL_SMTP_ENABLED') == true) {
             $suite->addTestSuite('Zend_Mail_SmtpTest');
         }

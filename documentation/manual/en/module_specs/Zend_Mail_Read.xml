@@ -179,6 +179,21 @@ $mail = new Zend_Mail_Storage_Pop3(array('host'     => 'example.com',
 ]]></programlisting>
 
         <para>
+            Gmail and Microsoft 365 expect an OAuth 2.0 access token instead of a password
+            (XOAUTH2). Pass it as 'accessToken'; the application has to obtain and refresh the
+            token itself. The protocol classes offer the same through
+            <methodname>Zend_Mail_Protocol_Imap::authenticateXoauth2()</methodname> and
+            <methodname>Zend_Mail_Protocol_Pop3::authenticateXoauth2()</methodname>.
+        </para>
+
+        <programlisting language="php"><![CDATA[
+$mail = new Zend_Mail_Storage_Imap(array('host'        => 'imap.gmail.com',
+                                         'ssl'         => 'SSL',
+                                         'user'        => 'alice@gmail.com',
+                                         'accessToken' => $accessToken));
+]]></programlisting>
+
+        <para>
             Both constructors can throw <classname>Zend_Mail_Exception</classname> or
             <classname>Zend_Mail_Protocol_Exception</classname> (extends
             <classname>Zend_Mail_Exception</classname>), depending on the type of error.
