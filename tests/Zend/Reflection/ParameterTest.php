@@ -74,9 +74,43 @@ class Zend_Reflection_ParameterTest extends TestCase
      */
     public function testTypeReturn($param, $type)
     {
-        $this->markTestSkipped('TypeError: Zend_Reflection_Parameter::getType(): Return value must be of type ?ReflectionType, string returned');
         $parameter = new Zend_Reflection_Parameter(['Zend_Reflection_TestSampleClass5', 'doSomething'], $param);
-        $this->assertEquals($parameter->getType(), $type);
+        $this->assertEquals($type, $parameter->getDocblockType());
+        // the parameters are not declared with a type
+        $this->assertNull($parameter->getType());
+    }
+
+    public function testDocblockTypeIsNullWithoutDocblock()
+    {
+        $parameter = new Zend_Reflection_Parameter(['Zend_Reflection_TestSampleClass2', 'getProp2'], 'param1');
+        $this->assertNull($parameter->getDocblockType());
+    }
+
+    public function testTypeReturnsTheDeclaredType()
+    {
+        $parameter = new Zend_Reflection_Parameter(['Zend_Reflection_TestSampleClass2', 'getProp2'], 'param2');
+        $type = $parameter->getType();
+        $this->assertInstanceOf('ReflectionNamedType', $type);
+        $this->assertEquals('Zend_Reflection_TestSampleClass', $type->getName());
+    }
+
+    public function testClassReturnReflectsTheDeclaredClass()
+    {
+        $parameter = new Zend_Reflection_Parameter(['Zend_Reflection_TestSampleClass2', 'getProp2'], 'param2');
+        $this->assertEquals('Zend_Reflection_TestSampleClass', $parameter->getClass()->getName());
+    }
+
+    public function testClassReturnIsNullForAScalarType()
+    {
+        $parameter = new Zend_Reflection_Parameter(['Zend_Reflection_ParameterTest_Typed', 'typed'], 'number');
+        $this->assertNull($parameter->getClass());
+        $this->assertEquals('int', $parameter->getType()->getName());
+    }
+
+    public function testClassReturnResolvesSelf()
+    {
+        $parameter = new Zend_Reflection_Parameter(['Zend_Reflection_ParameterTest_Typed', 'typed'], 'other');
+        $this->assertEquals('Zend_Reflection_ParameterTest_Typed', $parameter->getClass()->getName());
     }
 
     public function paramTypeTestProvider()
@@ -86,5 +120,12 @@ class Zend_Reflection_ParameterTest extends TestCase
             ['two', 'int'],
             ['three', 'string'],
         ];
+    }
+}
+
+class Zend_Reflection_ParameterTest_Typed
+{
+    public function typed(int $number, self $other)
+    {
     }
 }
