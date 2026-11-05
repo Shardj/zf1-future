@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Filter_Encrypt_Openssl works with OpenSSL 3: the content is sealed with the cipher of the new `cipher` option (default `aes-256-cbc`, IV in front of the sealed content) instead of RC4, which OpenSSL 3 no longer provides; `'cipher' => 'rc4'` reads content of earlier versions where RC4 is available. The `compression` option no longer ends up in the key list. Zend_Filter_Encrypt / Zend_Filter_Decrypt default to the Openssl adapter instead of the deprecated Mcrypt one. See BREAKING-CHANGES.md.
 * Zend_OpenId_Consumer_Storage_File::purgeNonces() with a date string purges the nonces older than that date; it used the current time instead (the `time($date)` of PHP 5 ignored the argument, PHP 8 rejects it), so every nonce was purged. A string that is not a date purges nothing.
 * Zend_Queue_Stomp_Client_Connection::read() no longer passes an empty read of the non-blocking socket to ord(), which PHP 8.5 reports as deprecated.
 * Zend_Validate_Date: validating by locale without a format no longer triggers "Passing null to parameter" deprecations (PHP 8.1+) for an invalid date; the format check handled the null format with strpos()/strtoupper().
