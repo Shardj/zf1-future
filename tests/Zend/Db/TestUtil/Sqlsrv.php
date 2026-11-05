@@ -46,9 +46,12 @@ class Zend_Db_TestUtil_Sqlsrv extends Zend_Db_TestUtil_Common
             'dbname' => 'TESTS_ZEND_DB_ADAPTER_SQLSRV_DATABASE',
         ];
 
-        $constants = parent::getParams($constants);
+        $params = parent::getParams($constants);
 
-        return $constants;
+        // the test servers have self-signed certificates
+        $params['driver_options']['TrustServerCertificate'] = 'true';
+
+        return $params;
     }
 
     public function getSqlType($type)

@@ -1,0 +1,118 @@
+name: Database drivers
+
+on: [push, pull_request]
+
+# Zend_Db tests of the drivers whose database servers are too heavy for the
+# PHPUnit workflow: SQL Server, Oracle and Db2, each in its own job
+jobs:
+  db-drivers:
+    name: Zend_Db on ${{ matrix.database }}
+
+    runs-on: ubuntu-24.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        database:
+          - sqlsrv
+          - oracle
+          - db2
+        include:
+          - database: sqlsrv
+            extensions: sqlsrv, pdo_sqlsrv, pdo_dblib
+          - database: oracle
+            extensions: oci8, pdo_oci
+          - database: db2
+            extensions: ibm_db2, pdo_ibm
+
+    env:
+      PHP_VERSION: "8.4"
+      PHP_EXTENSIONS: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, ctype, pdo"
+      PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, display_errors=On
+
+      DB_PASSWORD: "Zend_Test_2026"
+
+      TESTS_ZEND_DB_ADAPTER_SQLSRV_HOSTNAME: 127.0.0.1
+      TESTS_ZEND_DB_ADAPTER_SQLSRV_USERNAME: sa
+      TESTS_ZEND_DB_ADAPTER_SQLSRV_PASSWORD: "Zend_Test_2026"
+      TESTS_ZEND_DB_ADAPTER_SQLSRV_DATABASE: zftest
+      TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_HOSTNAME: 127.0.0.1
+      TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_USERNAME: sa
+      TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PASSWORD: "Zend_Test_2026"
+      TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_DATABASE: zftest
+      TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PDOTYPE: dblib
+
+      TESTS_ZEND_DB_ADAPTER_ORACLE_HOSTNAME: 127.0.0.1
+      TESTS_ZEND_DB_ADAPTER_ORACLE_USERNAME: system
+      TESTS_ZEND_DB_ADAPTER_ORACLE_PASSWORD: "Zend_Test_2026"
+      TESTS_ZEND_DB_ADAPTER_ORACLE_SID: XE
+
+      TESTS_ZEND_DB_ADAPTER_DB2_HOSTNAME: 127.0.0.1
+      TESTS_ZEND_DB_ADAPTER_DB2_PORT: 50000
+      TESTS_ZEND_DB_ADAPTER_DB2_USERNAME: db2inst1
+      TESTS_ZEND_DB_ADAPTER_DB2_PASSWORD: "Zend_Test_2026"
+      TESTS_ZEND_DB_ADAPTER_DB2_DATABASE: zftest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Provider config base on env for integrate test
+        run: cp tests/TestConfiguration.env.php tests/TestConfiguration.php
+
+      - name: Start SQL Server
+        if: matrix.database == 'sqlsrv'
+        run: |
+          docker run -d --name db -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD="$DB_PASSWORD" -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+          for i in $(seq 1 60); do
+            docker exec db /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P "$DB_PASSWORD" -Q "SELECT 1" > /dev/null 2>&1 && break
+            sleep 2
+          done
+          docker exec db /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P "$DB_PASSWORD" -Q "CREATE DATABASE zftest"
+          echo "TESTS_ZEND_DB_ADAPTER_SQLSRV_ENABLED=true" >> $GITHUB_ENV
+          echo "TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_ENABLED=true" >> $GITHUB_ENV
+
+      - name: Start Oracle
+        if: matrix.database == 'oracle'
+        run: |
+          docker run -d --name db -e ORACLE_PASSWORD="$DB_PASSWORD" -p 1521:1521 gvenzl/oracle-xe:21-slim-faststart
+          for i in $(seq 1 90); do
+            docker logs db 2>&1 | grep -q "DATABASE IS READY TO USE" && break
+            sleep 5
+          done
+          docker logs db 2>&1 | tail -5
+          # the native adapter connects by the SID as a TNS name
+          mkdir -p "$HOME/tns"
+          echo "XE=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SID=XE)))" > "$HOME/tns/tnsnames.ora"
+          echo "TNS_ADMIN=$HOME/tns" >> $GITHUB_ENV
+          echo "TESTS_ZEND_DB_ADAPTER_ORACLE_ENABLED=true" >> $GITHUB_ENV
+          echo "TESTS_ZEND_DB_ADAPTER_PDO_OCI_ENABLED=true" >> $GITHUB_ENV
+
+      - name: Start Db2
+        if: matrix.database == 'db2'
+        run: |
+          docker run -d --name db --privileged -e LICENSE=accept -e DB2INSTANCE=db2inst1 -e DB2INST1_PASSWORD="$DB_PASSWORD" -e DBNAME=zftest -e ARCHIVE_LOGS=false -e AUTOCONFIG=false -p 50000:50000 icr.io/db2_community/db2:latest
+          for i in $(seq 1 120); do
+            docker logs db 2>&1 | grep -q "Setup has completed" && break
+            sleep 5
+          done
+          docker logs db 2>&1 | tail -5
+          echo "TESTS_ZEND_DB_ADAPTER_DB2_ENABLED=true" >> $GITHUB_ENV
+          echo "TESTS_ZEND_DB_ADAPTER_PDO_IBM_ENABLED=true" >> $GITHUB_ENV
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: ${{ env.PHP_EXTENSIONS }}, ${{ matrix.extensions }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
+        env:
+          fail-fast: true
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Run the Zend_Db tests
+        run: |
+          printf "<?php\ndefine('PHPUnit_MAIN_METHOD', 'none');\nrequire '%s/tests/TestHelper.php';\n" "$PWD" > /tmp/bootstrap.php
+          bin/phpunit --bootstrap /tmp/bootstrap.php tests/Zend/Db/AllTests.php
