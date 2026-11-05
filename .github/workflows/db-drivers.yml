@@ -32,7 +32,7 @@ jobs:
 
       DB_PASSWORD: "Zend_Test_2026"
 
-      TESTS_ZEND_DB_ADAPTER_SQLSRV_HOSTNAME: 127.0.0.1
+      TESTS_ZEND_DB_ADAPTER_SQLSRV_HOSTNAME: localhost
       TESTS_ZEND_DB_ADAPTER_SQLSRV_USERNAME: sa
       TESTS_ZEND_DB_ADAPTER_SQLSRV_PASSWORD: "Zend_Test_2026"
       TESTS_ZEND_DB_ADAPTER_SQLSRV_DATABASE: zftest
@@ -63,9 +63,9 @@ jobs:
       - name: Start SQL Server
         if: matrix.database == 'sqlsrv'
         run: |
-          # a certificate for 127.0.0.1, trusted by the runner, as the ODBC driver encrypts by default
+          # a certificate for localhost, trusted by the runner, as the ODBC driver encrypts by default
           mkdir -p /tmp/mssql
-          openssl req -x509 -newkey rsa:2048 -nodes -days 2 -subj /CN=127.0.0.1 -addext "subjectAltName=IP:127.0.0.1,DNS:localhost" -keyout /tmp/mssql/key.pem -out /tmp/mssql/cert.pem
+          openssl req -x509 -newkey rsa:2048 -nodes -days 2 -subj /CN=localhost -addext "subjectAltName=DNS:localhost,IP:127.0.0.1" -keyout /tmp/mssql/key.pem -out /tmp/mssql/cert.pem
           chmod 644 /tmp/mssql/key.pem /tmp/mssql/cert.pem
           sudo cp /tmp/mssql/cert.pem /usr/local/share/ca-certificates/zf-mssql.crt
           sudo update-ca-certificates
