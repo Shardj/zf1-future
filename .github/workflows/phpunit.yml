@@ -6,7 +6,7 @@ jobs:
   phpunit:
     name: Tests on PHP ${{ matrix.php-version }}${{ matrix.experimental && ' (experimental)' || '' }}
 
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     # A failing experimental job (including PHP or extension setup) does not fail the workflow
     continue-on-error: ${{ matrix.experimental }}
