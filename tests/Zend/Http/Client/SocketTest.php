@@ -167,24 +167,37 @@ class Zend_Http_Client_SocketTest extends Zend_Http_Client_CommonHttpTests
 
     public function testSetHttpsStreamContextParam()
     {
-        if ($this->client->getUri()->getScheme() != 'https') {
-            $this->markTestSkipped();
-        }
+        $this->_requireHttpsBaseUri();
 
         $adapter = new $this->config['adapter']();
         $adapter->setStreamContext([
             'ssl' => [
-                'capture_peer_cert' => true,
-                'capture_peer_chain' => true
+                'capture_peer_cert'  => true,
+                'capture_peer_chain' => true,
+                'verify_peer'        => false,
+                'verify_peer_name'   => false,
             ]
         ]);
 
         $this->client->setAdapter($adapter);
-        $this->client->setUri($this->baseuri . '/testSimpleRequests.php');
+        $this->client->setUri(TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI . 'testSimpleRequests.php');
         $this->client->request();
 
         $opts = stream_context_get_options($adapter->getStreamContext());
         $this->assertTrue(isset($opts['ssl']['peer_certificate']));
+    }
+
+    /**
+     * The HTTPS tests need TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI and ext/openssl
+     */
+    protected function _requireHttpsBaseUri()
+    {
+        if (!defined('TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI') || !TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI) {
+            $this->markTestSkipped('TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI is not set in TestConfiguration.php');
+        }
+        if (!extension_loaded('openssl')) {
+            $this->markTestSkipped('HTTPS requests need the openssl extension');
+        }
     }
 
     /**

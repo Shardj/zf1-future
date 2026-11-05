@@ -103,7 +103,7 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
             'proxy_host' => null,
         ]);
 
-        $this->client->setUri($this->baseuri . 'testGetLastRequest.php');
+        $this->client->setUri($this->baseuri . 'testHeaders.php');
         $res = $this->client->request(Zend_Http_Client::TRACE);
         if ($res->getStatus() == 405 || $res->getStatus() == 501) {
             $this->markTestSkipped("Server does not allow the TRACE method");
@@ -129,13 +129,15 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      */
     public function testConnectHandshakeSendsCustomUserAgentHeader()
     {
+        $this->_requireHttpsBaseUri();
+
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         $this->config['useragent'] = 'ZendTest';
         parent::set_up();
         
-        $base = preg_replace("/^http:/", "https:", $this->baseuri);
-        $this->client->setUri($base . 'testSimpleRequests.php');
+        $this->_trustAnyCertificate();
+        $this->client->setUri(TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI . 'testSimpleRequests.php');
 
         // Ensure we're proxying a HTTPS request
         $this->assertEquals('https', $this->client->getUri()->getScheme());
@@ -154,12 +156,14 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      */
     public function testConnectHandshakeSendsCustomUserAgentHeaderWhenSetInHeaders()
     {
+        $this->_requireHttpsBaseUri();
+
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         parent::set_up();
         
-        $base = preg_replace("/^http:/", "https:", $this->baseuri);
-        $this->client->setUri($base . 'testSimpleRequests.php');
+        $this->_trustAnyCertificate();
+        $this->client->setUri(TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI . 'testSimpleRequests.php');
         $this->client->setHeaders('User-Agent', 'ZendTest');
 
         // Ensure we're proxying a HTTPS request
@@ -167,7 +171,6 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         
         // Perform the request
         $this->client->request();
-        print_r($this->client->getAdapter()->getLastConnectHandshakeRequest());
         $this->assertMatchesRegularExpression(
             "/\r\nUser-Agent: ZendTest\r\n/i",
             $this->client->getAdapter()->getLastConnectHandshakeRequest()
@@ -179,12 +182,14 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
      */
     public function testProxyAdapterDoesNotOverwriteExistingProxyAuthorizationHeader()
     {
+        $this->_requireHttpsBaseUri();
+
         // Change the adapter
         $this->config['adapter'] = 'ZF3189_ProxyAdapter';
         parent::set_up();
         
-        $base = preg_replace("/^http:/", "https:", $this->baseuri);
-        $this->client->setUri($base . 'testSimpleRequests.php');
+        $this->_trustAnyCertificate();
+        $this->client->setUri(TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI . 'testSimpleRequests.php');
         $this->client->setHeaders('Proxy-Authorization', 'FooBarBaz');
 
         // Ensure we're proxying a HTTPS request
@@ -192,11 +197,40 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         
         // Perform the request
         $this->client->request();
-        print_r($this->client->getAdapter()->getLastConnectHandshakeRequest());
         
         $resp = $this->client->getAdapter()->getLastConnectHandshakeRequest();
         $this->assertEquals(1, preg_match_all('/\r\nProxy-Authorization: ([^\r\n]+)\r\n/i', $resp, $matches));
         $this->assertEquals('FooBarBaz', $matches[1][0]);
+    }
+
+    /**
+     * The proxy forwards one of the two Content-Length headers of the response
+     *
+     * @link http://framework.zend.com/issues/browse/ZF-9404
+     */
+    public function testZF9404DoubleContentLengthHeader()
+    {
+        $this->client->setUri($this->baseuri . 'ZF9404-doubleContentLength.php');
+        $expect = filesize(dirname(realpath(__FILE__)) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'ZF9404-doubleContentLength.php');
+
+        $response = $this->client->request();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertEquals($expect, $response->getHeader('content-length'));
+        $this->assertEquals($expect, strlen($response->getBody()));
+    }
+
+    /**
+     * The HTTPS test server has a self-signed certificate
+     */
+    protected function _trustAnyCertificate()
+    {
+        $this->client->getAdapter()->setStreamContext([
+            'ssl' => [
+                'verify_peer'      => false,
+                'verify_peer_name' => false,
+            ]
+        ]);
     }
 }
 

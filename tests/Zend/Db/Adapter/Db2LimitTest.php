@@ -27,6 +27,8 @@ class Zend_Db_Adapter_Db2LimitTest extends TestCase
 
     /**
      * @dataProvider limitProvider
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testDb2Limit($count, $offset, $expected)
     {
@@ -48,12 +50,20 @@ class Zend_Db_Adapter_Db2LimitTest extends TestCase
         $this->assertSame('SELECT z1.* FROM (SELECT * FROM t) z1 WHERE 1 = 0', $server->limit('SELECT * FROM t', 0));
     }
 
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testDb2LimitRejectsInvalidCount()
     {
         $this->expectException(Zend_Db_Adapter_Db2_Exception::class);
         $this->_getDb2Adapter()->limit('SELECT * FROM t', 0);
     }
 
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testDb2LimitRejectsNegativeOffset()
     {
         $this->expectException(Zend_Db_Adapter_Db2_Exception::class);
@@ -67,13 +77,24 @@ class Zend_Db_Adapter_Db2LimitTest extends TestCase
     }
 
     /**
+     * The adapter uses constants of the ibm_db2 extension; without it the tests
+     * define them, in a separate process so that no other test sees them.
+     *
      * @return Zend_Db_Adapter_Db2
      */
     protected function _getDb2Adapter()
     {
-        if (!extension_loaded('ibm_db2')) {
-            // the adapter uses constants of the extension
-            $this->markTestSkipped('The ibm_db2 extension is not loaded');
+        $constants = [
+            'DB2_AUTOCOMMIT_OFF' => 0,
+            'DB2_AUTOCOMMIT_ON'  => 1,
+            'DB2_CASE_NATURAL'   => 0,
+            'DB2_CASE_LOWER'     => 1,
+            'DB2_CASE_UPPER'     => 2,
+            'DB2_I5_NAMING_OFF'  => 0,
+            'DB2_I5_NAMING_ON'   => 1,
+        ];
+        foreach ($constants as $name => $value) {
+            defined($name) || define($name, $value);
         }
 
         return new Zend_Db_Adapter_Db2(['dbname' => 'test', 'username' => 'test', 'password' => 'test']);

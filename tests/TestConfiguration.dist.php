@@ -288,6 +288,12 @@ defined('TESTS_Zend_Feed_Pubsubhubbub_BASEURI') || define('TESTS_Zend_Feed_Pubsu
 defined('TESTS_ZEND_HTTP_CLIENT_BASEURI') || define('TESTS_ZEND_HTTP_CLIENT_BASEURI', false);
 
 /**
+ * URL of the same files over HTTPS, for the HTTPS tests of the Socket and Proxy
+ * adapters. The certificate is not verified, so a self-signed one does.
+ */
+defined('TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI') || define('TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI', false);
+
+/**
  * Zend_Http_Client_Proxy tests
  *
  * HTTP proxy to be used for testing the Proxy adapter. Set to a string of
@@ -725,15 +731,6 @@ defined('TESTS_ZEND_SERVICE_YAHOO_ONLINE_APPID') || define('TESTS_ZEND_SERVICE_Y
  * when having more than one version installed and include paths are changing.
  */
 defined('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI') || define('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI', false);
-
-/**
- * Zend_Version tests
- *
- * Set ONLINE_ENABLED if you wish to run validators that require network
- * connectivity.
- */
-defined('TESTS_ZEND_VERSION_ONLINE_ENABLED') || define('TESTS_ZEND_VERSION_ONLINE_ENABLED', false);
-
 
 /**
  * Zend_Validate tests

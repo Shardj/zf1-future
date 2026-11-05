@@ -42,6 +42,8 @@ jobs:
 
       # the files in tests/Zend/Http/Client/_files are served by PHP's built-in server (see below)
       TESTS_ZEND_HTTP_CLIENT_BASEURI: http://127.0.0.1:8085/
+      TESTS_ZEND_HTTP_CLIENT_HTTPS_BASEURI: https://127.0.0.1:8443/
+      TESTS_ZEND_HTTP_CLIENT_HTTP_PROXY: 127.0.0.1:8889
       TESTS_ZEND_FEED_PUBSUBHUBBUB_BASEURI: http://127.0.0.1:8085/
       # the XXE tests of Zend_Feed fetch their feeds and the entity from tests/Zend/Feed/_files
       TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI: http://127.0.0.1:8086/
@@ -206,6 +208,20 @@ jobs:
           sleep 1
           curl -sSf http://127.0.0.1:8085/testSimpleRequests.php > /dev/null
           curl -sSf http://127.0.0.1:8086/xxe-info.txt > /dev/null
+
+      # HTTPS in front of the Zend_Http_Client test files (self-signed certificate)
+      # and an HTTP proxy for the Proxy adapter tests
+      - name: Serve the Zend_Http_Client test files over HTTPS and through a proxy
+        run: |
+          sudo apt-get install -y socat tinyproxy
+          openssl req -x509 -newkey rsa:2048 -nodes -days 1 -subj /CN=127.0.0.1 -keyout /tmp/zf-key.pem -out /tmp/zf-cert.pem
+          cat /tmp/zf-key.pem /tmp/zf-cert.pem > /tmp/zf-server.pem
+          socat openssl-listen:8443,reuseaddr,fork,cert=/tmp/zf-server.pem,verify=0 tcp:127.0.0.1:8085 > /tmp/socat.log 2>&1 &
+          printf 'Port 8889\nListen 127.0.0.1\nAllow 127.0.0.1\nTimeout 60\nMaxClients 50\nLogFile "/tmp/tinyproxy.log"\n' > /tmp/tinyproxy.conf
+          tinyproxy -c /tmp/tinyproxy.conf
+          sleep 1
+          curl -sSfk https://127.0.0.1:8443/testSimpleRequests.php > /dev/null
+          curl -sSf -x http://127.0.0.1:8889 http://127.0.0.1:8085/testSimpleRequests.php > /dev/null
 
       - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }}) with minimal extensions"
         run: |

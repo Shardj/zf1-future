@@ -605,20 +605,6 @@ class Zend_Controller_Router_RewriteTest extends TestCase
         $this->assertEquals('http://www.zend.com/bar', $this->_router->assemble([], 'foo-bar'));
     }
 
-    public function testAssemblingWithNonFirstHostname()
-    {
-        $this->markTestSkipped('Router features not ready');
-
-        $foo = new Zend_Controller_Router_Route_Static('bar');
-        $bar = new Zend_Controller_Router_Route_Hostname('www.zend.com');
-
-        $foo->chain($bar);
-
-        $this->_router->addRoute('foo-bar', $foo);
-
-        $this->assertEquals('bar/www.zend.com', $this->_router->assemble([], 'foo-bar'));
-    }
-
     /**
      * @see ZF-3922
      */
