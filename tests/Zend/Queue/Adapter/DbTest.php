@@ -108,12 +108,6 @@ class Zend_Queue_Adapter_DbTest extends Zend_Queue_Adapter_AdapterTest
         ];
     }
 
-    // test the constants
-    public function testConst()
-    {
-        $this->markTestSkipped('no constants to test');
-    }
-
     // additional non-standard tests
 
     public function test_constructor2()

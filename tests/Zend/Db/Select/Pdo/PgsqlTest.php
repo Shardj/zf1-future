@@ -20,12 +20,10 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Db_Select_TestCommon
  */
 require_once 'Zend/Db/Select/TestCommon.php';
-
 
 /**
  * @category   Zend
@@ -54,16 +52,6 @@ class Zend_Db_Select_Pdo_PgsqlTest extends Zend_Db_Select_TestCommon
                             ->from('zfproducts')
                             ->where($product_name . ' = ?', "as'as:x");
         return $select;
-    }
-
-    public function testSelectGroupByExpr()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support expressions in GROUP BY');
-    }
-
-    public function testSelectGroupByAutoExpr()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support expressions in GROUP BY');
     }
 
     /**

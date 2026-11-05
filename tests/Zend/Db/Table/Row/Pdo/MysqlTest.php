@@ -37,9 +37,12 @@ require_once 'Zend/Db/Table/Row/TestCommon.php';
  */
 class Zend_Db_Table_Row_Pdo_MysqlTest extends Zend_Db_Table_Row_TestCommon
 {
+    /**
+     * The driver has no sequences
+     */
     public function testTableRowSaveInsertSequence()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support sequences');
+        $this->_testTableRowSaveInsertWithoutSequence();
     }
 
     public function getDriver()

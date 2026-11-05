@@ -280,26 +280,53 @@ class Zend_View_Helper_Navigation_SitemapTest extends Zend_View_Helper_Navigatio
 
     public function testUseSchemaValidation()
     {
-        $this->markTestSkipped('Skipped because it fetches XSD from web');
-        return;
         $nav = clone $this->_nav2;
         $this->_helper->setUseSitemapValidators(false);
         $this->_helper->setUseSchemaValidation(true);
         $nav->addPage(['label' => 'Invalid', 'uri' => 'http://w.']);
 
+        $this->_useLocalSitemapXsd();
         try {
             $this->_helper->render($nav);
+            $this->fail('A Zend_View_Exception was not thrown when using Schema validation');
         } catch (Zend_View_Exception $e) {
             $expected = sprintf(
                 'Sitemap is invalid according to XML Schema at "%s"',
                 Zend_View_Helper_Navigation_Sitemap::SITEMAP_XSD
             );
-            $actual = $e->getMessage();
-            $this->assertEquals($expected, $actual);
-            return;
+            $this->assertEquals($expected, $e->getMessage());
+        } finally {
+            libxml_set_external_entity_loader(null);
+        }
+    }
+
+    public function testValidSitemapPassesSchemaValidation()
+    {
+        $this->_helper->setUseSchemaValidation(true);
+
+        $this->_useLocalSitemapXsd();
+        try {
+            $dom = $this->_helper->getDomSitemap();
+        } finally {
+            libxml_set_external_entity_loader(null);
         }
 
-        $this->fail('A Zend_View_Exception was not thrown when using Schema validation');
+        $this->assertInstanceOf('DOMDocument', $dom);
+    }
+
+    /**
+     * Loads the sitemap schema from the local copy instead of sitemaps.org
+     */
+    protected function _useLocalSitemapXsd()
+    {
+        $xsd = dirname(__FILE__) . '/_files/sitemap.xsd';
+        libxml_set_external_entity_loader(function ($public, $system, $context) use ($xsd) {
+            if ($system === Zend_View_Helper_Navigation_Sitemap::SITEMAP_XSD) {
+                return $xsd;
+            }
+
+            return $system;
+        });
     }
 
     /**

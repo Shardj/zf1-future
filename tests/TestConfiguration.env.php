@@ -91,14 +91,6 @@ defined('TESTS_ZEND_CLOUD_STORAGE_WINDOWSAZURE_CONTAINER') || define('TESTS_ZEND
 
 
 /**
- * Zend_Controller
- *
- * TESTS_ZEND_CONTROLLER_DISPATCHER_OB => test disabling output buffering in
- *                                        dispatcher
- */
-defined('TESTS_ZEND_CONTROLLER_DISPATCHER_OB') || define('TESTS_ZEND_CONTROLLER_DISPATCHER_OB', getenv('TESTS_ZEND_CONTROLLER_DISPATCHER_OB') ?: false);
-
-/**
  * Zend_Db_Adapter_Pdo_Mysql and Zend_Db_Adapter_Mysqli
  *
  * There are separate properties to enable tests for the PDO_MYSQL adapter and
@@ -335,41 +327,6 @@ defined('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_DATA_FILE') || define('TESTS_ZEND
  * detection against TeraWurfl
  */
 defined('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR') || define('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR', getenv('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR') ?: false);
-
-/**
- * Zend_Loader_Autoloader multi-version support tests
- *
- * ENABLED:      whether or not to run the multi-version tests
- * PATH:         path to a directory containing multiple ZF version installs
- * LATEST:       most recent ZF version in the PATH
- *               e.g., "1.9.2"
- * LATEST_MAJOR: most recent ZF major version in the PATH to test against
- *               e.g., "1.9.2"
- * LATEST_MINOR: most recent ZF minor version in the PATH to test against
- *               e.g., "1.8.4PL1"
- * SPECIFIC:     specific ZF version in the PATH to test against
- *               e.g., "1.7.6"
- * As an example, consider the following tree:
- *     ZendFramework/
- *     |-- 1.9.2
- *     |-- ZendFramework-1.9.1-minimal
- *     |-- 1.8.4PL1
- *     |-- 1.8.4
- *     |-- ZendFramework-1.8.3
- *     |-- 1.7.8
- *     |-- 1.7.7
- *     |-- 1.7.6
- * You would then set the value of "LATEST" and "LATEST_MAJOR" to "1.9.2", and
- * could choose between "1.9.2", "1.8.4PL1", and "1.7.8" for "LATEST_MINOR",
- * and any version number for "SPECIFIC". "PATH" would point to the parent
- * "ZendFramework" directory.
- */
-defined('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_ENABLED') || define('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_ENABLED', getenv('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_ENABLED') ?: false);
-defined('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_PATH') || define('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_PATH', getenv('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_PATH') ?: false);
-defined('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST') || define('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST', getenv('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST') ?: false);
-defined('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MAJOR') || define('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MAJOR', getenv('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MAJOR') ?: false);
-defined('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MINOR') || define('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MINOR', getenv('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MINOR') ?: false);
-defined('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_SPECIFIC') || define('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_SPECIFIC', getenv('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_SPECIFIC') ?: false);
 
 /**
  * Zend_Ldap online tests
@@ -811,17 +768,6 @@ defined('TESTS_ZEND_SERVICE_YAHOO_ONLINE_APPID') || define('TESTS_ZEND_SERVICE_Y
  * when having more than one version installed and include paths are changing.
  */
 defined('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI') || define('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI', getenv('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI') ?: false);
-
-/**
- * Zend_Uri tests
- *
- * Setting CRASH_TEST_ENABLED to true will enable some tests that may
- * potentially crash PHP on some systems, due to very deep-nesting regular
- * expressions.
- *
- * Only do this if you know what you are doing!
- */
-defined('TESTS_ZEND_URI_CRASH_TEST_ENABLED') || define('TESTS_ZEND_URI_CRASH_TEST_ENABLED', getenv('TESTS_ZEND_URI_CRASH_TEST_ENABLED') ?: false);
 
 /**
  * Zend_Version tests

@@ -489,14 +489,9 @@ class Zend_Application_ApplicationTest extends TestCase
 
     public function testPassingZfVersionAutoloaderInformationConfiguresAutoloader()
     {
-        if (!constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_ENABLED')) {
-            $this->markTestSkipped();
-        }
-        if (!constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST')) {
-            $this->markTestSkipped();
-        }
-        $path = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_PATH');
-        $latest = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST');
+        // directories named like ZF installations, see Zend_Loader_AutoloaderMultiVersionTest
+        $path = dirname(__FILE__) . '/../Loader/_files/MultiVersion';
+        $latest = '1.9.2';
 
         $application = new Zend_Application('production', [
             'autoloaderZfPath' => $path,

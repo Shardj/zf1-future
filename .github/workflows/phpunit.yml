@@ -12,7 +12,7 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
 
     env:
-      PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On, register_argc_argv=On
+      PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On, register_argc_argv=On, browscap=${{ github.workspace }}/tests/Zend/Http/UserAgent/_files/browscap.ini
 
       TESTS_ZEND_DB_ADAPTER_PDO_MYSQL_ENABLED: true
       TESTS_ZEND_DB_ADAPTER_MYSQLI_ENABLED: true
