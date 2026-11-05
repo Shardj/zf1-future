@@ -220,9 +220,66 @@ INPUT;
         }
     }
 
-    public function testStatementGetColumnMeta()
+    public function testStatementGetColumnMetaDescribesTheColumns()
     {
-        $this->markTestIncomplete($this->getDriver() . ' has not implemented getColumnMeta() yet [ZF-1424]');
+        $stmt = $this->_db->query('SELECT b.bug_id, b.bug_description FROM zfbugs AS b');
+
+        $id = $stmt->getColumnMeta(0);
+        $this->assertSame('bug_id', $id['name']);
+        $this->assertSame('b', $id['table']);
+        $this->assertSame('LONG', $id['native_type']);
+        $this->assertContains('not_null', $id['flags']);
+        $this->assertContains('primary_key', $id['flags']);
+        $this->assertSame(0, $id['precision']);
+        $this->assertSame(Zend_Db::PARAM_INT, $id['pdo_type']);
+
+        $description = $stmt->getColumnMeta(1);
+        $this->assertSame('bug_description', $description['name']);
+        $this->assertSame('VAR_STRING', $description['native_type']);
+        $this->assertSame([], $description['flags']);
+        $this->assertSame(Zend_Db::PARAM_STR, $description['pdo_type']);
+
+        $stmt->closeCursor();
+    }
+
+    public function testStatementGetColumnMetaWithoutSuchColumn()
+    {
+        $stmt = $this->_db->query('SELECT bug_id FROM zfbugs');
+        $this->assertFalse($stmt->getColumnMeta(1));
+        $this->assertFalse($stmt->getColumnMeta(-1));
+        $stmt->closeCursor();
+
+        $stmt = $this->_db->query('UPDATE zfbugs SET bug_status = bug_status WHERE bug_id = 1');
+        $this->assertFalse($stmt->getColumnMeta(0));
+    }
+
+    /**
+     * The metadata has the format of pdo_mysql; pdo_type differs before PHP 8.1,
+     * where pdo_mysql fetches integers as strings
+     */
+    public function testStatementGetColumnMetaMatchesPdoMysql()
+    {
+        if (!extension_loaded('pdo_mysql')) {
+            $this->markTestSkipped('Comparing with pdo_mysql requires the pdo_mysql extension');
+        }
+
+        $sql = 'SELECT p.*, 1 AS one, 1.5 AS half, NOW() AS now, NULL AS nothing FROM zfproducts AS p';
+        $pdo = Zend_Db::factory('Pdo_Mysql', $this->_util->getParams());
+
+        $mysqliStmt = $this->_db->query($sql);
+        $pdoStmt    = $pdo->query($sql);
+        $this->assertSame($pdoStmt->columnCount(), $mysqliStmt->columnCount());
+        for ($i = 0; $i < $pdoStmt->columnCount(); ++$i) {
+            $expected = $pdoStmt->getColumnMeta($i);
+            $actual   = $mysqliStmt->getColumnMeta($i);
+            if (PHP_VERSION_ID < 80100) {
+                unset($expected['pdo_type'], $actual['pdo_type']);
+            }
+            $this->assertEquals($expected, $actual, "Column $i");
+        }
+        $mysqliStmt->closeCursor();
+        $pdoStmt->closeCursor();
+        $pdo->closeConnection();
     }
 
     /**
