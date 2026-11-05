@@ -144,14 +144,4 @@ class Zend_Serializer_Adapter_PhpCodeTest extends TestCase
             $this->assertEquals($expected, $data);
         }
     */
-
-    public function testUnserialzeInvalid()
-    {
-        if (version_compare(phpversion(), '7', '>=')) {
-            $this->markTestSkipped('Evaling of invalid input is PHP Parse error in PHP7+');
-        }
-        $value = 'not a serialized string';
-        $this->expectException('Zend_Serializer_Exception');
-        $this->_adapter->unserialize($value);
-    }
 }

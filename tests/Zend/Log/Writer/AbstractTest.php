@@ -58,21 +58,6 @@ class Zend_Log_Writer_AbstractTest extends TestCase
         $this->_writer = new Zend_Log_Writer_AbstractTest_Concrete();
     }
 
-    /**
-     * @group ZF-6085
-     */
-    public function testSetFormatter()
-    {
-        if (version_compare(phpversion(), '7', '>=')) {
-            $this->markTestSkipped('Invalid typehinting is PHP Fatal error in PHP7+');
-        }
-
-        require_once 'Zend/Log/Formatter/Simple.php';
-        $this->_writer->setFormatter(new Zend_Log_Formatter_Simple());
-        $this->expectException('PHPUnit_Framework_Error');
-        $this->_writer->setFormatter(new StdClass());
-    }
-
     public function testAddFilter()
     {
         $this->_writer->addFilter(1);

@@ -81,6 +81,26 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
     }
 
     /**
+     * flush() reports false as soon as one server of the pool is unreachable,
+     * so the whole-cache cleaning is tested with the reachable server only
+     */
+    public function testCleanModeAll()
+    {
+        $instance = new Zend_Cache_Backend_Memcached(['servers' => [[
+            'host'       => TESTS_ZEND_CACHE_MEMCACHED_HOST,
+            'port'       => TESTS_ZEND_CACHE_MEMCACHED_PORT,
+            'persistent' => TESTS_ZEND_CACHE_MEMCACHED_PERSISTENT,
+        ]]]);
+        $instance->save('data', 'cleanall');
+        $this->assertNotFalse($instance->test('cleanall'));
+
+        $this->assertTrue($instance->clean('all'));
+        $this->assertFalse($instance->test('cleanall'));
+        $this->assertFalse($this->_instance->test('bar'));
+        $this->assertFalse($this->_instance->test('bar2'));
+    }
+
+    /**
      * @doesNotPerformAssertions
      */
     public function testConstructorCorrectCall()
