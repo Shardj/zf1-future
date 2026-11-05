@@ -68,3 +68,4 @@ The following adapters and backends depend on technologies that are not availabl
 * ``Zend_Cache_Backend_Sqlite`` (needs the SQLite 2 extension of PHP 5), ``Zend_Cache_Backend_Xcache``, ``Zend_Cache_Backend_ZendPlatform``, ``Zend_Cache_Backend_ZendServer_Disk``, ``Zend_Cache_Backend_ZendServer_ShMem``, ``Zend_Cache_Backend_WinCache``
 * ``Zend_Serializer_Adapter_Wddx`` (ext/wddx was removed in PHP 7.4)
 * ``Zend_Http_UserAgent_Features_Adapter_TeraWurfl``, ``Zend_Http_UserAgent_Features_Adapter_DeviceAtlas``
+* ``Zend_Queue_Adapter_PlatformJobQueue`` and ``Zend_Queue_Message_PlatformJob`` (Zend Platform and its Job Queue are discontinued; use ``Zend_Queue_Adapter_Db`` or ``Zend_Queue_Adapter_Activemq``)
