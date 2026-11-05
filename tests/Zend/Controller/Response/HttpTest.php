@@ -1,8 +1,6 @@
 <?php
 
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
-use PHPUnit\Framework\TestSuite;
-use PHPUnit\TextUI\TestRunner;
 
 /**
  * Zend Framework
@@ -25,11 +23,6 @@ use PHPUnit\TextUI\TestRunner;
  * @version    $Id$
  */
 
-// Call Zend_Controller_Response_HttpTest::main() if this source file is executed directly.
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Controller_Response_HttpTest::main');
-}
-
 require_once 'Zend/Controller/Response/Http.php';
 require_once 'Zend/Controller/Response/Exception.php';
 
@@ -48,18 +41,6 @@ class Zend_Controller_Response_HttpTest extends TestCase
      * @var Zend_Http_Response
      */
     protected $_response;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @access public
-     * @static
-     */
-    public static function main()
-    {
-        $suite = new TestSuite("Zend_Controller_Response_HttpTest");
-        $result = (new resources_Runner())->run($suite);
-    }
 
     protected function set_up()
     {
@@ -231,43 +212,20 @@ class Zend_Controller_Response_HttpTest extends TestCase
     }
 
     /**
-     * SKIPPED - This test is untestable in the CLI environment.  PHP ignores all
-     * header() calls (which are used by Http_Abstract::setHeader()), thus, anything
-     * that is expected to be found in http headers when inserted via header(), will
-     * not be found.  In addition, headers_sent() should always return false, until
-     * real output is sent to the console.
+     * Sending the response sends headers, so the test needs a process without
+     * output; the headers themselves are not inspected because PHP ignores
+     * header() calls in the CLI.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function test__toString()
     {
-        $skipHeadersTest = headers_sent();
-        if ($skipHeadersTest) {
-            $this->markTestSkipped('Unable to run Zend_Controller_Response_Http::__toString() test as headers have already been sent');
-            return;
-        }
-
         $this->_response->setHeader('Content-Type', 'text/plain');
         $this->_response->setBody('Content');
         $this->_response->appendBody('; and more content.');
 
-        $expected = 'Content; and more content.';
-        $result = $this->_response->__toString();
-
-        $this->assertSame($expected, $result);
-        return;
-
-        // header checking will not work
-
-        if (!$skipHeadersTest) {
-            $this->assertTrue(headers_sent());
-            $headers = headers_list();
-            $found = false;
-            foreach ($headers as $header) {
-                if ('Content-Type: text/plain' == $header) {
-                    $found = true;
-                }
-            }
-            $this->assertTrue($found, var_export($headers, 1));
-        }
+        $this->assertSame('Content; and more content.', $this->_response->__toString());
     }
 
     public function testRenderExceptions()
@@ -655,7 +613,3 @@ class Zend_Controller_Response_HttpTest_Action extends Zend_Controller_Action
 {
 }
 
-// Call Zend_Controller_Response_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === "Zend_Controller_Response_HttpTest::main") {
-    Zend_Controller_Response_HttpTest::main();
-}

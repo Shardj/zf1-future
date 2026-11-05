@@ -1,8 +1,6 @@
 <?php
 
 use Yoast\PHPUnitPolyfills\TestCases\TestCase;
-use PHPUnit\Framework\TestSuite;
-use PHPUnit\TextUI\TestRunner;
 
 /**
  * Zend Framework
@@ -24,11 +22,6 @@ use PHPUnit\TextUI\TestRunner;
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-
-// Call Zend_Captcha_FigletTest::main() if this source file is executed directly.
-if (!defined("PHPUnit_MAIN_METHOD")) {
-    define("PHPUnit_MAIN_METHOD", "Zend_Captcha_FigletTest::main");
-}
 
 require_once 'Zend/Form/Element/Captcha.php';
 require_once 'Zend/Captcha/Adapter.php';
@@ -63,17 +56,6 @@ class Zend_Captcha_FigletTest extends TestCase
      * @var string
      */
     protected $id;
-
-    /**
-     * Runs the test methods of this class.
-     *
-     * @return void
-     */
-    public static function main()
-    {
-        $suite = new TestSuite("Zend_Captcha_FigletTest");
-        $result = (new resources_Runner())->run($suite);
-    }
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -330,12 +312,11 @@ class Zend_Captcha_FigletTest extends TestCase
 
     /**
      * @group ZF-5728
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testSetSessionWorks()
     {
-        if (headers_sent($file, $line)) {
-            $this->markTestSkipped("Cannot use sessions because headers already sent");
-        }
         require_once 'Zend/Session/Namespace.php';
         $session = new Zend_Session_Namespace('captcha');
         $this->captcha->setSession($session);
@@ -390,7 +371,3 @@ class Zend_Captcha_FigletTest_SessionContainer
     }
 }
 
-// Call Zend_Captcha_FigletTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === "Zend_Captcha_FigletTest::main") {
-    Zend_Captcha_FigletTest::main();
-}

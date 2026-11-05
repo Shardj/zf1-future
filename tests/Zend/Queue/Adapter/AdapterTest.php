@@ -812,6 +812,7 @@ abstract class Zend_Queue_Adapter_AdapterTest extends TestCase
         $adapter = $queue->getAdapter();
 
         $functions = $adapter->getCapabilities();
+        $this->assertIsArray($functions);
 
         if (!$functions['create']) {
             try {

@@ -259,48 +259,6 @@ class Zend_Validate_File_MimeTypeTest extends TestCase
         $validator->setTryCommonMagicFilesFlag(true);
         $this->assertTrue($validator->shouldTryCommonMagicFiles());
     }
-
-    /**
-     * @group ZF-11784
-     */
-    public function testDisablingTryCommonMagicFilesIgnoresCommonLocations()
-    {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Behavior is only applicable and testable for PHP 5.3+');
-        }
-
-        if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
-            $this->markTestSkipped('Behavior is only applicable and testable for PHP 5.3+');
-        }
-
-        $filetest = dirname(__FILE__) . '/_files/picture.jpg';
-        $files = [
-            'name' => 'picture.jpg',
-            'size' => 200,
-            'tmp_name' => $filetest,
-            'error' => 0
-        ];
-
-        $validator = new Zend_Validate_File_MimeType(['image/jpeg', 'image/jpeg; charset=binary']);
-
-        $goodEnvironment = $validator->isValid($filetest, $files);
-
-        if ($goodEnvironment) {
-            /**
-             * The tester's environment has magic files that are properly read by PHP
-             * This prevents the test from being relevant in the environment
-             */
-            $this->markTestSkipped('This test environment works as expected with the common magic files, preventing this from being testable.');
-        } else {
-            // The common magic files detected the image as application/octet-stream -- try the PHP default
-            // Note that if this  branch of code is entered then testBasic, testDualValidation,
-            // as well as Zend_Validate_File_IsCompressedTest::testBasic and Zend_Validate_File_IsImageTest::testBasic
-            // will be failing as well.
-            $validator = new Zend_Validate_File_MimeType(['image/jpeg', 'image/jpeg; charset=binary']);
-            $validator->setMagicFile(false);
-            $this->assertTrue($validator->isValid($filetest, $files));
-        }
-    }
 }
 
 // Call Zend_Validate_File_MimeTypeTest::main() if this source file is executed directly.

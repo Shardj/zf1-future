@@ -136,17 +136,15 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     }
 
     /**
-     * CURLOPT_CLOSEPOLICY never worked and returns false on setopt always:
-     * @link http://de2.php.net/manual/en/function.curl-setopt.php#84277
-     *
-     * This should throw an exception.
+     * A cURL option curl_setopt() rejects (an unknown HTTP version) should
+     * throw an exception.
      */
     public function testSettingInvalidCurlOption()
     {
         $this->expectException(Zend_Http_Exception::class);
         $config = [
             'adapter' => 'Zend_Http_Client_Adapter_Curl',
-            'curloptions' => [CURLOPT_CLOSEPOLICY => true],
+            'curloptions' => [CURLOPT_HTTP_VERSION => 999],
         ];
         $this->client = new Zend_Http_Client($this->client->getUri(true), $config);
 
@@ -267,7 +265,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 
         $this->assertEquals(
             ['curloptions' => ['foo' => 'bar', 'bar' => 'baz']],
-            $this->readAttribute($adapter, '_config')
+            $adapter->getConfig()
         );
     }
 
@@ -291,7 +289,7 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
 
         $this->assertEquals(
             $expected,
-            $this->readAttribute($adapter, '_config')
+            $adapter->getConfig()
         );
     }
 
@@ -302,9 +300,11 @@ class Zend_Http_Client_CurlTest extends Zend_Http_Client_CommonHttpTests
     {
         $adapter = new Zend_Http_Client_Adapter_Curl();
         $adapter->setConfig(['timeout' => 2, 'maxredirects' => 1]);
-        $adapter->connect("http://framework.zend.com");
+        $adapter->connect($this->client->getUri()->getHost(), $this->client->getUri()->getPort());
 
-        $this->assertTrue(is_resource($adapter->getHandle()));
+        $handle = $adapter->getHandle();
+        // a resource before PHP 8.0, a CurlHandle object since
+        $this->assertTrue(is_resource($handle) || $handle instanceof CurlHandle);
     }
     
     /**
