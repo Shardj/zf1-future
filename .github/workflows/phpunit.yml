@@ -39,6 +39,11 @@ jobs:
 
       TESTS_ZEND_CACHE_APC_ENABLED: true
 
+      TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED: true
+
+      # the files in tests/Zend/Http/Client/_files are served by PHP's built-in server (see below)
+      TESTS_ZEND_HTTP_CLIENT_BASEURI: http://127.0.0.1:8085/
+
       # https://hub.docker.com/r/bitnami/openldap
       LDAP_ROOT: "dc=example,dc=com"
       LDAP_ALLOW_ANON_BINDING: false
@@ -118,24 +123,24 @@ jobs:
           #bare for PHP >=7.2
           - php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
           #full for PHP <= 8.0
-          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar, intl"
+          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar, intl"
           - php-version: "8.1"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, intl"
           - php-version: "8.2"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, intl"
           - php-version: "8.3"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, intl"
           - php-version: "8.4"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, intl"
           - php-version: "8.5"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, lzf, memcached, memcache, ldap, sqlite, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, intl"
           # Experimental versions are not listed in php-version above. They are separate
           # combinations, so the generic entries above are not applied to them and both
           # extension lists have to be set here.
           # lzf does not build on PHP 8.6 yet
           - php-version: "8.6"
             php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, bz2, memcached, memcache, ldap, sqlite, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, memcached, memcache, ldap, sqlite, intl"
             experimental: true
     steps:
       - name: Checkout
@@ -179,6 +184,12 @@ jobs:
         run: |
           bin/parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php . --checkstyle | cs2pr
 
+      - name: Serve the Zend_Http_Client test files
+        run: |
+          php -S 127.0.0.1:8085 -t tests/Zend/Http/Client/_files > /tmp/php-server.log 2>&1 &
+          sleep 1
+          curl -sSf http://127.0.0.1:8085/testSimpleRequests.php > /dev/null
+
       - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }}) with minimal extensions"
         run: |
           bin/phpunit -c tests/phpunit.xml
@@ -200,7 +211,14 @@ jobs:
           # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
           fail-fast: true
 
+      - name: Create the Zend_Queue tables
+        run: |
+          mysql -h 127.0.0.1 -u "$TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME" -p"$TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD" "$TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE" < library/Zend/Queue/Adapter/Db/mysql.sql
+
       - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }}) with extensions"
         run: |
           bin/phpunit -c tests/phpunit.xml
         continue-on-error: ${{ matrix.experimental }}
+        env:
+          # Zend_Queue_Adapter_Db on the MySQL service, schema from library/Zend/Queue/Adapter/Db/mysql.sql
+          TESTS_ZEND_QUEUE_DB: '{"type":"pdo_mysql","host":"127.0.0.1","port":3306,"username":"github","password":"github","dbname":"zftest"}'

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Test_PHPUnit_ControllerTestCase: assertNotQueryContentContains() / assertNotXpathContentContains() compare a numeric needle as text; before PHP 8 strstr() took an int as a character code, so assertNotQueryContentContains('.price', 42) passed whatever the content was (the sister assertQueryContentContains() already cast the needle).
 * Zend_Reflection_Parameter: getType() returns the declared type (ReflectionType) as its signature promises; it returned the @param type of the docblock as a string, which has been a TypeError since the PHP 8 signature. The docblock type is available through the new getDocblockType(). getClass() on PHP 8 reflected the ReflectionNamedType class instead of the parameter's class, returns null for scalar types and resolves self/parent. Zend_CodeGenerator_Php_Parameter::fromReflection() sets the type only when one is declared.
 * Zend_XmlRpc_Value_DateTime throws Zend_XmlRpc_Value_Exception ("Cannot convert given value … to a timestamp") for a string DateTime cannot parse, with the DateTime exception as previous; the plain DateTime exception (DateMalformedStringException on PHP 8.3+) escaped before, because the `=== false` check dates from PHP 5.2.
 

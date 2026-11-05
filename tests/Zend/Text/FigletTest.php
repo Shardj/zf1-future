@@ -140,16 +140,9 @@ class Zend_Text_FigletTest extends TestCase
     public function testIncorrectEncoding()
     {
         $this->expectException(Zend_Text_Figlet_Exception::class);
-        $this->markTestSkipped('Test case not reproducible on all setups');
+        $this->expectExceptionMessage('not encoded with UTF-8');
         $figlet = new Zend_Text_Figlet();
-
-        if (PHP_OS == 'AIX') {
-            $isoText = iconv('UTF-8', 'ISO-8859-15', 'Ömläüt');
-        } else {
-            $isoText = iconv('UTF-8', 'ISO-8859-15', 'Ömläüt');
-        }
-
-        $figlet->render($isoText);
+        $figlet->render(iconv('UTF-8', 'ISO-8859-15', 'Ömläüt'));
     }
 
     public function testNonExistentFont()

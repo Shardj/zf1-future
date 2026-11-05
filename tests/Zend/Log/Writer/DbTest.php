@@ -161,23 +161,6 @@ class Zend_Log_Writer_DbTest extends TestCase
     }
 
     /**
-     * @group ZF-10089
-     */
-    public function testThrowStrictSetFormatter()
-    {
-        if (version_compare(phpversion(), '7', '>=')) {
-            $this->markTestSkipped('Invalid typehinting is PHP Fatal error in PHP7+');
-        }
-
-        try {
-            $this->writer->setFormatter(new StdClass());
-        } catch (Exception $e) {
-            $this->assertTrue($e instanceof Error);
-            $this->assertStringContainsString('must implement interface', $e->getMessage());
-        }
-    }
-
-    /**
      * @group ZF-12514
      */
     public function testWriteWithExtraInfos()

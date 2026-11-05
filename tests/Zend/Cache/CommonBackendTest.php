@@ -270,14 +270,6 @@ abstract class Zend_Cache_CommonBackendTest extends TestCase
 
     public function testCleanModeAll()
     {
-        if ($this instanceof Zend_Cache_MemcachedBackendTest
-            && (getenv('TRAVIS') || getenv('CI'))
-        ) {
-            $this->markTestSkipped(
-                'Test randomly fail on CI.'
-            );
-        }
-
         $this->assertTrue($this->_instance->clean('all'));
         $this->assertFalse($this->_instance->test('bar'));
         $this->assertFalse($this->_instance->test('bar2'));
