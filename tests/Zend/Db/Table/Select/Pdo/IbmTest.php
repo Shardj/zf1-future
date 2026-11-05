@@ -78,4 +78,16 @@ class Zend_Db_Table_Select_Pdo_IbmTest extends Zend_Db_Table_Select_TestCommon
     {
         $this->_testSelectFromForUpdate();
     }
+
+    /**
+     * ZF-5234: Db2 does not cast the string to the integer column, the test uses a string column
+     */
+    protected function _selectColumnWithColonQuotedParameter()
+    {
+        $product_name = $this->_db->quoteIdentifier('product_name');
+
+        return $this->_db->select()
+            ->from('zfproducts')
+            ->where($product_name . ' = ?', "as'as:x");
+    }
 }

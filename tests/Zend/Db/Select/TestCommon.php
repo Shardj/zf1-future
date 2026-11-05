@@ -1933,13 +1933,20 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     }
 
     /**
-     * Writes the backticks of the SQL with the identifier quote of the adapter
+     * Writes the backticks and table aliases of the SQL as the adapter does
      *
      * @param  string $sql
      * @return string
      */
     protected function _quoteSql($sql)
     {
-        return str_replace('`', $this->_db->getQuoteIdentifierSymbol(), $sql);
+        $q   = $this->_db->getQuoteIdentifierSymbol();
+        $sql = str_replace('`', $q, $sql);
+
+        // some adapters, such as Oracle, write a table alias without AS
+        $tableAs = $this->_db->quoteTableAs('t', 'a');
+        $as      = substr($tableAs, 3, -3);
+
+        return str_replace($q . ' AS ' . $q, $q . $as . $q, $sql);
     }
 }

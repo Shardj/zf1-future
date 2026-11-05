@@ -58,12 +58,16 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
     /**
      * Returns a list of the tables in the database.
      *
+     * @param string $schema OPTIONAL Only the tables of this schema
      * @return array
      */
-    public function listTables()
+    public function listTables($schema = null)
     {
         $sql = "SELECT tabname "
         . "FROM SYSCAT.TABLES ";
+        if ($schema) {
+            $sql .= $this->_adapter->quoteInto('WHERE UPPER(tabschema) = UPPER(?)', $schema);
+        }
         return $this->_adapter->fetchCol($sql);
     }
 

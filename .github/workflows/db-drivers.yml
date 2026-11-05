@@ -109,10 +109,15 @@ jobs:
         env:
           fail-fast: true
 
-      # pdo_dblib comes with the sybase package of the ondrej/php repository
-      - name: Install pdo_dblib
+      # sqlsrv needs the ODBC driver of Microsoft, pdo_dblib comes with the
+      # sybase package of the ondrej/php repository
+      - name: Install the ODBC driver and pdo_dblib
         if: matrix.database == 'sqlsrv'
         run: |
+          curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc > /dev/null
+          curl -sSL https://packages.microsoft.com/config/ubuntu/24.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list > /dev/null
+          sudo apt-get update
+          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
           sudo add-apt-repository -y ppa:ondrej/php
           sudo apt-get update
           sudo apt-get install -y php${PHP_VERSION}-sybase
