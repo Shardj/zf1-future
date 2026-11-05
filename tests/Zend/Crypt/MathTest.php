@@ -37,31 +37,49 @@ require_once 'Zend/Crypt/Exception.php';
 class Zend_Crypt_MathTest extends TestCase
 {
     /**
-     * on php > 7 will raise "ValueError: bccomp(): Argument #1 ($num1) is not well-formed"
-     * @requires PHP <= 7
+     * @return Zend_Crypt_Math
      */
-    public function testRand()
+    protected function _math()
     {
-        if (!extension_loaded('bcmath')) {
-            $this->markTestSkipped('Extension bcmath not loaded');
+        if (!extension_loaded('bcmath') && !extension_loaded('gmp')) {
+            $this->markTestSkipped('Neither bcmath nor gmp is loaded');
         }
 
-        try {
-            $math = new Zend_Crypt_Math_BigInteger();
-        } catch (Zend_Crypt_Math_BigInteger_Exception $e) {
-            if (strpos($e->getMessage(), 'big integer precision math support not detected') !== false) {
-                $this->markTestSkipped($e->getMessage());
-            } else {
-                throw $e;
-            }
-        }
+        return new Zend_Crypt_Math();
+    }
 
-        $math = new Zend_Crypt_Math();
+    public function testRandStaysInRange()
+    {
+        $math   = $this->_math();
         $higher = '155172898181473697471232257763715539915724801966915404479707795314057629378541917580651227423698188993727816152646631438561595825688188889951272158842675419950341258706556549803580104870537681476726513255747040765857479291291572334510643245094715007229621094194349783925984760375594985848253359305585439638443';
-        $lower = '155172898181473697471232257763715539915724801966915404479707795314057629378541917580651227423698188993727816152646631438561595825688188889951272158842675419950341258706556549803580104870537681476726513255747040765857479291291572334510643245094715007229621094194349783925984760375594985848253359305585439638442';
-        $result = $math->rand($lower, $higher);
-        $this->assertTrue(bccomp($result, $higher) !== '1');
-        $this->assertTrue(bccomp($result, $lower) !== '-1');
+        $lower  = '155172898181473697471232257763715539915724801966915404479707795314057629378541917580651227423698188993727816152646631438561595825688188889951272158842675419950341258706556549803580104870537681476726513255747040765857479291291572334510643245094715007229621094194349783925984760375594985848253359305585439638442';
+
+        // the only value of [lower, higher)
+        $this->assertSame($lower, (string) $math->rand($lower, $higher));
+
+        for ($i = 0; $i < 20; $i++) {
+            $result = (string) $math->rand('1000000000000000000000000000000', '9000000000000000000000000000000');
+            $this->assertMatchesRegularExpression('/^\d+$/', $result);
+            $this->assertGreaterThanOrEqual(0, $math->compare($result, '1000000000000000000000000000000'));
+            $this->assertLessThan(0, $math->compare($result, '9000000000000000000000000000000'));
+        }
+    }
+
+    public function testRandIsNotConstant()
+    {
+        $math = $this->_math();
+        $seen = [];
+        for ($i = 0; $i < 50; $i++) {
+            $seen[(string) $math->rand(0, 1000000)] = true;
+        }
+        $this->assertGreaterThan(1, count($seen));
+    }
+
+    public function testRandWithAnEmptyRangeThrows()
+    {
+        $math = $this->_math();
+        $this->expectException('Zend_Crypt_Math_Exception');
+        $math->rand(5, 5);
     }
 
     public function testRandBytes()
