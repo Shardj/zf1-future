@@ -404,6 +404,35 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends TestCase
         }
     }
 
+    /**
+     * A numeric needle is compared as text; strstr() would take an int as a
+     * character code before PHP 8
+     */
+    public function testQueryContentAssertionsTreatANumericNeedleAsText()
+    {
+        $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
+        $this->testCase->dispatch('/zend-test-php-unit-foo/baz');
+
+        $this->testCase->assertQueryContentContains('legend.numeric', 4);
+        $this->testCase->assertNotQueryContentContains('legend.numeric', 7);
+        $this->testCase->assertXpathContentContains("//legend[contains(@class, ' numeric ')]", 4);
+        $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' numeric ')]", 7);
+        $this->assertSame(4, $this->testCase->getNumAssertions());
+
+        try {
+            $this->testCase->assertNotQueryContentContains('legend.numeric', 4);
+            $this->fail('4 is part of 42, the assertion should fail');
+        } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertInstanceOf('Zend_Test_PHPUnit_Constraint_Exception', $e);
+        }
+        try {
+            $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' numeric ')]", 4);
+            $this->fail('4 is part of 42, the assertion should fail');
+        } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertInstanceOf('Zend_Test_PHPUnit_Constraint_Exception', $e);
+        }
+    }
+
     public function testAssertXpathShouldDoNothingForValidResponseContent()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
