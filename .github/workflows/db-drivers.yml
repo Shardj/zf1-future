@@ -19,7 +19,7 @@ jobs:
           - db2
         include:
           - database: sqlsrv
-            extensions: sqlsrv, pdo_sqlsrv, pdo_dblib
+            extensions: sqlsrv, pdo_sqlsrv
           - database: oracle
             extensions: oci8, pdo_oci
           - database: db2
@@ -108,6 +108,13 @@ jobs:
           ini-values: ${{ env.PHP_INI_VALUES }}
         env:
           fail-fast: true
+
+      # pdo_dblib comes with the sybase package of the PHP repository setup-php uses
+      - name: Install pdo_dblib
+        if: matrix.database == 'sqlsrv'
+        run: |
+          sudo apt-get install -y php${PHP_VERSION}-sybase
+          php -m | grep -i dblib
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-interaction

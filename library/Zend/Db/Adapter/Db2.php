@@ -142,7 +142,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
 
         if (!isset($this->_config['driver_options']['autocommit'])) {
             // set execution mode
-            $this->_config['driver_options']['autocommit'] = &$this->_execute_mode;
+            $this->_config['driver_options']['autocommit'] = $this->_execute_mode;
         }
 
         if (isset($this->_config['options'][Zend_Db::CASE_FOLDING])) {
@@ -173,8 +173,8 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                      ';PWD='      . $this->_config['password'] .';';
             $this->_connection = $conn_func_name(
                 $dbname,
-                null,
-                null,
+                '',
+                '',
                 $this->_config['driver_options']
             );
         } else {
