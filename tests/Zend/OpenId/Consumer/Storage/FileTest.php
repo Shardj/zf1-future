@@ -269,17 +269,10 @@ class Zend_OpenId_Consumer_Storage_FileTest extends TestCase
 
     /**
      * testing isUniqueNonce
-     *
-     * Add require php < 8, to skip this test only on php >= 8
-     * (Zend lib has issue when call time() with argument)
-     * in future please remove this notation and fix core lib
-     *
-     * @requires PHP < 8
      */
     public function testIsUniqueNonce()
     {
         $tmp = $this->_tmpDir;
-        $dir = $tmp . '/openid_consumer';
 
         $storage = new Zend_OpenId_Consumer_Storage_File($tmp);
         $storage->purgeNonces();
@@ -289,25 +282,58 @@ class Zend_OpenId_Consumer_Storage_FileTest extends TestCase
         $this->assertFalse($storage->isUniqueNonce(self::SERVER, '2'));
         $storage->purgeNonces();
         $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
-        sleep(2);
-        $date = @date("r", time());
-        sleep(2);
-        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '2'));
-        $storage->purgeNonces($date);
-        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
-        $this->assertFalse($storage->isUniqueNonce(self::SERVER, '2'));
-        $storage->purgeNonces();
-        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
-        sleep(2);
-        $date = time();
-        sleep(2);
-        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '2'));
-        $storage->purgeNonces($date);
-        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
-        $this->assertFalse($storage->isUniqueNonce(self::SERVER, '2'));
-        $storage->purgeNonces();
-        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
         $this->assertTrue($storage->isUniqueNonce(self::SERVER2, '1'));
         $storage->purgeNonces();
+    }
+
+    /**
+     * Nonces older than the given date (a timestamp or a date string) are purged
+     *
+     * @dataProvider purgeDateProvider
+     */
+    public function testPurgeNoncesOlderThan($dateFromTimestamp)
+    {
+        $storage = new Zend_OpenId_Consumer_Storage_File($this->_tmpDir);
+        $storage->purgeNonces();
+
+        // nonce 1 is two hours old, nonce 2 is current
+        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
+        touch($this->_nonceFile(self::SERVER, '1'), time() - 7200);
+        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '2'));
+
+        $storage->purgeNonces($dateFromTimestamp(time() - 3600));
+        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'), 'the old nonce was purged');
+        $this->assertFalse($storage->isUniqueNonce(self::SERVER, '2'), 'the current nonce was kept');
+        $storage->purgeNonces();
+    }
+
+    public function purgeDateProvider()
+    {
+        return [
+            'timestamp'   => [function ($time) { return $time; }],
+            'date string' => [function ($time) { return date('r', $time); }],
+        ];
+    }
+
+    public function testPurgeNoncesWithAnInvalidDatePurgesNothing()
+    {
+        $storage = new Zend_OpenId_Consumer_Storage_File($this->_tmpDir);
+        $storage->purgeNonces();
+        $this->assertTrue($storage->isUniqueNonce(self::SERVER, '1'));
+        touch($this->_nonceFile(self::SERVER, '1'), time() - 7200);
+
+        $storage->purgeNonces('not a date');
+        $this->assertFalse($storage->isUniqueNonce(self::SERVER, '1'));
+        $storage->purgeNonces();
+    }
+
+    /**
+     * @param  string $provider
+     * @param  string $nonce
+     * @return string
+     */
+    protected function _nonceFile($provider, $nonce)
+    {
+        return $this->_tmpDir . '/nonce_' . md5($provider . ';' . $nonce);
     }
 }
