@@ -524,14 +524,6 @@ defined('TESTS_ZEND_MAIL_SMTP_AUTH') || define('TESTS_ZEND_MAIL_SMTP_AUTH', gete
  *     dbname: "queue"
  * }
  *
- * The PlatformJobQueue adapter expects two parameters, the host and password.
- * The HOST string should include both the host and port (typically 10003):
- *     127.0.0.1:10003
- * When running tests against PlatformJobQueue, it's best to do so where
- * Platform is installed on localhost and has maximum workers set to 20
- * (default is 5); do so with this zend.ini setting:
- *     zend_jq.max_num_of_request_workers=20
- *
  * Selectively define the below in order to run tests for them.
  */
 defined('TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED') || define('TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED', getenv('TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED') ?: false);
@@ -539,9 +531,6 @@ defined('TESTS_ZEND_QUEUE_ACTIVEMQ_SCHEME') || define('TESTS_ZEND_QUEUE_ACTIVEMQ
 defined('TESTS_ZEND_QUEUE_ACTIVEMQ_HOST') || define('TESTS_ZEND_QUEUE_ACTIVEMQ_HOST', getenv('TESTS_ZEND_QUEUE_ACTIVEMQ_HOST') ?: false);
 defined('TESTS_ZEND_QUEUE_ACTIVEMQ_PORT') || define('TESTS_ZEND_QUEUE_ACTIVEMQ_PORT', getenv('TESTS_ZEND_QUEUE_ACTIVEMQ_PORT') ?: false);
 defined('TESTS_ZEND_QUEUE_DB') || define('TESTS_ZEND_QUEUE_DB', getenv('TESTS_ZEND_QUEUE_DB') ?: false);
-defined('TESTS_ZEND_QUEUE_PLATFORMJQ_ENABLED') || define('TESTS_ZEND_QUEUE_PLATFORMJQ_ENABLED', getenv('TESTS_ZEND_QUEUE_PLATFORMJQ_ENABLED') ?: false);
-defined('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST') || define('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST', getenv('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST') ?: false);
-defined('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS') || define('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS', getenv('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS') ?: false);
 
 /**
  * Zend_Rest tests

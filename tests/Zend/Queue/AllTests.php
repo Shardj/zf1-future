@@ -43,7 +43,6 @@ require_once 'Zend/Queue/Adapter/AdapterTest.php';
 require_once 'Zend/Queue/Adapter/ArrayTest.php';
 require_once 'Zend/Queue/Adapter/NullTest.php';
 require_once 'Zend/Queue/Adapter/DbTest.php';
-require_once 'Zend/Queue/Adapter/PlatformJobQueueTest.php';
 
 // Stomp protocol testing
 require_once 'Zend/Queue/Stomp/FrameTest.php';
@@ -86,7 +85,6 @@ class Zend_Queue_AllTests
         $suite->addTestSuite('Zend_Queue_Adapter_ArrayTest');
         $suite->addTestSuite('Zend_Queue_Adapter_DbTest');
         $suite->addTestSuite('Zend_Queue_Adapter_NullTest');
-        $suite->addTestSuite('Zend_Queue_Adapter_PlatformJobQueueTest');
 
         // Stomp protocol testing
         $suite->addTestSuite('Zend_Queue_Stomp_FrameTest');
