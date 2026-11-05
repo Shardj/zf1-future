@@ -63,7 +63,14 @@ jobs:
       - name: Start SQL Server
         if: matrix.database == 'sqlsrv'
         run: |
-          docker run -d --name db -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD="$DB_PASSWORD" -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+          # a certificate for 127.0.0.1, trusted by the runner, as the ODBC driver encrypts by default
+          mkdir -p /tmp/mssql
+          openssl req -x509 -newkey rsa:2048 -nodes -days 2 -subj /CN=127.0.0.1 -addext "subjectAltName=IP:127.0.0.1,DNS:localhost" -keyout /tmp/mssql/key.pem -out /tmp/mssql/cert.pem
+          chmod 644 /tmp/mssql/key.pem /tmp/mssql/cert.pem
+          sudo cp /tmp/mssql/cert.pem /usr/local/share/ca-certificates/zf-mssql.crt
+          sudo update-ca-certificates
+          printf '[network]\ntlscert = /var/opt/mssql/tls/cert.pem\ntlskey = /var/opt/mssql/tls/key.pem\ntlsprotocols = 1.2\nforceencryption = 0\n' > /tmp/mssql/mssql.conf
+          docker run -d --name db -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD="$DB_PASSWORD" -p 1433:1433 -v /tmp/mssql:/var/opt/mssql/tls -v /tmp/mssql/mssql.conf:/var/opt/mssql/mssql.conf mcr.microsoft.com/mssql/server:2022-latest
           for i in $(seq 1 60); do
             docker exec db /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P "$DB_PASSWORD" -Q "SELECT 1" > /dev/null 2>&1 && break
             sleep 2

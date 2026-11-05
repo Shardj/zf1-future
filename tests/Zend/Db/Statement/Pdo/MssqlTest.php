@@ -96,4 +96,17 @@ class Zend_Db_Statement_Pdo_MssqlTest extends Zend_Db_Statement_Pdo_TestCommon
     {
         return 'Pdo_Mssql';
     }
+
+    /**
+     * The dblib driver supports more than one rowset; a SELECT has only one
+     */
+    public function testStatementNextRowset()
+    {
+        $select = $this->_db->select()
+            ->from('zfproducts');
+        $stmt = $this->_db->prepare($select->__toString());
+        $stmt->execute();
+        $this->assertFalse($stmt->nextRowset());
+        $stmt->closeCursor();
+    }
 }

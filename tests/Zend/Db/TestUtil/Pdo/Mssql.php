@@ -123,4 +123,10 @@ class Zend_Db_TestUtil_Pdo_Mssql extends Zend_Db_TestUtil_Pdo_Common
         parent::dropView();
         parent::createView();
     }
+
+    public function getSchema()
+    {
+        $desc = $this->_db->describeTable('zfproducts');
+        return $desc['product_id']['SCHEMA_NAME'];
+    }
 }

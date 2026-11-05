@@ -46,4 +46,17 @@ class Zend_Db_Table_Pdo_MssqlTest extends Zend_Db_Table_TestCommon
     {
         return 'Pdo_Mssql';
     }
+
+    /**
+     * A value for the identity column needs IDENTITY_INSERT
+     */
+    protected function _allowExplicitBugIds()
+    {
+        $this->_db->query('SET IDENTITY_INSERT ' . $this->_db->quoteIdentifier('zfbugs') . ' ON');
+    }
+
+    public function testTableCascadeUpdate()
+    {
+        $this->markTestSkipped($this->getDriver() . ' cannot update identity columns.');
+    }
 }

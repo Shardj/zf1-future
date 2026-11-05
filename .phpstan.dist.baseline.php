@@ -4550,7 +4550,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between string and \'OCI-Lob\' will always evaluate to false.',
+	'rawMessage' => 'Instanceof between string and \'OCI-Lob\'|\'OCILob\' will always evaluate to false.',
 	'identifier' => 'instanceof.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
