@@ -48,7 +48,6 @@ class Zend_Filter_EncryptTest extends TestCase
 
     /**
      * Ensures that the filter follows expected behavior
-     * @requires PHP < 8.0
      *
      * @return void
      */
@@ -98,7 +97,6 @@ PIDs9E7uuizAKDhRRRvho8BS
 
     /**
      * Ensures that the filter allows de/encryption
-     * @requires PHP < 8.0
      *
      * @return void
      */
