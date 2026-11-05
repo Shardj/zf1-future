@@ -68,4 +68,9 @@ class Zend_Db_Table_Select_Db2Test extends Zend_Db_Table_Select_TestCommon
     {
         return 'Db2';
     }
+
+    public function testSelectFromForUpdate()
+    {
+        $this->_testSelectFromForUpdate();
+    }
 }

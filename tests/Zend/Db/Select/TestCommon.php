@@ -378,7 +378,10 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
      * Test support for FOR UPDATE
      * e.g. from('schema.table').
      */
-    public function testSelectFromForUpdate()
+    /**
+     * FOR UPDATE runs only on the drivers that have it, their tests call this
+     */
+    protected function _testSelectFromForUpdate()
     {
         $select = $this->_db->select()
             ->from("zfproducts")

@@ -194,4 +194,9 @@ class Zend_Db_Select_Pdo_PgsqlTest extends Zend_Db_Select_TestCommon
             'Order direction of field failed'
         );
     }
+
+    public function testSelectFromForUpdate()
+    {
+        $this->_testSelectFromForUpdate();
+    }
 }

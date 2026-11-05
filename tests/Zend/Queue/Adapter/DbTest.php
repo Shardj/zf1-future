@@ -154,4 +154,9 @@ class Zend_Queue_Adapter_DbTest extends Zend_Queue_Adapter_AdapterTest
         $messages = $queue->receive(0);
         $this->assertEquals(0, count($messages));
     }
+
+    public function testVisibility()
+    {
+        $this->_testVisibility();
+    }
 }

@@ -65,4 +65,9 @@ class Zend_Db_Table_Select_OracleTest extends Zend_Db_Table_Select_TestCommon
     {
         return 'Oracle';
     }
+
+    public function testSelectFromForUpdate()
+    {
+        $this->_testSelectFromForUpdate();
+    }
 }
