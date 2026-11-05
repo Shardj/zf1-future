@@ -56,22 +56,13 @@ defined('TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED') || define('TESTS_ZEND_AUT
 /**
  * Zend_Cache
  *
- * TESTS_ZEND_CACHE_SQLITE_ENABLED     => sqlite extension has to be enabled
  * TESTS_ZEND_CACHE_APC_ENABLED        => apc extension has to be enabled
- * TESTS_ZEND_CACHE_WINCACHE_ENABLED   => wincache extension has to be enabled
  * TESTS_ZEND_CACHE_MEMCACHED_ENABLED  => memcache extension has to be enabled and
  *                                        a memcached server has to be available
  * TESTS_ZEND_CACHE_LIBMEMCACHED_ENABLED => memcached extension has to be enabled and
  *                                          a memcached server has to be available
- * TESTS_ZEND_CACHE_XCACHE_ENABLED     => xcache extension has to be enabled
  */
-defined('TESTS_ZEND_CACHE_SQLITE_ENABLED') || define('TESTS_ZEND_CACHE_SQLITE_ENABLED', getenv('TESTS_ZEND_CACHE_SQLITE_ENABLED') ?: false);
 defined('TESTS_ZEND_CACHE_APC_ENABLED') || define('TESTS_ZEND_CACHE_APC_ENABLED', getenv('TESTS_ZEND_CACHE_APC_ENABLED') ?: false);
-defined('TESTS_ZEND_CACHE_WINCACHE_ENABLED') || define('TESTS_ZEND_CACHE_WINCACHE_ENABLED', getenv('TESTS_ZEND_CACHE_WINCACHE_ENABLED') ?: false);
-defined('TESTS_ZEND_CACHE_XCACHE_ENABLED') || define('TESTS_ZEND_CACHE_XCACHE_ENABLED', getenv('TESTS_ZEND_CACHE_XCACHE_ENABLED') ?: false);
-defined('TESTS_ZEND_CACHE_XCACHE_USER') || define('TESTS_ZEND_CACHE_XCACHE_USER', getenv('TESTS_ZEND_CACHE_XCACHE_USER') ?: null);
-defined('TESTS_ZEND_CACHE_XCACHE_PASSWORD') || define('TESTS_ZEND_CACHE_XCACHE_PASSWORD', getenv('TESTS_ZEND_CACHE_XCACHE_PASSWORD') ?: null);
-defined('TESTS_ZEND_CACHE_PLATFORM_ENABLED') || define('TESTS_ZEND_CACHE_PLATFORM_ENABLED', getenv('TESTS_ZEND_CACHE_PLATFORM_ENABLED') ?: false);
 defined('TESTS_ZEND_CACHE_MEMCACHED_ENABLED') || define('TESTS_ZEND_CACHE_MEMCACHED_ENABLED', getenv('TESTS_ZEND_CACHE_MEMCACHED_ENABLED') ?: false);
 defined('TESTS_ZEND_CACHE_MEMCACHED_HOST') || define('TESTS_ZEND_CACHE_MEMCACHED_HOST', getenv('TESTS_ZEND_CACHE_MEMCACHED_HOST') ?: '127.0.0.1');
 defined('TESTS_ZEND_CACHE_MEMCACHED_PORT') || define('TESTS_ZEND_CACHE_MEMCACHED_PORT', getenv('TESTS_ZEND_CACHE_MEMCACHED_PORT') ?: 11211);
@@ -324,19 +315,6 @@ defined('TESTS_ZEND_HTTP_USERAGENT_WURFL_LIB_DIR') || define('TESTS_ZEND_HTTP_US
 defined('TESTS_ZEND_HTTP_USERAGENT_WURFL_CONFIG_FILE') || define('TESTS_ZEND_HTTP_USERAGENT_WURFL_CONFIG_FILE', getenv('TESTS_ZEND_HTTP_USERAGENT_WURFL_CONFIG_FILE') ?: false);
 
 /**
- * Location of DeviceAtlas library and data file, for testing mobile device
- * detection against DeviceAtlas
- */
-defined('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_LIB_DIR') || define('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_LIB_DIR', getenv('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_LIB_DIR') ?: false);
-defined('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_DATA_FILE') || define('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_DATA_FILE', getenv('TESTS_ZEND_HTTP_USERAGENT_DEVICEATLAS_DATA_FILE') ?: false);
-
-/**
- * Location of TeraWurfl library and data file, for testing mobile device
- * detection against TeraWurfl
- */
-defined('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR') || define('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR', getenv('TESTS_ZEND_HTTP_USERAGENT_TERAWURFL_LIB_DIR') ?: false);
-
-/**
  * Zend_Loader_Autoloader multi-version support tests
  *
  * ENABLED:      whether or not to run the multi-version tests
@@ -561,9 +539,6 @@ defined('TESTS_ZEND_QUEUE_ACTIVEMQ_SCHEME') || define('TESTS_ZEND_QUEUE_ACTIVEMQ
 defined('TESTS_ZEND_QUEUE_ACTIVEMQ_HOST') || define('TESTS_ZEND_QUEUE_ACTIVEMQ_HOST', getenv('TESTS_ZEND_QUEUE_ACTIVEMQ_HOST') ?: false);
 defined('TESTS_ZEND_QUEUE_ACTIVEMQ_PORT') || define('TESTS_ZEND_QUEUE_ACTIVEMQ_PORT', getenv('TESTS_ZEND_QUEUE_ACTIVEMQ_PORT') ?: false);
 defined('TESTS_ZEND_QUEUE_DB') || define('TESTS_ZEND_QUEUE_DB', getenv('TESTS_ZEND_QUEUE_DB') ?: false);
-defined('TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED') || define('TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED', getenv('TESTS_ZEND_QUEUE_MEMCACHEQ_ENABLED') ?: false);
-defined('TESTS_ZEND_QUEUE_MEMCACHEQ_HOST') || define('TESTS_ZEND_QUEUE_MEMCACHEQ_HOST', getenv('TESTS_ZEND_QUEUE_MEMCACHEQ_HOST') ?: false);
-defined('TESTS_ZEND_QUEUE_MEMCACHEQ_PORT') || define('TESTS_ZEND_QUEUE_MEMCACHEQ_PORT', getenv('TESTS_ZEND_QUEUE_MEMCACHEQ_PORT') ?: false);
 defined('TESTS_ZEND_QUEUE_PLATFORMJQ_ENABLED') || define('TESTS_ZEND_QUEUE_PLATFORMJQ_ENABLED', getenv('TESTS_ZEND_QUEUE_PLATFORMJQ_ENABLED') ?: false);
 defined('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST') || define('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST', getenv('TESTS_ZEND_QUEUE_PLATFORMJQ_HOST') ?: false);
 defined('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS') || define('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS', getenv('TESTS_ZEND_QUEUE_PLATFORMJQ_PASS') ?: false);
@@ -577,15 +552,10 @@ defined('TESTS_ZEND_REST_ONLINE_ENABLED') || define('TESTS_ZEND_REST_ONLINE_ENAB
 /**
  * Zend_Serializer adapter tests
  *
- * TESTS_ZEND_SERIALIZER_ADAPTER_WDDX_ENABLED:
- *   - enable wddx adapter tests
- *   - needs wddx and SimpleXml php extension installed
- *
  * TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED:
  *   - enable igbinary adapter tests
  *   - needs igbinary php extension installed
  */
-defined('TESTS_ZEND_SERIALIZER_ADAPTER_WDDX_ENABLED') || define('TESTS_ZEND_SERIALIZER_ADAPTER_WDDX_ENABLED', getenv('TESTS_ZEND_SERIALIZER_ADAPTER_WDDX_ENABLED') ?: false);
 defined('TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED') || define('TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED', getenv('TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED') ?: false);
 
 /**
