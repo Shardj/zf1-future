@@ -212,34 +212,6 @@ class Zend_Application_Resource_CacheManagerTest extends TestCase
     }
 
     /**
-     * @group ZF-9738
-     */
-    public function testZendServer()
-    {
-        if (!function_exists('zend_disk_cache_store')) {
-            $this->markTestSkipped('ZendServer is required for this test');
-        }
-
-        $options = [
-            'foo' => [
-                'frontend' => [
-                    'name' => 'Core',
-                    'options' => [
-                        'lifetime' => 7200,
-                    ],
-                ],
-                'backend' => [
-                    'name' => 'ZendServer_Disk',
-                ],
-            ],
-        ];
-        $resource = new Zend_Application_Resource_Cachemanager($options);
-        $manager = $resource->init();
-        $cache = $manager->getCache('foo')->getBackend();
-        $this->assertTrue($cache instanceof Zend_Cache_Backend_ZendServer_Disk);
-    }
-
-    /**
      * @group ZF-9737
      */
     public function testCustomFrontendBackendNaming()

@@ -165,137 +165,94 @@ class Zend_Feed_ReaderTest extends TestCase
     }
 
     /**
-     * @doesNotPerformAssertions
+     * Lets Zend_Feed_Reader answer the HTTP requests with the given bodies
+     *
+     * @param  array $bodies response bodies in request order
+     * @return void
      */
+    protected function _answerWith(array $bodies)
+    {
+        $adapter = new Zend_Http_Client_Adapter_Test();
+        foreach ($bodies as $i => $body) {
+            $response = new Zend_Http_Response(200, ['Content-Type' => 'text/html'], $body);
+            $i === 0 ? $adapter->setResponse($response) : $adapter->addResponse($response);
+        }
+        Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, ['adapter' => $adapter]));
+    }
+
     public function testImportsUri()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testImportsUri() requires a network connection');
-            return;
-        }
-
-        try {
-            $feed = Zend_Feed_Reader::import('http://www.planet-php.net/rdf/');
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-        }
+        $this->_answerWith([file_get_contents($this->_feedSamplePath . '/Reader/rss20.xml')]);
+        $feed = Zend_Feed_Reader::import('http://www.example.com/rdf/');
+        $this->assertInstanceOf('Zend_Feed_Reader_Feed_Rss', $feed);
+        $this->assertEquals(Zend_Feed_Reader::TYPE_RSS_20, $feed->getType());
     }
-    
+
     /**
      * @group ZF-8328
      */
     public function testImportsUriAndThrowsExceptionIfNotAFeed()
     {
+        $this->_answerWith(['<!DOCTYPE html><html><head><title>Not a feed</title></head><body></body></html>']);
         $this->expectException(Zend_Feed_Exception::class);
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testImportsUri() requires a network connection');
-            return;
-        }
-
-        $feed = Zend_Feed_Reader::import('http://twitter.com/alganet');
+        Zend_Feed_Reader::import('http://www.example.com/');
     }
 
     public function testGetsFeedLinksAsValueObject()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testGetsFeedLinksAsValueObject() requires a network connection');
-            return;
-        }
-
-        try {
-            $links = Zend_Feed_Reader::findFeedLinks('http://www.planet-php.net');
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-        }
-        $this->assertEquals('http://www.planet-php.org/rss/', $links->rss);
+        $this->_answerWith(['<html><head><link rel="alternate" type="application/rss+xml" href="http://www.example.com/rss/"></head><body></body></html>']);
+        $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
+        $this->assertEquals('http://www.example.com/rss/', $links->rss);
     }
 
     public function testCompilesLinksAsArrayObject()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testGetsFeedLinksAsValueObject() requires a network connection');
-            return;
-        }
-        $links = Zend_Feed_Reader::findFeedLinks('http://www.planet-php.net');
+        $this->_answerWith(['<html><head><link rel="alternate" type="application/rss+xml" href="http://www.example.com/rss/"></head><body></body></html>']);
+        $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
         $this->assertTrue($links instanceof Zend_Feed_Reader_FeedSet);
         $this->assertEquals([
-            'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => 'http://www.planet-php.org/rss/'
+            'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => 'http://www.example.com/rss/'
         ], (array) $links->getIterator()->current());
     }
 
     public function testFeedSetLoadsFeedObjectWhenFeedArrayKeyAccessed()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testGetsFeedLinksAsValueObject() requires a network connection');
-            return;
-        }
-        $links = Zend_Feed_Reader::findFeedLinks('http://www.planet-php.net');
+        $this->_answerWith([
+            '<html><head><link rel="alternate" type="application/rss+xml" href="http://www.example.com/rss/"></head><body></body></html>',
+            file_get_contents($this->_feedSamplePath . '/Reader/rss20.xml'),
+        ]);
+        $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
         $link = $links->getIterator()->current();
         $this->assertTrue($link['feed'] instanceof Zend_Feed_Reader_Feed_Rss);
     }
 
     public function testZeroCountFeedSetReturnedFromEmptyList()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testGetsFeedLinksAsValueObject() requires a network connection');
-            return;
-        }
+        $this->_answerWith(['<html><head><title>No feeds</title></head><body></body></html>']);
         $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
         $this->assertEquals(0, count($links));
     }
-    
+
     /**
      * @group ZF-8327
      */
     public function testGetsFeedLinksAndTrimsNewlines()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testGetsFeedLinksAsValueObject() requires a network connection');
-            return;
-        }
-
-        try {
-            $links = Zend_Feed_Reader::findFeedLinks('http://www.infopod.com.br');
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-        }
-        $this->assertEquals('http://feeds.feedburner.com/jonnyken/infoblog', $links->rss);
+        $this->_answerWith(["<html><head><link rel=\"alternate\" type=\"application/rss+xml\" href=\"\n http://feeds.example.com/blog\n\"></head><body></body></html>"]);
+        $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
+        $this->assertEquals('http://feeds.example.com/blog', $links->rss);
     }
-    
+
     /**
      * @group ZF-8330
      */
     public function testGetsFeedLinksAndNormalisesRelativeUrls()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testGetsFeedLinksAsValueObject() requires a network connection');
-            return;
-        }
-
-        try {
-            $links = Zend_Feed_Reader::findFeedLinks('http://meiobit.com');
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-        }
-        $this->assertEquals('http://meiobit.com/rss.xml', $links->rss);
+        $this->_answerWith(['<html><head><link rel="alternate" type="application/rss+xml" href="/rss.xml"></head><body></body></html>']);
+        $links = Zend_Feed_Reader::findFeedLinks('http://www.example.com');
+        $this->assertEquals('http://www.example.com/rss.xml', $links->rss);
     }
-    
+
     /**
      * @group ZF-8330
      */

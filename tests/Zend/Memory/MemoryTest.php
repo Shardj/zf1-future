@@ -123,12 +123,7 @@ class Zend_Memory_MemoryTest extends TestCase
             'Zend_Cache_Backend_File' => ['File'],
             'Zend_Cache_Backend_Libmemcached' => ['Libmemcached'],
             'Zend_Cache_Backend_Memcached' => ['Memcached'],
-            'Zend_Cache_Backend_Sqlite' => ['Sqlite'],
             'Zend_Cache_Backend_TwoLevels' => ['TwoLevels'],
-            'Zend_Cache_Backend_TwoLevels' => ['Xcache'],
-            'Zend_Cache_Backend_ZendPlatform' => ['ZendPlatform'],
-            'Zend_Cache_Backend_ZendServer_Disk' => ['ZendServer_Disk'],
-            'Zend_Cache_Backend_ZendServer_ShMem    ' => ['ZendServer_ShMem']
         ];
     }
 }

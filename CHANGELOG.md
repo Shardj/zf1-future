@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+
+* Adapters and backends for technologies that are no longer available on supported PHP versions are deprecated and will be removed in a future version; they trigger an E_USER_DEPRECATED notice when instantiated: Zend_Queue_Adapter_Memcacheq (MemcacheQ, unmaintained since 2009), Zend_Filter_Encrypt_Mcrypt (ext/mcrypt removed in PHP 7.2, use Zend_Filter_Encrypt_Openssl), Zend_Filter_Compress_Rar (no rar extension for current PHP), Zend_Cache_Backend_Sqlite (needs the SQLite 2 extension of PHP 5), Zend_Cache_Backend_Xcache, Zend_Cache_Backend_ZendPlatform, Zend_Cache_Backend_ZendServer_Disk / _ShMem, Zend_Cache_Backend_WinCache, Zend_Serializer_Adapter_Wddx (ext/wddx removed in PHP 7.4), Zend_Http_UserAgent_Features_Adapter_TeraWurfl and _DeviceAtlas. Their tests, which could not run on any supported PHP, are removed.
+
 ### Fixed
 
 * Zend_Validate_Date: validating by locale without a format no longer triggers "Passing null to parameter" deprecations (PHP 8.1+) for an invalid date; the format check handled the null format with strpos()/strtoupper().

@@ -523,25 +523,6 @@ class Zend_EventManager_EventManagerTest extends TestCase
         $this->assertTrue($responses->stopped());
     }
 
-    public function testWeakRefsAreHonoredWhenTriggering()
-    {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('Requires PHP >= 5.3.0 as it tests functors');
-        }
-        if (!class_exists('WeakRef', false)) {
-            $this->markTestSkipped('Requires pecl/weakref');
-        }
-
-        $functor = new Zend_EventManager_TestAsset_Functor();
-        $this->events->attach('test', $functor);
-
-        unset($functor);
-
-        $result = $this->events->trigger('test', $this, []);
-        $message = $result->last();
-        $this->assertNull($message);
-    }
-
     public function testDuplicateIdentifiersAreNotRegistered()
     {
         $events = new Zend_EventManager_EventManager([__CLASS__, get_class($this)]);
