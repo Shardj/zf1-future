@@ -189,9 +189,7 @@ class Zend_Validate_DateTest extends TestCase
         }
         $this->assertEquals('de_AT', $this->_validator->getLocale());
         restore_error_handler();
-        if ($errorOccurredLocal) {
-            $this->markTestSkipped('Affected by bug described in ZF-2789');
-        }
+        $this->assertFalse($errorOccurredLocal, 'validating by locale must not trigger a PHP error');
     }
 
     /**
