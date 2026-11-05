@@ -596,10 +596,6 @@ class Zend_Cache_CoreTest extends TestCase
      */
     public function testIfFileZendLogWasIncluded()
     {
-        if (class_exists('Zend_Log', false)) {
-            $this->markTestSkipped('File Zend/Log.php already included');
-        }
-
         $cacheCore = new Zend_Cache_Core(
             ['logging' => true]
         );

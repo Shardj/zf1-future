@@ -296,6 +296,12 @@ defined('TESTS_ZEND_GDATA_PHOTOS_ONLINE_ENABLED') || define('TESTS_ZEND_GDATA_PH
  * under your web server(s) document root and set this constant to point to the
  * URL of this directory.
  */
+/**
+ * Zend_Feed_Pubsubhubbub_Subscriber tests post to testRawPostData.php of the
+ * same directory, so the URL of the Zend_Http_Client files serves here too.
+ */
+defined('TESTS_Zend_Feed_Pubsubhubbub_BASEURI') || define('TESTS_Zend_Feed_Pubsubhubbub_BASEURI', getenv('TESTS_ZEND_FEED_PUBSUBHUBBUB_BASEURI') ?: false);
+
 defined('TESTS_ZEND_HTTP_CLIENT_BASEURI') || define('TESTS_ZEND_HTTP_CLIENT_BASEURI', getenv('TESTS_ZEND_HTTP_CLIENT_BASEURI') ?: false);
 
 /**
