@@ -243,22 +243,6 @@ class Zend_Cache_AllTests
             $suite->addTestSuite('Zend_Cache_ZendServerShMemTest');
         }
 
-        /*
-         * Check if WinCache tests are enabled, and if extension is available.
-         */
-        if (!defined('TESTS_ZEND_CACHE_WINCACHE_ENABLED') ||
-            constant('TESTS_ZEND_CACHE_WINCACHE_ENABLED') === false) {
-            $skipTest = new Zend_Cache_TwoLevelsBackendTest_SkipTests();
-            $skipTest->message = 'Tests are not enabled in TestConfiguration.php';
-            $suite->addTest($skipTest);
-        } elseif (!extension_loaded('wincache')) {
-            $skipTest = new Zend_Cache_TwoLevelsBackendTest_SkipTests();
-            $skipTest->message = "Extension 'wincache' is not loaded";
-            $suite->addTest($skipTest);
-        } else {
-            $suite->addTestSuite('Zend_Cache_TwoLevelsBackendTest');
-        }
-        
         return $suite;
     }
 }

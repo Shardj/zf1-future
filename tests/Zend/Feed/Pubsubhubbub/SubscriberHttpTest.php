@@ -80,7 +80,7 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends TestCase
             $this->_subscriber = new Zend_Feed_Pubsubhubbub_Subscriber();
 
 
-            $this->_storage = $this->_getCleanMock('Zend_Feed_Pubsubhubbub_Entity_TopicSubscription');
+            $this->_storage = $this->createMock('Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface');
             $this->_subscriber->setStorage($this->_storage);
         } else {
             // Skip tests
@@ -95,10 +95,11 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends TestCase
         $this->_subscriber->addHubUrl($this->_baseuri . '/testRawPostData.php');
         $this->_subscriber->setCallbackUrl('http://www.example.com/callback');
         $this->_subscriber->setTestStaticToken('abc'); // override for testing
+        $this->_subscriber->setLeaseSeconds(2592000);
         $this->_subscriber->subscribeAll();
         $this->assertEquals(
-            'hub.callback=http%3A%2F%2Fwww.example.com%2Fcallback%3Fxhub.subscription%3D5536df06b5d'
-            . 'cb966edab3a4c4d56213c16a8184b&hub.lease_seconds=2592000&hub.mode='
+            'hub.callback=http%3A%2F%2Fwww.example.com%2Fcallback%3Fxhub.subscription%3D' . $this->_subscriptionKey()
+            . '&hub.lease_seconds=2592000&hub.mode='
             . 'subscribe&hub.topic=http%3A%2F%2Fwww.example.com%2Ftopic&hub.veri'
             . 'fy=sync&hub.verify=async&hub.verify_token=abc',
             $this->_client->getLastResponse()->getBody()
@@ -113,28 +114,21 @@ class Zend_Feed_Pubsubhubbub_SubscriberHttpTest extends TestCase
         $this->_subscriber->setTestStaticToken('abc'); //override for testing
         $this->_subscriber->unsubscribeAll();
         $this->assertEquals(
-            'hub.callback=http%3A%2F%2Fwww.example.com%2Fcallback%3Fxhub.subscription%3D5536df06b5d'
-            . 'cb966edab3a4c4d56213c16a8184b&hub.mode=unsubscribe&hub.topic=http'
+            'hub.callback=http%3A%2F%2Fwww.example.com%2Fcallback%3Fxhub.subscription%3D' . $this->_subscriptionKey()
+            . '&hub.mode=unsubscribe&hub.topic=http'
             . '%3A%2F%2Fwww.example.com%2Ftopic&hub.verify=sync&hub.verify=async'
             . '&hub.verify_token=abc',
             $this->_client->getLastResponse()->getBody()
         );
     }
 
-    protected function _getCleanMock($className)
+    /**
+     * The subscription key is the md5 of topic and hub URL
+     *
+     * @return string
+     */
+    protected function _subscriptionKey()
     {
-        $class = new ReflectionClass($className);
-        $methods = $class->getMethods();
-        $stubMethods = [];
-        foreach ($methods as $method) {
-            if ($method->isPublic() || ($method->isProtected()
-            && $method->isAbstract())) {
-                $stubMethods[] = $method->getName();
-            }
-        }
-        $mocked = $this->createMock(
-            $className
-        );
-        return $mocked;
+        return md5('http://www.example.com/topic' . $this->_baseuri . '/testRawPostData.php');
     }
 }

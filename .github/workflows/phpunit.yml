@@ -43,6 +43,9 @@ jobs:
 
       # the files in tests/Zend/Http/Client/_files are served by PHP's built-in server (see below)
       TESTS_ZEND_HTTP_CLIENT_BASEURI: http://127.0.0.1:8085/
+      TESTS_ZEND_FEED_PUBSUBHUBBUB_BASEURI: http://127.0.0.1:8085/
+
+      TESTS_ZEND_AUTH_ADAPTER_DBTABLE_PDO_SQLITE_ENABLED: true
 
       # https://hub.docker.com/r/bitnami/openldap
       LDAP_ROOT: "dc=example,dc=com"

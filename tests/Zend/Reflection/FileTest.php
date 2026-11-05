@@ -121,11 +121,12 @@ class Zend_Reflection_FileTest extends TestCase
 
     public function testFileGetFunctionsReturnsFunctions()
     {
-        $this->markTestSkipped('Regex in Zend_Reflection_File needs work in the function department');
         $fileToRequire = dirname(__FILE__) . '/_files/FileOfFunctions.php';
         require_once $fileToRequire;
         $reflectionFile = new Zend_Reflection_File($fileToRequire);
-        echo count($reflectionFile->getFunctions());
+        $functions = $reflectionFile->getFunctions();
+        $this->assertCount(2, $functions);
+        $this->assertContainsOnlyInstancesOf('Zend_Reflection_Function', $functions);
     }
 
     public function testFileCanReflectFileWithInterface()
