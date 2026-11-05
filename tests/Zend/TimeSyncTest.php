@@ -27,6 +27,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_timeSync
  */
 require_once 'Zend/TimeSync.php';
+require_once 'Zend/TimeSync/Ntp.php';
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_TranslateTest::main');
@@ -341,6 +342,61 @@ class Zend_TimeSyncTest extends TestCase
      *
      * @return void
      */
+    /**
+     * The NTP client against a canned answer of a server: no network, no PHP errors
+     */
+    public function testGetDateFromAnNtpAnswer()
+    {
+        if (!function_exists('stream_socket_pair')) {
+            $this->markTestSkipped('stream_socket_pair() is not available');
+        }
+        $now = microtime(true);
+        Zend_TimeSyncTest_FakeNtp::$packet =
+            chr(0x24) . chr(1) . chr(6) . chr(0xEC)          // no leap warning, NTP v4, server; stratum 1; poll; precision
+            . pack('N', 0x00000100) . pack('N', 0x00000200)  // root delay, root dispersion
+            . 'GPS '                                         // reference id
+            . $this->_ntpTimestamp($now - 10)                // reference
+            . $this->_ntpTimestamp($now)                     // originate
+            . $this->_ntpTimestamp($now)                     // receive
+            . $this->_ntpTimestamp($now);                    // transmit
+
+        $sync = new Zend_TimeSync();
+        $sync->addServer('ntp://fake');
+        $servers = new ReflectionProperty($sync, '_timeservers');
+        $servers->setAccessible(true);
+        $servers->setValue($sync, ['fake' => new Zend_TimeSyncTest_FakeNtp('fake', 123)]);
+
+        $errors = [];
+        set_error_handler(function ($level, $message) use (&$errors) {
+            $errors[] = $message;
+            return true;
+        });
+        try {
+            $date = $sync->getDate();
+            $info = $sync->getInfo();
+        } finally {
+            restore_error_handler();
+        }
+
+        $this->assertSame([], $errors);
+        $this->assertInstanceOf('Zend_Date', $date);
+        $this->assertEqualsWithDelta($now, $date->getTimestamp(), 2);
+        $this->assertEqualsWithDelta(0, $info['offset'], 1);
+        $this->assertEquals('primary reference', $info['stratum']);
+        $this->assertEquals('GPS UHF satellite positioning', $info['ntpid']);
+    }
+
+    /**
+     * @param  float $time Unix timestamp
+     * @return string 64 bit NTP timestamp
+     */
+    protected function _ntpTimestamp($time)
+    {
+        $seconds  = (int) floor($time) + 2208988800;
+        $fraction = (int) (($time - floor($time)) * 4294967296);
+        return pack('NN', $seconds, $fraction);
+    }
+
     public function testGetInfo()
     {
         $server = new Zend_TimeSync('time.windows.com');
@@ -352,5 +408,27 @@ class Zend_TimeSyncTest extends TestCase
         } catch (Zend_TimeSync_Exception  $e) {
             // nothing
         }
+    }
+}
+
+/**
+ * NTP client that reads the canned answer from a socket pair instead of a server
+ */
+class Zend_TimeSyncTest_FakeNtp extends Zend_TimeSync_Ntp
+{
+    public static $packet = '';
+
+    /**
+     * The server end of the pair, kept open while the client writes its request
+     *
+     * @var resource
+     */
+    protected $_server;
+
+    protected function _connect()
+    {
+        [$client, $this->_server] = stream_socket_pair(STREAM_PF_UNIX, STREAM_SOCK_STREAM, STREAM_IPPROTO_IP);
+        fwrite($this->_server, self::$packet);
+        $this->_socket = $client;
     }
 }

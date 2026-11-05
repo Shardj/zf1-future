@@ -21574,30 +21574,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "&" between non-falsy-string and 16711680 results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "&" between non-falsy-string and 255 results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "&" between non-falsy-string and 4278190080 results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "&" between non-falsy-string and 65280 results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation ">>" between non-falsy-string and 17 results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
