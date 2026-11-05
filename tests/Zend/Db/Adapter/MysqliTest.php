@@ -307,11 +307,15 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
     }
 
     /**
-     * mysqli_set_charset() reports the bogus charset only with mysqli error
-     * reporting on, which is the default since PHP 8.1
+     * mysqli_set_charset() reports the bogus charset with mysqli error
+     * reporting on, which is the default since PHP 8.1; PHP 7.4 does not report it
      */
     public function testAdapterInvalidCharsetThrowsAdapterException()
     {
+        if (PHP_VERSION_ID < 80000) {
+            $this->markTestSkipped('mysqli_set_charset() reports errors since PHP 8.0');
+        }
+
         $params = $this->_util->getParams();
         $params['charset'] = 'bogus_charset';
         $db = Zend_Db::factory($this->getDriver(), $params);

@@ -895,18 +895,19 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
     {
         $table = $this->_table['products'];
 
+        // the keys are given, so the insert needs no sequence or auto-increment support
         $this->_db->beginTransaction();
         try {
             // warm up caches and statement handling
-            for ($i = 0; $i < 200; $i++) {
-                $table->insert(['product_name' => "warmup$i"]);
+            for ($i = 1; $i <= 200; $i++) {
+                $table->insert(['product_id' => 1000 + $i, 'product_name' => "warmup$i"]);
             }
             gc_collect_cycles();
             $mem1 = memory_get_usage();
 
             $n = 2000;
             for ($i = 1; $i <= $n; $i++) {
-                $table->insert(['product_name' => "product$i"]);
+                $table->insert(['product_id' => 2000 + $i, 'product_name' => "product$i"]);
             }
             gc_collect_cycles();
             $mem2 = memory_get_usage();
