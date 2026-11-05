@@ -57,3 +57,14 @@ Since 1.26.0 `Zend_Mail` authenticates with an OAuth 2.0 access token where a pa
 * ``Bootstrap error: Unable to resolve plugin "useragent"; no corresponding plugin with that name``  
    Fixed in 1.26.0 (https://github.com/Shardj/zf1-future/issues/407). On older versions the resource file has to be renamed to ``Zend/Application/Resource/Useragent.php``, see https://github.com/Shardj/zf1-future/issues/92
 * ``Zend_Test_PHPUnit_Db`` (database fixtures for PHPUnit) is not supported. It extends the DbUnit classes ``PHPUnit_Extensions_Database_*``, which only exist for PHPUnit 5 and older; the component is shipped as is, without tests, and is not adapted to the DbUnit forks for current PHPUnit versions (their classes are namespaced and typed). Applications that need DbUnit have to use such a fork directly, see https://github.com/Shardj/zf1-future/issues/412
+
+# Deprecated components
+
+The following adapters and backends depend on technologies that are not available on any supported PHP version. They are kept for now, trigger an ``E_USER_DEPRECATED`` notice when instantiated, are not covered by the test suite and will be removed in a future version:
+
+* ``Zend_Queue_Adapter_Memcacheq`` (MemcacheQ, unmaintained since 2009; use ``Zend_Queue_Adapter_Db`` or ``Zend_Queue_Adapter_Activemq``)
+* ``Zend_Filter_Encrypt_Mcrypt`` (ext/mcrypt was removed in PHP 7.2; use ``Zend_Filter_Encrypt_Openssl``)
+* ``Zend_Filter_Compress_Rar`` (no rar extension for current PHP versions)
+* ``Zend_Cache_Backend_Sqlite`` (needs the SQLite 2 extension of PHP 5), ``Zend_Cache_Backend_Xcache``, ``Zend_Cache_Backend_ZendPlatform``, ``Zend_Cache_Backend_ZendServer_Disk``, ``Zend_Cache_Backend_ZendServer_ShMem``, ``Zend_Cache_Backend_WinCache``
+* ``Zend_Serializer_Adapter_Wddx`` (ext/wddx was removed in PHP 7.4)
+* ``Zend_Http_UserAgent_Features_Adapter_TeraWurfl``, ``Zend_Http_UserAgent_Features_Adapter_DeviceAtlas``

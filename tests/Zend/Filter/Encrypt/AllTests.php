@@ -28,7 +28,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Zend_Filter_Encrypt_AllTests::main');
 }
 
-require_once 'Zend/Filter/Encrypt/McryptTest.php';
 require_once 'Zend/Filter/Encrypt/OpensslTest.php';
 
 /**
@@ -60,7 +59,6 @@ class Zend_Filter_Encrypt_AllTests
     {
         $suite = new TestSuite('Zend Framework - Zend_Filter_Encrypt');
 
-        $suite->addTestSuite('Zend_Filter_Encrypt_McryptTest');
         $suite->addTestSuite('Zend_Filter_Encrypt_OpensslTest');
 
         return $suite;

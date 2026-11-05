@@ -31,6 +31,7 @@ require_once 'Zend/Filter/Compress/CompressAbstract.php';
  * @package    Zend_Filter
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @deprecated Deprecated since 1.26.1 and will be removed in a future version: the rar extension is not available for current PHP versions
  */
 class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
 {
@@ -59,6 +60,8 @@ class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
      */
     public function __construct($options = null)
     {
+        trigger_error(get_class($this) . ' is deprecated and will be removed in a future version', E_USER_DEPRECATED);
+
         if (!extension_loaded('rar')) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception('This filter needs the rar extension');

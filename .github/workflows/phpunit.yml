@@ -26,7 +26,6 @@ jobs:
       TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_PASSWORD: github
       TESTS_ZEND_DB_ADAPTER_PDO_PGSQL_DATABASE: zftest
 
-      TESTS_ZEND_CACHE_SQLITE_ENABLED: true
       TESTS_ZEND_DB_ADAPTER_PDO_SQLITE_ENABLED: true
 
       TESTS_ZEND_CACHE_MEMCACHED_ENABLED: true
@@ -44,8 +43,16 @@ jobs:
       # the files in tests/Zend/Http/Client/_files are served by PHP's built-in server (see below)
       TESTS_ZEND_HTTP_CLIENT_BASEURI: http://127.0.0.1:8085/
       TESTS_ZEND_FEED_PUBSUBHUBBUB_BASEURI: http://127.0.0.1:8085/
+      # the XXE tests of Zend_Feed fetch their feeds and the entity from tests/Zend/Feed/_files
+      TESTS_ZEND_FEED_IMPORT_ONLINE_BASEURI: http://127.0.0.1:8086/
 
       TESTS_ZEND_AUTH_ADAPTER_DBTABLE_PDO_SQLITE_ENABLED: true
+
+      # Zend_Queue_Adapter_Activemq over STOMP on the ActiveMQ service
+      TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED: true
+      TESTS_ZEND_QUEUE_ACTIVEMQ_SCHEME: tcp
+      TESTS_ZEND_QUEUE_ACTIVEMQ_HOST: 127.0.0.1
+      TESTS_ZEND_QUEUE_ACTIVEMQ_PORT: 61613
 
       # https://hub.docker.com/r/bitnami/openldap
       LDAP_ROOT: "dc=example,dc=com"
@@ -61,6 +68,11 @@ jobs:
       LOCALES: "fr_FR@euro fr_FR fr_BE.UTF-8 de en_US"
       OPENSSL_CONF: "./tests/openssl.conf"
     services:
+      activemq:
+        image: apache/activemq-classic:5.18.3
+        ports:
+          - 61613:61613
+
       memcache:
         image: memcached:1.6.17-alpine
         ports:
@@ -187,11 +199,13 @@ jobs:
         run: |
           bin/parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php . --checkstyle | cs2pr
 
-      - name: Serve the Zend_Http_Client test files
+      - name: Serve the Zend_Http_Client and Zend_Feed test files
         run: |
-          php -S 127.0.0.1:8085 -t tests/Zend/Http/Client/_files > /tmp/php-server.log 2>&1 &
+          php -S 127.0.0.1:8085 -t tests/Zend/Http/Client/_files > /tmp/php-server-http.log 2>&1 &
+          php -S 127.0.0.1:8086 -t tests/Zend/Feed/_files > /tmp/php-server-feed.log 2>&1 &
           sleep 1
           curl -sSf http://127.0.0.1:8085/testSimpleRequests.php > /dev/null
+          curl -sSf http://127.0.0.1:8086/xxe-info.txt > /dev/null
 
       - name: "Run tests on PHP ${{ matrix.php-version }} (Experimental: ${{ matrix.experimental }}) with minimal extensions"
         run: |

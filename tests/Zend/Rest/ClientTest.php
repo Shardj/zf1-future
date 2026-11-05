@@ -80,14 +80,10 @@ class Zend_Rest_ClientTest extends TestCase
      */
     public function testCanPostFileInPresetHttpClient()
     {
-        if (!defined('TESTS_ZEND_REST_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_REST_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('Define TESTS_ZEND_REST_ONLINE_ENABLED to test Zend_Rest_ClientTest online.');
-        }
-
         $client = new Zend_Rest_Client('http://framework.zend.com');
-        $httpClient = new Zend_Http_Client();
+        $adapter = new Zend_Http_Client_Adapter_Test();
+        $adapter->setResponse("HTTP/1.1 200 OK\r\nContent-Type: text/xml\r\n\r\n<?xml version=\"1.0\"?><response><status>success</status></response>");
+        $httpClient = new Zend_Http_Client(null, ['adapter' => $adapter]);
         $text = 'this is some plain text';
         $httpClient->setFileUpload('some_text.txt', 'upload', $text, 'text/plain');
         $client->setHttpClient($httpClient);
@@ -99,12 +95,6 @@ class Zend_Rest_ClientTest extends TestCase
 
     public function testUri()
     {
-        if (!defined('TESTS_ZEND_REST_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_REST_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('Define TESTS_ZEND_REST_ONLINE_ENABLED to test Zend_Rest_ClientTest online.');
-        }
-
         $client = new Zend_Rest_Client('http://framework.zend.com/rest/');
         $uri = $client->getUri();
         $this->assertTrue($uri instanceof Zend_Uri_Http);

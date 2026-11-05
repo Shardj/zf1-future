@@ -6,8 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+
+* Adapters and backends for technologies that are no longer available on supported PHP versions are deprecated and will be removed in a future version; they trigger an E_USER_DEPRECATED notice when instantiated: Zend_Queue_Adapter_Memcacheq (MemcacheQ, unmaintained since 2009), Zend_Filter_Encrypt_Mcrypt (ext/mcrypt removed in PHP 7.2, use Zend_Filter_Encrypt_Openssl), Zend_Filter_Compress_Rar (no rar extension for current PHP), Zend_Cache_Backend_Sqlite (needs the SQLite 2 extension of PHP 5), Zend_Cache_Backend_Xcache, Zend_Cache_Backend_ZendPlatform, Zend_Cache_Backend_ZendServer_Disk / _ShMem, Zend_Cache_Backend_WinCache, Zend_Serializer_Adapter_Wddx (ext/wddx removed in PHP 7.4), Zend_Http_UserAgent_Features_Adapter_TeraWurfl and _DeviceAtlas. Their tests, which could not run on any supported PHP, are removed.
+
 ### Fixed
 
+* Zend_Queue_Stomp_Client_Connection::read() no longer passes an empty read of the non-blocking socket to ord(), which PHP 8.5 reports as deprecated.
 * Zend_Validate_Date: validating by locale without a format no longer triggers "Passing null to parameter" deprecations (PHP 8.1+) for an invalid date; the format check handled the null format with strpos()/strtoupper().
 * Zend_Test_PHPUnit_ControllerTestCase: assertNotQueryContentContains() / assertNotXpathContentContains() compare a numeric needle as text; before PHP 8 strstr() took an int as a character code, so assertNotQueryContentContains('.price', 42) passed whatever the content was (the sister assertQueryContentContains() already cast the needle).
 * Zend_Reflection_Parameter: getType() returns the declared type (ReflectionType) as its signature promises; it returned the @param type of the docblock as a string, which has been a TypeError since the PHP 8 signature. The docblock type is available through the new getDocblockType(). getClass() on PHP 8 reflected the ReflectionNamedType class instead of the parameter's class, returns null for scalar types and resolves self/parent. Zend_CodeGenerator_Php_Parameter::fromReflection() sets the type only when one is declared.

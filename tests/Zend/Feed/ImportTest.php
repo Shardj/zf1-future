@@ -459,17 +459,19 @@ class Zend_Feed_ImportTest extends TestCase
      */
     public function testFindFeedsIncludesUriAsArrayKey()
     {
-        if (!defined('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_FEED_READER_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('testFindFeedsIncludesUriAsArrayKey() requires a network connection');
-            return;
-        }
-        Zend_Feed::setHttpClient(new Zend_Http_Client());
-        $feeds = Zend_Feed::findFeeds('http://www.planet-php.net');
+        $this->_adapter->setResponse(new Zend_Http_Response(200, ['Content-Type' => 'text/html'],
+            '<html><head>'
+            . '<link rel="alternate" type="application/rss+xml" href="http://www.example.com/rss/">'
+            . '<link rel="alternate" type="application/rdf+xml" href="http://www.example.com/rdf/">'
+            . '</head><body></body></html>'));
+        $this->_adapter->addResponse(new Zend_Http_Response(200, [], file_get_contents(dirname(__FILE__) . '/_files/RssTest200Sample1.xml')));
+        $this->_adapter->addResponse(new Zend_Http_Response(200, [], file_get_contents(dirname(__FILE__) . '/_files/RssTest200Sample1.xml')));
+
+        $feeds = Zend_Feed::findFeeds('http://www.example.com');
         $this->assertEquals([
-            'http://www.planet-php.org:80/rss/', 'http://www.planet-php.org:80/rdf/'
+            'http://www.example.com/rss/', 'http://www.example.com/rdf/'
         ], array_keys($feeds));
+        $this->assertContainsOnlyInstancesOf('Zend_Feed_Rss', $feeds);
     }
 
     /**
@@ -492,18 +494,10 @@ class Zend_Feed_ImportTest extends TestCase
         self::fail('This test should create a mangled object that throws when deserialized');
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
-    public function testFindFeedsMissingLinkException()
+    public function testFindFeedsReturnsNoFeedsForAPageWithoutFeedLinks()
     {
-        self::markTestSkipped('Not yet implemented. Currently the only way to reliably test this is to spawn a server process');
-
-        try {
-            Zend_Feed::setHttpClient(new Zend_Http_Client());
-            Zend_Feed::findFeeds('https://www.microsoft.com/');
-        } catch (Exception $e) {
-            #var_dump($e);
-        }
+        $this->_adapter->setResponse(new Zend_Http_Response(200, ['Content-Type' => 'text/html'],
+            '<html><head><title>No feeds here</title></head><body></body></html>'));
+        $this->assertSame([], Zend_Feed::findFeeds('http://www.example.com/'));
     }
 }

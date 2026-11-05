@@ -71,22 +71,6 @@ class Zend_Queue_FactoryTest extends TestCase
         $this->assertTrue($adapter instanceof Zend_Queue);
     }
 
-    public function testMemcacheq()
-    {
-        if (TESTS_ZEND_QUEUE_MEMCACHEQ_HOST === false ||
-             TESTS_ZEND_QUEUE_MEMCACHEQ_PORT === false) {
-            $this->markTestSkipped('MemcacheQ setup required');
-        }
-
-        $config = ['name' => 'queue1',
-                        'driverOptions' => ['host' => TESTS_ZEND_QUEUE_MEMCACHEQ_HOST,
-                                                 'port' => TESTS_ZEND_QUEUE_MEMCACHEQ_PORT]];
-
-        $adapter = new Zend_Queue('Memcacheq', $config);
-
-        $this->assertTrue($adapter instanceof Zend_Queue);
-    }
-
     public function testActivemq()
     {
         if (TESTS_ZEND_QUEUE_ACTIVEMQ_SCHEME === false ||

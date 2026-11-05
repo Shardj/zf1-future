@@ -58,11 +58,9 @@ require_once 'Zend/Filter/StripTagsTest.php';
 require_once 'Zend/Filter/Compress/Bz2Test.php';
 require_once 'Zend/Filter/Compress/GzTest.php';
 require_once 'Zend/Filter/Compress/LzfTest.php';
-require_once 'Zend/Filter/Compress/RarTest.php';
 require_once 'Zend/Filter/Compress/TarTest.php';
 require_once 'Zend/Filter/Compress/ZipTest.php';
 
-require_once 'Zend/Filter/Encrypt/McryptTest.php';
 require_once 'Zend/Filter/Encrypt/OpensslTest.php';
 
 require_once 'Zend/Filter/File/DecryptTest.php';
@@ -149,10 +147,8 @@ class Zend_Filter_AllTests
         $suite->addTestSuite('Zend_Filter_Compress_Bz2Test');
         $suite->addTestSuite('Zend_Filter_Compress_GzTest');
         $suite->addTestSuite('Zend_Filter_Compress_LzfTest');
-        $suite->addTestSuite('Zend_Filter_Compress_RarTest');
         $suite->addTestSuite('Zend_Filter_Compress_TarTest');
         $suite->addTestSuite('Zend_Filter_Compress_ZipTest');
-        $suite->addTestSuite('Zend_Filter_Encrypt_McryptTest');
         $suite->addTestSuite('Zend_Filter_Encrypt_OpensslTest');
         $suite->addTestSuite('Zend_Filter_File_DecryptTest');
         $suite->addTestSuite('Zend_Filter_File_EncryptTest');
