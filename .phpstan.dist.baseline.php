@@ -17768,12 +17768,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Reflection/Method.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type string is incompatible with native type ReflectionType|null.',
-	'identifier' => 'return.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Reflection/Parameter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_Registry::$_registry (Zend_Registry) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
