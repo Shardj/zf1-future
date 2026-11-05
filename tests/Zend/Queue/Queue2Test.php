@@ -50,4 +50,23 @@ class Zend_Queue_Queue2Test extends Zend_Queue_QueueBaseTest
 
         $this->queue = new Zend_Queue('Null', $this->config);
     }
+
+    /**
+     * The Null adapter supports no messages: count() is zero, send() and receive() throw
+     */
+    public function testSendAndCountAndReceiveAndDeleteMessage()
+    {
+        $this->assertEquals(0, $this->queue->count());
+
+        try {
+            $this->queue->send('message');
+            $this->fail('send() should throw');
+        } catch (Zend_Queue_Exception $e) {
+            $this->assertStringContainsString('send() is not supported', $e->getMessage());
+        }
+
+        $this->expectException('Zend_Queue_Exception');
+        $this->expectExceptionMessage('receive() is not supported');
+        $this->queue->receive();
+    }
 }

@@ -61,7 +61,7 @@ class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends TestCase
         $this->assertEquals(1, $adapter['javascript']);
         $this->assertEquals(3, $adapter['cssversion']);
         $this->assertEquals('iPhone', $adapter['mobile_browser']);
-        $this->assertStringContainsString('^mozilla/.\\..*(iphone;.*cpu', $adapter['browser_name_regex']);
+        $this->assertStringStartsWith('Mozilla/5.0 (iPhone; U; CPU like Mac OS X;', $adapter['browser_name_pattern']);
 
         $request['http_user_agent'] = 'SonyEricssonK700i/R2AC SEMC-Browser/4.0.2 Profile/MIDP-2.0 Configuration/CLDC-1.1';
         $adapter = Zend_Http_UserAgent_Features_Adapter_Browscap::getFromRequest($request, []);
@@ -69,7 +69,7 @@ class Zend_Http_UserAgent_Features_Adapter_BrowscapTest extends TestCase
         $this->assertEquals(1, $adapter['javascript']);
         $this->assertEquals(1, $adapter['cssversion']);
         $this->assertEquals('SEMC Browser', $adapter['mobile_browser']);
-        $this->assertEquals('^.*semc-browser/.*$', $adapter['browser_name_regex']);
+        $this->assertEquals('*SEMC-Browser/*', $adapter['browser_name_pattern']);
     }
 }
 

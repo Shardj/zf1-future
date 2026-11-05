@@ -132,9 +132,12 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->assertFalse((bool) $db->getConnection()->getAttribute(Zend_Db_TestUtil_Pdo_Mysql::getBufferedQueryAttribute()));
     }
 
+    /**
+     * The driver has no sequences
+     */
     public function testAdapterInsertSequence()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support sequences');
+        $this->_testAdapterInsertWithoutSequence();
     }
 
     /**
@@ -267,17 +270,6 @@ class Zend_Db_Adapter_Pdo_MysqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $alias = "bar";
         $value = $this->_db->quoteTableAs($string, $alias);
         $this->assertEquals('`foo` AS `bar`', $value);
-    }
-
-    /**
-     * Ensures that the character sequence ":0'" is handled properly
-     *
-     * @link   http://framework.zend.com/issues/browse/ZF-2059
-     * @return void
-     */
-    public function testZF2059()
-    {
-        $this->markTestIncomplete('Inconsistent test results');
     }
 
     /**

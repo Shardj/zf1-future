@@ -34,15 +34,9 @@ require_once 'Zend/Db/Select/TestCommon.php';
  */
 class Zend_Db_Select_Pdo_SqliteTest extends Zend_Db_Select_TestCommon
 {
-    public function testSelectFromQualified()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support qualified table names');
-    }
 
-    public function testSelectJoinQualified()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support qualified table names');
-    }
+
+
 
     public function testSelectFromForUpdate()
     {
@@ -51,7 +45,11 @@ class Zend_Db_Select_Pdo_SqliteTest extends Zend_Db_Select_TestCommon
 
     public function testSelectJoinRight()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support RIGHT OUTER JOIN');
+        $version = $this->_db->getConnection()->query('SELECT sqlite_version()')->fetchColumn();
+        if (version_compare($version, '3.39.0', '<')) {
+            $this->markTestSkipped("SQLite $version does not support RIGHT OUTER JOIN, 3.39.0 does");
+        }
+        parent::testSelectJoinRight();
     }
 
     public function testSelectGroupBy()
