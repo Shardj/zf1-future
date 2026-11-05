@@ -112,4 +112,32 @@ class Zend_Db_Table_Pdo_OciTest extends Zend_Db_Table_TestCommon
     {
         return 'Pdo_Oci';
     }
+
+    /**
+     * Oracle has no auto-increment, the keys of the bugs come from their sequence
+     */
+    public function testTableInsertWhenAutoIncrementFieldIsAnEmptyStringShouldProduceNewAutoIncrementValue()
+    {
+        $this->_useBugsSequence();
+        parent::testTableInsertWhenAutoIncrementFieldIsAnEmptyStringShouldProduceNewAutoIncrementValue();
+    }
+
+    public function testTableInsertWithEmptyValueAsPrimaryKey()
+    {
+        $this->_useBugsSequence();
+        parent::testTableInsertWithEmptyValueAsPrimaryKey();
+    }
+
+    protected function _useBugsSequence()
+    {
+        $this->_table['bugs'] = $this->_getTable(
+            'My_ZendDbTable_TableBugs',
+            [Zend_Db_Table_Abstract::SEQUENCE => 'zfbugs_seq']
+        );
+    }
+
+    protected function _lastInsertBugId()
+    {
+        return $this->_db->lastSequenceId('zfbugs_seq');
+    }
 }

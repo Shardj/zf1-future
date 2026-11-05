@@ -757,9 +757,19 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
             'verified_by' => 'dduck'
         ];
         $insertResult = $table->insert($row);
-        $lastInsertId = $this->_db->lastInsertId('zfbugs', 'bug_id');
+        $lastInsertId = $this->_lastInsertBugId();
         $this->assertEquals($insertResult, $lastInsertId);
         $this->assertEquals(5, $lastInsertId);
+    }
+
+    /**
+     * The key of the last row inserted into zfbugs, as the driver reports it
+     *
+     * @return string
+     */
+    protected function _lastInsertBugId()
+    {
+        return $this->_db->lastInsertId('zfbugs', 'bug_id');
     }
 
     public function testTableInsertWithSchema()
@@ -952,13 +962,13 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
 
         // zero '0'
         $row['bug_id'] = '0';
-        $table->delete('bug_id > 0'); // clear table
+        $table->delete($this->_db->quoteIdentifier('bug_id') . ' > 0'); // clear table
         $insertResult = $table->insert($row);
         $this->assertEquals('0', $insertResult, 'Zero string did not return assigned primary key');
 
         // zero 0
         $row['bug_id'] = 0;
-        $table->delete('bug_id = 0'); // clear table
+        $table->delete($this->_db->quoteIdentifier('bug_id') . ' = 0'); // clear table
         $insertResult = $table->insert($row);
         $this->assertEquals('0', $insertResult, 'Zero int did not return assigned primary key');
     }
@@ -1834,7 +1844,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         }
 
         // Perform the delete
-        $tblRecursive->delete($tblRecursive->getAdapter()->quoteInto('item_id = ?', 1));
+        $tblRecursive->delete($tblRecursive->getAdapter()->quoteInto($this->_db->quoteIdentifier('item_id') . ' = ?', 1));
 
         // Assert that all children of #1 (2,3,4,5) are removed recursively
         $this->assertNull($tblRecursive->find(1)->current());

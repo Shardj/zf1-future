@@ -124,4 +124,4 @@ jobs:
       - name: Run the Zend_Db tests
         run: |
           printf "<?php\ndefine('PHPUnit_MAIN_METHOD', 'none');\nrequire '%s/tests/TestHelper.php';\n" "$PWD" > /tmp/bootstrap.php
-          bin/phpunit --bootstrap /tmp/bootstrap.php tests/Zend/Db/AllTests.php
+          bin/phpunit --verbose --bootstrap /tmp/bootstrap.php tests/Zend/Db/AllTests.php

@@ -45,4 +45,12 @@ class Zend_Db_Table_Pdo_IbmTest extends Zend_Db_Table_TestCommon
     {
         return 'Pdo_Ibm';
     }
+
+    /**
+     * The bugs have an identity column, not a sequence named after the table
+     */
+    protected function _lastInsertBugId()
+    {
+        return $this->_db->lastInsertId();
+    }
 }
