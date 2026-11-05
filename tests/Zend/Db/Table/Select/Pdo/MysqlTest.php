@@ -46,4 +46,9 @@ class Zend_Db_Table_Select_Pdo_MysqlTest extends Zend_Db_Table_Select_TestCommon
     {
         return 'Pdo_Mysql';
     }
+
+    public function testSelectFromForUpdate()
+    {
+        $this->_testSelectFromForUpdate();
+    }
 }

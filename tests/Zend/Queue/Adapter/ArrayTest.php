@@ -125,4 +125,9 @@ class Zend_Queue_Adapter_ArrayTest extends Zend_Queue_Adapter_AdapterTest
     {
         parent::testIsSupportException();
     }
+
+    public function testVisibility()
+    {
+        $this->_testVisibility();
+    }
 }

@@ -677,36 +677,23 @@ abstract class Zend_Queue_Adapter_AdapterTest extends TestCase
     }
 
     /**
-     * This tests to see if a message is in-visibile for the proper amount of time
-     *
-     * adapters that support deleteMessage() by nature will support visibility
+     * This tests to see if a message is in-visibile for the proper amount of time;
+     * the tests of the adapters that support visibility call it
      */
-    public function testVisibility()
+    protected function _testVisibility()
     {
         $debug = false;
         $default_timeout = 3; // how long we tell the queue to keep the message invisible
         $extra_delay = 2; // how long we are willing to wait for the test to finish before failing
         // keep in mind that some queue services are on forigen machines and need network time.
 
-        if (false) { // easy comment/uncomment, set to true or false
-            $this->markTestSkipped('Visibility testing takes ' . (string)($default_timeout + $extra_delay) . ' seconds per adapter, if you wish to test this, uncomment the test case in ' . __FILE__ . ' line ' . __LINE__);
-            return;
-        }
-
         $config = $this->getTestConfig();
         $config['timeout'] = 2;
 
-        if (!$queue = $this->createQueue(__FUNCTION__, $config)) {
+        if (!$queue = $this->createQueue('testVisibility', $config)) {
             return;
         }
         $adapter = $queue->getAdapter();
-
-        $not_supported = ['Activemq'];
-        if ((!$queue->isSupported('deleteMessage')) || in_array($this->getAdapterName(), $not_supported)) {
-            $queue->deleteQueue();
-            $this->markTestSkipped($this->getAdapterName() . ' does not support visibility of messages');
-            return;
-        }
 
         $body = 'hello world';
 

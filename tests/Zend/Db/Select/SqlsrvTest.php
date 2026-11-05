@@ -47,11 +47,6 @@ class Zend_Db_Select_SqlsrvTest extends Zend_Db_Select_TestCommon
         $this->markTestSkipped($this->getDriver() . ' does not support selecting int columns by varchar param.');
     }
 
-    public function testSelectFromForUpdate()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support for update.');
-    }
-
     public function testSelectFromQualified()
     {
         $this->markTestIncomplete($this->getDriver() . ' needs more syntax for qualified table names.');
