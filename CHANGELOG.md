@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* Zend_Crypt_Math::rand() returns a random number of the given range from random_bytes(); on systems with /dev/urandom it returned raw bytes instead of a number, which bcmath took as 0 (PHP 7) or rejected with a ValueError (PHP 8). Zend_Crypt_DiffieHellman generates its private key through it when ext/openssl is not used.
 * Zend_Queue_Stomp_Client_Connection::read() no longer passes an empty read of the non-blocking socket to ord(), which PHP 8.5 reports as deprecated.
 * Zend_Validate_Date: validating by locale without a format no longer triggers "Passing null to parameter" deprecations (PHP 8.1+) for an invalid date; the format check handled the null format with strpos()/strtoupper().
 * Zend_Test_PHPUnit_ControllerTestCase: assertNotQueryContentContains() / assertNotXpathContentContains() compare a numeric needle as text; before PHP 8 strstr() took an int as a character code, so assertNotQueryContentContains('.price', 42) passed whatever the content was (the sister assertQueryContentContains() already cast the needle).
