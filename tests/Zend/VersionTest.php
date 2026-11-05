@@ -186,6 +186,8 @@ class Zend_VersionTest_HttpsStream
     }
 }
 
-if (PHPUnit_MAIN_METHOD === "Zend_VersionTest::main") {
+// A test in a separate process loads this file again in the child process;
+// the tests must not start over there.
+if (PHPUnit_MAIN_METHOD === "Zend_VersionTest::main" && !function_exists('__phpunit_run_isolated_test')) {
     Zend_VersionTest::main();
 }

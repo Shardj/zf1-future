@@ -389,6 +389,8 @@ class Zend_File_Transfer_Adapter_HttpTest_MockAdapter extends Zend_File_Transfer
 }
 
 // Call Zend_File_Transfer_Adapter_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === "Zend_File_Transfer_Adapter_HttpTest::main") {
+// A test in a separate process loads this file again in the child process;
+// the tests must not start over there.
+if (PHPUnit_MAIN_METHOD === "Zend_File_Transfer_Adapter_HttpTest::main" && !function_exists('__phpunit_run_isolated_test')) {
     Zend_File_Transfer_Adapter_HttpTest::main();
 }
