@@ -313,25 +313,16 @@ class Zend_Feed_ImportTest extends TestCase
     }
 
     /**
-     * Imports an invalid feed and ensure everything works as expected
-     * even if XDebug is running (ZF-2590).
+     * An empty response is reported as such, whether XDebug is loaded or not (ZF-2590)
      */
-    public function testImportInvalidIsXdebugAware()
+    public function testImportEmptyResponseThrows()
     {
-        if (!function_exists('xdebug_is_enabled')) {
-            $this->markTestSkipped('XDebug not installed');
-        }
-
         $response = new Zend_Http_Response(200, [], '');
         $this->_adapter->setResponse($response);
 
-        try {
-            $feed = Zend_Feed::import('http://localhost');
-            $this->fail('Expected Zend_Feed_Exception not thrown');
-        } catch (Zend_Feed_Exception $e) {
-            $this->assertTrue($e instanceof Zend_Feed_Exception);
-            $this->assertMatchesRegularExpression('/(XDebug is running|Empty string)/', $e->getMessage());
-        }
+        $this->expectException(Zend_Feed_Exception::class);
+        $this->expectExceptionMessage('is an Empty string or comes from an empty HTTP response');
+        Zend_Feed::import('http://localhost');
     }
 
     /**
