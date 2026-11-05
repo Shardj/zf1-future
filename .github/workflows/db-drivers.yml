@@ -43,7 +43,7 @@ jobs:
       TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PDOTYPE: dblib
 
       TESTS_ZEND_DB_ADAPTER_ORACLE_HOSTNAME: 127.0.0.1
-      TESTS_ZEND_DB_ADAPTER_ORACLE_USERNAME: system
+      TESTS_ZEND_DB_ADAPTER_ORACLE_USERNAME: SYSTEM
       TESTS_ZEND_DB_ADAPTER_ORACLE_PASSWORD: "Zend_Test_2026"
       TESTS_ZEND_DB_ADAPTER_ORACLE_SID: XE
 
@@ -109,10 +109,12 @@ jobs:
         env:
           fail-fast: true
 
-      # pdo_dblib comes with the sybase package of the PHP repository setup-php uses
+      # pdo_dblib comes with the sybase package of the ondrej/php repository
       - name: Install pdo_dblib
         if: matrix.database == 'sqlsrv'
         run: |
+          sudo add-apt-repository -y ppa:ondrej/php
+          sudo apt-get update
           sudo apt-get install -y php${PHP_VERSION}-sybase
           php -m | grep -i dblib
 

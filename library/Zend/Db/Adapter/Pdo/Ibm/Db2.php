@@ -77,7 +77,7 @@ class Zend_Db_Adapter_Pdo_Ibm_Db2
     public function describeTable($tableName, $schemaName = null)
     {
         $sql = "SELECT DISTINCT c.tabschema, c.tabname, c.colname, c.colno,
-                c.typename, c.default, c.nulls, c.length, c.scale,
+                c.typename, CAST(c.default AS VARCHAR(2000)), c.nulls, c.length, c.scale,
                 c.identity, tc.type AS tabconsttype, k.colseq
                 FROM syscat.columns c
                 LEFT JOIN (syscat.keycoluse k JOIN syscat.tabconst tc
