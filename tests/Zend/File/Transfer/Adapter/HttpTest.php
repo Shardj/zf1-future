@@ -235,38 +235,30 @@ class Zend_File_Transfer_Adapter_HttpTest extends TestCase
         );
     }
 
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testNoUploadInProgress()
     {
-        if (!(ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable('apc_fetch')) &&
-            !is_callable('uploadprogress_get_info')) {
-            $this->markTestSkipped('Whether APC nor UploadExtension available');
-            return;
-        }
+        $this->_stubUploadProgressExtension();
 
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
-        $this->assertStringContainsString('No upload in progress', $status);
+        $this->assertTrue($status['done']);
+        $this->assertStringContainsString('No upload in progress', $status['message']);
     }
 
-    public function testUploadProgressFailure()
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testUploadProgress()
     {
-        if (!(ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable('apc_fetch')) &&
-            !is_callable('uploadprogress_get_info')) {
-            $this->markTestSkipped('Whether APC nor UploadExtension available');
-            return;
-        }
+        $this->_stubUploadProgressExtension();
+        $this->adapter->switchApcToUP();
 
         $_GET['progress_key'] = 'mykey';
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
-        $this->assertEquals([
-            'total' => 100,
-            'current' => 100,
-            'rate' => 10,
-            'id' => 'mykey',
-            'done' => false,
-            'message' => '100B - 100B'], $status);
-
-        $this->adapter->switchApcToUP();
-        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
         $this->assertEquals([
             'total' => 100,
             'bytes_total' => 100,
@@ -280,17 +272,35 @@ class Zend_File_Transfer_Adapter_HttpTest extends TestCase
             'id' => 'mykey'], $status);
     }
 
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testUploadProgressFailure()
+    {
+        $this->_stubUploadProgressExtension();
+        $this->adapter->switchApcToUP('uPFailureTest');
+
+        $_GET['progress_key'] = 'mykey';
+        $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress();
+        $this->assertTrue($status['done']);
+        $this->assertEquals('Failure while retrieving the upload progress', $status['message']);
+        $this->assertEquals('mykey', $status['id']);
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testUploadProgressAdapter()
     {
-        if (!(ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable('apc_fetch')) &&
-            !is_callable('uploadprogress_get_info')) {
-            $this->markTestSkipped('Whether APC nor UploadExtension available');
-            return;
-        }
+        $this->_stubUploadProgressExtension();
+        $this->adapter->switchApcToUP();
 
         $_GET['progress_key'] = 'mykey';
         require_once 'Zend/ProgressBar/Adapter/Console.php';
         $adapter = new Zend_ProgressBar_Adapter_Console();
+        $adapter->setOutputStream('php://memory');
         $status = ['progress' => $adapter, 'session' => 'upload'];
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
         $this->assertTrue(array_key_exists('total', $status));
@@ -301,15 +311,25 @@ class Zend_File_Transfer_Adapter_HttpTest extends TestCase
         $this->assertTrue(array_key_exists('progress', $status));
         $this->assertTrue($status['progress'] instanceof Zend_ProgressBar);
 
-        $this->adapter->switchApcToUP();
+        // the returned status carries the progress bar into the next call
         $status = Zend_File_Transfer_Adapter_HttpTest_MockAdapter::getProgress($status);
-        $this->assertTrue(array_key_exists('total', $status));
-        $this->assertTrue(array_key_exists('current', $status));
-        $this->assertTrue(array_key_exists('rate', $status));
-        $this->assertTrue(array_key_exists('id', $status));
-        $this->assertTrue(array_key_exists('message', $status));
-        $this->assertTrue(array_key_exists('progress', $status));
+        $this->assertTrue($status['done']);
         $this->assertTrue($status['progress'] instanceof Zend_ProgressBar);
+    }
+
+    /**
+     * getProgress() requires APC or the uploadprogress extension; APC has no
+     * upload progress on PHP 7+, so the tests stand in for the uploadprogress
+     * function, and the mock adapter answers through its own callback
+     */
+    protected function _stubUploadProgressExtension()
+    {
+        if (!function_exists('uploadprogress_get_info')) {
+            function uploadprogress_get_info($id)
+            {
+                return null;
+            }
+        }
     }
 
     public function testValidationOfPhpExtendsFormError()
@@ -356,14 +376,21 @@ class Zend_File_Transfer_Adapter_HttpTest_MockAdapter extends Zend_File_Transfer
         return ['bytes_total' => 100, 'bytes_uploaded' => 100, 'speed_average' => 10, 'cancel_upload' => true];
     }
 
-    public function switchApcToUP()
+    public static function uPFailureTest($id)
+    {
+        return false;
+    }
+
+    public function switchApcToUP($callback = 'uPTest')
     {
         self::$_callbackApc = null;
-        self::$_callbackUploadProgress = ['Zend_File_Transfer_Adapter_HttpTest_MockAdapter', 'uPTest'];
+        self::$_callbackUploadProgress = ['Zend_File_Transfer_Adapter_HttpTest_MockAdapter', $callback];
     }
 }
 
 // Call Zend_File_Transfer_Adapter_HttpTest::main() if this source file is executed directly.
-if (PHPUnit_MAIN_METHOD === "Zend_File_Transfer_Adapter_HttpTest::main") {
+// A test in a separate process loads this file again in the child process;
+// the tests must not start over there.
+if (PHPUnit_MAIN_METHOD === "Zend_File_Transfer_Adapter_HttpTest::main" && !function_exists('__phpunit_run_isolated_test')) {
     Zend_File_Transfer_Adapter_HttpTest::main();
 }

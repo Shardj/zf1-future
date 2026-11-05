@@ -91,26 +91,103 @@ class Zend_VersionTest extends TestCase
     }
 
     /**
-     * @group ZF-10363
+     * getLatest() reads the name of the latest release from the GitHub API; a
+     * stream wrapper serves the response, so the test needs no network
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testFetchLatestVersion()
     {
-        if (!defined('TESTS_ZEND_VERSION_ONLINE_ENABLED')
-            || !constant('TESTS_ZEND_VERSION_ONLINE_ENABLED')
-        ) {
-            $this->markTestSkipped('Testing fetchLatersVersion only works when TESTS_ZEND_VERSION_ONLINE_ENABLED is set.');
-            return;
-        }
+        Zend_VersionTest_HttpsStream::register(json_encode(['name' => 'release-1.25.2']));
 
-        $actual = Zend_Version::getLatest();
-        if ('not available' === $actual) {
-            $this->markTestIncomplete('http://framework.zend.com/ may be down');
-        }
+        $this->assertSame('1.25.2', Zend_Version::getLatest());
+        $this->assertSame(
+            'https://api.github.com/repos/Shardj/zf1-future/releases/latest',
+            Zend_VersionTest_HttpsStream::$requested
+        );
+    }
 
-        $this->assertMatchesRegularExpression('/^[1-2](\.[0-9]+){2}/', $actual);
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testFetchLatestVersionWhenTheRequestFails()
+    {
+        Zend_VersionTest_HttpsStream::register(false);
+
+        // file_get_contents() warns about the failed request
+        error_reporting(E_ALL & ~E_WARNING);
+        $this->assertSame('not available', Zend_Version::getLatest());
     }
 }
 
-if (PHPUnit_MAIN_METHOD === "Zend_VersionTest::main") {
+/**
+ * Stream wrapper for https:// that serves a fixed response or fails to open
+ */
+class Zend_VersionTest_HttpsStream
+{
+    /**
+     * @var string|false
+     */
+    public static $response;
+
+    /**
+     * @var string|null
+     */
+    public static $requested;
+
+    /**
+     * @var resource
+     */
+    public $context;
+
+    /**
+     * @var int
+     */
+    protected $_position = 0;
+
+    /**
+     * @param string|false $response Response body, false to fail the request
+     */
+    public static function register($response)
+    {
+        self::$response  = $response;
+        self::$requested = null;
+        if (in_array('https', stream_get_wrappers())) {
+            stream_wrapper_unregister('https');
+        }
+        stream_wrapper_register('https', __CLASS__);
+    }
+
+    public function stream_open($path, $mode, $options, &$openedPath)
+    {
+        self::$requested = $path;
+
+        return self::$response !== false;
+    }
+
+    public function stream_read($count)
+    {
+        $chunk = substr(self::$response, $this->_position, $count);
+        $this->_position += strlen($chunk);
+
+        return $chunk;
+    }
+
+    public function stream_eof()
+    {
+        return $this->_position >= strlen(self::$response);
+    }
+
+    public function stream_stat()
+    {
+        return [];
+    }
+}
+
+// A test in a separate process loads this file again in the child process;
+// the tests must not start over there.
+if (PHPUnit_MAIN_METHOD === "Zend_VersionTest::main" && !function_exists('__phpunit_run_isolated_test')) {
     Zend_VersionTest::main();
 }

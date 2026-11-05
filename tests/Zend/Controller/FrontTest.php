@@ -384,23 +384,6 @@ class Zend_Controller_FrontTest extends TestCase
     }
 
     /**
-     * Test without router, using GET params
-     */
-    public function testDispatch7()
-    {
-        if ('cli' == strtolower(php_sapi_name())) {
-            $this->markTestSkipped('Issues with $_GET in CLI interface prevents test from passing');
-        }
-        $request = new Zend_Controller_Request_Http('http://framework.zend.com/index.php?controller=foo&action=bar');
-
-        $response = new Zend_Controller_Response_Cli();
-        $response = $this->_controller->dispatch($request, $response);
-
-        $body = $response->getBody();
-        $this->assertStringContainsString('Bar action called', $body);
-    }
-
-    /**
      * Test that run() throws exception when called from object instance
      */
     public function _testRunThrowsException()

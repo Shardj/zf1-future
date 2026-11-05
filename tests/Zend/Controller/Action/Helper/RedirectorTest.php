@@ -344,14 +344,9 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
         $this->assertEquals('/blog/list/error', $this->redirector->getRedirectUrl());
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGotoAndExit()
     {
-        $this->markTestSkipped(
-            "Testing Zend_Controller_Action_Helper_Redirector::gotoAndExit() would break the test suite"
-        );
+        $this->assertSame(['code' => 302, 'location' => '/foo/bar'], $this->_runRedirectorExit('gotoAndExit'));
     }
 
     /**
@@ -375,14 +370,9 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
         $this->assertEquals('/blog/archive/281', $this->redirector->getRedirectUrl());
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGotoRouteAndExit()
     {
-        $this->markTestSkipped(
-            "Testing Zend_Controller_Action_Helper_Redirector::gotoRouteAndExit() would break the test suite"
-        );
+        $this->assertSame(['code' => 302, 'location' => '/blog/archive/1'], $this->_runRedirectorExit('gotoRouteAndExit'));
     }
 
     /**
@@ -394,24 +384,14 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
         $this->assertEquals('/foo/bar', $this->redirector->getRedirectUrl());
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testGotoUrlAndExit()
     {
-        $this->markTestSkipped(
-            "Testing Zend_Controller_Action_Helper_Redirector::gotoUrlAndExit() would break the test suite"
-        );
+        $this->assertSame(['code' => 302, 'location' => '/foo/bar'], $this->_runRedirectorExit('gotoUrlAndExit'));
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testRedirectAndExit()
     {
-        $this->markTestSkipped(
-            "Testing Zend_Controller_Action_Helper_Redirector::redirectAndExit() would break the test suite"
-        );
+        $this->assertSame(['code' => 302, 'location' => '/baz'], $this->_runRedirectorExit('redirectAndExit'));
     }
 
     /**
@@ -596,6 +576,26 @@ class Zend_Controller_Action_Helper_RedirectorTest extends TestCase
                 return $header['value'];
             }
         }
+    }
+
+    /**
+     * The *AndExit() methods end the process, so a separate PHP process calls them
+     *
+     * @param  string $method
+     * @return array The response code and Location header when the process exited
+     */
+    protected function _runRedirectorExit($method)
+    {
+        $command = escapeshellarg(PHP_BINARY)
+                 . ' -d ' . escapeshellarg('include_path=' . get_include_path())
+                 . ' ' . escapeshellarg(dirname(__FILE__) . '/_files/redirector-exit.php')
+                 . ' ' . escapeshellarg($method);
+        exec($command, $output, $status);
+
+        $this->assertSame(0, $status);
+        $this->assertCount(1, $output, implode("\n", $output));
+
+        return json_decode($output[0], true);
     }
 }
 
