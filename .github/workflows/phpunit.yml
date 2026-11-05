@@ -166,7 +166,7 @@ jobs:
 
       - name: Setup Locale
         run: |
-          sudo apt-get update && sudo apt-get install tzdata locales -y && sudo locale-gen $LOCALES
+          sudo apt-get update && sudo apt-get install tzdata tzdata-legacy locales -y && sudo locale-gen $LOCALES
           echo "All languages..."
           locale -a
       
