@@ -97,9 +97,12 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
         }
     }
 
+    /**
+     * The driver has no sequences
+     */
     public function testAdapterInsertSequence()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support sequences');
+        $this->_testAdapterInsertWithoutSequence();
     }
 
     /**
@@ -303,20 +306,29 @@ class Zend_Db_Adapter_MysqliTest extends Zend_Db_Adapter_TestCommon
         $this->assertFalse($db->isConnected());
     }
 
+    /**
+     * mysqli_set_charset() reports the bogus charset with mysqli error
+     * reporting on, which is the default since PHP 8.1; PHP 7.4 does not report it
+     */
     public function testAdapterInvalidCharsetThrowsAdapterException()
     {
+        if (PHP_VERSION_ID < 80000) {
+            $this->markTestSkipped('mysqli_set_charset() reports errors since PHP 8.0');
+        }
+
         $params = $this->_util->getParams();
         $params['charset'] = 'bogus_charset';
         $db = Zend_Db::factory($this->getDriver(), $params);
 
+        $reportMode = (new mysqli_driver())->report_mode;
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         try {
             $db->getConnection();
-            if (!(new mysqli_driver())->report_mode) {
-                $this->markTestSkipped('mysqli_set_charset() only throws when mysqli error reporting is enabled');
-            }
             $this->fail('Expected to catch Zend_Db_Adapter_Mysqli_Exception');
         } catch (Zend_Exception $e) {
             $this->assertInstanceOf('Zend_Db_Adapter_Mysqli_Exception', $e);
+        } finally {
+            mysqli_report($reportMode);
         }
         $this->assertFalse($db->isConnected());
     }

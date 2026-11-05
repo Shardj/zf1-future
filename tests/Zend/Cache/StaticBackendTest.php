@@ -305,21 +305,23 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTest
     }
 
 
-    // Irrelevant Tests (from common tests)
     /**
-     * @doesNotPerformAssertions
+     * Static files have no lifetime, a negative lifetime does not expire them
      */
     public function testGetWithAnExpiredCacheId()
     {
-        $this->markTestSkipped('Irrelevant Test');
+        $this->_instance->setDirectives(['lifetime' => -1]);
+        $this->assertEquals('bar : data to cache', $this->_instance->load(bin2hex('/bar')));
     }
 
     /**
-     * @doesNotPerformAssertions
+     * Static files have no lifetime, so there is nothing old to clean
      */
     public function testCleanModeOld()
     {
-        $this->markTestSkipped('Irrelevant Test');
+        $this->assertFalse($this->_instance->clean(Zend_Cache::CLEANING_MODE_OLD));
+        $this->assertTrue($this->_instance->test(bin2hex('/bar')));
+        $this->assertTrue($this->_instance->test(bin2hex('/bar2')));
     }
 
     // Helper Methods

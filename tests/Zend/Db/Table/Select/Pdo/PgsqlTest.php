@@ -20,15 +20,10 @@
  * @version    $Id$
  */
 
-
 /**
  * @see Zend_Db_Table_Select_TestCommon
  */
 require_once 'Zend/Db/Table/Select/TestCommon.php';
-
-
-
-
 
 /**
  * @category   Zend
@@ -45,16 +40,6 @@ class Zend_Db_Table_Select_Pdo_PgsqlTest extends Zend_Db_Table_Select_TestCommon
     public function getDriver()
     {
         return 'Pdo_Pgsql';
-    }
-
-    public function testSelectGroupByExpr()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support expressions in GROUP BY');
-    }
-
-    public function testSelectGroupByAutoExpr()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support expressions in GROUP BY');
     }
 
     /**

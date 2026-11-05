@@ -37,9 +37,12 @@ require_once 'Zend/Db/Table/TestCommon.php';
  */
 class Zend_Db_Table_MysqliTest extends Zend_Db_Table_TestCommon
 {
+    /**
+     * The driver has no sequences
+     */
     public function testTableInsertSequence()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support sequences.');
+        $this->_testTableInsertWithoutSequence();
     }
 
     public function getDriver()

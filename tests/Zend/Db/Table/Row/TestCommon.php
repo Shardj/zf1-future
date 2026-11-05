@@ -497,6 +497,24 @@ abstract class Zend_Db_Table_Row_TestCommon extends Zend_Db_Table_TestSetup
         }
     }
 
+    /**
+     * The sequence test of a driver without sequences: a saved row of an
+     * auto-increment table gets its key
+     */
+    protected function _testTableRowSaveInsertWithoutSequence()
+    {
+        $table = $this->_getTable(
+            'My_ZendDbTable_TableProducts',
+            [Zend_Db_Table_Abstract::SEQUENCE => true]
+        );
+        $product_id = $this->_db->foldCase('product_id');
+        $product_name = $this->_db->foldCase('product_name');
+
+        $row = $table->createRow([$product_name => 'Solaris']);
+        $row->save();
+        $this->assertEquals(4, $row->$product_id);
+    }
+
     public function testTableRowSaveUpdate()
     {
         $table = $this->_table['bugs'];

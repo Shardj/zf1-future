@@ -45,6 +45,16 @@ class Zend_Db_TestUtil_Pdo_Sqlite extends Zend_Db_TestUtil_Pdo_Common
         return parent::getParams($constants);
     }
 
+    /**
+     * The tables live in the main database of the connection, whatever file holds it
+     *
+     * @return string
+     */
+    public function getSchema()
+    {
+        return 'main';
+    }
+
     protected function _getSqlCreateTable($tableName)
     {
         return 'CREATE TABLE IF NOT EXISTS ' . $this->_db->quoteIdentifier($tableName);
