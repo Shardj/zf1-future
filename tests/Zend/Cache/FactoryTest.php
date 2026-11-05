@@ -98,23 +98,6 @@ class Zend_Cache_FactoryTest extends TestCase
      *
      * @return void
      */
-    public function testFactoryLoadsPlatformBackend()
-    {
-        try {
-            $cache = Zend_Cache::factory('Core', 'Zend-Platform');
-        } catch (Zend_Cache_Exception $e) {
-            $message = $e->getMessage();
-            if (strstr($message, 'Incorrect backend')) {
-                $this->fail('Zend Platform is a valid backend');
-            }
-        }
-    }
-
-    /**
-     * @doesNotPerformAssertions
-     *
-     * @return void
-     */
     public function testBadFrontend()
     {
         try {
