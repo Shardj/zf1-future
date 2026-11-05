@@ -43,9 +43,6 @@ class Zend_Filter_Encrypt_OpensslTest extends TestCase
         if (!extension_loaded('openssl')) {
             $this->markTestSkipped('This filter needs the openssl extension');
         }
-        if (!in_array('rc4', openssl_get_cipher_methods(), true)) {
-            $this->markTestSkipped('This filter needs a version of OpenSSL that supports the RC4 cipher');
-        }
         if (empty(array_intersect(['md5', 'md5-rsa'], openssl_get_md_methods()))) {
             $this->markTestSkipped('The keys used by this test need a version of OpenSSL that supports MD5 and MD5-RSA as message digest');
         }
@@ -228,10 +225,101 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
             $this->assertStringContainsString('Please give a envelope key', $e->getMessage());
         }
 
-        // A wrong envelope key cannot be detected with RC4 (stream cipher, no padding or MAC):
-        // openssl_open() succeeds and the result is just not the original content
+        // shorter than the IV of the cipher
         $filter->setEnvelopeKey('unknown');
-        $this->assertNotSame('unknown', $filter->decrypt('unknown'));
+        try {
+            $filter->decrypt('unknown');
+            $this->fail();
+        } catch (Zend_Filter_Exception $e) {
+            $this->assertStringContainsString('too short', $e->getMessage());
+        }
+
+        // a wrong envelope key fails on the padding of the block cipher
+        try {
+            $filter->decrypt(str_repeat('x', 48));
+            $this->fail();
+        } catch (Zend_Filter_Exception $e) {
+            $this->assertStringContainsString('not able to decrypt', $e->getMessage());
+        }
+    }
+
+    public function testDefaultCipherIsAes256Cbc()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl();
+        $this->assertEquals('aes-256-cbc', $filter->getCipher());
+        $this->assertEquals(Zend_Filter_Encrypt_Openssl::DEFAULT_CIPHER, $filter->getCipher());
+    }
+
+    public function testCipherOptionAndSetter()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl(['cipher' => 'AES-128-CBC']);
+        $this->assertEquals('aes-128-cbc', $filter->getCipher());
+        $filter->setCipher('aes-256-ctr');
+        $this->assertEquals('aes-256-ctr', $filter->getCipher());
+    }
+
+    public function testUnknownCipherIsRejected()
+    {
+        $this->expectException(Zend_Filter_Exception::class);
+        $this->expectExceptionMessage('not available');
+        new Zend_Filter_Encrypt_Openssl(['cipher' => 'no-such-cipher']);
+    }
+
+    /**
+     * @dataProvider cipherProvider
+     */
+    public function testRoundTripWithCipher($cipher)
+    {
+        if (!in_array($cipher, openssl_get_cipher_methods(), true)) {
+            $this->markTestSkipped("This OpenSSL has no $cipher");
+        }
+        $filter = new Zend_Filter_Encrypt_Openssl([
+            'public' => dirname(__FILE__) . '/../_files/publickey.pem',
+            'cipher' => $cipher,
+        ]);
+        $output   = $filter->encrypt('teststring');
+        $envelope = $filter->getEnvelopeKey();
+        $this->assertNotEquals('teststring', $output);
+
+        // the IV is in front of the sealed content
+        $ivLength = openssl_cipher_iv_length($cipher);
+        $this->assertGreaterThan($ivLength, strlen($output));
+
+        $filter = new Zend_Filter_Encrypt_Openssl([
+            'private' => dirname(__FILE__) . '/../_files/privatekey.pem',
+            'cipher'  => $cipher,
+        ]);
+        $filter->setEnvelopeKey($envelope);
+        $this->assertEquals('teststring', $filter->decrypt($output));
+    }
+
+    public function cipherProvider()
+    {
+        return [
+            ['aes-256-cbc'],
+            ['aes-128-cbc'],
+            ['aes-256-ctr'],
+        ];
+    }
+
+    public function testEveryEncryptionUsesAFreshIv()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl(['public' => dirname(__FILE__) . '/../_files/publickey.pem']);
+        $first  = $filter->encrypt('teststring');
+        $second = $filter->encrypt('teststring');
+        $this->assertNotEquals(substr($first, 0, 16), substr($second, 0, 16));
+    }
+
+    public function testContentSealedWithAnotherCipherDoesNotDecrypt()
+    {
+        $filter = new Zend_Filter_Encrypt_Openssl(['public' => dirname(__FILE__) . '/../_files/publickey.pem', 'cipher' => 'aes-128-cbc']);
+        $output   = $filter->encrypt('teststring');
+        $envelope = $filter->getEnvelopeKey();
+
+        $filter = new Zend_Filter_Encrypt_Openssl(['private' => dirname(__FILE__) . '/../_files/privatekey.pem']);
+        $filter->setEnvelopeKey($envelope);
+        $this->expectException(Zend_Filter_Exception::class);
+        $filter->decrypt($output);
     }
 
     /**

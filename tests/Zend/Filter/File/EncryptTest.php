@@ -41,12 +41,8 @@ class Zend_Filter_File_EncryptTest extends TestCase
 {
     protected function set_up()
     {
-        if (!extension_loaded('mcrypt')) {
-            $this->markTestSkipped('This filter needs the mcrypt extension');
-        }
-
-        if (extension_loaded('mcrypt') && version_compare(PHP_VERSION, '7.1.0', '>=')) {
-            $this->markTestSkipped('mcrypt_* function has been DEPRECATED as of PHP 7.1.0 and REMOVED as of PHP 7.2.0. Relying on this function is highly discouraged.');
+        if (!extension_loaded('openssl')) {
+            $this->markTestSkipped('This filter needs the openssl extension');
         }
 
         if (file_exists(dirname(__FILE__) . '/../_files/newencryption.txt')) {
@@ -68,7 +64,7 @@ class Zend_Filter_File_EncryptTest extends TestCase
      */
     public function testBasic()
     {
-        $filter = new Zend_Filter_File_Encrypt();
+        $filter = new Zend_Filter_File_Encrypt(['adapter' => 'Openssl', 'package' => true, 'public' => dirname(__FILE__) . '/../_files/publickey.pem']);
         $filter->setFilename(dirname(__FILE__) . '/../_files/newencryption.txt');
 
         $this->assertEquals(
@@ -76,7 +72,6 @@ class Zend_Filter_File_EncryptTest extends TestCase
             $filter->getFilename()
         );
 
-        $filter->setVector('testvect');
         $this->assertEquals(
             dirname(__FILE__) . '/../_files/newencryption.txt',
             $filter->filter(dirname(__FILE__) . '/../_files/encryption.txt')
@@ -95,9 +90,8 @@ class Zend_Filter_File_EncryptTest extends TestCase
 
     public function testEncryptionWithDecryption()
     {
-        $filter = new Zend_Filter_File_Encrypt();
+        $filter = new Zend_Filter_File_Encrypt(['adapter' => 'Openssl', 'package' => true, 'public' => dirname(__FILE__) . '/../_files/publickey.pem']);
         $filter->setFilename(dirname(__FILE__) . '/../_files/newencryption.txt');
-        $filter->setVector('testvect');
         $this->assertEquals(
             dirname(__FILE__) . '/../_files/newencryption.txt',
             $filter->filter(dirname(__FILE__) . '/../_files/encryption.txt')
@@ -108,8 +102,7 @@ class Zend_Filter_File_EncryptTest extends TestCase
             file_get_contents(dirname(__FILE__) . '/../_files/newencryption.txt')
         );
 
-        $filter = new Zend_Filter_File_Decrypt();
-        $filter->setVector('testvect');
+        $filter = new Zend_Filter_File_Decrypt(['adapter' => 'Openssl', 'package' => true, 'private' => dirname(__FILE__) . '/../_files/privatekey.pem']);
         $input = $filter->filter(dirname(__FILE__) . '/../_files/newencryption.txt');
         $this->assertEquals(dirname(__FILE__) . '/../_files/newencryption.txt', $input);
 
@@ -124,8 +117,7 @@ class Zend_Filter_File_EncryptTest extends TestCase
      */
     public function testNonExistingFile()
     {
-        $filter = new Zend_Filter_File_Encrypt();
-        $filter->setVector('testvect');
+        $filter = new Zend_Filter_File_Encrypt(['adapter' => 'Openssl', 'package' => true, 'public' => dirname(__FILE__) . '/../_files/publickey.pem']);
 
         try {
             $filter->filter(dirname(__FILE__) . '/../_files/nofile.txt');
@@ -140,8 +132,7 @@ class Zend_Filter_File_EncryptTest extends TestCase
      */
     public function testEncryptionInSameFile()
     {
-        $filter = new Zend_Filter_File_Encrypt();
-        $filter->setVector('testvect');
+        $filter = new Zend_Filter_File_Encrypt(['adapter' => 'Openssl', 'package' => true, 'public' => dirname(__FILE__) . '/../_files/publickey.pem']);
 
         copy(dirname(__FILE__) . '/../_files/encryption.txt', dirname(__FILE__) . '/../_files/newencryption.txt');
         $filter->filter(dirname(__FILE__) . '/../_files/newencryption.txt');

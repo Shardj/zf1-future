@@ -4,6 +4,10 @@
 #AIM of this doc.
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
+### 1.26.1
+* Zend_Filter_Encrypt_Openssl seals the content with `aes-256-cbc` and stores the IV of the cipher (16 bytes) in front of the sealed content; the `cipher` option selects another cipher of `openssl_get_cipher_methods()`. Before, the content was sealed with RC4, which OpenSSL 3 (Ubuntu 22.04+, Debian 12+, RHEL 9+) only provides in its legacy provider, so the adapter could neither encrypt nor decrypt there. Content sealed by earlier versions is decrypted with `'cipher' => 'rc4'` on a system whose OpenSSL still provides RC4; it cannot be decrypted on OpenSSL 3 without the legacy provider, as before.
+* Zend_Filter_Encrypt and Zend_Filter_Decrypt (and the file filters) use the Openssl adapter when no adapter is named. The previous default, the deprecated Mcrypt adapter, threw an exception on every PHP without the mcrypt extension.
+
 ### 1.26.0
 * Zend_Db_Select: a union part (`Zend_Db_Select` instance) with its own `ORDER BY` or `LIMIT` is rendered in parentheses, `… UNION (SELECT … ORDER BY … LIMIT …)`. Before, the clauses were rendered unparenthesized and applied to the whole union on MySQL and PostgreSQL (and were a syntax error on SQLite). To sort or limit the whole union, call `order()` / `limit()` on the select that holds the union (#505).
 * locale data was updated from CLDR 25 (2014) to CLDR 48.2 (#554). Localized output of Zend_Locale, Zend_Date, Zend_Currency, Zend_Locale_Format and the localized filters/validators follows the current data, for example:
