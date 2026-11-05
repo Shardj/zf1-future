@@ -48,17 +48,17 @@ class Zend_Crypt_Math extends Zend_Crypt_Math_BigInteger
         $minimum = (string) $minimum;
         $maximum = (string) $maximum;
 
-        $range = $this->subtract($maximum, $minimum);
-        if ($this->compare($range, '1') < 0) {
+        $range = $this->_math->subtract($maximum, $minimum);
+        if ($this->_math->compare($range, '1') < 0) {
             require_once 'Zend/Crypt/Math/Exception.php';
             throw new Zend_Crypt_Math_Exception('The maximum must be greater than the minimum');
         }
 
         // 64 random bits more than the range needs keep the bias of the modulo negligible
-        $bytes  = strlen($this->integerToBinary($range)) + 8;
-        $random = $this->binaryToInteger(random_bytes($bytes));
+        $bytes  = strlen($this->_math->integerToBinary($range)) + 8;
+        $random = $this->_math->binaryToInteger(random_bytes($bytes));
 
-        return $this->add($minimum, $this->modulus($random, $range));
+        return $this->_math->add($minimum, $this->_math->modulus($random, $range));
     }
 
     /**
