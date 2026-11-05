@@ -33,6 +33,13 @@ require_once 'Zend/Db/Table/TestSetup.php';
  */
 require_once 'Zend/Loader.php';
 
+/**
+ * Row and rowset classes of the *Custom tables, loaded here because the tables
+ * name them without loading them
+ */
+require_once dirname(dirname(__FILE__)) . '/_files/My/ZendDbTable/Row/TestMyRow.php';
+require_once dirname(dirname(__FILE__)) . '/_files/My/ZendDbTable/Rowset/TestMyRowset.php';
+
 
 
 

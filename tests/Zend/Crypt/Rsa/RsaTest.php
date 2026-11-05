@@ -146,11 +146,8 @@ CERT;
 
     public function testConstructorSetsHashOption()
     {
-        if (!defined('OPENSSL_ALGO_MD2')) {
-            $this->markTestSkipped('The OPENSSL_ALGO_MD2 constant is not defined in this PHP instance.');
-        }
-        $rsa = new Zend_Crypt_Rsa(['hashAlgorithm' => 'md2']);
-        $this->assertEquals(OPENSSL_ALGO_MD2, $rsa->getHashAlgorithm());
+        $rsa = new Zend_Crypt_Rsa(['hashAlgorithm' => 'md5']);
+        $this->assertEquals(OPENSSL_ALGO_MD5, $rsa->getHashAlgorithm());
     }
 
     public function testSetPemStringParsesPemForPrivateKey()

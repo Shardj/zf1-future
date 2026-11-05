@@ -718,6 +718,20 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $this->assertEquals('4', (string) $lastInsertId, 'Expected new id to be 4');
     }
 
+    /**
+     * The sequence test of a driver without sequences: the sequence methods return
+     * null and the key comes from the auto-increment column
+     */
+    protected function _testAdapterInsertWithoutSequence()
+    {
+        $this->assertNull($this->_db->nextSequenceId('zfproducts_seq'));
+        $this->assertNull($this->_db->lastSequenceId('zfproducts_seq'));
+
+        $rowsAffected = $this->_db->insert('zfproducts', ['product_name' => 'Solaris']);
+        $this->assertEquals(1, $rowsAffected);
+        $this->assertEquals('4', (string) $this->_db->lastInsertId('zfproducts'));
+    }
+
     public function testAdapterInsertDbExpr()
     {
         $bugs = $this->_db->quoteIdentifier('zfbugs');

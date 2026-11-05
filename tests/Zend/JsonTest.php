@@ -745,15 +745,19 @@ EOB;
      */
     public function testKommaDecimalIsConvertedToCorrectJsonWithDot()
     {
-        $localeInfo = localeconv();
-        if ($localeInfo['decimal_point'] != ",") {
-            $this->markTestSkipped("This test only works for platforms where , is the decimal point separator.");
+        $locale = setlocale(LC_NUMERIC, 0);
+        if (!setlocale(LC_NUMERIC, 'fr_BE.UTF-8', 'fr_FR', 'de')) {
+            $this->markTestSkipped('No locale with a comma as the decimal point is installed');
         }
 
-        Zend_Json::$useBuiltinEncoderDecoder = true;
-        $this->assertEquals("[1.20, 1.68]", Zend_Json_Encoder::encode([
-            (float)"1,20", (float)"1,68"
-        ]));
+        try {
+            $this->assertEquals(',', localeconv()['decimal_point']);
+
+            Zend_Json::$useBuiltinEncoderDecoder = true;
+            $this->assertEquals('[1.2,1.68]', Zend_Json_Encoder::encode([1.2, 1.68]));
+        } finally {
+            setlocale(LC_NUMERIC, $locale);
+        }
     }
 
     public function testEncodeObjectImplementingIterator()

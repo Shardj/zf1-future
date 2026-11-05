@@ -289,24 +289,34 @@ class Zend_Controller_Response_HttpTest extends TestCase
     }
 
     /**
-     * Same problem as test__toString()
-     *
-     * Specifically for this test, headers_sent will always be false, so canSentHeaders() will
-     * never actually throw an exception since the conditional exception code will never trigger
+     * The headers count as sent only after real output, which a test cannot make
+     * without breaking the runner, so a separate PHP process prints it
      */
     public function testCanSendHeadersIndicatesFileAndLine()
     {
-        $this->markTestSkipped();
-        return;
+        $script  = dirname(__FILE__) . '/_files/headers-sent.php';
+        $command = escapeshellarg(PHP_BINARY)
+                 . ' -d ' . escapeshellarg('include_path=' . get_include_path())
+                 . ' ' . escapeshellarg($script);
+        exec($command, $output, $status);
 
+        $this->assertSame(0, $status);
+        $this->assertSame('output', $output[0]);
+        $this->assertSame(
+            'Cannot send headers; headers already sent in ' . $script . ', line 6',
+            $output[1]
+        );
+    }
+
+    /**
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testCanSendHeadersWithoutOutput()
+    {
         $this->_response->headersSentThrowsException = true;
-        try {
-            $this->_response->canSendHeaders(true);
-            $this->fail('canSendHeaders() should throw exception');
-        } catch (Exception $e) {
-            var_dump($e->getMessage());
-            $this->assertMatchesRegularExpression('/headers already sent in .+, line \d+$/', $e->getMessage());
-        }
+
+        $this->assertTrue($this->_response->canSendHeaders(true));
     }
 
     public function testAppend()

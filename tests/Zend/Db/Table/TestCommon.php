@@ -810,6 +810,23 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertEquals(4, $insertResult);
     }
 
+    /**
+     * The sequence test of a driver without sequences: the key of an auto-increment
+     * table is returned by insert()
+     */
+    protected function _testTableInsertWithoutSequence()
+    {
+        $table = $this->_getTable(
+            'My_ZendDbTable_TableProducts',
+            [Zend_Db_Table_Abstract::SEQUENCE => true]
+        );
+
+        $insertResult = $table->insert(['product_name' => 'Solaris']);
+        $this->assertEquals(4, $insertResult);
+        $this->assertEquals($insertResult, $this->_db->lastInsertId('zfproducts'));
+        $this->assertNull($this->_db->lastSequenceId('zfproducts_seq'));
+    }
+
     public function testTableInsertNaturalCompound()
     {
         $table = $this->_table['bugs_products'];
@@ -876,31 +893,30 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
      */
     public function testTableInsertWithHighMemoryUsage()
     {
-        $this->markTestSkipped('Very slow test inserts thousands of rows');
-
         $table = $this->_table['products'];
 
-        // insert one row to prime the pump
-        $table->insert(['product_name' => "product0"]);
-
-        // measure current memory usage
-        $mem1 = memory_get_usage();
-
-        // insert a lot of rows
-        $n = 100000;
-        for ($i = 1; $i <= $n; $i++) {
-            $table->insert(['product_name' => "product$i"]);
-            if ($i % 1000 == 0) {
-                echo '.';
+        // the keys are given, so the insert needs no sequence or auto-increment support
+        $this->_db->beginTransaction();
+        try {
+            // warm up caches and statement handling
+            for ($i = 1; $i <= 200; $i++) {
+                $table->insert(['product_id' => 1000 + $i, 'product_name' => "warmup$i"]);
             }
+            gc_collect_cycles();
+            $mem1 = memory_get_usage();
+
+            $n = 2000;
+            for ($i = 1; $i <= $n; $i++) {
+                $table->insert(['product_id' => 2000 + $i, 'product_name' => "product$i"]);
+            }
+            gc_collect_cycles();
+            $mem2 = memory_get_usage();
+        } finally {
+            $this->_db->rollBack();
         }
 
-        // measure new memory usage
-        $mem2 = memory_get_usage();
-
-        // compare new memory usage to original
-        $mem_delta = $mem2 - $mem1;
-        $this->assertThat($mem_delta, $this->lessThan(513));
+        // a leak of a few bytes per insert would add up to many kilobytes
+        $this->assertLessThan(32 * 1024, $mem2 - $mem1);
     }
 
     /**
@@ -1464,14 +1480,16 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertEquals(0, count($rowset));
     }
 
+    /**
+     * Runs in a process of its own: the custom classes are loaded once per
+     * process, the test checks when that happens
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function testTableLoadsCustomRowClass()
     {
         $this->_useMyIncludePath();
-
-        if (class_exists('My_ZendDbTable_Row_TestMyRow')) {
-            $this->markTestSkipped("Cannot test loading the custom Row class because it is already loaded");
-            return;
-        }
 
         $this->assertFalse(
             class_exists('My_ZendDbTable_Row_TestMyRow', false),

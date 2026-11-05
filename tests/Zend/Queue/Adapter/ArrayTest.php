@@ -82,12 +82,6 @@ class Zend_Queue_Adapter_ArrayTest extends Zend_Queue_Adapter_AdapterTest
         return ['driverOptions' => []];
     }
 
-    // test the constants
-    public function testConst()
-    {
-        $this->markTestSkipped('no constants to test');
-    }
-
     // extra non standard tests
     public function test_magic()
     {

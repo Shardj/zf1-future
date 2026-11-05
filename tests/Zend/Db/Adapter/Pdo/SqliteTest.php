@@ -87,24 +87,37 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
     }
 
 
-    public function testAdapterConstructInvalidParamDbnameException()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not throw exception on missing dbname');
-    }
 
+
+
+    /**
+     * SQLite has no login: missing credentials are no error
+     */
     public function testAdapterConstructInvalidParamUsernameException()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support login credentials');
+        $params = $this->_util->getParams();
+        unset($params['username']);
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $this->assertInstanceOf('PDO', $db->getConnection());
     }
 
+    /**
+     * SQLite has no login: missing credentials are no error
+     */
     public function testAdapterConstructInvalidParamPasswordException()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support login credentials');
+        $params = $this->_util->getParams();
+        unset($params['password']);
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $this->assertInstanceOf('PDO', $db->getConnection());
     }
 
+    /**
+     * The driver has no sequences
+     */
     public function testAdapterInsertSequence()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support sequences');
+        $this->_testAdapterInsertWithoutSequence();
     }
 
     /**
@@ -171,19 +184,52 @@ class Zend_Db_Adapter_Pdo_SqliteTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->assertEquals("id = 'St John''s Wort'", $value);
     }
 
+
+
+
+    /**
+     * The test database is in memory, where a second connection opens another
+     * database; commit and rollback are checked on one connection
+     */
     public function testAdapterTransactionAutoCommit()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support transactions or concurrency');
+        $bugs = $this->_db->quoteIdentifier('zfbugs');
+
+        $this->assertTrue($this->_db->getConnection()->inTransaction() === false);
+        $this->_db->delete('zfbugs', $this->_db->quoteIdentifier('bug_id') . ' = 1');
+        $this->assertEquals(3, $this->_db->fetchOne("SELECT COUNT(*) FROM $bugs"));
     }
 
+    /**
+     * @see testAdapterTransactionAutoCommit()
+     */
     public function testAdapterTransactionCommit()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support transactions or concurrency');
+        $bugs = $this->_db->quoteIdentifier('zfbugs');
+
+        $this->_db->beginTransaction();
+        $this->assertTrue($this->_db->getConnection()->inTransaction());
+        $this->assertEquals(1, $this->_db->delete('zfbugs', $this->_db->quoteIdentifier('bug_id') . ' = 1'));
+        $this->_db->commit();
+
+        $this->assertFalse($this->_db->getConnection()->inTransaction());
+        $this->assertEquals(3, $this->_db->fetchOne("SELECT COUNT(*) FROM $bugs"));
     }
 
+    /**
+     * @see testAdapterTransactionAutoCommit()
+     */
     public function testAdapterTransactionRollback()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support transactions or concurrency');
+        $bugs = $this->_db->quoteIdentifier('zfbugs');
+
+        $this->_db->beginTransaction();
+        $this->assertEquals(1, $this->_db->delete('zfbugs', $this->_db->quoteIdentifier('bug_id') . ' = 1'));
+        $this->assertEquals(3, $this->_db->fetchOne("SELECT COUNT(*) FROM $bugs"));
+        $this->_db->rollBack();
+
+        $this->assertFalse($this->_db->getConnection()->inTransaction());
+        $this->assertEquals(4, $this->_db->fetchOne("SELECT COUNT(*) FROM $bugs"));
     }
 
     /**

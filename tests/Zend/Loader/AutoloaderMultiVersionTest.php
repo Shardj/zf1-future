@@ -103,17 +103,14 @@ class Zend_Loader_AutoloaderMultiVersionTest extends TestCase
         // Store original include_path
         $this->includePath = get_include_path();
 
-        if (!constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_ENABLED')) {
-            $this->markTestSkipped();
-        }
-
         Zend_Loader_Autoloader::resetInstance();
-        $this->path = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_PATH');
-        $this->latest = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST');
-        $this->latestMajor = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MAJOR');
-        $this->latestMinor = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_LATEST_MINOR');
-        $this->specific = constant('TESTS_ZEND_LOADER_AUTOLOADER_MULTIVERSION_SPECIFIC');
-        $this->autoloader = Zend_Loader_Autoloader::getInstance();
+        // directories named like ZF installations, only their names are read
+        $this->path        = dirname(__FILE__) . '/_files/MultiVersion';
+        $this->latest      = '1.9.2';
+        $this->latestMajor = '1.9.2';
+        $this->latestMinor = '1.8.4pl1';
+        $this->specific    = '1.7.7';
+        $this->autoloader  = Zend_Loader_Autoloader::getInstance();
     }
 
     protected function tear_down()
