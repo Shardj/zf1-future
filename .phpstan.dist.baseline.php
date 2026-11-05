@@ -3080,12 +3080,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Crypt/Math.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Crypt_Math::rand() should return string but returns int.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Crypt_Math::randBytes() should return string but returns false.',
 	'identifier' => 'return.type',
 	'count' => 1,
