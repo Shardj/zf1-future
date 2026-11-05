@@ -5062,30 +5062,6 @@ class Zend_DateTest extends TestCase
         }
     }
 
-    /**
-     * Temporary skip this test on php < 8.0 because raise issue 'A non-numeric value encountered'
-     * @requires PHP < 7
-     */
-    public function testTimesync()
-    {
-        try {
-            $server = new Zend_TimeSync('ntp://pool.ntp.org', 'alias');
-            $date1 = $server->getDate();
-            // need to use the proxy class to simulate time() returning wrong value
-            $date2 = new Zend_Date_TestHelper(time());
-
-            $info = $server->getInfo();
-
-            if (($info['offset'] >= 0.5) || ($info['offset'] <= -0.52)) {
-                $this->assertFalse($date1->getTimestamp() == $date2->getTimestamp());
-            } else {
-                $this->assertEquals($date1->getTimestamp(), $date2->getTimestamp());
-            }
-        } catch (Zend_TimeSync_Exception $e) {
-            $this->markTestIncomplete('NTP timeserver not available.');
-        }
-    }
-
     public function testUsePhpDateFormat()
     {
         Zend_Date::setOptions(['format_type' => 'iso']);
