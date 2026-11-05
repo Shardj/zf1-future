@@ -218,8 +218,9 @@ jobs:
           openssl req -x509 -newkey rsa:2048 -nodes -days 1 -subj /CN=127.0.0.1 -keyout /tmp/zf-key.pem -out /tmp/zf-cert.pem
           cat /tmp/zf-key.pem /tmp/zf-cert.pem > /tmp/zf-server.pem
           socat openssl-listen:8443,reuseaddr,fork,cert=/tmp/zf-server.pem,verify=0 tcp:127.0.0.1:8085 > /tmp/socat.log 2>&1 &
-          printf 'Port 8889\nListen 127.0.0.1\nAllow 127.0.0.1\nTimeout 60\nMaxClients 50\nLogFile "/tmp/tinyproxy.log"\n' > /tmp/tinyproxy.conf
-          tinyproxy -c /tmp/tinyproxy.conf
+          # the tinyproxy service reads only its own configuration file (AppArmor)
+          printf 'User tinyproxy\nGroup tinyproxy\nPort 8889\nListen 127.0.0.1\nAllow 127.0.0.1\nTimeout 60\nMaxClients 50\n' | sudo tee /etc/tinyproxy/tinyproxy.conf > /dev/null
+          sudo systemctl restart tinyproxy
           sleep 1
           curl -sSfk https://127.0.0.1:8443/testSimpleRequests.php > /dev/null
           curl -sSf -x http://127.0.0.1:8889 http://127.0.0.1:8085/testSimpleRequests.php > /dev/null
