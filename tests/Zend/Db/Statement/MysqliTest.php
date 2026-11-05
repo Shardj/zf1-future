@@ -254,7 +254,8 @@ INPUT;
     }
 
     /**
-     * The metadata has the format of pdo_mysql
+     * The metadata has the format of pdo_mysql; pdo_type differs before PHP 8.1,
+     * where pdo_mysql fetches integers as strings
      */
     public function testStatementGetColumnMetaMatchesPdoMysql()
     {
@@ -269,7 +270,12 @@ INPUT;
         $pdoStmt    = $pdo->query($sql);
         $this->assertSame($pdoStmt->columnCount(), $mysqliStmt->columnCount());
         for ($i = 0; $i < $pdoStmt->columnCount(); ++$i) {
-            $this->assertEquals($pdoStmt->getColumnMeta($i), $mysqliStmt->getColumnMeta($i), "Column $i");
+            $expected = $pdoStmt->getColumnMeta($i);
+            $actual   = $mysqliStmt->getColumnMeta($i);
+            if (PHP_VERSION_ID < 80100) {
+                unset($expected['pdo_type'], $actual['pdo_type']);
+            }
+            $this->assertEquals($expected, $actual, "Column $i");
         }
         $mysqliStmt->closeCursor();
         $pdoStmt->closeCursor();

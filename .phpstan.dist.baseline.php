@@ -4454,12 +4454,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $field_count on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $sqlstate on object|resource.',
 	'identifier' => 'property.nonObject',
 	'count' => 2,
@@ -4546,12 +4540,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept null.',
 	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Statement_Mysqli::$_meta (array) in isset() is not nullable.',
-	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];

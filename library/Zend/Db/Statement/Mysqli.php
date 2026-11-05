@@ -54,7 +54,10 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
     protected $_values;
 
     /**
-     * @var array
+     * Result set metadata, false for a statement without a result set,
+     * null before the first execution.
+     *
+     * @var mysqli_result|false|null
      */
     protected $_meta = null;
 
@@ -150,7 +153,8 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
     /**
      * Returns metadata for a column in a result set, in the format of
      * PDOStatement::getColumnMeta() of pdo_mysql: native_type, flags, table,
-     * name, len, precision and pdo_type.
+     * name, len, precision and pdo_type. The pdo_type is the type of the
+     * values fetched: integer columns come as integers from mysqli.
      *
      * @param int $column Zero-based index of the column.
      * @return array|false False when the statement has no result set or no such column.
