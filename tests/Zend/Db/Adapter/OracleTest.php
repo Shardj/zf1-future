@@ -426,7 +426,7 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchRow("SELECT * FROM $documents WHERE $document_id = 1");
-        $class = 'OCI-Lob';
+        $class = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
         $this->assertTrue($value['doc_clob'] instanceof $class);
         $expected = 'this is the clob that never ends...' .
                     'this is the clob that never ends...' .
@@ -452,7 +452,7 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchAssoc("SELECT * FROM $documents WHERE $document_id = 1");
-        $class = 'OCI-Lob';
+        $class = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
         $this->assertTrue($value[1]['doc_clob'] instanceof $class);
         $expected = 'this is the clob that never ends...' .
                     'this is the clob that never ends...' .
@@ -479,7 +479,7 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $document_clob = $this->_db->quoteIdentifier('doc_clob');
         $value = $this->_db->fetchOne("SELECT $document_clob FROM $documents WHERE $document_id = 1");
-        $class = 'OCI-Lob';
+        $class = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
         $this->assertTrue($value instanceof $class);
         $expected = 'this is the clob that never ends...' .
                     'this is the clob that never ends...' .
@@ -543,5 +543,17 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
     public function getDriver()
     {
         return 'Oracle';
+    }
+
+    /**
+     * The Oracle adapter binds parameters by name only
+     */
+    public function testAdapterFetchPairsWithSingleColumn()
+    {
+        $products = $this->_db->quoteIdentifier('zfproducts');
+        $product_id = $this->_db->quoteIdentifier('product_id');
+
+        $result = $this->_db->fetchPairs("SELECT $product_id FROM $products WHERE $product_id > :id ORDER BY $product_id ASC", ['id' => 1]);
+        $this->assertEquals([2 => null, 3 => null], $result);
     }
 }
