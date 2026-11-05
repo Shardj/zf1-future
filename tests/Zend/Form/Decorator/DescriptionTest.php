@@ -226,9 +226,34 @@ class Zend_Form_Decorator_DescriptionTest extends TestCase
 
         $this->decorator->setElement($element);
 
-        $this->markTestSkipped('Temporary skip this test because exist commit change core library make this test fail. https://github.com/Shardj/zf1-future/commit/6851df2ab423eb07d3acb5a3da168b3102771513');
+        $this->assertEquals('secondDescription', $element->getDescription());
+        $this->assertEquals(
+            '<p class="hint">secondDescription</p>',
+            trim($this->decorator->render(''))
+        );
+    }
 
-        // Test
+    /**
+     * @group ZF-8694
+     */
+    public function testFormDescriptionIsTranslatedOnce()
+    {
+        require_once 'Zend/Translate.php';
+        $translate = new Zend_Translate([
+            'adapter' => 'array',
+            'content' => [
+                'firstDescription'  => 'secondDescription',
+                'secondDescription' => 'thirdDescription',
+            ],
+            'locale' => 'en',
+        ]);
+        $form = new Zend_Form();
+        $form->setView($this->getView())
+             ->setDescription('firstDescription')
+             ->setTranslator($translate);
+
+        $this->decorator->setElement($form);
+
         $this->assertEquals(
             '<p class="hint">secondDescription</p>',
             trim($this->decorator->render(''))
