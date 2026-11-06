@@ -56,6 +56,7 @@ Since 1.26.0 `Zend_Mail` authenticates with an OAuth 2.0 access token where a pa
 
 * ``Bootstrap error: Unable to resolve plugin "useragent"; no corresponding plugin with that name``  
    Fixed in 1.26.0 (https://github.com/Shardj/zf1-future/issues/407). On older versions the resource file has to be renamed to ``Zend/Application/Resource/Useragent.php``, see https://github.com/Shardj/zf1-future/issues/92
+* ``Zend_Db_Adapter_Pdo_Mssql``: rows of a query with an offset but without ORDER BY (``limit($count, $offset)``) carry the column ``ZEND_DB_ROWNUM`` in addition to the selected columns. Such a query numbers the rows with ``ROW_NUMBER()``, which works on SQL Server 2005 and later; ``OFFSET ... FETCH``, which returns only the selected columns, needs SQL Server 2012. The SQL Server adapters are planned to change to ``OFFSET ... FETCH`` in 1.27 or 1.28.
 * ``Zend_Test_PHPUnit_Db`` (database fixtures for PHPUnit) is not supported. It extends the DbUnit classes ``PHPUnit_Extensions_Database_*``, which only exist for PHPUnit 5 and older; the component is shipped as is, without tests, and is not adapted to the DbUnit forks for current PHPUnit versions (their classes are namespaced and typed). Applications that need DbUnit have to use such a fork directly, see https://github.com/Shardj/zf1-future/issues/412
 
 # Deprecated components
