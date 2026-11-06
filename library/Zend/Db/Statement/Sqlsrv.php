@@ -93,7 +93,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
      */
     protected function _bindParam($parameter, &$variable, $type = null, $length = null, $options = null)
     {
-        //Sql server doesn't support bind by name
+        // the bound variables are passed to sqlsrv_query() on execute
         return true;
     }
 
@@ -192,6 +192,12 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
         $connection = $this->_adapter->getConnection();
         if (!$this->_stmt) {
             return false;
+        }
+
+        // without execute() parameters, the values of bindParam() and bindValue() in their order
+        if ($params === null && $this->_bindParam) {
+            $params = $this->_bindParam;
+            ksort($params);
         }
 
         if ($params !== null) {
