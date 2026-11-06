@@ -140,29 +140,19 @@ jobs:
         include:
           #bare for PHP >=7.2
           - php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
-          #full for PHP <= 8.0
-          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, rar, intl, xdebug"
-          - php-version: "8.1"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, intl, xdebug"
-          - php-version: "8.2"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, mcrypt, intl, xdebug"
-          - php-version: "8.3"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, intl, xdebug"
-          - php-version: "8.4"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, intl, xdebug"
-          - php-version: "8.5"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, sqlite, intl, xdebug"
+          #full for every PHP version of the matrix
+          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, intl, xdebug"
           # Experimental versions are not listed in php-version above. They are separate
           # combinations, so the generic entries above are not applied to them and both
           # extension lists have to be set here.
           # lzf does not build on PHP 8.6 yet
           - php-version: "8.6"
             php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, memcached, memcache, ldap, sqlite, intl"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, memcached, memcache, ldap, intl"
             experimental: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Setup Locale
         run: |
@@ -189,7 +179,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}
