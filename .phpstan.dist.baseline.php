@@ -13532,12 +13532,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Signature/SignatureAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Oauth_Token::_parseParameters() should return array but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Token.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::setToken().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
