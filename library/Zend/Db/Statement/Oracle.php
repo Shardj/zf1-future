@@ -49,7 +49,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
 
     /**
      * Check if LOB field are returned as string
-     * instead of OCI-Lob object
+     * instead of OCILob objects (OCI-Lob before PHP 8)
      *
      * @var boolean
      */
@@ -486,8 +486,8 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
         }
 
         if ($this->getLobAsString()) {
-            // instanceof doesn't allow '-', we must use a temporary string
-            $type = 'OCI-Lob';
+            // the LOB class is OCILob since PHP 8 and OCI-Lob before
+            $type = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
             if ($data instanceof $type) {
                 $data = $data->read($data->size());
             }
