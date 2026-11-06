@@ -90,9 +90,7 @@ require_once 'Zend/Search/Lucene/AllTests.php';
 require_once 'Zend/Serializer/AllTests.php';
 require_once 'Zend/Server/AllTests.php';
 require_once 'Zend/Service/AllTests.php';
-// require_once 'Zend/Session/AllTests.php';
-// The rest of the Zend_Session tests are disabled (see above), but the ini option tests are self-contained
-require_once 'Zend/Session/OptionsTest.php';
+require_once 'Zend/Session/AllTests.php';
 // require_once 'Zend/Soap/AllTests.php';
 require_once 'Zend/Tag/AllTests.php';
 require_once 'Zend/Test/AllTests.php';
@@ -133,6 +131,8 @@ class Zend_AllTests
             'notLoadedExtensions' => [],
             'colors' => 'always',
             'verbose' => true,
+            // Session tests start sessions and send headers, so nothing may be written to stdout before them
+            'stderr' => true,
             // 'printer' => \PHPUnit\Util\TestDox\CliTestDoxPrinter::class,
         ];
         // Run buffered tests as a separate suite first
@@ -161,7 +161,6 @@ class Zend_AllTests
         // on internal PHP functions
         $suite->addTestSuite('Zend_OpenIdTest');
         $suite->addTest(Zend_OpenId_AllTests::suite());
-        // $suite->addTest(Zend_Session_AllTests::suite());
         // $suite->addTest(Zend_Soap_AllTests::suite());
 
         return $suite;
@@ -242,7 +241,7 @@ class Zend_AllTests
         $suite->addTest(Zend_Serializer_AllTests::suite());
         // $suite->addTest(Zend_Server_AllTests::suite());
         // $suite->addTest(Zend_Service_AllTests::suite());
-        $suite->addTestSuite('Zend_Session_OptionsTest');
+        $suite->addTest(Zend_Session_AllTests::suite());
         $suite->addTest(Zend_Tag_AllTests::suite());
         $suite->addTest(Zend_Test_AllTests::suite());
         $suite->addTest(Zend_Text_AllTests::suite());

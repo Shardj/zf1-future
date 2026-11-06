@@ -125,7 +125,7 @@ class Zend_Session_SessionTest extends TestCase
      */
     public function sortResult(array $result)
     {
-        $results = explode(';', array_pop($result));
+        $results = explode(';', (string) array_pop($result));
         sort($results);
         return implode(';', $results);
     }
@@ -808,6 +808,7 @@ class Zend_Session_SessionTest extends TestCase
      * test expiration of namespaces and namespace variables by seconds; expect expiration of specified keys/namespace
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      * @return void
      */
     public function testSetExpirationSeconds()
@@ -878,6 +879,7 @@ class Zend_Session_SessionTest extends TestCase
      * test expiration of namespaces by hops; expect expiration of specified namespace in the proper number of hops
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      * @return void
      */
     public function testSetExpireSessionHops()
@@ -915,6 +917,7 @@ class Zend_Session_SessionTest extends TestCase
      * test expiration of namespace variables by hops; expect expiration of specified keys in the proper number of hops
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      * @return void
      */
     public function testSetExpireSessionVarsByHops1()
@@ -926,6 +929,7 @@ class Zend_Session_SessionTest extends TestCase
      * sanity check .. we should be able to repeat this test without problems
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      * @return void
      */
     public function testSetExpireSessionVarsByHops2()
@@ -936,6 +940,7 @@ class Zend_Session_SessionTest extends TestCase
     /**
      * @group ZF-7196
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testUnsettingNamespaceKeyWithoutUnsettingCompleteExpirationData()
     {
@@ -1021,6 +1026,7 @@ class Zend_Session_SessionTest extends TestCase
      * test expiration of namespace variables by hops; expect expiration of specified keys in the proper number of hops
      *
      * @runInSeparateProcess
+     * @preserveGlobalState disabled
      * @return void
      */
     public function testSetExpireSessionVarsByHopsOnUse()
@@ -1119,12 +1125,11 @@ class Zend_Session_SessionTest extends TestCase
 
     /**
      * @group ZF-3378
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testInvalidPreexistingSessionIdDoesNotPreventRegenerationOfSid()
     {
-        // Pattern: [0-9a-v]*
-        ini_set('session.hash_bits_per_character', 5);
-
         // Session store
         $sessionCharSet = array_merge(range(0, 9), range('a', 'v'));
         $sessionStore = dirname(__FILE__)
@@ -1160,7 +1165,11 @@ class Zend_Session_SessionTest extends TestCase
         Zend_Session::$_unitTestEnabled = true;
         Zend_Session::destroy();
         foreach ($sessionCharSet as $subdir) {
-            @rmdir($sessionStore . DIRECTORY_SEPARATOR . $subdir);
+            $dir = $sessionStore . DIRECTORY_SEPARATOR . $subdir;
+            foreach (glob($dir . DIRECTORY_SEPARATOR . 'sess_*') ?: [] as $file) {
+                @unlink($file);
+            }
+            @rmdir($dir);
         }
         @rmdir($sessionStore);
 
