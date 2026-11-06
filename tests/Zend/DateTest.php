@@ -3834,7 +3834,7 @@ class Zend_DateTest extends TestCase
         $result = Zend_Date_Cities::City('vienna');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        // date_sun_info() changed with the fix of https://github.com/php/php-src/issues/18076
+        // with or without the refraction, see hasSunInfoRefractionFix()
         if (self::hasSunInfoRefractionFix()) {
             $this->assertSame('2002-01-04T20:14:02+05:00', $result->get(Zend_Date::W3C));
         } else {
@@ -3942,14 +3942,17 @@ class Zend_DateTest extends TestCase
     }
 
     /**
-     * date_sun_info() returns different sunrise and sunset times since the fix for
-     * https://github.com/php/php-src/issues/18076 (PHP 8.3.22 and 8.4.8; never backported to 8.2).
+     * Whether date_sun_info() takes the refraction into account for the sunrise
+     * and sunset: PHP 7.4, and PHP 8.3.22 and 8.4.8 on with the fix of
+     * https://github.com/php/php-src/issues/18076 (PHP 8.0 to 8.2 do not)
      *
      * @return bool
      */
     private static function hasSunInfoRefractionFix()
     {
-        return PHP_VERSION_ID >= 80408 || (PHP_VERSION_ID >= 80322 && PHP_VERSION_ID < 80400);
+        return PHP_VERSION_ID < 80000
+            || PHP_VERSION_ID >= 80408
+            || (PHP_VERSION_ID >= 80322 && PHP_VERSION_ID < 80400);
     }
 
     /**

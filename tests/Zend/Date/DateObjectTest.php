@@ -278,8 +278,8 @@ class Zend_Date_DateObjectTest extends TestCase
     public function testCalcSunInternal()
     {
         $date = new Zend_Date_DateObjectTestHelper(10000000);
-        // calcSun() returns the times of date_sun_info(), which changed with the fix of
-        // https://github.com/php/php-src/issues/18076 in PHP 8.3.22 / 8.4.8
+        // calcSun() returns the times of date_sun_info(), with or without the refraction,
+        // see hasSunInfoRefractionFix()
         if (self::hasSunInfoRefractionFix()) {
             $this->assertSame(9961524, $date->calcSun(['latitude' => 38.4, 'longitude' => -29], -0.0145439, true));
             $this->assertSame(10010533, $date->calcSun(['latitude' => 38.4, 'longitude' => -29], -0.0145439, false));
@@ -355,14 +355,17 @@ class Zend_Date_DateObjectTest extends TestCase
     }
 
     /**
-     * date_sun_info() returns different sunrise and sunset times since the fix for
-     * https://github.com/php/php-src/issues/18076 (PHP 8.3.22 and 8.4.8; never backported to 8.2).
+     * Whether date_sun_info() takes the refraction into account for the sunrise
+     * and sunset: PHP 7.4, and PHP 8.3.22 and 8.4.8 on with the fix of
+     * https://github.com/php/php-src/issues/18076 (PHP 8.0 to 8.2 do not)
      *
      * @return bool
      */
     private static function hasSunInfoRefractionFix()
     {
-        return PHP_VERSION_ID >= 80408 || (PHP_VERSION_ID >= 80322 && PHP_VERSION_ID < 80400);
+        return PHP_VERSION_ID < 80000
+            || PHP_VERSION_ID >= 80408
+            || (PHP_VERSION_ID >= 80322 && PHP_VERSION_ID < 80400);
     }
 
     public function testGetDate()
