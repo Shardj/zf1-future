@@ -42,7 +42,7 @@ require_once 'resources/ErrorCapture.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Session
  */
-class Zend_SessionTest extends TestCase
+class Zend_Session_SessionTest extends TestCase
 {
     /**
      * Helper script invoked via exec()
@@ -66,11 +66,6 @@ class Zend_SessionTest extends TestCase
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->_script = 'php '
-            . '-c ' . escapeshellarg(php_ini_loaded_file()) . ' '
-            . '-d include_path=' . get_include_path() . ' '
-            . escapeshellarg(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SessionTestHelper.php');
-
         $this->_savePath = ini_get('session.save_path');
     }
 
@@ -82,6 +77,13 @@ class Zend_SessionTest extends TestCase
         // _unitTestEnabled is utilised by other tests to handle session data processing
         // Zend_Session tests should pass with _unitTestEnabled turned off
         Zend_Session::$_unitTestEnabled = false;
+
+        // the helper reads and writes the sessions where this process does
+        $this->_script = 'php '
+            . '-c ' . escapeshellarg(php_ini_loaded_file()) . ' '
+            . '-d include_path=' . escapeshellarg(get_include_path()) . ' '
+            . '-d session.save_path=' . escapeshellarg(ini_get('session.save_path')) . ' '
+            . escapeshellarg(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SessionTestHelper.php');
     }
 
     /**
@@ -91,7 +93,9 @@ class Zend_SessionTest extends TestCase
      */
     protected function tear_down()
     {
-        ini_set('session.save_path', $this->_savePath);
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            ini_set('session.save_path', $this->_savePath);
+        }
 
         $this->assertSame(
             E_ALL,
