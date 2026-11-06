@@ -345,7 +345,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             unset($row['zend_db_rownum']);
         }
 
-        return $row;
+        return $this->_foldCase($row);
     }
 
     /**
@@ -447,7 +447,43 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             }
         }
 
+        if ($style != Zend_Db::FETCH_COLUMN) {
+            $result = array_map([$this, '_foldCase'], $result);
+        }
+
         return $result;
+    }
+
+    /**
+     * Folds the column names of a row by the CASE_FOLDING option of the adapter,
+     * which oci8 does not do itself.
+     *
+     * @param mixed $row Array, object, or false
+     * @return mixed
+     */
+    protected function _foldCase($row)
+    {
+        if ($this->_adapter->foldCase('Zend') === 'Zend') {
+            return $row;
+        }
+
+        if (is_array($row)) {
+            $folded = [];
+            foreach ($row as $key => $value) {
+                $folded[is_string($key) ? $this->_adapter->foldCase($key) : $key] = $value;
+            }
+            return $folded;
+        }
+
+        if (is_object($row)) {
+            $folded = new stdClass();
+            foreach (get_object_vars($row) as $key => $value) {
+                $folded->{$this->_adapter->foldCase($key)} = $value;
+            }
+            return $folded;
+        }
+
+        return $row;
     }
 
 
