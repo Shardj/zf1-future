@@ -116,9 +116,7 @@ class Zend_Ldap_CrudTest extends Zend_Ldap_OnlineTestCase
                 $exThrown = true;
             }
             $this->_getLdap()->delete($dn);
-            if (!$exThrown) {
-                $this->fail('no exception thrown while illegaly updating entry');
-            }
+            $this->assertTrue($exThrown, 'no exception thrown while illegaly updating entry');
         } catch (Zend_Ldap_Exception $e) {
             $this->fail($e->getMessage());
         }
@@ -336,8 +334,8 @@ class Zend_Ldap_CrudTest extends Zend_Ldap_OnlineTestCase
             $this->_getLdap()->delete($dn);
 
             $this->assertEquals('domain', $entry['associateddomain'][0]);
-            $this->assertStringContainsString('organizationalUnit', $entry['objectclass']);
-            $this->assertStringContainsString('domainRelatedObject', $entry['objectclass']);
+            $this->assertContains('organizationalUnit', $entry['objectclass']);
+            $this->assertContains('domainRelatedObject', $entry['objectclass']);
         } catch (Zend_Ldap_Exception $e) {
             if ($this->_getLdap()->exists($dn)) {
                 $this->_getLdap()->delete($dn);
@@ -365,8 +363,8 @@ class Zend_Ldap_CrudTest extends Zend_Ldap_OnlineTestCase
             $this->_getLdap()->delete($dn);
 
             $this->assertArrayNotHasKey('associateddomain', $entry);
-            $this->assertStringContainsString('organizationalUnit', $entry['objectclass']);
-            $this->assertStringNotContainsString('domainRelatedObject', $entry['objectclass']);
+            $this->assertContains('organizationalUnit', $entry['objectclass']);
+            $this->assertNotContains('domainRelatedObject', $entry['objectclass']);
         } catch (Zend_Ldap_Exception $e) {
             if ($this->_getLdap()->exists($dn)) {
                 $this->_getLdap()->delete($dn);

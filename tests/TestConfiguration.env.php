@@ -347,7 +347,7 @@ defined('TESTS_ZEND_LDAP_ONLINE_ENABLED') || define('TESTS_ZEND_LDAP_ONLINE_ENAB
  *                    ALT_DN: CN=Alice Baker,OU=Sales,DC=foo,DC=net
  *              ALT_PASSWORD: apass
  */
-defined('TESTS_ZEND_LDAP_HOST') || define('TESTS_ZEND_LDAP_HOST', getenv('TESTS_GENERATE_REPORT') ?: 'localhost');
+defined('TESTS_ZEND_LDAP_HOST') || define('TESTS_ZEND_LDAP_HOST', getenv('TESTS_ZEND_LDAP_HOST') ?: 'localhost');
 defined('TESTS_ZEND_LDAP_PORT') || define('TESTS_ZEND_LDAP_PORT', getenv('TESTS_ZEND_LDAP_PORT') ?: 1389);
 defined('TESTS_ZEND_LDAP_USE_START_TLS') || define('TESTS_ZEND_LDAP_USE_START_TLS', getenv('TESTS_ZEND_LDAP_USE_START_TLS') ?: false);
 defined('TESTS_ZEND_LDAP_USE_SSL') || define('TESTS_ZEND_LDAP_USE_SSL', getenv('TESTS_ZEND_LDAP_USE_SSL') ?: false);

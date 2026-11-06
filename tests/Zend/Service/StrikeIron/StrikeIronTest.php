@@ -99,7 +99,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends TestCase
     {
         $class = 'Zend_Service_StrikeIron_StrikeIronTest_StubbedBase';
         $stub = $this->strikeIron->getService(['class' => $class]);
-        $this->assertEquals($this->options, $stub->options);
+        $this->assertEquals($this->options, $stub->getOptions());
     }
 
     public function testFactoryMergesItsOptionsWithConstructorOptions()
@@ -111,7 +111,7 @@ class Zend_Service_StrikeIron_StrikeIronTest extends TestCase
         unset($mergedOptions['class']);
 
         $stub = $this->strikeIron->getService($options);
-        $this->assertEquals($mergedOptions, $stub->options);
+        $this->assertEquals($mergedOptions, $stub->getOptions());
     }
 }
 
@@ -130,5 +130,10 @@ class Zend_Service_StrikeIron_StrikeIronTest_StubbedBase
     public function __construct($options)
     {
         $this->options = $options;
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
     }
 }
