@@ -3834,59 +3834,11 @@ class Zend_DateTest extends TestCase
         $result = Zend_Date_Cities::City('vienna');
         $this->assertTrue(is_array($result));
         $result = $date->getSunset($result);
-        // PHP's internal sunrise/sunset calculation changed in 7.2.0, 8.1.0 and again with the GH-18076 fix
-        // See comment in Zend/Date/DateObjectTest.php::testCalcSunInternal
-        // This applies to all of the version_compare blocks in this test
+        // with or without the refraction, see hasSunInfoRefractionFix()
         if (self::hasSunInfoRefractionFix()) {
             $this->assertSame('2002-01-04T20:14:02+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
-            $this->assertSame('2002-01-04T20:15:51+05:00', $result->get(Zend_Date::W3C));
-        }else if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            $this->assertSame('2002-01-04T20:09:40+05:00', $result->get(Zend_Date::W3C));
         } else {
-            $this->assertSame('2002-01-04T20:09:59+05:00', $result->get(Zend_Date::W3C));
-        }
-
-        unset($result);
-        $result = Zend_Date_Cities::City('vienna', 'civil');
-        $this->assertTrue(is_array($result));
-        $result = $date->getSunset($result);
-        if (self::hasSunInfoRefractionFix()) {
-            $this->assertSame('2002-01-04T20:14:02+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
             $this->assertSame('2002-01-04T20:15:51+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            $this->assertSame('2002-01-04T20:09:01+05:00', $result->get(Zend_Date::W3C));
-        } else {
-            $this->assertSame('2002-01-04T20:09:20+05:00', $result->get(Zend_Date::W3C));
-        }
-
-        unset($result);
-        $result = Zend_Date_Cities::City('vienna', 'nautic');
-        $this->assertTrue(is_array($result));
-        $result = $date->getSunset($result);
-        if (self::hasSunInfoRefractionFix()) {
-            $this->assertSame('2002-01-04T20:14:02+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
-            $this->assertSame('2002-01-04T20:15:51+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            $this->assertSame('2002-01-04T20:08:15+05:00', $result->get(Zend_Date::W3C));
-        } else {
-            $this->assertSame('2002-01-04T20:08:34+05:00', $result->get(Zend_Date::W3C));
-        }
-
-        unset($result);
-        $result = Zend_Date_Cities::City('vienna', 'astronomic');
-        $this->assertTrue(is_array($result));
-        $result = $date->getSunset($result);
-        if (self::hasSunInfoRefractionFix()) {
-            $this->assertSame('2002-01-04T20:14:02+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
-            $this->assertSame('2002-01-04T20:15:51+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            $this->assertSame('2002-01-04T20:07:30+05:00', $result->get(Zend_Date::W3C));
-        } else {
-            $this->assertSame('2002-01-04T20:07:49+05:00', $result->get(Zend_Date::W3C));
         }
 
         unset($result);
@@ -3895,54 +3847,33 @@ class Zend_DateTest extends TestCase
         $result = $date->getSunrise($result);
         if (self::hasSunInfoRefractionFix()) {
             $this->assertSame('2002-01-04T12:16:25+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
-            $this->assertSame('2002-01-04T12:14:21+05:00', $result->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            $this->assertSame('2002-01-04T12:21:26+05:00', $result->get(Zend_Date::W3C));
         } else {
-            $this->assertSame('2002-01-04T12:21:21+05:00', $result->get(Zend_Date::W3C));
+            $this->assertSame('2002-01-04T12:14:21+05:00', $result->get(Zend_Date::W3C));
         }
 
-        unset($result);
-        $result = Zend_Date_Cities::City('London');
-        $this->assertTrue(is_array($result));
-        $result = $date->getSunInfo($result);
-        if (self::hasSunInfoRefractionFix()) {
-            $this->assertSame('2002-01-04T13:05:25+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:05:25+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:05:25+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:05:25+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:05:22+05:00', $result['sunset']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:05:22+05:00', $result['sunset']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:05:22+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:05:22+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
-            $this->assertSame('2002-01-04T13:03:25+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:03:25+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:03:25+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:03:25+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:07:22+05:00', $result['sunset']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:07:22+05:00', $result['sunset']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:07:22+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:07:22+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C));
-        } else if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
-            $this->assertSame('2002-01-04T13:10:15+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:10:59+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:11:50+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:12:40+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:00:32+05:00', $result['sunset']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T20:59:48+05:00', $result['sunset']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T20:58:57+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T20:58:07+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C));
-        } else {
-            $this->assertSame('2002-01-04T13:10:10+05:00', $result['sunrise']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:10:54+05:00', $result['sunrise']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:11:45+05:00', $result['sunrise']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T13:12:35+05:00', $result['sunrise']['astronomic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:00:52+05:00', $result['sunset']['effective']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T21:00:08+05:00', $result['sunset']['civil']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T20:59:18+05:00', $result['sunset']['nautic']->get(Zend_Date::W3C));
-            $this->assertSame('2002-01-04T20:58:28+05:00', $result['sunset']['astronomic']->get(Zend_Date::W3C));
+        // the twilights of the horizons
+        foreach (['vienna', 'BERLIN', 'London'] as $city) {
+            $location = Zend_Date_Cities::City($city);
+            $info = date_sun_info(1010101010, $location['latitude'], $location['longitude']);
+            $keys = [
+                'effective'  => ['sunrise', 'sunset'],
+                'civil'      => ['civil_twilight_begin', 'civil_twilight_end'],
+                'nautic'     => ['nautical_twilight_begin', 'nautical_twilight_end'],
+                'astronomic' => ['astronomical_twilight_begin', 'astronomical_twilight_end'],
+            ];
+            $result = $date->getSunInfo($location);
+            foreach ($keys as $horizon => [$begin, $end]) {
+                $this->assertSame($info[$begin], (int) $result['sunrise'][$horizon]->getTimestamp(), "$city sunrise $horizon");
+                $this->assertSame($info[$end], (int) $result['sunset'][$horizon]->getTimestamp(), "$city sunset $horizon");
+                $location['horizon'] = $horizon;
+                $this->assertSame($info[$begin], (int) $date->getSunrise($location)->getTimestamp(), "$city getSunrise $horizon");
+                $this->assertSame($info[$end], (int) $date->getSunset($location)->getTimestamp(), "$city getSunset $horizon");
+            }
+            // the twilights begin before the sunrise and end after the sunset
+            $this->assertLessThan($info['sunrise'], $info['civil_twilight_begin']);
+            $this->assertLessThan($info['civil_twilight_begin'], $info['nautical_twilight_begin']);
+            $this->assertLessThan($info['nautical_twilight_begin'], $info['astronomical_twilight_begin']);
+            $this->assertGreaterThan($info['sunset'], $info['civil_twilight_end']);
         }
 
         unset($result);
@@ -4011,14 +3942,17 @@ class Zend_DateTest extends TestCase
     }
 
     /**
-     * date_sun_info() returns different sunrise and sunset times since the fix for
-     * https://github.com/php/php-src/issues/18076 (PHP 8.3.22 and 8.4.8; never backported to 8.2).
+     * Whether date_sun_info() takes the refraction into account for the sunrise
+     * and sunset: PHP 7.4, and PHP 8.3.22 and 8.4.8 on with the fix of
+     * https://github.com/php/php-src/issues/18076 (PHP 8.0 to 8.2 do not)
      *
      * @return bool
      */
     private static function hasSunInfoRefractionFix()
     {
-        return PHP_VERSION_ID >= 80408 || (PHP_VERSION_ID >= 80322 && PHP_VERSION_ID < 80400);
+        return PHP_VERSION_ID < 80000
+            || PHP_VERSION_ID >= 80408
+            || (PHP_VERSION_ID >= 80322 && PHP_VERSION_ID < 80400);
     }
 
     /**
