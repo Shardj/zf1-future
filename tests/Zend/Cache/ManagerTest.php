@@ -240,7 +240,7 @@ class Zend_Cache_ManagerTest extends TestCase
     {
         $manager = new Zend_Cache_Manager();
         $tagCacheConfig = $manager->getCacheTemplate('tagCache');
-        $tagCacheConfig['backend']['options']['cache_dir'] = $this->getTmpDir();
+        $tagCacheConfig['backend']['options']['cache_dir'] = $this->_cache_dir;
         $manager->setTemplateOptions('pagetag', $tagCacheConfig);
         $tagCache = $manager->getCache('page')->getBackend()->getOption('tag_cache');
         $this->assertTrue($tagCache instanceof Zend_Cache_Core);
