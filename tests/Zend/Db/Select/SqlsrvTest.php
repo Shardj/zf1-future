@@ -42,19 +42,14 @@ class Zend_Db_Select_SqlsrvTest extends Zend_Db_Select_TestCommon
         $this->markTestSkipped($this->getDriver() . ' does not support binding by name.');
     }
 
-    public function testSelectColumnWithColonQuotedParameter()
+    // SQL Server cannot compare the integer key with a string value
+    protected function _selectColumnWithColonQuotedParameter()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not support selecting int columns by varchar param.');
-    }
+        $product_name = $this->_db->quoteIdentifier('product_name');
 
-    public function testSelectFromQualified()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' needs more syntax for qualified table names.');
-    }
-
-    public function testSelectJoinQualified()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' needs more syntax for qualified table names.');
+        return $this->_db->select()
+            ->from('zfproducts')
+            ->where($product_name . ' = ?', "as'as:x");
     }
 
     public function getDriver()

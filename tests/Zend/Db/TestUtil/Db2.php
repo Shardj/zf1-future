@@ -110,6 +110,9 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
         if ($type == 'DATETIME') {
             return 'DATE';
         }
+        if (preg_match('/^TEXT\b(.*)/', $type, $matches)) {
+            return 'CLOB' . $matches[1];
+        }
         return $type;
     }
 

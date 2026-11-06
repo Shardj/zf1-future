@@ -68,11 +68,6 @@ class Zend_Db_Select_Pdo_IbmTest extends Zend_Db_Select_TestCommon
         }
     }
 
-    public function testSelectJoinCross()
-    {
-        $this->markTestSkipped($this->getDriver() . ' adapter support for CROSS JOIN not yet available');
-    }
-
     public function testSelectFromForUpdate()
     {
         $this->_testSelectFromForUpdate();

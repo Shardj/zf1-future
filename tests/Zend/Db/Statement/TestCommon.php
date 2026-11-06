@@ -178,16 +178,33 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
         $this->assertEquals([['product_id' => 4, 'product_name' => 'Solaris']], $result);
     }
 
-    public function testStatementErrorCodeKeyViolation()
+    /**
+     * Prepares an INSERT of an existing product id, with the parameter style
+     * the adapter supports.
+     *
+     * @return array The statement and its bind values
+     */
+    protected function _prepareKeyViolation()
     {
         $products = $this->_db->quoteIdentifier('zfproducts');
         $product_id = $this->_db->quoteIdentifier('product_id');
         $product_name = $this->_db->quoteIdentifier('product_name');
 
-        $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
+        if ($this->_db->supportsParameters('positional')) {
+            $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
+            return [$stmt, [1, 'Solaris']];
+        }
+
+        $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (:product_id, :product_name)");
+        return [$stmt, ['product_id' => 1, 'product_name' => 'Solaris']];
+    }
+
+    public function testStatementErrorCodeKeyViolation()
+    {
+        [$stmt, $bind] = $this->_prepareKeyViolation();
         try {
             // INSERT a value that results in a key violation
-            $retval = $stmt->execute([1, 'Solaris']);
+            $retval = $stmt->execute($bind);
             if ($retval === false) {
                 throw new Zend_Db_Statement_Exception('dummy');
             }
@@ -204,14 +221,10 @@ abstract class Zend_Db_Statement_TestCommon extends Zend_Db_TestSetup
 
     public function testStatementErrorInfoKeyViolation()
     {
-        $products = $this->_db->quoteIdentifier('zfproducts');
-        $product_id = $this->_db->quoteIdentifier('product_id');
-        $product_name = $this->_db->quoteIdentifier('product_name');
-
-        $stmt = $this->_db->prepare("INSERT INTO $products ($product_id, $product_name) VALUES (?, ?)");
+        [$stmt, $bind] = $this->_prepareKeyViolation();
         try {
             // INSERT a value that results in a key violation
-            $retval = $stmt->execute([1, 'Solaris']);
+            $retval = $stmt->execute($bind);
             if ($retval === false) {
                 throw new Zend_Db_Statement_Exception('dummy');
             }

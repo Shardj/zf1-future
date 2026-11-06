@@ -44,16 +44,6 @@ class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
         $this->markTestSkipped($this->getDriver() . ' does not support bound parameters by position');
     }
 
-    public function testStatementErrorCodeKeyViolation()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not return error codes correctly.');
-    }
-
-    public function testStatementErrorInfoKeyViolation()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not return error codes correctly.');
-    }
-
     public function testStatementExecuteWithParams()
     {
         $products = $this->_db->quoteIdentifier('zfproducts');

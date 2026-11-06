@@ -73,6 +73,9 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         if ($type == 'DATETIME') {
             return 'TIMESTAMP';
         }
+        if (preg_match('/^TEXT\b(.*)/', $type, $matches)) {
+            return 'CLOB' . $matches[1];
+        }
         return $type;
     }
 

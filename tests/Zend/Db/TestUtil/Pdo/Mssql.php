@@ -126,7 +126,7 @@ class Zend_Db_TestUtil_Pdo_Mssql extends Zend_Db_TestUtil_Pdo_Common
 
     public function getSchema()
     {
-        $desc = $this->_db->describeTable('zfproducts');
-        return $desc['product_id']['SCHEMA_NAME'];
+        // describeTable() does not report the schema of SQL Server tables
+        return $this->_db->fetchOne('SELECT SCHEMA_NAME()');
     }
 }

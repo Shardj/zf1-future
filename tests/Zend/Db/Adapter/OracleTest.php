@@ -507,37 +507,25 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         return 'CASE_FOLDED_IDENTIFIER';
     }
 
-    public function testAdapterOptionCaseFoldingUpper()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not support case-folding array keys yet.');
-    }
-
     public function testAdapterOptionCaseFoldingLower()
     {
-        $this->markTestIncomplete($this->getDriver() . ' does not support case-folding array keys yet.');
+        $this->markTestIncomplete($this->getDriver() . ' does not fold the case of column names yet.');
     }
 
-    public function testAdapterTransactionCommit()
+    /**
+     * oci_connect() returns the open connection for the same arguments, so the
+     * second connection asks for an explicit character set to get its own session
+     */
+    protected function _getSecondConnection()
     {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with transactions');
-    }
-
-    public function testAdapterTransactionRollback()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with transactions');
+        $params = $this->_util->getParams();
+        $params['charset'] = 'AL32UTF8';
+        return Zend_Db::factory($this->getDriver(), $params);
     }
 
     public function testAdapterAlternateStatement()
     {
         $this->_testAdapterAlternateStatement('Test_OracleStatement');
-    }
-
-    /**
-     * @group ZF-8399
-     */
-    public function testLongQueryWithTextField()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not have TEXT field type');
     }
 
     public function getDriver()

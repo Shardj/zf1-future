@@ -50,11 +50,6 @@ class Zend_Db_Table_Select_Db2Test extends Zend_Db_Table_Select_TestCommon
         return $select;
     }
 
-    public function testSelectJoinCross()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support CROSS JOIN');
-    }
-
     /**
      * ZF-2017: Test bind use of the Zend_Db_Select class.
      * @group ZF-2017

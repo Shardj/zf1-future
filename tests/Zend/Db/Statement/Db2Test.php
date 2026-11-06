@@ -34,16 +34,6 @@ require_once 'Zend/Db/Statement/TestCommon.php';
  */
 class Zend_Db_Statement_Db2Test extends Zend_Db_Statement_TestCommon
 {
-    public function testStatementErrorCodeKeyViolation()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not return error codes correctly.');
-    }
-
-    public function testStatementErrorInfoKeyViolation()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not return error codes correctly.');
-    }
-
     public function testStatementColumnCountForSelect()
     {
         $select = $this->_db->select()

@@ -37,10 +37,10 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
  */
 class Zend_Db_Statement_Pdo_OciTest extends Zend_Db_Statement_Pdo_TestCommon
 {
-    public function testStatementGetColumnMeta()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support statement metadata');
-    }
+    // pdo_oci does not report the table of a column
+    protected $_getColumnMetaKeys = [
+        'native_type', 'flags', 'name', 'len', 'precision', 'pdo_type'
+    ];
 
     public function getDriver()
     {
