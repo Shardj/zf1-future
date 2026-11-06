@@ -639,18 +639,25 @@ class Zend_Validate_EmailAddressTest extends TestCase
     }
 
     /**
+     * The MX records of an IDN domain are looked up by its ASCII form. кц.рф is
+     * the domain of the .рф registry; a domain with ß would depend on the ICU
+     * version, which maps faß.de to fass.de (before ICU 76) or xn--fa-hia.de.
+     *
      * @group GH-62
      */
     public function testIdnHostnameInEmaillAddress()
     {
-        if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-            $this->markTestSkipped('idn_to_ascii() is available in intl in PHP 5.3.0+');
-        } elseif (!extension_loaded('intl')) {
-            $this->markTestSkipped('idn_to_ascii() is available in intl in PHP 5.3.0+');
+        if (!defined('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
+            || !constant('TESTS_ZEND_VALIDATE_ONLINE_ENABLED')
+        ) {
+            $this->markTestSkipped('Testing MX records only works when a valid internet connection is available');
+        }
+        if (!extension_loaded('intl')) {
+            $this->markTestSkipped('idn_to_ascii() needs the intl extension');
         }
         $validator = new Zend_Validate_EmailAddress();
         $validator->setValidateMx(true);
-        $this->assertTrue($validator->isValid('testmail@faß.de'));
+        $this->assertTrue($validator->isValid('testmail@кц.рф'), implode("\n", $validator->getMessages()));
     }
 
     /**
