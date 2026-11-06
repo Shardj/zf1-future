@@ -111,6 +111,7 @@ class Zend_Ldap_Node_ChildrenIterationTest extends Zend_Ldap_OnlineTestCase
      */
     public function testCallingNextAfterIterationShouldNotThrowException()
     {
+        $this->expectNotToPerformAssertions();
         $node = $this->_getLdap()->getBaseNode();
         $nodes = $node->searchChildren('(objectClass=*)');
         foreach ($nodes as $rdn => $n) {

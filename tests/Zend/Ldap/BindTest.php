@@ -51,6 +51,12 @@ class Zend_Ldap_BindTest extends TestCase
 
     protected function set_up()
     {
+        if (!extension_loaded('ldap')) {
+            $this->markTestSkipped('Zend_Ldap requires the ldap extension');
+        }
+        if (!TESTS_ZEND_LDAP_ONLINE_ENABLED) {
+            $this->markTestSkipped('Test skipped due to test configuration');
+        }
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,
@@ -191,9 +197,8 @@ class Zend_Ldap_BindTest extends TestCase
             $ldap->bind($this->_principalName);
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            /* Note that if your server actually allows anonymous binds this test will fail.
-             */
-            $this->assertStringContainsString('No object found for', $zle->getMessage());
+            // the account is not found, or the server refuses the anonymous bind of the search
+            $this->assertStringContainsString('Failed to retrieve DN for account', $zle->getMessage());
         }
     }
 
