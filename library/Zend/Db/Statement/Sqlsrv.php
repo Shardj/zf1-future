@@ -53,6 +53,13 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
     protected $_executed = false;
 
     /**
+     * Errors of the last failed execution, which leaves no statement handle
+     *
+     * @var array|null
+     */
+    protected $_executeErrors = null;
+
+    /**
      * Prepares statement handle
      *
      * @param string $sql
@@ -131,7 +138,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
     public function errorCode()
     {
         if (!$this->_stmt) {
-            return false;
+            return $this->_executeErrors ? $this->_executeErrors[0]['code'] : false;
         }
 
         $error = sqlsrv_errors();
@@ -152,7 +159,13 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
     public function errorInfo()
     {
         if (!$this->_stmt) {
-            return false;
+            if (!$this->_executeErrors) {
+                return false;
+            }
+            return [
+                $this->_executeErrors[0]['code'],
+                $this->_executeErrors[0]['message'],
+            ];
         }
 
         $error = sqlsrv_errors();
@@ -202,9 +215,12 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
         $this->_stmt = sqlsrv_query($connection, $this->_originalSQL, $params);
 
         if (!$this->_stmt) {
+            $this->_executeErrors = sqlsrv_errors();
             require_once 'Zend/Db/Statement/Sqlsrv/Exception.php';
-            throw new Zend_Db_Statement_Sqlsrv_Exception(sqlsrv_errors());
+            throw new Zend_Db_Statement_Sqlsrv_Exception($this->_executeErrors);
         }
+
+        $this->_executeErrors = null;
 
         $this->_executed = true;
 
