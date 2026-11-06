@@ -250,6 +250,14 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->assertEquals($expected, stream_get_contents($value));
     }
 
+    /**
+     * @group ZF-8399
+     */
+    public function testLongQueryWithTextField()
+    {
+        $this->markTestSkipped($this->getDriver() . ' binds a string of 4000 bytes as LONG, which a CLOB column takes only as a LOB parameter');
+    }
+
     public function getDriver()
     {
         return 'Pdo_Oci';
