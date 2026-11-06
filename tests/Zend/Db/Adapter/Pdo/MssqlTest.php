@@ -374,6 +374,22 @@ class Zend_Db_Adapter_Pdo_MssqlTest extends Zend_Db_Adapter_Pdo_TestCommon
         $this->assertEquals("'1\\000'", $value);
     }
 
+    public function testAdapterDescribeTableSchemaName()
+    {
+        $schema = $this->_db->fetchOne('SELECT SCHEMA_NAME()');
+
+        $desc = $this->_db->describeTable('zfproducts');
+        $this->assertSame($schema, $desc['product_id']['SCHEMA_NAME']);
+
+        $desc = $this->_db->describeTable('zfproducts', $schema);
+        $this->assertSame($schema, $desc['product_id']['SCHEMA_NAME']);
+
+        $desc = $this->_db->describeTable('zfproducts', 'zftest.' . $schema);
+        $this->assertSame($schema, $desc['product_id']['SCHEMA_NAME']);
+
+        $this->assertSame([], $this->_db->describeTable('zfproducts', 'zfnoschema'));
+    }
+
     public function getDriver()
     {
         return 'Pdo_Mssql';
