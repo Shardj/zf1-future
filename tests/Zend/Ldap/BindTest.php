@@ -51,6 +51,12 @@ class Zend_Ldap_BindTest extends TestCase
 
     protected function set_up()
     {
+        if (!extension_loaded('ldap')) {
+            $this->markTestSkipped('Zend_Ldap requires the ldap extension');
+        }
+        if (!TESTS_ZEND_LDAP_ONLINE_ENABLED) {
+            $this->markTestSkipped('Test skipped due to test configuration');
+        }
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,
