@@ -142,7 +142,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
 
         if (!isset($this->_config['driver_options']['autocommit'])) {
             // set execution mode
-            $this->_config['driver_options']['autocommit'] = &$this->_execute_mode;
+            $this->_config['driver_options']['autocommit'] = $this->_execute_mode;
         }
 
         if (isset($this->_config['options'][Zend_Db::CASE_FOLDING])) {
@@ -173,8 +173,8 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                      ';PWD='      . $this->_config['password'] .';';
             $this->_connection = $conn_func_name(
                 $dbname,
-                null,
-                null,
+                '',
+                '',
                 $this->_config['driver_options']
             );
         } else {
@@ -385,7 +385,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         if (!$this->_isI5) {
 
             $sql = "SELECT DISTINCT c.tabschema, c.tabname, c.colname, c.colno,
-                c.typename, c.default, c.nulls, c.length, c.scale,
+                c.typename, CAST(c.default AS VARCHAR(2000)), c.nulls, c.length, c.scale,
                 c.identity, tc.type AS tabconsttype, k.colseq
                 FROM syscat.columns c
                 LEFT JOIN (syscat.keycoluse k JOIN syscat.tabconst tc
