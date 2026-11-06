@@ -55,11 +55,6 @@ class Zend_Db_Statement_Db2Test extends Zend_Db_Statement_TestCommon
         $this->assertEquals(2, $n);
     }
 
-    public function testStatementBindParamByPosition()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding params');
-    }
-
     public function testStatementBindParamByName()
     {
         $products = $this->_db->quoteIdentifier('zfproducts');
@@ -83,11 +78,6 @@ class Zend_Db_Statement_Db2Test extends Zend_Db_Statement_TestCommon
             );
             $this->assertEquals("Invalid bind-variable name ':id'", $e->getMessage());
         }
-    }
-
-    public function testStatementBindValueByPosition()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding params');
     }
 
     public function testStatementBindValueByName()
@@ -115,9 +105,73 @@ class Zend_Db_Statement_Db2Test extends Zend_Db_Statement_TestCommon
         }
     }
 
-    public function testStatementGetColumnMeta()
+    // ibm_db2 reports neither the table nor the flags of a column
+    protected $_getColumnMetaKeys = [
+        'native_type', 'name', 'len', 'precision', 'scale', 'pdo_type'
+    ];
+
+    public function testStatementGetColumnMetaDescribesTheColumns()
     {
-        $this->markTestIncomplete($this->getDriver() . ' has not implemented getColumnMeta() yet [ZF-1424]');
+        $bugs = $this->_db->quoteIdentifier('zfbugs');
+        $bug_id = $this->_db->quoteIdentifier('bug_id');
+        $bug_description = $this->_db->quoteIdentifier('bug_description');
+        $stmt = $this->_db->query("SELECT $bug_id, $bug_description FROM $bugs");
+
+        $id = $stmt->getColumnMeta(0);
+        $this->assertSame('bug_id', $id['name']);
+        $this->assertSame('int', $id['native_type']);
+        $this->assertSame(0, $id['scale']);
+        $this->assertSame(Zend_Db::PARAM_INT, $id['pdo_type']);
+
+        $description = $stmt->getColumnMeta(1);
+        $this->assertSame('bug_description', $description['name']);
+        $this->assertSame('string', $description['native_type']);
+        $this->assertSame(100, $description['len']);
+        $this->assertSame(Zend_Db::PARAM_STR, $description['pdo_type']);
+
+        $stmt->closeCursor();
+    }
+
+    public function testStatementGetColumnMetaWithoutSuchColumn()
+    {
+        $bugs = $this->_db->quoteIdentifier('zfbugs');
+        $bug_id = $this->_db->quoteIdentifier('bug_id');
+        $bug_status = $this->_db->quoteIdentifier('bug_status');
+
+        $stmt = $this->_db->query("SELECT $bug_id FROM $bugs");
+        $this->assertFalse($stmt->getColumnMeta(1));
+        $this->assertFalse($stmt->getColumnMeta(-1));
+        $stmt->closeCursor();
+
+        $stmt = $this->_db->query("UPDATE $bugs SET $bug_status = $bug_status WHERE $bug_id = 1");
+        $this->assertFalse($stmt->getColumnMeta(0));
+    }
+
+    /**
+     * The name and the sizes match pdo_ibm; the native_type of ibm_db2 is not
+     * the SQL type
+     */
+    public function testStatementGetColumnMetaMatchesPdoIbm()
+    {
+        if (!extension_loaded('pdo_ibm')) {
+            $this->markTestSkipped('Comparing with pdo_ibm requires the pdo_ibm extension');
+        }
+
+        $sql = 'SELECT * FROM ' . $this->_db->quoteIdentifier('zfbugs');
+        $pdo = Zend_Db::factory('Pdo_Ibm', $this->_util->getParams());
+
+        $db2Stmt = $this->_db->query($sql);
+        $pdoStmt = $pdo->query($sql);
+        $this->assertSame($pdoStmt->columnCount(), $db2Stmt->columnCount());
+        $keys = ['name' => true, 'len' => true, 'precision' => true, 'scale' => true];
+        for ($i = 0; $i < $pdoStmt->columnCount(); ++$i) {
+            $expected = array_intersect_key($pdoStmt->getColumnMeta($i), $keys);
+            $actual = array_intersect_key($db2Stmt->getColumnMeta($i), $keys);
+            $this->assertEquals($expected, $actual, "Column $i");
+        }
+        $db2Stmt->closeCursor();
+        $pdoStmt->closeCursor();
+        $pdo->closeConnection();
     }
 
     public function getDriver()
