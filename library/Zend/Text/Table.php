@@ -519,6 +519,9 @@ class Zend_Text_Table
     /**
      * Magic method which returns the rendered table
      *
+     * An exception of the rendering is reported as an E_USER_WARNING, as
+     * Zend_Form does, and the table is rendered as an empty string.
+     *
      * @return string
      */
     public function __toString()
@@ -526,8 +529,8 @@ class Zend_Text_Table
         try {
             return $this->render();
         } catch (Exception $e) {
-            trigger_error($e->getMessage(), E_USER_ERROR);
+            trigger_error($e->getMessage(), E_USER_WARNING);
+            return '';
         }
-
     }
 }
