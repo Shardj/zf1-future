@@ -163,6 +163,39 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
         return oci_num_fields($this->_stmt);
     }
 
+    /**
+     * Returns metadata for a column in a result set, in the format of
+     * PDOStatement::getColumnMeta() of pdo_oci as far as oci8 reports it:
+     * native_type, name, len, precision, scale and pdo_type. oci8 reports
+     * neither the table nor the flags of a column, and the native_type of a
+     * type it has no name for is the Oracle type code. The pdo_type is the
+     * type of the values fetched: LOB columns come as OCILob objects, or as
+     * strings with the lob_as_string option.
+     *
+     * @param int $column Zero-based index of the column.
+     * @return array|false False when the statement has no result set or no such column.
+     */
+    public function getColumnMeta($column)
+    {
+        $column = (int) $column;
+        if (!$this->_stmt || $column < 0 || $column >= oci_num_fields($this->_stmt)) {
+            return false;
+        }
+
+        $field = $column + 1;
+        $nativeType = oci_field_type($this->_stmt, $field);
+        $isLob = in_array($nativeType, ['BLOB', 'CLOB', 'BFILE'], true);
+
+        return [
+            'native_type' => $nativeType,
+            'name'        => $this->_adapter->foldCase(oci_field_name($this->_stmt, $field)),
+            'len'         => oci_field_size($this->_stmt, $field),
+            'precision'   => oci_field_precision($this->_stmt, $field),
+            'scale'       => oci_field_scale($this->_stmt, $field),
+            'pdo_type'    => $isLob && !$this->getLobAsString() ? Zend_Db::PARAM_LOB : Zend_Db::PARAM_STR,
+        ];
+    }
+
 
     /**
      * Retrieves the error code, if any, associated with the last operation on

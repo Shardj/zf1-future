@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Zend_Db_Statement_Mysqli::getColumnMeta() returns the metadata of a result set column in the format of pdo_mysql (native_type, flags, table, name, len, precision, pdo_type), or false when there is no such column; Zend_Db_Statement_Pdo had the method already, the Mysqli statement had none.
+* Zend_Db_Statement_Oracle::getColumnMeta() and Zend_Db_Statement_Db2::getColumnMeta() return the metadata of a result set column in the format of pdo_oci and pdo_ibm as far as oci8 and ibm_db2 report it (native_type, name, len, precision, scale, pdo_type), or false when there is no such column; neither extension reports the table and the flags of a column, and the native_type of ibm_db2 is the kind of values it fetches (int, real, string, ...) instead of the SQL type.
 
 ### Deprecated
 

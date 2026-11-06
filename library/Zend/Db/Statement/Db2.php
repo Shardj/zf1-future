@@ -140,6 +140,47 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
     }
 
     /**
+     * Returns metadata for a column in a result set, in the format of
+     * PDOStatement::getColumnMeta() of pdo_ibm as far as ibm_db2 reports it:
+     * native_type, name, len, precision, scale and pdo_type. ibm_db2 reports
+     * neither the table nor the flags of a column, and as the native_type the
+     * kind of values it fetches (int, real, string, clob, blob, date, time,
+     * timestamp, xml, boolean) instead of the SQL type. As in pdo_ibm, len is
+     * the display size and precision is the scale. The pdo_type is the type of
+     * the values fetched: SMALLINT and INTEGER columns come as integers,
+     * BIGINT columns as strings.
+     *
+     * @param int $column Zero-based index of the column.
+     * @return array|false False when the statement has no result set or no such column.
+     */
+    public function getColumnMeta($column)
+    {
+        $column = (int) $column;
+        if (!$this->_stmt || $column < 0 || $column >= db2_num_fields($this->_stmt)) {
+            return false;
+        }
+
+        $type = db2_field_type($this->_stmt, $column);
+        $scale = db2_field_scale($this->_stmt, $column);
+        if ($type === 'boolean') {
+            $pdoType = Zend_Db::PARAM_BOOL;
+        } elseif ($type === 'int' && db2_field_precision($this->_stmt, $column) <= 10) {
+            $pdoType = Zend_Db::PARAM_INT;
+        } else {
+            $pdoType = Zend_Db::PARAM_STR;
+        }
+
+        return [
+            'native_type' => $type,
+            'name'        => db2_field_name($this->_stmt, $column),
+            'len'         => db2_field_display_size($this->_stmt, $column),
+            'precision'   => $scale,
+            'scale'       => $scale,
+            'pdo_type'    => $pdoType,
+        ];
+    }
+
+    /**
      * Retrieves the error code, if any, associated with the last operation on
      * the statement handle.
      *
