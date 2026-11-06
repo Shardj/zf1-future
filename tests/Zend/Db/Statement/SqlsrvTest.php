@@ -50,6 +50,28 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
         sqlsrv_query($this->_db->getConnection(), "SET IDENTITY_INSERT $products OFF");
     }
 
+    public function testStatementBindParamByPosition()
+    {
+        $products = $this->_db->quoteIdentifier('zfproducts');
+
+        // Make IDENTITY column accept explicit value.
+        // This can be done in only one table in a given session.
+        sqlsrv_query($this->_db->getConnection(), "SET IDENTITY_INSERT $products ON");
+        parent::testStatementBindParamByPosition();
+        sqlsrv_query($this->_db->getConnection(), "SET IDENTITY_INSERT $products OFF");
+    }
+
+    public function testStatementBindValueByPosition()
+    {
+        $products = $this->_db->quoteIdentifier('zfproducts');
+
+        // Make IDENTITY column accept explicit value.
+        // This can be done in only one table in a given session.
+        sqlsrv_query($this->_db->getConnection(), "SET IDENTITY_INSERT $products ON");
+        parent::testStatementBindValueByPosition();
+        sqlsrv_query($this->_db->getConnection(), "SET IDENTITY_INSERT $products OFF");
+    }
+
     public function testStatementBindParamByName()
     {
         $this->markTestSkipped($this->getDriver() . ' does not support bind by name.');
@@ -58,16 +80,6 @@ class Zend_Db_Statement_SqlsrvTest extends Zend_Db_Statement_TestCommon
     public function testStatementBindValueByName()
     {
         $this->markTestSkipped($this->getDriver() . ' does not support bind by name.');
-    }
-
-    public function testStatementBindParamByPosition()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support bind by position.');
-    }
-
-    public function testStatementBindValueByPosition()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support bind by position.');
     }
 
     public function testStatementNextRowset()
