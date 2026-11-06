@@ -1361,7 +1361,7 @@ abstract class Zend_Db_Table_Relationships_TestCommon extends Zend_Db_Table_Test
         $relatedTable = $this->_table['products'];
         $relatedTableExpectedColumns = $relatedTable->info(Zend_Db_Table::COLS);
 
-        $row = $table->fetchRow('bug_id = 1');
+        $row = $table->fetchRow($this->_db->quoteIdentifier('bug_id') . ' = 1');
 
         $relatedRows = $row->findManyToManyRowset('My_ZendDbTable_TableProducts', 'My_ZendDbTable_TableBugsProducts');
 

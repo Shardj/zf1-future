@@ -110,4 +110,21 @@ class Zend_Db_Statement_Pdo_IbmTest extends Zend_Db_Statement_Pdo_TestCommon
         $this->assertEquals($valueArray, $stmt->getAttribute(1235), "Expected array #2");
         $this->assertEquals($value, $stmt->getAttribute(1234), "Expected '$value' #2");
     }
+
+    /**
+     * The IBM driver reports a function sequence error when a finished result
+     * is iterated again, so the test iterates once
+     */
+    public function testStatementIsIterableThroughtForeach()
+    {
+        $select = $this->_db->select()->from('zfproducts');
+        $stmt = $this->_db->query($select);
+        $stmt->setFetchMode(Zend_Db::FETCH_OBJ);
+        $count = 0;
+        foreach ($stmt as $test) {
+            $this->assertTrue($test instanceof stdClass);
+            $count++;
+        }
+        $this->assertEquals(3, $count);
+    }
 }

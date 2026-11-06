@@ -121,6 +121,10 @@ class Zend_Db_AllTests
 
             // check the PDO driver is available
             $pdo_driver = strtolower($matches[1]);
+            // Pdo_Mssql connects through the dblib, sybase or mssql PDO driver
+            if ($pdo_driver == 'mssql' && defined('TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PDOTYPE')) {
+                $pdo_driver = strtolower(TESTS_ZEND_DB_ADAPTER_PDO_MSSQL_PDOTYPE);
+            }
             if (!in_array($pdo_driver, PDO::getAvailableDrivers())) {
                 self::_skipTestSuite($driver, "PDO driver '{$pdo_driver}' is not available");
                 return;

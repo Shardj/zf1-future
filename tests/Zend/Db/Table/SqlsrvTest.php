@@ -51,4 +51,12 @@ class Zend_Db_Table_SqlsrvTest extends Zend_Db_Table_TestCommon
     {
         return 'Sqlsrv';
     }
+
+    /**
+     * A value for the identity column needs IDENTITY_INSERT
+     */
+    protected function _allowExplicitBugIds()
+    {
+        $this->_db->query('SET IDENTITY_INSERT ' . $this->_db->quoteIdentifier('zfbugs') . ' ON');
+    }
 }

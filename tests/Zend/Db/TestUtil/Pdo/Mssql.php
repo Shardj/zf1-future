@@ -123,4 +123,10 @@ class Zend_Db_TestUtil_Pdo_Mssql extends Zend_Db_TestUtil_Pdo_Common
         parent::dropView();
         parent::createView();
     }
+
+    public function getSchema()
+    {
+        // describeTable() does not report the schema of SQL Server tables
+        return $this->_db->fetchOne('SELECT SCHEMA_NAME()');
+    }
 }

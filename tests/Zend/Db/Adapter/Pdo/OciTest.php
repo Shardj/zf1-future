@@ -255,7 +255,7 @@ class Zend_Db_Adapter_Pdo_OciTest extends Zend_Db_Adapter_Pdo_TestCommon
      */
     public function testLongQueryWithTextField()
     {
-        $this->markTestSkipped($this->getDriver() . ' does not have TEXT field type');
+        $this->markTestSkipped($this->getDriver() . ' binds a string of 4000 bytes as LONG, which a CLOB column takes only as a LOB parameter');
     }
 
     public function getDriver()

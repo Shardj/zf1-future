@@ -67,8 +67,21 @@ class Zend_Db_Adapter_Pdo_IbmTest extends Zend_Db_Adapter_Db2Test
         if ($server == 'IDS') {
             $this->markTestIncomplete('IDS needs special consideration for transactions');
         } else {
-            parent::testAdapterTransactionCommit();
+            parent::testAdapterTransactionRollback();
         }
+    }
+
+    public function testAdapterAlternateStatement()
+    {
+        $this->_testAdapterAlternateStatement('Test_PdoStatement');
+    }
+
+    /**
+     * The PDO adapter adds no driver options of its own, unlike the native one
+     */
+    public function testAdapterZendConfigEmptyDriverOptions()
+    {
+        Zend_Db_Adapter_TestCommon::testAdapterZendConfigEmptyDriverOptions();
     }
 
     public function testAdapterLimitInvalidArgumentException()

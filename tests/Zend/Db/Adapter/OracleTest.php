@@ -426,7 +426,7 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchRow("SELECT * FROM $documents WHERE $document_id = 1");
-        $class = 'OCI-Lob';
+        $class = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
         $this->assertTrue($value['doc_clob'] instanceof $class);
         $expected = 'this is the clob that never ends...' .
                     'this is the clob that never ends...' .
@@ -452,7 +452,7 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $documents = $this->_db->quoteIdentifier('zfdocuments');
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $value = $this->_db->fetchAssoc("SELECT * FROM $documents WHERE $document_id = 1");
-        $class = 'OCI-Lob';
+        $class = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
         $this->assertTrue($value[1]['doc_clob'] instanceof $class);
         $expected = 'this is the clob that never ends...' .
                     'this is the clob that never ends...' .
@@ -479,7 +479,7 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $document_id = $this->_db->quoteIdentifier('doc_id');
         $document_clob = $this->_db->quoteIdentifier('doc_clob');
         $value = $this->_db->fetchOne("SELECT $document_clob FROM $documents WHERE $document_id = 1");
-        $class = 'OCI-Lob';
+        $class = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
         $this->assertTrue($value instanceof $class);
         $expected = 'this is the clob that never ends...' .
                     'this is the clob that never ends...' .
@@ -507,24 +507,20 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         return 'CASE_FOLDED_IDENTIFIER';
     }
 
-    public function testAdapterOptionCaseFoldingUpper()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not support case-folding array keys yet.');
-    }
-
     public function testAdapterOptionCaseFoldingLower()
     {
-        $this->markTestIncomplete($this->getDriver() . ' does not support case-folding array keys yet.');
+        $this->markTestIncomplete($this->getDriver() . ' does not fold the case of column names yet.');
     }
 
-    public function testAdapterTransactionCommit()
+    /**
+     * oci_connect() returns the open connection for the same arguments, so the
+     * second connection asks for an explicit character set to get its own session
+     */
+    protected function _getSecondConnection()
     {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with transactions');
-    }
-
-    public function testAdapterTransactionRollback()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with transactions');
+        $params = $this->_util->getParams();
+        $params['charset'] = 'AL32UTF8';
+        return Zend_Db::factory($this->getDriver(), $params);
     }
 
     public function testAdapterAlternateStatement()
@@ -532,16 +528,20 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         $this->_testAdapterAlternateStatement('Test_OracleStatement');
     }
 
-    /**
-     * @group ZF-8399
-     */
-    public function testLongQueryWithTextField()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not have TEXT field type');
-    }
-
     public function getDriver()
     {
         return 'Oracle';
+    }
+
+    /**
+     * The Oracle adapter binds parameters by name only
+     */
+    public function testAdapterFetchPairsWithSingleColumn()
+    {
+        $products = $this->_db->quoteIdentifier('zfproducts');
+        $product_id = $this->_db->quoteIdentifier('product_id');
+
+        $result = $this->_db->fetchPairs("SELECT $product_id FROM $products WHERE $product_id > :id ORDER BY $product_id ASC", ['id' => 1]);
+        $this->assertEquals([2 => null, 3 => null], $result);
     }
 }

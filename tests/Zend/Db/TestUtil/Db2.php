@@ -110,12 +110,15 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
         if ($type == 'DATETIME') {
             return 'DATE';
         }
+        if (preg_match('/^TEXT\b(.*)/', $type, $matches)) {
+            return 'CLOB' . $matches[1];
+        }
         return $type;
     }
 
     protected function _getSqlCreateTable($tableName)
     {
-        if ($this->_db->isI5()) {
+        if (method_exists($this->_db, 'isI5') && $this->_db->isI5()) {
             $tableList = $this->_db->fetchCol(
                 'SELECT UPPER(T.TABLE_NAME) FROM QSYS2.TABLES T '
                 . $this->_db->quoteInto(' WHERE UPPER(T.TABLE_NAME) = UPPER(?)', $tableName)
@@ -135,7 +138,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 
     protected function _getSqlDropTable($tableName)
     {
-        if ($this->_db->isI5()) {
+        if (method_exists($this->_db, 'isI5') && $this->_db->isI5()) {
             $tableList = $this->_db->fetchCol(
                 'SELECT UPPER(T.TABLE_NAME) FROM QSYS2.TABLES T '
                 . $this->_db->quoteInto(' WHERE UPPER(T.TABLE_NAME) = UPPER(?)', $tableName)
@@ -155,7 +158,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 
     protected function _getSqlCreateSequence($sequenceName)
     {
-        if ($this->_db->isI5()) {
+        if (method_exists($this->_db, 'isI5') && $this->_db->isI5()) {
             $sequenceQuery = 'SELECT UPPER(S.SEQNAME) FROM QSYS2.SYSSEQUENCES S '
                 . $this->_db->quoteInto(' WHERE UPPER(S.SEQNAME) = UPPER(?)', $sequenceName);
         } else {
@@ -173,7 +176,7 @@ class Zend_Db_TestUtil_Db2 extends Zend_Db_TestUtil_Common
 
     protected function _getSqlDropSequence($sequenceName)
     {
-        if ($this->_db->isI5()) {
+        if (method_exists($this->_db, 'isI5') && $this->_db->isI5()) {
             $sequenceQuery = 'SELECT UPPER(S.SEQNAME) FROM QSYS2.SYSSEQUENCES S '
                 . $this->_db->quoteInto(' WHERE UPPER(S.SEQNAME) = UPPER(?)', $sequenceName);
         } else {

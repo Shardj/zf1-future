@@ -41,4 +41,12 @@ class Zend_Db_Table_Db2Test extends Zend_Db_Table_TestCommon
     {
         return 'Db2';
     }
+
+    /**
+     * The bugs have an identity column, not a sequence named after the table
+     */
+    protected function _lastInsertBugId()
+    {
+        return $this->_db->lastInsertId();
+    }
 }

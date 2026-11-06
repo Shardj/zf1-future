@@ -37,10 +37,10 @@ require_once 'Zend/Db/Statement/Pdo/TestCommon.php';
  */
 class Zend_Db_Statement_Pdo_MssqlTest extends Zend_Db_Statement_Pdo_TestCommon
 {
-    public function testStatementGetColumnMeta()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not support meta data.');
-    }
+    // pdo_dblib reports neither the flags nor the table of a column
+    protected $_getColumnMetaKeys = [
+        'native_type', 'name', 'len', 'precision', 'pdo_type'
+    ];
 
     public function testStatementExecuteWithParams()
     {
@@ -95,5 +95,18 @@ class Zend_Db_Statement_Pdo_MssqlTest extends Zend_Db_Statement_Pdo_TestCommon
     public function getDriver()
     {
         return 'Pdo_Mssql';
+    }
+
+    /**
+     * The dblib driver supports more than one rowset; a SELECT has only one
+     */
+    public function testStatementNextRowset()
+    {
+        $select = $this->_db->select()
+            ->from('zfproducts');
+        $stmt = $this->_db->prepare($select->__toString());
+        $stmt->execute();
+        $this->assertFalse($stmt->nextRowset());
+        $stmt->closeCursor();
     }
 }

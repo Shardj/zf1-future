@@ -71,7 +71,7 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
         $this->assertMatchesRegularExpression('/varchar/i', $desc['product_name']['DATA_TYPE'], 'Expected data type to be VARCHAR');
         $this->assertEquals('', $desc['product_name']['DEFAULT'], 'Expected default to be empty string');
         $this->assertTrue($desc['product_name']['NULLABLE'], 'Expected product_name to be nullable');
-        if (!$this->_db->isI5()) {
+        if (!$this->_isI5($this->_db)) {
             $this->assertEquals(0, $desc['product_name']['SCALE'], 'Expected scale to be 0');
         } else {
             $this->assertNull($desc['product_name']['SCALE'], 'Expected scale to be 0');
@@ -118,7 +118,7 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
         // create a second connection to the same database
         $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
         $dbConnection2->getConnection();
-        if ($dbConnection2->isI5()) {
+        if ($this->_isI5($dbConnection2)) {
             $dbConnection2->query('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE');
         } else {
             $dbConnection2->query('SET ISOLATION LEVEL = UR');
@@ -174,7 +174,7 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
         // create a second connection to the same database
         $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
         $dbConnection2->getConnection();
-        if ($dbConnection2->isI5()) {
+        if ($this->_isI5($dbConnection2)) {
             $dbConnection2->query('SET TRANSACTION ISOLATION LEVEL SERIALIZABLE');
         } else {
             $dbConnection2->query('SET ISOLATION LEVEL = UR');
@@ -334,11 +334,11 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
         $tableCountNoSchema = count($connection->listTables());
 
         $dbConfig = $this->_db->getConfig();
-        if ($this->_db->isI5()) {
+        if ($this->_isI5($this->_db)) {
             if (isset($dbConfig['driver_options']['i5_lib'])) {
                 $schema = $dbConfig['driver_options']['i5_lib'];
             }
-        } elseif (!$this->_db->isI5()) {
+        } elseif (!$this->_isI5($this->_db)) {
             $schema = $this->_util->getSchema();
         } else {
             $this->markTestSkipped('No valid schema to test against.');
@@ -356,16 +356,19 @@ class Zend_Db_Adapter_Db2Test extends Zend_Db_Adapter_TestCommon
         $this->assertTrue(($tableCountNoSchema > $tableCountSchema), 'Table count with schema provided should be less than without.');
     }
 
-    /**
-     * @group ZF-8399
-     */
-    public function testLongQueryWithTextField()
-    {
-        $this->markTestSkipped($this->getDriver() . ' does not have TEXT field type');
-    }
-
     public function getDriver()
     {
         return 'Db2';
+    }
+
+    /**
+     * Only the native adapter knows the i5 platform, Pdo_Ibm runs these tests too
+     *
+     * @param  Zend_Db_Adapter_Abstract $db
+     * @return bool
+     */
+    protected function _isI5($db)
+    {
+        return method_exists($db, 'isI5') && $db->isI5();
     }
 }

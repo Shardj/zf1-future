@@ -757,9 +757,28 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
             'verified_by' => 'dduck'
         ];
         $insertResult = $table->insert($row);
-        $lastInsertId = $this->_db->lastInsertId('zfbugs', 'bug_id');
+        $lastInsertId = $this->_lastInsertBugId();
         $this->assertEquals($insertResult, $lastInsertId);
         $this->assertEquals(5, $lastInsertId);
+    }
+
+    /**
+     * Prepares the bugs table for inserts with the key given
+     *
+     * @return void
+     */
+    protected function _allowExplicitBugIds()
+    {
+    }
+
+    /**
+     * The key of the last row inserted into zfbugs, as the driver reports it
+     *
+     * @return string
+     */
+    protected function _lastInsertBugId()
+    {
+        return $this->_db->lastInsertId('zfbugs', 'bug_id');
     }
 
     public function testTableInsertWithSchema()
@@ -893,21 +912,21 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
      */
     public function testTableInsertWithHighMemoryUsage()
     {
-        $table = $this->_table['products'];
+        $table = $this->_table['bugs_products'];
 
-        // the keys are given, so the insert needs no sequence or auto-increment support
+        // the table has a key of two columns that are given, no sequence or identity
         $this->_db->beginTransaction();
         try {
             // warm up caches and statement handling
             for ($i = 1; $i <= 200; $i++) {
-                $table->insert(['product_id' => 1000 + $i, 'product_name' => "warmup$i"]);
+                $table->insert(['bug_id' => 1000 + $i, 'product_id' => 1]);
             }
             gc_collect_cycles();
             $mem1 = memory_get_usage();
 
             $n = 2000;
             for ($i = 1; $i <= $n; $i++) {
-                $table->insert(['product_id' => 2000 + $i, 'product_name' => "product$i"]);
+                $table->insert(['bug_id' => 2000 + $i, 'product_id' => 1]);
             }
             gc_collect_cycles();
             $mem2 = memory_get_usage();
@@ -951,14 +970,15 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         $this->assertTrue(is_numeric($insertResult), 'Empty array did not return assigned primary key');
 
         // zero '0'
+        $this->_allowExplicitBugIds();
         $row['bug_id'] = '0';
-        $table->delete('bug_id > 0'); // clear table
+        $table->delete($this->_db->quoteIdentifier('bug_id') . ' > 0'); // clear table
         $insertResult = $table->insert($row);
         $this->assertEquals('0', $insertResult, 'Zero string did not return assigned primary key');
 
         // zero 0
         $row['bug_id'] = 0;
-        $table->delete('bug_id = 0'); // clear table
+        $table->delete($this->_db->quoteIdentifier('bug_id') . ' = 0'); // clear table
         $insertResult = $table->insert($row);
         $this->assertEquals('0', $insertResult, 'Zero int did not return assigned primary key');
     }
@@ -1834,7 +1854,7 @@ abstract class Zend_Db_Table_TestCommon extends Zend_Db_Table_TestSetup
         }
 
         // Perform the delete
-        $tblRecursive->delete($tblRecursive->getAdapter()->quoteInto('item_id = ?', 1));
+        $tblRecursive->delete($tblRecursive->getAdapter()->quoteInto($this->_db->quoteIdentifier('item_id') . ' = ?', 1));
 
         // Assert that all children of #1 (2,3,4,5) are removed recursively
         $this->assertNull($tblRecursive->find(1)->current());

@@ -40,6 +40,9 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
     public function set_up(Zend_Db_Adapter_Abstract $db)
     {
         $this->_db = $db;
+        // the tests write dates as YYYY-MM-DD strings
+        $this->_rawQuery("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD'");
+        $this->_rawQuery("ALTER SESSION SET NLS_TIMESTAMP_FORMAT = 'YYYY-MM-DD HH24:MI:SS'");
         $this->createSequence('zfbugs_seq');
         $this->createSequence('zfproducts_seq');
         parent::set_up($db);
@@ -69,6 +72,9 @@ class Zend_Db_TestUtil_Pdo_Oci extends Zend_Db_TestUtil_Pdo_Common
         }
         if ($type == 'DATETIME') {
             return 'TIMESTAMP';
+        }
+        if (preg_match('/^TEXT\b(.*)/', $type, $matches)) {
+            return 'CLOB' . $matches[1];
         }
         return $type;
     }

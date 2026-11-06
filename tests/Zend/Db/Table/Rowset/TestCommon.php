@@ -315,7 +315,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
     public function testTableRowsetIteratesAndWillReturnLastRowAfter()
     {
         $table = $this->_table['bugs'];
-        $rowset = $table->fetchAll('bug_id IN (1,2,3,4)', 'bug_id ASC');
+        $rowset = $table->fetchAll($this->_db->quoteIdentifier('bug_id') . ' IN (1,2,3,4)', 'bug_id ASC');
         foreach ($rowset as $row) {
             $lastRow = $row;
         }
@@ -335,7 +335,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
     public function testTableRowsetThrowsExceptionOnInvalidSeek()
     {
         $table = $this->_table['bugs'];
-        $rowset = $table->fetchAll('bug_id IN (1,2,3,4)', 'bug_id ASC');
+        $rowset = $table->fetchAll($this->_db->quoteIdentifier('bug_id') . ' IN (1,2,3,4)', 'bug_id ASC');
         $rowset->seek(3);
 
         $this->expectException('Zend_Db_Table_Rowset_Exception');
@@ -349,7 +349,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
     public function testTableRowsetThrowsExceptionOnInvalidGetRow()
     {
         $table = $this->_table['bugs'];
-        $rowset = $table->fetchAll('bug_id IN (1,2,3,4)', 'bug_id ASC');
+        $rowset = $table->fetchAll($this->_db->quoteIdentifier('bug_id') . ' IN (1,2,3,4)', 'bug_id ASC');
         $rowset->getRow(3);
 
         $this->expectException('Zend_Db_Table_Rowset_Exception');
@@ -363,7 +363,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
     public function testTableRowsetContainsDisconnectedRowObjectsWhenDeserialized()
     {
         $table = $this->_table['bugs'];
-        $onlineRowset = $table->fetchAll('bug_id = 1', 'bug_id ASC');
+        $onlineRowset = $table->fetchAll($this->_db->quoteIdentifier('bug_id') . ' = 1', 'bug_id ASC');
 
         // Test that initial rowset and it's rows are connected
         $this->assertTrue($onlineRowset instanceof Zend_Db_Table_Rowset_Abstract);
@@ -390,7 +390,7 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
     public function testConnectedRowObjectsAreCreatedByRowsetAfterSetTableIsCalled()
     {
         $table = $this->_table['bugs'];
-        $ser = serialize($table->fetchAll('bug_id = 1', 'bug_id ASC'));
+        $ser = serialize($table->fetchAll($this->_db->quoteIdentifier('bug_id') . ' = 1', 'bug_id ASC'));
         $rowset = unserialize($ser);
 
         // Reconnect the rowset
@@ -433,8 +433,9 @@ abstract class Zend_Db_Table_Rowset_TestCommon extends Zend_Db_Table_TestSetup
         $tableClass = get_class($table);
 
         $select = $table->select(Zend_Db_Table::SELECT_WITH_FROM_PART)->setIntegrityCheck(false);
-        $select->join('zfaccounts', 'zfaccounts.account_name = zfbugs.reported_by', 'account_name');
-        $select->where('zfaccounts.account_name = ?', 'Bob');
+        $accountName = $this->_db->quoteIdentifier(['zfaccounts', 'account_name']);
+        $select->join('zfaccounts', $accountName . ' = ' . $this->_db->quoteIdentifier(['zfbugs', 'reported_by']), 'account_name');
+        $select->where($accountName . ' = ?', 'Bob');
 
         $result = $table->fetchAll($select);
         $this->assertTrue($result instanceof Zend_Db_Table_Rowset);

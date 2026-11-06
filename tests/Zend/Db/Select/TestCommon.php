@@ -1856,11 +1856,11 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     {
         $select = $this->_db->select();
         $select->from(['p' => 'products'])->order('MD5(1);select');
-        $this->assertEquals('SELECT `p`.* FROM `products` AS `p` ORDER BY `MD5(1);select` ASC', $select->assemble());
+        $this->assertEquals($this->_quoteSql('SELECT `p`.* FROM `products` AS `p` ORDER BY `MD5(1);select` ASC'), $select->assemble());
 
         $select = $this->_db->select();
         $select->from(['p' => 'products'])->order('name;select;MD5(1)');
-        $this->assertEquals('SELECT `p`.* FROM `products` AS `p` ORDER BY `name;select;MD5(1)` ASC', $select->assemble());
+        $this->assertEquals($this->_quoteSql('SELECT `p`.* FROM `products` AS `p` ORDER BY `name;select;MD5(1)` ASC'), $select->assemble());
     }
 
     /**
@@ -1872,7 +1872,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $select->from(['p' => 'product'])
             ->order('productId DESC');
 
-        $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` DESC';
+        $expected = $this->_quoteSql('SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` DESC');
         $this->assertEquals(
             $expected,
             $select->assemble(),
@@ -1889,7 +1889,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $select->from(['p' => 'product'])
             ->order(['productId DESC', 'userId ASC']);
 
-        $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` DESC, `userId` ASC';
+        $expected = $this->_quoteSql('SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` DESC, `userId` ASC');
         $this->assertEquals(
             $expected,
             $select->assemble(),
@@ -1906,7 +1906,7 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
         $select->from(['p' => 'product'])
             ->order(['productId', 'userId DESC']);
 
-        $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` ASC, `userId` DESC';
+        $expected = $this->_quoteSql('SELECT `p`.* FROM `product` AS `p` ORDER BY `productId` ASC, `userId` DESC');
         $this->assertEquals(
             $expected,
             $select->assemble(),
@@ -1922,13 +1922,31 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     {
         $select = $this->_db->select();
         $select->from(['p' => 'product'])
-            ->order('IF(`productId` > 5,1,0) ASC');
+            ->order($this->_quoteSql('IF(`productId` > 5,1,0) ASC'));
 
-        $expected = 'SELECT `p`.* FROM `product` AS `p` ORDER BY IF(`productId` > 5,1,0) ASC';
+        $expected = $this->_quoteSql('SELECT `p`.* FROM `product` AS `p` ORDER BY IF(`productId` > 5,1,0) ASC');
         $this->assertEquals(
             $expected,
             $select->assemble(),
             'Order direction of field failed'
         );
+    }
+
+    /**
+     * Writes the backticks and table aliases of the SQL as the adapter does
+     *
+     * @param  string $sql
+     * @return string
+     */
+    protected function _quoteSql($sql)
+    {
+        $q   = $this->_db->getQuoteIdentifierSymbol();
+        $sql = str_replace('`', $q, $sql);
+
+        // some adapters, such as Oracle, write a table alias without AS
+        $tableAs = $this->_db->quoteTableAs('t', 'a');
+        $as      = substr($tableAs, 3, -3);
+
+        return str_replace($q . ' AS ' . $q, $q . $as . $q, $sql);
     }
 }

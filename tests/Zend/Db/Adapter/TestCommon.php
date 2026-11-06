@@ -1733,6 +1733,16 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         }
     }
 
+    /**
+     * Creates a second connection to the test database, with its own session
+     *
+     * @return Zend_Db_Adapter_Abstract
+     */
+    protected function _getSecondConnection()
+    {
+        return Zend_Db::factory($this->getDriver(), $this->_util->getParams());
+    }
+
     public function testAdapterTransactionAutoCommit()
     {
         $bugs = $this->_db->quoteIdentifier('zfbugs');
@@ -1742,7 +1752,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $dbConnection1 = $this->_db;
 
         // create a second connection to the same database
-        $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
+        $dbConnection2 = $this->_getSecondConnection();
         $dbConnection2->getConnection();
 
         // notice the number of rows in connection 2
@@ -1771,7 +1781,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $dbConnection1 = $this->_db;
 
         // create a second connection to the same database
-        $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
+        $dbConnection2 = $this->_getSecondConnection();
         $dbConnection2->getConnection();
               
         // notice the number of rows in connection 2
@@ -1822,7 +1832,7 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $dbConnection1 = $this->_db;
 
         // create a second connection to the same database
-        $dbConnection2 = Zend_Db::factory($this->getDriver(), $this->_util->getParams());
+        $dbConnection2 = $this->_getSecondConnection();
         $dbConnection2->getConnection();
 
         // notice the number of rows in connection 2
@@ -2305,6 +2315,13 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
 
         $stmt = $this->_db->query($select);
         $fetched = $stmt->fetchAll(Zend_Db::FETCH_NUM);
+        foreach ($fetched as &$row) {
+            // some PDO drivers return the CLOB of databases without TEXT as a stream
+            if (is_resource($row[1])) {
+                $row[1] = stream_get_contents($row[1]);
+            }
+        }
+        unset($row);
         $a = [
             0 => [0 => 1, 1 => $longValue],
             1 => [0 => 2, 1 => $longValue]
