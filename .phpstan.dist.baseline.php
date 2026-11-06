@@ -3728,12 +3728,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $horizon of method Zend_Date_DateObject::calcSun() expects bool, float given.',
-	'identifier' => 'argument.type',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $minute of method Zend_Date_DateObject::mktime() expects int, float given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
