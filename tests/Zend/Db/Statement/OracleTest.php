@@ -62,11 +62,6 @@ class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
         $this->assertEquals([['product_id' => 4, 'product_name' => 'Solaris']], $result);
     }
 
-    public function testStatementFetchAllStyleBoth()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' driver does not support fetchAll(FETCH_BOTH)');
-    }
-
     public function testStatementGetColumnMeta()
     {
         $this->markTestIncomplete($this->getDriver() . ' has not implemented getColumnMeta() yet [ZF-1424]');
@@ -110,11 +105,6 @@ class Zend_Db_Statement_OracleTest extends Zend_Db_Statement_TestCommon
         $this->assertTrue(array_key_exists('product_name', $result[0]), 'fetchAll must return null for empty fields with Oracle');
         $result = $this->_db->fetchRow($select);
         $this->assertTrue(array_key_exists('product_name', $result), 'fetchRow must return null for empty fields with Oracle');
-    }
-
-    public function testStatementSetFetchModeBoth()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' does not implement FETCH_BOTH correctly.');
     }
 
     public function getDriver()
