@@ -378,7 +378,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             unset($row['zend_db_rownum']);
         }
 
-        return $row;
+        return $this->_foldCase($row);
     }
 
     /**
@@ -400,24 +400,18 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             $style = $this->_fetchMode;
         }
 
+        // oci_fetch_all() has no mode with both numeric and named keys
+        if ($style == Zend_Db::FETCH_BOTH) {
+            $result = [];
+            while (($row = $this->fetch(Zend_Db::FETCH_BOTH)) !== false) {
+                $result[] = $row;
+            }
+            return $result;
+        }
+
         $flags = OCI_FETCHSTATEMENT_BY_ROW;
 
         switch ($style) {
-            case Zend_Db::FETCH_BOTH:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception(
-                    [
-                        'code'    => 'HYC00',
-                        'message' => "OCI8 driver does not support fetchAll(FETCH_BOTH), use fetch() in a loop instead"
-                    ]
-                );
-                // notreached
-                $flags |= OCI_NUM;
-                $flags |= OCI_ASSOC;
-                break;
             case Zend_Db::FETCH_NUM:
                 $flags |= OCI_NUM;
                 break;
@@ -480,7 +474,43 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             }
         }
 
+        if ($style != Zend_Db::FETCH_COLUMN) {
+            $result = array_map([$this, '_foldCase'], $result);
+        }
+
         return $result;
+    }
+
+    /**
+     * Folds the column names of a row by the CASE_FOLDING option of the adapter,
+     * which oci8 does not do itself.
+     *
+     * @param mixed $row Array, object, or false
+     * @return mixed
+     */
+    protected function _foldCase($row)
+    {
+        if ($this->_adapter->foldCase('Zend') === 'Zend') {
+            return $row;
+        }
+
+        if (is_array($row)) {
+            $folded = [];
+            foreach ($row as $key => $value) {
+                $folded[is_string($key) ? $this->_adapter->foldCase($key) : $key] = $value;
+            }
+            return $folded;
+        }
+
+        if (is_object($row)) {
+            $folded = new stdClass();
+            foreach (get_object_vars($row) as $key => $value) {
+                $folded->{$this->_adapter->foldCase($key)} = $value;
+            }
+            return $folded;
+        }
+
+        return $row;
     }
 
 

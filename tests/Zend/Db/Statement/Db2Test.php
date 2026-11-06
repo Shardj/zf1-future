@@ -55,11 +55,6 @@ class Zend_Db_Statement_Db2Test extends Zend_Db_Statement_TestCommon
         $this->assertEquals(2, $n);
     }
 
-    public function testStatementBindParamByPosition()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding params');
-    }
-
     public function testStatementBindParamByName()
     {
         $products = $this->_db->quoteIdentifier('zfproducts');
@@ -83,11 +78,6 @@ class Zend_Db_Statement_Db2Test extends Zend_Db_Statement_TestCommon
             );
             $this->assertEquals("Invalid bind-variable name ':id'", $e->getMessage());
         }
-    }
-
-    public function testStatementBindValueByPosition()
-    {
-        $this->markTestIncomplete($this->getDriver() . ' is having trouble with binding params');
     }
 
     public function testStatementBindValueByName()

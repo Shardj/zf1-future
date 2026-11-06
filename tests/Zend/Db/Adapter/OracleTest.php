@@ -507,9 +507,24 @@ class Zend_Db_Adapter_OracleTest extends Zend_Db_Adapter_TestCommon
         return 'CASE_FOLDED_IDENTIFIER';
     }
 
-    public function testAdapterOptionCaseFoldingLower()
+    public function testAdapterOptionCaseFoldingLowerFetchesRowsAndObjects()
     {
-        $this->markTestIncomplete($this->getDriver() . ' does not fold the case of column names yet.');
+        $params = $this->_util->getParams();
+        $params['options'] = [
+            Zend_Db::CASE_FOLDING => Zend_Db::CASE_LOWER
+        ];
+        $db = Zend_Db::factory($this->getDriver(), $params);
+        $products = $db->quoteIdentifier('zfproducts');
+        $product_name = $db->quoteIdentifier('product_name');
+        $sql = "SELECT $product_name AS case_folded_identifier FROM $products";
+
+        $this->assertSame(['case_folded_identifier'], array_keys($db->fetchRow($sql)));
+
+        $object = $db->query($sql)->fetch(Zend_Db::FETCH_OBJ);
+        $this->assertSame(['case_folded_identifier'], array_keys(get_object_vars($object)));
+
+        $objects = $db->fetchAll($sql, [], Zend_Db::FETCH_OBJ);
+        $this->assertSame(['case_folded_identifier'], array_keys(get_object_vars($objects[0])));
     }
 
     /**

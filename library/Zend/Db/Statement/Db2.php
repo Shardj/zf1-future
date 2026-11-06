@@ -47,6 +47,13 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
     protected $_values;
 
     /**
+     * Parameter and data types of the bound parameters, by position.
+     *
+     * @var array
+     */
+    protected $_bindTypes = [];
+
+    /**
      * Prepare a statement handle.
      *
      * @param string $sql
@@ -96,16 +103,8 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
             $datatype = DB2_CHAR;
         }
 
-        if (!db2_bind_param($this->_stmt, $parameter, "variable", $type, $datatype)) {
-            /**
-             * @see Zend_Db_Statement_Db2_Exception
-             */
-            require_once 'Zend/Db/Statement/Db2/Exception.php';
-            throw new Zend_Db_Statement_Db2_Exception(
-                db2_stmt_errormsg(),
-                db2_stmt_error()
-            );
-        }
+        // the variable is bound to the statement on execute
+        $this->_bindTypes[$parameter] = [$type, $datatype];
 
         return true;
     }
@@ -238,6 +237,28 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
             return false;
         }
 
+        // db2_bind_param() binds a variable by its name, so the values of
+        // bindParam() and bindValue() get variables in the scope of db2_execute()
+        $bound = [];
+        if ($params === null) {
+            foreach ($this->_bindParam as $position => $value) {
+                $name = 'zendDbParam' . $position;
+                $$name = $value;
+                [$type, $datatype] = $this->_bindTypes[$position];
+                if (!db2_bind_param($this->_stmt, $position, $name, $type, $datatype)) {
+                    /**
+                     * @see Zend_Db_Statement_Db2_Exception
+                     */
+                    require_once 'Zend/Db/Statement/Db2/Exception.php';
+                    throw new Zend_Db_Statement_Db2_Exception(
+                        db2_stmt_errormsg(),
+                        db2_stmt_error()
+                    );
+                }
+                $bound[$position] = $name;
+            }
+        }
+
         $retval = true;
         if ($params !== null) {
             $retval = @db2_execute($this->_stmt, $params);
@@ -253,6 +274,13 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
             throw new Zend_Db_Statement_Db2_Exception(
                 db2_stmt_errormsg(),
                 db2_stmt_error());
+        }
+
+        // output parameters return their values to the bound variables
+        foreach ($bound as $position => $name) {
+            if (in_array($this->_bindTypes[$position][0], [DB2_PARAM_OUT, DB2_PARAM_INOUT], true)) {
+                $this->_bindParam[$position] = $$name;
+            }
         }
 
         $this->_keys = [];
