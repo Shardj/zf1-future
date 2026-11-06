@@ -53,6 +53,11 @@ jobs:
             extensions: oci8, pdo_oci
           - database: db2
             extensions: ibm_db2, pdo_ibm
+          # setup-php cannot build pdo_oci for PHP 8.6, the job builds it
+          - php: "8.6"
+            database: oracle
+            extensions: oci8
+            pdo_oci: build
 
     env:
       PHP_EXTENSIONS: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, ctype, pdo"
@@ -141,7 +146,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}, ${{ matrix.extensions }}
           ini-values: ${{ env.PHP_INI_VALUES }}
-          tools: ${{ matrix.database == 'sqlsrv' && 'phpize, php-config' || '' }}
+          tools: ${{ (matrix.database == 'sqlsrv' || matrix.pdo_oci == 'build') && 'phpize, php-config' || '' }}
         env:
           fail-fast: true
 
@@ -167,6 +172,21 @@ jobs:
           sudo make install
           echo "extension=pdo_dblib.so" | sudo tee "$(php -r 'echo PHP_CONFIG_FILE_SCAN_DIR;')/20-pdo_dblib.ini"
           php -m | grep -i dblib
+
+      # pdo_oci of PECL with the Instant Client that setup-php installed for oci8.
+      # Its sources use EMPTY_SWITCH_DEFAULT_CASE(), which PHP 8.6 does not have.
+      - name: Build pdo_oci
+        if: matrix.pdo_oci == 'build'
+        run: |
+          git clone --depth 1 https://github.com/php/pecl-database-pdo_oci.git /tmp/pdo_oci
+          cd /tmp/pdo_oci
+          sed -i 's/EMPTY_SWITCH_DEFAULT_CASE();/default: ZEND_UNREACHABLE();/' *.c
+          phpize
+          ./configure --with-pdo-oci=instantclient,/opt/oracle/instantclient
+          make -j"$(nproc)"
+          sudo make install
+          echo "extension=pdo_oci.so" | sudo tee "$(php -r 'echo PHP_CONFIG_FILE_SCAN_DIR;')/20-pdo_oci.ini"
+          php -m | grep -i pdo_oci
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-interaction
