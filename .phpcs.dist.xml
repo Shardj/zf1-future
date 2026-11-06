@@ -11,6 +11,8 @@
     <rule ref="PHPCompatibility">
         <!-- func_get_args() & co. behave the same on every PHP version >= 7.0, so there is no difference to detect in the supported range -->
         <exclude name="PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue"/>
+        <!-- trim() also strips a form feed by default since PHP 8.6; the library does not rely on keeping one -->
+        <exclude name="PHPCompatibility.ParameterValues.NewTrimCharactersDefault"/>
     </rule>
 
     <!--
