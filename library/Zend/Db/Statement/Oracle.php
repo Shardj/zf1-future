@@ -367,24 +367,18 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
             $style = $this->_fetchMode;
         }
 
+        // oci_fetch_all() has no mode with both numeric and named keys
+        if ($style == Zend_Db::FETCH_BOTH) {
+            $result = [];
+            while (($row = $this->fetch(Zend_Db::FETCH_BOTH)) !== false) {
+                $result[] = $row;
+            }
+            return $result;
+        }
+
         $flags = OCI_FETCHSTATEMENT_BY_ROW;
 
         switch ($style) {
-            case Zend_Db::FETCH_BOTH:
-                /**
-                 * @see Zend_Db_Adapter_Oracle_Exception
-                 */
-                require_once 'Zend/Db/Statement/Oracle/Exception.php';
-                throw new Zend_Db_Statement_Oracle_Exception(
-                    [
-                        'code'    => 'HYC00',
-                        'message' => "OCI8 driver does not support fetchAll(FETCH_BOTH), use fetch() in a loop instead"
-                    ]
-                );
-                // notreached
-                $flags |= OCI_NUM;
-                $flags |= OCI_ASSOC;
-                break;
             case Zend_Db::FETCH_NUM:
                 $flags |= OCI_NUM;
                 break;
