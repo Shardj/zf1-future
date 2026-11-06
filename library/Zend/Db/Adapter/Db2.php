@@ -329,7 +329,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
 
         if (!$this->_isI5) {
             if ($schema) {
-                $stmt = db2_tables($this->_connection, null, $schema);
+                $stmt = db2_tables($this->_connection, '', $schema);
             } else {
                 $stmt = db2_tables($this->_connection);
             }
@@ -774,7 +774,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
         //list of i5 libraries.
         $tables = [];
         if ($schema) {
-            $tablesStatement = db2_tables($this->_connection, null, $schema);
+            $tablesStatement = db2_tables($this->_connection, '', $schema);
             while ($rowTables = db2_fetch_assoc($tablesStatement) ) {
                 if ($rowTables['TABLE_NAME'] !== null) {
                     $tables[] = $rowTables['TABLE_NAME'];
@@ -785,7 +785,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
             while ($schema = db2_fetch_assoc($schemaStatement)) {
                 if ($schema['TABLE_SCHEM'] !== null) {
                     // list of the tables which belongs to the selected library
-                    $tablesStatement = db2_tables($this->_connection, NULL, $schema['TABLE_SCHEM']);
+                    $tablesStatement = db2_tables($this->_connection, '', $schema['TABLE_SCHEM']);
                     if (is_resource($tablesStatement)) {
                         while ($rowTables = db2_fetch_assoc($tablesStatement) ) {
                             if ($rowTables['TABLE_NAME'] !== null) {
