@@ -3896,12 +3896,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $qualifier of function db2_tables expects string, null given.',
-	'identifier' => 'argument.type',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of function db2_autocommit expects 0|1, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
