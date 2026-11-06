@@ -204,7 +204,8 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
     }
 
     /**
-     * The proxy forwards one of the two Content-Length headers of the response
+     * Depending on its version, the proxy forwards one or both Content-Length
+     * headers of the response
      *
      * @link http://framework.zend.com/issues/browse/ZF-9404
      */
@@ -216,7 +217,9 @@ class Zend_Http_Client_ProxyAdapterTest extends Zend_Http_Client_SocketTest
         $response = $this->client->request();
 
         $this->assertTrue($response->isSuccessful());
-        $this->assertEquals($expect, $response->getHeader('content-length'));
+        foreach ((array) $response->getHeader('content-length') as $length) {
+            $this->assertEquals($expect, $length);
+        }
         $this->assertEquals($expect, strlen($response->getBody()));
     }
 

@@ -3896,25 +3896,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $qualifier of function db2_tables expects string, null given.',
-	'identifier' => 'argument.type',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $username of callable \'db2_connect\'|\'db2_pconnect\' expects string, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of function db2_autocommit expects 0|1, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $password of callable \'db2_connect\'|\'db2_pconnect\' expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
@@ -4562,7 +4544,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between string and \'OCI-Lob\' will always evaluate to false.',
+	'rawMessage' => 'Instanceof between string and \'OCI-Lob\'|\'OCILob\' will always evaluate to false.',
 	'identifier' => 'instanceof.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
