@@ -197,9 +197,8 @@ class Zend_Ldap_BindTest extends TestCase
             $ldap->bind($this->_principalName);
             $this->fail('Expected exception not thrown');
         } catch (Zend_Ldap_Exception $zle) {
-            /* Note that if your server actually allows anonymous binds this test will fail.
-             */
-            $this->assertStringContainsString('No object found for', $zle->getMessage());
+            // the account is not found, or the server refuses the anonymous bind of the search
+            $this->assertStringContainsString('Failed to retrieve DN for account', $zle->getMessage());
         }
     }
 
