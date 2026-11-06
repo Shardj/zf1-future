@@ -1,6 +1,25 @@
 name: Database drivers
 
-on: [push, pull_request]
+# only changes that can affect Zend_Db run the database servers
+on:
+  push:
+    paths:
+      - "library/Zend/Db.php"
+      - "library/Zend/Db/**"
+      - "tests/Zend/Db/**"
+      - "tests/TestHelper.php"
+      - "tests/TestConfiguration.env.php"
+      - "composer.json"
+      - ".github/workflows/db-drivers.yml"
+  pull_request:
+    paths:
+      - "library/Zend/Db.php"
+      - "library/Zend/Db/**"
+      - "tests/Zend/Db/**"
+      - "tests/TestHelper.php"
+      - "tests/TestConfiguration.env.php"
+      - "composer.json"
+      - ".github/workflows/db-drivers.yml"
 
 # Zend_Db tests of the drivers whose database servers are too heavy for the
 # PHPUnit workflow: SQL Server, Oracle and Db2, each in its own job
