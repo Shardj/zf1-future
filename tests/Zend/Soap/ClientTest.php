@@ -32,9 +32,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 /** Zend_Soap_Server */
 require_once 'Zend/Soap/Server.php';
 
-/** Zend_Soap_Client */
-require_once 'Zend/Soap/Client.php';
-
 require_once 'Zend/Config.php';
 
 /**
@@ -63,6 +60,11 @@ class Zend_Soap_ClientTest extends TestCase
         if (!extension_loaded('soap')) {
             $this->markTestSkipped('SOAP Extension is not loaded');
         }
+        if (PHP_VERSION_ID >= 80500) {
+            $this->markTestSkipped('Zend_Soap_Client_Common::__doRequest() lacks the $uriParserClass parameter of SoapClient on PHP 8.5+');
+        }
+
+        require_once 'Zend/Soap/Client.php';
     }
 
     public function testSetOptions()

@@ -60,15 +60,11 @@ class Zend_Soap_Client_Common extends SoapClient
      * @param string $action
      * @param int    $version
      * @param int    $one_way
-     * @param string|null $uriParserClass URI parser class of PHP 8.5+, passed on to the callback when set
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-    function __doRequest($request, $location, $action, $version, $one_way = null, $uriParserClass = null)
+    function __doRequest($request, $location, $action, $version, $one_way = null)
     {
-        if ($uriParserClass !== null) {
-            return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version, $one_way, $uriParserClass);
-        }
         if ($one_way === null) {
             return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version);
         } else {
