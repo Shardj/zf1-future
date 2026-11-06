@@ -111,7 +111,7 @@ require_once 'Zend/View/AllTests.php';
 // if (PHP_OS != 'AIX') {
 //     require_once 'Zend/Wildfire/AllTests.php';
 // }
-// require_once 'Zend/XmlRpc/AllTests.php';
+require_once 'Zend/XmlRpc/AllTests.php';
 
 /**
  * @category   Zend
@@ -260,7 +260,7 @@ class Zend_AllTests
         // if (PHP_OS != 'AIX') {
         //     $suite->addTest(Zend_Wildfire_AllTests::suite());
         // }
-        // $suite->addTest(Zend_XmlRpc_AllTests::suite());
+        $suite->addTest(Zend_XmlRpc_AllTests::suite());
 
         return $suite;
     }
