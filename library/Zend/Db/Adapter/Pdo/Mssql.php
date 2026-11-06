@@ -339,6 +339,13 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
         if ($offset > 0) {
             $orderby = stristr($sql, 'ORDER BY');
 
+            if ($orderby === false) {
+                // without an order there is nothing to invert, the rows are numbered instead
+                return 'SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS "ZEND_DB_ROWNUM", *'
+                    . ' FROM (' . $sql . ') AS inner_tbl) AS outer_tbl'
+                    . ' WHERE "ZEND_DB_ROWNUM" > ' . $offset;
+            }
+
             if ($orderby !== false) {
                 $orderParts = explode(',', substr($orderby, 8));
                 $pregReplaceCount = null;

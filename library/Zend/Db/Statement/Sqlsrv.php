@@ -224,7 +224,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
 
         $this->_executed = true;
 
-        return (!$this->_stmt);
+        return true;
     }
 
     /**
@@ -256,6 +256,9 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
         if (null === $values) {
             return null;
         }
+
+        // the row number of limit() with an offset is no column of the query
+        unset($values['ZEND_DB_ROWNUM']);
 
         if (!$this->_keys) {
             foreach ($values as $key => $value) {
@@ -315,6 +318,12 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
 
             // If no error, there is simply no record
             return false;
+        }
+
+        // the row number of limit() with an offset is no column of the query
+        $fields = sqlsrv_field_metadata($this->_stmt);
+        if ($fields && $fields[0]['Name'] === 'ZEND_DB_ROWNUM') {
+            $col++;
         }
 
         $data = sqlsrv_get_field($this->_stmt, $col); //0-based
