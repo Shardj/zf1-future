@@ -6,22 +6,28 @@ on: [push, pull_request]
 # PHPUnit workflow: SQL Server, Oracle and Db2, each in its own job
 jobs:
   db-drivers:
-    name: Zend_Db on ${{ matrix.database }}, PHP ${{ matrix.php }}
+    name: Zend_Db on ${{ matrix.database }}, PHP ${{ matrix.php }}${{ matrix.experimental && ' (experimental)' || '' }}
 
     runs-on: ubuntu-26.04
+
+    # A failing experimental job (including PHP or extension setup) does not fail the workflow
+    continue-on-error: ${{ matrix.experimental == true }}
 
     strategy:
       fail-fast: false
       matrix:
-        # the oldest and the newest stable PHP
+        # the oldest and the newest stable PHP, and the next one
         php:
           - "7.4"
           - "8.5"
+          - "8.6"
         database:
           - sqlsrv
           - oracle
           - db2
         include:
+          - php: "8.6"
+            experimental: true
           - database: sqlsrv
             extensions: sqlsrv, pdo_sqlsrv
           - database: oracle
@@ -116,21 +122,31 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}, ${{ matrix.extensions }}
           ini-values: ${{ env.PHP_INI_VALUES }}
+          tools: ${{ matrix.database == 'sqlsrv' && 'phpize, php-config' || '' }}
         env:
           fail-fast: true
 
-      # sqlsrv needs the ODBC driver of Microsoft, pdo_dblib comes with the
-      # sybase package of the ondrej/php repository
+      # sqlsrv needs the ODBC driver of Microsoft, whose repository the runner
+      # has. pdo_dblib is built from the PHP sources of the installed version
+      # with FreeTDS, as no package repository has it for every PHP and Ubuntu.
       - name: Install the ODBC driver and pdo_dblib
         if: matrix.database == 'sqlsrv'
         run: |
-          curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc > /dev/null
-          curl -sSL https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list > /dev/null
           sudo apt-get update
-          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
-          sudo add-apt-repository -y ppa:ondrej/php
-          sudo apt-get update
-          sudo apt-get install -y php${{ matrix.php }}-sybase
+          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 freetds-dev
+          version=$(php -r 'echo PHP_VERSION;')
+          case "$version" in
+            *-dev*|*alpha*|*beta*|*RC*) ref=master ;;
+            *) ref="php-$version" ;;
+          esac
+          mkdir -p /tmp/php-src
+          curl -sSL "https://github.com/php/php-src/archive/$ref.tar.gz" | tar xz -C /tmp/php-src --strip-components=1
+          cd /tmp/php-src/ext/pdo_dblib
+          phpize
+          ./configure --with-pdo-dblib=/usr --with-libdir=lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)
+          make -j"$(nproc)"
+          sudo make install
+          echo "extension=pdo_dblib.so" | sudo tee "$(php -r 'echo PHP_CONFIG_FILE_SCAN_DIR;')/20-pdo_dblib.ini"
           php -m | grep -i dblib
 
       - name: Install dependencies
