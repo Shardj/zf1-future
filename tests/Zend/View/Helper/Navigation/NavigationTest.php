@@ -332,20 +332,13 @@ class Zend_View_Helper_Navigation_NavigationTest extends Zend_View_Helper_Naviga
         }
     }
 
-    private $_errorMessage;
-    public function toStringErrorHandler($code, $msg, $file, $line, array $c = [])
+    public function testMagicToStringThrowsTheExceptionOfTheRendering()
     {
-        $this->_errorMessage = $msg;
-    }
-
-    public function testMagicToStringShouldNotThrowException()
-    {
-        set_error_handler([$this, 'toStringErrorHandler']);
         $this->_helper->menu()->setPartial([1337]);
-        $this->_helper->__toString();
-        restore_error_handler();
 
-        $this->assertStringContainsString('array must contain two values', $this->_errorMessage);
+        $this->expectException(Zend_View_Exception::class);
+        $this->expectExceptionMessage('array must contain two values');
+        $this->_helper->__toString();
     }
 
     public function testPageIdShouldBeNormalized()
