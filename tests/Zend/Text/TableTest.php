@@ -463,6 +463,15 @@ class Zend_Text_TableTest extends TestCase
         $this->assertEquals((string) $table, "┌──────────┐\n│foobar    │\n└──────────┘\n");
     }
 
+    public function testTableMagicToStringThrowsTheExceptionOfTheRendering()
+    {
+        $table = new Zend_Text_Table(['columnWidths' => [10]]);
+
+        $this->expectException(Zend_Text_Table_Exception::class);
+        $this->expectExceptionMessage('No rows were added to the table yet');
+        $table->__toString();
+    }
+
     public function testDecoratorUnicode()
     {
         $decorator = new Zend_Text_Table_Decorator_Unicode();

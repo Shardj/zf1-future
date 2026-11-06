@@ -166,6 +166,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                     }
 
                     if (PHP_VERSION_ID < 80000) {
+                        // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.openssl_free_keyDeprecated -- called before PHP 8.0 only
                         openssl_free_key($test);
                     }
                     $this->_keys['public'][$key] = $cert;
@@ -178,6 +179,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
                     }
 
                     if (PHP_VERSION_ID < 80000) {
+                        // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.openssl_free_keyDeprecated -- called before PHP 8.0 only
                         openssl_free_key($test);
                     }
                     $this->_keys['private'][$key] = $cert;
@@ -449,6 +451,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
         $crypt = openssl_seal($value, $encrypted, $encryptedkeys, $keys, $this->_cipher, $iv);
         if (PHP_VERSION_ID < 80000) {
             foreach ($keys as $key) {
+                // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.openssl_free_keyDeprecated -- called before PHP 8.0 only
                 openssl_free_key($key);
             }
         }
@@ -544,6 +547,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
 
         $crypt = openssl_open($value, $decrypted, $envelope, $keys, $this->_cipher, $iv);
         if (PHP_VERSION_ID < 80000) {
+            // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.openssl_free_keyDeprecated -- called before PHP 8.0 only
             openssl_free_key($keys);
         }
 
