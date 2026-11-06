@@ -97,7 +97,7 @@ require_once 'Zend/Session/OptionsTest.php';
 require_once 'Zend/Tag/AllTests.php';
 require_once 'Zend/Test/AllTests.php';
 require_once 'Zend/Text/AllTests.php';
-// require_once 'Zend/TimeSyncTest.php';
+require_once 'Zend/TimeSyncTest.php';
 require_once 'Zend/TranslateTest.php';
 require_once 'Zend/Translate/Adapter/AllTests.php';
 require_once 'Zend/Tool/AllTests.php';
@@ -247,7 +247,7 @@ class Zend_AllTests
         $suite->addTest(Zend_Test_AllTests::suite());
         $suite->addTest(Zend_Text_AllTests::suite());
         $suite->addTest(Zend_Tool_AllTests::suite());
-        // $suite->addTestSuite('Zend_TimeSyncTest');
+        $suite->addTestSuite('Zend_TimeSyncTest');
         $suite->addTestSuite('Zend_TranslateTest');
         $suite->addTest(Zend_Translate_Adapter_AllTests::suite());
         $suite->addTestSuite('Zend_UriTest');

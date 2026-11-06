@@ -205,14 +205,15 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _read()
     {
-        $flags = ord(fread($this->_socket, 1));
+        $flags = fread($this->_socket, 1);
         $info  = stream_get_meta_data($this->_socket);
 
-        if ($info['timed_out'] === true) {
+        if ($info['timed_out'] === true || $flags === false || $flags === '') {
             fclose($this->_socket);
             throw new Zend_TimeSync_Exception('could not connect to ' .
                 "'$this->_timeserver' on port '$this->_port', reason: 'server timed out'");
         }
+        $flags = ord($flags);
 
         $result = [
             'flags'          => $flags,
