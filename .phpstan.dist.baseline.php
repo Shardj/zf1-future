@@ -20704,42 +20704,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $rowKey of class Zend_Service_WindowsAzure_Storage_DynamicTableEntity constructor expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $read of function session_set_save_handler expects callable(string): string, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'read\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $rowKey of method Zend_Service_WindowsAzure_Storage_Table::retrieveEntityById() expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #4 $write of function session_set_save_handler expects callable(string, string): bool, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'write\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #5 $destroy of function session_set_save_handler expects callable(string): bool, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'destroy\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #6 $gc of function session_set_save_handler expects callable(string): bool, array{$this(Zend_Service_WindowsAzure_SessionHandler), \'gc\'} given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parentElement',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -24930,12 +24894,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/HelperAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/HelperAbstract.php',
 ];
