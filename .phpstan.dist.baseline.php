@@ -4750,7 +4750,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Statement_Sqlsrv::errorCode() should return string but returns false.',
 	'identifier' => 'return.type',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
 ];
 $ignoreErrors[] = [
@@ -4768,12 +4768,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Statement_Sqlsrv::rowCount() should return int but returns false.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always false.',
-	'identifier' => 'booleanNot.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
 ];

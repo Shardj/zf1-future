@@ -339,40 +339,36 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
         if ($offset > 0) {
             $orderby = stristr($sql, 'ORDER BY');
 
-            if ($orderby !== false) {
-                $orderParts = explode(',', substr($orderby, 8));
-                $pregReplaceCount = null;
-                $orderbyInverseParts = [];
-                foreach ($orderParts as $orderPart) {
-                    $orderPart = rtrim($orderPart);
-                    $inv = preg_replace('/\s+desc$/i', ' ASC', $orderPart, 1, $pregReplaceCount);
-                    if ($pregReplaceCount) {
-                        $orderbyInverseParts[] = $inv;
-                        continue;
-                    }
-                    $inv = preg_replace('/\s+asc$/i', ' DESC', $orderPart, 1, $pregReplaceCount);
-                    if ($pregReplaceCount) {
-                        $orderbyInverseParts[] = $inv;
-                        continue;
-                    } else {
-                        $orderbyInverseParts[] = $orderPart . ' DESC';
-                    }
+            if ($orderby === false) {
+                // without an order there is nothing to invert, the rows are numbered instead
+                return 'SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS "ZEND_DB_ROWNUM", *'
+                    . ' FROM (' . $sql . ') AS inner_tbl) AS outer_tbl'
+                    . ' WHERE "ZEND_DB_ROWNUM" > ' . $offset;
+            }
+
+            $orderParts = explode(',', substr($orderby, 8));
+            $pregReplaceCount = null;
+            $orderbyInverseParts = [];
+            foreach ($orderParts as $orderPart) {
+                $orderPart = rtrim($orderPart);
+                $inv = preg_replace('/\s+desc$/i', ' ASC', $orderPart, 1, $pregReplaceCount);
+                if ($pregReplaceCount) {
+                    $orderbyInverseParts[] = $inv;
+                    continue;
                 }
-
-                $orderbyInverse = 'ORDER BY ' . implode(', ', $orderbyInverseParts);
+                $inv = preg_replace('/\s+asc$/i', ' DESC', $orderPart, 1, $pregReplaceCount);
+                if ($pregReplaceCount) {
+                    $orderbyInverseParts[] = $inv;
+                    continue;
+                } else {
+                    $orderbyInverseParts[] = $orderPart . ' DESC';
+                }
             }
 
+            $orderbyInverse = 'ORDER BY ' . implode(', ', $orderbyInverseParts);
 
-
-
-            $sql = 'SELECT * FROM (SELECT TOP ' . $count . ' * FROM (' . $sql . ') AS inner_tbl';
-            if ($orderby !== false) {
-                $sql .= ' ' . $orderbyInverse . ' ';
-            }
-            $sql .= ') AS outer_tbl';
-            if ($orderby !== false) {
-                $sql .= ' ' . $orderby;
-            }
+            $sql = 'SELECT * FROM (SELECT TOP ' . $count . ' * FROM (' . $sql . ') AS inner_tbl'
+                . ' ' . $orderbyInverse . ' ) AS outer_tbl ' . $orderby;
         }
 
         return $sql;
