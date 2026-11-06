@@ -6,13 +6,17 @@ on: [push, pull_request]
 # PHPUnit workflow: SQL Server, Oracle and Db2, each in its own job
 jobs:
   db-drivers:
-    name: Zend_Db on ${{ matrix.database }}
+    name: Zend_Db on ${{ matrix.database }}, PHP ${{ matrix.php }}
 
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     strategy:
       fail-fast: false
       matrix:
+        # the oldest and the newest stable PHP
+        php:
+          - "7.4"
+          - "8.5"
         database:
           - sqlsrv
           - oracle
@@ -26,7 +30,6 @@ jobs:
             extensions: ibm_db2, pdo_ibm
 
     env:
-      PHP_VERSION: "8.4"
       PHP_EXTENSIONS: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, ctype, pdo"
       PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, display_errors=On
 
@@ -110,7 +113,7 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ env.PHP_VERSION }}
+          php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}, ${{ matrix.extensions }}
           ini-values: ${{ env.PHP_INI_VALUES }}
         env:
@@ -122,12 +125,12 @@ jobs:
         if: matrix.database == 'sqlsrv'
         run: |
           curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc > /dev/null
-          curl -sSL https://packages.microsoft.com/config/ubuntu/24.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list > /dev/null
+          curl -sSL https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list > /dev/null
           sudo apt-get update
           sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
           sudo add-apt-repository -y ppa:ondrej/php
           sudo apt-get update
-          sudo apt-get install -y php${PHP_VERSION}-sybase
+          sudo apt-get install -y php${{ matrix.php }}-sybase
           php -m | grep -i dblib
 
       - name: Install dependencies
