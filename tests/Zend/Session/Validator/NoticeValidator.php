@@ -41,7 +41,7 @@ class Zend_Session_Validator_NoticeValidator extends Zend_Session_Validator_Abst
      * @access public
      * @return void
      */
-    public function set_up()
+    public function setup()
     {
         $this->getValidData();
     }

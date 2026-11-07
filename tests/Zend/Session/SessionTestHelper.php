@@ -68,7 +68,8 @@ class Zend_Session_TestHelper
      */
     public function doExpireAll(array $args)
     {
-        Zend_Session::setOptions(['remember_me_seconds' => 15, 'gc_probability' => 2]);
+        // no garbage collection: it lists the save path, which the user may not be allowed to read
+        Zend_Session::setOptions(['remember_me_seconds' => 15, 'gc_probability' => 0]);
         session_id($args[0]);
         if (isset($args[1]) && !empty($args[1])) {
             $s = new Zend_Session_Namespace($args[1]);
