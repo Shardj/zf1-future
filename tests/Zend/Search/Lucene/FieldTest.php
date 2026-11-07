@@ -115,12 +115,12 @@ class Zend_Search_Lucene_FieldTest extends TestCase
 
     public function testEncoding()
     {
-        $field = Zend_Search_Lucene_Field::Text('field', 'Words with umlauts: ���...', 'ISO-8859-1');
+        $field = Zend_Search_Lucene_Field::Text('field', "Words with umlauts: \xE5\xE3\xFC...", 'ISO-8859-1');
 
         $this->assertEquals($field->encoding, 'ISO-8859-1');
 
         $this->assertEquals($field->name, 'field');
-        $this->assertEquals($field->value, 'Words with umlauts: ���...');
+        $this->assertEquals($field->value, "Words with umlauts: \xE5\xE3\xFC...");
         $this->assertEquals($field->getUtf8Value(), 'Words with umlauts: åãü...');
     }
 }

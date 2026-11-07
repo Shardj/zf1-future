@@ -79,17 +79,14 @@ class Zend_Search_Lucene_Storage_DirectoryTest extends TestCase
         $directory->renameFile('file2', 'file3');
         $this->assertEquals(count(array_diff($directory->fileList(), ['file3'])), 0);
 
-        $modifiedAt1 = $directory->fileModified('file3');
+        // the file is dated back, so touching it sets a later modification time on any file system clock
+        $past = time() - 3600;
+        touch($tempPath . '/file3', $past);
         clearstatcache();
+        $this->assertEquals($past, $directory->fileModified('file3'));
         $directory->touchFile('file3');
-        $modifiedAt2 = $directory->fileModified('file3');
-        sleep(1);
         clearstatcache();
-        $directory->touchFile('file3');
-        $modifiedAt3 = $directory->fileModified('file3');
-
-        $this->assertTrue($modifiedAt2 >= $modifiedAt1);
-        $this->assertTrue($modifiedAt3 > $modifiedAt2);
+        $this->assertGreaterThan($past, $directory->fileModified('file3'));
 
         $fileObject = $directory->getFileObject('file3');
         $this->assertEquals($fileObject->readBytes($directory->fileLength('file3')), '0123456789');

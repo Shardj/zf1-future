@@ -621,11 +621,8 @@ class Zend_Soap_AutoDiscoverTest extends TestCase
     public function testSetNonStringNonZendUriUriThrowsException()
     {
         $server = new Zend_Soap_AutoDiscover();
-        try {
-            $server->setUri(["bogus"]);
-            $this->fail();
-        } catch (Zend_Soap_AutoDiscover_Exception $e) {
-        }
+        $this->expectException(Zend_Soap_AutoDiscover_Exception::class);
+        $server->setUri(["bogus"]);
     }
 
     /**
@@ -684,18 +681,21 @@ class Zend_Soap_AutoDiscoverTest extends TestCase
             $server->setPersistence("bogus");
             $this->fail();
         } catch (Zend_Soap_AutoDiscover_Exception $e) {
+            $this->addToAssertionCount(1);
         }
 
         try {
             $server->fault();
             $this->fail();
         } catch (Zend_Soap_AutoDiscover_Exception $e) {
+            $this->addToAssertionCount(1);
         }
 
         try {
             $server->loadFunctions("bogus");
             $this->fail();
         } catch (Zend_Soap_AutoDiscover_Exception $e) {
+            $this->addToAssertionCount(1);
         }
     }
 

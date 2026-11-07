@@ -53,19 +53,14 @@ class Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest extends TestCase
 
     public function testNestingObjectsDeepMakesNoSenseThrowingException()
     {
-        try {
-            $this->wsdl->addComplexType('Zend_Soap_Wsdl_ComplexTest[][]');
-            $this->fail();
-        } catch (Zend_Soap_Wsdl_Exception $e) {
-        }
+        $this->expectException(Zend_Soap_Wsdl_Exception::class);
+        $this->wsdl->addComplexType('Zend_Soap_Wsdl_ComplexTest[][]');
     }
 
     public function testAddComplexTypeOfNonExistingClassThrowsException()
     {
-        try {
-            $this->wsdl->addComplexType('Zend_Soap_Wsdl_UnknownClass[]');
-        } catch (Zend_Soap_Wsdl_Exception $e) {
-        }
+        $this->expectException(Zend_Soap_Wsdl_Exception::class);
+        $this->wsdl->addComplexType('Zend_Soap_Wsdl_UnknownClass[]');
     }
 
     /**
@@ -195,12 +190,10 @@ class Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest extends TestCase
      */
     public function testArrayOfComplexNestedObjectsIsCoveredByStrategyAndNotThrowingException()
     {
-        try {
-            $return = $this->wsdl->addComplexType("Zend_Soap_Wsdl_ComplexTypeA");
-            $wsdl = $this->wsdl->toXml();
-        } catch (Exception $e) {
-            $this->fail("Adding object with nested structure should not throw exception.");
-        }
+        $return = $this->wsdl->addComplexType("Zend_Soap_Wsdl_ComplexTypeA");
+
+        $this->assertSame('tns:Zend_Soap_Wsdl_ComplexTypeA', $return);
+        $this->assertNotEmpty($this->wsdl->toXml());
     }
 
     /**
@@ -235,5 +228,7 @@ class Zend_Soap_Wsdl_ArrayOfTypeComplexStrategyTest extends TestCase
     public function testNestingOfSameTypesDoesNotLeadToInfiniteRecursionButWillThrowException()
     {
         $return = $this->wsdl->addComplexType("Zend_Soap_AutoDiscover_Recursion");
+
+        $this->assertSame('tns:Zend_Soap_AutoDiscover_Recursion', $return);
     }
 }

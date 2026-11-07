@@ -622,7 +622,7 @@ if (extension_loaded('soap')) {
         }
 
         #[ReturnTypeWillChange]
-    public function __doRequest($request, $location, $action, $version, $one_way = 0)
+    public function __doRequest($request, $location, $action, $version, $one_way = 0, $uriParserClass = null)
     {
         ob_start();
         $this->server->handle($request);

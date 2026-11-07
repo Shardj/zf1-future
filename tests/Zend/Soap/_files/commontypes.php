@@ -129,7 +129,7 @@ class Zend_Soap_AutoDiscover_TestFixingMultiplePrototypes
      * @param integer $a
      * @param integer $b
      * @param integer $d
-     * @return void
+     * @return integer
      */
     public function testFunc($a = 100, $b = 200, $d = 300)
     {
@@ -345,14 +345,14 @@ class Zend_Soap_AutoDiscover_MyService
 {
     /**
      *    @param string $foo
-     *    @return void
+     *    @return Zend_Soap_AutoDiscover_MyResponse[]
      */
     public function foo($foo)
     {
     }
     /**
      *    @param string $bar
-     *    @return void
+     *    @return Zend_Soap_AutoDiscover_MyResponse[]
      */
     public function bar($bar)
     {
@@ -360,7 +360,7 @@ class Zend_Soap_AutoDiscover_MyService
 
     /**
      *    @param string $baz
-     *    @return void
+     *    @return Zend_Soap_AutoDiscover_MyResponse[]
      */
     public function baz($baz)
     {
@@ -378,14 +378,14 @@ class Zend_Soap_AutoDiscover_MyServiceSequence
 {
     /**
      *    @param string $foo
-     *    @return void
+     *    @return string[]
      */
     public function foo($foo)
     {
     }
     /**
      *    @param string $bar
-     *    @return void
+     *    @return string[]
      */
     public function bar($bar)
     {
@@ -393,7 +393,7 @@ class Zend_Soap_AutoDiscover_MyServiceSequence
 
     /**
      *    @param string $baz
-     *    @return void
+     *    @return string[]
      */
     public function baz($baz)
     {
@@ -401,7 +401,7 @@ class Zend_Soap_AutoDiscover_MyServiceSequence
 
     /**
      *    @param string $baz
-     *    @return void
+     *    @return string[][][]
      */
     public function bazNested($baz)
     {
@@ -438,7 +438,7 @@ class Zend_Soap_AutoDiscover_Recursion
     public $recursion;
 
     /**
-     * @return void
+     * @return Zend_Soap_AutoDiscover_Recursion
      */
     public function create()
     {

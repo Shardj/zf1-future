@@ -155,7 +155,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setEncoding(['UTF-8']);
             $this->fail('Non-string encoding values should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -170,7 +170,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setSoapVersion('bogus');
             $this->fail('Invalid soap versions should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -182,7 +182,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->validateUrn('bogosity');
             $this->fail('URNs without schemes should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
 
         $this->assertTrue($server->validateUrn('http://framework.zend.com/'));
@@ -200,7 +200,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setActor('bogus');
             $this->fail('Invalid actor should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -224,7 +224,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setUri('bogus');
             $this->fail('Invalid URI should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -251,13 +251,13 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setClassmap('bogus');
             $this->fail('Classmap which is not an array should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
         try {
             $server->setClassmap(['soapTypeName', 'bogusClassName']);
             $this->fail('Invalid class within classmap should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -284,7 +284,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setWsdl(dirname(__FILE__) . '/_files/bogus.wsdl');
             $this->fail('Invalid WSDL URI or PATH should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -323,7 +323,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->addFunction(126);
             $this->fail('Invalid value should fail');
         } catch (Zend_Soap_Server_Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -335,7 +335,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->addFunction('bogus_function');
             $this->fail('Invalid function should fail.');
         } catch (Zend_Soap_Server_Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -350,7 +350,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->addFunction($functions);
             $this->fail('Invalid function within a set of functions should fail');
         } catch (Zend_Soap_Server_Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -369,11 +369,7 @@ class Zend_Soap_ServerTest extends TestCase
         $server = new Zend_Soap_Server();
 
         // Correct class name should pass
-        try {
-            $server->setClass('Zend_Soap_Server_TestClass');
-        } catch (Exception $e) {
-            $this->fail("Setting a correct class name should not fail setClass()");
-        }
+        $this->assertSame($server, $server->setClass('Zend_Soap_Server_TestClass'));
     }
 
     public function testSetClassTwiceThrowsException()
@@ -395,11 +391,7 @@ class Zend_Soap_ServerTest extends TestCase
         $server = new Zend_Soap_Server();
 
         // Correct class name should pass
-        try {
-            $server->setClass('Zend_Soap_Server_TestClass', 1, 2, 3, 4);
-        } catch (Exception $e) {
-            $this->fail("Setting a correct class name should not fail setClass()");
-        }
+        $this->assertSame($server, $server->setClass('Zend_Soap_Server_TestClass', 1, 2, 3, 4));
     }
 
     public function testSetBogusClassWithIntegerName()
@@ -410,7 +402,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setClass(465);
             $this->fail('Non-string value should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -422,7 +414,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setClass('Zend_Soap_Server_Test_BogusClass');
             $this->fail('Invalid class should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -437,7 +429,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setObject(465);
             $this->fail('Non-object value should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
 
         try {
@@ -445,7 +437,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setObject($int);
             $this->fail('Invalid argument should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
 
         // Correct class name should pass
@@ -455,7 +447,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setObject(new Zend_Soap_Server_TestClass());
             $this->fail('setClass() should pass only once');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -519,7 +511,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setSoapVersion('bogus');
             $this->fail('Invalid soap versions should fail');
         } catch (Exception $e) {
-            // success
+            $this->addToAssertionCount(1);
         }
 
         $server->setPersistence(SOAP_PERSISTENCE_REQUEST);
@@ -534,6 +526,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->setPersistence('bogus');
             $this->fail();
         } catch (Zend_Soap_Server_Exception $e) {
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -887,6 +880,7 @@ class Zend_Soap_ServerTest extends TestCase
             $server->loadFunctions("bogus");
             $this->fail();
         } catch (Zend_Soap_Server_Exception $e) {
+            $this->addToAssertionCount(1);
         }
     }
 
@@ -1044,7 +1038,7 @@ if (extension_loaded('soap')) {
         }
 
         #[ReturnTypeWillChange]
-    public function __doRequest($request, $location, $action, $version, $one_way = 0)
+    public function __doRequest($request, $location, $action, $version, $one_way = 0, $uriParserClass = null)
     {
         ob_start();
         $this->server->handle($request);
@@ -1130,7 +1124,8 @@ class Zend_Soap_Server_TestClass
      */
     public function testFunc5()
     {
-        trigger_error("Test Message", E_USER_ERROR);
+        // PHP 8.4+ deprecates E_USER_ERROR; the server still turns it into a fault
+        @trigger_error("Test Message", E_USER_ERROR);
     }
 }
 
