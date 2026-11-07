@@ -59,9 +59,11 @@ require_once 'Zend/Config.php';
 abstract class Zend_Queue_Adapter_AdapterTest extends TestCase
 {
     /**
-     * @var bool
+     * Message of a PHP error raised while creating the queue, false without an error
+     *
+     * @var string|false
      */
-    protected $error;
+    protected $error = false;
 
     protected function tear_down()
     {
@@ -151,27 +153,23 @@ abstract class Zend_Queue_Adapter_AdapterTest extends TestCase
             $queue = new Zend_Queue($this->getAdapterName(), $config);
         } catch (Zend_Queue_Exception $e) {
             $this->markTestSkipped($e->getMessage());
-            restore_error_handler();
             return false;
+        } finally {
+            restore_error_handler();
         }
 
         // a PHP level error occurred, mark test as failed with error as reason
         // (misconfigured test? undefined constant?)
-        if ($this->error) {
-            $err = error_get_last();
-            $this->markTestFailed($err['message']);
-            restore_error_handler();
-            return false;
+        if ($this->error !== false) {
+            $this->fail($this->error);
         }
-
-        restore_error_handler();
 
         return $queue;
     }
 
     public function handleErrors($errno, $errstr)
     {
-        $this->error = true;
+        $this->error = $errstr;
     }
 
     public function testGetOptions()

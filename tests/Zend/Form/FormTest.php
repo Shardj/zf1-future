@@ -4014,7 +4014,13 @@ class Zend_Form_FormTest extends TestCase
         $form->reset();
         $test = $form->getValues();
         $this->assertNotEquals($values, $test);
-        $this->assertEquals(0, array_sum($test));
+        $filled = [];
+        array_walk_recursive($test, function ($value) use (&$filled) {
+            if ($value !== null && $value !== '') {
+                $filled[] = $value;
+            }
+        });
+        $this->assertSame([], $filled);
     }
 
     /**
