@@ -179,8 +179,8 @@ EOT;
         } catch (Exception $e) {
             $this->fail('Should be able to pass in methods and params to request');
         }
-        $this->assertEquals('foo', $request->method);
-        $this->assertEquals(['bar', 'baz'], $request->params);
+        $this->assertEquals('foo', $request->getReceivedMethod());
+        $this->assertEquals(['bar', 'baz'], $request->getReceivedParams());
     }
 
     public function testHttpRequestReadsFromPhpInput()
@@ -216,6 +216,16 @@ class Zend_XmlRpc_Request_HttpTest_Extension extends Zend_XmlRpc_Request_Http
     {
         $this->method = $method;
         $this->params = (array) $params;
+    }
+
+    public function getReceivedMethod()
+    {
+        return $this->method;
+    }
+
+    public function getReceivedParams()
+    {
+        return $this->params;
     }
 }
 

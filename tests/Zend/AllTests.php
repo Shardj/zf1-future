@@ -107,7 +107,7 @@ require_once 'Zend/VersionTest.php';
 require_once 'Zend/ViewTest.php';
 require_once 'Zend/View/AllTests.php';
 require_once 'Zend/Wildfire/AllTests.php';
-// require_once 'Zend/XmlRpc/AllTests.php';
+require_once 'Zend/XmlRpc/AllTests.php';
 
 /**
  * @category   Zend
@@ -252,7 +252,7 @@ class Zend_AllTests
         $suite->addTest(Zend_View_AllTests::suite());
         $suite->addTestSuite('Zend_VersionTest');
         $suite->addTest(Zend_Wildfire_AllTests::suite());
-        // $suite->addTest(Zend_XmlRpc_AllTests::suite());
+        $suite->addTest(Zend_XmlRpc_AllTests::suite());
 
         return $suite;
     }
