@@ -432,13 +432,16 @@ class Zend_Feed_Reader
             // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.libxml_disable_entity_loaderDeprecated -- called with libxml before 2.9 only
             $oldValue = libxml_disable_entity_loader(true);
         }
-        $dom = new DOMDocument;
-        $status = $dom->loadHTML($responseHtml);
-        if (LIBXML_VERSION < 20900) {
-            // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.libxml_disable_entity_loaderDeprecated -- called with libxml before 2.9 only
-            libxml_disable_entity_loader($oldValue);
+        try {
+            $dom = new DOMDocument;
+            $status = $dom->loadHTML($responseHtml);
+        } finally {
+            if (LIBXML_VERSION < 20900) {
+                // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.libxml_disable_entity_loaderDeprecated -- called with libxml before 2.9 only
+                libxml_disable_entity_loader($oldValue);
+            }
+            libxml_use_internal_errors($libxml_errflag);
         }
-        libxml_use_internal_errors($libxml_errflag);
         if (!$status) {
             // Build error message
             $error = libxml_get_last_error();

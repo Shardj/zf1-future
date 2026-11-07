@@ -111,12 +111,15 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
 
         if ($this->parameters === null) {
             set_error_handler([$this, '_handleMailErrors']);
-            $result = mail(
-                $recipients,
-                $subject,
-                $body,
-                $header);
-            restore_error_handler();
+            try {
+                $result = mail(
+                    $recipients,
+                    $subject,
+                    $body,
+                    $header);
+            } finally {
+                restore_error_handler();
+            }
         } else {
             if(!is_string($this->parameters)) {
                 /**
@@ -159,13 +162,16 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
             processMail:
             
                 set_error_handler([$this, '_handleMailErrors']);
-                $result = mail(
-                    $recipients,
-                    $subject,
-                    $body,
-                    $header,
-                    $fromEmailHeader);
-                restore_error_handler();
+                try {
+                    $result = mail(
+                        $recipients,
+                        $subject,
+                        $body,
+                        $header,
+                        $fromEmailHeader);
+                } finally {
+                    restore_error_handler();
+                }
 
         }
 

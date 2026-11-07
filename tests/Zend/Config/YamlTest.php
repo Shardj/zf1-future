@@ -27,6 +27,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_Config_Ini
  */
 require_once 'Zend/Config/Yaml.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -510,5 +511,19 @@ class Zend_Config_YamlTest extends TestCase
         $this->assertEquals('101112', $config->{'te-n'}->{'ele-ven'}->{0}->{'twel-ve'});
         $this->assertEquals('101112', $config->{'te-n'}->{'ele-ven'}->{0}->twelve);
         $this->assertEquals('thir-teen', $config->{'te-n'}->{'ele-ven'}->{1});
+    }
+
+    public function testErrorHandlerIsRestoredWhenTheFileNameIsInvalid()
+    {
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        try {
+            new Zend_Config_Yaml("zf\0.yaml");
+            $this->fail('An expected exception has not been raised');
+        } catch (Zend_Config_Exception $e) {
+            // PHP 7.4 warns about the null byte
+        } catch (Error $e) {
+            // PHP 8 throws for the null byte
+        }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
     }
 }

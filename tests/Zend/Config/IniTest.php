@@ -27,6 +27,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_Config_Ini
  */
 require_once 'Zend/Config/Ini.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -316,5 +317,19 @@ class Zend_Config_IniTest extends TestCase
         $filename = dirname(__FILE__) . '/_files/zf6508.ini';
         $config = new Zend_Config_Ini($filename, 'all');
         $this->assertEquals(true, isset($config->{1002}));
+    }
+
+    public function testErrorHandlerIsRestoredWhenTheFileNameIsInvalid()
+    {
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        try {
+            new Zend_Config_Ini("zf\0.ini");
+            $this->fail('An expected exception has not been raised');
+        } catch (Zend_Config_Exception $e) {
+            // PHP 7.4 warns about the null byte
+        } catch (Error $e) {
+            // PHP 8 throws for the null byte
+        }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
     }
 }

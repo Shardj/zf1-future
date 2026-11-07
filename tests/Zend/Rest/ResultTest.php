@@ -27,6 +27,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_Rest_Server
  */
 require_once 'Zend/Rest/Client/Result.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * Test cases for Zend_Rest_Server
@@ -46,6 +47,19 @@ class Zend_Rest_ResultTest extends TestCase
     public static function set_up_before_class()
     {
         self::$path = dirname(__FILE__) . '/responses/';
+    }
+
+    public function testErrorHandlerIsRestoredWhenTheResponseIsRejected()
+    {
+        $xml = '<?xml version="1.0"?><!DOCTYPE response [<!ENTITY a "b">]><response><status>&a;</status></response>';
+
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        try {
+            new Zend_Rest_Client_Result($xml);
+            $this->fail('An expected Zend_Xml_Exception has not been raised');
+        } catch (Zend_Xml_Exception $e) {
+            $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
+        }
     }
 
     public function testResponseSuccess()

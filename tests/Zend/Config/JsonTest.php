@@ -27,6 +27,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_Config_Json
  */
 require_once 'Zend/Config/Json.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -305,5 +306,19 @@ EOJ;
         $this->expectException('Zend_Config_Exception');
         $this->expectExceptionMessage('Error parsing JSON data');
         $config = new Zend_Config_Json($json, null, ['ignore_constants' => true]);
+    }
+
+    public function testErrorHandlerIsRestoredWhenTheFileNameIsInvalid()
+    {
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        try {
+            new Zend_Config_Json("zf\0.json");
+            $this->fail('An expected exception has not been raised');
+        } catch (Zend_Config_Exception $e) {
+            // PHP 7.4 warns about the null byte
+        } catch (Error $e) {
+            // PHP 8 throws for the null byte
+        }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
     }
 }

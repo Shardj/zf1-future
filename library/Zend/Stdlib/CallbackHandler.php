@@ -99,8 +99,11 @@ class Zend_Stdlib_CallbackHandler
             : E_ALL;
 
         set_error_handler([$this, 'errorHandler'], $errorLevel);
-        $callable = is_callable($callback);
-        restore_error_handler();
+        try {
+            $callable = is_callable($callback);
+        } finally {
+            restore_error_handler();
+        }
         if (!$callable || $this->error) {
             require_once 'Zend/Stdlib/Exception/InvalidCallbackException.php';
             throw new Zend_Stdlib_Exception_InvalidCallbackException('Invalid callback provided; not callable');
@@ -108,8 +111,11 @@ class Zend_Stdlib_CallbackHandler
 
         // If pecl/weakref is not installed, simply store the callback and return
         set_error_handler([$this, 'errorHandler'], $errorLevel);
-        $callable = class_exists('WeakRef');
-        restore_error_handler();
+        try {
+            $callable = class_exists('WeakRef');
+        } finally {
+            restore_error_handler();
+        }
         if (!$callable || $this->error) {
             $this->callback = $callback;
             return;

@@ -400,6 +400,41 @@ XML;
         $this->expectException("Zend_Dom_Exception");
         $this->query->queryXpath('/');
     }
+
+    public function testQueryRestoresTheLibxmlErrorSettingWhenItThrows()
+    {
+        $xml = <<<XML
+<?xml version="1.0"?>
+<!DOCTYPE results [<!ENTITY harmless "completely harmless">]>
+<results>
+    <result>This result is &harmless;</result>
+</results>
+XML;
+        $this->query->setDocumentXml($xml);
+
+        $useInternalErrors = libxml_use_internal_errors(true);
+        try {
+            $this->query->queryXpath('/');
+            $this->fail('An expected Zend_Dom_Exception has not been raised');
+        } catch (Zend_Dom_Exception $e) {
+            $this->assertTrue(libxml_use_internal_errors());
+        } finally {
+            libxml_use_internal_errors($useInternalErrors);
+        }
+    }
+
+    public function testQueryRestoresTheLibxmlErrorSetting()
+    {
+        $this->loadHtml();
+
+        $useInternalErrors = libxml_use_internal_errors(true);
+        try {
+            $this->query->query('p');
+            $this->assertTrue(libxml_use_internal_errors());
+        } finally {
+            libxml_use_internal_errors($useInternalErrors);
+        }
+    }
 }
 
 // Call Zend_Dom_QueryTest::main() if this source file is executed directly.
