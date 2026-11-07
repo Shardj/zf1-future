@@ -524,22 +524,25 @@ class Zend_Validate_EmailAddressTest extends TestCase
      */
     public function testInstanceWithOldOptions()
     {
-        $handler = set_error_handler([$this, 'errorHandler'], E_USER_NOTICE);
-        $validator = new Zend_Validate_EmailAddress();
-        $options = $validator->getOptions();
-
-        $this->assertEquals(Zend_Validate_Hostname::ALLOW_DNS, $options['allow']);
-        $this->assertFalse($options['mx']);
-
+        set_error_handler([$this, 'errorHandler'], E_USER_NOTICE);
         try {
-            $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_ALL, true, new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_ALL));
+            $validator = new Zend_Validate_EmailAddress();
             $options = $validator->getOptions();
 
-            $this->assertEquals(Zend_Validate_Hostname::ALLOW_ALL, $options['allow']);
-            $this->assertTrue($options['mx']);
-            set_error_handler($handler);
-        } catch (Zend_Exception $e) {
-            $this->markTestSkipped('MX not available on this system');
+            $this->assertEquals(Zend_Validate_Hostname::ALLOW_DNS, $options['allow']);
+            $this->assertFalse($options['mx']);
+
+            try {
+                $validator = new Zend_Validate_EmailAddress(Zend_Validate_Hostname::ALLOW_ALL, true, new Zend_Validate_Hostname(Zend_Validate_Hostname::ALLOW_ALL));
+                $options = $validator->getOptions();
+
+                $this->assertEquals(Zend_Validate_Hostname::ALLOW_ALL, $options['allow']);
+                $this->assertTrue($options['mx']);
+            } catch (Zend_Exception $e) {
+                $this->markTestSkipped('MX not available on this system');
+            }
+        } finally {
+            restore_error_handler();
         }
     }
 
