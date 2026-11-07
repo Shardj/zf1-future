@@ -486,19 +486,26 @@ class Zend_Session extends Zend_Session_Abstract
                 set_error_handler(['Zend_Session_Exception', 'handleSessionStartError'], $errorLevel);
             }
 
-            $startedCleanly = session_start();
-
-            if (self::$_throwStartupExceptions) {
-                restore_error_handler();
+            try {
+                $startedCleanly = session_start();
+            } finally {
+                if (self::$_throwStartupExceptions) {
+                    restore_error_handler();
+                }
             }
 
             if (!$startedCleanly || Zend_Session_Exception::$sessionStartError != null) {
                 if (self::$_throwStartupExceptions) {
                     set_error_handler(['Zend_Session_Exception', 'handleSilentWriteClose'], $errorLevel);
                 }
-                session_write_close();
+                try {
+                    session_write_close();
+                } finally {
+                    if (self::$_throwStartupExceptions) {
+                        restore_error_handler();
+                    }
+                }
                 if (self::$_throwStartupExceptions) {
-                    restore_error_handler();
                     throw new Zend_Session_Exception(__CLASS__ . '::' . __FUNCTION__ . '() - ' . Zend_Session_Exception::$sessionStartError);
                 }
             }

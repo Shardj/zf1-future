@@ -35,6 +35,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once 'Zend/Xml/Security.php';
 
 require_once 'Zend/Xml/Exception.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -52,6 +53,48 @@ class Zend_Xml_SecurityTest extends TestCase
         $result = (new resources_Runner())->run($suite);
     }
  
+    public function testScanRestoresTheLibxmlStateAndTheErrorHandlerWhenItThrows()
+    {
+        $xml = <<<XML
+<?xml version="1.0"?>
+<!DOCTYPE results [<!ENTITY harmless "completely harmless">]>
+<results>
+    <result>This result is &harmless;</result>
+</results>
+XML;
+
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        $useInternalErrors = libxml_use_internal_errors(false);
+        try {
+            Zend_Xml_Security::scan($xml);
+            $this->fail('An expected Zend_Xml_Exception has not been raised');
+        } catch (Zend_Xml_Exception $e) {
+            $this->assertFalse(libxml_use_internal_errors());
+            $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
+        } finally {
+            libxml_use_internal_errors($useInternalErrors);
+        }
+    }
+
+    public function testScanRestoresTheLibxmlStateAndTheErrorHandlerWhenLoadingThrows()
+    {
+        if (PHP_VERSION_ID < 80000) {
+            $this->markTestSkipped('DOMDocument::loadXML() throws for an empty string since PHP 8.0');
+        }
+
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        $useInternalErrors = libxml_use_internal_errors(false);
+        try {
+            Zend_Xml_Security::scan('');
+            $this->fail('An expected ValueError has not been raised');
+        } catch (ValueError $e) {
+            $this->assertFalse(libxml_use_internal_errors());
+            $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
+        } finally {
+            libxml_use_internal_errors($useInternalErrors);
+        }
+    }
+
     public function testScanForXEE()
     {
         $xml = <<<XML

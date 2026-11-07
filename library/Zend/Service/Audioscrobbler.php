@@ -187,9 +187,13 @@ class Zend_Service_Audioscrobbler
         }
 
         set_error_handler([$this, '_errorHandler']);
-
-        if (!$simpleXmlElementResponse = Zend_Xml_Security::scan($responseBody)) {
+        try {
+            $simpleXmlElementResponse = Zend_Xml_Security::scan($responseBody);
+        } finally {
             restore_error_handler();
+        }
+
+        if (!$simpleXmlElementResponse) {
             /**
              * @see Zend_Service_Exception
              */
@@ -199,8 +203,6 @@ class Zend_Service_Audioscrobbler
             $exception->response = $responseBody;
             throw $exception;
         }
-
-        restore_error_handler();
 
         return $simpleXmlElementResponse;
     }

@@ -29,6 +29,7 @@ require_once 'Zend/Soap/Server.php';
 require_once 'Zend/Soap/Server/Exception.php';
 
 require_once "Zend/Config.php";
+require_once 'resources/ErrorCapture.php';
 
 require_once dirname(__FILE__) . '/TestAsset/commontypes.php';
 
@@ -872,6 +873,25 @@ class Zend_Soap_ServerTest extends TestCase
         );
     }
 
+    public function testHandleRestoresTheErrorContextWhenItThrows()
+    {
+        $server = new Zend_Soap_Server_TestServerWithoutSoapServer();
+        $server->setOptions(['location' => 'test://', 'uri' => 'http://framework.zend.com']);
+
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        $displayErrors = ini_get('display_errors');
+        $outputBuffers = ob_get_level();
+        try {
+            $server->handle('<?xml version="1.0" encoding="UTF-8"?><request/>');
+            $this->fail('An expected Zend_Soap_Server_Exception has not been raised');
+        } catch (Zend_Soap_Server_Exception $e) {
+            $this->assertSame('SoapServer cannot be created', $e->getMessage());
+        }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
+        $this->assertSame($displayErrors, ini_get('display_errors'));
+        $this->assertSame($outputBuffers, ob_get_level());
+    }
+
     public function testLoadFunctionsIsNotImplemented()
     {
         $server = new Zend_Soap_Server();
@@ -1072,6 +1092,14 @@ class Zend_Soap_MockServer extends Zend_Soap_Server
 }
 
 /** Test Class */
+class Zend_Soap_Server_TestServerWithoutSoapServer extends Zend_Soap_Server
+{
+    protected function _getSoap()
+    {
+        throw new Zend_Soap_Server_Exception('SoapServer cannot be created');
+    }
+}
+
 class Zend_Soap_Server_TestClass
 {
     /**

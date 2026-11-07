@@ -253,6 +253,29 @@ class Zend_Feed_ReaderTest extends TestCase
         $this->assertEquals('http://www.example.com/rss.xml', $links->rss);
     }
 
+    public function testFindFeedLinksRestoresTheLibxmlErrorSetting()
+    {
+        $currClient = Zend_Feed_Reader::getHttpClient();
+        $testAdapter = new Zend_Http_Client_Adapter_Test();
+        $testAdapter->setResponse(new Zend_Http_Response(200, [], ''));
+        Zend_Feed_Reader::setHttpClient(new Zend_Http_Client(null, ['adapter' => $testAdapter]));
+
+        // PHP 7.4 warns about the empty document, PHP 8 throws a ValueError
+        $thrown = null;
+        $useInternalErrors = libxml_use_internal_errors(false);
+        try {
+            Zend_Feed_Reader::findFeedLinks('http://foo/bar');
+        } catch (Throwable $e) {
+            $thrown = $e;
+        } finally {
+            $useInternalErrorsAfter = libxml_use_internal_errors($useInternalErrors);
+            Zend_Feed_Reader::setHttpClient($currClient);
+        }
+
+        $this->assertNotNull($thrown, 'An empty document has not been rejected');
+        $this->assertFalse($useInternalErrorsAfter);
+    }
+
     /**
      * @group ZF-8330
      */

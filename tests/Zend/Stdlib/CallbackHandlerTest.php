@@ -30,6 +30,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Stdlib/CallbackHandler.php';
+require_once 'resources/ErrorCapture.php';
 require_once 'Zend/Stdlib/TestAsset/SignalHandlers/InstanceMethod.php';
 require_once 'Zend/Stdlib/TestAsset/SignalHandlers/ObjectCallback.php';
 
@@ -151,6 +152,27 @@ class Zend_Stdlib_CallbackHandlerTest extends TestCase
     {
         $this->expectException('Zend_Stdlib_Exception_InvalidCallbackException');
         $handler = new Zend_Stdlib_CallbackHandler('foo', [ 'Zend_Stdlib_TestAsset_SignalHandlers_Overloadable', 'foo' ]);
+    }
+
+    public function testErrorHandlerIsRestoredWhenAnAutoloaderThrows()
+    {
+        $autoloader = function ($class) {
+            if ($class === 'WeakRef') {
+                throw new RuntimeException('autoloader failed');
+            }
+        };
+
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        spl_autoload_register($autoloader, true, true);
+        try {
+            new Zend_Stdlib_CallbackHandler('strlen');
+            $this->fail('An expected RuntimeException has not been raised');
+        } catch (RuntimeException $e) {
+            $this->assertSame('autoloader failed', $e->getMessage());
+        } finally {
+            spl_autoload_unregister($autoloader);
+        }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
     }
 
     public function handleCall()

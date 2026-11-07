@@ -871,36 +871,41 @@ class Zend_Soap_Server implements Zend_Server_Interface
         // Set Zend_Soap_Server error handler
         $displayErrorsOriginalState = $this->_initializeSoapErrorContext();
 
-        $setRequestException = null;
-        /**
-         * @see Zend_Soap_Server_Exception
-         */
-        require_once 'Zend/Soap/Server/Exception.php';
         try {
-            $this->_setRequest($request);
-        } catch (Zend_Soap_Server_Exception $e) {
-            $setRequestException = $e;
-        }
-
-        $soap = $this->_getSoap();
-
-        $fault = false;
-        ob_start();
-        if ($setRequestException instanceof Exception) {
-            // Create SOAP fault message if we've caught a request exception
-            $fault = $this->fault($setRequestException->getMessage(), 'Sender');
-        } else {
+            $setRequestException = null;
+            /**
+             * @see Zend_Soap_Server_Exception
+             */
+            require_once 'Zend/Soap/Server/Exception.php';
             try {
-                $soap->handle($this->_request);
-            } catch (Exception $e) {
-                $fault = $this->fault($e);
+                $this->_setRequest($request);
+            } catch (Zend_Soap_Server_Exception $e) {
+                $setRequestException = $e;
             }
-        }
-        $this->_response = ob_get_clean();
 
-        // Restore original error handler
-        restore_error_handler();
-        ini_set('display_errors', $displayErrorsOriginalState);
+            $soap = $this->_getSoap();
+
+            $fault = false;
+            ob_start();
+            try {
+                if ($setRequestException instanceof Exception) {
+                    // Create SOAP fault message if we've caught a request exception
+                    $fault = $this->fault($setRequestException->getMessage(), 'Sender');
+                } else {
+                    try {
+                        $soap->handle($this->_request);
+                    } catch (Exception $e) {
+                        $fault = $this->fault($e);
+                    }
+                }
+            } finally {
+                $this->_response = ob_get_clean();
+            }
+        } finally {
+            // Restore original error handler
+            restore_error_handler();
+            ini_set('display_errors', $displayErrorsOriginalState);
+        }
 
         // Send a fault, if we have one
         if ($fault) {

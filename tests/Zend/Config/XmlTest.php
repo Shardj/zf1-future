@@ -27,6 +27,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  * Zend_Config_Xml
  */
 require_once 'Zend/Config/Xml.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -232,23 +233,35 @@ class Zend_Config_XmlTest extends TestCase
 
     public function testZF3578_InvalidOrMissingfXmlFile()
     {
+        $handler = resources_ErrorCapture::currentErrorHandler();
         try {
             $config = new Zend_Config_Xml($this->_xmlFileInvalid);
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
             $this->assertStringContainsString('failed to load', $expected->getMessage());
         }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
+
         try {
             $config = new Zend_Config_Xml('I/dont/exist');
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            /**
-             * Zend_Config_Xml construct missing call restore_error_handler()
-             * on internal exception handler when xml file not exist.
-             */
-            restore_error_handler();
             $this->assertStringContainsString('doesn\'t exist', $expected->getMessage());
         }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
+    }
+
+    public function testErrorHandlerIsRestoredWhenXmlStringIsRejected()
+    {
+        $handler = resources_ErrorCapture::currentErrorHandler();
+        $xml = '<?xml version="1.0"?><!DOCTYPE config [<!ENTITY a "b">]><config><a>&a;</a></config>';
+        try {
+            $config = new Zend_Config_Xml($xml);
+            $this->fail('An expected Zend_Xml_Exception has not been raised');
+        } catch (Zend_Xml_Exception $expected) {
+            $this->assertStringContainsString('ENTITY', $expected->getMessage());
+        }
+        $this->assertSame($handler, resources_ErrorCapture::currentErrorHandler());
     }
 
     public function testShortParamsOne()

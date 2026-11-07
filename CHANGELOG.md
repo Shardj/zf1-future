@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 * Zend_Serializer_Adapter_Igbinary throws Zend_Serializer_Exception with the warning of igbinary as its message instead of emitting the warning first; the message came from error_get_last(), which is empty when an error handler of the application takes the warning, or holds an earlier, unrelated error.
+* Components that set their own error handler restore the previous one also when an exception or an Error is thrown in between; the handler stayed active and silently took every later PHP error of the application: Zend_Config_Xml (missing or invalid file, XML with an ENTITY declaration), Zend_Config_Ini, Zend_Config_Json and Zend_Config_Yaml (e.g. a ValueError for an invalid file name), Zend_Xml_Security::scan() (ValueError of DOMDocument::loadXML() for an empty string), Zend_Rest_Client_Result and Zend_Service_Audioscrobbler (response rejected by Zend_Xml_Security), Zend_Session::start() (an exception of the save handler), Zend_Stdlib_CallbackHandler (an exception of an autoloader), Zend_Mail_Transport_Sendmail, Zend_Validate_File_MimeType and Zend_Soap_Server::handle(), which also restores display_errors and closes its output buffer when the SoapServer cannot be created.
+* Zend_Xml_Security::scan(), Zend_Dom_Query::queryXpath() and Zend_Feed_Reader::findFeedLinks() restore the libxml settings (internal errors, entity loader) also when they throw, e.g. Zend_Xml_Exception for an ENTITY declaration; Zend_Dom_Query restores the previous libxml_use_internal_errors() setting instead of switching it off.
 
 ## [1.26.1] - 2026-11-07
 

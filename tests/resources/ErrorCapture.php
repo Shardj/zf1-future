@@ -81,6 +81,24 @@ class resources_ErrorCapture
     }
 
     /**
+     * Returns the active error handler, null without one
+     *
+     * Tests compare it before and after a call to check that the call restored
+     * the error handlers it set.
+     *
+     * @return callable|null
+     */
+    public static function currentErrorHandler()
+    {
+        $handler = set_error_handler(function () {
+            return false;
+        });
+        restore_error_handler();
+
+        return $handler;
+    }
+
+    /**
      * @param  int $level
      * @return string
      */

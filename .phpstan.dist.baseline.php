@@ -25288,12 +25288,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $loadEntities might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_XmlRpc_Client::getIntrospector() should return Zend_XmlRpc_Client_ServerIntrospection but returns Zend_Http_Client_Introspector.',
 	'identifier' => 'return.type',
 	'count' => 1,
