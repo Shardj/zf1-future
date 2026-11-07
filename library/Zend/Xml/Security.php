@@ -82,6 +82,9 @@ class Zend_Xml_Security
             $dom = new DOMDocument();
         }
 
+        // previous libxml settings, restored after loading
+        $loadEntities = false;
+        $useInternalXmlErrors = false;
         if (!self::isPhpFpm()) {
             if (LIBXML_VERSION < 20900) {
                 // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.libxml_disable_entity_loaderDeprecated -- called with libxml before 2.9 only
