@@ -97,4 +97,26 @@ class Zend_Oauth_Http_UtilityTest extends TestCase
         $string = '、';
         $this->assertEquals('%E3%80%81', Zend_Oauth_Http_Utility::urlEncode($string));
     }
+
+    public function testUrlEncodeEncodesNullAsEmptyString()
+    {
+        set_error_handler(function ($severity, $message) {
+            throw new ErrorException($message, 0, $severity);
+        }, E_DEPRECATED);
+        try {
+            $this->assertSame('', Zend_Oauth_Http_Utility::urlEncode(null));
+        } finally {
+            restore_error_handler();
+        }
+    }
+
+    public function testParseQueryStringKeepsValuesWithEqualsSignAndParametersWithoutValue()
+    {
+        $utility = new Zend_Oauth_Http_Utility();
+        $this->assertSame(
+            ['a' => 'b=c', 'd' => '', 'e f' => 'g'],
+            $utility->parseQueryString('a=b%3Dc&d&e%20f=g')
+        );
+        $this->assertSame(['a' => 'b=c'], $utility->parseQueryString('a=b=c'));
+    }
 }
