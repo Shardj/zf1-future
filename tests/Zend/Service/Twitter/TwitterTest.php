@@ -45,6 +45,7 @@ require_once 'Zend/Oauth/Token/Access.php';
 require_once 'Zend/Oauth/Token/Access.php';
 require_once 'Zend/Oauth/Client.php';
 require_once 'Zend/Oauth/Consumer.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -406,7 +407,10 @@ class Zend_Service_Twitter_TwitterTest extends TestCase
             'statuses.update.json',
             ['status' => 'Test Message 1']
         ));
-        $response = $twitter->statuses->update('Test Message 1');
+        $response = null;
+        resources_ErrorCapture::assertTriggersNothing(function () use ($twitter, &$response) {
+            $response = $twitter->statuses->update('Test Message 1');
+        }, E_DEPRECATED);
         $this->assertTrue($response instanceof Zend_Service_Twitter_Response);
     }
 

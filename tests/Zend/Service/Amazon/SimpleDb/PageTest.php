@@ -24,6 +24,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  */
 
 require_once 'Zend/Service/Amazon/SimpleDb/Page.php';
+require_once 'resources/ErrorCapture.php';
 
 /**
  * @category   Zend
@@ -42,6 +43,15 @@ class Zend_Service_Amazon_SimpleDb_PageTest extends TestCase
     protected function set_up()
     {
         $this->page = new Zend_Service_Amazon_SimpleDb_Page('foobar');
+    }
+
+    public function testConstructorWithoutTokenTriggersNoDeprecation()
+    {
+        $page = null;
+        resources_ErrorCapture::assertTriggersNothing(function () use (&$page) {
+            $page = new Zend_Service_Amazon_SimpleDb_Page('data');
+        }, E_DEPRECATED);
+        $this->assertNull($page->getToken());
     }
 
     public function testSetAndGetDataPerMethods()

@@ -846,7 +846,7 @@ abstract class Zend_Db_Adapter_Abstract
         } elseif (is_float($value)) {
             return sprintf('%F', $value);
         }
-        return "'" . addcslashes($value, "\000\n\r\\'\"\032") . "'";
+        return "'" . addcslashes((string) $value, "\000\n\r\\'\"\032") . "'";
     }
 
     /**

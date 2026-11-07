@@ -1189,7 +1189,7 @@ class Zend_Service_Twitter
      */
     protected function validInteger($int)
     {
-        if (preg_match("/(\d+)/", $int)) {
+        if (is_scalar($int) && preg_match("/(\d+)/", (string) $int)) {
             return $int;
         }
         return 0;
