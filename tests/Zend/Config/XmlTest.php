@@ -238,17 +238,43 @@ class Zend_Config_XmlTest extends TestCase
         } catch (Zend_Config_Exception $expected) {
             $this->assertStringContainsString('failed to load', $expected->getMessage());
         }
+        $this->assertErrorHandlerRestored();
+
         try {
             $config = new Zend_Config_Xml('I/dont/exist');
             $this->fail('An expected Zend_Config_Exception has not been raised');
         } catch (Zend_Config_Exception $expected) {
-            /**
-             * Zend_Config_Xml construct missing call restore_error_handler()
-             * on internal exception handler when xml file not exist.
-             */
-            restore_error_handler();
             $this->assertStringContainsString('doesn\'t exist', $expected->getMessage());
         }
+        $this->assertErrorHandlerRestored();
+    }
+
+    public function testErrorHandlerIsRestoredWhenXmlStringIsRejected()
+    {
+        $xml = '<?xml version="1.0"?><!DOCTYPE config [<!ENTITY a "b">]><config><a>&a;</a></config>';
+        try {
+            $config = new Zend_Config_Xml($xml);
+            $this->fail('An expected Zend_Xml_Exception has not been raised');
+        } catch (Zend_Xml_Exception $expected) {
+            $this->assertStringContainsString('ENTITY', $expected->getMessage());
+        }
+        $this->assertErrorHandlerRestored();
+    }
+
+    /**
+     * Asserts that no error handler of Zend_Config_Xml is active
+     */
+    protected function assertErrorHandlerRestored()
+    {
+        $active = set_error_handler(function () {
+            return false;
+        });
+        restore_error_handler();
+
+        $this->assertFalse(
+            is_array($active) && $active[0] instanceof Zend_Config_Xml,
+            'The error handler of Zend_Config_Xml is still active'
+        );
     }
 
     public function testShortParamsOne()

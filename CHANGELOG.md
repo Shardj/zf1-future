@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 * Zend_Serializer_Adapter_Igbinary throws Zend_Serializer_Exception with the warning of igbinary as its message instead of emitting the warning first; the message came from error_get_last(), which is empty when an error handler of the application takes the warning, or holds an earlier, unrelated error.
+* Zend_Config_Xml restores the previous error handler when it throws an exception (missing or invalid file, XML with an ENTITY declaration); the error handler of the failed Zend_Config_Xml instance stayed active and took every later PHP error.
 
 ## [1.26.1] - 2026-11-07
 
