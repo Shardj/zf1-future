@@ -590,21 +590,14 @@ class Zend_Soap_WsdlTest extends TestCase
 
     public function testSettingUnknownStrategyThrowsException()
     {
-        try {
-            $wsdl = new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php', 'Zend_Soap_Wsdl_Strategy_UnknownStrategyType');
-            $this->fail();
-        } catch (Zend_Soap_Wsdl_Exception $e) {
-        }
+        $this->expectException(Zend_Soap_Wsdl_Exception::class);
+        new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php', 'Zend_Soap_Wsdl_Strategy_UnknownStrategyType');
     }
 
     public function testSettingInvalidStrategyObjectThrowsException()
     {
-        try {
-            $strategy = new Zend_Soap_Wsdl_Test();
-            $wsdl = new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php', $strategy);
-            $this->fail();
-        } catch (Zend_Soap_Wsdl_Exception $e) {
-        }
+        $this->expectException(Zend_Soap_Wsdl_Exception::class);
+        new Zend_Soap_Wsdl('MyService', 'http://localhost/MyService.php', new Zend_Soap_Wsdl_Test());
     }
 
     public function testAddingSameComplexTypeMoreThanOnceIsIgnored()

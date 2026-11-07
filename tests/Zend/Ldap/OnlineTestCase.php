@@ -59,6 +59,9 @@ abstract class Zend_Ldap_OnlineTestCase extends Zend_Ldap_TestCase
 
     protected function set_up()
     {
+        if (!extension_loaded('ldap')) {
+            $this->markTestSkipped('Zend_Ldap requires the ldap extension');
+        }
         if (!TESTS_ZEND_LDAP_ONLINE_ENABLED) {
             $this->markTestSkipped("Test skipped due to test configuration");
             return;

@@ -597,41 +597,25 @@ class Zend_OpenIdTest extends TestCase
      */
     public function testCreateDhKey()
     {
+        // OpenSSL 3 refuses a prime of a few bits, so the keys use the OpenID default prime
+        $p = pack('H*', Zend_OpenId::DH_P);
+        $g = pack('H*', Zend_OpenId::DH_G);
         try {
-            $dh = Zend_OpenId::createDhKey(
-                pack('H*', '0233'),
-                pack('H*', '05'),
-                pack('H*', '09')
-            );
+            $dh = Zend_OpenId::createDhKey($p, $g, pack('H*', '09'));
             $dh_details = Zend_OpenId::getDhKeyDetails($dh);
             $this->assertTrue(is_array($dh_details));
             $this->assertSame(4, count($dh_details));
-            $this->assertSame('0233', bin2hex($dh_details['p']));
-            $this->assertSame('05', bin2hex($dh_details['g']));
-            $this->assertSame('09', bin2hex($dh_details['priv_key']));
-            $this->assertSame('4e', bin2hex($dh_details['pub_key']));
-
-            $dh = Zend_OpenId::createDhKey(
-                pack('H*', '0233'),
-                pack('H*', '02'),
-                pack('H*', '09')
-            );
-            $dh_details = Zend_OpenId::getDhKeyDetails($dh);
-            $this->assertTrue(is_array($dh_details));
-            $this->assertSame(4, count($dh_details));
-            $this->assertSame('0233', bin2hex($dh_details['p']));
+            $this->assertSame(Zend_OpenId::DH_P, bin2hex($dh_details['p']));
             $this->assertSame('02', bin2hex($dh_details['g']));
             $this->assertSame('09', bin2hex($dh_details['priv_key']));
+            // 2^9
             $this->assertSame('0200', bin2hex($dh_details['pub_key']));
 
-            $dh = Zend_OpenId::createDhKey(
-                pack('H*', '0233'),
-                pack('H*', '02')
-            );
+            $dh = Zend_OpenId::createDhKey($p, $g);
             $dh_details = Zend_OpenId::getDhKeyDetails($dh);
             $this->assertTrue(is_array($dh_details));
             $this->assertSame(4, count($dh_details));
-            $this->assertSame('0233', bin2hex($dh_details['p']));
+            $this->assertSame(Zend_OpenId::DH_P, bin2hex($dh_details['p']));
             $this->assertSame('02', bin2hex($dh_details['g']));
             $this->assertTrue(is_string($dh_details['priv_key']));
             $this->assertTrue(strlen($dh_details['priv_key']) > 0);
@@ -648,29 +632,27 @@ class Zend_OpenIdTest extends TestCase
      */
     public function testComputeDhSecret()
     {
+        $p = pack('H*', Zend_OpenId::DH_P);
+        $g = pack('H*', Zend_OpenId::DH_G);
         try {
-            $alice = Zend_OpenId::createDhKey(
-                pack('H*', '0233'),
-                pack('H*', '05'),
-                pack('H*', '09')
-            );
+            $alice = Zend_OpenId::createDhKey($p, $g, pack('H*', '09'));
             $alice_details = Zend_OpenId::getDhKeyDetails($alice);
-            $this->assertSame('4e', bin2hex($alice_details['pub_key']));
+            // 2^9
+            $this->assertSame('0200', bin2hex($alice_details['pub_key']));
 
-            $bob = Zend_OpenId::createDhKey(
-                pack('H*', '0233'),
-                pack('H*', '05'),
-                pack('H*', '0e')
-            );
+            $bob = Zend_OpenId::createDhKey($p, $g, pack('H*', '0e'));
             $bob_details = Zend_OpenId::getDhKeyDetails($bob);
-            $this->assertSame('0216', bin2hex($bob_details['pub_key']));
+            // 2^14
+            $this->assertSame('4000', bin2hex($bob_details['pub_key']));
 
+            // 2^(9 * 14)
+            $secret = '4' . str_repeat('0', 31);
             $this->assertSame(
-                '75',
+                $secret,
                 bin2hex(Zend_OpenId::computeDhSecret($alice_details['pub_key'], $bob))
             );
             $this->assertSame(
-                '75',
+                $secret,
                 bin2hex(Zend_OpenId::computeDhSecret($bob_details['pub_key'], $alice))
             );
         } catch (Zend_OpenId_Exception $e) {

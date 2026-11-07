@@ -62,7 +62,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
         $entry = $this->_getLdap()->getEntry($dn);
         $this->assertEquals($dn, $entry["dn"]);
         $this->assertArrayHasKey('ou', $entry);
-        $this->assertStringContainsString('Test1', $entry['ou']);
+        $this->assertContains('Test1', $entry['ou']);
         $this->assertEquals(1, count($entry['ou']));
     }
 
@@ -307,6 +307,7 @@ class Zend_Ldap_SearchTest extends Zend_Ldap_OnlineTestCase
      */
     public function testCallingNextAfterIterationShouldNotThrowException()
     {
+        $this->expectNotToPerformAssertions();
         $items = $this->_getLdap()->search(
             '(objectClass=organizationalUnit)',
             TESTS_ZEND_LDAP_WRITEABLE_SUBTREE,

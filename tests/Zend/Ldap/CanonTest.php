@@ -48,6 +48,9 @@ class Zend_Ldap_CanonTest extends TestCase
 
     protected function set_up()
     {
+        if (!extension_loaded('ldap')) {
+            $this->markTestSkipped('Zend_Ldap requires the ldap extension');
+        }
         $this->_options = [
             'host' => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,
