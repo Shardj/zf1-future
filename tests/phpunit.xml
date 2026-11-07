@@ -4,6 +4,7 @@
     colors="true"
     verbose="true"
     cacheResult="false"
+    stderr="true"
     convertDeprecationsToExceptions="false"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"

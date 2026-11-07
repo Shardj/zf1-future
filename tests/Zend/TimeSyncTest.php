@@ -405,8 +405,8 @@ class Zend_TimeSyncTest extends TestCase
             $result = $server->getInfo();
 
             $this->assertTrue(count($result) > 0);
-        } catch (Zend_TimeSync_Exception  $e) {
-            // nothing
+        } catch (Zend_TimeSync_Exception $e) {
+            $this->assertStringContainsString('all timeservers are bogus', $e->getMessage());
         }
     }
 }
