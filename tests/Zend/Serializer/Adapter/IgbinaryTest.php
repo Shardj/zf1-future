@@ -143,6 +143,7 @@ class Zend_Serializer_Adapter_IgbinaryTest extends TestCase
     {
         $value = "\0\1\r\n";
         $this->expectException('Zend_Serializer_Exception');
+        $this->expectExceptionMessage('igbinary_unserialize');
         $this->_adapter->unserialize($value);
     }
 }
