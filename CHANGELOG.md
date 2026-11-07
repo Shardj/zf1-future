@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.26.1] - 2026-11-07
+
+PHP support is unchanged: PHP 7.4 – 8.3 officially, PHP 8.4 and 8.5 in the regular test matrix, PHP 8.6 experimental.
+
 ### Added
 
 * Zend_Db_Statement_Mysqli::getColumnMeta() returns the metadata of a result set column in the format of pdo_mysql (native_type, flags, table, name, len, precision, pdo_type), or false when there is no such column; Zend_Db_Statement_Pdo had the method already, the Mysqli statement had none.
@@ -44,11 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Reflection_Parameter: getType() returns the declared type (ReflectionType) as its signature promises; it returned the @param type of the docblock as a string, which has been a TypeError since the PHP 8 signature. The docblock type is available through the new getDocblockType(). getClass() on PHP 8 reflected the ReflectionNamedType class instead of the parameter's class, returns null for scalar types and resolves self/parent. Zend_CodeGenerator_Php_Parameter::fromReflection() sets the type only when one is declared.
 * Zend_Form_Decorator_Description no longer translates the description of a Zend_Form_Element a second time; Zend_Form_Element::getDescription() translates since 1.21 and the decorator translated the result again, so a translation whose target is itself a message key was rendered one step too far (ZF-8694). Form and display group descriptions are still translated by the decorator.
 * Zend_XmlRpc_Value_DateTime throws Zend_XmlRpc_Value_Exception ("Cannot convert given value … to a timestamp") for a string DateTime cannot parse, with the DateTime exception as previous; the plain DateTime exception (DateMalformedStringException on PHP 8.3+) escaped before, because the `=== false` check dates from PHP 5.2.
-
 * PHP 8.6: the constructors of Zend_Db_Adapter_Pdo_Sqlite and Zend_Server_Reflection_Node no longer return a value ("Returning a value from a constructor is deprecated"); the deprecation printed at load time made the experimental PHP 8.6 test job abort.
-
 * PHP 8.6: Zend_Filter_Compress adapters (Bz2, Gz, Rar, Tar, Zip) no longer pass binary content to file_exists(), which throws a ValueError for a null byte since PHP 8.6; the previous null-byte check in Bz2 and Gz looked for the literal text `/\0/` and never matched.
-
 * PHP 8.6 deprecations removed: `is_integer()` → `is_int()`, `spl_object_hash()` → `spl_object_id()` for internal object maps (Zend_Pdf, Zend_Amf), `SORT_LOCALE_STRING` → `SORT_STRING` for LDAP attribute names, `Zend_Service_LiveDocx::__destruct()` no longer returns a value. `Zend_Navigation_Page::hashCode()` still returns a string (now the object id); the value is only unique while the object exists, as before.
 * Zend_Oauth_Http_Utility::urlEncode() encodes null as an empty string without passing it to rawurlencode(), which PHP 8.1+ reports as deprecated; signing without a token secret, e.g. for a request token, called it with null. parseQueryString() keeps a parameter value with "=" whole and reads a parameter without "=" as an empty value instead of warning about an undefined array key, like Zend_Oauth_Token.
 
