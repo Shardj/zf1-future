@@ -28,6 +28,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
  */
 require_once 'Zend/Locale/Math.php';
 require_once 'Zend/Locale/Math/PhpMath.php';
+require_once 'resources/ErrorCapture.php';
 
 
 /**
@@ -1424,6 +1425,19 @@ class Zend_Locale_MathTest extends TestCase
         $this->assertEquals(11900, Zend_Locale_Math_PhpMath::Pow(10.4444, 4.5556, 0));
         $this->assertEquals(11900, Zend_Locale_Math_PhpMath::Pow(-10.4444, 4, 0));
         $this->assertEquals(100000000000, Zend_Locale_Math_PhpMath::Pow(10, 11, 2));
+    }
+
+    public function testPowOfZeroToANegativePowerThrowsWithoutDeprecation()
+    {
+        Zend_Locale_Math_PhpMath::disable();
+        resources_ErrorCapture::assertTriggersNothing(function () {
+            try {
+                Zend_Locale_Math_PhpMath::Pow(0, -2);
+                $this->fail('An expected Zend_Locale_Math_Exception has not been raised');
+            } catch (Zend_Locale_Math_Exception $e) {
+                $this->assertStringContainsString('power overflow', $e->getMessage());
+            }
+        }, E_DEPRECATED);
     }
 
     public function testMul()

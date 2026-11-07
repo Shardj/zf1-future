@@ -365,6 +365,25 @@ class Zend_Soap_ServerTest extends TestCase
         $this->assertEquals([@SOAP_FUNCTIONS_ALL], $server->getFunctions());
     }
 
+    public function testHandleWithAllFunctionsCallsAUserFunctionWithoutDeprecation()
+    {
+        $server = new Zend_Soap_Server();
+        $server->setOptions(['location' => 'test://', 'uri' => 'http://framework.zend.com']);
+        $server->addFunction(@SOAP_FUNCTIONS_ALL);
+
+        $localClient = new Zend_Soap_Server_TestLocalSoapClient(
+            $server,
+            null,
+            ['location' => 'test://', 'uri' => 'http://framework.zend.com']
+        );
+
+        $result = null;
+        resources_ErrorCapture::assertTriggersNothing(function () use ($localClient, &$result) {
+            $result = $localClient->Zend_Soap_Server_TestFunc1('World');
+        }, E_DEPRECATED);
+        $this->assertSame('Hello World', $result);
+    }
+
     public function testSetClass()
     {
         $server = new Zend_Soap_Server();

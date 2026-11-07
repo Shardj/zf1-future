@@ -819,7 +819,13 @@ class Zend_Soap_Server implements Zend_Server_Interface
         $server  = new SoapServer($this->_wsdl, $options);
 
         if (!empty($this->_functions)) {
-            $server->addFunction($this->_functions);
+            $functions = $this->_functions;
+            if (!is_array($functions) && $functions == self::SOAP_FUNCTIONS_ALL) {
+                // PHP 8.4 deprecates passing SOAP_FUNCTIONS_ALL to SoapServer::addFunction()
+                $defined   = get_defined_functions();
+                $functions = array_merge($defined['internal'], $defined['user']);
+            }
+            $server->addFunction($functions);
         }
 
         if (!empty($this->_class)) {

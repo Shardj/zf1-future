@@ -107,7 +107,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
             return $value;
         }
         $this->_connect();
-        return "'" . $this->_connection->real_escape_string($value) . "'";
+        return "'" . $this->_connection->real_escape_string((string) $value) . "'";
     }
 
     /**
