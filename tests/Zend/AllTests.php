@@ -61,7 +61,7 @@ require_once 'Zend/Http/AllTests.php';
 require_once 'Zend/JsonTest.php';
 require_once 'Zend/Json/AllTests.php';
 require_once 'Zend/Layout/AllTests.php';
-// require_once 'Zend/Ldap/AllTests.php';
+require_once 'Zend/Ldap/AllTests.php';
 require_once 'Zend/LoaderTest.php';
 require_once 'Zend/Loader/AllTests.php';
 require_once 'Zend/LocaleTest.php';
@@ -69,15 +69,15 @@ require_once 'Zend/Locale/AllTests.php';
 require_once 'Zend/Log/AllTests.php';
 require_once 'Zend/Mail/AllTests.php';
 require_once 'Zend/Markup/AllTests.php';
-// require_once 'Zend/Measure/AllTests.php';
+require_once 'Zend/Measure/AllTests.php';
 require_once 'Zend/Memory/AllTests.php';
 require_once 'Zend/MimeTest.php';
 require_once 'Zend/Mime/AllTests.php';
 require_once 'Zend/NavigationTest.php';
 require_once 'Zend/Navigation/AllTests.php';
-// require_once 'Zend/Oauth/AllTests.php';
-// require_once 'Zend/OpenIdTest.php';
-// require_once 'Zend/OpenId/AllTests.php';
+require_once 'Zend/Oauth/AllTests.php';
+require_once 'Zend/OpenIdTest.php';
+require_once 'Zend/OpenId/AllTests.php';
 require_once 'Zend/Paginator/AllTests.php';
 require_once 'Zend/PdfTest.php';
 require_once 'Zend/Pdf/AllTests.php';
@@ -93,7 +93,7 @@ require_once 'Zend/Service/AllTests.php';
 // require_once 'Zend/Session/AllTests.php';
 // The rest of the Zend_Session tests are disabled (see above), but the ini option tests are self-contained
 require_once 'Zend/Session/OptionsTest.php';
-// require_once 'Zend/Soap/AllTests.php';
+require_once 'Zend/Soap/AllTests.php';
 require_once 'Zend/Tag/AllTests.php';
 require_once 'Zend/Test/AllTests.php';
 require_once 'Zend/Text/AllTests.php';
@@ -159,10 +159,7 @@ class Zend_AllTests
 
         // These tests require no output be sent prior to running as they rely
         // on internal PHP functions
-        $suite->addTestSuite('Zend_OpenIdTest');
-        $suite->addTest(Zend_OpenId_AllTests::suite());
         // $suite->addTest(Zend_Session_AllTests::suite());
-        // $suite->addTest(Zend_Soap_AllTests::suite());
 
         return $suite;
     }
@@ -216,7 +213,7 @@ class Zend_AllTests
         $suite->addTestSuite('Zend_JsonTest');
         $suite->addTest(Zend_Json_AllTests::suite());
         $suite->addTest(Zend_Layout_AllTests::suite());
-        // $suite->addTest(Zend_Ldap_AllTests::suite());
+        $suite->addTest(Zend_Ldap_AllTests::suite());
         $suite->addTestSuite('Zend_LoaderTest');
         $suite->addTest(Zend_Loader_AllTests::suite());
         $suite->addTestSuite('Zend_LocaleTest');
@@ -224,12 +221,14 @@ class Zend_AllTests
         $suite->addTest(Zend_Log_AllTests::suite());
         $suite->addTest(Zend_Mail_AllTests::suite());
         $suite->addTest(Zend_Markup_AllTests::suite());
-        // $suite->addTest(Zend_Measure_AllTests::suite());
+        $suite->addTest(Zend_Measure_AllTests::suite());
         $suite->addTestSuite('Zend_MimeTest');
         $suite->addTest(Zend_Mime_AllTests::suite());
         $suite->addTestSuite('Zend_NavigationTest');
         $suite->addTest(Zend_Navigation_AllTests::suite());
-        // $suite->addTest(Zend_Oauth_AllTests::suite());
+        $suite->addTest(Zend_Oauth_AllTests::suite());
+        $suite->addTestSuite('Zend_OpenIdTest');
+        $suite->addTest(Zend_OpenId_AllTests::suite());
         $suite->addTest(Zend_Paginator_AllTests::suite());
         $suite->addTestSuite('Zend_PdfTest');
         $suite->addTest(Zend_Pdf_AllTests::suite());
@@ -238,11 +237,12 @@ class Zend_AllTests
         $suite->addTest(Zend_Rest_AllTests::suite());
         $suite->addTest(Zend_Reflection_AllTests::suite());
         $suite->addTest(Zend_Queue_AllTests::suite());
-        // $suite->addTest(Zend_Search_Lucene_AllTests::suite());
+        $suite->addTest(Zend_Search_Lucene_AllTests::suite());
         $suite->addTest(Zend_Serializer_AllTests::suite());
-        // $suite->addTest(Zend_Server_AllTests::suite());
-        // $suite->addTest(Zend_Service_AllTests::suite());
+        $suite->addTest(Zend_Server_AllTests::suite());
+        $suite->addTest(Zend_Service_AllTests::suite());
         $suite->addTestSuite('Zend_Session_OptionsTest');
+        $suite->addTest(Zend_Soap_AllTests::suite());
         $suite->addTest(Zend_Tag_AllTests::suite());
         $suite->addTest(Zend_Test_AllTests::suite());
         $suite->addTest(Zend_Text_AllTests::suite());
