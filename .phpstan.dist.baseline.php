@@ -18722,12 +18722,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/Igbinary.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between string|null and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/Igbinary.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Undefined variable: $ret',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
