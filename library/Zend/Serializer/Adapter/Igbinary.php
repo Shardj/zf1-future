@@ -68,11 +68,13 @@ class Zend_Serializer_Adapter_Igbinary extends Zend_Serializer_Adapter_AdapterAb
      */
     public function serialize($value, array $opts = [])
     {
-        $ret = igbinary_serialize($value);
+        // the warning of igbinary becomes the message of the exception
+        error_clear_last();
+        $ret = @igbinary_serialize($value);
         if ($ret === false) {
             $lastErr = error_get_last();
             require_once 'Zend/Serializer/Exception.php';
-            throw new Zend_Serializer_Exception($lastErr['message']);
+            throw new Zend_Serializer_Exception($lastErr['message'] ?? 'Serialization with igbinary failed');
         }
         return $ret;
     }
@@ -87,11 +89,13 @@ class Zend_Serializer_Adapter_Igbinary extends Zend_Serializer_Adapter_AdapterAb
      */
     public function unserialize($serialized, array $opts = [])
     {
-        $ret = igbinary_unserialize($serialized);
+        // the warning of igbinary becomes the message of the exception
+        error_clear_last();
+        $ret = @igbinary_unserialize($serialized);
         if ($ret === null && $serialized !== self::$_serializedNull) {
             $lastErr = error_get_last();
             require_once 'Zend/Serializer/Exception.php';
-            throw new Zend_Serializer_Exception($lastErr['message']);
+            throw new Zend_Serializer_Exception($lastErr['message'] ?? 'Unserialization with igbinary failed');
         }
         return $ret;
     }

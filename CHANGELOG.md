@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* Zend_Serializer_Adapter_Igbinary throws Zend_Serializer_Exception with the message of igbinary for invalid data without emitting the igbinary warning first; the message no longer comes from an earlier, unrelated error when igbinary reports none.
+
 ## [1.26.1] - 2026-11-07
 
 PHP support is unchanged: PHP 7.4 – 8.3 officially, PHP 8.4 and 8.5 in the regular test matrix, PHP 8.6 experimental.
