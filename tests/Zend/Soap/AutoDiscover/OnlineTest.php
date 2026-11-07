@@ -25,9 +25,6 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
 require_once dirname(__FILE__) . "/../_files/commontypes.php";
 
-/** Zend_Soap_Server */
-require_once 'Zend/Soap/Client.php';
-
 /**
  * @category   Zend
  * @package    Zend_Soap
@@ -45,6 +42,11 @@ class Zend_Soap_AutoDiscover_OnlineTest extends TestCase
         if (!defined('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI') || constant('TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI') == false) {
             $this->markTestSkipped('The constant TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI has to be defined to allow the Online test to work.');
         }
+        if (PHP_VERSION_ID >= 80500) {
+            $this->markTestSkipped('Zend_Soap_Client_Common::__doRequest() lacks the $uriParserClass parameter of SoapClient on PHP 8.5+');
+        }
+
+        require_once 'Zend/Soap/Client.php';
         $this->baseuri = TESTS_ZEND_SOAP_AUTODISCOVER_ONLINE_SERVER_BASEURI;
     }
 
