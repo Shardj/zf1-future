@@ -13,4 +13,7 @@
   <testsuite name="Zend Framework - Testsuite">
     <file>./Zend/AllTests.php</file>
   </testsuite>
+  <listeners>
+    <listener class="Zend_ErrorHandlerLeakListener" file="./resources/ErrorHandlerLeakListener.php"/>
+  </listeners>
 </phpunit>
