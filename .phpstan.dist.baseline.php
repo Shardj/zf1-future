@@ -482,12 +482,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Application/Resource/View.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadMeta::appendHttpEquiv() invoked with 2 parameters, 3 required.',
-	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/View.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Auth::getInstance() should return $this(Zend_Auth) but returns Zend_Auth.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1308,12 +1302,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Captcha/Word.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type string supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Adapter/SimpleDb.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_DocumentService_Adapter_SimpleDb::_resolveAttributes() should return array but returns object.',
@@ -17424,18 +17412,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/S3/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $data of class Zend_Service_Amazon_SimpleDb_Page constructor expects string, array<string, array<string, Zend_Service_Amazon_SimpleDb_Attribute>> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/SimpleDb.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $data of class Zend_Service_Amazon_SimpleDb_Page constructor expects string, list<string> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/SimpleDb.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $params_out might not be defined.',
