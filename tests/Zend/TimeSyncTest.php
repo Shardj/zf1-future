@@ -363,7 +363,9 @@ class Zend_TimeSyncTest extends TestCase
         $sync = new Zend_TimeSync();
         $sync->addServer('ntp://fake');
         $servers = new ReflectionProperty($sync, '_timeservers');
-        $servers->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $servers->setAccessible(true);
+        }
         $servers->setValue($sync, ['fake' => new Zend_TimeSyncTest_FakeNtp('fake', 123)]);
 
         $errors = [];

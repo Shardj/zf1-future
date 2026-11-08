@@ -501,7 +501,7 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
 
         sleep(2);
 
-        $this->assertSame(false, unserialize($saveHandler->read($id)));
+        $this->assertSame('', $saveHandler->read($id));
     }
 
     public function testReadWriteThreeTimesAndGc()

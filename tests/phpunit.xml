@@ -5,7 +5,7 @@
     verbose="true"
     cacheResult="false"
     stderr="true"
-    convertDeprecationsToExceptions="false"
+    convertDeprecationsToExceptions="true"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
     convertWarningsToExceptions = "true"
