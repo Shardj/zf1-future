@@ -111,10 +111,8 @@ class Zend_Ldap_Converter
             switch ($type) {
                 case self::BOOLEAN:
                     return self::toLdapBoolean($value);
-                    break;
                 case self::GENERALIZED_TIME:
                     return self::toLdapDateTime($value);
-                    break;
                 default:
                     if (is_string($value)) {
                         return $value;
@@ -137,7 +135,6 @@ class Zend_Ldap_Converter
                     } else {
                         return null;
                     }
-                    break;
             }
         } catch (Exception $e) {
             throw new Zend_Ldap_Converter_Exception($e->getMessage(), $e->getCode(), $e);
@@ -232,10 +229,8 @@ class Zend_Ldap_Converter
         switch ($type) {
             case self::BOOLEAN:
                 return self::fromLdapBoolean($value);
-                break;
             case self::GENERALIZED_TIME:
                 return self::fromLdapDateTime($value);
-                break;
             default:
                 if (is_numeric($value)) {
                     // prevent numeric values to be treated as date/time

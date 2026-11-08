@@ -372,10 +372,8 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
             switch ($value) {
                 case 'true':
                     return true;
-                    break;
                 case 'false':
                     return false;
-                    break;
                 default:
                     require_once 'Zend/Gdata/App/Exception.php';
                     throw new Zend_Gdata_App_Exception(
@@ -420,10 +418,8 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
             switch ($value) {
                 case 'true':
                     return true;
-                    break;
                 case 'false':
                     return false;
-                    break;
                 default:
                     require_once 'Zend/Gdata/App/Exception.php';
                     throw new Zend_Gdata_App_Exception(

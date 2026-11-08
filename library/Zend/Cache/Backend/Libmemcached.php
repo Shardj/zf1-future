@@ -247,7 +247,6 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
         switch ($mode) {
             case Zend_Cache::CLEANING_MODE_ALL:
                 return $this->_memcache->flush();
-                break;
             case Zend_Cache::CLEANING_MODE_OLD:
                 $this->_log("Zend_Cache_Backend_Libmemcached::clean() : CLEANING_MODE_OLD is unsupported by the Libmemcached backend");
                 break;

@@ -563,7 +563,6 @@ class Zend_Filter_Input
                 default:
                     require_once 'Zend/Filter/Exception.php';
                     throw new Zend_Filter_Exception("Unknown option '$option'");
-                    break;
             }
         }
 

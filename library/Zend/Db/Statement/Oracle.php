@@ -363,7 +363,6 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
                         'message' => "Invalid fetch mode '$style' specified"
                     ]
                 );
-                break;
         }
 
         if (! $row && $error = oci_error($this->_stmt)) {
@@ -436,7 +435,6 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
                         'message' => "Invalid fetch mode '$style' specified"
                     ]
                 );
-                break;
         }
 
         $result = [];

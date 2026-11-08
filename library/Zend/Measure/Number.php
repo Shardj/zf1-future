@@ -154,12 +154,8 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
         }
 
         if (!Zend_Locale::isLocale($locale, true, false)) {
-            if (!Zend_Locale::isLocale($locale, true, false)) {
-                require_once 'Zend/Measure/Exception.php';
-                throw new Zend_Measure_Exception("Language (" . (string) $locale . ") is unknown");
-            }
-
-            $locale = new Zend_Locale($locale);
+            require_once 'Zend/Measure/Exception.php';
+            throw new Zend_Measure_Exception("Language (" . (string) $locale . ") is unknown");
         }
 
         $this->_locale = (string) $locale;

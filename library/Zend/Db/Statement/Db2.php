@@ -343,7 +343,6 @@ class Zend_Db_Statement_Db2 extends Zend_Db_Statement
                  */
                 require_once 'Zend/Db/Statement/Db2/Exception.php';
                 throw new Zend_Db_Statement_Db2_Exception("Invalid fetch mode '$style' specified");
-                break;
         }
 
         return $row;

@@ -177,16 +177,12 @@ class Zend_Json_Decoder
                 $result  = $this->_tokenValue;
                 $this->_getNextToken();
                 return($result);
-                break;
             case self::LBRACE:
                 return($this->_decodeObject());
-                break;
             case self::LBRACKET:
                 return($this->_decodeArray());
-                break;
             default:
                 return null;
-                break;
         }
     }
 

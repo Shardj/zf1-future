@@ -1571,7 +1571,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      * so index Write lock has to be already obtained.
      *
      * @internal
-     * @throws Zend_Search_Lucene_Exceptions
+     * @throws Zend_Search_Lucene_Exception
      */
     public function writeChanges()
     {
@@ -1868,7 +1868,6 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             default:
                 require_once 'Zend/Search/Lucene/Exception.php';
                 throw new Zend_Search_Lucene_Exception('Wrong terms scaning mode specified.');
-                break;
         }
 
         // Calculate next segment start id (since $this->_docMap structure may be cleaned by $this->nextTerm() call)

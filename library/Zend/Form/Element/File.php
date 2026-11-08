@@ -528,7 +528,7 @@ class Zend_Form_Element_File extends Zend_Form_Element_Xhtml
      *
      * @param  string  $value (Optional) Element or file to return
      * @param  boolean $path  (Optional) Return also the path, defaults to true
-     * @return string
+     * @return string|array|null
      */
     public function getFileName($value = null, $path = true)
     {

@@ -399,7 +399,7 @@ class Zend_Acl
      * @param  Zend_Acl_Resource_Interface|string $resource
      * @param  Zend_Acl_Resource_Interface|string $inherit
      * @param  boolean                            $onlyParent
-     * @throws Zend_Acl_Resource_Registry_Exception
+     * @throws Zend_Acl_Exception
      * @return boolean
      */
     public function inherits($resource, $inherit, $onlyParent = false)

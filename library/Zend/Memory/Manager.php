@@ -386,7 +386,7 @@ class Zend_Memory_Manager
     /**
      * Check and swap objects if necessary
      *
-     * @throws Zend_MemoryException
+     * @throws Zend_Memory_Exception
      */
     private function _swapCheck()
     {

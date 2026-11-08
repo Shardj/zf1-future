@@ -529,7 +529,6 @@ abstract class Zend_Pdf_FileParser_Font_OpenType extends Zend_Pdf_FileParser_Fon
                 /* Something else went wrong. Throw this exception higher up the chain.
                  */
                 throw $e;
-                throw new Zend_Pdf_Exception($e->getMessage(), $e->getCode(), $e);
             }
         }
 

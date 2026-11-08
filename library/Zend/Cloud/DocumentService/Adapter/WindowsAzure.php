@@ -222,8 +222,6 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
         } catch(Zend_Service_WindowsAzure_Exception $e) {
             throw new Zend_Cloud_DocumentService_Exception('Error on collection list: '.$e->getMessage(), $e->getCode(), $e);
         }
-
-        return $tables;
     }
 
     /**

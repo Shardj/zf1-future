@@ -192,7 +192,7 @@ class Zend_Soap_Client
      *
      * @param  array|Zend_Config $options
      * @return Zend_Soap_Client
-     * @throws Zend_SoapClient_Exception
+     * @throws Zend_Soap_Client_Exception
      */
     public function setOptions($options)
     {
@@ -281,7 +281,6 @@ class Zend_Soap_Client
                 default:
                     require_once 'Zend/Soap/Client/Exception.php';
                     throw new Zend_Soap_Client_Exception('Unknown SOAP client option');
-                    break;
             }
         }
 

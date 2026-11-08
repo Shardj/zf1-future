@@ -60,7 +60,7 @@ class Zend_Translate_Adapter_Xliff extends Zend_Translate_Adapter {
      *                            see Zend_Locale for more information
      * @param  string  $filename  XLIFF file to add, full path must be given for access
      * @param  array   $option    OPTIONAL Options to use
-     * @throws Zend_Translation_Exception
+     * @throws Zend_Translate_Exception
      * @return array
      */
     protected function _loadTranslationData($filename, $locale, array $options = [])

@@ -268,7 +268,6 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                  */
                 require_once 'Zend/Db/Adapter/Db2/Exception.php';
                 throw new Zend_Db_Adapter_Db2_Exception("execution mode not supported");
-                break;
         }
     }
 
@@ -641,14 +640,12 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
                  */
                 require_once 'Zend/Db/Adapter/Db2/Exception.php';
                 throw new Zend_Db_Adapter_Db2_Exception('FETCH_BOUND is not supported yet');
-                break;
             default:
                 /**
                  * @see Zend_Db_Adapter_Db2_Exception
                  */
                 require_once 'Zend/Db/Adapter/Db2/Exception.php';
                 throw new Zend_Db_Adapter_Db2_Exception("Invalid fetch mode '$mode' specified");
-                break;
         }
     }
 

@@ -196,7 +196,6 @@ class Zend_Cache_Backend_Xcache extends Zend_Cache_Backend implements Zend_Cache
                     $_SERVER['PHP_AUTH_PW'] = $backup['PHP_AUTH_PW'];
                 }
                 return true;
-                break;
             case Zend_Cache::CLEANING_MODE_OLD:
                 $this->_log("Zend_Cache_Backend_Xcache::clean() : CLEANING_MODE_OLD is unsupported by the Xcache backend");
                 break;

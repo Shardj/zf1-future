@@ -8,12 +8,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Acl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Acl_Resource_Registry_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Acl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Acl::$_isAllowedPrivilege (string) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -155,12 +149,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $data',
 	'identifier' => 'parameter.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
 ];
 $ignoreErrors[] = [
@@ -350,12 +338,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $length of method Zend_Amf_Util_BinaryStream::readBytes() expects int, float given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -418,12 +400,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always true.',
 	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Application.php',
 ];
@@ -866,12 +842,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Cache_Exceptions is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -914,12 +884,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/BlackHole.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type string supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_File::_fileGetContents() should return string but returns false.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -939,12 +903,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_File::_hash() should return string but returns int<0, max>.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_File::_path() should return string but returns list<string>.',
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/File.php',
@@ -986,12 +944,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Libmemcached.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Libmemcached.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_Memcached::clean() should return bool but return statement is missing.',
 	'identifier' => 'return.missing',
 	'count' => 1,
@@ -1001,12 +953,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_Memcached::getMetadatas() should return array but returns false.',
 	'identifier' => 'return.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Memcached.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Memcached.php',
 ];
 $ignoreErrors[] = [
@@ -1049,12 +995,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between SQLiteResult and false will always evaluate to false.',
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 5,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
 ];
 $ignoreErrors[] = [
@@ -1118,12 +1058,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #4 $specificLifetime (false) of method Zend_Cache_Backend_WinCache::save() is incompatible with type int.',
 	'identifier' => 'parameter.defaultValue',
 	'count' => 1,
@@ -1144,12 +1078,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_WinCache::load() should return string but returns false.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/WinCache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/WinCache.php',
 ];
@@ -1178,12 +1106,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Xcache.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Xcache.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #4 $specificLifetime (false) of method Zend_Cache_Backend_ZendPlatform::save() is incompatible with type int.',
 	'identifier' => 'parameter.defaultValue',
 	'count' => 1,
@@ -1208,12 +1130,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendPlatform.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendPlatform.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #4 $specificLifetime (false) of method Zend_Cache_Backend_ZendServer::save() is incompatible with type int.',
 	'identifier' => 'parameter.defaultValue',
 	'count' => 1,
@@ -1222,12 +1138,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_ZendServer::clean() should return bool but return statement is missing.',
 	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendServer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendServer.php',
 ];
@@ -1589,12 +1499,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Cloud_DocumentService_Adapter_WindowsAzure::updateDocument() should be compatible with return type (bool) of method Zend_Cloud_DocumentService_Adapter::updateDocument()',
 	'identifier' => 'method.childReturnType',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
@@ -2536,12 +2440,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoRender().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Controller_Action_Helper_Json is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Json.php',
 ];
@@ -3896,12 +3794,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $identQuote might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -3968,12 +3860,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $result might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -4001,12 +3887,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $lob_as_string of method Zend_Db_Statement_Oracle::setLobAsString() expects string, bool given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Oracle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Oracle.php',
 ];
 $ignoreErrors[] = [
@@ -4072,12 +3952,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $bind',
 	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
 ];
@@ -4244,12 +4118,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlsrv.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Db_Adapter_Exceptions is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlsrv.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $type might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -4270,7 +4138,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Unreachable statement - code above always terminates.',
 	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
+	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Sqlsrv.php',
 ];
 $ignoreErrors[] = [
@@ -4406,12 +4274,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Db2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Db2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $affected_rows on object|resource.',
 	'identifier' => 'property.nonObject',
 	'count' => 1,
@@ -4520,12 +4382,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Db_Adapter_Abstract::_getExecuteMode().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -4589,12 +4445,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
 ];
 $ignoreErrors[] = [
@@ -4768,12 +4618,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
 	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
 ];
@@ -7684,7 +7528,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Unreachable statement - code above always terminates.',
 	'identifier' => 'deadCode.unreachable',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
 ];
 $ignoreErrors[] = [
@@ -8258,12 +8102,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Element.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type string supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $value of method Zend_Form_Element_File::isValid() expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -8684,12 +8522,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/EventQuery.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/EventQuery.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Class Zend_Gdata_Calendar_Extension_WebContent referenced with incorrect case: Zend_Gdata_Calendar_Extension_Webcontent.',
 	'identifier' => 'class.nameCase',
 	'count' => 2,
@@ -8960,12 +8792,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method getResponse() on an unknown class Zend_Gdata_Exception.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $login on string|Zend_Gdata_App_Entry.',
 	'identifier' => 'property.nonObject',
 	'count' => 2,
@@ -9026,24 +8852,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type mixed is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $e of static method Zend_Gdata_Gapps::throwServiceExceptionIfDetected() expects Zend_Gdata_Exception, Zend_Gdata_App_HttpException given.',
-	'identifier' => 'argument.type',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $e of method Zend_Gdata_Gapps::throwServiceExceptionIfDetected() has invalid type Zend_Gdata_Exception.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_Gdata_App::delete() (void) is used.',
 	'identifier' => 'staticMethod.void',
 	'count' => 1,
@@ -9053,12 +8861,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_Gdata_Gapps::delete() (void) is used.',
 	'identifier' => 'method.void',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Throwing object of an unknown class Zend_Gdata_Exception.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
 $ignoreErrors[] = [
@@ -10460,18 +10262,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/CookieJar.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/Http/CookieJar.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\RuntimeException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Header/HeaderValue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Http_Header_SetCookie::fromString() has invalid return type SetCookie.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -10862,12 +10652,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Json/Decoder.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Json/Decoder.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -11120,12 +10904,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Converter.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Ldap/Converter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $attribute',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -11141,12 +10919,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $caseFold of static method Zend_Ldap_Dn::_caseFoldRdn() expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Dn.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Ldap/Dn.php',
 ];
 $ignoreErrors[] = [
@@ -11780,12 +11552,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Locale/Data.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Locale/Data.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Locale_Format::convertPhpToIsoFormat() should return string but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -11794,12 +11560,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $value of static method Zend_Locale_Data::getList() expects bool|string, array<int, string> given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale/Format.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Locale/Format.php',
 ];
@@ -12062,20 +11822,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\RuntimeException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Header/HeaderName.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">=" between int<0, 255> and 0 is always true.',
 	'identifier' => 'greaterOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Header/HeaderValue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\RuntimeException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Header/HeaderValue.php',
 ];
@@ -12305,12 +12053,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $code of method Zend_Mail_Protocol_Abstract::_expect() expects array|string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 9,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Smtp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Smtp.php',
 ];
 $ignoreErrors[] = [
@@ -12704,12 +12446,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Transport_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Mail_Transport_Smtp::$_connection (Zend_Mail_Protocol_Smtp) does not accept Zend_Mail_Protocol_Abstract.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -12824,12 +12560,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Measure/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $input of static method Zend_Locale_Format::getInteger() expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -12874,12 +12604,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Measure_Number::setType() should be compatible with return type (Zend_Measure_Abstract) of method Zend_Measure_Abstract::setType()',
 	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
 ];
@@ -13016,12 +12740,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_MemoryException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Memory_Manager::$_backend (Zend_Cache_Backend_Interface) does not accept Zend_Cache_Backend.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -13124,12 +12842,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 10,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::toJson().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -13151,12 +12863,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mobile_Push_Response_Gcm) of method Zend_Mobile_Push_Gcm::send() should be compatible with return type (bool) of method Zend_Mobile_Push_Interface::send()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Gcm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 4,
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Gcm.php',
 ];
 $ignoreErrors[] = [
@@ -13217,12 +12923,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getXmlPayload().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 7,
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
 ];
 $ignoreErrors[] = [
@@ -14192,12 +13892,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$S.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -14327,12 +14021,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $dictionary of class Zend_Pdf_Action_Unknown constructor expects Zend_Pdf_Element_Dictionary, Zend_Pdf_Element given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 19,
 	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
 ];
 $ignoreErrors[] = [
@@ -14762,12 +14450,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 9,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$items.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -14777,12 +14459,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_Destination_Explicit::$_destinationArray (Zend_Pdf_Element_Array) does not accept Zend_Pdf_Element.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Explicit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Explicit.php',
 ];
 $ignoreErrors[] = [
@@ -15470,12 +15146,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $cmapLength might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 2,
@@ -15492,18 +15162,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Filter/Ascii85.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $hexCodeHigh might not be defined.',
@@ -15536,12 +15194,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Filter/Compression/Lzw.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Filter/Compression/Lzw.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">" between int<129, 255> and 128 is always true.',
 	'identifier' => 'greater.alwaysTrue',
 	'count' => 1,
@@ -15560,22 +15212,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Image.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/Image.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$Kids.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/NameTree.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$A.',
@@ -15917,12 +15557,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_Canvas_Abstract::$_style (Zend_Pdf_Style) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
 ];
 $ignoreErrors[] = [
@@ -16802,12 +16436,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$dictionary.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -16817,12 +16445,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object::skipFilters().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Tiff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 8,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Tiff.php',
 ];
 $ignoreErrors[] = [
@@ -16836,12 +16458,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 9,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Tiff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/ImageFactory.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Length.',
@@ -16895,12 +16511,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Result of || is always true.',
 	'identifier' => 'booleanOr.alwaysTrue',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
 ];
 $ignoreErrors[] = [
@@ -18104,12 +17714,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Search_Lucene_Exceptions is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $num of method Zend_Search_Lucene_Storage_File::readBytes() expects int, float given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -18184,12 +17788,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Undefined variable: $fdtFile',
 	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
@@ -18580,12 +18178,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Invalid type Zend_Search_Lucene to throw.',
 	'identifier' => 'throw.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Search_Lucene is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
 ];
@@ -19018,12 +18610,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/CustomerReview.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $access_key',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -19052,12 +18638,6 @@ $ignoreErrors[] = [
 	'identifier' => 'empty.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Image.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $instaceId',
@@ -20002,12 +19582,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Service_LiveDocx_Excpetion is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $method might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -20278,36 +19852,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\BadMethodCallException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\DomainException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 6,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\DomainException|Exception\\InvalidArgumentException|Exception\\OutOfRangeException|Zend_Http_Client_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\DomainException|Zend_Http_Client_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 19,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\InvalidArgumentException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $cookiejar of method Zend_Http_Client::setCookieJar() expects bool|Zend_Http_CookieJar, array given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -20318,24 +19862,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between bool and 2 will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception\\DomainException is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter/Response.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Undefined variable: $client',
@@ -21112,12 +20638,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_SoapClient_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $options of method SoapClient::__soapCall() expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -21127,12 +20647,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Soap_Client::$_soapClient (SoapClient) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 18,
-	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
 ];
 $ignoreErrors[] = [
@@ -22792,12 +22306,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbTable.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbTable.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -23050,12 +22558,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Gettext.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Translation_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Gettext.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $bytes of method Zend_Translate_Adapter_Gettext::_readMOData() expects string, (float|int) given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -23076,12 +22578,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
 	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Translation_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
 ];
@@ -23110,12 +22606,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Translation_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_Tbx::$_cleared is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
@@ -23134,20 +22624,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tmx.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Translation_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tmx.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
 	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Translation_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
 ];
@@ -23160,12 +22638,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
 	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Zend_Translation_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
 ];
@@ -23192,18 +22664,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.defaultValue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Plural.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Plural.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Uri.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">" between int<1, max> and 0 is always true.',
@@ -25162,12 +24622,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/Translate.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Stream.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_Wildfire_Channel_HttpHeaders::$_instance (Zend_Wildfire_Channel_HttpHeaders) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 2,
@@ -25261,12 +24715,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_Wildfire_Plugin_FirePhp::$_instance (Zend_Wildfire_Plugin_FirePhp) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
 ];
 $ignoreErrors[] = [
@@ -25390,12 +24838,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws with type Exception|Zend_XmlRpcServer_Exception is not subtype of Throwable',
-	'identifier' => 'throws.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (array) of method Zend_XmlRpc_Server::getFunctions() should be compatible with return type (Zend_Server_Definition) of method Zend_Server_Abstract::getFunctions()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -25465,12 +24907,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$type by-ref type of method Zend_XmlRpc_Value::_extractTypeAndValue() expects string, int|string|null given.',
 	'identifier' => 'parameterByRef.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Value.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Value.php',
 ];
 $ignoreErrors[] = [

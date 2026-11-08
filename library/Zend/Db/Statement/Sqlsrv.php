@@ -297,7 +297,6 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
             default:
                 require_once 'Zend/Db/Statement/Sqlsrv/Exception.php';
                 throw new Zend_Db_Statement_Sqlsrv_Exception("Invalid fetch mode '$style' specified");
-                break;
         }
 
         return $row;

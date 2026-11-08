@@ -81,7 +81,6 @@ class Zend_Translate_Plural
             case 'vi':
             case 'zh':
                 return 0;
-                break;
 
             case 'af':
             case 'bn':

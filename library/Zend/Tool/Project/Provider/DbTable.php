@@ -162,7 +162,6 @@ class Zend_Tool_Project_Provider_DbTable
             $zendApp->bootstrap('db');
         } catch (Zend_Application_Exception $e) {
             throw new Zend_Tool_Project_Provider_Exception('Db resource not available, you might need to configure a DbAdapter.');
-            return;
         }
 
         /* @var Zend_Db_Adapter_Abstract $db */

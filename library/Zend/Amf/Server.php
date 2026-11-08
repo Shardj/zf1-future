@@ -423,7 +423,6 @@ class Zend_Amf_Server implements Zend_Server_Interface
             default :
                 require_once 'Zend/Amf/Server/Exception.php';
                 throw new Zend_Amf_Server_Exception('CommandMessage::' . $message->operation . ' not implemented');
-                break;
         }
         return $return;
     }

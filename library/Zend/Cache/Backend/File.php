@@ -917,7 +917,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @param  string $id Cache id
      * @param  boolean $parts if true, returns array of directory parts instead of single string
-     * @return string Complete directory path
+     * @return string|array Complete directory path, or its parts
      */
     protected function _path($id, $parts = false)
     {

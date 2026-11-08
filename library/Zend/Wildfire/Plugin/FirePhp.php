@@ -470,7 +470,6 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
             default:
                 require_once 'Zend/Wildfire/Exception.php';
                 throw new Zend_Wildfire_Exception('Log style "'.$meta['Type'].'" not recognized!');
-                break;
         }
 
         if ($meta['Type'] != self::DUMP && $options['includeLineNumbers']) {
@@ -607,9 +606,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
             default:
                 require_once 'Zend/Wildfire/Exception.php';
                 throw new Zend_Wildfire_Exception('Structure of name "'.$structure.'" is not recognized.');
-                break;
         }
-        return false;
     }
 
     /**

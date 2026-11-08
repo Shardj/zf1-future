@@ -128,7 +128,6 @@ abstract class Zend_Uri
                 default:
                     require_once 'Zend/Uri/Exception.php';
                     throw new Zend_Uri_Exception("Scheme \"$scheme\" is not supported");
-                    break;
             }
         }
 

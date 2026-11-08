@@ -314,7 +314,7 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
      * @param integer $count
      * @param integer $offset OPTIONAL
      * @return string
-     * @throws Zend_Db_Adapter_Exceptions
+     * @throws Zend_Db_Adapter_Exception
      */
      public function limit($sql, $count, $offset = 0)
      {

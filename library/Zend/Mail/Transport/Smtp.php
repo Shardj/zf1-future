@@ -223,7 +223,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
      * @access  protected
      * @param   array $headers
      * @return  void
-     * @throws  Zend_Transport_Exception
+     * @throws  Zend_Mail_Transport_Exception
      */
     protected function _prepareHeaders($headers)
     {

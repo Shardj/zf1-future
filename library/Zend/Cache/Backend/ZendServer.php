@@ -190,7 +190,6 @@ abstract class Zend_Cache_Backend_ZendServer extends Zend_Cache_Backend implemen
             case Zend_Cache::CLEANING_MODE_ALL:
                 $this->_clear();
                 return true;
-                break;
             case Zend_Cache::CLEANING_MODE_OLD:
                 $this->_log("Zend_Cache_Backend_ZendServer::clean() : CLEANING_MODE_OLD is unsupported by the Zend Server backends.");
                 break;

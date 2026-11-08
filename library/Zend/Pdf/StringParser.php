@@ -243,16 +243,13 @@ class Zend_Pdf_StringParser
                 case '<<':
                     $this->offset += 2;
                     return '<<';
-                    break;
 
                 case '>>':
                     $this->offset += 2;
                     return '>>';
-                    break;
 
                 default:
                     return $this->data[$this->offset++];
-                    break;
             }
         } else {
             $start = $this->offset;

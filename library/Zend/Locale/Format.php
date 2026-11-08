@@ -173,7 +173,6 @@ class Zend_Locale_Format
                 default:
                     require_once 'Zend/Locale/Exception.php';
                     throw new Zend_Locale_Exception("Unknown option: '$name' = '$value'");
-                    break;
 
             }
         }

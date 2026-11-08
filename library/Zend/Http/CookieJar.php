@@ -256,21 +256,17 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
             switch ($ret_as) {
                 case self::COOKIE_OBJECT:
                     return $cookie;
-                    break;
 
                 case self::COOKIE_STRING_CONCAT_STRICT:
                     return rtrim(trim($cookie->__toString()), ';');
-                    break;
 
                 case self::COOKIE_STRING_ARRAY:
                 case self::COOKIE_STRING_CONCAT:
                     return $cookie->__toString();
-                    break;
 
                 default:
                     require_once 'Zend/Http/Exception.php';
                     throw new Zend_Http_Exception("Invalid value passed for \$ret_as: {$ret_as}");
-                    break;
             }
         } else {
             return false;
@@ -303,19 +299,16 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
             switch ($ret_as) {
                 case self::COOKIE_STRING_ARRAY:
                     return [$ptr->__toString()];
-                    break;
 
                 case self::COOKIE_STRING_CONCAT_STRICT:
                     // break intentionally omitted
 
                 case self::COOKIE_STRING_CONCAT:
                     return $ptr->__toString();
-                    break;
 
                 case self::COOKIE_OBJECT:
                 default:
                     return [$ptr];
-                    break;
             }
         }
 

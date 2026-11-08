@@ -1047,7 +1047,6 @@ class Zend_Locale_Data
             default :
                 require_once 'Zend/Locale/Exception.php';
                 throw new Zend_Locale_Exception("Unknown list ($path) for parsing locale data.");
-                break;
         }
 
         if (isset(self::$_cache)) {
@@ -1558,9 +1557,6 @@ class Zend_Locale_Data
                 }
                 break;
 
-                $temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $value . '\']/substitute', '', $value);
-                break;
-
             case 'fallbacktochar':
                 $temp = self::_getFile('characters', '/supplementalData/characters/character-fallback/character[@value=\'' . $value . '\']/substitute', '');
                 break;
@@ -1583,7 +1579,6 @@ class Zend_Locale_Data
             default :
                 require_once 'Zend/Locale/Exception.php';
                 throw new Zend_Locale_Exception("Unknown detail ($path) for parsing locale data.");
-                break;
         }
 
         if (is_array($temp)) {
