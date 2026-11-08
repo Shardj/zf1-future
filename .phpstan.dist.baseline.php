@@ -86,12 +86,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $data',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $stream of class Zend_Amf_Parse_Amf3_Serializer constructor expects Zend_Amf_Parse_OutputStream, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -144,18 +138,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $data',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $typeMarker',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Deserializer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $link of function mysqli_num_fields expects mysqli_result, resource given.',
@@ -284,12 +266,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $arg',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $message of class Zend_Amf_Value_Messaging_ErrorMessage constructor expects Zend_Amf_Value_Messaging_AbstractMessage|null, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -342,12 +318,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Amf/Util/BinaryStream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $content',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Value/MessageHeader.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Amf_Value_Messaging_AbstractMessage::$body (string) does not accept null.',
@@ -522,12 +492,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Auth.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @phpstan-ignore-next-line has invalid value ((constructor.unusedParameter)): Unexpected token ".unusedParameter)", expected \')\' at offset 212 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Auth/Adapter/Digest.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Auth_Adapter_Http::$_basicResolver (Zend_Auth_Adapter_Http_Resolver_Interface) in empty() is not falsy.',
@@ -1268,18 +1232,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $doNotTestCacheValidity',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $options',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $flag of function ob_implicit_flush expects int, false given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1466,12 +1418,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $document',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $query of method Zend_Cloud_DocumentService_Adapter_WindowsAzure::query() expects string|Zend_Cloud_DocumentService_Adapter_WindowsAzure_Query, Zend_Cloud_DocumentService_Query given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1502,12 +1448,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $args',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/DocumentService/Query.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_Infrastructure_Adapter::imagesInstance() has invalid return type ImageList.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1522,12 +1462,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to undefined constant Zend_Cloud_Infrastructure_Instance::SSH_KEY.',
 	'identifier' => 'classConstant.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $param',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php',
 ];
@@ -1736,18 +1670,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Rackspace.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_Infrastructure_Image::getAttribute() has invalid return type misc.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $data',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Image.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_Infrastructure_ImageList::current() has invalid return type Image.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1766,12 +1688,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/ImageList.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $list',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/ImageList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $image of method Zend_Cloud_Infrastructure_ImageList::addImage() has invalid type Image.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1780,24 +1696,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to constant TIMEOUT_STATUS_CHANGE on an unknown class Adapter.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Instance.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_Infrastructure_Instance::getAttribute() has invalid return type misc.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Instance.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $data',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Instance.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $param',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Instance.php',
 ];
@@ -1976,18 +1874,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/MessageSet.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $destination',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $options',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_StorageService_Adapter_FileSystem::getClient() has invalid return type strings.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1996,18 +1882,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_StorageService_Adapter_FileSystem::getClient() should return strings but returns string.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/FileSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $destination',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/FileSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $options',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/FileSystem.php',
 ];
@@ -2024,12 +1898,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/Rackspace.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $destination',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Cloud_StorageService_Adapter_Rackspace::storeItem() should be compatible with return type (bool) of method Zend_Cloud_StorageService_Adapter::storeItem()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -2040,18 +1908,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $destination',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/S3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $options',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/S3.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_StorageService_Adapter_WindowsAzure::fetchMetadata() should return array but returns false.',
@@ -2122,12 +1978,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Reflection_Docblock_Tag::getUrl().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Docblock/Tag/License.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $reflectionTagReturn',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Docblock/Tag/License.php',
 ];
@@ -2214,18 +2064,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Config/Writer/Ini.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $filename',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Config/Writer/Ini.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $prettyPrint',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Config/Writer/Json.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Console_Getopt::parse() should return $this(Zend_Console_Getopt) but empty return statement found.',
@@ -2402,12 +2240,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Controller_Action_Helper_ContextSwitch::$_currentContext (string) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -2422,12 +2254,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Session::setExpirationHops().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/FlashMessenger.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $namespace',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/FlashMessenger.php',
 ];
@@ -2516,12 +2342,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/HelperBroker/PriorityStack.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $dir',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Interface.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Instanceof between object and Zend_Controller_Action will always evaluate to false.',
 	'identifier' => 'instanceof.alwaysFalse',
 	'count' => 1,
@@ -2530,12 +2350,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always true.',
 	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Standard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $action',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Standard.php',
 ];
@@ -2606,12 +2420,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Plugin/ActionStack.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $request',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Plugin/Broker.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property ArrayObject<*NEVER*, *NEVER*>::$exception.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -2662,18 +2470,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Request_Http::set() with return type void returns null but should not return anything.',
 	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $paramSoures',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @var has invalid value (string;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 41 on line 3',
-	'identifier' => 'phpDoc.parseError',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
 ];
@@ -3716,12 +3512,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Date/DateObject.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $cache',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date/DateObject.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $day of static method Zend_Date_DateObject::dayOfWeek() expects int, float given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3878,12 +3668,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Oracle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $lob_as_string',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Oracle.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $lob_as_string of method Zend_Db_Statement_Oracle::setLobAsString() expects string, bool given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3950,12 +3734,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $bind',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -4013,12 +3791,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Adapter_Pdo_Ibm::getServerVersion() should return string but returns null.',
 	'identifier' => 'return.type',
 	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $bind',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
@@ -4172,12 +3944,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $param',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Profiler/Query.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Db_Profiler_Query::$_endedMicrotime (int) does not accept float.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -4216,12 +3982,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Select::query() should return Zend_Db_Statement but returns Zend_Db_Statement_Interface.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Select.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $tbl',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Select.php',
 ];
@@ -4646,12 +4406,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $definition',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $key',
 	'identifier' => 'parameter.notFound',
 	'count' => 1,
@@ -4724,34 +4478,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $adapter',
-	'identifier' => 'parameter.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Select.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $cond of method Zend_Db_Select::joinInner() expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Table/Select.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Table_Select::$_integrityCheck (array) does not accept default value of type true.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Select.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (string;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 141 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Debug.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (void;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 163 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Debug.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
@@ -4810,12 +4540,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_Data::rewind() with return type void returns mixed but should not return anything.',
 	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Data.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $identifier',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/Data.php',
 ];
@@ -4884,18 +4608,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $am',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/DateTextBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $strict',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/DateTextBox.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
@@ -4976,60 +4688,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Editor.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $extraPlugins',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Editor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $strict',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/NumberTextBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $clickSelect',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Slider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $intermediateChanges',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Slider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $showButtons',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Slider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $lowercase',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/TextBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $propercase',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/TextBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $trim',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/TextBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $uppercase',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/TextBox.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_Form_Element_ValidationTextBox::clearConstraints() should return Zend_Dojo_Form_Element_ValidationTextBox but returns Zend_Dojo_Form_Element_Dijit.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -5094,12 +4752,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Button.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $content',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/CheckBox.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $haystack of function strstr expects string, int given.',
@@ -5242,18 +4894,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $view with type Zend_Dojo_View_Interface is not subtype of native type Zend_View_Interface.',
 	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
 ];
@@ -5478,12 +5118,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/EventManager/GlobalEventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $priority',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/ListenerAggregate.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_EventManager_StaticEventManager::$instance (Zend_EventManager_StaticEventManager) does not accept null.',
@@ -5720,12 +5354,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $val',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Entry/Rss.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_FeedInterface::getHubs().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -5854,12 +5482,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Left side of || is always false.',
 	'identifier' => 'booleanOr.leftAlwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $url',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
 ];
@@ -6080,12 +5702,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $entryKey of method Zend_Feed_Reader_EntryAbstract::__construct() expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -6206,12 +5822,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/DublinCore/Entry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/DublinCore/Entry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Reader_Extension_DublinCore_Feed::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -6228,12 +5838,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/EntryAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $feed',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/FeedAbstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
@@ -6264,12 +5868,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Slash/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Thread/Entry.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getAuthors().',
@@ -6770,18 +6368,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Entry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $enclosures',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $index',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Entry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $flinks in empty() always exists and is not falsy.',
 	'identifier' => 'empty.variable',
 	'count' => 1,
@@ -6866,12 +6452,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $entry',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Writer_Feed_FeedAbstract::getAuthors() should return array but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -6892,12 +6472,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $category with type string is incompatible with native type array.',
 	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed/FeedAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $index',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed/FeedAbstract.php',
 ];
@@ -7052,18 +6626,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $filter',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $validator',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $filter of method Zend_File_Transfer_Adapter_Abstract::addFilter() expects array|string, Zend_Filter_Interface given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7108,24 +6670,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_File_Transfer_Adapter_Http::setValidators() should return Zend_File_Transfer_Adapter_Http but returns Zend_File_Transfer_Adapter_Abstract.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $file',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $validator',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
 ];
@@ -7196,12 +6740,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $locale',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $locale of static method Zend_Locale::getTranslation() expects string|Zend_Locale|null, array given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7242,12 +6780,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Filter/Compress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $level',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress/Bz2.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (bool) of method Zend_Filter_Compress_Rar::decompress() should be compatible with return type (string) of method Zend_Filter_Compress_CompressInterface::decompress()',
@@ -7406,18 +6938,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws has invalid value (): Unexpected token "\\n     ", expected type at offset 146 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $options',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Openssl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $keys might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 3,
@@ -7478,12 +6998,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/HtmlEntities.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $throwTargetExceptions',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Inflector.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $options of method Zend_Filter_Inflector::setOptions() expects array, Zend_Config given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7508,12 +7022,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Filter_Input::$_translator (Zend_Translate) does not accept Zend_Translate_Adapter.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -7532,18 +7040,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $locale',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/LocalizedToNormalized.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $locale',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/NormalizedToLocalized.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array<mixed, mixed> will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -7560,30 +7056,6 @@ $ignoreErrors[] = [
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Filter/StripTags.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $separator',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Word/DashToUnderscore.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $replacementSeperator',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Word/SeparatorToSeparator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $separator',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Word/UnderscoreToDash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $separator',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Word/UnderscoreToSeparator.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
@@ -7958,12 +7430,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewScript.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $module',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewScript.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -8192,22 +7658,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Analytics/AccountEntry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Analytics/DataQuery.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Gdata_Query::$_url (string) in isset() is not nullable.',
 	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Analytics/DataQuery.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $attribute',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Analytics/Extension/TableId.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Argument of an invalid type object|string supplied for foreach, only iterables are supported.',
@@ -8246,30 +7700,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $allowWeak',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $headers',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $majorProcolVersion',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $minorProcolVersion',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $use_include_path of function file_get_contents expects bool, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -8294,20 +7724,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App/Base.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/Base.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_App_BaseMediaSource::__set() with return type void returns mixed but should not return anything.',
 	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/BaseMediaSource.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/App/BaseMediaSource.php',
 ];
@@ -8339,12 +7757,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Gdata_App_Feed::$entries.',
 	'identifier' => 'property.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/App/Feed.php',
 ];
 $ignoreErrors[] = [
@@ -8402,12 +7814,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App/HttpException.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $timeout',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/LoggingHttpClientAdapterSocket.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Gdata_App_MediaSource::getFilename().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -8436,12 +7842,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Gdata/AuthSub.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Books/Extension/AnnotationLink.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Class Zend_Gdata_App_Extension_Link referenced with incorrect case: Zend_Gdata_App_Extension_link.',
@@ -8510,12 +7910,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/EventQuery.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/EventQuery.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Gdata_Query::$_url (string) in isset() is not nullable.',
 	'identifier' => 'isset.property',
 	'count' => 1,
@@ -8574,66 +7968,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Docs/Query.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Creator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Description.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Format.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Identifier.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Language.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Publisher.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Rights.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Subject.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $element',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/DublinCore/Extension/Title.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getDOM() on string.',
@@ -8828,30 +8162,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $emaiList',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $extraHaders',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $startEmailListName',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $username',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_Gdata_App::delete() (void) is used.',
 	'identifier' => 'staticMethod.void',
 	'count' => 1,
@@ -8900,22 +8210,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/EmailListRecipientQuery.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/EmailListRecipientQuery.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_App_Base::__construct() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/Error.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @var has invalid value (boolean.): Unexpected token ".", expected TOKEN_HORIZONTAL_WS at offset 130 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/Extension/Login.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Gapps_Extension_Quota::getLimit() should return string but returns int.',
@@ -8978,18 +8276,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupQuery.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $startGroupName',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupQuery.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupQuery.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Argument of an invalid type Zend_Gdata_Gapps_Extension_Property supplied for foreach, only iterables are supported.',
 	'identifier' => 'foreach.nonIterable',
 	'count' => 2,
@@ -9011,12 +8297,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Gapps_MemberQuery::getStartMemberId() should return string but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/MemberQuery.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/MemberQuery.php',
 ];
 $ignoreErrors[] = [
@@ -9070,12 +8350,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Gapps_UserQuery::getStartUsername() should return string but returns null.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/UserQuery.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/UserQuery.php',
 ];
@@ -9374,12 +8648,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/MediaMimeStream.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $bufferSize',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/MediaMimeStream.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $fileHandle of class Zend_Gdata_MimeFile constructor expects string, resource|false given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -9406,36 +8674,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Gdata_Query::setUser().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $url',
-	'identifier' => 'parameter.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (void.): Unexpected token ".", expected TOKEN_HORIZONTAL_WS at offset 257 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (void.): Unexpected token ".", expected TOKEN_HORIZONTAL_WS at offset 265 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (void.): Unexpected token ".", expected TOKEN_HORIZONTAL_WS at offset 266 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (void.): Unexpected token ".", expected TOKEN_HORIZONTAL_WS at offset 273 on line 8',
-	'identifier' => 'phpDoc.parseError',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
 ];
@@ -9998,12 +9236,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $uri',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/CellEntry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Gdata_Spreadsheets_CellFeed::$colCount.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -10196,12 +9428,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Client/Adapter/Curl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $http_ver',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Client/Adapter/Curl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $port of method Zend_Http_Client_Adapter_Proxy::connectHandshake() expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -10246,18 +9472,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Http_CookieJar::getCookie() should return string|Zend_Http_Cookie but returns false.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/CookieJar.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $dom_array',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/CookieJar.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $uri',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/CookieJar.php',
 ];
@@ -10414,12 +9628,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Offset 2 on array{non-falsy-string, string, string} in isset() always exists and is not nullable.',
 	'identifier' => 'isset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $browserType',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
 ];
@@ -10598,12 +9806,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Spam.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $contents',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Storage/Session.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of method Zend_Http_UserAgent_AbstractDevice::setFeature() expects string, false given.',
 	'identifier' => 'argument.type',
 	'count' => 4,
@@ -10646,18 +9848,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Json/Decoder.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Json/Decoder.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Json/Encoder.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #1 $request (false) of method Zend_Json_Server::handle() is incompatible with type Zend_Json_Server_Request.',
 	'identifier' => 'parameter.defaultValue',
 	'count' => 1,
@@ -10686,12 +9876,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Json/Server/Response.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $Id',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Json/Server/Smd.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
@@ -10768,12 +9952,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Ldap::getNode() invoked with 2 parameters, 1 required.',
 	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap.php',
 ];
@@ -10896,18 +10074,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Converter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $ytpe',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Ldap/Converter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $attribute',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Dn.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $array of function implode expects array<string>, array<int, array|int|string> given.',
@@ -11312,12 +10478,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader/ClassMapAutoloader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $location',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/ClassMapAutoloader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'If condition is always false.',
 	'identifier' => 'if.alwaysFalse',
 	'count' => 1,
@@ -11447,12 +10607,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Locale::isLocale() should return bool but returns string.',
 	'identifier' => 'return.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Locale.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $searchorder',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Locale.php',
 ];
 $ignoreErrors[] = [
@@ -11828,18 +10982,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Header/HeaderValue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $rawMessage',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Message.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $rawMessage',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Message/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Mail_Part::$contentType.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -11882,12 +11024,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws has invalid value (Zend_Exception, Zend_Mail_Exception): Unexpected token ",", expected TOKEN_HORIZONTAL_WS at offset 731 on line 14',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $headers of static method Zend_Mime_Decode::splitMessage() expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -11908,12 +11044,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #3 $firstName (int) of method Zend_Mail_Part_Interface::getHeaderField() is incompatible with type string.',
 	'identifier' => 'parameter.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Part/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @throws has invalid value (Zend_Exception, Zend_Mail_Exception): Unexpected token ",", expected TOKEN_HORIZONTAL_WS at offset 731 on line 14',
-	'identifier' => 'phpDoc.parseError',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Part/Interface.php',
 ];
@@ -11956,12 +11086,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always true.',
 	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $filter',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
 ];
@@ -12022,12 +11146,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::undelete() should return null but return statement is missing.',
 	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $try_apop',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
 ];
@@ -12422,12 +11540,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $status',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Transport/SendgridSmtp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Mail_Transport_Sendmail), \'_handleMailErrors\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -12440,28 +11552,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $client',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Mail_Transport_Smtp::$_connection (Zend_Mail_Protocol_Smtp) does not accept Zend_Mail_Protocol_Abstract.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $input',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Parser/Bbcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $tokens',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Parser/Bbcode.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Markup_TokenList) of method Zend_Markup_Parser_Bbcode::parse() should be compatible with return type (array) of method Zend_Markup_Parser_ParserInterface::parse()',
@@ -12502,12 +11596,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $filter with type string is incompatible with native type Zend_Filter_Interface.',
 	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $tokenList',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
 ];
@@ -12614,42 +11702,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Memory/AccessController.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $memoryManager',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/AccessController.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (&string): Unexpected token "&", expected type at offset 178 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/AccessController.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (&string): Unexpected token "&", expected type at offset 178 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $id',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Locked.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $memoryManager',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Locked.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (&string): Unexpected token "&", expected type at offset 178 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Locked.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Memory_Manager::load().',
 	'identifier' => 'method.internal',
 	'count' => 4,
@@ -12676,12 +11728,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Memory_Value::startTrace().',
 	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (&string): Unexpected token "&", expected type at offset 178 on line 7',
-	'identifier' => 'phpDoc.parseError',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
 ];
@@ -12730,12 +11776,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::unloadValue().',
 	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $backendOptions',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
 ];
@@ -13352,12 +12392,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $staus',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #5 $expires of method Zend_OpenId_Consumer_Storage::addAssociation() expects long, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -13578,12 +12612,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Paginator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $totalRowCount',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator/Adapter/DbSelect.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Db_Select::getTable().',
@@ -14348,30 +13376,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((needs implementation)): Unexpected token "implementation", expected \')\' at offset 108 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((needs implementation)): Unexpected token "implementation", expected \')\' at offset 111 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((needs implementation)): Unexpected token "implementation", expected \')\' at offset 169 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((not implemented now)): Unexpected token "implemented", expected \')\' at offset 96 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $image with type Zend_Pdf_Image is incompatible with native type Zend_Pdf_Resource_Image.',
 	'identifier' => 'parameter.phpDocType',
 	'count' => 1,
@@ -14400,30 +13404,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((needs implementation)): Unexpected token "implementation", expected \')\' at offset 108 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((needs implementation)): Unexpected token "implementation", expected \')\' at offset 111 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((needs implementation)): Unexpected token "implementation", expected \')\' at offset 169 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @internal has invalid value ((not implemented now)): Unexpected token "implemented", expected \')\' at offset 96 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Interface.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $image with type Zend_Pdf_Image is incompatible with native type Zend_Pdf_Resource_Image.',
@@ -14534,12 +13514,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $offset',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Array::toString() has invalid type Zend_Pdf_Factory.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -14562,12 +13536,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $property',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Dictionary.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Dictionary::toString() has invalid type Zend_Pdf_Factory.',
@@ -14774,12 +13742,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $objectValue',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_ElementFactory::$_attachedFactories (array) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -14804,32 +13766,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $factory',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $objectValue',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory/Interface.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Pdf_ElementFactory_Interface::close().',
 	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory/Proxy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $factory',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory/Proxy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $objectValue',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory/Proxy.php',
 ];
@@ -14848,12 +13786,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font::$fontType.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (mixed (optional, multiple) Additional arguments): Unexpected token "(", expected variable at offset 257 on line 8',
-	'identifier' => 'phpDoc.parseError',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font.php',
 ];
@@ -15130,18 +14062,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$yMin.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $encodingID',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $maxVertion',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
 ];
@@ -15424,18 +14344,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf_Outline_Loaded::isItalic() should return bool but returns int<0, 1>.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parentAction',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $processedOutlines',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
 ];
@@ -15755,18 +14663,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Pdf_Resource_Font::toEmSpace().',
 	'identifier' => 'method.internal',
 	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $embeddingOptions',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $glyphNumbers',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
 ];
 $ignoreErrors[] = [
@@ -16490,12 +15386,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $pdfString',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_StringParser::$_context (Zend_Pdf_Element_Reference_Context) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -16562,12 +15452,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Target.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (Zend_Pdf_Destination|): Unexpected token "\\n     * ", expected type at offset 161 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Target.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (int) of method Zend_Pdf_Trailer_Generator::getPDFLength() should be compatible with return type (string) of method Zend_Pdf_Trailer::getPDFLength()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -16584,18 +15468,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Trailer/Keeper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $objCount',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/UpdateInfoContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Pdf_UpdateInfoContainer::$_dump (Zend_Memory_Container|null) does not accept Zend_Memory_Container_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/UpdateInfoContainer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $current on string.',
@@ -16676,12 +15548,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/ProgressBar/Adapter/Console.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $spec of class Zend_Queue constructor expects array|string|Zend_Config|Zend_Queue_Adapter|null, Zend_Queue_Adapter_AdapterInterface given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -16748,18 +15614,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $config',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Queue_Adapter_Activemq::$_client (Zend_Queue_Adapter_Stomp_client) does not accept Zend_Queue_Stomp_Client.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -16792,12 +15646,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Queue_Adapter_AdapterAbstract::getQueue() has invalid return type Zend_Queue_Adapter_Abstract.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/AdapterAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $config',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/AdapterAbstract.php',
 ];
@@ -16841,24 +15689,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to method getName() on an unknown class Zend_Queue_Adapter_Abstract.',
 	'identifier' => 'class.notFound',
 	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value ($this;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 141 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (array;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 109 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
 ];
 $ignoreErrors[] = [
@@ -16928,12 +15758,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -16958,12 +15782,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -16980,12 +15798,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Null.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Queue_Message::getJobId().',
@@ -17063,12 +15875,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always false.',
 	'identifier' => 'booleanNot.alwaysFalse',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
 ];
 $ignoreErrors[] = [
@@ -17204,18 +16010,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value ($this;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 221 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (true;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 295 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function stream_set_blocking expects bool, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -17234,18 +16028,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (Zend_Queue_Stomp_Client_ConnectionInterface;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 198 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/ConnectionInterface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value ($this;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 128 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Frame.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (string|false) of method Zend_Queue_Stomp_Frame::getBody() should be compatible with return type ($this(Zend_Queue_Stomp_FrameInterface)) of method Zend_Queue_Stomp_FrameInterface::getBody()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -17256,18 +16038,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Frame.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value ($string): Unexpected token "$string", expected type at offset 141 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/FrameInterface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value ($this;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 128 on line 7',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/FrameInterface.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #1 $filter (int) of method Zend_Reflection_Class::getMethods() is incompatible with type string.',
@@ -17444,12 +16214,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $fault',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $exception_handler of function set_exception_handler expects (callable(Throwable): void)|null, array{$this(Zend_Rest_Server), \'fault\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -17470,12 +16234,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene::termDocsFilter() should return Zend_Search_Lucene_Index_DocsFilter but returns array.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $maxMergeDocs',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
 ];
@@ -17558,32 +16316,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $similarity',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Analysis/Analyzer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene_Analysis_Analyzer_Common::normalize() should return Zend_Search_Lucene_Analysis_Token but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Analysis/Analyzer/Common.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Analysis/Token.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene_Analysis_TokenFilter_ShortWords::normalize() should return Zend_Search_Lucene_Analysis_Token but returns null.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Analysis/TokenFilter/ShortWords.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $short',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Analysis/TokenFilter/ShortWords.php',
 ];
@@ -17630,20 +16370,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Document/OpenXml.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $input',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/FSM.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene_Field::getUtf8Value() should return string but returns bool.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Field.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $encoding',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Field.php',
 ];
@@ -17816,12 +16544,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $segment',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentMerger.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #6 $isTokenized of class Zend_Search_Lucene_Field constructor expects bool, int<0, 1> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -17894,12 +16616,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $cleanUpLock',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $number of function base_convert expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -17948,18 +16664,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $maxMergeDocs',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $defaultLockDirectory',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/LockManager.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Search_Lucene_Interface::addReference().',
 	'identifier' => 'method.internal',
 	'count' => 2,
@@ -17972,22 +16676,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $maxMergeDocs',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Proxy::$_index (Zend_Search_Lucene_Interface) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $operator',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/BooleanExpressionRecognizer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Search_Query::$_currentColorIndex is never read, only written.',
@@ -18078,12 +16770,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.extendsInternalClass',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Term.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $sign',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Term.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Search_Query_Term::$_termFreqs (array) does not accept int.',
@@ -18206,20 +16892,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $tokText',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryToken.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Search_Lucene_Search_Similarity::encodeNorm() should return int but returns float.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Similarity.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $b',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Similarity.php',
 ];
@@ -18332,12 +17006,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/PythonPickle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $sequence',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/PythonPickle.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $base of function bcpow expects numeric-string, 2 given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -18416,12 +17084,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $string',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $parameter of method Zend_Server_Method_Prototype::addParameter() expects string, Zend_Server_Method_Parameter given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -18452,32 +17114,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Server/Definition.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (null|array Optional array of arguments to pass to callbacks at
-dispatch.): Unexpected token "Optional", expected variable at offset 274 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (null|array Optional array of arguments to pass to callbacks at
-dispatch.): Unexpected token "Optional", expected variable at offset 657 on line 16',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $array',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Interface.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parameter',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Method/Prototype.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #2 $argv (false) of method Zend_Server_Reflection::reflectClass() is incompatible with type array|null.',
 	'identifier' => 'parameter.defaultValue',
 	'count' => 1,
@@ -18505,18 +17141,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $function',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $params',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
 ];
 $ignoreErrors[] = [
@@ -18562,46 +17186,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Amazon.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $access_key',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $secret_key',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNameSpaceNode|DOMNode::$data.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Accessories.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parameters',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Authentication/V1.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $queue_url',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Authentication/V1.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parameters',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Authentication/V2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $queue_url',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Authentication/V2.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNameSpaceNode|DOMNode::$data.',
@@ -18610,40 +17198,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/CustomerReview.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $access_key',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parameters',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $secretKey',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $secret_key',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $region in empty() always exists and is not falsy.',
 	'identifier' => 'empty.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $instaceId',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Instance.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $keyName of method Zend_Service_Amazon_Ec2_Keypair::describe() has invalid type rarray.',
@@ -18918,24 +17476,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Service_Amazon_Sqs::getAttribute() should return string but returns array<string, string>.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Sqs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parameters',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Sqs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $queue',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Sqs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $region',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Sqs.php',
 ];
@@ -19594,12 +18134,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $get',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Rackspace_Abstract::$errorCode (string) does not accept int<min, 203>|int<205, max>.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -19732,12 +18266,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Servers/SharedIpGroup.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $shared',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Servers/SharedIpGroupList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Constant MCRYPT_MODE_CBC not found.',
 	'identifier' => 'constant.notFound',
 	'count' => 1,
@@ -19840,18 +18368,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/StrikeIron/Base.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $param',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/StrikeIron/Base.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $params',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $cookiejar of method Zend_Http_Client::setCookieJar() expects bool|Zend_Http_CookieJar, array given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -19888,12 +18404,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $root',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function chmod expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -19912,196 +18422,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $root',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/Scaffolders/DefaultScaffolder/index.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always true.',
 	'identifier' => 'booleanNot.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Credentials/SharedKey.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (Zend_Service_WindowsAzure_Diagnostics_ConfigurationDiagnosticInfrastructureLogs	DiagnosticInfrastructureLogs	Diagnostic infrastructure logs): Unexpected token "DiagnosticInfrastructureLogs", expected variable at offset 520 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDataSources.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (Zend_Service_WindowsAzure_Diagnostics_ConfigurationDirectories						Directories						Directories): Unexpected token "Directories", expected variable at offset 914 on line 13',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDataSources.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (Zend_Service_WindowsAzure_Diagnostics_ConfigurationLogs							Logs							Logs): Unexpected token "Logs", expected variable at offset 411 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDataSources.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (Zend_Service_WindowsAzure_Diagnostics_ConfigurationPerformanceCounters				PerformanceCounters				Performance counters): Unexpected token "PerformanceCounters", expected variable at offset 667 on line 11',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDataSources.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (Zend_Service_WindowsAzure_Diagnostics_ConfigurationWindowsEventLog					WindowsEventLog					Windows Event Log): Unexpected token "WindowsEventLog", expected variable at offset 795 on line 12',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDataSources.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int																				OverallQuotaInMB				Overall quota in MB): Unexpected token "OverallQuotaInMB", expected variable at offset 296 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDataSources.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		BufferQuotaInMB						Buffer quota in MB): Unexpected token "BufferQuotaInMB", expected variable at offset 278 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDiagnosticInfrastructureLogs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes): Unexpected token "ScheduledTransferPeriodInMinutes", expected variable at offset 336 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDiagnosticInfrastructureLogs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (string	ScheduledTransferLogLevelFilter		Scheduled transfer log level filter): Unexpected token "ScheduledTransferLogLevelFilter", expected variable at offset 426 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDiagnosticInfrastructureLogs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (array	Subscriptions						Subscriptions): Unexpected token "Subscriptions", expected variable at offset 425 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDirectories.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		BufferQuotaInMB						Buffer quota in MB): Unexpected token "BufferQuotaInMB", expected variable at offset 278 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDirectories.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes): Unexpected token "ScheduledTransferPeriodInMinutes", expected variable at offset 336 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDirectories.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Service_WindowsAzure_Diagnostics_ConfigurationInstance::$DataSources.',
-	'identifier' => 'property.notFound',
-	'count' => 37,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (Zend_Service_WindowsAzure_Diagnostics_ConfigurationDataSources	DataSources	Data sources): Unexpected token "DataSources", expected variable at offset 336 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationInstance.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		BufferQuotaInMB						Buffer quota in MB): Unexpected token "BufferQuotaInMB", expected variable at offset 278 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationLogs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes): Unexpected token "ScheduledTransferPeriodInMinutes", expected variable at offset 336 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationLogs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (string	ScheduledTransferLogLevelFilter		Scheduled transfer log level filter): Unexpected token "ScheduledTransferLogLevelFilter", expected variable at offset 426 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationLogs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (array	Subscriptions						Subscriptions): Unexpected token "Subscriptions", expected variable at offset 425 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationPerformanceCounters.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		BufferQuotaInMB						Buffer quota in MB): Unexpected token "BufferQuotaInMB", expected variable at offset 278 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationPerformanceCounters.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes): Unexpected token "ScheduledTransferPeriodInMinutes", expected variable at offset 336 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationPerformanceCounters.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (array	Subscriptions						Subscriptions): Unexpected token "Subscriptions", expected variable at offset 514 on line 11',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationWindowsEventLog.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		BufferQuotaInMB						Buffer quota in MB): Unexpected token "BufferQuotaInMB", expected variable at offset 278 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationWindowsEventLog.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		ScheduledTransferPeriodInMinutes	Scheduled transfer period in minutes): Unexpected token "ScheduledTransferPeriodInMinutes", expected variable at offset 336 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationWindowsEventLog.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (string	ScheduledTransferLogLevelFilter		Scheduled transfer log level filter): Unexpected token "ScheduledTransferLogLevelFilter", expected variable at offset 426 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/ConfigurationWindowsEventLog.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		DirectoryQuotaInMB		Directory quota in MB): Unexpected token "DirectoryQuotaInMB", expected variable at offset 355 on line 10',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/DirectoryConfigurationSubscription.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (string	Container				Container): Unexpected token "Container", expected variable at offset 314 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/DirectoryConfigurationSubscription.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (string	Path					Path): Unexpected token "Path", expected variable at offset 280 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/DirectoryConfigurationSubscription.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Unreachable statement - code above always terminates.',
 	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (int		SampleRateInSeconds					Sample rate in seconds): Unexpected token "SampleRateInSeconds", expected variable at offset 337 on line 9',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/PerformanceCounterSubscription.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @property has invalid value (string	CounterSpecifier					Counter specifier): Unexpected token "CounterSpecifier", expected variable at offset 280 on line 8',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Diagnostics/PerformanceCounterSubscription.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $rowKey of class Zend_Service_WindowsAzure_Storage_DynamicTableEntity constructor expects string, float given.',
@@ -20148,12 +18478,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Service_WindowsAzure_Management_Client::waitForOperation() should return Zend_Service_WindowsAzure_Management_OperationStatusInstance but returns null.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Management/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $deploymentSlot',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Management/Client.php',
 ];
@@ -20216,12 +18540,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $parentElement',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_WindowsAzure_Storage_Batch::$_storageClient (Zend_Service_WindowsAzure_Storage_BatchStorageAbstract) does not accept null.',
@@ -20330,18 +18648,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/Blob/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/DynamicTableEntity.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/DynamicTableEntity.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Undefined variable: $type',
@@ -20512,12 +18818,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Yahoo/WebResultSet.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $interface',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{\'Zend_Session…\', \'handleSessionStartE…\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -20540,12 +18840,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session/Abstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Session_Namespace::__unset() with return type void returns null but should not return anything.',
@@ -20614,30 +18908,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/AutoDiscover.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $arguments',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $proxyLogin',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $options of method SoapClient::__soapCall() expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -20650,12 +18920,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $arguments',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client/DotNet.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between string|false and null will always evaluate to false.',
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
@@ -20664,18 +18928,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method __toString() on stdClass.',
 	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $array',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $caching',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
 ];
@@ -20722,12 +18974,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $service',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server/Proxy.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #3 $input (false) of method Zend_Soap_Wsdl::addBindingOperation() is incompatible with type array.',
 	'identifier' => 'parameter.defaultValue',
 	'count' => 1,
@@ -20764,34 +19010,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Wsdl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $operation',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Wsdl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Wsdl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $complexTypeName might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Wsdl/Strategy/Composite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (<type> $context): Unexpected token "<", expected type at offset 78 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Wsdl/Strategy/Interface.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method get() on an unknown class WeakRef.',
@@ -20809,18 +19031,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Instantiated class WeakRef not found.',
 	'identifier' => 'class.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Stdlib/CallbackHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $event',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Stdlib/CallbackHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $options',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Stdlib/CallbackHandler.php',
 ];
 $ignoreErrors[] = [
@@ -20936,18 +19146,6 @@ $ignoreErrors[] = [
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Text/MultiByte.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $charset',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Text/Table.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $columnsWidths',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Text/Table.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Text_Table::$_pluginLoader (string) does not accept Zend_Loader_PluginLoader.',
@@ -21154,12 +19352,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $action',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Action/Base.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Framework_Action_Repository::getAction() should return Zend_Tool_Framework_Action_Interface but returns null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -21346,12 +19538,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $pretend',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Request.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Tool_Framework_Client_Response::$_exception (Zend_Tool_Framework_Exception) does not accept Exception.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -21466,12 +19652,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Metadata/Basic.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $Value',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Metadata/Basic.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $type of method Zend_Tool_Framework_Metadata_Basic::getAttributes() has invalid type const.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -21486,12 +19666,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Instanceof between Zend_Tool_Framework_Provider_Signature and Zend_Tool_Framework_Registry_EnabledInterface will always evaluate to true.',
 	'identifier' => 'instanceof.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Repository.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $action',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Repository.php',
 ];
@@ -21550,12 +19724,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/System/Provider/Config.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/System/Provider/Config.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $prefix of function http_build_query expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -21594,12 +19762,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method exists() on an unknown class Zend_Tool_Project_Context.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Directory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return has invalid value (Zend_Tool_Project_Context_Filesystem_Directory;): Unexpected token ";", expected TOKEN_HORIZONTAL_WS at offset 88 on line 4',
-	'identifier' => 'phpDoc.parseError',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Directory.php',
 ];
@@ -22138,12 +20300,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource/Container.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $searchParameters',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource/Container.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $name might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -22236,12 +20392,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::setClassNamePrefix().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $force',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
 ];
@@ -22456,60 +20606,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/View.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|Zend_Locale [$locale]): Unexpected token "[", expected variable at offset 225 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|Zend_Locale [$locale]): Unexpected token "[", expected variable at offset 255 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|array [$content] Path to content, or content itself): Unexpected token "[", expected variable at offset 145 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|array [$content] Path to content, or content itself): Unexpected token "[", expected variable at offset 175 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|Zend_Locale [$locale]): Unexpected token "[", expected variable at offset 199 on line 6',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|array [$content]): Unexpected token "[", expected variable at offset 154 on line 5',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $cache',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $content',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @var has invalid value (array()): Unexpected token "(", expected TOKEN_HORIZONTAL_WS at offset 75 on line 3',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_Translate_Adapter::$_cache (Zend_Cache_Core) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -22540,21 +20636,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Array.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Csv.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between 4 and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Gettext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Gettext.php',
 ];
 $ignoreErrors[] = [
@@ -22600,28 +20684,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_Tbx::$_cleared is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tmx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tmx.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
@@ -23380,12 +21446,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/Sitemap/Changefreq.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string The view script to execute.): Unexpected token "The", expected variable at offset 109 on line 4',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_View_Abstract::_run() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
@@ -23407,12 +21467,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_View_Abstract::_setPath() is unused.',
 	'identifier' => 'method.unused',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $prefix',
-	'identifier' => 'parameter.notFound',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
 ];
 $ignoreErrors[] = [
@@ -23438,12 +21492,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Currency.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param has invalid value (string|array variable number of arguments, all string names of variables to test): Unexpected token "variable", expected variable at offset 797 on line 22',
-	'identifier' => 'phpDoc.parseError',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/DeclareVars.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $view in isset() is never defined.',
@@ -23908,30 +21956,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $content',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $modifiers',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $typeValue',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of && is always false.',
 	'identifier' => 'booleanAnd.alwaysFalse',
 	'count' => 1,
@@ -24034,36 +22058,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $attributes',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $content',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $method',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $type',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $typeOrAttrs',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_View_Helper_HeadScript::$_requiredAttributes (string) does not accept default value of type array<int, string>.',
 	'identifier' => 'property.defaultValue',
 	'count' => 1,
@@ -24150,24 +22144,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::set() with return type void returns null but should not return anything.',
 	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $captureType',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $method',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $typeOrAttrs',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
 ];
@@ -24682,30 +22658,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $Class',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $Filter',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $Table',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $Trace',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of || is always true.',
 	'identifier' => 'booleanOr.alwaysTrue',
 	'count' => 1,
@@ -24782,24 +22734,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerIntrospection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $method',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerIntrospection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $methodN',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerProxy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $name',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerProxy.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_XmlRpc_Generator_GeneratorAbstract::_init().',
@@ -24908,12 +22842,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameterByRef.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Value.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $already_encoded',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Value/Base64.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::init().',

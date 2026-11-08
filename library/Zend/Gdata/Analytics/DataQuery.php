@@ -288,7 +288,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         return $this;
     }
     /**
-     * @param string $value
+     * @param string $date
      * @return Zend_Gdata_Analytics_DataQuery
      */
     public function setStartDate($date)
@@ -297,7 +297,7 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         return $this;
     }
     /**
-     * @param string $value
+     * @param string $date
      * @return Zend_Gdata_Analytics_DataQuery
      */
     public function setEndDate($date)

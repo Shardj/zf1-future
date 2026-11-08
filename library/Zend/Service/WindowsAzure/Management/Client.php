@@ -1383,7 +1383,7 @@ class Zend_Service_WindowsAzure_Management_Client
      * Updates a deployment's role instance count.
      *
      * @param string $serviceName		The service name
-     * @param string $deploymentSlot	The deployment slot (production or staging)
+     * @param string $deploymentId	The deployment slot (production or staging)
      * @param string|array $roleName	The role name
      * @param string|array $instanceCount The instance count
      * @throws Zend_Service_WindowsAzure_Management_Exception

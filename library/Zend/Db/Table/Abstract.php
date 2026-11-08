@@ -353,7 +353,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * setDefinitionConfigName()
      *
-     * @param string $definition
+     * @param string $definitionConfigName
      * @return $this
      */
     public function setDefinitionConfigName($definitionConfigName)

@@ -147,7 +147,7 @@ abstract class Zend_Search_Lucene_Analysis_Analyzer
     /**
      * Set the default Analyzer implementation used by indexing code.
      *
-     * @param Zend_Search_Lucene_Analysis_Analyzer $similarity
+     * @param Zend_Search_Lucene_Analysis_Analyzer $analyzer
      */
     public static function setDefault(Zend_Search_Lucene_Analysis_Analyzer $analyzer)
     {

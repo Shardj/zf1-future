@@ -1087,7 +1087,7 @@ abstract class Zend_Pdf_FileParser_Font_OpenType extends Zend_Pdf_FileParser_Fon
      * returns the version number.
      *
      * @param float $minVersion Minimum compatible version number.
-     * @param float $maxVertion Maximum compatible version number.
+     * @param float $maxVersion Maximum compatible version number.
      * @return float Table version number.
      * @throws Zend_Pdf_Exception
      */
@@ -1109,7 +1109,7 @@ abstract class Zend_Pdf_FileParser_Font_OpenType extends Zend_Pdf_FileParser_Fon
      * not supported.
      *
      * @param integer $platformID
-     * @param integer $encodingID
+     * @param integer $languageID
      * @return string | null
      */
     protected function _languageCodeForPlatform($platformID, $languageID)

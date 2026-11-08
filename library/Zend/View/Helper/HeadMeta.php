@@ -338,10 +338,6 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
     /**
      * Build meta HTML string
      *
-     * @param  string $type
-     * @param  string $typeValue
-     * @param  string $content
-     * @param  array $modifiers
      * @return string
      */
     public function itemToString(stdClass $item)

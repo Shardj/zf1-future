@@ -771,7 +771,6 @@ abstract class Zend_Http_UserAgent_AbstractDevice
      * Loads the Features Adapter if it's defined in the $config array
      * Otherwise, nothing is done
      *
-     * @param  string $browserType Browser type
      * @return array
      */
     protected function _loadFeaturesAdapter()

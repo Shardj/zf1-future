@@ -89,7 +89,7 @@ class Zend_Gdata_Gapps_Extension_Login extends Zend_Gdata_Extension
      * True if the user has agreed to the terms of service for Google Apps,
      * false otherwise.
      *
-     * @var boolean.
+     * @var boolean
      */
     protected $_agreedToTerms = null;
 

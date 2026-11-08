@@ -312,8 +312,8 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      *
      * Filters are used to exclude object members.
      *
-     * @param string $Class The class name of the object
-     * @param array $Filter An array of members to exclude
+     * @param string $class The class name of the object
+     * @param array $filter An array of members to exclude
      * @return void
      */
     public function setObjectFilter($class, $filter) {
@@ -612,7 +612,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
     /**
      * Encodes a table by encoding each row and column with _encodeObject()
      *
-     * @param array $Table The table to be encoded
+     * @param array $table The table to be encoded
      * @return array|null
      */
     protected function _encodeTable($table)
@@ -633,7 +633,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
     /**
      * Encodes a trace by encoding all "args" with _encodeObject()
      *
-     * @param array $Trace The trace to be encoded
+     * @param array $trace The trace to be encoded
      * @return array|null The encoded trace
      */
     protected function _encodeTrace($trace)

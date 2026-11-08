@@ -221,7 +221,7 @@ class Zend_Amf_Parse_Amf0_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write a PHP array with string or mixed keys.
      *
-     * @param object $data
+     * @param object $object
      * @return Zend_Amf_Parse_Amf0_Serializer
      */
     public function writeObject($object)

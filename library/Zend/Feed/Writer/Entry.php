@@ -77,7 +77,9 @@ class Zend_Feed_Writer_Entry
     /**
      * Set a single author
      *
-     * @param  int $index
+     * @param  array|string $name Author name, or an array with the keys name, email and uri
+     * @param  string|null $email
+     * @param  string|null $uri
      * @return void
      */
     public function addAuthor($name, $email = null, $uri = null)
@@ -597,7 +599,7 @@ class Zend_Feed_Writer_Entry
      * others must also be provided or RSS rendering (where they are required)
      * will throw an Exception.
      *
-     * @param array $enclosures
+     * @param array $enclosure
      */
     public function setEnclosure(array $enclosure)
     {

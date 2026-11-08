@@ -68,7 +68,7 @@ interface Zend_Cloud_StorageService_Adapter
      * The $destinationPath must be a directory.
      *
      * @param  string $sourcePath
-     * @param  string $destination path
+     * @param  string $destinationPath path
      * @param  array $options
      * @return void
      */
@@ -80,7 +80,7 @@ interface Zend_Cloud_StorageService_Adapter
      * The $destinationPath must be a directory.
      *
      * @param  string $sourcePath
-     * @param  string $destination path
+     * @param  string $destinationPath path
      * @param  array $options
      * @return void
      */
@@ -133,7 +133,6 @@ interface Zend_Cloud_StorageService_Adapter
      * Delete a key/value array of metadata at the given path.
      *
      * @param  string $path
-     * @param  array $options
      * @return void
      */
     public function deleteMetadata($path);

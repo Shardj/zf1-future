@@ -92,7 +92,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      * Set an individual item, optionally by identifier (overwrites)
      *
      * @param  array|object $item
-     * @param  string|null $identifier
+     * @param  string|null $id
      * @return Zend_Dojo_Data
      */
     public function setItem($item, $id = null)

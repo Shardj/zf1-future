@@ -337,7 +337,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
     /**
      * Return a subset of a domain-matching cookies that also match a specified path
      *
-     * @param array $dom_array
+     * @param array $domains
      * @param string $path
      * @return array
      */
@@ -367,7 +367,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
      * of the cookie.
      *
      * @param Zend_Http_Response $response HTTP Response object
-     * @param Zend_Uri_Http|string $uri The requested URI
+     * @param Zend_Uri_Http|string $ref_uri The requested URI
      * @return Zend_Http_CookieJar
      * @todo Add the $uri functionality.
      */

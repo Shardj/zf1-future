@@ -1139,7 +1139,6 @@ abstract class Zend_Date_DateObject
     /**
      * Internal method to check if the given cache supports tags
      *
-     * @param Zend_Cache $cache
      */
     protected static function _getTagSupportForCache()
     {

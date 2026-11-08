@@ -904,7 +904,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * Default value is 10
      *
-     * @param integer $maxMergeDocs
+     * @param integer $mergeFactor
      */
     public function setMergeFactor($mergeFactor)
     {

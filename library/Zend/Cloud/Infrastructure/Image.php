@@ -93,8 +93,8 @@ class Zend_Cloud_Infrastructure_Image
     /**
      * Get Attribute with a specific key
      *
-     * @param array $data
-     * @return misc|boolean
+     * @param string $key
+     * @return mixed|boolean
      */
     public function getAttribute($key)
     {

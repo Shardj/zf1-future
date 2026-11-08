@@ -574,7 +574,7 @@ class Zend_Ldap
 
     /**
      * @param  string $acctname The name to canonicalize
-     * @param  int    $type     The desired form of canonicalization
+     * @param  int    $form     The desired form of canonicalization
      * @return string The canonicalized name in the desired form
      * @throws Zend_Ldap_Exception
      */

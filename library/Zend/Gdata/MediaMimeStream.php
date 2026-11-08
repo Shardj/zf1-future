@@ -128,7 +128,7 @@ class Zend_Gdata_MediaMimeStream
     /**
      * Read a specific chunk of the the MIME multipart message.
      *
-     * @param integer $bufferSize The size of the chunk that is to be read,
+     * @param integer $bytesRequested The size of the chunk that is to be read,
      *                            must be lower than MAX_BUFFER_SIZE.
      * @return string A corresponding piece of the message. This could be
      *                binary or regular text.

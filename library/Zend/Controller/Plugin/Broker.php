@@ -343,7 +343,6 @@ class Zend_Controller_Plugin_Broker extends Zend_Controller_Plugin_Abstract
     /**
      * Called before Zend_Controller_Front exits its dispatch loop.
      *
-     * @param Zend_Controller_Request_Abstract $request
      * @return void
      * @throws Zend_Controller_Exception
      */

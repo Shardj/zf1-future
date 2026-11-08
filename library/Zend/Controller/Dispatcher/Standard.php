@@ -196,7 +196,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
      * if a given controller does not exist. This method returning false does
      * not necessarily indicate the dispatcher will not still dispatch the call.
      *
-     * @param Zend_Controller_Request_Abstract $action
+     * @param Zend_Controller_Request_Abstract $request
      * @return boolean
      */
     public function isDispatchable(Zend_Controller_Request_Abstract $request)

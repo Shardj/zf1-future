@@ -31,7 +31,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
 	 * Invokes the scaffolder.
 	 *
 	 * @param Phar $phar Phar archive containing the current scaffolder.
-	 * @param string $root Path Root path.
+	 * @param string $rootPath Path Root path.
 	 * @param array $options Options array (key/value).
 	 */
 	abstract public function invoke(Phar $phar, $rootPath, $options = []);

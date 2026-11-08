@@ -383,7 +383,8 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
     /**
      * Delete document.
      *
-     * @param  mixed  $document Document ID or Document object.
+     * @param  string $collectionName
+     * @param  mixed  $documentId Document ID or Document object.
      * @param  array  $options
      * @return void
      */

@@ -95,7 +95,9 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Set a single author
      *
-     * @param  int $index
+     * @param  array|string $name Author name, or an array with the keys name, email and uri
+     * @param  string|null $email
+     * @param  string|null $uri
      * @return void
      */
     public function addAuthor($name, $email = null, $uri = null)

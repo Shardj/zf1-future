@@ -155,7 +155,7 @@ class Zend_Db_Profiler_Query
     }
 
     /**
-     * @param array $param
+     * @param array $params
      * @return void
      */
     public function bindParams(array $params)

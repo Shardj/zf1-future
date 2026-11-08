@@ -45,8 +45,7 @@ class Zend_Gdata_DublinCore_Extension_Title extends Zend_Gdata_Extension
      * Constructor for Zend_Gdata_DublinCore_Extension_Title which
      * Name given to the resource
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param string|null $value (optional) Text value of the element
      */
     public function __construct($value = null)
     {

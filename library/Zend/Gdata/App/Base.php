@@ -499,7 +499,7 @@ abstract class Zend_Gdata_App_Base
      * TODO Remove ability to bypass getFoo() methods??
      *
      * @param string $name
-     * @param string $value
+     * @param string $val
      */
     public function __set($name, $val)
     {

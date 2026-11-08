@@ -153,7 +153,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
     /**
      * Sets the connection protocol instance
      *
-     * @param Zend_Mail_Protocol_Abstract $client
+     * @param Zend_Mail_Protocol_Abstract $connection
      *
      * @return void
      */

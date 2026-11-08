@@ -495,8 +495,8 @@ class Zend_OpenId_Consumer
      * @param string $url OpenID server url
      * @param string $method HTTP request method 'GET' or 'POST'
      * @param array $params additional qwery parameters to be passed with
-     * @param int &$staus HTTP status code
      *  request
+     * @param int &$status HTTP status code
      * @return false|string|null
      */
     protected function _httpRequest($url, $method = 'GET', array $params = [], &$status = null)

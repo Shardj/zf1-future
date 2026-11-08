@@ -700,7 +700,7 @@ class Zend_Soap_Client
     /**
      * Set proxy password
      *
-     * @param  string $proxyLogin
+     * @param  string $proxyPassword
      * @return Zend_Soap_Client
      */
     public function setProxyPassword($proxyPassword)
@@ -1088,7 +1088,7 @@ class Zend_Soap_Client
      *
      * My be overridden in descendant classes
      *
-     * @param array $arguments
+     * @param array $result
      */
     protected function _preProcessResult($result)
     {
@@ -1228,8 +1228,8 @@ class Zend_Soap_Client
     }
 
     /**
-     * @param string $name
-     * @param string $value
+     * @param string $cookieName
+     * @param string $cookieValue
      * @return Zend_Soap_Client
      */
     public function setCookie($cookieName, $cookieValue=null)

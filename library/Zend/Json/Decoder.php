@@ -476,7 +476,7 @@ class Zend_Json_Decoder
      *
      * @link   http://solarphp.com/
      * @link   http://svn.solarphp.com/core/trunk/Solar/Json.php
-     * @param  string $value
+     * @param  string $chrs
      * @return string
      */
     public static function decodeUnicodeString($chrs)

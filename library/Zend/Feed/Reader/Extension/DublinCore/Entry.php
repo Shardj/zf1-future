@@ -46,7 +46,7 @@ class Zend_Feed_Reader_Extension_DublinCore_Entry
     /**
      * Get an author entry
      *
-     * @param DOMElement $element
+     * @param int $index
      * @return string
      */
     public function getAuthor($index = 0)

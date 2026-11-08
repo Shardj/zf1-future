@@ -156,7 +156,6 @@ class Zend_Memory_Manager
      * If backend is not specified, then memory objects are never swapped
      *
      * @param Zend_Cache_Backend $backend
-     * @param array $backendOptions associative array of options for the corresponding backend constructor
      */
     public function __construct($backend = null)
     {

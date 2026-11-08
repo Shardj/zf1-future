@@ -2389,7 +2389,7 @@ class Zend_Locale
      *
      * Standard Searchorder is Browser, Environment, Default
      *
-     * @param  string  $searchorder (Optional) Searchorder
+     * @param  string  $order (Optional) Searchorder
      * @return array Returns an array of all detected locales
      */
     public static function getOrder($order = null)

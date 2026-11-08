@@ -215,7 +215,7 @@ class Zend_Filter_Boolean implements Zend_Filter_Interface
     /**
      * Set the working mode
      *
-     * @param  boolean $locale When true this filter works like cast
+     * @param  boolean $casting When true this filter works like cast
      *                         When false it recognises only true and false
      *                         and all other values are returned as is
      * @throws Zend_Filter_Exception

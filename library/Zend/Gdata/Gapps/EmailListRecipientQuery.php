@@ -86,8 +86,6 @@ class Zend_Gdata_Gapps_EmailListRecipientQuery extends Zend_Gdata_Gapps_Query
      * Get the email list name to query for. If no name is set, null will be
      * returned.
      *
-     * @param string $value The email list name to filter search results by,
-     *          or null if disabled.
      */
     public function getEmailListName()
     {

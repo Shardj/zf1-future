@@ -570,7 +570,7 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
      * Passing an empty header value to the setters disables the response
      * header.
      *
-     * @param  string $type   Context type for which to set suffix
+     * @param  string $context   Context type for which to set suffix
      * @param  string $header Header to set
      * @param  string $content Header content
      * @return $this

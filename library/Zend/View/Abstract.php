@@ -376,7 +376,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      * </code>
      *
      * @param  string $path
-     * @param  string $prefix Prefix to use for helper and filter paths
+     * @param  string $classPrefix Prefix to use for helper and filter paths
      * @return Zend_View_Abstract
      */
     public function setBasePath($path, $classPrefix = 'Zend_View')
@@ -403,7 +403,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      * </code>
      *
      * @param  string $path
-     * @param  string $prefix Prefix to use for helper and filter paths
+     * @param  string $classPrefix Prefix to use for helper and filter paths
      * @return Zend_View_Abstract
      */
     public function addBasePath($path, $classPrefix = 'Zend_View')

@@ -723,7 +723,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      * This method supports the creation of multi-valued RDNs
      * $part must contain an even number of elemets.
      *
-     * @param  array  $attribute
+     * @param  array  $part
      * @param  string $caseFold
      * @return string
      * @throws Zend_Ldap_Exception

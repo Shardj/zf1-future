@@ -91,7 +91,7 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
      * host           => (string) What host to connect to, defaults to localhost
      * port           => (string) The port of the database
      *
-     * @param  array|Zend_Config $config An array having configuration data
+     * @param  array|Zend_Config $options An array having configuration data
      * @param  Zend_Queue $queue The Zend_Queue object that created this class
      * @return void
      * @throws Zend_Queue_Exception

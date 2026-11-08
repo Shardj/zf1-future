@@ -354,7 +354,7 @@ class Zend_Filter_Input
     }
 
     /**
-     * @param mixed $value
+     * @param mixed $data
      * @return mixed
      */
     protected function _escapeRecursive($data)

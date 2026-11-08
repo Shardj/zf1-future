@@ -170,7 +170,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @TODO Support streams for those services that don't support natively
      *
      * @param  string $sourcePath
-     * @param  string $destination path
+     * @param  string $destinationPath path
      * @param  array $options
      * @return bool
      */
@@ -196,7 +196,7 @@ class Zend_Cloud_StorageService_Adapter_S3
      * @TODO Support streams for those services that don't support natively
      *
      * @param  string $sourcePath
-     * @param  string $destination path
+     * @param  string $destinationPath path
      * @param  array $options
      * @return bool
      */
@@ -285,7 +285,6 @@ class Zend_Cloud_StorageService_Adapter_S3
      * Delete a key/value array of metadata at the given path.
      *
      * @param  string $path
-     * @param  array $options
      * @return void
      */
     public function deleteMetadata($path)

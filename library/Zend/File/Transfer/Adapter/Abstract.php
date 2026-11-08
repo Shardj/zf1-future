@@ -440,7 +440,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     /**
      * Sets a validator for the class, erasing all previous set
      *
-     * @param  string|array $validator Validator to set
+     * @param  array $validators Validators to set
      * @param  string|array $files     Files to limit this validator to
      * @return Zend_File_Transfer_Adapter_Abstract|Zend_File_Transfer_Adapter_Http
      */
@@ -815,7 +815,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     /**
      * Sets a filter for the class, erasing all previous set
      *
-     * @param  string|array $filter Filter to set
+     * @param  array $filters Filters to set
      * @param  string|array $files     Files to limit this filter to
      * @return Zend_File_Transfer_Adapter_Abstract
      */

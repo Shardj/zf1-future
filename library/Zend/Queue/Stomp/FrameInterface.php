@@ -49,7 +49,7 @@ interface Zend_Queue_Stomp_FrameInterface
      * Set the value on or off.
      *
      * @param boolean $auto
-     * @return $this;
+     * @return $this
      * @throws Zend_Queue_Exception
      */
     public function setAutoContentLength($auto);
@@ -77,7 +77,7 @@ interface Zend_Queue_Stomp_FrameInterface
      * returns false if the header does not exist
      *
      * @param string $header
-     * @return $string
+     * @return string|false
      * @throws Zend_Queue_Exception
      */
     public function getHeader($header);

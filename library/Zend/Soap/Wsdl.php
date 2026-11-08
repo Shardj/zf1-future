@@ -269,7 +269,7 @@ class Zend_Soap_Wsdl
      * Add a {@link http://www.w3.org/TR/wsdl#_bindings binding} element to WSDL
      *
      * @param string $name Name of the Binding
-     * @param string $type name of the portType to bind
+     * @param string $portType name of the portType to bind
      * @return object The new binding's XML_Tree_Node for use with {@link function addBindingOperation} and {@link function addDocumentation}
      */
     public function addBinding($name, $portType)
@@ -363,7 +363,7 @@ class Zend_Soap_Wsdl
     /**
      * Add a {@link http://www.w3.org/TR/wsdl#_soap:operation SOAP operation} to an operation element
      *
-     * @param object $operation An operation XML_Tree_Node returned by {@link function addBindingOperation}
+     * @param object $binding An operation XML_Tree_Node returned by {@link function addBindingOperation}
      * @param string $soap_action SOAP Action
      * @return boolean
      */

@@ -60,7 +60,8 @@ class Zend_View_Helper_DeclareVars extends Zend_View_Helper_Abstract
      * );
      * </code>
      *
-     * @param string|array variable number of arguments, all string names of variables to test
+     * Takes a variable number of arguments, all string names of variables to test
+     * or arrays of names and default values.
      * @return void
      */
     public function declareVars()

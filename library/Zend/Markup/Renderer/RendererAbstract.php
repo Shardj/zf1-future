@@ -296,7 +296,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     /**
      * Render function
      *
-     * @param  Zend_Markup_TokenList|string $tokenList
+     * @param  Zend_Markup_TokenList|string $value
      * @return string
      */
     public function render($value)

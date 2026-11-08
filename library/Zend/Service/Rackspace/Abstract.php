@@ -321,7 +321,7 @@ abstract class Zend_Service_Rackspace_Abstract
      * @param string $url
      * @param string $method
      * @param array $headers
-     * @param array $get
+     * @param array $data
      * @param string $body
      * @return Zend_Http_Response
      */

@@ -101,7 +101,7 @@ class Zend_Ldap_Converter
      * @todo write more tests
      *
      * @param    mixed     $value     The value to convert
-     * @param    int       $ytpe      The conversion type to use
+     * @param    int       $type      The conversion type to use
      * @return    string
      * @throws    Zend_Ldap_Converter_Exception
      */
@@ -219,7 +219,7 @@ class Zend_Ldap_Converter
      * type can be forced
      * .
      * @param    string    $value             The value to convert
-     * @param    int        $ytpe              The conversion type to use
+     * @param    int        $type              The conversion type to use
      * @param    boolean    $dateTimeAsUtc    Return DateTime values in UTC timezone
      * @return    mixed
      * @throws    Zend_Ldap_Converter_Exception

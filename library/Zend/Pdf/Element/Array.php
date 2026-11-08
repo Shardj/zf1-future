@@ -84,7 +84,7 @@ class Zend_Pdf_Element_Array extends Zend_Pdf_Element
     /**
      * Setter
      *
-     * @param mixed $offset
+     * @param mixed $property
      * @param mixed $value
      * @throws Zend_Pdf_Exception
      */

@@ -263,7 +263,7 @@ class Zend_Mail_Protocol_Pop3
      *
      * @param  string $user      username
      * @param  string $password  password
-     * @param  bool   $try_apop  should APOP be tried?
+     * @param  bool   $tryApop  should APOP be tried?
      * @return void
      * @throws Zend_Mail_Protocol_Exception
      */

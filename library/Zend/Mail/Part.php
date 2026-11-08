@@ -456,7 +456,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
      * @param  string $wantedPart the wanted part, default is first, if null an array with all parts is returned
      * @param  string $firstName  key name for the first part
      * @return string|array wanted part or all parts as array($firstName => firstPart, partname => value)
-     * @throws Zend_Exception, Zend_Mail_Exception
+     * @throws Zend_Exception|Zend_Mail_Exception
      */
     public function getHeaderField($name, $wantedPart = 0, $firstName = 0) {
         return Zend_Mime_Decode::splitHeaderField(current($this->getHeader($name, 'array')), $wantedPart, $firstName);

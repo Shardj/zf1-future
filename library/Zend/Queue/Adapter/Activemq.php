@@ -63,7 +63,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
     /**
      * Constructor
      *
-     * @param  array|Zend_Config $config An array having configuration data
+     * @param  array|Zend_Config $options An array having configuration data
      * @param  Zend_Queue $queue The Zend_Queue object that created this class
      * @return void
      */
@@ -368,7 +368,6 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * $array['function name'] = true or false
      * true is supported, false is not supported.
      *
-     * @param  string $name
      * @return array
      */
     public function getCapabilities()

@@ -82,7 +82,7 @@ class Zend_Loader_ClassMapAutoloader implements Zend_Loader_SplAutoloader
      * An autoload map should be an associative array containing
      * classname/file pairs.
      *
-     * @param  string|array $location
+     * @param  string|array $map
      * @return Zend_Loader_ClassMapAutoloader
      */
     public function registerAutoloadMap($map)

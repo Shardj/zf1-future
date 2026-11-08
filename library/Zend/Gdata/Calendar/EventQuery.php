@@ -362,7 +362,6 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value Also accepts bools.
      * @return $this
      */
     public function getSingleEvents()

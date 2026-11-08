@@ -36,7 +36,6 @@ class Zend_Tool_Project_Provider_Application
     /**
      *
      * @param string $classNamePrefix Prefix of classes
-     * @param bool   $force
      */
     public function changeClassNamePrefix($classNamePrefix /* , $force = false */)
     {

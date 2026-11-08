@@ -35,7 +35,7 @@ class Zend_Mail_Transport_SendgridSmtp extends Zend_Mail_Transport_Smtp
     /**
      * Set ClickTracking status
      *
-     * @param bool $status
+     * @param bool $bool
      * @return void
      */ 
     public function setClickTracking($bool)

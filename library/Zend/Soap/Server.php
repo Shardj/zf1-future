@@ -521,7 +521,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
     /**
      * Set the SOAP Wsdl Caching Options
      *
-     * @param string|int|boolean $caching
+     * @param string|int|boolean $options
      * @return Zend_Soap_Server
      */
     public function setWsdlCache($options)
@@ -675,7 +675,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
     /**
      * Unimplemented: Load server definition
      *
-     * @param array $array
+     * @param array $definition
      * @return void
      * @throws Zend_Soap_Server_Exception Unimplemented
      */

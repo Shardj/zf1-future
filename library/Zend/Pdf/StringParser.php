@@ -712,7 +712,7 @@ class Zend_Pdf_StringParser
      * Note: PHP duplicates string, which is sent by value, only of it's updated.
      * Thus we don't need to care about overhead
      *
-     * @param string $pdfString
+     * @param string $source
      * @param Zend_Pdf_ElementFactory_Interface $factory
      */
     public function __construct($source, Zend_Pdf_ElementFactory_Interface $factory)

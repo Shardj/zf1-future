@@ -66,7 +66,7 @@ class Zend_Amf_Value_MessageHeader
      *
      * @param String $name
      * @param Boolean $mustRead
-     * @param misc $content
+     * @param mixed $data
      * @param integer $length
      */
     public function __construct($name, $mustRead, $data, $length=null)

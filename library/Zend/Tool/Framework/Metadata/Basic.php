@@ -148,7 +148,7 @@ class Zend_Tool_Framework_Metadata_Basic
     /**
      * setValue()
      *
-     * @param string $Value
+     * @param string $value
      * @return Zend_Tool_Framework_Metadata_Basic
      */
     public function setValue($value)
