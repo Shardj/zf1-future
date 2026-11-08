@@ -32,7 +32,6 @@ require_once 'Zend/Service/AkismetTest.php';
 require_once 'Zend/Service/Amazon/AllTests.php';
 require_once 'Zend/Service/Audioscrobbler/AllTests.php';
 require_once 'Zend/Service/Delicious/AllTests.php';
-require_once 'Zend/Service/Ebay/AllTests.php';
 require_once 'Zend/Service/Flickr/AllTests.php';
 require_once 'Zend/Service/LiveDocx/AllTests.php';
 require_once 'Zend/Service/ReCaptcha/AllTests.php';
@@ -77,7 +76,6 @@ class Zend_Service_AllTests
         $suite->addTest(Zend_Service_Amazon_AllTests::suite());
         $suite->addTest(Zend_Service_Audioscrobbler_AllTests::suite());
         $suite->addTest(Zend_Service_Delicious_AllTests::suite());
-        $suite->addTest(Zend_Service_Ebay_AllTests::suite());
         $suite->addTest(Zend_Service_Flickr_AllTests::suite());
         $suite->addTest(Zend_Service_LiveDocx_AllTests::suite());
         $suite->addTest(Zend_Service_ReCaptcha_AllTests::suite());

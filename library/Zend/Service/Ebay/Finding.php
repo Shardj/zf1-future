@@ -35,6 +35,7 @@ require_once 'Zend/Xml/Security.php';
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @uses       Zend_Service_Ebay_Abstract
+ * @deprecated Deprecated since 1.27.0 and will be removed in a future version: the eBay Finding API was decommissioned on 2025-02-05
  */
 class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
 {
@@ -79,6 +80,8 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
      */
     public function __construct($options)
     {
+        trigger_error(get_class($this) . ' is deprecated and will be removed in a future version', E_USER_DEPRECATED);
+
         // prepare options
         if (is_string($options)) {
             // application id was given

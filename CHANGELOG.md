@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+
+* Zend_Service_Ebay is deprecated and will be removed in a future version: the eBay Finding API, the only API it supports, was decommissioned on 2025-02-05 (the Browse API replaces it). Zend_Service_Ebay_Finding triggers an E_USER_DEPRECATED notice when instantiated; its tests are removed.
+
 ### Fixed
 
 * Zend_Serializer_Adapter_Igbinary throws Zend_Serializer_Exception with the warning of igbinary as its message instead of emitting the warning first; the message came from error_get_last(), which is empty when an error handler of the application takes the warning, or holds an earlier, unrelated error.
