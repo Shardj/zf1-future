@@ -289,7 +289,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
          * so fall back to default quoting in the parent class.
          */
         if (function_exists('db2_escape_string')) {
-            return "'" . db2_escape_string($value) . "'";
+            return "'" . db2_escape_string((string) $value) . "'";
         }
         return parent::_quote($value);
     }

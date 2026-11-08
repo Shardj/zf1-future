@@ -32,6 +32,7 @@ require_once 'Zend/Db/TestSetup.php';
  * @see Zend_Loader
  */
 require_once 'Zend/Loader.php';
+require_once 'resources/ErrorCapture.php';
 
 
 
@@ -1056,6 +1057,15 @@ abstract class Zend_Db_Adapter_TestCommon extends Zend_Db_TestSetup
         $string = 'String without quotes';
         $value = $this->_db->quote($string);
         $this->assertEquals("'String without quotes'", $value);
+    }
+
+    public function testAdapterQuoteNullIsAnEmptyString()
+    {
+        $value = null;
+        resources_ErrorCapture::assertTriggersNothing(function () use (&$value) {
+            $value = $this->_db->quote(null);
+        }, E_DEPRECATED);
+        $this->assertEquals("''", $value);
     }
 
     /**

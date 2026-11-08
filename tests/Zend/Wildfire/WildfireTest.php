@@ -59,6 +59,9 @@ require_once 'Zend/Json.php';
 /** Zend_Json_Encoder */
 require_once 'Zend/Json/Encoder.php';
 
+/** resources_ErrorCapture */
+require_once 'resources/ErrorCapture.php';
+
 /**
  * @category   Zend
  * @package    Zend_Wildfire
@@ -166,6 +169,19 @@ class Zend_Wildfire_WildfireTest extends TestCase
         $this->_request->setUserAgentExtensionEnabled(true, 'X-FirePHP-Version');
 
         $this->assertTrue($channel->isReady(true));
+    }
+
+    public function testIsReadyWithoutUserAgentHeader()
+    {
+        $channel = Zend_Wildfire_Channel_HttpHeaders::getInstance();
+        $channel->setRequest(new Zend_Controller_Request_HttpTestCase());
+        $channel->setResponse(new Zend_Controller_Response_HttpTestCase());
+
+        $ready = null;
+        resources_ErrorCapture::assertTriggersNothing(function () use ($channel, &$ready) {
+            $ready = $channel->isReady(true);
+        }, E_DEPRECATED);
+        $this->assertFalse($ready);
     }
 
     public function testIsReady2()
