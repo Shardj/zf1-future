@@ -126,7 +126,7 @@ class Zend_Json
      * @see Zend_Json_Expr
      *
      * @param  mixed $valueToEncode
-     * @param  boolean|null $cycleCheck Optional; whether or not to check for object recursion; off by default
+     * @param  boolean $cycleCheck Optional; whether or not to check for object recursion; off by default
      * @param  array $options Additional options used during encoding
      * @return string JSON encoded object
      */

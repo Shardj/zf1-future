@@ -13430,6 +13430,12 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/InlineScript.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Parameter #2 $cycleCheck of static method Zend_Json::encode() expects bool, null given.',
+	'identifier' => 'argument.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/View/Helper/Json.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
