@@ -404,7 +404,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Get method param type
      *
-     * @param  Zend_Server_Reflection_Function_Abstract $method
+     * @param  Zend_Server_Method_Definition $method
      * @return array
      */
     protected function _getParams(Zend_Server_Method_Definition $method)
@@ -466,7 +466,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Get method return type
      *
-     * @param  Zend_Server_Reflection_Function_Abstract $method
+     * @param  Zend_Server_Method_Definition $method
      * @return string|array
      */
     protected function _getReturnType(Zend_Server_Method_Definition $method)

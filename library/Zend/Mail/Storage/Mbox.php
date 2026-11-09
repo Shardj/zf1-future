@@ -429,7 +429,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
      * with this method you can cache the mbox class
      * for cache validation the mtime of the mbox file is used
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Storage_Exception
      */
     public function __wakeup()

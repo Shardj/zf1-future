@@ -224,12 +224,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Amf_Server::$_sesionNamespace (Zend_Session_Namespace) does not accept default value of type string.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Amf_Value_Messaging_AbstractMessage::$messageId (string) in isset() is not nullable.',
 	'identifier' => 'isset.property',
 	'count' => 1,
@@ -548,12 +542,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (false) of method Zend_Cache_Backend_BlackHole::getMetadatas() should be compatible with return type (array) of method Zend_Cache_Backend_ExtendedInterface::getMetadatas()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/BlackHole.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between string and int results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -576,12 +564,6 @@ $ignoreErrors[] = [
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (false) of method Zend_Cache_Backend_Test::getMetadatas() should be compatible with return type (array) of method Zend_Cache_Backend_ExtendedInterface::getMetadatas()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Test.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_ExtendedInterface::___expire().',
@@ -722,28 +704,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Captcha_Base::setOption() should return Zend_Form_Element but returns $this(Zend_Captcha_Base).',
-	'identifier' => 'return.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Captcha/Base.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Captcha/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Captcha_ReCaptcha::setOption() should return Zend_Captcha_ReCaptcha but returns Zend_Form_Element.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/ReCaptcha.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_Captcha_ReCaptcha) of method Zend_Captcha_ReCaptcha::setOption() should be compatible with return type (Zend_Form_Element) of method Zend_Captcha_Base::setOption()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/ReCaptcha.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$word.',
@@ -1070,18 +1034,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/ImageList.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $image with type Image is not subtype of native type Zend_Cloud_Infrastructure_Image.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/ImageList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $image of method Zend_Cloud_Infrastructure_ImageList::addImage() has invalid type Image.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/ImageList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to constant TIMEOUT_STATUS_CHANGE on an unknown class Adapter.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1106,12 +1058,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/InstanceList.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $instance with type Instance is not subtype of native type Zend_Cloud_Infrastructure_Instance.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/InstanceList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $adapter of class Zend_Cloud_Infrastructure_Instance constructor expects Adapter, Zend_Cloud_Infrastructure_Adapter given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1119,12 +1065,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $adapter of method Zend_Cloud_Infrastructure_InstanceList::__construct() has invalid type Adapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/InstanceList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $instance of method Zend_Cloud_Infrastructure_InstanceList::addInstance() has invalid type Instance.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/InstanceList.php',
@@ -1292,30 +1232,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Docblock/Tag/Return.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_CodeGenerator_Php_Member_Abstract::getVisibility() has invalid return type const.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $visibility of method Zend_CodeGenerator_Php_Member_Abstract::setVisibility() has invalid type const.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_CodeGenerator_Php_Member_Abstract::$_visibility (const) does not accept default value of type string.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_CodeGenerator_Php_Member_Abstract::$_visibility has unknown class const as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $type of method Zend_CodeGenerator_Php_Member_Container::__construct() has invalid type const.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1328,12 +1244,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Container.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $visibility of method Zend_CodeGenerator_Php_Member_Abstract::setVisibility() expects const, string given.',
-	'identifier' => 'argument.type',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Method.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method generate() on string.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
@@ -1343,12 +1253,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method isValidConstantType() on string.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $visibility of method Zend_CodeGenerator_Php_Member_Abstract::setVisibility() expects const, string given.',
-	'identifier' => 'argument.type',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property.php',
 ];
 $ignoreErrors[] = [
@@ -1618,12 +1522,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Plugin_ActionStack::popStack() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Plugin/ActionStack.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $next with type array is incompatible with native type Zend_Controller_Request_Abstract.',
-	'identifier' => 'parameter.phpDocType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Plugin/ActionStack.php',
 ];
@@ -2798,33 +2696,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Db_Adapter_Pdo_Ibm::lastInsertId() should be compatible with return type (string) of method Zend_Db_Adapter_Pdo_Abstract::lastInsertId()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Db_Adapter_Pdo_Ibm::lastSequenceId() should be compatible with return type (string|null) of method Zend_Db_Adapter_Abstract::lastSequenceId()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Db_Adapter_Pdo_Ibm::nextSequenceId() should be compatible with return type (string|null) of method Zend_Db_Adapter_Abstract::nextSequenceId()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method exec() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Mssql.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Db_Adapter_Pdo_Mssql::lastInsertId() should be compatible with return type (string) of method Zend_Db_Adapter_Pdo_Abstract::lastInsertId()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Mssql.php',
 ];
 $ignoreErrors[] = [
@@ -2890,12 +2764,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $replace of function str_replace expects array<string>|string, array<int, int|string> given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Db_Profiler_Firebug::queryEnd() should be compatible with return type (string) of method Zend_Db_Profiler::queryEnd()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
 ];
@@ -3152,18 +3020,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $key (int) of method Zend_Db_Statement_Pdo::getAttribute() should be compatible with parameter $key (string) of method Zend_Db_Statement::getAttribute()',
-	'identifier' => 'method.childParameterType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $key (int) of method Zend_Db_Statement_Pdo::getAttribute() should be compatible with parameter $key (string) of method Zend_Db_Statement_Interface::getAttribute()',
-	'identifier' => 'method.childParameterType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method bindParam() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
@@ -3262,12 +3118,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Dojo_Form::loadDefaultDecorators() should be compatible with return type ($this(Zend_Form)) of method Zend_Form::loadDefaultDecorators()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/Form.php',
 ];
@@ -3404,12 +3254,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/SubForm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Dojo_Form_SubForm::loadDefaultDecorators() should be compatible with return type (Zend_Form_SubForm) of method Zend_Form_SubForm::loadDefaultDecorators()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/SubForm.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_View_Helper_AccordionContainer::accordionContainer() should return string but returns $this(Zend_Dojo_View_Helper_AccordionContainer).',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -3482,18 +3326,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/DijitContainer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $view with type Zend_Dojo_View_Interface is not subtype of native type Zend_View_Interface.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $view of method Zend_Dojo_View_Helper_Dojo::setView() has invalid type Zend_Dojo_View_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::doctype().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -3503,18 +3335,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
 	'identifier' => 'method.notFound',
 	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $view with type Zend_Dojo_View_Interface is not subtype of native type Zend_View_Interface.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $view of method Zend_Dojo_View_Helper_Dojo_Container::setView() has invalid type Zend_Dojo_View_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
 ];
 $ignoreErrors[] = [
@@ -3608,21 +3428,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $e with type EventDescription is not subtype of native type Zend_EventManager_EventDescription.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $listeners of method Zend_EventManager_EventManager::insertListeners() expects Zend_Stdlib_PriorityQueue, array given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $e of method Zend_EventManager_EventManager::triggerListeners() has invalid type EventDescription.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
 ];
 $ignoreErrors[] = [
@@ -3636,18 +3444,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $argv with type mixed is not subtype of native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/FilterChain.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_EventManager_Filter_FilterIterator) of method Zend_EventManager_FilterChain::getFilters() should be compatible with return type (array) of method Zend_EventManager_Filter::getFilters()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/FilterChain.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::setFragment().',
@@ -3802,12 +3598,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $title on array.',
 	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Feed_Atom::_mapFeedEntries() should be compatible with return type (DOMElement) of method Zend_Feed_Abstract::_mapFeedEntries()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
 ];
@@ -4052,12 +3842,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Feed_Reader_Entry_Atom::getEnclosure() should be compatible with return type (stdClass) of method Zend_Feed_Reader_EntryInterface::getEnclosure()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
 	'identifier' => 'method.notFound',
 	'count' => 4,
@@ -4142,24 +3926,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $entry with type Zend_Feed_Entry_Abstract is incompatible with native type DOMElement.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Feed_Reader_Entry_Rss::getEnclosure() should be compatible with return type (stdClass) of method Zend_Feed_Reader_EntryInterface::getEnclosure()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Feed_Reader_Entry_Rss::getCommentCount() should be compatible with return type (int) of method Zend_Feed_Reader_EntryInterface::getCommentCount()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $authors on left side of ?? always exists and is not nullable.',
 	'identifier' => 'nullCoalesce.variable',
 	'count' => 1,
@@ -4197,12 +3963,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Reader_Extension_Atom_Entry::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Reader_Extension_Atom_Entry::getEnclosure() should return string but returns stdClass|null.',
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
@@ -4248,12 +4008,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/DublinCore/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $entry with type Zend_Feed_Entry_Abstract is incompatible with native type DOMElement.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/EntryAbstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Feed_Reader_Extension_EntryAbstract::$_entry (Zend_Feed_Entry_Abstract) does not accept DOMElement.',
@@ -4484,12 +4238,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_Date) of method Zend_Feed_Reader_Feed_Rss::getDateModified() should be compatible with return type (string|null) of method Zend_Feed_Reader_FeedInterface::getDateModified()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $authors on left side of ?? always exists and is not nullable.',
 	'identifier' => 'nullCoalesce.variable',
 	'count' => 1,
@@ -4646,18 +4394,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Feed_Rss::_mapFeedEntries() should be compatible with return type (DOMElement) of method Zend_Feed_Abstract::_mapFeedEntries()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $category with type string is incompatible with native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Entry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $flinks in empty() always exists and is not falsy.',
 	'identifier' => 'empty.variable',
 	'count' => 1,
@@ -4680,12 +4416,6 @@ $ignoreErrors[] = [
 	'identifier' => 'empty.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/DublinCore/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $value with type string is incompatible with native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Feed.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
@@ -4742,12 +4472,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $category with type string is incompatible with native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed/FeedAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot cast tidy to string.',
 	'identifier' => 'cast.string',
 	'count' => 1,
@@ -4790,20 +4514,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Atom/AtomAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $container with type Zend_Feed_Writer_Feed_Source is not subtype of native type Zend_Feed_Writer_Source.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Atom/Source.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $container of method Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract::__construct() expects Zend_Feed_Writer_Feed, Zend_Feed_Writer_Source given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Atom/Source.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $container of method Zend_Feed_Writer_Renderer_Feed_Atom_Source::__construct() has invalid type Zend_Feed_Writer_Feed_Source.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Atom/Source.php',
 ];
@@ -4910,12 +4622,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_File_Transfer_Adapter_Http::send() should be compatible with return type (bool) of method Zend_File_Transfer_Adapter_Abstract::send()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $call might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -4988,12 +4694,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Compress.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (bool) of method Zend_Filter_Compress_Rar::decompress() should be compatible with return type (string) of method Zend_Filter_Compress_CompressInterface::decompress()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress/Rar.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method create() on an unknown class Archive_Tar.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -5008,12 +4708,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Instantiated class Archive_Tar not found.',
 	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress/Tar.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (bool) of method Zend_Filter_Compress_Tar::decompress() should be compatible with return type (string) of method Zend_Filter_Compress_CompressInterface::decompress()',
-	'identifier' => 'method.childReturnType',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Filter/Compress/Tar.php',
 ];
@@ -5654,12 +5348,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Element/Hash.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (null) of method Zend_Form_Element_Hash::getLabel() should be compatible with return type (string) of method Zend_Form_Element::getLabel()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element/Hash.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Gdata::decodeRequest().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -6062,20 +5750,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type Zend_Gdata_Extension_FeedLink supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/EmailListEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_EmailListEntry::$_feedLink (Zend_Gdata_Extension_FeedLink) does not accept array.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/EmailListEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_EmailListEntry::$_feedLink (Zend_Gdata_Extension_FeedLink) does not accept default value of type array.',
-	'identifier' => 'property.defaultValue',
+	'rawMessage' => 'Access to an undefined property Zend_Gdata_Extension_FeedLink::$rel.',
+	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/EmailListEntry.php',
 ];
@@ -6086,74 +5762,26 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/Error.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type Zend_Gdata_Gapps_Extension_Property supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_GroupEntry::$_property (Zend_Gdata_Gapps_Extension_Property) does not accept array.',
-	'identifier' => 'assign.propertyType',
+	'rawMessage' => 'Access to an undefined property Zend_Gdata_Gapps_Extension_Property::$rel.',
+	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupEntry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_GroupEntry::$_property (Zend_Gdata_Gapps_Extension_Property) does not accept default value of type array.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type Zend_Gdata_Gapps_Extension_Property supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/MemberEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_MemberEntry::$_property (Zend_Gdata_Gapps_Extension_Property) does not accept array.',
-	'identifier' => 'assign.propertyType',
+	'rawMessage' => 'Access to an undefined property Zend_Gdata_Gapps_Extension_Property::$rel.',
+	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/MemberEntry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_MemberEntry::$_property (Zend_Gdata_Gapps_Extension_Property) does not accept default value of type array.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/MemberEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type Zend_Gdata_Gapps_Extension_Property supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/OwnerEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_OwnerEntry::$_property (Zend_Gdata_Gapps_Extension_Property) does not accept array.',
-	'identifier' => 'assign.propertyType',
+	'rawMessage' => 'Access to an undefined property Zend_Gdata_Gapps_Extension_Property::$rel.',
+	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/OwnerEntry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_OwnerEntry::$_property (Zend_Gdata_Gapps_Extension_Property) does not accept default value of type array.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/OwnerEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Argument of an invalid type Zend_Gdata_Extension_FeedLink supplied for foreach, only iterables are supported.',
-	'identifier' => 'foreach.nonIterable',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_UserEntry::$_feedLink (Zend_Gdata_Extension_FeedLink) does not accept array.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Gapps_UserEntry::$_feedLink (Zend_Gdata_Extension_FeedLink) does not accept default value of type array.',
-	'identifier' => 'property.defaultValue',
+	'rawMessage' => 'Access to an undefined property Zend_Gdata_Extension_FeedLink::$rel.',
+	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/UserEntry.php',
 ];
@@ -6950,30 +6578,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_AbstractDevice::getMaxImageHeight() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getMaxImageHeight()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_AbstractDevice::getMaxImageWidth() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getMaxImageWidth()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_AbstractDevice::getPhysicalScreenHeight() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getPhysicalScreenHeight()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_AbstractDevice::getPhysicalScreenWidth() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getPhysicalScreenWidth()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to static method getProperties() on an unknown class Mobi_Mtld_DA_Api.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -7016,90 +6620,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::getMaxImageHeight() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getMaxImageHeight()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::getMaxImageWidth() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getMaxImageWidth()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::getPhysicalScreenHeight() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getPhysicalScreenHeight()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::getPhysicalScreenWidth() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getPhysicalScreenWidth()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::getXhtmlSupportLevel() should be compatible with return type (int) of method Zend_Http_UserAgent_AbstractDevice::getXhtmlSupportLevel()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::getXhtmlSupportLevel() should be compatible with return type (int) of method Zend_Http_UserAgent_Device::getXhtmlSupportLevel()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::hasFlashSupport() should be compatible with return type (bool) of method Zend_Http_UserAgent_AbstractDevice::hasFlashSupport()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::hasFlashSupport() should be compatible with return type (bool) of method Zend_Http_UserAgent_Device::hasFlashSupport()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::hasPdfSupport() should be compatible with return type (bool) of method Zend_Http_UserAgent_AbstractDevice::hasPdfSupport()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::hasPdfSupport() should be compatible with return type (bool) of method Zend_Http_UserAgent_Device::hasPdfSupport()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::hasPhoneNumber() should be compatible with return type (bool) of method Zend_Http_UserAgent_AbstractDevice::hasPhoneNumber()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|null) of method Zend_Http_UserAgent_Mobile::hasPhoneNumber() should be compatible with return type (bool) of method Zend_Http_UserAgent_Device::hasPhoneNumber()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Mobile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (null) of method Zend_Http_UserAgent_Text::getImageFormatSupport() should be compatible with return type (array) of method Zend_Http_UserAgent_AbstractDevice::getImageFormatSupport()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Text.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (null) of method Zend_Http_UserAgent_Text::getImageFormatSupport() should be compatible with return type (array) of method Zend_Http_UserAgent_Device::getImageFormatSupport()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Text.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $assoc of function json_decode expects bool|null, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7116,12 +6636,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameterByRef.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $method with type Zend_Server_Reflection_Function_Abstract is incompatible with native type Zend_Server_Method_Definition.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Json/Server.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $method might not be defined.',
@@ -7304,18 +6818,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Node.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Ldap_Node::__set() should be compatible with return type (null) of method Zend_Ldap_Node_Abstract::__set()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Ldap_Node::__unset() should be compatible with return type (null) of method Zend_Ldap_Node_Abstract::__unset()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
 	'identifier' => 'return.phpDocType',
 	'count' => 2,
@@ -7329,12 +6831,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Ldap_Node) of method Zend_Ldap_Node_Collection::_createEntry() should be compatible with return type (array) of method Zend_Ldap_Collection::_createEntry()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Collection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Ldap_Node_Collection::key() should be compatible with return type (int|null) of method Zend_Ldap_Collection::key()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Collection.php',
@@ -7574,12 +7070,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader/PluginLoader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (bool) of method Zend_Loader_PluginLoader::isLoaded() should be compatible with return type (Zend_Loader_PluginLoader) of method Zend_Loader_PluginLoader_Interface::isLoaded()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/PluginLoader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $className might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 3,
@@ -7784,12 +7274,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Log/Writer/Db.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Log_Writer_Db::setFormatter() should be compatible with return type (Zend_Log_Writer_Abstract) of method Zend_Log_Writer_Abstract::setFormatter()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Db.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Layout::$events.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -7946,32 +7430,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Folder_Maildir::getCurrentFolder() should be compatible with return type (Zend_Mail_Storage_Folder) of method Zend_Mail_Storage_Folder_Interface::getCurrentFolder()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Folder_Mbox::getCurrentFolder() should be compatible with return type (Zend_Mail_Storage_Folder) of method Zend_Mail_Storage_Folder_Interface::getCurrentFolder()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Mbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Mail_Storage_Folder_Mbox::__wakeup() should be compatible with return type (null) of method Zend_Mail_Storage_Mbox::__wakeup()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Mbox.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'If condition is always true.',
 	'identifier' => 'if.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Imap::getCurrentFolder() should be compatible with return type (Zend_Mail_Storage_Folder) of method Zend_Mail_Storage_Folder_Interface::getCurrentFolder()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
 ];
@@ -7989,12 +7449,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mail_Message_File) of method Zend_Mail_Storage_Mbox::getMessage() should be compatible with return type (Zend_Mail_Message) of method Zend_Mail_Storage_Abstract::getMessage()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Mbox::getNumberByUniqueId() should be compatible with return type (int) of method Zend_Mail_Storage_Abstract::getNumberByUniqueId()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
@@ -8048,22 +7502,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Transport/Sendmail.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $config with type array|null is not subtype of native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Mail_Transport_Smtp::$_connection (Zend_Mail_Protocol_Smtp) does not accept Zend_Mail_Protocol_Abstract.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Transport/Smtp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_Markup_TokenList) of method Zend_Markup_Parser_Bbcode::parse() should be compatible with return type (array) of method Zend_Markup_Parser_ParserInterface::parse()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Parser/Bbcode.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "&" between string and 16 results in an error.',
@@ -8080,12 +7522,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "^" between string and 16 results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $filter with type string is incompatible with native type Zend_Filter_Interface.',
-	'identifier' => 'parameter.phpDocType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
 ];
@@ -8144,12 +7580,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Measure_Number::setType() should be compatible with return type (Zend_Measure_Abstract) of method Zend_Measure_Abstract::setType()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Memory_Container::destroy().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -8171,12 +7601,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to internal method Zend_Memory_Manager::unlink().',
 	'identifier' => 'method.internal',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Memory_Container_Movable::isLocked() should be compatible with return type (bool) of method Zend_Memory_Container_Interface::isLocked()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
 ];
 $ignoreErrors[] = [
@@ -8372,18 +7796,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $length (string) of method Zend_Mobile_Push_Test_ApnsProxy::_read() should be compatible with parameter $length (int) of method Zend_Mobile_Push_Apns::_read()',
-	'identifier' => 'method.childParameterType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Test/ApnsProxy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $length of function substr expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Test/ApnsProxy.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function current() on a separate line has no effect.',
 	'identifier' => 'function.resultUnused',
 	'count' => 1,
@@ -8466,12 +7878,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $options with type array|Zend_Config is not subtype of native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Config.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Oauth_Consumer::getRequestMethod().',
@@ -8890,18 +8296,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Db_Select::getTable().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator/Adapter/DbTableSelect.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_Db_Table_Rowset_Abstract) of method Zend_Paginator_Adapter_DbTableSelect::getItems() should be compatible with return type (array) of method Zend_Paginator_Adapter_DbSelect::getItems()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator/Adapter/DbTableSelect.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_Db_Table_Rowset_Abstract) of method Zend_Paginator_Adapter_DbTableSelect::getItems() should be compatible with return type (array) of method Zend_Paginator_Adapter_Interface::getItems()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Paginator/Adapter/DbTableSelect.php',
 ];
@@ -9326,12 +8720,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $destination with type string|Zend_Pdf_Destination is not subtype of native type Zend_Pdf_Destination.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$IsMap.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -9602,12 +8990,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $image with type Zend_Pdf_Image is incompatible with native type Zend_Pdf_Resource_Image.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $box of method Zend_Pdf_Canvas_Abstract::drawLayoutBox() has invalid type Zend_Pdf_Element_LayoutBox.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -9624,12 +9006,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $image with type Zend_Pdf_Image is incompatible with native type Zend_Pdf_Resource_Image.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Interface.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $box of method Zend_Pdf_Canvas_Interface::drawLayoutBox() has invalid type Zend_Pdf_Element_LayoutBox.',
@@ -11468,18 +10844,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Target.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Pdf_Trailer_Generator::getPDFLength() should be compatible with return type (string) of method Zend_Pdf_Trailer::getPDFLength()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Trailer/Generator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (int) of method Zend_Pdf_Trailer_Keeper::getPDFLength() should be compatible with return type (string) of method Zend_Pdf_Trailer::getPDFLength()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Trailer/Keeper.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $current on string.',
 	'identifier' => 'property.nonObject',
 	'count' => 2,
@@ -11597,24 +10961,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Queue_Adapter_Activemq::$_client has unknown class Zend_Queue_Adapter_Stomp_client as its type.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Queue_Adapter_Activemq::create() should be compatible with return type (bool) of method Zend_Queue_Adapter_AdapterInterface::create()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Queue_Adapter_Activemq::delete() should be compatible with return type (bool) of method Zend_Queue_Adapter_AdapterInterface::delete()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Queue_Adapter_Activemq::getQueues() should be compatible with return type (array) of method Zend_Queue_Adapter_AdapterInterface::getQueues()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
 ];
 $ignoreErrors[] = [
@@ -11858,24 +11204,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Queue_Adapter_PlatformJobQueue::create() should be compatible with return type (bool) of method Zend_Queue_Adapter_AdapterInterface::create()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Queue_Adapter_PlatformJobQueue::delete() should be compatible with return type (bool) of method Zend_Queue_Adapter_AdapterInterface::delete()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Queue_Adapter_PlatformJobQueue::getQueues() should be compatible with return type (array) of method Zend_Queue_Adapter_AdapterInterface::getQueues()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Queue_Message_Iterator::getQueue() should return Zend_Queue|null but returns Zend_Queue_Adapter_AdapterInterface.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -11884,12 +11212,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Offset \'queue\' on array{data: mixed} in empty() does not exist.',
 	'identifier' => 'empty.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $queue with type Zend_Queue_Adapter_AdapterInterface is not subtype of native type Zend_Queue.',
-	'identifier' => 'parameter.phpDocType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
 ];
@@ -11960,34 +11282,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $frame with type Zend_Queue_Stom_FrameInterface is not subtype of native type Zend_Queue_Stomp_FrameInterface.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function stream_set_blocking expects bool, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $frame of method Zend_Queue_Stomp_Client_Connection::write() has invalid type Zend_Queue_Stom_FrameInterface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client/Connection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|false) of method Zend_Queue_Stomp_Frame::getBody() should be compatible with return type ($this(Zend_Queue_Stomp_FrameInterface)) of method Zend_Queue_Stomp_FrameInterface::getBody()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Frame.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string|false) of method Zend_Queue_Stomp_Frame::getCommand() should be compatible with return type ($this(Zend_Queue_Stomp_FrameInterface)) of method Zend_Queue_Stomp_FrameInterface::getCommand()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Frame.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Reflector::getStartLine().',
@@ -12024,12 +11322,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Rest/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type bool|DOMDocument|SimpleXMLElement|null is not subtype of native type Traversable.',
-	'identifier' => 'return.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Client/Result.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Rest_Client_Result), \'handleXmlErrors\'} given.',
@@ -12137,12 +11429,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #6 $isTokenized of class Zend_Search_Lucene_Field constructor expects bool, int<0, 1> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (array) of method Zend_Search_Lucene::termFreqs() should be compatible with return type (int) of method Zend_Search_Lucene_Interface::termFreqs()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
 ];
 $ignoreErrors[] = [
@@ -12440,12 +11726,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Term.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Search_Lucene_Search_Query_Term::$_termFreqs (array) does not accept int.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Term.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method __construct() of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase.',
 	'identifier' => 'method.internalClass',
 	'count' => 1,
@@ -12506,32 +11786,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParser.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an offset on an unknown class arrays.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to offset (int|string) on an unknown class arrays.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Invalid type Zend_Search_Lucene to throw.',
 	'identifier' => 'throw.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Search_Lucene_Search_QueryParserContext::$_signs (arrays) does not accept default value of type array.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Search_Lucene_Search_QueryParserContext::$_signs has unknown class arrays as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
 ];
@@ -12576,12 +11832,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Weight/MultiTerm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Search_Lucene_Storage_File_Memory::seek() should be compatible with return type (int) of method Zend_Search_Lucene_Storage_File::seek()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Storage/File/Memory.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Serializer::getDefaultAdapter() has invalid return type Zend_Serializer_AdapterInterface.',
@@ -12706,12 +11956,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $parameter of method Zend_Server_Method_Prototype::addParameter() expects string, Zend_Server_Method_Parameter given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (Zend_Server_Definition) of method Zend_Server_Abstract::getFunctions() should be compatible with return type (array) of method Zend_Server_Interface::getFunctions()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
 ];
@@ -13880,12 +13124,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $code (string) of method Zend_Soap_Server::fault() should be compatible with parameter $code (int) of method Zend_Server_Interface::fault()',
-	'identifier' => 'method.childParameterType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $newvalue of function ini_set expects string, bool given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -14324,12 +13562,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterator.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type object is not subtype of native type RecursiveFilterIterator|null.',
-	'identifier' => 'return.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterator.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method getActionRepository() on an unknown class Zend_Tool_Framework_Provider_Registry_Interface.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -14338,12 +13570,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method getProviderRepository() on an unknown class Zend_Tool_Framework_Provider_Registry_Interface.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $metadata with type Zend_Tool_Framework_Manifest_Metadata is not subtype of native type Zend_Tool_Framework_Metadata_Interface.',
-	'identifier' => 'parameter.phpDocType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
 ];
@@ -14498,12 +13724,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/System/ProjectDirectory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_System_ProjectProfileFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/System/ProjectProfileFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -14534,12 +13754,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ApplicationConfigFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_ApplicationConfigFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ApplicationConfigFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -14550,18 +13764,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_BootstrapFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_ConfigFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ConfigFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
@@ -14582,28 +13784,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ControllerFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_ControllerFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ControllerFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_DbTableFile::getContents() should return null but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/DbTableFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/DbTableFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_FormFile::getContents() should return null but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/FormFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
@@ -14618,28 +13802,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/FormFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_HtaccessFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/HtaccessFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_LayoutScriptFile::$_layoutName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/LayoutScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_LayoutScriptFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/LayoutScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_ModelFile::getContents() should return null but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModelFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
@@ -14694,18 +13860,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_ProjectProviderFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_PublicIndexFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/PublicIndexFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getContext().',
@@ -14768,12 +13922,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationControllerFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_TestApplicationControllerFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationControllerFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestApplicationModuleDirectory::$_filesystemName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -14798,12 +13946,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_TestLibraryFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestLibraryNamespaceDirectory::$_filesystemName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -14814,18 +13956,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryNamespaceDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_TestPHPUnitBootstrapFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestPHPUnitBootstrapFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_TestPHPUnitConfigFile::getContents() should return null but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestPHPUnitConfigFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ViewControllerScriptsDirectory::$_forControllerName (name) does not accept Zend_Tool_Project_Profile_Resource_Container.',
@@ -14876,12 +14006,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Tool_Project_Context_Zf_ViewScriptFile::getContents() should be compatible with return type (null) of method Zend_Tool_Project_Context_Filesystem_File::getContents()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Project_Profile_Resource_Container::append() invoked with 2 parameters, 1 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
@@ -14902,12 +14026,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Iterator<mixed, mixed>::getChildren().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Iterator/ContextFilter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type object is not subtype of native type RecursiveFilterIterator|null.',
-	'identifier' => 'return.phpDocType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Iterator/ContextFilter.php',
 ];
@@ -15458,18 +14576,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/Barcode/AdapterAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_Barcode_Code39ext::$_characters (string) does not accept default value of type int.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode/Code39ext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_Barcode_Code93ext::$_characters (string) does not accept default value of type int.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode/Code93ext.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between int<1, max> and non-empty-string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -15690,12 +14796,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/Identical.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $haystack with type mixed is not subtype of native type array.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/InArray.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between 3 and non-empty-string results in an error.',
@@ -16340,18 +15440,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/HelperAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $page with type Zend_Navigaiton_Page is not subtype of native type Zend_Navigation_Page.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Links.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $page of method Zend_View_Helper_Navigation_Links::_findRoot() has invalid type Zend_Navigaiton_Page.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Links.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -16508,36 +15596,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_Placeholder_Container_Standalone::$_autoEscape (book) does not accept bool.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_Placeholder_Container_Standalone::$_autoEscape (book) does not accept default value of type true.',
-	'identifier' => 'property.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_Placeholder_Container_Standalone::$_autoEscape has unknown class book as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param for parameter $container with type Zend_View_Placeholder_Container_Abstract is not subtype of native type Zend_View_Helper_Placeholder_Container_Abstract.',
-	'identifier' => 'parameter.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Registry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $container of method Zend_View_Helper_Placeholder_Registry::setContainer() has invalid type Zend_View_Placeholder_Container_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Registry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::placeholder().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -16664,12 +15722,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (array) of method Zend_XmlRpc_Server::getFunctions() should be compatible with return type (Zend_Server_Definition) of method Zend_Server_Abstract::getFunctions()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Instanceof between Exception and (int|string) results in an error.',
 	'identifier' => 'instanceof.invalidExprType',
 	'count' => 1,
@@ -16720,12 +15772,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::init().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Value/BigInteger.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_XmlRpc_Value_BigInteger::getValue() should be compatible with return type (int) of method Zend_XmlRpc_Value_Integer::getValue()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Value/BigInteger.php',
 ];

@@ -147,7 +147,7 @@ class Zend_Queue_Stomp_Client_Connection
      *
      * example: $response = $client->write($frame)->read();
      *
-     * @param Zend_Queue_Stom_FrameInterface $frame
+     * @param Zend_Queue_Stomp_FrameInterface $frame
      * @return $this
      */
     public function write(Zend_Queue_Stomp_FrameInterface $frame)

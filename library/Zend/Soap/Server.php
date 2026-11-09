@@ -989,7 +989,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
      *
      * @link   http://www.w3.org/TR/soap12-part1/#faultcodes
      * @param  string|Exception $fault
-     * @param  string $code SOAP Fault Codes
+     * @param  string|int $code SOAP Fault Codes
      * @return SoapFault
      */
     public function fault($fault = null, $code = "Receiver")

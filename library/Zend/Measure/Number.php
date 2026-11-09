@@ -388,7 +388,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
      *
      * @param  string $type New type to set
      * @throws Zend_Measure_Exception When a unknown type is given
-     * @return void
+     * @return $this
      */
     public function setType($type)
     {
@@ -402,6 +402,8 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
 
         $this->_value = $value;
         $this->_type  = $type;
+
+        return $this;
     }
 
     /**

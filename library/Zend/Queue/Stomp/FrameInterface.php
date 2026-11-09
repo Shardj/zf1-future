@@ -97,7 +97,7 @@ interface Zend_Queue_Stomp_FrameInterface
      * Return the body for this frame
      * returns false if the body does not exist
      *
-     * @return $this
+     * @return string|false
      */
     public function getBody();
 
@@ -117,7 +117,7 @@ interface Zend_Queue_Stomp_FrameInterface
      * Return the command for this frame
      * return false if the command does not exist
      *
-     * @return $this
+     * @return string|false
      */
     public function getCommand();
 

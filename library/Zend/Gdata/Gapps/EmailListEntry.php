@@ -73,7 +73,7 @@ class Zend_Gdata_Gapps_EmailListEntry extends Zend_Gdata_Entry
      * <gd:feedLink> element containing information about other feeds
      * relevant to this entry.
      *
-     * @var Zend_Gdata_Extension_FeedLink
+     * @var Zend_Gdata_Extension_FeedLink[]
      */
     protected $_feedLink = [];
 

@@ -189,7 +189,7 @@ class Zend_Feed_Reader_Entry_Atom extends Zend_Feed_Reader_EntryAbstract impleme
     /**
      * Get the entry enclosure
      *
-     * @return string
+     * @return stdClass|null
      */
     public function getEnclosure()
     {

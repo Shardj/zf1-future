@@ -277,7 +277,7 @@ class Zend_Feed_Writer_Extension_ITunes_Feed
     /**
      * Add feed owner
      *
-     * @param  string $value
+     * @param  array $value
      * @return Zend_Feed_Writer_Extension_ITunes_Feed
      */
     public function addItunesOwner(array $value)

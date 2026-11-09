@@ -342,7 +342,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
     /**
      * Retrieve a statement attribute.
      *
-     * @param integer $key Attribute name.
+     * @param string $key Attribute name.
      * @return mixed      Attribute value.
      * @throws Zend_Db_Statement_Exception
      */

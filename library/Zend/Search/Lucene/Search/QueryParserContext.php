@@ -77,7 +77,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
      * Entries signs.
      * Used in GM_SIGNS grouping mode
      *
-     * @var arrays
+     * @var array
      */
     private $_signs = [];
 

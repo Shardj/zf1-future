@@ -514,7 +514,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Add a feed category
      *
-     * @param string $category
+     * @param array $category
      */
     public function addCategory(array $category)
     {

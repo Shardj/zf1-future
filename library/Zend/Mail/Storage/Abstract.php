@@ -204,7 +204,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
      * as parameter and use this method to translate it to message number right before calling removeMessage()
      *
      * @param string $id unique id
-     * @return int message number
+     * @return int|string message number
      * @throws Zend_Mail_Storage_Exception
      */
     abstract public function getNumberByUniqueId($id);

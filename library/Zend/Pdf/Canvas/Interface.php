@@ -305,7 +305,7 @@ interface Zend_Pdf_Canvas_Interface
     /**
      * Draw an image at the specified position on the page.
      *
-     * @param Zend_Pdf_Image $image
+     * @param Zend_Pdf_Resource_Image $image
      * @param float $x1
      * @param float $y1
      * @param float $x2

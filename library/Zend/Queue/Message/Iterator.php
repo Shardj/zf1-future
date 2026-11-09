@@ -172,7 +172,7 @@ class Zend_Queue_Message_Iterator implements Iterator, Countable
      * Set the queue object, to re-establish a live connection
      * to the queue for a Message that has been de-serialized.
      *
-     * @param  Zend_Queue_Adapter_AdapterInterface $queue
+     * @param  Zend_Queue $queue
      * @return boolean
      * @throws Zend_Queue_Exception
      */

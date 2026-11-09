@@ -268,7 +268,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
     /**
      * Get the entry enclosure
      *
-     * @return string
+     * @return stdClass|null
      */
     public function getEnclosure()
     {

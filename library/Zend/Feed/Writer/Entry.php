@@ -542,7 +542,7 @@ class Zend_Feed_Writer_Entry
     /**
      * Add a entry category
      *
-     * @param string $category
+     * @param array $category
      */
     public function addCategory(array $category)
     {

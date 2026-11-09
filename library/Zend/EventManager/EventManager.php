@@ -432,7 +432,7 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
      * delegate.
      *
      * @param  string           $event Event name
-     * @param  EventDescription $e
+     * @param  Zend_EventManager_EventDescription $e
      * @param  null|callable    $callback
      * @return Zend_EventManager_ResponseCollection
      */

@@ -561,7 +561,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     /**
      * Add a default filter
      *
-     * @param string $filter
+     * @param Zend_Filter_Interface $filter
      *
      * @return void
      */

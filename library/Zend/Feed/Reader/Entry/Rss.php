@@ -100,7 +100,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
     /**
      * Constructor
      *
-     * @param  Zend_Feed_Entry_Abstract $entry
+     * @param  DOMElement $entry
      * @param  string|int|null $entryKey
      * @param  string $type
      * @return void
@@ -349,7 +349,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
 
     /**
      * Get the entry enclosure
-     * @return string
+     * @return stdClass|null
      */
     public function getEnclosure()
     {

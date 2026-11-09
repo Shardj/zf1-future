@@ -133,7 +133,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      *
      * @param  string  $name    queue name
      * @param  integer $timeout default visibility timeout
-     * @return void
+     * @return never
      * @throws Zend_Queue_Exception
      */
     public function create($name, $timeout=null)
@@ -146,7 +146,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
      * Delete a queue and all of its messages
      *
      * @param  string $name queue name
-     * @return void
+     * @return never
      * @throws Zend_Queue_Exception
      */
     public function delete($name)
@@ -178,7 +178,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
     /**
      * Get an array of all available queues
      *
-     * @return void
+     * @return never
      * @throws Zend_Queue_Exception
      */
     public function getQueues()

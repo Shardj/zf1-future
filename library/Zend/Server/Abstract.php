@@ -104,7 +104,7 @@ abstract class Zend_Server_Abstract implements Zend_Server_Interface
      *
      * Returns an array of method definitions.
      *
-     * @return Zend_Server_Definition
+     * @return Zend_Server_Definition|array
      */
     public function getFunctions()
     {

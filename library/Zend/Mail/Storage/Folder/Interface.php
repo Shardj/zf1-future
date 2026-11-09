@@ -53,7 +53,7 @@ interface Zend_Mail_Storage_Folder_Interface
     /**
      * get Zend_Mail_Storage_Folder instance for current folder
      *
-     * @return Zend_Mail_Storage_Folder instance of current folder
+     * @return string instance of current folder
      * @throws Zend_Mail_Storage_Exception
      */
     public function getCurrentFolder();

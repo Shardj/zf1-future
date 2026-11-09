@@ -168,7 +168,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
     /**
      * Set view object
      *
-     * @param  Zend_Dojo_View_Interface $view
+     * @param  Zend_View_Interface $view
      * @return void
      */
     public function setView(Zend_View_Interface $view)

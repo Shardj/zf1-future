@@ -1064,7 +1064,7 @@ abstract class Zend_Db_Adapter_Abstract
      * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
      *
      * @param string $sequenceName
-     * @return string|null
+     * @return string|int|null
      */
     public function lastSequenceId($sequenceName)
     {
@@ -1077,7 +1077,7 @@ abstract class Zend_Db_Adapter_Abstract
      * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
      *
      * @param string $sequenceName
-     * @return string|null
+     * @return string|int|null
      */
     public function nextSequenceId($sequenceName)
     {

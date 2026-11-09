@@ -810,7 +810,7 @@ abstract class Zend_Http_UserAgent_AbstractDevice
     /**
      * Retrieve image format support
      *
-     * @return array
+     * @return array|null
      */
     public function getImageFormatSupport()
     {
@@ -870,7 +870,7 @@ abstract class Zend_Http_UserAgent_AbstractDevice
     /**
      * Get supported X/HTML version
      *
-     * @return int
+     * @return int|string|null
      */
     public function getXhtmlSupportLevel()
     {
@@ -880,7 +880,7 @@ abstract class Zend_Http_UserAgent_AbstractDevice
     /**
      * Does the device support Flash?
      *
-     * @return bool
+     * @return bool|string|null
      */
     public function hasFlashSupport()
     {
@@ -890,7 +890,7 @@ abstract class Zend_Http_UserAgent_AbstractDevice
     /**
      * Does the device support PDF?
      *
-     * @return bool
+     * @return bool|string|null
      */
     public function hasPdfSupport()
     {
@@ -900,7 +900,7 @@ abstract class Zend_Http_UserAgent_AbstractDevice
     /**
      * Does the device have a phone number associated with it?
      *
-     * @return bool
+     * @return bool|string|null
      */
     public function hasPhoneNumber()
     {

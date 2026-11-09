@@ -72,7 +72,7 @@ abstract class Zend_Feed_Reader_Extension_EntryAbstract
     /**
      * Constructor
      *
-     * @param  Zend_Feed_Entry_Abstract $entry
+     * @param  DOMElement $entry
      * @param  int $entryKey
      * @param  string $type
      * @return void

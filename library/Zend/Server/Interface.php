@@ -91,7 +91,7 @@ interface Zend_Server_Interface
      * documentation, or persistence.
      *
      * @access public
-     * @return array
+     * @return array|Zend_Server_Definition
      */
     public function getFunctions();
 

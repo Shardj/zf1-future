@@ -611,7 +611,7 @@ class Zend_View_Helper_Navigation_Links
      * makes sure finder methods will not traverse above the container given
      * to the render method.
      *
-     * @param  Zend_Navigaiton_Page $page  page to find root for
+     * @param  Zend_Navigation_Page $page  page to find root for
      * @return Zend_Navigation_Container   the root container of the given page
      */
     protected function _findRoot(Zend_Navigation_Page $page)

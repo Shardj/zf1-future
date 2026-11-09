@@ -172,7 +172,7 @@ class Zend_Rest_Client_Result implements IteratorAggregate {
     /**
      * Implement IteratorAggregate::getIterator()
      *
-     * @return bool|DOMDocument|SimpleXMLElement|null
+     * @return Traversable
      */
     #[\ReturnTypeWillChange]
     public function getIterator(): \Traversable

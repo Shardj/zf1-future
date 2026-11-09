@@ -184,7 +184,7 @@ class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
      *
      * @param  string $key
      * @param  mixed $value
-     * @return Zend_Captcha_ReCaptcha
+     * @return $this
      */
     public function setOption($key, $value)
     {

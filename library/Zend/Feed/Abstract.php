@@ -247,7 +247,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      *
      * @param  DOMElement $root the root node to use
      * @param  array $array the data to use
-     * @return DOMElement root node
+     * @return void root node
      */
     abstract protected function _mapFeedEntries(DOMElement $root, $array);
 
