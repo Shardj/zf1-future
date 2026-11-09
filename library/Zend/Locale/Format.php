@@ -190,7 +190,7 @@ class Zend_Locale_Format
      * Example for conversion from Latin to Arabic numerals:
      *   convertNumerals('100 Tests', 'Latn', 'Arab'); -> returns '١١٠ Tests'
      *
-     * @param  string  $input  String to convert
+     * @param  string|int  $input  String to convert
      * @param  string  $from   Script to parse, see {@link Zend_Locale::getScriptList()} for details.
      * @param  string  $to     OPTIONAL Script to convert to
      * @return string  Returns the converted input
@@ -718,7 +718,7 @@ class Zend_Locale_Format
      * '0' = 0
      * '(-){0,1}(\d+(\.){0,1})*(\,){0,1})\d+'
      *
-     * @param   string   $input    Input string to parse for numbers
+     * @param   string|int   $input    Input string to parse for numbers
      * @param   array    $options  Options: locale. See {@link setOptions()} for details.
      * @return  integer            Returns the extracted number
      */

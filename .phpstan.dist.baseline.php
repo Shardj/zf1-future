@@ -1766,18 +1766,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Currency.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of static method Zend_Locale_Format::convertNumerals() expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $strict of static method Zend_Locale::isLocale() expects bool, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $subject of function str_replace expects array<string>|string, float|int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2162,18 +2150,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value of static method Zend_Date::getFullYear() expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $strict of static method Zend_Locale::isLocale() expects bool, null given.',
-	'identifier' => 'argument.type',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $locale of method Zend_Date::toString() expects string|Zend_Locale|null, true given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2194,12 +2170,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between string and float results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date/DateObject.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $day of static method Zend_Date_DateObject::dayOfWeek() expects int, float given.',
-	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Date/DateObject.php',
 ];
@@ -4964,18 +4934,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App/MediaEntry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $time of function strtotime expects string, int<min, -1> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/Util.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $subject of function preg_match expects string, int<min, -1> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/Util.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function urlencode expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -5444,12 +5402,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Query.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $timestamp of static method Zend_Gdata_App_Util::formatTimestamp() expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Gdata/Query.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method delete() on an unknown class ListEntry.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -5804,12 +5756,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Dn.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $caseFold of static method Zend_Ldap_Dn::_caseFoldRdn() expects string, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Dn.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $base64 of method Zend_Ldap_Ldif_Encoder::_encodeString() has invalid type boolen.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -5838,24 +5784,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Node.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
-	'identifier' => 'return.phpDocType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
-	'identifier' => 'return.phpDocType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
-	'identifier' => 'return.phpDocType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/ChildrenIterator.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Ldap_Node) of method Zend_Ldap_Node_Collection::_createEntry() should be compatible with return type (array) of method Zend_Ldap_Collection::_createEntry()',
@@ -5940,12 +5868,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
-	'identifier' => 'return.phpDocType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/Item.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory::$ldapdisplayname.',
@@ -6122,21 +6044,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of static method Zend_Locale::_prepareQuestionString() expects string, list<string> given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Locale.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $locale of function setlocale expects array|string|null, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $value of static method Zend_Locale::getTranslationList() expects string|null, int given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Locale.php',
 ];
 $ignoreErrors[] = [
@@ -6144,12 +6054,6 @@ $ignoreErrors[] = [
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Locale.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $strict of static method Zend_Locale::isLocale() expects bool, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale/Data.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_Locale_Data::$_list is never read, only written.',
@@ -6171,24 +6075,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $number of function number_format expects float, string given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Locale/Math.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value of static method Zend_Locale_Math::exponent() expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 15,
-	'path' => __DIR__ . '/library/Zend/Locale/Math.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value of static method Zend_Locale_Math::normalize() expects int, float given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale/Math.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $str of function explode expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Locale/Math.php',
@@ -6254,18 +6140,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Locale/Math/PhpMath.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value of static method Zend_Locale_Math::normalize() expects int, float given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale/Math/PhpMath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value of static method Zend_Locale_Math::normalize() expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 6,
-	'path' => __DIR__ . '/library/Zend/Locale/Math/PhpMath.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $stack of function array_shift expects array, string given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -6322,12 +6196,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Mail_Storage_Abstract::$hasFetchPart.',
 	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
-	'identifier' => 'return.phpDocType',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
 ];
@@ -6408,12 +6276,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
-	'identifier' => 'return.phpDocType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Mail_Storage_Folder::$INBOX.',
@@ -6530,18 +6392,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $strict of static method Zend_Locale::isLocale() expects bool, null given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Measure/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of static method Zend_Locale_Format::getInteger() expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function str_split expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -6555,12 +6405,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $string of function strlen expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $strict of static method Zend_Locale::isLocale() expects bool, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
@@ -13586,12 +13430,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/InlineScript.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $cycleCheck of static method Zend_Json::encode() expects bool, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Json.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -13788,12 +13626,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/View/Helper/RenderToPlaceholder.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $strict of static method Zend_Locale::isLocale() expects bool, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Translate.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Wildfire_Channel_Interface::getProtocol().',

@@ -649,7 +649,7 @@ abstract class Zend_Date_DateObject
      *
      * @param  integer  $year
      * @param  integer  $month
-     * @param  integer  $day
+     * @param  integer|float  $day
      * @return integer  dayOfWeek
      */
     protected static function dayOfWeek($year, $month, $day)

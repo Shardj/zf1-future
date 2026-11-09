@@ -182,7 +182,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      * Implements ArrayAccess.
      *
      * @param  string $name
-     * @return null
+     * @return void
      */
     public function offsetUnset($name): void { }
 
@@ -192,7 +192,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      *
      * @param  string $name
      * @param  mixed $value
-     * @return null
+     * @return void
      */
     public function offsetSet($name, $value): void { }
 

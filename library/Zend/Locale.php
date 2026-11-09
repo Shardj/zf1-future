@@ -1894,7 +1894,7 @@ class Zend_Locale
      *
      * @param  string             $path   (Optional) Type of information to return
      * @param  string|Zend_Locale $locale (Optional) Locale|Language for which this informations should be returned
-     * @param  string             $value  (Optional) Value for detail list
+     * @param  string|int             $value  (Optional) Value for detail list
      * @return array|false Array with the wished information in the given language
      */
     public static function getTranslationList($path = null, $locale = null, $value = null)
@@ -2066,7 +2066,7 @@ class Zend_Locale
     /**
      * Internal function for preparing the returned question regex string
      *
-     * @param  string $input Regex to parse
+     * @param  string|array $input Regex to parse
      * @return string
      */
     private static function _prepareQuestionString($input)
@@ -2114,7 +2114,7 @@ class Zend_Locale
      * "XX_yy" refers to "root", which returns false
      *
      * @param  string|Zend_Locale $locale     Locale to check for
-     * @param  boolean            $strict     (Optional) If true, no rerouting will be done when checking
+     * @param  boolean|null            $strict     (Optional) If true, no rerouting will be done when checking
      * @param  boolean            $compatible (DEPRECATED) Only for internal usage, brakes compatibility mode
      * @return boolean|string If the locale is known dependend on the settings
      */

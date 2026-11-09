@@ -540,7 +540,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
     /**
      * implements Iterator::next()
      *
-     * @return null
+     * @return void
      */
     public function next(): void
     {
@@ -572,7 +572,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
     /**
      * implements Iterator::rewind()
      *
-     * @return null
+     * @return void
      */
     public function rewind(): void
     {

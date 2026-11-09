@@ -370,7 +370,7 @@ class Zend_Ldap_Dn implements ArrayAccess
      * Do a case folding on a RDN
      *
      * @param  array  $part
-     * @param  string $caseFold
+     * @param  string|null $caseFold
      * @return array
      */
     protected static function _caseFoldRdn(array $part, $caseFold)

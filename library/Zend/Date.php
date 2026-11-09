@@ -963,7 +963,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Counts the exact year number
      * < 70 - 2000 added, >70 < 100 - 1900, others just returned
      *
-     * @param  integer  $value year number
+     * @param  integer|string  $value year number
      * @return integer  Number of year
      */
     public static function getFullYear($value)
