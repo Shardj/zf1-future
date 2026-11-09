@@ -78,22 +78,22 @@ class Zend_Service_Amazon_Item
     public $TotalReviews;
 
     /**
-     * @var int
+     * @var int|float
      */
     public $AverageRating;
 
     /**
-     * @var string
+     * @var Zend_Service_Amazon_Image|null
      */
     public $SmallImage;
 
     /**
-     * @var string
+     * @var Zend_Service_Amazon_Image|null
      */
     public $MediumImage;
 
     /**
-     * @var string
+     * @var Zend_Service_Amazon_Image|null
      */
     public $LargeImage;
 

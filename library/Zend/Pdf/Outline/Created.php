@@ -82,7 +82,7 @@ class Zend_Pdf_Outline_Created extends Zend_Pdf_Outline
      *
      * Null means no target.
      *
-     * @var Zend_Pdf_Destination|Zend_Pdf_Action
+     * @var Zend_Pdf_Target|null
      */
     protected $_target = null;
 

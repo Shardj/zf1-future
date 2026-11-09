@@ -65,7 +65,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     protected $_messages = [];
 
     /**
-     * @var Zend_Translate_Adapter
+     * @var Zend_Translate_Adapter|null
      */
     protected $_translator;
 
@@ -325,7 +325,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      * Adds a new validator for this class
      *
      * @param  string|Zend_Validate_Interface $validator           Type of validator to add
-     * @param  boolean                        $breakChainOnFailure If the validation chain should stop an failure
+     * @param  boolean|null                        $breakChainOnFailure If the validation chain should stop an failure
      * @param  string|array                   $options             Options to set for the validator
      * @param  string|array                   $files               Files to limit this validator to
      * @return Zend_File_Transfer_Adapter_Abstract
@@ -440,7 +440,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     /**
      * Sets a validator for the class, erasing all previous set
      *
-     * @param  string|array $validator Validator to set
+     * @param  array $validators Validators to set
      * @param  string|array $files     Files to limit this validator to
      * @return Zend_File_Transfer_Adapter_Abstract|Zend_File_Transfer_Adapter_Http
      */
@@ -554,7 +554,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      * Sets Options for adapters
      *
      * @param array $options Options to set
-     * @param array $files   (Optional) Files to set the options for
+     * @param array|string $files   (Optional) Files to set the options for
      * @return Zend_File_Transfer_Adapter_Abstract
      */
     public function setOptions($options = [], $files = null) {
@@ -815,7 +815,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
     /**
      * Sets a filter for the class, erasing all previous set
      *
-     * @param  string|array $filter Filter to set
+     * @param  array $filters Filters to set
      * @param  string|array $files     Files to limit this filter to
      * @return Zend_File_Transfer_Adapter_Abstract
      */
@@ -1234,7 +1234,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      * Internal method to detect the size of a file
      *
      * @param  array $value File infos
-     * @return string Filesize of given file
+     * @return string|null Filesize of given file
      */
     protected function _detectFileSize($value)
     {
@@ -1283,7 +1283,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      * Internal method to detect the mime type of a file
      *
      * @param  array $value File infos
-     * @return string Mimetype of given file
+     * @return string|null Mimetype of given file
      */
     protected function _detectMimeType($value)
     {
@@ -1527,7 +1527,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      * Retrieve internal identifier for a named validator
      *
      * @param  string $name
-     * @return string
+     * @return string|false
      */
     protected function _getValidatorIdentifier($name)
     {
@@ -1548,7 +1548,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      * Retrieve internal identifier for a named filter
      *
      * @param  string $name
-     * @return string
+     * @return string|false
      */
     protected function _getFilterIdentifier($name)
     {

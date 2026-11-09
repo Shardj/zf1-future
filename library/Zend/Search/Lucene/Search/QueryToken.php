@@ -103,7 +103,7 @@ class Zend_Search_Lucene_Search_QueryToken
     /**
      * Token text.
      *
-     * @var integer
+     * @var string
      */
     public $text;
 
@@ -119,7 +119,7 @@ class Zend_Search_Lucene_Search_QueryToken
      * IndexReader constructor needs token type and token text as a parameters.
      *
      * @param integer $tokenCategory
-     * @param string  $tokText
+     * @param string  $tokenText
      * @param integer $position
      */
     public function __construct($tokenCategory, $tokenText, $position)

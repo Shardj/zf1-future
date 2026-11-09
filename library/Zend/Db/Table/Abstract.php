@@ -119,7 +119,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * The schema name (default null means current schema)
      *
-     * @var array
+     * @var array|string
      */
     protected $_schema = null;
 
@@ -353,7 +353,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * setDefinitionConfigName()
      *
-     * @param string $definition
+     * @param string $definitionConfigName
      * @return $this
      */
     public function setDefinitionConfigName($definitionConfigName)
@@ -595,7 +595,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param  mixed $db Either an Adapter object, or a string naming a Registry key
-     * @return Zend_Db_Adapter_Abstract
+     * @return Zend_Db_Adapter_Abstract|null
      * @throws Zend_Db_Table_Exception
      */
     protected static function _setupAdapter($db)
@@ -690,7 +690,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param mixed $metadataCache Either a Cache object, or a string naming a Registry key
-     * @return Zend_Cache_Core
+     * @return Zend_Cache_Core|null
      * @throws Zend_Db_Table_Exception
      */
     protected static function _setupMetadataCache($metadataCache)

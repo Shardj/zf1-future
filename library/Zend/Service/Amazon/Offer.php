@@ -57,7 +57,7 @@ class Zend_Service_Amazon_Offer
     public $OfferListingId;
 
     /**
-     * @var string
+     * @var string|int
      */
     public $Price;
 

@@ -924,7 +924,7 @@ abstract class Zend_Db_Adapter_Abstract
      *
      * @param string  $text  The text with a placeholder.
      * @param mixed   $value The value to quote.
-     * @param string  $type  OPTIONAL SQL datatype
+     * @param string|int|null  $type  OPTIONAL SQL datatype
      * @param integer $count OPTIONAL count of placeholders to replace
      * @return string An SQL-safe quoted value placed into the original text.
      */
@@ -1064,7 +1064,7 @@ abstract class Zend_Db_Adapter_Abstract
      * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
      *
      * @param string $sequenceName
-     * @return string
+     * @return string|int|null
      */
     public function lastSequenceId($sequenceName)
     {
@@ -1077,7 +1077,7 @@ abstract class Zend_Db_Adapter_Abstract
      * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
      *
      * @param string $sequenceName
-     * @return string
+     * @return string|int|null
      */
     public function nextSequenceId($sequenceName)
     {
@@ -1182,7 +1182,7 @@ abstract class Zend_Db_Adapter_Abstract
      * PRIMARY_POSITION => integer; position of column in primary key
      *
      * @param string $tableName
-     * @param string $schemaName OPTIONAL
+     * @param string|array $schemaName OPTIONAL
      * @return array
      */
     abstract public function describeTable($tableName, $schemaName = null);

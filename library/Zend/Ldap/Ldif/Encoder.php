@@ -155,7 +155,7 @@ class Zend_Ldap_Ldif_Encoder
      * and then dispatches to the appropriate method.
      *
      * @param  mixed $value The value to be encoded
-     * @return string Encoded value
+     * @return string|null Encoded value
      */
     protected function _encode($value)
     {

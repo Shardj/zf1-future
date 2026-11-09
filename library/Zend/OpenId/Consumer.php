@@ -69,7 +69,7 @@ class Zend_OpenId_Consumer
      * Enables or disables consumer to use association with server based on
      * Diffie-Hellman key agreement
      *
-     * @var Zend_OpenId_Consumer_Storage $_dumbMode
+     * @var bool $_dumbMode
      */
     protected $_dumbMode = false;
 
@@ -442,7 +442,7 @@ class Zend_OpenId_Consumer
      * @param string $macFunc HMAC function (sha1 or sha256)
      * @param string $secret shared secret
      * @param integer $expires expiration UNIX time
-     * @return void
+     * @return bool
      */
     protected function _addAssociation($url, $handle, $macFunc, $secret, $expires)
     {
@@ -495,8 +495,8 @@ class Zend_OpenId_Consumer
      * @param string $url OpenID server url
      * @param string $method HTTP request method 'GET' or 'POST'
      * @param array $params additional qwery parameters to be passed with
-     * @param int &$staus HTTP status code
      *  request
+     * @param int &$status HTTP status code
      * @return false|string|null
      */
     protected function _httpRequest($url, $method = 'GET', array $params = [], &$status = null)

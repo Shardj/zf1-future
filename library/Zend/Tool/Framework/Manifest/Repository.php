@@ -36,7 +36,7 @@ class Zend_Tool_Framework_Manifest_Repository
 {
 
     /**
-     * @var Zend_Tool_Framework_Provider_Registry_Interface
+     * @var Zend_Tool_Framework_Registry_Interface
      */
     protected $_registry = null;
 
@@ -150,7 +150,7 @@ class Zend_Tool_Framework_Manifest_Repository
     /**
      * addMetadata() - add a metadata peice by peice
      *
-     * @param Zend_Tool_Framework_Manifest_Metadata $metadata
+     * @param Zend_Tool_Framework_Metadata_Interface $metadata
      * @return Zend_Tool_Framework_Manifest_Repository
      */
     public function addMetadata(Zend_Tool_Framework_Metadata_Interface $metadata)

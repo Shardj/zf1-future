@@ -62,7 +62,7 @@ class Zend_Tool_Framework_Client_Console
     protected $_storageOptions = null;
 
     /**
-     * @var Zend_Filter_Word_CamelCaseToDash
+     * @var Zend_Filter
      */
     protected $_filterToClientNaming = null;
 

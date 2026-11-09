@@ -237,7 +237,7 @@ abstract class Zend_Gdata_App_FeedSourceParent extends Zend_Gdata_App_FeedEntryP
     }
 
     /**
-     * @param Zend_Gdata_App_Extension_logo $value
+     * @param Zend_Gdata_App_Extension_Logo $value
      * @return $this
      */
     public function setlogo($value)

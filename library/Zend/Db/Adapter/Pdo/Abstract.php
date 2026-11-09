@@ -199,7 +199,6 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
      * Prepares an SQL statement.
      *
      * @param string $sql The SQL statement with placeholders.
-     * @param array $bind An array of data to bind to the placeholders.
      * @return PDOStatement
      */
     public function prepare($sql)
@@ -230,7 +229,7 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
      *
      * @param string $tableName   OPTIONAL Name of table.
      * @param string $primaryKey  OPTIONAL Name of primary key column.
-     * @return string
+     * @return string|int
      */
     public function lastInsertId($tableName = null, $primaryKey = null)
     {
@@ -391,7 +390,6 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
                  */
                 require_once 'Zend/Db/Adapter/Exception.php';
                 throw new Zend_Db_Adapter_Exception("Invalid fetch mode '$mode' specified");
-                break;
         }
     }
 
@@ -414,7 +412,7 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
     /**
      * Retrieve server version in PHP style
      *
-     * @return string
+     * @return string|null
      */
     public function getServerVersion()
     {

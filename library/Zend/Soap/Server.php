@@ -56,7 +56,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
 
     /**
      * Class registered with this server
-     * @var string
+     * @var string|null
      */
     protected $_class;
 
@@ -521,7 +521,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
     /**
      * Set the SOAP Wsdl Caching Options
      *
-     * @param string|int|boolean $caching
+     * @param string|int|boolean $options
      * @return Zend_Soap_Server
      */
     public function setWsdlCache($options)
@@ -675,7 +675,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
     /**
      * Unimplemented: Load server definition
      *
-     * @param array $array
+     * @param array $definition
      * @return void
      * @throws Zend_Soap_Server_Exception Unimplemented
      */
@@ -989,7 +989,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
      *
      * @link   http://www.w3.org/TR/soap12-part1/#faultcodes
      * @param  string|Exception $fault
-     * @param  string $code SOAP Fault Codes
+     * @param  string|int $code SOAP Fault Codes
      * @return SoapFault
      */
     public function fault($fault = null, $code = "Receiver")

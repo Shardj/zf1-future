@@ -221,7 +221,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
      * Defined by Autoloadable; autoload a class
      *
      * @param  string $class
-     * @return false|string
+     * @return false|string|null
      */
     public function autoload($class)
     {
@@ -301,7 +301,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
      *
      * @param  string $class
      * @param  string $type
-     * @return void
+     * @return mixed
      */
     protected function loadClass($class, $type)
     {

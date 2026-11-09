@@ -467,7 +467,6 @@ class Zend_Queue implements Countable
      * $array['function name'] = true or false
      * true is supported, false is not supported.
      *
-     * @param  string $name
      * @return array
      */
     public function getCapabilities()

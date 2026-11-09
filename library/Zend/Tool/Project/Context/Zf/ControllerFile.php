@@ -58,7 +58,7 @@ class Zend_Tool_Project_Context_Zf_ControllerFile extends Zend_Tool_Project_Cont
         $this->_controllerName = $this->_resource->getAttribute('controllerName');
         $this->_moduleName = $this->_resource->getAttribute('moduleName');
         $this->_filesystemName = ucfirst($this->_controllerName) . 'Controller.php';
-        parent::init();
+        return parent::init();
     }
 
     /**

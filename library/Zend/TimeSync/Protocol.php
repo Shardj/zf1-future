@@ -39,7 +39,7 @@ abstract class Zend_TimeSync_Protocol
     /**
      * Holds the current socket connection
      *
-     * @var array
+     * @var array|resource|null
      */
     protected $_socket;
 

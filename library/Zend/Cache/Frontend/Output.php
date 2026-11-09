@@ -79,7 +79,7 @@ class Zend_Cache_Frontend_Output extends Zend_Cache_Core
      * Stop the cache
      *
      * @param  array   $tags             Tags array
-     * @param  int     $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @param  int|false     $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
      * @param  string  $forcedDatas      If not null, force written datas with this
      * @param  boolean $echoData         If set to true, datas are sent to the browser
      * @param  int     $priority         integer between 0 (very low priority) and 10 (maximum priority) used by some particular backends

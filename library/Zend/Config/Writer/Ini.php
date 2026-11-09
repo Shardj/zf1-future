@@ -49,7 +49,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
     /**
      * Set the nest separator
      *
-     * @param  string $filename
+     * @param  string $separator
      * @return Zend_Config_Writer_Ini
      */
     public function setNestSeparator($separator)
@@ -145,7 +145,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
      * Prepare a value for INI
      *
      * @param  mixed $value
-     * @return string
+     * @return string|float|int
      */
     protected function _prepareValue($value)
     {

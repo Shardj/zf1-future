@@ -46,7 +46,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
     /**
      * Field specified for next entry
      *
-     * @var string
+     * @var string|null
      */
     private $_nextEntryField = null;
 
@@ -55,7 +55,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
      * False means, that term is prohibited.
      * null means, that term is neither prohibited, nor required
      *
-     * @var boolean
+     * @var boolean|null
      */
     private $_nextEntrySign = null;
 
@@ -77,7 +77,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
      * Entries signs.
      * Used in GM_SIGNS grouping mode
      *
-     * @var arrays
+     * @var array
      */
     private $_signs = [];
 
@@ -279,7 +279,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
      * 'term1 and term2   or   term3 and (<subquery1>) and not (<subquery2>)'
      *
      * @return Zend_Search_Lucene_Search_Query
-     * @throws Zend_Search_Lucene
+     * @throws Zend_Search_Lucene_Exception
      */
     private function _booleanExpressionQuery()
     {

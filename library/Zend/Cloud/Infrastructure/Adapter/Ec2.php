@@ -43,28 +43,28 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
     /**
      * Ec2 Instance
      *
-     * @var Ec2Instance
+     * @var Zend_Service_Amazon_Ec2_Instance
      */
     protected $ec2;
 
     /**
      * Ec2 Image
      *
-     * @var Ec2Image
+     * @var Zend_Service_Amazon_Ec2_Image|null
      */
     protected $ec2Image;
 
     /**
      * Ec2 Zone
      *
-     * @var Ec2Zone
+     * @var Zend_Service_Amazon_Ec2_Availabilityzones|null
      */
     protected $ec2Zone;
 
     /**
      * Ec2 Monitor
      *
-     * @var Ec2Monitor
+     * @var Zend_Service_Amazon_Ec2_CloudWatch|null
      */
     protected $ec2Monitor;
 
@@ -376,7 +376,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
     public function zonesInstance()
     {
         if (!isset($this->ec2Zone)) {
-            $this->ec2Zone = new Zend_Service_Amazon_Ec2_AvailabilityZones($this->accessKey,$this->accessSecret,$this->region);
+            $this->ec2Zone = new Zend_Service_Amazon_Ec2_Availabilityzones($this->accessKey,$this->accessSecret,$this->region);
         }
         $this->adapterResult = $this->ec2Zone->describe();
 
@@ -397,7 +397,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
      * @param  string $id
      * @param  string $metric
      * @param  null|array $options
-     * @return array
+     * @return array|false
      */
     public function monitorInstance($id, $metric, $options = null)
     {

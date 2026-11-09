@@ -246,7 +246,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
     /**
      * Returns the proper string based on the given error constant
      *
-     * @param string $error
+     * @param string|int|false $error
      */
     protected function _errorString($error)
     {

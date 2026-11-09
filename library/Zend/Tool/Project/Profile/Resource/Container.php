@@ -68,7 +68,8 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      *
      * </code>
      *
-     * @param Zend_Tool_Project_Profile_Resource_SearchConstraints|string|array $searchParameters
+     * @param Zend_Tool_Project_Profile_Resource_SearchConstraints|string|array $matchSearchConstraints
+     * @param Zend_Tool_Project_Profile_Resource_SearchConstraints|string|array|null $nonMatchSearchConstraints
      * @return Zend_Tool_Project_Profile_Resource
      */
     public function search($matchSearchConstraints, $nonMatchSearchConstraints = null)
@@ -251,7 +252,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      * getAttribute()
      *
      * @param string $name
-     * @return Zend_Tool_Project_Profile_Resource_Container
+     * @return mixed
      */
     public function getAttribute($name)
     {

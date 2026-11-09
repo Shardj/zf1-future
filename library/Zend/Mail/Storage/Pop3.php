@@ -200,7 +200,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * Close resource for mail lib. If you need to control, when the resource
      * is closed. Otherwise the destructor would call this.
      *
-     * @return null
+     * @return void
      */
     public function close()
     {
@@ -210,12 +210,12 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
     /**
      * Keep the server busy.
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Protocol_Exception
      */
     public function noop()
     {
-        return $this->_protocol->noop();
+        $this->_protocol->noop();
     }
 
     /**
@@ -224,7 +224,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * identify the message.
      *
      * @param  int $id number of message
-     * @return null
+     * @return void
      * @throws Zend_Mail_Protocol_Exception
      */
     public function removeMessage($id)
@@ -238,7 +238,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * if storage does not support unique ids it's the same as the message number
      *
      * @param int|null $id message number
-     * @return array|string message number for given message or all messages as array
+     * @return array|string|int message number for given message or all messages as array
      * @throws Zend_Mail_Storage_Exception
      */
     public function getUniqueId($id = null)
@@ -265,7 +265,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * as parameter and use this method to translate it to message number right before calling removeMessage()
      *
      * @param string $id unique id
-     * @return int message number
+     * @return int|string message number
      * @throws Zend_Mail_Storage_Exception
      */
     public function getNumberByUniqueId($id)

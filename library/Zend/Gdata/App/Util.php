@@ -37,7 +37,7 @@ class Zend_Gdata_App_Util
      *  Convert timestamp into RFC 3339 date string.
      *  2005-04-19T15:30:00
      *
-     * @param int $timestamp
+     * @param int|string $timestamp
      * @throws Zend_Gdata_App_InvalidArgumentException
      */
     public static function formatTimestamp($timestamp)

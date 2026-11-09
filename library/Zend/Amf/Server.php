@@ -109,7 +109,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
 
     /**
      * Namespace allows all AMF calls to not clobber other PHP session variables
-     * @var Zend_Session_NameSpace default session namespace zend_amf
+     * @var string|Zend_Session_Namespace default session namespace zend_amf
      */
     protected $_sesionNamespace = 'zend_amf';
 
@@ -234,7 +234,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
     /**
      * Check if the ACL allows accessing the function or method
      *
-     * @param string|object $object Object or class being accessed
+     * @param string|object|null $object Object or class being accessed
      * @param string $function Function or method being accessed
      * @return bool
      * @throws Zend_Acl_Exception
@@ -423,7 +423,6 @@ class Zend_Amf_Server implements Zend_Server_Interface
             default :
                 require_once 'Zend/Amf/Server/Exception.php';
                 throw new Zend_Amf_Server_Exception('CommandMessage::' . $message->operation . ' not implemented');
-                break;
         }
         return $return;
     }
@@ -769,7 +768,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
      *
      * @param string|object $class
      * @param string $namespace Optional
-     * @param mixed $arg Optional arguments to pass to a method
+     * @param mixed $argv Optional arguments to pass to a method
      * @return Zend_Amf_Server
      * @throws Zend_Amf_Server_Exception on invalid input
      * @throws Zend_Server_Reflection_Exception

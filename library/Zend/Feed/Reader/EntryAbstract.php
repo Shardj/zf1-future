@@ -44,7 +44,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
     /**
      * Entry instance
      *
-     * @var Zend_Feed_Entry_Interface
+     * @var DOMElement
      */
     protected $_entry = null;
 
@@ -73,7 +73,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
      * Constructor
      *
      * @param  DOMElement  $entry
-     * @param  int         $entryKey
+     * @param  int|string         $entryKey
      * @param  string|null $type
      * @return void
      */
@@ -188,7 +188,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
      * Return an Extension object with the matching name (postfixed with _Entry)
      *
      * @param string $name
-     * @return Zend_Feed_Reader_Extension_EntryAbstract
+     * @return Zend_Feed_Reader_Extension_EntryAbstract|null
      */
     public function getExtension($name)
     {

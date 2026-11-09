@@ -223,7 +223,7 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
     /**
      * @param  Zend_Service_Ebay_Finding $proxy
      * @param  integer                   $max
-     * @return Zend_Service_Ebay_Finding_Response_Items
+     * @return Zend_Service_Ebay_Finding_Response_Items|null
      */
     public function pageNext(Zend_Service_Ebay_Finding $proxy, $max = self::PAGE_MAX_DEFAULT)
     {
@@ -237,7 +237,7 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
 
     /**
      * @param  Zend_Service_Ebay_Finding $proxy
-     * @return Zend_Service_Ebay_Finding_Response_Items
+     * @return Zend_Service_Ebay_Finding_Response_Items|null
      */
     public function pagePrevious(Zend_Service_Ebay_Finding $proxy)
     {

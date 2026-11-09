@@ -137,7 +137,7 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
      *
      * @param  string  $value  Full path of file to change
      * @param  boolean $source Return internal informations
-     * @return string The new filename which has been set
+     * @return string|array The new filename which has been set
      */
     public function getNewName($value, $source = false)
     {
@@ -268,7 +268,7 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
      * and return all other related parameters
      *
      * @param  string $file Filename to get the informations for
-     * @return array
+     * @return array|string
      */
     protected function _getFileName($file)
     {

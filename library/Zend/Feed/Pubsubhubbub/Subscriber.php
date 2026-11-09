@@ -136,7 +136,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
      * retrieved from an action using the Zend_Controller_Action::_getParam()
      * method.
      *
-     * @var string
+     * @var string|false|bool
      */
     protected $_usePathParameter = false;
 

@@ -52,7 +52,7 @@ class Zend_Gdata_Gapps_Extension_Quota extends Zend_Gdata_Extension
     /**
      * The amount of storage space available to the user in megabytes.
      *
-     * @var integer
+     * @var integer|string|null
      */
     protected $_limit = null;
 
@@ -109,7 +109,7 @@ class Zend_Gdata_Gapps_Extension_Quota extends Zend_Gdata_Extension
      * Get the value for this element's limit attribute.
      *
      * @see setLimit
-     * @return string The requested attribute.
+     * @return string|int The requested attribute.
      */
     public function getLimit()
     {

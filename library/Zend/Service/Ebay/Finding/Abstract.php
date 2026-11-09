@@ -138,7 +138,7 @@ abstract class Zend_Service_Ebay_Finding_Abstract
     /**
      * @param  string $path
      * @param  string $type
-     * @param  string $array When true means it expects more than one node occurence
+     * @param  string|bool $array When true means it expects more than one node occurence
      * @return mixed
      */
     protected function _query($path, $type, $array = false)

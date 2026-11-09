@@ -64,9 +64,9 @@ class Zend_Xml_Security
      * Scan XML string for potential XXE and XEE attacks
      *
      * @param   string $xml
-     * @param   DomDocument $dom
+     * @param   DOMDocument $dom
      * @throws  Zend_Xml_Exception
-     * @return  SimpleXMLElement|DomDocument|boolean
+     * @return  SimpleXMLElement|DOMDocument|boolean
      */
     public static function scan($xml, ?DOMDocument $dom = null)
     {
@@ -145,7 +145,7 @@ class Zend_Xml_Security
      * @param  string $file
      * @param  DOMDocument $dom
      * @throws Zend_Xml_Exception
-     * @return SimpleXMLElement|DomDocument
+     * @return SimpleXMLElement|DOMDocument
      */
     public static function scanFile($file, ?DOMDocument $dom = null)
     {

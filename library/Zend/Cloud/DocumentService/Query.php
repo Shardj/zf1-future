@@ -108,7 +108,7 @@ class Zend_Cloud_DocumentService_Query
      * WHERE query
      *
      * @param string $cond Condition
-     * @param array $args Arguments to substitute instead of ?'s in condition
+     * @param array $value Arguments to substitute instead of ?'s in condition
      * @param string $op relation to other clauses - and/or
      * @return Zend_Cloud_DocumentService_Query
      */

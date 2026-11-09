@@ -222,8 +222,6 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
         } catch(Zend_Service_WindowsAzure_Exception $e) {
             throw new Zend_Cloud_DocumentService_Exception('Error on collection list: '.$e->getMessage(), $e->getCode(), $e);
         }
-
-        return $tables;
     }
 
     /**
@@ -385,7 +383,8 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
     /**
      * Delete document.
      *
-     * @param  mixed  $document Document ID or Document object.
+     * @param  string $collectionName
+     * @param  mixed  $documentId Document ID or Document object.
      * @param  array  $options
      * @return void
      */
@@ -416,7 +415,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * @param  string $collectionName Collection name
      * @param  mixed $documentId Document ID, adapter-dependent
      * @param  array $options
-     * @return Zend_Cloud_DocumentService_Document
+     * @return Zend_Cloud_DocumentService_Document|false
      */
     public function fetchDocument($collectionName, $documentId, $options = null)
     {
@@ -557,7 +556,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * - otherwise, it's invalid
      *
      * @param  array|string $documentId
-     * @param  null|string $collectionName
+     * @param  string|false|null $collectionName
      * @return array
      * @throws Zend_Cloud_DocumentService_Exception
      */

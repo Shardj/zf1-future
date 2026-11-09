@@ -123,7 +123,6 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
      * Constructor
      *
      * @param  array   $options                Associative array of options
-     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
      * @throws Zend_Cache_Exception
      * @return void
      */
@@ -205,7 +204,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     /**
      * Specific setter for the 'regexps' option (with some additional tests)
      *
-     * @param  array $options Associative array
+     * @param  array $regexps Associative array
      * @throws Zend_Cache_Exception
      * @return void
      */
@@ -235,7 +234,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
     /**
      * Start the cache
      *
-     * @param  string  $id       (optional) A cache id (if you set a value here, maybe you have to use Output frontend instead)
+     * @param  string|false  $id       (optional) A cache id (if you set a value here, maybe you have to use Output frontend instead)
      * @param  boolean $doNotDie For unit testing only !
      * @return boolean True if the cache is hit (false else)
      */

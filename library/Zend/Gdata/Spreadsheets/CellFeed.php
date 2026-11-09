@@ -139,7 +139,7 @@ class Zend_Gdata_Spreadsheets_CellFeed extends Zend_Gdata_Feed
 
     /**
      * Sets the row count for this feed.
-     * @param string $rowCount The new row count for the feed.
+     * @param Zend_Gdata_Spreadsheets_Extension_RowCount $rowCount The new row count for the feed.
      */
     public function setRowCount($rowCount)
     {
@@ -149,7 +149,7 @@ class Zend_Gdata_Spreadsheets_CellFeed extends Zend_Gdata_Feed
 
     /**
      * Sets the column count for this feed.
-     * @param string $colCount The new column count for the feed.
+     * @param Zend_Gdata_Spreadsheets_Extension_ColCount $colCount The new column count for the feed.
      */
     public function setColumnCount($colCount)
     {

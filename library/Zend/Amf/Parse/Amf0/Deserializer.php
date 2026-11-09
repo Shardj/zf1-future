@@ -62,7 +62,7 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
      * the following value.
      *
      * @param  integer $typeMarker
-     * @return array|bool|DomDocument|float|object|SimpleXMLElement|string|Zend_Date|null whatever the data type is of the marker in php
+     * @return array|bool|DOMDocument|float|object|SimpleXMLElement|string|Zend_Date|null whatever the data type is of the marker in php
      * @throws Zend_Amf_Exception for invalid type
      */
     public function readTypeMarker($typeMarker = null)
@@ -244,9 +244,9 @@ class Zend_Amf_Parse_Amf0_Deserializer extends Zend_Amf_Parse_Deserializer
 
     /**
      * Convert XML to SimpleXml
-     * If user wants DomDocument they can use dom_import_simplexml
+     * If user wants DOMDocument they can use dom_import_simplexml
      *
-     * @return bool|DomDocument|SimpleXMLElement|null Object
+     * @return bool|DOMDocument|SimpleXMLElement|null Object
      */
     public function readXmlString()
     {

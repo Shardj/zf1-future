@@ -212,7 +212,7 @@ class Zend_Tool_Project_Profile_Resource extends Zend_Tool_Project_Profile_Resou
     public function initializeContext()
     {
         if ($this->_isContextInitialized) {
-            return;
+            return $this;
         }
         if (is_string($this->_context)) {
             $this->_context = Zend_Tool_Project_Context_Repository::getInstance()->getContext($this->_context);

@@ -189,7 +189,7 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
      * @param  string $data            Datas to cache
      * @param  string $id              Cache id
      * @param  array $tags             Array of strings, the cache record will be tagged by each string entry
-     * @param  int   $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @param  int|false   $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
      * @param  int   $priority         integer between 0 (very low priority) and 10 (maximum priority) used by some particular backends
      * @return boolean true if no problem
      */
@@ -327,7 +327,6 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
                 $boolFast = $this->_fastBackend->clean(Zend_Cache::CLEANING_MODE_ALL);
                 $boolSlow = $this->_slowBackend->clean(Zend_Cache::CLEANING_MODE_ALL);
                 return $boolFast && $boolSlow;
-                break;
             case Zend_Cache::CLEANING_MODE_OLD:
                 return $this->_slowBackend->clean(Zend_Cache::CLEANING_MODE_OLD);
             case Zend_Cache::CLEANING_MODE_MATCHING_TAG:
@@ -338,7 +337,6 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
                     $res = $res && $bool;
                 }
                 return $res;
-                break;
             case Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG:
                 $ids = $this->_slowBackend->getIdsNotMatchingTags($tags);
                 $res = true;
@@ -347,7 +345,6 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
                     $res = $res && $bool;
                 }
                 return $res;
-                break;
             case Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG:
                 $ids = $this->_slowBackend->getIdsMatchingAnyTags($tags);
                 $res = true;
@@ -356,10 +353,8 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
                     $res = $res && $bool;
                 }
                 return $res;
-                break;
             default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                break;
         }
     }
 

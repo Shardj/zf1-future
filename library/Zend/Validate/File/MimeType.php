@@ -81,7 +81,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
     /**
      * Finfo object to use
      *
-     * @var resource
+     * @var resource|null
      */
     protected $_finfo;
 
@@ -117,7 +117,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
     /**
      * Holds error information returned by finfo_open
      *
-     * @var array
+     * @var ErrorException|null
      */
     protected $_finfoError;
 
@@ -385,7 +385,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
     /**
      * Throws an error of the given type
      *
-     * @param  string $file
+     * @param  string|array $file
      * @param  string $errorType
      * @return false
      */

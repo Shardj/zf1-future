@@ -57,7 +57,7 @@ class Zend_Wildfire_Channel_HttpHeaders extends Zend_Controller_Plugin_Abstract 
 
     /**
      * Singleton instance
-     * @var Zend_Wildfire_Channel_HttpHeaders
+     * @var Zend_Wildfire_Channel_HttpHeaders|null
      */
     protected static $_instance = null;
 

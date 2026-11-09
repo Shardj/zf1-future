@@ -150,8 +150,6 @@ class Zend_Service_WindowsAzure_Storage_DynamicTableEntity extends Zend_Service_
      * Get an Azure property
      *
      * @param string $name Property name
-     * @param mixed $value Property value
-     * @param string $type Property type (Edm.xxxx)
      * @return string
      */
     public function getAzureProperty($name)

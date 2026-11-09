@@ -99,7 +99,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
      *
      * @param mixed $value Raw string
      *
-     * @return string           Quoted string
+     * @return string|float|int           Quoted string
      */
     protected function _quote($value)
     {
@@ -433,7 +433,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
      * Prepare a statement and return a PDOStatement-like object.
      *
      * @param  string  $sql  SQL query
-     * @return Zend_Db_Statement_Mysqli
+     * @return Zend_Db_Statement_Mysqli|false
      */
     public function prepare($sql)
     {
@@ -534,7 +534,6 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
                  */
                 require_once 'Zend/Db/Adapter/Mysqli/Exception.php';
                 throw new Zend_Db_Adapter_Mysqli_Exception('FETCH_BOUND is not supported yet');
-                break;
             default:
                 /**
                  * @see Zend_Db_Adapter_Mysqli_Exception

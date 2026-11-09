@@ -416,9 +416,9 @@ class Zend_Amf_Parse_Amf3_Deserializer extends Zend_Amf_Parse_Deserializer
 
     /**
      * Convert XML to SimpleXml
-     * If user wants DomDocument they can use dom_import_simplexml
+     * If user wants DOMDocument they can use dom_import_simplexml
      *
-     * @return bool|DomDocument|SimpleXMLElement|null Object
+     * @return bool|DOMDocument|SimpleXMLElement|null Object
      */
     public function readXmlString()
     {

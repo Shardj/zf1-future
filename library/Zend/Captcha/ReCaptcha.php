@@ -53,7 +53,7 @@ class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
     /**
      * Recaptcha service object
      *
-     * @var Zend_Service_Recaptcha
+     * @var Zend_Service_ReCaptcha
      */
     protected $_service;
 
@@ -184,7 +184,7 @@ class Zend_Captcha_ReCaptcha extends Zend_Captcha_Base
      *
      * @param  string $key
      * @param  mixed $value
-     * @return Zend_Captcha_ReCaptcha
+     * @return $this
      */
     public function setOption($key, $value)
     {

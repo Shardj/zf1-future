@@ -136,7 +136,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      * Copy an item in the storage service to a given path.
      *
      * @param  string $sourcePath
-     * @param  string $destination path
+     * @param  string $destinationPath path
      * @param  array $options
      * @return void
      */
@@ -154,7 +154,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      * support moving an item natively.
      *
      * @param  string $sourcePath
-     * @param  string $destination path
+     * @param  string $destinationPath path
      * @param  array $options
      * @return void
      */

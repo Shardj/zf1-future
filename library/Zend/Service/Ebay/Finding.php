@@ -165,7 +165,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
     /**
      * Finds items in a specific category. Results can be filtered and sorted.
      *
-     * @param  integer           $categoryId
+     * @param  integer|string           $categoryId
      * @param  Zend_Config|array $options
      * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsByCategory.html
      * @return Zend_Service_Ebay_Finding_Response_Items
@@ -202,7 +202,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
     /**
      * Finds items based upon a product ID, such as an ISBN, UPC, EAN, or ePID.
      *
-     * @param  integer           $productId
+     * @param  integer|string           $productId
      * @param  string            $productIdType Default value is ReferenceID
      * @param  Zend_Config|array $options
      * @link   http://developer.ebay.com/DevZone/finding/CallRef/findItemsByProduct.html

@@ -146,7 +146,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
     /**
      * Gets the title attribute for this query.
      *
-     * @return string title
+     * @return string|null title
      */
     public function getTitle()
     {
@@ -179,7 +179,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
     /**
      * Gets the title-exact attribute for this query.
      *
-     * @return string title-exact
+     * @return string|false title-exact
      */
     public function getTitleExact()
     {

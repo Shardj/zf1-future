@@ -114,7 +114,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
     /**
      * Get positions for mail message or throw exeption if id is invalid
      *
-     * @param int $id number of message
+     * @param int|string $id number of message
      * @return array positions as in _positions
      * @throws Zend_Mail_Storage_Exception
      */
@@ -277,7 +277,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
      * open given file as current mbox file
      *
      * @param  string $filename filename of mbox file
-     * @return null
+     * @return void
      * @throws Zend_Mail_Storage_Exception
      */
     protected function _openMboxFile($filename)
@@ -359,7 +359,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
     /**
      * stub for not supported message deletion
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Storage_Exception
      */
     public function removeMessage($id)
@@ -429,7 +429,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
      * with this method you can cache the mbox class
      * for cache validation the mtime of the mbox file is used
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Storage_Exception
      */
     public function __wakeup()

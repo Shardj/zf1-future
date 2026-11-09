@@ -757,7 +757,7 @@ class Zend_Gdata_App
      *
      * @param  string $url The URL to import
      * @param  string $className The class which is used as the return type
-     * @param array $extraHeaders Extra headers to add to the request, as an
+     * @param array|null $extraHeaders Extra headers to add to the request, as an
      *        array of string-based key/value pairs.
      * @throws Zend_Gdata_App_Exception
      * @return string|Zend_Gdata_App_Feed Returns string only if the object
@@ -806,9 +806,9 @@ class Zend_Gdata_App
      *
      * @param string $string
      * @param string $className The class which is used as the return type
-     * @param integer $majorProcolVersion (optional) The major protocol version
+     * @param integer|string|null $majorProtocolVersion (optional) The major protocol version
      *        of the data model object that is to be created.
-     * @param integer $minorProcolVersion (optional) The minor protocol version
+     * @param integer|string|null $minorProtocolVersion (optional) The minor protocol version
      *        of the data model object that is to be created.
      * @throws Zend_Gdata_App_Exception
      * @return Zend_Gdata_App_Feed
@@ -848,7 +848,7 @@ class Zend_Gdata_App
      *
      * @param  string $filename
      * @param  string $className The class which is used as the return type
-     * @param  string $useIncludePath Whether the include_path should be searched
+     * @param  string|false $useIncludePath Whether the include_path should be searched
      * @throws Zend_Gdata_App_Exception
      * @return Zend_Gdata_App_Feed
      */
@@ -888,7 +888,7 @@ class Zend_Gdata_App
      *
      * @param mixed $data The Zend_Gdata_App_Entry or XML to post
      * @param string $uri POST URI
-     * @param array $headers Additional HTTP headers to insert.
+     * @param int|null $remainingRedirects (optional) Number of redirects to follow.
      * @param string $contentType Content-type of the data
      * @param array $extraHeaders Extra headers to add to the request, as an
      *        array of string-based key/value pairs.
@@ -913,7 +913,7 @@ class Zend_Gdata_App
      *
      * @param mixed $data The Zend_Gdata_App_Entry or XML to post
      * @param string $uri PUT URI
-     * @param array $headers Additional HTTP headers to insert.
+     * @param int|null $remainingRedirects (optional) Number of redirects to follow.
      * @param string $contentType Content-type of the data
      * @param array $extraHeaders Extra headers to add to the request, as an
      *        array of string-based key/value pairs.
@@ -937,7 +937,7 @@ class Zend_Gdata_App
      * DELETE entry with client object
      *
      * @param mixed $data The Zend_Gdata_App_Entry or URL to delete
-     * @return void
+     * @return Zend_Http_Response
      * @throws Zend_Gdata_App_Exception
      * @throws Zend_Gdata_App_HttpException
      * @throws Zend_Gdata_App_InvalidArgumentException
@@ -1197,7 +1197,8 @@ class Zend_Gdata_App
      * property. If Etags are not supported by the server or cannot be
      * extracted from the data, then null will be returned.
      *
-     * @param boolean $allowWeak If false, then if a weak Etag is detected,
+     * @param mixed $data Entry or Etag the header is generated for
+     * @param boolean $allowWeek If false, then if a weak Etag is detected,
      *        then return null rather than the Etag.
      * @return string|null $data
      */

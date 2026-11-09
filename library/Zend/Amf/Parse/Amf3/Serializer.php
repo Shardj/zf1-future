@@ -177,7 +177,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write an AMF3 integer
      *
-     * @param int|float $data
+     * @param int|float $int
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
     public function writeInteger($int)
@@ -406,7 +406,7 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write object to ouput stream
      *
-     * @param  mixed $data
+     * @param  mixed $object
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
     public function writeObject($object)
@@ -519,7 +519,6 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                 case Zend_Amf_Constants::ET_EXTERNAL:
                     require_once 'Zend/Amf/Exception.php';
                     throw new Zend_Amf_Exception('External Object Encoding not implemented');
-                    break;
                 default:
                     require_once 'Zend/Amf/Exception.php';
                     throw new Zend_Amf_Exception('Unknown Object Encoding type: ' . $encoding);

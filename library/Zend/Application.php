@@ -444,7 +444,6 @@ class Zend_Application
                     );
                 }
                 return $config;
-                break;
 
             default:
                 throw new Zend_Application_Exception(

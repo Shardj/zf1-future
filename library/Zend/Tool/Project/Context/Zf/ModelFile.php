@@ -57,7 +57,7 @@ class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Z
     {
         $this->_modelName = $this->_resource->getAttribute('modelName');
         $this->_filesystemName = ucfirst($this->_modelName) . '.php';
-        parent::init();
+        return parent::init();
     }
 
     /**

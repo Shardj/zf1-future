@@ -126,7 +126,7 @@ class Zend_Oauth_Consumer extends Zend_Oauth
      *
      * @param  null|array $customServiceParameters
      * @param  null|Zend_Oauth_Token_Request $token
-     * @param  null|Zend_OAuth_Http_UserAuthorization $redirect
+     * @param  null|Zend_Oauth_Http_UserAuthorization $redirect
      * @return string
      */
     public function getRedirectUrl(

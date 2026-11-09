@@ -120,7 +120,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     /**
      * File system adapter.
      *
-     * @var Zend_Search_Lucene_Storage_Directory
+     * @var Zend_Search_Lucene_Storage_Directory|null
      */
     private $_directory = null;
 
@@ -134,14 +134,14 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     /**
      * Writer for this index, not instantiated unless required.
      *
-     * @var Zend_Search_Lucene_Index_Writer
+     * @var Zend_Search_Lucene_Index_Writer|null
      */
     private $_writer = null;
 
     /**
      * Array of Zend_Search_Lucene_Index_SegmentInfo objects for current version of index.
      *
-     * @var array Zend_Search_Lucene_Index_SegmentInfo
+     * @var array|null Zend_Search_Lucene_Index_SegmentInfo
      */
     private $_segmentInfos = [];
 
@@ -904,7 +904,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * Default value is 10
      *
-     * @param integer $maxMergeDocs
+     * @param integer $mergeFactor
      */
     public function setMergeFactor($mergeFactor)
     {
@@ -1328,7 +1328,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
      *
      * @param integer $id
      * @param string $fieldName
-     * @return float
+     * @return float|null
      */
     public function norm($id, $fieldName)
     {
@@ -1499,7 +1499,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     /**
      * Terms stream priority queue object
      *
-     * @var Zend_Search_Lucene_TermStreamsPriorityQueue
+     * @var Zend_Search_Lucene_TermStreamsPriorityQueue|null
      */
     private $_termsStream = null;
 

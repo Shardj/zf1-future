@@ -84,14 +84,14 @@ class Zend_Feed_Reader
     /**
      * Cache instance
      *
-     * @var Zend_Cache_Core
+     * @var Zend_Cache_Core|null
      */
     protected static $_cache = null;
 
     /**
      * HTTP client object to use for retrieving feeds
      *
-     * @var Zend_Http_Client
+     * @var Zend_Http_Client|null
      */
     protected static $_httpClient = null;
 
@@ -222,7 +222,7 @@ class Zend_Feed_Reader
     /**
      * Import a feed by providing a URL
      *
-     * @param  string $url The URL to the feed
+     * @param  string $uri The URL to the feed
      * @param  string $etag OPTIONAL Last received ETag for this resource
      * @param  string $lastModified OPTIONAL Last-Modified value for this resource
      * @return Zend_Feed_Reader_FeedInterface
@@ -502,7 +502,7 @@ class Zend_Feed_Reader
         } else {
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Invalid object/scalar provided: must'
-            . ' be of type Zend_Feed_Reader_FeedInterface, DomDocument or string');
+            . ' be of type Zend_Feed_Reader_FeedInterface, DOMDocument or string');
         }
         $xpath = new DOMXPath($dom);
 

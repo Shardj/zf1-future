@@ -647,7 +647,7 @@ class Zend_Gdata_Books_VolumeEntry extends Zend_Gdata_Entry
     /**
      * Gets the thumbnail link
      *
-     * @return Zend_Gdata_App_Extension_link|null The thumbnail link
+     * @return Zend_Gdata_App_Extension_Link|null The thumbnail link
      */
     public function getThumbnailLink()
     {

@@ -39,13 +39,13 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
 {
     /**
      * Class map cache file
-     * @var string
+     * @var string|null
      */
     protected static $_includeFileCache;
 
     /**
      * Class map cache file handler
-     * @var resource
+     * @var resource|false|null
      */
     protected static $_includeFileCacheHandler;
 

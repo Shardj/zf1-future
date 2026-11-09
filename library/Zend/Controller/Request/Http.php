@@ -56,7 +56,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
 
     /**
      * REQUEST_URI
-     * @var string;
+     * @var string
      */
     protected $_requestUri;
 
@@ -199,7 +199,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function set($key, $value)
     {
-        return $this->__set($key, $value);
+        $this->__set($key, $value);
     }
 
     /**
@@ -680,7 +680,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      *
      * Can be empty array, or contain one or more of '_GET' or '_POST'.
      *
-     * @param  array $paramSoures
+     * @param  array $paramSources
      * @return $this
      */
     public function setParamSources(array $paramSources = [])

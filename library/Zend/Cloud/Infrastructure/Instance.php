@@ -118,8 +118,8 @@ class Zend_Cloud_Infrastructure_Instance
     /**
      * Get Attribute with a specific key
      *
-     * @param array $data
-     * @return misc|false
+     * @param string $key
+     * @return mixed|false
      */
     public function getAttribute($key)
     {
@@ -309,7 +309,7 @@ class Zend_Cloud_Infrastructure_Instance
     /**
      * Run arbitrary shell script on the instance
      *
-     * @param  array $param
+     * @param  array $params
      * @param  string|array $cmd
      * @return string|array
      */

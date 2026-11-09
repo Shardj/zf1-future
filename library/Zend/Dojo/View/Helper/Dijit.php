@@ -141,7 +141,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
     /**
      * Create a layout container
      *
-     * @param  int $id
+     * @param  int|string|null $id
      * @param  string $content
      * @param  array $params
      * @param  array $attribs
@@ -163,7 +163,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
     /**
      * Create HTML representation of a dijit form element
      *
-     * @param  string $id
+     * @param  string|int $id
      * @param  string $value
      * @param  array $params
      * @param  array $attribs
@@ -304,7 +304,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
     /**
      * Render a hidden element to hold a value
      *
-     * @param  string $id
+     * @param  string|int $id
      * @param  string|int|float $value
      * @return string
      */

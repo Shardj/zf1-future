@@ -37,17 +37,17 @@ class Zend_Amf_Value_Messaging_AbstractMessage
     public $clientId;
 
     /**
-     * @var string Destination
+     * @var string|null Destination
      */
     public $destination;
 
     /**
-     * @var string Message identifier
+     * @var string|null Message identifier
      */
     public $messageId;
 
     /**
-     * @var int Message timestamp
+     * @var int|string Message timestamp
      */
     public $timestamp;
 
@@ -62,7 +62,7 @@ class Zend_Amf_Value_Messaging_AbstractMessage
     public $headers;
 
     /**
-     * @var string Message body
+     * @var string|null Message body
      */
     public $body;
 

@@ -65,7 +65,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
 
     /**
      * Random unique ID used to identify message in comparison operations
-     * @var string
+     * @var string|false
      */
     protected $_ruid = false;
 

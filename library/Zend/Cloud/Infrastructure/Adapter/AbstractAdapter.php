@@ -34,7 +34,7 @@ abstract class Zend_Cloud_Infrastructure_Adapter_AbstractAdapter implements Zend
     /**
      * Store the last response from the adpter
      *
-     * @var array
+     * @var array|bool
      */
     protected $adapterResult;
 
@@ -89,7 +89,7 @@ abstract class Zend_Cloud_Infrastructure_Adapter_AbstractAdapter implements Zend
      * Run arbitrary shell script on an instance
      *
      * @param  string $id
-     * @param  array $param
+     * @param  array $params
      * @param  string|array $cmd
      * @return string|array
      */

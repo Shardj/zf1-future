@@ -116,7 +116,7 @@ class Zend_Search_Lucene_Index_Writer
     /**
      * Current segment to add documents
      *
-     * @var Zend_Search_Lucene_Index_SegmentWriter_DocumentWriter
+     * @var Zend_Search_Lucene_Index_SegmentWriter_DocumentWriter|null
      */
     private $_currentSegment = null;
 
@@ -218,7 +218,6 @@ class Zend_Search_Lucene_Index_Writer
      * @param Zend_Search_Lucene_Storage_Directory $directory
      * @param array $segmentInfos
      * @param integer $targetFormatVersion
-     * @param Zend_Search_Lucene_Storage_File $cleanUpLock
      */
     public function __construct(Zend_Search_Lucene_Storage_Directory $directory, &$segmentInfos, $targetFormatVersion)
     {

@@ -130,7 +130,7 @@ abstract class Zend_Gdata_App_BaseMediaSource implements Zend_Gdata_App_MediaSou
      * is defined, this is returned.
      *
      * @param string $name
-     * @param string $value
+     * @param string $val
      */
     public function __set($name, $val)
     {

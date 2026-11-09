@@ -892,7 +892,7 @@ class Zend_Date extends Zend_Date_DateObject
     /**
      * Private function to make a comment of a token
      *
-     * @param string $token
+     * @param string|int $token
      * @return string
      */
     private function _toComment($token)
@@ -963,7 +963,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Counts the exact year number
      * < 70 - 2000 added, >70 < 100 - 1900, others just returned
      *
-     * @param  integer  $value year number
+     * @param  integer|string  $value year number
      * @return integer  Number of year
      */
     public static function getFullYear($value)
@@ -1106,7 +1106,7 @@ class Zend_Date extends Zend_Date_DateObject
      * Internal function, returns the offset of a given timezone
      *
      * @param string $zone
-     * @return integer
+     * @return integer|string
      */
     public function getTimezoneFromString($zone)
     {
@@ -1156,7 +1156,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string                    $calc  Calculation to make
      * @param  string|integer            $date  Date for calculation
      * @param  string|integer            $comp  Second date for calculation
-     * @param  boolean|integer           $dst   Use dst correction if option is set
+     * @param  boolean|integer|string           $dst   Use dst correction if option is set
      * @return integer|string|Zend_Date  new timestamp or Zend_Date depending on calculation
      */
     private function _assign($calc, $date, $comp = 0, $dst = false)
@@ -3319,7 +3319,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string                          $calc    Calculation to make
      * @param  string|integer|array|Zend_Date  $date    Date or Part to calculate
      * @param  string                          $type    Datepart for Calculation
-     * @param  string|Zend_Locale              $locale  Locale for parsing input
+     * @param  string|Zend_Locale|null              $locale  Locale for parsing input
      * @return integer|Zend_Date  new date
      * @throws Zend_Date_Exception
      */

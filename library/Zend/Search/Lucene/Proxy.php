@@ -38,7 +38,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Index object
      *
-     * @var Zend_Search_Lucene_Interface
+     * @var Zend_Search_Lucene_Interface|null
      */
     private $_index;
 
@@ -322,7 +322,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Default value is 10
      *
-     * @param integer $maxMergeDocs
+     * @param integer $mergeFactor
      */
     public function setMergeFactor($mergeFactor)
     {
@@ -416,7 +416,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @param Zend_Search_Lucene_Index_Term $term
      * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     * @return integer
+     * @return array
      */
     public function termFreqs(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
     {

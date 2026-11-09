@@ -154,12 +154,8 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
         }
 
         if (!Zend_Locale::isLocale($locale, true, false)) {
-            if (!Zend_Locale::isLocale($locale, true, false)) {
-                require_once 'Zend/Measure/Exception.php';
-                throw new Zend_Measure_Exception("Language (" . (string) $locale . ") is unknown");
-            }
-
-            $locale = new Zend_Locale($locale);
+            require_once 'Zend/Measure/Exception.php';
+            throw new Zend_Measure_Exception("Language (" . (string) $locale . ") is unknown");
         }
 
         $this->_locale = (string) $locale;
@@ -320,7 +316,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
     /**
      * Convert input to type value string
      *
-     * @param  integer $value Input string
+     * @param  integer|string $value Input string
      * @param  string  $type  Type to convert to
      * @return string
      * @throws Zend_Measure_Exception When more than 200 digits are calculated
@@ -392,7 +388,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
      *
      * @param  string $type New type to set
      * @throws Zend_Measure_Exception When a unknown type is given
-     * @return void
+     * @return $this
      */
     public function setType($type)
     {
@@ -406,6 +402,8 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
 
         $this->_value = $value;
         $this->_type  = $type;
+
+        return $this;
     }
 
     /**

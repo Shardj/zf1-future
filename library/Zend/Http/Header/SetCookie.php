@@ -113,7 +113,7 @@ class Zend_Http_Header_SetCookie
     protected $secure = null;
 
     /**
-     * @var true
+     * @var true|bool
      */
     protected $httponly = null;
     
@@ -376,7 +376,7 @@ class Zend_Http_Header_SetCookie
     /**
      * Set Max-Age
      *
-     * @param integer $maxAge
+     * @param integer|string $maxAge
      */
     public function setMaxAge($maxAge)
     {
@@ -397,7 +397,7 @@ class Zend_Http_Header_SetCookie
     }
 
     /**
-     * @param int $expires
+     * @param int|string|null $expires
      * @return Zend_Http_Header_SetCookie
      */
     public function setExpires($expires)
@@ -414,12 +414,12 @@ class Zend_Http_Header_SetCookie
     }
 
     /**
-     * @return int
+     * @return int|string|null
      */
     public function getExpires($inSeconds = false)
     {
         if ($this->expires == null) {
-            return;
+            return null;
         }
         if ($inSeconds) {
             return $this->expires;

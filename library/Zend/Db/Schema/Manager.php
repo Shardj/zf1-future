@@ -220,8 +220,8 @@ class Zend_Db_Schema_Manager
      * will also determine the direction of the migration and sort the files
      * accordingly.
      *
-     * @param string $currentVersion Version to migrate database from
-     * @param string $stopVersion    Version to migrate database to
+     * @param string|int $currentVersion Version to migrate database from
+     * @param string|int $stopVersion    Version to migrate database to
      * @param string $dir            Directory containing migration files
      *
      * @throws Zend_Db_Schema_Exception
@@ -308,7 +308,7 @@ class Zend_Db_Schema_Manager
      *
      * @throws Zend_Db_Schema_Exception
      *
-     * @return null
+     * @return void
      *
      * @todo I think there may be a problem with different migration files using
      * the same class name. -- Confirmed. If you migrate single versions at a time,
@@ -342,7 +342,7 @@ class Zend_Db_Schema_Manager
      *
      * @param int $version Version to update into database
      *
-     * @return null
+     * @return void
      */
     protected function _updateSchemaVersion($version)
     {

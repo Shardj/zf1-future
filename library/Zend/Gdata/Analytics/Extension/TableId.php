@@ -72,7 +72,7 @@ class Zend_Gdata_Analytics_Extension_TableId extends Zend_Gdata_Extension
      * instance members.  If no mapping is defined, the name and value are
      * stored in an array.
      *
-     * @param DOMNode $attribute The DOMNode attribute needed to be handled
+     * @param DOMNode $child The DOMNode attribute needed to be handled
      */
     protected function takeChildFromDOM($child)
     {

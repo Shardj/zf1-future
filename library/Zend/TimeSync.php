@@ -49,7 +49,7 @@ class Zend_TimeSync implements IteratorAggregate
     /**
      * Holds a reference to the timeserver that is currently being used
      *
-     * @var object
+     * @var object|null
      */
     protected $_current;
 

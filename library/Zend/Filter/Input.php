@@ -354,7 +354,7 @@ class Zend_Filter_Input
     }
 
     /**
-     * @param mixed $value
+     * @param mixed $data
      * @return mixed
      */
     protected function _escapeRecursive($data)
@@ -563,7 +563,6 @@ class Zend_Filter_Input
                 default:
                     require_once 'Zend/Filter/Exception.php';
                     throw new Zend_Filter_Exception("Unknown option '$option'");
-                    break;
             }
         }
 

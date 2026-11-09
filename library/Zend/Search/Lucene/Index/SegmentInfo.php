@@ -77,7 +77,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      *
      * Corresponding Zend_Search_Lucene_Index_TermInfo object stored in the $_termDictionaryInfos
      *
-     * @var array
+     * @var array|null
      */
     private $_termDictionary;
 
@@ -161,7 +161,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     /**
      * File system adapter.
      *
-     * @var Zend_Search_Lucene_Storage_Directory_Filesystem
+     * @var Zend_Search_Lucene_Storage_Directory
      */
     private $_directory;
 
@@ -217,7 +217,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      * @param integer    $docCount
      * @param integer    $delGen
      * @param array|null $docStoreOptions
-     * @param boolean    $hasSingleNormFile
+     * @param boolean|int    $hasSingleNormFile
      * @param boolean    $isCompound
      */
     public function __construct(Zend_Search_Lucene_Storage_Directory $directory, $name, $docCount, $delGen = 0, $docStoreOptions = null, $hasSingleNormFile = false, $isCompound = null)
@@ -816,7 +816,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      * Scans terms dictionary and returns term info
      *
      * @param Zend_Search_Lucene_Index_Term $term
-     * @return Zend_Search_Lucene_Index_TermInfo
+     * @return Zend_Search_Lucene_Index_TermInfo|null
      */
     public function getTermInfo(Zend_Search_Lucene_Index_Term $term)
     {
@@ -1415,7 +1415,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      *
      * @param integer $id
      * @param string $fieldName
-     * @return float
+     * @return float|null
      */
     public function norm($id, $fieldName)
     {
@@ -1571,7 +1571,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      * so index Write lock has to be already obtained.
      *
      * @internal
-     * @throws Zend_Search_Lucene_Exceptions
+     * @throws Zend_Search_Lucene_Exception
      */
     public function writeChanges()
     {
@@ -1648,7 +1648,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     /**
      * Term Dictionary File object for stream like terms reading
      *
-     * @var Zend_Search_Lucene_Storage_File
+     * @var Zend_Search_Lucene_Storage_File|null
      */
     private $_tisFile = null;
 
@@ -1662,7 +1662,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     /**
      * Frequencies File object for stream like terms reading
      *
-     * @var Zend_Search_Lucene_Storage_File
+     * @var Zend_Search_Lucene_Storage_File|null
      */
     private $_frqFile = null;
 
@@ -1676,7 +1676,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     /**
      * Positions File object for stream like terms reading
      *
-     * @var Zend_Search_Lucene_Storage_File
+     * @var Zend_Search_Lucene_Storage_File|null
      */
     private $_prxFile = null;
 
@@ -1719,14 +1719,14 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     /**
      * Last TermInfo in a terms stream
      *
-     * @var Zend_Search_Lucene_Index_TermInfo
+     * @var Zend_Search_Lucene_Index_TermInfo|null
      */
     private $_lastTermInfo = null;
 
     /**
      * Last Term in a terms stream
      *
-     * @var Zend_Search_Lucene_Index_Term
+     * @var Zend_Search_Lucene_Index_Term|null
      */
     private $_lastTerm = null;
 
@@ -1868,7 +1868,6 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             default:
                 require_once 'Zend/Search/Lucene/Exception.php';
                 throw new Zend_Search_Lucene_Exception('Wrong terms scaning mode specified.');
-                break;
         }
 
         // Calculate next segment start id (since $this->_docMap structure may be cleaned by $this->nextTerm() call)

@@ -74,7 +74,6 @@ class Zend_Service_Amazon_Ec2
                 break;
             default:
                 throw new Zend_Service_Amazon_Ec2_Exception('Invalid Section: ' . $section);
-                break;
         }
 
         if (!class_exists($class)) {

@@ -44,14 +44,14 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
     /**
      * Result identifier resource
      *
-     * @var resource
+     * @var resource|null
      */
     protected $_resultId = null;
 
     /**
      * Current result entry identifier
      *
-     * @var resource
+     * @var resource|null
      */
     protected $_current = null;
 

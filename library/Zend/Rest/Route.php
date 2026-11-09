@@ -121,7 +121,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
      * Always returns the values as an array.
      *
      * @param Zend_Controller_Request_Http $request Request used to match against this routing ruleset
-     * @return array An array of assigned values or a false on a mismatch
+     * @return array|false An array of assigned values or a false on a mismatch
      */
     public function match($request, $partial = false)
     {

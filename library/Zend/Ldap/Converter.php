@@ -101,8 +101,8 @@ class Zend_Ldap_Converter
      * @todo write more tests
      *
      * @param    mixed     $value     The value to convert
-     * @param    int       $ytpe      The conversion type to use
-     * @return    string
+     * @param    int       $type      The conversion type to use
+     * @return    string|null
      * @throws    Zend_Ldap_Converter_Exception
      */
     public static function toLdap($value, $type = self::STANDARD)
@@ -111,10 +111,8 @@ class Zend_Ldap_Converter
             switch ($type) {
                 case self::BOOLEAN:
                     return self::toLdapBoolean($value);
-                    break;
                 case self::GENERALIZED_TIME:
                     return self::toLdapDateTime($value);
-                    break;
                 default:
                     if (is_string($value)) {
                         return $value;
@@ -137,7 +135,6 @@ class Zend_Ldap_Converter
                     } else {
                         return null;
                     }
-                    break;
             }
         } catch (Exception $e) {
             throw new Zend_Ldap_Converter_Exception($e->getMessage(), $e->getCode(), $e);
@@ -222,7 +219,7 @@ class Zend_Ldap_Converter
      * type can be forced
      * .
      * @param    string    $value             The value to convert
-     * @param    int        $ytpe              The conversion type to use
+     * @param    int        $type              The conversion type to use
      * @param    boolean    $dateTimeAsUtc    Return DateTime values in UTC timezone
      * @return    mixed
      * @throws    Zend_Ldap_Converter_Exception
@@ -232,10 +229,8 @@ class Zend_Ldap_Converter
         switch ($type) {
             case self::BOOLEAN:
                 return self::fromLdapBoolean($value);
-                break;
             case self::GENERALIZED_TIME:
                 return self::fromLdapDateTime($value);
-                break;
             default:
                 if (is_numeric($value)) {
                     // prevent numeric values to be treated as date/time

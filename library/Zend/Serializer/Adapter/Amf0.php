@@ -70,7 +70,7 @@ class Zend_Serializer_Adapter_Amf0 extends Zend_Serializer_Adapter_AdapterAbstra
      *
      * @param  mixed $value
      * @param  array $opts
-     * @return array|bool|DomDocument|float|object|SimpleXMLElement|string|Zend_Date|null
+     * @return array|bool|DOMDocument|float|object|SimpleXMLElement|string|Zend_Date|null
      * @throws Zend_Serializer_Exception
      */
     public function unserialize($value, array $opts = [])

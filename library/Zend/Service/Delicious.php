@@ -86,7 +86,7 @@ class Zend_Service_Delicious
     /**
      * Zend_Service_Rest instance
      *
-     * @var Zend_Service_Rest
+     * @var Zend_Rest_Client
      */
     protected $_rest;
 
@@ -327,7 +327,7 @@ class Zend_Service_Delicious
      * Get recent posts
      *
      * @param  string $tag   Optional filtering by tag
-     * @param  string $count Maximum number of posts to be returned (default 15)
+     * @param  string|int $count Maximum number of posts to be returned (default 15)
      * @return Zend_Service_Delicious_PostList
      */
     public function getRecentPosts($tag = null, $count = 15)
@@ -441,7 +441,7 @@ class Zend_Service_Delicious
      * If URL hasen't been bookmarked null is returned.
      *
      * @param  string $url URL for which to get details
-     * @return array
+     * @return array|null
      */
     public function getUrlDetails($url)
     {
@@ -462,7 +462,7 @@ class Zend_Service_Delicious
      * @param   string $path  Path
      * @param   array  $parms Array of GET parameters
      * @param   string $type  Type of a request ("xml"|"json")
-     * @return  array|bool|DomDocument|SimpleXMLElement|StdClass|void|null  decoded response from web service
+     * @return  array|bool|DOMDocument|SimpleXMLElement|stdClass|void|null  decoded response from web service
      * @throws  Zend_Service_Delicious_Exception
      */
     public function makeRequest($path, array $parms = [], $type = 'xml')

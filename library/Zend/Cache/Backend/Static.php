@@ -213,7 +213,7 @@ class Zend_Cache_Backend_Static
      * @param  string $data            Datas to cache
      * @param  string $id              Cache id
      * @param  array $tags             Array of strings, the cache record will be tagged by each string entry
-     * @param  int   $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @param  int|false   $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
      * @return boolean true if no problem
      */
     public function save($data, $id, $tags = [], $specificLifetime = false)
@@ -468,7 +468,6 @@ class Zend_Cache_Backend_Static
                 break;
             default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                break;
         }
         return $result;
     }
@@ -560,7 +559,7 @@ class Zend_Cache_Backend_Static
      * otherwise return the non-string (assumed octal or decimal int already)
      *
      * @param string $val The potential octal in need of conversion
-     * @return int
+     * @return int|string
      */
     protected function _octdec($val)
     {

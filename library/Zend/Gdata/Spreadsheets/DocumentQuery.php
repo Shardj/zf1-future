@@ -197,7 +197,7 @@ class Zend_Gdata_Spreadsheets_DocumentQuery extends Zend_Gdata_Query
 
     /**
      * Gets the title attribute for this query.
-     * @return string title
+     * @return string|null title
      */
     public function getTitle()
     {
@@ -210,7 +210,7 @@ class Zend_Gdata_Spreadsheets_DocumentQuery extends Zend_Gdata_Query
 
     /**
      * Gets the title-exact attribute for this query.
-     * @return string title-exact
+     * @return string|null title-exact
      */
     public function getTitleExact()
     {

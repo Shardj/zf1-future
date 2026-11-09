@@ -33,7 +33,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      * If you are downgrading, it will go to the highest version that is equal to or lower than the
      * version you specified.
      *
-     * @param string $version Version to change to
+     * @param string|null $version Version to change to
      * @param string $env     Environment to retrieve database credentials from, default is development
      * @param string $dir     Directory containing migration files, default is ./scripts/migrations
      *
@@ -193,7 +193,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @param string $env Environment to initialize for
      *
-     * @return null
+     * @return void
      *
      * @throws Zend_Tool_Project_Exception
      */
@@ -245,7 +245,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      * @param string $filename           File to create the object from
      * @param string $section            If not null, pull this sestion of the config
      * file only. Doesn't apply to .php and .inc file
-     * @param string $allowModifications Should the object be mutable or not
+     * @param string|bool $allowModifications Should the object be mutable or not
      *
      * @throws Zend_Db_Schema_Exception
      *

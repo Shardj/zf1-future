@@ -500,7 +500,7 @@ class Zend_Uri_Http extends Zend_Uri
     /**
      * Sets the port for the current URI, and returns the old port
      *
-     * @param  string $port The HTTP port
+     * @param  string|int $port The HTTP port
      * @throws Zend_Uri_Exception When $port is not a valid HTTP port
      * @return string
      */

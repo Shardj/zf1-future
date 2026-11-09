@@ -267,7 +267,7 @@ class Zend_Session extends Zend_Session_Abstract
     /**
      * setSaveHandler() - Session Save Handler assignment
      *
-     * @param Zend_Session_SaveHandler_Interface $interface
+     * @param Zend_Session_SaveHandler_Interface $saveHandler
      * @throws Zend_Session_Exception When the session_set_save_handler call fails
      * @return void
      */

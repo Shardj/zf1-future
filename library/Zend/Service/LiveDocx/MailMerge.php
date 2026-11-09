@@ -324,7 +324,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
     /**
      * Merge assigned data with template to generate document
      *
-     * @throws Zend_Service_LiveDocx_Excpetion
+     * @throws Zend_Service_LiveDocx_Exception
      * @return void
      * @since  LiveDocx 1.0
      */

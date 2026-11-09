@@ -277,7 +277,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
     /**
      * Sets envelope keys
      *
-     * @param  string|array $options Envelope keys
+     * @param  string|array $key Envelope keys
      * @return Zend_Filter_Encrypt_Openssl
      */
     public function setEnvelopeKey($key)

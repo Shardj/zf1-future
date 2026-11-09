@@ -78,7 +78,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
     /**
      * Get an array with feed authors
      *
-     * @return array
+     * @return Zend_Feed_Reader_Collection_Author|null
      */
     public function getAuthors()
     {
@@ -268,7 +268,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
     /**
      * Get the entry enclosure
      *
-     * @return string
+     * @return stdClass|null
      */
     public function getEnclosure()
     {
@@ -352,7 +352,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      * Get a specific link
      *
      * @param  int $index
-     * @return string
+     * @return string|null
      */
     public function getLink($index = 0)
     {
