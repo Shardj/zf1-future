@@ -1,9 +1,9 @@
 ![zf1-future logo](https://imgur.com/S0i6qOh.png)
 <sub><sup>Thanks to [WebTigers](https://github.com/WebTigers) for the logo</sup></sub>
-# Zend Framework 1 now for PHP 8.3!
+# Zend Framework 1 now for PHP 8.4!
 ### Classic ZF1 Reborn
 Zend may have abandoned the original Zend Framework, but the global Zend Framework Community has not! Since Zend sentenced ZF1 to EOL, the Zend Framework community around the globe has continued to work and build on what we consider to be one of the best PHP frameworks of all time.
-Framework is supported and tested on PHP 7.4 up to 8.3. PHP 8.4 and 8.5 are part of the regular test suite as well, but may still show deprecation notices; PHP 8.6 is tested as experimental.
+Framework is supported and tested on PHP 7.4 up to 8.4. PHP 8.5 is part of the regular test suite as well, but may still show deprecation notices; PHP 8.6 is tested as experimental.
 
 # ZF1-Future Sponsors
 ### Products and Projects built with ZF1-Future:
@@ -16,9 +16,9 @@ Creators of the [Tiger Development Platform](https://webtigers.com) featuring ZF
 
 Creators of [Seiden PHP+ for IBM i](https://www.seidengroup.com/seiden-php-for-ibm-i/) featuring ZF1-Future
 
-# ZF1 is Now Version 1.26!
+# ZF1 is Now Version 1.27!
 ### Over 250 updates and bug fixes since 1.12!
-The ZF1 community has been hard at work updating Zend Framework with all of the latest features of 8.3.
+The ZF1 community has been hard at work updating Zend Framework with all of the latest features of 8.4.
 
 # Documentation
 New ZF1-Future Manual: [ZF1-Future Docs](https://zf1future.com/manual)
@@ -34,7 +34,7 @@ Installable through git clone or through
 Composer is the recommended way. If you install from git or from a release archive without Composer, add the `library` directory to your `include_path` and make sure the `ctype` and `mbstring` extensions are enabled. The Symfony polyfills from `composer.json` are not loaded in that case.
 
 # System Requirements
-ZF1 Future runs on any version of PHP between 7.4 and 8.3. PHP 8.4 and 8.5 are tested as well and work in practice, but are not officially supported yet; PHP 8.6 is experimental (see the test matrix in `.github/workflows/phpunit.yml`).
+ZF1 Future runs on any version of PHP between 7.4 and 8.4. PHP 8.5 is tested as well and works in practice, but is not officially supported yet (see the known issues below); PHP 8.6 is experimental (see the test matrix in `.github/workflows/phpunit.yml`).
 
 # License
 The files in this archive are released under the Zend Framework license. You can find a copy of this license in [LICENSE.txt](LICENSE.txt).
@@ -56,7 +56,11 @@ Since 1.26.0 `Zend_Mail` authenticates with an OAuth 2.0 access token where a pa
 
 * ``Bootstrap error: Unable to resolve plugin "useragent"; no corresponding plugin with that name``  
    Fixed in 1.26.0 (https://github.com/Shardj/zf1-future/issues/407). On older versions the resource file has to be renamed to ``Zend/Application/Resource/Useragent.php``, see https://github.com/Shardj/zf1-future/issues/92
-* ``Zend_Db_Adapter_Pdo_Mssql``: rows of a query with an offset but without ORDER BY (``limit($count, $offset)``) carry the column ``ZEND_DB_ROWNUM`` in addition to the selected columns. Such a query numbers the rows with ``ROW_NUMBER()``, which works on SQL Server 2005 and later; ``OFFSET ... FETCH``, which returns only the selected columns, needs SQL Server 2012. The SQL Server adapters are planned to change to ``OFFSET ... FETCH`` in 1.27 or 1.28.
+* ``Zend_Db_Adapter_Pdo_Mssql``: rows of a query with an offset but without ORDER BY (``limit($count, $offset)``) carry the column ``ZEND_DB_ROWNUM`` in addition to the selected columns. Such a query numbers the rows with ``ROW_NUMBER()``, which works on SQL Server 2005 and later; ``OFFSET ... FETCH``, which returns only the selected columns, needs SQL Server 2012. The SQL Server adapters are planned to change to ``OFFSET ... FETCH`` in 1.28.
+* PHP 8.4: ``Zend_Session::setOptions()`` (or the ``resources.session`` options of ``Zend_Application``) with ``sid_length`` or ``sid_bits_per_character`` triggers PHP's deprecation notice, because PHP 8.4 deprecates changing ``session.sid_length`` and ``session.sid_bits_per_character``. Remove these options; PHP 9 drops the settings.
+* PHP 8.4: ``Zend_Db_Adapter_Pdo_Pgsql`` returns the values of ``real`` and ``double precision`` columns as float instead of string, because pdo_pgsql does so since PHP 8.4. Code that compares such values as strings (``===``) has to cast them, or set ``PDO::ATTR_STRINGIFY_FETCHES => true`` in the ``driver_options`` of the adapter to get strings as before.
+* PHP 8.4: ``Zend_Soap_Server`` turns ``E_USER_ERROR`` raised in a service method into a SOAP fault, but PHP 8.4 deprecates ``trigger_error()`` with ``E_USER_ERROR``. Throw a ``SoapFault`` or an exception in the service method instead.
+* PHP 8.5: ``Zend_Soap_Client`` cannot be loaded, because the signature of ``Zend_Soap_Client_Common::__doRequest()`` is incompatible with ``SoapClient::__doRequest()`` of PHP 8.5 (fatal error). The fix changes the signature for subclasses and is planned for 1.28.
 * ``Zend_Test_PHPUnit_Db`` (database fixtures for PHPUnit) is not supported. It extends the DbUnit classes ``PHPUnit_Extensions_Database_*``, which only exist for PHPUnit 5 and older; the component is shipped as is, without tests, and is not adapted to the DbUnit forks for current PHPUnit versions (their classes are namespaced and typed). Applications that need DbUnit have to use such a fork directly, see https://github.com/Shardj/zf1-future/issues/412
 
 # Deprecated components
@@ -70,3 +74,4 @@ The following adapters and backends depend on technologies that are not availabl
 * ``Zend_Serializer_Adapter_Wddx`` (ext/wddx was removed in PHP 7.4)
 * ``Zend_Http_UserAgent_Features_Adapter_TeraWurfl``, ``Zend_Http_UserAgent_Features_Adapter_DeviceAtlas``
 * ``Zend_Queue_Adapter_PlatformJobQueue`` and ``Zend_Queue_Message_PlatformJob`` (Zend Platform and its Job Queue are discontinued; use ``Zend_Queue_Adapter_Db`` or ``Zend_Queue_Adapter_Activemq``)
+* ``Zend_Service_Ebay`` (the eBay Finding API, the only API it supports, was decommissioned on 2025-02-05)

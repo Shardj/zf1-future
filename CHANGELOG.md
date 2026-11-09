@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.27.0] - 2026-11-09
+
+PHP 8.4 is officially supported with this release (PHP 7.4 – 8.4). PHP 8.5 is part of the regular test matrix but may still show deprecation notices; PHP 8.6 is tested as experimental.
+
+### Changed
+
+* Supported PHP versions: 7.4 – 8.4 (PHP 8.4 officially supported, the test suite runs with deprecations converted to exceptions on every PHP version); PHP 8.5 tested in CI, PHP 8.6 experimental (#446). Known issues on PHP 8.4 and 8.5 are listed in README.md.
+* Methods that returned null on some paths return what their docblock and their parent method declare (Zend_Console_Getopt::parse(), ContextSwitch::addActionContext()/setActionContext(), Zend_Tool_Project contexts, Zend_Dojo_Form::loadDefaultDecorators(), Zend_Measure_Number::setType(), Zend_Db_Profiler_Firebug::queryEnd(), Zend_Search_Lucene_Storage_File_Memory::seek()). See BREAKING-CHANGES.md.
+
 ### Deprecated
 
 * Zend_Service_Ebay is deprecated and will be removed in a future version: the eBay Finding API, the only API it supports, was decommissioned on 2025-02-05 (the Browse API replaces it). Zend_Service_Ebay_Finding triggers an E_USER_DEPRECATED notice when instantiated; its tests are removed.
