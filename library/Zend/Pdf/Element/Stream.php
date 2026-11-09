@@ -40,7 +40,7 @@ class Zend_Pdf_Element_Stream extends Zend_Pdf_Element
     /**
      * Object value
      *
-     * @var Zend_Memory_Container
+     * @var Zend_Memory_Container_Interface
      */
     public $value;
 

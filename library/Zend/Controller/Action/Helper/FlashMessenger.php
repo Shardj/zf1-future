@@ -52,7 +52,7 @@ class Zend_Controller_Action_Helper_FlashMessenger extends Zend_Controller_Actio
     /**
      * $_session - Zend_Session storage object
      *
-     * @var Zend_Session
+     * @var Zend_Session_Namespace
      */
     static protected $_session = null;
 

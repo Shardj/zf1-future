@@ -65,14 +65,14 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     /**
      * What filter to use
      *
-     * @var bool
+     * @var Zend_Filter_Interface|bool
      */
     protected $_filter;
 
     /**
      * Filter chain
      *
-     * @var Zend_Filter
+     * @var Zend_Filter_Interface
      */
     protected $_defaultFilter;
 
@@ -547,7 +547,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     /**
      * Get the default filter
      *
-     * @return Zend_Filter
+     * @return Zend_Filter_Interface
      */
     public function getDefaultFilter()
     {

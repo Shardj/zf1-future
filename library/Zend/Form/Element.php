@@ -2038,7 +2038,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      * Retrieve a registered decorator
      *
      * @param  string $name
-     * @return false|Zend_Form_Decorator_Abstract
+     * @return Zend_Form_Decorator_Interface|false
      */
     public function getDecorator($name)
     {

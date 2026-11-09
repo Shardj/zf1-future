@@ -80,17 +80,17 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
     protected $_implementedInterfaces = [];
 
     /**
-     * @var array Array of properties
+     * @var Zend_CodeGenerator_Php_Member_Container Array of properties
      */
     protected $_properties = null;
 
     /**
-     * @var array Array of constants
+     * @var Zend_CodeGenerator_Php_Member_Container Array of constants
      */
     protected $_constants = null;
 
     /**
-     * @var array Array of methods
+     * @var Zend_CodeGenerator_Php_Member_Container Array of methods
      */
     protected $_methods = null;
 
@@ -362,7 +362,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
     /**
      * getProperties()
      *
-     * @return array
+     * @return Zend_CodeGenerator_Php_Member_Container
      */
     public function getProperties()
     {
@@ -372,7 +372,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
     /**
      * getConstants()
      *
-     * @return array
+     * @return Zend_CodeGenerator_Php_Member_Container
      */
     public function getConstants()
     {
@@ -477,7 +477,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
     /**
      * getMethods()
      *
-     * @return array
+     * @return Zend_CodeGenerator_Php_Member_Container
      */
     public function getMethods()
     {

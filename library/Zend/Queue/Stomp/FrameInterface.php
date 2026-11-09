@@ -87,7 +87,7 @@ interface Zend_Queue_Stomp_FrameInterface
      * returns false if the header does not exist
      *
      * @param string $header
-     * @param string $value
+     * @param string|int $value
      * @return $this
      * @throws Zend_Queue_Exception
      */

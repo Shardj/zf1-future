@@ -42,7 +42,7 @@ class Zend_Amf_Value_Messaging_AbstractMessage
     public $destination;
 
     /**
-     * @var string Message identifier
+     * @var string|null Message identifier
      */
     public $messageId;
 

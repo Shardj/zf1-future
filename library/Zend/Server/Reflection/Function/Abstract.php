@@ -53,7 +53,7 @@ require_once 'Zend/Server/Reflection/Prototype.php';
 abstract class Zend_Server_Reflection_Function_Abstract
 {
     /**
-     * @var ReflectionFunction
+     * @var ReflectionFunction|ReflectionMethod
      */
     protected $_reflection;
 

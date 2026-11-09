@@ -161,7 +161,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
     /**
      * File system adapter.
      *
-     * @var Zend_Search_Lucene_Storage_Directory_Filesystem
+     * @var Zend_Search_Lucene_Storage_Directory
      */
     private $_directory;
 

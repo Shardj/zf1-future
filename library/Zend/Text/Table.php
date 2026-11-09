@@ -82,7 +82,7 @@ class Zend_Text_Table
     /**
      * Plugin loader for decorators
      *
-     * @var string
+     * @var Zend_Loader_PluginLoader|null
      */
     protected $_pluginLoader = null;
 

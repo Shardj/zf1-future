@@ -129,7 +129,7 @@ abstract class Zend_Search_Lucene_Index_SegmentWriter
     /**
      * '.fdx'  file - Stored Fields, the field index.
      *
-     * @var Zend_Search_Lucene_Storage_File
+     * @var Zend_Search_Lucene_Storage_File|null
      */
     protected $_fdxFile = null;
 

@@ -70,14 +70,14 @@ class Zend_Ldap
     /**
      * Caches the RootDSE
      *
-     * @var Zend_Ldap_Node
+     * @var Zend_Ldap_Node_RootDse|null
      */
     protected $_rootDse = null;
 
     /**
      * Caches the schema
      *
-     * @var Zend_Ldap_Node
+     * @var Zend_Ldap_Node_Schema|null
      */
     protected $_schema = null;
 

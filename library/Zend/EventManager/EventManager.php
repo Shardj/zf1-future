@@ -58,7 +58,7 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
 
     /**
      * Static collections
-     * @var false|null|Zend_EventManager_StaticEventCollection
+     * @var Zend_EventManager_SharedEventCollection|false|null
      */
     protected $sharedCollections = null;
 

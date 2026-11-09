@@ -46,7 +46,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
     /**
      * Timestamp
      *
-     * @var string
+     * @var DateTime|null
      */
     protected $_timestamp;
 
@@ -117,7 +117,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
      * Get timestamp
      *
      * @azure Timestamp Edm.DateTime
-     * @return string
+     * @return DateTime|null
      */
     public function getTimestamp()
     {

@@ -51,7 +51,7 @@ class Zend_Queue_Adapter_Activemq extends Zend_Queue_Adapter_AdapterAbstract
     public const DEFAULT_PORT   = 61613;
 
     /**
-     * @var Zend_Queue_Adapter_Stomp_client
+     * @var Zend_Queue_Stomp_Client
      */
     private $_client = null;
 

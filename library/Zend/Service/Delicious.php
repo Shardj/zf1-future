@@ -86,7 +86,7 @@ class Zend_Service_Delicious
     /**
      * Zend_Service_Rest instance
      *
-     * @var Zend_Service_Rest
+     * @var Zend_Rest_Client
      */
     protected $_rest;
 

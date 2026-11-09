@@ -44,7 +44,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
     /**
      * Entry instance
      *
-     * @var Zend_Feed_Entry_Interface
+     * @var DOMElement
      */
     protected $_entry = null;
 

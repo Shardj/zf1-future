@@ -33,7 +33,7 @@ abstract class Zend_Amf_Parse_Serializer
     /**
      * Reference to the current output stream being constructed
      *
-     * @var string
+     * @var Zend_Amf_Parse_OutputStream
      */
     protected $_stream;
 

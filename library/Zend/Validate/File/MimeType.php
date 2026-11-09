@@ -117,7 +117,7 @@ class Zend_Validate_File_MimeType extends Zend_Validate_Abstract
     /**
      * Holds error information returned by finfo_open
      *
-     * @var array
+     * @var ErrorException|null
      */
     protected $_finfoError;
 

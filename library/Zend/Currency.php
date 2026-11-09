@@ -756,7 +756,7 @@ class Zend_Currency
      *
      * @param float|integer|Zend_Currency $value    Compares the currency with this value
      * @param string|Zend_Currency        $currency The currency to compare this value from
-     * @return unknown
+     * @return float|int
      */
     protected function _exchangeCurrency($value, $currency)
     {

@@ -31,7 +31,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
 {
     /**
      * Element Id
-     * @var string
+     * @var string|null
      */
     protected $id;
 
@@ -806,7 +806,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      * Retrieve a registered decorator
      *
      * @param  string $name
-     * @return false|Zend_Form_Decorator_Abstract
+     * @return Zend_Form_Decorator_Interface|false
      */
     public function getDecorator($name)
     {

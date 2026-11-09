@@ -74,7 +74,7 @@ require_once 'Zend/View.php';
 class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_Helper_Abstract
 {
     /**
-     * @var Zend_View_Interface
+     * @var Zend_View_Interface|null
      */
     public $view;
 

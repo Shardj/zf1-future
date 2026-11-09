@@ -56,7 +56,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
 
     /**
      * Class registered with this server
-     * @var string
+     * @var string|null
      */
     protected $_class;
 

@@ -68,7 +68,7 @@ class Zend_Feed_Reader_Extension_Atom_Feed
     /**
      * Get an array with feed authors
      *
-     * @return array
+     * @return Zend_Feed_Reader_Collection_Author|null
      */
     public function getAuthors()
     {

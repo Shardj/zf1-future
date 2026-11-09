@@ -39,7 +39,7 @@ class Zend_Tool_Framework_Client_Response
     protected $_content = [];
 
     /**
-     * @var Zend_Tool_Framework_Exception
+     * @var Exception|null
      */
     protected $_exception = null;
 

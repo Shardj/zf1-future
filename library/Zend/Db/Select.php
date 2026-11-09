@@ -793,7 +793,7 @@ class Zend_Db_Select
      *
      * @param integer $fetchMode OPTIONAL
      * @param  mixed  $bind An array of data to bind to the placeholders.
-     * @return Zend_Db_Statement
+     * @return Zend_Db_Statement_Interface
      */
     public function query($fetchMode = null, $bind = [])
     {

@@ -252,7 +252,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
      * getAttribute()
      *
      * @param string $name
-     * @return Zend_Tool_Project_Profile_Resource_Container
+     * @return mixed
      */
     public function getAttribute($name)
     {

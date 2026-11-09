@@ -58,7 +58,7 @@ class Zend_Gdata_Query
      * Base URL
      * TODO: Add setters and getters
      *
-     * @var string
+     * @var string|null
      */
     protected $_url = null;
 

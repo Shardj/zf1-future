@@ -75,7 +75,7 @@ class Zend_Service_Twitter
     public const STATUS_MAX_CHARACTERS = 246;
 
     /**
-     * @var array
+     * @var Zend_Http_CookieJar|null
      */
     protected $cookieJar;
 

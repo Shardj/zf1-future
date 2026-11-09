@@ -26,48 +26,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeByte() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeDouble() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeInt() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeLong() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeLongUtf() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeUtf() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $stream of class Zend_Amf_Parse_Amf3_Serializer constructor expects Zend_Amf_Parse_OutputStream, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -92,24 +50,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeByte() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 11,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeBytes() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method writeDouble() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Serializer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $link of function mysqli_num_fields expects mysqli_result, resource given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -126,12 +66,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Resource/MysqliResult.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Amf_Parse_Serializer::$_stream (string) does not accept Zend_Amf_Parse_OutputStream.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Serializer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Amf_Parse_TypeLoader::loadType() never returns array<string> so it can be removed from the return type.',
@@ -222,12 +156,6 @@ $ignoreErrors[] = [
 	'identifier' => 'empty.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Amf_Value_Messaging_AbstractMessage::$messageId (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Value/Messaging/AcknowledgeMessage.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always true.',
@@ -342,12 +270,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Application/Resource/View.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Auth::getInstance() should return $this(Zend_Auth) but returns Zend_Auth.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Auth.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Auth_Adapter_Http::$_basicResolver (Zend_Auth_Adapter_Http_Resolver_Interface) in empty() is not falsy.',
@@ -860,60 +782,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method describe() on an unknown class Ec2Image.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method describe() on an unknown class Ec2Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method describe() on an unknown class Ec2Zone.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getHttpClient() on an unknown class Ec2Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMetricStatistics() on an unknown class Ec2Monitor.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method reboot() on an unknown class Ec2Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method run() on an unknown class Ec2Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method terminate() on an unknown class Ec2Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_Infrastructure_Adapter_Ec2::getAdapter() should return Zend_Service_Amazon_Ec2_Instance but returns Ec2Instance.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $adapter of class Zend_Cloud_Infrastructure_Instance constructor expects Adapter, $this(Zend_Cloud_Infrastructure_Adapter_Ec2) given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -922,72 +790,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $adapter of class Zend_Cloud_Infrastructure_InstanceList constructor expects Adapter, $this(Zend_Cloud_Infrastructure_Adapter_Ec2) given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2 (Ec2Instance) does not accept Zend_Service_Amazon_Ec2_Instance.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2 has unknown class Ec2Instance as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Image (Ec2Image) does not accept Zend_Service_Amazon_Ec2_Image.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Image (Ec2Image) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Image has unknown class Ec2Image as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Monitor (Ec2Monitor) does not accept Zend_Service_Amazon_Ec2_CloudWatch.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Monitor (Ec2Monitor) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Monitor has unknown class Ec2Monitor as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Zone (Ec2Zone) does not accept Zend_Service_Amazon_Ec2_Availabilityzones.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Zone (Ec2Zone) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Cloud_Infrastructure_Adapter_Ec2::$ec2Zone has unknown class Ec2Zone as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
 ];
@@ -1142,18 +944,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/MessageSet.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_StorageService_Adapter_FileSystem::getClient() has invalid return type strings.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/FileSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_StorageService_Adapter_FileSystem::getClient() should return strings but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/FileSystem.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Cloud_StorageService_Adapter_FileSystem::storeItem() should be compatible with return type (bool) of method Zend_Cloud_StorageService_Adapter::storeItem()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -1188,24 +978,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_CodeGenerator_Php_Class::$_constants (array) does not accept Zend_CodeGenerator_Php_Member_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Class.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_CodeGenerator_Php_Class::$_methods (array) does not accept Zend_CodeGenerator_Php_Member_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Class.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_CodeGenerator_Php_Class::$_properties (array) does not accept Zend_CodeGenerator_Php_Member_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Class.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Reflection_Docblock_Tag::getUrl().',
@@ -1304,12 +1076,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Controller_Action::$view (Zend_View_Interface) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Controller_Action_Helper_ActionStack::$_actionStack (Zend_Controller_Plugin_ActionStack) does not accept array|Zend_Controller_Plugin_Abstract|false.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -1394,18 +1160,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Session::setExpirationHops().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/FlashMessenger.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Static property Zend_Controller_Action_Helper_FlashMessenger::$_session (Zend_Session) does not accept Zend_Session_Namespace.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/FlashMessenger.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoRender().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -1427,12 +1181,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Controller_Action_Helper_ViewRenderer::$_inflectorTarget (string) does not accept reference.',
 	'identifier' => 'assign.propertyType',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Controller_Action_Helper_ViewRenderer::$view (Zend_View_Interface) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
 ];
 $ignoreErrors[] = [
@@ -1622,12 +1370,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Rewrite.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Controller_Router_Rewrite::$_currentRoute (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Rewrite.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -1810,30 +1552,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $dh_key of function openssl_dh_compute_key expects resource, string given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Crypt_DiffieHellman::$_generator (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Crypt_DiffieHellman::$_prime (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Crypt_DiffieHellman::$_privateKey (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Crypt_DiffieHellman::$_secretKey (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
 ];
@@ -2038,18 +1756,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method getRate() on an unknown class Zend_Service.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Currency::_exchangeCurrency() has invalid return type unknown.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Currency::_exchangeCurrency() should return unknown but returns (float|int).',
-	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Currency.php',
 ];
@@ -2636,12 +2342,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method describeTable() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getAttribute() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
@@ -2654,44 +2354,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method lastSequenceId() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method limit() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method listTables() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method nextSequenceId() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method setAttribute() on object|resource.',
 	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Adapter_Pdo_Ibm::$_serverType (string) does not accept Zend_Db_Adapter_Pdo_Ibm_Db2.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Adapter_Pdo_Ibm::$_serverType (string) does not accept Zend_Db_Adapter_Pdo_Ibm_Ids.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
@@ -2766,12 +2430,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Select::query() should return Zend_Db_Statement but returns Zend_Db_Statement_Interface.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Select.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
@@ -3254,26 +2912,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/SubForm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_AccordionContainer::accordionContainer() should return string but returns $this(Zend_Dojo_View_Helper_AccordionContainer).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/AccordionContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_AccordionPane::accordionPane() should return string but returns $this(Zend_Dojo_View_Helper_AccordionPane).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/AccordionPane.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::headStyle().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/BorderContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_BorderContainer::borderContainer() should return string but returns $this(Zend_Dojo_View_Helper_BorderContainer).',
-	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/BorderContainer.php',
 ];
@@ -3294,12 +2934,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/ComboBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_ContentPane::contentPane() should return string but returns $this(Zend_Dojo_View_Helper_ContentPane).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/ContentPane.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
@@ -3368,24 +3002,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Slider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_SplitContainer::splitContainer() should return string but returns $this(Zend_Dojo_View_Helper_SplitContainer).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/SplitContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_StackContainer::stackContainer() should return string but returns $this(Zend_Dojo_View_Helper_StackContainer).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/StackContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_TabContainer::tabContainer() should return string but returns $this(Zend_Dojo_View_Helper_TabContainer).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/TabContainer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dom_Query::_getNodeList() should return array but returns DOMNodeList<DOMNameSpaceNode|DOMNode>|false.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -3431,18 +3047,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $listeners of method Zend_EventManager_EventManager::insertListeners() expects Zend_Stdlib_PriorityQueue, array given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_EventManager_EventManager::$sharedCollections (Zend_EventManager_StaticEventCollection|false|null) does not accept Zend_EventManager_SharedEventCollection.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_EventManager_EventManager::$sharedCollections has unknown class Zend_EventManager_StaticEventCollection as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
 ];
 $ignoreErrors[] = [
@@ -3674,12 +3278,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Feed_Pubsubhubbub_Model_ModelAbstract::$_db (Zend_Db_Table) does not accept Zend_Db_Table_Abstract.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Model/ModelAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$created_time.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -3707,18 +3305,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $haystack of function stripos expects string, bool given.',
 	'identifier' => 'argument.type',
 	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Subscriber/Callback.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Feed_Pubsubhubbub_Subscriber_Callback::$_subscriptionKey (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Subscriber/Callback.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Subscriber/Callback.php',
 ];
 $ignoreErrors[] = [
@@ -3932,24 +3518,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Reader_EntryAbstract::getElement() should return DOMElement but returns Zend_Feed_Entry_Interface.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/EntryAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Feed_Reader_EntryAbstract::$_entry (Zend_Feed_Entry_Interface) does not accept DOMElement.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/EntryAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Feed_Reader_EntryAbstract::$_entry has unknown class Zend_Feed_Entry_Interface as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/EntryAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNameSpaceNode|DOMNode::$value.',
 	'identifier' => 'property.notFound',
 	'count' => 4,
@@ -3959,12 +3527,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
 	'identifier' => 'method.notFound',
 	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Reader_Extension_Atom_Entry::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
-	'identifier' => 'return.type',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
 ];
 $ignoreErrors[] = [
@@ -3986,34 +3548,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Feed.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Reader_Extension_Atom_Feed::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Feed.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $element of method Zend_Feed_Reader_Extension_Atom_Feed::_getAuthor() expects DOMElement, DOMNameSpaceNode|DOMNode given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Reader_Extension_DublinCore_Entry::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/DublinCore/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Reader_Extension_DublinCore_Feed::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/DublinCore/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Feed_Reader_Extension_EntryAbstract::$_entry (Zend_Feed_Entry_Abstract) does not accept DOMElement.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/EntryAbstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
@@ -4676,24 +4214,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Callback.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method compress() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method toString() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Filter_Compress::getAdapter() should return string but returns Zend_Filter_Compress_CompressInterface.',
-	'identifier' => 'return.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method create() on an unknown class Archive_Tar.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -4722,12 +4242,6 @@ $ignoreErrors[] = [
 	'identifier' => 'notIdentical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Filter/Compress/Zip.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method decompress() on string.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Decompress.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Constant MCRYPT_DEV_RANDOM not found.',
@@ -4830,18 +4344,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Openssl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Filter_File_Decrypt::$_filename (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/File/Decrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Filter_File_Encrypt::$_filename (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/File/Encrypt.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $overwrite',
@@ -4952,12 +4454,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form::getDecorator() should return Zend_Form_Decorator_Abstract|false but returns Zend_Form_Decorator_Interface.',
-	'identifier' => 'return.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $decorator of method Zend_Form::addDecorator() expects string|Zend_Form_Decorator_Interface, array<string, string|Zend_Form_Decorator_Interface> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -5004,18 +4500,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $callback of method Zend_Form_Decorator_Callback::setCallback() has invalid type callback.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Callback.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Form_Decorator_Callback::$_callback (array|string) does not accept callable&callback.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Callback.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formHidden().',
@@ -5106,12 +4590,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormErrors.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Form_Decorator_HtmlTag::$_tagFilter (Zend_Filter) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/HtmlTag.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Form|Zend_Form_Element::getImageValue().',
@@ -5234,32 +4712,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_DisplayGroup::getDecorator() should return Zend_Form_Decorator_Abstract|false but returns Zend_Form_Decorator_Interface.',
-	'identifier' => 'return.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $decorator of method Zend_Form_DisplayGroup::addDecorator() expects string|Zend_Form_Decorator_Interface, array<string, string|Zend_Form_Decorator_Interface> given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $element of method Zend_Form_Decorator_Abstract::setElement() expects Zend_Form|Zend_Form_Element, $this(Zend_Form_DisplayGroup) given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Form_DisplayGroup::$id (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
 ];
@@ -5291,12 +4745,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
 	'identifier' => 'smallerOrEqual.alwaysTrue',
 	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Element::getDecorator() should return Zend_Form_Decorator_Abstract|false but returns Zend_Form_Decorator_Interface.',
-	'identifier' => 'return.type',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Form/Element.php',
 ];
 $ignoreErrors[] = [
@@ -5406,12 +4854,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Analytics/AccountEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Query::$_url (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Analytics/DataQuery.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Argument of an invalid type object|string supplied for foreach, only iterables are supported.',
@@ -5544,18 +4986,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Gdata/AuthSub.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Query::$_url (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Books/VolumeQuery.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Query::$_url (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/EventQuery.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Calendar_Extension_SendEventNotifications::__toString() should return string but returns bool|null.',
@@ -6002,388 +5432,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method getDOM() on an unknown class Zend_Gdata_Media_MediaGroup.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_Photos_AlbumEntry::getMediaGroup() has invalid return type Zend_Gdata_Media_MediaGroup.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_geoRssWhere (Zend_Gdata_Geo_Extension_GeoRssWhere) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoAccess (Zend_Gdata_Photos_Extension_Access) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoCommentCount (Zend_Gdata_Photos_Extension_CommentCount) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoCommentingEnabled (Zend_Gdata_Photos_Extension_CommentingEnabled) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoId (Zend_Gdata_Photos_Extension_Id) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoName (Zend_Gdata_Photos_Extension_Name) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoNickname (Zend_Gdata_Photos_Extension_Nickname) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoNumPhotos (Zend_Gdata_Photos_Extension_NumPhotos) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoTimestamp (Zend_Gdata_Photos_Extension_Timestamp) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_gphotoUser (Zend_Gdata_Photos_Extension_User) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_mediaGroup (Zend_Gdata_Media_MediaGroup) does not accept Zend_Gdata_Media_Extension_MediaGroup.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_mediaGroup (Zend_Gdata_Media_MediaGroup) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumEntry::$_mediaGroup has unknown class Zend_Gdata_Media_MediaGroup as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Gdata_Photos_AlbumFeed::$_geoRssWhere.',
 	'identifier' => 'property.notFound',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoAccess (Zend_Gdata_Photos_Extension_Access) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoCommentCount (Zend_Gdata_Photos_Extension_CommentCount) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoCommentingEnabled (Zend_Gdata_Photos_Extension_CommentingEnabled) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoId (Zend_Gdata_Photos_Extension_Id) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoLocation (Zend_Gdata_Photos_Extension_Location) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoName (Zend_Gdata_Photos_Extension_Name) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoNickname (Zend_Gdata_Photos_Extension_Nickname) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoNumPhotos (Zend_Gdata_Photos_Extension_NumPhotos) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoTimestamp (Zend_Gdata_Photos_Extension_Timestamp) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_AlbumFeed::$_gphotoUser (Zend_Gdata_Photos_Extension_User) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_CommentEntry::$_gphotoId (Zend_Gdata_Photos_Extension_Id) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/CommentEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_CommentEntry::$_gphotoPhotoId (Zend_Gdata_Photos_Extension_PhotoId) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/CommentEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value (string) of method Zend_Gdata_Photos_PhotoEntry::setMediaGroup() should be compatible with parameter $mediaGroup (Zend_Gdata_Media_Extension_MediaGroup) of method Zend_Gdata_Media_Entry::setMediaGroup()',
-	'identifier' => 'method.childParameterType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Media_Entry::$_mediaGroup (Zend_Gdata_Media_Extension_MediaGroup) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_exifTags (Zend_Gdata_Exif_Extension_Tags) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_geoRssWhere (Zend_Gdata_Geo_Extension_GeoRssWhere) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoAlbumId (Zend_Gdata_Photos_Extension_AlbumId) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoChecksum (Zend_Gdata_Photos_Extension_Checksum) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoClient (Zend_Gdata_Photos_Extension_Client) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoCommentCount (Zend_Gdata_Photos_Extension_CommentCount) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoCommentingEnabled (Zend_Gdata_Photos_Extension_CommentingEnabled) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoHeight (Zend_Gdata_Photos_Extension_Height) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoId (Zend_Gdata_Photos_Extension_Id) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoSize (Zend_Gdata_Photos_Extension_Size) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoTimestamp (Zend_Gdata_Photos_Extension_Timestamp) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoVersion (Zend_Gdata_Photos_Extension_Version) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoEntry::$_gphotoWidth (Zend_Gdata_Photos_Extension_Width) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoAlbumId (Zend_Gdata_Photos_Extension_AlbumId) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoChecksum (Zend_Gdata_Photos_Extension_Checksum) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoClient (Zend_Gdata_Photos_Extension_Client) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoCommentCount (Zend_Gdata_Photos_Extension_CommentCount) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoCommentingEnabled (Zend_Gdata_Photos_Extension_CommentingEnabled) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoHeight (Zend_Gdata_Photos_Extension_Height) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoId (Zend_Gdata_Photos_Extension_Id) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoSize (Zend_Gdata_Photos_Extension_Size) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoTimestamp (Zend_Gdata_Photos_Extension_Timestamp) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoVersion (Zend_Gdata_Photos_Extension_Version) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_gphotoWidth (Zend_Gdata_Photos_Extension_Width) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_PhotoFeed::$_mediaGroup (Zend_Gdata_Media_Extension_MediaGroup) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/PhotoFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserEntry::$_gphotoMaxPhotosPerAlbum (Zend_Gdata_Photos_Extension_MaxPhotosPerAlbum) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserEntry::$_gphotoNickname (Zend_Gdata_Photos_Extension_Nickname) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserEntry::$_gphotoQuotaCurrent (Zend_Gdata_Photos_Extension_QuotaCurrent) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserEntry::$_gphotoQuotaLimit (Zend_Gdata_Photos_Extension_QuotaLimit) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserEntry::$_gphotoThumbnail (Zend_Gdata_Photos_Extension_Thumbnail) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserEntry::$_gphotoUser (Zend_Gdata_Photos_Extension_User) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserFeed::$_gphotoNickname (Zend_Gdata_Photos_Extension_Nickname) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserFeed::$_gphotoThumbnail (Zend_Gdata_Photos_Extension_Thumbnail) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Photos_UserFeed::$_gphotoUser (Zend_Gdata_Photos_Extension_User) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/UserFeed.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Query::__set() with return type void returns mixed but should not return anything.',
@@ -6454,18 +5506,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Gdata_Spreadsheets_CellFeed::$rowCount.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/CellFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Spreadsheets_CellFeed::$_colCount (Zend_Gdata_Spreadsheets_Extension_ColCount) does not accept string.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/CellFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Gdata_Spreadsheets_CellFeed::$_rowCount (Zend_Gdata_Spreadsheets_Extension_RowCount) does not accept string.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/CellFeed.php',
 ];
@@ -6706,18 +5746,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$dname by-ref type of method Zend_Ldap::_splitName() expects string, null given.',
 	'identifier' => 'parameterByRef.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Ldap::$_rootDse (Zend_Ldap_Node) does not accept Zend_Ldap_Node_RootDse.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Ldap::$_schema (Zend_Ldap_Node) does not accept Zend_Ldap_Node_Schema.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap.php',
 ];
@@ -7280,30 +6308,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Log/Writer/Mail.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $fp of function fwrite expects resource, stream|null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Log_Writer_Stream::$_stream (stream|null) does not accept resource.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Log_Writer_Stream::$_stream (stream|null) does not accept resource|false.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Log_Writer_Stream::$_stream has unknown class stream as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Stream.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">=" between int<0, 255> and 0 is always true.',
 	'identifier' => 'greaterOrEqual.alwaysTrue',
 	'count' => 1,
@@ -7522,18 +6526,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "^" between string and 16 results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Markup_Renderer_RendererAbstract::$_defaultFilter (Zend_Filter) does not accept Zend_Filter_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Markup_Renderer_RendererAbstract::$_filter (bool) does not accept Zend_Filter.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
 ];
@@ -7798,18 +6790,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function current() on a separate line has no effect.',
 	'identifier' => 'function.resultUnused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Navigation/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Navigation_Container::findBy() should return Zend_Navigation_Page|null but returns array<Zend_Navigation_Page>.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Navigation/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Navigation_Container::toArray() should return array<Zend_Navigation_Page> but returns list<array>.',
-	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Navigation/Container.php',
 ];
@@ -8504,12 +7484,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Invalid array key type Zend_Pdf_Element.',
-	'identifier' => 'offsetAccess.invalidOffset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf::_cleanUpAction() should return Zend_Pdf_Action|null but returns RecursiveIterator.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -8517,12 +7491,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $factory of method Zend_Pdf_Action::dumpAction() expects Zend_Pdf_ElementFactory, Zend_Pdf_ElementFactory_Interface given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $name of method Zend_Pdf::getNamedDestination() expects string, Zend_Pdf_Element given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
@@ -9080,12 +8048,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitVertically.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Destination_Named::getName() should return Zend_Pdf_Element but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Named.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_Destination_Named::$_nameElement (Zend_Pdf_Element_Name|Zend_Pdf_Element_String) does not accept Zend_Pdf_Element.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -9256,12 +8218,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Stream::toString() has invalid type Zend_Pdf_Factory.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Pdf_Element_Stream::$value (Zend_Memory_Container) does not accept Zend_Memory_Container_Interface.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Stream.php',
 ];
@@ -9718,12 +8674,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $resource of class Zend_Pdf_Destination_Named constructor expects Zend_Pdf_Element, string given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Pdf_Outline_Created::$_target (Zend_Pdf_Action|Zend_Pdf_Destination) does not accept Zend_Pdf_Target|null.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
 ];
@@ -10910,78 +9860,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method canRead() on an unknown class Zend_Queue_Adapter_Stomp_client.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method createFrame() on an unknown class Zend_Queue_Adapter_Stomp_client.',
-	'identifier' => 'class.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageSetClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getName() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method receive() on an unknown class Zend_Queue_Adapter_Stomp_client.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method send() on an unknown class Zend_Queue_Adapter_Stomp_client.',
-	'identifier' => 'class.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Adapter_Activemq::$_client (Zend_Queue_Adapter_Stomp_client) does not accept Zend_Queue_Stomp_Client.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Adapter_Activemq::$_client has unknown class Zend_Queue_Adapter_Stomp_client as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Queue_Adapter_AdapterAbstract::getQueue() has invalid return type Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/AdapterAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Adapter_AdapterAbstract::$_queue (Zend_Queue_Adapter_Abstract) does not accept Zend_Queue.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/AdapterAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Adapter_AdapterAbstract::$_queue has unknown class Zend_Queue_Adapter_Abstract as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/AdapterAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Queue_Message::$handle.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -10991,24 +9869,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Queue_Message::$queue_name.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageSetClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getName() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 7,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
 ];
 $ignoreErrors[] = [
@@ -11060,46 +9920,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageSetClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getName() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageSetClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getName() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
@@ -11150,18 +9974,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getMessageSetClass() on an unknown class Zend_Queue_Adapter_Abstract.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method getNumOfJobsInQueue() on an unknown class ZendApi_JobQueue.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -11169,12 +9981,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method removeJob() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method setMessageClass() on an unknown class Zend_Queue_Adapter_Abstract.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
@@ -11204,20 +10010,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Queue_Message_Iterator::getQueue() should return Zend_Queue|null but returns Zend_Queue_Adapter_AdapterInterface.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Offset \'queue\' on array{data: mixed} in empty() does not exist.',
 	'identifier' => 'empty.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Message_Iterator::$_queue (Zend_Queue_Adapter_AdapterInterface) does not accept Zend_Queue.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
 ];
@@ -11234,50 +10028,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Message/PlatformJob.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method canRead() on array.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method close() on array.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method createFrame() on array.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method read() on array.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method setFrameClass() on array.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method write() on array.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Queue_Stomp_Client::send() has invalid return type StompClientMock.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Stomp_Client::$_connection (array) does not accept Zend_Queue_Stomp_Client_ConnectionInterface.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
 ];
@@ -11546,12 +10298,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Search_Lucene_Index_SegmentInfo::$_directory (Zend_Search_Lucene_Storage_Directory_Filesystem) does not accept Zend_Search_Lucene_Storage_Directory.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Index_SegmentInfo::$_usesSharedDocStore (bool) is never assigned false so the property type can be changed to true.',
 	'identifier' => 'property.tooWideBool',
 	'count' => 1,
@@ -11598,12 +10344,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentMerger.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Search_Lucene_Index_SegmentWriter::$_fdxFile (Zend_Search_Lucene_Storage_File) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentWriter.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Search_Lucene_Storage_File::close().',
@@ -11840,18 +10580,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Serializer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Serializer::$_defaultAdapter has unknown class Zend_Serializer_AdapterInterface as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Static property Zend_Serializer::$_defaultAdapter (string|Zend_Serializer_AdapterInterface) does not accept Zend_Serializer_Adapter_AdapterInterface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $serialized of method Zend_Serializer_Adapter_Igbinary::unserialize() has invalid type binary.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -11966,21 +10694,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Server/Reflection/Class.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method ReflectionFunction::getDeclaringClass().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Server_Reflection_Function_Abstract::$_reflection (ReflectionFunction) does not accept ReflectionMethod.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
 ];
 $ignoreErrors[] = [
@@ -11993,12 +10709,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::getName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Method.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Server_Reflection_Function_Abstract::$_reflection (ReflectionFunction) does not accept ReflectionMethod.',
-	'identifier' => 'assign.propertyType',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Server/Reflection/Method.php',
 ];
 $ignoreErrors[] = [
@@ -12110,32 +10820,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Item.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Amazon_Item::$LargeImage (string) does not accept Zend_Service_Amazon_Image.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Item.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Amazon_Item::$ListmaniaLists has unknown class Zend_Service_Amazon_ListmaniaLists as its type.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Item.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Amazon_Item::$MediumImage (string) does not accept Zend_Service_Amazon_Image.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Item.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Amazon_Item::$SimilarProducts has unknown class Zend_Service_Amazon_SimilarProducts as its type.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Amazon_Item::$SmallImage (string) does not accept Zend_Service_Amazon_Image.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Item.php',
 ];
@@ -12284,38 +10976,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method getHttpClient() on an unknown class Zend_Service_Rest.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method restGet() on an unknown class Zend_Service_Rest.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method setUri() on an unknown class Zend_Service_Rest.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $micro_seconds of function usleep expects int, float given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Delicious::$_rest (Zend_Service_Rest) does not accept Zend_Rest_Client.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Delicious::$_rest has unknown class Zend_Service_Rest as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
 ];
@@ -12734,42 +11396,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $service of class Zend_Service_Rackspace_Files_Container constructor expects Zend_Service_Rackspace_Files, RackspaceFiles given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Files/ContainerList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Rackspace_Files_ContainerList::$service (RackspaceFiles) does not accept Zend_Service_Rackspace_Files.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Files/ContainerList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Rackspace_Files_ContainerList::$service has unknown class RackspaceFiles as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Files/ContainerList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $service of class Zend_Service_Rackspace_Files_Object constructor expects Zend_Service_Rackspace_Files, RackspaceFiles given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Files/ObjectList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Rackspace_Files_ObjectList::$service (RackspaceFiles) does not accept Zend_Service_Rackspace_Files.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Files/ObjectList.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Rackspace_Files_ObjectList::$service has unknown class RackspaceFiles as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Files/ObjectList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with non-empty-array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -12834,18 +11460,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/StrikeIron/Base.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $cookiejar of method Zend_Http_Client::setCookieJar() expects bool|Zend_Http_CookieJar, array given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Twitter::$cookieJar (array) does not accept Zend_Http_CookieJar.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Twitter.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Undefined variable: $client',
@@ -12954,18 +11568,6 @@ $ignoreErrors[] = [
 	'identifier' => 'function.impossibleType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/Queue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $value of method Zend_Service_WindowsAzure_Storage_Table::_convertToEdmDateTime() expects DateTime, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/Table.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_WindowsAzure_Storage_TableEntity::$_timestamp (string) does not accept DateTime.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/TableEntity.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNameSpaceNode|DOMNode::$data.',
@@ -13088,18 +11690,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/AutoDiscover.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Soap_AutoDiscover::$_uri (WSDL) does not accept string|Zend_Uri.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/AutoDiscover.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Soap_AutoDiscover::$_uri has unknown class WSDL as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/AutoDiscover.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $options of method SoapClient::__soapCall() expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -13132,18 +11722,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $newvalue of function ini_set expects string, false given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Soap_Server::$_class (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
 ];
@@ -13196,22 +11774,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Stdlib/CallbackHandler.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Stdlib_PriorityQueue::getQueue() should return Zend_Stdlib_SplPriorityQueue but returns SplPriorityQueue.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Stdlib/PriorityQueue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $key might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Stdlib/PriorityQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tag_Cloud::$_pluginLoader (Zend_Loader_PluginLoader) does not accept Zend_Loader_PluginLoader_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tag/Cloud.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to sscanf contains 11 placeholders, 7 values given.',
@@ -13256,12 +11822,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Text/MultiByte.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Text_Table::$_pluginLoader (string) does not accept Zend_Loader_PluginLoader.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Text/Table.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $lastColumnWidths might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -13278,12 +11838,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Text/Table/Row.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_TimeSync::$_current (object) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Right side of && is always true.',
@@ -13400,12 +11954,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Config.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Client_Console::$_filterToClientNaming (Zend_Filter_Word_CamelCaseToDash) does not accept Zend_Filter.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getActionName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -13496,100 +12044,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Client_Response::$_exception (Zend_Tool_Framework_Exception) does not accept Exception.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Response.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Client_Response::$_exception (Zend_Tool_Framework_Exception) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Response.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getManifestRepository() on an unknown class Zend_Tool_Framework_Repository_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getProviderRepository() on an unknown class Zend_Tool_Framework_Repository_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Loader_Abstract::$_registry (Zend_Tool_Framework_Repository_Interface) does not accept Zend_Tool_Framework_Registry_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Loader_Abstract::$_registry has unknown class Zend_Tool_Framework_Repository_Interface as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getManifestRepository() on an unknown class Zend_Tool_Framework_Repository_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/BasicLoader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getProviderRepository() on an unknown class Zend_Tool_Framework_Repository_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/BasicLoader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Loader_BasicLoader::$_registry (Zend_Tool_Framework_Repository_Interface) does not accept Zend_Tool_Framework_Registry_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/BasicLoader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Loader_BasicLoader::$_registry has unknown class Zend_Tool_Framework_Repository_Interface as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/BasicLoader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Iterator<mixed, mixed>::getChildren().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getActionRepository() on an unknown class Zend_Tool_Framework_Provider_Registry_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getProviderRepository() on an unknown class Zend_Tool_Framework_Provider_Registry_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $registry of method Zend_Tool_Framework_Registry_EnabledInterface::setRegistry() expects Zend_Tool_Framework_Registry_Interface, Zend_Tool_Framework_Provider_Registry_Interface given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Manifest_Repository::$_registry (Zend_Tool_Framework_Provider_Registry_Interface) does not accept Zend_Tool_Framework_Registry_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Manifest_Repository::$_registry has unknown class Zend_Tool_Framework_Provider_Registry_Interface as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Manifest/Repository.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Default value of the parameter #1 $type (string) of method Zend_Tool_Framework_Metadata_Basic::getAttributes() is incompatible with type const.',
@@ -13616,20 +12074,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Repository.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Provider_Repository::$_registry (Zend_Tool_Framework_Registry) does not accept Zend_Tool_Framework_Registry_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Repository.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Provider_Interface::getSpecialties().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Signature.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Provider_Signature::$_registry (Zend_Tool_Framework_Registry) does not accept Zend_Tool_Framework_Registry_Interface.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Signature.php',
 ];
@@ -13712,33 +12158,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/File.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Filesystem_File::$_filesystemName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function rtrim expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/System/ProjectDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/AbstractClassFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getContext().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ActionMethod.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ActionMethod::$_actionName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ActionMethod.php',
 ];
 $ignoreErrors[] = [
@@ -13746,12 +12168,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ActionMethod.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ApplicationConfigFile::$_type (string|null) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ApplicationConfigFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
@@ -13764,102 +12180,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ControllerFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ControllerFile::$_controllerName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ControllerFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ControllerFile::$_moduleName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ControllerFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/DbTableFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/FormFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_FormFile::$_formName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/FormFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_LayoutScriptFile::$_layoutName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/LayoutScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModelFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ModelFile::$_modelName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModelFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ModuleDirectory::$_filesystemName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModuleDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ModuleDirectory::$_moduleName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModuleDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $haystack of function strpos expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $str of function explode expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ProjectProviderFile::$_actionNames (array) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ProjectProviderFile::$_projectProviderName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ProjectProviderFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getContext().',
@@ -13886,12 +12206,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationActionMethod.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestApplicationActionMethod::$_forActionName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationActionMethod.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestApplicationActionMethod::$_testApplicationControllerResource (Zend_Tool_Project_Profile_Resource) does not accept Zend_Tool_Project_Profile_Resource_Container.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -13910,72 +12224,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationControllerFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationControllerFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestApplicationControllerFile::$_forControllerName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationControllerFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestApplicationModuleDirectory::$_filesystemName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationModuleDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestApplicationModuleDirectory::$_forModuleName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestApplicationModuleDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $haystack of function strrchr expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestLibraryFile::$_forClassName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestLibraryNamespaceDirectory::$_filesystemName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryNamespaceDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_TestLibraryNamespaceDirectory::$_namespaceName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/TestLibraryNamespaceDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ViewControllerScriptsDirectory::$_forControllerName (name) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewControllerScriptsDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ViewControllerScriptsDirectory::$_forControllerName has unknown class name as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewControllerScriptsDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "." between Zend_Tool_Project_Profile_Resource_Container and \'.phtml\' results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getModuleName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -13984,24 +12232,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getName().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Part $controllerName (Zend_Tool_Project_Profile_Resource_Container) of encapsed string cannot be cast to string.',
-	'identifier' => 'encapsedStringPart.nonString',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ViewScriptFile::$_forActionName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Context_Zf_ViewScriptFile::$_scriptName (string) does not accept Zend_Tool_Project_Profile_Resource_Container.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
 ];
@@ -14015,12 +12245,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $resources of method Zend_Tool_Project_Profile_FileParser_Xml::_serializeRecurser() expects array, Zend_Tool_Project_Profile given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/FileParser/Xml.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $value of method SimpleXMLElement::addAttribute() expects string, Zend_Tool_Project_Profile_Resource_Container given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/FileParser/Xml.php',
 ];
 $ignoreErrors[] = [
@@ -14286,12 +12510,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Module.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "." between \'Working with…\' and Zend_Tool_Project_Profile_Resource_Container results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Project.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Registry_Interface::getStorage().',
@@ -14714,18 +12932,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $previous of class Zend_Validate_Exception constructor expects Throwable|null, array given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/MimeType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_File_MimeType::$_finfoError (array) does not accept ErrorException.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/MimeType.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot assign new offset to string.',
 	'identifier' => 'offsetAssign.dimType',
 	'count' => 1,
@@ -14856,12 +13062,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_Currency::currency() should return string but returns $this(Zend_View_Helper_Currency).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Currency.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $view in isset() is never defined.',
@@ -15500,12 +13700,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_Navigation_Sitemap::$_serverUrl (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to property $paginator on an unknown class Zend_View_Instance.',
 	'identifier' => 'class.notFound',
 	'count' => 4,
@@ -15582,12 +13776,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_PartialLoop::partialLoop() should return string but returns $this(Zend_View_Helper_PartialLoop).',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PartialLoop.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_scalar() with *NEVER* will always evaluate to true.',

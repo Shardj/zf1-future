@@ -48,7 +48,7 @@ class Zend_Queue_Message_Iterator implements Iterator, Countable
     /**
      * Zend_Queue_Adapter_AdapterInterface parent class or instance
      *
-     * @var Zend_Queue_Adapter_AdapterInterface
+     * @var Zend_Queue|null
      */
     protected $_queue = null;
 

@@ -41,7 +41,7 @@ class Zend_Tool_Framework_Provider_Repository
 {
 
     /**
-     * @var Zend_Tool_Framework_Registry
+     * @var Zend_Tool_Framework_Registry_Interface
      */
     protected $_registry = null;
 

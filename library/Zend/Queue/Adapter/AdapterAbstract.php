@@ -69,7 +69,7 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
     /**
      * Contains the Zend_Queue that this object
      *
-     * @var Zend_Queue_Adapter_Abstract
+     * @var Zend_Queue|null
      */
     protected $_queue = null;
 
@@ -147,7 +147,7 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
     /**
      * get the Zend_Queue class that is attached to this object
      *
-     * @return Zend_Queue_Adapter_Abstract|null
+     * @return Zend_Queue|null
      */
     public function getQueue()
     {
