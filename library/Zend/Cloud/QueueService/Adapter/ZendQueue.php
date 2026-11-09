@@ -115,7 +115,7 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
      *
      * @param string $queueId
      * @param array $options
-     * @return boolean true if successful, false otherwise
+     * @return boolean|null true if successful, false otherwise
      * @throws Zend_Cloud_QueueService_Exception
      */
     public function deleteQueue($queueId, $options = null)
@@ -131,6 +131,8 @@ class Zend_Cloud_QueueService_Adapter_ZendQueue
         } catch (Zend_Queue_Exception $e) {
             throw new Zend_Cloud_QueueService_Exception('Error on queue deletion: '.$e->getMessage(), $e->getCode(), $e);
         }
+
+        return null;
     }
 
     /**

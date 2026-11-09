@@ -57,7 +57,7 @@ class Zend_Tool_Project_Context_Zf_FormFile extends Zend_Tool_Project_Context_Zf
     {
         $this->_formName = $this->_resource->getAttribute('formName');
         $this->_filesystemName = ucfirst($this->_formName) . '.php';
-        parent::init();
+        return parent::init();
     }
 
     /**

@@ -193,7 +193,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
      *
      * @param string $env Environment to initialize for
      *
-     * @return null
+     * @return void
      *
      * @throws Zend_Tool_Project_Exception
      */

@@ -200,7 +200,7 @@ class Zend_Translate_Plural
      *
      * @param string $rule   Callback which acts as rule
      * @param string $locale Locale which is used for this callback
-     * @return null
+     * @return void
      */
     public static function setPlural($rule, $locale)
     {

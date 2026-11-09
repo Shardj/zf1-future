@@ -741,7 +741,6 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
                         break;
                     default:
                         Zend_Cache::throwException('Invalid mode for clean() method');
-                        break;
                 }
             }
             if ((is_dir($file)) && ($this->_options['hashed_directory_level']>0)) {
@@ -832,7 +831,6 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
                         break;
                     default:
                         Zend_Cache::throwException('Invalid mode for _get() method');
-                        break;
                 }
             }
             if ((is_dir($file)) && ($this->_options['hashed_directory_level']>0)) {

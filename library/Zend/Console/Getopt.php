@@ -704,7 +704,7 @@ class Zend_Console_Getopt
     public function parse()
     {
         if ($this->_parsed === true) {
-            return;
+            return $this;
         }
         $argv = $this->_argv;
         $this->_options = [];

@@ -205,7 +205,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
         // Emit response?
         if ($this->autoEmitResponse()) {
             echo $response;
-            return;
+            return null;
         }
 
         // or return it?

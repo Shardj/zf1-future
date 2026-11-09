@@ -57,7 +57,7 @@ class Zend_Tool_Project_Context_Zf_DbTableFile extends Zend_Tool_Project_Context
         $this->_dbTableName = $this->_resource->getAttribute('dbTableName');
         $this->_actualTableName = $this->_resource->getAttribute('actualTableName');
         $this->_filesystemName = ucfirst($this->_dbTableName) . '.php';
-        parent::init();
+        return parent::init();
     }
 
     public function getPersistentAttributes()

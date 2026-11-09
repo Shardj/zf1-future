@@ -414,12 +414,12 @@ class Zend_Http_Header_SetCookie
     }
 
     /**
-     * @return int|string
+     * @return int|string|null
      */
     public function getExpires($inSeconds = false)
     {
         if ($this->expires == null) {
-            return;
+            return null;
         }
         if ($inSeconds) {
             return $this->expires;

@@ -204,7 +204,7 @@ class Zend_Http_Response_Stream extends Zend_Http_Response
      *
      * Function reads the remainder of the body from the stream and closes the stream.
      *
-     * @return string
+     * @return string|null
      */
     protected function readStream()
     {
@@ -219,6 +219,8 @@ class Zend_Http_Response_Stream extends Zend_Http_Response
         }
         fclose($this->stream);
         $this->stream = null;
+
+        return null;
     }
 
     public function __destruct()

@@ -277,7 +277,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
      * open given file as current mbox file
      *
      * @param  string $filename filename of mbox file
-     * @return null
+     * @return void
      * @throws Zend_Mail_Storage_Exception
      */
     protected function _openMboxFile($filename)
@@ -359,7 +359,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
     /**
      * stub for not supported message deletion
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Storage_Exception
      */
     public function removeMessage($id)

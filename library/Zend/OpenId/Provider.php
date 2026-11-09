@@ -141,7 +141,7 @@ class Zend_OpenId_Provider
      * Sets the OP Endpoint URL
      *
      * @param string $url the OP Endpoint URL
-     * @return null
+     * @return void
      */
     public function setOpEndpoint($url)
     {

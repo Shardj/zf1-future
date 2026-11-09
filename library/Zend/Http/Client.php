@@ -534,7 +534,7 @@ class Zend_Http_Client
      * @param string $type GET or POST
      * @param string $name
      * @param string $value
-     * @return null
+     * @return void
      */
     protected function _setParameter($type, $name, $value)
     {
@@ -914,7 +914,7 @@ class Zend_Http_Client
      * seperated from ->request() to preserve logic and readability
      *
      * @param Zend_Http_Client_Adapter_Interface|string $adapter
-     * @return null
+     * @return void
      * @throws Zend_Http_Client_Exception
      */
     public function setAdapter($adapter)

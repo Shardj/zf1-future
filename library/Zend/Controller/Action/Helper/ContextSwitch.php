@@ -1139,7 +1139,7 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
         $this->hasContext($context, true);
         $controller = $this->getActionController();
         if (null === $controller) {
-            return;
+            return $this;
         }
         $action     = (string) $action;
         $contextKey = $this->_contextKey;
@@ -1179,7 +1179,7 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
         $this->hasContext($context, true);
         $controller = $this->getActionController();
         if (null === $controller) {
-            return;
+            return $this;
         }
         $action     = (string) $action;
         $contextKey = $this->_contextKey;

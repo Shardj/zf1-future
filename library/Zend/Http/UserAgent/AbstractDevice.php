@@ -222,6 +222,8 @@ abstract class Zend_Http_UserAgent_AbstractDevice
         if ($this->hasFeature($feature)) {
             return $this->_aFeatures[$feature];
         }
+
+        return null;
     }
 
     /**

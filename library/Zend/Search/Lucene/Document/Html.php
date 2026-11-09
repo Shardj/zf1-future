@@ -412,7 +412,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
      * @param callable $callback   Callback method, used to transform (highlighting) text.
      * @param array    $params     Array of additionall callback parameters passed through into it
      *                             (first non-optional parameter is an HTML fragment for highlighting)
-     * @return string
+     * @return string|null
      * @throws Zend_Search_Lucene_Exception
      */
     public function highlightExtended($words, $callback, $params = [])
@@ -454,6 +454,8 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         foreach ($matchedNodes as $matchedNode) {
             $this->_highlightNodeRecursive($matchedNode, $wordsToHighlightFlipped, $callback, $params);
         }
+
+        return null;
     }
 
 

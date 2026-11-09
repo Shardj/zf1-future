@@ -118,7 +118,7 @@ class Zend_Mime_Decode
      * @param  array  $headers output param, array with headers as array(name => value)
      * @param  string $body    output param, content of message
      * @param  string $EOL     EOL string; defaults to {@link Zend_Mime::LINEEND}
-     * @return null
+     * @return void
      */
     public static function splitMessage(
         $message, &$headers, &$body, $EOL = Zend_Mime::LINEEND

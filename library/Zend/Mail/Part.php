@@ -256,7 +256,7 @@ class Zend_Mail_Part implements RecursiveIterator, Zend_Mail_Part_Interface
     /**
      * Cache content and split in parts if multipart
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Exception
      */
     protected function _cacheContent()

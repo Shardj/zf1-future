@@ -280,6 +280,8 @@ class Zend_Feed_Element implements ArrayAccess
                 }
             }
         }
+
+        return false;
     }
 
 

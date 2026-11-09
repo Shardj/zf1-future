@@ -355,7 +355,6 @@ class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Ca
                 return $res;
             default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                break;
         }
     }
 

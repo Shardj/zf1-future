@@ -200,7 +200,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * Close resource for mail lib. If you need to control, when the resource
      * is closed. Otherwise the destructor would call this.
      *
-     * @return null
+     * @return void
      */
     public function close()
     {
@@ -210,12 +210,12 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
     /**
      * Keep the server busy.
      *
-     * @return null
+     * @return void
      * @throws Zend_Mail_Protocol_Exception
      */
     public function noop()
     {
-        return $this->_protocol->noop();
+        $this->_protocol->noop();
     }
 
     /**
@@ -224,7 +224,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * identify the message.
      *
      * @param  int $id number of message
-     * @return null
+     * @return void
      * @throws Zend_Mail_Protocol_Exception
      */
     public function removeMessage($id)

@@ -240,7 +240,7 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
      * @param  string $mode Clean mode
      * @param  array  $tags Array of tags
      * @throws Zend_Cache_Exception
-     * @return boolean True if no problem
+     * @return boolean|null True if no problem
      */
     public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = [])
     {
@@ -257,8 +257,9 @@ class Zend_Cache_Backend_Libmemcached extends Zend_Cache_Backend implements Zend
                 break;
                default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                   break;
         }
+
+        return null;
     }
 
     /**

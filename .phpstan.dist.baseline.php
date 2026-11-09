@@ -542,64 +542,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Svg.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $backendObject might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $frontendObject might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend::getTmpDir() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Apc::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Apc.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (false) of method Zend_Cache_Backend_BlackHole::getMetadatas() should be compatible with return type (array) of method Zend_Cache_Backend_ExtendedInterface::getMetadatas()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/BlackHole.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_File::getFillingPercentage() should return int but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_File::_hash() should return int|string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Libmemcached::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Libmemcached.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Memcached::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Memcached.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between string and int results in an error.',
@@ -616,12 +568,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cache_Backend_Sqlite::_query() should return resource|false but returns SQLiteResult.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Sqlite::getFillingPercentage() should return int but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
 ];
@@ -644,12 +590,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_TwoLevels::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Cache_Backend_TwoLevels::$_fastBackend (Zend_Cache_Backend_ExtendedInterface) does not accept Zend_Cache_Backend.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -662,40 +602,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_WinCache::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/WinCache.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Constant XC_TYPE_VAR not found.',
 	'identifier' => 'constant.notFound',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Xcache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Xcache::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Xcache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function accelerator_license_info not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendPlatform.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_ZendPlatform::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendPlatform.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_ZendServer::clean() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/ZendServer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend::getCapabilities().',
@@ -794,12 +704,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Function.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $tmp might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Function.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $flag of function ob_implicit_flush expects int, false given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -816,18 +720,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Manager::getCache() should return Zend_Cache_Core but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Manager::getCacheTemplate() should return array but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Manager.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Captcha_Base::setOption() should return Zend_Form_Element but returns $this(Zend_Captcha_Base).',
@@ -1292,12 +1184,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/ZendQueue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_ZendQueue::deleteQueue() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/ZendQueue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $messages of method Zend_Cloud_QueueService_Adapter_ZendQueue::_makeMessages() expects array, Iterator given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1466,12 +1352,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Console_Getopt::parse() should return $this(Zend_Console_Getopt) but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Console/Getopt.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_HelperBroker::$redirector.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -1600,18 +1480,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Action_Helper_ContextSwitch::_getViewRenderer() should return $this(Zend_Controller_Action_Helper_ContextSwitch) but returns Zend_Controller_Action_Helper_Abstract.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Action_Helper_ContextSwitch::addActionContext() should return $this(Zend_Controller_Action_Helper_ContextSwitch) but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Action_Helper_ContextSwitch::setActionContext() should return $this(Zend_Controller_Action_Helper_ContextSwitch) but empty return statement found.',
-	'identifier' => 'return.empty',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
 ];
@@ -1958,12 +1826,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Module.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Router_Route_Module::getDefault() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Module.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Unsafe usage of new static().',
 	'identifier' => 'new.static',
 	'count' => 1,
@@ -1984,12 +1846,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Config::$route.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Regex.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Router_Route_Regex::getDefault() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Regex.php',
 ];
@@ -2082,12 +1938,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Crypt_Hmac::_hash() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Hmac.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $types might not be defined.',
@@ -2966,12 +2816,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Adapter_Pdo_Ibm_Ids::_getPrimaryInfo() should return array but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm/Ids.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method exec() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 4,
@@ -3054,18 +2898,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Schema_Manager::_processFile() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Schema/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Schema_Manager::_updateSchemaVersion() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Schema/Manager.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Select::query() should return Zend_Db_Statement but returns Zend_Db_Statement_Interface.',
@@ -3986,12 +3818,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Builder.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Element::__isset() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Element.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Feed_Element::$_element (DOMElement) does not accept DOMNode.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -4056,12 +3882,6 @@ $ignoreErrors[] = [
 	'identifier' => 'instanceof.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Pubsubhubbub_HttpResponse::getHeader() should return string|null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/HttpResponse.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Feed_Pubsubhubbub_Model_ModelAbstract::$_db (Zend_Db_Table) does not accept Zend_Db_Table_Abstract.',
@@ -5102,18 +4922,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Filter::addDefaultNamespaces() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Filter::setDefaultNamespaces() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_int() with string will always evaluate to false.',
 	'identifier' => 'function.impossibleType',
 	'count' => 1,
@@ -5135,12 +4943,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation "==" between *NEVER* and 1.0 results in an error.',
 	'identifier' => 'equal.invalid',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Filter_Boolean::_getLocalizedQuestion() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
 ];
 $ignoreErrors[] = [
@@ -5552,12 +5354,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/Errors.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Decorator_Errors::render() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Errors.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::fieldset().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -5618,12 +5414,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormErrors.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Decorator_FormErrors::render() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormErrors.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Form_Decorator_HtmlTag::$_tagFilter (Zend_Filter) in isset() is not nullable.',
 	'identifier' => 'isset.property',
 	'count' => 1,
@@ -5669,12 +5459,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formLabel().',
 	'identifier' => 'method.notFound',
 	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Decorator_Label::render() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
 ];
 $ignoreErrors[] = [
@@ -6110,12 +5894,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/Extension/WebContent.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_ClientLogin::getHttpClient() should return Zend_Gdata_HttpClient but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/ClientLogin.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Gdata_Docs::newMediaFileSource().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -6520,12 +6298,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Gdata_HttpClient::$_clientLoginKey is never read, only written.',
 	'identifier' => 'property.onlyWritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/HttpClient.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Gdata_HttpClient::setAdapter() should be compatible with return type (null) of method Zend_Http_Client::setAdapter()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/HttpClient.php',
 ];
@@ -7082,18 +6854,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Http_Client::_setParameter() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Http/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Http_Client::setAdapter() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Unreachable statement - code above always terminates.',
 	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
@@ -7136,22 +6896,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Header/SetCookie.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Http_Header_SetCookie::getExpires() should return int|string but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Header/SetCookie.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/Response.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Http_Response_Stream::readStream() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Response/Stream.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Undefined variable: $headers',
@@ -7176,12 +6924,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Http_UserAgent_AbstractDevice::getFeature() should return string|null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Offset \'AppleWebKit\'|\'Gecko\'|\'MSIE\'|\'Presto\' on array{AppleWebKit: \'Safari\', Gecko: \'Firefox\', MSIE: \'Internet Explorer\', Presto: \'Opera\'} in isset() always exists and is not nullable.',
@@ -7376,12 +7118,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Json.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Json_Server::handle() should return Zend_Json_Server_Response|null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Json/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $method with type Zend_Server_Reflection_Function_Abstract is incompatible with native type Zend_Server_Method_Definition.',
 	'identifier' => 'parameter.phpDocType',
 	'count' => 2,
@@ -7470,18 +7206,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Ldap_Attribute::setDateTimeAttribute() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Attribute.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Ldap_Attribute::setPassword() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Attribute.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function function_exists() with callable-string will always evaluate to true.',
@@ -7694,12 +7418,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Ldap_Node_Schema_AttributeType_OpenLdap::getParent() should return Zend_Ldap_Node_Schema_AttributeType_OpenLdap|null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
 	'identifier' => 'return.phpDocType',
 	'count' => 2,
@@ -7848,18 +7566,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_ClassMapAutoloader::realPharPath() should return string but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/ClassMapAutoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_ClassMapAutoloader::realPharPath() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/ClassMapAutoloader.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'If condition is always false.',
@@ -8132,18 +7838,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Part::_cacheContent() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Part::_cacheContent() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
 	'identifier' => 'return.phpDocType',
 	'count' => 2,
@@ -8166,12 +7860,6 @@ $ignoreErrors[] = [
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Imap::sendRequest() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always true.',
@@ -8202,42 +7890,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::delete() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::logout() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::logout() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::noop() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::sendRequest() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Protocol_Pop3::undelete() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Pop3.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$messages by-ref type of method Zend_Mail_Protocol_Pop3::status() expects int, string given.',
@@ -8294,34 +7946,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Folder_Maildir::_buildFolderTree() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Folder_Maildir::selectFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Folder_Maildir::getCurrentFolder() should be compatible with return type (Zend_Mail_Storage_Folder) of method Zend_Mail_Storage_Folder_Interface::getCurrentFolder()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Folder_Mbox::_buildFolderTree() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Mbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Folder_Mbox::selectFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Mbox.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Folder_Mbox::getCurrentFolder() should be compatible with return type (Zend_Mail_Storage_Folder) of method Zend_Mail_Storage_Folder_Interface::getCurrentFolder()',
@@ -8342,91 +7970,13 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::close() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::copyMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::createFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::moveMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::noop() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::removeFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::removeMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::renameFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Imap::selectFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Imap::getCurrentFolder() should be compatible with return type (Zend_Mail_Storage_Folder) of method Zend_Mail_Storage_Folder_Interface::getCurrentFolder()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Maildir::_getMaildirFiles() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Maildir::_openMaildir() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Maildir.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mail_Message_File) of method Zend_Mail_Storage_Maildir::getMessage() should be compatible with return type (Zend_Mail_Message) of method Zend_Mail_Storage_Abstract::getMessage()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (bool) of method Zend_Mail_Storage_Maildir::noop() should be compatible with return type (null) of method Zend_Mail_Storage_Abstract::noop()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Mail_Storage_Maildir::close() should be compatible with return type (null) of method Zend_Mail_Storage_Abstract::close()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Maildir.php',
@@ -8438,31 +7988,13 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Mbox::_openMboxFile() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mail_Message_File) of method Zend_Mail_Storage_Mbox::getMessage() should be compatible with return type (Zend_Mail_Message) of method Zend_Mail_Storage_Abstract::getMessage()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (bool) of method Zend_Mail_Storage_Mbox::noop() should be compatible with return type (null) of method Zend_Mail_Storage_Abstract::noop()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Mbox::getNumberByUniqueId() should be compatible with return type (int) of method Zend_Mail_Storage_Abstract::getNumberByUniqueId()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Mail_Storage_Mbox::close() should be compatible with return type (null) of method Zend_Mail_Storage_Abstract::close()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
@@ -8480,63 +8012,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Pop3.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Pop3::close() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Pop3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Pop3::removeMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Pop3.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Left side of || is always false.',
 	'identifier' => 'booleanOr.leftAlwaysFalse',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::copyMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::initMaildir() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::moveMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::removeFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::removeMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::renameFolder() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mail_Storage_Writable_Maildir::setQuota() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
 ];
 $ignoreErrors[] = [
@@ -8554,12 +8032,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $message of method Zend_Mail_Storage_Writable_Maildir::appendMessage() has invalid type stream.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (string) of method Zend_Mail_Storage_Writable_Maildir::createFolder() should be compatible with return type (null) of method Zend_Mail_Storage_Writable_Interface::createFolder()',
-	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
 ];
@@ -8760,18 +8232,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mime.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mime_Decode::splitMessage() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mime/Decode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mime_Decode::splitMessage() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mime/Decode.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$headers by-ref type of method Zend_Mime_Decode::splitMessage() expects array, array|false given.',
@@ -9008,12 +8468,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Return type (void) of method Zend_Oauth_Client::setAdapter() should be compatible with return type (null) of method Zend_Http_Client::setAdapter()',
-	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $options with type array|Zend_Config is not subtype of native type array.',
 	'identifier' => 'parameter.phpDocType',
 	'count' => 1,
@@ -9194,20 +8648,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Token/Access.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Oauth_Token_AuthorizedRequest::_parseData() should return array but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Token/AuthorizedRequest.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_OpenId::createDhKey() has invalid return type OpenSSLAsymmetricKey.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_OpenId::getDhKeyDetails() should return array but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId.php',
 ];
@@ -9394,12 +8836,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "^" between string|false and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Provider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_OpenId_Provider::setOpEndpoint() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Provider.php',
 ];
@@ -10474,12 +9910,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object::compareFactory().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_ElementFactory::cleanEnumerationShiftCache() should return int but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
 ];
@@ -12044,12 +11474,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Trailer/Generator.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Trailer_Keeper::getLastFreeObject() should return int but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Trailer/Keeper.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (int) of method Zend_Pdf_Trailer_Keeper::getPDFLength() should be compatible with return type (string) of method Zend_Pdf_Trailer::getPDFLength()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -12761,12 +12185,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
 	'identifier' => 'method.notFound',
 	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Document/Html.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Search_Lucene_Document_Html::highlightExtended() should return string but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Document/Html.php',
 ];
 $ignoreErrors[] = [
@@ -14270,24 +13688,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Service_WindowsAzure_SessionHandler::destroy() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Service_WindowsAzure_SessionHandler::gc() should return bool but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Service_WindowsAzure_SessionHandler::read() should return string|false but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_null() with mixed will always evaluate to false.',
 	'identifier' => 'function.impossibleType',
 	'count' => 1,
@@ -14436,12 +13836,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Session_Namespace::resetSingleInstance() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Session/Namespace.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
@@ -14720,12 +14114,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_DatabaseSchemaProvider::_init() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $db of class Zend_Db_Schema_Manager constructor expects Zend_Db_Adapter_Abstract, Zend_Db_Adapter_Interface given.',
 	'identifier' => 'argument.type',
 	'count' => 4,
@@ -14807,54 +14195,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getValue().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Loose comparison using != between int<1, max> and 0 will always evaluate to true.',
-	'identifier' => 'notEqual.alwaysTrue',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Framework_Client_Console_ArgumentParser::_parseActionPart() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Framework_Client_Console_ArgumentParser::_parseGlobalPart() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Framework_Client_Console_ArgumentParser::_parseProviderOptionsPart() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Framework_Client_Console_ArgumentParser::_parseProviderPart() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Framework_Client_Console_ArgumentParser::parse() should return null but empty return statement found.',
-	'identifier' => 'return.empty',
-	'count' => 6,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between int<1, max> and 0 will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
 ];
 $ignoreErrors[] = [
@@ -15200,12 +14540,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ApplicationConfigFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_ApplicationDirectory::init() should return Zend_Tool_Project_Context_Filesystem_Abstract but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ApplicationDirectory.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -15214,12 +14548,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method exists() on string|Zend_Tool_Project_Context.',
 	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_BootstrapFile::init() should return Zend_Tool_Project_Context_Filesystem_File but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
 ];
@@ -15234,12 +14562,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ConfigFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_ControllerFile::init() should return Zend_Tool_Project_Context_Filesystem_File but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ControllerFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
@@ -15272,12 +14594,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/DbTableFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_DbTableFile::init() should return Zend_Tool_Project_Context_Filesystem_File but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/DbTableFile.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function ucfirst expects string, Zend_Tool_Project_Profile_Resource_Container given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -15286,12 +14602,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_FormFile::getContents() should return null but returns string.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/FormFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_FormFile::init() should return Zend_Tool_Project_Context_Filesystem_File but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/FormFile.php',
 ];
@@ -15328,12 +14638,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_ModelFile::getContents() should return null but returns string.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModelFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Context_Zf_ModelFile::init() should return Zend_Tool_Project_Context_Filesystem_File but return statement is missing.',
-	'identifier' => 'return.missing',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ModelFile.php',
 ];
@@ -15622,12 +14926,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Project_Profile_Resource::getContext() has invalid return type Zend_Tool_Project_Context.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Profile_Resource::initializeContext() should return Zend_Tool_Project_Profile_Resource but empty return statement found.',
-	'identifier' => 'return.empty',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource.php',
 ];
@@ -16028,12 +15326,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Translate_Plural::setPlural() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Plural.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">" between int<1, max> and 0 is always true.',
 	'identifier' => 'greater.alwaysTrue',
 	'count' => 1,
@@ -16044,18 +15336,6 @@ $ignoreErrors[] = [
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Uri/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Validate::addDefaultNamespaces() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Validate::setDefaultNamespaces() should return null but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Validate_Abstract::getDefaultTranslator() should return Zend_Translate_Adapter|null but returns Zend_Translate.',

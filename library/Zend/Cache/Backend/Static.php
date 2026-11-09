@@ -468,7 +468,6 @@ class Zend_Cache_Backend_Static
                 break;
             default:
                 Zend_Cache::throwException('Invalid mode for clean() method');
-                break;
         }
         return $result;
     }
