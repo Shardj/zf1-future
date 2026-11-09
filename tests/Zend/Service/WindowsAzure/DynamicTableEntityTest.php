@@ -164,6 +164,13 @@ class Zend_Service_WindowsAzure_DynamicTableEntityTest extends TestCase
         $this->assertEquals('Edm.DateTime', $target->getAzurePropertyType('DateInService'));
     }
     
+    public function testGetAzurePropertyTypeOfUnknownPropertyIsString()
+    {
+        $target = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity();
+
+        $this->assertSame('Edm.String', $target->getAzurePropertyType('Unknown'));
+    }
+
     /**
      * Test insert entity
      */

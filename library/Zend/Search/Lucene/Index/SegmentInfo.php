@@ -556,7 +556,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
                 // Seek to the start of current segment documents section
                 $cfxFile->seek($fdtStartOffset, SEEK_CUR);
 
-                return $fdtFile;
+                return $cfxFile;
             }
         }
 

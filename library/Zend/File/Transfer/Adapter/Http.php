@@ -351,6 +351,7 @@ class Zend_File_Transfer_Adapter_Http extends Zend_File_Transfer_Adapter_Abstrac
         }
 
         if (!empty($id)) {
+            $call = null;
             if (self::isApcAvailable()) {
 
                 $call = call_user_func(self::$_callbackApc, ini_get('apc.rfc1867_prefix') . $id);

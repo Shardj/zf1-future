@@ -125,6 +125,14 @@ class Zend_Queue_QueueTest extends TestCase
         $this->assertTrue($this->queue->getAdapter($adapter) instanceof Zend_Queue_Adapter_Array);
     }
 
+    public function testSetAdapterRejectsObjectWithoutAdapterInterface()
+    {
+        $this->expectException(Zend_Queue_Exception::class);
+        $this->expectExceptionMessage("Adapter class 'stdClass' does not implement Zend_Queue_Adapter_AdapterInterface");
+
+        $this->queue->setAdapter(new stdClass());
+    }
+
     public function test_set_getMessageClass()
     {
         $class = 'test';

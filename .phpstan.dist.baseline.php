@@ -8,12 +8,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Acl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $assertionValue might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Acl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $date of class Zend_Date constructor expects array|int|string|Zend_Date|null, float given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -806,24 +800,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Rackspace.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $total might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $usage might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $used might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_Infrastructure_ImageList::current() has invalid return type Image.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -914,12 +890,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $httpAdapter',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_ZendQueue::_makeMessages() should return array<Zend_Cloud_QueueService_Message> but returns object.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -962,20 +932,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/Rackspace.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $options might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Cloud_StorageService_Adapter_WindowsAzure::storeItem() should be compatible with return type (bool) of method Zend_Cloud_StorageService_Adapter::storeItem()',
 	'identifier' => 'method.childReturnType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $destinationPath',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
 ];
@@ -1574,18 +1532,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $string of function strlen expects string, float|int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcadd expects numeric-string, float|int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $right_operand of function bcadd expects numeric-string, int<0, 255> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1612,18 +1558,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $right_operand of function bcmul expects numeric-string, 256 given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcmul expects numeric-string, 65536 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $hex might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
 ];
@@ -1682,12 +1616,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $string of function strlen expects string, float|int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $b of function gmp_add expects GMP|int|string, resource given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1732,12 +1660,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $mod of function gmp_powm expects GMP|int|string, resource given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $hex might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
 ];
@@ -2198,12 +2120,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $identQuote might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $error on object|resource.',
 	'identifier' => 'property.nonObject',
 	'count' => 2,
@@ -2242,12 +2158,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between object and false will always evaluate to false.',
 	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $result might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
@@ -2908,12 +2818,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dijit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $stripParams might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dijit.php',
 ];
@@ -4126,12 +4030,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_File_Transfer_Adapter_Http::setValidators() should return Zend_File_Transfer_Adapter_Http but returns Zend_File_Transfer_Adapter_Abstract.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $call might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
 ];
@@ -5522,18 +5420,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Response.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $headers',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Response/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $headers in isset() is never defined.',
-	'identifier' => 'isset.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Response/Stream.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $path might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -6242,12 +6128,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $data might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$messages by-ref type of method Zend_Mail_Protocol_Pop3::status() expects int, string given.',
 	'identifier' => 'parameterByRef.type',
 	'count' => 1,
@@ -6338,12 +6218,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always false.',
-	'identifier' => 'booleanNot.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $params of method Zend_Mail_Storage_Folder_Maildir::__construct() expects array, stdClass given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -6352,12 +6226,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $message of method Zend_Mail_Storage_Writable_Maildir::appendMessage() has invalid type stream.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $fh might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
 ];
@@ -7684,7 +7552,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Dest.',
 	'identifier' => 'property.notFound',
-	'count' => 3,
+	'count' => 4,
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
 ];
 $ignoreErrors[] = [
@@ -7702,12 +7570,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to internal static method Zend_Pdf_Destination::load().',
 	'identifier' => 'staticMethod.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $destination',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
 ];
@@ -7811,12 +7673,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Variable $endAngle might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $path might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
 ];
 $ignoreErrors[] = [
@@ -9464,12 +9320,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/GraphicsState.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $gsDictionary might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/GraphicsState.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$dictionary.',
 	'identifier' => 'property.notFound',
 	'count' => 2,
@@ -9688,12 +9538,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $spec of method Zend_Queue::__construct() has invalid type Zend_Queue_Adapter.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $adapterName might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue.php',
 ];
@@ -10144,12 +9988,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Index_SegmentInfo::$_usesSharedDocStore (bool) is never assigned false so the property type can be changed to true.',
 	'identifier' => 'property.tooWideBool',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $fdtFile',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
@@ -10730,12 +10568,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/S3.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $params_out might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/SimpleDb.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Amazon_SimpleDb_Response::$_errorCode is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
@@ -11228,12 +11060,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $method might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Rackspace_Abstract::$httpClient (Zend_Http_Client) in empty() is not falsy.',
 	'identifier' => 'empty.property',
 	'count' => 1,
@@ -11294,22 +11120,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/SqlAzure/Management/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $affinityGroup',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/SqlAzure/Management/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property SoapHeader::$name.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/StrikeIron/Base.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $client',
-	'identifier' => 'variable.undefined',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/Deployment.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 ...$args of function array_merge expects array, SimpleXMLElement given.',
@@ -11400,12 +11214,6 @@ $ignoreErrors[] = [
 	'identifier' => 'function.impossibleType',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/Blob.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $type',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Storage/DynamicTableEntity.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_null() with string will always evaluate to false.',
@@ -11882,12 +11690,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $displayActionNames might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Iterator<mixed, mixed>::getChildren().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -12302,12 +12104,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $testFormResource might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Form.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::addStringItem().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -12358,12 +12154,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Registry_Interface::getStorage().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Project.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $name might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Project.php',
 ];

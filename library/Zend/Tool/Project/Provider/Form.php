@@ -139,6 +139,7 @@ class Zend_Tool_Project_Provider_Form extends Zend_Tool_Project_Provider_Abstrac
 
         $name = ucwords($name);
 
+        $testFormResource = null;
         try {
             $formResource = self::createResource($this->_loadedProfile, $name, $module);
 

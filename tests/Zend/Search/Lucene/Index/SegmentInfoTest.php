@@ -561,4 +561,49 @@ class Zend_Search_Lucene_Index_SegmentInfoTest extends TestCase
         $segmentInfo1 = new Zend_Search_Lucene_Index_SegmentInfo($directory, '_3', 2);
         $this->assertEquals($segmentInfo1->resetTermsStream(6, Zend_Search_Lucene_Index_SegmentInfo::SM_MERGE_INFO), 7);
     }
+
+    public function testOpenCompoundFileReadsSharedCompoundDocStore()
+    {
+        $path = sys_get_temp_dir() . '/zf1-lucene-' . uniqid();
+        mkdir($path);
+
+        try {
+            $directory = new Zend_Search_Lucene_Storage_Directory_Filesystem($path);
+
+            $fnmFile = $directory->createFile('_1.fnm');
+            $fnmFile->writeVInt(0);
+
+            // Shared doc store compound file: two entries, then .fdx data at 31 and .fdt data at 39
+            $cfxFile = $directory->createFile('_0.cfx');
+            $cfxFile->writeVInt(2);
+            $cfxFile->writeLong(31);
+            $cfxFile->writeString('_0.fdx');
+            $cfxFile->writeLong(39);
+            $cfxFile->writeString('_0.fdt');
+            $cfxFile->writeLong(0);
+            $cfxFile->writeBytes('ABCD');
+            unset($fnmFile, $cfxFile);
+
+            $segmentInfo = new Zend_Search_Lucene_Index_SegmentInfo(
+                $directory,
+                '_1',
+                1,
+                0,
+                ['segment' => '_0', 'offset' => 0, 'isCompound' => true],
+                false,
+                false
+            );
+
+            $this->assertSame(0, $segmentInfo->openCompoundFile('.fdx', false)->readLong());
+            $this->assertSame('ABCD', $segmentInfo->openCompoundFile('.fdt', false)->readBytes(4));
+
+            unset($segmentInfo);
+            $directory->close();
+        } finally {
+            foreach (glob($path . '/*') as $file) {
+                unlink($file);
+            }
+            rmdir($path);
+        }
+    }
 }

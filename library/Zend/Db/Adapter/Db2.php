@@ -300,6 +300,7 @@ class Zend_Db_Adapter_Db2 extends Zend_Db_Adapter_Abstract
     {
         $this->_connect();
         $info = db2_server_info($this->_connection);
+        $identQuote = null;
         if ($info) {
             $identQuote = $info->IDENTIFIER_QUOTE_CHAR;
         } else {

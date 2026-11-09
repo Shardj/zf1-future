@@ -29,10 +29,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Pdf/ActionTest.php';
+require_once 'Zend/Pdf/AnnotationLinkTest.php';
 require_once 'Zend/Pdf/DestinationTest.php';
 require_once 'Zend/Pdf/DrawingTest.php';
 require_once 'Zend/Pdf/FactoryTest.php';
 require_once 'Zend/Pdf/FontTest.php';
+require_once 'Zend/Pdf/GraphicsStateTest.php';
 require_once 'Zend/Pdf/NamedDestinationsTest.php';
 require_once 'Zend/Pdf/ProcessingTest.php';
 
@@ -59,10 +61,12 @@ class Zend_Pdf_AllTests
         $suite = new TestSuite('Zend Framework - Zend_Pdf');
 
         $suite->addTestSuite('Zend_Pdf_ActionTest');
+        $suite->addTestSuite('Zend_Pdf_AnnotationLinkTest');
         $suite->addTestSuite('Zend_Pdf_DestinationTest');
         $suite->addTestSuite('Zend_Pdf_DrawingTest');
         $suite->addTestSuite('Zend_Pdf_FactoryTest');
         $suite->addTestSuite('Zend_Pdf_FontTest');
+        $suite->addTestSuite('Zend_Pdf_GraphicsStateTest');
         $suite->addTestSuite('Zend_Pdf_NamedDestinationsTest');
         $suite->addTestSuite('Zend_Pdf_ProcessingTest');
 

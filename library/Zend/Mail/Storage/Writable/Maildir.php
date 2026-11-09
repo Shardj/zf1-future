@@ -455,6 +455,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
         // if you change this variable take into account that it can take up to $max_tries seconds
         // normally we should have a valid unique name after the first try, we're just following the "standard" here
         $max_tries = 5;
+        $fh = false;
         for ($i = 0; $i < $max_tries; ++$i) {
             $uniq = $this->_createUniqueId();
             if (!file_exists($tmpdir . $uniq)) {

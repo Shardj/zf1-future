@@ -201,6 +201,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
     {
         $this->dojo->requireModule($this->_module);
 
+        $stripParams = [];
         switch ($type) {
             case 'layout':
                 $stripParams = ['id'];

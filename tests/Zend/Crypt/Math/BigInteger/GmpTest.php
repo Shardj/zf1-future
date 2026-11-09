@@ -116,4 +116,12 @@ class Zend_Crypt_Math_BigInteger_GmpTest extends TestCase
         $gmpInteger = $this->_math->binaryToInteger($binary);
         $this->assertEquals($integer, $gmpInteger);
     }
+
+    public function testHexToDecimal()
+    {
+        $this->assertSame('0', $this->_math->hexToDecimal('0'));
+        $this->assertSame('255', $this->_math->hexToDecimal('ff'));
+        $this->assertSame('65536', $this->_math->hexToDecimal('10000'));
+        $this->assertSame('5373003642731685151011', $this->_math->hexToDecimal('123456789ABCDEF0123'));
+    }
 }
