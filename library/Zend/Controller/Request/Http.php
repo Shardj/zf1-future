@@ -199,7 +199,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
      */
     public function set($key, $value)
     {
-        return $this->__set($key, $value);
+        $this->__set($key, $value);
     }
 
     /**

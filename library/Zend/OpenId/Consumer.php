@@ -442,7 +442,7 @@ class Zend_OpenId_Consumer
      * @param string $macFunc HMAC function (sha1 or sha256)
      * @param string $secret shared secret
      * @param integer $expires expiration UNIX time
-     * @return void
+     * @return bool
      */
     protected function _addAssociation($url, $handle, $macFunc, $secret, $expires)
     {

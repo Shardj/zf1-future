@@ -41,7 +41,7 @@ abstract class Zend_OpenId_Consumer_Storage
      * @param string $macFunc HMAC function (sha1 or sha256)
      * @param string $secret shared secret
      * @param long $expires expiration UNIX time
-     * @return void
+     * @return bool
      */
     abstract public function addAssociation($url, $handle, $macFunc, $secret, $expires);
 

@@ -485,7 +485,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Iterator: get next item
      *
-     * @return void
+     * @return mixed
      */
     #[\ReturnTypeWillChange]
     public function next()
@@ -496,7 +496,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Iterator: rewind to first value in collection
      *
-     * @return void
+     * @return mixed
      */
     #[\ReturnTypeWillChange]
     public function rewind()

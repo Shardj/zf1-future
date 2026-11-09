@@ -378,8 +378,8 @@ abstract class Zend_Gdata_App_FeedEntryParent extends Zend_Gdata_App_Base
      * 'edit', and 'alternate'.
      *
      * @param string $rel The rel value of the link to be found.  If null,
-     *     the array of Zend_Gdata_App_Extension_link elements is returned
-     * @return mixed Either a single Zend_Gdata_App_Extension_link element,
+     *     the array of Zend_Gdata_App_Extension_Link elements is returned
+     * @return mixed Either a single Zend_Gdata_App_Extension_Link element,
      *     an array of the same or null is returned depending on the rel value
      *     supplied as the argument to this function
      */

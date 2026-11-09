@@ -14,12 +14,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Acl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class DOMDocument referenced with incorrect case: DomDocument.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Deserializer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $date of class Zend_Date constructor expects array|int|string|Zend_Date|null, float given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -76,12 +70,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Deserializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class DOMDocument referenced with incorrect case: DomDocument.',
-	'identifier' => 'class.nameCase',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf3/Deserializer.php',
 ];
@@ -158,12 +146,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Parse/TypeLoader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Amf_Parse_Amf0_Deserializer referenced with incorrect case: Zend_Amf_Parse_AMF0_Deserializer.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Request.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Reflection::getPrototypes().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -214,12 +196,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_object() with object will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Session_Namespace referenced with incorrect case: Zend_Session_NameSpace.',
-	'identifier' => 'class.nameCase',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
 ];
@@ -866,12 +842,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Captcha/Image.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Service_ReCaptcha referenced with incorrect case: Zend_Service_Recaptcha.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/ReCaptcha.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Captcha_ReCaptcha::setOption() should return Zend_Captcha_ReCaptcha but returns Zend_Form_Element.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1078,12 +1048,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method terminate() on an unknown class Ec2Instance.',
 	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Service_Amazon_Ec2_Availabilityzones referenced with incorrect case: Zend_Service_Amazon_Ec2_AvailabilityZones.',
-	'identifier' => 'class.nameCase',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/Ec2.php',
 ];
@@ -1298,30 +1262,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_WindowsAzure::deleteMessage() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_WindowsAzure::deleteQueue() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_WindowsAzure::sendMessage() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_WindowsAzure::storeQueueMetadata() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Cloud_QueueService_Adapter_WindowsAzure::deleteQueue() should be compatible with return type (bool) of method Zend_Cloud_QueueService_Adapter::deleteQueue()',
 	'identifier' => 'method.childReturnType',
 	'count' => 2,
@@ -1352,20 +1292,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/ZendQueue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_ZendQueue::deleteMessage() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/ZendQueue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_ZendQueue::deleteQueue() should return bool but return statement is missing.',
 	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/ZendQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_QueueService_Adapter_ZendQueue::storeQueueMetadata() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/QueueService/Adapter/ZendQueue.php',
 ];
@@ -1422,18 +1350,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/Rackspace.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cloud_StorageService_Adapter_WindowsAzure::renameItem() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Cloud_StorageService_Adapter_WindowsAzure::moveItem() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Cloud_StorageService_Adapter_WindowsAzure::storeItem() should be compatible with return type (bool) of method Zend_Cloud_StorageService_Adapter::storeItem()',
@@ -1618,18 +1534,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Request_Abstract::isXmlHttpRequest().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AjaxContext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Action_Helper_AjaxContext::initContext() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AjaxContext.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Controller_Action_Helper_ContextSwitch::initContext() (void) is used.',
-	'identifier' => 'staticMethod.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AjaxContext.php',
 ];
@@ -1901,18 +1805,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array<mixed> will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Request_Http::set() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Controller_Request_Http::__set() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
 ];
 $ignoreErrors[] = [
@@ -3488,18 +3380,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Table_Row_Abstract::refresh() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Db_Table_Row_Abstract::_refresh() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $joinCond might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -3540,18 +3420,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_Data::next() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Data.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_Data::rewind() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Data.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
@@ -3758,18 +3626,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/ContentPane.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dojo_View_Helper_CustomDijit::captureStart() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/CustomDijit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Dojo_View_Helper_DijitContainer::captureStart() (void) is used.',
-	'identifier' => 'staticMethod.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/CustomDijit.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -3960,30 +3816,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/EventManager/FilterChain.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_EventManager_GlobalEventManager::clearListeners() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/GlobalEventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_EventManager_GlobalEventManager::detach() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/GlobalEventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_EventManager_EventCollection::clearListeners() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/GlobalEventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_EventManager_EventCollection::detach() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/GlobalEventManager.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::setFragment().',
@@ -4842,12 +4674,6 @@ $ignoreErrors[] = [
 	'identifier' => 'nullCoalesce.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class DOMDocument referenced with incorrect case: DomDocument.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/FeedAbstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::getHost().',
@@ -5816,24 +5642,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/Image.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Decorator_Image::getTag() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Form_Decorator_Image::getTag() with return type void returns string but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Form_Decorator_Image::getTag() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Image.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Form_Decorator_Label::getOptPrefix().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -6158,12 +5966,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_App::delete() with return type void returns Zend_Http_Response but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNode::$name.',
 	'identifier' => 'property.notFound',
 	'count' => 2,
@@ -6215,12 +6017,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Gdata_App_FeedSourceParent::$_entry.',
 	'identifier' => 'property.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/FeedSourceParent.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Gdata_App_Extension_Logo referenced with incorrect case: Zend_Gdata_App_Extension_logo.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/App/FeedSourceParent.php',
 ];
 $ignoreErrors[] = [
@@ -6278,12 +6074,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/AuthSub.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Gdata_App_Extension_Link referenced with incorrect case: Zend_Gdata_App_Extension_link.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Books/VolumeEntry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Gdata_Query::$_url (string) in isset() is not nullable.',
 	'identifier' => 'isset.property',
 	'count' => 1,
@@ -6294,12 +6084,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.property',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/EventQuery.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Gdata_Calendar_Extension_WebContent referenced with incorrect case: Zend_Gdata_Calendar_Extension_Webcontent.',
-	'identifier' => 'class.nameCase',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/Extension/Link.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Calendar_Extension_SendEventNotifications::__toString() should return string but returns bool|null.',
@@ -6496,48 +6280,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $login on string|Zend_Gdata_App_Entry.',
 	'identifier' => 'property.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_Gapps::delete() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_Gapps::get() should return Zend_Http_Response but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_Gapps::import() should return Zend_Gdata_App_Feed but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_Gapps::post() should return Zend_Http_Response but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Gdata_Gapps::put() should return Zend_Http_Response but return statement is missing.',
-	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Gdata_App::delete() (void) is used.',
-	'identifier' => 'staticMethod.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Gdata_Gapps::delete() (void) is used.',
-	'identifier' => 'method.void',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
@@ -7634,12 +7376,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Json.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class stdClass referenced with incorrect case: StdClass.',
-	'identifier' => 'class.nameCase',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Json/Decoder.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Json_Server::handle() should return Zend_Json_Server_Response|null but empty return statement found.',
 	'identifier' => 'return.empty',
 	'count' => 1,
@@ -7670,12 +7406,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Layout.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getContainer() on null.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7684,12 +7414,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Layout::$_inflectorTarget (string) does not accept reference.',
 	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of static method Zend_View_Helper_Placeholder_Registry::getRegistry() (void) is used.',
-	'identifier' => 'staticMethod.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Layout.php',
 ];
@@ -7872,12 +7596,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.phpDocType',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Ldap_Node referenced with incorrect case: Zend_Ldap_node.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/ChildrenIterator.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @return with type null is incompatible with native type void.',
@@ -8126,20 +7844,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_Autoloader::_getVersionPath() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $autoload_function of function spl_autoload_register expects callable(string): void, array{\'Zend_Loader_Autoloader\', \'autoload\'} given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Loader_Autoloader::_getVersionPath() (void) is used.',
-	'identifier' => 'method.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
 ];
@@ -8186,33 +7892,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_StandardAutoloader::loadClass() with return type void returns bool but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_StandardAutoloader::loadClass() with return type void returns false but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_StandardAutoloader::loadClass() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Loader_StandardAutoloader), \'handleError\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_Loader_StandardAutoloader::loadClass() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 5,
 	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
 ];
 $ignoreErrors[] = [
@@ -9344,12 +9026,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Consumer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Oauth_Http_UserAuthorization referenced with incorrect case: Zend_OAuth_Http_UserAuthorization.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Consumer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Instanceof between Zend_Oauth_Token_Request|null and Zend_Oauth_Http_UserAuthorization will always evaluate to false.',
 	'identifier' => 'instanceof.alwaysFalse',
 	'count' => 1,
@@ -9620,12 +9296,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_OpenId_Consumer::_addAssociation() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #5 $expires of method Zend_OpenId_Consumer_Storage::addAssociation() expects long, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -9640,12 +9310,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #5 $expires of method Zend_OpenId_Consumer_Storage::getAssociation() expects long, int given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_OpenId_Consumer_Storage::addAssociation() (void) is used.',
-	'identifier' => 'method.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
@@ -12746,18 +12410,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class ZendAPI_Job referenced with incorrect case: ZendAPI_job.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class ZendAPI_Queue referenced with incorrect case: ZendApi_Queue.',
-	'identifier' => 'class.nameCase',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always false.',
 	'identifier' => 'booleanNot.alwaysFalse',
 	'count' => 2,
@@ -12822,12 +12474,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class ZendAPI_Job referenced with incorrect case: ZendApi_Job.',
-	'identifier' => 'class.nameCase',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/PlatformJob.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Function serialize invoked with 3 parameters, 1 required.',
@@ -12954,12 +12600,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Rest/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class DOMDocument referenced with incorrect case: DomDocument.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Client/Result.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @return with type bool|DOMDocument|SimpleXMLElement|null is not subtype of native type Traversable.',
@@ -13658,18 +13298,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Server_Definition::next() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Definition.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Server_Definition::rewind() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Definition.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::getName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -14009,18 +13637,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to method setUri() on an unknown class Zend_Service_Rest.',
 	'identifier' => 'class.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class DOMDocument referenced with incorrect case: DomDocument.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class stdClass referenced with incorrect case: StdClass.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Delicious.php',
 ];
 $ignoreErrors[] = [
@@ -14822,26 +14438,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Session.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Session_Namespace::__unset() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session/Namespace.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Session_Namespace::resetSingleInstance() should return null but empty return statement found.',
 	'identifier' => 'return.empty',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Session/Namespace.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Session_Namespace::unsetAll() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session/Namespace.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of static method Zend_Session_Abstract::_namespaceUnset() (void) is used.',
-	'identifier' => 'staticMethod.void',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Session/Namespace.php',
 ];
@@ -15978,12 +15576,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ViewScriptFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class SimpleXMLElement referenced with incorrect case: SimpleXmlElement.',
-	'identifier' => 'class.nameCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/FileParser/Xml.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Project_Profile_Resource_Container::append() invoked with 2 parameters, 1 required.',
@@ -17216,66 +16808,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadLink::__call() with return type void returns $this(Zend_View_Helper_HeadLink) but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadLink::__call() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadLink::append() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadLink::offsetSet() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadLink::prepend() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadLink::set() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::append() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetSet() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::prepend() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::set() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
 	'identifier' => 'method.notFound',
 	'count' => 3,
@@ -17312,36 +16844,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadMeta::append() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadMeta::offsetSet() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadMeta::offsetUnset() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadMeta::prepend() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadMeta::set() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always false.',
 	'identifier' => 'booleanNot.alwaysFalse',
 	'count' => 1,
@@ -17354,37 +16856,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::append() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetSet() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetUnset() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_HeadMeta::append() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_View_Helper_HeadMeta::offsetSet() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::prepend() (void) is used.',
 	'identifier' => 'method.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
@@ -17426,54 +16898,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadScript::append() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadScript::offsetSet() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadScript::prepend() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadScript::set() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::append() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetSet() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::prepend() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::set() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadStyle::getIndent().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -17498,42 +16922,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::__call() with return type void returns $this(Zend_View_Helper_HeadStyle) but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::__call() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::append() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::offsetSet() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::prepend() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_HeadStyle::set() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $attributes of method Zend_View_Helper_HeadStyle::appendStyle() expects array, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -17554,30 +16942,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_View_Helper_HeadStyle::$_captureAttrs (string) does not accept null.',
 	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::append() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetSet() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::prepend() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method Zend_View_Helper_Placeholder_Container_Abstract::set() (void) is used.',
-	'identifier' => 'method.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
 ];
@@ -17858,34 +17222,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/PartialLoop.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Result of static method Zend_View_Helper_Placeholder_Registry::getRegistry() (void) is used.',
-	'identifier' => 'staticMethod.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_scalar() with *NEVER* will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_Placeholder_Container_Standalone::offsetSet() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_Placeholder_Container_Standalone::offsetUnset() with return type void returns null but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $registry of method Zend_View_Helper_Placeholder_Container_Standalone::setRegistry() expects Zend_View_Helper_Placeholder_Registry, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_View_Helper_Placeholder_Container_Standalone::$_autoEscape (book) does not accept bool.',
@@ -17904,30 +17244,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetSet() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of method ArrayObject<(int|string),mixed>::offsetUnset() (void) is used.',
-	'identifier' => 'method.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of static method Zend_View_Helper_Placeholder_Registry::getRegistry() (void) is used.',
-	'identifier' => 'staticMethod.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Standalone.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_View_Helper_Placeholder_Registry::getRegistry() with return type void returns mixed but should not return anything.',
-	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Registry.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @param for parameter $container with type Zend_View_Placeholder_Container_Abstract is not subtype of native type Zend_View_Helper_Placeholder_Container_Abstract.',
@@ -18005,12 +17321,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNode::$entities.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class DOMDocument referenced with incorrect case: DomDocument.',
-	'identifier' => 'class.nameCase',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
 ];
 $ignoreErrors[] = [

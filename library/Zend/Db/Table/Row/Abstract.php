@@ -691,7 +691,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      */
     public function refresh()
     {
-        return $this->_refresh();
+        $this->_refresh();
     }
 
     /**

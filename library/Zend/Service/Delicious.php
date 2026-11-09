@@ -462,7 +462,7 @@ class Zend_Service_Delicious
      * @param   string $path  Path
      * @param   array  $parms Array of GET parameters
      * @param   string $type  Type of a request ("xml"|"json")
-     * @return  array|bool|DomDocument|SimpleXMLElement|StdClass|void|null  decoded response from web service
+     * @return  array|bool|DOMDocument|SimpleXMLElement|stdClass|void|null  decoded response from web service
      * @throws  Zend_Service_Delicious_Exception
      */
     public function makeRequest($path, array $parms = [], $type = 'xml')

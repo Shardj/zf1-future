@@ -376,7 +376,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
     public function zonesInstance()
     {
         if (!isset($this->ec2Zone)) {
-            $this->ec2Zone = new Zend_Service_Amazon_Ec2_AvailabilityZones($this->accessKey,$this->accessSecret,$this->region);
+            $this->ec2Zone = new Zend_Service_Amazon_Ec2_Availabilityzones($this->accessKey,$this->accessSecret,$this->region);
         }
         $this->adapterResult = $this->ec2Zone->describe();
 

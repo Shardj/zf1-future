@@ -31,7 +31,7 @@ class Zend_Layout
 {
     /**
      * Placeholder container for layout variables
-     * @var Zend_View_Helper_Placeholder_Container
+     * @var Zend_View_Helper_Placeholder_Container_Abstract
      */
     protected $_container;
 
@@ -311,7 +311,7 @@ class Zend_Layout
     /**
      * Initialize placeholder container for layout vars
      *
-     * @return Zend_View_Helper_Placeholder_Container
+     * @return Zend_View_Helper_Placeholder_Container_Abstract
      */
     protected function _initVarContainer()
     {

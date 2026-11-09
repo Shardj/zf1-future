@@ -151,6 +151,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
      *
      * @param Zend_Gdata_App_HttpException $e The exception to convert.
      * @throws Zend_Gdata_Gapps_ServiceException
+     * @return never
      * @throws Zend_Gdata_App_HttpException|Zend_Gdata_App_IOException
      */
     public static function throwServiceExceptionIfDetected($e) {
@@ -282,7 +283,7 @@ class Zend_Gdata_Gapps extends Zend_Gdata
      *
      * @param mixed $data The Zend_Gdata_App_Entry or URL to delete
      * @param integer $remainingRedirects (optional)
-     * @return void
+     * @return Zend_Http_Response
      * @throws Zend_Gdata_App_HttpException
      * @throws Zend_Gdata_App_InvalidArgumentException
      * @throws Zend_Gdata_Gapps_ServiceException

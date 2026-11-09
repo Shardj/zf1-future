@@ -502,7 +502,7 @@ class Zend_Feed_Reader
         } else {
             require_once 'Zend/Feed/Exception.php';
             throw new Zend_Feed_Exception('Invalid object/scalar provided: must'
-            . ' be of type Zend_Feed_Reader_FeedInterface, DomDocument or string');
+            . ' be of type Zend_Feed_Reader_FeedInterface, DOMDocument or string');
         }
         $xpath = new DOMXPath($dom);
 

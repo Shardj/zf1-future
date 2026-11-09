@@ -109,7 +109,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
 
     /**
      * Namespace allows all AMF calls to not clobber other PHP session variables
-     * @var Zend_Session_NameSpace default session namespace zend_amf
+     * @var Zend_Session_Namespace default session namespace zend_amf
      */
     protected $_sesionNamespace = 'zend_amf';
 

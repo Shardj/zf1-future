@@ -71,7 +71,7 @@ class Zend_Amf_Request
     protected $_inputStream;
 
     /**
-     * @var Zend_Amf_Parse_AMF0_Deserializer
+     * @var Zend_Amf_Parse_Amf0_Deserializer
      */
     protected $_deserializer;
 

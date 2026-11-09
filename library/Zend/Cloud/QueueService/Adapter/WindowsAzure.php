@@ -147,7 +147,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
             if ($queueId instanceof Zend_Service_WindowsAzure_Storage_QueueInstance) {
                 $queueId = $queueId->Name;
             }
-            return $this->_storageClient->deleteQueue($queueId);
+            $this->_storageClient->deleteQueue($queueId);
         } catch (Zend_Service_WindowsAzure_Exception $e) {
             throw new Zend_Cloud_QueueService_Exception('Error on queue deletion: '.$e->getMessage(), $e->getCode(), $e);
         }
@@ -213,7 +213,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
             if ($queueId instanceof Zend_Service_WindowsAzure_Storage_QueueInstance) {
                 $queueId = $queueId->Name;
             }
-            return $this->_storageClient->setQueueMetadata($queueId, $metadata);
+            $this->_storageClient->setQueueMetadata($queueId, $metadata);
         } catch (Zend_Service_WindowsAzure_Exception $e) {
             throw new Zend_Cloud_QueueService_Exception('Error on setting queue metadata: '.$e->getMessage(), $e->getCode(), $e);
         }
@@ -233,7 +233,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
             if ($queueId instanceof Zend_Service_WindowsAzure_Storage_QueueInstance) {
                 $queueId = $queueId->Name;
             }
-            return $this->_storageClient->putMessage(
+            $this->_storageClient->putMessage(
                 $queueId, $message, $options[self::MESSAGE_TTL]
             );
         } catch (Zend_Service_WindowsAzure_Exception $e) {
@@ -303,7 +303,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
                 $message = $message->getMessage();
             }
             if ($message instanceof Zend_Service_WindowsAzure_Storage_QueueMessage) {
-                return $this->_storageClient->deleteMessage($queueId, $message);
+                $this->_storageClient->deleteMessage($queueId, $message);
             } else {
                 throw new Zend_Cloud_QueueService_Exception('Cannot delete the message: message object required');
             }

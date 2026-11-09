@@ -265,7 +265,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
      */
     public function unsetAll()
     {
-        return parent::_namespaceUnset($this->_namespace);
+        parent::_namespaceUnset($this->_namespace);
     }
 
 
@@ -412,7 +412,7 @@ class Zend_Session_Namespace extends Zend_Session_Abstract implements IteratorAg
             throw new Zend_Session_Exception("The '$name' key must be a non-empty string");
         }
 
-        return parent::_namespaceUnset($this->_namespace, $name);
+        parent::_namespaceUnset($this->_namespace, $name);
     }
 
 

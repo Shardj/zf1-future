@@ -503,7 +503,7 @@ class Zend_Loader_Autoloader
      *
      * @param string $path
      * @param string $version
-     * @return void
+     * @return string
      * @throws Zend_Loader_Exception
      */
     protected function _getVersionPath($path, $version)

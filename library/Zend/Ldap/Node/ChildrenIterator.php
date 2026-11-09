@@ -153,7 +153,7 @@ class Zend_Ldap_Node_ChildrenIterator implements Iterator, Countable, RecursiveI
      * Implements ArrayAccess.
      *
      * @param  string $rdn
-     * @return Zend_Ldap_node|null
+     * @return Zend_Ldap_Node|null
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($rdn)

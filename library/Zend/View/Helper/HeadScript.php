@@ -324,7 +324,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             throw $e;
         }
 
-        return $this->getContainer()->append($value);
+        $this->getContainer()->append($value);
     }
 
     /**
@@ -342,7 +342,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             throw $e;
         }
 
-        return $this->getContainer()->prepend($value);
+        $this->getContainer()->prepend($value);
     }
 
     /**
@@ -360,7 +360,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             throw $e;
         }
 
-        return $this->getContainer()->set($value);
+        $this->getContainer()->set($value);
     }
 
     /**
@@ -380,7 +380,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
             throw $e;
         }
 
-        return $this->getContainer()->offsetSet($index, $value);
+        $this->getContainer()->offsetSet($index, $value);
     }
 
     /**

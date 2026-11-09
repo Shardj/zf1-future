@@ -41,7 +41,7 @@ require_once "Zend/Xml/Security.php";
 class Zend_Soap_Wsdl
 {
     /**
-     * @var object DomDocument Instance
+     * @var object DOMDocument Instance
      */
     private $_dom;
 
@@ -88,7 +88,7 @@ class Zend_Soap_Wsdl
         $this->_uri = $uri;
 
         /**
-         * @todo change DomDocument object creation from cparsing to construxting using API
+         * @todo change DOMDocument object creation from cparsing to construxting using API
          * It also should authomatically escape $name and $uri values if necessary
          */
         $wsdl = "<?xml version='1.0' ?>
@@ -102,7 +102,7 @@ class Zend_Soap_Wsdl
         $this->_dom = new DOMDocument();
         if (!$this->_dom = Zend_Xml_Security::scan($wsdl, $this->_dom)) {
             require_once 'Zend/Server/Exception.php';
-            throw new Zend_Server_Exception('Unable to create DomDocument');
+            throw new Zend_Server_Exception('Unable to create DOMDocument');
         }
         $this->_wsdl = $this->_dom->documentElement;
 
@@ -447,7 +447,7 @@ class Zend_Soap_Wsdl
     /**
      * Add WSDL Types element
      *
-     * @param object $types A DomDocument|DomNode|DomElement|DomDocumentFragment with all the XML Schema types defined in it
+     * @param object $types A DOMDocument|DomNode|DomElement|DomDocumentFragment with all the XML Schema types defined in it
      */
     public function addTypes($types)
     {
