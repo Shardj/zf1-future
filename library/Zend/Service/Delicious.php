@@ -327,7 +327,7 @@ class Zend_Service_Delicious
      * Get recent posts
      *
      * @param  string $tag   Optional filtering by tag
-     * @param  string $count Maximum number of posts to be returned (default 15)
+     * @param  string|int $count Maximum number of posts to be returned (default 15)
      * @return Zend_Service_Delicious_PostList
      */
     public function getRecentPosts($tag = null, $count = 15)
@@ -441,7 +441,7 @@ class Zend_Service_Delicious
      * If URL hasen't been bookmarked null is returned.
      *
      * @param  string $url URL for which to get details
-     * @return array
+     * @return array|null
      */
     public function getUrlDetails($url)
     {

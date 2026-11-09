@@ -250,7 +250,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return int start-max
+     * @return int|null start-max
      */
     public function getStartMax()
     {
@@ -262,7 +262,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return int start-min
+     * @return int|null start-min
      */
     public function getStartMin()
     {
@@ -274,7 +274,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return string orderby
+     * @return string|null orderby
      */
     public function getOrderBy()
     {
@@ -286,7 +286,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return string sortorder
+     * @return string|null sortorder
      */
     public function getSortOrder()
     {
@@ -311,7 +311,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return string recurrence-expansion-start
+     * @return string|null recurrence-expansion-start
      */
     public function getRecurrenceExpansionStart()
     {
@@ -337,7 +337,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
 
 
     /**
-     * @return string recurrence-expansion-end
+     * @return string|null recurrence-expansion-end
      */
     public function getRecurrenceExpansionEnd()
     {
@@ -362,7 +362,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return $this
+     * @return $this|bool|null
      */
     public function getSingleEvents()
     {

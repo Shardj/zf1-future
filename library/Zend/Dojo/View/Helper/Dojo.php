@@ -54,7 +54,7 @@ class Zend_Dojo_View_Helper_Dojo
     protected $_container;
 
     /**
-     * @var bool Whether or not dijits should be declared programmatically
+     * @var bool|int Whether or not dijits should be declared programmatically
      */
     protected static $_useProgrammatic = true;
 

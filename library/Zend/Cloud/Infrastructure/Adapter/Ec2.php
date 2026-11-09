@@ -397,7 +397,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
      * @param  string $id
      * @param  string $metric
      * @param  null|array $options
-     * @return array
+     * @return array|false
      */
     public function monitorInstance($id, $metric, $options = null)
     {

@@ -53,7 +53,7 @@ class Zend_Memory_Container_Movable extends Zend_Memory_Container {
     /**
      * Value object
      *
-     * @var Zend_Memory_Value
+     * @var Zend_Memory_Value|null
      */
     private $_value;
 

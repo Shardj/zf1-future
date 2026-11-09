@@ -120,7 +120,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
 
     /**
      * Singleton instance
-     * @var Zend_Wildfire_Plugin_FirePhp
+     * @var Zend_Wildfire_Plugin_FirePhp|null
      */
     protected static $_instance = null;
 
@@ -656,7 +656,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
      * the object class is added.
      *
      * @param mixed $object The object/array/value to be encoded
-     * @return array The encoded object
+     * @return array|string The encoded object
      */
     protected function _encodeObject($object, $objectDepth = 1, $arrayDepth = 1)
     {

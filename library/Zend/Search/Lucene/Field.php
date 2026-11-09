@@ -47,7 +47,7 @@ class Zend_Search_Lucene_Field
     /**
      * Field value
      *
-     * @var boolean
+     * @var boolean|string
      */
     public $value;
 
@@ -209,7 +209,7 @@ class Zend_Search_Lucene_Field
     /**
      * Get field value in UTF-8 encoding
      *
-     * @return string
+     * @return string|bool
      */
     public function getUtf8Value()
     {

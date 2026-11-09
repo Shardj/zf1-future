@@ -147,7 +147,7 @@ class Zend_Gdata_Gapps_MemberQuery extends Zend_Gdata_Gapps_Query
      * a list of users.
      *
      * @see setStartUsername
-     * @return string The first username to be returned, or null if
+     * @return string|null The first username to be returned, or null if
      *          disabled.
      */
     public function getStartMemberId()

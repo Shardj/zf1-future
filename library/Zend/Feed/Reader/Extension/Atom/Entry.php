@@ -352,7 +352,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      * Get a specific link
      *
      * @param  int $index
-     * @return string
+     * @return string|null
      */
     public function getLink($index = 0)
     {

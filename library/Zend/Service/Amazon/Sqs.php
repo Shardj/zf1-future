@@ -382,7 +382,7 @@ class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
      *
      * @param  string $queue_url  Queue URL
      * @param  string $attribute
-     * @return string
+     * @return string|array
      * @throws Zend_Service_Amazon_Sqs_Exception
      */
     public function getAttribute($queue_url, $attribute = 'All')

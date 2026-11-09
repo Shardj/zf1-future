@@ -435,7 +435,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      *
      * To clear all paths, use Zend_View::setScriptPath(null).
      *
-     * @param string|array $path The directory (-ies) to set as the path.
+     * @param string|array|null $path The directory (-ies) to set as the path.
      * @return Zend_View_Abstract
      */
     public function setScriptPath($path)
@@ -661,7 +661,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
      *
      * To clear all paths, use Zend_View::setFilterPath(null).
      *
-     * @param string|array $path The directory (-ies) to set as the path.
+     * @param string|array|null $path The directory (-ies) to set as the path.
      * @param string $classPrefix The class prefix to apply to all elements in
      * $path; defaults to Zend_View_Filter
      * @return Zend_View_Abstract

@@ -316,7 +316,7 @@ class Zend_Measure_Number extends Zend_Measure_Abstract
     /**
      * Convert input to type value string
      *
-     * @param  integer $value Input string
+     * @param  integer|string $value Input string
      * @param  string  $type  Type to convert to
      * @return string
      * @throws Zend_Measure_Exception When more than 200 digits are calculated

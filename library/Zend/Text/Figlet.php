@@ -237,7 +237,7 @@ class Zend_Text_Figlet
     /**
      * Current char
      *
-     * @var array
+     * @var array|null
      */
     protected $_currentChar = null;
 
@@ -837,7 +837,7 @@ class Zend_Text_Figlet
      *
      * @param  string $leftChar  Left character to smush
      * @param  string $rightChar Right character to smush
-     * @return string
+     * @return string|null
      */
     protected function _smushem($leftChar, $rightChar)
     {
@@ -1179,7 +1179,7 @@ class Zend_Text_Figlet
      * Load a single character from the font file
      *
      * @param  resource $fp File pointer to the font file
-     * @return array
+     * @return array|false
      */
     protected function _loadChar($fp)
     {

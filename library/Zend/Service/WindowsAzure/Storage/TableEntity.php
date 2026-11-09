@@ -61,7 +61,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
      * Constructor
      *
      * @param string  $partitionKey    Partition key
-     * @param string  $rowKey          Row key
+     * @param string|float  $rowKey          Row key
      */
     public function __construct($partitionKey = '', $rowKey = '')
     {
@@ -285,7 +285,7 @@ class Zend_Service_WindowsAzure_Storage_TableEntity
      * Get Azure accessor from reflection member
      *
      * @param ReflectionProperty|ReflectionMethod $member
-     * @return object
+     * @return object|null
      */
     public static function getAzureAccessor($member)
     {

@@ -41,7 +41,7 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
     /**
      * Read values from the MO file
      *
-     * @param  string  $bytes
+     * @param  string|int|float  $bytes
      */
     private function _readMOData($bytes)
     {

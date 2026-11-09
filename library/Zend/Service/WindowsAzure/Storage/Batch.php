@@ -33,7 +33,7 @@ class Zend_Service_WindowsAzure_Storage_Batch
     /**
      * Storage client the batch is defined on
      *
-     * @var Zend_Service_WindowsAzure_Storage_BatchStorageAbstract
+     * @var Zend_Service_WindowsAzure_Storage_BatchStorageAbstract|null
      */
     protected $_storageClient = null;
 

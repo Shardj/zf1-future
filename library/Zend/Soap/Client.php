@@ -102,7 +102,7 @@ class Zend_Soap_Client
     /**
      * SoapClient object
      *
-     * @var SoapClient
+     * @var SoapClient|null
      */
     protected $_soapClient;
 

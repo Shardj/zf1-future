@@ -402,7 +402,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
      * - mtime : timestamp of last modification time
      *
      * @param string $id cache id
-     * @return array array of metadatas (false if the cache id is not found)
+     * @return array|false array of metadatas (false if the cache id is not found)
      */
     public function getMetadatas($id)
     {
@@ -868,7 +868,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
      * @param  string $data        Data
      * @param  string $controlType Type of control 'md5', 'crc32' or 'strlen'
      * @throws Zend_Cache_Exception
-     * @return string Control key
+     * @return string|int Control key
      */
     protected function _hash($data, $controlType)
     {
@@ -982,7 +982,7 @@ class Zend_Cache_Backend_File extends Zend_Cache_Backend implements Zend_Cache_B
      * Return the file content of the given file
      *
      * @param  string $file File complete path
-     * @return string File content (or false if problem)
+     * @return string|false File content (or false if problem)
      */
     protected function _fileGetContents($file)
     {

@@ -58,7 +58,7 @@ class Zend_Stdlib_PriorityQueue implements Countable, IteratorAggregate, Seriali
 
     /**
      * Inner queue object
-     * @var SplPriorityQueue
+     * @var SplPriorityQueue|null
      */
     protected $queue;
 

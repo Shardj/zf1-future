@@ -220,8 +220,8 @@ class Zend_Db_Schema_Manager
      * will also determine the direction of the migration and sort the files
      * accordingly.
      *
-     * @param string $currentVersion Version to migrate database from
-     * @param string $stopVersion    Version to migrate database to
+     * @param string|int $currentVersion Version to migrate database from
+     * @param string|int $stopVersion    Version to migrate database to
      * @param string $dir            Directory containing migration files
      *
      * @throws Zend_Db_Schema_Exception

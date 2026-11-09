@@ -67,7 +67,7 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
     /**
      * List of blobs
      *
-     * @var array
+     * @var array|null
      */
     protected $_blobs = null;
 
@@ -221,7 +221,7 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
      * Read from the stream
      *
      * @param  integer $count
-     * @return string
+     * @return string|false
      */
     public function stream_read($count)
     {
@@ -331,7 +331,7 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
     /**
      * Returns data array of stream variables
      *
-     * @return array
+     * @return array|false
      */
     public function stream_stat()
     {
@@ -399,7 +399,7 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
      *
      * @param  string $path
      * @param  integer $flags
-     * @return array
+     * @return array|false
      */
     public function url_stat($path, $flags)
     {
@@ -511,7 +511,7 @@ class Zend_Service_WindowsAzure_Storage_Blob_Stream
     /**
      * Return the next filename in the directory
      *
-     * @return string
+     * @return string|false
      */
     public function dir_readdir()
     {

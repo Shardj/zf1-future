@@ -109,7 +109,7 @@ final class Zend_Amf_Parse_TypeLoader
      * Looks up the supplied call name to its mapped class name
      *
      * @param  string $className
-     * @return string
+     * @return string|false
      */
     public static function getMappedClassName($className)
     {
@@ -181,7 +181,7 @@ final class Zend_Amf_Parse_TypeLoader
      * Get plugin class that handles this resource
      *
      * @param resource $resource Resource type
-     * @return string Class name
+     * @return string|false Class name
      */
     public static function getResourceParser($resource)
     {

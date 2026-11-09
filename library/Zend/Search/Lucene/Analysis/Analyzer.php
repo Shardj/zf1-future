@@ -116,7 +116,7 @@ abstract class Zend_Search_Lucene_Analysis_Analyzer
      * Tokenization stream API
      * Set input
      *
-     * @param string $data
+     * @param string|bool $data
      */
     public function setInput($data, $encoding = '')
     {

@@ -286,7 +286,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
      * Return an Extension object with the matching name (postfixed with _Feed)
      *
      * @param string $name
-     * @return Zend_Feed_Reader_Extension_FeedAbstract
+     * @return Zend_Feed_Reader_Extension_FeedAbstract|null
      */
     public function getExtension($name)
     {

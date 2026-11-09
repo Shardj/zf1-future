@@ -36,7 +36,7 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
     /**
      * Database adapter instance
      *
-     * @var Zend_Db_Adapter
+     * @var Zend_Db_Adapter|null
      */
     protected $_db;
 

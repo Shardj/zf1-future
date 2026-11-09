@@ -46,7 +46,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
     /**
      * Field specified for next entry
      *
-     * @var string
+     * @var string|null
      */
     private $_nextEntryField = null;
 
@@ -55,7 +55,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
      * False means, that term is prohibited.
      * null means, that term is neither prohibited, nor required
      *
-     * @var boolean
+     * @var boolean|null
      */
     private $_nextEntrySign = null;
 

@@ -133,7 +133,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
      * Retrieves the error code, if any, associated with the last operation on
      * the statement handle.
      *
-     * @return string error code.
+     * @return string|false error code.
      */
     public function errorCode()
     {
@@ -154,7 +154,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
      * Retrieves an array of error information, if any, associated with the
      * last operation on the statement handle.
      *
-     * @return array
+     * @return array|false
      */
     public function errorInfo()
     {
@@ -306,7 +306,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
      * Returns a single column from the next row of a result set.
      *
      * @param int $col OPTIONAL Position of the column to fetch.
-     * @return string
+     * @return string|false
      * @throws Zend_Db_Statement_Exception
      */
     public function fetchColumn($col = 0)
@@ -418,7 +418,7 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
      * last INSERT, DELETE, or UPDATE statement executed by this
      * statement object.
      *
-     * @return int     The number of rows affected.
+     * @return int|false     The number of rows affected.
      * @throws Zend_Db_Statement_Exception
      */
     public function rowCount()

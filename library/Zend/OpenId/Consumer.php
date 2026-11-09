@@ -69,7 +69,7 @@ class Zend_OpenId_Consumer
      * Enables or disables consumer to use association with server based on
      * Diffie-Hellman key agreement
      *
-     * @var Zend_OpenId_Consumer_Storage $_dumbMode
+     * @var bool $_dumbMode
      */
     protected $_dumbMode = false;
 

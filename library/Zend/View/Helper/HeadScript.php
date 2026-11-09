@@ -82,7 +82,7 @@ class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container
 
     /**
      * Required attributes for script tag
-     * @var string
+     * @var string|array
      */
     protected $_requiredAttributes = ['type'];
 

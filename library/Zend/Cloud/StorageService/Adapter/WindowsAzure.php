@@ -364,7 +364,7 @@ class Zend_Cloud_StorageService_Adapter_WindowsAzure
      *
      * @param  string $path
      * @param  array  $options
-     * @return array
+     * @return array|false
      */
     public function fetchMetadata($path, $options = null)
     {

@@ -54,7 +54,7 @@ class Zend_Controller_Action_HelperBroker
     /**
      * $_helpers - Helper array
      *
-     * @var Zend_Controller_Action_HelperBroker_PriorityStack
+     * @var Zend_Controller_Action_HelperBroker_PriorityStack|null
      */
     protected static $_stack = null;
 

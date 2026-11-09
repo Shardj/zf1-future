@@ -51,14 +51,14 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
      *
      * If array is null then all terms are required
      *
-     * @var array
+     * @var array|null
      */
     private $_signs;
 
     /**
      * Result vector.
      *
-     * @var array
+     * @var array|null
      */
     private $_resVector = null;
 

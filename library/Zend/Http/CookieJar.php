@@ -232,7 +232,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
      * @param Zend_Uri_Http|string $uri The uri (domain and path) to match
      * @param string $cookie_name The cookie's name
      * @param int $ret_as Whether to return cookies as objects of Zend_Http_Cookie or as strings
-     * @return Zend_Http_Cookie|string
+     * @return Zend_Http_Cookie|string|false
      */
     public function getCookie($uri, $cookie_name, $ret_as = self::COOKIE_OBJECT)
     {
@@ -279,7 +279,7 @@ class Zend_Http_CookieJar implements Countable, IteratorAggregate
      *
      * @param Zend_Http_Cookie|array $ptr
      * @param int $ret_as What value to return
-     * @return array|string
+     * @return array|string|null
      */
     protected function _flattenCookiesArray($ptr, $ret_as = self::COOKIE_OBJECT) {
         if (is_array($ptr)) {

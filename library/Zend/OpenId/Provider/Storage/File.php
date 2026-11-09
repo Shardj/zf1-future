@@ -353,7 +353,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
      * by $id
      *
      * @param string $id user identity URL
-     * @return array
+     * @return array|false
      */
     public function getTrustedSites($id)
     {

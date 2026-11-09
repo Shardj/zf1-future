@@ -147,7 +147,7 @@ class Zend_Pdf
     /**
      * Document level javascript
      *
-     * @var string
+     * @var string|array|null
      */
     protected $_javaScript = null;
 

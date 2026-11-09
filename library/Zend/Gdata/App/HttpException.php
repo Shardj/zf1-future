@@ -107,7 +107,7 @@ class Zend_Gdata_App_HttpException extends Zend_Gdata_App_Exception
     /**
      * Get the body of the Zend_Http_Response
      *
-     * @return string
+     * @return string|null
      */
     public function getRawResponseBody()
     {

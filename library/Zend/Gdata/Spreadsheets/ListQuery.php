@@ -185,7 +185,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
 
     /**
      * Gets the spreadsheet key for this query.
-     * @return string spreadsheet query
+     * @return string|null spreadsheet query
      */
     public function getSpreadsheetQuery()
     {
@@ -214,7 +214,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
 
     /**
      * Gets the orderby attribute for this query.
-     * @return string orderby
+     * @return string|null orderby
      */
     public function getOrderBy()
     {
@@ -243,7 +243,7 @@ class Zend_Gdata_Spreadsheets_ListQuery extends Zend_Gdata_Query
 
     /**
      * Gets the reverse attribute for this query.
-     * @return string reverse
+     * @return string|null reverse
      */
     public function getReverse()
     {

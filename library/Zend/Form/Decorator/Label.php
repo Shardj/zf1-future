@@ -75,19 +75,19 @@ class Zend_Form_Decorator_Label extends Zend_Form_Decorator_Abstract
 
     /**
      * Default placement: prepend
-     * @var string
+     * @var string|null
      */
     protected $_placement = 'PREPEND';
 
     /**
      * HTML tag with which to surround label
-     * @var string
+     * @var string|null
      */
     protected $_tag;
 
     /**
      * Class for the HTML tag with which to surround label
-     * @var string
+     * @var string|null
      */
     protected $_tagClass;
 

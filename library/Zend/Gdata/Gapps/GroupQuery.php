@@ -115,7 +115,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
      * null will be returned.
      *
      * @see setMember
-     * @return string The member email address to filter search
+     * @return string|null The member email address to filter search
      *              results by, or null if disabled.
      */
     public function getMember()
@@ -148,7 +148,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
     /**
      *
      * @see setDirectOnly
-     * @return bool
+     * @return bool|null
      */
     public function getDirectOnly()
     {
@@ -185,7 +185,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
      * a list of groups.
      *
      * @see setStartGroupId
-     * @return string The first group id to be returned, or null if
+     * @return string|null The first group id to be returned, or null if
      *          disabled.
      */
     public function getStartGroupId()

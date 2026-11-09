@@ -69,7 +69,7 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
 
     /**
      * Current context
-     * @var string
+     * @var string|null
      */
     protected $_currentContext;
 

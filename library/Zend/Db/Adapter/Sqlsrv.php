@@ -59,7 +59,7 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
     /**
      * Last insert id from INSERT query
      *
-     * @var int
+     * @var int|string|false|null
      */
     protected $_lastInsertId;
 

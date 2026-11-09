@@ -54,7 +54,7 @@ class Zend_Ldap
     /**
      * The raw LDAP extension resource.
      *
-     * @var resource
+     * @var resource|null
      */
     protected $_resource = null;
 
@@ -1178,7 +1178,7 @@ class Zend_Ldap
      * @param  string|Zend_Ldap_Dn $dn
      * @param  array               $attributes
      * @param  boolean             $throwOnNotFound
-     * @return array
+     * @return array|null
      * @throws Zend_Ldap_Exception
      */
     public function getEntry($dn, array $attributes = [], $throwOnNotFound = false)

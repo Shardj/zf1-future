@@ -185,14 +185,14 @@ class Zend_Http_Client
     /**
      * Request body content type (for POST requests)
      *
-     * @var string
+     * @var string|null
      */
     protected $enctype = null;
 
     /**
      * The raw post data to send. Could be set by setRawData($data, $enctype).
      *
-     * @var string
+     * @var string|null
      */
     protected $raw_post_data = null;
 
@@ -233,21 +233,21 @@ class Zend_Http_Client
     /**
      * The client's cookie jar
      *
-     * @var Zend_Http_CookieJar
+     * @var Zend_Http_CookieJar|null
      */
     protected $cookiejar = null;
 
     /**
      * The last HTTP request sent by the client, as string
      *
-     * @var string
+     * @var string|null
      */
     protected $last_request = null;
 
     /**
      * The last HTTP response received by the client
      *
-     * @var Zend_Http_Response
+     * @var Zend_Http_Response|null
      */
     protected $last_response = null;
 
@@ -494,7 +494,7 @@ class Zend_Http_Client
      * Set a GET parameter for the request. Wrapper around _setParameter
      *
      * @param string|array $name
-     * @param string $value
+     * @param string|int $value
      * @return Zend_Http_Client
      */
     public function setParameterGet($name, $value = null)
@@ -670,7 +670,7 @@ class Zend_Http_Client
      * will be added directly to the headers array as "Cookie" headers.
      *
      * @param Zend_Http_Cookie|string $cookie
-     * @param string|null $value If "cookie" is a string, this is the cookie value.
+     * @param string|int|null $value If "cookie" is a string, this is the cookie value.
      * @return Zend_Http_Client
      * @throws Zend_Http_Client_Exception
      */
@@ -960,7 +960,7 @@ class Zend_Http_Client
     /**
      * Set streaming for received data
      *
-     * @param string|boolean $streamfile Stream file, true for temp file, false/null for no streaming
+     * @param string|boolean|null $streamfile Stream file, true for temp file, false/null for no streaming
      * @return Zend_Http_Client
      */
     public function setStream($streamfile = true)

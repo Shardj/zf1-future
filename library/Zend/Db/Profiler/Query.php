@@ -55,7 +55,7 @@ class Zend_Db_Profiler_Query
     /**
      * Unix timestamp with microseconds when self::queryEnd() was called.
      *
-     * @var integer
+     * @var integer|float|null
      */
     protected $_endedMicrotime = null;
 

@@ -45,7 +45,7 @@ class Zend_Service_ShortUrl_BitLy extends Zend_Service_ShortUrl_AbstractShortene
     /**
      * user login name
      *
-     * @var string
+     * @var string|null
      */
     protected $_loginName;
 

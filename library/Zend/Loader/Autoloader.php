@@ -35,7 +35,7 @@ require_once 'Zend/Loader.php';
 class Zend_Loader_Autoloader
 {
     /**
-     * @var Zend_Loader_Autoloader Singleton instance
+     * @var Zend_Loader_Autoloader|null Singleton instance
      */
     protected static $_instance;
 
@@ -467,7 +467,7 @@ class Zend_Loader_Autoloader
      * Internal autoloader implementation
      *
      * @param  string $class
-     * @return bool
+     * @return bool|string
      */
     protected function _autoload($class)
     {

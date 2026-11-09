@@ -508,7 +508,7 @@ class Zend_Soap_AutoDiscover implements Zend_Server_Interface
     /**
      * Handle the Request
      *
-     * @param string $request A non-standard request - Not Used
+     * @param string|false $request A non-standard request - Not Used
      */
     public function handle($request = false)
     {

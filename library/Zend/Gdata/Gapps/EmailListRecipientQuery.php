@@ -112,7 +112,7 @@ class Zend_Gdata_Gapps_EmailListRecipientQuery extends Zend_Gdata_Gapps_Query
      * Get the first recipient which should be displayed when retrieving
      * a list of email list recipients.
      *
-     * @return string The first recipient to be returned, or null if
+     * @return string|null The first recipient to be returned, or null if
      *              disabled.
      */
     public function getStartRecipient()

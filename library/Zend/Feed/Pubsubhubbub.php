@@ -68,7 +68,7 @@ class Zend_Feed_Pubsubhubbub
     /**
      * Singleton instance if required of the HTTP client
      *
-     * @var Zend_Http_Client
+     * @var Zend_Http_Client|null
      */
     protected static $httpClient = null;
 

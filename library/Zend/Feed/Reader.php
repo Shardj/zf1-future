@@ -84,14 +84,14 @@ class Zend_Feed_Reader
     /**
      * Cache instance
      *
-     * @var Zend_Cache_Core
+     * @var Zend_Cache_Core|null
      */
     protected static $_cache = null;
 
     /**
      * HTTP client object to use for retrieving feeds
      *
-     * @var Zend_Http_Client
+     * @var Zend_Http_Client|null
      */
     protected static $_httpClient = null;
 

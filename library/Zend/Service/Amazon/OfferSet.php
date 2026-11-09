@@ -32,7 +32,7 @@
 class Zend_Service_Amazon_OfferSet
 {
     /**
-     * @var string
+     * @var string|int
      */
     public $LowestNewPrice;
 
@@ -42,7 +42,7 @@ class Zend_Service_Amazon_OfferSet
     public $LowestNewPriceCurrency;
 
     /**
-     * @var string
+     * @var string|int
      */
     public $LowestUsedPrice;
 

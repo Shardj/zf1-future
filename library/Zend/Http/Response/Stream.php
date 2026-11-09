@@ -36,7 +36,7 @@ class Zend_Http_Response_Stream extends Zend_Http_Response
     /**
      * Response as stream
      *
-     * @var resource
+     * @var resource|null
      */
     protected $stream;
 
@@ -69,7 +69,7 @@ class Zend_Http_Response_Stream extends Zend_Http_Response
     /**
      * Set the response stream
      *
-     * @param resourse $stream
+     * @param resource $stream
      * @return Zend_Http_Response_Stream
      */
     public function setStream($stream)
@@ -131,7 +131,7 @@ class Zend_Http_Response_Stream extends Zend_Http_Response
      *
      * @param int $code Response code (200, 404, ...)
      * @param array $headers Headers array
-     * @param string $body Response body
+     * @param string|resource $body Response body
      * @param string $version HTTP version
      * @param string $message Response code as text
      * @throws Zend_Http_Exception

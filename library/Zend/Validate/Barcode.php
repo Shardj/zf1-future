@@ -61,7 +61,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
     /**
      * Length for the set subtype
      *
-     * @var integer
+     * @var integer|string
      */
     protected $_length;
 

@@ -40,7 +40,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
 	 * Writes output to STDERR, followed by a newline (optional)
 	 *
 	 * @param string $message
-	 * @param string $newLine
+	 * @param string|true $newLine
 	 */
 	protected function log($message, $newLine = true)
 	{

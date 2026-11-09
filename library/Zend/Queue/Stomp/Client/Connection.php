@@ -49,7 +49,7 @@ class Zend_Queue_Stomp_Client_Connection
     /**
      * tcp/udp socket
      *
-     * @var resource
+     * @var resource|false
      */
     protected $_socket = false;
 

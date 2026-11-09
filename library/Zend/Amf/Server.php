@@ -234,7 +234,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
     /**
      * Check if the ACL allows accessing the function or method
      *
-     * @param string|object $object Object or class being accessed
+     * @param string|object|null $object Object or class being accessed
      * @param string $function Function or method being accessed
      * @return bool
      * @throws Zend_Acl_Exception

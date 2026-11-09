@@ -78,7 +78,7 @@ class Zend_Service_Amazon_Item
     public $TotalReviews;
 
     /**
-     * @var int
+     * @var int|float
      */
     public $AverageRating;
 

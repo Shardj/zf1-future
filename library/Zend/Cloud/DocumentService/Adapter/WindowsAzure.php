@@ -415,7 +415,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * @param  string $collectionName Collection name
      * @param  mixed $documentId Document ID, adapter-dependent
      * @param  array $options
-     * @return Zend_Cloud_DocumentService_Document
+     * @return Zend_Cloud_DocumentService_Document|false
      */
     public function fetchDocument($collectionName, $documentId, $options = null)
     {
@@ -556,7 +556,7 @@ class Zend_Cloud_DocumentService_Adapter_WindowsAzure
      * - otherwise, it's invalid
      *
      * @param  array|string $documentId
-     * @param  null|string $collectionName
+     * @param  string|false|null $collectionName
      * @return array
      * @throws Zend_Cloud_DocumentService_Exception
      */

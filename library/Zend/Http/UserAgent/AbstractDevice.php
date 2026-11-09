@@ -228,7 +228,7 @@ abstract class Zend_Http_UserAgent_AbstractDevice
      * Set a feature for the current browser/device.
      *
      * @param  string $feature The feature to set.
-     * @param  string $value (option) feature value.
+     * @param  string|bool $value (option) feature value.
      * @param  string $group (option) Group to associate with the feature
      * @return Zend_Http_UserAgent_AbstractDevice
      */

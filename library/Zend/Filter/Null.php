@@ -132,7 +132,7 @@ class Zend_Filter_Null implements Zend_Filter_Interface
      * types that should be considered null.
      *
      * @param  string $value
-     * @return string
+     * @return string|null
      */
     public function filter($value)
     {

@@ -267,7 +267,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string rss or atom
+     * @return string|null rss or atom
      */
     public function getAlt()
     {
@@ -279,7 +279,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return int maxResults
+     * @return int|null maxResults
      */
     public function getMaxResults()
     {
@@ -291,7 +291,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string query
+     * @return string|null query
      */
     public function getQuery()
     {
@@ -303,7 +303,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return int startIndex
+     * @return int|null startIndex
      */
     public function getStartIndex()
     {
@@ -315,7 +315,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string updatedMax
+     * @return string|null updatedMax
      */
     public function getUpdatedMax()
     {
@@ -327,7 +327,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string updatedMin
+     * @return string|null updatedMin
      */
     public function getUpdatedMin()
     {
@@ -339,7 +339,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string publishedMax
+     * @return string|null publishedMax
      */
     public function getPublishedMax()
     {
@@ -351,7 +351,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string publishedMin
+     * @return string|null publishedMin
      */
     public function getPublishedMin()
     {
@@ -363,7 +363,7 @@ class Zend_Gdata_Query
     }
 
     /**
-     * @return string author
+     * @return string|null author
      */
     public function getAuthor()
     {

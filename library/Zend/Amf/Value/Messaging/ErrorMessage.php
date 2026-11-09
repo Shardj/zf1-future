@@ -43,7 +43,7 @@ class Zend_Amf_Value_Messaging_ErrorMessage extends Zend_Amf_Value_Messaging_Ack
 
     /**
      * Error code number
-     * @var string
+     * @var string|int
      */
     public $faultCode;
 

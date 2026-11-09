@@ -177,7 +177,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
     protected $_required = false;
 
     /**
-     * @var Zend_Translate_Adapter
+     * @var Zend_Translate_Adapter|null
      */
     protected $_translator;
 
@@ -1798,7 +1798,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
      * Retrieve a single filter by name
      *
      * @param  string $name
-     * @return Zend_Filter_Interface
+     * @return Zend_Filter_Interface|false
      */
     public function getFilter($name)
     {

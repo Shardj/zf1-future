@@ -47,7 +47,7 @@ abstract class Zend_Gdata_App_Base
     protected $_rootElement = null;
 
     /**
-     * @var string The XML namespace prefix
+     * @var string|null The XML namespace prefix
      */
     protected $_rootNamespace = 'atom';
 

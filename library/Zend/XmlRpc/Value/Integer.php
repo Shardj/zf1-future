@@ -40,7 +40,7 @@ class Zend_XmlRpc_Value_Integer extends Zend_XmlRpc_Value_Scalar
     /**
      * Set the value of an integer native type
      *
-     * @param int $value
+     * @param int|string $value
      */
     public function __construct($value)
     {

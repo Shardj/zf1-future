@@ -32,7 +32,7 @@ class Zend_Translate_Plural
     /**
      * Manual rule to use
      *
-     * @var string
+     * @var string|array
      */
     protected static $_plural = [];
 

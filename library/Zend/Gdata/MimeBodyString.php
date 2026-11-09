@@ -61,7 +61,7 @@ class Zend_Gdata_MimeBodyString
      * Read the next chunk of the string.
      *
      * @param integer $bytesRequested The size of the chunk that is to be read.
-     * @return string A corresponding piece of the string.
+     * @return string|false A corresponding piece of the string.
      */
     public function read($bytesRequested)
     {

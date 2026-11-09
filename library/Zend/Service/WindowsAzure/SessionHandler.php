@@ -199,7 +199,7 @@ class Zend_Service_WindowsAzure_SessionHandler
      * Read a specific session
      *
      * @param string $id Session Id
-     * @return string
+     * @return string|false
      */
     public function read($id)
     {

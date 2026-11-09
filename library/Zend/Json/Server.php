@@ -180,7 +180,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Handle request
      *
-     * @param Zend_Json_Server_Request $request
+     * @param Zend_Json_Server_Request|false $request
      * @return null|Zend_Json_Server_Response
      * @throws Zend_Json_Server_Exception
      * @throws Zend_Server_Exception

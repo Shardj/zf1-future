@@ -1511,28 +1511,28 @@ class Zend_Locale
     /**
      * Automatic detected locale
      *
-     * @var string Locales
+     * @var string|array Locales
      */
     protected static $_auto;
 
     /**
      * Browser detected locale
      *
-     * @var string Locales
+     * @var string|array Locales
      */
     protected static $_browser;
 
     /**
      * Environment detected locale
      *
-     * @var string Locales
+     * @var string|array Locales
      */
     protected static $_environment;
 
     /**
      * Default locale
      *
-     * @var string Locales
+     * @var string|array Locales
      */
     protected static $_default = ['en' => true];
 
@@ -1588,7 +1588,7 @@ class Zend_Locale
     /**
      * Return the default locale
      *
-     * @return array Returns an array of all locale string
+     * @return array|string Returns an array of all locale string
      */
     public static function getDefault()
     {
@@ -1662,7 +1662,7 @@ class Zend_Locale
      * f.e.: LC_COLLATE=C;LC_CTYPE=German_Austria.1252;LC_MONETARY=C
      * would be recognised as de_AT
      *
-     * @return array
+     * @return array|string
      */
     public static function getEnvironment()
     {
@@ -1721,7 +1721,7 @@ class Zend_Locale
      * The notation can be :
      * de,en-UK-US;q=0.5,fr-FR;q=0.2
      *
-     * @return array - list of accepted languages including quality
+     * @return array|string - list of accepted languages including quality
      */
     public static function getBrowser()
     {
@@ -1895,7 +1895,7 @@ class Zend_Locale
      * @param  string             $path   (Optional) Type of information to return
      * @param  string|Zend_Locale $locale (Optional) Locale|Language for which this informations should be returned
      * @param  string             $value  (Optional) Value for detail list
-     * @return array Array with the wished information in the given language
+     * @return array|false Array with the wished information in the given language
      */
     public static function getTranslationList($path = null, $locale = null, $value = null)
     {
@@ -2116,7 +2116,7 @@ class Zend_Locale
      * @param  string|Zend_Locale $locale     Locale to check for
      * @param  boolean            $strict     (Optional) If true, no rerouting will be done when checking
      * @param  boolean            $compatible (DEPRECATED) Only for internal usage, brakes compatibility mode
-     * @return boolean If the locale is known dependend on the settings
+     * @return boolean|string If the locale is known dependend on the settings
      */
     public static function isLocale($locale, $strict = false, $compatible = true)
     {

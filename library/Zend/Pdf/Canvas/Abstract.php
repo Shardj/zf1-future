@@ -63,7 +63,7 @@ abstract class Zend_Pdf_Canvas_Abstract implements Zend_Pdf_Canvas_Interface
     /**
      * Current font
      *
-     * @var Zend_Pdf_Resource_Font
+     * @var Zend_Pdf_Resource_Font|null
      */
     protected $_font = null;
 
@@ -77,7 +77,7 @@ abstract class Zend_Pdf_Canvas_Abstract implements Zend_Pdf_Canvas_Interface
     /**
      * Current style
      *
-     * @var Zend_Pdf_Style
+     * @var Zend_Pdf_Style|null
      */
     protected $_style = null;
 
@@ -219,7 +219,7 @@ abstract class Zend_Pdf_Canvas_Abstract implements Zend_Pdf_Canvas_Interface
      * Phase is shift from the beginning of line.
      *
      * @param mixed $pattern
-     * @param array $phase
+     * @param float|int $phase
      * @return Zend_Pdf_Canvas_Interface
      */
     public function setLineDashingPattern($pattern, $phase = 0)

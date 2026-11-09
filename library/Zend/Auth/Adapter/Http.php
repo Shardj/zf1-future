@@ -46,14 +46,14 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
     /**
      * Reference to the HTTP Request object
      *
-     * @var Zend_Controller_Request_Http
+     * @var Zend_Controller_Request_Http|null
      */
     protected $_request;
 
     /**
      * Reference to the HTTP Response object
      *
-     * @var Zend_Controller_Response_Http
+     * @var Zend_Controller_Response_Http|null
      */
     protected $_response;
 

@@ -33,7 +33,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
 {
     /**
      * Identifier field of item
-     * @var string|int
+     * @var string|int|null
      */
     protected $_identifier;
 
@@ -45,7 +45,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
 
     /**
      * Label field of item
-     * @var string
+     * @var string|null
      */
     protected $_label;
 
@@ -172,7 +172,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      * Item retrieved will be flattened to an array.
      *
      * @param  string $id
-     * @return array
+     * @return array|null
      */
     public function getItem($id)
     {

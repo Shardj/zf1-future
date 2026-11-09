@@ -609,7 +609,7 @@ class Zend_Mail_Protocol_Imap
      * @param  string|array $items items to fetch from message(s) as string (if only one item)
      *                             or array of strings
      * @param  int          $from  message for items or start message if $to !== null
-     * @param  int|null     $to    if null only one message ($from) is fetched, else it's the
+     * @param  int|float|null     $to    if null only one message ($from) is fetched, else it's the
      *                             last message, INF means last message avaible
      * @return string|array if only one item of one message is fetched it's returned as string
      *                      if items of one message are fetched it's returned as (name => value)

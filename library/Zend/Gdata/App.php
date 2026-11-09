@@ -757,7 +757,7 @@ class Zend_Gdata_App
      *
      * @param  string $url The URL to import
      * @param  string $className The class which is used as the return type
-     * @param array $extraHeaders Extra headers to add to the request, as an
+     * @param array|null $extraHeaders Extra headers to add to the request, as an
      *        array of string-based key/value pairs.
      * @throws Zend_Gdata_App_Exception
      * @return string|Zend_Gdata_App_Feed Returns string only if the object
@@ -848,7 +848,7 @@ class Zend_Gdata_App
      *
      * @param  string $filename
      * @param  string $className The class which is used as the return type
-     * @param  string $useIncludePath Whether the include_path should be searched
+     * @param  string|false $useIncludePath Whether the include_path should be searched
      * @throws Zend_Gdata_App_Exception
      * @return Zend_Gdata_App_Feed
      */

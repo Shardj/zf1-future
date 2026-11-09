@@ -101,7 +101,7 @@ class Zend_View_Helper_Navigation_Links
      *
      * @see _findRoot()
      *
-     * @var Zend_Navigation_Container
+     * @var Zend_Navigation_Container|null
      */
     protected $_root;
 

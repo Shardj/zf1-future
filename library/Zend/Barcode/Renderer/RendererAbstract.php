@@ -50,25 +50,25 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
 
     /**
      * Offset of the barcode from the top of the rendering resource
-     * @var integer
+     * @var integer|float
      */
     protected $_topOffset = 0;
 
     /**
      * Offset of the barcode from the left of the rendering resource
-     * @var integer
+     * @var integer|float
      */
     protected $_leftOffset = 0;
 
     /**
      * Horizontal position of the barcode in the rendering resource
-     * @var integer
+     * @var integer|string
      */
     protected $_horizontalPosition = 'left';
 
     /**
      * Vertical position of the barcode in the rendering resource
-     * @var integer
+     * @var integer|string
      */
     protected $_verticalPosition = 'top';
 
@@ -257,7 +257,7 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
 
     /**
      * Horizontal position of the barcode in the rendering resource
-     * @return string
+     * @return string|int
      */
     public function getHorizontalPosition()
     {
@@ -285,7 +285,7 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
 
     /**
      * Vertical position of the barcode in the rendering resource
-     * @return string
+     * @return string|int
      */
     public function getVerticalPosition()
     {

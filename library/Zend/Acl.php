@@ -93,17 +93,17 @@ class Zend_Acl
     protected $_resources = [];
 
     /**
-     * @var Zend_Acl_Role_Interface
+     * @var Zend_Acl_Role_Interface|null
      */
     protected $_isAllowedRole     = null;
 
     /**
-     * @var Zend_Acl_Resource_Interface
+     * @var Zend_Acl_Resource_Interface|null
      */
     protected $_isAllowedResource = null;
 
     /**
-     * @var String
+     * @var String|null
      */
     protected $_isAllowedPrivilege = null;
 

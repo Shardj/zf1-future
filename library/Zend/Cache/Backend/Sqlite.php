@@ -155,7 +155,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
      * @param  string $data             Datas to cache
      * @param  string $id               Cache id
      * @param  array  $tags             Array of strings, the cache record will be tagged by each string entry
-     * @param  int    $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @param  int|false    $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
      * @throws Zend_Cache_Exception
      * @return boolean True if no problem
      */
@@ -394,7 +394,7 @@ class Zend_Cache_Backend_Sqlite extends Zend_Cache_Backend implements Zend_Cache
      * - mtime : timestamp of last modification time
      *
      * @param string $id cache id
-     * @return array array of metadatas (false if the cache id is not found)
+     * @return array|false array of metadatas (false if the cache id is not found)
      */
     public function getMetadatas($id)
     {

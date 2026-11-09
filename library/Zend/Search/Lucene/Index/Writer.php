@@ -116,7 +116,7 @@ class Zend_Search_Lucene_Index_Writer
     /**
      * Current segment to add documents
      *
-     * @var Zend_Search_Lucene_Index_SegmentWriter_DocumentWriter
+     * @var Zend_Search_Lucene_Index_SegmentWriter_DocumentWriter|null
      */
     private $_currentSegment = null;
 

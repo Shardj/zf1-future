@@ -473,7 +473,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
      *
      * @param Zend_Markup_Token $token
      *
-     * @return string
+     * @return string|false
      */
     protected function _getMarkupName(Zend_Markup_Token $token)
     {
@@ -593,7 +593,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
      *
      * @param string $markup
      *
-     * @return Zend_Filter_Interface
+     * @return Zend_Filter_Interface|false
      */
     public function getFilter($markup)
     {

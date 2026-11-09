@@ -102,7 +102,7 @@ class Zend_Ldap_Converter
      *
      * @param    mixed     $value     The value to convert
      * @param    int       $type      The conversion type to use
-     * @return    string
+     * @return    string|null
      * @throws    Zend_Ldap_Converter_Exception
      */
     public static function toLdap($value, $type = self::STANDARD)

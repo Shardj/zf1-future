@@ -37,7 +37,7 @@ class Zend_Pdf_Element_Object extends Zend_Pdf_Element
     /**
      * Object value
      *
-     * @var Zend_Pdf_Element
+     * @var Zend_Pdf_Element|null
      */
     protected $_value;
 

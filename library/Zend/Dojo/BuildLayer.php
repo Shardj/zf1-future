@@ -522,7 +522,7 @@ class Zend_Dojo_BuildLayer
     /**
      * Filter a JSON build profile to JavaScript
      *
-     * @param  string $profile
+     * @param  string|array $profile
      * @return string
      */
     protected function _filterJsonProfileToJavascript($profile)

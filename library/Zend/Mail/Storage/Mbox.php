@@ -114,7 +114,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
     /**
      * Get positions for mail message or throw exeption if id is invalid
      *
-     * @param int $id number of message
+     * @param int|string $id number of message
      * @return array positions as in _positions
      * @throws Zend_Mail_Storage_Exception
      */

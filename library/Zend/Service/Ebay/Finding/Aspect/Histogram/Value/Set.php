@@ -39,7 +39,7 @@ class Zend_Service_Ebay_Finding_Aspect_Histogram_Value_Set extends Zend_Service_
     /**
      * Implement SeekableIterator::current()
      *
-     * @return Zend_Service_Ebay_Finding_Aspect_Histogram_Value
+     * @return Zend_Service_Ebay_Finding_Aspect_Histogram_Value|null
      */
     #[\ReturnTypeWillChange]
     public function current()

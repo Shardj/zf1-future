@@ -94,7 +94,7 @@ class Zend_Layout
 
     /**
      * Instance registered with MVC, if any
-     * @var Zend_Layout
+     * @var Zend_Layout|null
      */
     protected static $_mvcInstance;
 

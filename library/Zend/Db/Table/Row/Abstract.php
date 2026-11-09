@@ -64,7 +64,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
     /**
      * Zend_Db_Table_Abstract parent class or instance.
      *
-     * @var Zend_Db_Table_Abstract
+     * @var Zend_Db_Table_Abstract|null
      */
     protected $_table = null;
 
@@ -938,7 +938,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
      * @param string|Zend_Db_Table_Abstract $parentTable
      * @param string $ruleKey               OPTIONAL
      * @param Zend_Db_Table_Select $select  OPTIONAL
-     * @return Zend_Db_Table_Row_Abstract   Query result from $parentTable
+     * @return Zend_Db_Table_Row_Abstract|null   Query result from $parentTable
      * @throws Zend_Db_Table_Row_Exception If $parentTable is not a table or is not loadable.
      */
     public function findParentRow($parentTable, $ruleKey = null, ?Zend_Db_Table_Select $select = null)

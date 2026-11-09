@@ -101,7 +101,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      * Constructor
      *
      * @param  Zend_Feed_Entry_Abstract $entry
-     * @param  string $entryKey
+     * @param  string|int|null $entryKey
      * @param  string $type
      * @return void
      */
@@ -136,7 +136,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      * Get an author entry
      *
      * @param int $index
-     * @return string
+     * @return string|null
      */
     public function getAuthor($index = 0)
     {
@@ -425,7 +425,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
      * Get a specific link
      *
      * @param  int $index
-     * @return string
+     * @return string|null
      */
     public function getLink($index = 0)
     {

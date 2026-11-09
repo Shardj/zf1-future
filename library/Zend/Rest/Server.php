@@ -169,7 +169,7 @@ class Zend_Rest_Server implements Zend_Server_Interface
     /**
      * Implement Zend_Server_Interface::handle()
      *
-     * @param  array $request
+     * @param  array|false $request
      * @throws Zend_Rest_Server_Exception
      * @return string|void
      */

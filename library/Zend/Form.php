@@ -194,13 +194,13 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     protected $_subForms = [];
 
     /**
-     * @var Zend_Translate_Adapter
+     * @var Zend_Translate_Adapter|null
      */
     protected $_translator;
 
     /**
      * Global default translation adapter
-     * @var Zend_Translate_Adapter
+     * @var Zend_Translate_Adapter|null
      */
     protected static $_translatorDefault;
 

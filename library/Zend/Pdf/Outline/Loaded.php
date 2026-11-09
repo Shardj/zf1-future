@@ -114,7 +114,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
     /**
      * Returns true if outline item is displayed in italic
      *
-     * @return boolean
+     * @return boolean|int
      */
     public function isItalic()
     {
@@ -149,7 +149,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
     /**
      * Returns true if outline item is displayed in bold
      *
-     * @return boolean
+     * @return boolean|int
      */
     public function isBold()
     {
@@ -185,7 +185,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
     /**
      * Get outline text color.
      *
-     * @return Zend_Pdf_Color_Rgb
+     * @return Zend_Pdf_Color_Rgb|null
      */
     public function getColor()
     {
@@ -226,7 +226,7 @@ class Zend_Pdf_Outline_Loaded extends Zend_Pdf_Outline
     /**
      * Get outline target.
      *
-     * @return Zend_Pdf_Target
+     * @return Zend_Pdf_Target|null
      * @throws Zend_Pdf_Exception
      */
     public function getTarget()

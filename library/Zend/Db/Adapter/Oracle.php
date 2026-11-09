@@ -294,7 +294,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
      *
      * @param string $tableName   OPTIONAL Name of table.
      * @param string $primaryKey  OPTIONAL Name of primary key column.
-     * @return string
+     * @return string|null
      */
     public function lastInsertId($tableName = null, $primaryKey = null)
     {
@@ -620,7 +620,7 @@ class Zend_Db_Adapter_Oracle extends Zend_Db_Adapter_Abstract
     /**
      * Retrieve server version in PHP style
      *
-     * @return string
+     * @return string|null
      */
     public function getServerVersion()
     {

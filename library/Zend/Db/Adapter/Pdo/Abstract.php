@@ -412,7 +412,7 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
     /**
      * Retrieve server version in PHP style
      *
-     * @return string
+     * @return string|null
      */
     public function getServerVersion()
     {

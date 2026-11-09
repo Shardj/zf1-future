@@ -772,7 +772,7 @@ class Zend_Locale_Format
      * 'a', 'A' - Meridiem is not explicit upper/lowercase, you have to upper/lowercase the translated value yourself
      *
      * @param  string  $format  Format string in PHP's date format
-     * @return string           Format string in ISO format
+     * @return string|null           Format string in ISO format
      */
     public static function convertPhpToIsoFormat($format)
     {

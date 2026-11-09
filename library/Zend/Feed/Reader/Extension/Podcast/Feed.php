@@ -79,7 +79,7 @@ class Zend_Feed_Reader_Extension_Podcast_Feed extends Zend_Feed_Reader_Extension
     /**
      * Get the entry category
      *
-     * @return string
+     * @return string|array|null
      */
     public function getCategories()
     {

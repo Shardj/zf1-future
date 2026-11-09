@@ -271,7 +271,7 @@ class Zend_Http_Client_Adapter_Curl implements Zend_Http_Client_Adapter_Interfac
      *
      * @param  string        $method
      * @param  Zend_Uri_Http $uri
-     * @param  string        $httpVersion
+     * @param  string|float        $httpVersion
      * @param  array         $headers
      * @param  string        $body
      * @return string        $request

@@ -570,7 +570,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Get an array with feed authors
      *
-     * @return array
+     * @return array|null
      */
     public function getAuthors()
     {
@@ -674,7 +674,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Get the feed image URI
      *
-     * @return array
+     * @return array|null
      */
     public function getImage()
     {
@@ -687,7 +687,7 @@ class Zend_Feed_Writer_Feed_FeedAbstract
     /**
      * Get the feed icon URI
      *
-     * @return array
+     * @return array|null
      */
     public function getIcon()
     {

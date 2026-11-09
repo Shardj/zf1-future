@@ -44,7 +44,7 @@ class Zend_View_Helper_HtmlList extends Zend_View_Helper_FormElement
      *
      * @param array   $items   Array with the elements of the list
      * @param boolean $ordered Specifies ordered/unordered list; default unordered
-     * @param array   $attribs Attributes for the ol/ul tag.
+     * @param array|false   $attribs Attributes for the ol/ul tag.
      * @return string The list XHTML.
      */
     public function htmlList(array $items, $ordered = false, $attribs = false, $escape = true)

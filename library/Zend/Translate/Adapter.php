@@ -54,7 +54,7 @@ abstract class Zend_Translate_Adapter {
 
     /**
      * Internal cache for all adapters
-     * @var Zend_Cache_Core
+     * @var Zend_Cache_Core|null
      */
     protected static $_cache     = null;
 

@@ -411,7 +411,7 @@ class Zend_Db_Select
      * as described in the from() method.
      *
      * @param  array|string|Zend_Db_Expr $name The table name.
-     * @param  string $cond Join on this condition.
+     * @param  string|null $cond Join on this condition.
      * @param  array|string $cols The columns to select from the joined table.
      * @param  string $schema The database name to specify, if any.
      * @return $this This Zend_Db_Select object.
@@ -863,7 +863,7 @@ class Zend_Db_Select
      *
      * @param  null|string $type Type of join; inner, left, and null are currently supported
      * @param  array|string|Zend_Db_Expr $name Table name
-     * @param  string $cond Join on this condition
+     * @param  string|null $cond Join on this condition
      * @param  array|string $cols The columns to select from the joined table
      * @param  string $schema The database name to specify, if any.
      * @return $this This Zend_Db_Select object
@@ -1110,7 +1110,7 @@ class Zend_Db_Select
      *
      * @param string   $condition
      * @param mixed    $value  optional
-     * @param string   $type   optional
+     * @param string|int|null   $type   optional
      * @param boolean  $bool  true = AND, false = OR
      * @return string  clause
      */

@@ -350,7 +350,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      * Retrieve server version in PHP style
      * Pdo_Idm doesn't support getAttribute(PDO::ATTR_SERVER_VERSION)
      *
-     * @return string
+     * @return string|null
      * @throws Zend_Db_Adapter_Exception
      * @throws Zend_Db_Statement_Exception
      */

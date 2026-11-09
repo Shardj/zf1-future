@@ -115,14 +115,14 @@ class Zend_Memory_Manager
      * object.
      * So we have to trace only _first_ object modification and do nothing for others
      *
-     * @var Zend_Memory_Container_Movable
+     * @var Zend_Memory_Container_Movable|null
      */
     private $_lastModified = null;
 
     /**
      * Unique memory manager id
      *
-     * @var integer
+     * @var string
      */
     private $_managerId;
 

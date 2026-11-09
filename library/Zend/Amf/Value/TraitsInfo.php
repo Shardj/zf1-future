@@ -46,7 +46,7 @@ class Zend_Amf_Value_TraitsInfo
     protected $_externalizable;
 
     /**
-     * @var array Class properties
+     * @var array|bool|null Class properties
      */
     protected $_properties;
 

@@ -383,7 +383,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * getProperty()
      *
      * @param string $propertyName
-     * @return Zend_CodeGenerator_Php_Property
+     * @return Zend_CodeGenerator_Php_Property|false
      */
     public function getProperty($propertyName)
     {
@@ -399,7 +399,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * getConstant()
      *
      * @param string $constName
-     * @return Zend_CodeGenerator_Php_Property
+     * @return Zend_CodeGenerator_Php_Property|false
      */
     public function getConstant($constName)
     {
@@ -488,7 +488,7 @@ class Zend_CodeGenerator_Php_Class extends Zend_CodeGenerator_Php_Abstract
      * getMethod()
      *
      * @param string $methodName
-     * @return Zend_CodeGenerator_Php_Method
+     * @return Zend_CodeGenerator_Php_Method|false
      */
     public function getMethod($methodName)
     {

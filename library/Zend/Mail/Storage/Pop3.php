@@ -238,7 +238,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * if storage does not support unique ids it's the same as the message number
      *
      * @param int|null $id message number
-     * @return array|string message number for given message or all messages as array
+     * @return array|string|int message number for given message or all messages as array
      * @throws Zend_Mail_Storage_Exception
      */
     public function getUniqueId($id = null)
@@ -265,7 +265,7 @@ class Zend_Mail_Storage_Pop3 extends Zend_Mail_Storage_Abstract
      * as parameter and use this method to translate it to message number right before calling removeMessage()
      *
      * @param string $id unique id
-     * @return int message number
+     * @return int|string message number
      * @throws Zend_Mail_Storage_Exception
      */
     public function getNumberByUniqueId($id)

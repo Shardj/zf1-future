@@ -39,7 +39,7 @@ class Zend_Service_Ebay_Finding_Error_Data_Set extends Zend_Service_Ebay_Finding
     /**
      * Implement SeekableIterator::current()
      *
-     * @return Zend_Service_Ebay_Finding_Error_Data
+     * @return Zend_Service_Ebay_Finding_Error_Data|null
      */
     #[\ReturnTypeWillChange]
     public function current()
