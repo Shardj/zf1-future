@@ -4,6 +4,15 @@
 #AIM of this doc.
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
+### 1.27.0
+* Methods that returned null on some paths return what their docblock and their parent method declare. Code that tested the result for null or for falsiness on these paths has to be adjusted:
+  * Zend_Console_Getopt::parse() returns the instance also when the options were parsed already.
+  * Zend_Controller_Action_Helper_ContextSwitch::addActionContext() and setActionContext() return the instance also without an action controller.
+  * Zend_Tool_Project_Profile_Resource::initializeContext() returns the instance also when the context is initialized already; the init() methods of the Zend_Tool_Project_Context_Zf file and directory contexts (ApplicationDirectory, BootstrapFile, ControllerFile, DbTableFile, FormFile, ModelFile) return the instance.
+  * Zend_Dojo_Form::loadDefaultDecorators(), Zend_Dojo_Form_SubForm::loadDefaultDecorators() and Zend_Measure_Number::setType() return the instance, as Zend_Form::loadDefaultDecorators() and Zend_Measure_Abstract::setType() do.
+  * Zend_Db_Profiler_Firebug::queryEnd() returns the state of the query (`Zend_Db_Profiler::STORED` or `Zend_Db_Profiler::IGNORED`), as Zend_Db_Profiler::queryEnd() does.
+  * Zend_Search_Lucene_Storage_File_Memory::seek() returns 0, as the filesystem implementation does on success.
+
 ### 1.26.1
 * Zend_Text_Table::__toString() and the __toString() of the navigation view helpers (`Zend_View_Helper_Navigation_HelperAbstract`) throw an exception of the rendering, as `render()` does, which PHP allows since 7.4. They caught it and triggered `E_USER_ERROR` with its message, which PHP 8.4 deprecated. Without an error handler, the script still ends on such an error, now with the uncaught exception. An error handler that took the `E_USER_ERROR` and returned `true` let the navigation render as an empty string; the exception now reaches the caller, e.g. the error controller (Zend_Text_Table::__toString() returned null there, which was already an error).
 * Zend_Date::getSunrise(), getSunset() and getSunInfo() with the horizon `civil`, `nautic` or `astronomic` return the begin and end of that twilight (sun 6, 12 or 18 degrees below the horizon), from `date_sun_info()`. Before, PHP 8.1+ returned the sunrise and sunset for every horizon, and older PHP a time about a minute off the sunrise and sunset. On PHP 7.4 and 8.0, the sunrise and sunset of the default horizon (`effective`) are those of `date_sun_info()` too, as on PHP 8.1+, a few minutes off the former `date_sunrise()`/`date_sunset()` times.
