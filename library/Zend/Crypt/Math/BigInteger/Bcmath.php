@@ -218,10 +218,11 @@ class Zend_Crypt_Math_BigInteger_Bcmath implements Zend_Crypt_Math_BigInteger_In
      */
     public function hexToDecimal($operand)
     {
-        $return = '0';
-        while(strlen($hex)) {
-            $hex = hexdec(substr($operand, 0, 4));
-            $dec = bcadd(bcmul($return, 65536), $hex);
+        // Process four hex digits per step; left padding keeps every step a full 16 bits
+        $operand = str_pad($operand, (int) ceil(strlen($operand) / 4) * 4, '0', STR_PAD_LEFT);
+        $return  = '0';
+        while (strlen($operand)) {
+            $return  = bcadd(bcmul($return, '65536'), (string) hexdec(substr($operand, 0, 4)));
             $operand = substr($operand, 4);
         }
         return $return;

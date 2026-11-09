@@ -646,6 +646,7 @@ class Zend_Mail_Protocol_Imap
             }
             // if we only want one item we return that one directly
             if (count($items) === 1) {
+                $data = null;
                 if ($tokens[2][0] == $items[0]) {
                     $data = $tokens[2][1];
                 } else {

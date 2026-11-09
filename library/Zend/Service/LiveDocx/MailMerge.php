@@ -148,6 +148,7 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
     {
         $this->logIn();
 
+        $method = 'assocArrayToArrayOfArrayOfString';
         foreach ($values as $value) {
             if (is_array($value)) {
                 $method = 'multiAssocArrayToArrayOfArrayOfString';

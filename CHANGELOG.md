@@ -17,6 +17,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Xml_Security::scan(), Zend_Dom_Query::queryXpath() and Zend_Feed_Reader::findFeedLinks() restore the libxml settings (internal errors, entity loader) also when they throw, e.g. Zend_Xml_Exception for an ENTITY declaration; Zend_Dom_Query restores the previous libxml_use_internal_errors() setting instead of switching it off.
 * No more deprecations of PHP 8.1 and 8.4 that the test suite triggered: Zend_Db_Adapter quote(null) returns '' as before without passing null to addcslashes(), str_replace() or the escape functions of the extensions (Abstract, Mysqli, Db2, Oracle, Sqlsrv, Pdo_Sqlite, Pdo_Mssql, Pdo_Oci); Zend_Service_Amazon_SimpleDb_Page without a token, Zend_Service_Twitter::statusesUpdate() without a reply id and Zend_Wildfire_Channel_HttpHeaders::isReady() without a User-Agent header (e.g. Zend_Controller_Request_HttpTestCase) no longer pass null to string functions; Zend_Soap_Server with SOAP_FUNCTIONS_ALL registers the defined functions by name instead of passing the int to SoapServer::addFunction(), which PHP 8.4 deprecates; Zend_Locale_Math_PhpMath::Pow() throws its "power overflow" exception for zero to a negative power before calling pow(), which PHP 8.4 deprecates for this case.
 * Zend_Service_Twitter::searchTweets() accepts the geocode option again; the format check rejected every value.
+* Code paths that used an undefined variable:
+  * Zend_Pdf_Annotation_Link::setDestination() sets the destination; it failed for every target (an exception for a named destination given as string, an Error for a Zend_Pdf_Target).
+  * Zend_Pdf_Resource_GraphicsState wraps the graphics state object passed to the constructor instead of creating an empty stream object.
+  * Zend_Search_Lucene_Index_SegmentInfo::openCompoundFile('.fdt') returns the stored fields of a segment whose documents are in a shared compound doc store (.cfx) instead of null.
+  * Zend_Crypt_Math_BigInteger_Bcmath::hexToDecimal() and Zend_Crypt_Math_BigInteger_Gmp::hexToDecimal() convert the hexadecimal number; they returned '0' for every value.
+  * Zend_Mail_Protocol_Imap::fetch() returns null for a message without the requested item instead of the value of the previous message.
+  * Zend_Queue::setAdapter() throws Zend_Queue_Exception for an adapter that does not implement Zend_Queue_Adapter_AdapterInterface instead of a TypeError of get_class().
+  * Zend_Tool_Framework_Client_Console_HelpSystem shows the help when no action matches instead of a TypeError of array_search().
+  * Zend_Cloud_QueueService_Adapter_WindowsAzure passes the http_adapter option to the storage client; it passed null.
+  * Zend_Service_WindowsAzure_CommandLine_Deployment::createFromStorageCommand() creates the management client; it failed with an Error.
+  * Zend_Service_LiveDocx_MailMerge::setFieldValues() accepts an empty array.
+  * No more "Undefined variable" warnings in Zend_Acl, Zend_Cloud_Infrastructure_Adapter_Rackspace::monitorInstance(), Zend_Cloud_StorageService_Adapter_Rackspace, Zend_Cloud_StorageService_Adapter_WindowsAzure::deleteMetadata(), Zend_Db_Adapter_Db2::getQuoteIdentifierSymbol(), Zend_Db_Adapter_Mysqli::describeTable(), Zend_Dojo_View_Helper_Dijit, Zend_File_Transfer_Adapter_Http::getProgress(), Zend_Mail_Storage_Writable_Maildir, Zend_Pdf_Canvas_Abstract::clipPolygon() and drawPolygon() with no points, Zend_Service_SqlAzure_Management_Client::createServer(), Zend_Service_WindowsAzure_Storage_DynamicTableEntity::getAzurePropertyType() and the Zend_Tool_Project form and project providers; the variables have the value they had before (null or an empty array where it is iterated).
+  * Zend_Http_Response_Stream::readStream() reads the remainder of the stream without the check for a content-length header that was never set; the behaviour does not change.
 
 ## [1.26.1] - 2026-11-07
 

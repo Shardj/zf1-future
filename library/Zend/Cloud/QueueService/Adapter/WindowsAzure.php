@@ -107,7 +107,7 @@ class Zend_Cloud_QueueService_Adapter_WindowsAzure
                 $this->_storageClient->setProxy(true, $proxyHost, $proxyPort, $proxyCredentials);
             }
             if (isset($options[self::HTTP_ADAPTER])) {
-                $this->_storageClient->setHttpClientChannel($httpAdapter);
+                $this->_storageClient->setHttpClientChannel($options[self::HTTP_ADAPTER]);
             }
         } catch(Zend_Service_WindowsAzure_Exception $e) {
             throw new Zend_Cloud_QueueService_Exception('Error on create: '.$e->getMessage(), $e->getCode(), $e);

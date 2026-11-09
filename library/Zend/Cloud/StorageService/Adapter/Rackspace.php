@@ -275,6 +275,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      */
     private function getAllFolders($path, &$resultArray)
     {
+        $options = [];
         if (!empty($path)) {
             $options = [
                 'prefix'    => $path

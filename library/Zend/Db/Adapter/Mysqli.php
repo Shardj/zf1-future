@@ -191,6 +191,7 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
          * Use mysqli extension API, because DESCRIBE doesn't work
          * well as a prepared statement on MySQL 4.1.
          */
+        $result = [];
         if ($queryResult = $this->_query($sql)) {
             while ($row = $queryResult->fetch_assoc()) {
                 $result[] = $row;

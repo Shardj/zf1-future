@@ -511,6 +511,7 @@ abstract class Zend_Pdf_Canvas_Abstract implements Zend_Pdf_Canvas_Interface
     {
         $this->_addProcSet('PDF');
 
+        $path       = '';
         $firstPoint = true;
         foreach ($x as $id => $xVal) {
             $xObj = new Zend_Pdf_Element_Numeric($xVal);
@@ -821,6 +822,7 @@ abstract class Zend_Pdf_Canvas_Abstract implements Zend_Pdf_Canvas_Interface
     {
         $this->_addProcSet('PDF');
 
+        $path       = '';
         $firstPoint = true;
         foreach ($x as $id => $xVal) {
             $xObj = new Zend_Pdf_Element_Numeric($xVal);

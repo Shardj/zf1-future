@@ -209,6 +209,7 @@ EOS;
 
     public static function getDefaultReadmeContents($caller = null)
     {
+        $name = '';
         $projectDirResource = $caller->getResource()->getProfile()->search('projectDirectory');
         if ($projectDirResource) {
             $name = ltrim(strrchr($projectDirResource->getPath(), DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR);

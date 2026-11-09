@@ -1120,6 +1120,7 @@ class Zend_Acl
         }
 
         // check assertion first
+        $assertionValue = null;
         if ($rule['assert']) {
             $assertion = $rule['assert'];
             $assertionValue = $assertion->assert(

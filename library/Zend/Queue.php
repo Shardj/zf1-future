@@ -240,7 +240,7 @@ class Zend_Queue implements Countable
 
         if (!$adapter instanceof Zend_Queue_Adapter_AdapterInterface) {
             require_once 'Zend/Queue/Exception.php';
-            throw new Zend_Queue_Exception("Adapter class '" . get_class($adapterName) . "' does not implement Zend_Queue_Adapter_AdapterInterface");
+            throw new Zend_Queue_Exception("Adapter class '" . (is_object($adapter) ? get_class($adapter) : gettype($adapter)) . "' does not implement Zend_Queue_Adapter_AdapterInterface");
         }
 
         $this->_adapter = $adapter;
