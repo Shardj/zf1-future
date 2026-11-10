@@ -1536,7 +1536,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
         }
 
         foreach (array_keys($this->_validators) as $test) {
-            if (preg_match('/' . preg_quote($name) . '$/i', $test)) {
+            if (preg_match('/' . preg_quote($name, '/') . '$/i', $test)) {
                 return $test;
             }
         }
@@ -1557,7 +1557,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
         }
 
         foreach (array_keys($this->_filters) as $test) {
-            if (preg_match('/' . preg_quote($name) . '$/i', $test)) {
+            if (preg_match('/' . preg_quote($name, '/') . '$/i', $test)) {
                 return $test;
             }
         }

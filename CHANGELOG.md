@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 * Zend_OpenId_Consumer_Storage_File and Zend_OpenId_Provider_Storage_File throw Zend_OpenId_Exception ("Cannot create a lock file in the directory") when a lock file cannot be created in an existing storage directory; the result of fopen() was compared with null, so the constructor emitted a warning and failed with a TypeError of fclose() (PHP 8) instead.
+* Zend_Http_Cookie::matchCookieDomain() and the validator and filter lookup of Zend_File_Transfer_Adapter_Abstract (hasValidator(), getValidator(), removeValidator(), hasFilter(), getFilter(), removeFilter()) escape a slash in the cookie domain or name; a value with a slash ended in a preg_match() warning ("Unknown modifier") instead of no match.
 
 ## [1.27.0] - 2026-11-09
 

@@ -2684,12 +2684,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to preg_quote() is missing delimiter / to be effective.',
-	'identifier' => 'argument.invalidPregQuote',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $value of method Zend_Dojo_BuildLayer::addProfileOption() has invalid type value.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -4031,12 +4025,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_int() with int will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to preg_quote() is missing delimiter / to be effective.',
-	'identifier' => 'argument.invalidPregQuote',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
 ];
 $ignoreErrors[] = [
@@ -5416,12 +5404,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::getPath().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Cookie.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to preg_quote() is missing delimiter / to be effective.',
-	'identifier' => 'argument.invalidPregQuote',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/Cookie.php',
 ];
