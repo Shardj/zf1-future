@@ -1580,31 +1580,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $insert_id on object|resource.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $server_version on object|resource.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method close() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method query() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method real_escape_string() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
@@ -1616,18 +1592,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method beginTransaction() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method commit() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method errorInfo() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
@@ -1635,36 +1599,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method exec() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getAttribute() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method inTransaction() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method lastInsertId() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method quote() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method rollBack() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
@@ -1694,46 +1628,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method exec() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Mssql.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $type might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Mssql.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method exec() on object|resource.',
-	'identifier' => 'method.nonObject',
+	'rawMessage' => 'Parameter #1 $name of method PDO::lastInsertId() expects string, null given.',
+	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Pgsql.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method lastInsertId() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Pgsql.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method errorInfo() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method exec() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method exec() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlsrv.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $type might not be defined.',
@@ -1802,12 +1706,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Db2.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $affected_rows on object|resource.',
 	'identifier' => 'property.nonObject',
 	'count' => 1,
@@ -1816,42 +1714,12 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $errno on object|resource.',
 	'identifier' => 'property.nonObject',
-	'count' => 6,
+	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $error on object|resource.',
 	'identifier' => 'property.nonObject',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $sqlstate on object|resource.',
-	'identifier' => 'property.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method close() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method execute() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method fetch() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method free_result() on object|resource.',
-	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];
@@ -1870,30 +1738,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method prepare() on object|resource.',
 	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method reset() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method result_metadata() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method store_result() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept null.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];
@@ -1922,146 +1766,26 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $queryString on object|resource.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method bindColumn() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method bindParam() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method bindValue() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method closeCursor() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method columnCount() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method errorCode() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method errorInfo() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method execute() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method fetch() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method fetchAll() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method fetchColumn() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method fetchObject() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getAttribute() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getColumnMeta() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method nextRowset() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method prepare() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method rowCount() on object|resource.',
-	'identifier' => 'method.nonObject',
+	'rawMessage' => 'Parameter #1 $attribute of method PDOStatement::setAttribute() expects int, string given.',
+	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method setAttribute() on object|resource.',
-	'identifier' => 'method.nonObject',
+	'rawMessage' => 'Parameter #1 $name of method PDOStatement::getAttribute() expects int, string given.',
+	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method setFetchMode() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method bindParam() on object|resource.',
-	'identifier' => 'method.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
 ];
@@ -2264,12 +1988,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $array of method Zend_Feed_Abstract::_mapFeedHeaders() expects array, Zend_Feed_Builder_Header given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $xml of static method Zend_Xml_Security::scan() expects string, DOMElement given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2302,84 +2020,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMElement::$version.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMElement::createCDATASection().',
-	'identifier' => 'method.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMElement::createElement().',
-	'identifier' => 'method.notFound',
-	'count' => 25,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMElement::createElementNS().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $author on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $copyright on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $description on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $generator on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $image on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $language on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $lastUpdate on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $link on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $published on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $title on array.',
-	'identifier' => 'property.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Atom.php',
 ];
@@ -2646,144 +2286,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/FeedSet.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMElement::createCDATASection().',
-	'identifier' => 'method.notFound',
-	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMElement::createElement().',
-	'identifier' => 'method.notFound',
-	'count' => 41,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMElement::createElementNS().',
-	'identifier' => 'method.notFound',
-	'count' => 15,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $author on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $category on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $cloud on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $copyright on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $description on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $email on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $generator on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $image on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $itunes on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 11,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $language on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $lastUpdate on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $link on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $published on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $rating on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $skipDays on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $skipHours on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $textInput on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $title on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $ttl on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access property $webmaster on array.',
-	'identifier' => 'property.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $flinks in empty() always exists and is not falsy.',
