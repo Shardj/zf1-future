@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Pdf_StringParser::skipComment() stops at the end of the line; it skipped the rest of the data.
 * Zend_Search_Lucene_Search_QueryParserContext throws Zend_Search_Lucene_Exception for an unknown boolean operator; it tried to throw a Zend_Search_Lucene index object.
 * Zend_Tool_DatabaseSchemaProvider throws Zend_Db_Schema_Exception ("Database was not initialized") when no database is configured; the check referred to an interface that does not exist and never matched.
+* Zend_Filter_Compress_Zip throws Zend_Filter_Exception when a file of a compressed directory cannot be added to the archive; the result of ZipArchive::addFile() was not checked, so the archive was written without the file.
+* Zend_Feed_Builder_Header::setCloud() loads Zend_Uri_Http before it uses it; without an autoloader it failed with "Class Zend_Uri_Http not found".
 
 ## [1.27.0] - 2026-11-09
 
