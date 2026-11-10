@@ -1,0 +1,10 @@
+# Analysis with the latest PHPStan release and PHP 8.6 as the highest version, run as an experimental CI job.
+# .phpstan.php86.baseline.php holds only the errors reported in addition to .phpstan.dist.baseline.php.
+includes:
+    - .phpstan.dist.neon
+    - .phpstan.php86.baseline.php
+parameters:
+    phpVersion:
+        max: 80699
+    # entries of .phpstan.dist.baseline.php that the newer PHPStan reports differently
+    reportUnmatchedIgnoredErrors: false

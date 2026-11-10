@@ -46,3 +46,26 @@ jobs:
         with:
           path: .phpstan.cache
           key: phpstan-result-cache-${{ github.run_id }}
+  phpstan-php86:
+    name: Analyze for PHP 8.6 (experimental)
+    runs-on: ubuntu-26.04
+
+    # Runs the latest PHPStan release, which knows PHP 8.6; a failing job does not fail the workflow
+    continue-on-error: true
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - uses: actions/checkout@v5
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --ignore-platform-req=ext-*
+
+      - name: Update PHPStan to the latest release
+        run: composer update phpstan/phpstan phpstan/phpstan-phpunit --prefer-dist --no-progress --ignore-platform-req=ext-*
+
+      - name: PHPStan Static Analysis
+        run: XDEBUG_MODE=off php bin/phpstan.phar analyze --configuration .phpstan.php86.neon
