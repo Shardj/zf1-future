@@ -30,7 +30,7 @@ class Zend_View_Helper_PaginationControl
     /**
      * View instance
      *
-     * @var Zend_View_Instance
+     * @var Zend_View_Interface
      */
     public $view = null;
 

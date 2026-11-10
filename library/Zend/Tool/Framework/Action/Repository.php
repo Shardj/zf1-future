@@ -83,7 +83,7 @@ class Zend_Tool_Framework_Action_Repository
     /**
      * process() - this is called when the client is done constructing (after init())
      *
-     * @return unknown|null
+     * @return mixed|null
      */
     public function process()
     {

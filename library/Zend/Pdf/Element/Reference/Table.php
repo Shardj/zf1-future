@@ -175,7 +175,7 @@ class Zend_Pdf_Element_Reference_Table
      * Get next generation number for free object
      *
      * @param integer $objNum
-     * @return unknown
+     * @return mixed
      */
     public function getNewGeneration($objNum)
     {

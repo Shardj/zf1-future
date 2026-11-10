@@ -134,18 +134,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Application/Resource/Dojo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Application_Resource_Dojo::getDojo() has invalid return type Zend_Dojo_View_Dojo_Container.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/Dojo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Application_Resource_Dojo::init() should return Zend_Dojo_View_Helper_Dojo_Container but returns Zend_Dojo_View_Dojo_Container.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/Dojo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Application_Bootstrap_Bootstrapper::$frontController.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -384,18 +372,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $barcode of method Zend_Barcode_Renderer_RendererAbstract::setBarcode() expects Zend_Barcode_Object, Zend_Barcode_Object_ObjectAbstract given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/RendererAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $barcode of method Zend_Barcode_Renderer_RendererAbstract::setBarcode() has invalid type Zend_Barcode_Object.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/RendererAbstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of method DOMElement::setAttribute() expects string, int given.',
@@ -872,18 +848,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Docblock/Tag/Return.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $type of method Zend_CodeGenerator_Php_Member_Container::__construct() has invalid type const.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_CodeGenerator_Php_Member_Container::$_type has unknown class const as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Member/Container.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method generate() on string.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
@@ -1268,12 +1232,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Static.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Crypt::hash() has invalid return type unknown.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $dh_key of function openssl_dh_compute_key expects resource, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1438,18 +1396,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getRate() on an unknown class Zend_Service.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Currency::getService() has invalid return type Zend_Service.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Currency.php',
 ];
@@ -2286,18 +2232,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childParameterType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/EventManager/Event.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getListeners() on an unknown class Zend_EventManager_StaticEventCollection.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_EventManager_EventManager::getSharedCollections() has invalid return type Zend_EventManager_StaticEventCollection.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_EventManager_ListenerAggregate::attach() invoked with 2 parameters, 1 required.',
@@ -4028,26 +3962,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Ldap_Collection_Iterator_Default::getAttributeNameTreatment() has invalid return type callback.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $ldap of class Zend_Ldap_Exception constructor expects Zend_Ldap|null, $this(Zend_Ldap_Collection_Iterator_Default) given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $attributeNameTreatment of method Zend_Ldap_Collection_Iterator_Default::setAttributeNameTreatment() has invalid type callback.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Ldap_Collection_Iterator_Default::$_attributeNameTreatment has unknown class callback as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
 ];
@@ -4302,24 +4218,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Log/Filter/Priority.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method insert() on an unknown class Zend_Db_Adapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $db of method Zend_Log_Writer_Db::__construct() has invalid type Zend_Db_Adapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Log_Writer_Db::$_db has unknown class Zend_Db_Adapter as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Db.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">=" between int<0, 255> and 0 is always true.',
@@ -4970,36 +4868,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage::addAssociation() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage::addDiscoveryInfo() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage::getAssociation() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage::getAssociationByHandle() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage::getDiscoveryInfo() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -5008,36 +4876,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $recursive of function mkdir expects bool, int given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage_File::addAssociation() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage_File::addDiscoveryInfo() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage_File::getAssociation() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage_File::getAssociationByHandle() has invalid type long.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $expires of method Zend_OpenId_Consumer_Storage_File::getDiscoveryInfo() has invalid type long.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
 ];
@@ -5354,20 +5192,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Named.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'ArrayObject<*NEVER*, *NEVER*> does not accept Zend_Pdf_Element.',
 	'identifier' => 'offsetAssign.valueType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Array::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
 ];
@@ -5384,58 +5210,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Boolean::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Dictionary::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Dictionary.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Name.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Name::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Name.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Null::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Null.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Numeric::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Numeric.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getEnumerationShift() on an unknown class Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $factory of method Zend_Pdf_Element::toString() expects Zend_Pdf_Factory|null, Zend_Pdf_ElementFactory given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Object::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element::length().',
@@ -5448,42 +5226,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getEnumerationShift() on an unknown class Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Reference.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Reference::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Reference.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Pdf_Element_Reference_Table::getNewGeneration() has invalid return type unknown.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Reference/Table.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_Stream::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_String::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/String.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element_String_Binary::toString() has invalid type Zend_Pdf_Factory.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/String/Binary.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_ElementFactory_Interface::$_factoryId.',
@@ -7070,12 +6812,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Framework_Action_Repository::process() has invalid return type unknown.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Action/Repository.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $client of method Zend_Tool_Framework_Client_Interactive_InputHandler::setClient() expects Zend_Tool_Framework_Client_Interactive_InputInterface, $this(Zend_Tool_Framework_Client_Abstract) given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7182,18 +6918,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Loader/IncludePathLoader/RecursiveFilterIterator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Default value of the parameter #1 $type (string) of method Zend_Tool_Framework_Metadata_Basic::getAttributes() is incompatible with type const.',
-	'identifier' => 'parameter.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Metadata/Basic.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $type of method Zend_Tool_Framework_Metadata_Basic::getAttributes() has invalid type const.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Metadata/Basic.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Tool_Framework_Metadata_Dynamic::__set() with return type void returns $this(Zend_Tool_Framework_Metadata_Dynamic) but should not return anything.',
@@ -7362,30 +7086,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Iterator/ContextFilter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getName() on an unknown class Zend_Tool_Project_Context.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getName() on string|Zend_Tool_Project_Context.',
-	'identifier' => 'method.nonObject',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_Project_Profile_Resource::getContext() has invalid return type Zend_Tool_Project_Context.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Project_Profile_Resource::$_context has unknown class Zend_Tool_Project_Context as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Profile/Resource.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property ArrayObject::$name.',
@@ -7646,56 +7346,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method checkChars() on an unknown class Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method checkLength() on an unknown class Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method checksum() on an unknown class Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getCheck() on an unknown class Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getLength() on an unknown class Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method setCheck() on an unknown class Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Validate_Barcode::getAdapter() has invalid return type Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $adapter of method Zend_Validate_Barcode::__construct() has invalid type Zend_Validate_Barcode_BarcodeAdapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_Barcode::$_adapter has unknown class Zend_Validate_Barcode_BarcodeAdapter as its type.',
-	'identifier' => 'class.notFound',
+	'rawMessage' => 'Call to an undefined method Zend_Validate_Barcode_AdapterInterface::getLength().',
+	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/Barcode.php',
 ];
@@ -7754,12 +7406,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Validate_EmailAddress::getDomainCheck() has invalid return type unknown.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $decimal_number of function decbin expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7796,40 +7442,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/Exists.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Hash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of function array_keys expects array, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Hash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of function array_values expects array<T>, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Hash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_File_Hash::$_hash (string) does not accept null.',
+	'rawMessage' => 'Property Zend_Validate_File_Hash::$_hash (array) does not accept null.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/File/Hash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset \'name\' does not exist on string.',
-	'identifier' => 'offsetAccess.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/IsCompressed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset \'name\' does not exist on string.',
-	'identifier' => 'offsetAccess.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/IsImage.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
@@ -8264,38 +7880,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to property $paginator on an unknown class Zend_View_Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method partial() on an unknown class Zend_View_Instance.',
-	'identifier' => 'class.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $obj of function get_object_vars expects object, array given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $view of method Zend_View_Exception::setView() expects Zend_View_Interface|null, Zend_View_Instance given.',
-	'identifier' => 'argument.type',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_PaginationControl::$view (Zend_View_Instance) does not accept Zend_View_Interface.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_PaginationControl::$view has unknown class Zend_View_Instance as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
 ];

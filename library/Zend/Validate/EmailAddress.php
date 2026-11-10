@@ -326,7 +326,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
     /**
      * Returns the set domainCheck option
      *
-     * @return unknown
+     * @return mixed
      */
     public function getDomainCheck()
     {

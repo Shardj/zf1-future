@@ -333,7 +333,7 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
     /**
      * Set the barcode object
      *
-     * @param Zend_Barcode_Object $barcode
+     * @param Zend_Barcode_Object_ObjectAbstract $barcode
      * @return Zend_Barcode_Renderer_RendererAbstract
      * @throws Zend_Barcode_Renderer_Exception
      */
