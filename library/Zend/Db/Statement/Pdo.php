@@ -41,6 +41,13 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
 {
 
     /**
+     * The driver level statement
+     *
+     * @var PDOStatement|null
+     */
+    protected $_stmt = null;
+
+    /**
      * @var int
      */
     protected $_fetchMode = PDO::FETCH_ASSOC;

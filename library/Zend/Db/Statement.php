@@ -43,7 +43,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
 {
 
     /**
-     * @var resource|object The driver level statement object/resource
+     * @var resource|object|false|null The driver level statement object/resource; false or null when there is none
      */
     protected $_stmt = null;
 
