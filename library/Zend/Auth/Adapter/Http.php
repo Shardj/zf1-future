@@ -502,6 +502,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
             require_once 'Zend/Auth/Adapter/Exception.php';
             throw new Zend_Auth_Adapter_Exception('The value of the client Authorization header is required');
         }
+        // @phpstan-ignore empty.property (no resolver is set until setBasicResolver() is called)
         if (empty($this->_basicResolver)) {
             /**
              * @see Zend_Auth_Adapter_Exception
@@ -560,6 +561,7 @@ class Zend_Auth_Adapter_Http implements Zend_Auth_Adapter_Interface
             require_once 'Zend/Auth/Adapter/Exception.php';
             throw new Zend_Auth_Adapter_Exception('The value of the client Authorization header is required');
         }
+        // @phpstan-ignore empty.property (no resolver is set until setDigestResolver() is called)
         if (empty($this->_digestResolver)) {
             /**
              * @see Zend_Auth_Adapter_Exception

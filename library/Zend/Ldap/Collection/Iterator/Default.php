@@ -103,6 +103,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
         $this->_ldap = $ldap;
         $this->_resultId = $resultId;
         $this->_itemCount = @ldap_count_entries($ldap->getResource(), $resultId);
+        // @phpstan-ignore identical.alwaysFalse (ldap_count_entries() returns false on failure)
         if ($this->_itemCount === false) {
             /**
              * @see Zend_Ldap_Exception

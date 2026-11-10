@@ -379,6 +379,7 @@ class Zend_Cache_Frontend_Page extends Zend_Cache_Core
             }
             break;
         case 'Cookie':
+            // @phpstan-ignore isset.variable (the application may unset or replace the superglobal)
             if (isset($_COOKIE)) {
                 $var = $_COOKIE;
             } else {

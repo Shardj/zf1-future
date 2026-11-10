@@ -360,11 +360,13 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
             throw new Zend_Controller_Dispatcher_Exception('Cannot load controller class "' . $className . '" from file "' . $loadFile . "'");
         }
 
+        // @phpstan-ignore booleanNot.alwaysTrue (the file loaded above may define the class)
         if (!class_exists($finalClass, false)) {
             require_once 'Zend/Controller/Dispatcher/Exception.php';
             throw new Zend_Controller_Dispatcher_Exception('Invalid controller class ("' . $finalClass . '")');
         }
 
+        // @phpstan-ignore deadCode.unreachable (reached when the file loaded above defines the class)
         return $finalClass;
     }
 
