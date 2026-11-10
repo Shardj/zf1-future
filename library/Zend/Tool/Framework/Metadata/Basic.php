@@ -183,7 +183,7 @@ class Zend_Tool_Framework_Metadata_Basic
      * getAttributes() - this will retrieve any attributes of this object that exist as properties
      * This is most useful for printing metadata.
      *
-     * @param const $type
+     * @param string $type
      * @return array
      */
     public function getAttributes($type = self::ATTRIBUTES_ALL, $stringRepresentationOfNonScalars = false)

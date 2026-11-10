@@ -65,7 +65,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
     /**
      * The method that will be applied to the attribute's names.
      *
-     * @var  integer|callback
+     * @var  integer|callable
      */
     protected $_attributeNameTreatment = self::ATTRIBUTE_TO_LOWER;
 
@@ -170,7 +170,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
      * or a valid callback accepting the attribute's name as it's only
      * argument and returning the new attribute's name.
      *
-     * @param  integer|callback $attributeNameTreatment
+     * @param  integer|callable $attributeNameTreatment
      * @return $this
      */
     public function setAttributeNameTreatment($attributeNameTreatment)
@@ -203,7 +203,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
     /**
      * Returns the currently set attribute name treatment
      *
-     * @return integer|callback
+     * @return integer|callable
      */
     public function getAttributeNameTreatment()
     {

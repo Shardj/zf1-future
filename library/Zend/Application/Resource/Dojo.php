@@ -57,7 +57,7 @@ class Zend_Application_Resource_Dojo
     /**
      * Retrieve Dojo View Helper
      *
-     * @return Zend_Dojo_View_Dojo_Container
+     * @return Zend_Dojo_View_Helper_Dojo_Container
      */
     public function getDojo()
     {
