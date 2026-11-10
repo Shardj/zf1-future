@@ -10,7 +10,7 @@ parameters:
     excludePaths:
         - library/Zend/Search/Lucene/MultiSearcher.php
         - library/Zend/Service/WindowsAzure/Log/Writer/WindowsAzure.php
-        - library/Zend/Test/
+        - library/Zend/Test/PHPUnit/
     level: 5
     tmpDir: .phpstan.cache
     checkFunctionNameCase: true

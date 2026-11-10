@@ -11420,6 +11420,30 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Stdlib/SplPriorityQueue.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Test_DbAdapter::lastInsertId() should return string but returns false.',
+	'identifier' => 'return.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Test/DbAdapter.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Test_DbStatement::fetchColumn() should return string but returns false.',
+	'identifier' => 'return.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Test/DbStatement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Return type (false) of method Zend_Test_DbStatement::errorCode() should be compatible with return type (string) of method Zend_Db_Statement_Interface::errorCode()',
+	'identifier' => 'method.childReturnType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Test/DbStatement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Return type (false) of method Zend_Test_DbStatement::errorInfo() should be compatible with return type (array) of method Zend_Db_Statement_Interface::errorInfo()',
+	'identifier' => 'method.childReturnType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Test/DbStatement.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Call to sscanf contains 11 placeholders, 7 values given.',
 	'identifier' => 'argument.sscanf',
 	'count' => 1,
