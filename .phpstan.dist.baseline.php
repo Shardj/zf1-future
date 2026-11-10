@@ -2312,18 +2312,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Db_Statement::_bindParam().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Db_Statement::_execute().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation "<=" between *NEVER* and int<0, max> results in an error.',
 	'identifier' => 'smallerOrEqual.invalid',
 	'count' => 1,
@@ -2332,12 +2320,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">=" between int<1, max> and 1 is always true.',
 	'identifier' => 'greaterOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Db_Profiler_Query::start() invoked with 1 parameter, 0 required.',
-	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
 ];
@@ -4070,44 +4052,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Http.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_int() with string will always evaluate to false.',
-	'identifier' => 'function.impossibleType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "==" between *NEVER* and 0.0 results in an error.',
-	'identifier' => 'equal.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "==" between *NEVER* and 1.0 results in an error.',
-	'identifier' => 'equal.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $locale of static method Zend_Locale::getTranslation() expects string|Zend_Locale|null, array given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of && is always false.',
-	'identifier' => 'booleanAnd.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between *NEVER* and 1 will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
 ];
@@ -12592,12 +12538,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function method_exists() with object and \'__toString\' will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/NotEmpty.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "==" between *NEVER* and 0.0 results in an error.',
-	'identifier' => 'equal.invalid',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/NotEmpty.php',
 ];
