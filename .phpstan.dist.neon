@@ -11,8 +11,36 @@ parameters:
         - library/Zend/Search/Lucene/MultiSearcher.php
         - library/Zend/Service/WindowsAzure/Log/Writer/WindowsAzure.php
         - library/Zend/Test/PHPUnit/
+        # Deprecated components (see README.md); they are not tested either
+        - library/Zend/Cache/Backend/Sqlite.php
+        - library/Zend/Cache/Backend/WinCache.php
+        - library/Zend/Cache/Backend/Xcache.php
+        - library/Zend/Cache/Backend/ZendPlatform.php
+        - library/Zend/Cache/Backend/ZendServer.php
+        - library/Zend/Cache/Backend/ZendServer/
+        - library/Zend/Filter/Compress/Rar.php
+        - library/Zend/Filter/Encrypt/Mcrypt.php
+        - library/Zend/Http/UserAgent/Features/Adapter/DeviceAtlas.php
+        - library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php
+        - library/Zend/Queue/Adapter/Memcacheq.php
+        - library/Zend/Queue/Adapter/PlatformJobQueue.php
+        - library/Zend/Queue/Message/PlatformJob.php
+        - library/Zend/Serializer/Adapter/Wddx.php
+        - library/Zend/Service/Ebay/
     level: 5
     tmpDir: .phpstan.cache
     checkFunctionNameCase: true
     checkInternalClassCaseSensitivity: true
     treatPhpDocTypesAsCertain: false
+    # Members of classes with __get() / __set() / __call() are resolved at runtime (Zend_Pdf_Element_*, Zend_Config,
+    # Zend_Soap_Client, ...), so an unknown member of such a class is not reported
+    reportMagicMethods: false
+    reportMagicProperties: false
+    ignoreErrors:
+        # The library has no namespaces: @internal marks members used by other components of the library
+        - identifier: method.internal
+        - identifier: staticMethod.internal
+        - identifier: method.internalClass
+        - identifier: property.internalClass
+        - identifier: new.internalClass
+        - identifier: class.extendsInternalClass

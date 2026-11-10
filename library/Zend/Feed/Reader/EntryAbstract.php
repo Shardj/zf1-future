@@ -188,7 +188,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
      * Return an Extension object with the matching name (postfixed with _Entry)
      *
      * @param string $name
-     * @return Zend_Feed_Reader_Extension_EntryAbstract|null
+     * @return ($name is 'Atom' ? Zend_Feed_Reader_Extension_Atom_Entry|null : ($name is 'Content' ? Zend_Feed_Reader_Extension_Content_Entry|null : ($name is 'DublinCore' ? Zend_Feed_Reader_Extension_DublinCore_Entry|null : ($name is 'Slash' ? Zend_Feed_Reader_Extension_Slash_Entry|null : ($name is 'Thread' ? Zend_Feed_Reader_Extension_Thread_Entry|null : ($name is 'WellFormedWeb' ? Zend_Feed_Reader_Extension_WellFormedWeb_Entry|null : Zend_Feed_Reader_Extension_EntryAbstract|null))))))
      */
     public function getExtension($name)
     {
