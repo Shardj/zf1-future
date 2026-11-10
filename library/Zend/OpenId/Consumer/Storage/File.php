@@ -79,7 +79,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                     Zend_OpenId_Exception::ERROR_STORAGE);
             }
         }
-        if (($f = fopen($this->_dir.'/assoc.lock', 'w+')) === null) {
+        if (($f = @fopen($this->_dir.'/assoc.lock', 'w+')) === false) {
             /**
              * @see Zend_OpenId_Exception
              */
@@ -89,7 +89,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 Zend_OpenId_Exception::ERROR_STORAGE);
         }
         fclose($f);
-        if (($f = fopen($this->_dir.'/discovery.lock', 'w+')) === null) {
+        if (($f = @fopen($this->_dir.'/discovery.lock', 'w+')) === false) {
             /**
              * @see Zend_OpenId_Exception
              */
@@ -99,7 +99,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
                 Zend_OpenId_Exception::ERROR_STORAGE);
         }
         fclose($f);
-        if (($f = fopen($this->_dir.'/nonce.lock', 'w+')) === null) {
+        if (($f = @fopen($this->_dir.'/nonce.lock', 'w+')) === false) {
             /**
              * @see Zend_OpenId_Exception
              */

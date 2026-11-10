@@ -2666,12 +2666,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to preg_quote() is missing delimiter / to be effective.',
-	'identifier' => 'argument.invalidPregQuote',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $value of method Zend_Dojo_BuildLayer::addProfileOption() has invalid type value.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -4016,12 +4010,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to preg_quote() is missing delimiter / to be effective.',
-	'identifier' => 'argument.invalidPregQuote',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
 	'identifier' => 'smallerOrEqual.alwaysTrue',
 	'count' => 1,
@@ -5362,12 +5350,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::getPath().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Cookie.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to preg_quote() is missing delimiter / to be effective.',
-	'identifier' => 'argument.invalidPregQuote',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/Cookie.php',
 ];
@@ -6866,12 +6848,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between resource|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "^" between string|false and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -6887,12 +6863,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $recursive of function mkdir expects bool, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between resource|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
 ];
 $ignoreErrors[] = [
