@@ -68,3 +68,28 @@ To stop the VM do one of the following:
 Also, when any of of the Puppet manifests change (.pp files), it is a good idea to rerun them:
 
     vagrant provision
+
+# Releasing a new version
+
+A release is one commit named `Release x.y.z` on its own branch (`release/x.y.z`), merged with a pull request.
+
+### 1. Prepare the release commit
+
+- `CHANGELOG.md`: rename the `[Unreleased]` section to `[x.y.z] - YYYY-MM-DD` and add a new, empty `[Unreleased]` section above it.
+- `composer.json`: set `version` to `x.y.z`.
+- `library/Zend/Version.php`: set `Zend_Version::VERSION` to `x.y.z`.
+- `composer.lock`: run `composer update --lock`, so that the content hash matches the changed `composer.json`. No package version may change with it.
+
+  If the command fails because a requirement of `phpcompatibility/php-compatibility` (installed from its development branch) has changed, update that package together with PHP_CodeSniffer:
+
+      composer update -W phpcompatibility/php-compatibility squizlabs/php_codesniffer
+
+- `README.md`: update the supported PHP versions and the known issues when they change with the release.
+
+Changes that break backward compatibility are described in `BREAKING-CHANGES.md` by the pull requests that make them; check that the section of the release is complete.
+
+### 2. Merge and tag
+
+- Wait for all workflows (PHPUnit, PHPStan, PHPCS, PHP-CS-Fixer, Rector, Database drivers) to pass and merge the pull request.
+- Tag the merge commit as `release-x.y.z` and push the tag.
+- Publish the GitHub release for the tag with the section of `CHANGELOG.md` as its notes.
