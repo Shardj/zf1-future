@@ -80,48 +80,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::newInstance().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::invokeArgs().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::isStatic().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_object() with object will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -228,12 +186,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Application/Resource/Router.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Translate::addTranslation().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/Translate.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Application_Bootstrap_Bootstrapper::getResource().',
@@ -458,30 +410,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "+" between string and int results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Sqlite::_query() never returns resource so it can be removed from the return type.',
-	'identifier' => 'return.unusedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Cache_Backend_Sqlite::_query() should return resource|false but returns SQLiteResult.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between SQLiteResult and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_ExtendedInterface::___expire().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -498,12 +426,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Constant XC_TYPE_VAR not found.',
-	'identifier' => 'constant.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Xcache.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend::getCapabilities().',
@@ -618,18 +540,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$word.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Captcha/Word.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'If condition is always true.',
@@ -986,18 +896,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_HelperBroker::$redirector.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_HelperBroker::$viewRenderer.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::getViewScript().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -1062,12 +960,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AutoCompleteDojo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Cache::getCache().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Cache.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Request_Abstract::getRequestUri().',
@@ -1328,36 +1220,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Rewrite.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$reqs.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$route.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Translate::getMessages().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Translate::translate().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using === between mixed and null will always evaluate to false.',
 	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
@@ -1376,14 +1238,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Chain.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$route.',
-	'identifier' => 'property.notFound',
+	'rawMessage' => 'Unsafe usage of new static().',
+	'identifier' => 'new.static',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Chain.php',
 ];
@@ -1391,37 +1247,7 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Unsafe usage of new static().',
 	'identifier' => 'new.static',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Chain.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Hostname.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$reqs.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Hostname.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$route.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Hostname.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unsafe usage of new static().',
-	'identifier' => 'new.static',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Hostname.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Module.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Unsafe usage of new static().',
@@ -1430,40 +1256,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Module.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Regex.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$map.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Regex.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$route.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Regex.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Unsafe usage of new static().',
 	'identifier' => 'new.static',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Regex.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$defaults.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Static.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$route.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route/Static.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Unsafe usage of new static().',
@@ -1476,36 +1272,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Crypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::btwoc().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::fromBinary().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::powmod().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::rand().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::toBinary().',
-	'identifier' => 'method.notFound',
-	'count' => 6,
-	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $dh_key of function openssl_dh_compute_key expects resource, string given.',
@@ -1780,258 +1546,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_int() with string will always evaluate to false.',
 	'identifier' => 'function.impossibleType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addArpa() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addDate() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addDay() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addDayOfYear() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addHour() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addIso() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addMinute() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addMonth() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addSecond() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addTime() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addTimestamp() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addWeek() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addWeekday() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::addYear() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setArpa() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setDate() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setDay() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setDayOfYear() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setHour() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setIso() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setMinute() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setMonth() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setSecond() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setTime() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setTimestamp() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setWeek() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setWeekday() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::setYear() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subArpa() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subDate() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subDay() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subDayOfYear() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subHour() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subIso() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subMinute() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subMonth() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subSecond() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subTime() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subTimestamp() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subWeek() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subWeekday() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Date::subYear() should return $this(Zend_Date) but returns int|Zend_Date.',
-	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
@@ -2642,94 +2156,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getHelper().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $value of method Zend_Dojo_BuildLayer::addProfileOption() has invalid type value.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Decorator/DijitContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Decorator/DijitElement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::form().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Decorator/DijitForm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_Form_DisplayGroup::setView() should return Zend_Dojo_Form_DisplayGroup but returns Zend_Form_DisplayGroup.',
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Dijit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/Dijit.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_Form_Element_Editor::addStyleSheet() should return Zend_Dojo_Form_Element_Editor but returns Zend_Dojo_Form_Element_Dijit.',
@@ -2804,46 +2240,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/Form/Element/ValidationTextBox.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/SubForm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/Form/SubForm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::headStyle().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/BorderContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formButton().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Button.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $haystack of function strstr expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/CheckBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formSelect().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/ComboBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::dojo().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dijit.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $attribs might not be defined.',
@@ -2856,42 +2256,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/DijitContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Dojo/Container.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formTextarea().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Editor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formRadio().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/RadioButton.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/SimpleTextarea.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::htmlList().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Slider.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $subject of function str_replace expects array<string>|string, int given.',
@@ -2970,18 +2334,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.offset',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Feed_Abstract::$_entryClassName.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Feed_Abstract::$_entryElementName.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Abstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $array of method Zend_Feed_Abstract::_mapFeedHeaders() expects array, Zend_Feed_Builder_Header given.',
@@ -3134,12 +2486,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Entry/Atom.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Entry_Atom::id().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Entry/Atom.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Http_Client::setHeader().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -3150,12 +2496,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Entry_Rss::content().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_FeedInterface::getHubs().',
@@ -3174,12 +2514,6 @@ $ignoreErrors[] = [
 	'identifier' => 'instanceof.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$created_time.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Model/Subscription.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
@@ -3212,12 +2546,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method (DOMDocument&Zend_Feed_Reader_FeedInterface)|(Zend_Feed_Abstract&Zend_Feed_Reader_FeedInterface)::getDomDocument().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_FeedInterface::setOriginalSourceUri().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -3242,86 +2570,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getAuthors().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCategories().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCommentCount().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCommentFeedLink().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCommentLink().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getContent().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getDateCreated().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getDateModified().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getDescription().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getEnclosure().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getId().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getLinks().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getSource().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getTitle().',
-	'identifier' => 'method.notFound',
+	'rawMessage' => 'Method Zend_Feed_Reader_Entry_Atom::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
+	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
 ];
@@ -3332,81 +2582,15 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getAuthors().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCategories().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCommentCount().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCommentFeedLink().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getCommentLink().',
-	'identifier' => 'method.notFound',
+	'rawMessage' => 'Method Zend_Feed_Reader_Entry_Rss::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
+	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getContent().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getDate().',
-	'identifier' => 'method.notFound',
+	'rawMessage' => 'Method Zend_Feed_Reader_Entry_Rss::getCommentCount() should return string|null but returns int<min, -1>|int<1, max>|null.',
+	'identifier' => 'return.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getDateModified().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getDescription().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getEnclosure().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getId().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getLinks().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_EntryAbstract::getTitle().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
@@ -3470,92 +2654,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Slash/Entry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getAuthors().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getBaseUrl().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getCategories().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getCopyright().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getDateCreated().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getDateModified().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getDescription().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getFeedLink().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getGenerator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getHubs().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getId().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getImage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getLanguage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getLink().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getTitle().',
-	'identifier' => 'method.notFound',
+	'rawMessage' => 'Method Zend_Feed_Reader_Feed_Atom::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
+	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom.php',
 ];
@@ -3596,81 +2696,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getAuthors().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getCategories().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getCopyright().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getDate().',
-	'identifier' => 'method.notFound',
+	'rawMessage' => 'Method Zend_Feed_Reader_Feed_Rss::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
+	'identifier' => 'return.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getDateModified().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getDescription().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getFeedLink().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getGenerator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getHubs().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getId().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getLanguage().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getLink().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_Extension_FeedAbstract::getTitle().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
@@ -4088,102 +3116,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Compress/Zip.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Constant MCRYPT_DEV_RANDOM not found.',
-	'identifier' => 'constant.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Constant MCRYPT_DEV_URANDOM not found.',
-	'identifier' => 'constant.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Constant MCRYPT_RAND not found.',
-	'identifier' => 'constant.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_create_iv not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_enc_get_iv_size not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_enc_get_key_size not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_enc_get_supported_key_sizes not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_generic not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_generic_deinit not found.',
-	'identifier' => 'function.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_generic_init not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_list_algorithms not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_list_modes not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_module_close not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_module_open not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mcrypt_module_self_test not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function mdecrypt_generic not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Mcrypt.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $keys might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 3,
@@ -4316,66 +3248,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formHidden().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Captcha/ReCaptcha.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formHidden().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Captcha/Word.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formText().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Captcha/Word.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Description.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formErrors().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Errors.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::fieldset().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Fieldset.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Element::getMaxFileSize().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Element::getMultiFile().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Element::setMaxFileSize().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formHidden().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Instanceof between *NEVER* and Zend_Form_DisplayGroup will always evaluate to false.',
 	'identifier' => 'instanceof.alwaysFalse',
 	'count' => 1,
@@ -4394,60 +3266,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormElements.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormErrors.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formErrors().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormErrors.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form|Zend_Form_Element::getImageValue().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formImage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Decorator_Label::getOptPrefix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Decorator_Label::getOptSuffix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Decorator_Label::getReqPrefix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Form_Decorator_Label::getReqSuffix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formLabel().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $label in empty() always exists and is not falsy.',
 	'identifier' => 'empty.variable',
 	'count' => 1,
@@ -4464,48 +3282,6 @@ $ignoreErrors[] = [
 	'identifier' => 'arguments.count',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/PrepareElements.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Form_Element::$content.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewHelper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Form|Zend_Form_Element::$options.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewHelper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formMultiCheckbox().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewHelper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formRadio().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewHelper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::formSelect().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewHelper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getHelper().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewHelper.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::partial().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/ViewScript.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
@@ -4604,18 +3380,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Element.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$hash.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element/Hash.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata::decodeRequest().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Http_Client::getAuthSubToken().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -4712,12 +3476,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App/BaseMediaSource.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_App_Entry::$service.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/Entry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_App_Extension_Generator::getVersion() has invalid return type Zend_Gdata_App_Extension_Version.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -4730,22 +3488,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/App/Extension/Generator.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_App_Feed::$entries.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/Feed.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_App_FeedEntryParent::getRights() has invalid return type Zend_Gdata_AppExtension_Rights.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/App/FeedEntryParent.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_App_FeedSourceParent::$_entry.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/App/FeedSourceParent.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_App_FeedSourceParent::getGenerator() has invalid return type Zend_Gdata_AppExtension_Generator.',
@@ -4796,30 +3542,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/Extension/SendEventNotifications.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Calendar_Extension_WebContent::$height.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/Extension/WebContent.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Calendar_Extension_WebContent::$url.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/Extension/WebContent.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Calendar_Extension_WebContent::$width.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Calendar/Extension/WebContent.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Docs::newMediaFileSource().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Docs.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getDOM() on string.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
@@ -4850,172 +3572,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Extension/Visibility.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Extension_Where::$entryLink.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Extension/Where.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newEmailList().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newEmailListEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newEmailListQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newEmailListRecipientEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newEmailListRecipientQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newGroupEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newGroupQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newLogin().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newMemberEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newMemberQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newNickname().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newNicknameEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newNicknameQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newOwnerEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newProperty().',
-	'identifier' => 'method.notFound',
-	'count' => 10,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newQuota().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newUserEntry().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newUserQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Gdata_Gapps::newWho().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $login on string|Zend_Gdata_App_Entry.',
 	'identifier' => 'property.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Extension_FeedLink::$rel.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/EmailListEntry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_App_Base::__construct() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/Error.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Gapps_Extension_Property::$rel.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/GroupEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Gapps_Extension_Property::$rel.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/MemberEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Gapps_Extension_Property::$rel.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/OwnerEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Extension_FeedLink::$rel.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps/UserEntry.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Constructor of class Zend_Gdata_Gbase has an unused parameter $applicationId.',
@@ -5228,18 +3794,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Gdata/Photos.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Photos_AlbumEntry::$_location.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumEntry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Photos_AlbumFeed::$_geoRssWhere.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Photos/AlbumFeed.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Gdata_Query::__set() with return type void returns mixed but should not return anything.',
 	'identifier' => 'return.void',
 	'count' => 1,
@@ -5292,24 +3846,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Spreadsheets_CellFeed::$colCount.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/CellFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Spreadsheets_CellFeed::$rowCount.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/CellFeed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Gdata_Spreadsheets_ListEntry::$customByName.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets/ListEntry.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Http_Client_Adapter_Interface::setOutputStream().',
@@ -5390,48 +3926,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to static method getProperties() on an unknown class Mobi_Mtld_DA_Api.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/DeviceAtlas.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to static method getTreeFromFile() on an unknown class Mobi_Mtld_DA_Api.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/DeviceAtlas.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to property $capabilities on an unknown class TeraWurfl.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getDeviceCapabilitiesFromRequest() on an unknown class TeraWurfl.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instantiated class TeraWurfl not found.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $wurflObj of method Zend_Http_UserAgent_Features_Adapter_TeraWurfl::getAllCapabilities() has invalid type TeraWurfl.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $features might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $assoc of function json_decode expects bool|null, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -5484,12 +3978,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Layout/Controller/Action/Helper/Layout.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Layout::$content.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout/Controller/Plugin/Layout.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Class LDAP\\Connection not found.',
@@ -5588,12 +4076,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Collection.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_ActiveDirectory::$ldapdisplayname.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/ActiveDirectory.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Ldap_Node_Schema_AttributeType_ActiveDirectory::getDescription() should be compatible with return type (string) of method Zend_Ldap_Node_Schema_AttributeType_Interface::getDescription()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
@@ -5622,54 +4104,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/ActiveDirectory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$_parents.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$desc.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$max-length.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$name.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$oid.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$single-value.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$syntax.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/AttributeType/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory::$ldapdisplayname.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/ActiveDirectory.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Ldap_Node_Schema_ObjectClass_ActiveDirectory::getDescription() should be compatible with return type (string) of method Zend_Ldap_Node_Schema_ObjectClass_Interface::getDescription()',
@@ -5708,94 +4142,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/ActiveDirectory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$_parents.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$abstract.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$auxiliary.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$desc.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$may.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$must.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$name.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$oid.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$structural.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$sup.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $array_arg of function sort contains unresolvable type.',
 	'identifier' => 'argument.unresolvableType',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$aliases.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_AttributeType_OpenLdap::$sup.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$aliases.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/OpenLdap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Ldap_Node_Schema_ObjectClass_OpenLdap::$sup.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/OpenLdap.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'If condition is always false.',
@@ -5972,28 +4322,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Log/Writer/Db.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Layout::$events.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Log/Writer/Mail.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">=" between int<0, 255> and 0 is always true.',
 	'identifier' => 'greaterOrEqual.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Header/HeaderValue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Mail_Part::$contentType.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Mail_Storage_Abstract::$hasFetchPart.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Part.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $headers of static method Zend_Mime_Decode::splitMessage() expects array, null given.',
@@ -6068,12 +4400,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Mail_Storage_Folder::$INBOX.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'If condition is always true.',
 	'identifier' => 'if.alwaysTrue',
 	'count' => 1,
@@ -6108,12 +4434,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Mail_Storage_Pop3::$hasUniqueid.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Pop3.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation "<" between 0 and 1 is always true.',
@@ -6198,60 +4518,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Memory/AccessController.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Manager::load().',
-	'identifier' => 'method.internal',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Manager::processUpdate().',
-	'identifier' => 'method.internal',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Manager::unlink().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Container/Movable.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::getId().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::isSwapped().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::markAsSwapped().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::setValue().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::startTrace().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Memory_Container_Movable::unloadValue().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Memory/Manager.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Memory_Manager::$_backend (Zend_Cache_Backend_Interface) does not accept Zend_Cache_Backend.',
@@ -6446,46 +4712,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Navigation/Page/Mvc.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::getRealm().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::getRequestMethod().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::getRequestScheme().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::getToken().',
-	'identifier' => 'method.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::setRequestMethod().',
-	'identifier' => 'method.notFound',
-	'count' => 6,
-	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getTotalSize() on string.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Consumer::getRequestMethod().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Oauth/Consumer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Instanceof between Zend_Oauth_Token_Request|null and Zend_Oauth_Http_UserAuthorization will always evaluate to false.',
@@ -6498,12 +4728,6 @@ $ignoreErrors[] = [
 	'identifier' => 'isset.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Oauth/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Consumer::getRequestScheme().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Http.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Oauth_Http::_attemptRequest().',
@@ -6644,12 +4868,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Signature/SignatureAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Oauth_Client::setToken().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Token/Access.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Class Zend_Oauth_Client constructor invoked with 4 parameters, 1-3 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
@@ -6713,18 +4931,6 @@ $ignoreErrors[] = [
 	'rawMessage' => '',
 	'identifier' => 'class.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$claimed_id.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$identity.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
 $ignoreErrors[] = [
@@ -6854,12 +5060,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Session_Namespace::$logged_in.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Provider/User/Session.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -6872,22 +5072,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Paginator.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::paginationControl().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Paginator::$_pages (array) does not accept stdClass.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Paginator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Db_Select::getTable().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator/Adapter/DbTableSelect.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property RecursiveIterator::$next.',
@@ -6902,163 +5090,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$ID.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Size.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Count.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Kids.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Names.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Pages.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Version.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object_Stream::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$AcroForm.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$Dests.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$JS.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$Kids.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$Names.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$Outlines.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$S.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Reference::$Version.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer::$Info.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer::$Root.',
-	'identifier' => 'property.notFound',
-	'count' => 16,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer::$Size.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer_Generator::$Root.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer_Keeper::$Encrypt.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer_Keeper::$Info.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer_Keeper::$Root.',
-	'identifier' => 'property.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element::add().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Reference::getKeys().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
@@ -7066,24 +5098,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Trailer::getPrev().',
 	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Action::dumpAction().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Outline_Loaded::__construct().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Target::getResource().',
-	'identifier' => 'method.internal',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
 ];
@@ -7127,18 +5141,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$S.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Next.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Next.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
 ];
 $ignoreErrors[] = [
@@ -7256,90 +5258,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Action.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$D.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Next.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$S.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$D.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Target::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Destination::load().',
-	'identifier' => 'staticMethod.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/GoTo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$IsMap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Next.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$S.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$URI.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$IsMap.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$URI.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Action/URI.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$Rect.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -7349,18 +5267,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$Type.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Contents.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Rect.',
-	'identifier' => 'property.notFound',
-	'count' => 12,
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation.php',
 ];
 $ignoreErrors[] = [
@@ -7376,98 +5282,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/FileAttachment.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$F.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/FileAttachment.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FS.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/FileAttachment.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Rect.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/FileAttachment.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/FileAttachment.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/FileAttachment.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$Subtype.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$A.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Dest.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Rect.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$A.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Dest.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Target::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Action::load().',
-	'identifier' => 'staticMethod.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Destination::load().',
-	'identifier' => 'staticMethod.internal',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Link.php',
 ];
@@ -7478,82 +5294,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Markup.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Contents.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Markup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$QuadPoints.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Markup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Rect.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Markup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Markup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Markup.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$Subtype.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Text.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Contents.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Text.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Rect.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Text.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Text.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Annotation/Text.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Resources.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Canvas_Interface::getContents().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Canvas/Abstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf_Style::instructions() invoked with 1 parameter, 0 required.',
@@ -7604,58 +5348,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Explicit.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Fit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitBoundingBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitBoundingBoxHorizontally.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitBoundingBoxVertically.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitHorizontally.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitRectangle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/FitVertically.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_Destination_Named::$_nameElement (Zend_Pdf_Element_Name|Zend_Pdf_Element_String) does not accept Zend_Pdf_Element.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Named.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::getPageDictionary().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Zoom.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter $factory of method Zend_Pdf_Element::toString() has invalid type Zend_Pdf_Factory.',
@@ -7742,48 +5438,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$DecodeParms.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$F.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FDecodeParms.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FFilter.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Filter.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Length.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object_Stream::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element::length().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -7838,294 +5492,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object::compareFactory().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font::$fontType.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$ascent.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$averageCharWidth.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$baselineAtZero.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$capitalHeight.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$cmap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$descent.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$fontWeight.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$fontWidth.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$glyphWidths.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isAdobeLatinSubset.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isBold.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isEmbeddable.',
-	'identifier' => 'property.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isItalic.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isMonospaced.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isOrnamentalFont.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isSansSerifFont.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isScriptFont.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isSerifFont.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isSubsettable.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isSymbolicFont.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$italicAngle.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$lineGap.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$metricDataFormat.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$names.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$numGlyphs.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$numberHMetrics.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$strikePosition.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$strikeThickness.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$subscriptXOffset.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$subscriptXSize.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$subscriptYOffset.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$subscriptYSize.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$superscriptXOffset.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$superscriptXSize.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$superscriptYOffset.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$superscriptYSize.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$underlinePosition.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$underlineThickness.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$unitsPerEm.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$useIntegerScaling.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$vendorID.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$xHeight.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$xMax.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$xMin.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$yMax.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$yMin.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $cmapLength might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 2,
@@ -8136,12 +5502,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType_TrueType::$fontType.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType/TrueType.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $hexCodeHigh might not be defined.',
@@ -8198,78 +5558,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/NameTree.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$A.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$C.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Count.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Dest.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$F.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$First.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Last.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Parent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Prev.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Title.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Action::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Target::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Created.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $resource of class Zend_Pdf_Destination_Named constructor expects Zend_Pdf_Element, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -8284,96 +5572,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element::$First.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$A.',
-	'identifier' => 'property.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$C.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Count.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Dest.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$F.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$First.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Last.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Next.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Parent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Prev.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary|Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Title.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Action::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Target::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Action::load().',
-	'identifier' => 'staticMethod.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Destination::load().',
-	'identifier' => 'staticMethod.internal',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
 ];
@@ -8396,268 +5594,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Contents.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$LastModified.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$MediaBox.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Resources.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Annots.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Contents.',
-	'identifier' => 'property.notFound',
-	'count' => 11,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$MediaBox.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$P.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::$Resources.',
-	'identifier' => 'property.notFound',
-	'count' => 20,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object|Zend_Pdf_Element_Reference::getKeys().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Annotation::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getFactory().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Prev.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object_Stream::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer_Keeper::$Prev.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Trailer_Keeper::$Size.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Trailer::getRefTable().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Page::clonePage().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Extractor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Ordering.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Registry.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Supplement.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$CIDSystemInfo.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$DW.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$W.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$ascent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$cmap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$descent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$glyphWidths.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isBold.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isItalic.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isMonospaced.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$lineGap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$names.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$strikePosition.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$strikeThickness.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$underlinePosition.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$underlineThickness.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$unitsPerEm.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource_Font::toEmSpace().',
-	'identifier' => 'method.internal',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $charCodesSequense might not be defined.',
@@ -8672,238 +5612,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$CIDToGIDMap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$FontDescriptor.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object_Stream::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Cmap::getCoveredCharactersGlyphs().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont/TrueType.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf_Resource_Font_CidFont::__construct() invoked with 2 parameters, 1 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Ascent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$CapHeight.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Descent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Flags.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FontBBox.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FontFile.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FontFile2.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FontFile3.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$FontName.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$ItalicAngle.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$MissingWidth.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$StemV.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object_Stream::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$ascent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$capitalHeight.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$descent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$glyphWidths.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isAdobeLatinSubset.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isEmbeddable.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isItalic.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isMonospaced.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isScriptFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isSerifFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$italicAngle.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$xMax.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$xMin.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$yMax.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$yMin.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getFactory().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource_Font::toEmSpace().',
-	'identifier' => 'method.internal',
-	'count' => 6,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Class Zend_Pdf_FileParser_Font_OpenType_Type1 not found.',
@@ -8912,388 +5624,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/FontDescriptor.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Encoding.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$FirstChar.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$LastChar.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Widths.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$ascent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$cmap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$descent.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$glyphWidths.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isBold.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isItalic.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$isMonospaced.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$lineGap.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$names.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$strikePosition.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$strikeThickness.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$underlinePosition.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$underlineThickness.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_FileParser_Font_OpenType::$unitsPerEm.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource_Font::toEmSpace().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$FontDescriptor.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed/TrueType.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf_Resource_Font_Simple_Parsed::__construct() invoked with 2 parameters, 1 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed/TrueType.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/Courier.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/CourierBold.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/CourierBoldOblique.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/CourierOblique.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/Helvetica.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/HelveticaBold.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/HelveticaBoldOblique.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/HelveticaOblique.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/Symbol.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Encoding.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/Symbol.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/TimesBold.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/TimesBoldItalic.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/TimesItalic.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/TimesRoman.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/ZapfDingbats.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Encoding.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Standard/ZapfDingbats.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BaseFont.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$DescendantFonts.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Encoding.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$Subtype.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$ToUnicode.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getFactory().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Pdf_Resource::getResource().',
-	'identifier' => 'method.internal',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Type0.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Type.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/GraphicsState.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$BM.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/GraphicsState.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$CA.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/GraphicsState.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$ca.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/GraphicsState.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Jpeg.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object::skipFilters().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Jpeg.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Loose comparison using == between 9 and 9 will always evaluate to true.',
 	'identifier' => 'equal.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Jpeg.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$BitsPerComponent.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Colors.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Columns.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Predictor.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object_Stream::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 20,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object::skipFilters().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Png.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Object::$dictionary.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Tiff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element_Object::skipFilters().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Tiff.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $refOffset might not be defined.',
@@ -9306,12 +5646,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 9,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Tiff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Pdf_Element_Dictionary::$Length.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Empty array passed to foreach.',
@@ -9374,18 +5708,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Target.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Action::load().',
-	'identifier' => 'staticMethod.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Target.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal static method Zend_Pdf_Destination::load().',
-	'identifier' => 'staticMethod.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Target.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $current on string.',
 	'identifier' => 'property.nonObject',
 	'count' => 2,
@@ -9440,178 +5762,22 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Queue.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Queue_Message::$handle.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Activemq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Queue_Message::$handle.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Queue_Message::$queue_name.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Array.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$body.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$created.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$md5.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$queue_id.',
-	'identifier' => 'property.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$queue_name.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Db_Table_Row_Abstract::$timeout.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Queue_Message::$handle.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $errno might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $errstr might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Queue_Message::getJobId().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method addJob() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getJob() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getJobsInQueue() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getLastError() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method getNumOfJobsInQueue() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method removeJob() on an unknown class ZendApi_JobQueue.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always false.',
-	'identifier' => 'booleanNot.alwaysFalse',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Adapter_PlatformJobQueue::$_zendQueue (ZendApi_JobQueue) does not accept ZendAPI_Queue.',
-	'identifier' => 'assign.propertyType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Queue_Adapter_PlatformJobQueue::$_zendQueue has unknown class ZendApi_JobQueue as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Return type (ArrayIterator) of method Zend_Queue_Adapter_PlatformJobQueue::receive() should be compatible with return type (Zend_Queue_Message_Iterator) of method Zend_Queue_Adapter_AdapterInterface::receive()',
-	'identifier' => 'method.childReturnType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/PlatformJobQueue.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Offset \'queue\' on array{data: mixed} in empty() does not exist.',
 	'identifier' => 'empty.offset',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function serialize invoked with 3 parameters, 1 required.',
-	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/PlatformJob.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Queue_Message_PlatformJob::__sleep() should return array<int, string> but returns string.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/PlatformJob.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Queue_Stomp_Client::send() has invalid return type StompClientMock.',
@@ -9702,42 +5868,6 @@ $ignoreErrors[] = [
 	'identifier' => 'new.static',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Rest/Route.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function|Zend_Server_Reflection_Method::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function|Zend_Server_Reflection_Method::getParameters().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::isPublic().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::isStatic().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $exception_handler of function set_exception_handler expects (callable(Throwable): void)|null, array{$this(Zend_Rest_Server), \'fault\'} given.',
@@ -9962,18 +6092,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Search_Lucene_Interface::addReference().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to internal method Zend_Search_Lucene_Interface::removeReference().',
-	'identifier' => 'method.internal',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Search_Query::$_currentColorIndex is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
@@ -9996,84 +6114,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Phrase.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to property $_matches of internal class Zend_Search_Lucene_Search_Query_Preprocessing.',
-	'identifier' => 'property.internalClass',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Fuzzy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Search_Lucene_Search_Query_Preprocessing_Fuzzy extends internal class Zend_Search_Lucene_Search_Query_Preprocessing.',
-	'identifier' => 'class.extendsInternalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Fuzzy.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to property $_matches of internal class Zend_Search_Lucene_Search_Query_Preprocessing.',
-	'identifier' => 'property.internalClass',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Phrase.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase extends internal class Zend_Search_Lucene_Search_Query_Preprocessing.',
-	'identifier' => 'class.extendsInternalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Phrase.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to property $_matches of internal class Zend_Search_Lucene_Search_Query_Preprocessing.',
-	'identifier' => 'property.internalClass',
-	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Term.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Search_Lucene_Search_Query_Preprocessing_Term extends internal class Zend_Search_Lucene_Search_Query_Preprocessing.',
-	'identifier' => 'class.extendsInternalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/Preprocessing/Term.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method __construct() of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase.',
-	'identifier' => 'method.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Phrase.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method setSlop() of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase.',
-	'identifier' => 'method.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Phrase.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instantiation of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Phrase.',
-	'identifier' => 'new.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Phrase.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method __construct() of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Fuzzy.',
-	'identifier' => 'method.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Term.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method __construct() of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Term.',
-	'identifier' => 'method.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Term.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instantiation of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Fuzzy.',
-	'identifier' => 'new.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Term.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instantiation of internal class Zend_Search_Lucene_Search_Query_Preprocessing_Term.',
-	'identifier' => 'new.internalClass',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryEntry/Term.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $position on int|string.',
@@ -10208,76 +6248,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/PythonPickle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Function wddx_deserialize not found.',
-	'identifier' => 'function.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/Wddx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Function wddx_serialize_value not found.',
-	'identifier' => 'function.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/Wddx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::isStatic().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $parameter of method Zend_Server_Method_Prototype::addParameter() expects string, Zend_Server_Method_Parameter given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Class.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Function/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Class::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Method.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Method::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Method.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using !== between null and mixed will always evaluate to true.',
@@ -10550,126 +6524,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Delicious/PostList.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Response_Histograms constructor expects DOMElement, DOMNode|null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Response_Items constructor expects DOMElement, DOMNode|null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Response_Keywords constructor expects DOMElement, DOMNode|null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property DOMDocument::$ebayFindingXPath.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Aspect_Histogram_Value constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Aspect/Histogram/Value/Set.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Aspect constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Aspect/Set.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Category_Histogram constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Category/Histogram/Set.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Error_Data constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Error/Data/Set.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Error_Message constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Response/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Aspect_Histogram_Container constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Response/Histograms.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Category_Histogram_Container constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Response/Histograms.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_PaginationOutput constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Response/Items.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Search_Result constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Response/Items.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Category constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_ListingInfo constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_SellerInfo constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_SellingStatus constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_ShippingInfo constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Storefront constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $dom of class Zend_Service_Ebay_Finding_Search_Item constructor expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Ebay/Finding/Search/Item/Set.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
 	'identifier' => 'method.notFound',
 	'count' => 5,
@@ -10710,228 +6564,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Flickr/ResultSet.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::LogIn().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::LogOut().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::CreateDocument().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::DeleteImage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::DeleteSharedDocument().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::DeleteTemplate().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::DownloadImage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::DownloadSharedDocument().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::DownloadTemplate().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetAllBitmaps().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetAllMetafiles().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetBitmaps().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetBlockFieldNames().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetBlockNames().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetDocumentAccessOptions().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetDocumentFormats().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetFieldNames().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetFontNames().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetImageExportFormats().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetImageImportFormats().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetMetafiles().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::GetTemplateFormats().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::ImageExists().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::ListImages().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::ListSharedDocuments().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::ListTemplates().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::RetrieveDocument().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::SetBlockFieldValues().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::SetDocumentAccessPermissions().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::SetDocumentPassword().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::SetFieldValues().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::SetLocalTemplate().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::SetRemoteTemplate().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::ShareDocument().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::TemplateExists().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::UploadImage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Soap_Client::UploadTemplate().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access property $ArrayOfString on array.',
@@ -11072,18 +6704,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/Management/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Service_WindowsAzure_Storage_DynamicTableEntity::$serializedData.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Service_WindowsAzure_Storage_DynamicTableEntity::$sessionExpires.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/SessionHandler.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Service_WindowsAzure_Storage_TableEntity::$serializedData.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -11220,12 +6840,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function_Abstract::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 15,
-	'path' => __DIR__ . '/library/Zend/Soap/AutoDiscover.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $options of method SoapClient::__soapCall() expects array, null given.',
@@ -11420,21 +7034,9 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/TimeSync/Protocol.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Config::$resources.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Registry_Interface::getConfig().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
 ];
 $ignoreErrors[] = [
@@ -11618,12 +7220,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Tool_Framework_Client_Config::$basicloader.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/System/Provider/Config.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Registry_Interface::getConfig().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -11666,22 +7262,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Directory.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method exists() on an unknown class Zend_Tool_Project_Context.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Directory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/File.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to method exists() on an unknown class Zend_Tool_Project_Context.',
@@ -11700,12 +7284,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ActionMethod.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method exists() on string|Zend_Tool_Project_Context.',
@@ -11846,12 +7424,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::loadProviders().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
@@ -11864,12 +7436,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Action.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getContext().',
 	'identifier' => 'method.notFound',
 	'count' => 4,
@@ -11880,42 +7446,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::addStringItem().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getAsZendConfig().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::removeStringItem().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::setClassNamePrefix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Application.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::create().',
@@ -11942,42 +7472,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::addItem().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbAdapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbAdapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getContents().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbAdapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbAdapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getApplicationInstance().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/DbTable.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Form.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
@@ -11990,46 +7484,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::addStringItem().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Layout.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Layout.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getAsZendConfig().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Layout.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'If condition is always false.',
 	'identifier' => 'if.alwaysFalse',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Model.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::addStringItem().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Module.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Module.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::removeStringItem().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Module.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $currentChildResource might not be defined.',
@@ -12044,28 +7502,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Project.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/ProjectProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::getPath().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/ProjectProvider.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc tag @var above a method has no effect.',
 	'identifier' => 'varTag.misplaced',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/ProjectProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Test.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
@@ -12084,12 +7524,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Test.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource::create().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/View.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
@@ -12306,12 +7740,6 @@ $ignoreErrors[] = [
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/CreditCard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Validate_EmailAddress::$localPart.',
-	'identifier' => 'property.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot access offset *NEVER* on 0|1.',
@@ -12548,28 +7976,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/DeclareVars.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Fieldset.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $escape might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Fieldset.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormButton.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
@@ -12588,12 +7998,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormButton.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormCheckbox.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always false.',
@@ -12612,24 +8016,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormCheckbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormElement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormErrors.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormFile.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
@@ -12650,12 +8036,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormHidden.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormImage.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -12666,12 +8046,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormImage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormLabel.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always false.',
@@ -12698,12 +8072,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormLabel.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormPassword.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -12714,12 +8082,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormPassword.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormRadio.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
@@ -12740,12 +8102,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormRadio.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormReset.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -12756,12 +8112,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormReset.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSelect.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
@@ -12782,12 +8132,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormSelect.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSubmit.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -12798,12 +8142,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormSubmit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormText.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
@@ -12818,12 +8156,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormText.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormTextarea.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -12834,72 +8166,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormTextarea.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadLink::getIndent().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadLink::getSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadLink::getWhitespace().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadLink::setSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadLink.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadMeta::getIndent().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadMeta::getSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadMeta::getWhitespace().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadMeta::setSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Negated boolean expression is always false.',
@@ -12918,66 +8184,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.void',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Abstract::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadScript::getIndent().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadScript::getSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadScript::getWhitespace().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadScript::setSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadScript.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadStyle::getIndent().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadStyle::getSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadStyle::getWhitespace().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadStyle::setSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $attributes of method Zend_View_Helper_HeadStyle::appendStyle() expects array, string given.',
@@ -13004,54 +8210,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadTitle::getIndent().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadTitle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadTitle::getPostfix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadTitle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadTitle::getPrefix().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadTitle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadTitle::getSeparator().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadTitle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Helper_HeadTitle::getWhitespace().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadTitle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::doctype().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HtmlElement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HtmlElement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HtmlList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -13068,66 +8226,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::addHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getHelper().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getHelperPaths().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::getPluginLoader().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::setHelperPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Breadcrumbs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::partial().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Breadcrumbs.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/HelperAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::escape().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Menu.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::partial().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Menu.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
@@ -13161,18 +8259,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri_Exception::setView().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::serverUrl().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::url().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
@@ -13220,18 +8306,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_View_Interface::$partialCounter.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_View_Interface::$partialTotalCount.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -13260,12 +8334,6 @@ $ignoreErrors[] = [
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_View_Interface::placeholder().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/RenderToPlaceholder.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Wildfire_Channel_Interface::getProtocol().',
@@ -13340,24 +8408,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_XmlRpc_Client_ServerProxy::listMethods().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerIntrospection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_XmlRpc_Client_ServerProxy::methodSignature().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerIntrospection.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_XmlRpc_Client_ServerProxy::multicall().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client/ServerIntrospection.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_XmlRpc_Generator_GeneratorAbstract::_init().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -13428,12 +8478,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameterByRef.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Value.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Crypt_Math_BigInteger::init().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Value/BigInteger.php',
 ];
 
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];
