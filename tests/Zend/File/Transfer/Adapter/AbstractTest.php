@@ -223,6 +223,14 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
         $this->assertNull($this->adapter->getValidator('Alpha'));
     }
 
+    public function testValidatorNameWithSlashDoesNotMatchAnyValidator()
+    {
+        $this->adapter->addValidator('Count', false, 1);
+        $this->assertFalse($this->adapter->hasValidator('File/Count'));
+        $this->assertNull($this->adapter->getValidator('File/Count'));
+        $this->assertTrue($this->adapter->hasValidator('Count'));
+    }
+
     public function testAdapterShouldAllowPullingValidatorsByFile()
     {
         $this->adapter->addValidator('Alpha', false, false, 'foo');
@@ -416,6 +424,14 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
     public function testGetFilterShouldReturnNullWhenNoMatchingIdentifierExists()
     {
         $this->assertNull($this->adapter->getFilter('Alpha'));
+    }
+
+    public function testFilterNameWithSlashDoesNotMatchAnyFilter()
+    {
+        $this->adapter->addFilter('Alpha');
+        $this->assertFalse($this->adapter->hasFilter('Filter/Alpha'));
+        $this->assertNull($this->adapter->getFilter('Filter/Alpha'));
+        $this->assertTrue($this->adapter->hasFilter('Alpha'));
     }
 
     public function testAdapterShouldAllowPullingFiltersByFile()

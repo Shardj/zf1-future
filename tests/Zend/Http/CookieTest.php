@@ -475,6 +475,12 @@ class Zend_Http_CookieTest extends TestCase
         $this->assertFalse(Zend_Http_Cookie::matchCookieDomain('foo.bar.com', 'www.foozbar.com'));
     }
 
+    public function testCookieDomainWithSlashDoesNotMatch()
+    {
+        $this->assertFalse(Zend_Http_Cookie::matchCookieDomain('foo.com/bar', 'www.foo.com'));
+        $this->assertTrue(Zend_Http_Cookie::matchCookieDomain('foo.com', 'www.foo.com'));
+    }
+
     /**
      * Data Providers
      */

@@ -530,7 +530,7 @@ class Zend_Dojo_BuildLayer
         require_once 'Zend/Json.php';
         $profile = Zend_Json::encode($profile);
         $profile = trim($profile, '"');
-        $profile = preg_replace('/' . preg_quote('\\') . '/', '', $profile);
+        $profile = preg_replace('/' . preg_quote('\\', '/') . '/', '', $profile);
         return $profile;
     }
 }
