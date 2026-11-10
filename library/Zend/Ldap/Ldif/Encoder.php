@@ -175,7 +175,7 @@ class Zend_Ldap_Ldif_Encoder
      * @link http://www.faqs.org/rfcs/rfc2849.html
      *
      * @param  string $string
-     * @param  boolen $base64
+     * @param  boolean $base64
      * @return string
      */
     protected function _encodeString($string, &$base64 = null)

@@ -2312,6 +2312,60 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Call to an undefined method Zend_Db_Statement::_bindParam().',
+	'identifier' => 'method.notFound',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Call to an undefined method Zend_Db_Statement::_execute().',
+	'identifier' => 'method.notFound',
+	'count' => 2,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Comparison operation "<=" between *NEVER* and int<0, max> results in an error.',
+	'identifier' => 'smallerOrEqual.invalid',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Comparison operation ">=" between int<1, max> and 1 is always true.',
+	'identifier' => 'greaterOrEqual.alwaysTrue',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Db_Profiler_Query::start() invoked with 1 parameter, 0 required.',
+	'identifier' => 'arguments.count',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Db_Statement::fetchColumn() should return string but returns false.',
+	'identifier' => 'return.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Db_Statement::setAttribute() should return bool but return statement is missing.',
+	'identifier' => 'return.missing',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Db_Statement::setFetchMode() should return bool but return statement is missing.',
+	'identifier' => 'return.missing',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Result of || is always true.',
+	'identifier' => 'booleanOr.alwaysTrue',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Db_Statement::$_stmt (object|resource) does not accept false.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
@@ -2574,12 +2628,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $key',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Abstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
@@ -4076,12 +4124,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Boolean.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $callback',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Callback.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method create() on an unknown class Archive_Tar.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -4214,32 +4256,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Openssl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $overwrite',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/File/Rename.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $target',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/File/Rename.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Filter_HtmlEntities::setCharSet() should return $this(Zend_Filter_HtmlEntities) but returns Zend_Filter_HtmlEntities.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/HtmlEntities.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $charSet',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/HtmlEntities.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $quoteStyle',
-	'identifier' => 'parameter.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Filter/HtmlEntities.php',
 ];
@@ -5640,30 +5658,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap/Dn.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $base64 of method Zend_Ldap_Ldif_Encoder::_encodeString() has invalid type boolen.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Ldif/Encoder.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter &$base64 by-ref type of method Zend_Ldap_Ldif_Encoder::_encodeString() expects boolen|null, false given.',
-	'identifier' => 'parameterByRef.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Ldif/Encoder.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter &$base64 by-ref type of method Zend_Ldap_Ldif_Encoder::_encodeString() expects boolen|null, true given.',
-	'identifier' => 'parameterByRef.type',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Ldap/Ldif/Encoder.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between boolen|null and true will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Ldif/Encoder.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getRdnString() on array.',
@@ -9956,18 +9950,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $mode',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $startId',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $number of function base_convert expects string, int given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -11432,6 +11414,12 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Stdlib/PriorityQueue.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Return type (void) of method Zend_Stdlib_SplPriorityQueue::insert() should be compatible with return type (true) of method SplPriorityQueue<mixed,mixed>::insert()',
+	'identifier' => 'method.childReturnType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Stdlib/SplPriorityQueue.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Call to sscanf contains 11 placeholders, 7 values given.',
 	'identifier' => 'argument.sscanf',
 	'count' => 1,
@@ -11584,12 +11572,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $client of method Zend_Tool_Framework_Client_Interactive_InputHandler::setClient() expects Zend_Tool_Framework_Client_Interactive_InputInterface, $this(Zend_Tool_Framework_Client_Abstract) given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Client_Abstract::$_interactiveCallback has unknown class callback as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Abstract.php',
 ];
@@ -12242,12 +12224,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Ini.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Qt.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_Qt::$_cleared is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
@@ -12272,22 +12248,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Tbx.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_Xliff::$_cleared is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Xliff.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc tag @param references unknown parameter: $option',
-	'identifier' => 'parameter.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_XmlTm::$_cleared is never read, only written.',
@@ -12436,24 +12400,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between int<1, max> and non-empty-string results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/CreditCard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Validate_CreditCard::getService() has invalid return type callback.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/CreditCard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_CreditCard::$_service (callback) in empty() is not falsy.',
-	'identifier' => 'empty.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/CreditCard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Validate_CreditCard::$_service has unknown class callback as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/CreditCard.php',
 ];
