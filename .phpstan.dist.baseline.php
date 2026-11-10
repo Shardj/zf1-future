@@ -11246,12 +11246,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between string|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client/Local.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method __toString() on stdClass.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
