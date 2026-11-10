@@ -94,6 +94,16 @@ class Zend_Search_Lucene_LuceneTest extends TestCase
         $this->assertTrue($index instanceof Zend_Search_Lucene_Interface);
     }
 
+    public function testProxyReturnsSegmentFileName()
+    {
+        $this->assertSame('segments', Zend_Search_Lucene_Proxy::getSegmentFileName(0));
+        $this->assertSame(
+            Zend_Search_Lucene::getSegmentFileName(46),
+            Zend_Search_Lucene_Proxy::getSegmentFileName(46)
+        );
+        $this->assertSame('segments_1a', Zend_Search_Lucene_Proxy::getSegmentFileName(46));
+    }
+
     public function testDefaultSearchField()
     {
         $currentDefaultSearchField = Zend_Search_Lucene::getDefaultSearchField();

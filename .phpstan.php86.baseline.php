@@ -1436,12 +1436,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to Zend_Search_Lucene::getSegmentFileName() on a separate line has no effect.',
-	'identifier' => 'staticMethod.resultUnused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Foreach value variable $prevSubquery is never read.',
 	'identifier' => 'foreach.unusedValue',
 	'count' => 1,
