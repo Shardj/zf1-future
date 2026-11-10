@@ -92,6 +92,20 @@ class Zend_Text_MultiByteTest extends TestCase
         $this->assertEquals("Ä very<br>long wöö<br>öööööööö<br>öörd.", $line);
     }
 
+    public function testWordWrapEmptyBreakThrowsException()
+    {
+        $this->expectException(Zend_Text_Exception::class);
+        $this->expectExceptionMessage('Break string cannot be empty');
+        Zend_Text_MultiByte::wordWrap('abc def', 3, '', true);
+    }
+
+    public function testWordWrapZeroWidthWithCutThrowsException()
+    {
+        $this->expectException(Zend_Text_Exception::class);
+        $this->expectExceptionMessage("Can't force cut when width is zero");
+        Zend_Text_MultiByte::wordWrap('abc def', 0, "\n", true);
+    }
+
     /**
      * Alternative cut tests
      */
