@@ -232,7 +232,7 @@ class Zend_Filter_Boolean implements Zend_Filter_Interface
      *
      * Returns a boolean representation of $value
      *
-     * @param  string $value
+     * @param  mixed $value
      * @return string|bool
      */
     public function filter($value)

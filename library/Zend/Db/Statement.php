@@ -273,6 +273,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
 
         // Finally we are assured that $position is valid
         $this->_bindParam[$position] =& $variable;
+        // @phpstan-ignore method.notFound (implemented by the statement classes of the adapters)
         return $this->_bindParam($position, $variable, $type, $length, $options);
     }
 
@@ -301,6 +302,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
          * Simple case - no query profiler to manage.
          */
         if ($this->_queryId === null) {
+            // @phpstan-ignore method.notFound (implemented by the statement classes of the adapters)
             return $this->_execute($params);
         }
 
@@ -319,8 +321,9 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
         } else {
             $qp->bindParams($this->_bindParam);
         }
-        $qp->start($this->_queryId);
+        $qp->start();
 
+        // @phpstan-ignore method.notFound (implemented by the statement classes of the adapters)
         $retval = $this->_execute($params);
 
         $prof->queryEnd($this->_queryId);
