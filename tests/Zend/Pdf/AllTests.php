@@ -37,6 +37,7 @@ require_once 'Zend/Pdf/FontTest.php';
 require_once 'Zend/Pdf/GraphicsStateTest.php';
 require_once 'Zend/Pdf/NamedDestinationsTest.php';
 require_once 'Zend/Pdf/ProcessingTest.php';
+require_once 'Zend/Pdf/StringParserTest.php';
 
 require_once 'Zend/Pdf/Element/AllTests.php';
 require_once 'Zend/Pdf/Filter/AllTests.php';
@@ -69,6 +70,7 @@ class Zend_Pdf_AllTests
         $suite->addTestSuite('Zend_Pdf_GraphicsStateTest');
         $suite->addTestSuite('Zend_Pdf_NamedDestinationsTest');
         $suite->addTestSuite('Zend_Pdf_ProcessingTest');
+        $suite->addTestSuite('Zend_Pdf_StringParserTest');
 
         $suite->addTest(Zend_Pdf_Element_AllTests::suite());
         $suite->addTest(Zend_Pdf_Filter_AllTests::suite());

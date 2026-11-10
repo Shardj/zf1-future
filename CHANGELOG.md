@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Text_MultiByte::wordWrap() throws Zend_Text_Exception ("Break string cannot be empty") for an empty break string; the check never matched and the method did not return.
 * Zend_Soap_Client_Local works with a server that returns its response (Zend_Soap_Server::setReturnResponse(true)); the request failed with "Call to a member function getResponse() on null".
 * Zend_Search_Lucene_Proxy::getSegmentFileName() returns the segments file name; it returned null.
+* Zend_Validate_EmailAddress: the reserved address check of the deep MX validation compares the address with the reserved networks; every address with the first octet 0, 10, 100, 127, 169, 172, 192 or 198 counted as reserved, so hosts on public addresses such as 172.217.0.1 or 192.30.252.1 were rejected.
+* Zend_Pdf_StringParser::skipComment() stops at the end of the line; it skipped the rest of the data.
+* Zend_Search_Lucene_Search_QueryParserContext throws Zend_Search_Lucene_Exception for an unknown boolean operator; it tried to throw a Zend_Search_Lucene index object.
+* Zend_Tool_DatabaseSchemaProvider throws Zend_Db_Schema_Exception ("Database was not initialized") when no database is configured; the check referred to an interface that does not exist and never matched.
 
 ## [1.27.0] - 2026-11-09
 

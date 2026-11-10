@@ -169,20 +169,11 @@ class Zend_Pdf_StringParser
 
 
     /**
-     * Skip comment
+     * Skip comment: moves the offset to the end of the current line
      */
     public function skipComment()
     {
-        while ($this->offset < strlen($this->data))
-        {
-            if (ord($this->data[$this->offset]) != 0x0A || // Line feed
-                ord($this->data[$this->offset]) != 0x0d    // Carriage return
-               ) {
-                $this->offset++;
-            } else {
-                return;
-            }
-        }
+        $this->offset += strcspn($this->data, "\r\n", $this->offset);
     }
 
 

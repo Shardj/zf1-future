@@ -2,7 +2,7 @@
 class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstract
 {
     /**
-     * @var Zend_Db_Adapter_Interface
+     * @var Zend_Db_Adapter_Abstract
      */
     protected $_db;
 
@@ -430,7 +430,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
     /**
      * Retrieve initialized DB connection
      *
-     * @return Zend_Db_Adapter_Interface
+     * @return Zend_Db_Adapter_Abstract
      */
     protected function _getDbAdapter()
     {
@@ -445,7 +445,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
                     }
                 }
             }
-            if($this->_db instanceof Zend_Db_Adapter_Interface) {
+            if(!$this->_db instanceof Zend_Db_Adapter_Abstract) {
                 throw new Zend_Db_Schema_Exception('Database was not initialized');
             }
         }
