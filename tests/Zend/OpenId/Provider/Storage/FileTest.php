@@ -79,6 +79,37 @@ class Zend_OpenId_Provider_Storage_FileTest extends TestCase
     }
 
     /**
+     * @dataProvider lockFileProvider
+     */
+    public function testConstructThrowsWhenLockFileCannotBeCreated($lockFile)
+    {
+        $dir = sys_get_temp_dir() . '/openid_provider_' . uniqid();
+        mkdir($dir);
+        // a directory in place of the lock file makes fopen() fail for every user
+        mkdir($dir . '/' . $lockFile);
+
+        try {
+            new Zend_OpenId_Provider_Storage_File($dir);
+            $this->fail('Zend_OpenId_Exception expected');
+        } catch (Zend_OpenId_Exception $e) {
+            $this->assertSame(Zend_OpenId_Exception::ERROR_STORAGE, $e->getCode());
+            $this->assertStringContainsString('Cannot create a lock file in the directory', $e->getMessage());
+        } finally {
+            @rmdir($dir . '/' . $lockFile);
+            array_map('unlink', glob($dir . '/*.lock'));
+            @rmdir($dir);
+        }
+    }
+
+    public function lockFileProvider()
+    {
+        return [
+            ['assoc.lock'],
+            ['user.lock'],
+        ];
+    }
+
+    /**
      * testing getAssociation
      *
      */

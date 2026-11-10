@@ -75,13 +75,13 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
                     Zend_OpenId_Exception::ERROR_STORAGE);
             }
         }
-        if (($f = fopen($this->_dir.'/assoc.lock', 'w+')) === null) {
+        if (($f = @fopen($this->_dir.'/assoc.lock', 'w+')) === false) {
             throw new Zend_OpenId_Exception(
                 'Cannot create a lock file in the directory ' . $dir,
                 Zend_OpenId_Exception::ERROR_STORAGE);
         }
         fclose($f);
-        if (($f = fopen($this->_dir.'/user.lock', 'w+')) === null) {
+        if (($f = @fopen($this->_dir.'/user.lock', 'w+')) === false) {
             throw new Zend_OpenId_Exception(
                 'Cannot create a lock file in the directory ' . $dir,
                 Zend_OpenId_Exception::ERROR_STORAGE);
