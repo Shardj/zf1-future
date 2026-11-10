@@ -11384,24 +11384,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Text/Figlet.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $multiplier of function str_repeat expects int, float given.',
-	'identifier' => 'argument.type',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Text/MultiByte.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $length of function iconv_substr expects int, float given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Text/MultiByte.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between int<0, max>|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Text/MultiByte.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $lastColumnWidths might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
