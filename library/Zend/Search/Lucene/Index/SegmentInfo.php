@@ -1779,8 +1779,8 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
      *
      * Returns start document id for the next segment
      *
-     * @param integer $startId
-     * @param integer $mode
+     * Takes two optional arguments: integer $startId and integer $mode.
+     *
      * @throws Zend_Search_Lucene_Exception
      * @return integer
      */

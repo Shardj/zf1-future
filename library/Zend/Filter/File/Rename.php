@@ -46,9 +46,10 @@ class Zend_Filter_File_Rename implements Zend_Filter_Interface
      * 'target'    => Target filename or directory, the new name of the sourcefile
      * 'overwrite' => Shall existing files be overwritten ?
      *
-     * @param  string|array $options Target file or directory to be renamed
-     * @param  string $target Source filename or directory (deprecated)
-     * @param  bool $overwrite Should existing files be overwritten (deprecated)
+     * Deprecated: a second argument is taken as the source filename or directory
+     * and a third one as the overwrite flag.
+     *
+     * @param  string|array|Zend_Config $options Target file or directory to be renamed
      * @return void
      */
     public function __construct($options)
