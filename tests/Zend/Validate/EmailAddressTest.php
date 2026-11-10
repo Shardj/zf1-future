@@ -266,7 +266,9 @@ class Zend_Validate_EmailAddressTest extends TestCase
     public function testReservedAddressIsDetectedByNetwork($address, $expected)
     {
         $method = new ReflectionMethod($this->_validator, '_isReserved');
-        $method->setAccessible(true);
+        if (PHP_VERSION_ID < 80100) {
+            $method->setAccessible(true);
+        }
 
         $this->assertSame($expected, $method->invoke($this->_validator, $address));
     }
