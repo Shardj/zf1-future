@@ -139,6 +139,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         }
         $this->addField(Zend_Search_Lucene_Field::text('title', $docTitle, 'UTF-8'));
 
+        /** @var DOMNodeList<DOMElement> $metaNodes */
         $metaNodes = $xpath->query('/html/head/meta[@name]');
         foreach ($metaNodes as $metaNode) {
             $this->addField(Zend_Search_Lucene_Field::text($metaNode->getAttribute('name'),
@@ -176,6 +177,7 @@ class Zend_Search_Lucene_Document_Html extends Zend_Search_Lucene_Document
         }
         $this->_links = array_unique($this->_links);
 
+        /** @var DOMNodeList<DOMElement> $linkNodes */
         $linkNodes = $xpath->query('/html/head/link');
         foreach ($linkNodes as $linkNode) {
             if (($href = $linkNode->getAttribute('href')) != '') {
