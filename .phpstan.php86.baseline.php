@@ -170,12 +170,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Case \'integer\' in switch is a duplicate of case \'integer\' on line 210.',
-	'identifier' => 'switch.duplicateCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property/DefaultValue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $constName is never read.',
 	'identifier' => 'variable.unused',
 	'count' => 1,
@@ -408,12 +402,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.overwritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Db2.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Case \\false in switch is a duplicate of case \\null on line 393.',
-	'identifier' => 'switch.duplicateCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Mysqli.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $stmt is never read.',
@@ -1436,12 +1424,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to Zend_Search_Lucene::getSegmentFileName() on a separate line has no effect.',
-	'identifier' => 'staticMethod.resultUnused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Proxy.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Foreach value variable $prevSubquery is never read.',
 	'identifier' => 'foreach.unusedValue',
 	'count' => 1,
@@ -1458,12 +1440,6 @@ $ignoreErrors[] = [
 	'identifier' => 'foreach.unusedValue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/MultiTerm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Case self::TC_NUMBER in switch is a duplicate of case self::TC_NUMBER on line 149.',
-	'identifier' => 'switch.duplicateCase',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryToken.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Foreach key variable $k is never read.',

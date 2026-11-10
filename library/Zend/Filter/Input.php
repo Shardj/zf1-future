@@ -245,8 +245,6 @@ class Zend_Filter_Input
                 require_once 'Zend/Filter/Exception.php';
                 throw new Zend_Filter_Exception(sprintf('Invalid type "%s" provided to setPluginLoader()', $type));
         }
-
-        return $this;
     }
 
     /**

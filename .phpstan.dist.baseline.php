@@ -4232,12 +4232,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array<mixed, mixed> will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
 	'count' => 1,
@@ -5320,12 +5314,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Http_Client_Adapter_Interface::setOutputStream().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/Client.php',
 ];
@@ -11244,12 +11232,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Soap/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between string|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Client/Local.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method __toString() on stdClass.',

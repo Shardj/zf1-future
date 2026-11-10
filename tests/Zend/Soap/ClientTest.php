@@ -327,6 +327,17 @@ class Zend_Soap_ClientTest extends TestCase
         );
     }
 
+    public function testLocalClientWithServerThatReturnsItsResponse()
+    {
+        $server = new Zend_Soap_Server(dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+        $server->setClass('Zend_Soap_Client_TestClass');
+        $server->setReturnResponse(true);
+
+        $client = new Zend_Soap_Client_Local($server, dirname(__FILE__) . '/_files/wsdl_example.wsdl');
+
+        $this->assertSame('Hello World!', $client->testFunc2('World'));
+    }
+
     public function testGetLastRequest()
     {
         if (headers_sent()) {

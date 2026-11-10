@@ -33,6 +33,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * Zend_Search_Lucene
  */
 require_once 'Zend/Search/Lucene.php';
+require_once 'Zend/Search/Lucene/Proxy.php';
 
 /**
  * @category   Zend
@@ -92,6 +93,16 @@ class Zend_Search_Lucene_LuceneTest extends TestCase
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_nonCompoundIndexFiles');
 
         $this->assertTrue($index instanceof Zend_Search_Lucene_Interface);
+    }
+
+    public function testProxyReturnsSegmentFileName()
+    {
+        $this->assertSame('segments', Zend_Search_Lucene_Proxy::getSegmentFileName(0));
+        $this->assertSame(
+            Zend_Search_Lucene::getSegmentFileName(46),
+            Zend_Search_Lucene_Proxy::getSegmentFileName(46)
+        );
+        $this->assertSame('segments_1a', Zend_Search_Lucene_Proxy::getSegmentFileName(46));
     }
 
     public function testDefaultSearchField()

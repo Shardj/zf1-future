@@ -1346,7 +1346,6 @@ class Zend_Http_Client
                     require_once 'Zend/Http/Client/Exception.php';
                     throw new Zend_Http_Client_Exception("Cannot handle content type '{$this->enctype}' automatically." .
                         " Please use Zend_Http_Client::setRawData to send this kind of content.");
-                    break;
             }
         }
 

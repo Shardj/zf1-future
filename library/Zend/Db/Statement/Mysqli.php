@@ -390,8 +390,7 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
         // fetch the next result
         $retval = $this->_stmt->fetch();
         switch ($retval) {
-            case null: // end of data
-            case false: // error occurred
+            case null: // end of data; the loose comparison also matches false (an error occurred)
                 $this->_stmt->reset();
                 return false;
             default:
