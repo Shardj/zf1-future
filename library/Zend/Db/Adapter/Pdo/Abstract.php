@@ -45,6 +45,13 @@ require_once 'Zend/Db/Statement/Pdo.php';
 abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
 {
     /**
+     * Database connection
+     *
+     * @var PDO|null
+     */
+    protected $_connection = null;
+
+    /**
      * Transaction in BC mode for php >= 8 flag
      * 
      * Bring back behavior of PDO::rollback()/PDO::commit() 

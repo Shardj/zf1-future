@@ -40,6 +40,13 @@ class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
 {
 
     /**
+     * The driver level statement
+     *
+     * @var mysqli_stmt|false|null
+     */
+    protected $_stmt = null;
+
+    /**
      * Column names.
      *
      * @var array
