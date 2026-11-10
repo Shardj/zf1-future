@@ -224,12 +224,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Auth/Adapter/OpenId.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $barcode of method Zend_Barcode_Renderer_RendererAbstract::setBarcode() expects Zend_Barcode_Object, Zend_Barcode_Object_ObjectAbstract given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter $barcode of method Zend_Barcode::draw() has invalid type Zend_Barcode_Object.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -260,7 +254,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Barcode/Object/Ean2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $adapter of class Zend_Validate_Barcode constructor expects string|Zend_Config|Zend_Validate_Barcode_BarcodeAdapter, array<string, string|false> given.',
+	'rawMessage' => 'Parameter #1 $adapter of class Zend_Validate_Barcode constructor expects string|Zend_Config|Zend_Validate_Barcode_AdapterInterface, array<string, string|false> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Barcode/Object/Ean8.php',
@@ -290,7 +284,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Barcode/Object/ObjectAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $adapter of class Zend_Validate_Barcode constructor expects string|Zend_Config|Zend_Validate_Barcode_BarcodeAdapter, array<string, mixed> given.',
+	'rawMessage' => 'Parameter #1 $adapter of class Zend_Validate_Barcode constructor expects string|Zend_Config|Zend_Validate_Barcode_AdapterInterface, array<string, mixed> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Barcode/Object/ObjectAbstract.php',
@@ -326,7 +320,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Barcode/Object/Royalmail.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $adapter of class Zend_Validate_Barcode constructor expects string|Zend_Config|Zend_Validate_Barcode_BarcodeAdapter, array<string, string|false> given.',
+	'rawMessage' => 'Parameter #1 $adapter of class Zend_Validate_Barcode constructor expects string|Zend_Config|Zend_Validate_Barcode_AdapterInterface, array<string, string|false> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Barcode/Object/Upce.php',
@@ -4826,12 +4820,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => '',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between int<1, max> and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -4846,24 +4834,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Loose comparison using == between \'sha256\' and \'sha256\' will always evaluate to true.',
 	'identifier' => 'equal.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #5 $expires of method Zend_OpenId_Consumer_Storage::addAssociation() expects long, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #5 $expires of method Zend_OpenId_Consumer_Storage::addDiscoveryInfo() expects long, int<3601, max> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #5 $expires of method Zend_OpenId_Consumer_Storage::getAssociation() expects long, int given.',
-	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
@@ -5218,12 +5188,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Element::length().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $factory of method Zend_Pdf_Element::toString() expects Zend_Pdf_Factory|null, Zend_Pdf_ElementFactory given.',
-	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Object/Stream.php',
 ];
@@ -6986,18 +6950,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to method exists() on an unknown class Zend_Tool_Project_Context.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/Directory.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to method exists() on an unknown class Zend_Tool_Project_Context.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Filesystem/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getContext().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -7010,7 +6962,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/ActionMethod.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method exists() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method exists() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Context/Zf/BootstrapFile.php',
@@ -7124,13 +7076,13 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method save() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method save() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Abstract.php',
@@ -7142,7 +7094,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Action.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Action.php',
@@ -7160,7 +7112,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
@@ -7172,7 +7124,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Form.php',
@@ -7208,7 +7160,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/ProjectProvider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Test.php',
@@ -7226,7 +7178,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Test.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context.',
+	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/View.php',
@@ -7424,6 +7376,18 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Validate_File_Crc32::getCrc32() should return string but returns array.',
+	'identifier' => 'return.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Validate/File/Crc32.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'PHPDoc type string of property Zend_Validate_File_Crc32::$_hash is not covariant with PHPDoc type array of overridden property Zend_Validate_File_Hash::$_hash.',
+	'identifier' => 'property.phpDocType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Validate/File/Crc32.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7448,6 +7412,18 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/Hash.php',
 ];
 $ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Validate_File_Md5::getMd5() should return string but returns array.',
+	'identifier' => 'return.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'PHPDoc type string of property Zend_Validate_File_Md5::$_hash is not covariant with PHPDoc type array of overridden property Zend_Validate_File_Hash::$_hash.',
+	'identifier' => 'property.phpDocType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
+];
+$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7464,6 +7440,18 @@ $ignoreErrors[] = [
 	'identifier' => 'offsetAssign.dimType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/File/NotExists.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'Method Zend_Validate_File_Sha1::getSha1() should return string but returns array.',
+	'identifier' => 'return.type',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Validate/File/Sha1.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'PHPDoc type string of property Zend_Validate_File_Sha1::$_hash is not covariant with PHPDoc type array of overridden property Zend_Validate_File_Hash::$_hash.',
+	'identifier' => 'property.phpDocType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Validate/File/Sha1.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
