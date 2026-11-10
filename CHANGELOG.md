@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* Zend_OpenId_Consumer_Storage_File and Zend_OpenId_Provider_Storage_File throw Zend_OpenId_Exception ("Cannot create a lock file in the directory") when a lock file cannot be created in an existing storage directory; the result of fopen() was compared with null, so the constructor emitted a warning and failed with a TypeError of fclose() (PHP 8) instead.
+
 ## [1.27.0] - 2026-11-09
 
 PHP 8.4 is officially supported with this release (PHP 7.4 – 8.4). PHP 8.5 is part of the regular test matrix but may still show deprecation notices; PHP 8.6 is tested as experimental.

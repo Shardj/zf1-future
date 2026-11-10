@@ -6926,12 +6926,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between resource|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "^" between string|false and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -6947,12 +6941,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $recursive of function mkdir expects bool, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between resource|false and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
 ];
 $ignoreErrors[] = [
