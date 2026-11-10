@@ -1426,61 +1426,13 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between string and 1 results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "+" between string and 23 results in an error.',
-	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "+=" between float|int|numeric-string and string results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "+=" between int and string results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "-" between string and (int|string) results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "-" between string and 1 results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "-" between string and 23 results in an error.',
-	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "-" between string and float|int|numeric-string results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "-" between string and int results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "-=" between string and 1970 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 19,
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
 $ignoreErrors[] = [
@@ -1529,12 +1481,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $locale of method Zend_Date::toString() expects string|Zend_Locale|null, true given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $value of static method Zend_Locale_Data::getList() expects bool|string, array<int, string> given.',
-	'identifier' => 'argument.type',
-	'count' => 5,
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
 $ignoreErrors[] = [
@@ -1928,18 +1874,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Slider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Dom_Query::_getNodeList() should return array but returns DOMNodeList<DOMNameSpaceNode|DOMNode>|false.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dom/Query.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #4 $nodeList of class Zend_Dom_Query_Result constructor expects DOMNodeList, array given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dom/Query.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_object() with mixed will always evaluate to false.',
 	'identifier' => 'function.impossibleType',
 	'count' => 1,
@@ -2144,12 +2078,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Atom.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
-	'identifier' => 'method.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Reader_Entry_Rss::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -2168,46 +2096,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property DOMNameSpaceNode|DOMNode::$value.',
-	'identifier' => 'property.notFound',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
-	'identifier' => 'method.notFound',
-	'count' => 7,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $element of method Zend_Feed_Reader_Extension_Atom_Entry::_getAuthor() expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
+	'rawMessage' => 'Method Zend_Feed_Reader_Extension_Atom_Entry::getCommentCount() should return int but returns string|null.',
+	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $source of class Zend_Feed_Reader_Feed_Atom_Source constructor expects DOMElement, DOMNameSpaceNode|DOMNode|null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $element of method Zend_Feed_Reader_Extension_Atom_Feed::_getAuthor() expects DOMElement, DOMNameSpaceNode|DOMNode given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Atom/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Extension/Podcast/Feed.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNode::getAttribute().',
@@ -2256,12 +2148,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Atom/Source.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Reader_Feed_Rss::getAuthors() should return array but returns Zend_Feed_Reader_Collection_Author|null.',
@@ -3612,12 +3498,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Locale/Data.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $value of static method Zend_Locale_Data::getList() expects bool|string, array<int, string> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale/Format.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $base of function bcpow expects numeric-string, 10 given.',
@@ -5126,12 +5006,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Document/Html.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method DOMNameSpaceNode|DOMNode::getAttribute().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Document/Html.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $node of method Zend_Search_Lucene_Document_Html::_highlightTextNode() expects DOMText, DOMNode given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -6242,88 +6116,28 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Config.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getActionName().',
+	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Metadata_Interface::getActionName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getProviderName().',
+	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Metadata_Interface::getProviderName().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getReference().',
+	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Metadata_Interface::getReference().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getSpecialtyName().',
+	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Metadata_Interface::getSpecialtyName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getValue().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/ArgumentParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getActionName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getProviderName().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getReference().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Manifest_Metadata::getValue().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $providerMetadata of method Zend_Tool_Framework_Client_Console_HelpSystem::_respondWithCommand() expects Zend_Tool_Framework_Metadata_Tool, Zend_Tool_Framework_Manifest_Metadata given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $providerMetadata of method Zend_Tool_Framework_Client_Console_HelpSystem::_respondWithProviderName() expects Zend_Tool_Framework_Metadata_Tool, Zend_Tool_Framework_Manifest_Metadata given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $actionMetadata of method Zend_Tool_Framework_Client_Console_HelpSystem::_respondWithCommand() expects Zend_Tool_Framework_Metadata_Tool, Zend_Tool_Framework_Manifest_Metadata given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $specialtyMetadata of method Zend_Tool_Framework_Client_Console_HelpSystem::_respondWithCommand() expects Zend_Tool_Framework_Metadata_Tool, Zend_Tool_Framework_Manifest_Metadata given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #4 $parameterLongMetadata of method Zend_Tool_Framework_Client_Console_HelpSystem::_respondWithCommand() expects Zend_Tool_Framework_Metadata_Tool, Zend_Tool_Framework_Manifest_Metadata given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Client/Console/HelpSystem.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Iterator<mixed, mixed>::getChildren().',

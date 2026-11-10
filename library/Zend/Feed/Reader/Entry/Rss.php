@@ -360,6 +360,7 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
         $enclosure = null;
 
         if ($this->getType() == Zend_Feed_Reader::TYPE_RSS_20) {
+            /** @var DOMNodeList<DOMElement> $nodeList */
             $nodeList = $this->_xpath->query($this->_xpathQueryRss . '/enclosure');
 
             if ($nodeList->length > 0) {
@@ -486,8 +487,10 @@ class Zend_Feed_Reader_Entry_Rss extends Zend_Feed_Reader_EntryAbstract implemen
 
         if ($this->getType() !== Zend_Feed_Reader::TYPE_RSS_10 &&
             $this->getType() !== Zend_Feed_Reader::TYPE_RSS_090) {
+            /** @var DOMNodeList<DOMElement> $list */
             $list = $this->_xpath->query($this->_xpathQueryRss.'//category');
         } else {
+            /** @var DOMNodeList<DOMElement> $list */
             $list = $this->_xpath->query($this->_xpathQueryRdf.'//rss:category');
         }
 

@@ -438,7 +438,7 @@ class Zend_Locale_Data
      *
      * @param  string      $locale
      * @param  string      $path
-     * @param  bool|string $value
+     * @param  array|bool|string $value
      * @return array
      * @throws Zend_Locale_Exception
      */

@@ -666,8 +666,10 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
 
         if ($this->getType() !== Zend_Feed_Reader::TYPE_RSS_10 &&
             $this->getType() !== Zend_Feed_Reader::TYPE_RSS_090) {
+            /** @var DOMNodeList<DOMElement> $list */
             $list = $this->_xpath->query('/rss/channel//category');
         } else {
+            /** @var DOMNodeList<DOMElement> $list */
             $list = $this->_xpath->query('/rdf:RDF/rss:channel//rss:category');
         }
 

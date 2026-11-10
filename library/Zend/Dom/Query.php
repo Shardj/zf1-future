@@ -338,7 +338,7 @@ class Zend_Dom_Query
      *
      * @param  DOMDocument $document
      * @param  string|array $xpathQuery
-     * @return array
+     * @return DOMNodeList|false
      */
     protected function _getNodeList($document, $xpathQuery)
     {

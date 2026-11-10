@@ -211,7 +211,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @param array $searchProperties
      * @param bool $includeNonExistentProperties
-     * @return Zend_Tool_Framework_Manifest_Metadata[]
+     * @return Zend_Tool_Framework_Metadata_Interface[]
      */
     public function getMetadatas(Array $searchProperties = [], $includeNonExistentProperties = true)
     {
@@ -253,7 +253,7 @@ class Zend_Tool_Framework_Manifest_Repository
      *
      * @param array $searchProperties
      * @param bool $includeNonExistentProperties
-     * @return Zend_Tool_Framework_Manifest_Metadata
+     * @return Zend_Tool_Framework_Metadata_Interface
      */
     public function getMetadata(Array $searchProperties = [], $includeNonExistentProperties = true)
     {
