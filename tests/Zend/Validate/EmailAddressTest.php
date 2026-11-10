@@ -260,6 +260,48 @@ class Zend_Validate_EmailAddressTest extends TestCase
      *
      * @return void
      */
+    /**
+     * @dataProvider reservedAddressProvider
+     */
+    public function testReservedAddressIsDetectedByNetwork($address, $expected)
+    {
+        $method = new ReflectionMethod($this->_validator, '_isReserved');
+        $method->setAccessible(true);
+
+        $this->assertSame($expected, $method->invoke($this->_validator, $address));
+    }
+
+    public function reservedAddressProvider()
+    {
+        return [
+            ['0.1.2.3', true],
+            ['10.1.2.3', true],
+            ['100.64.1.1', true],
+            ['100.127.255.255', true],
+            ['100.128.0.1', false],
+            ['127.0.0.1', true],
+            ['169.254.1.1', true],
+            ['169.1.1.1', false],
+            ['172.16.5.4', true],
+            ['172.31.255.255', true],
+            ['172.32.0.1', false],
+            ['172.217.0.1', false],
+            ['192.0.0.5', true],
+            ['192.0.1.5', false],
+            ['192.0.2.5', true],
+            ['192.88.99.1', true],
+            ['192.168.1.1', true],
+            ['192.30.252.1', false],
+            ['198.18.0.1', true],
+            ['198.19.255.255', true],
+            ['198.20.0.1', false],
+            ['8.8.8.8', false],
+            ['223.255.255.255', false],
+            ['224.0.0.1', true],
+            ['255.255.255.255', true],
+        ];
+    }
+
     public function testEmailDisplay()
     {
         $this->assertFalse($this->_validator->isValid('User Name <username@example.com>'));
