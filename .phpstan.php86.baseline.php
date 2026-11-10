@@ -116,18 +116,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/Memcached.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $res is never read before being overwritten.',
-	'identifier' => 'assign.overwritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/Sqlite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $data is never read.',
-	'identifier' => 'variable.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Backend/WinCache.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $res is never read.',
 	'identifier' => 'variable.unused',
 	'count' => 1,
@@ -896,12 +884,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/UserAgent/AbstractDevice.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $matched is never read.',
-	'identifier' => 'assign.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Value assigned to variable $return is never read before being overwritten.',
 	'identifier' => 'assign.overwritten',
 	'count' => 3,
@@ -1301,24 +1283,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Foreach key variable $i is never read.',
 	'identifier' => 'foreach.unusedKey',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $timeout is never read.',
-	'identifier' => 'assign.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $result is never read.',
-	'identifier' => 'variable.unused',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Memcacheq.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Foreach key variable $i is never read.',
-	'identifier' => 'foreach.unusedKey',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
 ];
 $ignoreErrors[] = [
@@ -1350,12 +1314,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.unused',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Rest/Route.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Server_Reflection_Function::getName().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Server.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Value assigned to variable $result is never read before being overwritten.',
