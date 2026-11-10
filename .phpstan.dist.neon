@@ -8,12 +8,9 @@ parameters:
     paths:
         - library
     excludePaths:
-        - library/Zend/Db/Statement.php
         - library/Zend/Search/Lucene/MultiSearcher.php
         - library/Zend/Service/WindowsAzure/Log/Writer/WindowsAzure.php
-        - library/Zend/Soap/Client/Common.php
-        - library/Zend/Stdlib/SplPriorityQueue.php
-        - library/Zend/Test/
+        - library/Zend/Test/PHPUnit/
     level: 5
     tmpDir: .phpstan.cache
     checkFunctionNameCase: true

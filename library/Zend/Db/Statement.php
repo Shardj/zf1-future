@@ -95,7 +95,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
     protected $_sqlParam = [];
 
     /**
-     * @var Zend_Db_Profiler_Query
+     * @var int|null
      */
     protected $_queryId = null;
 
@@ -439,7 +439,6 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
                  */
                 require_once 'Zend/Db/Statement/Exception.php';
                 throw new Zend_Db_Statement_Exception('invalid fetch mode');
-                break;
         }
     }
 
