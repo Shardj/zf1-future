@@ -320,7 +320,7 @@ class Zend_Date extends Zend_Date_DateObject
      *
      * @param  string                          $calc    Type of calculation to make
      * @param  string|integer|array|Zend_Date  $stamp   Timestamp to calculate, when null the actual timestamp is calculated
-     * @return Zend_Date|integer
+     * @return ($calc is 'cmp' ? integer : $this)
      * @throws Zend_Date_Exception
      */
     private function _timestamp($calc, $stamp)
@@ -2627,7 +2627,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string|integer|array|Zend_Date  $time    Time to calculate with, if null the actual time is taken
      * @param  string                          $format  Timeformat for parsing input
      * @param  string|Zend_Locale              $locale  Locale for parsing input
-     * @return integer|Zend_Date  new time
+     * @return ($calc is 'cmp' ? integer : $this)  new time
      * @throws Zend_Date_Exception
      */
     private function _time($calc, $time, $format, $locale)
@@ -2789,7 +2789,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string|integer|array|Zend_Date  $date    Date to calculate with, if null the actual date is taken
      * @param  string                          $format  Date format for parsing
      * @param  string|Zend_Locale              $locale  Locale for parsing input
-     * @return integer|Zend_Date  new date
+     * @return ($calc is 'cmp' ? integer : $this)  new date
      * @throws Zend_Date_Exception
      */
     private function _date($calc, $date, $format, $locale)
@@ -3320,7 +3320,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string|integer|array|Zend_Date  $date    Date or Part to calculate
      * @param  string                          $type    Datepart for Calculation
      * @param  string|Zend_Locale|null              $locale  Locale for parsing input
-     * @return integer|Zend_Date  new date
+     * @return ($calc is 'cmp' ? integer : $this)  new date
      * @throws Zend_Date_Exception
      */
     private function _calcdetail($calc, $date, $type, $locale)
@@ -3362,7 +3362,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string                   $parameter
      * @param  string|Zend_Locale       $locale Locale for parsing input
      * @throws Zend_Date_Exception
-     * @return integer|Zend_Date  new date
+     * @return ($calc is 'cmp' ? integer : $this)  new date
      */
     private function _calcvalue($calc, $value, $type, $parameter, $locale)
     {
@@ -3508,7 +3508,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string                          $calc    Calculation to make
      * @param  string|integer|array|Zend_Date  $month   Month to calculate with, if null the actual month is taken
      * @param  string|Zend_Locale              $locale  Locale for parsing input
-     * @return integer|Zend_Date  new time
+     * @return ($calc is 'cmp' ? integer : $this)  new time
      * @throws Zend_Date_Exception
      */
     private function _month($calc, $month, $locale)
@@ -3664,7 +3664,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param Zend_Date   $day    Day to calculate, when null the actual day is calculated
      * @param Zend_Locale $locale Locale for parsing input
      * @throws Zend_Date_Exception
-     * @return Zend_Date|integer
+     * @return ($calc is 'cmp' ? integer : $this)
      */
     private function _day($calc, $day, $locale)
     {
@@ -3813,7 +3813,7 @@ class Zend_Date extends Zend_Date_DateObject
      * @param  string      $calc     Type of calculation to make
      * @param  Zend_Date   $weekday  Weekday to calculate, when null the actual weekday is calculated
      * @param  Zend_Locale $locale   Locale for parsing input
-     * @return Zend_Date|integer
+     * @return ($calc is 'cmp' ? integer : $this)
      * @throws Zend_Date_Exception
      */
     private function _weekday($calc, $weekday, $locale)
