@@ -1670,12 +1670,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Text/Figlet.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $length of function iconv_substr expects int|null, float given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Text/MultiByte.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Value assigned to variable $lastStringLeft is never read before being overwritten.',
 	'identifier' => 'assign.overwritten',
 	'count' => 1,
