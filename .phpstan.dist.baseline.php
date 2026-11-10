@@ -5360,20 +5360,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Loose comparison using != between 10 and 13 will always evaluate to true.',
-	'identifier' => 'notEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf_StringParser::getObject() should return Zend_Pdf_Element_Object but returns Zend_Pdf_Element_Null.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of || is always true.',
-	'identifier' => 'booleanOr.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/StringParser.php',
 ];
@@ -5838,12 +5826,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.nonObject',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Invalid type Zend_Search_Lucene to throw.',
-	'identifier' => 'throw.notThrowable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/QueryParserContext.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Search_Lucene_Search_Query::getSigns().',
@@ -6746,36 +6728,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Db_Adapter_Interface not found.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Tool_DatabaseSchemaProvider::_getDbAdapter() has invalid return type Zend_Db_Adapter_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $db of class Zend_Db_Schema_Manager constructor expects Zend_Db_Adapter_Abstract, Zend_Db_Adapter_Interface given.',
-	'identifier' => 'argument.type',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_DatabaseSchemaProvider::$_db (Zend_Db_Adapter_Interface) does not accept Zend_Db_Adapter_Abstract.',
-	'identifier' => 'assign.propertyType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_DatabaseSchemaProvider::$_db has unknown class Zend_Db_Adapter_Interface as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/DatabaseSchemaProvider.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $client of method Zend_Tool_Framework_Client_Interactive_InputHandler::setClient() expects Zend_Tool_Framework_Client_Interactive_InputInterface, $this(Zend_Tool_Framework_Client_Abstract) given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -7344,36 +7296,6 @@ $ignoreErrors[] = [
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/CreditCard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot access offset *NEVER* on 0|1.',
-	'identifier' => 'offsetAccess.nonOffsetAccessible',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between int<4, max> and 4 is always false.',
-	'identifier' => 'smaller.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $decimal_number of function decbin expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $length of function substr expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $pad_string of function str_pad expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Validate/EmailAddress.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Validate_File_Crc32::getCrc32() should return string but returns array.',
