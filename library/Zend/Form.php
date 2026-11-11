@@ -1168,25 +1168,17 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                         $options = $spec['options'];
                     }
                     $this->addElement($type, $name, $options);
-                } else {
-                    switch ($argc) {
-                        case 0:
-                            break;
-                        case (1 <= $argc):
-                            $type = array_shift($spec);
-                        case (2 <= $argc):
-                            if (null === $name) {
-                                $name = array_shift($spec);
-                            } else {
-                                $options = array_shift($spec);
-                            }
-                        case (3 <= $argc):
-                            if (empty($options)) {
-                                $options = array_shift($spec);
-                            }
-                        default:
-                            $this->addElement($type, $name, $options);
+                } elseif (0 < $argc) {
+                    $type = array_shift($spec);
+                    if (null === $name) {
+                        $name = array_shift($spec);
+                    } else {
+                        $options = array_shift($spec);
                     }
+                    if (empty($options)) {
+                        $options = array_shift($spec);
+                    }
+                    $this->addElement($type, $name, $options);
                 }
             }
         }
@@ -1684,23 +1676,17 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             }
 
             if (is_array($spec)) {
-                $argc  = count($spec);
-                $order = null;
-                switch ($argc) {
-                    case 0:
-                        break;
-                    case (1 <= $argc):
-                        $subForm = array_shift($spec);
-
-                        if (!$subForm instanceof Zend_Form) {
-                            $subForm = new Zend_Form_SubForm($subForm);
-                        }
-                    case (2 <= $argc):
-                        $name  = array_shift($spec);
-                    case (3 <= $argc):
-                        $order = array_shift($spec);
-                    default:
-                        $this->addSubForm($subForm, $name, $order);
+                $argc = count($spec);
+                if (0 < $argc) {
+                    $subForm = array_shift($spec);
+                    if (!$subForm instanceof Zend_Form) {
+                        $subForm = new Zend_Form_SubForm($subForm);
+                    }
+                    if (1 < $argc) {
+                        $name = array_shift($spec);
+                    }
+                    $order = array_shift($spec);
+                    $this->addSubForm($subForm, $name, $order);
                 }
             }
         }
@@ -1938,7 +1924,6 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                 continue;
             }
 
-            $argc    = count($spec);
             $options = [];
 
             if (isset($spec['elements'])) {
@@ -1951,25 +1936,17 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                 }
                 $this->addDisplayGroup($elements, $name, $options);
             } else {
-                switch ($argc) {
-                    case (1 <= $argc):
-                        $elements = array_shift($spec);
-                        if (!is_array($elements) && (null !== $name)) {
-                            $elements = array_merge((array) $elements, $spec);
-                            $this->addDisplayGroup($elements, $name);
-                            break;
-                        }
-                    case (2 <= $argc):
-                        if (null !== $name) {
-                            $options = array_shift($spec);
-                            $this->addDisplayGroup($elements, $name, $options);
-                            break;
-                        }
-                        $name = array_shift($spec);
-                    case (3 <= $argc):
-                        $options = array_shift($spec);
-                    default:
-                        $this->addDisplayGroup($elements, $name, $options);
+                $elements = array_shift($spec);
+                if (null === $name) {
+                    $name    = array_shift($spec);
+                    $options = array_shift($spec);
+                    $this->addDisplayGroup($elements, $name, $options);
+                } elseif (!is_array($elements)) {
+                    $elements = array_merge((array) $elements, $spec);
+                    $this->addDisplayGroup($elements, $name);
+                } else {
+                    $options = array_shift($spec);
+                    $this->addDisplayGroup($elements, $name, $options);
                 }
             }
         }
@@ -2739,9 +2716,8 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                 'options'   => $options,
             ];
         } elseif (is_array($decorator)) {
-            foreach ($decorator as $name => $spec) {
-                break;
-            }
+            $spec = reset($decorator);
+            $name = key($decorator);
             if (is_numeric($name)) {
                 require_once 'Zend/Form/Exception.php';
                 throw new Zend_Form_Exception('Invalid alias provided to addDecorator; must be alphanumeric string');
@@ -2790,18 +2766,10 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                         $options = $decoratorInfo['options'];
                     }
                     $this->addDecorator($decorator, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $decorator  = array_shift($decoratorInfo);
-                        case (2 <= $argc):
-                            $options = array_shift($decoratorInfo);
-                        default:
-                            $this->addDecorator($decorator, $options);
-                            break;
-                    }
+                } elseif (0 < $argc) {
+                    $decorator = array_shift($decoratorInfo);
+                    $options   = array_shift($decoratorInfo);
+                    $this->addDecorator($decorator, $options);
                 }
             } else {
                 require_once 'Zend/Form/Exception.php';
@@ -3280,7 +3248,6 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function current()
     {
         $this->_sort();
-        current($this->_order);
         $key = key($this->_order);
 
         if (isset($this->_elements[$key])) {

@@ -1108,12 +1108,13 @@ class Zend_Form_Element implements Zend_Validate_Interface
         switch ($type) {
             case self::FILTER:
             case self::VALIDATE:
-                $prefixSegment = ucfirst(strtolower($type));
-                $pathSegment   = $prefixSegment;
             case self::DECORATOR:
-                if (!isset($prefixSegment)) {
+                if (self::DECORATOR === $type) {
                     $prefixSegment = 'Form_Decorator';
                     $pathSegment   = 'Form/Decorator';
+                } else {
+                    $prefixSegment = ucfirst(strtolower($type));
+                    $pathSegment   = $prefixSegment;
                 }
                 if (!isset($this->_loaders[$type])) {
                     require_once 'Zend/Loader/PluginLoader.php';
@@ -1285,20 +1286,11 @@ class Zend_Form_Element implements Zend_Validate_Interface
                         $options = $validatorInfo['options'];
                     }
                     $this->addValidator($validator, $breakChainOnFailure, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $validator  = array_shift($validatorInfo);
-                        case (2 <= $argc):
-                            $breakChainOnFailure = array_shift($validatorInfo);
-                        case (3 <= $argc):
-                            $options = array_shift($validatorInfo);
-                        default:
-                            $this->addValidator($validator, $breakChainOnFailure, $options);
-                            break;
-                    }
+                } elseif (0 < $argc) {
+                    $validator           = array_shift($validatorInfo);
+                    $breakChainOnFailure = array_shift($validatorInfo);
+                    $options             = array_shift($validatorInfo);
+                    $this->addValidator($validator, $breakChainOnFailure, $options);
                 }
             } else {
                 require_once 'Zend/Form/Exception.php';
@@ -1760,18 +1752,10 @@ class Zend_Form_Element implements Zend_Validate_Interface
                         $options = $filterInfo['options'];
                     }
                     $this->addFilter($filter, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $filter  = array_shift($filterInfo);
-                        case (2 <= $argc):
-                            $options = array_shift($filterInfo);
-                        default:
-                            $this->addFilter($filter, $options);
-                            break;
-                    }
+                } elseif (0 < $argc) {
+                    $filter  = array_shift($filterInfo);
+                    $options = array_shift($filterInfo);
+                    $this->addFilter($filter, $options);
                 }
             } else {
                 require_once 'Zend/Form/Exception.php';
@@ -1950,9 +1934,8 @@ class Zend_Form_Element implements Zend_Validate_Interface
                 'options'   => $options,
             ];
         } elseif (is_array($decorator)) {
-            foreach ($decorator as $name => $spec) {
-                break;
-            }
+            $spec = reset($decorator);
+            $name = key($decorator);
             if (is_numeric($name)) {
                 require_once 'Zend/Form/Exception.php';
                 throw new Zend_Form_Exception('Invalid alias provided to addDecorator; must be alphanumeric string');
@@ -2000,18 +1983,10 @@ class Zend_Form_Element implements Zend_Validate_Interface
                         $options = $decoratorInfo['options'];
                     }
                     $this->addDecorator($decorator, $options);
-                } else {
-                    switch (true) {
-                        case (0 == $argc):
-                            break;
-                        case (1 <= $argc):
-                            $decorator  = array_shift($decoratorInfo);
-                        case (2 <= $argc):
-                            $options = array_shift($decoratorInfo);
-                        default:
-                            $this->addDecorator($decorator, $options);
-                            break;
-                    }
+                } elseif (0 < $argc) {
+                    $decorator = array_shift($decoratorInfo);
+                    $options   = array_shift($decoratorInfo);
+                    $this->addDecorator($decorator, $options);
                 }
             } else {
                 require_once 'Zend/Form/Exception.php';

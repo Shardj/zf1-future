@@ -1279,6 +1279,19 @@ class Zend_Form_FormTest extends TestCase
         $this->assertSame($page3, $subforms['page3']);
     }
 
+    public function testAddSubFormsNamesSubFormGivenAloneInArrayByItsKey()
+    {
+        $page1 = new Zend_Form_SubForm();
+        $this->form->addSubForms([
+            'page1' => [$page1],
+            'page2' => [['legend' => 'Second page']],
+        ]);
+        $subforms = $this->form->getSubForms();
+        $this->assertEquals(['page1', 'page2'], array_keys($subforms));
+        $this->assertSame($page1, $subforms['page1']);
+        $this->assertSame('Second page', $subforms['page2']->getLegend());
+    }
+
     public function testSetSubFormsOverwritesExistingSubForms()
     {
         $this->testCanAddAndRetrieveMultipleSubForms();
