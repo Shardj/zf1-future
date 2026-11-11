@@ -151,6 +151,13 @@ jobs:
             php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, memcached, memcache, ldap, intl"
             experimental: true
     steps:
+      # The resolver of the hosted runners (Azure DNS) fails for some hosts at times, e.g. the Ubuntu package archive
+      # A static file, the per-link settings of systemd-resolved do not last for the whole job
+      - name: Use public DNS servers in front of the resolver of the runner
+        run: |
+          sudo rm -f /etc/resolv.conf
+          printf 'nameserver 1.1.1.1\nnameserver 8.8.8.8\nnameserver 168.63.129.16\noptions timeout:2 attempts:3\n' | sudo tee /etc/resolv.conf
+
       - name: Checkout
         uses: actions/checkout@v5
 
