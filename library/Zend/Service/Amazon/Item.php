@@ -30,6 +30,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 #[AllowDynamicProperties]
+/**
+ * @deprecated Deprecated since 1.27.1 and will be removed in a future version: the Product Advertising API 4.0 was shut down in 2020
+ */
 class Zend_Service_Amazon_Item
 {
    /**

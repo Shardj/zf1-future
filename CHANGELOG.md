@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+
+* Components for services and formats that no longer exist are deprecated and will be removed in a future version. They trigger an E_USER_DEPRECATED notice when instantiated, their tests are removed and they are no longer covered by the static analysis:
+  * Zend_Amf (notice in Zend_Amf_Server) with Zend_Serializer_Adapter_Amf0 and Zend_Serializer_Adapter_Amf3: AMF is the data format of Adobe Flash Player, which reached its end of life on 2020-12-31.
+  * Zend_Gdata (notice in Zend_Gdata_App and the classes extending it): Google shut down the Google Data APIs it implements and the ClientLogin and AuthSub authentication.
+  * Zend_Cloud (notice in the service adapters): the Simple Cloud API is not developed any further; use the SDK of the cloud provider.
+  * Zend_Service_ReCaptcha, Zend_Service_ReCaptcha_MailHide, Zend_Captcha_ReCaptcha and Zend_Form_Decorator_Captcha_ReCaptcha: reCAPTCHA v1 was shut down on 2018-03-31; Zend_Captcha_SiteVerify and Zend_Service_SiteVerify replace them.
+  * Zend_Service_Amazon and Zend_Service_Amazon_Query with their result classes: the Product Advertising API 4.0 was shut down in 2020. Zend_Service_Amazon_Ec2, Zend_Service_Amazon_S3, Zend_Service_Amazon_Sqs and Zend_Service_Amazon_SimpleDb are not affected.
+  * Zend_Service_Delicious (the API was shut down on 2017-06-15), Zend_Service_Yahoo (the Yahoo! Search web services were shut down) and Zend_Service_Audioscrobbler (the Audioscrobbler 1.0 web services were shut down in favour of the Last.fm API 2.0).
+
 ### Fixed
 
 * Zend_OpenId_Consumer_Storage_File and Zend_OpenId_Provider_Storage_File throw Zend_OpenId_Exception ("Cannot create a lock file in the directory") when a lock file cannot be created in an existing storage directory; the result of fopen() was compared with null, so the constructor emitted a warning and failed with a TypeError of fclose() (PHP 8) instead.

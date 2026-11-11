@@ -5,6 +5,7 @@
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
 ### 1.27.1
+* Zend_Amf_Server, Zend_Gdata_App and the classes extending it, the Zend_Cloud service adapters, Zend_Serializer_Adapter_Amf0 / Amf3, Zend_Service_ReCaptcha (also through Zend_Captcha_ReCaptcha), Zend_Service_Amazon, Zend_Service_Delicious, Zend_Service_Yahoo and Zend_Service_Audioscrobbler trigger an E_USER_DEPRECATED notice when instantiated (see "Deprecated components" in README.md). Applications that turn deprecation notices into exceptions have to handle it.
 * Zend_Validate_EmailAddress with the deep MX check (`deep` option) accepts hosts whose address lies outside the reserved networks. Before, every address with the first octet 0, 10, 100, 127, 169, 172, 192 or 198 counted as reserved, so hosts on public addresses such as 172.217.0.1, 192.30.252.1 or 100.128.0.1 were rejected with `INVALID_SEGMENT`. Addresses inside the reserved networks (10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.168.0.0/16, ...) and from 224.0.0.0 up are rejected as before.
 * Zend_Search_Lucene_Proxy::getSegmentFileName() returns the name of the segments file, as Zend_Search_Lucene::getSegmentFileName() does. It returned null.
 * Zend_Pdf_StringParser::skipComment() moves the offset to the end of the current line. It moved it to the end of the data.

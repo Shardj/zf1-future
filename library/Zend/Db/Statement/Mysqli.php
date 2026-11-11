@@ -38,6 +38,10 @@ require_once 'Zend/Db/Statement.php';
  */
 class Zend_Db_Statement_Mysqli extends Zend_Db_Statement
 {
+    /**
+     * @var Zend_Db_Adapter_Mysqli
+     */
+    protected $_adapter = null;
 
     /**
      * The driver level statement

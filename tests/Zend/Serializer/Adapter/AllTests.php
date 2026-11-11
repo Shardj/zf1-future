@@ -44,16 +44,6 @@ require_once dirname(__FILE__) . '/PhpCodeTest.php';
 require_once dirname(__FILE__) . '/JsonTest.php';
 
 /**
- * @see Zend_Serializer_Adapter_Amf0Test
- */
-require_once dirname(__FILE__) . '/Amf0Test.php';
-
-/**
- * @see Zend_Serializer_Adapter_Amf3Test
- */
-require_once dirname(__FILE__) . '/Amf3Test.php';
-
-/**
  * @see Zend_Serializer_Adapter_IgbinaryTest
  */
 require_once dirname(__FILE__) . '/IgbinaryTest.php';
@@ -94,8 +84,6 @@ class Zend_Serializer_Adapter_AllTests
         $suite->addTestSuite('Zend_Serializer_Adapter_PhpSerializeTest');
         $suite->addTestSuite('Zend_Serializer_Adapter_PhpCodeTest');
         $suite->addTestSuite('Zend_Serializer_Adapter_JsonTest');
-        $suite->addTestSuite('Zend_Serializer_Adapter_Amf0Test');
-        $suite->addTestSuite('Zend_Serializer_Adapter_Amf3Test');
 
         if (!defined('TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED') || !TESTS_ZEND_SERIALIZER_ADAPTER_IGBINARY_ENABLED) {
             $skippedTest = new Zend_Serializer_Adapter_IgbinarySkipTest();
