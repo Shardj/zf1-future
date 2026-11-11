@@ -511,7 +511,6 @@ abstract class Zend_Navigation_Container implements RecursiveIterator, Countable
     public function current()
     {
         $this->_sort();
-        current($this->_index);
         $hash = key($this->_index) ?? '';
 
         if (isset($this->_pages[$hash])) {

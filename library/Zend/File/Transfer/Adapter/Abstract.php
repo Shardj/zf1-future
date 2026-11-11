@@ -407,25 +407,15 @@ abstract class Zend_File_Transfer_Adapter_Abstract
                         $validator = $name;
                         $options   = $validatorInfo;
                         $this->addValidator($validator, $breakChainOnFailure, $options, $files);
-                    } else {
-                        $file = $files;
-                        switch (true) {
-                            case (0 == $argc):
-                                break;
-                            case (1 <= $argc):
-                                $validator  = array_shift($validatorInfo);
-                            case (2 <= $argc):
-                                $breakChainOnFailure = array_shift($validatorInfo);
-                            case (3 <= $argc):
-                                $options = array_shift($validatorInfo);
-                            case (4 <= $argc):
-                                if (!empty($validatorInfo)) {
-                                    $file = array_shift($validatorInfo);
-                                }
-                            default:
-                                $this->addValidator($validator, $breakChainOnFailure, $options, $file);
-                                break;
+                    } elseif (0 < $argc) {
+                        $file                = $files;
+                        $validator           = array_shift($validatorInfo);
+                        $breakChainOnFailure = array_shift($validatorInfo);
+                        $options             = array_shift($validatorInfo);
+                        if (!empty($validatorInfo)) {
+                            $file = array_shift($validatorInfo);
                         }
+                        $this->addValidator($validator, $breakChainOnFailure, $options, $file);
                     }
                 }
             } else {
@@ -645,7 +635,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
             }
         }
 
-        if (isset($count)) {
+        if (isset($count, $validator)) {
             if (!$validator->isValid($count['tmp_name'], $count)) {
                 $this->_messages += $validator->getMessages();
             }

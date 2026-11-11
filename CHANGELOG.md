@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Filter_Compress_Zip throws Zend_Filter_Exception when a file of a compressed directory cannot be added to the archive; the result of ZipArchive::addFile() was not checked, so the archive was written without the file.
 * Zend_Feed_Builder_Header::setCloud() loads Zend_Uri_Http before it uses it; without an autoloader it failed with "Class Zend_Uri_Http not found".
 * Zend_Pdf_Outline_Loaded::getColor() returns the colour of an outline loaded from a document; it threw Zend_Pdf_Exception ("Argument must be numeric"). Zend_Pdf_Outline_Loaded::setColor() and Zend_Pdf_Outline_Created::setColor() accept null to reset the colour to the default, as documented; null ended in a TypeError.
+* Zend_Form::addSubForms() keeps the array key as the name of a sub form given alone in an array (`['page1' => [$subForm]]` or `['page1' => [$options]]`); the sub form was registered under an empty name.
 
 ## [1.27.0] - 2026-11-09
 

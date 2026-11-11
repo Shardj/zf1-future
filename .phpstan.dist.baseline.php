@@ -1424,12 +1424,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
-	'identifier' => 'smallerOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $filter of method Zend_File_Transfer_Adapter_Abstract::addFilter() expects array|string, Zend_Filter_Interface given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1445,12 +1439,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Variable $options might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $validator might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
 ];
 $ignoreErrors[] = [
@@ -1556,56 +1544,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function current() on a separate line has no effect.',
-	'identifier' => 'function.resultUnused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
-	'identifier' => 'smallerOrEqual.alwaysTrue',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $decorator of method Zend_Form::addDecorator() expects string|Zend_Form_Decorator_Interface, array<string, string|Zend_Form_Decorator_Interface> given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $decorator might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $elements might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $name might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $spec might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $subForm might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $type might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form.php',
 ];
@@ -1628,86 +1568,14 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function current() on a separate line has no effect.',
-	'identifier' => 'function.resultUnused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
-	'identifier' => 'smallerOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $decorator of method Zend_Form_DisplayGroup::addDecorator() expects string|Zend_Form_Decorator_Interface, array<string, string|Zend_Form_Decorator_Interface> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $decorator might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $name might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $spec might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
 	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
-	'identifier' => 'smallerOrEqual.alwaysTrue',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $decorator might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $filter might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $name might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $pathSegment might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $spec might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $validator might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/Element.php',
 ];
@@ -2384,12 +2252,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function current() on a separate line has no effect.',
-	'identifier' => 'function.resultUnused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Navigation/Container.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $pages of method Zend_Navigation_Container::addPages() expects (iterable<Zend_Navigation_Page>&Zend_Config)|(iterable<Zend_Navigation_Page>&Zend_Navigation_Container), array<Zend_Navigation_Page> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2712,6 +2574,12 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Destination/Named.php',
+];
+$ignoreErrors[] = [
+	'rawMessage' => 'ArrayObject<*NEVER*, *NEVER*> does not accept Zend_Pdf_Element.',
+	'identifier' => 'offsetAssign.valueType',
+	'count' => 1,
+	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf_Element_Array::$items (array) does not accept ArrayObject<*NEVER*, *NEVER*>.',
@@ -4908,12 +4776,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameter.unresolvableType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/XmlRpc/Value.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'ArrayObject<*NEVER*, *NEVER*> does not accept Zend_Pdf_Element.',
-	'identifier' => 'offsetAssign.valueType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$type by-ref type of method Zend_XmlRpc_Value::_extractTypeAndValue() expects string, int|string|null given.',
