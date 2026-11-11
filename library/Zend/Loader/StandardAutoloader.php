@@ -325,6 +325,7 @@ class Zend_Loader_StandardAutoloader implements Zend_Loader_SplAutoloader
             set_error_handler([$this, 'handleError'], E_WARNING);
             include $filename;
             restore_error_handler();
+            // @phpstan-ignore if.alwaysFalse (handleError() sets the flag when the include emits a warning)
             if ($this->error) {
                 return false;
             }

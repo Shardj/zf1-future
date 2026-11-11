@@ -110,12 +110,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Loader_PluginLoader_Interface::getPaths().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -149,12 +143,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Application_Bootstrap_Bootstrapper::getResource().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/Modules.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Application/Resource/Modules.php',
 ];
 $ignoreErrors[] = [
@@ -204,18 +192,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Application/Resource/View.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Auth_Adapter_Http::$_basicResolver (Zend_Auth_Adapter_Http_Resolver_Interface) in empty() is not falsy.',
-	'identifier' => 'empty.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Auth/Adapter/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Auth_Adapter_Http::$_digestResolver (Zend_Auth_Adapter_Http_Resolver_Interface) in empty() is not falsy.',
-	'identifier' => 'empty.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Auth/Adapter/Http.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Auth_Adapter_OpenId::$_response (Zend_Controller_Response_Abstract) does not accept string.',
@@ -334,12 +310,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Function imagepolygon invoked with 3 parameters, 4 required.',
 	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Image.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between class-string and \'GdImage\' will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Barcode/Renderer/Image.php',
 ];
@@ -502,12 +472,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $flag of function ob_implicit_flush expects int, false given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $_COOKIE in isset() always exists and is not nullable.',
-	'identifier' => 'isset.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
 ];
@@ -1022,18 +986,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Standard.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Standard.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Standard.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Dispatcher_Interface::removeControllerDirectory().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -1124,26 +1076,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array<mixed> will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Strict comparison using !== between int<1, max> and 0 will always evaluate to true.',
 	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $_GET in isset() always exists and is not nullable.',
-	'identifier' => 'isset.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $_POST in isset() always exists and is not nullable.',
-	'identifier' => 'isset.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
 ];
@@ -1592,18 +1526,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlsrv.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between array and false will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Sqlsrv.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $type might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -1696,12 +1618,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
 	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between string and \'OCI-Lob\'|\'OCILob\' will always evaluate to false.',
-	'identifier' => 'instanceof.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
 ];
@@ -3344,12 +3260,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between int and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $array of function implode expects array<string>, array<int, array|int|string> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3452,12 +3362,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'If condition is always false.',
-	'identifier' => 'if.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/PluginLoader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $className might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 3,
@@ -3468,12 +3372,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Loader/SplAutoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'If condition is always false.',
-	'identifier' => 'if.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Loader_StandardAutoloader), \'handleError\'} given.',
@@ -3900,30 +3798,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Message/Mpns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Mobile_Push_Message_Abstract::$_token (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Message/Mpns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Mobile_Push_Message_Abstract::$_token (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Message/Mpns/Raw.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Mobile_Push_Message_Abstract::$_token (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Message/Mpns/Tile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Mobile_Push_Message_Abstract::$_token (string) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Message/Mpns/Toast.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getDelay().',
@@ -6514,12 +6388,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation ">" between int<1, max> and 0 is always true.',
 	'identifier' => 'greater.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Uri/Http.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between 0|1 and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Uri/Http.php',
 ];

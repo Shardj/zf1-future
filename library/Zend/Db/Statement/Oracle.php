@@ -549,6 +549,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
         if ($this->getLobAsString()) {
             // the LOB class is OCILob since PHP 8 and OCI-Lob before
             $type = class_exists('OCILob', false) ? 'OCILob' : 'OCI-Lob';
+            // @phpstan-ignore instanceof.alwaysFalse (a LOB column is fetched as an object of the LOB class)
             if ($data instanceof $type) {
                 $data = $data->read($data->size());
             }

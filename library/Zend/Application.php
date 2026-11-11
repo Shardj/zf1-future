@@ -347,6 +347,7 @@ class Zend_Application
 
         if (!class_exists($class, false)) {
             require_once $path;
+            // @phpstan-ignore booleanNot.alwaysTrue (the file loaded above may define the class)
             if (!class_exists($class, false)) {
                 throw new Zend_Application_Exception(
                     'Bootstrap class not found'

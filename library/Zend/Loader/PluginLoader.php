@@ -400,6 +400,7 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
                 $loadFile = $path . $classFile;
                 if (Zend_Loader::isReadable($loadFile)) {
                     include_once $loadFile;
+                    // @phpstan-ignore if.alwaysFalse (the file loaded above may define the class)
                     if (class_exists($className, false)) {
                         if (null !== $incFile) {
                             self::_appendIncFile($loadFile);

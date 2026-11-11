@@ -205,6 +205,7 @@ class Zend_Uri_Http extends Zend_Uri
         }
 
         // Failed decomposition; no further processing needed
+        // @phpstan-ignore identical.alwaysFalse (preg_match() returns false on a PCRE error)
         if ($status === false) {
             return;
         }

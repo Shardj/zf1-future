@@ -677,10 +677,12 @@ class Zend_Db_Adapter_Sqlsrv extends Zend_Db_Adapter_Abstract
         $this->_connect();
         $serverInfo = sqlsrv_server_info($this->_connection);
 
+        // @phpstan-ignore notIdentical.alwaysTrue (sqlsrv_server_info() returns false on failure)
         if ($serverInfo !== false) {
             return $serverInfo['SQLServerVersion'];
         }
 
+        // @phpstan-ignore deadCode.unreachable (reached when sqlsrv_server_info() returns false)
         return null;
     }
 }

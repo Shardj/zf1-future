@@ -759,13 +759,17 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
         $return       = $this->_params;
         $paramSources = $this->getParamSources();
         if (in_array('_GET', $paramSources)
+            // @phpstan-ignore isset.variable (the application may unset or replace the superglobal)
             && isset($_GET)
+            // @phpstan-ignore function.alreadyNarrowedType (the application may unset or replace the superglobal)
             && is_array($_GET)
         ) {
             $return += $_GET;
         }
         if (in_array('_POST', $paramSources)
+            // @phpstan-ignore isset.variable (the application may unset or replace the superglobal)
             && isset($_POST)
+            // @phpstan-ignore function.alreadyNarrowedType (the application may unset or replace the superglobal)
             && is_array($_POST)
         ) {
             $return += $_POST;
