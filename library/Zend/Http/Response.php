@@ -349,7 +349,7 @@ class Zend_Http_Response
     public function getHeader($header)
     {
         $header = ucwords(strtolower($header));
-        if (! is_string($header) || ! isset($this->headers[$header])) return null;
+        if (! isset($this->headers[$header])) return null;
 
         return $this->headers[$header];
     }

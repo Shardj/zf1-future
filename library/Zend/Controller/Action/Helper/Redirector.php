@@ -350,16 +350,14 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
         // prevent header injections
         $url = str_replace(["\n", "\r"], '', $url);
 
-        if (null !== $options) {
-            if (isset($options['exit'])) {
-                $this->setExit(($options['exit']) ? true : false);
-            }
-            if (isset($options['prependBase'])) {
-                $this->setPrependBase(($options['prependBase']) ? true : false);
-            }
-            if (isset($options['code'])) {
-                $this->setCode($options['code']);
-            }
+        if (isset($options['exit'])) {
+            $this->setExit(($options['exit']) ? true : false);
+        }
+        if (isset($options['prependBase'])) {
+            $this->setPrependBase(($options['prependBase']) ? true : false);
+        }
+        if (isset($options['code'])) {
+            $this->setCode($options['code']);
         }
 
         // If relative URL, decide if we should prepend base URL

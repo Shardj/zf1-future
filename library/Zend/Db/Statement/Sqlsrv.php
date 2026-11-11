@@ -201,9 +201,6 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
         }
 
         if ($params !== null) {
-            if (!is_array($params)) {
-                $params = [$params];
-            }
             $error = false;
 
             // make all params passed by reference

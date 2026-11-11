@@ -241,7 +241,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         $authors = $this->_container->getAuthors();
-        if (!$authors || empty($authors)) {
+        if (!$authors) {
             /**
              * Technically we should defer an exception until we can check
              * that all entries contain an author. If any entry is missing

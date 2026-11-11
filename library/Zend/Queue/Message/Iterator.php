@@ -110,9 +110,7 @@ class Zend_Queue_Message_Iterator implements Iterator, Countable
             $message = ['data' => $data];
 
             // If queue has not been set, then use the default.
-            if (empty($message['queue'])) {
-                $message['queue'] = $this->_queue;
-            }
+            $message['queue'] = $this->_queue;
 
             // construct the message and add it to _data[];
             $this->_data[] = new $classname($message);

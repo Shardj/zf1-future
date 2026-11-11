@@ -456,6 +456,7 @@ abstract class Zend_Mail_Protocol_Abstract
 
             if ($errMsg !== '') {
                 $errMsg .= ' ' . $msg;
+            // @phpstan-ignore identical.alwaysFalse (preg_split() may return fewer parts, list() then assigns null)
             } elseif ($cmd === null || !in_array($cmd, $code)) {
                 $errMsg =  $msg;
             }

@@ -195,7 +195,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
     protected function _setAuthors(DOMDocument $dom, DOMElement $root)
     {
         $authors = $this->_container->getAuthors();
-        if ((!$authors || empty($authors))) {
+        if (!$authors) {
             /**
              * This will actually trigger an Exception at the feed level if
              * a feed level author is not set.
@@ -234,7 +234,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom
     protected function _setEnclosure(DOMDocument $dom, DOMElement $root)
     {
         $data = $this->_container->getEnclosure();
-        if ((!$data || empty($data))) {
+        if (!$data) {
             return;
         }
         $enclosure = $this->_dom->createElement('link');

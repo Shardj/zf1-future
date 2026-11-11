@@ -520,29 +520,28 @@ class Zend_View_Helper_Navigation_Menu
         }
 
         // UL class
-        if (isset($options['ulClass']) && $options['ulClass'] !== null) {
+        if (isset($options['ulClass'])) {
             $options['ulClass'] = (string) $options['ulClass'];
         } else {
             $options['ulClass'] = $this->getUlClass();
         }
 
         // UL id
-        if (isset($options['ulId']) && $options['ulId'] !== null) {
+        if (isset($options['ulId'])) {
             $options['ulId'] = (string) $options['ulId'];
         } else {
             $options['ulId'] = $this->getUlId();
         }
 
         // Active class
-        if (isset($options['activeClass']) && $options['activeClass'] !== null
-        ) {
+        if (isset($options['activeClass'])) {
             $options['activeClass'] = (string) $options['activeClass'];
         } else {
             $options['activeClass'] = $this->getActiveClass();
         }
 
         // Parent class
-        if (isset($options['parentClass']) && $options['parentClass'] !== null) {
+        if (isset($options['parentClass'])) {
             $options['parentClass'] = (string) $options['parentClass'];
         } else {
             $options['parentClass'] = $this->getParentClass();

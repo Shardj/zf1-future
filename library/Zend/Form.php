@@ -2227,6 +2227,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                     $suborder = (null !== $suborder) ? $suborder : count($subordered);
                     array_splice($subordered, $suborder, 0, [$element]);
                 }
+                // @phpstan-ignore empty.variable (array_splice() fills $subordered by reference)
                 if (!empty($subordered)) {
                     array_splice($ordered, $order, 0, $subordered);
                 }

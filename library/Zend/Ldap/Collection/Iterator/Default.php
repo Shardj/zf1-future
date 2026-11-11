@@ -177,6 +177,7 @@ class Zend_Ldap_Collection_Iterator_Default implements Iterator, Countable
     public function setAttributeNameTreatment($attributeNameTreatment)
     {
         if (is_callable($attributeNameTreatment)) {
+            // @phpstan-ignore function.alreadyNarrowedType (a callable string may name a static method, which is not a function)
             if (is_string($attributeNameTreatment) && !function_exists($attributeNameTreatment)) {
                 $this->_attributeNameTreatment = self::ATTRIBUTE_TO_LOWER;
             } else if (is_array($attributeNameTreatment) &&

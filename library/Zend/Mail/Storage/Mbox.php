@@ -153,6 +153,7 @@ class Zend_Mail_Storage_Mbox extends Zend_Mail_Storage_Abstract
 
         $message = $this->getRawHeader($id);
         // file pointer is after headers now
+        // @phpstan-ignore if.alwaysFalse ($bodyLines is fixed to 0 until reading body lines is implemented)
         if ($bodyLines) {
             $message .= "\n";
             while ($bodyLines-- && ftell($this->_fh) < $this->_positions[$id - 1]['end']) {

@@ -268,9 +268,6 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
         }
 
         if ($params !== null) {
-            if (!is_array($params)) {
-                $params = [$params];
-            }
             $error = false;
             foreach (array_keys($params) as $name) {
                 if (!$this->bindParam($name, $params[$name], null, -1)) {
@@ -447,9 +444,7 @@ class Zend_Db_Statement_Oracle extends Zend_Db_Statement
                     require_once 'Zend/Db/Statement/Oracle/Exception.php';
                     throw new Zend_Db_Statement_Oracle_Exception($error);
                 }
-                if (!$rows) {
-                    return [];
-                }
+                return [];
             }
             if ($style == Zend_Db::FETCH_COLUMN) {
                 $result = $result[$col];

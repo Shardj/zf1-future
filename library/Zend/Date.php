@@ -1134,7 +1134,7 @@ class Zend_Date extends Zend_Date_DateObject
 
         preg_match('/([[:alpha:]\/_-]{3,30})(?!.*([[:alpha:]\/_-]{3,30}))/', (string) $zone, $match);
         try {
-            if (!empty($match) && (!is_int($match[count($match) - 1]))) {
+            if (!empty($match)) {
                 $oldzone = $this->getTimezone();
                 $this->setTimezone($match[count($match) - 1]);
                 $result = $this->getTimezone();
