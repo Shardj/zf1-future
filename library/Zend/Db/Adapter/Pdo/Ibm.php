@@ -298,7 +298,7 @@ class Zend_Db_Adapter_Pdo_Ibm extends Zend_Db_Adapter_Pdo_Abstract
      *
      * @param string $tableName OPTIONAL
      * @param string $primaryKey OPTIONAL
-     * @return integer
+     * @return string|int|false
      * @throws Zend_Db_Adapter_Exception
      */
     public function lastInsertId($tableName = null, $primaryKey = null)

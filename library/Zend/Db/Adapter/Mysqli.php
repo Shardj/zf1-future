@@ -60,6 +60,16 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
     protected $_connection = null;
 
     /**
+     * Returns the underlying database connection object, creating it when needed
+     *
+     * @return mysqli
+     */
+    public function getConnection()
+    {
+        return parent::getConnection();
+    }
+
+    /**
      * Keys are UPPERCASE SQL datatypes or the constants
      * Zend_Db::INT_TYPE, Zend_Db::BIGINT_TYPE, or Zend_Db::FLOAT_TYPE.
      *

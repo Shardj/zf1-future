@@ -39,7 +39,6 @@ require_once 'Zend/Form/Decorator/FormTest.php';
 require_once 'Zend/Form/Decorator/HtmlTagTest.php';
 require_once 'Zend/Form/Decorator/ImageTest.php';
 require_once 'Zend/Form/Decorator/LabelTest.php';
-require_once 'Zend/Form/Decorator/ReCaptchaTest.php';
 require_once 'Zend/Form/Decorator/ViewHelperTest.php';
 require_once 'Zend/Form/Decorator/ViewScriptTest.php';
 
@@ -73,7 +72,6 @@ class Zend_Form_Decorator_AllTests
         $suite->addTestSuite('Zend_Form_Decorator_HtmlTagTest');
         $suite->addTestSuite('Zend_Form_Decorator_ImageTest');
         $suite->addTestSuite('Zend_Form_Decorator_LabelTest');
-        $suite->addTestSuite('Zend_Form_Decorator_ReCaptchaTest');
         $suite->addTestSuite('Zend_Form_Decorator_ViewHelperTest');
         $suite->addTestSuite('Zend_Form_Decorator_ViewScriptTest');
 

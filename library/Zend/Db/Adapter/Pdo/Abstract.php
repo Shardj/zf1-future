@@ -52,6 +52,16 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
     protected $_connection = null;
 
     /**
+     * Returns the underlying database connection object, creating it when needed
+     *
+     * @return PDO
+     */
+    public function getConnection()
+    {
+        return parent::getConnection();
+    }
+
+    /**
      * Transaction in BC mode for php >= 8 flag
      * 
      * Bring back behavior of PDO::rollback()/PDO::commit() 

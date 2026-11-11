@@ -58,6 +58,7 @@ require_once 'Zend/Xml/Security.php';
  * @subpackage Delicious
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @deprecated Deprecated since 1.27.1 and will be removed in a future version: the Delicious API was shut down on 2017-06-15
  */
 class Zend_Service_Delicious
 {
@@ -120,6 +121,8 @@ class Zend_Service_Delicious
      */
     public function __construct($uname = null, $pass = null)
     {
+        trigger_error(get_class($this) . ' is deprecated and will be removed in a future version', E_USER_DEPRECATED);
+
         $this->_rest = new Zend_Rest_Client();
         $this->_rest->getHttpClient()->setConfig(['ssltransport' => 'ssl']);
         $this->setAuth($uname, $pass);

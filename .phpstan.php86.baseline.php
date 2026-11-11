@@ -20,30 +20,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Acl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $length is never read.',
-	'identifier' => 'variable.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Deserializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $className is never read before being overwritten.',
-	'identifier' => 'assign.overwritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $className is assigned value \'\' but it already has that value.',
-	'identifier' => 'assign.redundant',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Parse/Amf0/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $message might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Amf/Server.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $basePath is never read.',
 	'identifier' => 'variable.unused',
 	'count' => 1,
@@ -132,30 +108,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.unused',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $result is never read before being overwritten.',
-	'identifier' => 'assign.overwritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/Infrastructure/Adapter/AbstractAdapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $removeTemporaryFilePath is never read before being overwritten.',
-	'identifier' => 'assign.overwritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $temporaryFilePath is never read before being overwritten.',
-	'identifier' => 'assign.overwritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $removeTemporaryFilePath is assigned value false but it already has that value.',
-	'identifier' => 'assign.redundant',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cloud/StorageService/Adapter/WindowsAzure.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $constName is never read.',
@@ -768,30 +720,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.redundant',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value of variable $i after ++ is never read.',
-	'identifier' => 'postInc.unused',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Gdata/Gapps.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Value assigned to variable $cellQuery is never read before being overwritten.',
-	'identifier' => 'assign.overwritten',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $location is never read.',
-	'identifier' => 'variable.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $newCustomArr is never read.',
-	'identifier' => 'variable.unused',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Gdata/Spreadsheets.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $stream of method Zend_Http_Client_Adapter_Stream::setOutputStream() expects resource, null given.',

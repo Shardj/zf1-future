@@ -128,6 +128,7 @@ abstract class Zend_Pdf_Action extends Zend_Pdf_Target implements RecursiveItera
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('$dictionary mast be a direct or an indirect dictionary object.');
         }
+        /** @var Zend_Pdf_Element_Dictionary $dictionary a dictionary, directly or through an indirect object or a reference */
         if (isset($dictionary->Type)  &&  $dictionary->Type->value != 'Action') {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Action dictionary Type entry must be set to \'Action\'.');

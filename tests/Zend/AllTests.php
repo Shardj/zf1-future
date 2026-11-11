@@ -29,14 +29,12 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Acl/AclTest.php';
-require_once 'Zend/Amf/AllTests.php';
 require_once 'Zend/Application/AllTests.php';
 require_once 'Zend/AuthTest.php';
 require_once 'Zend/Auth/AllTests.php';
 require_once 'Zend/Barcode/AllTests.php';
 require_once 'Zend/Cache/AllTests.php';
 require_once 'Zend/Captcha/AllTests.php';
-require_once 'Zend/Cloud/AllTests.php';
 require_once 'Zend/CodeGenerator/Php/AllTests.php';
 require_once 'Zend/Db/AllTests.php';
 require_once 'Zend/Dom/AllTests.php';
@@ -56,7 +54,6 @@ require_once 'Zend/File/AllTests.php';
 require_once 'Zend/FilterTest.php';
 require_once 'Zend/Filter/AllTests.php';
 require_once 'Zend/Form/AllTests.php';
-require_once 'Zend/Gdata/AllTests.php';
 require_once 'Zend/Http/AllTests.php';
 require_once 'Zend/JsonTest.php';
 require_once 'Zend/Json/AllTests.php';
@@ -175,14 +172,12 @@ class Zend_AllTests
 
         // Start remaining tests...
         $suite->addTestSuite('Zend_Acl_AclTest');
-        // $suite->addTest(Zend_Amf_AllTests::suite());
         $suite->addTest(Zend_Application_AllTests::suite());
         $suite->addTestSuite('Zend_AuthTest');
         $suite->addTest(Zend_Auth_AllTests::suite());
         $suite->addTest(Zend_Barcode_AllTests::suite());
         $suite->addTest(Zend_Cache_AllTests::suite());
         $suite->addTest(Zend_Captcha_AllTests::suite());
-        // $suite->addTest(Zend_Cloud_AllTests::suite());
         $suite->addTest(Zend_CodeGenerator_Php_AllTests::suite());
         $suite->addTestSuite('Zend_ConfigTest');
         $suite->addTest(Zend_Config_AllTests::suite());
@@ -202,7 +197,6 @@ class Zend_AllTests
         $suite->addTestSuite('Zend_FilterTest');
         $suite->addTest(Zend_Filter_AllTests::suite());
         $suite->addTest(Zend_Form_AllTests::suite());
-        // $suite->addTest(Zend_Gdata_AllTests::suite());
         $suite->addTest(Zend_Http_AllTests::suite());
         $suite->addTestSuite('Zend_JsonTest');
         $suite->addTest(Zend_Json_AllTests::suite());

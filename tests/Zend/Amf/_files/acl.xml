@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<roles>
-    <role id="admin">
-        <user name="george" password="password" />
-    </role>
-    <role id="anonymous">
-        <user name="guest" password="" />
-    </role>
-</roles>

@@ -122,6 +122,7 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
     protected function bootstrapBootstraps($bootstraps)
     {
         $bootstrap = $this->getBootstrap();
+        /** @var ArrayObject<string, object> $out */
         $out       = new ArrayObject([], ArrayObject::ARRAY_AS_PROPS);
 
         foreach ($bootstraps as $module => $bootstrapClass) {

@@ -205,7 +205,7 @@ class Zend_Search_Lucene_Search_QueryParserContext
     /**
      * Set boost factor to the entry
      *
-     * @param float $boostFactor
+     * @param float|numeric-string $boostFactor
      */
     public function boost($boostFactor)
     {

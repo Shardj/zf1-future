@@ -59,6 +59,7 @@ require_once 'Zend/Xml/Security.php';
  * @subpackage App
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @deprecated Deprecated since 1.27.1 and will be removed in a future version: Google shut down the Google Data APIs it implements and the ClientLogin and AuthSub authentication
  */
 class Zend_Gdata_App
 {
@@ -178,6 +179,8 @@ class Zend_Gdata_App
      */
     public function __construct($client = null, $applicationId = 'MyCompany-MyApp-1.0')
     {
+        trigger_error(get_class($this) . ' is deprecated and will be removed in a future version', E_USER_DEPRECATED);
+
         $this->setHttpClient($client, $applicationId);
         // Set default protocol version. Subclasses should override this as
         // needed once a given service supports a new version.
