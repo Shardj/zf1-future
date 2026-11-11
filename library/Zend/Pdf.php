@@ -633,9 +633,7 @@ class Zend_Pdf
 
         foreach ($root->AcroForm->Fields->items as $field) {
             /* We only support fields that are textfields and have a name */
-            if ($field->FT && $field->FT->value == 'Tx' && $field->T
-                && $field->T !== null
-            ) {
+            if ($field->FT && $field->FT->value == 'Tx' && $field->T) {
                 $this->_formFields[$field->T->value] = $field;
             }
         }

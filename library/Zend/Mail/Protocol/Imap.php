@@ -671,7 +671,9 @@ class Zend_Mail_Protocol_Imap
             // if we want only one message we can ignore everything else and just return
             if ($to === null && !is_array($from) && $tokens[0] == $from) {
                 // we still need to read all lines
+                // @phpstan-ignore booleanNot.alwaysTrue (readLine() returns true once the tagged line is read)
                 while (!$this->readLine($tokens, $tag));
+                // @phpstan-ignore deadCode.unreachable (readLine() returns true once the tagged line is read)
                 return $data;
             }
             $result[$tokens[0]] = $data;

@@ -95,7 +95,7 @@ class Zend_Feed_Writer_Renderer_Entry_Atom_Deleted
     protected function _setBy(DOMDocument $dom, DOMElement $root)
     {
         $data = $this->_container->getBy();
-        if ((!$data || empty($data))) {
+        if (!$data) {
             return;
         }
         $author = $this->_dom->createElement('at:by');

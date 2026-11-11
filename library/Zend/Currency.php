@@ -151,7 +151,7 @@ class Zend_Currency
     public function toCurrency($value = null, array $options = [])
     {
         if ($value === null) {
-            if (is_array($options) && isset($options['value'])) {
+            if (isset($options['value'])) {
                 $value = $options['value'];
             } else {
                 $value = $this->_options['value'];

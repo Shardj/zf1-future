@@ -49,13 +49,6 @@ class Zend_View_Helper_HtmlList extends Zend_View_Helper_FormElement
      */
     public function htmlList(array $items, $ordered = false, $attribs = false, $escape = true)
     {
-        if (!is_array($items)) {
-            require_once 'Zend/View/Exception.php';
-            $e = new Zend_View_Exception('First param must be an array');
-            $e->setView($this->view);
-            throw $e;
-        }
-
         $list = '';
 
         foreach ($items as $item) {

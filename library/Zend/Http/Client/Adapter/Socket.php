@@ -412,9 +412,6 @@ class Zend_Http_Client_Adapter_Socket implements Zend_Http_Client_Adapter_Interf
                 $this->close();
         require_once 'Zend/Http/Client/Adapter/Exception.php';
                 $encoding = $headers['transfer-encoding'];
-                if (is_array($encoding)) {
-                    $encoding = json_encode($encoding);
-                }
                 throw new Zend_Http_Client_Adapter_Exception('Cannot handle "' .
                     $encoding . '" transfer encoding');
             }

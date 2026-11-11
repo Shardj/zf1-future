@@ -279,8 +279,7 @@ class Zend_Controller_Dispatcher_Standard extends Zend_Controller_Dispatcher_Abs
          * arguments; throw exception if it's not an action controller
          */
         $controller = new $moduleClassName($request, $this->getResponse(), $this->getParams());
-        if (!($controller instanceof Zend_Controller_Action_Interface) &&
-            !($controller instanceof Zend_Controller_Action)) {
+        if (!($controller instanceof Zend_Controller_Action_Interface)) {
             require_once 'Zend/Controller/Dispatcher/Exception.php';
             throw new Zend_Controller_Dispatcher_Exception(
                 'Controller "' . $moduleClassName . '" is not an instance of Zend_Controller_Action_Interface'

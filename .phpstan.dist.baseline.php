@@ -476,12 +476,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Frontend/Page.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'If condition is always true.',
-	'identifier' => 'if.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Captcha/Word.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Cloud_DocumentService_Adapter_SimpleDb::_resolveAttributes() should return array but returns object.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -938,12 +932,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Json.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between null and array will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Redirector.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -980,12 +968,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/HelperBroker/PriorityStack.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between object and Zend_Controller_Action will always evaluate to false.',
-	'identifier' => 'instanceof.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Dispatcher/Standard.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Dispatcher_Interface::removeControllerDirectory().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -1018,12 +1000,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Dispatcher_Interface::setControllerDirectory() invoked with 2 parameters, 1 required.',
 	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Front.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between null and null will always evaluate to true.',
-	'identifier' => 'identical.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Front.php',
 ];
@@ -1076,12 +1052,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between int<1, max> and 0 will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Request/Http.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc type string|null of property Zend_Controller_Request_HttpTestCase::$_rawBody is not covariant with PHPDoc type string|false of overridden property Zend_Controller_Request_Http::$_rawBody.',
 	'identifier' => 'property.phpDocType',
 	'count' => 1,
@@ -1110,12 +1080,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Controller/Router/Rewrite.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between mixed and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Router/Route.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Unsafe usage of new static().',
@@ -1322,12 +1286,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Crypt/Rsa.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $subject of function str_replace expects array<string>|string, float|int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1366,12 +1324,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "-" between string and 1 results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_int() with string will always evaluate to false.',
-	'identifier' => 'function.impossibleType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
@@ -1466,12 +1418,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between object and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Mysqli.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method errorInfo() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
@@ -1482,12 +1428,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.nonObject',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Ibm.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getAttribute() on object|resource.',
@@ -1616,18 +1556,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Oracle.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method prepare() on object|resource.',
 	'identifier' => 'method.nonObject',
 	'count' => 1,
@@ -1644,24 +1572,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between true and true will always evaluate to true.',
-	'identifier' => 'identical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Abstract.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $cacheId might not be defined.',
@@ -1790,12 +1700,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/Slider.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_object() with mixed will always evaluate to false.',
-	'identifier' => 'function.impossibleType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/EventManager/Event.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $params (array|object) of method Zend_EventManager_Event::setParams() should be compatible with parameter $params (string) of method Zend_EventManager_EventDescription::setParams()',
 	'identifier' => 'method.childParameterType',
 	'count' => 1,
@@ -1828,12 +1732,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::setQuery().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset 1 on array{list<string>, list<non-falsy-string>} in isset() always exists and is not nullable.',
-	'identifier' => 'isset.offset',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed.php',
 ];
@@ -1922,32 +1820,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_object() with Zend_Feed_Abstract will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between Zend_Feed_Abstract and Zend_Feed_Abstract will always evaluate to true.',
-	'identifier' => 'instanceof.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Publisher.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Subscriber.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Pubsubhubbub/Subscriber.php',
 ];
@@ -1966,12 +1840,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Feed_Reader_FeedInterface::setOriginalSourceUri().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'If condition is always false.',
-	'identifier' => 'if.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader.php',
 ];
@@ -2002,12 +1870,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Reader_Entry_Rss::getCommentCount() should return string|null but returns int<min, -1>|int<1, max>|null.',
 	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors on left side of ?? always exists and is not nullable.',
-	'identifier' => 'nullCoalesce.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Entry/Rss.php',
 ];
@@ -2072,12 +1934,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors on left side of ?? always exists and is not nullable.',
-	'identifier' => 'nullCoalesce.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::getHost().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -2088,78 +1944,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/FeedSet.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $flinks in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/Atom/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $hubs in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/Atom/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/DublinCore/Renderer/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/DublinCore/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Renderer/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $keywords in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Renderer/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $cats in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $keywords in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $owners in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/ITunes/Renderer/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $links in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/Threading/Renderer/Entry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $links in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Extension/WellFormedWeb/Renderer/Entry.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Writer_Feed::current() has invalid return type Zend_Feed_Reader_Entry_Interface.',
@@ -2174,52 +1958,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Entry/Atom.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $data in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Entry/Atom.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $data in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Entry/Atom/Deleted.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $data in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Entry/Rss.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Atom/AtomAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $container of method Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract::__construct() expects Zend_Feed_Writer_Feed, Zend_Feed_Writer_Source given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Atom/Source.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $authors in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Renderer/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method SplFileInfo::addClass().',
@@ -2236,12 +1978,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_File_ClassFileLocator::setInfoClass().',
 	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/ClassFileLocator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between null and string will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/File/ClassFileLocator.php',
 ];
@@ -2390,18 +2126,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array<mixed, mixed> will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Null.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array<mixed, mixed> will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/StripTags.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
 	'identifier' => 'property.notFound',
 	'count' => 1,
@@ -2462,46 +2186,16 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $subordered in empty() always exists and is always falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $type might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between *NEVER* and Zend_Form_DisplayGroup will always evaluate to false.',
-	'identifier' => 'instanceof.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormElements.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between Zend_Form and Zend_Form will always evaluate to true.',
-	'identifier' => 'instanceof.alwaysTrue',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormElements.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Form::setElementsBelongTo() invoked with 2 parameters, 1 required.',
 	'identifier' => 'arguments.count',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/FormElements.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $label in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/Label.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between Zend_Form and Zend_Form will always evaluate to true.',
-	'identifier' => 'instanceof.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Decorator/PrepareElements.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Form::setElementsBelongTo() invoked with 2 parameters, 1 required.',
@@ -2561,12 +2255,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Comparison operation "<=" between 1 and int<1, max> is always true.',
 	'identifier' => 'smallerOrEqual.alwaysTrue',
 	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/Element.php',
 ];
 $ignoreErrors[] = [
@@ -3086,12 +2774,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with string will always evaluate to false.',
-	'identifier' => 'function.impossibleType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Client/Adapter/Socket.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri::getHost().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -3108,12 +2790,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Http/Header/SetCookie.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Response.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $path might not be defined.',
@@ -3234,12 +2910,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameterByRef.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Ldap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function function_exists() with callable-string will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Ldap/Collection/Iterator/Default.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Class LDAP\\Result not found.',
@@ -3488,12 +3158,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Log/Filter/Priority.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">=" between int<0, 255> and 0 is always true.',
-	'identifier' => 'greaterOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Header/HeaderValue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $headers of static method Zend_Mime_Decode::splitMessage() expects array, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3506,18 +3170,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between array{string, int<0, max>}|string and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $start of function substr expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3526,12 +3178,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $length of function substr expects int, string given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Imap.php',
 ];
@@ -3590,22 +3236,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Maildir.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'If condition is always false.',
-	'identifier' => 'if.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mail_Message_File) of method Zend_Mail_Storage_Mbox::getMessage() should be compatible with return type (Zend_Mail_Message) of method Zend_Mail_Storage_Abstract::getMessage()',
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Mbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<" between 0 and 1 is always true.',
-	'identifier' => 'smaller.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Pop3.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Left side of || is always false.',
@@ -4088,12 +3722,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer/Storage/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $recursive of function mkdir expects bool, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -4104,12 +3732,6 @@ $ignoreErrors[] = [
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Provider.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $recursive of function mkdir expects bool, int given.',
@@ -4186,12 +3808,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Pdf::$_pageReferences (SplObjectStorage) does not accept array.',
 	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf.php',
 ];
@@ -4424,12 +4040,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between null and null will always evaluate to false.',
-	'identifier' => 'notIdentical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Element/Array.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -4494,12 +4104,6 @@ $ignoreErrors[] = [
 	'identifier' => 'greater.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Filter/RunLength.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between null and null will always evaluate to true.',
-	'identifier' => 'identical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Font.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $imageFileName of class Zend_Pdf_Resource_Image_Png constructor expects string, Zend_Pdf_FileParser_Image_Png given.',
@@ -4716,12 +4320,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset \'queue\' on array{data: mixed} in empty() does not exist.',
-	'identifier' => 'empty.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Message/Iterator.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Queue_Stomp_Client::send() has invalid return type StompClientMock.',
@@ -5132,12 +4730,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/PhpCode.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between string and false will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/PhpSerialize.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Serializer_Adapter_PythonPickle::setOption() should return Zend_Serializer_Adapter_PythonPickle but returns Zend_Serializer_Adapter_AdapterAbstract.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -5184,12 +4776,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Server/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between null and mixed will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Server/Reflection/Node.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Access to an undefined property DOMNameSpaceNode|DOMNode::$data.',
@@ -6338,18 +5924,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Offset mixed on array{} in isset() does not exist.',
-	'identifier' => 'isset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Array.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset mixed on array{} in isset() does not exist.',
-	'identifier' => 'isset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter/Ini.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_Qt::$_cleared is never read, only written.',
 	'identifier' => 'property.onlyWritten',
 	'count' => 1,
@@ -6614,12 +6188,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $context in isset() always exists and is not nullable.',
-	'identifier' => 'isset.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Identical.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between 3 and non-empty-string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -6630,18 +6198,6 @@ $ignoreErrors[] = [
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/Isbn.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function method_exists() with object and \'__toString\' will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/NotEmpty.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_string() with string will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/Sitemap/Changefreq.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_View_Abstract::_run() invoked with 1 parameter, 0 required.',
@@ -6698,12 +6254,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormButton.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always false.',
-	'identifier' => 'booleanNot.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormCheckbox.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -6744,12 +6294,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormImage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always false.',
-	'identifier' => 'booleanNot.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormLabel.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
@@ -6821,12 +6365,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Variable $id might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSelect.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $multiple in empty() always exists and is not falsy.',
-	'identifier' => 'empty.variable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormSelect.php',
 ];
 $ignoreErrors[] = [
@@ -6908,12 +6446,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/HeadStyle.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HtmlList.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_View_Helper_InlineScript::inlineScript() should return Zend_View_Helper_InlineScript but returns Zend_View_Helper_HeadScript.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -6924,12 +6456,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Menu.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $foundDepth might not be defined.',
@@ -6964,12 +6490,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $obj of function get_object_vars expects object, array given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between mixed and null will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
 ];

@@ -1506,7 +1506,7 @@ abstract class Zend_Db_Table_Abstract
         if ($defaultSource == self::DEFAULT_DB) {
             foreach ($this->_metadata as $metadataName => $metadata) {
                 if (($metadata['DEFAULT'] != null) &&
-                    ($metadata['NULLABLE'] !== true || ($metadata['NULLABLE'] === true && isset($this->_defaultValues[$metadataName]) && $this->_defaultValues[$metadataName] === true)) &&
+                    ($metadata['NULLABLE'] !== true || (isset($this->_defaultValues[$metadataName]) && $this->_defaultValues[$metadataName] === true)) &&
                     (!(isset($this->_defaultValues[$metadataName]) && $this->_defaultValues[$metadataName] === false))) {
                     $defaults[$metadataName] = $metadata['DEFAULT'];
                 }
@@ -1628,7 +1628,7 @@ abstract class Zend_Db_Table_Abstract
             $options['db'] = $referenceTable->getAdapter();
         }
 
-        if (isset($tableDefinition) && $tableDefinition !== null) {
+        if (isset($tableDefinition)) {
             $options[Zend_Db_Table_Abstract::DEFINITION] = $tableDefinition;
         }
 

@@ -62,7 +62,7 @@ class Zend_OpenId_Provider_Storage_File extends Zend_OpenId_Provider_Storage
                 }
             }
             $user = get_current_user();
-            if (is_string($user) && !empty($user)) {
+            if (!empty($user)) {
                 $tmp .= '/' . $user;
             }
             $dir = $tmp . '/openid/provider';

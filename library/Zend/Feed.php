@@ -311,6 +311,7 @@ class Zend_Feed
 
         // Try to fetch a feed for each link tag that appears to refer to a feed
         $feeds = [];
+        // @phpstan-ignore isset.offset (preg_match_all() leaves $matches empty on a PCRE error)
         if (isset($matches[1]) && count($matches[1]) > 0) {
             foreach ($matches[1] as $link) {
                 // force string to be an utf-8 one

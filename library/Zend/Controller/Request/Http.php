@@ -543,6 +543,7 @@ class Zend_Controller_Request_Http extends Zend_Controller_Request_Abstract
             // out of baseUrl. $pos !== 0 makes sure it is not matching a value
             // from PATH_INFO or QUERY_STRING
             if ((strlen($requestUri) >= strlen($baseUrl))
+                // @phpstan-ignore notIdentical.alwaysTrue (position 0 is handled by the checks above)
                 && ((false !== ($pos = strpos($requestUri, $baseUrl))) && ($pos !== 0)))
             {
                 $baseUrl = substr($requestUri, 0, $pos + strlen($baseUrl));

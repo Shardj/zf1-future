@@ -62,6 +62,7 @@ class Zend_Pdf_Element_Array extends Zend_Pdf_Element
                 }
                 $this->items[] = $element;
             }
+        // @phpstan-ignore notIdentical.alwaysFalse (guards a value that is neither null nor an array)
         } else if ($val !== null){
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Argument must be an array');

@@ -455,9 +455,6 @@ class Zend_Db_Adapter_Mysqli extends Zend_Db_Adapter_Abstract
             Zend_Loader::loadClass($stmtClass);
         }
         $stmt = new $stmtClass($this, $sql);
-        if ($stmt === false) {
-            return false;
-        }
         $stmt->setFetchMode($this->_fetchMode);
         $this->_stmt = $stmt;
         return $stmt;

@@ -578,6 +578,7 @@ class Zend_Feed_Reader
 
         $xpath->registerNamespace('atom', self::NAMESPACE_ATOM_03);
 
+        // @phpstan-ignore if.alwaysFalse (the atom prefix is bound to another namespace above)
         if ($xpath->query('//atom:feed')->length) {
             return self::TYPE_ATOM_03;
         }
