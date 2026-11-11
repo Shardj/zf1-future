@@ -93,6 +93,7 @@ class Zend_Mobile_Push_Mpns extends Zend_Mobile_Push_Abstract
         if (!$message->validate()) {
             throw new Zend_Mobile_Push_Exception('The message is not valid.');
         }
+        /** @var Zend_Mobile_Push_Message_Mpns $message the service takes its own message class only */
 
         $this->connect();
 

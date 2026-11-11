@@ -74,12 +74,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Application/Resource/Useragent.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setView().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Application/Resource/View.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Application_Resource_View::getView() should return Zend_View but returns Zend_View_Interface.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -260,54 +254,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Cache/Backend/TwoLevels.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend::getCapabilities().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getFillingPercentage().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getIds().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getIdsMatchingAnyTags().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getIdsMatchingTags().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getIdsNotMatchingTags().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getMetadatas().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::getTags().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Cache/Core.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Cache_Backend_Interface::touch().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -404,18 +350,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/CodeGenerator/Php/Property.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::getViewScript().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoController().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Dispatcher_Interface::getPathDelimiter().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -452,70 +386,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AjaxContext.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::encodeJson().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AutoComplete/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoRender().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AutoComplete/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoRender().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/AutoCompleteDojo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Controller_Request_Abstract::getRequestUri().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Cache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoRender().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_ContextSwitch::getViewSuffix().',
-	'identifier' => 'method.notFound',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_ContextSwitch::setViewSuffix().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Controller_Action_Helper_ContextSwitch::_getViewRenderer() should return $this(Zend_Controller_Action_Helper_ContextSwitch) but returns Zend_Controller_Action_Helper_Abstract.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Controller_Action_Helper_ContextSwitch::$_viewRenderer (Zend_Controller_Action_Helper_ViewRenderer) does not accept Zend_Controller_Action_Helper_Abstract.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::setNoRender().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Json.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
@@ -708,144 +582,6 @@ $ignoreErrors[] = [
 	'identifier' => 'constant.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Crypt/Math.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcadd expects numeric-string, int<0, 255> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bccomp expects numeric-string, 0 given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcdiv expects numeric-string, 256 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcmod expects numeric-string, 256 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcmul expects numeric-string, 256 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Bcmath.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $a of function gmp_add expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $a of function gmp_cmp expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $a of function gmp_div expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $a of function gmp_mod expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $a of function gmp_mul expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $a of function gmp_sub expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $base of function gmp_pow expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $base of function gmp_powm expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $gmpnumber of function gmp_strval expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $b of function gmp_add expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $b of function gmp_cmp expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $b of function gmp_div expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $b of function gmp_mod expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $b of function gmp_mul expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $b of function gmp_sub expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $exp of function gmp_powm expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #3 $mod of function gmp_powm expects GMP|int|string, resource given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Math/BigInteger/Gmp.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Class Zend_Crypt_Rsa_Key_Public constructor invoked with 2 parameters, 1 required.',
@@ -1136,24 +872,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/EventManager/EventManager.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::setFragment().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::setPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::setQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $xml of static method Zend_Xml_Security::scan() expects string, DOMElement given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -1352,18 +1070,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::getHost().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/FeedSet.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::getPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Reader/FeedSet.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Feed_Writer_Feed::current() has invalid return type Zend_Feed_Reader_Entry_Interface.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1532,12 +1238,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Input.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Loader_PluginLoader_Interface::getPaths().',
 	'identifier' => 'method.notFound',
 	'count' => 2,
@@ -1562,22 +1262,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Form/Decorator/PrepareElements.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $decorator of method Zend_Form_DisplayGroup::addDecorator() expects string|Zend_Form_Decorator_Interface, array<string, string|Zend_Form_Decorator_Interface> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Form/DisplayGroup.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Form/Element.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Http_Client_Adapter_Interface::setOutputStream().',
@@ -1590,18 +1278,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Http/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::getHost().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Cookie.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::getPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Cookie.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Http_Header_SetCookie::fromString() has invalid return type SetCookie.',
@@ -1668,18 +1344,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Json/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::initView().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
@@ -2090,30 +1754,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Markup/Renderer/RendererAbstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function str_split expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $str of function strtoupper expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $string of function strlen expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $subject of function preg_match expects string, int given.',
-	'identifier' => 'argument.type',
-	'count' => 8,
-	'path' => __DIR__ . '/library/Zend/Measure/Number.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Memory_Container::destroy().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -2150,36 +1790,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mime/Decode.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getAlert().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getBadge().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getCustomData().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getExpire().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getSound().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function stream_set_blocking expects bool, int given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2190,18 +1800,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Apns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::toJson().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Gcm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $message of class Zend_Mobile_Push_Response_Gcm constructor expects Zend_Mobile_Push_Message_Gcm|null, Zend_Mobile_Push_Message_Abstract given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Gcm.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mobile_Push_Response_Gcm) of method Zend_Mobile_Push_Gcm::send() should be compatible with return type (bool) of method Zend_Mobile_Push_Abstract::send()',
@@ -2234,24 +1832,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Message/Mpns.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getDelay().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getNotificationType().',
-	'identifier' => 'method.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Mobile_Push_Message_Abstract::getXmlPayload().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Mpns.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $pages of method Zend_Navigation_Container::addPages() expects (iterable<Zend_Navigation_Page>&Zend_Config)|(iterable<Zend_Navigation_Page>&Zend_Navigation_Container), array<Zend_Navigation_Page> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2268,18 +1848,6 @@ $ignoreErrors[] = [
 	'identifier' => 'greater.invalid',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Navigation/Page.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::url().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Navigation/Page/Mvc.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Static property Zend_Navigation_Page_Mvc::$_urlHelper (Zend_Controller_Action_Helper_Url) does not accept Zend_Controller_Action_Helper_Abstract.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Navigation/Page/Mvc.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getTotalSize() on string.',
@@ -2336,42 +1904,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcadd expects numeric-string, int<0, 255> given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bccomp expects numeric-string, 0 given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcdiv expects numeric-string, 256 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcmod expects numeric-string, 256 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $right_operand of function bcmul expects numeric-string, 256 given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter &$id by-ref type of method Zend_OpenId::normalize() expects string, (string|false) given.',
 	'identifier' => 'parameterByRef.type',
 	'count' => 3,
@@ -2406,18 +1938,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Provider/Storage/File.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_Abstract::$view.',
-	'identifier' => 'property.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Controller_Action_Helper_Abstract::initView().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Paginator.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Paginator::$_pages (array) does not accept stdClass.',
@@ -2864,12 +2384,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Reflection/Method.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Rest_Client::$_uri (Zend_Uri_Http) does not accept Zend_Uri.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Rest/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Rest_Client_Result), \'handleXmlErrors\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3280,12 +2794,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Service_Amazon_Abstract::__construct() invoked with 3 parameters, 0-2 required.',
 	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/S3.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Service_Amazon_S3::$_endpoint (Zend_Uri_Http) does not accept Zend_Uri.',
-	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/S3.php',
 ];
@@ -3726,24 +3234,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/TimeSync.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "&" between non-falsy-string and 131071 results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation ">>" between non-falsy-string and 17 results in an error.',
-	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of function str_pad expects string, int<0, 255> given.',
-	'identifier' => 'argument.type',
-	'count' => 8,
-	'path' => __DIR__ . '/library/Zend/TimeSync/Ntp.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $date of class Zend_Date constructor expects array|int|string|Zend_Date|null, $this(Zend_TimeSync_Protocol) given.',
@@ -4250,24 +3740,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/Crc32.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc type string of property Zend_Validate_File_Crc32::$_hash is not covariant with PHPDoc type array of overridden property Zend_Validate_File_Hash::$_hash.',
-	'identifier' => 'property.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Crc32.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Crc32.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of function array_keys expects array, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Crc32.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot assign new offset to string.',
 	'identifier' => 'offsetAssign.dimType',
 	'count' => 1,
@@ -4286,24 +3758,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc type string of property Zend_Validate_File_Md5::$_hash is not covariant with PHPDoc type array of overridden property Zend_Validate_File_Hash::$_hash.',
-	'identifier' => 'property.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of function array_keys expects array, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Md5.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot assign new offset to string.',
 	'identifier' => 'offsetAssign.dimType',
 	'count' => 1,
@@ -4314,72 +3768,6 @@ $ignoreErrors[] = [
 	'identifier' => 'return.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Validate/File/Sha1.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'PHPDoc type string of property Zend_Validate_File_Sha1::$_hash is not covariant with PHPDoc type array of overridden property Zend_Validate_File_Hash::$_hash.',
-	'identifier' => 'property.phpDocType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Sha1.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $array of function array_unique expects array, null given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Sha1.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $input of function array_keys expects array, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Sha1.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1.1805916207174113E+21 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1.2089258196146292E+24 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1024 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1048576 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1073741824 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1099511627776 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1125899906842624 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Binary operation "*=" between string and 1152921504606846976 results in an error.',
-	'identifier' => 'assignOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Validate/File/Size.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between 3 and non-empty-string results in an error.',
@@ -4638,24 +4026,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Menu.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::setFragment().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::setPath().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to an undefined method Zend_Uri::setQuery().',
-	'identifier' => 'method.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Sitemap.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri_Exception::setView().',

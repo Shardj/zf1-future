@@ -90,7 +90,7 @@ abstract class Zend_Uri
      * @throws Zend_Uri_Exception When an illegal scheme is supplied
      * @throws Zend_Uri_Exception When the scheme is not supported
      * @throws Zend_Uri_Exception When $className doesn't exist or doesn't implements Zend_Uri
-     * @return Zend_Uri
+     * @return ($className is null ? Zend_Uri_Http : Zend_Uri)
      * @link   http://www.faqs.org/rfcs/rfc2396.html
      */
     public static function factory($uri = 'http', $className = null)
