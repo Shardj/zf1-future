@@ -251,9 +251,8 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
 
         $position = null;
         if (($intval = (int) $parameter) > 0 && $this->_adapter->supportsParameters('positional')) {
-            if ($intval >= 1 || $intval <= count($this->_sqlParam)) {
-                $position = $intval;
-            }
+            // the upper bound is checked by the driver
+            $position = $intval;
         } else if ($this->_adapter->supportsParameters('named')) {
             if ($parameter[0] != ':') {
                 $parameter = ':' . $parameter;

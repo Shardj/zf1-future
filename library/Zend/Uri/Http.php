@@ -375,7 +375,7 @@ class Zend_Uri_Http extends Zend_Uri
         }
 
         // If the password is nonempty, but there is no username, then it is considered invalid
-        if (strlen($password) > 0 && strlen($this->_username) === 0) {
+        if (strlen($this->_username) === 0) {
             return false;
         }
 

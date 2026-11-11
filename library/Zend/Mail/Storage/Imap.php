@@ -440,7 +440,7 @@ class Zend_Mail_Storage_Imap extends Zend_Mail_Storage_Abstract
                     array_push($folderStack, $parentFolder);
                     $parentFolder = $folder;
                     break;
-                } else if ($stack) {
+                } else {
                     $parent = array_pop($stack);
                     $parentFolder = array_pop($folderStack);
                 }

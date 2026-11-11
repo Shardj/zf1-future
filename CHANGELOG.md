@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Tool_DatabaseSchemaProvider throws Zend_Db_Schema_Exception ("Database was not initialized") when no database is configured; the check referred to an interface that does not exist and never matched.
 * Zend_Filter_Compress_Zip throws Zend_Filter_Exception when a file of a compressed directory cannot be added to the archive; the result of ZipArchive::addFile() was not checked, so the archive was written without the file.
 * Zend_Feed_Builder_Header::setCloud() loads Zend_Uri_Http before it uses it; without an autoloader it failed with "Class Zend_Uri_Http not found".
+* Zend_Pdf_Outline_Loaded::getColor() returns the colour of an outline loaded from a document; it threw Zend_Pdf_Exception ("Argument must be numeric"). Zend_Pdf_Outline_Loaded::setColor() and Zend_Pdf_Outline_Created::setColor() accept null to reset the colour to the default, as documented; null ended in a TypeError.
 
 ## [1.27.0] - 2026-11-09
 

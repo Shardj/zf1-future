@@ -358,12 +358,6 @@ abstract class Zend_Date_DateObject
                     $tempstamp -= (86400 * 23376);
                 }
 
-                $dst = date("I", $tempstamp);
-
-                if ($dst === 1) {
-                    $timestamp += 3600;
-                }
-
                 $temp       = date('Z', $tempstamp);
                 $timestamp += $temp;
             }
