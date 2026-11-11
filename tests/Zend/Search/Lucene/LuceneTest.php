@@ -222,6 +222,16 @@ class Zend_Search_Lucene_LuceneTest extends TestCase
                           [0, 2, 6, 7, 8]);
     }
 
+    public function testTermDocsFilterOfEmptyIndex()
+    {
+        $index = Zend_Search_Lucene::create(dirname(__FILE__) . '/_index/_files');
+
+        $this->assertSame([], $index->termDocsFilter(new Zend_Search_Lucene_Index_Term('packages', 'contents')));
+
+        unset($index);
+        $this->_clearDirectory(dirname(__FILE__) . '/_index/_files');
+    }
+
     public function testTermPositions()
     {
         $index = Zend_Search_Lucene::open(dirname(__FILE__) . '/_indexSample/_files');

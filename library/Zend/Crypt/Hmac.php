@@ -176,6 +176,7 @@ class Zend_Crypt_Hmac extends Zend_Crypt
      */
     protected static function _getMhashDefinition($hashAlgorithm)
     {
+        $types = [];
         // phpcs:ignore PHPCompatibility.FunctionUse.RemovedFunctions.mhash_countDeprecated -- fallback without ext/hash
         for ($i = 0; $i <= mhash_count(); $i++)
         {

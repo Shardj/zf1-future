@@ -426,10 +426,13 @@ class Zend_Loader_PluginLoader implements Zend_Loader_PluginLoader_Interface
        }
 
         if ($this->_useStaticRegistry) {
+            // @phpstan-ignore variable.undefined ($found is set together with $className)
             self::$_staticLoadedPlugins[$this->_useStaticRegistry][$name]     = $className;
         } else {
+            // @phpstan-ignore variable.undefined ($found is set together with $className)
             $this->_loadedPlugins[$name]     = $className;
         }
+        // @phpstan-ignore variable.undefined ($found is set together with $className)
         return $className;
     }
 

@@ -882,9 +882,11 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
         $filtered = $inflector->filter($params);
 
         if (isset($params['suffix'])) {
+            // @phpstan-ignore variable.undefined (set above under the same condition)
             $this->setViewSuffix($origSuffix);
         }
         if (isset($params['moduleDir'])) {
+            // @phpstan-ignore variable.undefined (set above under the same condition)
             $this->_setModuleDir($origModuleDir);
         }
 

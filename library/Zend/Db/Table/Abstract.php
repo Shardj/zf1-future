@@ -803,6 +803,7 @@ abstract class Zend_Db_Table_Abstract
         }
 
         // If $this has a metadata cache
+        $cacheId = null;
         if (null !== $this->_metadataCache) {
             // Define the cache identifier where the metadata are saved
 

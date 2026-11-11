@@ -404,18 +404,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $origModuleDir might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $origSuffix might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Action_HelperBroker::getPluginLoader() should return Zend_Loader_PluginLoader but returns Zend_Loader_PluginLoader_Interface.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -572,12 +560,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Crypt/DiffieHellman.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $types might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Crypt/Hmac.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Constant MCRYPT_DEV_URANDOM not found.',
 	'identifier' => 'constant.notFound',
 	'count' => 1,
@@ -704,28 +686,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Db2.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $type might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Mssql.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $name of method PDO::lastInsertId() expects string, null given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Pgsql.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $type might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Pdo/Sqlsrv.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $type might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Adapter/Sqlsrv.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $replace of function str_replace expects array<string>|string, array<int, int|string> given.',
@@ -770,20 +734,8 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Statement/Pdo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $cacheId might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Table_Row_Abstract::__unset() with return type void returns $this(Zend_Db_Table_Row_Abstract) but should not return anything.',
 	'identifier' => 'return.void',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $joinCond might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
@@ -834,18 +786,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/CheckBox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $attribs might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/DijitContainer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $params might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/View/Helper/DijitContainer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #3 $subject of function str_replace expects array<string>|string, int given.',
@@ -1190,12 +1130,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Compress/Tar.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $keys might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Filter/Encrypt/Openssl.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Filter_HtmlEntities::setCharSet() should return $this(Zend_Filter_HtmlEntities) but returns Zend_Filter_HtmlEntities.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1274,12 +1208,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $stream might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Http/Client.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Http_Header_SetCookie::fromString() has invalid return type SetCookie.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -1338,12 +1266,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameterByRef.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $method might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Json/Server.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
@@ -1506,12 +1428,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $className might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Loader/PluginLoader.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Loader_SplAutoloader::setOptions() has invalid return type SplAutoloader.',
@@ -1910,12 +1826,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/OpenId.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $bn_pub_key might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/OpenId.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between int<1, max> and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -2128,20 +2038,8 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $cmapLength might not be defined.',
 	'identifier' => 'variable.undefined',
-	'count' => 2,
+	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $cmapOffset might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $hexCodeHigh might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Pdf/Filter/AsciiHex.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, float given.',
@@ -2219,12 +2117,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Variable $charCodesSequense might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $sequenceStartCode might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
 ];
 $ignoreErrors[] = [
@@ -2366,12 +2258,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Reflection/Docblock/Tag.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $foundRealpath might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Reflection/File.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $input of function array_splice is passed by reference, so it expects variables only.',
 	'identifier' => 'argument.byRef',
 	'count' => 1,
@@ -2380,7 +2266,7 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $firstLine might not be defined.',
 	'identifier' => 'variable.undefined',
-	'count' => 3,
+	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Reflection/Method.php',
 ];
 $ignoreErrors[] = [
@@ -2457,24 +2343,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $isCompound might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $segInfo might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $segmentInfo might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 5,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $subResults might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
@@ -3810,174 +3678,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $escape might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Fieldset.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormButton.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $escape might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormButton.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormButton.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormCheckbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormCheckbox.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormFile.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormImage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormImage.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormLabel.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $escape might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormLabel.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormLabel.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormPassword.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormPassword.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormRadio.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $escape might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormRadio.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormRadio.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormReset.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormReset.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSelect.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSelect.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSubmit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormSubmit.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormText.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormText.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $disable might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormTextarea.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $id might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormTextarea.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_View_Helper_HeadMeta::offsetSet() (void) is used.',
