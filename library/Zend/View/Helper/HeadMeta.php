@@ -216,8 +216,8 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
 
         $isHtml5 = is_null($this->view) ? false : $this->view->doctype()->isHtml5();
 
-        if (!isset($item->content)
-        && (! $isHtml5 || (! $isHtml5 && $item->type !== 'charset'))) {
+        // the content is required, except with an HTML5 doctype
+        if (!isset($item->content) && ! $isHtml5) {
             return false;
         }
 

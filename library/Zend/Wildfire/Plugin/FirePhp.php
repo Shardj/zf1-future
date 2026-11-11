@@ -422,10 +422,8 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
                 $var = null;
             }
 
-            if (!$trace) {
-                $trace = $firephp->_getStackTrace(array_merge($options,
-                                                              ['maxTraceDepth'=>$options['maxTraceDepth']+1]));
-            }
+            $trace = $firephp->_getStackTrace(array_merge($options,
+                                                          ['maxTraceDepth'=>$options['maxTraceDepth']+1]));
 
             $var = ['Class'=>$trace[0]['class'],
                          'Type'=>$trace[0]['type'],
@@ -473,17 +471,13 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
         }
 
         if ($meta['Type'] != self::DUMP && $options['includeLineNumbers']) {
-            if (!isset($meta['File']) || !isset($meta['Line'])) {
-
-                if (!$trace) {
-                    $trace = $firephp->_getStackTrace(array_merge($options,
-                                                                  ['maxTraceDepth'=>$options['maxTraceDepth']+1]));
-                }
-
-                $meta['File'] = isset($trace[0]['file'])?$trace[0]['file']:'';
-                $meta['Line'] = isset($trace[0]['line'])?$trace[0]['line']:'';
-
+            if (!$trace) {
+                $trace = $firephp->_getStackTrace(array_merge($options,
+                                                              ['maxTraceDepth'=>$options['maxTraceDepth']+1]));
             }
+
+            $meta['File'] = isset($trace[0]['file'])?$trace[0]['file']:'';
+            $meta['Line'] = isset($trace[0]['line'])?$trace[0]['line']:'';
         } else {
             unset($meta['File']);
             unset($meta['Line']);
@@ -530,7 +524,7 @@ class Zend_Wildfire_Plugin_FirePhp implements Zend_Wildfire_Plugin_Interface
         if (isset($options['fixZendLogOffsetIfApplicable']) && $options['fixZendLogOffsetIfApplicable']) {
             if (count($trace) >=3 &&
                 isset($trace[0]['file']) && substr($trace[0]['file'], -7, 7)=='Log.php' &&
-                isset($trace[1]['function']) && $trace[1]['function']=='__call') {
+                $trace[1]['function']=='__call') {
 
                 $spliceOffset = 2;
                 //Debug backtrace changed in PHP 7.0.0

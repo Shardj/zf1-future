@@ -671,6 +671,7 @@ class Zend_OpenId_Consumer
 
         if ($ret['assoc_type'] == 'HMAC-SHA1') {
             $macFunc = 'sha1';
+        // @phpstan-ignore equal.alwaysTrue (guards an association type other than the two requested above)
         } else if ($ret['assoc_type'] == 'HMAC-SHA256' &&
             $version >= 2.0) {
             $macFunc = 'sha256';
@@ -717,7 +718,7 @@ class Zend_OpenId_Consumer
                 $this->_setError("The length of the sha1 secret must be 20");
                 return false;
             }
-        } else if ($macFunc == 'sha256') {
+        } else {
             if (Zend_OpenId::strlen($secret) != 32) {
                 $this->_setError("The length of the sha256 secret must be 32");
                 return false;

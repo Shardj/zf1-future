@@ -908,12 +908,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">=" between int<2, max> and 2 is always true.',
-	'identifier' => 'greaterOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ContextSwitch.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Action_Helper_ContextSwitch::_getViewRenderer() should return $this(Zend_Controller_Action_Helper_ContextSwitch) but returns Zend_Controller_Action_Helper_Abstract.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1382,12 +1376,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Date/DateObject.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between string and 1 will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Date/DateObject.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Constant DB2_I5_NAMING_OFF not found.',
 	'identifier' => 'constant.notFound',
 	'count' => 1,
@@ -1478,18 +1466,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Profiler/Firebug.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation "<=" between *NEVER* and int<0, max> results in an error.',
-	'identifier' => 'smallerOrEqual.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">=" between int<1, max> and 1 is always true.',
-	'identifier' => 'greaterOrEqual.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Statement::fetchColumn() should return string but returns false.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1504,12 +1480,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Db_Statement::setFetchMode() should return bool but return statement is missing.',
 	'identifier' => 'return.missing',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of || is always true.',
-	'identifier' => 'booleanOr.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Db/Statement.php',
 ];
@@ -3020,12 +2990,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Ldap/Node/Schema/ObjectClass/OpenLdap.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'If condition is always false.',
-	'identifier' => 'if.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $autoload_function of function spl_autoload_register expects callable(string): void, array{\'Zend_Loader_Autoloader\', \'autoload\'} given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -3212,22 +3176,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'If condition is always true.',
-	'identifier' => 'if.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Mail_Storage_Folder_Maildir::_buildFolderTree() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Folder/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'If condition is always true.',
-	'identifier' => 'if.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Imap.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (Zend_Mail_Message_File) of method Zend_Mail_Storage_Maildir::getMessage() should be compatible with return type (Zend_Mail_Message) of method Zend_Mail_Storage_Abstract::getMessage()',
@@ -3494,18 +3446,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Instanceof between Zend_Oauth_Token_Request|null and Zend_Oauth_Http_UserAuthorization will always evaluate to false.',
-	'identifier' => 'instanceof.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $token in isset() always exists and is not nullable.',
-	'identifier' => 'isset.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Consumer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Oauth_Http::_attemptRequest().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -3706,18 +3646,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between int<1, max> and string results in an error.',
 	'identifier' => 'binaryOp.invalid',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Loose comparison using == between \'HMAC-SHA256\' and \'HMAC-SHA256\' will always evaluate to true.',
-	'identifier' => 'equal.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Loose comparison using == between \'sha256\' and \'sha256\' will always evaluate to true.',
-	'identifier' => 'equal.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/OpenId/Consumer.php',
 ];
@@ -4100,12 +4028,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Filter/Compression/Lzw.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">" between int<129, 255> and 128 is always true.',
-	'identifier' => 'greater.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Filter/RunLength.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $imageFileName of class Zend_Pdf_Resource_Image_Png constructor expects string, Zend_Pdf_FileParser_Image_Png given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -4148,12 +4070,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between Zend_Pdf_Color_Rgb and null will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Outline/Loaded.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Pdf_Trailer::getRefTable().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -4188,12 +4104,6 @@ $ignoreErrors[] = [
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/Simple/Parsed/TrueType.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Loose comparison using == between 9 and 9 will always evaluate to true.',
-	'identifier' => 'equal.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Image/Jpeg.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $refOffset might not be defined.',
@@ -4439,12 +4349,6 @@ $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #6 $isTokenized of class Zend_Search_Lucene_Field constructor expects bool, int<0, 1> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Unreachable statement - code above always terminates.',
-	'identifier' => 'deadCode.unreachable',
-	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene.php',
 ];
 $ignoreErrors[] = [
@@ -5480,18 +5384,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Text/Figlet.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between non-falsy-string and \'0\' will always evaluate to true.',
-	'identifier' => 'notIdentical.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Text/Figlet.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using === between mixed~\' \' and \' \' will always evaluate to false.',
-	'identifier' => 'identical.alwaysFalse',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Text/Figlet.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $lastSpace might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 2,
@@ -5960,12 +5852,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Translate/Adapter/XmlTm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">" between int<1, max> and 0 is always true.',
-	'identifier' => 'greater.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Uri/Http.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Validate_Abstract::getDefaultTranslator() should return Zend_Translate_Adapter|null but returns Zend_Translate.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -6278,12 +6164,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormFile.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/FormHidden.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $disable might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -6404,18 +6284,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/FormTextarea.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always false.',
-	'identifier' => 'booleanNot.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of && is always false.',
-	'identifier' => 'booleanAnd.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/HeadMeta.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_View_Helper_HeadMeta::offsetSet() (void) is used.',
 	'identifier' => 'method.void',
 	'count' => 1,
@@ -6494,36 +6362,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Helper/PaginationControl.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_array() with array will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_object() with *NEVER* will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_Partial::$partialCounter (int) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_View_Helper_Partial::$partialTotalCount (int) in isset() is not nullable.',
-	'identifier' => 'isset.property',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Partial.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to function is_scalar() with *NEVER* will always evaluate to true.',
-	'identifier' => 'function.alreadyNarrowedType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Placeholder/Container/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Wildfire_Channel_Interface::getProtocol().',
 	'identifier' => 'method.notFound',
 	'count' => 3,
@@ -6538,36 +6376,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot unset offset \'Line\' on array{Type: string|null, Label?: mixed}.',
 	'identifier' => 'unset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Negated boolean expression is always true.',
-	'identifier' => 'booleanNot.alwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset \'File\' on array{Type: mixed, Label?: mixed} in isset() does not exist.',
-	'identifier' => 'isset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset \'Line\' on *NEVER* in isset() always exists and is not nullable.',
-	'identifier' => 'isset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Offset \'function\' on array{function: string, line?: int, file?: string, class?: class-string, type?: \'->\'|\'::\', args?: list<mixed>, object?: object} in isset() always exists and is not nullable.',
-	'identifier' => 'isset.offset',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Result of || is always true.',
-	'identifier' => 'booleanOr.alwaysTrue',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Wildfire/Plugin/FirePhp.php',
 ];

@@ -412,7 +412,7 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
                         $prependViewRendererSuffix = array_shift($suffixInfo);
                         $this->setSuffix($context, $suffix, $prependViewRendererSuffix);
                         break;
-                    case ($count >= 2):
+                    default:
                         $suffix  = array_shift($suffixInfo);
                         $prependViewRendererSuffix = array_shift($suffixInfo);
                         $this->setSuffix($context, $suffix, $prependViewRendererSuffix);
