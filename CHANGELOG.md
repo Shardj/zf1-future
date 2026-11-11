@@ -32,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Pdf_Outline_Loaded::getColor() returns the colour of an outline loaded from a document; it threw Zend_Pdf_Exception ("Argument must be numeric"). Zend_Pdf_Outline_Loaded::setColor() and Zend_Pdf_Outline_Created::setColor() accept null to reset the colour to the default, as documented; null ended in a TypeError.
 * Zend_Form::addSubForms() keeps the array key as the name of a sub form given alone in an array (`['page1' => [$subForm]]` or `['page1' => [$options]]`); the sub form was registered under an empty name.
 * Zend_Search_Lucene::termDocsFilter() returns an empty array for an index without segments; it ended in a TypeError (count() of an undefined variable) on PHP 8. Zend_Reflection_File::findRealpathInIncludePath() returns false for an empty include path instead of raising an "Undefined variable" warning.
+* Zend_Date::setMonth(), addMonth(), subMonth() and compareMonth() accept the month as an array (`['month' => 3]`), as documented; it ended in "parameter $date must be set, null is not allowed".
+* Zend_TimeSync::getDate() throws Zend_TimeSync_Exception when no time server is configured; it ended in the PHP error "Can only throw objects".
 
 ## [1.27.0] - 2026-11-09
 

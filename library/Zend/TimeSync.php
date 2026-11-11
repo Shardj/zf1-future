@@ -241,14 +241,12 @@ class Zend_TimeSync implements IteratorAggregate
     public function getDate($locale = null)
     {
         require_once 'Zend/TimeSync/Exception.php';
+        $masterException = new Zend_TimeSync_Exception('all timeservers are bogus');
         foreach ($this->_timeservers as $alias => $server) {
             $this->_current = $server;
             try {
                 return $server->getDate($locale);
             } catch (Zend_TimeSync_Exception $e) {
-                if (!isset($masterException)) {
-                    $masterException = new Zend_TimeSync_Exception('all timeservers are bogus');
-                }
                 $masterException->addException($e);
             }
         }

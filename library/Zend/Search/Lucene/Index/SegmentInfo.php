@@ -289,12 +289,14 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
             for ($count = 0; $count < $segFilesCount; $count++) {
                 $dataOffset = $cfsFile->readLong();
                 if ($count != 0) {
+                    // @phpstan-ignore variable.undefined (set in the previous iteration)
                     $this->_segFileSizes[$fileName] = $dataOffset - end($this->_segFiles);
                 }
                 $fileName = $cfsFile->readString();
                 $this->_segFiles[$fileName] = $dataOffset;
             }
             if ($count != 0) {
+                // @phpstan-ignore variable.undefined, variable.undefined (the loop above ran at least once)
                 $this->_segFileSizes[$fileName] = $this->_directory->fileLength($name . '.cfs') - $dataOffset;
             }
         }
@@ -926,6 +928,7 @@ class Zend_Search_Lucene_Index_SegmentInfo implements Zend_Search_Lucene_Index_T
         }
 
         if ($termFieldNum == $searchField && $termValue == $term->text) {
+            // @phpstan-ignore variable.undefined, variable.undefined (the loop above ran, otherwise the last term differs from the searched one)
             $termInfo = new Zend_Search_Lucene_Index_TermInfo($docFreq, $freqPointer, $proxPointer, $skipOffset);
         } else {
             $termInfo = null;

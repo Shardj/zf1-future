@@ -172,7 +172,7 @@ abstract class Zend_Pdf_Resource_Font_CidFont extends Zend_Pdf_Resource_Font
                 $sequenceStartCode = $charCode;
             } else if ($charCode != $lastCharCode + 1) {
                 // New chracters sequence detected
-                // @phpstan-ignore variable.undefined (set in the first iteration)
+                // @phpstan-ignore variable.undefined, variable.undefined (set in the first iteration)
                 $widthsSequences[$sequenceStartCode] = $charCodesSequense;
                 $charCodesSequense = [];
                 $sequenceStartCode = $charCode;

@@ -169,7 +169,7 @@ class Zend_Reflection_Method extends ReflectionMethod
 
         // If there are more characters on the line after the opening brace,
         // push them back onto the lines stack as they are part of the body
-        // @phpstan-ignore variable.undefined (a method has at least the line with its signature)
+        // @phpstan-ignore variable.undefined, variable.undefined (a method has at least the line with its signature)
         $restOfFirstLine = trim(substr($firstLine, strpos($firstLine, '{')+1));
         if (!empty($restOfFirstLine)) {
             array_unshift($lines, $restOfFirstLine);

@@ -746,6 +746,7 @@ abstract class Zend_Translate_Adapter {
                     return $messageId;
                 }
 
+                // @phpstan-ignore variable.undefined, variable.undefined (set above together with $plural)
                 $rule = Zend_Translate_Plural::getPlural($number, $plocale);
                 if (!isset($plural[$rule])) {
                     $rule = 0;
@@ -765,6 +766,7 @@ abstract class Zend_Translate_Adapter {
                 return $this->_translate[$locale][$messageId];
             }
 
+            // @phpstan-ignore variable.undefined (set above together with $plural)
             $rule = Zend_Translate_Plural::getPlural($number, $locale);
             if (isset($this->_translate[$locale][$plural[0]][$rule])) {
                 $this->_routed = [];
@@ -781,6 +783,7 @@ abstract class Zend_Translate_Adapter {
                     return $this->_translate[$locale][$messageId];
                 }
 
+                // @phpstan-ignore variable.undefined (set above together with $plural)
                 $rule = Zend_Translate_Plural::getPlural($number, $locale);
                 if (isset($this->_translate[$locale][$plural[0]][$rule])) {
                     $this->_routed = [];
@@ -804,6 +807,7 @@ abstract class Zend_Translate_Adapter {
             return $messageId;
         }
 
+        // @phpstan-ignore variable.undefined, variable.undefined (set above together with $plural)
         $rule = Zend_Translate_Plural::getPlural($number, $plocale);
         if (!isset($plural[$rule])) {
             $rule = 0;

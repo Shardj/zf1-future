@@ -536,8 +536,11 @@ class Zend_Search_Lucene_Index_Writer
                     $newSegmentFile->writeLong($delGen);
                     if ($this->_targetFormatVersion == Zend_Search_Lucene::FORMAT_2_3) {
                         if ($docStoreOptions !== null) {
+                            // @phpstan-ignore variable.undefined (set together with $docStoreOptions)
                             $newSegmentFile->writeInt($docStoreOffset);
+                            // @phpstan-ignore variable.undefined (set together with $docStoreOptions)
                             $newSegmentFile->writeString($docStoreSegment);
+                            // @phpstan-ignore variable.undefined (set together with $docStoreOptions)
                             $newSegmentFile->writeByte($docStoreIsCompoundFile);
                         } else {
                             // Set DocStoreOffset to -1
@@ -553,6 +556,7 @@ class Zend_Search_Lucene_Index_Writer
                     $newSegmentFile->writeByte($hasSingleNormFile);
                     $newSegmentFile->writeInt($numField);
                     if ($numField != (int)0xFFFFFFFF) {
+                        // @phpstan-ignore variable.undefined (the format without norm generations sets $numField to 0xFFFFFFFF)
                         foreach ($normGens as $normGen) {
                             $newSegmentFile->writeLong($normGen);
                         }

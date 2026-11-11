@@ -656,12 +656,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Date.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $found might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 11,
-	'path' => __DIR__ . '/library/Zend/Date.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "+" between string and float results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -1778,18 +1772,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Oauth/Http.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $httpClient might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Http/AccessToken.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $httpClient might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Http/RequestToken.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2036,12 +2018,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $cmapLength might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/FileParser/Font/OpenType.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, float given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2112,12 +2088,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Pdf/Parser.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $charCodesSequense might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Resource/Font/CidFont.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Pdf_Resource_Font_CidFont::__construct() invoked with 2 parameters, 1 required.',
@@ -2262,12 +2232,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.byRef',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Reflection/Function.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $firstLine might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Reflection/Method.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Rest_Client_Result), \'handleXmlErrors\'} given.',
@@ -2420,30 +2384,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $dataOffset might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $docFreq might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $fileName might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $skipOffset might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/SegmentInfo.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #6 $isTokenized of class Zend_Search_Lucene_Field constructor expects bool, int<0, 1> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -2474,31 +2414,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $docStoreIsCompoundFile might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $docStoreOffset might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $docStoreSegment might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $isCompound might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $normGens might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Index/Writer.php',
@@ -2514,12 +2430,6 @@ $ignoreErrors[] = [
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $termDocs might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Query/MultiTerm.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Search_Lucene_Search_Query_Phrase::$_weights is never read, only written.',
@@ -2580,12 +2490,6 @@ $ignoreErrors[] = [
 	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/Igbinary.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Undefined variable: $ret',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/PhpCode.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Serializer_Adapter_PythonPickle::setOption() should return Zend_Serializer_Adapter_PythonPickle but returns Zend_Serializer_Adapter_AdapterAbstract.',
@@ -2978,18 +2882,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $xml might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Soap/Server.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $complexTypeName might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Soap/Wsdl/Strategy/ArrayOfTypeSequence.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to method get() on an unknown class WeakRef.',
 	'identifier' => 'class.notFound',
 	'count' => 1,
@@ -3024,12 +2916,6 @@ $ignoreErrors[] = [
 	'identifier' => 'booleanOr.rightAlwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Stdlib/CallbackHandler.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $key might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Stdlib/PriorityQueue.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Return type (void) of method Zend_Stdlib_SplPriorityQueue::insert() should be compatible with return type (true) of method SplPriorityQueue<mixed,mixed>::insert()',
@@ -3080,12 +2966,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Text/Table.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $padMode might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Text/Table/Column.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $input of function array_sum expects an array of values castable to number, array given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -3094,12 +2974,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Right side of && is always true.',
 	'identifier' => 'booleanAnd.rightAlwaysTrue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/TimeSync.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $masterException might not be defined.',
-	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/TimeSync.php',
 ];
@@ -3398,12 +3272,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $indexActionViewResource might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 3,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Controller.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method getPath() on string|Zend_Tool_Project_Context_Interface.',
 	'identifier' => 'method.nonObject',
 	'count' => 2,
@@ -3420,12 +3288,6 @@ $ignoreErrors[] = [
 	'identifier' => 'if.alwaysFalse',
 	'count' => 3,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Model.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $currentChildResource might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Module.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Framework_Registry_Interface::getStorage().',
@@ -3468,18 +3330,6 @@ $ignoreErrors[] = [
 	'identifier' => 'arguments.count',
 	'count' => 2,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/View.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $number might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 4,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $plocale might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Translate/Adapter.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Translate_Adapter_Qt::$_cleared is never read, only written.',
@@ -3674,12 +3524,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $storeVar might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Result of method Zend_View_Helper_HeadMeta::offsetSet() (void) is used.',
 	'identifier' => 'method.void',
 	'count' => 1,
@@ -3720,12 +3564,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Helper/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $foundDepth might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/Navigation/Menu.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Uri_Exception::setView().',

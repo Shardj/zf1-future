@@ -4317,6 +4317,20 @@ class Zend_DateTest extends TestCase
     /**
      * Test for addMonth
      */
+    public function testSetMonthFromArray()
+    {
+        $date = new Zend_Date('2026-01-15', 'yyyy-MM-dd', 'en_US');
+
+        $date->setMonth(['month' => 3], 'en_US');
+        $this->assertSame('2026-03-15', $date->toString('yyyy-MM-dd'));
+
+        $date->setMonth(['month' => 'May'], 'en_US');
+        $this->assertSame('2026-05-15', $date->toString('yyyy-MM-dd'));
+
+        $this->expectException(Zend_Date_Exception::class);
+        $date->setMonth(['day' => 3], 'en_US');
+    }
+
     public function testAddMonth()
     {
         date_default_timezone_set('Europe/Vienna');

@@ -173,6 +173,7 @@ class Zend_Tool_Project_Provider_Controller
 
             if (isset($indexActionResource)) {
                 $response->appendContent('Would create an index action method in controller ' . $name);
+                // @phpstan-ignore variable.undefined (set together with $indexActionResource)
                 $response->appendContent('Would create a view script for the index action method at ' . $indexActionViewResource->getContext()->getPath());
             }
 
@@ -188,7 +189,9 @@ class Zend_Tool_Project_Provider_Controller
             if (isset($indexActionResource)) {
                 $response->appendContent('Creating an index action method in controller ' . $name);
                 $indexActionResource->create();
+                // @phpstan-ignore variable.undefined (set together with $indexActionResource)
                 $response->appendContent('Creating a view script for the index action method at ' . $indexActionViewResource->getContext()->getPath());
+                // @phpstan-ignore variable.undefined (set together with $indexActionResource)
                 $indexActionViewResource->create();
             }
 

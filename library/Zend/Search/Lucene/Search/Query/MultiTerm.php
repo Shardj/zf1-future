@@ -341,6 +341,7 @@ class Zend_Search_Lucene_Search_Query_MultiTerm extends Zend_Search_Lucene_Searc
 
         require_once 'Zend/Search/Lucene/Index/DocsFilter.php';
         $docsFilter = new Zend_Search_Lucene_Index_DocsFilter();
+        $termDocs   = [];
         foreach ($this->_terms as $termId => $term) {
             $termDocs = $reader->termDocs($term, $docsFilter);
         }

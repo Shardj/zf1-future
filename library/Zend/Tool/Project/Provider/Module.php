@@ -101,6 +101,7 @@ class Zend_Tool_Project_Provider_Module
                 // if we went down into a child, make note
                 array_push($parentResources, $currentResource);
                 // this will have always been set previously by another loop
+                // @phpstan-ignore variable.undefined (set by an earlier iteration, the iterator descends from a visited resource only)
                 $currentResource = $currentChildResource;
             } elseif ($depthDifference < 0) {
                 // if we went up to a parent, make note
