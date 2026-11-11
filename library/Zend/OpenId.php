@@ -558,8 +558,8 @@ class Zend_OpenId
             $bn = 0;
             $len = Zend_OpenId::strlen($bin);
             for ($i = 0; $i < $len; $i++) {
-                $bn = bcmul($bn, 256);
-                $bn = bcadd($bn, ord($bin[$i]));
+                $bn = bcmul($bn, '256');
+                $bn = bcadd($bn, (string) ord($bin[$i]));
             }
             return $bn;
         }
@@ -591,7 +591,7 @@ class Zend_OpenId
         }
 
         if (extension_loaded('bcmath')) {
-            $cmp = bccomp($bn, 0);
+            $cmp = bccomp($bn, '0');
 
             if ($cmp === 0) {
                 return "\0";
@@ -605,9 +605,9 @@ class Zend_OpenId
             }
 
             $bin = "";
-            while (bccomp($bn, 0) > 0) {
-                $bin = chr(bcmod($bn, 256)) . $bin;
-                $bn = bcdiv($bn, 256);
+            while (bccomp($bn, '0') > 0) {
+                $bin = chr((int) bcmod($bn, '256')) . $bin;
+                $bn = bcdiv($bn, '256');
             }
             if (ord($bin[0]) > 127) {
                 $bin = "\0" . $bin;

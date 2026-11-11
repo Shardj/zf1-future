@@ -1380,7 +1380,7 @@ class Zend_Controller_Action_Helper_ContextSwitch extends Zend_Controller_Action
     /**
      * Retrieve ViewRenderer
      *
-     * @return $this
+     * @return Zend_Controller_Action_Helper_ViewRenderer
      */
     protected function _getViewRenderer()
     {

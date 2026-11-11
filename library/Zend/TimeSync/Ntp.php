@@ -148,10 +148,10 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _getInteger($input)
     {
-        $f1  = str_pad(ord($input[0]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[1]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[2]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[3]), 2, '0', STR_PAD_LEFT);
+        $f1  = str_pad((string) ord($input[0]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad((string) ord($input[1]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad((string) ord($input[2]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad((string) ord($input[3]), 2, '0', STR_PAD_LEFT);
         return (int) $f1;
     }
 
@@ -163,12 +163,12 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
      */
     protected function _getFloat($input)
     {
-        $f1  = str_pad(ord($input[0]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[1]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[2]), 2, '0', STR_PAD_LEFT);
-        $f1 .= str_pad(ord($input[3]), 2, '0', STR_PAD_LEFT);
-        $f2  = $f1 >> 17;
-        $f3  = ($f1 & 0x0001FFFF);
+        $f1  = str_pad((string) ord($input[0]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad((string) ord($input[1]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad((string) ord($input[2]), 2, '0', STR_PAD_LEFT);
+        $f1 .= str_pad((string) ord($input[3]), 2, '0', STR_PAD_LEFT);
+        $f2  = (int) $f1 >> 17;
+        $f3  = ((int) $f1 & 0x0001FFFF);
         $f1  = $f2 . '.' . $f3;
         return (float) $f1;
     }
