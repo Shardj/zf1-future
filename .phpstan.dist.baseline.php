@@ -2342,12 +2342,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Compress/Tar.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Strict comparison using !== between true and true will always evaluate to false.',
-	'identifier' => 'notIdentical.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Compress/Zip.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $keys might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 3,
@@ -6678,12 +6672,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/View/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Variable $view in isset() is never defined.',
-	'identifier' => 'isset.variable',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/View/Helper/DeclareVars.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Variable $escape might not be defined.',

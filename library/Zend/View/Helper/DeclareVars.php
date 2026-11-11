@@ -72,7 +72,7 @@ class Zend_View_Helper_DeclareVars extends Zend_View_Helper_Abstract
                 foreach ($key as $name => $value) {
                     $this->_declareVar($name, $value);
                 }
-            } else if (!isset($view->$key)) {
+            } else if (!isset($this->view->$key)) {
                 $this->_declareVar($key);
             }
         }

@@ -8,6 +8,7 @@ As pressure to implement some PHP 8.2+ related changes are raising, we are goig 
 * Zend_Validate_EmailAddress with the deep MX check (`deep` option) accepts hosts whose address lies outside the reserved networks. Before, every address with the first octet 0, 10, 100, 127, 169, 172, 192 or 198 counted as reserved, so hosts on public addresses such as 172.217.0.1, 192.30.252.1 or 100.128.0.1 were rejected with `INVALID_SEGMENT`. Addresses inside the reserved networks (10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.168.0.0/16, ...) and from 224.0.0.0 up are rejected as before.
 * Zend_Search_Lucene_Proxy::getSegmentFileName() returns the name of the segments file, as Zend_Search_Lucene::getSegmentFileName() does. It returned null.
 * Zend_Pdf_StringParser::skipComment() moves the offset to the end of the current line. It moved it to the end of the data.
+* Zend_Filter_Compress_Zip throws Zend_Filter_Exception when a file of a compressed directory cannot be added to the archive. Before, the archive was written without that file and no error was reported.
 
 ### 1.27.0
 * Methods that returned null on some paths return what their docblock and their parent method declare. Code that tested the result for null or for falsiness on these paths has to be adjusted:
