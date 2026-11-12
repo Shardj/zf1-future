@@ -1,0 +1,21 @@
+name: Standalone load
+
+on: [push, pull_request]
+
+jobs:
+  standalone-load:
+    name: Load every library file alone
+    runs-on: ubuntu-26.04
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: soap
+          coverage: none
+
+      - uses: actions/checkout@v5
+
+      - name: Load every library file in its own process, without an autoloader
+        run: php tests/check-standalone-load.php

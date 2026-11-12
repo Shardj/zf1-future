@@ -90,6 +90,6 @@ Changes that break backward compatibility are described in `BREAKING-CHANGES.md`
 
 ### 2. Merge and tag
 
-- Wait for all workflows (PHPUnit, PHPStan, PHPCS, PHP-CS-Fixer, Rector, Database drivers) to pass and merge the pull request.
+- Wait for all workflows (PHPUnit, PHPStan, PHPCS, PHP-CS-Fixer, Rector, Standalone load, Database drivers) to pass and merge the pull request.
 - Tag the merge commit as `release-x.y.z` and push the tag.
 - Publish the GitHub release for the tag with the section of `CHANGELOG.md` as its notes.
