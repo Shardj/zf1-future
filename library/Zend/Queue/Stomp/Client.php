@@ -131,7 +131,7 @@ class Zend_Queue_Stomp_Client
      * Returns true if the frame was successfully sent.
      *
      * @param Zend_Queue_Stomp_FrameInterface $frame
-     * @return StompClientMock|Zend_Queue_Stomp_Client
+     * @return Zend_Queue_Stomp_Client
      */
     public function send(Zend_Queue_Stomp_FrameInterface $frame)
     {

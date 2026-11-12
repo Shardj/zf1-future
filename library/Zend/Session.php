@@ -59,7 +59,7 @@ class Zend_Session extends Zend_Session_Abstract
     /**
      * $_throwStartupException
      *
-     * @var bool|bitset This could also be a combiniation of error codes to catch
+     * @var bool|int This could also be a combiniation of error codes to catch
      */
     protected static $_throwStartupExceptions = true;
 

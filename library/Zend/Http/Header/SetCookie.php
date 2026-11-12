@@ -131,7 +131,7 @@ class Zend_Http_Header_SetCookie
      * @throws Zend_Http_Header_Exception_InvalidArgumentException
      * @param  $headerLine
      * @param  bool $bypassHeaderFieldName
-     * @return array|SetCookie
+     * @return array|Zend_Http_Header_SetCookie
      */
     public static function fromString($headerLine, $bypassHeaderFieldName = false)
     {

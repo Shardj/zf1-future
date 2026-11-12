@@ -139,7 +139,7 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
      * @param string  $sourcePath   Source directory
      * @param string  $destinationPath   Target directory
      * @param boolean $abortIfExists Query re-creating target directory if exists
-     * @param octal   $mode           Changes access mode
+     * @param integer|string $mode           Changes access mode
      *
      * @return boolean
      */

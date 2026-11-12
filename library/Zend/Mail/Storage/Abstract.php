@@ -256,7 +256,7 @@ abstract class Zend_Mail_Storage_Abstract implements Countable, ArrayAccess, See
      /**
       * ArrayAccess::offsetSet()
       *
-      * @param    id     $id
+      * @param    mixed  $id
       * @param    mixed  $value
       * @throws   Zend_Mail_Storage_Exception
       * @return   void
