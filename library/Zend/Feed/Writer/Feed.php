@@ -208,7 +208,7 @@ implements Iterator, Countable
     /**
      * Return the current entry
      *
-     * @return Zend_Feed_Reader_Entry_Interface
+     * @return Zend_Feed_Writer_Entry
      */
     #[\ReturnTypeWillChange]
     public function current()

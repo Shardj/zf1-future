@@ -264,7 +264,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
     /**
      * Set Target Reference
      *
-     * @param reference $target
+     * @param string $target
      * @return Zend_Filter_Inflector
      */
     public function setTargetReference(&$target)

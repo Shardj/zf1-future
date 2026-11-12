@@ -86,30 +86,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Auth/Adapter/OpenId.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $barcode of method Zend_Barcode::draw() has invalid type Zend_Barcode_Object.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $barcode of method Zend_Barcode::render() has invalid type Zend_Barcode_Object.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $renderer of method Zend_Barcode::draw() has invalid type Zend_Barcode_Renderer.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $renderer of method Zend_Barcode::render() has invalid type Zend_Barcode_Renderer.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Barcode.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "%%" between string and 4 results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -390,18 +366,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/Cache.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
-	'identifier' => 'argument.type',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Controller_Action_Helper_ViewRenderer::$_inflectorTarget (string) does not accept reference.',
-	'identifier' => 'assign.propertyType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Controller_Action_HelperBroker::getPluginLoader() should return Zend_Loader_PluginLoader but returns Zend_Loader_PluginLoader_Interface.',
@@ -734,12 +698,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Db/Table/Row/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $value of method Zend_Dojo_BuildLayer::addProfileOption() has invalid type value.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Dojo/BuildLayer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Dojo_Form_DisplayGroup::setView() should return Zend_Dojo_Form_DisplayGroup but returns Zend_Form_DisplayGroup.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1004,12 +962,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Feed/Reader/Feed/Rss.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Feed_Writer_Feed::current() has invalid return type Zend_Feed_Reader_Entry_Interface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Feed/Writer/Feed.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Cannot cast tidy to string.',
 	'identifier' => 'cast.string',
 	'count' => 1,
@@ -1050,12 +1002,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.undefined',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/File/ClassFileLocator.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_File_Transfer::getAdapter() has invalid return type Zend_File_Transfer_Adapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to function is_int() with int will always evaluate to true.',
@@ -1136,18 +1082,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Filter/Inflector.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $target of method Zend_Filter_Inflector::setTargetReference() has invalid type reference.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Inflector.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Filter_Inflector::$_target (string) does not accept reference.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Filter/Inflector.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Filter_Input::getTranslator() should return Zend_Translate_Adapter|null but returns Zend_Translate.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -1202,12 +1136,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Http/Client.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Http_Header_SetCookie::fromString() has invalid return type SetCookie.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Http/Header/SetCookie.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $path might not be defined.',
 	'identifier' => 'variable.undefined',
 	'count' => 1,
@@ -1260,18 +1188,6 @@ $ignoreErrors[] = [
 	'identifier' => 'parameterByRef.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Json.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $target of method Zend_Filter_Inflector::setTargetReference() expects reference, string given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Layout::$_inflectorTarget (string) does not accept reference.',
-	'identifier' => 'assign.propertyType',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Layout.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Cannot call method setLayoutActionHelper() on array|Zend_Controller_Plugin_Abstract|false.',
@@ -1422,12 +1338,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Loader/Autoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Loader_SplAutoloader::setOptions() has invalid return type SplAutoloader.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Loader/SplAutoloader.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $callback of function set_error_handler expects (callable(int, string, string, int, array): bool)|null, array{$this(Zend_Loader_StandardAutoloader), \'handleError\'} given.',
@@ -1592,12 +1502,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Mail/Protocol/Smtp/Auth/Crammd5.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter $id of method Zend_Mail_Storage_Abstract::offsetSet() has invalid type id.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Mail_Storage_Folder_Maildir::_buildFolderTree() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,
@@ -1624,12 +1528,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $params of method Zend_Mail_Storage_Folder_Maildir::__construct() expects array, stdClass given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $message of method Zend_Mail_Storage_Writable_Maildir::appendMessage() has invalid type stream.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mail/Storage/Writable/Maildir.php',
 ];
@@ -1722,12 +1620,6 @@ $ignoreErrors[] = [
 	'identifier' => 'method.childReturnType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Mobile/Push/Gcm.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Mobile_Push_Interface::connect() has invalid return type Push.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Mobile/Push/Interface.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'PHPDoc type array of property Zend_Mobile_Push_Message_Gcm::$_token is not covariant with PHPDoc type string of overridden property Zend_Mobile_Push_Message_Abstract::$_token.',
@@ -2180,18 +2072,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/ProgressBar/Adapter/Console.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $spec of class Zend_Queue constructor expects array|string|Zend_Config|Zend_Queue_Adapter|null, Zend_Queue_Adapter_AdapterInterface given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $spec of method Zend_Queue::__construct() has invalid type Zend_Queue_Adapter.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $prefix of function uniqid expects string, int<0, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 2,
@@ -2202,12 +2082,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Queue/Adapter/Db.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Queue_Stomp_Client::send() has invalid return type StompClientMock.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Queue/Stomp/Client.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function stream_set_blocking expects bool, int given.',
@@ -2480,18 +2354,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Search/Lucene/Search/Weight/MultiTerm.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Serializer::getDefaultAdapter() has invalid return type Zend_Serializer_AdapterInterface.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $serialized of method Zend_Serializer_Adapter_Igbinary::unserialize() has invalid type binary.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Serializer/Adapter/Igbinary.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_Serializer_Adapter_PythonPickle::setOption() should return Zend_Serializer_Adapter_PythonPickle but returns Zend_Serializer_Adapter_AdapterAbstract.',
 	'identifier' => 'return.type',
 	'count' => 1,
@@ -2544,12 +2406,6 @@ $ignoreErrors[] = [
 	'identifier' => 'empty.variable',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Abstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $keyName of method Zend_Service_Amazon_Ec2_Keypair::describe() has invalid type rarray.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Amazon/Ec2/Keypair.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Amazon_Ec2_Response::$_errorCode is never read, only written.',
@@ -2690,12 +2546,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_Service_LiveDocx_MailMerge::__construct() has invalid return type throws.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/LiveDocx/MailMerge.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Property Zend_Service_Rackspace_Abstract::$httpClient (Zend_Http_Client) in empty() is not falsy.',
 	'identifier' => 'empty.property',
 	'count' => 1,
@@ -2708,22 +2558,10 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Servers.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $service of class Zend_Service_Rackspace_Servers_ImageList constructor expects RackspaceServers, $this(Zend_Service_Rackspace_Servers) given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Servers.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #1 $str of function rawurlencode expects string, int<min, -1>|int<1, max> given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Servers.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $service of method Zend_Service_Rackspace_Servers_ImageList::__construct() has invalid type RackspaceServers.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/Rackspace/Servers/ImageList.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method DOMNode::getAttribute().',
@@ -2750,12 +2588,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/Package.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Default value of the parameter #4 $mode (string) of method Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageScaffolderAbstract::copyDirectory() is incompatible with type octal.',
-	'identifier' => 'parameter.defaultValue',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function chmod expects int, string given.',
 	'identifier' => 'argument.type',
 	'count' => 1,
@@ -2764,12 +2596,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $mode of function mkdir expects int, string given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Parameter $mode of method Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageScaffolderAbstract::copyDirectory() has invalid type octal.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php',
 ];
@@ -2842,12 +2668,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $value of function setcookie expects string, false given.',
 	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Session.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Session::$_throwStartupExceptions has unknown class bitset as its type.',
-	'identifier' => 'class.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Session.php',
 ];
