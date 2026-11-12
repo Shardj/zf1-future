@@ -656,12 +656,14 @@ class Zend_OpenId
             } else if (extension_loaded('bcmath')) {
                 $bn_pub_key  = bcpowmod($bn_g, $bn_priv_key, $bn_p);
             }
+            // @phpstan-ignore variable.undefined (binToBigNum() above throws without gmp and bcmath)
             $pub_key     = self::bigNumToBin($bn_pub_key);
 
             return [
                 'p'        => $bn_p,
                 'g'        => $bn_g,
                 'priv_key' => $bn_priv_key,
+                // @phpstan-ignore variable.undefined (binToBigNum() above throws without gmp and bcmath)
                 'pub_key'  => $bn_pub_key,
                 'details'  => [
                     'p'        => $p,

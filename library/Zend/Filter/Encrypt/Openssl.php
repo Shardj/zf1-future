@@ -505,6 +505,7 @@ class Zend_Filter_Encrypt_Openssl implements Zend_Filter_Encrypt_Interface
             throw new Zend_Filter_Exception('Please give a envelope key for decryption with Openssl');
         }
 
+        $keys = null;
         foreach($this->_keys['private'] as $key => $cert) {
             $keys = openssl_pkey_get_private($cert, $this->getPassphrase());
         }

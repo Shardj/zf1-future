@@ -724,6 +724,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $segmentStartId += $segmentInfo->count();
         }
 
+        // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
         return $segmentInfo->isDeleted($id - $segmentStartId);
     }
 
@@ -1122,10 +1123,12 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $segmentStartId += $segmentInfo->count();
         }
 
+        // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
         $fdxFile = $segmentInfo->openCompoundFile('.fdx');
         $fdxFile->seek(($id-$segmentStartId)*8, SEEK_CUR);
         $fieldValuesPosition = $fdxFile->readLong();
 
+        // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
         $fdtFile = $segmentInfo->openCompoundFile('.fdt');
         $fdtFile->seek($fieldValuesPosition, SEEK_CUR);
         $fieldCount = $fdtFile->readVInt();
@@ -1135,6 +1138,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $fieldNum = $fdtFile->readVInt();
             $bits = $fdtFile->readByte();
 
+            // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
             $fieldInfo = $segmentInfo->getField($fieldNum);
 
             if (!($bits & 2)) { // Text data
@@ -1224,6 +1228,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     {
         $segmentStartDocId = 0;
         $result = new Zend_Search_Lucene_Index_DocsFilter();
+        $subResults = [];
 
         foreach ($this->_segmentInfos as $segmentInfo) {
             $subResults[] = $segmentInfo->termDocs($term, $segmentStartDocId, $docsFilter);
@@ -1343,10 +1348,12 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
             $segmentStartId += $segInfo->count();
         }
 
+        // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
         if ($segInfo->isDeleted($id - $segmentStartId)) {
             return 0;
         }
 
+        // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
         return $segInfo->norm($id - $segmentStartId, $fieldName);
     }
 
@@ -1393,6 +1400,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
 
             $segmentStartId += $segmentInfo->count();
         }
+        // @phpstan-ignore variable.undefined (the id is below the document count, so the loop above stops at a segment)
         $segmentInfo->delete($id - $segmentStartId);
 
         $this->_hasChanges = true;

@@ -1398,6 +1398,7 @@ class Zend_Date extends Zend_Date_DateObject
 
                 // Weekday found
                 if ($cnt < 7) {
+                    // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                     return $this->_assign($calc, $this->mktime(0, 0, 0, 1, 1 + $found, 1970, true),
                                                  $this->mktime(0, 0, 0, 1, 1 + $weekday, 1970, true), $hour);
                 }
@@ -1430,6 +1431,7 @@ class Zend_Date extends Zend_Date_DateObject
 
                 // Weekday found
                 if ($cnt < 7) {
+                    // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                     return $this->_assign($calc, $this->mktime(0, 0, 0, 1, 1 + $found, 1970, true),
                                                  $this->mktime(0, 0, 0, 1, 1 + $weekday, 1970, true), $hour);
                 }
@@ -1493,6 +1495,7 @@ class Zend_Date extends Zend_Date_DateObject
 
                 // Weekday found
                 if ($cnt < 7) {
+                    // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                     return $this->_assign($calc, $this->mktime(0, 0, 0, 1, 1 + $found, 1970, true),
                                                  $this->mktime(0, 0, 0, 1, 1 + $weekday, 1970, true), $hour);
                 }
@@ -1515,6 +1518,7 @@ class Zend_Date extends Zend_Date_DateObject
 
                 // Weekday found
                 if ($cnt < 7) {
+                    // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                     return $this->_assign($calc, $this->mktime(0, 0, 0, 1, 1 + $found, 1970, true),
                                                  $this->mktime(0, 0, 0, 1, 1 + $weekday, 1970, true), $hour);
                 }
@@ -1551,6 +1555,7 @@ class Zend_Date extends Zend_Date_DateObject
                 if ($cnt < 12) {
                     $fixday = 0;
                     if ($calc == 'add') {
+                        // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                         $date += $found;
                         $calc = 'set';
                         if (self::$_options['extend_month'] == false) {
@@ -1560,6 +1565,7 @@ class Zend_Date extends Zend_Date_DateObject
                             }
                         }
                     } else if ($calc == 'sub') {
+                        // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                         $date = $month - $found;
                         $calc = 'set';
                         if (self::$_options['extend_month'] == false) {
@@ -1622,6 +1628,7 @@ class Zend_Date extends Zend_Date_DateObject
                 if ($cnt < 12) {
                     $fixday = 0;
                     if ($calc == 'add') {
+                        // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                         $date += $found;
                         $calc = 'set';
                         if (self::$_options['extend_month'] === false) {
@@ -1631,6 +1638,7 @@ class Zend_Date extends Zend_Date_DateObject
                             }
                         }
                     } else if ($calc == 'sub') {
+                        // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                         $date = $month - $found;
                         $calc = 'set';
                         if (self::$_options['extend_month'] === false) {
@@ -1698,6 +1706,7 @@ class Zend_Date extends Zend_Date_DateObject
                 if ($cnt < 12) {
                     $fixday = 0;
                     if ($calc === 'add') {
+                        // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                         $date += $found;
                         $calc  = 'set';
                         if (self::$_options['extend_month'] === false) {
@@ -1707,6 +1716,7 @@ class Zend_Date extends Zend_Date_DateObject
                             }
                         }
                     } else if ($calc === 'sub') {
+                        // @phpstan-ignore variable.undefined ($cnt below the size of the list means that the name was found)
                         $date = $month - $found;
                         $calc = 'set';
                         if (self::$_options['extend_month'] === false) {
@@ -3529,19 +3539,21 @@ class Zend_Date extends Zend_Date_DateObject
             $locale = $this->getLocale();
         }
 
+        if (is_array($month)) {
+            if (isset($month['month']) === true) {
+                $month = $month['month'];
+            } else {
+                require_once 'Zend/Date/Exception.php';
+                throw new Zend_Date_Exception("no month given in array");
+            }
+        }
+
         if ($month instanceof Zend_Date) {
             // extract month from object
             $found = $month->toString(self::MONTH_SHORT, 'iso', $locale);
         } else {
             if (is_numeric($month)) {
                 $found = $month;
-            } else if (is_array($month)) {
-                if (isset($month['month']) === true) {
-                    $month = $month['month'];
-                } else {
-                    require_once 'Zend/Date/Exception.php';
-                    throw new Zend_Date_Exception("no month given in array");
-                }
             } else {
                 $monthlist  = Zend_Locale_Data::getList($locale, 'month');
                 $monthlist2 = Zend_Locale_Data::getList($locale, 'month', ['gregorian', 'format', 'abbreviated']);

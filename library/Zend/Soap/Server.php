@@ -727,6 +727,7 @@ class Zend_Soap_Server implements Zend_Server_Interface
      */
     protected function _setRequest($request)
     {
+        $xml = null;
         if ($request instanceof DOMDocument) {
             $xml = $request->saveXML();
         } elseif ($request instanceof DOMNode) {

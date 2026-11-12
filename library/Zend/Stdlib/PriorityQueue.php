@@ -108,6 +108,7 @@ class Zend_Stdlib_PriorityQueue implements Countable, IteratorAggregate, Seriali
             }
         }
         if ($found) {
+            // @phpstan-ignore variable.undefined ($found is set inside the loop)
             unset($this->items[$key]);
             $this->queue = null;
             $queue = $this->getQueue();

@@ -1184,6 +1184,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
             }
         }
 
+        // @phpstan-ignore variable.undefined (called with 'filter' or 'helper' only)
         $this->$storeVar = $store;
         return $store[$name];
     }

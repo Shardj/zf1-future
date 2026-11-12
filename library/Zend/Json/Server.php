@@ -128,6 +128,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
             }
         }
 
+        // @phpstan-ignore variable.undefined (the loop above ends with a method, or the request is answered with a fault)
         $definition = $this->_buildSignature($method);
         $this->_addMethodServiceMap($definition);
 

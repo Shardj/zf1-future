@@ -1007,8 +1007,11 @@ abstract class Zend_Pdf_FileParser_Font_OpenType extends Zend_Pdf_FileParser_Fon
         /* Now extract the subtable data and create a Zend_Pdf_FontCmap object.
          */
         $this->_debugLog('Using cmap type %d; offset: 0x%x; length: %d',
+                         // @phpstan-ignore variable.undefined, variable.undefined (set together with $cmapType)
                          $cmapType, $cmapOffset, $cmapLength);
+        // @phpstan-ignore variable.undefined (set together with $cmapType)
         $this->moveToOffset($cmapOffset);
+        // @phpstan-ignore variable.undefined (set together with $cmapType)
         $cmapData = $this->readBytes($cmapLength);
 
         require_once 'Zend/Pdf/Cmap.php';
