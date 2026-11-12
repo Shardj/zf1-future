@@ -60,10 +60,13 @@ class Zend_Cache_MemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTe
             'port' => TESTS_ZEND_CACHE_MEMCACHED_PORT,
             'persistent' => TESTS_ZEND_CACHE_MEMCACHED_PERSISTENT
         ];
+        // A closed port instead of a host name, so that the test does not depend on the DNS. The failed server is never
+        // retried: only save() suppresses the errors of the extension, a retry in load(), remove() or clean() fails the test
         $serverFail = [
-            'host' => 'not.exist',
-            'port' => TESTS_ZEND_CACHE_MEMCACHED_PORT,
-            'persistent' => TESTS_ZEND_CACHE_MEMCACHED_PERSISTENT
+            'host' => '127.0.0.1',
+            'port' => 1,
+            'persistent' => TESTS_ZEND_CACHE_MEMCACHED_PERSISTENT,
+            'retry_interval' => -1
         ];
         $options = [
             'servers' => [$serverValid, $serverFail]
