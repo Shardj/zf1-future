@@ -1680,6 +1680,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                 if (0 < $argc) {
                     $subForm = array_shift($spec);
                     if (!$subForm instanceof Zend_Form) {
+                        require_once 'Zend/Form/SubForm.php';
                         $subForm = new Zend_Form_SubForm($subForm);
                     }
                     if (1 < $argc) {

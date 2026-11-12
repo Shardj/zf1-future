@@ -256,6 +256,7 @@ class Zend_Service_WindowsAzure_SessionHandler
     	// Store data
        	if ($this->_storageType == self::STORAGE_TYPE_TABLE) {
     		// In table storage
+       	    require_once 'Zend/Service/WindowsAzure/Storage/DynamicTableEntity.php';
        	    $sessionRecord = new Zend_Service_WindowsAzure_Storage_DynamicTableEntity($this->_sessionContainerPartition, $id);
 	        $sessionRecord->sessionExpires = time();
 	        $sessionRecord->serializedData = $serializedData;

@@ -477,7 +477,9 @@ class Zend_Controller_Action_Helper_Redirector extends Zend_Controller_Action_He
     {
         if ($this->getCloseSessionOnExit()) {
             // Close session, if started
+            require_once 'Zend/Session.php';
             if (class_exists('Zend_Session', false) && Zend_Session::isStarted()) {
+                require_once 'Zend/Session.php';
                 Zend_Session::writeClose();
             } elseif (isset($_SESSION)) {
                 session_write_close();

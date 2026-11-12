@@ -661,6 +661,7 @@ class Zend_View_Helper_Navigation_Links
             }
         } elseif (is_string($mixed)) {
             // value is a string; make an URI page
+            require_once 'Zend/Navigation/Page.php';
             return Zend_Navigation_Page::factory([
                 'type' => 'uri',
                 'uri'  => $mixed
@@ -678,6 +679,7 @@ class Zend_View_Helper_Navigation_Links
             } else {
                 // pass array to factory directly
                 try {
+                    require_once 'Zend/Navigation/Page.php';
                     $page = Zend_Navigation_Page::factory($mixed);
                     return $page;
                 } catch (Exception $e) {

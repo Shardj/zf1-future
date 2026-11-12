@@ -20,6 +20,8 @@
  */
 
 
+require_once 'Zend/Service/WindowsAzure/CommandLine/PackageScaffolder/PackageScaffolderAbstract.php';
+
 /**
  * @category   Zend
  * @package    Zend_Service_WindowsAzure_CommandLine

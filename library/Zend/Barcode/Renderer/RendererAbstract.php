@@ -454,6 +454,7 @@ abstract class Zend_Barcode_Renderer_RendererAbstract
                 $renderable = $e->isRenderable();
             }
             if ($this->_automaticRenderError && $renderable) {
+                require_once 'Zend/Barcode.php';
                 $barcode = Zend_Barcode::makeBarcode(
                     'error',
                     ['text' => $e->getMessage()]

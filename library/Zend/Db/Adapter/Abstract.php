@@ -30,6 +30,7 @@ require_once 'Zend/Db.php';
  * @see Zend_Db_Select
  */
 require_once 'Zend/Db/Select.php';
+require_once 'Zend/Db/Profiler.php';
 
 /**
  * Class for connecting to SQL databases and performing common operations.

@@ -80,6 +80,7 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
                         // @phpstan-ignore booleanNot.alwaysTrue (the file loaded above may define the class)
                         && !class_exists($bootstrapClass, false)
                     ) {
+                        require_once 'Zend/Application/Resource/Exception.php';
                         throw new Zend_Application_Resource_Exception(
                             sprintf(
                                 $eMsgTpl, $module, $bootstrapClass
@@ -90,6 +91,7 @@ class Zend_Application_Resource_Modules extends Zend_Application_Resource_Resour
                         if (!class_exists($bootstrapClass, false)) {
                             $bootstrapClass = 'Bootstrap';
                             if (!class_exists($bootstrapClass, false)) {
+                                require_once 'Zend/Application/Resource/Exception.php';
                                 throw new Zend_Application_Resource_Exception(
                                     sprintf(
                                         $eMsgTpl, $module, $bootstrapClass

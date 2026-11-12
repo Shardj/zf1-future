@@ -529,6 +529,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                 return $translator;
             } else {
                 try {
+                    require_once 'Zend/Registry.php';
                     $translator = Zend_Registry::get('Zend_Translate');
                 } catch (Zend_Exception $e) {
                     $translator = null;
@@ -590,6 +591,7 @@ class Zend_Controller_Router_Route extends Zend_Controller_Router_Route_Abstract
                 return $locale;
             } else {
                 try {
+                    require_once 'Zend/Registry.php';
                     $locale = Zend_Registry::get('Zend_Locale');
                 } catch (Zend_Exception $e) {
                     $locale = null;

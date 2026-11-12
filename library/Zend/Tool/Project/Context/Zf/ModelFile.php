@@ -92,6 +92,8 @@ class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Z
 
         $className = $this->getFullClassName($this->_modelName, 'Model');
 
+        require_once 'Zend/CodeGenerator/Php/Class.php';
+        require_once 'Zend/CodeGenerator/Php/File.php';
         $codeGenFile = new Zend_CodeGenerator_Php_File([
             'fileName' => $this->getPath(),
             'classes' => [

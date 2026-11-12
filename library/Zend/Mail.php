@@ -991,6 +991,7 @@ class Zend_Mail extends Zend_Mime_Message
                 }
                 $date = date('r', $date);
             } else if ($date instanceof Zend_Date) {
+                require_once 'Zend/Date.php';
                 $date = $date->get(Zend_Date::RFC_2822);
             } else {
                 /**

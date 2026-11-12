@@ -85,6 +85,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
          */
 
         if ($nonMatchSearchConstraints) {
+            require_once 'Zend/Tool/Project/Profile/Iterator/ContextFilter.php';
             $filterIterator = new Zend_Tool_Project_Profile_Iterator_ContextFilter($this, ['denyNames' => $nonMatchSearchConstraints]);
             $riIterator = new RecursiveIteratorIterator($filterIterator, RecursiveIteratorIterator::SELF_FIRST);
         } else {
@@ -172,6 +173,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
     public function createResource($context, Array $attributes = [])
     {
         if (is_string($context)) {
+            require_once 'Zend/Tool/Project/Context/Repository.php';
             $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
             if ($contextRegistry->hasContext($context)) {
                 $context = $contextRegistry->getContext($context);
@@ -184,6 +186,7 @@ class Zend_Tool_Project_Profile_Resource_Container implements RecursiveIterator,
             throw new Zend_Tool_Project_Profile_Exception('Context must be of type string or Zend_Tool_Project_Context_Interface.');
         }
 
+        require_once 'Zend/Tool/Project/Profile/Resource.php';
         $newResource = new Zend_Tool_Project_Profile_Resource($context);
 
         if ($attributes) {

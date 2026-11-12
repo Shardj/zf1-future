@@ -210,6 +210,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
 
         if ($info['timed_out'] === true || $flags === false || $flags === '') {
             fclose($this->_socket);
+            require_once 'Zend/TimeSync/Exception.php';
             throw new Zend_TimeSync_Exception('could not connect to ' .
                 "'$this->_timeserver' on port '$this->_port', reason: 'server timed out'");
         }
@@ -245,6 +246,7 @@ class Zend_TimeSync_Ntp extends Zend_TimeSync_Protocol
         $this->_connect();
 
         fwrite($this->_socket, $data);
+        require_once 'Zend/TimeSync.php';
         stream_set_timeout($this->_socket, Zend_TimeSync::$options['timeout']);
     }
 

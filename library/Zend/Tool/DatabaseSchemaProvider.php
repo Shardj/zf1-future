@@ -1,4 +1,11 @@
 <?php
+require_once 'Zend/Tool/Project/Provider/Abstract.php';
+require_once 'Zend/Db/Schema/Manager.php';
+require_once 'Zend/Config/Ini.php';
+require_once 'Zend/Config/Xml.php';
+require_once 'Zend/Config/Json.php';
+require_once 'Zend/Config/Yaml.php';
+
 class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstract
 {
     /**
@@ -203,6 +210,7 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
         $appConfigFileResource = $profile->search('applicationConfigFile');
 
         if ($appConfigFileResource == false) {
+            require_once 'Zend/Tool/Project/Exception.php';
             throw new Zend_Tool_Project_Exception('A project with an application config file is required to use this provider.');
         }
         $appConfigFilePath = $appConfigFileResource->getPath();
@@ -285,14 +293,17 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
             case 'inc':
                 $config = include $filename;
                 if (!is_array($config)) {
+                    require_once 'Zend/Db/Schema/Exception.php';
                     throw new Zend_Db_Schema_Exception(
                         'Invalid configuration file provided; PHP file does not return array value'
                     );
                 }
+                require_once 'Zend/Config.php';
                 $config = new Zend_Config($config, $allowModifications);
                 break;
 
             default:
+                require_once 'Zend/Db/Schema/Exception.php';
                 throw new Zend_Db_Schema_Exception(
                     'Invalid configuration file provided; unknown config type'
                 );
@@ -437,15 +448,18 @@ class Zend_Tool_DatabaseSchemaProvider extends Zend_Tool_Project_Provider_Abstra
         if ((null === $this->_db)) {
             if($this->_config->resources->db){
                 $dbConfig = $this->_config->resources->db;
+                require_once 'Zend/Db.php';
                 $this->_db = Zend_Db::factory($dbConfig->adapter, $dbConfig->params);
             } elseif($this->_config->resources->multidb){
                 foreach ($this->_config->resources->multidb as $db) {
                     if($db->default){
+                        require_once 'Zend/Db.php';
                         $this->_db = Zend_Db::factory($db->adapter, $db);
                     }
                 }
             }
             if(!$this->_db instanceof Zend_Db_Adapter_Abstract) {
+                require_once 'Zend/Db/Schema/Exception.php';
                 throw new Zend_Db_Schema_Exception('Database was not initialized');
             }
         }

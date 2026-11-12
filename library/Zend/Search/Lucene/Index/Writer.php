@@ -23,6 +23,7 @@
 
 /** Zend_Search_Lucene_LockManager */
 require_once 'Zend/Search/Lucene/LockManager.php';
+require_once 'Zend/Search/Lucene.php';
 
 
 /**

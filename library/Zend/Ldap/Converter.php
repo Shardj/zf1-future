@@ -137,6 +137,7 @@ class Zend_Ldap_Converter
                     }
             }
         } catch (Exception $e) {
+            require_once 'Zend/Ldap/Converter/Exception.php';
             throw new Zend_Ldap_Converter_Exception($e->getMessage(), $e->getCode(), $e);
         }
     }
@@ -163,6 +164,7 @@ class Zend_Ldap_Converter
             } else if (is_string($date)) {
                 $date = new DateTime($date);
             } else if ($date instanceof Zend_Date) {
+                require_once 'Zend/Date.php';
                 $date = new DateTime($date->get(Zend_Date::ISO_8601));
             } else {
                 throw new InvalidArgumentException('Parameter $date is not of the expected type');

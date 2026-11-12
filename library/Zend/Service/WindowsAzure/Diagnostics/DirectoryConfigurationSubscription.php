@@ -21,6 +21,8 @@
  */
 
 
+require_once 'Zend/Service/WindowsAzure/Diagnostics/ConfigurationObjectBaseAbstract.php';
+
 /**
  * @category   Zend
  * @package    Zend_Service_WindowsAzure

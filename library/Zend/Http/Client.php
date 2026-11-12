@@ -643,6 +643,7 @@ class Zend_Http_Client
         if ($cookiejar instanceof Zend_Http_CookieJar) {
             $this->cookiejar = $cookiejar;
         } elseif ($cookiejar === true) {
+            require_once 'Zend/Http/CookieJar.php';
             $this->cookiejar = new Zend_Http_CookieJar();
         } elseif (! $cookiejar) {
             $this->cookiejar = null;
@@ -698,6 +699,7 @@ class Zend_Http_Client
             if ($cookie instanceof Zend_Http_Cookie) {
                 $this->cookiejar->addCookie($cookie);
             } elseif (is_string($cookie) && $value !== null) {
+                require_once 'Zend/Http/Cookie.php';
                 $cookie = Zend_Http_Cookie::fromString("{$cookie}={$value}",
                                                        $this->uri,
                                                        $this->config['encodecookies']);
@@ -1231,6 +1233,7 @@ class Zend_Http_Client
 
         // Load cookies from cookie jar
         if (isset($this->cookiejar)) {
+            require_once 'Zend/Http/CookieJar.php';
             $cookstr = $this->cookiejar->getMatchingCookies($this->uri,
                 true, Zend_Http_CookieJar::COOKIE_STRING_CONCAT);
 

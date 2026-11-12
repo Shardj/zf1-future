@@ -40,6 +40,7 @@ class Zend_Xml_Security
     {
         foreach (self::getEntityComparison($xml) as $compare) {
             if (strpos($xml, $compare) !== false) {
+                require_once 'Zend/Xml/Exception.php';
                 throw new Zend_Xml_Exception(self::ENTITY_DETECT);
             }
         }
@@ -113,6 +114,7 @@ class Zend_Xml_Security
                     if ($child->nodeType === XML_DOCUMENT_TYPE_NODE) {
                         if ($child->entities->length > 0) {
                             require_once 'Exception.php';
+                            require_once 'Zend/Xml/Exception.php';
                             throw new Zend_Xml_Exception(self::ENTITY_DETECT);
                         }
                     }
@@ -151,6 +153,7 @@ class Zend_Xml_Security
     {
         if (!file_exists($file)) {
             require_once 'Exception.php';
+            require_once 'Zend/Xml/Exception.php';
             throw new Zend_Xml_Exception(
                 "The file $file specified doesn't exist"
             );

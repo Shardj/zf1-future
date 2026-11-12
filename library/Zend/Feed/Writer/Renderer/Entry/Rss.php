@@ -20,6 +20,11 @@
  */
 
 /**
+ * @see Zend_Feed_Writer_Renderer_RendererInterface
+ */
+require_once 'Zend/Feed/Writer/Renderer/RendererInterface.php';
+
+/**
  * @see Zend_Feed_Writer_Renderer_RendererAbstract
  */
 require_once 'Zend/Feed/Writer/Renderer/RendererAbstract.php';
@@ -157,6 +162,7 @@ class Zend_Feed_Writer_Renderer_Entry_Rss
 
         $updated = $dom->createElement('pubDate');
         $root->appendChild($updated);
+        require_once 'Zend/Date.php';
         $text = $dom->createTextNode(
             $this->getDataContainer()->getDateModified()->get(Zend_Date::RSS)
         );
@@ -299,6 +305,7 @@ class Zend_Feed_Writer_Renderer_Entry_Rss
         }
         $text = $dom->createTextNode($this->getDataContainer()->getId());
         $id->appendChild($text);
+        require_once 'Zend/Uri.php';
         if (!Zend_Uri::check($this->getDataContainer()->getId())) {
             $id->setAttribute('isPermaLink', 'false');
         }

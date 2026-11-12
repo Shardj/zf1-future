@@ -68,6 +68,7 @@ class Zend_Tool_Project_Provider_Module
 
         // if there is a module directory already, except
         if ($modulesDirectory->search(['moduleDirectory' => ['moduleName' => $moduleName]])) {
+            require_once 'Zend/Tool/Project/Provider/Exception.php';
             throw new Zend_Tool_Project_Provider_Exception('A module named "' . $moduleName . '" already exists.');
         }
 

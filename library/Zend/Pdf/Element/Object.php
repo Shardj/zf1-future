@@ -229,6 +229,7 @@ class Zend_Pdf_Element_Object extends Zend_Pdf_Element
         }
 
         // Create obect with null value and register it in $processed container
+        require_once 'Zend/Pdf/Element/Null.php';
         $processed[$id] = $clonedObject = $factory->newObject(new Zend_Pdf_Element_Null());
 
         // Pecursively process actual data

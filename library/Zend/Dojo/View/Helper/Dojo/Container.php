@@ -958,6 +958,7 @@ EOJ;
 
         $this->_isXhtml = $this->view->doctype()->isXhtml();
 
+        require_once 'Zend/Dojo/View/Helper/Dojo.php';
         if (Zend_Dojo_View_Helper_Dojo::useDeclarative()) {
             if (null === $this->getDjConfigOption('parseOnLoad')) {
                 $this->setDjConfigOption('parseOnLoad', true);

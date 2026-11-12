@@ -61,6 +61,8 @@ class Zend_Feed_Reader_Feed_Rss extends Zend_Feed_Reader_FeedAbstract
      */
     public function __construct(DOMDocument $dom, $type = null)
     {
+        require_once 'Zend/Feed/Reader.php';
+
         parent::__construct($dom, $type);
 
         $dublinCoreClass = Zend_Feed_Reader::getPluginLoader()->getClassName('DublinCore_Feed');

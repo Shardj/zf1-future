@@ -188,6 +188,7 @@ class Zend_Config_Writer_Ini extends Zend_Config_Writer_FileAbstract
             $configArray[$key] = $value;
         }
 
+        require_once 'Zend/Config.php';
         return new Zend_Config($configArray);
     }
 }

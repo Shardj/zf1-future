@@ -24,6 +24,7 @@
  * @see Zend_Db
  */
 require_once 'Zend/Db.php';
+require_once 'Zend/Db/Table/Abstract.php';
 
 /**
  * @category   Zend
@@ -1078,6 +1079,7 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
         }
         $joinCond = implode(' AND ', $joinCond);
 
+        require_once 'Zend/Db/Select.php';
         $select->from(['i' => $interName], [], $interSchema)
                ->joinInner(['m' => $matchName], $joinCond, Zend_Db_Select::SQL_WILDCARD, $matchSchema)
                ->setIntegrityCheck(false);

@@ -58,6 +58,7 @@ class Zend_EventManager_GlobalEventManager
     public static function getEventCollection()
     {
         if (null === self::$events) {
+            require_once 'Zend/EventManager/EventManager.php';
             self::setEventCollection(new Zend_EventManager_EventManager());
         }
         return self::$events;

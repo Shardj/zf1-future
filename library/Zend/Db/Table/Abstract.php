@@ -1608,6 +1608,7 @@ abstract class Zend_Db_Table_Abstract
             $tableDefinition = $referenceTable->getDefinition();
 
             if ($tableDefinition !== null && $tableDefinition->hasTableConfig($tableName)) {
+                require_once 'Zend/Db/Table.php';
                 return new Zend_Db_Table($tableName, $tableDefinition);
             }
         }

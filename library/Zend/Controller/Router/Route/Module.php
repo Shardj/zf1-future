@@ -99,6 +99,7 @@ class Zend_Controller_Router_Route_Module extends Zend_Controller_Router_Route_A
      */
     public static function getInstance(Zend_Config $config)
     {
+        require_once 'Zend/Controller/Front.php';
         $frontController = Zend_Controller_Front::getInstance();
 
         $defs       = ($config->defaults instanceof Zend_Config) ? $config->defaults->toArray() : [];

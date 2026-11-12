@@ -20,11 +20,6 @@
  */
 
 /**
- * @see Zend_Feed_Reader
- */
-require_once 'Zend/Feed/Reader.php';
-
-/**
  * @see Zend_feed_Reader_FeedInterface
  */
 require_once 'Zend/Feed/Reader/FeedInterface.php';
@@ -100,6 +95,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
         if ($type !== null) {
             $this->_data['type'] = $type;
         } else {
+            require_once 'Zend/Feed/Reader.php';
             $this->_data['type'] = Zend_Feed_Reader::detectType($this->_domDocument);
         }
         $this->_registerNamespaces();
@@ -151,8 +147,10 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
     public function current()
     {
         if (substr($this->getType(), 0, 3) == 'rss') {
+            require_once 'Zend/Feed/Reader/Entry/Rss.php';
             $reader = new Zend_Feed_Reader_Entry_Rss($this->_entries[$this->key()], $this->key(), $this->getType());
         } else {
+            require_once 'Zend/Feed/Reader/Entry/Atom.php';
             $reader = new Zend_Feed_Reader_Entry_Atom($this->_entries[$this->key()], $this->key(), $this->getType());
         }
 
@@ -298,6 +296,7 @@ abstract class Zend_Feed_Reader_FeedAbstract implements Zend_Feed_Reader_FeedInt
 
     protected function _loadExtensions()
     {
+        require_once 'Zend/Feed/Reader.php';
         $all = Zend_Feed_Reader::getExtensions();
         $feed = $all['feed'];
         foreach ($feed as $extension) {

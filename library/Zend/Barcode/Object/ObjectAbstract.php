@@ -1377,6 +1377,7 @@ abstract class Zend_Barcode_Object_ObjectAbstract
     {
         $validatorName = (isset($options['validator'])) ? $options['validator'] : $this->getType();
 
+        require_once 'Zend/Validate/Barcode.php';
         $validator = new Zend_Validate_Barcode(
             [
                 'adapter'  => $validatorName,

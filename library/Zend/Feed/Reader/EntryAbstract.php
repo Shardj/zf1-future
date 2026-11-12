@@ -85,6 +85,7 @@ abstract class Zend_Feed_Reader_EntryAbstract
         if ($type !== null) {
             $this->_data['type'] = $type;
         } else {
+            require_once 'Zend/Feed/Reader.php';
             $this->_data['type'] = Zend_Feed_Reader::detectType(
                 $this->_domDocument
             );
@@ -227,12 +228,14 @@ abstract class Zend_Feed_Reader_EntryAbstract
      */
     protected function _loadExtensions()
     {
+        require_once 'Zend/Feed/Reader.php';
         $all = Zend_Feed_Reader::getExtensions();
         $feed = $all['entry'];
         foreach ($feed as $extension) {
             if (in_array($extension, $all['core'])) {
                 continue;
             }
+            require_once 'Zend/Feed/Reader.php';
             $className = Zend_Feed_Reader::getPluginLoader()->getClassName($extension);
             $this->_extensions[$extension] = new $className(
                 $this->getElement(), $this->_entryKey, $this->_data['type']

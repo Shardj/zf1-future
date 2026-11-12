@@ -367,6 +367,7 @@ abstract class Zend_Markup_Renderer_RendererAbstract
     protected function _execute(Zend_Markup_Token $token)
     {
         // first return the normal text tags
+        require_once 'Zend/Markup/Token.php';
         if ($token->getType() == Zend_Markup_Token::TYPE_NONE) {
             return $this->_filter($token->getTag());
         }

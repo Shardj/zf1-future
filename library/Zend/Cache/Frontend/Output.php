@@ -94,6 +94,7 @@ class Zend_Cache_Frontend_Output extends Zend_Cache_Core
         }
         $id = array_pop($this->_idStack);
         if ($id === null) {
+            require_once 'Zend/Cache.php';
             Zend_Cache::throwException('use of end() without a start()');
         }
         $this->save($data, $id, $tags, $specificLifetime, $priority);

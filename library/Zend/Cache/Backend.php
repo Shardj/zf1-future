@@ -21,6 +21,8 @@
  */
 
 
+require_once 'Zend/Cache.php';
+
 /**
  * @package    Zend_Cache
  * @subpackage Zend_Cache_Backend
