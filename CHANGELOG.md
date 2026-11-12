@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.27.1] - 2026-11-12
+
 ### Deprecated
 
 * Components for services and formats that no longer exist are deprecated and will be removed in a future version. They trigger an E_USER_DEPRECATED notice when instantiated, their tests are removed and they are no longer covered by the static analysis:
