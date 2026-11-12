@@ -507,6 +507,7 @@ class Zend_Search_Lucene implements Zend_Search_Lucene_Interface
     {
         if ($directory === null) {
             require_once 'Zend/Search/Lucene/Exception.php';
+            require_once 'Zend/Search/Exception.php';
             throw new Zend_Search_Exception('No index directory specified');
         }
 

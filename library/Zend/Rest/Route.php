@@ -96,6 +96,7 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
      */
     public static function getInstance(Zend_Config $config)
     {
+        require_once 'Zend/Controller/Front.php';
         $frontController = Zend_Controller_Front::getInstance();
         $defaultsArray = [];
         $restfulConfigArray = [];

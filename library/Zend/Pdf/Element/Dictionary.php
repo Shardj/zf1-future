@@ -182,6 +182,7 @@ class Zend_Pdf_Element_Dictionary extends Zend_Pdf_Element
             if ($this->_items['Type']->value == 'Pages') {
                 // It's a page tree node
                 // skip it and its children
+                require_once 'Zend/Pdf/Element/Null.php';
                 return new Zend_Pdf_Element_Null();
             }
 
@@ -189,6 +190,7 @@ class Zend_Pdf_Element_Dictionary extends Zend_Pdf_Element
                 $mode == Zend_Pdf_Element::CLONE_MODE_SKIP_PAGES
             ) {
                 // It's a page node, skip it
+                require_once 'Zend/Pdf/Element/Null.php';
                 return new Zend_Pdf_Element_Null();
             }
         }

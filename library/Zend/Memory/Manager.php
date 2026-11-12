@@ -196,6 +196,7 @@ class Zend_Memory_Manager
     public function __destruct()
     {
         if ($this->_backend !== null) {
+            require_once 'Zend/Cache.php';
             $this->_backend->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, $this->_tags);
         }
     }

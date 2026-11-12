@@ -75,6 +75,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
     {
         if ($uri !== null) {
             // Retrieve the feed via HTTP
+            require_once 'Zend/Feed.php';
             $client = Zend_Feed::getHttpClient();
             $client->setUri($uri);
             $response = $client->request('GET');

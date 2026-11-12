@@ -21,6 +21,7 @@
 
 /** Zend_Form_Decorator_Abstract */
 require_once 'Zend/Form/Decorator/Abstract.php';
+require_once 'Zend/Form.php';
 
 /**
  * Zend_Form_Decorator_FormElements

@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Search_Lucene::termDocsFilter() returns an empty array for an index without segments; it ended in a TypeError (count() of an undefined variable) on PHP 8. Zend_Reflection_File::findRealpathInIncludePath() returns false for an empty include path instead of raising an "Undefined variable" warning.
 * Zend_Date::setMonth(), addMonth(), subMonth() and compareMonth() accept the month as an array (`['month' => 3]`), as documented; it ended in "parameter $date must be set, null is not allowed".
 * Zend_TimeSync::getDate() throws Zend_TimeSync_Exception when no time server is configured; it ended in the PHP error "Can only throw objects".
+* Library files load without an autoloader in any order: 31 files that could not be loaded on their own (a missing require of the parent class or interface, or a circular require in Zend_Feed_Reader, Zend_Feed_Writer and Zend_EventManager) load now, and about 260 uses of classes that the file did not require got a require_once (in front of the statement, or at the top of the file where the class is used throughout and the require cannot close a cycle).
 
 ## [1.27.0] - 2026-11-09
 

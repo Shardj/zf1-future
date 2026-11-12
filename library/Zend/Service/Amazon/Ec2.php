@@ -73,6 +73,7 @@ class Zend_Service_Amazon_Ec2
                 $class = 'Zend_Service_Amazon_Ec2_Securitygroups';
                 break;
             default:
+                require_once 'Zend/Service/Amazon/Ec2/Exception.php';
                 throw new Zend_Service_Amazon_Ec2_Exception('Invalid Section: ' . $section);
         }
 

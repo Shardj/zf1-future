@@ -21,6 +21,8 @@
  */
 
 
+require_once 'Zend/Feed.php';
+
 /**
  * Wraps a DOMElement allowing for SimpleXML-like access to attributes.
  *

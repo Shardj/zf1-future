@@ -336,6 +336,7 @@ class Zend_Feed
                 try {
                     // checks if we need to canonize the given uri
                     try {
+                        require_once 'Zend/Uri.php';
                         $uri = Zend_Uri::factory((string) $attributes['href']);
                     } catch (Zend_Uri_Exception $e) {
                         // canonize the uri
@@ -351,6 +352,7 @@ class Zend_Feed
                         if (strpos($query, '#') !== false) {
                             list($query, $fragment) = explode('#', $query, 2);
                         }
+                        require_once 'Zend/Uri.php';
                         $uri = Zend_Uri::factory($client->getUri(true));
                         $uri->setPath($path);
                         $uri->setQuery($query);

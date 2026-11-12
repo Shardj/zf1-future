@@ -154,6 +154,7 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
   
             } else { // full email validation
                 
+                require_once 'Zend/Validate.php';
                 if( Zend_Validate::is($fromEmailHeader, 'EmailAddress') === FALSE ) {
                     throw new Zend_Mail_Transport_Exception('Potential code injection in From header');
                 }                

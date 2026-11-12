@@ -39,6 +39,9 @@ require_once 'Zend/Cache/Backend.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
+require_once 'Zend/Cache.php';
+require_once 'Zend/Log.php';
+
 class Zend_Cache_Backend_TwoLevels extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
 {
     /**

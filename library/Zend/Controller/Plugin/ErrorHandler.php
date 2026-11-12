@@ -142,6 +142,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
     public function getErrorHandlerModule()
     {
         if (null === $this->_errorModule) {
+            require_once 'Zend/Controller/Front.php';
             $this->_errorModule = Zend_Controller_Front::getInstance()->getDispatcher()->getDefaultModule();
         }
         return $this->_errorModule;
@@ -234,6 +235,7 @@ class Zend_Controller_Plugin_ErrorHandler extends Zend_Controller_Plugin_Abstrac
      */
     protected function _handleError(Zend_Controller_Request_Abstract $request)
     {
+        require_once 'Zend/Controller/Front.php';
         $frontController = Zend_Controller_Front::getInstance();
         if ($frontController->getParam('noErrorHandler')) {
             return;

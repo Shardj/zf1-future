@@ -20,6 +20,8 @@
  */
 
 
+require_once 'Zend/Cache.php';
+
 /**
  * @package    Zend_Cache
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)

@@ -254,6 +254,7 @@ class Zend_Db_Schema_Manager
             if (preg_match('/^([0-9]+)\-(.*)\.php/i', $entry, $matches) ) {
                 $versionNumber = (int)$matches[1];
                 if (isset($seen[$versionNumber])) {
+                    require_once 'Zend/Db/Schema/Exception.php';
                     throw new Zend_Db_Schema_Exception("version $versionNumber is used for multiple migrations.");
                 }
                 $seen[$versionNumber] = true;
@@ -325,6 +326,7 @@ class Zend_Db_Schema_Manager
         $classname = $migration['classname'];
         require_once($this->_dir.'/'.$path.'/'.$filename);
         if (!class_exists($classname, false)) {
+            require_once 'Zend/Db/Schema/Exception.php';
             throw new Zend_Db_Schema_Exception("Could not find class '$classname' in file '$filename'");
         }
         $class = new $classname($this->_db, $this->_tablePrefix);

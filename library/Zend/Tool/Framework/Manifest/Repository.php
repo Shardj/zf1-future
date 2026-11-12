@@ -124,6 +124,7 @@ class Zend_Tool_Framework_Manifest_Repository
 
             foreach ($actions as $action) {
                 if (is_string($action)) {
+                    require_once 'Zend/Tool/Framework/Action/Base.php';
                     $action = new Zend_Tool_Framework_Action_Base($action);
                 }
                 $actionRepository->addAction($action);

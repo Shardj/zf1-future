@@ -279,6 +279,7 @@ class Zend_Session extends Zend_Session_Abstract
             return;
         }
 
+        require_once 'Zend/Session/SaveHandler/SessionHandlerInterfaceAdapter.php';
         $adapter = new Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter($saveHandler);
         $result = session_set_save_handler($adapter, false);
         register_shutdown_function('session_write_close');

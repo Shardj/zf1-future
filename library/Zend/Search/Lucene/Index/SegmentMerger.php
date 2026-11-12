@@ -190,6 +190,7 @@ class Zend_Search_Lucene_Index_SegmentMerger
                     $fieldInfo = $segmentInfo->getField($fieldNum);
 
                     if (!($bits & 2)) { // Text data
+                        require_once 'Zend/Search/Lucene/Field.php';
                         $storedFields[] =
                                  new Zend_Search_Lucene_Field($fieldInfo->name,
                                                               $fdtFile->readString(),
@@ -198,6 +199,7 @@ class Zend_Search_Lucene_Index_SegmentMerger
                                                               $fieldInfo->isIndexed,
                                                               $bits & 1 );
                     } else {            // Binary data
+                        require_once 'Zend/Search/Lucene/Field.php';
                         $storedFields[] =
                                  new Zend_Search_Lucene_Field($fieldInfo->name,
                                                               $fdtFile->readBinary(),

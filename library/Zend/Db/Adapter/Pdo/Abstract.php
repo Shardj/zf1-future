@@ -149,6 +149,7 @@ abstract class Zend_Db_Adapter_Pdo_Abstract extends Zend_Db_Adapter_Abstract
         }
 
         // create PDO connection
+        require_once 'Zend/Db/Profiler.php';
         $q = $this->_profiler->queryStart('connect', Zend_Db_Profiler::CONNECT);
 
         // add the persistence flag if we find it in our config array
