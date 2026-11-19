@@ -246,4 +246,123 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapterTest extends TestCa
         $this->assertIsInt($result);
         $this->assertSame(42, $result);
     }
+
+    /**
+     * validateId() is true when the save handler holds data for the id.
+     */
+    public function testValidateIdIsTrueWhenTheHandlerHasData(): void
+    {
+        $this->mockHandler
+            ->expects($this->once())
+            ->method('read')
+            ->with('abc123')
+            ->willReturn('serialized|data');
+
+        $this->assertTrue($this->adapter->validateId('abc123'));
+    }
+
+    /**
+     * validateId() is false when the save handler has no data for the id:
+     * Zend_Session_SaveHandler_DbTable::read() returns an empty string then,
+     * other handlers may return null or false.
+     *
+     * @dataProvider noSessionDataProvider
+     * @param mixed $noData
+     */
+    public function testValidateIdIsFalseWithoutData($noData): void
+    {
+        $this->mockHandler
+            ->method('read')
+            ->willReturn($noData);
+
+        $this->assertFalse($this->adapter->validateId('abc123'));
+    }
+
+    public static function noSessionDataProvider(): array
+    {
+        return [
+            'empty string' => [''],
+            'null'         => [null],
+            'false'        => [false],
+        ];
+    }
+
+    /**
+     * create_sid() returns a new session id in PHP's format.
+     */
+    public function testCreateSidReturnsNewSessionIds(): void
+    {
+        $first = $this->adapter->create_sid();
+
+        $this->assertMatchesRegularExpression('/^[0-9a-zA-Z,-]{22,256}$/', $first);
+        $this->assertNotSame($first, $this->adapter->create_sid());
+    }
+
+    /**
+     * A native session through the adapter with session.use_strict_mode on: an id
+     * the save handler does not know is replaced, a known id is kept, and the new
+     * ids of session_regenerate_id() and session_create_id() pass PHP's collision
+     * check. On PHP 8.6, an adapter without create_sid() and validateId() raises a
+     * warning when it is declared.
+     *
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function testNativeSessionInStrictMode(): void
+    {
+        ini_set('session.use_cookies', '0');
+        ini_set('session.cache_limiter', '');
+        ini_set('session.use_strict_mode', '1');
+
+        $store = new class implements Zend_Session_SaveHandler_Interface {
+            public $rows = ['knownsessionid01' => 'a|i:1;'];
+
+            public function open($save_path, $name)
+            {
+                return true;
+            }
+
+            public function close()
+            {
+                return true;
+            }
+
+            public function read($id)
+            {
+                return $this->rows[$id] ?? '';
+            }
+
+            public function write($id, $data)
+            {
+                $this->rows[$id] = $data;
+                return true;
+            }
+
+            public function destroy($id)
+            {
+                unset($this->rows[$id]);
+                return true;
+            }
+
+            public function gc($maxlifetime)
+            {
+                return true;
+            }
+        };
+        session_set_save_handler(new Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter($store), false);
+
+        session_id('unknownsession01');
+        session_start();
+        $this->assertNotSame('unknownsession01', session_id());
+        session_write_close();
+
+        session_id('knownsessionid01');
+        session_start();
+        $this->assertSame('knownsessionid01', session_id());
+
+        $this->assertTrue(session_regenerate_id(true));
+        $this->assertNotSame('knownsessionid01', session_id());
+        $this->assertIsString(session_create_id());
+        session_write_close();
+    }
 }
