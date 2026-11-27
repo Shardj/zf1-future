@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+* Zend_Cache_Core::$_lastId is protected, as the other properties of the class, so a frontend extending Zend_Cache_Core can set the id that save() without an id uses (#684). It holds the id with the cache_id_prefix, as returned by _id().
+
 ### Fixed
 
 * Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements create_sid() and validateId(). On PHP 8.6, declaring the adapter raised a warning ("Class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implementing SessionHandlerInterface is missing the create_sid() method which will be required in PHP 9.0", and the same for validateId()), and session_set_save_handler() two deprecation notices, on every request that set a save handler. With display_errors on, the warning was sent before the session started and Zend_Session::setSaveHandler() threw "Unable to set session handler". With session.use_strict_mode on (the default of PHP 8.6), an unknown session id is now replaced instead of adopted, and session_regenerate_id() and session_create_id() check their new ids against the save handler; before, strict mode had no effect with a Zend_Session save handler on any PHP version. A save handler that has validateId() or create_sid() itself is asked; for any other save handler a session counts as known when read() returns data for it.

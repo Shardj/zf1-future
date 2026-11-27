@@ -328,6 +328,27 @@ class Zend_Cache_CoreTest extends TestCase
         $this->assertEquals($expected3, $logs[count($logs) - 1]);
     }
 
+    /**
+     * A frontend extending Zend_Cache_Core can set the id that save() without an id uses (GH-684)
+     */
+    public function testSaveWithoutIdUsesTheLastIdSetByASubclass()
+    {
+        $instance = new class (['cache_id_prefix' => 'prefix_', 'write_control' => false]) extends Zend_Cache_Core {
+            public function increment($id)
+            {
+                $this->_lastId = $this->_id($id);
+            }
+        };
+        $instance->setBackend($this->_backend);
+
+        $instance->increment('counter');
+        $instance->save('data');
+
+        $log = $this->_backend->getLastLog();
+        $this->assertSame('save', $log['methodName']);
+        $this->assertSame('prefix_counter', $log['args'][1]);
+    }
+
     public function testSaveCorrectCallButFileCorruption()
     {
         $cacheIdPrefix = 'cacheIdPrefix';
