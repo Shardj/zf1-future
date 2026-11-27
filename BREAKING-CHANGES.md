@@ -5,6 +5,12 @@
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
 ### 1.27.2
+* **Security fix, changes behaviour:** `Zend_Db_Select::order()` and `Zend_Db_Select::group()` no longer convert strings that look like SQL function calls (e.g. `'RAND()'`, `'ABS(price) DESC'`, `'IF(a > 5,1,0)'`, `'YEAR(created)'`) into expressions. The conversion embedded the string in the query as raw SQL and allowed SQL injection wherever request data, such as a sort column, reached these methods. Such strings now throw `Zend_Db_Select_Exception`; every other string is quoted as an identifier, as before.
+  * Pass expressions explicitly: `$select->order(new Zend_Db_Expr('RAND()'))`, `$select->group(new Zend_Db_Expr('ABS(price)'))`. The direction belongs inside the expression: `new Zend_Db_Expr('ABS(price) DESC')`.
+  * This also affects the `$order` argument of `Zend_Db_Table_Abstract::fetchAll()` / `fetchRow()`.
+  * Never build a `Zend_Db_Expr` from request data; map the request value to a column from a fixed list.
+  * Backward compatibility switch: `Zend_Db_Select::setStringExpressionsAllowed(true)`, called once (e.g. in the bootstrap), restores the previous conversion for all selects. With it the application is exposed as before, so use it only when no user input reaches `order()` / `group()`, and only until the calls are rewritten.
+  * The column list of `from()` / `columns()` / `join*()` is unchanged: a string with parentheses is still an expression there.
 * Zend_Session with a save handler (`Zend_Session::setSaveHandler()`) and `session.use_strict_mode` on: a session id that the save handler does not know is replaced with a new one instead of adopted. Before, strict mode had no effect with a save handler and every id was accepted. The setting is off by default up to PHP 8.5 (on through `Zend_Session::setOptions(['use_strict_mode' => 1])` or php.ini) and on by default in PHP 8.6. With strict mode off, nothing changes.
   * Applications that set the session id themselves (`Zend_Session::setId()`, an id passed from another system) get a new id unless a session with that id is stored already.
   * Zend_Session_SaveHandler_DbTable knows a session by its stored, unexpired row (new `validateId()` method, one more query at session start).

@@ -436,18 +436,17 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
     }
 
     /**
-     * Test support for automatic conversion of a SQL
-     * function to a Zend_Db_Expr in group(),
-     * e.g.  group('LOWER(title)') should give the same
-     * result as group(new Zend_Db_Expr('LOWER(title)')).
+     * group() and order() with a SQL function passed as an explicit Zend_Db_Expr
      */
-
-
-    public function testSelectGroupByAutoExpr()
+    public function testSelectGroupByFunctionAsExplicitExpr()
     {
-        $select = $this->_selectGroupByAutoExpr();
+        $expr = new Zend_Db_Expr('ABS("zfbugs_products"."bug_id")');
+        $select = $this->_db->select()
+            ->from('zfbugs_products', ['bug_id' => $expr, new Zend_Db_Expr('COUNT(*) AS "thecount"')])
+            ->group($expr)
+            ->order($expr);
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
-        $this->assertEquals('SELECT ABS("zfbugs_products"."bug_id") AS "bug_id", COUNT(*) AS "thecount" FROM "zfbugs_products" GROUP BY ABS("zfbugs_products"."bug_id") ORDER BY ABS("zfbugs_products"."bug_id") ASC', $sql);
+        $this->assertEquals('SELECT ABS("zfbugs_products"."bug_id") AS "bug_id", COUNT(*) AS "thecount" FROM "zfbugs_products" GROUP BY ABS("zfbugs_products"."bug_id") ORDER BY ABS("zfbugs_products"."bug_id")', $sql);
     }
 
     /**
@@ -672,17 +671,15 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
     }
 
     /**
-     * Test automatic conversion of SQL functions to
-     * Zend_Db_Expr, e.g. order('LOWER(title)')
-     * should give the same result as
-     * order(new Zend_Db_Expr('LOWER(title)')).
+     * order() with a SQL function passed as an explicit Zend_Db_Expr
      */
-
-    public function testSelectOrderByAutoExpr()
+    public function testSelectOrderByFunctionAsExplicitExpr()
     {
-        $select = $this->_selectOrderByAutoExpr();
+        $select = $this->_db->select()
+            ->from('zfproducts')
+            ->order(new Zend_Db_Expr('ABS("zfproducts"."product_id") DESC'));
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
-        $this->assertEquals('SELECT "zfproducts".* FROM "zfproducts" ORDER BY ABS("zfproducts"."product_id") ASC', $sql);
+        $this->assertEquals('SELECT "zfproducts".* FROM "zfproducts" ORDER BY ABS("zfproducts"."product_id") DESC', $sql);
     }
 
     /**
@@ -863,7 +860,7 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
     public function testSqlInjectionWithGroup()
     {
         $select = $this->_db->select();
-        $select->from(['p' => 'products'])->group('ABS("weight")');
+        $select->from(['p' => 'products'])->group(new Zend_Db_Expr('ABS("weight")'));
         $this->assertEquals('SELECT "p".* FROM "products" AS "p" GROUP BY ABS("weight")', $select->assemble());
 
         $select = $this->_db->select();
@@ -934,11 +931,20 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $this->assertEquals("SELECT \"table1\".*, \"table2\".\"IF(SUM()\" AS \"bar\" FROM \"table1\"\n INNER JOIN \"table2\" ON table1.id = table2.id", $select->assemble());
     }
 
+    public function testNestedIfInGroupAsStringIsRejected()
+    {
+        $select = $this->_db->select();
+        $select->from(['p' => 'product']);
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->group('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)');
+    }
+
     public function testNestedIfInGroup()
     {
         $select = $this->_db->select();
         $select->from(['p' => 'product'])
-            ->group('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)');
+            ->group(new Zend_Db_Expr('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)'));
 
         $expected = 'SELECT "p".* FROM "product" AS "p" GROUP BY IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)';
         $this->assertEquals($expected, $select->assemble());
@@ -1005,31 +1011,22 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         );
     }
 
-    /**
-     * @group ZF-378
-     * @group ZF-381
-     */
-    public function testOrderOfConditionalFieldWithDirection()
+    public function testOrderOfDeepConditionalFieldAsStringIsRejected()
     {
         $select = $this->_db->select();
-        $select->from(['p' => 'product'])
-            ->order('IF("productId" > 5,1,0) ASC');
+        $select->from(['p' => 'product']);
 
-        $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF("productId" > 5,1,0) ASC';
-        $this->assertEquals(
-            $expected,
-            $select->assemble(),
-            'Order direction of field failed'
-        );
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->order('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)');
     }
 
     public function testOrderOfDeepConditionalField()
     {
         $select = $this->_db->select();
         $select->from(['p' => 'product'])
-            ->order('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)');
+            ->order(new Zend_Db_Expr('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)'));
 
-        $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0) ASC';
+        $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0)';
         $this->assertEquals($expected, $select->assemble());
     }
 
@@ -1043,13 +1040,22 @@ class Zend_Db_Select_StaticTest extends Zend_Db_Select_TestCommon
         $this->assertEquals($expected, $select->assemble());
     }
 
+    public function testOrderOfDeepConditionalFieldWithDirectionAsStringIsRejected()
+    {
+        $select = $this->_db->select();
+        $select->from(['p' => 'product']);
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->order('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0) ASC');
+    }
+
     public function testOrderOfDeepConditionalFieldWithDirection()
     {
         $select = $this->_db->select();
         $select->from(['p' => 'product'])
-            ->order('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0) ASC');
+            ->order(new Zend_Db_Expr('IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0) DESC'));
 
-        $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0) ASC';
+        $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF(p.id IS NOT NULL, IF(p.id2 IS NOT NULL, SUM(1), 2), 0) DESC';
         $this->assertEquals($expected, $select->assemble());
     }
 

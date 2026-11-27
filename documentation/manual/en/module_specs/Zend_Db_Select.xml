@@ -905,9 +905,10 @@ $select = $db->select()
 
             <para>
                 Like the columns array in the <methodname>from()</methodname> method, you can use
-                correlation names in the column name strings, and the column is quoted as an
-                identifier unless the string contains parentheses or is an object of type
-                <classname>Zend_Db_Expr</classname>.
+                correlation names in the column name strings. Unlike the columns array, a string
+                is always quoted as an identifier. To group by an expression, pass an object of type
+                <classname>Zend_Db_Expr</classname>; a string that looks like a function call
+                throws a <classname>Zend_Db_Select_Exception</classname>.
             </para>
         </sect3>
 
@@ -990,9 +991,18 @@ $select = $db->select()
             </para>
 
             <para>
-                Like in the <methodname>from()</methodname> and <methodname>group()</methodname>
-                methods, column names are quoted as identifiers, unless they contain parentheses or
-                are an object of type <classname>Zend_Db_Expr</classname>.
+                Like in the <methodname>group()</methodname> method, a string is always quoted as
+                an identifier. To order by an expression, pass an object of type
+                <classname>Zend_Db_Expr</classname>; a string that looks like a function call
+                throws a <classname>Zend_Db_Select_Exception</classname>. Never build a
+                <classname>Zend_Db_Expr</classname> from request data.
+            </para>
+
+            <para>
+                <methodname>Zend_Db_Select::setStringExpressionsAllowed(true)</methodname> makes
+                <methodname>group()</methodname> and <methodname>order()</methodname> embed a
+                string that looks like a function call as an expression. Use it only in an
+                application that passes no user input to these methods.
             </para>
 
             <example id="zend.db.select.building.order.example">

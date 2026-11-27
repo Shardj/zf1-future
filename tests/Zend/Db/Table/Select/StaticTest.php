@@ -445,18 +445,17 @@ class Zend_Db_Table_Select_StaticTest extends Zend_Db_Select_TestCommon
     }
 
     /**
-     * Test support for automatic conversion of a SQL
-     * function to a Zend_Db_Expr in group(),
-     * e.g.  group('LOWER(title)') should give the same
-     * result as group(new Zend_Db_Expr('LOWER(title)')).
+     * group() and order() with a SQL function passed as an explicit Zend_Db_Expr
      */
-
-
-    public function testSelectGroupByAutoExpr()
+    public function testSelectGroupByFunctionAsExplicitExpr()
     {
-        $select = $this->_selectGroupByAutoExpr();
+        $expr = new Zend_Db_Expr('ABS("zfbugs_products"."bug_id")');
+        $select = $this->_db->select()
+            ->from('zfbugs_products', ['bug_id' => $expr, new Zend_Db_Expr('COUNT(*) AS "thecount"')])
+            ->group($expr)
+            ->order($expr);
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
-        $this->assertEquals('SELECT ABS("zfbugs_products"."bug_id") AS "bug_id", COUNT(*) AS "thecount" FROM "zfbugs_products" GROUP BY ABS("zfbugs_products"."bug_id") ORDER BY ABS("zfbugs_products"."bug_id") ASC', $sql);
+        $this->assertEquals('SELECT ABS("zfbugs_products"."bug_id") AS "bug_id", COUNT(*) AS "thecount" FROM "zfbugs_products" GROUP BY ABS("zfbugs_products"."bug_id") ORDER BY ABS("zfbugs_products"."bug_id")', $sql);
     }
 
     /**
@@ -575,17 +574,15 @@ class Zend_Db_Table_Select_StaticTest extends Zend_Db_Select_TestCommon
     }
 
     /**
-     * Test automatic conversion of SQL functions to
-     * Zend_Db_Expr, e.g. order('LOWER(title)')
-     * should give the same result as
-     * order(new Zend_Db_Expr('LOWER(title)')).
+     * order() with a SQL function passed as an explicit Zend_Db_Expr
      */
-
-    public function testSelectOrderByAutoExpr()
+    public function testSelectOrderByFunctionAsExplicitExpr()
     {
-        $select = $this->_selectOrderByAutoExpr();
+        $select = $this->_db->select()
+            ->from('zfproducts')
+            ->order(new Zend_Db_Expr('ABS("zfproducts"."product_id") DESC'));
         $sql = preg_replace('/\\s+/', ' ', $select->__toString());
-        $this->assertEquals('SELECT "zfproducts".* FROM "zfproducts" ORDER BY ABS("zfproducts"."product_id") ASC', $sql);
+        $this->assertEquals('SELECT "zfproducts".* FROM "zfproducts" ORDER BY ABS("zfproducts"."product_id") DESC', $sql);
     }
 
     /**
@@ -754,24 +751,6 @@ class Zend_Db_Table_Select_StaticTest extends Zend_Db_Select_TestCommon
             ->order(['productId', 'userId DESC']);
 
         $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY "productId" ASC, "userId" DESC';
-        $this->assertEquals(
-            $expected,
-            $select->assemble(),
-            'Order direction of field failed'
-        );
-    }
-
-    /**
-     * @group ZF-378
-     * @group ZF-381
-     */
-    public function testOrderOfConditionalFieldWithDirection()
-    {
-        $select = $this->_db->select();
-        $select->from(['p' => 'product'])
-            ->order('IF("productId" > 5,1,0) ASC');
-
-        $expected = 'SELECT "p".* FROM "product" AS "p" ORDER BY IF("productId" > 5,1,0) ASC';
         $this->assertEquals(
             $expected,
             $select->assemble(),

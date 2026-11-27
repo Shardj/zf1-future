@@ -195,7 +195,8 @@ class Zend_Db_Select
     protected $_regexColumnExpr = self::REGEX_COLUMN_EXPR;
 
     /**
-     * A regular expression used to match column expressions for ORDER BY clauses.
+     * A regular expression that detects strings that look like SQL function
+     * calls in order(), see setStringExpressionsAllowed().
      * Initialized with the constant REGEX_COLUMN_EXPR_ORDER.
      *
      * @var string
@@ -203,12 +204,21 @@ class Zend_Db_Select
     protected $_regexColumnExprOrder = self::REGEX_COLUMN_EXPR_ORDER;
 
     /**
-     * A regular expression used to match column expressions for GROUP BY clauses.
+     * A regular expression that detects strings that look like SQL function
+     * calls in group(), see setStringExpressionsAllowed().
      * Initialized with the constant REGEX_COLUMN_EXPR_GROUP.
      *
      * @var string
      */
     protected $_regexColumnExprGroup = self::REGEX_COLUMN_EXPR_GROUP;
+
+    /**
+     * Whether order() and group() convert strings that look like SQL function
+     * calls into SQL expressions, see setStringExpressionsAllowed().
+     *
+     * @var bool
+     */
+    protected static $_stringExpressionsAllowed = false;
 
     /**
      * Class constructor
@@ -608,8 +618,14 @@ class Zend_Db_Select
     /**
      * Adds grouping to the query.
      *
-     * @param  array|string $spec The column(s) to group by.
+     * Strings are treated as column identifiers and quoted. To group by
+     * an SQL expression, pass a Zend_Db_Expr object. A string that looks like a
+     * function call, e.g. 'ABS(col)', is rejected with an exception, unless
+     * setStringExpressionsAllowed() is on.
+     *
+     * @param  array|string|Zend_Db_Expr $spec The column(s) to group by.
      * @return $this This Zend_Db_Select object.
+     * @throws Zend_Db_Select_Exception If a string looks like an SQL function call.
      */
     public function group($spec)
     {
@@ -618,10 +634,8 @@ class Zend_Db_Select
         }
 
         foreach ($spec as $val) {
-            // Remove comments from SQL statement
-            $noComments = preg_replace(self::REGEX_SQL_COMMENTS, '$1', (string) $val);
-            if (preg_match($this->_regexColumnExprGroup, $noComments)) {
-                $val = new Zend_Db_Expr($val);
+            if (!$val instanceof Zend_Db_Expr) {
+                $val = $this->_stringExpression($val, $this->_regexColumnExprGroup, 'group');
             }
             $this->_parts[self::GROUP][] = $val;
         }
@@ -686,8 +700,15 @@ class Zend_Db_Select
     /**
      * Adds a row order to the query.
      *
+     * Strings are treated as column identifiers (with an optional
+     * ASC/DESC suffix) and quoted. To order by an SQL expression, pass a
+     * Zend_Db_Expr object. A string that looks like a function call, e.g.
+     * 'RAND()', is rejected with an exception, unless
+     * setStringExpressionsAllowed() is on.
+     *
      * @param mixed $spec The column(s) and direction to order by.
      * @return $this This Zend_Db_Select object.
+     * @throws Zend_Db_Select_Exception If a string looks like an SQL function call.
      */
     public function order($spec)
     {
@@ -712,16 +733,75 @@ class Zend_Db_Select
                     $val = trim($matches[1]);
                     $direction = $matches[2];
                 }
-                // Remove comments from SQL statement
-                $noComments = preg_replace(self::REGEX_SQL_COMMENTS, '$1', (string) $val);
-                if (preg_match($this->_regexColumnExprOrder, $noComments)) {
-                    $val = new Zend_Db_Expr($val);
-                }
+                $val = $this->_stringExpression($val, $this->_regexColumnExprOrder, 'order');
                 $this->_parts[self::ORDER][] = [$val, $direction];
             }
         }
 
         return $this;
+    }
+
+    /**
+     * Switches the conversion of strings that look like SQL function calls
+     * into SQL expressions in order() and group() on or off.
+     *
+     * It is off by default: order() and group() often receive request data
+     * (a sort column), and a converted string is embedded in the query as it
+     * is, which allows SQL injection. Switch it on only for an application
+     * that passes no user input to these methods, until its calls use
+     * Zend_Db_Expr.
+     *
+     * @param  bool $allowed
+     * @return void
+     */
+    public static function setStringExpressionsAllowed($allowed = true)
+    {
+        self::$_stringExpressionsAllowed = (bool) $allowed;
+    }
+
+    /**
+     * Whether order() and group() convert strings that look like SQL function
+     * calls into SQL expressions.
+     *
+     * @return bool
+     */
+    public static function getStringExpressionsAllowed()
+    {
+        return self::$_stringExpressionsAllowed;
+    }
+
+    /**
+     * Handles a string passed to order() or group() that looks like an SQL
+     * function call.
+     *
+     * Any other string is returned unchanged and gets quoted as an identifier.
+     * A function call would be quoted as the name of a column that does not
+     * exist, so it throws instead; with setStringExpressionsAllowed() on, it
+     * is returned as a Zend_Db_Expr.
+     *
+     * @param  mixed  $spec   The value passed to order() or group().
+     * @param  string $regex  The function-call detection pattern.
+     * @param  string $method The calling method name, for the message.
+     * @return mixed
+     * @throws Zend_Db_Select_Exception
+     */
+    protected function _stringExpression($spec, $regex, $method)
+    {
+        $noComments = (string) preg_replace(self::REGEX_SQL_COMMENTS, '$1', (string) $spec);
+        if (!preg_match($regex, $noComments)) {
+            return $spec;
+        }
+
+        if (self::$_stringExpressionsAllowed) {
+            return new Zend_Db_Expr($spec);
+        }
+
+        require_once 'Zend/Db/Select/Exception.php';
+        throw new Zend_Db_Select_Exception(
+            "Zend_Db_Select::$method() does not convert strings that look like SQL function calls"
+            . ' into expressions; pass a Zend_Db_Expr object to use an SQL expression'
+            . ' (see Zend_Db_Select::setStringExpressionsAllowed())'
+        );
     }
 
     /**
