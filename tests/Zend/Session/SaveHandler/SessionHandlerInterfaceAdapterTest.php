@@ -288,6 +288,64 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapterTest extends TestCa
     }
 
     /**
+     * A save handler with its own validateId() and create_sid() answers itself;
+     * read() is not used as the existence check.
+     */
+    public function testValidateIdAndCreateSidOfTheSaveHandlerAreUsed(): void
+    {
+        $handler = new class implements Zend_Session_SaveHandler_Interface {
+            public $reads = 0;
+
+            public function open($save_path, $name)
+            {
+                return true;
+            }
+
+            public function close()
+            {
+                return true;
+            }
+
+            public function read($id)
+            {
+                $this->reads++;
+                return '';
+            }
+
+            public function write($id, $data)
+            {
+                return true;
+            }
+
+            public function destroy($id)
+            {
+                return true;
+            }
+
+            public function gc($maxlifetime)
+            {
+                return true;
+            }
+
+            public function validateId($id)
+            {
+                return $id === 'known';
+            }
+
+            public function create_sid()
+            {
+                return 'idofthehandler';
+            }
+        };
+        $adapter = new Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter($handler);
+
+        $this->assertTrue($adapter->validateId('known'));
+        $this->assertFalse($adapter->validateId('unknown'));
+        $this->assertSame(0, $handler->reads);
+        $this->assertSame('idofthehandler', $adapter->create_sid());
+    }
+
+    /**
      * create_sid() returns a new session id in PHP's format.
      */
     public function testCreateSidReturnsNewSessionIds(): void

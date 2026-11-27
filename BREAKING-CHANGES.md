@@ -4,6 +4,12 @@
 #AIM of this doc.
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
+### 1.27.2
+* Zend_Session with a save handler (`Zend_Session::setSaveHandler()`) and `session.use_strict_mode` on: a session id that the save handler does not know is replaced with a new one instead of adopted. Before, strict mode had no effect with a save handler and every id was accepted. The setting is off by default up to PHP 8.5 (on through `Zend_Session::setOptions(['use_strict_mode' => 1])` or php.ini) and on by default in PHP 8.6. With strict mode off, nothing changes.
+  * Applications that set the session id themselves (`Zend_Session::setId()`, an id passed from another system) get a new id unless a session with that id is stored already.
+  * Zend_Session_SaveHandler_DbTable knows a session by its stored, unexpired row (new `validateId()` method, one more query at session start).
+  * A custom save handler is asked through `read()`, which is therefore called twice at session start, and a session it returns no data for gets a new id on the next request. To avoid both, give the save handler a `validateId($id)` method that returns whether the session exists; a `create_sid()` method of the save handler is used as well.
+
 ### 1.27.1
 * Zend_Amf_Server, Zend_Gdata_App and the classes extending it, the Zend_Cloud service adapters, Zend_Serializer_Adapter_Amf0 / Amf3, Zend_Service_ReCaptcha (also through Zend_Captcha_ReCaptcha), Zend_Service_Amazon, Zend_Service_Delicious, Zend_Service_Yahoo and Zend_Service_Audioscrobbler trigger an E_USER_DEPRECATED notice when instantiated (see "Deprecated components" in README.md). Applications that turn deprecation notices into exceptions have to handle it.
 * Zend_Validate_EmailAddress with the deep MX check (`deep` option) accepts hosts whose address lies outside the reserved networks. Before, every address with the first octet 0, 10, 100, 127, 169, 172, 192 or 198 counted as reserved, so hosts on public addresses such as 172.217.0.1, 192.30.252.1 or 100.128.0.1 were rejected with `INVALID_SEGMENT`. Addresses inside the reserved networks (10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.168.0.0/16, ...) and from 224.0.0.0 up are rejected as before.

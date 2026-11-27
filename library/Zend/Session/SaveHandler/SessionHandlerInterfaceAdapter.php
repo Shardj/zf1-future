@@ -112,7 +112,8 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements Session
     }
 
     /**
-     * Creates a new session id with PHP's own generator.
+     * Creates a new session id: with create_sid() of the save handler when it has
+     * one, otherwise with PHP's own generator.
      *
      * Inside a save handler callback, session_create_id() does not call back into
      * the handler, so the id follows session.sid_length and
@@ -123,6 +124,10 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements Session
      */
     public function create_sid(): string
     {
+        if (method_exists($this->saveHandler, 'create_sid')) {
+            return (string) $this->saveHandler->create_sid();
+        }
+
         $id = session_create_id();
         if ($id === false) {
             require_once 'Zend/Session/SaveHandler/Exception.php';
@@ -132,19 +137,26 @@ class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements Session
     }
 
     /**
-     * Whether the save handler holds data for the session id.
+     * Whether the save handler knows the session id.
      *
      * PHP asks this with session.use_strict_mode on, to replace an id it does not
      * know instead of adopting it, and for every new id of session_regenerate_id()
-     * and session_create_id(), to detect a collision. Zend_Session_SaveHandler_Interface
-     * has no existence check, so a session counts as known when read() returns data;
-     * a session without data is replaced as well, which loses nothing.
+     * and session_create_id(), to detect a collision.
+     *
+     * Zend_Session_SaveHandler_Interface has no existence check. A save handler
+     * that has validateId() answers itself, as Zend_Session_SaveHandler_DbTable
+     * does. For any other save handler a session counts as known when read()
+     * returns data, so a session without data is replaced as well.
      *
      * @param mixed $id
      * @return bool
      */
     public function validateId($id): bool
     {
+        if (method_exists($this->saveHandler, 'validateId')) {
+            return (bool) $this->saveHandler->validateId($id);
+        }
+
         $data = $this->saveHandler->read($id);
         return is_string($data) && $data !== '';
     }

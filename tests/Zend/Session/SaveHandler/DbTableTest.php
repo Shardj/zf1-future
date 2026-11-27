@@ -445,6 +445,38 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
         $this->assertSame('', $saveHandler->read($id));
     }
 
+    public function testValidateIdKnowsStoredSessionsOnly()
+    {
+        $config = $this->_saveHandlerTableConfig;
+        unset($config[Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT]);
+        $config['primary'] = [$config['primary'][0]];
+        $this->_setupDb($config['primary']);
+        $this->_usedSaveHandlers[] =
+            $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
+
+        $this->assertFalse($saveHandler->validateId('242'));
+
+        // a session without data is stored and known as well
+        $this->assertTrue($saveHandler->write('242', ''));
+        $this->assertTrue($saveHandler->validateId('242'));
+        $this->assertFalse($saveHandler->validateId('243'));
+    }
+
+    public function testValidateIdDoesNotKnowExpiredSessions()
+    {
+        $config = $this->_saveHandlerTableConfig;
+        unset($config[Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT]);
+        $config['primary'] = [$config['primary'][0]];
+        $this->_setupDb($config['primary']);
+        $this->_usedSaveHandlers[] =
+            $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
+
+        $this->assertTrue($saveHandler->write('242', 'foo'));
+        $this->_db->update('Sessions', ['modified' => time() - $saveHandler->getLifetime() - 10], ['id = ?' => '242']);
+
+        $this->assertFalse($saveHandler->validateId('242'));
+    }
+
     public function testReadWriteComplex()
     {
         $config = $this->_saveHandlerTableConfig;

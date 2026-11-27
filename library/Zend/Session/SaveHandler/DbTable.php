@@ -333,6 +333,23 @@ class Zend_Session_SaveHandler_DbTable
     }
 
     /**
+     * Whether a session with this id is stored and has not expired
+     *
+     * Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter calls it for PHP's
+     * session id validation (session.use_strict_mode). A session that holds no
+     * data yet is known as well.
+     *
+     * @param string $id
+     * @return boolean
+     */
+    public function validateId($id)
+    {
+        $rows = call_user_func_array([&$this, 'find'], $this->_getPrimary($id));
+
+        return count($rows) > 0 && $this->_getExpirationTime($rows->current()) > time();
+    }
+
+    /**
      * Write session data
      *
      * @param string $id
