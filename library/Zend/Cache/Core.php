@@ -109,11 +109,12 @@ class Zend_Cache_Core
     protected $_specificOptions = [];
 
     /**
-     * Last used cache id
+     * Last used cache id, with the cache_id_prefix (as returned by _id());
+     * save() without an id uses it as it is
      *
-     * @var string $_lastId
+     * @var string|null $_lastId
      */
-    private $_lastId = null;
+    protected $_lastId = null;
 
     /**
      * True if the backend implements Zend_Cache_Backend_ExtendedInterface
