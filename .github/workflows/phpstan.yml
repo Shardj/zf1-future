@@ -54,7 +54,7 @@ jobs:
     continue-on-error: true
 
     steps:
-      # PHPStan reads #[\ReturnTypeWillChange] only when it runs on PHP 8
+      # On PHP 7.4, PHPStan reports the methods with #[\ReturnTypeWillChange] as method.tentativeReturnType
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
