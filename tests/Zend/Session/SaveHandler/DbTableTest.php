@@ -472,7 +472,7 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
             $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
 
         $this->assertTrue($saveHandler->write('242', 'foo'));
-        $this->_db->update('Sessions', ['modified' => time() - $saveHandler->getLifetime() - 10], ['id = ?' => '242']);
+        $this->_makeSessionsOlder($saveHandler->getLifetime() + 10);
 
         $this->assertFalse($saveHandler->validateId('242'));
     }
@@ -517,7 +517,7 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
         $config = $this->_saveHandlerTableConfig;
         unset($config[Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT]);
         $config['primary'] = [$config['primary'][0]];
-        $config['lifetime'] = 1;
+        $config['lifetime'] = 100;
 
         $this->_setupDb($config['primary']);
         $this->_usedSaveHandlers[] =
@@ -531,23 +531,17 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
 
         $this->assertTrue($saveHandler->write($id, serialize($config)));
 
-        sleep(2);
+        $this->_makeSessionsOlder($config['lifetime'] + 1);
 
         $this->assertSame('', $saveHandler->read($id));
     }
 
     public function testReadWriteThreeTimesAndGc()
     {
-        if (getenv('TRAVIS')) {
-            $this->markTestSkipped(
-                'Test randomly fail on Travis CI.'
-            );
-        }
-
         $config = $this->_saveHandlerTableConfig;
         unset($config[Zend_Session_SaveHandler_DbTable::PRIMARY_ASSIGNMENT]);
         $config['primary'] = [$config['primary'][0]];
-        $config['lifetime'] = 1;
+        $config['lifetime'] = 100;
 
         $this->_setupDb($config['primary']);
         $this->_usedSaveHandlers[] =
@@ -573,14 +567,24 @@ class Zend_Session_SaveHandler_DbTableTest extends TestCase
             $this->assertSame($config, unserialize($row['data']));
         }
 
-        sleep(2);
+        $saveHandler->gc(false);
+        $this->assertCount(3, $this->_db->query('SELECT * FROM Sessions')->fetchAll());
+
+        $this->_makeSessionsOlder($config['lifetime'] + 1);
 
         $saveHandler->gc(false);
+        $this->assertSame([], $this->_db->query('SELECT * FROM Sessions')->fetchAll());
+    }
 
-        foreach ($this->_db->query('SELECT * FROM Sessions')->fetchAll() as $row) {
-            //should be empty!
-            $this->fail();
-        }
+    /**
+     * Moves the modification time of every stored session into the past,
+     * so that a test of the expiration does not depend on the clock
+     *
+     * @param int $seconds
+     */
+    protected function _makeSessionsOlder($seconds)
+    {
+        $this->_db->update('Sessions', ['modified' => new Zend_Db_Expr('modified - ' . (int) $seconds)]);
     }
 
     public function testSetLifetime()
