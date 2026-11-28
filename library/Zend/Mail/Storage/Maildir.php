@@ -357,10 +357,10 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
             }
 
             @list($uniq, $info) = explode(':', $entry, 2);
-            @list(,$size) = explode(',', $uniq, 2);
+            $size = explode(',', $uniq, 2)[1] ?? '';
 
-            if ($size && $size[0] == 'S' && $size[1] == '=') {
-                $size = substr($size, 2);
+            if (strncmp($size, 'S=', 2) === 0) {
+                $size = (string) substr($size, 2);
             }
 
             if (!ctype_digit($size)) {

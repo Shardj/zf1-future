@@ -70,6 +70,14 @@ class Zend_Pdf_Element_StringTest extends TestCase
     }
 
     /**
+     * The high-order overflow of an octal code above \377 is ignored
+     */
+    public function testUnescapeOctalAboveOneByte()
+    {
+        $this->assertSame("\x41\xFF", Zend_Pdf_Element_String::unescape('\\101\\777'));
+    }
+
+    /**
      * @group ZF-9450
      */
     public function testUnescapeOctal()

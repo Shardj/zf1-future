@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* PHP 8.5 deprecations: Zend_Pdf_Filter_Compression passed negative byte differences to chr() when encoding with a PNG predictor (Sub, Up, Average, Paeth), Zend_Pdf_Element_String::unescape() did the same for an octal code above \\377, and Zend_Mail_Storage_Writable_Maildir called readdir() without the directory handle when it recalculated the quota (the handle is closed now as well). The results do not change.
+* Zend_Mail_Storage_Maildir no longer passes null to ctype_digit() for a message file name without a size (deprecated since PHP 8.1, reported on every such message when a maildir is opened).
+
 ## [1.27.2] - 2026-11-28
 
 ### Security
