@@ -15,7 +15,6 @@ parameters:
         - library/Zend/Cache/Backend/WinCache.php
         - library/Zend/Cache/Backend/ZendServer.php
         - library/Zend/Cache/Backend/ZendServer/
-        - library/Zend/Filter/Compress/Rar.php
         - library/Zend/Filter/Encrypt/Mcrypt.php
         - library/Zend/Http/UserAgent/Features/Adapter/DeviceAtlas.php
         - library/Zend/Service/Ebay/

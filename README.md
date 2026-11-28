@@ -71,7 +71,6 @@ Since 1.26.0 `Zend_Mail` authenticates with an OAuth 2.0 access token where a pa
 The following adapters and backends depend on technologies that are not available on any supported PHP version. They are kept for now, trigger an ``E_USER_DEPRECATED`` notice when instantiated, are not covered by the test suite and will be removed in a future version:
 
 * ``Zend_Filter_Encrypt_Mcrypt`` (ext/mcrypt was removed in PHP 7.2; use ``Zend_Filter_Encrypt_Openssl``)
-* ``Zend_Filter_Compress_Rar`` (no rar extension for current PHP versions)
 * ``Zend_Cache_Backend_Sqlite`` (needs the SQLite 2 extension of PHP 5), ``Zend_Cache_Backend_ZendServer_Disk``, ``Zend_Cache_Backend_ZendServer_ShMem``, ``Zend_Cache_Backend_WinCache``
 * ``Zend_Http_UserAgent_Features_Adapter_DeviceAtlas``
 * ``Zend_Service_Ebay`` (the eBay Finding API, the only API it supports, was decommissioned on 2025-02-05)
