@@ -1910,12 +1910,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Pdf/ElementFactory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #1 $ascii of function chr expects int, float given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Pdf/Filter/Compression.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Parameter #2 $num of function array_fill expects int, float given.',
 	'identifier' => 'argument.type',
 	'count' => 2,

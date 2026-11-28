@@ -30,6 +30,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 
 require_once 'Zend/Pdf/Filter/Ascii85Test.php';
 require_once 'Zend/Pdf/Filter/RunLengthTest.php';
+require_once 'Zend/Pdf/Filter/Compression/FlateTest.php';
 
 /**
  * @category   Zend
@@ -52,6 +53,7 @@ class Zend_Pdf_Filter_AllTests
 
         $suite->addTestSuite('Zend_Pdf_Filter_Ascii85Test');
         $suite->addTestSuite('Zend_Pdf_Filter_RunLengthTest');
+        $suite->addTestSuite('Zend_Pdf_Filter_Compression_FlateTest');
 
         return $suite;
     }
