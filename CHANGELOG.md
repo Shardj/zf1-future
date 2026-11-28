@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Zend_Http_UserAgent_Features_Adapter_DeviceDetector: a features adapter for Zend_Http_UserAgent on top of the optional matomo/device-detector package. It replaces the browser and system features of the built-in parser, adds the device type, brand and model, recognises bots, and reads the User-Agent Client Hints of the request (e.g. to tell Windows 11 from Windows 10). The package is not required: after `composer require matomo/device-detector`, Zend_Http_UserAgent uses the adapter for every browser type without a `features` configuration; `'features' => false` keeps the built-in parser (see BREAKING-CHANGES.md).
+* Zend_Service_LastFm: a client for the read methods of the Last.fm API 2.0, the successor of the Audioscrobbler 1.0 web services. Any API method can be called by name (`call('user.getTopArtists', ['user' => 'rj'])`) or as a method of the client (`userGetTopArtists(['user' => 'rj'])`); the result is the XML response of the API as a SimpleXMLElement, and an error reported by the API is thrown as a Zend_Service_LastFm_Exception with the Last.fm error code. An API key is required.
 
 ### Fixed
 
@@ -37,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Deprecated components for technologies and services that no longer exist and have no successor are removed (see BREAKING-CHANGES.md): Zend_Amf with Zend_Serializer_Adapter_Amf0 and Zend_Serializer_Adapter_Amf3, Zend_Service_Yahoo, Zend_Cache_Backend_Xcache, Zend_Cache_Backend_ZendPlatform, Zend_Serializer_Adapter_Wddx, Zend_Queue_Adapter_Memcacheq, Zend_Queue_Adapter_PlatformJobQueue with Zend_Queue_Message_PlatformJob, and Zend_Http_UserAgent_Features_Adapter_TeraWurfl.
 * Zend_Service_ReCaptcha (with Zend_Service_ReCaptcha_MailHide), Zend_Captcha_ReCaptcha and Zend_Form_Decorator_Captcha_ReCaptcha are removed: reCAPTCHA v1 was shut down in 2018, Zend_Captcha_SiteVerify and Zend_Service_SiteVerify replace them.
+* Zend_Service_Audioscrobbler is removed: the Audioscrobbler 1.0 web services it called no longer exist. Zend_Service_LastFm replaces it (see BREAKING-CHANGES.md).
 
 ## [1.27.2] - 2026-11-28
 

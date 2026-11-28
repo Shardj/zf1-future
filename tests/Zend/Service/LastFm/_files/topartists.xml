@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lfm status="ok">
+<topartists user="rj" page="1" perPage="2" totalPages="5000" total="10000">
+<artist rank="1">
+<name>Dream Theater</name>
+<playcount>1337</playcount>
+<mbid>28503ab7-8bf2-4666-a7bd-2644bfc7cb1d</mbid>
+<url>https://www.last.fm/music/Dream+Theater</url>
+<streamable>0</streamable>
+</artist>
+<artist rank="2">
+<name>Tool</name>
+<playcount>1024</playcount>
+<mbid>66fc5bf8-daa4-4241-b378-9bc9077939d2</mbid>
+<url>https://www.last.fm/music/Tool</url>
+<streamable>0</streamable>
+</artist>
+</topartists>
+</lfm>

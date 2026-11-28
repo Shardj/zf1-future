@@ -33,6 +33,7 @@ require_once 'Zend/Service/Amazon/AllTests.php';
 require_once 'Zend/Service/Flickr/AllTests.php';
 require_once 'Zend/Service/LiveDocx/AllTests.php';
 require_once 'Zend/Service/ShortUrl/AllTests.php';
+require_once 'Zend/Service/LastFm/LastFmTest.php';
 require_once 'Zend/Service/SiteVerifyTest.php';
 require_once 'Zend/Service/SlideShareTest.php';
 require_once 'Zend/Service/StrikeIron/AllTests.php';
@@ -73,6 +74,7 @@ class Zend_Service_AllTests
         $suite->addTest(Zend_Service_Flickr_AllTests::suite());
         $suite->addTest(Zend_Service_LiveDocx_AllTests::suite());
         $suite->addTest(Zend_Service_ShortUrl_AllTests::suite());
+        $suite->addTestSuite('Zend_Service_LastFm_LastFmTest');
         $suite->addTestSuite('Zend_Service_SiteVerifyTest');
         $suite->addTestSuite('Zend_Service_SlideShareTest');
         $suite->addTest(Zend_Service_StrikeIron_AllTests::suite());
