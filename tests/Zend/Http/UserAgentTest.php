@@ -88,6 +88,8 @@ class Zend_Http_UserAgentTest extends TestCase
     {
         $config = $this->config;
         $config['server']['server_software'] = 'Apache/2';
+        // the features of the built-in parser
+        $config['desktop']['features'] = false;
         $userAgent = new Zend_Http_UserAgent($config);
         $device = $userAgent->getDevice();
 
@@ -109,6 +111,8 @@ class Zend_Http_UserAgentTest extends TestCase
         $config['server']['http_accept'] = '*/*';
         $config['server']['http_user_agent'] = 'Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 5.1)';
         $config['server']['server_software'] = 'Apache/99';
+        // the features of the built-in parser
+        $config['desktop']['features'] = false;
         $config['user_agent'] = $config['server']["http_user_agent"];
         $userAgent = new Zend_Http_UserAgent($config);
         $device = $userAgent->getDevice();

@@ -536,10 +536,46 @@ abstract class Zend_Http_UserAgent_AbstractDevice
             $result['browser_engine'] = 'MSIE';
             $result['browser_name']   = 'Internet Explorer';
         }
+        // the platform is not at a fixed position of the comment (e.g. "Windows NT 10.0; Win64; x64",
+        // "X11; Linux x86_64; rv:133.0", "Linux; Android 10; K"): take the part that names it
+        $platforms = [
+            'Android'   => '/^Android\b/',
+            'Windows'   => '/^Windows NT \d/',
+            'iOS'       => '/\b(iPhone OS|CPU OS) \d/',
+            'Mac OS X'  => '/\bMac OS X\b/',
+            'Chrome OS' => '/^CrOS\b/',
+            'Linux'     => '/^Linux\b/',
+        ];
+        foreach ($platforms as $platformName => $platformPattern) {
+            if (isset($result['device_os_token']) && preg_match($platformPattern, $result['device_os_token'])) {
+                // already found at the usual position
+                $platform = $platformName;
+                break;
+            }
+            foreach ($comment as $part) {
+                if (preg_match($platformPattern, trim($part))) {
+                    $platform                  = $platformName;
+                    $result['device_os_token'] = trim($part);
+                    break 2;
+                }
+            }
+        }
+        if (isset($platform) && $platform != 'Windows') {
+            $result['device_os_name'] = $platform;
+            // "Android 14", "CPU iPhone OS 18_1 like Mac OS X", "Intel Mac OS X 10_15_7"
+            if (preg_match('/(?:Android|OS|Mac OS X) (\d+(?:[._]\d+)*)/', $result['device_os_token'], $platformVersion)) {
+                $result['device_os_version'] = str_replace('_', '.', $platformVersion[1]);
+            }
+        }
+
         if (isset($result['device_os_token'])) {
             if (strpos($result['device_os_token'], 'Win') !== false) {
 
                 $windows = [
+                    // Windows 11 reports itself as Windows NT 10.0 as well
+                    'Windows NT 10.0'         => 'Windows 10',
+                    'Windows NT 6.3'          => 'Windows 8.1',
+                    'Windows NT 6.2'          => 'Windows 8',
                     'Windows NT 6.1'          => 'Windows 7',
                     'Windows NT 6.0'          => 'Windows Vista',
                     'Windows NT 5.2'          => 'Windows Server 2003',
@@ -627,8 +663,17 @@ abstract class Zend_Http_UserAgent_AbstractDevice
                     }
                 }
 
-                // For Safari < 2.2, AppleWebKit version gives the Safari version
-                if (strpos($result['browser_version'], '.') > 2 || (int) $result['browser_version'] > 20) {
+                // For Safari < 2.2, AppleWebKit version gives the Safari version;
+                // these versions have no "Version/" token
+                $hasVersionToken = false;
+                foreach ($result['others']['detail'] as $detail) {
+                    if ($detail[1] == 'Version') {
+                        $hasVersionToken = true;
+                    }
+                }
+                if (!$hasVersionToken
+                    && (strpos($result['browser_version'], '.') > 2 || (int) $result['browser_version'] > 20)
+                ) {
                     $temp = explode('.', $result['browser_version']);
                     $build = (int) $temp[0];
                     $awkVersion = [
@@ -747,6 +792,33 @@ abstract class Zend_Http_UserAgent_AbstractDevice
             }
         }
 
+        // Browsers on the Chromium engine and the iOS variants of other browsers name
+        // themselves in their own product token, next to "Chrome/..." and "Safari/..."
+        if (isset($result['others']['detail']) && $result['others']['detail'][0][1] == 'AppleWebKit') {
+            $products = [];
+            foreach ($result['others']['detail'] as $detail) {
+                $products[$detail[1]] = $detail[2];
+            }
+            $browsers = [
+                'Edg'            => 'Edge',
+                'EdgA'           => 'Edge',
+                'EdgiOS'         => 'Edge',
+                'Edge'           => 'Edge',
+                'OPR'            => 'Opera',
+                'SamsungBrowser' => 'Samsung Internet',
+                'FxiOS'          => 'Firefox',
+                'CriOS'          => 'Chrome',
+                'Chrome'         => 'Chrome',
+            ];
+            foreach ($browsers as $product => $browserName) {
+                if (!empty($products[$product])) {
+                    $result['browser_name']    = $browserName;
+                    $result['browser_version'] = $products[$product];
+                    break;
+                }
+            }
+        }
+
         // cleanup
         if (isset($result['browser_version']) && isset($result['browser_build'])) {
             if ($result['browser_version'] == $result['browser_build']) {
@@ -780,9 +852,18 @@ abstract class Zend_Http_UserAgent_AbstractDevice
         $config      = $this->_config;
         $browserType = $this->getType();
         if (!isset($config[$browserType]) || !isset($config[$browserType]['features'])) {
-            return [];
+            // without a configured adapter, the matomo/device-detector package is used when it is installed
+            if (!class_exists('DeviceDetector\DeviceDetector')) {
+                return [];
+            }
+            require_once 'Zend/Http/UserAgent/Features/Adapter/DeviceDetector.php';
+
+            return Zend_Http_UserAgent_Features_Adapter_DeviceDetector::getFromRequest($this->_server, $this->_config);
         }
         $config = $config[$browserType]['features'];
+        if ($config === false) {
+            return [];
+        }
 
         if (empty($config['classname'])) {
             require_once 'Zend/Http/UserAgent/Exception.php';
