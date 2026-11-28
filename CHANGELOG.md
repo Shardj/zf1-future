@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * PHP 8.5 deprecations: Zend_Pdf_Filter_Compression passed negative byte differences to chr() when encoding with a PNG predictor (Sub, Up, Average, Paeth), Zend_Pdf_Element_String::unescape() did the same for an octal code above \\377, and Zend_Mail_Storage_Writable_Maildir called readdir() without the directory handle when it recalculated the quota (the handle is closed now as well). The results do not change.
 * Zend_Mail_Storage_Maildir no longer passes null to ctype_digit() for a message file name without a size (deprecated since PHP 8.1, reported on every such message when a maildir is opened).
+* Zend_Mail_Storage_Maildir numbers the messages of a folder by file name, which starts with the delivery time; they were numbered in the order the file system returned the files, which differs between file systems and can change when a file is added or removed.
+* Zend_Mail_Storage_Writable_Maildir skips the empty line at the end of the maildirsize file when it sums up the quota; on PHP 8 every quota check of a maildir with entries in that file failed with a TypeError ("Unsupported operand types").
 
 ## [1.27.2] - 2026-11-28
 
