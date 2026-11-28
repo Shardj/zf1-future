@@ -1346,12 +1346,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Parameter #2 $locale of function setlocale expects array|string|null, int given.',
-	'identifier' => 'argument.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Static method Zend_Locale_Data::clearCache() invoked with 1 parameter, 0 required.',
 	'identifier' => 'arguments.count',
 	'count' => 1,

@@ -248,6 +248,51 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
     }
 
     /**
+     * Translates the fetch flags of Zend_Db (FETCH_GROUP, FETCH_UNIQUE,
+     * FETCH_CLASSTYPE, FETCH_SERIALIZE) to the values of the PDO constants
+     *
+     * Zend_Db mirrors the values PDO used up to PHP 8.4; PHP 8.5 changed them.
+     * The fetch type in the low bits and values that already use the PDO
+     * constants are passed through. Up to PHP 8.4 the mode comes out unchanged.
+     *
+     * @param  int|mixed $mode
+     * @return int|mixed
+     */
+    protected static function _pdoFetchMode($mode)
+    {
+        if (!is_int($mode)) {
+            return $mode;
+        }
+
+        return self::_translateFetchFlags($mode, [
+            Zend_Db::FETCH_UNIQUE    => PDO::FETCH_UNIQUE,
+            Zend_Db::FETCH_GROUP     => PDO::FETCH_GROUP,
+            Zend_Db::FETCH_CLASSTYPE => PDO::FETCH_CLASSTYPE,
+            Zend_Db::FETCH_SERIALIZE => PDO::FETCH_SERIALIZE,
+        ]);
+    }
+
+    /**
+     * Replaces the fetch flags of a fetch mode according to a map of
+     * Zend_Db flag => PDO flag; FETCH_UNIQUE must precede FETCH_GROUP in the
+     * map, because it includes the FETCH_GROUP bits
+     *
+     * @param  int   $mode
+     * @param  array $flags Zend_Db flag value => PDO flag value
+     * @return int
+     */
+    protected static function _translateFetchFlags($mode, array $flags)
+    {
+        foreach ($flags as $zendFlag => $pdoFlag) {
+            if (($mode & $zendFlag) === $zendFlag) {
+                $mode = ($mode & ~$zendFlag) | $pdoFlag;
+            }
+        }
+
+        return $mode;
+    }
+
+    /**
      * Fetches a row from the result set.
      *
      * @param int $style  OPTIONAL Fetch mode for this fetch operation.
@@ -261,6 +306,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
         if ($style === null) {
             $style = $this->_fetchMode;
         }
+        $style = self::_pdoFetchMode($style);
         // Zend_Db_Statement_Interface allows null, PDO expects integers
         if ($cursor === null) {
             $cursor = \PDO::FETCH_ORI_NEXT;
@@ -300,6 +346,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
         if ($style === null) {
             $style = $this->_fetchMode;
         }
+        $style = self::_pdoFetchMode($style);
         try {
             if ($style == PDO::FETCH_COLUMN) {
                 if ($col === null) {
@@ -449,7 +496,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
     {
         $this->_fetchMode = $mode;
         try {
-            return $this->_stmt->setFetchMode($mode);
+            return $this->_stmt->setFetchMode(self::_pdoFetchMode($mode));
         } catch (PDOException $e) {
             require_once 'Zend/Db/Statement/Exception.php';
             throw new Zend_Db_Statement_Exception($e->getMessage(), $e->getCode(), $e);
