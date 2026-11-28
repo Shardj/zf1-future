@@ -412,7 +412,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * Default value is 10
      *
-     * @param integer $maxMergeDocs
+     * @param integer $mergeFactor
      */
     public function setMergeFactor($mergeFactor)
     {
@@ -581,7 +581,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * @param Zend_Search_Lucene_Index_Term $term
      * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
-     * @return integer
+     * @return array
      * @throws Zend_Search_Lucene_Exception
      */
     public function termFreqs(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
@@ -770,7 +770,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * null means "default documents distributing algorithm"
      *
-     * @var callback
+     * @var callable|null
      */
     protected $_documentDistributorCallBack = null;
 
@@ -793,7 +793,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
     /**
      * Get callback for choosing target index.
      *
-     * @return callback
+     * @return callable|null
      */
     public function getDocumentDistributorCallback()
     {
@@ -861,7 +861,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
     /**
      * Terms stream priority queue object
      *
-     * @var Zend_Search_Lucene_TermStreamsPriorityQueue
+     * @var Zend_Search_Lucene_TermStreamsPriorityQueue|null
      */
     private $_termsStream = null;
 
