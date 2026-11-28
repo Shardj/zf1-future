@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* PHP 8.5 deprecations: Zend_Pdf_Filter_Compression passed negative byte differences to chr() when encoding with a PNG predictor (Sub, Up, Average, Paeth), Zend_Pdf_Element_String::unescape() did the same for an octal code above \\377, and Zend_Mail_Storage_Writable_Maildir called readdir() without the directory handle when it recalculated the quota (the handle is closed now as well). The results do not change.
+* Zend_Mail_Storage_Maildir no longer passes null to ctype_digit() for a message file name without a size (deprecated since PHP 8.1, reported on every such message when a maildir is opened).
+
 ## [1.27.2] - 2026-11-28
 
 ### Security
@@ -18,8 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-* PHP 8.5 deprecations: Zend_Pdf_Filter_Compression passed negative byte differences to chr() when encoding with a PNG predictor (Sub, Up, Average, Paeth), Zend_Pdf_Element_String::unescape() did the same for an octal code above \\377, and Zend_Mail_Storage_Writable_Maildir called readdir() without the directory handle when it recalculated the quota (the handle is closed now as well). The results do not change.
-* Zend_Mail_Storage_Maildir no longer passes null to ctype_digit() for a message file name without a size (deprecated since PHP 8.1, reported on every such message when a maildir is opened).
 * Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implements create_sid() and validateId(). On PHP 8.6, declaring the adapter raised a warning ("Class Zend_Session_SaveHandler_SessionHandlerInterfaceAdapter implementing SessionHandlerInterface is missing the create_sid() method which will be required in PHP 9.0", and the same for validateId()), and session_set_save_handler() two deprecation notices, on every request that set a save handler. With display_errors on, the warning was sent before the session started and Zend_Session::setSaveHandler() threw "Unable to set session handler". With session.use_strict_mode on (the default of PHP 8.6), an unknown session id is now replaced instead of adopted, and session_regenerate_id() and session_create_id() check their new ids against the save handler; before, strict mode had no effect with a Zend_Session save handler on any PHP version. A save handler that has validateId() or create_sid() itself is asked; for any other save handler a session counts as known when read() returns data for it.
 * Zend_Session_SaveHandler_DbTable has validateId(): a session is known when its row is stored and has not expired, also when it holds no data yet.
 
