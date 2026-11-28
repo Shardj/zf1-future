@@ -84,12 +84,12 @@ class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Inter
      */
     public function reset()
     {
-        unset($this->_client);
-        unset($this->_loader);
-        unset($this->_actionRepository);
-        unset($this->_providerRepository);
-        unset($this->_request);
-        unset($this->_response);
+        $this->_client = null;
+        $this->_loader = null;
+        $this->_actionRepository = null;
+        $this->_providerRepository = null;
+        $this->_request = null;
+        $this->_response = null;
     }
 
 //    public function __construct()

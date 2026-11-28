@@ -105,12 +105,10 @@ class Zend_Tool_Project_Provider_Module
                 // @phpstan-ignore variable.undefined (set by an earlier iteration, the iterator descends from a visited resource only)
                 $currentResource = $currentChildResource;
             } elseif ($depthDifference < 0) {
-                // if we went up to a parent, make note
-                $i = $depthDifference;
-                do {
-                    // if we went out more than 1 parent, get to the correct parent
+                // we went up, by one parent for each level
+                for ($i = $depthDifference; $i < 0; $i++) {
                     $currentResource = array_pop($parentResources);
-                } while ($i-- > 0);
+                }
             }
 
             // get parameters for the newly created module resource

@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * PHP 8.5: the fetch flags `Zend_Db::FETCH_GROUP`, `FETCH_UNIQUE`, `FETCH_CLASSTYPE` and `FETCH_SERIALIZE` work with the PDO adapters again. Zend_Db mirrors the values the PDO constants had up to PHP 8.4; PHP 8.5 changed them, so e.g. `fetchAll(Zend_Db::FETCH_GROUP | Zend_Db::FETCH_COLUMN)` ended in a ValueError ("must be a bitmask of PDO::FETCH_* constants"). Zend_Db_Statement_Pdo translates the flags to the values of the running PDO in fetch(), fetchAll() and setFetchMode().
 * Zend_Db_Statement_Pdo_Oci and Zend_Db_Statement_Pdo_Ibm keep the keys of a fetchAll() result; with `FETCH_GROUP`, `FETCH_UNIQUE` or `PDO::FETCH_KEY_PAIR` the result is indexed by the first column, and both statements renumbered it.
 * Zend_Locale::getEnvironment() queries the locale with setlocale(LC_ALL, '0'), the documented string, instead of the integer 0.
+* Zend_Tool_Framework_Registry::reset() sets its objects to null instead of unsetting the properties; after a reset every getter ended in __get() and threw "Property name: _loader was not located in this registry".
+* Zend_Tool_Project_Provider_Module::createResources() returns to the right parent after a subtree more than one level deep; a directory following such a subtree was created inside the previous top-level directory instead of the module directory.
+* Zend_Controller_Action_Helper_ViewRenderer ignores options with an integer key; on PHP 7.4 the key 0 matched the first option name and created a property `$_0`.
 
 ## [1.27.2] - 2026-11-28
 

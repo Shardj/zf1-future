@@ -29,6 +29,8 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Tool/Project/ProfileTest.php';
+require_once 'Zend/Tool/Project/Provider/ControllerTest.php';
+require_once 'Zend/Tool/Project/Provider/ModuleTest.php';
 require_once 'Zend/Tool/Project/Context/RegistryTest.php';
 
 /**
@@ -54,6 +56,8 @@ class Zend_Tool_Project_AllTests
         // suites here
         $suite->addTestSuite('Zend_Tool_Project_ProfileTest');
         $suite->addTestSuite('Zend_Tool_Project_Context_RepositoryTest');
+        $suite->addTestSuite('Zend_Tool_Project_Provider_ControllerTest');
+        $suite->addTestSuite('Zend_Tool_Project_Provider_ModuleTest');
         return $suite;
     }
 }
