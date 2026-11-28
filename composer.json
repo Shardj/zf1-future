@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
+        "matomo/device-detector": "^6.4",
         "php-parallel-lint/php-parallel-lint": "^1.3",
         "phpcompatibility/php-compatibility": "dev-develop",
         "phpstan/phpstan": "^2.0",
@@ -29,7 +30,8 @@
     },
 
     "suggest": {
-        "ext-mbstring": "Multibyte strings handling"
+        "ext-mbstring": "Multibyte strings handling",
+        "matomo/device-detector": "Browser, system and device detection for Zend_Http_UserAgent, used automatically when installed"
     },
     "autoload": {
         "psr-0": {
