@@ -8,7 +8,6 @@ parameters:
     paths:
         - library
     excludePaths:
-        - library/Zend/Search/Lucene/MultiSearcher.php
         - library/Zend/Service/WindowsAzure/Log/Writer/WindowsAzure.php
         - library/Zend/Test/PHPUnit/
         # Deprecated components (see README.md); they are not tested either

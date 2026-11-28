@@ -215,15 +215,14 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * Default value is null
      *
+     * The setting is shared by all indices, see Zend_Search_Lucene::setDefaultSearchField().
+     *
      * @param string $fieldName
      */
-    public function setDefaultSearchField($fieldName)
+    public static function setDefaultSearchField($fieldName)
     {
-        foreach ($this->_indices as $index) {
-            $index->setDefaultSearchField($fieldName);
-        }
+        Zend_Search_Lucene::setDefaultSearchField($fieldName);
     }
-
 
     /**
      * Get default search field.
@@ -231,25 +230,10 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      * Null means, that search is performed through all fields by default
      *
      * @return string
-     * @throws Zend_Search_Lucene_Exception
      */
-    public function getDefaultSearchField()
+    public static function getDefaultSearchField()
     {
-        if (count($this->_indices) === 0) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Indices list is empty');
-        }
-
-        $defaultSearchField = reset($this->_indices)->getDefaultSearchField();
-
-        foreach ($this->_indices as $index) {
-            if ($index->getDefaultSearchField() !== $defaultSearchField) {
-                require_once 'Zend/Search/Lucene/Exception.php';
-                throw new Zend_Search_Lucene_Exception('Indices have different default search field.');
-            }
-        }
-
-        return $defaultSearchField;
+        return Zend_Search_Lucene::getDefaultSearchField();
     }
 
     /**
@@ -257,40 +241,25 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      *
      * 0 (default) means no limit
      *
+     * The setting is shared by all indices, see Zend_Search_Lucene::setResultSetLimit().
+     *
      * @param integer $limit
      */
-    public function setResultSetLimit($limit)
+    public static function setResultSetLimit($limit)
     {
-        foreach ($this->_indices as $index) {
-            $index->setResultSetLimit($limit);
-        }
+        Zend_Search_Lucene::setResultSetLimit($limit);
     }
 
     /**
-     * Set result set limit.
+     * Get result set limit.
      *
      * 0 means no limit
      *
      * @return integer
-     * @throws Zend_Search_Lucene_Exception
      */
-    public function getResultSetLimit()
+    public static function getResultSetLimit()
     {
-        if (count($this->_indices) === 0) {
-            require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception('Indices list is empty');
-        }
-
-        $defaultResultSetLimit = reset($this->_indices)->getResultSetLimit();
-
-        foreach ($this->_indices as $index) {
-            if ($index->getResultSetLimit() !== $defaultResultSetLimit) {
-                require_once 'Zend/Search/Lucene/Exception.php';
-                throw new Zend_Search_Lucene_Exception('Indices have different default search field.');
-            }
-        }
-
-        return $defaultResultSetLimit;
+        return Zend_Search_Lucene::getResultSetLimit();
     }
 
     /**
@@ -643,7 +612,8 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
             $freqsList[] = $freqs;
         }
 
-        return call_user_func_array('array_merge', $freqsList);
+        // the document ids are the keys, array_merge() would renumber them
+        return array_replace([], ...$freqsList);
     }
 
     /**
@@ -673,7 +643,7 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
                 $termPositionsShifted = [];
 
                 foreach ($termPositions as $docId => $positions) {
-                    $termPositions[$docId + $indexShift] = $positions;
+                    $termPositionsShifted[$docId + $indexShift] = $positions;
                 }
 
                 $termPositions = $termPositionsShifted;
@@ -683,7 +653,8 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
             $termPositionsList[] = $termPositions;
         }
 
-        return call_user_func_array('array_merge', $termPositions);
+        // the document ids are the keys, array_merge() would renumber them
+        return array_replace([], ...$termPositionsList);
     }
 
     /**
@@ -875,13 +846,15 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
      */
     public function terms()
     {
-        $termsList = [];
+        $terms = [];
 
         foreach ($this->_indices as $index) {
-            $termsList[] = $index->terms();
+            foreach ($index->terms() as $term) {
+                $terms[$term->key()] = $term;
+            }
         }
 
-        return array_unique(call_user_func_array('array_merge', $termsList));
+        return array_values($terms);
     }
 
 

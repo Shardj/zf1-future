@@ -29,6 +29,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 }
 
 require_once 'Zend/Search/Lucene/LuceneTest.php';
+require_once 'Zend/Search/Lucene/MultiSearcherTest.php';
 
 require_once 'Zend/Search/Lucene/DocumentTest.php';
 require_once 'Zend/Search/Lucene/FSMTest.php';
@@ -74,6 +75,7 @@ class Zend_Search_Lucene_AllTests
         $suite = new TestSuite('Zend Framework - Zend_Search_Lucene');
 
         $suite->addTestSuite('Zend_Search_Lucene_LuceneTest');
+        $suite->addTestSuite('Zend_Search_Lucene_MultiSearcherTest');
 
         $suite->addTestSuite('Zend_Search_Lucene_DocumentTest');
         $suite->addTestSuite('Zend_Search_Lucene_FSMTest');

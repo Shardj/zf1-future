@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Tool_Framework_Registry::reset() sets its objects to null instead of unsetting the properties; after a reset every getter ended in __get() and threw "Property name: _loader was not located in this registry".
 * Zend_Tool_Project_Provider_Module::createResources() returns to the right parent after a subtree more than one level deep; a directory following such a subtree was created inside the previous top-level directory instead of the module directory.
 * Zend_Controller_Action_Helper_ViewRenderer ignores options with an integer key; on PHP 7.4 the key 0 matched the first option name and created a property `$_0`.
+* Zend_Search_Lucene_MultiSearcher can be loaded and used: setDefaultSearchField(), getDefaultSearchField(), setResultSetLimit() and getResultSetLimit() are static, as Zend_Search_Lucene_Interface declares them (loading the class was a fatal error). termFreqs() and termPositions() return their data by document id (termPositions() returned an empty array, termFreqs() renumbered the keys), and terms() no longer fails on comparing term objects.
 
 ## [1.27.2] - 2026-11-28
 
