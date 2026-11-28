@@ -57,11 +57,12 @@ class Zend_Db_Statement_Pdo_Ibm extends Zend_Db_Statement_Pdo
         $results = [];
         $remove = $this->_adapter->foldCase('ZEND_DB_ROWNUM');
 
-        foreach ($data as $row) {
+        // the keys are kept: FETCH_GROUP, FETCH_UNIQUE and FETCH_KEY_PAIR index the result by the first column
+        foreach ($data as $key => $row) {
             if (is_array($row) && array_key_exists($remove, $row)) {
                 unset($row[$remove]);
             }
-            $results[] = $row;
+            $results[$key] = $row;
         }
         return $results;
     }
