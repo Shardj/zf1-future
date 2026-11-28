@@ -2864,7 +2864,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Signature.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_Tool_Framework_Registry::$_loader (Zend_Tool_Framework_Loader_Abstract) does not accept Zend_Tool_Framework_Loader_Interface.',
+	'rawMessage' => 'Property Zend_Tool_Framework_Registry::$_loader (Zend_Tool_Framework_Loader_Abstract|null) does not accept Zend_Tool_Framework_Loader_Interface.',
 	'identifier' => 'assign.propertyType',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
