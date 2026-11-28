@@ -5,6 +5,9 @@
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
 ### 1.28.0
+* Zend_Oauth_Token_Access::toHeader() has a fifth optional parameter `$excludeCustomParams`, and the constructor of Zend_Oauth_Client a fourth one, `$excludeCustomParamsFromHeader`. A subclass that overrides one of them has to declare the new parameter (`= true`).
+* Zend_Currency::clearCache($tag) and Zend_Locale_Data::clearCache($tag) clear the cache entries with the given tag. Before, the tag was ignored and the locale data (tag `Zend_Locale`) was cleared whatever tag was passed. Call them without a tag to clear the locale data.
+* Zend_View_Helper_HeadMeta: with an HTML5 doctype, a meta element without content (other than `<meta charset>`) triggers an E_USER_NOTICE. An application that turns notices into exceptions has to pass a content.
 * Zend_Soap_Client_Common::__doRequest() has a sixth optional parameter `$uriParserClass`, which PHP 8.5 added to SoapClient::__doRequest(). A subclass of Zend_Soap_Client_Common that overrides `__doRequest()` has to declare it too (`$uriParserClass = null`); on PHP 8.5 it had to anyway. Subclasses of Zend_Soap_Client that override `_doRequest()` are not affected.
 
 ### 1.27.2

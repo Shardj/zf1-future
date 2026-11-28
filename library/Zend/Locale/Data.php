@@ -1643,12 +1643,17 @@ class Zend_Locale_Data
     /**
      * Clears all set cache data
      *
+     * @param string|null $tag Tag to clear when the default tag name is not used;
+     *                         a cache backend without tags is always cleared completely
      * @return void
      */
-    public static function clearCache()
+    public static function clearCache($tag = null)
     {
         if (self::$_cacheTags) {
-            self::$_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, ['Zend_Locale']);
+            if ($tag === null) {
+                $tag = 'Zend_Locale';
+            }
+            self::$_cache->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, [$tag]);
         } else {
             self::$_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
         }

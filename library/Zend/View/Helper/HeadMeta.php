@@ -217,8 +217,17 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
         $isHtml5 = is_null($this->view) ? false : $this->view->doctype()->isHtml5();
 
         // the content is required, except with an HTML5 doctype
-        if (!isset($item->content) && ! $isHtml5) {
-            return false;
+        if (!isset($item->content)) {
+            if (!$isHtml5) {
+                return false;
+            }
+            if ($item->type !== 'charset') {
+                // HTML5 allows a meta element without content only as <meta charset="...">
+                trigger_error(
+                    'A meta element of the type "' . $item->type . '" needs a content, also with an HTML5 doctype',
+                    E_USER_NOTICE
+                );
+            }
         }
 
         // <meta property= ... /> is only supported with doctype RDFa and html5

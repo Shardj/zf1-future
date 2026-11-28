@@ -46,10 +46,12 @@ class Zend_Oauth_Token_Access extends Zend_Oauth_Token
      * @param  Zend_Oauth_Config_ConfigInterface $config
      * @param  null|array $customParams
      * @param  null|string $realm
+     * @param  bool $excludeCustomParams False puts the custom parameters into the header as well
      * @return string
      */
     public function toHeader(
-        $url, Zend_Oauth_Config_ConfigInterface $config, ?array $customParams = null, $realm = null
+        $url, Zend_Oauth_Config_ConfigInterface $config, ?array $customParams = null, $realm = null,
+        $excludeCustomParams = true
     ) {
         if (!Zend_Uri::check($url)) {
             require_once 'Zend/Oauth/Exception.php';
@@ -58,7 +60,7 @@ class Zend_Oauth_Token_Access extends Zend_Oauth_Token
             );
         }
         $params = $this->_httpUtility->assembleParams($url, $config, $customParams);
-        return $this->_httpUtility->toAuthorizationHeader($params, $realm);
+        return $this->_httpUtility->toAuthorizationHeader($params, $realm, $excludeCustomParams);
     }
 
     /**

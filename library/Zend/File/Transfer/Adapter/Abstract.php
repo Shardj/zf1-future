@@ -587,6 +587,7 @@ abstract class Zend_File_Transfer_Adapter_Abstract
      */
     public function getOptions($files = null) {
         $file = $this->_getFiles($files, false, true);
+        $options = [];
 
         foreach ($file as $key => $content) {
             if (isset($this->_files[$key]['options'])) {

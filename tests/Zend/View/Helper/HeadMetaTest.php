@@ -530,6 +530,25 @@ class Zend_View_Helper_HeadMetaTest extends TestCase
     }
 
     /**
+     * With an HTML5 doctype a meta element without content is accepted, but only
+     * <meta charset> is valid without one
+     */
+    public function testMetaWithoutContentTriggersNoticeWithHtml5Doctype()
+    {
+        $view = new Zend_View();
+        $view->doctype('HTML5');
+
+        resources_ErrorCapture::assertTriggers(function () use ($view) {
+            $view->headMeta()->appendName('keywords', null);
+        }, E_USER_NOTICE, 'A meta element of the type "name" needs a content, also with an HTML5 doctype');
+
+        resources_ErrorCapture::assertTriggersNothing(function () use ($view) {
+            $view->headMeta()->setCharset('utf-8');
+            $view->headMeta()->appendName('description', 'foo');
+        });
+    }
+
+    /**
      * @group ZF-7722
      */
     public function testCharset()
