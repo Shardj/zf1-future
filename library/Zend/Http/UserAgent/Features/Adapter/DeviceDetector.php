@@ -10,11 +10,11 @@ require_once 'Zend/Http/UserAgent/Features/Adapter.php';
  * (Sec-CH-UA-* headers), so it also knows what current browsers no longer
  * put into the User-Agent, when the server asks for the hints.
  *
- * Configuration, for every browser type that should use it:
+ * Zend_Http_UserAgent uses this adapter for every browser type that has no
+ * "features" configuration, as soon as the package is installed. To keep the
+ * features of the built-in parser for a browser type:
  *
- *     'desktop' => [
- *         'features' => ['classname' => 'Zend_Http_UserAgent_Features_Adapter_DeviceDetector'],
- *     ],
+ *     'desktop' => ['features' => false],
  *
  * @package    Zend_Http
  * @subpackage UserAgent

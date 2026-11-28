@@ -31,7 +31,7 @@
 
     "suggest": {
         "ext-mbstring": "Multibyte strings handling",
-        "matomo/device-detector": "Browser, system and device detection for Zend_Http_UserAgent (Zend_Http_UserAgent_Features_Adapter_DeviceDetector)"
+        "matomo/device-detector": "Browser, system and device detection for Zend_Http_UserAgent, used automatically when installed"
     },
     "autoload": {
         "psr-0": {

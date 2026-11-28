@@ -117,4 +117,36 @@ class Zend_Http_UserAgent_Features_Adapter_DeviceDetectorTest extends TestCase
         $this->assertSame('Microsoft Edge', $device->getFeature('browser_name'));
         $this->assertSame('Windows', $device->getFeature('device_os_name'));
     }
+
+    public function testPackageIsUsedWithoutConfiguration()
+    {
+        require_once 'Zend/Http/UserAgent.php';
+
+        $userAgent = new Zend_Http_UserAgent($this->_edgeConfig());
+
+        $this->assertSame('Microsoft Edge', $userAgent->getDevice()->getFeature('browser_name'));
+    }
+
+    public function testFeaturesFalseKeepsTheBuiltInParser()
+    {
+        require_once 'Zend/Http/UserAgent.php';
+
+        $config = $this->_edgeConfig();
+        $config['desktop']['features'] = false;
+        $userAgent = new Zend_Http_UserAgent($config);
+
+        $this->assertSame('Edge', $userAgent->getDevice()->getFeature('browser_name'));
+    }
+
+    /**
+     * @return array
+     */
+    protected function _edgeConfig()
+    {
+        return [
+            'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)'
+                . ' Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0',
+            'storage'    => ['adapter' => 'NonPersistent'],
+        ];
+    }
 }

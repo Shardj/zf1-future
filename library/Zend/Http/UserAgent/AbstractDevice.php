@@ -852,9 +852,18 @@ abstract class Zend_Http_UserAgent_AbstractDevice
         $config      = $this->_config;
         $browserType = $this->getType();
         if (!isset($config[$browserType]) || !isset($config[$browserType]['features'])) {
-            return [];
+            // without a configured adapter, the matomo/device-detector package is used when it is installed
+            if (!class_exists('DeviceDetector\DeviceDetector')) {
+                return [];
+            }
+            require_once 'Zend/Http/UserAgent/Features/Adapter/DeviceDetector.php';
+
+            return Zend_Http_UserAgent_Features_Adapter_DeviceDetector::getFromRequest($this->_server, $this->_config);
         }
         $config = $config[$browserType]['features'];
+        if ($config === false) {
+            return [];
+        }
 
         if (empty($config['classname'])) {
             require_once 'Zend/Http/UserAgent/Exception.php';

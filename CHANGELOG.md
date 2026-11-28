@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Zend_Http_UserAgent_Features_Adapter_DeviceDetector: a features adapter for Zend_Http_UserAgent on top of the optional matomo/device-detector package. It replaces the browser and system features of the built-in parser, adds the device type, brand and model, recognises bots, and reads the User-Agent Client Hints of the request (e.g. to tell Windows 11 from Windows 10). The package is not required: install it with `composer require matomo/device-detector` and set the adapter as the `features` `classname` of a browser type.
+* Zend_Http_UserAgent_Features_Adapter_DeviceDetector: a features adapter for Zend_Http_UserAgent on top of the optional matomo/device-detector package. It replaces the browser and system features of the built-in parser, adds the device type, brand and model, recognises bots, and reads the User-Agent Client Hints of the request (e.g. to tell Windows 11 from Windows 10). The package is not required: after `composer require matomo/device-detector`, Zend_Http_UserAgent uses the adapter for every browser type without a `features` configuration; `'features' => false` keeps the built-in parser (see BREAKING-CHANGES.md).
 
 ### Fixed
 
