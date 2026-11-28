@@ -144,14 +144,14 @@ jobs:
           #bare for PHP >=7.2
           - php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
           #full for every PHP version of the matrix
-          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, intl, rar, xdebug"
+          - php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, lzf, memcached, memcache, ldap, intl, rar-cataphract/php-rar@v4.3.1, xdebug"
           # Experimental versions are not listed in php-version above. They are separate
           # combinations, so the generic entries above are not applied to them and both
           # extension lists have to be set here.
           # lzf does not build on PHP 8.6 yet
           - php-version: "8.6"
             php-extensions-bare: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring"
-            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, memcached, memcache, ldap, intl, rar"
+            php-extensions-full: "none, iconv, json, libxml, xml, dom, simplexml, xmlwriter, tokenizer, mbstring, apcu, ctype, openssl, curl, gd, posix, pdo_sqlite, pdo_mysql, mysqli, fileinfo, zip, sqlite, soap, bcmath, igbinary, gmp, pdo_pgsql, bz2, memcached, memcache, ldap, intl, rar-cataphract/php-rar@v4.3.1"
             experimental: true
     steps:
       - name: Checkout
