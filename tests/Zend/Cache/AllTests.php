@@ -33,6 +33,7 @@ require_once 'Zend/Cache/ClassFrontendTest.php';
 require_once 'Zend/Cache/CoreTest.php';
 require_once 'Zend/Cache/FactoryTest.php';
 require_once 'Zend/Cache/FileBackendTest.php';
+require_once 'Zend/Cache/SqliteBackendTest.php';
 require_once 'Zend/Cache/FileFrontendTest.php';
 require_once 'Zend/Cache/FunctionFrontendTest.php';
 require_once 'Zend/Cache/ManagerTest.php';
@@ -66,6 +67,9 @@ class Zend_Cache_AllTests
         $suite->addTestSuite('Zend_Cache_FactoryTest');
         $suite->addTestSuite('Zend_Cache_CoreTest');
         $suite->addTestSuite('Zend_Cache_FileBackendTest');
+        if (extension_loaded('pdo_sqlite')) {
+            $suite->addTestSuite('Zend_Cache_SqliteBackendTest');
+        }
         $suite->addTestSuite('Zend_Cache_StaticBackendTest');
         $suite->addTestSuite('Zend_Cache_OutputFrontendTest');
         $suite->addTestSuite('Zend_Cache_FunctionFrontendTest');
