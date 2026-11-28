@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+* Zend_Http_UserAgent_Features_Adapter_DeviceDetector: a features adapter for Zend_Http_UserAgent on top of the optional matomo/device-detector package. It replaces the browser and system features of the built-in parser, adds the device type, brand and model, recognises bots, and reads the User-Agent Client Hints of the request (e.g. to tell Windows 11 from Windows 10). The package is not required: install it with `composer require matomo/device-detector` and set the adapter as the `features` `classname` of a browser type.
+
 ### Fixed
 
 * PHP 8.5 deprecations: Zend_Pdf_Filter_Compression passed negative byte differences to chr() when encoding with a PNG predictor (Sub, Up, Average, Paeth), Zend_Pdf_Element_String::unescape() did the same for an octal code above \\377, and Zend_Mail_Storage_Writable_Maildir called readdir() without the directory handle when it recalculated the quota (the handle is closed now as well). The results do not change.
@@ -24,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Locale_Data::clearCache() takes the tag that Zend_Currency::clearCache($tag) passes to it and clears the entries with that tag; the tag was ignored and the locale data was cleared instead. See BREAKING-CHANGES.md.
 * Zend_View_Helper_HeadMeta triggers an E_USER_NOTICE for a meta element without content with an HTML5 doctype, unless it is `<meta charset>`; the element is still rendered.
 * Zend_File_Transfer_Adapter_Abstract::getOptions() returns an empty array when there are no files, instead of null and an "Undefined variable $options" warning.
+* Zend_Http_UserAgent_AbstractDevice::extractFromUserAgent() recognises the current browsers: Chrome and Edge from version 21 on were reported with a version between 0.8 and 2.0 (their version was taken for a WebKit build of Safari before 2.2), Edge, Opera and Samsung Internet were reported as Chrome, Chrome and Firefox on iOS and Chrome on Android as Safari, and Safari 26 got the version 0.8. The system is found wherever it stands in the User-Agent (it was missing or wrong for Windows 10/11, Android, macOS and Linux), `device_os_name` is set for Android, iOS, Mac OS X, Linux and Chrome OS as well, with `device_os_version` where the browser sends one, and Windows 8, 8.1 and 10 have their names.
 
 ## [1.27.2] - 2026-11-28
 

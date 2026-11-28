@@ -289,6 +289,117 @@ class Zend_Http_UserAgent_AbstractDeviceTest extends TestCase
         $this->assertEquals('Linux i686', $extract['device_os_token']);
     }
 
+    /**
+     * @dataProvider currentUserAgentProvider
+     */
+    public function testUserAgentOfCurrentBrowsers($userAgent, $browser, $version, $osName, $osVersion, $osToken)
+    {
+        $extract = Zend_Http_UserAgent_Desktop::extractFromUserAgent($userAgent);
+
+        $this->assertSame($browser, $extract['browser_name']);
+        $this->assertSame($version, $extract['browser_version']);
+        $this->assertSame($osName, $extract['device_os_name']);
+        $this->assertSame($osVersion, isset($extract['device_os_version']) ? $extract['device_os_version'] : null);
+        $this->assertSame($osToken, $extract['device_os_token']);
+    }
+
+    /**
+     * User-Agent headers as the browsers send them since the User-Agent reduction:
+     * the platform version is frozen and only the major browser version is given
+     *
+     * @return array
+     */
+    public static function currentUserAgentProvider()
+    {
+        $windows = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ';
+        $iphone  = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) ';
+        $android = 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) ';
+        $mac     = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ';
+
+        return [
+            'Chrome, Windows' => [
+                $windows . 'Chrome/131.0.0.0 Safari/537.36',
+                'Chrome', '131.0.0.0', 'Windows 10', null, 'Windows NT 10.0',
+            ],
+            'Edge, Windows' => [
+                $windows . 'Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0',
+                'Edge', '131.0.0.0', 'Windows 10', null, 'Windows NT 10.0',
+            ],
+            'Opera, Windows' => [
+                $windows . 'Chrome/130.0.0.0 Safari/537.36 OPR/115.0.0.0',
+                'Opera', '115.0.0.0', 'Windows 10', null, 'Windows NT 10.0',
+            ],
+            'Firefox, Windows' => [
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0',
+                'Firefox', '133.0', 'Windows 10', null, 'Windows NT 10.0',
+            ],
+            'Firefox, Linux' => [
+                'Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0',
+                'Firefox', '133.0', 'Linux', null, 'Linux x86_64',
+            ],
+            'Chrome, Linux' => [
+                'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+                'Chrome', '131.0.0.0', 'Linux', null, 'Linux x86_64',
+            ],
+            'Chrome, Chrome OS' => [
+                'Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+                'Chrome', '131.0.0.0', 'Chrome OS', null, 'CrOS x86_64 14541.0.0',
+            ],
+            'Chrome, macOS' => [
+                $mac . 'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+                'Chrome', '131.0.0.0', 'Mac OS X', '10.15.7', 'Intel Mac OS X 10_15_7',
+            ],
+            'Safari 18, macOS' => [
+                $mac . 'AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15',
+                'Safari', '18.1', 'Mac OS X', '10.15.7', 'Intel Mac OS X 10_15_7',
+            ],
+            'Safari 26, macOS' => [
+                $mac . 'AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15',
+                'Safari', '26.0', 'Mac OS X', '10.15.7', 'Intel Mac OS X 10_15_7',
+            ],
+            'Safari, iPhone' => [
+                $iphone . 'Version/18.1 Mobile/15E148 Safari/604.1',
+                'Safari Mobile', '18.1', 'iOS', '18.1', 'iPhone OS',
+            ],
+            'Safari, iPad' => [
+                'Mozilla/5.0 (iPad; CPU OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1',
+                'Safari Mobile', '17.6', 'iOS', '17.6', 'iPhone OS',
+            ],
+            'Chrome, iPhone' => [
+                $iphone . 'CriOS/131.0.6778.73 Mobile/15E148 Safari/604.1',
+                'Chrome', '131.0.6778.73', 'iOS', '18.1', 'iPhone OS',
+            ],
+            'Firefox, iPhone' => [
+                $iphone . 'FxiOS/133.0 Mobile/15E148 Safari/605.1.15',
+                'Firefox', '133.0', 'iOS', '18.1', 'iPhone OS',
+            ],
+            'Chrome, Android' => [
+                $android . 'Chrome/131.0.0.0 Mobile Safari/537.36',
+                'Chrome', '131.0.0.0', 'Android', '10', 'Android 10',
+            ],
+            'Samsung Internet, Android' => [
+                $android . 'SamsungBrowser/27.0 Chrome/125.0.0.0 Mobile Safari/537.36',
+                'Samsung Internet', '27.0', 'Android', '10', 'Android 10',
+            ],
+            'Firefox, Android' => [
+                'Mozilla/5.0 (Android 14; Mobile; rv:133.0) Gecko/133.0 Firefox/133.0',
+                'Firefox', '133.0', 'Android', '14', 'Android 14',
+            ],
+        ];
+    }
+
+    /**
+     * Safari before 2.2 has no "Version/" token; its version follows from the WebKit build
+     */
+    public function testUserAgentOfSafariWithoutVersionToken()
+    {
+        $userAgent = 'Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/124 (KHTML, like Gecko) Safari/125';
+        $extract = Zend_Http_UserAgent_Desktop::extractFromUserAgent($userAgent);
+
+        $this->assertSame('Safari', $extract['browser_name']);
+        $this->assertSame('1.2', $extract['browser_version']);
+    }
+
     public function testUserAgentNetscape()
     {
         $userAgent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9pre) Gecko/20071102 Firefox/2.0.0.9 Navigator/9.0.0.3';
