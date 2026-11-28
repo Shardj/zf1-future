@@ -32,6 +32,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Db_Adapter_Sqlsrv, Zend_Db_Adapter_Pdo_Mssql and Zend_Db_Adapter_Pdo_Sqlsrv build `limit($count, $offset)` with `OFFSET ... ROWS FETCH NEXT ... ROWS ONLY` (SQL Server 2012 and later, see BREAKING-CHANGES.md). The last page no longer repeats rows of the page before it (Pdo_Mssql, Pdo_Sqlsrv), an ORDER BY with an expression or with several columns is used as written, the rows have no `ZEND_DB_ROWNUM` column, the selected columns need unique names only when the query has no ORDER BY, and `Zend_Db_Select::limit(null, $offset)` returns all rows from the offset on with Pdo_Mssql and Pdo_Sqlsrv too. Zend_Db_Adapter_Pdo_Sqlsrv keeps DISTINCT in front of TOP.
 * Zend_Filter_Compress_Rar is no longer deprecated: the rar extension is available for PHP 8 again (4.2.0 and later), so the filter does not trigger the E_USER_DEPRECATED notice any more and its tests are back.
 
+### Removed
+
+* Deprecated components for technologies and services that no longer exist and have no successor are removed (see BREAKING-CHANGES.md): Zend_Amf with Zend_Serializer_Adapter_Amf0 and Zend_Serializer_Adapter_Amf3, Zend_Service_Yahoo, Zend_Cache_Backend_Xcache, Zend_Cache_Backend_ZendPlatform, Zend_Serializer_Adapter_Wddx, Zend_Queue_Adapter_Memcacheq, Zend_Queue_Adapter_PlatformJobQueue with Zend_Queue_Message_PlatformJob, and Zend_Http_UserAgent_Features_Adapter_TeraWurfl.
+* Zend_Service_ReCaptcha (with Zend_Service_ReCaptcha_MailHide), Zend_Captcha_ReCaptcha and Zend_Form_Decorator_Captcha_ReCaptcha are removed: reCAPTCHA v1 was shut down in 2018, Zend_Captcha_SiteVerify and Zend_Service_SiteVerify replace them.
+
 ## [1.27.2] - 2026-11-28
 
 ### Security

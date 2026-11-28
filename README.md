@@ -70,21 +70,15 @@ Since 1.26.0 `Zend_Mail` authenticates with an OAuth 2.0 access token where a pa
 
 The following adapters and backends depend on technologies that are not available on any supported PHP version. They are kept for now, trigger an ``E_USER_DEPRECATED`` notice when instantiated, are not covered by the test suite and will be removed in a future version:
 
-* ``Zend_Queue_Adapter_Memcacheq`` (MemcacheQ, unmaintained since 2009; use ``Zend_Queue_Adapter_Db`` or ``Zend_Queue_Adapter_Activemq``)
 * ``Zend_Filter_Encrypt_Mcrypt`` (ext/mcrypt was removed in PHP 7.2; use ``Zend_Filter_Encrypt_Openssl``)
-* ``Zend_Cache_Backend_Sqlite`` (needs the SQLite 2 extension of PHP 5), ``Zend_Cache_Backend_Xcache``, ``Zend_Cache_Backend_ZendPlatform``, ``Zend_Cache_Backend_ZendServer_Disk``, ``Zend_Cache_Backend_ZendServer_ShMem``, ``Zend_Cache_Backend_WinCache``
-* ``Zend_Serializer_Adapter_Wddx`` (ext/wddx was removed in PHP 7.4)
-* ``Zend_Http_UserAgent_Features_Adapter_TeraWurfl``, ``Zend_Http_UserAgent_Features_Adapter_DeviceAtlas``
-* ``Zend_Queue_Adapter_PlatformJobQueue`` and ``Zend_Queue_Message_PlatformJob`` (Zend Platform and its Job Queue are discontinued; use ``Zend_Queue_Adapter_Db`` or ``Zend_Queue_Adapter_Activemq``)
+* ``Zend_Cache_Backend_Sqlite`` (needs the SQLite 2 extension of PHP 5), ``Zend_Cache_Backend_ZendServer_Disk``, ``Zend_Cache_Backend_ZendServer_ShMem``, ``Zend_Cache_Backend_WinCache``
+* ``Zend_Http_UserAgent_Features_Adapter_DeviceAtlas``
 * ``Zend_Service_Ebay`` (the eBay Finding API, the only API it supports, was decommissioned on 2025-02-05)
 
-The following components talk to services or use formats that no longer exist. They are deprecated in the same way:
+The following components talk to services that no longer exist. They are deprecated in the same way:
 
-* ``Zend_Amf`` and the serializer adapters ``Zend_Serializer_Adapter_Amf0`` and ``Zend_Serializer_Adapter_Amf3`` (AMF is the data format of Adobe Flash Player, which reached its end of life on 2020-12-31)
 * ``Zend_Gdata`` (Google shut down the Google Data APIs it implements and the ClientLogin and AuthSub authentication)
 * ``Zend_Cloud`` (the Simple Cloud API is not developed any further; use the SDK of the cloud provider)
-* ``Zend_Service_ReCaptcha``, ``Zend_Captcha_ReCaptcha`` and ``Zend_Form_Decorator_Captcha_ReCaptcha`` (reCAPTCHA v1 was shut down on 2018-03-31; use ``Zend_Captcha_SiteVerify`` and ``Zend_Service_SiteVerify``)
 * ``Zend_Service_Amazon``, ``Zend_Service_Amazon_Query`` and their result classes (the Product Advertising API 4.0 was shut down in 2020); ``Zend_Service_Amazon_Ec2``, ``_S3``, ``_Sqs`` and ``_SimpleDb`` are not affected
 * ``Zend_Service_Delicious`` (the Delicious API was shut down on 2017-06-15)
-* ``Zend_Service_Yahoo`` (the Yahoo! Search web services were shut down)
 * ``Zend_Service_Audioscrobbler`` (the Audioscrobbler 1.0 web services were shut down in favour of the Last.fm API 2.0)
