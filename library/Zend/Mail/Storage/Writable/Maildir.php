@@ -909,7 +909,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
                 }
 
 
-                while (($entry = readdir()) !== false) {
+                while (($entry = readdir($dh)) !== false) {
                     if ($entry[0] == '.' || !is_file($dirname . $entry)) {
                         continue;
                     }
@@ -931,6 +931,7 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
                     $total_size += $size;
                     ++$messages;
                 }
+                closedir($dh);
             }
         }
 

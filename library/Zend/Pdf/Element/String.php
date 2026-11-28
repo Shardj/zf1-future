@@ -246,7 +246,8 @@ class Zend_Pdf_Element_String extends Zend_Pdf_Element
                                 }
                             }
 
-                            $outEntries[] = chr(octdec($nextCode));
+                            // the high-order overflow of a code above \377 is ignored
+                            $outEntries[] = chr(octdec($nextCode) & 0xFF);
                         } else {
                             $outEntries[] = $str[$offset];
                         }

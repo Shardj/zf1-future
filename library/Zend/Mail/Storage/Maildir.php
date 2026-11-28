@@ -363,7 +363,7 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
                 $size = substr($size, 2);
             }
 
-            if (!ctype_digit($size)) {
+            if ($size === null || !ctype_digit($size)) {
                 $size = null;
             }
 
