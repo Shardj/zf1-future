@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Locale_Data::clearCache() takes the tag that Zend_Currency::clearCache($tag) passes to it and clears the entries with that tag; the tag was ignored and the locale data was cleared instead. See BREAKING-CHANGES.md.
 * Zend_View_Helper_HeadMeta triggers an E_USER_NOTICE for a meta element without content with an HTML5 doctype, unless it is `<meta charset>`; the element is still rendered.
 * Zend_File_Transfer_Adapter_Abstract::getOptions() returns an empty array when there are no files, instead of null and an "Undefined variable $options" warning.
+* Zend_Db_Adapter_Sqlsrv, Zend_Db_Adapter_Pdo_Mssql and Zend_Db_Adapter_Pdo_Sqlsrv build `limit($count, $offset)` with `OFFSET ... ROWS FETCH NEXT ... ROWS ONLY` (SQL Server 2012 and later, see BREAKING-CHANGES.md). The last page no longer repeats rows of the page before it (Pdo_Mssql, Pdo_Sqlsrv), an ORDER BY with an expression or with several columns is used as written, the rows have no `ZEND_DB_ROWNUM` column, the selected columns need unique names only when the query has no ORDER BY, and `Zend_Db_Select::limit(null, $offset)` returns all rows from the offset on with Pdo_Mssql and Pdo_Sqlsrv too. Zend_Db_Adapter_Pdo_Sqlsrv keeps DISTINCT in front of TOP.
 
 ## [1.27.2] - 2026-11-28
 

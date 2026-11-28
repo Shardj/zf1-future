@@ -260,9 +260,6 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
             return null;
         }
 
-        // the row number of limit() with an offset is no column of the query
-        unset($values['ZEND_DB_ROWNUM']);
-
         if (!$this->_keys) {
             foreach ($values as $key => $value) {
                 $this->_keys[] = $this->_adapter->foldCase($key);
@@ -320,12 +317,6 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
 
             // If no error, there is simply no record
             return false;
-        }
-
-        // the row number of limit() with an offset is no column of the query
-        $fields = sqlsrv_field_metadata($this->_stmt);
-        if ($fields && $fields[0]['Name'] === 'ZEND_DB_ROWNUM') {
-            $col++;
         }
 
         $data = sqlsrv_get_field($this->_stmt, $col); //0-based
@@ -437,31 +428,5 @@ class Zend_Db_Statement_Sqlsrv extends Zend_Db_Statement
         }
 
         return $num_rows;
-    }
-
-    /**
-     * Returns an array containing all of the result set rows.
-     *
-     * @param int $style OPTIONAL Fetch mode.
-     * @param int $col   OPTIONAL Column number, if fetch mode is by column.
-     * @return array Collection of rows, each in a format by the fetch mode.
-     *
-     * Behaves like parent, but if limit()
-     * is used, the final result removes the extra column
-     * 'zend_db_rownum'
-     */
-    public function fetchAll($style = null, $col = null)
-    {
-        $data = parent::fetchAll($style, $col);
-        $results = [];
-        $remove = $this->_adapter->foldCase('ZEND_DB_ROWNUM');
-
-        foreach ($data as $row) {
-            if (is_array($row) && array_key_exists($remove, $row)) {
-                unset($row[$remove]);
-            }
-            $results[] = $row;
-        }
-        return $results;
     }
 }
