@@ -330,31 +330,47 @@ class Zend_Db_Adapter_Pdo_Sqlsrv extends Zend_Db_Adapter_Pdo_Abstract
         }
 
         if ($offset === 0) {
-            $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . $count . ' ', $sql);
-        } else {
-            $orderby = stristr($sql, 'ORDER BY');
-            if ($orderby !== false) {
-                $sort  = (stripos($orderby, ' desc') !== false) ? 'desc' : 'asc';
-                $order = str_ireplace('ORDER BY', '', $orderby);
-                $order = trim(preg_replace('/\bASC\b|\bDESC\b/i', '', $order));
-            }
+            return preg_replace('/^SELECT\s+(DISTINCT\s)?/i', 'SELECT $1TOP ' . $count . ' ', $sql);
+        }
 
-            $sql = preg_replace('/^SELECT\s/i', 'SELECT TOP ' . ($count+$offset) . ' ', $sql);
+        if (!$this->_hasOrderBy($sql)) {
+            // OFFSET belongs to ORDER BY; the query is wrapped, because DISTINCT and UNION
+            // accept only their own columns in ORDER BY
+            $sql = 'SELECT * FROM (' . $sql . ') AS inner_tbl ORDER BY (SELECT 0)';
+        }
 
-            $sql = 'SELECT * FROM (SELECT TOP ' . $count . ' * FROM (' . $sql . ') AS inner_tbl';
-            if ($orderby !== false) {
-                $innerOrder = preg_replace('/\".*\".\"(.*)\"/i', '"inner_tbl"."$1"', $order);
-                $sql .= ' ORDER BY ' . $innerOrder . ' ';
-                $sql .= (stripos($sort, 'asc') !== false) ? 'DESC' : 'ASC';
-            }
-            $sql .= ') AS outer_tbl';
-            if ($orderby !== false) {
-                $outerOrder = preg_replace('/\".*\".\"(.*)\"/i', '"outer_tbl"."$1"', $order);
-                $sql .= ' ORDER BY ' . $outerOrder . ' ' . $sort;
-            }
+        $sql .= ' OFFSET ' . $offset . ' ROWS';
+        if ($count != PHP_INT_MAX) {
+            $sql .= ' FETCH NEXT ' . $count . ' ROWS ONLY';
         }
 
         return $sql;
+    }
+
+    /**
+     * Whether the statement ends with an ORDER BY clause of its own, not one of a subquery
+     *
+     * @param  string $sql
+     * @return bool
+     */
+    protected function _hasOrderBy($sql)
+    {
+        $position = strripos($sql, 'ORDER BY');
+        if ($position === false) {
+            return false;
+        }
+
+        $depth = 0;
+        $tail  = substr($sql, $position);
+        for ($i = 0, $length = strlen($tail); $i < $length; $i++) {
+            if ($tail[$i] === '(') {
+                $depth++;
+            } elseif ($tail[$i] === ')' && --$depth < 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**

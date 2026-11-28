@@ -329,48 +329,48 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
             throw new Zend_Db_Adapter_Exception("LIMIT argument offset=$offset is not valid");
         }
 
-        $sql = preg_replace(
-            '/^SELECT\s+(DISTINCT\s)?/i',
-            'SELECT $1TOP ' . ($count+$offset) . ' ',
-            $sql
-            );
+        if ($offset === 0) {
+            return preg_replace('/^SELECT\s+(DISTINCT\s)?/i', 'SELECT $1TOP ' . $count . ' ', $sql);
+        }
 
-        if ($offset > 0) {
-            $orderby = stristr($sql, 'ORDER BY');
+        if (!$this->_hasOrderBy($sql)) {
+            // OFFSET belongs to ORDER BY; the query is wrapped, because DISTINCT and UNION
+            // accept only their own columns in ORDER BY
+            $sql = 'SELECT * FROM (' . $sql . ') AS inner_tbl ORDER BY (SELECT 0)';
+        }
 
-            if ($orderby === false) {
-                // without an order there is nothing to invert, the rows are numbered instead
-                return 'SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY (SELECT 0)) AS "ZEND_DB_ROWNUM", *'
-                    . ' FROM (' . $sql . ') AS inner_tbl) AS outer_tbl'
-                    . ' WHERE "ZEND_DB_ROWNUM" > ' . $offset;
-            }
-
-            $orderParts = explode(',', substr($orderby, 8));
-            $pregReplaceCount = null;
-            $orderbyInverseParts = [];
-            foreach ($orderParts as $orderPart) {
-                $orderPart = rtrim($orderPart);
-                $inv = preg_replace('/\s+desc$/i', ' ASC', $orderPart, 1, $pregReplaceCount);
-                if ($pregReplaceCount) {
-                    $orderbyInverseParts[] = $inv;
-                    continue;
-                }
-                $inv = preg_replace('/\s+asc$/i', ' DESC', $orderPart, 1, $pregReplaceCount);
-                if ($pregReplaceCount) {
-                    $orderbyInverseParts[] = $inv;
-                    continue;
-                } else {
-                    $orderbyInverseParts[] = $orderPart . ' DESC';
-                }
-            }
-
-            $orderbyInverse = 'ORDER BY ' . implode(', ', $orderbyInverseParts);
-
-            $sql = 'SELECT * FROM (SELECT TOP ' . $count . ' * FROM (' . $sql . ') AS inner_tbl'
-                . ' ' . $orderbyInverse . ' ) AS outer_tbl ' . $orderby;
+        $sql .= ' OFFSET ' . $offset . ' ROWS';
+        if ($count != PHP_INT_MAX) {
+            $sql .= ' FETCH NEXT ' . $count . ' ROWS ONLY';
         }
 
         return $sql;
+    }
+
+    /**
+     * Whether the statement ends with an ORDER BY clause of its own, not one of a subquery
+     *
+     * @param  string $sql
+     * @return bool
+     */
+    protected function _hasOrderBy($sql)
+    {
+        $position = strripos($sql, 'ORDER BY');
+        if ($position === false) {
+            return false;
+        }
+
+        $depth = 0;
+        $tail  = substr($sql, $position);
+        for ($i = 0, $length = strlen($tail); $i < $length; $i++) {
+            if ($tail[$i] === '(') {
+                $depth++;
+            } elseif ($tail[$i] === ')' && --$depth < 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
