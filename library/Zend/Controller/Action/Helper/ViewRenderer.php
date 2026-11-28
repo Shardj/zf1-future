@@ -402,6 +402,11 @@ class Zend_Controller_Action_Helper_ViewRenderer extends Zend_Controller_Action_
     {
         foreach ($options as $key => $value)
         {
+            if (!is_string($key)) {
+                // on PHP 7.4 the integer 0 equals every option name below
+                continue;
+            }
+
             switch ($key) {
                 case 'neverRender':
                 case 'neverController':

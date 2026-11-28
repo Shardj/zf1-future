@@ -64,6 +64,19 @@ class Zend_Tool_Framework_RegistryTest extends TestCase
         $this->_registry->reset();
     }
 
+    public function testRegistryCreatesItsObjectsAgainAfterReset()
+    {
+        $loader = $this->_registry->getLoader();
+        $request = $this->_registry->getRequest();
+
+        $this->_registry->reset();
+
+        $this->assertNull($this->_registry->getClient());
+        $this->assertInstanceOf(Zend_Tool_Framework_Loader_Interface::class, $this->_registry->getLoader());
+        $this->assertNotSame($loader, $this->_registry->getLoader());
+        $this->assertNotSame($request, $this->_registry->getRequest());
+    }
+
     public function testRegistryCanGetAndSetClient()
     {
         $this->assertNull($this->_registry->getClient());

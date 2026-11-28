@@ -255,6 +255,17 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends TestCase
         $this->_checkDefaults();
     }
 
+    /**
+     * On PHP 7.4 the integer key 0 equals every option name in a loose comparison
+     */
+    public function testOptionWithIntegerKeyIsIgnored()
+    {
+        $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer(null, [0 => 'neverRender']);
+
+        $this->assertFalse($viewRenderer->getNeverRender());
+        $this->assertFalse(property_exists($viewRenderer, '_0'));
+    }
+
     public function testInitViewWithOptions()
     {
         $this->request->setModuleName('foo')

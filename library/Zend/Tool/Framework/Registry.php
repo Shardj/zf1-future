@@ -34,12 +34,12 @@ require_once 'Zend/Tool/Framework/Registry/Interface.php';
 class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Interface
 {
     /**
-     * @var Zend_Tool_Framework_Loader_Abstract
+     * @var Zend_Tool_Framework_Loader_Abstract|null
      */
     protected $_loader = null;
 
     /**
-     * @var Zend_Tool_Framework_Client_Abstract
+     * @var Zend_Tool_Framework_Client_Abstract|null
      */
     protected $_client = null;
 
@@ -54,12 +54,12 @@ class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Inter
     protected $_storage = null;
 
     /**
-     * @var Zend_Tool_Framework_Action_Repository
+     * @var Zend_Tool_Framework_Action_Repository|null
      */
     protected $_actionRepository = null;
 
     /**
-     * @var Zend_Tool_Framework_Provider_Repository
+     * @var Zend_Tool_Framework_Provider_Repository|null
      */
     protected $_providerRepository = null;
 
@@ -69,12 +69,12 @@ class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Inter
     protected $_manifestRepository = null;
 
     /**
-     * @var Zend_Tool_Framework_Client_Request
+     * @var Zend_Tool_Framework_Client_Request|null
      */
     protected $_request = null;
 
     /**
-     * @var Zend_Tool_Framework_Client_Response
+     * @var Zend_Tool_Framework_Client_Response|null
      */
     protected $_response = null;
 
@@ -84,12 +84,12 @@ class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Inter
      */
     public function reset()
     {
-        unset($this->_client);
-        unset($this->_loader);
-        unset($this->_actionRepository);
-        unset($this->_providerRepository);
-        unset($this->_request);
-        unset($this->_response);
+        $this->_client = null;
+        $this->_loader = null;
+        $this->_actionRepository = null;
+        $this->_providerRepository = null;
+        $this->_request = null;
+        $this->_response = null;
     }
 
 //    public function __construct()

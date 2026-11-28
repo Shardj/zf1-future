@@ -122,12 +122,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Config.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Access to an undefined property Zend_Controller_Action_Helper_ViewRenderer::$_0.',
-	'identifier' => 'property.notFound',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/Controller/Action/Helper/ViewRenderer.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Variable $inflector is never read.',
 	'identifier' => 'variable.unused',
 	'count' => 1,
@@ -1628,42 +1622,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Tool/Framework/Provider/Signature.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Cannot unset property Zend_Tool_Framework_Registry::$_actionRepository because it might have hooks in a subclass.',
-	'identifier' => 'unset.possiblyHookedProperty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot unset property Zend_Tool_Framework_Registry::$_client because it might have hooks in a subclass.',
-	'identifier' => 'unset.possiblyHookedProperty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot unset property Zend_Tool_Framework_Registry::$_loader because it might have hooks in a subclass.',
-	'identifier' => 'unset.possiblyHookedProperty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot unset property Zend_Tool_Framework_Registry::$_providerRepository because it might have hooks in a subclass.',
-	'identifier' => 'unset.possiblyHookedProperty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot unset property Zend_Tool_Framework_Registry::$_request because it might have hooks in a subclass.',
-	'identifier' => 'unset.possiblyHookedProperty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Cannot unset property Zend_Tool_Framework_Registry::$_response because it might have hooks in a subclass.',
-	'identifier' => 'unset.possiblyHookedProperty',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Framework/Registry.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Tool_Project_Profile_Resource_Container::getName().',
 	'identifier' => 'method.notFound',
 	'count' => 3,
@@ -1710,12 +1668,6 @@ $ignoreErrors[] = [
 	'identifier' => 'variable.unused',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Form.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">" between int<min, -1> and 0 is always false.',
-	'identifier' => 'greater.alwaysFalse',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Tool/Project/Provider/Module.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Value assigned to variable $prev is never read before being overwritten.',
