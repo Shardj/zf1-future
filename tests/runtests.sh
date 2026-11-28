@@ -47,7 +47,7 @@ while [ -n "$1" ] ; do
      PHPUNIT_GROUPS="" 
      break ;;
 
-    Akismet|Amazon|Amazon_Ec2|Amazon_S3|Amazon_Sqs|Audioscrobbler|Delicious|Flickr|LiveDocx|ReCaptcha|Simpy|SlideShare|StrikeIron|Twitter|WindowsAzure|Yahoo)
+    Akismet|Amazon|Amazon_Ec2|Amazon_S3|Amazon_Sqs|Audioscrobbler|Delicious|Flickr|LiveDocx|Simpy|SlideShare|StrikeIron|Twitter|WindowsAzure)
      PHPUNIT_GROUPS="${PHPUNIT_GROUPS:+"$PHPUNIT_GROUPS,"}Zend_Service_$1" 
      shift ;;
     Ec2|S3)

@@ -13,27 +13,15 @@ parameters:
         # Deprecated components (see README.md); they are not tested either
         - library/Zend/Cache/Backend/Sqlite.php
         - library/Zend/Cache/Backend/WinCache.php
-        - library/Zend/Cache/Backend/Xcache.php
-        - library/Zend/Cache/Backend/ZendPlatform.php
         - library/Zend/Cache/Backend/ZendServer.php
         - library/Zend/Cache/Backend/ZendServer/
         - library/Zend/Filter/Compress/Rar.php
         - library/Zend/Filter/Encrypt/Mcrypt.php
         - library/Zend/Http/UserAgent/Features/Adapter/DeviceAtlas.php
-        - library/Zend/Http/UserAgent/Features/Adapter/TeraWurfl.php
-        - library/Zend/Queue/Adapter/Memcacheq.php
-        - library/Zend/Queue/Adapter/PlatformJobQueue.php
-        - library/Zend/Queue/Message/PlatformJob.php
-        - library/Zend/Serializer/Adapter/Wddx.php
         - library/Zend/Service/Ebay/
-        - library/Zend/Amf/
-        - library/Zend/Captcha/ReCaptcha.php
         - library/Zend/Cloud/
-        - library/Zend/Form/Decorator/Captcha/ReCaptcha.php
         - library/Zend/Gdata.php
         - library/Zend/Gdata/
-        - library/Zend/Serializer/Adapter/Amf0.php
-        - library/Zend/Serializer/Adapter/Amf3.php
         - library/Zend/Service/Amazon.php
         - library/Zend/Service/Amazon/Accessories.php
         - library/Zend/Service/Amazon/CustomerReview.php
@@ -49,10 +37,6 @@ parameters:
         - library/Zend/Service/Audioscrobbler.php
         - library/Zend/Service/Delicious.php
         - library/Zend/Service/Delicious/
-        - library/Zend/Service/ReCaptcha.php
-        - library/Zend/Service/ReCaptcha/
-        - library/Zend/Service/Yahoo.php
-        - library/Zend/Service/Yahoo/
     level: 5
     tmpDir: .phpstan.cache
     checkFunctionNameCase: true
