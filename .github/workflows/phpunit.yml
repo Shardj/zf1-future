@@ -244,6 +244,18 @@ jobs:
           # https://github.com/shivammathur/setup-php/issues/407#issuecomment-773675741
           fail-fast: true
 
+      - name: Build the rar extension
+        run: |
+          git clone --quiet --depth 1 --branch v4.3.1 https://github.com/cataphract/php-rar /tmp/php-rar
+          cd /tmp/php-rar
+          phpize > /dev/null
+          ./configure --quiet
+          make --quiet -j"$(nproc)" > /dev/null
+          sudo make --quiet install
+          echo "extension=rar.so" | sudo tee "$(php -r 'echo PHP_CONFIG_FILE_SCAN_DIR;')/99-rar.ini"
+          php -r 'exit(extension_loaded("rar") ? 0 : 1);'
+        continue-on-error: ${{ matrix.experimental }}
+
       - name: Create the Zend_Queue tables
         run: |
           mysql -h 127.0.0.1 -u "$TESTS_ZEND_DB_ADAPTER_MYSQL_USERNAME" -p"$TESTS_ZEND_DB_ADAPTER_MYSQL_PASSWORD" "$TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE" < library/Zend/Queue/Adapter/Db/mysql.sql
