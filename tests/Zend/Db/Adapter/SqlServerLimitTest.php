@@ -19,13 +19,14 @@ class Zend_Db_Adapter_SqlServerLimitTest extends TestCase
      */
     public static function adapterProvider()
     {
-        $config = ['dbname' => 'zftest', 'username' => 'zf', 'password' => 'zf'];
+        // limit() needs neither a connection nor the driver extension
+        $adapters = [];
+        foreach (['Sqlsrv', 'Pdo_Mssql', 'Pdo_Sqlsrv'] as $name) {
+            $class = new ReflectionClass('Zend_Db_Adapter_' . $name);
+            $adapters[$name] = [$class->newInstanceWithoutConstructor()];
+        }
 
-        return [
-            'Sqlsrv'     => [new Zend_Db_Adapter_Sqlsrv($config)],
-            'Pdo_Mssql'  => [new Zend_Db_Adapter_Pdo_Mssql($config)],
-            'Pdo_Sqlsrv' => [new Zend_Db_Adapter_Pdo_Sqlsrv($config)],
-        ];
+        return $adapters;
     }
 
     /**
