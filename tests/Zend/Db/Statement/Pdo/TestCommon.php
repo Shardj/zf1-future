@@ -53,6 +53,29 @@ abstract class Zend_Db_Statement_Pdo_TestCommon extends Zend_Db_Statement_TestCo
         $stmt->closeCursor();
     }
 
+    /**
+     * The Zend_Db fetch flags keep working whatever values the PDO constants have (they changed in PHP 8.5)
+     */
+    public function testStatementFetchAllWithZendDbFetchFlags()
+    {
+        $select = $this->_db->select()
+            ->from('zfproducts', ['product_name', 'product_id'])
+            ->order('product_id');
+
+        $stmt = $this->_db->query($select);
+        $unique = $stmt->fetchAll(Zend_Db::FETCH_UNIQUE | Zend_Db::FETCH_ASSOC);
+        $this->assertSame(['Windows', 'Linux', 'OS X'], array_keys($unique));
+        $this->assertEquals([1], array_values($unique['Windows']));
+
+        $stmt = $this->_db->query($select);
+        $grouped = $stmt->fetchAll(Zend_Db::FETCH_GROUP | Zend_Db::FETCH_COLUMN);
+        $this->assertEquals(['Windows' => [1], 'Linux' => [2], 'OS X' => [3]], $grouped);
+
+        $stmt = $this->_db->query($select);
+        $stmt->setFetchMode(Zend_Db::FETCH_UNIQUE | Zend_Db::FETCH_NUM);
+        $this->assertEquals(['Windows' => [1], 'Linux' => [2], 'OS X' => [3]], $stmt->fetchAll());
+    }
+
     public function testStatementNextRowset()
     {
         $select = $this->_db->select()
