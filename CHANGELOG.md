@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+* PHP 8.5 deprecations: Zend_Pdf_Filter_Compression passed negative byte differences to chr() when encoding with a PNG predictor (Sub, Up, Average, Paeth), Zend_Pdf_Element_String::unescape() did the same for an octal code above \\377, and Zend_Mail_Storage_Writable_Maildir called readdir() without the directory handle when it recalculated the quota (the handle is closed now as well). The results do not change.
+* Zend_Mail_Storage_Maildir no longer passes null to ctype_digit() for a message file name without a size (deprecated since PHP 8.1, reported on every such message when a maildir is opened).
+* Zend_Mail_Storage_Maildir numbers the messages of a folder by file name, which starts with the delivery time; they were numbered in the order the file system returned the files, which differs between file systems and can change when a file is added or removed.
+* Zend_Mail_Storage_Writable_Maildir skips the empty line at the end of the maildirsize file when it sums up the quota; on PHP 8 every quota check of a maildir with entries in that file failed with a TypeError ("Unsupported operand types").
 * PHP 8.5: the fetch flags `Zend_Db::FETCH_GROUP`, `FETCH_UNIQUE`, `FETCH_CLASSTYPE` and `FETCH_SERIALIZE` work with the PDO adapters again. Zend_Db mirrors the values the PDO constants had up to PHP 8.4; PHP 8.5 changed them, so e.g. `fetchAll(Zend_Db::FETCH_GROUP | Zend_Db::FETCH_COLUMN)` ended in a ValueError ("must be a bitmask of PDO::FETCH_* constants"). Zend_Db_Statement_Pdo translates the flags to the values of the running PDO in fetch(), fetchAll() and setFetchMode().
 * Zend_Db_Statement_Pdo_Oci and Zend_Db_Statement_Pdo_Ibm keep the keys of a fetchAll() result; with `FETCH_GROUP`, `FETCH_UNIQUE` or `PDO::FETCH_KEY_PAIR` the result is indexed by the first column, and both statements renumbered it.
 * Zend_Locale::getEnvironment() queries the locale with setlocale(LC_ALL, '0'), the documented string, instead of the integer 0.

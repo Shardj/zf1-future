@@ -51,6 +51,9 @@ jobs:
 
       TESTS_ZEND_AUTH_ADAPTER_DBTABLE_PDO_SQLITE_ENABLED: true
 
+      # The maildir fixture is unpacked in the "Unpack the maildir fixture" step
+      TESTS_ZEND_MAIL_MAILDIR_ENABLED: true
+
       # Zend_Queue_Adapter_Activemq over STOMP on the ActiveMQ service
       TESTS_ZEND_QUEUE_ACTIVEMQ_ENABLED: true
       TESTS_ZEND_QUEUE_ACTIVEMQ_SCHEME: tcp
@@ -191,6 +194,11 @@ jobs:
       - name: Lint PHP source files
         run: |
           bin/parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php . --checkstyle | cs2pr
+
+      # Message file names contain a colon, so the fixture is kept as an archive
+      - name: Unpack the maildir fixture
+        run: tar -xf maildir.tar
+        working-directory: tests/Zend/Mail/_files/test.maildir
 
       - name: Serve the Zend_Http_Client and Zend_Feed test files
         run: |
