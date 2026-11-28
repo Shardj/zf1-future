@@ -1000,9 +1000,13 @@ class Zend_Mail_Storage_Writable_Maildir extends    Zend_Mail_Storage_Folder_Mai
             }
             unset($maildirsize[0]);
             foreach ($maildirsize as $line) {
-                list($size, $count) = explode(' ', trim($line));
-                $total_size += $size;
-                $messages   += $count;
+                $entry = explode(' ', trim($line));
+                if (count($entry) < 2) {
+                    // the file ends with a line break
+                    continue;
+                }
+                $total_size += (int) $entry[0];
+                $messages   += (int) $entry[1];
             }
         }
 

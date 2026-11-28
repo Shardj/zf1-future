@@ -351,7 +351,15 @@ class Zend_Mail_Storage_Maildir extends Zend_Mail_Storage_Abstract
      */
     protected function _getMaildirFiles($dh, $dirname, $default_flags = [])
     {
+        // readdir() returns the files in the order of the file system; the messages are
+        // numbered by file name, which starts with the delivery time
+        $entries = [];
         while (($entry = readdir($dh)) !== false) {
+            $entries[] = $entry;
+        }
+        sort($entries, SORT_STRING);
+
+        foreach ($entries as $entry) {
             if ($entry[0] == '.' || !is_file($dirname . $entry)) {
                 continue;
             }
