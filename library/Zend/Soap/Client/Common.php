@@ -95,6 +95,7 @@ class Zend_Soap_Client_Common extends SoapClient
     public function doRequest($request, $location, $action, $version, $one_way = null)
     {
         if ($this->_uriParserClass !== null) {
+            // @phpstan-ignore arguments.count, argument.type (SoapClient has the sixth parameter since PHP 8.5, where $oneWay is a bool)
             return parent::__doRequest($request, $location, $action, $version, (bool) $one_way, $this->_uriParserClass);
         }
 
