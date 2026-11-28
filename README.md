@@ -1,5 +1,10 @@
 ![zf1-future logo](https://imgur.com/S0i6qOh.png)
 <sub><sup>Thanks to [WebTigers](https://github.com/WebTigers) for the logo</sup></sub>
+> [!WARNING]
+> **Security release 1.27.2: upgrade as soon as possible.**
+> Version 1.27.2 fixes an SQL injection in `Zend_Db_Select::order()` and `group()` that affects applications passing user input (e.g. a sort column from the URL) to these methods, also through the `$order` argument of `Zend_Db_Table` `fetchAll()` / `fetchRow()`. All earlier versions are affected.
+> The fix changes behaviour: a string that looks like an SQL function call, such as `order('RAND()')` or `group('YEAR(created)')`, now throws an exception; pass `new Zend_Db_Expr('RAND()')` instead. If the upgrade breaks an application, `Zend_Db_Select::setStringExpressionsAllowed(true)` in the bootstrap restores the previous behaviour until the calls are rewritten. Use it only when no user input reaches these methods. See [BREAKING-CHANGES.md](BREAKING-CHANGES.md).
+
 # Zend Framework 1 now for PHP 8.4!
 ### Classic ZF1 Reborn
 Zend may have abandoned the original Zend Framework, but the global Zend Framework Community has not! Since Zend sentenced ZF1 to EOL, the Zend Framework community around the globe has continued to work and build on what we consider to be one of the best PHP frameworks of all time.

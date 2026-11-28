@@ -25,6 +25,7 @@
  * @see Zend_Db_TestSetup
  */
 require_once 'Zend/Db/TestSetup.php';
+require_once 'Zend/Db/Select.php';
 
 
 
@@ -1065,33 +1066,36 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     }
 
     /**
-     * Test support for automatic conversion of a SQL
-     * function to a Zend_Db_Expr in group(),
-     * e.g.  group('LOWER(title)') should give the same
-     * result as group(new Zend_Db_Expr('LOWER(title)')).
+     * group() must not convert a string that looks like a SQL
+     * function into a Zend_Db_Expr: group('LOWER(title)') throws,
+     * group(new Zend_Db_Expr('LOWER(title)')) is the supported form.
      */
+    public function testSelectGroupByAutoExpr()
+    {
+        $bugs_products = $this->_db->quoteIdentifier('zfbugs_products');
+        $bug_id = $this->_db->quoteIdentifier('bug_id');
 
-    protected function _selectGroupByAutoExpr()
+        $select = $this->_db->select()->from('zfbugs_products');
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->group("ABS($bugs_products.$bug_id)");
+    }
+
+    public function testSelectGroupByFunctionAsExplicitExpr()
     {
         $thecount = $this->_db->quoteIdentifier('thecount');
         $bugs_products = $this->_db->quoteIdentifier('zfbugs_products');
         $bug_id = $this->_db->quoteIdentifier('bug_id');
+        $expr = new Zend_Db_Expr("ABS($bugs_products.$bug_id)");
 
         $select = $this->_db->select()
-            ->from('zfbugs_products', ['bug_id' => "ABS($bugs_products.$bug_id)", new Zend_Db_Expr("COUNT(*) AS $thecount")])
-            ->group("ABS($bugs_products.$bug_id)")
-            ->order("ABS($bugs_products.$bug_id)");
-        return $select;
-    }
-
-    public function testSelectGroupByAutoExpr()
-    {
-        $select = $this->_selectGroupByAutoExpr();
-        $stmt = $this->_db->query($select);
-        $result = $stmt->fetchAll();
-        $this->assertEquals(3, count($result), 'Expected count of first result set to be 2');
+            ->from('zfbugs_products', ['bug_id' => $expr, new Zend_Db_Expr("COUNT(*) AS $thecount")])
+            ->group($expr)
+            ->order($expr);
+        $result = $this->_db->query($select)->fetchAll();
+        $this->assertEquals(3, count($result));
         $this->assertEquals(1, $result[0]['bug_id']);
-        $this->assertEquals(3, $result[0]['thecount'], 'Expected count(*) of first result set to be 2');
+        $this->assertEquals(3, $result[0]['thecount']);
         $this->assertEquals(2, $result[1]['bug_id']);
         $this->assertEquals(1, $result[1]['thecount']);
     }
@@ -1421,28 +1425,143 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     }
 
     /**
-     * Test automatic conversion of SQL functions to
-     * Zend_Db_Expr, e.g. order('LOWER(title)')
-     * should give the same result as
-     * order(new Zend_Db_Expr('LOWER(title)')).
+     * order() must not convert a string that looks like a SQL
+     * function into a Zend_Db_Expr: order('LOWER(title)') throws,
+     * order(new Zend_Db_Expr('LOWER(title)')) is the supported form.
      */
-    protected function _selectOrderByAutoExpr()
+    public function testSelectOrderByAutoExpr()
+    {
+        $products = $this->_db->quoteIdentifier('zfproducts');
+        $product_id = $this->_db->quoteIdentifier('product_id');
+
+        $select = $this->_db->select()->from('zfproducts');
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->order("ABS($products.$product_id)");
+    }
+
+    public function testSelectOrderByFunctionAsExplicitExpr()
     {
         $products = $this->_db->quoteIdentifier('zfproducts');
         $product_id = $this->_db->quoteIdentifier('product_id');
 
         $select = $this->_db->select()
             ->from('zfproducts')
-            ->order("ABS($products.$product_id)");
-        return $select;
+            ->order(new Zend_Db_Expr("ABS($products.$product_id) DESC"));
+        $result = $this->_db->query($select)->fetchAll();
+        $this->assertEquals(3, $result[0]['product_id']);
     }
 
-    public function testSelectOrderByAutoExpr()
+    /**
+     * Strings that the former auto-conversion would have embedded as raw SQL.
+     *
+     * @return array
+     */
+    public static function stringExpressionProvider()
     {
-        $select = $this->_selectOrderByAutoExpr();
-        $stmt = $this->_db->query($select);
-        $result = $stmt->fetchAll();
-        $this->assertEquals(1, $result[0]['product_id']);
+        return [
+            'function call'                 => ['RAND()'],
+            'conditional'                   => ['IF(product_id > 5,1,0)'],
+            'blind injection via EXISTS'    => ["IF(EXISTS(SELECT 1 FROM zfaccounts WHERE account_name LIKE 'a%'),product_id,-product_id)"],
+            'error based injection'         => ['EXTRACTVALUE(1,CONCAT(0x7e,CURRENT_USER()))'],
+            'trailing comment'              => ['ABS(1)/* comment */'],
+            'nested comment, subquery'      => ['abs(1)/* /* */ , (SELECT account_name FROM zfaccounts LIMIT 1) -- */'],
+            'nested comment, stacked query' => ['abs(1)/* /* */ ; DROP TABLE zfproducts -- */'],
+            'executable comment'            => ['abs(1)/*! , SLEEP(5) */'],
+            'whitespace before parenthesis' => ["ABS\n(1)"],
+        ];
+    }
+
+    /**
+     * @dataProvider stringExpressionProvider
+     */
+    public function testOrderRejectsStringThatLooksLikeFunctionCall($spec)
+    {
+        $select = $this->_db->select()->from('zfproducts');
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->order($spec);
+    }
+
+    /**
+     * @dataProvider stringExpressionProvider
+     */
+    public function testOrderRejectsStringThatLooksLikeFunctionCallInArray($spec)
+    {
+        $select = $this->_db->select()->from('zfproducts');
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->order(['product_id', $spec]);
+    }
+
+    /**
+     * @dataProvider stringExpressionProvider
+     */
+    public function testGroupRejectsStringThatLooksLikeFunctionCall($spec)
+    {
+        $select = $this->_db->select()->from('zfproducts');
+
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->group($spec);
+    }
+
+    /**
+     * Strings that do not look like a function call, hostile or not.
+     *
+     * @return array
+     */
+    public static function stringIdentifierProvider()
+    {
+        return [
+            'plain column'           => ['product_id'],
+            'stacked query'          => ['product_id; DROP TABLE zfproducts'],
+            'function then payload'  => ['MD5(1); DROP TABLE zfproducts; -- )'],
+            'unbalanced parentheses' => ['IF(SUM('],
+            'comment only'           => ['/* /* */ ; DROP TABLE zfproducts -- */'],
+            'arithmetic'             => ['product_id + ABS(1)'],
+            'bare subquery'          => ['(SELECT 1)'],
+        ];
+    }
+
+    /**
+     * Whatever string reaches order(), the only thing that may follow
+     * ORDER BY is that string quoted as an identifier.
+     *
+     * @dataProvider stringIdentifierProvider
+     */
+    public function testOrderQuotesEveryOtherStringAsIdentifier($spec)
+    {
+        $select = $this->_db->select()->from('zfproducts')->order($spec);
+
+        $this->assertStringEndsWith(
+            ' ORDER BY ' . $this->_db->quoteIdentifier($spec) . ' ASC',
+            $select->assemble()
+        );
+    }
+
+    /**
+     * @dataProvider stringIdentifierProvider
+     */
+    public function testGroupQuotesEveryOtherStringAsIdentifier($spec)
+    {
+        $select = $this->_db->select()->from('zfproducts')->group($spec);
+
+        $this->assertStringEndsWith(
+            ' GROUP BY ' . $this->_db->quoteIdentifier($spec),
+            $select->assemble()
+        );
+    }
+
+    public function testFunctionCallIsNeverRawSqlEvenWithDetectionDisabled()
+    {
+        // The pattern only decides between "throw" and "quote as identifier":
+        // with detection disabled the string must still never become raw SQL.
+        $select = new Zend_Db_Select_TestCommon_NoDetection($this->_db);
+        $select->from('zfproducts')->group('RAND()')->order('RAND()');
+
+        $quoted = $this->_db->quoteIdentifier('RAND()');
+        $this->assertStringContainsString(' GROUP BY ' . $quoted, $select->assemble());
+        $this->assertStringEndsWith(' ORDER BY ' . $quoted . ' ASC', $select->assemble());
     }
 
     /**
@@ -1921,14 +2040,53 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
     public function testOrderOfConditionalFieldWithDirection()
     {
         $select = $this->_db->select();
-        $select->from(['p' => 'product'])
-            ->order($this->_quoteSql('IF(`productId` > 5,1,0) ASC'));
+        $select->from(['p' => 'product']);
 
-        $expected = $this->_quoteSql('SELECT `p`.* FROM `product` AS `p` ORDER BY IF(`productId` > 5,1,0) ASC');
+        $this->expectException(Zend_Db_Select_Exception::class);
+        $select->order($this->_quoteSql('IF(`productId` > 5,1,0) ASC'));
+    }
+
+    /**
+     * @group ZF-378
+     * @group ZF-381
+     */
+    public function testOrderOfConditionalExprWithDirection()
+    {
+        $select = $this->_db->select();
+        $select->from(['p' => 'product'])
+            ->order(new Zend_Db_Expr($this->_quoteSql('IF(`productId` > 5,1,0) DESC')));
+
+        $expected = $this->_quoteSql('SELECT `p`.* FROM `product` AS `p` ORDER BY IF(`productId` > 5,1,0) DESC');
         $this->assertEquals(
             $expected,
             $select->assemble(),
-            'Order direction of field failed'
+            'Order direction of expression failed'
+        );
+    }
+
+    /**
+     * With setStringExpressionsAllowed() on, order() and group() embed a
+     * string that looks like a function call as an SQL expression.
+     */
+    public function testStringExpressionsAllowedConvertsFunctionCalls()
+    {
+        $this->assertFalse(Zend_Db_Select::getStringExpressionsAllowed());
+
+        Zend_Db_Select::setStringExpressionsAllowed();
+        try {
+            $select = $this->_db->select()
+                ->from('zfproducts')
+                ->group('ABS(1)')
+                ->order(['RAND()', 'ABS(1) DESC', 'product_id']);
+            $sql = $select->assemble();
+        } finally {
+            Zend_Db_Select::setStringExpressionsAllowed(false);
+        }
+
+        $this->assertStringContainsString(' GROUP BY ABS(1)', $sql);
+        $this->assertStringEndsWith(
+            ' ORDER BY RAND() ASC, ABS(1) DESC, ' . $this->_db->quoteIdentifier('product_id') . ' ASC',
+            $sql
         );
     }
 
@@ -1949,4 +2107,13 @@ abstract class Zend_Db_Select_TestCommon extends Zend_Db_TestSetup
 
         return str_replace($q . ' AS ' . $q, $q . $as . $q, $sql);
     }
+}
+
+/**
+ * Zend_Db_Select with the function-call detection patterns set to never match.
+ */
+class Zend_Db_Select_TestCommon_NoDetection extends Zend_Db_Select
+{
+    protected $_regexColumnExprOrder = '/(?!)/';
+    protected $_regexColumnExprGroup = '/(?!)/';
 }

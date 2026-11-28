@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+* Zend_Db_Select::order() and group() no longer embed a string that looks like an SQL function call (`'RAND()'`, `'ABS(price) DESC'`, `'IF(a > 5,1,0)'`) in the query as an SQL expression. The conversion allowed SQL injection in applications that pass user input, e.g. a sort column, to these methods, also through the `$order` argument of Zend_Db_Table_Abstract::fetchAll() / fetchRow(). Such a string throws Zend_Db_Select_Exception; an expression has to be passed as Zend_Db_Expr. Zend_Db_Select::setStringExpressionsAllowed(true) restores the conversion for applications that pass no user input to these methods (see BREAKING-CHANGES.md). Reported and patched by Brian Morton.
+
 ### Changed
 
 * Zend_Cache_Core::$_lastId is protected, as the other properties of the class, so a frontend extending Zend_Cache_Core can set the id that save() without an id uses (#684). It holds the id with the cache_id_prefix, as returned by _id().
