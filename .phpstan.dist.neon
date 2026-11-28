@@ -11,7 +11,6 @@ parameters:
         - library/Zend/Service/WindowsAzure/Log/Writer/WindowsAzure.php
         - library/Zend/Test/PHPUnit/
         # Deprecated components (see README.md); they are not tested either
-        - library/Zend/Cache/Backend/Sqlite.php
         - library/Zend/Cache/Backend/WinCache.php
         - library/Zend/Cache/Backend/ZendServer.php
         - library/Zend/Cache/Backend/ZendServer/
