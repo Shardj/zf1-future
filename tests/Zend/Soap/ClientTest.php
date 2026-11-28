@@ -60,11 +60,26 @@ class Zend_Soap_ClientTest extends TestCase
         if (!extension_loaded('soap')) {
             $this->markTestSkipped('SOAP Extension is not loaded');
         }
-        if (PHP_VERSION_ID >= 80500) {
-            $this->markTestSkipped('Zend_Soap_Client_Common::__doRequest() lacks the $uriParserClass parameter of SoapClient on PHP 8.5+');
-        }
 
         require_once 'Zend/Soap/Client.php';
+    }
+
+    /**
+     * SoapClient::__doRequest() of PHP 8.5 has a sixth parameter, the URI parser class
+     */
+    public function testCommonClientTakesUriParserClass()
+    {
+        $received = null;
+        $callback = function () use (&$received) {
+            $received = func_get_args();
+            return '<response/>';
+        };
+        $client = new Zend_Soap_Client_Common($callback, null, ['location' => 'http://example.com/', 'uri' => 'http://example.com/']);
+
+        $response = $client->__doRequest('<request/>', 'http://example.com/', 'action', SOAP_1_1, false, 'Uri\\Rfc3986\\Uri');
+
+        $this->assertSame('<response/>', $response);
+        $this->assertSame([$client, '<request/>', 'http://example.com/', 'action', SOAP_1_1, false], $received);
     }
 
     public function testSetOptions()

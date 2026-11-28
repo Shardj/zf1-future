@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+* Zend_Soap_Client works on PHP 8.5: Zend_Soap_Client_Common::__doRequest() takes the `$uriParserClass` parameter that PHP 8.5 added to SoapClient::__doRequest(), and doRequest() passes it on to SoapClient. The declaration was incompatible, a fatal error on loading the class. See BREAKING-CHANGES.md.
+
 ## [1.27.2] - 2026-11-28
 
 ### Security

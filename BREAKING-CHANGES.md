@@ -4,6 +4,9 @@
 #AIM of this doc.
 As pressure to implement some PHP 8.2+ related changes are raising, we are goig to track any possible breaking change, starting from version 1.24.0
 
+### 1.28.0
+* Zend_Soap_Client_Common::__doRequest() has a sixth optional parameter `$uriParserClass`, which PHP 8.5 added to SoapClient::__doRequest(). A subclass of Zend_Soap_Client_Common that overrides `__doRequest()` has to declare it too (`$uriParserClass = null`); on PHP 8.5 it had to anyway. Subclasses of Zend_Soap_Client that override `_doRequest()` are not affected.
+
 ### 1.27.2
 * **Security fix, changes behaviour:** `Zend_Db_Select::order()` and `Zend_Db_Select::group()` no longer convert strings that look like SQL function calls (e.g. `'RAND()'`, `'ABS(price) DESC'`, `'IF(a > 5,1,0)'`, `'YEAR(created)'`) into expressions. The conversion embedded the string in the query as raw SQL and allowed SQL injection wherever request data, such as a sort column, reached these methods. Such strings now throw `Zend_Db_Select_Exception`; every other string is quoted as an identifier, as before.
   * Pass expressions explicitly: `$select->order(new Zend_Db_Expr('RAND()'))`, `$select->group(new Zend_Db_Expr('ABS(price)'))`. The direction belongs inside the expression: `new Zend_Db_Expr('ABS(price) DESC')`.

@@ -38,6 +38,13 @@ class Zend_Soap_Client_Common extends SoapClient
     protected $_doRequestCallback;
 
     /**
+     * URI parser class of the request in progress (PHP 8.5+)
+     *
+     * @var string|null
+     */
+    protected $_uriParserClass;
+
+    /**
      * Common Soap Client constructor
      *
      * @param callable $doRequestCallback
@@ -55,16 +62,19 @@ class Zend_Soap_Client_Common extends SoapClient
      * Performs SOAP request over HTTP.
      * Overridden to implement different transport layers, perform additional XML processing or other purpose.
      *
-     * @param string $request
-     * @param string $location
-     * @param string $action
-     * @param int    $version
-     * @param int    $one_way
+     * @param string      $request
+     * @param string      $location
+     * @param string      $action
+     * @param int         $version
+     * @param int         $one_way
+     * @param string|null $uriParserClass URI parser class of PHP 8.5+; doRequest() passes it on to SoapClient
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-    function __doRequest($request, $location, $action, $version, $one_way = null)
+    function __doRequest($request, $location, $action, $version, $one_way = null, $uriParserClass = null)
     {
+        $this->_uriParserClass = $uriParserClass;
+
         if ($one_way === null) {
             return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version);
         } else {
@@ -84,6 +94,10 @@ class Zend_Soap_Client_Common extends SoapClient
      */
     public function doRequest($request, $location, $action, $version, $one_way = null)
     {
+        if ($this->_uriParserClass !== null) {
+            return parent::__doRequest($request, $location, $action, $version, (bool) $one_way, $this->_uriParserClass);
+        }
+
         if ($one_way === null) {
             return parent::__doRequest($request, $location, $action, $version);
         } else {
