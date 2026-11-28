@@ -81,4 +81,3 @@ The following components talk to services that no longer exist. They are depreca
 * ``Zend_Cloud`` (the Simple Cloud API is not developed any further; use the SDK of the cloud provider)
 * ``Zend_Service_Amazon``, ``Zend_Service_Amazon_Query`` and their result classes (the Product Advertising API 4.0 was shut down in 2020); ``Zend_Service_Amazon_Ec2``, ``_S3``, ``_Sqs`` and ``_SimpleDb`` are not affected
 * ``Zend_Service_Delicious`` (the Delicious API was shut down on 2017-06-15)
-* ``Zend_Service_Audioscrobbler`` (the Audioscrobbler 1.0 web services were shut down in favour of the Last.fm API 2.0)

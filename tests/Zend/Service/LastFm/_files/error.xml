@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lfm status="failed">
+<error code="10">Invalid API key - You must be granted a valid key by last.fm</error>
+</lfm>

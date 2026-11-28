@@ -32,7 +32,6 @@ parameters:
         - library/Zend/Service/Amazon/Query.php
         - library/Zend/Service/Amazon/ResultSet.php
         - library/Zend/Service/Amazon/SimilarProduct.php
-        - library/Zend/Service/Audioscrobbler.php
         - library/Zend/Service/Delicious.php
         - library/Zend/Service/Delicious/
     level: 5
