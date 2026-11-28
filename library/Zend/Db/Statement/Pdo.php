@@ -253,14 +253,14 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      *
      * Zend_Db mirrors the values PDO used up to PHP 8.4; PHP 8.5 changed them.
      * The fetch type in the low bits and values that already use the PDO
-     * constants are passed through.
+     * constants are passed through. Up to PHP 8.4 the mode comes out unchanged.
      *
      * @param  int|mixed $mode
      * @return int|mixed
      */
     protected static function _pdoFetchMode($mode)
     {
-        if (!is_int($mode) || Zend_Db::FETCH_GROUP === PDO::FETCH_GROUP) {
+        if (!is_int($mode)) {
             return $mode;
         }
 
