@@ -548,6 +548,18 @@ class Zend_File_Transfer_Adapter_AbstractTest extends TestCase
         }
     }
 
+    public function testGetOptionsWithoutFilesReturnsAnEmptyArray()
+    {
+        $adapter = new class extends Zend_File_Transfer_Adapter_AbstractTest_MockAdapter {
+            public function __construct()
+            {
+                $this->_files = [];
+            }
+        };
+
+        $this->assertSame([], $adapter->getOptions());
+    }
+
     public function testSettingAndRetrievingOptions()
     {
         $this->assertEquals(

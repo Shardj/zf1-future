@@ -60,6 +60,25 @@ class Zend_Locale_DataTest extends TestCase
     }
 
     /**
+     * clearCache() clears the entries of Zend_Locale_Data; with a tag, the entries with that tag
+     */
+    public function testClearCacheWithAndWithoutTag()
+    {
+        Zend_Locale_Data::getList('de', 'language');
+        $this->_cache->save('data', 'zf_other_entry', ['other_tag']);
+        $localeEntries = array_diff($this->_cache->getIds(), ['zf_other_entry']);
+        $this->assertNotEmpty($localeEntries);
+
+        Zend_Locale_Data::clearCache('other_tag');
+        $this->assertFalse($this->_cache->test('zf_other_entry'));
+        $this->assertEquals(array_values($localeEntries), array_values($this->_cache->getIds()));
+
+        $this->_cache->save('data', 'zf_other_entry', ['other_tag']);
+        Zend_Locale_Data::clearCache();
+        $this->assertEquals(['zf_other_entry'], array_values($this->_cache->getIds()));
+    }
+
+    /**
      * test for reading the scriptlist from a locale that is an alias
      */
     public function testAliases()

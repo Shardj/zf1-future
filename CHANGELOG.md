@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Zend_Tool_Project_Provider_Module::createResources() returns to the right parent after a subtree more than one level deep; a directory following such a subtree was created inside the previous top-level directory instead of the module directory.
 * Zend_Controller_Action_Helper_ViewRenderer ignores options with an integer key; on PHP 7.4 the key 0 matched the first option name and created a property `$_0`.
 * Zend_Search_Lucene_MultiSearcher can be loaded and used: setDefaultSearchField(), getDefaultSearchField(), setResultSetLimit() and getResultSetLimit() are static, as Zend_Search_Lucene_Interface declares them (loading the class was a fatal error). termFreqs() and termPositions() return their data by document id (termPositions() returned an empty array, termFreqs() renumbered the keys), and terms() no longer fails on comparing term objects.
+* Zend_Oauth_Token_Access::getHttpClient() with `$excludeCustomParamsFromHeader = false` puts the request parameters into the Authorization header: the argument was passed to Zend_Oauth_Client, whose constructor did not take it. Zend_Oauth_Client has the constructor parameter now and Zend_Oauth_Token_Access::toHeader() a fifth optional parameter `$excludeCustomParams`. See BREAKING-CHANGES.md.
+* Zend_Locale_Data::clearCache() takes the tag that Zend_Currency::clearCache($tag) passes to it and clears the entries with that tag; the tag was ignored and the locale data was cleared instead. See BREAKING-CHANGES.md.
+* Zend_View_Helper_HeadMeta triggers an E_USER_NOTICE for a meta element without content with an HTML5 doctype, unless it is `<meta charset>`; the element is still rendered.
+* Zend_File_Transfer_Adapter_Abstract::getOptions() returns an empty array when there are no files, instead of null and an "Undefined variable $options" warning.
 
 ## [1.27.2] - 2026-11-28
 

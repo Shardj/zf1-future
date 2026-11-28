@@ -91,7 +91,7 @@ class Zend_XmlRpc_Client
 
     /**
      * Introspection object
-     * @var Zend_Http_Client_Introspector
+     * @var Zend_XmlRpc_Client_ServerIntrospection
      */
     protected $_introspector = null;
 

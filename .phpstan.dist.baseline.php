@@ -542,12 +542,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/Currency.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Static method Zend_Locale_Data::clearCache() invoked with 1 parameter, 0 required.',
-	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Currency.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Binary operation "*" between string and 1000 results in an error.',
 	'identifier' => 'binaryOp.invalid',
 	'count' => 1,
@@ -1022,12 +1016,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Variable $options might not be defined.',
-	'identifier' => 'variable.undefined',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/File/Transfer/Adapter/Abstract.php',
-];
-$ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_Filter_Interface::getNewName().',
 	'identifier' => 'method.notFound',
 	'count' => 1,
@@ -1344,12 +1332,6 @@ $ignoreErrors[] = [
 	'identifier' => 'argument.type',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Loader/StandardAutoloader.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Static method Zend_Locale_Data::clearCache() invoked with 1 parameter, 0 required.',
-	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Locale.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Static property Zend_Locale_Data::$_list is never read, only written.',
@@ -1674,12 +1656,6 @@ $ignoreErrors[] = [
 	'identifier' => 'arguments.count',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Oauth/Signature/SignatureAbstract.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Class Zend_Oauth_Client constructor invoked with 4 parameters, 1-3 required.',
-	'identifier' => 'arguments.count',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/Oauth/Token/Access.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Method Zend_OpenId::createDhKey() has invalid return type OpenSSLAsymmetricKey.',
@@ -3408,24 +3384,6 @@ $ignoreErrors[] = [
 	'identifier' => 'property.notFound',
 	'count' => 1,
 	'path' => __DIR__ . '/library/Zend/Xml/Security.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Method Zend_XmlRpc_Client::getIntrospector() should return Zend_XmlRpc_Client_ServerIntrospection but returns Zend_Http_Client_Introspector.',
-	'identifier' => 'return.type',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_XmlRpc_Client::$_introspector (Zend_Http_Client_Introspector) does not accept Zend_XmlRpc_Client_ServerIntrospection.',
-	'identifier' => 'assign.propertyType',
-	'count' => 2,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client.php',
-];
-$ignoreErrors[] = [
-	'rawMessage' => 'Property Zend_XmlRpc_Client::$_introspector has unknown class Zend_Http_Client_Introspector as its type.',
-	'identifier' => 'class.notFound',
-	'count' => 1,
-	'path' => __DIR__ . '/library/Zend/XmlRpc/Client.php',
 ];
 $ignoreErrors[] = [
 	'rawMessage' => 'Call to an undefined method Zend_XmlRpc_Generator_GeneratorAbstract::_init().',

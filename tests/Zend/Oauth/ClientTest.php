@@ -26,6 +26,7 @@ use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 require_once 'Zend/Oauth.php';
 require_once 'Zend/Oauth/Config.php';
 require_once 'Zend/Oauth/Client.php';
+require_once 'Zend/Oauth/Token/Access.php';
 
 class Test_Oauth_Client extends Zend_Oauth_Client
 {
@@ -53,6 +54,35 @@ class Zend_Oauth_ClientTest extends TestCase
     protected function set_up()
     {
         $this->client = new Zend_Oauth_Client([]);
+    }
+
+    /**
+     * @dataProvider excludeCustomParamsProvider
+     */
+    public function testCustomParametersInTheAuthorizationHeader($exclude, $expected)
+    {
+        $token = new Zend_Oauth_Token_Access();
+        $token->setToken('token')->setTokenSecret('secret');
+        $client = $token->getHttpClient(
+            ['consumerKey' => 'key', 'consumerSecret' => 'secret', 'requestScheme' => Zend_Oauth::REQUEST_SCHEME_HEADER],
+            'http://example.com/api',
+            null,
+            $exclude
+        );
+        $client->setParameterGet('custom', 'value');
+        $client->prepareOauth();
+
+        $header = $client->getHeader('Authorization');
+        $this->assertStringContainsString('oauth_token="token"', $header);
+        $this->assertSame($expected, strpos($header, 'custom="value"') !== false);
+    }
+
+    public static function excludeCustomParamsProvider()
+    {
+        return [
+            'excluded (default)' => [true, false],
+            'included'           => [false, true],
+        ];
     }
 
     /**

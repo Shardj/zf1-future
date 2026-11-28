@@ -64,6 +64,13 @@ class Zend_Oauth_Client extends Zend_Http_Client
     protected $_streamingRequest = null;
 
     /**
+     * Whether only the oauth_* parameters go into the Authorization header
+     *
+     * @var bool
+     */
+    protected $_excludeCustomParamsFromHeader = true;
+
+    /**
      * Constructor; creates a new HTTP Client instance which itself is
      * just a typical Zend_Http_Client subclass with some OAuth icing to
      * assist in automating OAuth parameter generation, addition and
@@ -72,10 +79,13 @@ class Zend_Oauth_Client extends Zend_Http_Client
      * @param  array|Zend_Config $oauthOptions
      * @param  string            $uri
      * @param  array|Zend_Config $config
+     * @param  bool              $excludeCustomParamsFromHeader False puts the request parameters
+     *                           into the Authorization header as well (header request scheme)
      * @return void
      */
-    public function __construct($oauthOptions, $uri = null, $config = null)
+    public function __construct($oauthOptions, $uri = null, $config = null, $excludeCustomParamsFromHeader = true)
     {
+        $this->_excludeCustomParamsFromHeader = (bool) $excludeCustomParamsFromHeader;
         if ($config instanceof Zend_Config && !isset($config->rfc3986_strict)) {
             $config                   = $config->toArray();
             $config['rfc3986_strict'] = true;
@@ -243,7 +253,8 @@ class Zend_Oauth_Client extends Zend_Http_Client
                 $this->getUri(true),
                 $this->_config,
                 $this->_getSignableParametersAsQueryString(),
-                $this->getRealm()
+                $this->getRealm(),
+                $this->_excludeCustomParamsFromHeader
             );
             $this->setHeaders('Authorization', $oauthHeaderValue);
         } elseif ($requestScheme == Zend_Oauth::REQUEST_SCHEME_POSTBODY) {
