@@ -40,8 +40,6 @@ if (isset($argv[1])) {
 // files that cannot be loaded alone, with the reason
 $known = [
     'Zend/Locale/Math/PhpMath.php' => 'loaded by Zend/Locale/Math.php, which calls it while it is loaded',
-    'Zend/Search/Lucene/Interface/MultiSearcher.php' => 'requires Zend_Search_Lucene_MultiSearcher, whose '
-        . 'setDefaultSearchField() is not static although the interface declares it static',
 ];
 
 // not checked: what the static analysis leaves out as well (deprecated components, classes for missing
