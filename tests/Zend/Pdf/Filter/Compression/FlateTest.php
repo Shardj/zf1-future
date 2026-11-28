@@ -11,29 +11,46 @@ class Zend_Pdf_Filter_Compression_FlateTest extends TestCase
         }
     }
 
-    public function testEncodeException()
+    public function testEncodeWithPredictorRejectsIncompleteRows()
     {
-        try {
-            Zend_Pdf_Filter_Compression_Flate::encode(null, str_repeat('foo', 1000));
-        } catch (Exception $e) {
-            self::assertInstanceOf('Zend_Pdf_Exception', $e);
-            self::assertStringNotContainsString('Not implemented yet', $e->getMessage());
+        $this->expectException(Zend_Pdf_Exception::class);
+        $this->expectExceptionMessage('Wrong data length.');
 
-            return;
-        }
-
-        self::fail('This test throw and handle an exception and return early');
+        Zend_Pdf_Filter_Compression_Flate::encode('12345', ['Predictor' => 11, 'Columns' => 4]);
     }
 
-    public function testDecodeException()
+    /**
+     * The PNG predictors store byte differences modulo 256; rows are chosen so
+     * that the differences are negative as well.
+     *
+     * @dataProvider pngPredictorProvider
+     */
+    public function testEncodeAndDecodeWithPngPredictor($predictor)
     {
-        try {
-            Zend_Pdf_Filter_Compression_Flate::decode(null);
-        } catch (Exception $e) {
-            self::assertInstanceOf('Zend_Pdf_Exception', $e);
-            self::assertStringNotContainsString('Not implemented yet', $e->getMessage());
-        }
+        $data = "\xFF\x10\x80\x00" . "\x00\xFF\x01\x7F" . "\x05\x04\x03\x02" . "\xFE\xFF\x00\x01";
+        $params = ['Predictor' => $predictor, 'Columns' => 4];
 
-        self::fail('This test throw and handle an exception and return early');
+        $encoded = Zend_Pdf_Filter_Compression_Flate::encode($data, $params);
+
+        self::assertSame($data, Zend_Pdf_Filter_Compression_Flate::decode($encoded, $params));
+    }
+
+    public static function pngPredictorProvider()
+    {
+        return [
+            'none'    => [10],
+            'sub'     => [11],
+            'up'      => [12],
+            'average' => [13],
+            'paeth'   => [14],
+            'optimal' => [15],
+        ];
+    }
+
+    public function testDecodeRejectsDataThatIsNotCompressed()
+    {
+        $this->expectException(Zend_Pdf_Exception::class);
+
+        Zend_Pdf_Filter_Compression_Flate::decode('not compressed');
     }
 }
